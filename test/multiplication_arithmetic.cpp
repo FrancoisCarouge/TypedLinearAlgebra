@@ -1,3 +1,9 @@
+/* Typed Linear Algebra
+Version 0.1.0
+https://github.com/FrancoisCarouge/TypedLinearAlgebra
+
+SPDX-License-Identifier: Unlicense
+
 This is free and unencumbered software released into the public domain.
 
 Anyone is free to copy, modify, publish, use, compile, sell, or
@@ -21,4 +27,25 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org>
+For more information, please refer to <https://unlicense.org> */
+
+#include "fcarouge/linalg.hpp"
+
+#include <cassert>
+
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the scalar multiplication operator.
+[[maybe_unused]] auto test{[] {
+  const matrix<double, 2, 2> a{{1.0, 2.0}, {3.0, 4.0}};
+  const matrix<double, 2, 2> r{a * 2.0};
+
+  assert(r(0, 0) == 2.0);
+  assert(r(0, 1) == 4.0);
+  assert(r(1, 0) == 6.0);
+  assert(r(1, 1) == 8.0);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

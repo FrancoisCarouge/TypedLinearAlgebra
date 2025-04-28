@@ -1,0 +1,53 @@
+name: 'CppCheck'
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+  - cron: '0 0 * * */5'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@0634a2670c59f64b4a01f0f96f84700a4088b9f0 # v2.12.0
+      with:
+        egress-policy: audit
+    - name: Checkout
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+    - name: Install
+      run: |
+        ( cd /tmp
+          git clone --depth 1 'https://gitlab.com/libeigen/eigen'
+          cmake -S 'eigen' -B 'eigen/build'
+          cmake --build 'eigen/build' --parallel 4
+          sudo cmake --install 'eigen/build' )
+        ( cd /tmp
+          git clone --depth 1 'https://github.com/danmar/cppcheck.git'
+          cmake -S 'cppcheck' -B 'cppcheck/build'
+          cmake --build 'cppcheck/build' --parallel 4
+          sudo cmake --install 'cppcheck/build' )
+    - name: Verify
+      run: |
+        cppcheck \
+          --enable=all \
+          --error-exitcode=1 \
+          --suppress=preprocessorErrorDirective \
+          --verbose \
+          -I include \
+          -I support/eigen \
+          -I support/eigexed \
+          -I support/main \
+          -I support/mp_units \
+          -I support/quantity \
+          .
