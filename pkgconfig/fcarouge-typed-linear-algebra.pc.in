@@ -1,7 +1,7 @@
 prefix=@CMAKE_INSTALL_PREFIX@
 includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
 
-Name: Typed Linear Algebra
+Name: fcarouge-typed-linear-algebra
 Description: Typed Linear Algebra.
 Version: @CMAKE_PROJECT_VERSION@
 Cflags: -I${includedir}

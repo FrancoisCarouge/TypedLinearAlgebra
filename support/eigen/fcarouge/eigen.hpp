@@ -35,11 +35,11 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief Linear algebra facade for Eigen3 third party implementation.
 //!
-//! @details Supporting matrix, vectors, and named algebraic values.
+//! @details Supporting matrix and vectors.
 //!
 //! @note The Eigen3 linear algebra is not constexpr-compatible as of July 2023.
 
-#include "fcarouge/utility.hpp"
+#include "fcarouge/typed_linear_algebra.hpp"
 
 #include <format>
 #include <sstream>
@@ -83,7 +83,8 @@ using column_vector = Eigen::Vector<Type, Row>;
 
 namespace fcarouge {
 //! @brief Specialization of the evaluation type.
-template <eigen::is_eigen Type> struct evaluates<Type> {
+template <eigen::is_eigen Type>
+struct typed_linear_algebra_internal::evaluates<Type> {
   [[nodiscard]] inline constexpr auto operator()() const ->
       typename Type::PlainMatrix;
 };

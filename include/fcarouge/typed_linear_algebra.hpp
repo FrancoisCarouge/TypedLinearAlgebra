@@ -35,9 +35,9 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief Index typed linear algebra implementation.
 //!
-//! @details Matrix, vectors, and named algebraic values.
+//! @details Matrix and vectors.
 
-#include "fcarouge/utility.hpp"
+#include "fcarouge/typed_linear_algebra_internal/utility.hpp"
 
 #include <concepts>
 #include <cstddef>
@@ -46,74 +46,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <tuple>
 
 namespace fcarouge {
-
-//! @brief The underlying storage type of the matrix's elements.
-template <typename Matrix>
-using underlying_t =
-    std::remove_cvref_t<decltype(std::declval<Matrix>()(0, 0))>;
-
-//! @brief The type of the element at the given matrix indexes position.
-template <typename Matrix, std::size_t RowIndex, std::size_t ColumnIndex>
-using element =
-    product<std::tuple_element_t<RowIndex, typename Matrix::row_indexes>,
-            std::tuple_element_t<ColumnIndex, typename Matrix::column_indexes>>;
-
-//! @brief Every element types of the matrix are the same.
-//!
-//! @details Matrices with uniform types are type safe even with the traditional
-//! operators.
-//!
-//! @note A matrix may be uniform with different row and column indexes.
-//!
-//! @todo There may be a way to write this concepts via two fold expressions.
-template <typename Matrix>
-concept uniform = []() {
-  bool result{true};
-
-  for_constexpr<0, Matrix::rows, 1>([&result](auto i) {
-    for_constexpr<0, Matrix::columns, 1>([&result, &i](auto j) {
-      result &= std::is_same_v<element<Matrix, i, j>, element<Matrix, 0, 0>>;
-    });
-  });
-
-  return result;
-}();
-
-//! @brief The index is within the range, inclusive.
-template <std::size_t Index, std::size_t Begin, std::size_t End>
-concept in_range = Begin <= Index && Index <= End;
-
-//! @brief The given matrix is a single column.
-template <typename Matrix>
-concept column = Matrix::columns == 1;
-
-//! @brief The matrix is a single row.
-template <typename Matrix>
-concept row = Matrix::rows == 1;
-
-//! @brief The given matrix is a single dimension, that is a row or a column.
-template <typename Matrix>
-concept one_dimension = column<Matrix> || row<Matrix>;
-
-//! @brief The given row and column indexes form a singleton matrix.
-template <typename Matrix>
-concept singleton = column<Matrix> && row<Matrix>;
-
-//! @brief The packs have the same count of types.
-template <typename Pack1, typename Pack2>
-concept same_size = size<Pack1> == size<Pack2>;
-
-//! @brief Element traits for conversions.
-template <typename Underlying, typename Type> struct element_traits {
-  [[nodiscard]] static inline constexpr Underlying to_underlying(Type value) {
-    return value;
-  }
-
-  [[nodiscard]] static inline constexpr Type &
-  from_underlying(Underlying &value) {
-    return value;
-  }
-};
 
 //! @name Types
 //! @{
@@ -138,7 +70,7 @@ template <typename Underlying, typename Type> struct element_traits {
 //!
 //! @note Deduction guides are tricky because a given element type comes from
 //! a row and column index to be deduced.
-template <algebraic Matrix, typename RowIndexes, typename ColumnIndexes>
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 struct typed_matrix {
   //! @todo Privatize this section.
 public:
@@ -146,7 +78,7 @@ public:
   //! @{
 
   //! @brief The type of the element's underlying storage.
-  using underlying = underlying_t<Matrix>;
+  using underlying = typed_linear_algebra_internal::underlying_t<Matrix>;
 
   //! @}
 
@@ -177,7 +109,8 @@ public:
 
   //! @brief The type of the element at the given matrix indexes position.
   template <std::size_t RowIndex, std::size_t ColumnIndex>
-  using element = element<typed_matrix, RowIndex, ColumnIndex>;
+  using element = typed_linear_algebra_internal::element<typed_matrix, RowIndex,
+                                                         ColumnIndex>;
 
   //! @}
 
@@ -185,10 +118,12 @@ public:
   //! @{
 
   //! @brief The count of rows.
-  inline constexpr static std::size_t rows{size<row_indexes>};
+  inline constexpr static std::size_t rows{
+      typed_linear_algebra_internal::size<row_indexes>};
 
   //! @brief The count of rows.
-  inline constexpr static std::size_t columns{size<column_indexes>};
+  inline constexpr static std::size_t columns{
+      typed_linear_algebra_internal::size<column_indexes>};
 
   //! @}
 
@@ -206,31 +141,35 @@ public:
   inline constexpr typed_matrix &operator=(typed_matrix &&other) = default;
 
   //! @todo Requires evaluated types of Matrix and OtherMatrix are identical?
-  template <algebraic OtherMatrix>
+  template <typename OtherMatrix>
   inline constexpr typed_matrix(
       const typed_matrix<OtherMatrix, RowIndexes, ColumnIndexes> &other)
       : data{other.data} {}
 
-  inline constexpr explicit typed_matrix(
-      const element<0, 0> (&elements)[size<RowIndexes> * size<ColumnIndexes>])
-    requires uniform<typed_matrix> && one_dimension<typed_matrix>
+  inline constexpr explicit typed_matrix(const element<0, 0> (
+      &elements)[typed_linear_algebra_internal::size<RowIndexes> *
+                 typed_linear_algebra_internal::size<ColumnIndexes>])
+    requires typed_linear_algebra_internal::uniform<typed_matrix> &&
+             typed_linear_algebra_internal::one_dimension<typed_matrix>
       : data{elements} {}
 
-  template <arithmetic Type>
-    requires singleton<typed_matrix>
+  template <typed_linear_algebra_internal::arithmetic Type>
+    requires typed_linear_algebra_internal::singleton<typed_matrix>
   explicit inline constexpr typed_matrix(const Type &value) {
-    data(0, 0) = element_traits<underlying, Type>::to_underlying(value);
+    data(0, 0) = typed_linear_algebra_internal::element_traits<
+        underlying, Type>::to_underlying(value);
   }
 
   //! @todo Verify the list sizes at runtime?
   template <typename Type>
   inline constexpr explicit typed_matrix(
       std::initializer_list<std::initializer_list<Type>> row_list)
-    requires uniform<typed_matrix>
+    requires typed_linear_algebra_internal::uniform<typed_matrix>
   {
     for (std::size_t i{0}; const auto &row : row_list) {
       for (std::size_t j{0}; const auto &value : row) {
-        data(i, j) = element_traits<underlying, Type>::to_underlying(value);
+        data(i, j) = typed_linear_algebra_internal::element_traits<
+            underlying, Type>::to_underlying(value);
         ++j;
       }
       ++i;
@@ -241,78 +180,95 @@ public:
   //! @todo Verify if the types are the same, or assignable, for nicer error?
   //! @todo Rewrite with a fold expression over the pack?
   template <typename... Types>
-    requires row<typed_matrix> && (not column<typed_matrix>) &&
-             same_size<ColumnIndexes, std::tuple<Types...>>
+    requires typed_linear_algebra_internal::row<typed_matrix> &&
+             (not typed_linear_algebra_internal::column<typed_matrix>) &&
+             typed_linear_algebra_internal::same_size<ColumnIndexes,
+                                                      std::tuple<Types...>>
   explicit inline constexpr typed_matrix(const Types &...values) {
     std::tuple value_pack{values...};
-    for_constexpr<0, size<ColumnIndexes>, 1>([this,
-                                              &value_pack](auto position) {
-      auto value{std::get<position>(value_pack)};
-      using type = std::remove_cvref_t<decltype(value)>;
-      data[position] = element_traits<underlying, type>::to_underlying(value);
-    });
+    typed_linear_algebra_internal::for_constexpr<
+        0, typed_linear_algebra_internal::size<ColumnIndexes>, 1>(
+        [this, &value_pack](auto position) {
+          auto value{std::get<position>(value_pack)};
+          using type = std::remove_cvref_t<decltype(value)>;
+          data[position] = typed_linear_algebra_internal::element_traits<
+              underlying, type>::to_underlying(value);
+        });
   }
 
   template <typename... Types>
-    requires column<typed_matrix> && (not row<typed_matrix>) &&
-             same_size<RowIndexes, std::tuple<Types...>>
+    requires typed_linear_algebra_internal::column<typed_matrix> &&
+             (not typed_linear_algebra_internal::row<typed_matrix>) &&
+             typed_linear_algebra_internal::same_size<RowIndexes,
+                                                      std::tuple<Types...>>
   inline constexpr typed_matrix(const Types &...values) {
     std::tuple value_pack{values...};
-    for_constexpr<0, size<RowIndexes>, 1>([this, &value_pack](auto position) {
-      auto value{std::get<position>(value_pack)};
-      using type = std::remove_cvref_t<decltype(value)>;
-      data[position] = element_traits<underlying, type>::to_underlying(value);
-    });
+    typed_linear_algebra_internal::for_constexpr<
+        0, typed_linear_algebra_internal::size<RowIndexes>, 1>(
+        [this, &value_pack](auto position) {
+          auto value{std::get<position>(value_pack)};
+          using type = std::remove_cvref_t<decltype(value)>;
+          data[position] = typed_linear_algebra_internal::element_traits<
+              underlying, type>::to_underlying(value);
+        });
   }
 
   [[nodiscard]] inline constexpr explicit(false) operator element<0, 0> &()
-    requires singleton<typed_matrix>
+    requires typed_linear_algebra_internal::singleton<typed_matrix>
   {
-    return element_traits<underlying, element<0, 0>>::from_underlying(
-        data(0, 0));
+    return typed_linear_algebra_internal::element_traits<
+        underlying, element<0, 0>>::from_underlying(data(0, 0));
   }
 
   [[nodiscard]] inline constexpr auto &&operator[](this auto &&self,
                                                    std::size_t index)
-    requires uniform<typed_matrix> && one_dimension<typed_matrix>
+    requires typed_linear_algebra_internal::uniform<typed_matrix> &&
+             typed_linear_algebra_internal::one_dimension<typed_matrix>
   {
     return std::forward<decltype(self)>(self).data(index);
   }
 
   [[nodiscard]] inline constexpr auto &&
   operator[](this auto &&self, std::size_t row, std::size_t column)
-    requires uniform<typed_matrix>
+    requires typed_linear_algebra_internal::uniform<typed_matrix>
   {
     return std::forward<decltype(self)>(self).data(row, column);
   }
 
   [[nodiscard]] inline constexpr auto &&operator()(this auto &&self,
                                                    std::size_t index)
-    requires uniform<typed_matrix> && one_dimension<typed_matrix>
+    requires typed_linear_algebra_internal::uniform<typed_matrix> &&
+             typed_linear_algebra_internal::one_dimension<typed_matrix>
   {
     return std::forward<decltype(self)>(self).data(index);
   }
 
   [[nodiscard]] inline constexpr auto &&
   operator()(this auto &&self, std::size_t row, std::size_t column)
-    requires uniform<typed_matrix>
+    requires typed_linear_algebra_internal::uniform<typed_matrix>
   {
     return std::forward<decltype(self)>(self).data(row, column);
   }
 
   template <std::size_t Row, std::size_t Column>
-    requires in_range<Row, 0, size<RowIndexes>> &&
-             in_range<Column, 0, size<ColumnIndexes>>
+    requires typed_linear_algebra_internal::in_range<
+                 Row, 0, typed_linear_algebra_internal::size<RowIndexes>> &&
+             typed_linear_algebra_internal::in_range<
+                 Column, 0, typed_linear_algebra_internal::size<ColumnIndexes>>
   [[nodiscard]] inline constexpr element<Row, Column> &at() {
-    return element_traits<underlying, element<Row, Column>>::from_underlying(
-        data(std::size_t{Row}, std::size_t{Column}));
+    return typed_linear_algebra_internal::
+        element_traits<underlying, element<Row, Column>>::from_underlying(
+            data(std::size_t{Row}, std::size_t{Column}));
   }
 
   template <std::size_t Index>
-    requires column<typed_matrix> && in_range<Index, 0, size<RowIndexes>>
+    requires typed_linear_algebra_internal::column<typed_matrix> &&
+             typed_linear_algebra_internal::in_range<
+                 Index, 0, typed_linear_algebra_internal::size<RowIndexes>>
   [[nodiscard]] inline constexpr element<Index, 0> &at() {
-    return element_traits<underlying, element<Index, 0>>::from_underlying(
-        data(std::size_t{Index}));
+    return typed_linear_algebra_internal::element_traits<
+        underlying, element<Index, 0>>::from_underlying(data(std::size_t{
+        Index}));
   }
 
   //! @}
@@ -330,6 +286,8 @@ using typed_column_vector =
 
 //! @}
 
+//! @todo Move template implementation to tpp file.
+
 template <typename Matrix1, typename Matrix2, typename RowIndexes,
           typename ColumnIndexes>
 [[nodiscard]] inline constexpr bool
@@ -343,42 +301,46 @@ template <typename Matrix1, typename Matrix2, typename RowIndexes,
 [[nodiscard]] inline constexpr auto
 operator*(const typed_matrix<Matrix1, RowIndexes, Indexes> &lhs,
           const typed_matrix<Matrix2, Indexes, ColumnIndexes> &rhs) {
-  return typed_matrix<evaluate<product<Matrix1, Matrix2>>, RowIndexes,
-                      ColumnIndexes>{lhs.data * rhs.data};
+  return typed_matrix<
+      typed_linear_algebra_internal::evaluate<
+          typed_linear_algebra_internal::product<Matrix1, Matrix2>>,
+      RowIndexes, ColumnIndexes>{lhs.data * rhs.data};
 }
 
-template <arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
-  requires singleton<Matrix>
+template <typed_linear_algebra_internal::arithmetic Scalar, typename Matrix,
+          typename RowIndexes, typename ColumnIndexes>
+  requires typed_linear_algebra_internal::singleton<Matrix>
 [[nodiscard]] inline constexpr auto operator*(Scalar lhs, const Matrix &rhs) {
-  return element<Matrix, 0, 0>{lhs * rhs.data(0)};
+  return typed_linear_algebra_internal::element<Matrix, 0, 0>{lhs *
+                                                              rhs.data(0)};
 }
 
-template <arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
+template <typed_linear_algebra_internal::arithmetic Scalar, typename Matrix,
+          typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] inline constexpr auto
 operator*(Scalar lhs,
           const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
-  return typed_matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>{lhs *
-                                                                   rhs.data};
+  return typed_matrix<typed_linear_algebra_internal::evaluate<Matrix>,
+                      RowIndexes, ColumnIndexes>{lhs * rhs.data};
 }
 
-template <arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
-  requires singleton<Matrix>
+template <typed_linear_algebra_internal::arithmetic Scalar, typename Matrix,
+          typename RowIndexes, typename ColumnIndexes>
+  requires typed_linear_algebra_internal::singleton<Matrix>
 [[nodiscard]] inline constexpr auto
 operator*(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
           Scalar rhs) {
-  return element<Matrix, 0, 0>{lhs.data(0) * rhs};
+  return typed_linear_algebra_internal::element<Matrix, 0, 0>{lhs.data(0) *
+                                                              rhs};
 }
 
-template <arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
+template <typed_linear_algebra_internal::arithmetic Scalar, typename Matrix,
+          typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] inline constexpr auto
 operator*(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
           Scalar rhs) {
-  return typed_matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>{lhs.data *
-                                                                   rhs};
+  return typed_matrix<typed_linear_algebra_internal::evaluate<Matrix>,
+                      RowIndexes, ColumnIndexes>{lhs.data * rhs};
 }
 
 template <typename Matrix1, typename Matrix2, typename RowIndexes,
@@ -386,16 +348,17 @@ template <typename Matrix1, typename Matrix2, typename RowIndexes,
 [[nodiscard]] inline constexpr auto
 operator+(const typed_matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
           const typed_matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
-  return typed_matrix<evaluate<Matrix1>, RowIndexes, ColumnIndexes>{lhs.data +
-                                                                    rhs.data};
+  return typed_matrix<typed_linear_algebra_internal::evaluate<Matrix1>,
+                      RowIndexes, ColumnIndexes>{lhs.data + rhs.data};
 }
 
-template <arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
-  requires singleton<Matrix>
+template <typed_linear_algebra_internal::arithmetic Scalar, typename Matrix,
+          typename RowIndexes, typename ColumnIndexes>
+  requires typed_linear_algebra_internal::singleton<Matrix>
 [[nodiscard]] inline constexpr auto operator+(const Matrix &lhs, Scalar rhs) {
   //! @todo Scalar will become Index with constraints.
-  return element<Matrix, 0, 0>{lhs.data(0) + rhs};
+  return typed_linear_algebra_internal::element<Matrix, 0, 0>{lhs.data(0) +
+                                                              rhs};
 }
 
 template <typename Matrix1, typename Matrix2, typename RowIndexes,
@@ -403,15 +366,16 @@ template <typename Matrix1, typename Matrix2, typename RowIndexes,
 [[nodiscard]] inline constexpr auto
 operator-(const typed_matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
           const typed_matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
-  return typed_matrix<evaluate<Matrix1>, RowIndexes, ColumnIndexes>{lhs.data -
-                                                                    rhs.data};
+  return typed_matrix<typed_linear_algebra_internal::evaluate<Matrix1>,
+                      RowIndexes, ColumnIndexes>{lhs.data - rhs.data};
 }
 
-template <arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
-  requires singleton<Matrix>
+template <typed_linear_algebra_internal::arithmetic Scalar, typename Matrix,
+          typename RowIndexes, typename ColumnIndexes>
+  requires typed_linear_algebra_internal::singleton<Matrix>
 [[nodiscard]] inline constexpr auto operator-(Scalar lhs, const Matrix &rhs) {
-  return element<Matrix, 0, 0>{lhs - rhs.data(0)};
+  return typed_linear_algebra_internal::element<Matrix, 0, 0>{lhs -
+                                                              rhs.data(0)};
 }
 
 template <typename Matrix1, typename Matrix2, typename RowIndexes1,
@@ -419,24 +383,27 @@ template <typename Matrix1, typename Matrix2, typename RowIndexes1,
 [[nodiscard]] inline constexpr auto
 operator/(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes> &lhs,
           const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes> &rhs) {
-  return typed_matrix<evaluate<quotient<Matrix1, Matrix2>>, RowIndexes1,
-                      RowIndexes2>{lhs.data / rhs.data};
+  return typed_matrix<
+      typed_linear_algebra_internal::evaluate<
+          typed_linear_algebra_internal::quotient<Matrix1, Matrix2>>,
+      RowIndexes1, RowIndexes2>{lhs.data / rhs.data};
 }
 
-template <fcarouge::arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
+template <typed_linear_algebra_internal::arithmetic Scalar, typename Matrix,
+          typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] inline constexpr auto
 operator/(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
           Scalar rhs) {
-  return typed_matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>{lhs.data /
-                                                                   rhs};
+  return typed_matrix<typed_linear_algebra_internal::evaluate<Matrix>,
+                      RowIndexes, ColumnIndexes>{lhs.data / rhs};
 }
 
-template <fcarouge::arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
-  requires singleton<Matrix>
+template <typed_linear_algebra_internal::arithmetic Scalar, typename Matrix,
+          typename RowIndexes, typename ColumnIndexes>
+  requires typed_linear_algebra_internal::singleton<Matrix>
 [[nodiscard]] inline constexpr auto operator/(const Matrix &lhs, Scalar rhs) {
-  return element<Matrix, 0, 0>{lhs.data(0) / rhs};
+  return typed_linear_algebra_internal::element<Matrix, 0, 0>{lhs.data(0) /
+                                                              rhs};
 }
 } // namespace fcarouge
 
@@ -456,14 +423,17 @@ struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
       -> OutputIterator {
     format_context.advance_to(std::format_to(format_context.out(), "["));
 
-    for (std::size_t i{0}; i < fcarouge::size<RowIndexes>; ++i) {
+    for (std::size_t i{0};
+         i < fcarouge::typed_linear_algebra_internal::size<RowIndexes>; ++i) {
       if (i > 0) {
         format_context.advance_to(std::format_to(format_context.out(), ", "));
       }
 
       format_context.advance_to(std::format_to(format_context.out(), "["));
 
-      for (std::size_t j{0}; j < fcarouge::size<ColumnIndexes>; ++j) {
+      for (std::size_t j{0};
+           j < fcarouge::typed_linear_algebra_internal::size<ColumnIndexes>;
+           ++j) {
         if (j > 0) {
           format_context.advance_to(std::format_to(format_context.out(), ", "));
         }
@@ -485,12 +455,14 @@ struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
   format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
          std::basic_format_context<OutputIterator, Char> &format_context) const
       -> OutputIterator
-    requires fcarouge::row<
+    requires fcarouge::typed_linear_algebra_internal::row<
         fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
   {
     format_context.advance_to(std::format_to(format_context.out(), "["));
 
-    for (std::size_t j{0}; j < fcarouge::size<ColumnIndexes>; ++j) {
+    for (std::size_t j{0};
+         j < fcarouge::typed_linear_algebra_internal::size<ColumnIndexes>;
+         ++j) {
       if (j > 0) {
         format_context.advance_to(std::format_to(format_context.out(), ", "));
       }
@@ -509,7 +481,7 @@ struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
   format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
          std::basic_format_context<OutputIterator, Char> &format_context) const
       -> OutputIterator
-    requires fcarouge::singleton<
+    requires fcarouge::typed_linear_algebra_internal::singleton<
         fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
   {
     format_context.advance_to(
@@ -525,7 +497,8 @@ namespace fcarouge {
 //! @note Implementation not needed.
 template <template <typename, typename, typename> typename TypedMatrix,
           typename Matrix, typename RowIndexes, typename ColumnIndexes>
-struct evaluates<TypedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
+struct typed_linear_algebra_internal::evaluates<
+    TypedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
   [[nodiscard]] inline constexpr auto operator()() const
       -> TypedMatrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>;
 };
@@ -536,28 +509,14 @@ template <template <typename, typename, typename> typename TypedMatrix,
   requires requires(TypedMatrix<Matrix, RowIndexes, ColumnIndexes> m) {
     m.data;
   }
-struct transposes<TypedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
+struct typed_linear_algebra_internal::transposes<
+    TypedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
   [[nodiscard]] inline constexpr auto operator()(
       const TypedMatrix<Matrix, RowIndexes, ColumnIndexes> &value) const {
     return TypedMatrix<evaluate<transpose<Matrix>>, ColumnIndexes, RowIndexes>{
         t(value.data)};
   }
 };
-
-//! @name Algebraic Named Values
-//! @{
-
-//! @brief The one matrix specialization.
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-inline typed_matrix<decltype(one<Matrix>), RowIndexes, ColumnIndexes>
-    one<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>{one<Matrix>};
-
-//! @brief The zero matrix specialization.
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-inline typed_matrix<decltype(zero<Matrix>), RowIndexes, ColumnIndexes>
-    zero<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>{zero<Matrix>};
-
-//! @}
 
 } // namespace fcarouge
 

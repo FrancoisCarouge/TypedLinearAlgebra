@@ -30,7 +30,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 add_library(linalg INTERFACE)
-target_link_libraries(linalg INTERFACE typed_linear_algebra_internal)
 target_sources(
   linalg
   INTERFACE FILE_SET
@@ -38,8 +37,8 @@ target_sources(
             TYPE
             "HEADERS"
             FILES
-            "fcarouge/typed_linear_algebra.hpp"
-            "fcarouge/utility.hpp")
+            "fcarouge/typed_linear_algebra_internal/utility.hpp"
+            "fcarouge/typed_linear_algebra.hpp")
 install(
   TARGETS linalg
   EXPORT "fcarouge-typed-linear-algebra-target"
@@ -51,5 +50,3 @@ install(
 if(NOT TARGET fcarouge-typed-linear-algebra::linalg)
   add_library(fcarouge-typed-linear-algebra::linalg ALIAS linalg)
 endif()
-
-add_subdirectory(fcarouge)

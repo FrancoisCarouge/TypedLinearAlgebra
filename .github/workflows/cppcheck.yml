@@ -41,7 +41,8 @@ jobs:
         cppcheck \
           --enable=all \
           --error-exitcode=1 \
-          --suppress=preprocessorErrorDirective \
+          --suppress=missingIncludeSystem \
+          --suppress=unusedFunction: include/fcarouge/typed_linear_algebra.hpp:448 \
           --verbose \
           -I include \
           -I support/eigen \

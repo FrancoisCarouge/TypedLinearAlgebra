@@ -37,9 +37,21 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the equality operator.
 [[maybe_unused]] auto test{[] {
-  const matrix<double, 5, 5> m{zero<matrix<double, 5, 5>>};
-  const matrix<double, 5, 5> i{one<matrix<double, 5, 5>>};
-  const matrix<double, 5, 5> z{zero<matrix<double, 5, 5>>};
+  const matrix<double, 5, 5> m{{0., 0., 0., 0., 0.},
+                               {0., 0., 0., 0., 0.},
+                               {0., 0., 0., 0., 0.},
+                               {0., 0., 0., 0., 0.},
+                               {0., 0., 0., 0., 0.}};
+  const matrix<double, 5, 5> i{{1., 0., 0., 0., 0.},
+                               {0., 1., 0., 0., 0.},
+                               {0., 0., 1., 0., 0.},
+                               {0., 0., 0., 1., 0.},
+                               {0., 0., 0., 0., 1.}};
+  const matrix<double, 5, 5> z{{0., 0., 0., 0., 0.},
+                               {0., 0., 0., 0., 0.},
+                               {0., 0., 0., 0., 0.},
+                               {0., 0., 0., 0., 0.},
+                               {0., 0., 0., 0., 0.}};
 
   assert(m == z);
   assert(m != i);

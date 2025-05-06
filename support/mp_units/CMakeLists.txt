@@ -1,4 +1,4 @@
-/* Typed Linear Algebra
+#[[ Typed Linear Algebra
 Version 0.1.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,29 +27,28 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> */
+For more information, please refer to <https://unlicense.org> ]]
 
-#include "fcarouge/linalg.hpp"
+FetchContent_Declare(
+  gsl-lite
+  GIT_REPOSITORY "https://github.com/gsl-lite/gsl-lite"
+  GIT_SHALLOW TRUE
+  FIND_PACKAGE_ARGS NAMES gsl-lite)
+FetchContent_MakeAvailable(gsl-lite)
 
-#include <cassert>
+FetchContent_Declare(
+  mp-units
+  GIT_REPOSITORY "https://github.com/mpusz/mp-units"
+  GIT_SHALLOW TRUE
+  SOURCE_SUBDIR "src" FIND_PACKAGE_ARGS NAMES mp-units)
+FetchContent_MakeAvailable(mp-units)
 
-namespace fcarouge::test {
-namespace {
-//! @test Verifies the zero matrices values are null.
-[[maybe_unused]] auto test{[] {
-  const matrix<double, 3, 3> z{{0., 0., 0.}, {0., 0., 0.}, {0., 0., 0.}};
+target_compile_options(mp-units INTERFACE $<IF:$<CXX_COMPILER_ID:MSVC>, ,
+                                          -Wno-double-promotion -Wno-undef>)
 
-  assert(z(0, 0) == 0.0);
-  assert(z(0, 1) == 0.0);
-  assert(z(0, 2) == 0.0);
-  assert(z(1, 0) == 0.0);
-  assert(z(1, 1) == 0.0);
-  assert(z(1, 2) == 0.0);
-  assert(z(2, 0) == 0.0);
-  assert(z(2, 1) == 0.0);
-  assert(z(2, 2) == 0.0);
-
-  return 0;
-}()};
-} // namespace
-} // namespace fcarouge::test
+add_library(typed_linear_algebra_unit_mp_units INTERFACE)
+target_sources(
+  typed_linear_algebra_unit_mp_units
+  INTERFACE FILE_SET "unit_headers" TYPE "HEADERS" FILES "fcarouge/unit.hpp")
+target_link_libraries(typed_linear_algebra_unit_mp_units
+                      INTERFACE typed_linear_algebra_options mp-units::mp-units)

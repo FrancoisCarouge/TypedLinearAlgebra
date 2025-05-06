@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.1.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,14 +27,30 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-add_library(typed_linear_algebra_internal INTERFACE)
-target_sources(
-  typed_linear_algebra_internal
-  INTERFACE FILE_SET "typed_linear_algebra_headers" TYPE "HEADERS" FILES
-            "internal/type.hpp")
-install(
-  TARGETS typed_linear_algebra_internal
-  EXPORT "fcarouge-typed-linear-algebra-target"
-  FILE_SET "typed_linear_algebra_headers")
+#include "fcarouge/linalg.hpp"
+
+#include <cassert>
+
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the identity matrices values are unit diagonals.
+[[maybe_unused]] auto test{[] {
+  //! @todo Support a const version of `at()`.
+  matrix<double, 3, 3> i{{1., 0., 0.}, {0., 1., 0.}, {0., 0., 1.}};
+
+  assert((i.at<0, 0>() == 1.0));
+  assert((i.at<0, 1>() == 0.0));
+  assert((i.at<0, 2>() == 0.0));
+  assert((i.at<1, 0>() == 0.0));
+  assert((i.at<1, 1>() == 1.0));
+  assert((i.at<1, 2>() == 0.0));
+  assert((i.at<2, 0>() == 0.0));
+  assert((i.at<2, 1>() == 0.0));
+  assert((i.at<2, 2>() == 1.0));
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

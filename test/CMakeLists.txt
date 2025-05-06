@@ -31,6 +31,7 @@ For more information, please refer to <https://unlicense.org> ]]
 
 test("addition" BACKENDS "eigen" "eigexed")
 test("assign" BACKENDS "eigen" "eigexed")
+test("at" BACKENDS "eigexed")
 test("constructor_1x1_array" BACKENDS "eigen" "eigexed")
 test("constructor_1x1" BACKENDS "eigen" "eigexed")
 test("constructor_1xn_array" BACKENDS "eigen" "eigexed")
