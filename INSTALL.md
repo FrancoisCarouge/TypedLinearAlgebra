@@ -12,8 +12,8 @@ sudo cmake --install "build"
 The standard shared CMake configuration file provides the library target to use in your own target:
 
 ```cmake
-find_package(typed-linear-algebra)
-target_link_libraries(your_target PRIVATE typed-linear-algebra::typed-linear-algebra)
+find_package(fcarouge-typed-linear-algebra)
+target_link_libraries(your_target PRIVATE fcarouge-typed-linear-algebra::typed-linear-algebra)
 ```
 
 # Development Build & Run

@@ -32,20 +32,23 @@ For more information, please refer to <https://unlicense.org> ]]
 include(CMakePackageConfigHelpers)
 
 configure_package_config_file(
-  "typed-linear-algebra-config.cmake.in" "typed-linear-algebra-config.cmake"
-  INSTALL_DESTINATION "${CMAKE_INSTALL_DATADIR}/typed-linear-algebra/cmake"
+  "fcarouge-typed-linear-algebra-config.cmake.in"
+  "fcarouge-typed-linear-algebra-config.cmake"
+  INSTALL_DESTINATION
+    "${CMAKE_INSTALL_DATADIR}/fcarouge-typed-linear-algebra/cmake"
   NO_SET_AND_CHECK_MACRO NO_CHECK_REQUIRED_COMPONENTS_MACRO)
 
 write_basic_package_version_file(
-  "typed-linear-algebra-config-version.cmake" COMPATIBILITY SameMajorVersion
-                                                            ARCH_INDEPENDENT)
+  "fcarouge-typed-linear-algebra-config-version.cmake"
+  COMPATIBILITY SameMajorVersion ARCH_INDEPENDENT)
 
 install(
-  EXPORT "typed-linear-algebra-target"
-  NAMESPACE "typed-linear-algebra::"
-  DESTINATION "${CMAKE_INSTALL_DATADIR}/typed-linear-algebra/cmake")
+  EXPORT "fcarouge-typed-linear-algebra-target"
+  NAMESPACE "fcarouge-typed-linear-algebra::"
+  DESTINATION "${CMAKE_INSTALL_DATADIR}/fcarouge-typed-linear-algebra/cmake")
 
 install(
-  FILES "${CMAKE_CURRENT_BINARY_DIR}/typed-linear-algebra-config.cmake"
-        "${CMAKE_CURRENT_BINARY_DIR}/typed-linear-algebra-config-version.cmake"
-  DESTINATION "${CMAKE_INSTALL_DATADIR}/typed-linear-algebra/cmake")
+  FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/fcarouge-typed-linear-algebra-config.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/fcarouge-typed-linear-algebra-config-version.cmake"
+  DESTINATION "${CMAKE_INSTALL_DATADIR}/fcarouge-typed-linear-algebra/cmake")

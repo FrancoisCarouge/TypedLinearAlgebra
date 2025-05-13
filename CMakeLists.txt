@@ -32,7 +32,7 @@ For more information, please refer to <https://unlicense.org> ]]
 cmake_minimum_required(VERSION "3.30")
 
 project(
-  typed-linear-algebra
+  fcarouge-typed-linear-algebra
   DESCRIPTION "Typed Linear Algebra"
   HOMEPAGE_URL "https://github.com/FrancoisCarouge/TypedLinearAlgebra"
   LANGUAGES "CXX"

@@ -43,14 +43,14 @@ target_sources(
             "fcarouge/utility.hpp")
 install(
   TARGETS typed_linear_algebra
-  EXPORT "typed-linear-algebra-target"
+  EXPORT "fcarouge-typed-linear-algebra-target"
   FILE_SET "typed_linear_algebra_headers")
 
 # Conditionally provide the namespace alias target which may be an imported
 # target from a package, or an aliased target if built as part of the same
 # buildsystem.
-if(NOT TARGET typed-linear-algebra::typed-linear-algebra)
-  add_library(typed-linear-algebra::typed-linear-algebra ALIAS
+if(NOT TARGET fcarouge-typed-linear-algebra::typed-linear-algebra)
+  add_library(fcarouge-typed-linear-algebra::typed-linear-algebra ALIAS
               typed_linear_algebra)
 endif()
 

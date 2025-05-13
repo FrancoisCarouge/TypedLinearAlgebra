@@ -19,12 +19,12 @@ Another variation for your CMake infrastructure via fetch content:
 include(FetchContent)
 
 FetchContent_Declare(
-  typed-linear-algebra
+  fcarouge-typed-linear-algebra
   GIT_REPOSITORY "https://github.com/FrancoisCarouge/TypedLinearAlgebra"
-  FIND_PACKAGE_ARGS NAMES typed-linear-algebra)
-FetchContent_MakeAvailable(typed-linear-algebra)
+  FIND_PACKAGE_ARGS NAMES fcarouge-typed-linear-algebra)
+FetchContent_MakeAvailable(fcarouge-typed-linear-algebra)
 
-target_link_libraries(your_target PRIVATE typed-linear-algebra::typed-linear-algebra)
+target_link_libraries(your_target PRIVATE fcarouge-typed-linear-algebra::typed-linear-algebra)
 ```
 
 [For more, see installation instructions](https://github.com/FrancoisCarouge/TypedLinearAlgebra/tree/master/INSTALL.md).

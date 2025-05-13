@@ -36,5 +36,5 @@ target_sources(
             "internal/type.hpp")
 install(
   TARGETS typed_linear_algebra_internal
-  EXPORT "typed-linear-algebra-target"
+  EXPORT "fcarouge-typed-linear-algebra-target"
   FILE_SET "typed_linear_algebra_headers")
