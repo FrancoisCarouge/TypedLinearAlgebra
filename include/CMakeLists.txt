@@ -29,11 +29,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-add_library(typed_linear_algebra INTERFACE)
-target_link_libraries(typed_linear_algebra
-                      INTERFACE typed_linear_algebra_internal)
+add_library(linalg INTERFACE)
+target_link_libraries(linalg INTERFACE typed_linear_algebra_internal)
 target_sources(
-  typed_linear_algebra
+  linalg
   INTERFACE FILE_SET
             "typed_linear_algebra_headers"
             TYPE
@@ -42,16 +41,15 @@ target_sources(
             "fcarouge/typed_linear_algebra.hpp"
             "fcarouge/utility.hpp")
 install(
-  TARGETS typed_linear_algebra
+  TARGETS linalg
   EXPORT "fcarouge-typed-linear-algebra-target"
   FILE_SET "typed_linear_algebra_headers")
 
 # Conditionally provide the namespace alias target which may be an imported
 # target from a package, or an aliased target if built as part of the same
 # buildsystem.
-if(NOT TARGET fcarouge-typed-linear-algebra::typed-linear-algebra)
-  add_library(fcarouge-typed-linear-algebra::typed-linear-algebra ALIAS
-              typed_linear_algebra)
+if(NOT TARGET fcarouge-typed-linear-algebra::linalg)
+  add_library(fcarouge-typed-linear-algebra::linalg ALIAS linalg)
 endif()
 
 add_subdirectory(fcarouge)

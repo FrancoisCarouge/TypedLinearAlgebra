@@ -35,4 +35,4 @@ target_sources(
   INTERFACE FILE_SET "typed_linear_algebra_headers" TYPE "HEADERS" FILES
             "fcarouge/linalg.hpp")
 target_link_libraries(typed_linear_algebra_eigexed
-                      INTERFACE typed_linear_algebra typed_linear_algebra_eigen)
+                      INTERFACE linalg typed_linear_algebra_eigen)

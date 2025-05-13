@@ -24,7 +24,7 @@ FetchContent_Declare(
   FIND_PACKAGE_ARGS NAMES fcarouge-typed-linear-algebra)
 FetchContent_MakeAvailable(fcarouge-typed-linear-algebra)
 
-target_link_libraries(your_target PRIVATE fcarouge-typed-linear-algebra::typed-linear-algebra)
+target_link_libraries(your_target PRIVATE fcarouge-typed-linear-algebra::linalg)
 ```
 
 [For more, see installation instructions](https://github.com/FrancoisCarouge/TypedLinearAlgebra/tree/master/INSTALL.md).
