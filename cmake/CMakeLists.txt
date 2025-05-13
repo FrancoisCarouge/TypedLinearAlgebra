@@ -29,6 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+include(CMakePackageConfigHelpers)
+
 configure_package_config_file(
   "typed-linear-algebra-config.cmake.in" "typed-linear-algebra-config.cmake"
   INSTALL_DESTINATION "${CMAKE_INSTALL_DATADIR}/typed-linear-algebra/cmake"
