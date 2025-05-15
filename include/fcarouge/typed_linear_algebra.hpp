@@ -35,9 +35,9 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief Index typed linear algebra implementation.
 //!
-//! @details Matrix and vectors.
+//! @details Matrix, vectors, and named algebraic values.
 
-#include "fcarouge/typed_linear_algebra_internal/utility.hpp"
+#include "typed_linear_algebra_internal/utility.hpp"
 
 #include <concepts>
 #include <cstddef>
@@ -50,9 +50,9 @@ namespace fcarouge {
 //! @name Types
 //! @{
 
-//! @brief Typed matrix.
+//! @brief Indexed matrix.
 //!
-//! @details Compose a linear algebra backend matrix into an typed matrix. Row
+//! @details Compose a linear algebra backend matrix into an indexed matrix. Row
 //! and column indexes provide each element's index type.
 //!
 //! @tparam Matrix The underlying linear algebra matrix.
@@ -70,7 +70,8 @@ namespace fcarouge {
 //!
 //! @note Deduction guides are tricky because a given element type comes from
 //! a row and column index to be deduced.
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+template <typed_linear_algebra_internal::algebraic Matrix, typename RowIndexes,
+          typename ColumnIndexes>
 struct typed_matrix {
   //! @todo Privatize this section.
 public:
@@ -141,7 +142,7 @@ public:
   inline constexpr typed_matrix &operator=(typed_matrix &&other) = default;
 
   //! @todo Requires evaluated types of Matrix and OtherMatrix are identical?
-  template <typename OtherMatrix>
+  template <typed_linear_algebra_internal::algebraic OtherMatrix>
   inline constexpr typed_matrix(
       const typed_matrix<OtherMatrix, RowIndexes, ColumnIndexes> &other)
       : data{other.data} {}
@@ -286,8 +287,6 @@ using typed_column_vector =
 
 //! @}
 
-//! @todo Move template implementation to tpp file.
-
 template <typename Matrix1, typename Matrix2, typename RowIndexes,
           typename ColumnIndexes>
 [[nodiscard]] inline constexpr bool
@@ -407,7 +406,8 @@ template <typed_linear_algebra_internal::arithmetic Scalar, typename Matrix,
 }
 } // namespace fcarouge
 
-//! @brief Specialization of the standard formatter for the typed matrix.
+//! @brief Specialization of the standard formatter for the indexed linear
+//! algebra matrix.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
           typename Char>
 struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
@@ -491,14 +491,13 @@ struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
   }
 };
 
-namespace fcarouge {
+namespace fcarouge::typed_linear_algebra_internal {
 //! @brief Specialization of the evaluation type.
 //!
 //! @note Implementation not needed.
 template <template <typename, typename, typename> typename TypedMatrix,
           typename Matrix, typename RowIndexes, typename ColumnIndexes>
-struct typed_linear_algebra_internal::evaluates<
-    TypedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
+struct evaluates<TypedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
   [[nodiscard]] inline constexpr auto operator()() const
       -> TypedMatrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>;
 };
@@ -509,8 +508,7 @@ template <template <typename, typename, typename> typename TypedMatrix,
   requires requires(TypedMatrix<Matrix, RowIndexes, ColumnIndexes> m) {
     m.data;
   }
-struct typed_linear_algebra_internal::transposes<
-    TypedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
+struct transposes<TypedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
   [[nodiscard]] inline constexpr auto operator()(
       const TypedMatrix<Matrix, RowIndexes, ColumnIndexes> &value) const {
     return TypedMatrix<evaluate<transpose<Matrix>>, ColumnIndexes, RowIndexes>{
@@ -518,6 +516,21 @@ struct typed_linear_algebra_internal::transposes<
   }
 };
 
-} // namespace fcarouge
+// //! @name Algebraic Named Values
+// //! @{
+
+// //! @brief The one matrix indexed specialization.
+// template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+// inline typed_matrix<decltype(one<Matrix>), RowIndexes, ColumnIndexes>
+//     one<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>{one<Matrix>};
+
+// //! @brief The zero matrix indexed specialization.
+// template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+// inline typed_matrix<decltype(zero<Matrix>), RowIndexes, ColumnIndexes>
+//     zero<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>{zero<Matrix>};
+
+// //! @}
+
+} // namespace fcarouge::typed_linear_algebra_internal
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_HPP
