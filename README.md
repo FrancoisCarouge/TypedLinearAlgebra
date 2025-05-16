@@ -118,6 +118,7 @@ The following useful operations are supported. This library attempts to align it
 | `*` | Multiplication where the factors are of multipliable shapes and multipliable types. |
 | `/` | Solution, if there exists one, to the inverse multiplication, where the factor are of compatible shapes and types. |
 | `==` | Direct, strict equality comparison, with traditional floating-point comparison pitfalls. |
+| `transposed` | Transpose the input matrix. |
 
 ## Aliases
 
@@ -149,7 +150,8 @@ A specialization of the standard formatter is provided for the typed matrix. Use
 Typed matrix element conversions customization point. Specialize this template to allow conversion of element's type and underlying type.
 
 ```cpp
-template <typename To, typename From> struct element_caster
+template <typename To, typename From>
+struct element_caster;
 ```
 
 # Considerations
