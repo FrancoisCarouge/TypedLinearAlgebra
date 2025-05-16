@@ -49,9 +49,8 @@ namespace fcarouge::typed_linear_algebra_internal {
 //! numerical stability, triangularity, symmetry, space, time, etc. Dividing an
 //! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix.
 template <typename Lhs, typename Rhs> struct divides {
-  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
-                                                 const Rhs &rhs) const
-      -> decltype(lhs / rhs);
+  [[nodiscard]] inline constexpr auto
+  operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs / rhs);
 };
 
 //! @brief Divider helper type.
@@ -61,9 +60,8 @@ using quotient =
 
 //! @brief Type multiplies expression type specialization point.
 template <typename Lhs, typename Rhs> struct multiplies {
-  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
-                                                 const Rhs &rhs) const
-      -> decltype(lhs * rhs);
+  [[nodiscard]] inline constexpr auto
+  operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs * rhs);
 };
 
 //! @brief Helper type to deduce the result type of the product.
@@ -91,8 +89,7 @@ template <std::size_t Begin, std::size_t End, std::size_t Increment,
 inline constexpr void for_constexpr(Function &&function) {
   if constexpr (Begin < End) {
     function(std::integral_constant<std::size_t, Begin>());
-    typed_linear_algebra_internal::for_constexpr<Begin + Increment, End,
-                                                 Increment>(
+    for_constexpr<Begin + Increment, End, Increment>(
         std::forward<Function>(function));
   }
 }
@@ -139,9 +136,9 @@ using underlying_t =
 
 //! @brief The type of the element at the given matrix indexes position.
 template <typename Matrix, std::size_t RowIndex, std::size_t ColumnIndex>
-using element = typed_linear_algebra_internal::product<
-    std::tuple_element_t<RowIndex, typename Matrix::row_indexes>,
-    std::tuple_element_t<ColumnIndex, typename Matrix::column_indexes>>;
+using element =
+    product<std::tuple_element_t<RowIndex, typename Matrix::row_indexes>,
+            std::tuple_element_t<ColumnIndex, typename Matrix::column_indexes>>;
 
 //! @brief Every element types of the matrix are the same.
 //!
@@ -155,14 +152,11 @@ template <typename Matrix>
 concept uniform = []() {
   bool result{true};
 
-  typed_linear_algebra_internal::for_constexpr<0, Matrix::rows, 1>(
-      [&result](auto i) {
-        typed_linear_algebra_internal::for_constexpr<0, Matrix::columns, 1>(
-            [&result, &i](auto j) {
-              result &=
-                  std::is_same_v<element<Matrix, i, j>, element<Matrix, 0, 0>>;
-            });
-      });
+  for_constexpr<0, Matrix::rows, 1>([&result](auto i) {
+    for_constexpr<0, Matrix::columns, 1>([&result, &i](auto j) {
+      result &= std::is_same_v<element<Matrix, i, j>, element<Matrix, 0, 0>>;
+    });
+  });
 
   return result;
 }();
@@ -189,8 +183,7 @@ concept singleton = column<Matrix> && row<Matrix>;
 
 //! @brief The packs have the same count of types.
 template <typename Pack1, typename Pack2>
-concept same_size = typed_linear_algebra_internal::size<Pack1> ==
-                    typed_linear_algebra_internal::size<Pack2>;
+concept same_size = size<Pack1> == size<Pack2>;
 
 //! @brief Element traits for conversions.
 template <typename Underlying, typename Type> struct element_traits {
