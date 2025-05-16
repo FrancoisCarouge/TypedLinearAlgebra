@@ -29,10 +29,33 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-add_library(typed_linear_algebra_eigexed INTERFACE)
-target_sources(
-  typed_linear_algebra_eigexed
-  INTERFACE FILE_SET "typed_linear_algebra_headers" TYPE "HEADERS" FILES
-            "fcarouge/linalg.hpp")
-target_link_libraries(typed_linear_algebra_eigexed
-                      INTERFACE tlinalg typed_linear_algebra_eigen)
+# FetchContent_Declare( TBB GIT_REPOSITORY
+# "https://github.com/uxlfoundation/oneTBB" GIT_SHALLOW TRUE FIND_PACKAGE_ARGS
+# NAMES TBB) FetchContent_MakeAvailable(TBB)
+
+# FetchContent_Declare( Kokkos GIT_REPOSITORY "https://github.com/kokkos/kokkos"
+# GIT_TAG "develop" FIND_PACKAGE_ARGS NAMES Kokkos)
+# FetchContent_MakeAvailable(Kokkos)
+
+# FetchContent_Declare( KokkosKernels GIT_REPOSITORY
+# "https://github.com/kokkos/kokkos-kernels" GIT_TAG "develop" FIND_PACKAGE_ARGS
+# NAMES KokkosKernels) FetchContent_MakeAvailable(KokkosKernels)
+
+# FetchContent_Declare( LinAlg GIT_REPOSITORY
+# "https://github.com/kokkos/stdBLAS" GIT_TAG "main" FIND_PACKAGE_ARGS NAMES
+# LinAlg) FetchContent_MakeAvailable(LinAlg)
+
+FetchContent_Declare(
+  mdspan
+  GIT_REPOSITORY "https://github.com/kokkos/mdspan"
+  GIT_TAG "stable"
+  FIND_PACKAGE_ARGS NAMES mdspan)
+FetchContent_MakeAvailable(mdspan)
+
+add_library(typed_linear_algebra_kokkos INTERFACE)
+# target_sources( typed_linear_algebra_kokkos INTERFACE FILE_SET
+# "typed_linear_algebra_headers" TYPE "HEADERS" FILES "fcarouge/kokkos.hpp"
+# "fcarouge/linalg.hpp")
+target_link_libraries(
+  typed_linear_algebra_kokkos INTERFACE # TBB::tbb Kokkos::kokkos LinAlg::linalg
+                                        mdspan::mdspan tlinalg)
