@@ -53,6 +53,8 @@ private:
 
 public:
   constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
+    // DO AN ALIGNED FORMAT
+    // DO A DEBUG FORMAT PRINTING THE INDEXES ALIGNED
     return parse_context.begin();
   }
 
