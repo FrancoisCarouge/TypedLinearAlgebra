@@ -145,15 +145,6 @@ struct multiplies<std::tuple<Types1...>, std::tuple<Types2...>> {
       const -> std::tuple<product<Types1, Types2>...>;
 };
 
-//! @brief Linear algebra evaluates override expression lazy evaluation
-//! specialization point.
-template <typename Type> struct evaluates {
-  [[nodiscard]] inline constexpr auto operator()() const -> Type;
-};
-
-//! @brief Evaluater helper type.
-template <typename Type> using evaluate = std::invoke_result_t<evaluates<Type>>;
-
 //! @name Functions
 //! @{
 
@@ -196,20 +187,6 @@ inline constexpr std::size_t size{repacker<Pack>::size};
 //! @details Any integer or floating point type.
 template <typename Type>
 concept arithmetic = std::integral<Type> || std::floating_point<Type>;
-
-//! @brief Algebraic concept.
-//!
-//! @details Not an arithmetic type.
-//!
-//! @todo What should be a better concept of an algebraic type?
-template <typename Type>
-concept algebraic = requires(Type value) { value(0, 0); };
-
-template <typename TypedMatrix>
-concept typed_matrix = requires(TypedMatrix value) {
-  typename TypedMatrix::row_indexes;
-  typename TypedMatrix::column_indexes;
-};
 
 //! @brief The underlying storage type of the matrix's elements.
 template <typename Matrix>
@@ -307,7 +284,6 @@ using tuple_n_type = typename tupler<Type, Size>::type;
 
 //! @brief One-element transparent tuple index.
 using identity_index = std::tuple<std::identity>;
-
 } // namespace fcarouge::typed_linear_algebra_internal
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_UTILITY_HPP

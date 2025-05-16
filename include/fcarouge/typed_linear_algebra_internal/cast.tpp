@@ -36,12 +36,12 @@ namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
 
 //! @todo Deduplicate, generalize the built-in casts.
-template <tla::arithmetic To, tla::arithmetic From>
-struct element_caster<To, From> {
-  [[nodiscard]] inline constexpr To operator()(const From &value) const {
-    return value;
-  }
-};
+// template <tla::arithmetic To, tla::arithmetic From>
+template <typename To, typename From>
+[[nodiscard]] inline constexpr To
+element_caster<To, From>::operator()(From value) const {
+  return value;
+}
 
 template <tla::arithmetic To, tla::arithmetic From>
 struct element_caster<To &, From &> {
@@ -57,6 +57,14 @@ template <tla::arithmetic To, tla::arithmetic From>
 struct element_caster<To &&, From &&> {
   [[nodiscard]] inline constexpr To &&operator()(From &&value) const {
     return std::move(value);
+  }
+};
+
+template <typename To, typename From>
+  requires requires(const From &value) { value(0, 0); }
+struct element_caster<To, From> {
+  [[nodiscard]] inline constexpr To operator()(const From &value) const {
+    return value(0, 0);
   }
 };
 } // namespace fcarouge
