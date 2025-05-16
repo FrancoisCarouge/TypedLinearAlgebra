@@ -29,39 +29,32 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
+//! @file
+//! @brief Unit safe linear algebra with mp-units and Eigen.
+//!
+//! @details Demonstrate a variety of linear algebra operations with mp-units
+//! and Eigen. This library composes Eigen as the linear algebra backend with
+//! index typed as mp-units types. This sample explicitly uses double precision
+//! floating point numbers. This sample uses Eigen linear algebra as the linear
+//! algebra backend. This sample uses mp-units types for the typed linear
+//! algebra.
 
-namespace fcarouge {
-namespace tla = typed_linear_algebra_internal;
+#include "fcarouge/typed_linear_algebra.hpp"
 
-//! @todo Deduplicate, generalize the built-in casts.
-template <typename To, typename From>
-[[nodiscard]] constexpr To
-element_caster<To, From>::operator()(From value) const {
-  return value;
-}
+#include <format>
+#include <print>
+#include <tuple>
+#include <type_traits>
 
-template <typename To, typename From> struct element_caster<To &, From &> {
-  [[nodiscard]] constexpr To &operator()(From &value) const { return value; }
-  [[nodiscard]] constexpr To operator()(const From &value) const {
-    return value;
-  }
-};
+// #include <mdspan>
+#include <mdspan/mdspan.hpp> // TODO: Provide a standard-like facade.
 
-template <typename To, typename From> struct element_caster<To &&, From &&> {
-  [[nodiscard]] constexpr To &&operator()(From &&value) const {
-    return std::move(value);
-  }
-};
+namespace fcarouge::sample {
+namespace {
+[[maybe_unused]] auto sample{[] {
+  // std::mdpan...
 
-template <typename To, typename From>
-  requires requires(const From &value) { value(0, 0); }
-struct element_caster<To, From> {
-  [[nodiscard]] constexpr To operator()(const From &value) const {
-    return value(0, 0);
-  }
-};
-} // namespace fcarouge
-
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::sample
