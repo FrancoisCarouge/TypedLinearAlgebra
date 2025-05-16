@@ -321,6 +321,15 @@ public:
     return std::forward<decltype(self)>(self).matrix;
   }
 
+  //! @todo Can we deduplicate with deducing this?
+  template <std::size_t Index>
+    requires tla::column<typed_matrix> &&
+             tla::in_range<Index, 0, tla::size<RowIndexes>>
+  [[nodiscard]] inline constexpr element<Index, 0> at() const {
+    return tla::element_traits<underlying, element<Index, 0>>::from_underlying(
+        data(std::size_t{Index}));
+  }
+
   //! @}
 
 private:
