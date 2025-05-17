@@ -32,6 +32,7 @@ For more information, please refer to <https://unlicense.org> ]]
 add_subdirectory("eigen")
 add_subdirectory("eigexed")
 add_subdirectory("main")
+add_subdirectory("mp_units")
 
 add_library(typed_linear_algebra_options INTERFACE)
 
