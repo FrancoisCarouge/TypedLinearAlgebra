@@ -29,6 +29,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+if(NOT BUILD_TESTING)
+  return()
+endif()
+
 test("addition" BACKENDS "eigen" "eigexed")
 test("assign" BACKENDS "eigen" "eigexed")
 test("at" BACKENDS "eigexed")
