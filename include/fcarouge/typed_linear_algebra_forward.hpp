@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.1.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,29 +27,20 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-add_library(linalg INTERFACE)
-target_sources(
-  linalg
-  INTERFACE FILE_SET
-            "typed_linear_algebra_headers"
-            TYPE
-            "HEADERS"
-            FILES
-            "fcarouge/typed_linear_algebra_forward.hpp"
-            "fcarouge/typed_linear_algebra_internal/format.hpp"
-            "fcarouge/typed_linear_algebra_internal/typed_linear_algebra.tpp"
-            "fcarouge/typed_linear_algebra_internal/utility.hpp"
-            "fcarouge/typed_linear_algebra.hpp")
-install(
-  TARGETS linalg
-  EXPORT "fcarouge-typed-linear-algebra-target"
-  FILE_SET "typed_linear_algebra_headers")
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_FORWARD_HPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_FORWARD_HPP
 
-# Conditionally provide the namespace alias target which may be an imported
-# target from a package, or an aliased target if built as part of the same
-# buildsystem.
-if(NOT TARGET fcarouge-typed-linear-algebra::linalg)
-  add_library(fcarouge-typed-linear-algebra::linalg ALIAS linalg)
-endif()
+//! @file
+//! @brief Authoritative forward declaration header.
+//!
+//! @details Use this authoritative header to forward declare the types of this
+//! project and avoid inconsistent declarations.
+
+namespace fcarouge {
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+struct typed_matrix;
+} // namespace fcarouge
+
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_FORWARD_HPP
