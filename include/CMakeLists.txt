@@ -37,6 +37,7 @@ target_sources(
             TYPE
             "HEADERS"
             FILES
+            "fcarouge/typed_linear_algebra_internal/format.hpp"
             "fcarouge/typed_linear_algebra_internal/utility.hpp"
             "fcarouge/typed_linear_algebra.hpp")
 install(

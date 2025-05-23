@@ -129,6 +129,12 @@ concept arithmetic = std::integral<Type> || std::floating_point<Type>;
 template <typename Type>
 concept algebraic = requires(Type value) { value(0, 0); };
 
+template <typename TypedMatrix>
+concept typed_matrix = requires(TypedMatrix value) {
+  typename TypedMatrix::row_indexes;
+  typename TypedMatrix::column_indexes;
+};
+
 //! @brief The underlying storage type of the matrix's elements.
 template <typename Matrix>
 using underlying_t =

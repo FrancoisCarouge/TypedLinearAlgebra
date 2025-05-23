@@ -37,6 +37,7 @@ For more information, please refer to <https://unlicense.org> */
 //!
 //! @details Typed matrix, vectors, and operations.
 
+#include "typed_linear_algebra_internal/format.hpp"
 #include "typed_linear_algebra_internal/utility.hpp"
 
 #include <concepts>
@@ -378,84 +379,5 @@ template <tla::arithmetic Scalar, typename Matrix, typename RowIndexes,
   return tla::element<Matrix, 0, 0>{lhs.data(0) / rhs};
 }
 } // namespace fcarouge
-
-//! @brief Specialization of the standard formatter for the typed matrix.
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
-          typename Char>
-struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
-                      Char> {
-  constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
-    return parse_context.begin();
-  }
-
-  template <typename OutputIterator>
-  constexpr auto
-  format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
-         std::basic_format_context<OutputIterator, Char> &format_context) const
-      -> OutputIterator {
-    format_context.advance_to(std::format_to(format_context.out(), "["));
-
-    for (std::size_t i{0}; i < fcarouge::tla::size<RowIndexes>; ++i) {
-      if (i > 0) {
-        format_context.advance_to(std::format_to(format_context.out(), ", "));
-      }
-
-      format_context.advance_to(std::format_to(format_context.out(), "["));
-
-      for (std::size_t j{0}; j < fcarouge::tla::size<ColumnIndexes>; ++j) {
-        if (j > 0) {
-          format_context.advance_to(std::format_to(format_context.out(), ", "));
-        }
-
-        format_context.advance_to(
-            std::format_to(format_context.out(), "{}", value.data(i, j)));
-      }
-
-      format_context.advance_to(std::format_to(format_context.out(), "]"));
-    }
-
-    format_context.advance_to(std::format_to(format_context.out(), "]"));
-
-    return format_context.out();
-  }
-
-  template <typename OutputIterator>
-  constexpr auto
-  format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
-         std::basic_format_context<OutputIterator, Char> &format_context) const
-      -> OutputIterator
-    requires fcarouge::tla::row<
-        fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
-  {
-    format_context.advance_to(std::format_to(format_context.out(), "["));
-
-    for (std::size_t j{0}; j < fcarouge::tla::size<ColumnIndexes>; ++j) {
-      if (j > 0) {
-        format_context.advance_to(std::format_to(format_context.out(), ", "));
-      }
-
-      format_context.advance_to(
-          std::format_to(format_context.out(), "{}", value.data(0, j)));
-    }
-
-    format_context.advance_to(std::format_to(format_context.out(), "]"));
-
-    return format_context.out();
-  }
-
-  template <typename OutputIterator>
-  constexpr auto
-  format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
-         std::basic_format_context<OutputIterator, Char> &format_context) const
-      -> OutputIterator
-    requires fcarouge::tla::singleton<
-        fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
-  {
-    format_context.advance_to(
-        std::format_to(format_context.out(), "{}", value.data(0, 0)));
-
-    return format_context.out();
-  }
-};
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_HPP
