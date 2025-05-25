@@ -29,37 +29,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-cmake_minimum_required(VERSION "3.30")
-
-project(
-  fcarouge-typed-linear-algebra
-  DESCRIPTION "Typed Linear Algebra"
-  HOMEPAGE_URL "https://github.com/FrancoisCarouge/TypedLinearAlgebra"
-  LANGUAGES "CXX"
-  VERSION "0.1.0")
-
-if(PROJECT_IS_TOP_LEVEL)
-  set(CMAKE_CXX_EXTENSIONS OFF)
-  set(CMAKE_CXX_STANDARD 23)
-  set(CMAKE_CXX_STANDARD_REQUIRED ON)
-  set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
-  set(CPACK_PACKAGE_CHECKSUM "SHA512")
-  set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_SOURCE_DIR}/README.md")
-  set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/LICENSE.txt")
-  set(CPACK_SOURCE_GENERATOR "TBZ2")
-
-  include(CPack)
-  include(CTest)
-  include(FetchContent)
-  include(GNUInstallDirs)
-
-  include(support/support.cmake)
-
-  add_subdirectory("pkgconfig")
-  add_subdirectory("sample")
-  add_subdirectory("support")
-  add_subdirectory("test")
+if(NOT BUILD_TESTING)
+  return()
 endif()
-
-add_subdirectory("cmake")
-add_subdirectory("include")
