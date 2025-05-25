@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.1.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,31 +27,22 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-if(NOT BUILD_TESTING)
-  return()
-endif()
+#include "fcarouge/linalg.hpp"
 
-test("addition" BACKENDS "eigen" "eigexed")
-test("assign" BACKENDS "eigen" "eigexed")
-test("at" BACKENDS "eigexed")
-test("constructor_1x1_array" BACKENDS "eigen" "eigexed")
-test("constructor_1x1" BACKENDS "eigen" "eigexed")
-test("constructor_1xn_array" BACKENDS "eigen" "eigexed")
-test("constructor_1xn" BACKENDS "eigen" "eigexed")
-test("constructor_initializer_lists" BACKENDS "eigen" "eigexed")
-test("constructor_nx1_array" BACKENDS "eigen" "eigexed")
-test("constructor_nx1" BACKENDS "eigen" "eigexed")
-test("copy" BACKENDS "eigen" "eigexed")
-test("format_1x1" BACKENDS "eigen" "eigexed")
-test("format_1xn" BACKENDS "eigen" "eigexed")
-test("format_mx1" BACKENDS "eigen" "eigexed")
-test("format_mxn" BACKENDS "eigen" "eigexed")
-test("identity" BACKENDS "eigen" "eigexed")
-test("multiplication_arithmetic" BACKENDS "eigen" "eigexed")
-test("multiplication_rxc" BACKENDS "eigen" "eigexed")
-test("multiplication_sxc" BACKENDS "eigen" "eigexed")
-test("operator_bracket" BACKENDS "eigen" "eigexed")
-test("operator_equality" BACKENDS "eigen" "eigexed")
-test("zero" BACKENDS "eigen" "eigexed")
+#include <cassert>
+#include <format>
+
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the initializer lists constructor.
+[[maybe_unused]] auto test{[] {
+  const matrix<int, 1, 1> m{1};
+
+  assert(std::format("{}", m) == "1");
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
