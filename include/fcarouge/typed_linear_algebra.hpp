@@ -37,6 +37,7 @@ For more information, please refer to <https://unlicense.org> */
 //!
 //! @details Typed matrix, vectors, and operations.
 
+#include "typed_linear_algebra_forward.hpp"
 #include "typed_linear_algebra_internal/format.hpp"
 #include "typed_linear_algebra_internal/utility.hpp"
 
