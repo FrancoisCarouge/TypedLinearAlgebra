@@ -241,6 +241,19 @@ template <typename Type, std::size_t Size> struct tupler {
 template <typename Type, std::size_t Size>
 using tuple_n_type = typename tupler<Type, Size>::type;
 
+//! @brief One-element transparent tuple index.
+using identity_index = std::tuple<std::type_identity<void>>;
+
+template <typename Type> struct multiplies<Type, std::type_identity<void>> {
+  [[nodiscard]] inline constexpr auto
+  operator()(const Type &lhs, std::type_identity<void> rhs) const -> Type;
+};
+
+template <typename Type> struct multiplies<std::type_identity<void>, Type> {
+  [[nodiscard]] inline constexpr auto operator()(std::type_identity<void> lhs,
+                                                 const Type &rhs) const -> Type;
+};
+
 } // namespace fcarouge::typed_linear_algebra_internal
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_UTILITY_HPP

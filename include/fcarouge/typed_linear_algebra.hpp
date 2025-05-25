@@ -262,12 +262,12 @@ public:
 //! @brief Strongly typed row vector.
 template <typename Matrix, typename... ColumnIndexes>
 using typed_row_vector =
-    typed_matrix<Matrix, std::tuple<int>, std::tuple<ColumnIndexes...>>;
+    typed_matrix<Matrix, tla::identity_index, std::tuple<ColumnIndexes...>>;
 
 //! @brief Strongly typed column vector.
 template <typename Matrix, typename... RowIndexes>
 using typed_column_vector =
-    typed_matrix<Matrix, std::tuple<RowIndexes...>, std::tuple<int>>;
+    typed_matrix<Matrix, std::tuple<RowIndexes...>, tla::identity_index>;
 
 //! @}
 
