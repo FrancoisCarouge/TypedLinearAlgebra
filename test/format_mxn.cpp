@@ -40,6 +40,12 @@ namespace {
 [[maybe_unused]] auto test{[] {
   const matrix<int, 3, 3> m{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 
+  //!@todo Add a test? Should compile?
+  //     std::is_default_constructible_v<std::formatter<
+  //         fcarouge::typed_matrix<Eigen::Matrix<double, 1, 1, 0, 1, 1>,
+  //                                std::tuple<double>, std::tuple<double>>,
+  //         char>>;
+
   assert(std::format("{}", m) == "[[1, 2, 3], [4, 5, 6], [7, 8, 9]]");
 
   return 0;
