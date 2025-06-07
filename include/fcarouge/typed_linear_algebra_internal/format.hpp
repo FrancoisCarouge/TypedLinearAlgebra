@@ -40,4 +40,90 @@ For more information, please refer to <https://unlicense.org> */
 #include <cstddef>
 #include <format>
 
+//! @brief Specialization of the standard formatter for the typed matrix.
+//!
+//! @todo Move the formatter to its header.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
+          typename Char>
+struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
+                      Char> {
+  constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
+    return parse_context.begin();
+  }
+
+  template <typename FormatContext>
+  constexpr auto
+  format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
+         FormatContext &format_context) const -> FormatContext::iterator {
+    format_context.advance_to(std::format_to(format_context.out(), "["));
+
+    fcarouge::typed_linear_algebra_internal::for_constexpr<
+        0, fcarouge::typed_linear_algebra_internal::size<RowIndexes>,
+        1>([&value, &format_context](auto i) {
+      if (i > 0) {
+        format_context.advance_to(std::format_to(format_context.out(), ", "));
+      }
+
+      format_context.advance_to(std::format_to(format_context.out(), "["));
+
+      fcarouge::typed_linear_algebra_internal::for_constexpr<
+          0, fcarouge::typed_linear_algebra_internal::size<ColumnIndexes>, 1>(
+          [&value, &format_context, &i](auto j) {
+            if (j > 0) {
+              format_context.advance_to(
+                  std::format_to(format_context.out(), ", "));
+            }
+
+            format_context.advance_to(std::format_to(
+                format_context.out(), "{}", value.template at<i, j>()));
+          });
+
+      format_context.advance_to(std::format_to(format_context.out(), "]"));
+    });
+
+    format_context.advance_to(std::format_to(format_context.out(), "]"));
+
+    return format_context.out();
+  }
+
+  template <typename FormatContext>
+  constexpr auto
+  format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
+         FormatContext &format_context) const -> FormatContext::iterator
+    requires fcarouge::typed_linear_algebra_internal::row<
+        fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
+  {
+    format_context.advance_to(std::format_to(format_context.out(), "["));
+
+    fcarouge::typed_linear_algebra_internal::for_constexpr<
+        0, fcarouge::typed_linear_algebra_internal::size<ColumnIndexes>, 1>(
+        [&value, &format_context](auto position) {
+          if (position > 0) {
+            format_context.advance_to(
+                std::format_to(format_context.out(), ", "));
+          }
+
+          format_context.advance_to(std::format_to(
+              format_context.out(), "{}", value.template at<0, position>()));
+        });
+
+    format_context.advance_to(std::format_to(format_context.out(), "]"));
+
+    return format_context.out();
+  }
+
+  template <typename FormatContext>
+  constexpr auto
+  format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
+         FormatContext &format_context) const -> FormatContext::iterator
+    requires fcarouge::typed_linear_algebra_internal::singleton<
+        fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
+  {
+    format_context.advance_to(
+        std::format_to(format_context.out(), "{}", value.template at<0>()));
+
+    return format_context.out();
+  }
+};
+
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_FORMAT_HPP

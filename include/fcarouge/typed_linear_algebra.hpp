@@ -48,7 +48,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <tuple>
 
 namespace fcarouge {
-
 namespace tla = typed_linear_algebra_internal;
 
 //! @name Types
@@ -89,10 +88,16 @@ public:
 
   //! @}
 
+private:
   //! @name Private Member Variables
   //! @{
 
-  Matrix data;
+  //! @brief Matrix element conversion customization point.
+  template <typename To, typename From>
+  inline constexpr static element_caster<To, From> cast{};
+
+  //! @brief Underlying algebraic backend data storage.
+  Matrix matrix;
 
   //! @}
 
@@ -205,8 +210,8 @@ public:
     requires tla::in_range<Row, 0, tla::size<RowIndexes>> &&
              tla::in_range<Column, 0, tla::size<ColumnIndexes>>
   [[nodiscard]] inline constexpr element<Row, Column> &at() {
-    return tla::element_traits<underlying, element<Row, Column>>::
-        from_underlying(data(std::size_t{Row}, std::size_t{Column}));
+    return cast<element<Row, Column> &, underlying &>(
+        matrix(std::size_t{Row}, std::size_t{Column}));
   }
 
   //! @todo Can we deduplicate with deducing this?
@@ -214,16 +219,15 @@ public:
     requires tla::in_range<Row, 0, tla::size<RowIndexes>> &&
              tla::in_range<Column, 0, tla::size<ColumnIndexes>>
   [[nodiscard]] inline constexpr element<Row, Column> at() const {
-    return tla::element_traits<underlying, element<Row, Column>>::
-        from_underlying(data(std::size_t{Row}, std::size_t{Column}));
+    return cast<element<Row, Column>, underlying>(
+        matrix(std::size_t{Row}, std::size_t{Column}));
   }
 
   template <std::size_t Index>
     requires tla::column<typed_matrix> &&
              tla::in_range<Index, 0, tla::size<RowIndexes>>
   [[nodiscard]] inline constexpr element<Index, 0> &at() {
-    return tla::element_traits<underlying, element<Index, 0>>::from_underlying(
-        data(std::size_t{Index}));
+    return cast<element<Index, 0> &, underlying &>(matrix(std::size_t{Index}));
   }
 
   //! @todo Can we deduplicate with deducing this?
@@ -231,8 +235,11 @@ public:
     requires tla::column<typed_matrix> &&
              tla::in_range<Index, 0, tla::size<RowIndexes>>
   [[nodiscard]] inline constexpr element<Index, 0> at() const {
-    return tla::element_traits<underlying, element<Index, 0>>::from_underlying(
-        data(std::size_t{Index}));
+    return cast<element<Index, 0>, underlying>(matrix(std::size_t{Index}));
+  }
+
+  [[nodiscard]] inline constexpr auto &&data(this auto &&self) {
+    return std::forward<decltype(self)>(self).matrix;
   }
 
   //! @}
@@ -248,93 +255,23 @@ template <typename Matrix, typename... RowIndexes>
 using typed_column_vector =
     typed_matrix<Matrix, std::tuple<RowIndexes...>, tla::identity_index>;
 
+//! @brief Typed matrix element conversions customization point.
+//!
+//! @details Specialize this template to allow conversion of element's type and
+//! underlying type.
+template <typename To, typename From> struct element_caster {
+  //! @todo In C++26 add an error message for informing the user of the
+  //! need to provide a specialization: "The element conversion is missing.
+  //! Specialize this template class to customize the typed matrix element
+  //! support."
+  //! @todo The call operator should be static once MSVC lands the support.
+  [[nodiscard]] inline constexpr To operator()(From value) const = delete;
+};
+
 //! @}
 
 } // namespace fcarouge
 
 #include "typed_linear_algebra_internal/typed_linear_algebra.tpp"
-
-//! @brief Specialization of the standard formatter for the typed matrix.
-//!
-//! @todo Move the formatter to its header.
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
-          typename Char>
-struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
-                      Char> {
-  constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
-    return parse_context.begin();
-  }
-
-  template <typename FormatContext>
-  constexpr auto
-  format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
-         FormatContext &format_context) const -> FormatContext::iterator {
-    format_context.advance_to(std::format_to(format_context.out(), "["));
-
-    fcarouge::tla::for_constexpr<0, fcarouge::tla::size<RowIndexes>,
-                                 1>([&value, &format_context](auto i) {
-      if (i > 0) {
-        format_context.advance_to(std::format_to(format_context.out(), ", "));
-      }
-
-      format_context.advance_to(std::format_to(format_context.out(), "["));
-
-      fcarouge::tla::for_constexpr<0, fcarouge::tla::size<ColumnIndexes>, 1>(
-          [&value, &format_context, &i](auto j) {
-            if (j > 0) {
-              format_context.advance_to(
-                  std::format_to(format_context.out(), ", "));
-            }
-
-            format_context.advance_to(std::format_to(
-                format_context.out(), "{}", value.template at<i, j>()));
-          });
-
-      format_context.advance_to(std::format_to(format_context.out(), "]"));
-    });
-
-    format_context.advance_to(std::format_to(format_context.out(), "]"));
-
-    return format_context.out();
-  }
-
-  template <typename FormatContext>
-  constexpr auto
-  format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
-         FormatContext &format_context) const -> FormatContext::iterator
-    requires fcarouge::tla::row<
-        fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
-  {
-    format_context.advance_to(std::format_to(format_context.out(), "["));
-
-    fcarouge::tla::for_constexpr<0, fcarouge::tla::size<ColumnIndexes>, 1>(
-        [&value, &format_context](auto position) {
-          if (position > 0) {
-            format_context.advance_to(
-                std::format_to(format_context.out(), ", "));
-          }
-
-          format_context.advance_to(std::format_to(
-              format_context.out(), "{}", value.template at<0, position>()));
-        });
-
-    format_context.advance_to(std::format_to(format_context.out(), "]"));
-
-    return format_context.out();
-  }
-
-  template <typename FormatContext>
-  constexpr auto
-  format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
-         FormatContext &format_context) const -> FormatContext::iterator
-    requires fcarouge::tla::singleton<
-        fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
-  {
-    format_context.advance_to(
-        std::format_to(format_context.out(), "{}", value.template at<0>()));
-
-    return format_context.out();
-  }
-};
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_HPP

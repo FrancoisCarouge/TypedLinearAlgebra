@@ -29,6 +29,38 @@ target_link_libraries(your_target PRIVATE fcarouge-typed-linear-algebra::linalg)
 
 [For more, see installation instructions](https://github.com/FrancoisCarouge/TypedLinearAlgebra/tree/master/INSTALL.md).
 
+# Reference
+
+## Class Typed Matrix
+
+### Declaration
+
+### Template Parameters
+
+### Member Types
+
+### Member Functions
+
+## Structure Element Caster
+
+## Aliases
+
+## Format
+
+# Considerations
+
+## Lessons Learned
+
+# Performance
+
+## Projects
+
+The library is used in projects:
+
+- [Kalman](https://github.com/FrancoisCarouge/Kalman): A Kalman filter library.
+
+*Your project link here!*
+
 # Resources
 
 ## Third Party Acknowledgement

@@ -33,9 +33,9 @@ if(NOT BUILD_TESTING)
   return()
 endif()
 
-# if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-#   message(STATUS "${SAMPLE_NAME} not yet compatible with MSVC/mp-units.")
-# else()
+if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+  message(STATUS "${SAMPLE_NAME} not yet compatible with MSVC/mp-units.")
+else()
   add_executable(typed_linear_algebra_sample_mp_units_eigen_driver
                  "mp_units_eigen.cpp")
   target_link_libraries(
@@ -44,4 +44,4 @@ endif()
             typed_linear_algebra_options typed_linear_algebra_unit_mp_units)
   add_test(NAME typed_linear_algebra_sample_mp_units_eigen
            COMMAND typed_linear_algebra_sample_mp_units_eigen_driver)
-# endif()
+endif()

@@ -41,6 +41,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 struct typed_matrix;
+template <typename To, typename From> struct element_caster;
 } // namespace fcarouge
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_FORWARD_HPP
