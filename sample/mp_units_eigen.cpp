@@ -68,59 +68,28 @@ For more information, please refer to <https://unlicense.org> */
 // };
 
 namespace fcarouge {
-namespace typed_linear_algebra_internal {
-//! @todo Users must not have to specialize internal types for this library to
-//! work. Find a solution.
-template <auto Reference, auto OriginPoint, typename Representation>
-struct element_traits<
-    Representation,
-    mp_units::quantity_point<Reference, OriginPoint, Representation>> {
-  [[nodiscard]] static inline constexpr Representation to_underlying(
-      const mp_units::quantity_point<Reference, OriginPoint, Representation>
-          &value) {
-    return value.quantity_from(OriginPoint).numerical_value_in(value.unit);
-  }
 
-  [[nodiscard]] static inline constexpr mp_units::quantity_point<
-      Reference, OriginPoint, Representation> &
-  from_underlying(Representation &value) {
-    return reinterpret_cast<
-        mp_units::quantity_point<Reference, OriginPoint, Representation> &>(
-        value);
-  }
-
-  [[nodiscard]] static inline constexpr mp_units::quantity_point<
-      Reference, OriginPoint, Representation>
-  from_underlying(const Representation &value) {
-    return mp_units::quantity_point<Reference, OriginPoint, Representation>{
-        value * Reference};
+template <mp_units::Quantity To, tla::arithmetic From>
+struct element_caster<To, From> {
+  [[nodiscard]] inline constexpr To operator()(const From &value) const {
+    return value * To::reference;
   }
 };
 
-// Can we do without point in this sample?
-template <auto Reference, typename Representation>
-struct element_traits<Representation,
-                      mp_units::quantity<Reference, Representation>> {
-  [[nodiscard]] static inline constexpr Representation
-  to_underlying(const mp_units::quantity<Reference, Representation> &value) {
+template <tla::arithmetic To, mp_units::Quantity From>
+struct element_caster<To, From> {
+  [[nodiscard]] inline constexpr To operator()(const From &value) const {
     return value.numerical_value_in(value.unit);
   }
+};
 
-  [[nodiscard]] static inline constexpr mp_units::quantity<Reference,
-                                                           Representation> &
-  from_underlying(Representation &value) {
-    return reinterpret_cast<mp_units::quantity<Reference, Representation> &>(
-        value);
-  }
-
-  [[nodiscard]] static inline constexpr mp_units::quantity<Reference,
-                                                           Representation>
-  from_underlying(const Representation &value) {
-    return mp_units::quantity<Reference, Representation>{value * Reference};
+template <mp_units::Quantity To, tla::arithmetic From>
+struct element_caster<To &, From &> {
+  [[nodiscard]] inline constexpr To &operator()(From &value) const {
+    return reinterpret_cast<To &>(value);
   }
 };
 
-} // namespace typed_linear_algebra_internal
 namespace sample {
 namespace {
 using representation = double;
@@ -156,7 +125,7 @@ using row_vector =
   using mp_units::si::unit_symbols::s;
   using mp_units::si::unit_symbols::s2;
 
-  using position = quantity<mp_units::isq::length[mp_units::si::metre]>;
+  using position = quantity<mp_units::isq::length[m]>;
   using velocity = quantity<mp_units::isq::velocity[m / s]>;
   using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
 
