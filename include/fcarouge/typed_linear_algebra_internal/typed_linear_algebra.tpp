@@ -112,6 +112,11 @@ inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
+    const Matrix &other)
+    : matrix{other} {}
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] inline constexpr typed_matrix<
     Matrix, RowIndexes, ColumnIndexes>::operator element<0, 0> &()
   requires tla::singleton<typed_matrix>

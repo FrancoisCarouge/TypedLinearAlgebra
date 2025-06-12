@@ -94,17 +94,6 @@ public:
 
   //! @}
 
-  //! @name Public Member Variables
-  //! @{
-
-  //! @brief The count of rows.
-  inline constexpr static std::size_t rows{tla::size<row_indexes>};
-
-  //! @brief The count of rows.
-  inline constexpr static std::size_t columns{tla::size<column_indexes>};
-
-  //! @}
-
   //! @name Public Member Functions
   //! @{
 
