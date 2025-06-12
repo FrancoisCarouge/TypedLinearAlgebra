@@ -35,19 +35,6 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
 
-//! @todo Can this be removed altogether?
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const Matrix &other)
-    : matrix{other} {}
-
-//! @todo Requires evaluated types of Matrix and OtherMatrix are identical?
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-template <tla::algebraic OtherMatrix>
-inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const typed_matrix<OtherMatrix, RowIndexes, ColumnIndexes> &other)
-    : matrix{other.matrix} {}
-
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const element<0, 0> (
@@ -64,7 +51,6 @@ inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
   data()(0, 0) = cast<underlying, Type>(value);
 }
 
-//! @todo Verify the list sizes at runtime?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <typename Type>
 inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
@@ -114,6 +100,11 @@ inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
         data()[position] = cast<underlying, type>(value);
       });
 }
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
+    const Matrix &other)
+    : matrix{other} {}
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] inline constexpr typed_matrix<

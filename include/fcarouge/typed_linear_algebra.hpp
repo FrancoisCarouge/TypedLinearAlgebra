@@ -75,32 +75,6 @@ namespace tla = typed_linear_algebra_internal;
 //! a row and column index to be deduced.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 struct typed_matrix {
-private:
-  static_assert(tla::algebraic<Matrix>);
-
-  //! @todo Privatize this section.
-public:
-  //! @name Private Member Functions
-  //! @{
-
-  //! @brief
-  explicit inline constexpr typed_matrix(const Matrix &other);
-
-  //! @}
-
-private:
-  //! @name Private Member Variables
-  //! @{
-
-  //! @brief Matrix element conversion customization point.
-  template <typename To, typename From>
-  inline constexpr static element_caster<To, From> cast{};
-
-  //! @brief Underlying algebraic backend data storage.
-  Matrix matrix;
-
-  //! @}
-
 public:
   //! @name Public Member Types
   //! @{
@@ -120,63 +94,85 @@ public:
 
   //! @}
 
-  //! @name Public Member Variables
-  //! @{
-
-  //! @brief The count of rows.
-  inline constexpr static std::size_t rows{tla::size<row_indexes>};
-
-  //! @brief The count of rows.
-  inline constexpr static std::size_t columns{tla::size<column_indexes>};
-
-  //! @}
-
   //! @name Public Member Functions
   //! @{
 
-  //! @brief
+  //! @brief Constructs a default typed matrix.
+  //!
+  //! @warning The initialization of the underlying matrix's storage follows the
+  //! initialization behavior of the underlying matrix's type, which for some
+  //! type means no initialization.
   inline constexpr typed_matrix() = default;
 
-  //! @brief
+  //! @brief Copy constructs the typed matrix.
   inline constexpr typed_matrix(const typed_matrix &other) = default;
 
-  //! @brief
+  //! @brief Copy assigns a typed matrix.
   inline constexpr typed_matrix &operator=(const typed_matrix &other) = default;
 
-  //! @brief
+  //! @brief Move constructs a typed matrix.
   inline constexpr typed_matrix(typed_matrix &&other) = default;
 
-  //! @brief
+  //! @brief Move constructs a typed matrix.
   inline constexpr typed_matrix &operator=(typed_matrix &&other) = default;
 
-  //! @brief
-  template <tla::algebraic OtherMatrix>
-  inline constexpr typed_matrix(
-      const typed_matrix<OtherMatrix, RowIndexes, ColumnIndexes> &other);
+  //! @brief Convert constructs a typed matrix from an underlying matrix.
+  //!
+  //! @warning Useful for operations implementation where underlying data
+  //! constrution is needed. Not recommended for convenience construction due to
+  //! absence of type validation.
+  explicit inline constexpr typed_matrix(const Matrix &other);
 
-  //! @brief
-  inline constexpr explicit typed_matrix(const element<0, 0> (
+  //! @brief Convert constructs a one-dimension uniformly typed matrix from
+  //! array.
+  //!
+  //! @details Applicable to one-dimension matrix: column- or row-vector.
+  //! Applicable to single-type matrix: uniform type of all elements.
+  //!
+  //! @param elements C-style array of elements of identical types.
+  explicit inline constexpr typed_matrix(const element<0, 0> (
       &elements)[tla::size<RowIndexes> * tla::size<ColumnIndexes>])
     requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>;
 
-  //! @brief
+  //! @brief Convert constructs a singleton typed matrix from a single value.
+  //!
+  //! @details Applicable to singleton matrix: one element.
+  //!
+  //! @param value Element of compatible type.
+  //!
+  //! @todo Should the arithmetic constraint dropped? The parameter renamed to
+  //! element systematically? A requirement of compatible conversion?
   template <tla::arithmetic Type>
   explicit inline constexpr typed_matrix(const Type &value)
     requires tla::singleton<typed_matrix>;
 
-  //! @brief
+  //! @brief Convert constructs a uniformly typed matrix from list-initializers.
+  //!
+  //! @details Applicable to matrix of uniform elements type.
+  //!
+  //! @param row_list List-initializers of list-initializer of elements.
+  //!
+  //! @todo Verify the list sizes at runtime? Deprecate?
   template <typename Type>
-  inline constexpr explicit typed_matrix(
+  explicit inline constexpr typed_matrix(
       std::initializer_list<std::initializer_list<Type>> row_list)
     requires tla::uniform<typed_matrix>;
 
-  //! @brief
+  //! @brief Convert constructs a row typed vector from elements.
+  //!
+  //! @details Applicable to one-dimension matrix: row-vector.
+  //!
+  //! @param values Parameter pack of elements.
   template <typename... Types>
   explicit inline constexpr typed_matrix(const Types &...values)
     requires tla::row<typed_matrix> && (not tla::column<typed_matrix>) &&
              tla::same_size<ColumnIndexes, std::tuple<Types...>>;
 
-  //! @brief
+  //! @brief Convert constructs a column typed vector from elements.
+  //!
+  //! @details Applicable to one-dimension matrix: column-vector.
+  //!
+  //! @param values Parameter pack of elements.
   template <typename... Types>
   inline constexpr typed_matrix(const Types &...values)
     requires tla::column<typed_matrix> && (not tla::row<typed_matrix>) &&
@@ -243,6 +239,36 @@ public:
   }
 
   //! @}
+
+  //! @name Public Member Variables
+  //! @{
+
+  //! @brief The count of rows.
+  inline constexpr static std::size_t rows{tla::size<row_indexes>};
+
+  //! @brief The count of rows.
+  inline constexpr static std::size_t columns{tla::size<column_indexes>};
+
+  //! @}
+
+private:
+  //! @name Private Member Variables
+  //! @{
+
+  //! @brief Matrix element conversion customization point.
+  //!
+  //! @details Specialization of the element caster function objects allows the
+  //! end-user to permit underlying type conversions.
+  template <typename To, typename From>
+  inline constexpr static element_caster<To, From> cast{};
+
+  //! @brief Underlying algebraic backend data storage.
+  Matrix matrix{};
+
+  //! @}
+
+  static_assert(tla::algebraic<Matrix>,
+                "The underlying matrix type shall be of algebraic nature.");
 };
 
 //! @brief Strongly typed row vector.
