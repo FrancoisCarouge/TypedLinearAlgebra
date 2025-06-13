@@ -137,7 +137,7 @@ using row_vector =
 
   x0.at<1>() = 2.5 * m / s;
   assert(x0.at<1>() == 2.5 * m / s);
-  assert(std::format("{}", x0.at<1>()) == "2.5 m/s");
+  assert(std::format("{:%N %U}", x0.at<1>()) == "2.5 m/s");
 
   state x1{x0 * 3.};
   std::println("x1 = {}", x1);
