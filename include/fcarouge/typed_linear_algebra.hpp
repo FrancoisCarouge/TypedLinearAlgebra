@@ -94,47 +94,65 @@ public:
 
   //! @}
 
+  //! @name Public Member Variables
+  //! @{
+
+  //! @brief The count of rows.
+  inline constexpr static std::size_t rows{tla::size<row_indexes>};
+
+  //! @brief The count of rows.
+  inline constexpr static std::size_t columns{tla::size<column_indexes>};
+
+  //! @}
+
   //! @name Public Member Functions
   //! @{
 
-  //! @brief Constructs a default typed matrix.
+  //! @brief Construct a default typed matrix.
   //!
   //! @warning The initialization of the underlying matrix's storage follows the
   //! initialization behavior of the underlying matrix's type, which for some
   //! type means no initialization.
   inline constexpr typed_matrix() = default;
 
-  //! @brief Copy constructs the typed matrix.
+  //! @brief Copy construct the typed matrix.
   inline constexpr typed_matrix(const typed_matrix &other) = default;
 
-  //! @brief Copy assigns a typed matrix.
+  //! @brief Copy assign a typed matrix.
   inline constexpr typed_matrix &operator=(const typed_matrix &other) = default;
 
-  //! @brief Move constructs a typed matrix.
+  //! @brief Move construct a typed matrix.
   inline constexpr typed_matrix(typed_matrix &&other) = default;
 
-  //! @brief Move constructs a typed matrix.
+  //! @brief Move construct a typed matrix.
   inline constexpr typed_matrix &operator=(typed_matrix &&other) = default;
 
-  //! @brief Convert constructs a typed matrix from an underlying matrix.
+  //! @brief Copy construct the typed matrix.
+  //!
+  //! @todo Add equivalent move constructor and assignment operator.
+  template <tla::algebraic OtherMatrix>
+  inline constexpr typed_matrix(
+      const typed_matrix<OtherMatrix, RowIndexes, ColumnIndexes> &other);
+
+  //! @brief Convert construct a typed matrix from an underlying matrix.
   //!
   //! @warning Useful for operations implementation where underlying data
   //! constrution is needed. Not recommended for convenience construction due to
   //! absence of type validation.
-  explicit inline constexpr typed_matrix(const Matrix &other);
+  inline constexpr typed_matrix(const Matrix &other);
 
-  //! @brief Convert constructs a one-dimension uniformly typed matrix from
+  //! @brief Convert construct a one-dimension uniformly typed matrix from
   //! array.
   //!
   //! @details Applicable to one-dimension matrix: column- or row-vector.
   //! Applicable to single-type matrix: uniform type of all elements.
   //!
   //! @param elements C-style array of elements of identical types.
-  explicit inline constexpr typed_matrix(const element<0, 0> (
-      &elements)[tla::size<RowIndexes> * tla::size<ColumnIndexes>])
+  explicit inline constexpr typed_matrix(
+      const element<0, 0> (&elements)[rows * columns])
     requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>;
 
-  //! @brief Convert constructs a singleton typed matrix from a single value.
+  //! @brief Convert construct a singleton typed matrix from a single value.
   //!
   //! @details Applicable to singleton matrix: one element.
   //!
@@ -146,7 +164,7 @@ public:
   explicit inline constexpr typed_matrix(const Type &value)
     requires tla::singleton<typed_matrix>;
 
-  //! @brief Convert constructs a uniformly typed matrix from list-initializers.
+  //! @brief Convert construct a uniformly typed matrix from list-initializers.
   //!
   //! @details Applicable to matrix of uniform elements type.
   //!
@@ -158,7 +176,7 @@ public:
       std::initializer_list<std::initializer_list<Type>> row_list)
     requires tla::uniform<typed_matrix>;
 
-  //! @brief Convert constructs a row typed vector from elements.
+  //! @brief Convert construct a row typed vector from elements.
   //!
   //! @details Applicable to one-dimension matrix: row-vector.
   //!
@@ -168,7 +186,7 @@ public:
     requires tla::row<typed_matrix> && (not tla::column<typed_matrix>) &&
              tla::same_size<ColumnIndexes, std::tuple<Types...>>;
 
-  //! @brief Convert constructs a column typed vector from elements.
+  //! @brief Convert construct a column typed vector from elements.
   //!
   //! @details Applicable to one-dimension matrix: column-vector.
   //!
@@ -178,76 +196,127 @@ public:
     requires tla::column<typed_matrix> && (not tla::row<typed_matrix>) &&
              tla::same_size<RowIndexes, std::tuple<Types...>>;
 
-  //! @brief
+  //! @brief Access the singleton typed matrix element.
+  //!
+  //! @details Applicable to singleton matrix: one element. Returns a reference
+  //! to the unique element of the typed matrix.
+  //!
+  //! @todo Provide a const overload through deducing this.
   [[nodiscard]] inline constexpr explicit(false) operator element<0, 0> &()
     requires tla::singleton<typed_matrix>;
 
-  //! @brief
+  //! @brief Access the specified element.
+  //!
+  //! @details Applicable to one-dimension matrix: column- or row-vector.
+  //! Applicable to single-type matrix: uniform type of all elements.
+  //! Returns a reference to the element at the specified location.
+  //!
+  //! @param self Explicit object parameter deducing this: not user specified.
+  //! @param index Position of the element to return.
+  //!
+  //! @todo Add complexity documentation.
+  //! @todo Document the classical lack of bound checking?
   [[nodiscard]] inline constexpr auto &&operator[](this auto &&self,
                                                    std::size_t index)
-    requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>;
+    requires(tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>);
 
-  //! @brief
+  //! @brief Access the specified element.
+  //!
+  //! @details Applicable to single-type matrix: uniform type of all elements.
+  //! Returns a reference to the element at the specified location.
+  //!
+  //! @param self Explicit object parameter deducing this: not user specified.
+  //! @param row Row index of the element to return.
+  //! @param column Column index of the element to return.
   [[nodiscard]] inline constexpr auto &&
   operator[](this auto &&self, std::size_t row, std::size_t column)
     requires tla::uniform<typed_matrix>;
 
-  //! @brief
+  //! @brief Access the specified element.
+  //!
+  //! @details Applicable to one-dimension matrix: column- or row-vector.
+  //! Applicable to single-type matrix: uniform type of all elements.
+  //! Returns a reference to the element at the specified location.
+  //!
+  //! @param self Explicit object parameter deducing this: not user specified.
+  //! @param index Position of the element to return.
   [[nodiscard]] inline constexpr auto &&operator()(this auto &&self,
                                                    std::size_t index)
     requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>;
 
-  //! @brief
+  //! @brief Access the specified element.
+  //!
+  //! @details Applicable to single-type matrix: uniform type of all elements.
+  //! Returns a reference to the element at the specified location.
+  //!
+  //! @param self Explicit object parameter deducing this: not user specified.
+  //! @param row Row index of the element to return.
+  //! @param column Column index of the element to return.
   [[nodiscard]] inline constexpr auto &&
   operator()(this auto &&self, std::size_t row, std::size_t column)
     requires tla::uniform<typed_matrix>;
 
+  //! @brief Access the specified element with compile-time bound checking.
+  //!
+  //! @details Returns a strongly typed reference to the element at the
+  //! specified location.
+  //!
+  //! @tparam Row Row index of the element to return.
+  //! @tparam Column Column index of the element to return.
+  //!
+  //! @todo Can we deduplicate with deducing this?
   template <std::size_t Row, std::size_t Column>
-    requires tla::in_range<Row, 0, tla::size<RowIndexes>> &&
-             tla::in_range<Column, 0, tla::size<ColumnIndexes>>
+    requires tla::in_range<Row, 0, rows> && tla::in_range<Column, 0, columns>
   [[nodiscard]] inline constexpr element<Row, Column> &at() {
     return cast<element<Row, Column> &, underlying &>(
         matrix(std::size_t{Row}, std::size_t{Column}));
   }
 
-  //! @todo Can we deduplicate with deducing this?
+  //! @brief Access the specified element with compile-time bound checking.
+  //!
+  //! @details Returns a strongly typed element at the specified location.
+  //!
+  //! @tparam Row Row index of the element to return.
+  //! @tparam Column Column index of the element to return.
   template <std::size_t Row, std::size_t Column>
-    requires tla::in_range<Row, 0, tla::size<RowIndexes>> &&
-             tla::in_range<Column, 0, tla::size<ColumnIndexes>>
+    requires tla::in_range<Row, 0, rows> && tla::in_range<Column, 0, columns>
   [[nodiscard]] inline constexpr element<Row, Column> at() const {
     return cast<element<Row, Column>, underlying>(
         matrix(std::size_t{Row}, std::size_t{Column}));
   }
 
+  //! @brief Access the specified element with compile-time bound checking.
+  //!
+  //! @details Returns a strongly typed element at the specified location.
+  //! Applicable to one-dimension matrix: column-vector.
+  //!
+  //! @tparam Index Position of the element to return.
   template <std::size_t Index>
-    requires tla::column<typed_matrix> &&
-             tla::in_range<Index, 0, tla::size<RowIndexes>>
+    requires tla::column<typed_matrix> && tla::in_range<Index, 0, rows>
   [[nodiscard]] inline constexpr element<Index, 0> &at() {
     return cast<element<Index, 0> &, underlying &>(matrix(std::size_t{Index}));
   }
 
-  //! @todo Can we deduplicate with deducing this?
+  //! @brief Access the specified element with compile-time bound checking.
+  //!
+  //! @details Returns a strongly typed element at the specified location.
+  //! Applicable to one-dimension matrix: column-vector.
+  //!
+  //! @tparam Index Position of the element to return.
+  //!
+  //! @todo Add row-vector overload.
   template <std::size_t Index>
-    requires tla::column<typed_matrix> &&
-             tla::in_range<Index, 0, tla::size<RowIndexes>>
+    requires tla::column<typed_matrix> && tla::in_range<Index, 0, rows>
   [[nodiscard]] inline constexpr element<Index, 0> at() const {
     return cast<element<Index, 0>, underlying>(matrix(std::size_t{Index}));
   }
 
+  //! @brief Direct access to the underlying storage.
+  //!
+  //! @details Reference to the underlying element storage.
   [[nodiscard]] inline constexpr auto &&data(this auto &&self) {
     return std::forward<decltype(self)>(self).matrix;
   }
-
-  //! @}
-
-  //! @name Public Member Variables
-  //! @{
-
-  //! @brief The count of rows.
-  inline constexpr static std::size_t rows{tla::size<row_indexes>};
-
-  //! @brief The count of rows.
-  inline constexpr static std::size_t columns{tla::size<column_indexes>};
 
   //! @}
 

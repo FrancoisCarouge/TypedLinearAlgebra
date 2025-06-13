@@ -68,22 +68,21 @@ For more information, please refer to <https://unlicense.org> */
 // };
 
 namespace fcarouge {
-
-template <mp_units::Quantity To, tla::arithmetic From>
+template <mp_units::Quantity To, typename From>
 struct element_caster<To, From> {
   [[nodiscard]] inline constexpr To operator()(const From &value) const {
     return value * To::reference;
   }
 };
 
-template <tla::arithmetic To, mp_units::Quantity From>
+template <typename To, mp_units::Quantity From>
 struct element_caster<To, From> {
   [[nodiscard]] inline constexpr To operator()(const From &value) const {
     return value.numerical_value_in(value.unit);
   }
 };
 
-template <mp_units::Quantity To, tla::arithmetic From>
+template <mp_units::Quantity To, typename From>
 struct element_caster<To &, From &> {
   [[nodiscard]] inline constexpr To &operator()(From &value) const {
     return reinterpret_cast<To &>(value);

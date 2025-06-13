@@ -36,9 +36,19 @@ namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+template <tla::algebraic OtherMatrix>
 inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const element<0, 0> (
-        &elements)[tla::size<RowIndexes> * tla::size<ColumnIndexes>])
+    const typed_matrix<OtherMatrix, RowIndexes, ColumnIndexes> &other)
+    : matrix{other.data()} {}
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
+    const Matrix &other)
+    : matrix{other} {}
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
+    const element<0, 0> (&elements)[typed_matrix::rows * typed_matrix::columns])
   requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>
     : matrix{elements} {}
 
@@ -77,7 +87,7 @@ inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
            tla::same_size<ColumnIndexes, std::tuple<Types...>>
 {
   std::tuple value_pack{values...};
-  tla::for_constexpr<0, tla::size<ColumnIndexes>, 1>(
+  tla::for_constexpr<0, typed_matrix::columns, 1>(
       [this, &value_pack](auto position) {
         auto value{std::get<position>(value_pack)};
         using type = std::remove_cvref_t<decltype(value)>;
@@ -93,7 +103,7 @@ inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
            tla::same_size<RowIndexes, std::tuple<Types...>>
 {
   std::tuple value_pack{values...};
-  tla::for_constexpr<0, tla::size<RowIndexes>, 1>(
+  tla::for_constexpr<0, typed_matrix::rows, 1>(
       [this, &value_pack](auto position) {
         auto value{std::get<position>(value_pack)};
         using type = std::remove_cvref_t<decltype(value)>;
@@ -102,23 +112,18 @@ inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const Matrix &other)
-    : matrix{other} {}
-
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] inline constexpr typed_matrix<
     Matrix, RowIndexes, ColumnIndexes>::operator element<0, 0> &()
   requires tla::singleton<typed_matrix>
 {
-  return cast<element<0, 0>, underlying>(data()(0, 0));
+  return cast<element<0, 0> &, underlying &>(data()(0, 0));
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] inline constexpr auto &&
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
                                                             std::size_t index)
-  requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>
+  requires(tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>)
 {
   return std::forward<decltype(self)>(self).data()(index);
 }

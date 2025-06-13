@@ -41,8 +41,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <format>
 
 //! @brief Specialization of the standard formatter for the typed matrix.
-//!
-//! @todo Move the formatter to its header.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
           typename Char>
 struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
