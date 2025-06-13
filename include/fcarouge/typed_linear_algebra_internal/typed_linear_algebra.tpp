@@ -112,19 +112,6 @@ inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const Matrix &other)
-    : matrix{other} {}
-
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-[[nodiscard]] inline constexpr typed_matrix<
-    Matrix, RowIndexes, ColumnIndexes>::operator element<0, 0> &()
-  requires tla::singleton<typed_matrix>
-{
-  return cast<element<0, 0> &, underlying &>(data()(0, 0));
-}
-
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] inline constexpr auto &&
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
                                                             std::size_t index)
@@ -175,14 +162,8 @@ template <typename Matrix1, typename Matrix2, typename RowIndexes,
 [[nodiscard]] inline constexpr auto
 operator*(const typed_matrix<Matrix1, RowIndexes, Indexes> &lhs,
           const typed_matrix<Matrix2, Indexes, ColumnIndexes> &rhs) {
-  return typed_matrix<tla::evaluate<tla::product<Matrix1, Matrix2>>, RowIndexes,
-                      ColumnIndexes>{lhs.data() * rhs.data()};
-}
-
-template <tla::arithmetic Scalar, typename Matrix>
-  requires tla::singleton<Matrix>
-[[nodiscard]] inline constexpr auto operator*(Scalar lhs, const Matrix &rhs) {
-  return tla::element<Matrix, 0, 0>{lhs * rhs.data()(0)};
+  // Wrong? resulting types should be what?
+  return make_typed_matrix<RowIndexes, ColumnIndexes>(lhs.data() * rhs.data());
 }
 
 template <tla::arithmetic Scalar, typename Matrix, typename RowIndexes,
@@ -190,12 +171,36 @@ template <tla::arithmetic Scalar, typename Matrix, typename RowIndexes,
 [[nodiscard]] inline constexpr auto
 operator*(Scalar lhs,
           const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
-  return typed_matrix<tla::evaluate<Matrix>, RowIndexes, ColumnIndexes>{
-      lhs * rhs.data()};
+  return make_typed_matrix<RowIndexes, ColumnIndexes>(lhs * rhs.data());
 }
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
+          tla::arithmetic Scalar>
+[[nodiscard]] inline constexpr auto
+operator*(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
+          Scalar rhs) {
+  return make_typed_matrix<RowIndexes, ColumnIndexes>(lhs.data() * rhs);
+}
+
+// template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
+//           typename Scalar>
+// [[nodiscard]] inline constexpr auto
+// operator*(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
+//           Scalar rhs) {
+//   return make_typed_matrix<RowIndexes, ColumnIndexes>(lhs.data() * rhs);
+// }
 
 template <tla::arithmetic Scalar, typename Matrix, typename RowIndexes,
           typename ColumnIndexes>
+  requires tla::singleton<Matrix>
+[[nodiscard]] inline constexpr auto
+operator*(Scalar lhs,
+          const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
+  return tla::element<Matrix, 0, 0>{rhs * lhs.data()(0)};
+}
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
+          tla::arithmetic Scalar>
   requires tla::singleton<Matrix>
 [[nodiscard]] inline constexpr auto
 operator*(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
@@ -203,22 +208,12 @@ operator*(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
   return tla::element<Matrix, 0, 0>{lhs.data()(0) * rhs};
 }
 
-template <tla::arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
-[[nodiscard]] inline constexpr auto
-operator*(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
-          Scalar rhs) {
-  return typed_matrix<tla::evaluate<Matrix>, RowIndexes, ColumnIndexes>{
-      lhs.data() * rhs};
-}
-
 template <typename Matrix1, typename Matrix2, typename RowIndexes,
           typename ColumnIndexes>
 [[nodiscard]] inline constexpr auto
 operator+(const typed_matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
           const typed_matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
-  return typed_matrix<tla::evaluate<Matrix1>, RowIndexes, ColumnIndexes>{
-      lhs.data() + rhs.data()};
+  return make_typed_matrix<RowIndexes, ColumnIndexes>(lhs.data() + rhs.data());
 }
 
 template <tla::arithmetic Scalar, typename Matrix, typename RowIndexes,
@@ -234,8 +229,7 @@ template <typename Matrix1, typename Matrix2, typename RowIndexes,
 [[nodiscard]] inline constexpr auto
 operator-(const typed_matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
           const typed_matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
-  return typed_matrix<tla::evaluate<Matrix1>, RowIndexes, ColumnIndexes>{
-      lhs.data() - rhs.data()};
+  return make_typed_matrix<RowIndexes, ColumnIndexes>(lhs.data() - rhs.data());
 }
 
 template <tla::arithmetic Scalar, typename Matrix, typename RowIndexes,
@@ -250,23 +244,22 @@ template <typename Matrix1, typename Matrix2, typename RowIndexes1,
 [[nodiscard]] inline constexpr auto
 operator/(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes> &lhs,
           const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes> &rhs) {
-  return typed_matrix<tla::evaluate<tla::quotient<Matrix1, Matrix2>>,
-                      RowIndexes1, RowIndexes2>{lhs.data() / rhs.data()};
+  return make_typed_matrix<RowIndexes1, RowIndexes2>(lhs.data() / rhs.data());
 }
 
-template <tla::arithmetic Scalar, typename Matrix, typename RowIndexes,
+template <typename Denominator, typename Matrix, typename RowIndexes,
           typename ColumnIndexes>
 [[nodiscard]] inline constexpr auto
 operator/(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
-          Scalar rhs) {
-  return typed_matrix<tla::evaluate<Matrix>, RowIndexes, ColumnIndexes>{
-      lhs.data() / rhs};
+          const Denominator &rhs) {
+  return make_typed_matrix<RowIndexes, ColumnIndexes>(lhs.data() / rhs);
 }
 
-template <tla::arithmetic Scalar, typename Matrix, typename RowIndexes,
+template <typename Denominator, typename Matrix, typename RowIndexes,
           typename ColumnIndexes>
   requires tla::singleton<Matrix>
-[[nodiscard]] inline constexpr auto operator/(const Matrix &lhs, Scalar rhs) {
+[[nodiscard]] inline constexpr auto operator/(const Matrix &lhs,
+                                              const Denominator &rhs) {
   return tla::element<Matrix, 0, 0>{lhs.data()(0) / rhs};
 }
 
