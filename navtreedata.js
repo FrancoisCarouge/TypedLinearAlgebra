@@ -26,6 +26,23 @@ var NAVTREE =
 [
   [ "Typed Linear Algebra", "index.xhtml", [
     [ "Installation", "index.xhtml#installation-1", null ],
+    [ "Reference", "index.xhtml#reference", [
+      [ "Class Typed Matrix", "index.xhtml#class-typed-matrix", [
+        [ "Declaration", "index.xhtml#declaration", null ],
+        [ "Template Parameters", "index.xhtml#template-parameters", null ],
+        [ "Member Types", "index.xhtml#member-types", null ],
+        [ "Member Functions", "index.xhtml#member-functions", null ]
+      ] ],
+      [ "Structure Element Caster", "index.xhtml#structure-element-caster", null ],
+      [ "Aliases", "index.xhtml#aliases", null ],
+      [ "Format", "index.xhtml#format", null ]
+    ] ],
+    [ "Considerations", "index.xhtml#considerations", [
+      [ "Lessons Learned", "index.xhtml#lessons-learned", null ]
+    ] ],
+    [ "Performance", "index.xhtml#performance", [
+      [ "Projects", "index.xhtml#projects", null ]
+    ] ],
     [ "Resources", "index.xhtml#resources", [
       [ "Third Party Acknowledgement", "index.xhtml#third-party-acknowledgement", null ],
       [ "Sponsors", "index.xhtml#sponsors", [
@@ -100,7 +117,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "addition_8cpp.xhtml",
-"structfcarouge_1_1typed__matrix.xhtml#a46ef06b82cd1ab3db9a22cd31436b802"
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02at_8cpp_03.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

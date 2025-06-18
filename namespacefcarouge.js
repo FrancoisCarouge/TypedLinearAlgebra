@@ -16,7 +16,8 @@ var namespacefcarouge =
       [ "for_constexpr", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a9a86c642ba2610ed4f92a3d84baf5b00", null ],
       [ "size", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aef655fff0379b424e1493f0e13f75682", null ]
     ] ],
-    [ "typed_matrix", "structfcarouge_1_1typed__matrix.xhtml", "structfcarouge_1_1typed__matrix" ],
+    [ "element_caster", "structfcarouge_1_1element__caster.xhtml", "structfcarouge_1_1element__caster" ],
+    [ "typed_matrix", "classfcarouge_1_1typed__matrix.xhtml", "classfcarouge_1_1typed__matrix" ],
     [ "column_vector", "namespacefcarouge.xhtml#ad06bb441aa2dcec149c52de0c297a967", null ],
     [ "matrix", "namespacefcarouge.xhtml#a2d5d861aa25651be3549e278fd1e21e6", null ],
     [ "typed_column_vector", "namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58", null ],

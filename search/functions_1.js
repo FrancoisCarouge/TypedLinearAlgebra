@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['explicit_0',['explicit',['../structfcarouge_1_1typed__matrix.xhtml#a356c81c7cc366d0905dcceab17d79b56',1,'fcarouge::typed_matrix']]]
+  ['data_0',['data',['../classfcarouge_1_1typed__matrix.xhtml#a7689ad2fa80eb2439d08296618b71a62',1,'fcarouge::typed_matrix']]]
 ];

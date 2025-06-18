@@ -123,6 +123,104 @@ Installation</h1>
 <div class="line"> </div>
 <div class="line">target_link_libraries(your_target PRIVATE fcarouge-typed-linear-algebra::linalg)</div>
 </div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/tree/master/INSTALL.md">For more, see installation instructions</a>.</p>
+<h1><a class="anchor" id="reference"></a>
+Reference</h1>
+<h2><a class="anchor" id="class-typed-matrix"></a>
+Class Typed Matrix</h2>
+<p>Strongly typed matrix. Compose a linear algebra backend matrix into a typed matrix. Row and column indexes provide each element's index type.</p>
+<p>Also documented in the <a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/include/fcarouge/typed_linear_algebra.hpp">fcarouge/typed_linear_algebra.hpp</a> header.</p>
+<h3><a class="anchor" id="declaration"></a>
+Declaration</h3>
+<div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Matrix, <span class="keyword">typename</span> RowIndexes, <span class="keyword">typename</span> ColumnIndexes&gt;</div>
+<div class="line"><span class="keyword">class </span>typed_matrix</div>
+</div><!-- fragment --><h3><a class="anchor" id="template-parameters"></a>
+Template Parameters</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Template Parameter   </th><th class="markdownTableHeadNone">Definition    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>Matrix</code>   </td><td class="markdownTableBodyNone">The underlying linear algebra matrix.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>RowIndexes</code>   </td><td class="markdownTableBodyNone">The tuple type of the row indexes.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>ColumnIndexes</code>   </td><td class="markdownTableBodyNone">The tuple type of the row indexes.   </td></tr>
+</table>
+<h3><a class="anchor" id="member-types"></a>
+Member Types</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Member Type   </th><th class="markdownTableHeadNone">Definition    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>underlying</code>   </td><td class="markdownTableBodyNone">The type of the element's underlying storage.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>row_indexes</code>   </td><td class="markdownTableBodyNone">The tuple with the row components of the indexes.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>column_indexes</code>   </td><td class="markdownTableBodyNone">The tuple with the column components of the indexes.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>element&lt;i, j&gt;</code>   </td><td class="markdownTableBodyNone">The type of the element at the given matrix indexes position.   </td></tr>
+</table>
+<h3><a class="anchor" id="member-functions"></a>
+Member Functions</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Member Function   </th><th class="markdownTableHeadNone">Definition    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>(default constructor)</code>   </td><td class="markdownTableBodyNone">Construct a default typed matrix.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>(default copy constructor)</code>   </td><td class="markdownTableBodyNone">Copy construct the typed matrix.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>(default copy assignment operator)</code>   </td><td class="markdownTableBodyNone">Copy assign a typed matrix.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>(default move constructor)</code>   </td><td class="markdownTableBodyNone">Move construct a typed matrix.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>(default move assignment operator)</code>   </td><td class="markdownTableBodyNone">Move construct a typed matrix.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Copy construct the typed matrix from another typed matrix with a compatible underlying matrix or from a compatible underlying matrix.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Copy construct the typed column-vector from a parameter pack or C-style array.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Copy construct the typed row-vector from a parameter pack or C-style array.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Copy construct the typed singletin matrix from the sole element.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>operator[i, j]</code>   </td><td class="markdownTableBodyNone">Access the specified element.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>operator(i, j)</code>   </td><td class="markdownTableBodyNone">Access the specified element.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>at&lt;i, j&gt;()</code>   </td><td class="markdownTableBodyNone">Access the specified element.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>(conversion operator)</code>   </td><td class="markdownTableBodyNone">Access the singleton element.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>(destructor)</code>   </td><td class="markdownTableBodyNone">Destruct a default typed matrix.   </td></tr>
+</table>
+<h2><a class="anchor" id="structure-element-caster"></a>
+Structure Element Caster</h2>
+<p>Typed matrix element conversions customization point. Specialize this template to allow conversion of element's type and underlying type.</p>
+<div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> To, <span class="keyword">typename</span> From&gt; <span class="keyword">struct </span>element_caster</div>
+</div><!-- fragment --><h2><a class="anchor" id="aliases"></a>
+Aliases</h2>
+<div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Matrix, <span class="keyword">typename</span>... ColumnIndexes&gt;</div>
+<div class="line">typed_row_vector;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Matrix, <span class="keyword">typename</span>... RowIndexes&gt;</div>
+<div class="line">typed_column_vector;</div>
+</div><!-- fragment --><h2><a class="anchor" id="format"></a>
+Format</h2>
+<p>A specialization of the standard formatter is provided for the typed matrix. Use <code>std::format</code> to store a formatted representation of the matrix. Standard format parameters to be supported.</p>
+<h1><a class="anchor" id="considerations"></a>
+Considerations</h1>
+<h2><a class="anchor" id="lessons-learned"></a>
+Lessons Learned</h2>
+<p>Type safety cannot be guaranteed at compilation time without index safety. The indexes can either be non-type template parameters or strong types overloadings. Converting a runtime index to a dependent template type is not possible in C++. A proxy reference could be used to allow traditional assignment syntax but the runtime check and extra indirection are not interesting tradeoffs. A template call operator can be used for getting a type safe value but impractical syntax for setting. Without index safety, the accepted tradeoff is a templated index <code>at&lt;i, j&gt;()</code> method.</p>
+<h1><a class="anchor" id="performance"></a>
+Performance</h1>
+<h2><a class="anchor" id="projects"></a>
+Projects</h2>
+<p>The library is used in projects:</p>
+<ul>
+<li><a href="https://github.com/FrancoisCarouge/Kalman">Kalman</a>: A Kalman filter library.</li>
+</ul>
+<p><em>Your project link here!</em></p>
 <h1><a class="anchor" id="resources"></a>
 Resources</h1>
 <h2><a class="anchor" id="third-party-acknowledgement"></a>
@@ -138,7 +236,6 @@ Third Party Acknowledgement</h2>
 <li><a href="https://github.com/jothepro/doxygen-awesome-css">Doxygen Awesome</a> for pretty documentation.</li>
 <li><a href="https://eigen.tuxfamily.org/">Eigen</a> for linear algebra.</li>
 <li><a href="https://gcc.gnu.org">GCC</a> for compilation and code sanitizers.</li>
-<li><a href="https://github.com/google/benchmark">Google Benchmark</a> to implement the benchmarks.</li>
 <li><a href="http://ltp.sourceforge.net/coverage/lcov.php">lcov</a> to process coverage information.</li>
 <li><a href="https://github.com/mpusz/mp-units">mp-units</a> the quantities and units library for C++.</li>
 <li><a href="https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist">MSVC</a> for compilation and code sanitizers.</li>
