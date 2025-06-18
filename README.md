@@ -29,6 +29,95 @@ target_link_libraries(your_target PRIVATE fcarouge-typed-linear-algebra::linalg)
 
 [For more, see installation instructions](https://github.com/FrancoisCarouge/TypedLinearAlgebra/tree/master/INSTALL.md).
 
+# Reference
+
+## Class Typed Matrix
+
+Strongly typed matrix. Compose a linear algebra backend matrix into a typed matrix. Row and column indexes provide each element's index type.
+
+Also documented in the [fcarouge/typed_linear_algebra.hpp](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/include/fcarouge/typed_linear_algebra.hpp) header.
+
+### Declaration
+
+```cpp
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+class typed_matrix
+```
+
+### Template Parameters
+
+| Template Parameter | Definition |
+| --- | --- |
+| `Matrix` | The underlying linear algebra matrix. |
+| `RowIndexes` | The tuple type of the row indexes. |
+| `ColumnIndexes` | The tuple type of the row indexes. |
+
+### Member Types
+
+| Member Type | Definition |
+| --- | --- |
+| `underlying` | The type of the element's underlying storage. |
+| `row_indexes` | The tuple with the row components of the indexes. |
+| `column_indexes` | The tuple with the column components of the indexes. |
+| `element<i, j>` | The type of the element at the given matrix indexes position. |
+
+### Member Functions
+
+| Member Function | Definition |
+| --- | --- |
+| `(default constructor)` | Construct a default typed matrix. |
+| `(default copy constructor)` | Copy construct the typed matrix. |
+| `(default copy assignment operator)` | Copy assign a typed matrix. |
+| `(default move constructor)` | Move construct a typed matrix. |
+| `(default move assignment operator)` | Move construct a typed matrix. |
+| `(conversion copy constructor)` | Copy construct the typed matrix from another typed matrix with a compatible underlying matrix or from a compatible underlying matrix. |
+| `(conversion copy constructor)` | Copy construct the typed column-vector from a parameter pack or C-style array. |
+| `(conversion copy constructor)` | Copy construct the typed row-vector from a parameter pack or C-style array. |
+| `(conversion copy constructor)` | Copy construct the typed singletin matrix from the sole element. |
+| `operator[i, j]` | Access the specified element. |
+| `operator(i, j)` | Access the specified element. |
+| `at<i, j>()` | Access the specified element. |
+| `(conversion operator)` | Access the singleton element. |
+| `(destructor)` | Destruct a default typed matrix. |
+
+## Structure Element Caster
+
+Typed matrix element conversions customization point. Specialize this template to allow conversion of element's type and underlying type.
+
+```cpp
+template <typename To, typename From> struct element_caster
+```
+
+## Aliases
+
+```cpp
+template <typename Matrix, typename... ColumnIndexes>
+typed_row_vector;
+
+template <typename Matrix, typename... RowIndexes>
+typed_column_vector;
+```
+
+## Format
+
+A specialization of the standard formatter is provided for the typed matrix. Use `std::format` to store a formatted representation of the matrix. Standard format parameters to be supported.
+
+# Considerations
+
+## Lessons Learned
+
+Type safety cannot be guaranteed at compilation time without index safety. The indexes can either be non-type template parameters or strong types overloadings. Converting a runtime index to a dependent template type is not possible in C++. A proxy reference could be used to allow traditional assignment syntax but the runtime check and extra indirection are not interesting tradeoffs. A template call operator can be used for getting a type safe value but impractical syntax for setting. Without index safety, the accepted tradeoff is a templated index `at<i, j>()` method.
+
+# Performance
+
+## Projects
+
+The library is used in projects:
+
+- [Kalman](https://github.com/FrancoisCarouge/Kalman): A Kalman filter library.
+
+*Your project link here!*
+
 # Resources
 
 ## Third Party Acknowledgement
@@ -44,7 +133,6 @@ The library is designed, developed, and tested with the help of third-party tool
 - [Doxygen Awesome](https://github.com/jothepro/doxygen-awesome-css) for pretty documentation.
 - [Eigen](https://eigen.tuxfamily.org/) for linear algebra.
 - [GCC](https://gcc.gnu.org) for compilation and code sanitizers.
-- [Google Benchmark](https://github.com/google/benchmark) to implement the benchmarks.
 - [lcov](http://ltp.sourceforge.net/coverage/lcov.php) to process coverage information.
 - [mp-units](https://github.com/mpusz/mp-units) the quantities and units library for C++.
 - [MSVC](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist) for compilation and code sanitizers.
