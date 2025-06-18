@@ -191,18 +191,6 @@ concept singleton = column<Matrix> && row<Matrix>;
 template <typename Pack1, typename Pack2>
 concept same_size = size<Pack1> == size<Pack2>;
 
-//! @brief Element traits for conversions.
-template <typename Underlying, typename Type> struct element_traits {
-  [[nodiscard]] static inline constexpr Underlying to_underlying(Type value) {
-    return value;
-  }
-
-  [[nodiscard]] static inline constexpr Type &
-  from_underlying(Underlying &value) {
-    return value;
-  }
-};
-
 //! @brief Linear algebra transposes specialization point.
 //!
 //! @todo Just implement `.transpose()` instead?

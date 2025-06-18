@@ -48,7 +48,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <tuple>
 
 namespace fcarouge {
-
 namespace tla = typed_linear_algebra_internal;
 
 //! @name Types
@@ -60,8 +59,8 @@ namespace tla = typed_linear_algebra_internal;
 //! and column indexes provide each element's index type.
 //!
 //! @tparam Matrix The underlying linear algebra matrix.
-//! @tparam RowIndexes The packed types of the row indexes.
-//! @tparam ColumnIndexes The packed types of the column indexes.
+//! @tparam RowIndexes The tuple type of the row indexes.
+//! @tparam ColumnIndexes The tuple type of the column indexes.
 //!
 //! @note Type safety cannot be guaranteed at compilation time without index
 //! safety. The indexes can either be non-type template parameters or strong
@@ -75,36 +74,13 @@ namespace tla = typed_linear_algebra_internal;
 //! @note Deduction guides are tricky because a given element type comes from
 //! a row and column index to be deduced.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-struct typed_matrix {
-  static_assert(tla::algebraic<Matrix>);
-  //! @todo Privatize this section.
+class typed_matrix {
 public:
-  //! @name Private Member Types
+  //! @name Public Member Types
   //! @{
 
   //! @brief The type of the element's underlying storage.
   using underlying = tla::underlying_t<Matrix>;
-
-  //! @}
-
-  //! @name Private Member Functions
-  //! @{
-
-  //! @todo Can this be removed altogether?
-  explicit inline constexpr typed_matrix(const Matrix &other) : data{other} {}
-
-  //! @}
-
-  //! @name Private Member Variables
-  //! @{
-
-  Matrix data;
-
-  //! @}
-
-public:
-  //! @name Public Member Types
-  //! @{
 
   //! @brief The tuple with the row components of the indexes.
   using row_indexes = RowIndexes;
@@ -132,132 +108,239 @@ public:
   //! @name Public Member Functions
   //! @{
 
+  //! @brief Destruct a default typed matrix.
+  inline constexpr ~typed_matrix() = default;
+
+  //! @brief Construct a default typed matrix.
+  //!
+  //! @warning The initialization of the underlying matrix's storage follows the
+  //! initialization behavior of the underlying matrix's type, which for some
+  //! type means no initialization.
   inline constexpr typed_matrix() = default;
 
+  //! @brief Copy construct a typed matrix.
   inline constexpr typed_matrix(const typed_matrix &other) = default;
 
+  //! @brief Copy assign a typed matrix.
   inline constexpr typed_matrix &operator=(const typed_matrix &other) = default;
 
+  //! @brief Move construct a typed matrix.
   inline constexpr typed_matrix(typed_matrix &&other) = default;
 
+  //! @brief Move construct a typed matrix.
   inline constexpr typed_matrix &operator=(typed_matrix &&other) = default;
 
-  //! @todo Requires evaluated types of Matrix and OtherMatrix are identical?
+  //! @brief Copy construct the typed matrix.
+  //!
+  //! @todo Add equivalent move constructor and assignment operator.
   template <tla::algebraic OtherMatrix>
   inline constexpr typed_matrix(
-      const typed_matrix<OtherMatrix, RowIndexes, ColumnIndexes> &other)
-      : data{other.data} {}
+      const typed_matrix<OtherMatrix, RowIndexes, ColumnIndexes> &other);
 
-  inline constexpr explicit typed_matrix(const element<0, 0> (
-      &elements)[tla::size<RowIndexes> * tla::size<ColumnIndexes>])
-    requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>
-      : data{elements} {}
+  //! @brief Convert construct a typed matrix from an underlying matrix.
+  //!
+  //! @warning Useful for operations implementation where underlying data
+  //! constrution is needed. Not recommended for convenience construction due to
+  //! absence of type validation.
+  explicit inline constexpr typed_matrix(const Matrix &other);
 
+  //! @brief Convert construct a one-dimension uniformly typed matrix from
+  //! array.
+  //!
+  //! @details Applicable to one-dimension matrix: column- or row-vector.
+  //! Applicable to single-type matrix: uniform type of all elements.
+  //!
+  //! @param elements C-style array of elements of identical types.
+  explicit inline constexpr typed_matrix(
+      const element<0, 0> (&elements)[rows * columns])
+    requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>;
+
+  //! @brief Convert construct a singleton typed matrix from a single value.
+  //!
+  //! @details Applicable to singleton matrix: one element.
+  //!
+  //! @param value Element of compatible type.
+  //!
+  //! @todo Should the arithmetic constraint be dropped? The parameter renamed
+  //! to element systematically? A requirement of compatible conversion?
   template <tla::arithmetic Type>
-    requires tla::singleton<typed_matrix>
-  explicit inline constexpr typed_matrix(const Type &value) {
-    data(0, 0) = tla::element_traits<underlying, Type>::to_underlying(value);
-  }
+  explicit inline constexpr typed_matrix(const Type &value)
+    requires tla::singleton<typed_matrix>;
 
-  //! @todo Verify the list sizes at runtime?
+  //! @brief Convert construct a uniformly typed matrix from list-initializers.
+  //!
+  //! @details Applicable to matrix of uniform elements type.
+  //!
+  //! @param row_list List-initializers of list-initializer of elements.
+  //!
+  //! @todo Verify the list sizes at runtime? Deprecate?
   template <typename Type>
-  inline constexpr explicit typed_matrix(
+  explicit inline constexpr typed_matrix(
       std::initializer_list<std::initializer_list<Type>> row_list)
-    requires tla::uniform<typed_matrix>
-  {
-    for (std::size_t i{0}; const auto &row : row_list) {
-      for (std::size_t j{0}; const auto &value : row) {
-        data(i, j) =
-            tla::element_traits<underlying, Type>::to_underlying(value);
-        ++j;
-      }
-      ++i;
-    }
-  }
+    requires tla::uniform<typed_matrix>;
 
-  //! @todo Combine the two constructors in ome?
-  //! @todo Verify if the types are the same, or assignable, for nicer error?
-  //! @todo Rewrite with a fold expression over the pack?
+  //! @brief Convert construct a row typed vector from elements.
+  //!
+  //! @details Applicable to one-dimension matrix: row-vector.
+  //!
+  //! @param values Parameter pack of elements.
   template <typename... Types>
+  explicit inline constexpr typed_matrix(const Types &...values)
     requires tla::row<typed_matrix> && (not tla::column<typed_matrix>) &&
-             tla::same_size<ColumnIndexes, std::tuple<Types...>>
-  explicit inline constexpr typed_matrix(const Types &...values) {
-    std::tuple value_pack{values...};
-    tla::for_constexpr<0, tla::size<ColumnIndexes>, 1>(
-        [this, &value_pack](auto position) {
-          auto value{std::get<position>(value_pack)};
-          using type = std::remove_cvref_t<decltype(value)>;
-          data[position] =
-              tla::element_traits<underlying, type>::to_underlying(value);
-        });
-  }
+             tla::same_size<ColumnIndexes, std::tuple<Types...>>;
 
+  //! @brief Convert construct a column typed vector from elements.
+  //!
+  //! @details Applicable to one-dimension matrix: column-vector.
+  //!
+  //! @param values Parameter pack of elements.
   template <typename... Types>
+  inline constexpr typed_matrix(const Types &...values)
     requires tla::column<typed_matrix> && (not tla::row<typed_matrix>) &&
-             tla::same_size<RowIndexes, std::tuple<Types...>>
-  inline constexpr typed_matrix(const Types &...values) {
-    std::tuple value_pack{values...};
-    tla::for_constexpr<0, tla::size<RowIndexes>, 1>(
-        [this, &value_pack](auto position) {
-          auto value{std::get<position>(value_pack)};
-          using type = std::remove_cvref_t<decltype(value)>;
-          data[position] =
-              tla::element_traits<underlying, type>::to_underlying(value);
-        });
-  }
+             tla::same_size<RowIndexes, std::tuple<Types...>>;
 
+  //! @brief Access the singleton typed matrix element.
+  //!
+  //! @details Applicable to singleton matrix: one element. Returns a reference
+  //! to the unique element of the typed matrix.
+  //!
+  //! @todo Provide a const overload through deducing this.
   [[nodiscard]] inline constexpr explicit(false) operator element<0, 0> &()
-    requires tla::singleton<typed_matrix>
-  {
-    return tla::element_traits<underlying, element<0, 0>>::from_underlying(
-        data(0, 0));
-  }
+    requires tla::singleton<typed_matrix>;
 
+  //! @brief Access the specified element.
+  //!
+  //! @details Applicable to one-dimension matrix: column- or row-vector.
+  //! Applicable to single-type matrix: uniform type of all elements.
+  //! Returns a reference to the element at the specified location.
+  //!
+  //! @param self Explicit object parameter deducing this: not user specified.
+  //! @param index Position of the element to return.
+  //!
+  //! @todo Add complexity documentation.
+  //! @todo Document the classical lack of bound checking?
   [[nodiscard]] inline constexpr auto &&operator[](this auto &&self,
                                                    std::size_t index)
-    requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>
-  {
-    return std::forward<decltype(self)>(self).data(index);
-  }
+    requires(tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>);
 
+  //! @brief Access the specified element.
+  //!
+  //! @details Applicable to single-type matrix: uniform type of all elements.
+  //! Returns a reference to the element at the specified location.
+  //!
+  //! @param self Explicit object parameter deducing this: not user specified.
+  //! @param row Row index of the element to return.
+  //! @param column Column index of the element to return.
   [[nodiscard]] inline constexpr auto &&
   operator[](this auto &&self, std::size_t row, std::size_t column)
-    requires tla::uniform<typed_matrix>
-  {
-    return std::forward<decltype(self)>(self).data(row, column);
-  }
+    requires tla::uniform<typed_matrix>;
 
+  //! @brief Access the specified element.
+  //!
+  //! @details Applicable to one-dimension matrix: column- or row-vector.
+  //! Applicable to single-type matrix: uniform type of all elements.
+  //! Returns a reference to the element at the specified location.
+  //!
+  //! @param self Explicit object parameter deducing this: not user specified.
+  //! @param index Position of the element to return.
   [[nodiscard]] inline constexpr auto &&operator()(this auto &&self,
                                                    std::size_t index)
-    requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>
-  {
-    return std::forward<decltype(self)>(self).data(index);
-  }
+    requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>;
 
+  //! @brief Access the specified element.
+  //!
+  //! @details Applicable to single-type matrix: uniform type of all elements.
+  //! Returns a reference to the element at the specified location.
+  //!
+  //! @param self Explicit object parameter deducing this: not user specified.
+  //! @param row Row index of the element to return.
+  //! @param column Column index of the element to return.
   [[nodiscard]] inline constexpr auto &&
   operator()(this auto &&self, std::size_t row, std::size_t column)
-    requires tla::uniform<typed_matrix>
-  {
-    return std::forward<decltype(self)>(self).data(row, column);
-  }
+    requires tla::uniform<typed_matrix>;
 
+  //! @brief Access the specified element with compile-time bound checking.
+  //!
+  //! @details Returns a strongly typed reference to the element at the
+  //! specified location.
+  //!
+  //! @tparam Row Row index of the element to return.
+  //! @tparam Column Column index of the element to return.
+  //!
+  //! @todo Can we deduplicate with deducing this?
   template <std::size_t Row, std::size_t Column>
-    requires tla::in_range<Row, 0, tla::size<RowIndexes>> &&
-             tla::in_range<Column, 0, tla::size<ColumnIndexes>>
+    requires tla::in_range<Row, 0, rows> && tla::in_range<Column, 0, columns>
   [[nodiscard]] inline constexpr element<Row, Column> &at() {
-    return tla::element_traits<underlying, element<Row, Column>>::
-        from_underlying(data(std::size_t{Row}, std::size_t{Column}));
+    return cast<element<Row, Column> &, underlying &>(
+        matrix(std::size_t{Row}, std::size_t{Column}));
   }
 
+  //! @brief Access the specified element with compile-time bound checking.
+  //!
+  //! @details Returns a strongly typed element at the specified location.
+  //!
+  //! @tparam Row Row index of the element to return.
+  //! @tparam Column Column index of the element to return.
+  template <std::size_t Row, std::size_t Column>
+    requires tla::in_range<Row, 0, rows> && tla::in_range<Column, 0, columns>
+  [[nodiscard]] inline constexpr element<Row, Column> at() const {
+    return cast<element<Row, Column>, underlying>(
+        matrix(std::size_t{Row}, std::size_t{Column}));
+  }
+
+  //! @brief Access the specified element with compile-time bound checking.
+  //!
+  //! @details Returns a strongly typed element at the specified location.
+  //! Applicable to one-dimension matrix: column-vector.
+  //!
+  //! @tparam Index Position of the element to return.
   template <std::size_t Index>
-    requires tla::column<typed_matrix> &&
-             tla::in_range<Index, 0, tla::size<RowIndexes>>
+    requires tla::column<typed_matrix> && tla::in_range<Index, 0, rows>
   [[nodiscard]] inline constexpr element<Index, 0> &at() {
-    return tla::element_traits<underlying, element<Index, 0>>::from_underlying(
-        data(std::size_t{Index}));
+    return cast<element<Index, 0> &, underlying &>(matrix(std::size_t{Index}));
+  }
+
+  //! @brief Access the specified element with compile-time bound checking.
+  //!
+  //! @details Returns a strongly typed element at the specified location.
+  //! Applicable to one-dimension matrix: column-vector.
+  //!
+  //! @tparam Index Position of the element to return.
+  //!
+  //! @todo Add row-vector overload.
+  template <std::size_t Index>
+    requires tla::column<typed_matrix> && tla::in_range<Index, 0, rows>
+  [[nodiscard]] inline constexpr element<Index, 0> at() const {
+    return cast<element<Index, 0>, underlying>(matrix(std::size_t{Index}));
+  }
+
+  //! @brief Direct access to the underlying storage.
+  //!
+  //! @details Reference to the underlying element storage.
+  [[nodiscard]] inline constexpr auto &&data(this auto &&self) {
+    return std::forward<decltype(self)>(self).matrix;
   }
 
   //! @}
+
+private:
+  //! @name Private Member Variables
+  //! @{
+
+  //! @brief Matrix element conversion customization point.
+  //!
+  //! @details Specialization of the element caster function objects allows the
+  //! end-user to permit underlying type conversions.
+  template <typename To, typename From>
+  inline constexpr static element_caster<To, From> cast{};
+
+  //! @brief Underlying algebraic backend data storage.
+  Matrix matrix;
+
+  //! @}
+
+  static_assert(tla::algebraic<Matrix>,
+                "The underlying matrix type shall be of algebraic nature.");
 };
 
 //! @brief Strongly typed row vector.
@@ -270,91 +353,23 @@ template <typename Matrix, typename... RowIndexes>
 using typed_column_vector =
     typed_matrix<Matrix, std::tuple<RowIndexes...>, tla::identity_index>;
 
+//! @brief Typed matrix element conversions customization point.
+//!
+//! @details Specialize this template to allow conversion of element's type and
+//! underlying type.
+template <typename To, typename From> struct element_caster {
+  //! @todo In C++26 add an error message for informing the user of the
+  //! need to provide a specialization: "The element conversion is missing.
+  //! Specialize this template class to customize the typed matrix element
+  //! support."
+  //! @todo The call operator should be static once MSVC lands the support.
+  [[nodiscard]] inline constexpr To operator()(From value) const = delete;
+};
+
 //! @}
 
 } // namespace fcarouge
 
 #include "typed_linear_algebra_internal/typed_linear_algebra.tpp"
-
-//! @brief Specialization of the standard formatter for the typed matrix.
-//!
-//! @todo Move the formatter to its header.
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
-          typename Char>
-struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
-                      Char> {
-  constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
-    return parse_context.begin();
-  }
-
-  template <typename OutputIterator>
-  constexpr auto
-  format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
-         std::basic_format_context<OutputIterator, Char> &format_context) const
-      -> OutputIterator {
-    format_context.advance_to(std::format_to(format_context.out(), "["));
-
-    for (std::size_t i{0}; i < fcarouge::tla::size<RowIndexes>; ++i) {
-      if (i > 0) {
-        format_context.advance_to(std::format_to(format_context.out(), ", "));
-      }
-
-      format_context.advance_to(std::format_to(format_context.out(), "["));
-
-      for (std::size_t j{0}; j < fcarouge::tla::size<ColumnIndexes>; ++j) {
-        if (j > 0) {
-          format_context.advance_to(std::format_to(format_context.out(), ", "));
-        }
-
-        format_context.advance_to(
-            std::format_to(format_context.out(), "{}", value.data(i, j)));
-      }
-
-      format_context.advance_to(std::format_to(format_context.out(), "]"));
-    }
-
-    format_context.advance_to(std::format_to(format_context.out(), "]"));
-
-    return format_context.out();
-  }
-
-  template <typename OutputIterator>
-  constexpr auto
-  format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
-         std::basic_format_context<OutputIterator, Char> &format_context) const
-      -> OutputIterator
-    requires fcarouge::tla::row<
-        fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
-  {
-    format_context.advance_to(std::format_to(format_context.out(), "["));
-
-    for (std::size_t j{0}; j < fcarouge::tla::size<ColumnIndexes>; ++j) {
-      if (j > 0) {
-        format_context.advance_to(std::format_to(format_context.out(), ", "));
-      }
-
-      format_context.advance_to(
-          std::format_to(format_context.out(), "{}", value.data(0, j)));
-    }
-
-    format_context.advance_to(std::format_to(format_context.out(), "]"));
-
-    return format_context.out();
-  }
-
-  template <typename OutputIterator>
-  constexpr auto
-  format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
-         std::basic_format_context<OutputIterator, Char> &format_context) const
-      -> OutputIterator
-    requires fcarouge::tla::singleton<
-        fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
-  {
-    format_context.advance_to(
-        std::format_to(format_context.out(), "{}", value.data(0, 0)));
-
-    return format_context.out();
-  }
-};
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_HPP
