@@ -73,6 +73,8 @@ namespace tla = typed_linear_algebra_internal;
 //!
 //! @note Deduction guides are tricky because a given element type comes from
 //! a row and column index to be deduced.
+//!
+//! @todo Don't limit the dimension to two? Use parameter pack of index tuples?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 class typed_matrix {
 public:
@@ -204,9 +206,31 @@ public:
   //! @details Applicable to singleton matrix: one element. Returns a reference
   //! to the unique element of the typed matrix.
   //!
-  //! @todo Provide a const overload through deducing this.
-  [[nodiscard]] inline constexpr explicit(false) operator element<0, 0> &()
-    requires tla::singleton<typed_matrix>;
+  //! @todo Deduplicate through deducing this.
+  [[nodiscard]] inline constexpr explicit(false) operator element<0, 0>()
+    requires tla::singleton<typed_matrix>
+  {
+    return cast<element<0, 0>, underlying>(data()(0, 0));
+  }
+
+  [[nodiscard]] inline constexpr explicit(false) operator element<0, 0> &() &
+    requires tla::singleton<typed_matrix>
+  {
+    return cast<element<0, 0> &, underlying &>(data()(0, 0));
+  }
+
+  [[nodiscard]] inline constexpr explicit(false) operator element<0, 0>() const
+    requires tla::singleton<typed_matrix>
+  {
+    return cast<element<0, 0>, underlying>(data()(0, 0));
+  }
+
+  [[nodiscard]] inline constexpr explicit(false)
+  operator element<0, 0> &() const &
+    requires tla::singleton<typed_matrix>
+  {
+    return cast<const element<0, 0> &, const underlying &>(data()(0, 0));
+  }
 
   //! @brief Access the specified element.
   //!
@@ -345,13 +369,13 @@ private:
 
 //! @brief Strongly typed row vector.
 template <typename Matrix, typename... ColumnIndexes>
-using typed_row_vector =
-    typed_matrix<Matrix, tla::identity_index, std::tuple<ColumnIndexes...>>;
+using typed_row_vector = typed_matrix<Matrix, tla::identity_index<Matrix>,
+                                      std::tuple<ColumnIndexes...>>;
 
 //! @brief Strongly typed column vector.
 template <typename Matrix, typename... RowIndexes>
-using typed_column_vector =
-    typed_matrix<Matrix, std::tuple<RowIndexes...>, tla::identity_index>;
+using typed_column_vector = typed_matrix<Matrix, std::tuple<RowIndexes...>,
+                                         tla::identity_index<Matrix>>;
 
 //! @brief Typed matrix element conversions customization point.
 //!
@@ -367,6 +391,13 @@ template <typename To, typename From> struct element_caster {
 };
 
 //! @}
+
+// help propage template expressions?
+template <typename RowIndexes, typename ColumnIndexes>
+auto make_typed_matrix(auto &&value) {
+  return typed_matrix<std::remove_cvref_t<decltype(value)>, RowIndexes,
+                      ColumnIndexes>{std::forward<decltype(value)>(value)};
+}
 
 } // namespace fcarouge
 

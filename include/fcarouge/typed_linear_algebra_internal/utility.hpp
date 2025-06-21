@@ -49,8 +49,9 @@ namespace fcarouge::typed_linear_algebra_internal {
 //! numerical stability, triangularity, symmetry, space, time, etc. Dividing an
 //! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix.
 template <typename Lhs, typename Rhs> struct divides {
-  [[nodiscard]] inline constexpr auto
-  operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs / rhs);
+  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
+                                                 const Rhs &rhs) const
+      -> decltype(lhs / rhs);
 };
 
 //! @brief Divider helper type.
@@ -60,8 +61,9 @@ using quotient =
 
 //! @brief Type multiplies expression type specialization point.
 template <typename Lhs, typename Rhs> struct multiplies {
-  [[nodiscard]] inline constexpr auto
-  operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs * rhs);
+  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
+                                                 const Rhs &rhs) const
+      -> decltype(lhs * rhs);
 };
 
 //! @brief Helper type to deduce the result type of the product.
@@ -230,16 +232,26 @@ template <typename Type, std::size_t Size>
 using tuple_n_type = typename tupler<Type, Size>::type;
 
 //! @brief One-element transparent tuple index.
-using identity_index = std::tuple<std::type_identity<void>>;
+template <typename Matrix>
+using identity_index = std::tuple<std::type_identity<underlying_t<Matrix>>>;
 
-template <typename Type> struct multiplies<Type, std::type_identity<void>> {
+template <typename Type, typename Any>
+struct multiplies<Type, std::type_identity<Any>> {
   [[nodiscard]] inline constexpr auto
-  operator()(const Type &lhs, std::type_identity<void> rhs) const -> Type;
+  operator()(const Type &lhs, std::type_identity<Any> rhs) const -> Type;
 };
 
-template <typename Type> struct multiplies<std::type_identity<void>, Type> {
-  [[nodiscard]] inline constexpr auto operator()(std::type_identity<void> lhs,
+template <typename Type, typename Any>
+struct multiplies<std::type_identity<Any>, Type> {
+  [[nodiscard]] inline constexpr auto operator()(std::type_identity<Any> lhs,
                                                  const Type &rhs) const -> Type;
+};
+
+template <typename Type1, typename Type2>
+struct multiplies<std::type_identity<Type1>, std::type_identity<Type2>> {
+  [[nodiscard]] inline constexpr auto
+  operator()(std::type_identity<Type1> lhs, std::type_identity<Type2> rhs) const
+      -> decltype(std::declval<Type1>() * std::declval<Type2>());
 };
 
 } // namespace fcarouge::typed_linear_algebra_internal
