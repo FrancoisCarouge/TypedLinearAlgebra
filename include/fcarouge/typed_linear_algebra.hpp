@@ -46,9 +46,19 @@ For more information, please refer to <https://unlicense.org> */
 #include <format>
 #include <initializer_list>
 #include <tuple>
+#include <utility>
 
 namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
+
+//! @brief Matrix element conversion customization point.
+//!
+//! @details Specialization of the element caster function objects allows the
+//! end-user to permit underlying type conversions.
+//!
+//! @todo Move me at the bottom and move out matrix implementations.
+template <typename To, typename From>
+inline constexpr static element_caster<To, From> cast{};
 
 //! @name Types
 //! @{
@@ -125,6 +135,14 @@ public:
 
   //! @brief Copy assign a typed matrix.
   inline constexpr typed_matrix &operator=(const typed_matrix &other) = default;
+
+  template <typename Matrix2, typename RowIndexes2, typename ColumnIndexes2>
+  inline constexpr typed_matrix(
+      const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &other)
+      : matrix{other.data()} {
+    // Verify types and storage (?) compatibility.
+    // Also add the equivalent operator=.
+  }
 
   //! @brief Move construct a typed matrix.
   inline constexpr typed_matrix(typed_matrix &&other) = default;
@@ -205,32 +223,9 @@ public:
   //!
   //! @details Applicable to singleton matrix: one element. Returns a reference
   //! to the unique element of the typed matrix.
-  //!
-  //! @todo Deduplicate through deducing this.
-  [[nodiscard]] inline constexpr explicit(false) operator element<0, 0>()
-    requires tla::singleton<typed_matrix>
-  {
-    return cast<element<0, 0>, underlying>(data()(0, 0));
-  }
-
-  [[nodiscard]] inline constexpr explicit(false) operator element<0, 0> &() &
-    requires tla::singleton<typed_matrix>
-  {
-    return cast<element<0, 0> &, underlying &>(data()(0, 0));
-  }
-
-  [[nodiscard]] inline constexpr explicit(false) operator element<0, 0>() const
-    requires tla::singleton<typed_matrix>
-  {
-    return cast<element<0, 0>, underlying>(data()(0, 0));
-  }
-
   [[nodiscard]] inline constexpr explicit(false)
-  operator element<0, 0> &() const &
-    requires tla::singleton<typed_matrix>
-  {
-    return cast<const element<0, 0> &, const underlying &>(data()(0, 0));
-  }
+  operator element<0, 0> &&(this auto &&self)
+    requires tla::singleton<typed_matrix>;
 
   //! @brief Access the specified element.
   //!
@@ -351,13 +346,6 @@ private:
   //! @name Private Member Variables
   //! @{
 
-  //! @brief Matrix element conversion customization point.
-  //!
-  //! @details Specialization of the element caster function objects allows the
-  //! end-user to permit underlying type conversions.
-  template <typename To, typename From>
-  inline constexpr static element_caster<To, From> cast{};
-
   //! @brief Underlying algebraic backend data storage.
   Matrix matrix;
 
@@ -369,13 +357,13 @@ private:
 
 //! @brief Strongly typed row vector.
 template <typename Matrix, typename... ColumnIndexes>
-using typed_row_vector = typed_matrix<Matrix, tla::identity_index<Matrix>,
-                                      std::tuple<ColumnIndexes...>>;
+using typed_row_vector =
+    typed_matrix<Matrix, tla::identity_index, std::tuple<ColumnIndexes...>>;
 
 //! @brief Strongly typed column vector.
 template <typename Matrix, typename... RowIndexes>
-using typed_column_vector = typed_matrix<Matrix, std::tuple<RowIndexes...>,
-                                         tla::identity_index<Matrix>>;
+using typed_column_vector =
+    typed_matrix<Matrix, std::tuple<RowIndexes...>, tla::identity_index>;
 
 //! @brief Typed matrix element conversions customization point.
 //!
@@ -392,15 +380,10 @@ template <typename To, typename From> struct element_caster {
 
 //! @}
 
-// help propage template expressions?
-template <typename RowIndexes, typename ColumnIndexes>
-auto make_typed_matrix(auto &&value) {
-  return typed_matrix<std::remove_cvref_t<decltype(value)>, RowIndexes,
-                      ColumnIndexes>{std::forward<decltype(value)>(value)};
-}
-
 } // namespace fcarouge
 
+#include "typed_linear_algebra_internal/cast.tpp"
+#include "typed_linear_algebra_internal/operation.tpp"
 #include "typed_linear_algebra_internal/typed_linear_algebra.tpp"
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_HPP

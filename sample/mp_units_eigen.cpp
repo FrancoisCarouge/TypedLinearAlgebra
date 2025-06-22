@@ -47,7 +47,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <type_traits>
 
 #include <Eigen/Eigen>
-#include <mp-units/format.h>
 #include <mp-units/framework/quantity.h>
 #include <mp-units/framework/quantity_point.h>
 #include <mp-units/math.h>
@@ -55,6 +54,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <mp-units/systems/si.h>
 
 namespace fcarouge {
+// Teach the typed linear algebra library about mp-units types conversions.
 template <mp_units::Quantity To, typename From>
 struct element_caster<To, From> {
   [[nodiscard]] inline constexpr To operator()(const From &value) const {
@@ -69,6 +69,13 @@ struct element_caster<To, From> {
   }
 };
 
+template <typename To, mp_units::Reference From>
+struct element_caster<To, From> {
+  [[nodiscard]] inline constexpr To operator()(const From &) const {
+    return 1.;
+  }
+};
+
 template <mp_units::Quantity To, typename From>
 struct element_caster<To &, From &> {
   [[nodiscard]] inline constexpr To &operator()(From &value) const {
@@ -76,21 +83,9 @@ struct element_caster<To &, From &> {
   }
 };
 
-// Make the useful tools available to the user. Revise evaluate, internalize in
-// the matrix?
-
-// template <mp_units::Quantity Denominator, typename Matrix, typename
-// RowIndexes,
-//           typename ColumnIndexes>
-// [[nodiscard]] inline constexpr auto
-// operator/(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
-//           const Denominator& rhs) {
-//   return typed_matrix<tla::evaluate<Matrix>, RowIndexes, ColumnIndexes>{
-//       lhs.data() / rhs};
-// }
-
 namespace sample {
 namespace {
+// Set up heterogenously typed linear algebra types.
 using representation = double;
 
 template <auto QuantityReference>
@@ -131,6 +126,8 @@ using row_vector =
 
   // Declaration.
   state x0{3. * m, 2. * m / s, 1. * m / s2};
+
+  // Printable.
   std::println("x0 = {}", x0);
   assert(std::format("{}", x0) == "[[3 m], [2 m/s], [1 m/s²]]");
 
@@ -139,56 +136,59 @@ using row_vector =
   assert(x0.at<1>() == 2.5 * m / s);
   assert(std::format("{}", x0.at<1>()) == "2.5 m/s");
 
-  // Multiplication with a scalar.
+  // Multiplication with a scalar factor.
   state x1{x0 * 3.};
-  std::println("x1 = {}", x1);
   assert(std::format("{}", x1) == "[[9 m], [7.5 m/s], [3 m/s²]]");
 
   // Division with a scalar divisor.
   state x2{x1 / 2.};
-  std::println("x2 = {}", x2);
   assert(std::format("{}", x2) == "[[4.5 m], [3.75 m/s], [1.5 m/s²]]");
 
   // Substraction of two vectors of the same types.
   state x3{x2 - x0};
-  std::println("x3 = {}", x3);
   assert(std::format("{}", x3) == "[[1.5 m], [1.25 m/s], [0.5 m/s²]]");
 
   // Substraction of two vectors of the same types.
   state x4{x3 + x3};
-  std::println("x4 = {}", x4);
   assert(std::format("{}", x4) == "[[3 m], [2.5 m/s], [1 m/s²]]");
 
-  using state_transpose = row_vector<position, velocity, acceleration>;
-
   state x5{3. * m, 2. * m / s, 1. * m / s2};
+
+  // Multiplication with a strongly typed factor.
+  assert(std::format("{}", x5 * (2. * m)) == "[[6 m²], [4 m²/s], [2 m²/s²]]");
+  assert(std::format("{}", (0.5 / m) * x5) == "[[1.5], [1 1/s], [0.5 1/s²]]");
+
+  using state_transpose = row_vector<position, velocity, acceleration>;
   state_transpose xt5{3. * m, 2. * m / s, 1. * m / s2};
-  using uncertainty = matrix<std::tuple<position, velocity, acceleration>,
-                             std::tuple<position, velocity, acceleration>>;
 
-  // Inner product.
-  double d5{xt5 * x5};
-  std::println("d5 = {}", d5);
-  assert(std::format("{}", d5) == "14");
+  // Matrix multiplication.
+  assert(std::format("{}", x5 * xt5) == "[[9 m², 6 m²/s, 3 m²/s²],"    //
+                                        " [6 m²/s, 4 m²/s², 2 m²/s³]," //
+                                        " [3 m²/s², 2 m²/s³, 1 m²/s⁴]]");
 
-  using uncertainty = matrix<std::tuple<position, velocity, acceleration>,
-                             std::tuple<position, velocity, acceleration>>;
+  using vector3d =
+      column_vector<representation, representation, representation>;
 
-  // Column-vector multiplication.
-  uncertainty p5{x5 * xt5};
-  std::println("p5 = {}", p5);
-  assert(std::format("{}", p5) == "[[9 m², 6 m²/s, 3 m²/s²],"    //
-                                  " [6 m²/s, 4 m²/s², 2 m²/s³]," //
-                                  " [3 m²/s², 2 m²/s³, 1 m²/s⁴]]");
+  // TODO Can we make this also a true mp-units quantity?
+  /*mp_units::Quantity */ auto v0{vector3d{1., 2., 3.} *
+                                  mp_units::isq::velocity[m / s]};
+  assert(std::format("{}", v0) == "[[1 m/s], [2 m/s], [3 m/s]]");
 
-  std::println("p6 = {}", p5 * p5); // Is this correct? It can't be.
+  // Beware of expression templates: these types are not the same.
+  using velocity3d = column_vector<velocity, velocity, velocity>;
+  static_assert(not std::is_same_v<decltype(v0), velocity3d>);
 
-  std::println("p7 = {}", p5 * 2);
-  std::println("p8 = {}", 2 * p5);
-  // std::println("p7 = {}", p5 * (2. * m));
-
-  // TODO Continue sample with temperatures to show the gaps with quantity
-  // points and show how complicated things get.
+  // TODO linalg need.
+  // a + b - addition where both arguments should be of the same quantity
+  // kind and character a - b - subtraction where both arguments should be
+  // of the same quantity kind and character a % b - modulo where both
+  // arguments should be of the same quantity kind and character a * b -
+  // multiplication where one of the arguments has to be a scalar a / b -
+  // division where the divisor has to be scalar a ⋅ b - dot product of two
+  // vectors a × b - cross product of two vectors |a| - magnitude of a
+  // vector a ⊗ b - tensor product of two vectors or tensors a ⋅ b - inner
+  // product of two tensors a ⋅ b - inner product of tensor and vector a : b
+  // - scalar product of two tensors
 
   // TODO Compatibility with STL/Ranges.
   // sum_v = accumulate (v. cbegin ()+1 , v. cend () -1 , 0.0);
@@ -202,17 +202,6 @@ using row_vector =
   // :: ranges :: transform (v , w. begin () , []( float f ){ return f
   // +1.0;}); x = inner_product (v. cbegin () , v. cend () , w. begin () ,
   // 0.0);
-
-  // a + b - addition where both arguments should be of the same quantity
-  // kind and character a - b - subtraction where both arguments should be
-  // of the same quantity kind and character a % b - modulo where both
-  // arguments should be of the same quantity kind and character a * b -
-  // multiplication where one of the arguments has to be a scalar a / b -
-  // division where the divisor has to be scalar a ⋅ b - dot product of two
-  // vectors a × b - cross product of two vectors |a| - magnitude of a
-  // vector a ⊗ b - tensor product of two vectors or tensors a ⋅ b - inner
-  // product of two tensors a ⋅ b - inner product of tensor and vector a : b
-  // - scalar product of two tensors
 
   return 0;
 }()};
