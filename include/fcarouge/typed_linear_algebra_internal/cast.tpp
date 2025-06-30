@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.1.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,21 +27,38 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-if(NOT BUILD_TESTING)
-  return()
-endif()
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
 
-if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-  message(STATUS "${SAMPLE_NAME} not yet compatible with MSVC/mp-units.")
-else()
-  add_executable(typed_linear_algebra_sample_mp_units_eigen_driver
-                 "mp_units_eigen.cpp")
-  target_link_libraries(
-    typed_linear_algebra_sample_mp_units_eigen_driver
-    PRIVATE typed_linear_algebra_eigen typed_linear_algebra_main
-            typed_linear_algebra_options typed_linear_algebra_unit_mp_units)
-  add_test(NAME typed_linear_algebra_sample_mp_units_eigen
-           COMMAND typed_linear_algebra_sample_mp_units_eigen_driver)
-endif()
+namespace fcarouge {
+namespace tla = typed_linear_algebra_internal;
+
+// TODO: How to deduplicate all of this?
+template <tla::arithmetic To, tla::arithmetic From>
+struct element_caster<To, From> {
+  [[nodiscard]] inline constexpr To operator()(const From &value) const {
+    return value;
+  }
+};
+
+template <tla::arithmetic To, tla::arithmetic From>
+struct element_caster<To &, From &> {
+  [[nodiscard]] inline constexpr To &operator()(From &value) const {
+    return value;
+  }
+  [[nodiscard]] inline constexpr To operator()(const From &value) const {
+    return value;
+  }
+};
+
+template <tla::arithmetic To, tla::arithmetic From>
+struct element_caster<To &&, From &&> {
+  [[nodiscard]] inline constexpr To &&operator()(From &&value) const {
+    return std::move(value);
+  }
+};
+} // namespace fcarouge
+
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP

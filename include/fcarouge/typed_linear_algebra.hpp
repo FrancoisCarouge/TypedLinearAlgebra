@@ -46,9 +46,19 @@ For more information, please refer to <https://unlicense.org> */
 #include <format>
 #include <initializer_list>
 #include <tuple>
+#include <utility>
 
 namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
+
+//! @brief Matrix element conversion customization point.
+//!
+//! @details Specialization of the element caster function objects allows the
+//! end-user to permit underlying type conversions.
+//!
+//! @todo Move me at the bottom and move out matrix implementations.
+template <typename To, typename From>
+inline constexpr static element_caster<To, From> cast{};
 
 //! @name Types
 //! @{
@@ -73,6 +83,8 @@ namespace tla = typed_linear_algebra_internal;
 //!
 //! @note Deduction guides are tricky because a given element type comes from
 //! a row and column index to be deduced.
+//!
+//! @todo Don't limit the dimension to two? Use parameter pack of index tuples?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 class typed_matrix {
 public:
@@ -123,6 +135,14 @@ public:
 
   //! @brief Copy assign a typed matrix.
   inline constexpr typed_matrix &operator=(const typed_matrix &other) = default;
+
+  template <typename Matrix2, typename RowIndexes2, typename ColumnIndexes2>
+  inline constexpr typed_matrix(
+      const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &other)
+      : matrix{other.data()} {
+    // Verify types and storage (?) compatibility.
+    // Also add the equivalent operator=.
+  }
 
   //! @brief Move construct a typed matrix.
   inline constexpr typed_matrix(typed_matrix &&other) = default;
@@ -203,9 +223,8 @@ public:
   //!
   //! @details Applicable to singleton matrix: one element. Returns a reference
   //! to the unique element of the typed matrix.
-  //!
-  //! @todo Provide a const overload through deducing this.
-  [[nodiscard]] inline constexpr explicit(false) operator element<0, 0> &()
+  [[nodiscard]] inline constexpr explicit(false)
+  operator element<0, 0> &&(this auto &&self)
     requires tla::singleton<typed_matrix>;
 
   //! @brief Access the specified element.
@@ -327,13 +346,6 @@ private:
   //! @name Private Member Variables
   //! @{
 
-  //! @brief Matrix element conversion customization point.
-  //!
-  //! @details Specialization of the element caster function objects allows the
-  //! end-user to permit underlying type conversions.
-  template <typename To, typename From>
-  inline constexpr static element_caster<To, From> cast{};
-
   //! @brief Underlying algebraic backend data storage.
   Matrix matrix;
 
@@ -370,6 +382,8 @@ template <typename To, typename From> struct element_caster {
 
 } // namespace fcarouge
 
+#include "typed_linear_algebra_internal/cast.tpp"
+#include "typed_linear_algebra_internal/operation.tpp"
 #include "typed_linear_algebra_internal/typed_linear_algebra.tpp"
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_HPP
