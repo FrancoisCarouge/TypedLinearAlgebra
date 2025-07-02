@@ -29,23 +29,36 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/linalg.hpp"
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
 
-#include <cassert>
+namespace fcarouge {
+namespace tla = typed_linear_algebra_internal;
 
-namespace fcarouge::test {
-namespace {
-//! @test Verifies the row by column multiplication operator.
-//!
-//! @todo Also test this edge case converts to the underlying type.
-[[maybe_unused]] auto test{[] {
-  const matrix<double, 1, 2> a{1.0, 2.0};
-  const matrix<double, 2, 1> b{3.0, 4.0};
-  const matrix<double, 1, 1> r{a * b};
+//! @todo Deduplicate, generalize the built-in casts.
+template <tla::arithmetic To, tla::arithmetic From>
+struct element_caster<To, From> {
+  [[nodiscard]] inline constexpr To operator()(const From &value) const {
+    return value;
+  }
+};
 
-  assert(r(0, 0) == 11.0);
+template <tla::arithmetic To, tla::arithmetic From>
+struct element_caster<To &, From &> {
+  [[nodiscard]] inline constexpr To &operator()(From &value) const {
+    return value;
+  }
+  [[nodiscard]] inline constexpr To operator()(const From &value) const {
+    return value;
+  }
+};
 
-  return 0;
-}()};
-} // namespace
-} // namespace fcarouge::test
+template <tla::arithmetic To, tla::arithmetic From>
+struct element_caster<To &&, From &&> {
+  [[nodiscard]] inline constexpr To &&operator()(From &&value) const {
+    return std::move(value);
+  }
+};
+} // namespace fcarouge
+
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
