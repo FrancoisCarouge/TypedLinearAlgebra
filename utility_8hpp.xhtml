@@ -108,6 +108,7 @@ $(function(){initNavTree('utility_8hpp.xhtml',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;concepts&gt;</code><br />
+<code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;tuple&gt;</code><br />
 <code>#include &lt;type_traits&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -115,7 +116,7 @@ $(function(){initNavTree('utility_8hpp.xhtml',''); initResizable(true); });
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="utility_8hpp__incl.svg" width="263" height="140"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="utility_8hpp__incl.svg" width="366" height="140"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
@@ -141,10 +142,10 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ad9aae459061728b7d7b2ae70196f2028"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#ad9aae459061728b7d7b2ae70196f2028">fcarouge::typed_linear_algebra_internal::quotient</a></td></tr>
 <tr class="memdesc:ad9aae459061728b7d7b2ae70196f2028"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divider helper type.  <br /></td></tr>
 <tr class="separator:ad9aae459061728b7d7b2ae70196f2028"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca585f39845dac1a268a75826589014c" id="r_aca585f39845dac1a268a75826589014c"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
-<tr class="memitem:aca585f39845dac1a268a75826589014c"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aca585f39845dac1a268a75826589014c">fcarouge::typed_linear_algebra_internal::product</a></td></tr>
-<tr class="memdesc:aca585f39845dac1a268a75826589014c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper type to deduce the result type of the product.  <br /></td></tr>
-<tr class="separator:aca585f39845dac1a268a75826589014c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a174364178a20af0590ffe5c549e13e66" id="r_a174364178a20af0590ffe5c549e13e66"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
+<tr class="memitem:a174364178a20af0590ffe5c549e13e66"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a174364178a20af0590ffe5c549e13e66">fcarouge::typed_linear_algebra_internal::product</a> = std::invoke_result_t&lt;multiplies&lt;Lhs, Rhs&gt;, Lhs, Rhs&gt;</td></tr>
+<tr class="memdesc:a174364178a20af0590ffe5c549e13e66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper type to deduce the result type of the product.  <br /></td></tr>
+<tr class="separator:a174364178a20af0590ffe5c549e13e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a185964b5c8d035580b458b26a229a549" id="r_a185964b5c8d035580b458b26a229a549"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
 <tr class="memitem:a185964b5c8d035580b458b26a229a549"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a185964b5c8d035580b458b26a229a549">fcarouge::typed_linear_algebra_internal::evaluate</a> = std::invoke_result_t&lt;evaluates&lt;Type&gt;&gt;</td></tr>
 <tr class="memdesc:a185964b5c8d035580b458b26a229a549"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluater helper type.  <br /></td></tr>
@@ -156,10 +157,10 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a1233ce8915a8ea54b53c7912a477afdc"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a1233ce8915a8ea54b53c7912a477afdc">fcarouge::typed_linear_algebra_internal::underlying_t</a></td></tr>
 <tr class="memdesc:a1233ce8915a8ea54b53c7912a477afdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The underlying storage type of the matrix's elements.  <br /></td></tr>
 <tr class="separator:a1233ce8915a8ea54b53c7912a477afdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a779b86b92edb4191f64f6a286495d228" id="r_a779b86b92edb4191f64f6a286495d228"><td class="memTemplParams" colspan="2">template&lt;typename Matrix , std::size_t RowIndex, std::size_t ColumnIndex&gt; </td></tr>
-<tr class="memitem:a779b86b92edb4191f64f6a286495d228"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a779b86b92edb4191f64f6a286495d228">fcarouge::typed_linear_algebra_internal::element</a></td></tr>
-<tr class="memdesc:a779b86b92edb4191f64f6a286495d228"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the element at the given matrix indexes position.  <br /></td></tr>
-<tr class="separator:a779b86b92edb4191f64f6a286495d228"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae127796f29a91fe39cd110accd6c82c5" id="r_ae127796f29a91fe39cd110accd6c82c5"><td class="memTemplParams" colspan="2">template&lt;typename Matrix , std::size_t RowIndex, std::size_t ColumnIndex&gt; </td></tr>
+<tr class="memitem:ae127796f29a91fe39cd110accd6c82c5"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#ae127796f29a91fe39cd110accd6c82c5">fcarouge::typed_linear_algebra_internal::element</a></td></tr>
+<tr class="memdesc:ae127796f29a91fe39cd110accd6c82c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the element at the given matrix indexes position.  <br /></td></tr>
+<tr class="separator:ae127796f29a91fe39cd110accd6c82c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f4f77aa7fb1fab03b068ab823abf023" id="r_a3f4f77aa7fb1fab03b068ab823abf023"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
 <tr class="memitem:a3f4f77aa7fb1fab03b068ab823abf023"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a3f4f77aa7fb1fab03b068ab823abf023">fcarouge::typed_linear_algebra_internal::transpose</a> = std::invoke_result_t&lt;transposes&lt;Type&gt;, const Type &amp;&gt;</td></tr>
 <tr class="memdesc:a3f4f77aa7fb1fab03b068ab823abf023"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transposer helper type.  <br /></td></tr>
@@ -168,9 +169,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a4dd57b09634fe03c0fd59b866657ad86"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a4dd57b09634fe03c0fd59b866657ad86">fcarouge::typed_linear_algebra_internal::tuple_n_type</a> = typename tupler&lt;Type, Size&gt;::type</td></tr>
 <tr class="memdesc:a4dd57b09634fe03c0fd59b866657ad86"><td class="mdescLeft">&#160;</td><td class="mdescRight">An alias for making a tuple of the same type.  <br /></td></tr>
 <tr class="separator:a4dd57b09634fe03c0fd59b866657ad86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af60dfb9fb7ed5802f1465f1c1e4a242b" id="r_af60dfb9fb7ed5802f1465f1c1e4a242b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#af60dfb9fb7ed5802f1465f1c1e4a242b">fcarouge::typed_linear_algebra_internal::identity_index</a> = std::tuple&lt;std::type_identity&lt;void&gt;&gt;</td></tr>
-<tr class="memdesc:af60dfb9fb7ed5802f1465f1c1e4a242b"><td class="mdescLeft">&#160;</td><td class="mdescRight">One-element transparent tuple index.  <br /></td></tr>
-<tr class="separator:af60dfb9fb7ed5802f1465f1c1e4a242b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2963e691119d8b2ac7bdeac82688b5b9" id="r_a2963e691119d8b2ac7bdeac82688b5b9"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a2963e691119d8b2ac7bdeac82688b5b9">fcarouge::typed_linear_algebra_internal::identity_index</a> = std::tuple&lt;std::identity&gt;</td></tr>
+<tr class="memdesc:a2963e691119d8b2ac7bdeac82688b5b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">One-element transparent tuple index.  <br /></td></tr>
+<tr class="separator:a2963e691119d8b2ac7bdeac82688b5b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>

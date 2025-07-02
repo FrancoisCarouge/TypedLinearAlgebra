@@ -102,7 +102,8 @@ $(function(){initNavTree('namespacefcarouge.xhtml',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">fcarouge Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -151,6 +152,13 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ad06bb441aa2dcec149c52de0c297a967"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ad06bb441aa2dcec149c52de0c297a967">column_vector</a> = <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix</a>&lt;Type, Row, 1&gt;</td></tr>
 <tr class="memdesc:ad06bb441aa2dcec149c52de0c297a967"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scalar type column vector with <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.  <br /></td></tr>
 <tr class="separator:ad06bb441aa2dcec149c52de0c297a967"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:aa6f7f6a8d1b65520e70b3e1330e880d2" id="r_aa6f7f6a8d1b65520e70b3e1330e880d2"><td class="memTemplParams" colspan="2">template&lt;typename To , typename From &gt; </td></tr>
+<tr class="memitem:aa6f7f6a8d1b65520e70b3e1330e880d2"><td class="memTemplItemLeft" align="right" valign="top">static constexpr <a class="el" href="structfcarouge_1_1element__caster.xhtml">element_caster</a>&lt; To, From &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aa6f7f6a8d1b65520e70b3e1330e880d2">cast</a> {}</td></tr>
+<tr class="memdesc:aa6f7f6a8d1b65520e70b3e1330e880d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix element conversion customization point.  <br /></td></tr>
+<tr class="separator:aa6f7f6a8d1b65520e70b3e1330e880d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Francois Carouge's projects namespace. </p>
@@ -218,7 +226,7 @@ template&lt;typename Matrix , typename... RowIndexes&gt; </div>
 </div><!-- fragment -->
 <p>Strongly typed column vector. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00353">353</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00354">354</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
@@ -240,8 +248,39 @@ template&lt;typename Matrix , typename... ColumnIndexes&gt; </div>
 </div><!-- fragment -->
 <p>Strongly typed row vector. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00348">348</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00349">349</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="aa6f7f6a8d1b65520e70b3e1330e880d2" name="aa6f7f6a8d1b65520e70b3e1330e880d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6f7f6a8d1b65520e70b3e1330e880d2">&#9670;&#160;</a></span>cast</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename To , typename From &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structfcarouge_1_1element__caster.xhtml">element_caster</a>&lt;To, From&gt; fcarouge::cast {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Matrix element conversion customization point. </p>
+<p>Specialization of the element caster function objects allows the end-user to permit underlying type conversions. </p>
+
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00377">377</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  377</span>{};</div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

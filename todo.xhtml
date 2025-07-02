@@ -105,31 +105,21 @@ $(function(){initNavTree('todo.xhtml',''); initResizable(true); });
 <div class="contents">
 <div class="textblock"><dl class="reflist">
 <dt>Member <a class="el" href="structfcarouge_1_1element__caster.xhtml#ad4e7440b6de6e7697f16aa87d2bfb9f2">fcarouge::element_caster&lt; To, From &gt;::operator()</a>  (From value) const =delete</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000011"></a>In C++26 add an error message for informing the user of the need to provide a specialization: "The element conversion is missing.
+<dd><p class="startdd"><a class="anchor" id="_todo000005"></a>In C++26 add an error message for informing the user of the need to provide a specialization: "The element conversion is missing.
 Specialize this template class to customize the typed matrix element
 support." </p>
 <p class="interdd"></p>
 <p class="enddd">The call operator should be static once MSVC lands the support.  </p>
 </dd>
 <dt>{<a class="el" href="multiplication__rxc_8cpp.xhtml">multiplication_rxc.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02multiplication__rxc_8cpp_03.xhtml#aff0c20ccc75350c173ea93708af0fffb">fcarouge::test::anonymous_namespace{multiplication_rxc.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_todo000012"></a>Should this edge case decay to the underlying type?  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1typed__matrix.xhtml#aa30a2af092c8cb9c2bb002ca0949393d">fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::at</a>  ()</dt>
-<dd><a class="anchor" id="_todo000009"></a>Can we deduplicate with deducing this?  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1typed__matrix.xhtml#a888cbaeceda39c59ae48995666234408">fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::at</a>  () const</dt>
-<dd><a class="anchor" id="_todo000010"></a>Add row-vector overload.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1typed__matrix.xhtml#a356c81c7cc366d0905dcceab17d79b56">fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::explicit</a>  (false) operator element&lt; 0</dt>
-<dd><a class="anchor" id="_todo000007"></a>Provide a const overload through deducing this.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1typed__matrix.xhtml#aa0a3a9ea5723af0693dab3eae4e4acb2">fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::operator[]</a>  (this auto &amp;&amp;self, std::size_t index)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000008"></a>Add complexity documentation. </p>
+<dd><a class="anchor" id="_todo000006"></a>Also test this edge case converts to the underlying type.  </dd>
+<dt>Class <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;</a>  </dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000004"></a>Don't limit the dimension to two? Use parameter pack of index tuples for tensor types. </p>
 <p class="interdd"></p>
-<p class="enddd">Document the classical lack of bound checking?  </p>
+<p class="interdd">Add complexity documentation where appropriate for the API? </p>
+<p class="interdd"></p>
+<p class="enddd">Document the lack of bound checking on the classical API or remove altogether? </p>
 </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1typed__matrix.xhtml#a75b7d16e5b2202e4ba4cbebef3e521bf">fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::typed_matrix</a>  (const typed_matrix&lt; OtherMatrix, RowIndexes, ColumnIndexes &gt; &amp;other)</dt>
-<dd><a class="anchor" id="_todo000004"></a>Add equivalent move constructor and assignment operator.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1typed__matrix.xhtml#a68813df101c471fdc0606ec04fb9dd6e">fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::typed_matrix</a>  (const Type &amp;value)</dt>
-<dd><a class="anchor" id="_todo000005"></a>Should the arithmetic constraint be dropped? The parameter renamed to element systematically? A requirement of compatible conversion?  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1typed__matrix.xhtml#a94431592f510543998a98119fde8c98c">fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::typed_matrix</a>  (std::initializer_list&lt; std::initializer_list&lt; Type &gt; &gt; row_list)</dt>
-<dd><a class="anchor" id="_todo000006"></a>Verify the list sizes at runtime? Deprecate? </dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

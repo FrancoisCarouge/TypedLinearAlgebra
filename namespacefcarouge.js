@@ -4,10 +4,10 @@ var namespacefcarouge =
     [ "internal", "namespacefcarouge_1_1internal.xhtml", null ],
     [ "test", "namespacefcarouge_1_1test.xhtml", "namespacefcarouge_1_1test" ],
     [ "typed_linear_algebra_internal", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml", [
-      [ "element", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a779b86b92edb4191f64f6a286495d228", null ],
+      [ "element", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#ae127796f29a91fe39cd110accd6c82c5", null ],
       [ "evaluate", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a185964b5c8d035580b458b26a229a549", null ],
-      [ "identity_index", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#af60dfb9fb7ed5802f1465f1c1e4a242b", null ],
-      [ "product", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aca585f39845dac1a268a75826589014c", null ],
+      [ "identity_index", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a2963e691119d8b2ac7bdeac82688b5b9", null ],
+      [ "product", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a174364178a20af0590ffe5c549e13e66", null ],
       [ "quotient", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#ad9aae459061728b7d7b2ae70196f2028", null ],
       [ "repack", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a8beb8d3741b310de71851a081557455e", null ],
       [ "transpose", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a3f4f77aa7fb1fab03b068ab823abf023", null ],
@@ -21,5 +21,6 @@ var namespacefcarouge =
     [ "column_vector", "namespacefcarouge.xhtml#ad06bb441aa2dcec149c52de0c297a967", null ],
     [ "matrix", "namespacefcarouge.xhtml#a2d5d861aa25651be3549e278fd1e21e6", null ],
     [ "typed_column_vector", "namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58", null ],
-    [ "typed_row_vector", "namespacefcarouge.xhtml#a7558e7ccc03031fb7de678cf4977e1bf", null ]
+    [ "typed_row_vector", "namespacefcarouge.xhtml#a7558e7ccc03031fb7de678cf4977e1bf", null ],
+    [ "cast", "namespacefcarouge.xhtml#aa6f7f6a8d1b65520e70b3e1330e880d2", null ]
 ];
