@@ -46,6 +46,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <format>
 #include <initializer_list>
 #include <tuple>
+#include <utility>
 
 namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
@@ -73,6 +74,12 @@ namespace tla = typed_linear_algebra_internal;
 //!
 //! @note Deduction guides are tricky because a given element type comes from
 //! a row and column index to be deduced.
+//!
+//! @todo Don't limit the dimension to two? Use parameter pack of index tuples
+//! for tensor types.
+//! @todo Add complexity documentation where appropriate for the API?
+//! @todo Document the lack of bound checking on the classical API or remove
+//! altogether?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 class typed_matrix {
 public:
@@ -131,8 +138,11 @@ public:
   inline constexpr typed_matrix &operator=(typed_matrix &&other) = default;
 
   //! @brief Copy construct the typed matrix.
-  //!
-  //! @todo Add equivalent move constructor and assignment operator.
+  template <typename Matrix2, typename RowIndexes2, typename ColumnIndexes2>
+  inline constexpr typed_matrix(
+      const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &other);
+
+  //! @brief Copy construct the typed matrix.
   template <tla::algebraic OtherMatrix>
   inline constexpr typed_matrix(
       const typed_matrix<OtherMatrix, RowIndexes, ColumnIndexes> &other);
@@ -160,9 +170,6 @@ public:
   //! @details Applicable to singleton matrix: one element.
   //!
   //! @param value Element of compatible type.
-  //!
-  //! @todo Should the arithmetic constraint be dropped? The parameter renamed
-  //! to element systematically? A requirement of compatible conversion?
   template <tla::arithmetic Type>
   explicit inline constexpr typed_matrix(const Type &value)
     requires tla::singleton<typed_matrix>;
@@ -172,8 +179,6 @@ public:
   //! @details Applicable to matrix of uniform elements type.
   //!
   //! @param row_list List-initializers of list-initializer of elements.
-  //!
-  //! @todo Verify the list sizes at runtime? Deprecate?
   template <typename Type>
   explicit inline constexpr typed_matrix(
       std::initializer_list<std::initializer_list<Type>> row_list)
@@ -203,9 +208,8 @@ public:
   //!
   //! @details Applicable to singleton matrix: one element. Returns a reference
   //! to the unique element of the typed matrix.
-  //!
-  //! @todo Provide a const overload through deducing this.
-  [[nodiscard]] inline constexpr explicit(false) operator element<0, 0> &()
+  [[nodiscard]] inline constexpr explicit(false)
+  operator element<0, 0> &&(this auto &&self)
     requires tla::singleton<typed_matrix>;
 
   //! @brief Access the specified element.
@@ -216,9 +220,6 @@ public:
   //!
   //! @param self Explicit object parameter deducing this: not user specified.
   //! @param index Position of the element to return.
-  //!
-  //! @todo Add complexity documentation.
-  //! @todo Document the classical lack of bound checking?
   [[nodiscard]] inline constexpr auto &&operator[](this auto &&self,
                                                    std::size_t index)
     requires(tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>);
@@ -266,14 +267,16 @@ public:
   //!
   //! @tparam Row Row index of the element to return.
   //! @tparam Column Column index of the element to return.
-  //!
-  //! @todo Can we deduplicate with deducing this?
   template <std::size_t Row, std::size_t Column>
-    requires tla::in_range<Row, 0, rows> && tla::in_range<Column, 0, columns>
-  [[nodiscard]] inline constexpr element<Row, Column> &at() {
-    return cast<element<Row, Column> &, underlying &>(
-        matrix(std::size_t{Row}, std::size_t{Column}));
-  }
+  [[nodiscard]] inline constexpr auto
+  at() -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Row,
+                       Column> &
+    requires tla::in_range<
+                 Row, 0,
+                 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows> &&
+             tla::in_range<
+                 Column, 0,
+                 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::columns>;
 
   //! @brief Access the specified element with compile-time bound checking.
   //!
@@ -282,11 +285,15 @@ public:
   //! @tparam Row Row index of the element to return.
   //! @tparam Column Column index of the element to return.
   template <std::size_t Row, std::size_t Column>
-    requires tla::in_range<Row, 0, rows> && tla::in_range<Column, 0, columns>
-  [[nodiscard]] inline constexpr element<Row, Column> at() const {
-    return cast<element<Row, Column>, underlying>(
-        matrix(std::size_t{Row}, std::size_t{Column}));
-  }
+  [[nodiscard]] inline constexpr auto
+  at() const -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
+                             Row, Column>
+    requires tla::in_range<
+                 Row, 0,
+                 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows> &&
+             tla::in_range<
+                 Column, 0,
+                 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::columns>;
 
   //! @brief Access the specified element with compile-time bound checking.
   //!
@@ -295,10 +302,13 @@ public:
   //!
   //! @tparam Index Position of the element to return.
   template <std::size_t Index>
-    requires tla::column<typed_matrix> && tla::in_range<Index, 0, rows>
-  [[nodiscard]] inline constexpr element<Index, 0> &at() {
-    return cast<element<Index, 0> &, underlying &>(matrix(std::size_t{Index}));
-  }
+  [[nodiscard]] inline constexpr auto at()
+      -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Index, 0>
+          &
+    requires tla::column<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
+             tla::in_range<
+                 Index, 0,
+                 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows>;
 
   //! @brief Access the specified element with compile-time bound checking.
   //!
@@ -306,33 +316,24 @@ public:
   //! Applicable to one-dimension matrix: column-vector.
   //!
   //! @tparam Index Position of the element to return.
-  //!
-  //! @todo Add row-vector overload.
   template <std::size_t Index>
-    requires tla::column<typed_matrix> && tla::in_range<Index, 0, rows>
-  [[nodiscard]] inline constexpr element<Index, 0> at() const {
-    return cast<element<Index, 0>, underlying>(matrix(std::size_t{Index}));
-  }
+  [[nodiscard]] inline constexpr auto at() const
+      -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Index, 0>
+    requires tla::column<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
+             tla::in_range<
+                 Index, 0,
+                 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows>;
 
   //! @brief Direct access to the underlying storage.
   //!
   //! @details Reference to the underlying element storage.
-  [[nodiscard]] inline constexpr auto &&data(this auto &&self) {
-    return std::forward<decltype(self)>(self).matrix;
-  }
+  [[nodiscard]] inline constexpr auto &&data(this auto &&self);
 
   //! @}
 
 private:
   //! @name Private Member Variables
   //! @{
-
-  //! @brief Matrix element conversion customization point.
-  //!
-  //! @details Specialization of the element caster function objects allows the
-  //! end-user to permit underlying type conversions.
-  template <typename To, typename From>
-  inline constexpr static element_caster<To, From> cast{};
 
   //! @brief Underlying algebraic backend data storage.
   Matrix matrix;
@@ -368,8 +369,17 @@ template <typename To, typename From> struct element_caster {
 
 //! @}
 
+//! @brief Matrix element conversion customization point.
+//!
+//! @details Specialization of the element caster function objects allows the
+//! end-user to permit underlying type conversions.
+template <typename To, typename From>
+inline constexpr static element_caster<To, From> cast{};
+
 } // namespace fcarouge
 
+#include "typed_linear_algebra_internal/cast.tpp"
+#include "typed_linear_algebra_internal/operation.tpp"
 #include "typed_linear_algebra_internal/typed_linear_algebra.tpp"
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_HPP

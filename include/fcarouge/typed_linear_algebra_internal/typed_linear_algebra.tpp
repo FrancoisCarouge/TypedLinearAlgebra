@@ -29,12 +29,25 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_TPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_TYPED_LINEAR_ALGEBRA_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_TYPED_LINEAR_ALGEBRA_TPP
 
 namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
 
+//! @todo Replace all calls to data() by direct matrix access?
+
+//! @todo Verify types and storage (?) compatibility.
+//! @todo Also add the equivalent operator=.
+//! @todo Combine with the similar delcarations.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+template <typename Matrix2, typename RowIndexes2, typename ColumnIndexes2>
+inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
+    const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &other)
+    : matrix{other.data()} {}
+
+//! @todo Should the arithmetic constraint be dropped? The parameter renamed
+//! to element systematically? A requirement of compatible conversion?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <tla::algebraic OtherMatrix>
 inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
@@ -61,6 +74,7 @@ inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
   data()(0, 0) = cast<underlying, Type>(value);
 }
 
+//! @todo Verify the list sizes at runtime? Deprecate?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <typename Type>
 inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
@@ -112,11 +126,29 @@ inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-[[nodiscard]] inline constexpr typed_matrix<
-    Matrix, RowIndexes, ColumnIndexes>::operator element<0, 0> &()
+[[nodiscard]] inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::
+operator element<0, 0> &&(this auto &&self)
   requires tla::singleton<typed_matrix>
 {
-  return cast<element<0, 0> &, underlying &>(data()(0, 0));
+  // This is a form of `std::forward_like`, is there a simpler, or more compact
+  // syntax?
+  constexpr bool is_adding_const{
+      std::is_const_v<std::remove_reference_t<decltype(self)>>};
+  if constexpr (std::is_lvalue_reference_v<decltype(self) &&>) {
+    if constexpr (is_adding_const)
+      return cast<element<0, 0>, underlying>(
+          std::forward<decltype(self)>(self).data()(0, 0));
+    else
+      return cast<element<0, 0> &, underlying &>(
+          std::forward<decltype(self)>(self).data()(0, 0));
+  } else {
+    if constexpr (is_adding_const)
+      return std::move(cast<element<0, 0>, underlying>(
+          std::forward<decltype(self)>(self).data()(0, 0)));
+    else
+      return std::move(cast<element<0, 0> &&, underlying &&>(
+          std::forward<decltype(self)>(self).data()(0, 0)));
+  }
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
@@ -157,127 +189,70 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
   return std::forward<decltype(self)>(self).data()(row, column);
 }
 
-template <typename Matrix1, typename Matrix2, typename RowIndexes,
-          typename ColumnIndexes>
-[[nodiscard]] inline constexpr bool
-operator==(const typed_matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
-           const typed_matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
-  return lhs.data() == rhs.data();
-}
-
-template <typename Matrix1, typename Matrix2, typename RowIndexes,
-          typename ColumnIndexes, typename Indexes>
+//! @todo Can we deduplicate with deducing this?
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+template <std::size_t Row, std::size_t Column>
 [[nodiscard]] inline constexpr auto
-operator*(const typed_matrix<Matrix1, RowIndexes, Indexes> &lhs,
-          const typed_matrix<Matrix2, Indexes, ColumnIndexes> &rhs) {
-  return typed_matrix<tla::evaluate<tla::product<Matrix1, Matrix2>>, RowIndexes,
-                      ColumnIndexes>{lhs.data() * rhs.data()};
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at()
+    -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Row,
+                    Column> &
+  requires tla::in_range<
+               Row, 0, typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows> &&
+           tla::in_range<
+               Column, 0,
+               typed_matrix<Matrix, RowIndexes, ColumnIndexes>::columns>
+{
+  return cast<element<Row, Column> &, underlying &>(
+      matrix(std::size_t{Row}, std::size_t{Column}));
 }
 
-template <tla::arithmetic Scalar, typename Matrix>
-  requires tla::singleton<Matrix>
-[[nodiscard]] inline constexpr auto operator*(Scalar lhs, const Matrix &rhs) {
-  return tla::element<Matrix, 0, 0>{lhs * rhs.data()(0)};
-}
-
-template <tla::arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+template <std::size_t Row, std::size_t Column>
 [[nodiscard]] inline constexpr auto
-operator*(Scalar lhs,
-          const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
-  return typed_matrix<tla::evaluate<Matrix>, RowIndexes, ColumnIndexes>{
-      lhs * rhs.data()};
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const
+    -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Row,
+                    Column>
+  requires tla::in_range<
+               Row, 0, typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows> &&
+           tla::in_range<
+               Column, 0,
+               typed_matrix<Matrix, RowIndexes, ColumnIndexes>::columns>
+{
+  return cast<element<Row, Column>, underlying>(
+      matrix(std::size_t{Row}, std::size_t{Column}));
 }
 
-template <tla::arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
-  requires tla::singleton<Matrix>
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+template <std::size_t Index>
 [[nodiscard]] inline constexpr auto
-operator*(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
-          Scalar rhs) {
-  return tla::element<Matrix, 0, 0>{lhs.data()(0) * rhs};
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at()
+    -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Index, 0> &
+  requires tla::column<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
+           tla::in_range<Index, 0,
+                         typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows>
+{
+  return cast<element<Index, 0> &, underlying &>(matrix(std::size_t{Index}));
 }
 
-template <tla::arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
+//! @todo Add row-vector overload.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+template <std::size_t Index>
 [[nodiscard]] inline constexpr auto
-operator*(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
-          Scalar rhs) {
-  return typed_matrix<tla::evaluate<Matrix>, RowIndexes, ColumnIndexes>{
-      lhs.data() * rhs};
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const
+    -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Index, 0>
+  requires tla::column<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
+           tla::in_range<Index, 0,
+                         typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows>
+{
+  return cast<element<Index, 0>, underlying>(matrix(std::size_t{Index}));
 }
 
-template <typename Matrix1, typename Matrix2, typename RowIndexes,
-          typename ColumnIndexes>
-[[nodiscard]] inline constexpr auto
-operator+(const typed_matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
-          const typed_matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
-  return typed_matrix<tla::evaluate<Matrix1>, RowIndexes, ColumnIndexes>{
-      lhs.data() + rhs.data()};
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+[[nodiscard]] inline constexpr auto &&
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::data(this auto &&self) {
+  return std::forward<decltype(self)>(self).matrix;
 }
 
-template <tla::arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
-  requires tla::singleton<Matrix>
-[[nodiscard]] inline constexpr auto operator+(const Matrix &lhs, Scalar rhs) {
-  //! @todo Scalar will become Index with constraints.
-  return tla::element<Matrix, 0, 0>{lhs.data()(0) + rhs};
-}
-
-template <typename Matrix1, typename Matrix2, typename RowIndexes,
-          typename ColumnIndexes>
-[[nodiscard]] inline constexpr auto
-operator-(const typed_matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
-          const typed_matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
-  return typed_matrix<tla::evaluate<Matrix1>, RowIndexes, ColumnIndexes>{
-      lhs.data() - rhs.data()};
-}
-
-template <tla::arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
-  requires tla::singleton<Matrix>
-[[nodiscard]] inline constexpr auto operator-(Scalar lhs, const Matrix &rhs) {
-  return tla::element<Matrix, 0, 0>{lhs - rhs.data()(0)};
-}
-
-template <typename Matrix1, typename Matrix2, typename RowIndexes1,
-          typename RowIndexes2, typename ColumnIndexes>
-[[nodiscard]] inline constexpr auto
-operator/(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes> &lhs,
-          const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes> &rhs) {
-  return typed_matrix<tla::evaluate<tla::quotient<Matrix1, Matrix2>>,
-                      RowIndexes1, RowIndexes2>{lhs.data() / rhs.data()};
-}
-
-template <tla::arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
-[[nodiscard]] inline constexpr auto
-operator/(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
-          Scalar rhs) {
-  return typed_matrix<tla::evaluate<Matrix>, RowIndexes, ColumnIndexes>{
-      lhs.data() / rhs};
-}
-
-template <tla::arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
-  requires tla::singleton<Matrix>
-[[nodiscard]] inline constexpr auto operator/(const Matrix &lhs, Scalar rhs) {
-  return tla::element<Matrix, 0, 0>{lhs.data()(0) / rhs};
-}
-
-template <tla::arithmetic To, tla::arithmetic From>
-struct element_caster<To, From> {
-  [[nodiscard]] inline constexpr To operator()(const From &value) const {
-    return value;
-  }
-};
-
-template <tla::arithmetic To, tla::arithmetic From>
-struct element_caster<To &, From &> {
-  [[nodiscard]] inline constexpr To &operator()(From &value) const {
-    return value;
-  }
-};
 } // namespace fcarouge
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_TPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_TYPED_LINEAR_ALGEBRA_TPP
