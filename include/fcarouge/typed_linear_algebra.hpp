@@ -142,11 +142,6 @@ public:
   inline constexpr typed_matrix(
       const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &other);
 
-  //! @brief Copy construct the typed matrix.
-  template <tla::algebraic OtherMatrix>
-  inline constexpr typed_matrix(
-      const typed_matrix<OtherMatrix, RowIndexes, ColumnIndexes> &other);
-
   //! @brief Convert construct a typed matrix from an underlying matrix.
   //!
   //! @warning Useful for operations implementation where underlying data
@@ -170,8 +165,7 @@ public:
   //! @details Applicable to singleton matrix: one element.
   //!
   //! @param value Element of compatible type.
-  template <tla::arithmetic Type>
-  explicit inline constexpr typed_matrix(const Type &value)
+  explicit inline constexpr typed_matrix(const auto &value)
     requires tla::singleton<typed_matrix>;
 
   //! @brief Convert construct a uniformly typed matrix from list-initializers.
@@ -339,9 +333,6 @@ private:
   Matrix matrix;
 
   //! @}
-
-  static_assert(tla::algebraic<Matrix>,
-                "The underlying matrix type shall be of algebraic nature.");
 };
 
 //! @brief Strongly typed row vector.
@@ -358,13 +349,10 @@ using typed_column_vector =
 //!
 //! @details Specialize this template to allow conversion of element's type and
 //! underlying type.
+//!
+//! @todo The call operator should be static once MSVC lands the support.
 template <typename To, typename From> struct element_caster {
-  //! @todo In C++26 add an error message for informing the user of the
-  //! need to provide a specialization: "The element conversion is missing.
-  //! Specialize this template class to customize the typed matrix element
-  //! support."
-  //! @todo The call operator should be static once MSVC lands the support.
-  [[nodiscard]] inline constexpr To operator()(From value) const = delete;
+  [[nodiscard]] inline constexpr To operator()(From value) const;
 };
 
 //! @}
