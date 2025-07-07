@@ -5,7 +5,6 @@ var namespacefcarouge =
     [ "test", "namespacefcarouge_1_1test.xhtml", "namespacefcarouge_1_1test" ],
     [ "typed_linear_algebra_internal", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml", [
       [ "element", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#ae127796f29a91fe39cd110accd6c82c5", null ],
-      [ "evaluate", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a185964b5c8d035580b458b26a229a549", null ],
       [ "identity_index", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a2963e691119d8b2ac7bdeac82688b5b9", null ],
       [ "product", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a174364178a20af0590ffe5c549e13e66", null ],
       [ "quotient", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#ad9aae459061728b7d7b2ae70196f2028", null ],

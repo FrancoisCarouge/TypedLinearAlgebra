@@ -148,13 +148,13 @@ template&lt;<a class="el" href="conceptfcarouge_1_1eigen_1_1is__eigen.xhtml">fca
 <p><a class="el" href="namespace_eigen.xhtml">Eigen</a> matrix solution to division. </p>
 <p>Argument-dependent lookup (ADL) used for type definition orgering dependencies. This demonstrator uses a householder rank-revealing QR decomposition of a matrix with full pivoting. Other applications could select a different solver. </p>
 
-<p class="definition">Definition at line <a class="el" href="eigen_8hpp_source.xhtml#l00102">102</a> of file <a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  105</span>                                                             {</div>
-<div class="line"><span class="lineno">  106</span>  <span class="keywordflow">return</span> rhs.transpose()</div>
-<div class="line"><span class="lineno">  107</span>      .fullPivHouseholderQr()</div>
-<div class="line"><span class="lineno">  108</span>      .solve(lhs.transpose())</div>
-<div class="line"><span class="lineno">  109</span>      .transpose();</div>
-<div class="line"><span class="lineno">  110</span>}</div>
+<p class="definition">Definition at line <a class="el" href="eigen_8hpp_source.xhtml#l00093">93</a> of file <a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   96</span>                                                             {</div>
+<div class="line"><span class="lineno">   97</span>  <span class="keywordflow">return</span> rhs.transpose()</div>
+<div class="line"><span class="lineno">   98</span>      .fullPivHouseholderQr()</div>
+<div class="line"><span class="lineno">   99</span>      .solve(lhs.transpose())</div>
+<div class="line"><span class="lineno">  100</span>      .transpose();</div>
+<div class="line"><span class="lineno">  101</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
