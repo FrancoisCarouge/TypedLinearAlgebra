@@ -35,23 +35,12 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
 
-//! @todo Replace all calls to data() by direct matrix access?
-
 //! @todo Verify types and storage (?) compatibility.
 //! @todo Also add the equivalent operator=.
-//! @todo Combine with the similar delcarations.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <typename Matrix2, typename RowIndexes2, typename ColumnIndexes2>
 inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &other)
-    : matrix{other.data()} {}
-
-//! @todo Should the arithmetic constraint be dropped? The parameter renamed
-//! to element systematically? A requirement of compatible conversion?
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-template <tla::algebraic OtherMatrix>
-inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const typed_matrix<OtherMatrix, RowIndexes, ColumnIndexes> &other)
     : matrix{other.data()} {}
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
@@ -66,12 +55,12 @@ inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     : matrix{elements} {}
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-template <tla::arithmetic Type>
 inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const Type &value)
+    const auto &value)
   requires tla::singleton<typed_matrix>
 {
-  data()(0, 0) = cast<underlying, Type>(value);
+  using type = std::remove_cvref_t<decltype(value)>;
+  matrix(std::size_t{0}, std::size_t{0}) = cast<underlying, type>(value);
 }
 
 //! @todo Verify the list sizes at runtime? Deprecate?
@@ -83,7 +72,7 @@ inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 {
   for (std::size_t i{0}; const auto &row : row_list) {
     for (std::size_t j{0}; const auto &value : row) {
-      data()(i, j) = cast<underlying, Type>(value);
+      matrix(std::size_t{i}, std::size_t{j}) = cast<underlying, Type>(value);
       ++j;
     }
     ++i;
@@ -105,7 +94,7 @@ inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
       [this, &value_pack](auto position) {
         auto value{std::get<position>(value_pack)};
         using type = std::remove_cvref_t<decltype(value)>;
-        data()[position] = cast<underlying, type>(value);
+        matrix(std::size_t{position}) = cast<underlying, type>(value);
       });
 }
 
@@ -121,7 +110,7 @@ inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
       [this, &value_pack](auto position) {
         auto value{std::get<position>(value_pack)};
         using type = std::remove_cvref_t<decltype(value)>;
-        data()[position] = cast<underlying, type>(value);
+        matrix(std::size_t{position}) = cast<underlying, type>(value);
       });
 }
 
@@ -137,17 +126,21 @@ operator element<0, 0> &&(this auto &&self)
   if constexpr (std::is_lvalue_reference_v<decltype(self) &&>) {
     if constexpr (is_adding_const)
       return cast<element<0, 0>, underlying>(
-          std::forward<decltype(self)>(self).data()(0, 0));
+          std::forward<decltype(self)>(self).matrix(std::size_t{0},
+                                                    std::size_t{0}));
     else
       return cast<element<0, 0> &, underlying &>(
-          std::forward<decltype(self)>(self).data()(0, 0));
+          std::forward<decltype(self)>(self).matrix(std::size_t{0},
+                                                    std::size_t{0}));
   } else {
     if constexpr (is_adding_const)
       return std::move(cast<element<0, 0>, underlying>(
-          std::forward<decltype(self)>(self).data()(0, 0)));
+          std::forward<decltype(self)>(self).matrix(std::size_t{0},
+                                                    std::size_t{0})));
     else
       return std::move(cast<element<0, 0> &&, underlying &&>(
-          std::forward<decltype(self)>(self).data()(0, 0)));
+          std::forward<decltype(self)>(self).matrix(std::size_t{0},
+                                                    std::size_t{0})));
   }
 }
 
@@ -157,7 +150,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
                                                             std::size_t index)
   requires(tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>)
 {
-  return std::forward<decltype(self)>(self).data()(index);
+  return std::forward<decltype(self)>(self).matrix(std::size_t{index});
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
@@ -167,7 +160,8 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
                                                             std::size_t column)
   requires tla::uniform<typed_matrix>
 {
-  return std::forward<decltype(self)>(self).data()(row, column);
+  return std::forward<decltype(self)>(self).matrix(std::size_t{row},
+                                                   std::size_t{column});
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
@@ -176,7 +170,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
                                                             std::size_t index)
   requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>
 {
-  return std::forward<decltype(self)>(self).data()(index);
+  return std::forward<decltype(self)>(self).matrix(std::size_t{index});
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
@@ -186,7 +180,8 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
                                                             std::size_t column)
   requires tla::uniform<typed_matrix>
 {
-  return std::forward<decltype(self)>(self).data()(row, column);
+  return std::forward<decltype(self)>(self).matrix(std::size_t{row},
+                                                   std::size_t{column});
 }
 
 //! @todo Can we deduplicate with deducing this?

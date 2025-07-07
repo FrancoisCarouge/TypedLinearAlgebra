@@ -81,15 +81,6 @@ using column_vector = Eigen::Vector<Type, Row>;
 
 } // namespace fcarouge::eigen
 
-namespace fcarouge {
-//! @brief Specialization of the evaluation type.
-template <eigen::is_eigen Type>
-struct typed_linear_algebra_internal::evaluates<Type> {
-  [[nodiscard]] inline constexpr auto operator()() const ->
-      typename Type::PlainMatrix;
-};
-} // namespace fcarouge
-
 namespace Eigen {
 //! @brief Eigen matrix solution to division.
 //!
