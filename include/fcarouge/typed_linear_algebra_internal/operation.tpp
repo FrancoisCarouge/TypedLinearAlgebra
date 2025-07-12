@@ -233,7 +233,6 @@ template <typename Matrix1, typename RowIndexes1, typename ColumnIndexes1,
 [[nodiscard]] inline constexpr auto
 operator/(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1> &lhs,
           const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &rhs) {
-
   //! @todo Simplify the size check with tla::size.
   static_assert(typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1>::columns ==
                     typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2>::columns,
@@ -251,7 +250,6 @@ operator/(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1> &lhs,
   return make_typed_matrix<RowIndexes, ColumnIndexes>(lhs.data() / rhs.data());
 }
 
-//! @todo Generalize out the scalar restriction.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] inline constexpr auto
 operator/(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
@@ -259,7 +257,6 @@ operator/(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
   return make_typed_matrix<RowIndexes, ColumnIndexes>(lhs.data() / rhs);
 }
 
-//! @todo Generalize out the scalar restriction.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
   requires tla::singleton<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
 [[nodiscard]] inline constexpr auto
@@ -268,6 +265,26 @@ operator/(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
   return tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, 0, 0>{
              lhs.data()} /
          rhs;
+}
+
+template <typename Matrix2, typename RowIndexes2, typename ColumnIndexes2>
+[[nodiscard]] inline constexpr auto
+operator/(const auto &lhs,
+          const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &rhs) {
+  //! @todo Simplify the size check with tla::size.
+  static_assert(1 ==
+                typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2>::columns,
+                "Matrix division requires compatible sizes.");
+
+  //! @todo This is likely incorrect, incomplete?
+  using RowIndexes = RowIndexes2;
+  using ColumnIndexes =
+      tla::quotient<decltype(lhs), std::tuple_element_t<0, ColumnIndexes2>>;
+
+  //! @todo Add type verification, perhaps with a generalization of the
+  //! multiplication verification?
+
+  return make_typed_matrix<RowIndexes, ColumnIndexes>(lhs / rhs.data());
 }
 } // namespace fcarouge
 

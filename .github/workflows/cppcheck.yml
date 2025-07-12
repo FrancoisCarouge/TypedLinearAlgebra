@@ -47,6 +47,7 @@ jobs:
           -I include \
           -I support/eigen \
           -I support/eigexed \
+          -I support/kokkos \
           -I support/main \
           -I support/mp_units \
           -I support/quantity \

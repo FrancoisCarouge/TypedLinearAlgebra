@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.1.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,12 +27,34 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-add_library(typed_linear_algebra_eigexed INTERFACE)
-target_sources(
-  typed_linear_algebra_eigexed
-  INTERFACE FILE_SET "typed_linear_algebra_headers" TYPE "HEADERS" FILES
-            "fcarouge/linalg.hpp")
-target_link_libraries(typed_linear_algebra_eigexed
-                      INTERFACE tlinalg typed_linear_algebra_eigen)
+//! @file
+//! @brief Unit safe linear algebra with mp-units and Eigen.
+//!
+//! @details Demonstrate a variety of linear algebra operations with mp-units
+//! and Eigen. This library composes Eigen as the linear algebra backend with
+//! index typed as mp-units types. This sample explicitly uses double precision
+//! floating point numbers. This sample uses Eigen linear algebra as the linear
+//! algebra backend. This sample uses mp-units types for the typed linear
+//! algebra.
+
+#include "fcarouge/typed_linear_algebra.hpp"
+
+#include <format>
+#include <print>
+#include <tuple>
+#include <type_traits>
+
+// #include <mdspan>
+#include "mdspan/mdspan.hpp"
+
+namespace fcarouge::sample {
+namespace {
+[[maybe_unused]] auto sample{[] {
+  // std::mdpan...
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::sample
