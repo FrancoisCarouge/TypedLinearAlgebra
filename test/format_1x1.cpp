@@ -33,6 +33,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <cassert>
 #include <format>
+#include <print>
 
 namespace fcarouge::test {
 namespace {
@@ -40,6 +41,7 @@ namespace {
 [[maybe_unused]] auto test{[] {
   const matrix<int, 1, 1> m{1};
 
+  std::println("{}", m);
   assert(std::format("{}", m) == "1");
 
   return 0;

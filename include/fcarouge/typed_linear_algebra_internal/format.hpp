@@ -46,6 +46,8 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
 struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
                       Char> {
   constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
+    // DO AN ALIGNED FORMAT
+    // DO A DEBUG FORMAT PRINTING THE INDEXES ALIGNED
     return parse_context.begin();
   }
 
@@ -56,8 +58,7 @@ struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
     format_context.advance_to(std::format_to(format_context.out(), "["));
 
     fcarouge::typed_linear_algebra_internal::for_constexpr<
-        0, fcarouge::typed_linear_algebra_internal::size<RowIndexes>,
-        1>([&value, &format_context](auto i) {
+        0, std::tuple_size_v<RowIndexes>, 1>([&value, &format_context](auto i) {
       if (i > 0) {
         format_context.advance_to(std::format_to(format_context.out(), ", "));
       }
@@ -65,16 +66,15 @@ struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
       format_context.advance_to(std::format_to(format_context.out(), "["));
 
       fcarouge::typed_linear_algebra_internal::for_constexpr<
-          0, fcarouge::typed_linear_algebra_internal::size<ColumnIndexes>, 1>(
-          [&value, &format_context, &i](auto j) {
-            if (j > 0) {
-              format_context.advance_to(
-                  std::format_to(format_context.out(), ", "));
-            }
+          0, std::tuple_size_v<ColumnIndexes>, 1>([&value, &format_context,
+                                                   &i](auto j) {
+        if (j > 0) {
+          format_context.advance_to(std::format_to(format_context.out(), ", "));
+        }
 
-            format_context.advance_to(std::format_to(
-                format_context.out(), "{}", value.template at<i, j>()));
-          });
+        format_context.advance_to(std::format_to(format_context.out(), "{}",
+                                                 value.template at<i, j>()));
+      });
 
       format_context.advance_to(std::format_to(format_context.out(), "]"));
     });
@@ -88,22 +88,21 @@ struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
   constexpr auto
   format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
          FormatContext &format_context) const -> FormatContext::iterator
-    requires fcarouge::typed_linear_algebra_internal::row<
+    requires fcarouge::typed_linear_algebra_internal::is_row_typed_matrix<
         fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
   {
     format_context.advance_to(std::format_to(format_context.out(), "["));
 
     fcarouge::typed_linear_algebra_internal::for_constexpr<
-        0, fcarouge::typed_linear_algebra_internal::size<ColumnIndexes>, 1>(
-        [&value, &format_context](auto position) {
-          if (position > 0) {
-            format_context.advance_to(
-                std::format_to(format_context.out(), ", "));
-          }
+        0, std::tuple_size_v<ColumnIndexes>, 1>([&value, &format_context](
+                                                    auto position) {
+      if (position > 0) {
+        format_context.advance_to(std::format_to(format_context.out(), ", "));
+      }
 
-          format_context.advance_to(std::format_to(
-              format_context.out(), "{}", value.template at<0, position>()));
-        });
+      format_context.advance_to(std::format_to(
+          format_context.out(), "{}", value.template at<0, position>()));
+    });
 
     format_context.advance_to(std::format_to(format_context.out(), "]"));
 
@@ -114,7 +113,7 @@ struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
   constexpr auto
   format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
          FormatContext &format_context) const -> FormatContext::iterator
-    requires fcarouge::typed_linear_algebra_internal::singleton<
+    requires fcarouge::typed_linear_algebra_internal::is_singleton_typed_matrix<
         fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
   {
     format_context.advance_to(
