@@ -67,7 +67,6 @@ auto make_typed_matrix(auto &&value) {
   static_assert(lhs_matrix::columns == rhs_matrix::rows,
                 "Matrix multiplication requires compatible sizes.");
 
-  static constexpr auto common_size = lhs_matrix::columns; // BETTER NAME?
   using lhs_row_indexes = typename lhs_matrix::row_indexes;
   using lhs_column_indexes = typename lhs_matrix::column_indexes;
   using rhs_row_indexes = typename rhs_matrix::row_indexes;
@@ -87,7 +86,7 @@ auto make_typed_matrix(auto &&value) {
       using rhs_column =
           tla::product<rhs_row_indexes,
                        std::tuple_element_t<j, rhs_column_indexes>>;
-      tla::for_constexpr<0, common_size, 1>([&](auto k) {
+      tla::for_constexpr<0, lhs_matrix::columns, 1>([&](auto k) {
         static_assert(
             std::is_same_v<tla::product<std::tuple_element_t<k, lhs_row>,
                                         std::tuple_element_t<k, rhs_column>>,
@@ -264,30 +263,6 @@ operator/(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
       cast<underlying, type>(lhs) / rhs.data());
 }
 
-// [[nodiscard]] constexpr auto operator/(const is_column_typed_matrix auto
-// &lhs,
-//                                        const is_column_typed_matrix auto
-//                                        &rhs) {
-//   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
-//   using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
-//   using lhs_row_indexes = typename lhs_matrix::row_indexes;
-//   using lhs_column_indexes = typename lhs_matrix::column_indexes;
-//   using rhs_row_indexes = typename rhs_matrix::row_indexes;
-//   using rhs_column_indexes = typename rhs_matrix::column_indexes;
-//   using row_indexes = tla::quotient<std::tuple_element_t<0,
-//   rhs_column_indexes>,
-//                                     lhs_row_indexes>;
-//   using column_indexes =
-//       tla::quotient<std::tuple_element_t<0, lhs_column_indexes>,
-//                     rhs_row_indexes>;
-
-//   //! @todo Add type verification, perhaps with a generalization of the
-//   //! multiplication verification?
-
-//   return make_typed_matrix<row_indexes, column_indexes>(lhs.data() /
-//                                                         rhs.data());
-// }
-
 //! @details Matrix division is a mathematical abuse of terminology. Informally
 //! defined as multiplication by the inverse. Similarly to division by zero in
 //! real numbers, there exists matrices that are not invertible. Remember the
@@ -311,13 +286,6 @@ operator/(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
   using lhs_column_indexes = typename lhs_matrix::column_indexes;
   using rhs_row_indexes = typename rhs_matrix::row_indexes;
   using rhs_column_indexes = typename rhs_matrix::column_indexes;
-  // using row_indexes = tla::quotient<std::tuple_element_t<0,
-  // rhs_column_indexes>,
-  //                                   lhs_row_indexes>;
-  // using column_indexes =
-  //     tla::quotient<std::tuple_element_t<0, lhs_column_indexes>,
-  //                   rhs_row_indexes>;
-
   using row_indexes =
       tla::quotient<lhs_row_indexes,
                     std::tuple_element_t<0, lhs_column_indexes>>;

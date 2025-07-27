@@ -176,15 +176,17 @@ public:
   //! @brief Move construct a typed matrix.
   constexpr typed_matrix &operator=(typed_matrix &&other) = default;
 
-  //! @brief Copy construct the typed matrix.
-  constexpr typed_matrix(const is_typed_matrix auto &other);
+  //! @brief Copy construct the compatible typed matrix generalization.
+  //!
+  //! @todo Document, record why implicit conversions are supported.
+  constexpr explicit(false) typed_matrix(const is_typed_matrix auto &other);
 
   //! @brief Convert construct a typed matrix from an underlying matrix.
   //!
   //! @warning Useful for operations implementation where underlying data
   //! constrution is needed. Not recommended for convenience construction due to
   //! absence of type validation.
-  explicit constexpr typed_matrix(const Matrix &other);
+  constexpr explicit typed_matrix(const Matrix &other);
 
   //! @brief Convert construct a one-dimension uniformly typed matrix from
   //! array.
@@ -210,9 +212,12 @@ public:
 
   //! @brief Convert construct a row or column typed vector from elements.
   //!
-  //! @details Applicable to one-dimension matrix.
+  //! @details Applicable to one-dimension matrix. The first and second value
+  //! parameter help in determining which constructor should the compiler call.
   //!
-  //! @param values Parameter pack of elements.
+  //! @param first_value First element.
+  //! @param second_value Second element.
+  //! @param values Other elements.
   constexpr typed_matrix(const auto &first_value, const auto &second_value,
                          const auto &...values)
     requires is_one_dimension_typed_matrix<typed_matrix>;
@@ -346,8 +351,8 @@ using typed_column_vector =
 
 //! @brief Typed matrix element conversions customization point.
 //!
-//! @details Specialize this template to allow conversion of element's type
-//! and underlying type.
+//! @details Specialize this template to allow conversion of element's type and
+//! underlying type.
 //!
 //! @todo The call operator should be static once MSVC lands the support.
 template <typename To, typename From> struct element_caster {

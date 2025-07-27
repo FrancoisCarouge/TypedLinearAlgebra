@@ -47,9 +47,6 @@ template <typename To, typename From> struct element_caster<To &, From &> {
   [[nodiscard]] constexpr To &&operator()(From &&value) const {
     return std::move(value);
   }
-  // [[nodiscard]] constexpr To operator()(const From &value) const {
-  //   return value;
-  // }
 };
 
 template <typename To, typename From> struct element_caster<To &&, From &&> {
