@@ -49,8 +49,8 @@ namespace fcarouge::typed_linear_algebra_internal {
 //! numerical stability, triangularity, symmetry, space, time, etc. Dividing an
 //! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix.
 template <typename Lhs, typename Rhs> struct divides {
-  [[nodiscard]] constexpr auto operator()(const Lhs &lhs, const Rhs &rhs) const
-      -> decltype(lhs / rhs);
+  [[nodiscard]] constexpr auto
+  operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs / rhs);
 };
 
 template <typename Lhs, typename Rhs>
@@ -58,21 +58,20 @@ using quotient =
     std::invoke_result_t<divides<Lhs, Rhs>, const Lhs &, const Rhs &>;
 
 template <> struct divides<std::identity, std::identity> {
-  [[nodiscard]] constexpr auto operator()(const std::identity &lhs,
-                                          const std::identity &rhs) const
-      -> std::identity;
+  [[nodiscard]] constexpr auto
+  operator()(const std::identity &lhs,
+             const std::identity &rhs) const -> std::identity;
 };
 
 template <typename Lhs> struct divides<Lhs, std::identity> {
-  [[nodiscard]] constexpr auto operator()(const Lhs &lhs,
-                                          const std::identity &rhs) const
-      -> Lhs;
+  [[nodiscard]] constexpr auto
+  operator()(const Lhs &lhs, const std::identity &rhs) const -> Lhs;
 };
 
 template <typename Rhs> struct divides<std::identity, Rhs> {
-  [[nodiscard]] constexpr auto operator()(const std::identity &lhs,
-                                          const Rhs &rhs) const
-      -> quotient<quotient<Rhs, Rhs>, Rhs>;
+  [[nodiscard]] constexpr auto
+  operator()(const std::identity &lhs,
+             const Rhs &rhs) const -> quotient<quotient<Rhs, Rhs>, Rhs>;
 };
 
 template <typename Lhs, typename... Types>
@@ -91,38 +90,36 @@ struct divides<std::identity, std::tuple<Types...>> {
 
 template <typename Rhs, typename... Types>
 struct divides<std::tuple<Types...>, Rhs> {
-  [[nodiscard]] constexpr auto operator()(const std::tuple<Types...> &lhs,
-                                          const Rhs &rhs) const
-      -> std::tuple<quotient<Types, Rhs>...>;
+  [[nodiscard]] constexpr auto
+  operator()(const std::tuple<Types...> &lhs,
+             const Rhs &rhs) const -> std::tuple<quotient<Types, Rhs>...>;
 };
 
 template <typename... Types>
 struct divides<std::tuple<Types...>, std::identity> {
-  [[nodiscard]] constexpr auto operator()(const std::tuple<Types...> &lhs,
-                                          const std::identity &rhs) const
-      -> std::tuple<Types...>;
+  [[nodiscard]] constexpr auto
+  operator()(const std::tuple<Types...> &lhs,
+             const std::identity &rhs) const -> std::tuple<Types...>;
 };
 
 template <typename... Types1, typename... Types2>
 struct divides<std::tuple<Types1...>, std::tuple<Types2...>> {
-  [[nodiscard]] constexpr auto
-  operator()(const std::tuple<Types1...> &lhs,
-             const std::tuple<Types2...> &rhs) const
-      -> std::tuple<quotient<Types1, Types2>...>;
+  [[nodiscard]] constexpr auto operator()(const std::tuple<Types1...> &lhs,
+                                          const std::tuple<Types2...> &rhs)
+      const -> std::tuple<quotient<Types1, Types2>...>;
 };
 
 template <typename Lhs, typename Rhs> struct multiplies {
-  [[nodiscard]] constexpr auto operator()(const Lhs &lhs, const Rhs &rhs) const
-      -> decltype(lhs * rhs);
+  [[nodiscard]] constexpr auto
+  operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs * rhs);
 };
 
 template <typename Lhs, typename Rhs>
 using product = std::invoke_result_t<multiplies<Lhs, Rhs>, Lhs, Rhs>;
 
 template <typename Lhs> struct multiplies<Lhs, std::identity> {
-  [[nodiscard]] constexpr auto operator()(const Lhs &lhs,
-                                          const std::identity &rhs) const
-      -> Lhs;
+  [[nodiscard]] constexpr auto
+  operator()(const Lhs &lhs, const std::identity &rhs) const -> Lhs;
 };
 
 template <typename Rhs> struct multiplies<std::identity, Rhs> {
@@ -139,24 +136,23 @@ struct multiplies<Lhs, std::tuple<Types...>> {
 
 template <typename Rhs, typename... Types>
 struct multiplies<std::tuple<Types...>, Rhs> {
-  [[nodiscard]] constexpr auto operator()(const std::tuple<Types...> &lhs,
-                                          const Rhs &rhs) const
-      -> std::tuple<product<Types, Rhs>...>;
+  [[nodiscard]] constexpr auto
+  operator()(const std::tuple<Types...> &lhs,
+             const Rhs &rhs) const -> std::tuple<product<Types, Rhs>...>;
 };
 
 template <typename... Types>
 struct multiplies<std::tuple<Types...>, std::identity> {
-  [[nodiscard]] constexpr auto operator()(const std::tuple<Types...> &lhs,
-                                          const std::identity &rhs) const
-      -> std::tuple<Types...>;
+  [[nodiscard]] constexpr auto
+  operator()(const std::tuple<Types...> &lhs,
+             const std::identity &rhs) const -> std::tuple<Types...>;
 };
 
 template <typename... Types1, typename... Types2>
 struct multiplies<std::tuple<Types1...>, std::tuple<Types2...>> {
-  [[nodiscard]] constexpr auto
-  operator()(const std::tuple<Types1...> &lhs,
-             const std::tuple<Types2...> &rhs) const
-      -> std::tuple<product<Types1, Types2>...>;
+  [[nodiscard]] constexpr auto operator()(const std::tuple<Types1...> &lhs,
+                                          const std::tuple<Types2...> &rhs)
+      const -> std::tuple<product<Types1, Types2>...>;
 };
 
 template <std::size_t Begin, std::size_t End, std::size_t Increment,

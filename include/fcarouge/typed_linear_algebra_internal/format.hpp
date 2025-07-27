@@ -62,9 +62,9 @@ public:
   }
 
   template <typename FormatContext>
-  constexpr auto format(const matrix &value,
-                        FormatContext &format_context) const
-      -> FormatContext::iterator {
+  constexpr auto
+  format(const matrix &value,
+         FormatContext &format_context) const -> FormatContext::iterator {
     format_context.advance_to(std::format_to(format_context.out(), "["));
 
     fcarouge::typed_linear_algebra_internal::for_constexpr<0, rows, 1>(
@@ -96,9 +96,9 @@ public:
   }
 
   template <typename FormatContext>
-  constexpr auto format(const matrix &value,
-                        FormatContext &format_context) const
-      -> FormatContext::iterator
+  constexpr auto
+  format(const matrix &value,
+         FormatContext &format_context) const -> FormatContext::iterator
     requires fcarouge::typed_linear_algebra_internal::is_row_typed_matrix<
         matrix>
   {
@@ -121,9 +121,9 @@ public:
   }
 
   template <typename FormatContext>
-  constexpr auto format(const matrix &value,
-                        FormatContext &format_context) const
-      -> FormatContext::iterator
+  constexpr auto
+  format(const matrix &value,
+         FormatContext &format_context) const -> FormatContext::iterator
     requires fcarouge::typed_linear_algebra_internal::is_singleton_typed_matrix<
         matrix>
   {

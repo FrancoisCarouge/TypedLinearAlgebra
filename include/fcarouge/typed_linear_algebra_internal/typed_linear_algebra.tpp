@@ -36,11 +36,34 @@ namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
 
 //! @todo Verify types and storage (?) compatibility.
-//! @todo Also add the equivalent operator=.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const is_typed_matrix auto &other)
     : storage{other.data()} {}
+
+//! @todo Verify types and storage (?) compatibility.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
+    const is_typed_matrix auto &other) {
+  storage = other.data();
+  return *this;
+}
+
+//! @todo Verify types and storage (?) compatibility.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
+    const is_typed_matrix auto &&other)
+    : storage{std::forward<decltype(other)>(other).data()} {}
+
+//! @todo Verify types and storage (?) compatibility.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
+    const is_typed_matrix auto &&other) {
+  storage = std::forward<decltype(other)>(other).data();
+  return *this;
+}
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
@@ -216,7 +239,6 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::data(this auto &&self) {
   return std::forward<decltype(self)>(self).storage;
 }
-
 } // namespace fcarouge
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_TYPED_LINEAR_ALGEBRA_TPP

@@ -176,43 +176,62 @@ public:
   //! @brief Move construct a typed matrix.
   constexpr typed_matrix &operator=(typed_matrix &&other) = default;
 
-  //! @brief Copy construct the typed matrix.
-  constexpr typed_matrix(const is_typed_matrix auto &other);
+  //! @brief Copy construct generalization of a compatible typed matrix.
+  //!
+  //! @details Implicit conversions supported.
+  constexpr explicit(false) typed_matrix(const is_typed_matrix auto &other);
+
+  //! @brief Copy assign generalization of a compatible typed matrix.
+  constexpr typed_matrix &operator=(const is_typed_matrix auto &other);
+
+  //! @brief Move construct generalization of a compatible typed matrix.
+  //!
+  //! @details Implicit conversions supported.
+  constexpr explicit(false) typed_matrix(const is_typed_matrix auto &&other);
+
+  //! @brief Move assign generalization of a compatible typed matrix.
+  constexpr typed_matrix &operator=(const is_typed_matrix auto &&other);
 
   //! @brief Convert construct a typed matrix from an underlying matrix.
   //!
   //! @warning Useful for operations implementation where underlying data
   //! constrution is needed. Not recommended for convenience construction due to
   //! absence of type validation.
-  explicit constexpr typed_matrix(const Matrix &other);
+  constexpr explicit typed_matrix(const Matrix &other);
 
   //! @brief Convert construct a one-dimension uniformly typed matrix from
   //! array.
   //!
   //! @details Applicable to one-dimension matrix: column- or row-vector.
   //! Applicable to single-type matrix: uniform type of all elements.
+  //! Single-argument constructors taking arrays of data should get implicit
+  //! constructors.
   //!
   //! @param elements C-style array of elements of identical types.
-  constexpr explicit typed_matrix(
-      const element<0, 0> (&elements)[rows * columns])
+  constexpr explicit(false)
+      typed_matrix(const element<0, 0> (&elements)[rows * columns])
     requires is_uniform_typed_matrix<typed_matrix> and
              is_one_dimension_typed_matrix<typed_matrix>;
 
   //! @brief Convert construct a uniformly typed matrix from list-initializers.
   //!
-  //! @details Applicable to matrix of uniform elements type.
+  //! @details Applicable to matrix of uniform elements type. Single-argument
+  //! constructors taking arrays of data should get implicit constructors.
   //!
   //! @param row_list List-initializers of list-initializer of elements.
   template <typename Type>
-  constexpr explicit typed_matrix(
-      std::initializer_list<std::initializer_list<Type>> row_list)
+  constexpr explicit(false)
+      typed_matrix(std::initializer_list<std::initializer_list<Type>> row_list)
     requires is_uniform_typed_matrix<typed_matrix>;
 
   //! @brief Convert construct a row or column typed vector from elements.
   //!
-  //! @details Applicable to one-dimension matrix.
+  //! @details Applicable to one-dimension matrix. The first and second value
+  //! parameter help in determining which constructor should the compiler call.
   //!
-  //! @param values Parameter pack of elements.
+  //! @param first_value First element.
+  //! @param second_value Second element.
+  //! @param values Other elements.
   constexpr typed_matrix(const auto &first_value, const auto &second_value,
                          const auto &...values)
     requires is_one_dimension_typed_matrix<typed_matrix>;
@@ -224,8 +243,7 @@ public:
   //!
   //! @details Applicable to singleton matrix: one element. Returns a reference
   //! to the unique element of the typed matrix.
-  [[nodiscard]] constexpr explicit(false)
-  operator element<0, 0> &&(this auto &&self)
+  [[nodiscard]] constexpr explicit operator element<0, 0> &&(this auto &&self)
     requires is_singleton_typed_matrix<typed_matrix>;
 
   //! @brief Access the specified element.
@@ -346,8 +364,8 @@ using typed_column_vector =
 
 //! @brief Typed matrix element conversions customization point.
 //!
-//! @details Specialize this template to allow conversion of element's type
-//! and underlying type.
+//! @details Specialize this template to allow conversion of element's type and
+//! underlying type.
 //!
 //! @todo The call operator should be static once MSVC lands the support.
 template <typename To, typename From> struct element_caster {
