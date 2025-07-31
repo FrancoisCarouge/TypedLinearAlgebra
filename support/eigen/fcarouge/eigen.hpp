@@ -99,6 +99,23 @@ constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
       .solve(lhs.transpose())
       .transpose();
 }
+
+//! @brief Eigen matrix solution to division.
+//!
+//! @details Argument-dependent lookup (ADL) used for type definition orgering
+//! dependencies. This demonstrator uses a householder rank-revealing QR
+//! decomposition of a matrix with full pivoting. Other applications could
+//! select a different solver.
+template <fcarouge::eigen::is_eigen Denominator>
+constexpr auto operator/(const typename Denominator::Scalar &lhs,
+                         const Denominator &rhs)
+    -> fcarouge::eigen::matrix<typename Denominator::Scalar, 1,
+                               Denominator::RowsAtCompileTime> {
+  return rhs.transpose()
+      .fullPivHouseholderQr()
+      .solve(fcarouge::eigen::matrix<typename Denominator::Scalar, 1, 1>{lhs})
+      .transpose();
+}
 } // namespace Eigen
 
 //! @brief Specialization of the standard formatter for the Eigen matrix.
@@ -134,7 +151,7 @@ struct std::formatter<fcarouge::eigen::matrix<Type, Row, Column>, Char> {
          std::basic_format_context<OutputIterator, Char> &format_context) const
       -> OutputIterator
     requires(fcarouge::eigen::matrix<Type, Row, Column>::RowsAtCompileTime ==
-                 1 &&
+                 1 and
              fcarouge::eigen::matrix<Type, Row, Column>::ColsAtCompileTime != 1)
   {
     const Eigen::IOFormat output_format{Eigen::StreamPrecision,
@@ -158,7 +175,7 @@ struct std::formatter<fcarouge::eigen::matrix<Type, Row, Column>, Char> {
          std::basic_format_context<OutputIterator, Char> &format_context) const
       -> OutputIterator
     requires(fcarouge::eigen::matrix<Type, Row, Column>::RowsAtCompileTime ==
-                 1 &&
+                 1 and
              fcarouge::eigen::matrix<Type, Row, Column>::ColsAtCompileTime == 1)
   {
     return std::format_to(format_context.out(), "{}", value.value());
