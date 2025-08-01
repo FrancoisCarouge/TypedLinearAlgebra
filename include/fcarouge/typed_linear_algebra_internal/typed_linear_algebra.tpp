@@ -39,23 +39,23 @@ namespace tla = typed_linear_algebra_internal;
 //! @todo Also add the equivalent operator=.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <typename Matrix2, typename RowIndexes2, typename ColumnIndexes2>
-inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &other)
     : matrix{other.data()} {}
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const Matrix &other)
     : matrix{other} {}
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const element<0, 0> (&elements)[typed_matrix::rows * typed_matrix::columns])
   requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>
     : matrix{elements} {}
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const auto &value)
   requires tla::singleton<typed_matrix>
 {
@@ -66,7 +66,7 @@ inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 //! @todo Verify the list sizes at runtime? Deprecate?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <typename Type>
-inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     std::initializer_list<std::initializer_list<Type>> row_list)
   requires tla::uniform<typed_matrix>
 {
@@ -84,7 +84,7 @@ inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 //! @todo Rewrite with a fold expression over the pack?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <typename... Types>
-inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const Types &...values)
   requires tla::row<typed_matrix> && (not tla::column<typed_matrix>) &&
            tla::same_size<ColumnIndexes, std::tuple<Types...>>
@@ -100,7 +100,7 @@ inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <typename... Types>
-inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const Types &...values)
   requires tla::column<typed_matrix> && (not tla::row<typed_matrix>) &&
            tla::same_size<RowIndexes, std::tuple<Types...>>
@@ -115,7 +115,7 @@ inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-[[nodiscard]] inline constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::
+[[nodiscard]] constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::
 operator element<0, 0> &&(this auto &&self)
   requires tla::singleton<typed_matrix>
 {
@@ -145,7 +145,7 @@ operator element<0, 0> &&(this auto &&self)
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-[[nodiscard]] inline constexpr auto &&
+[[nodiscard]] constexpr auto &&
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
                                                             std::size_t index)
   requires(tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>)
@@ -154,7 +154,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-[[nodiscard]] inline constexpr auto &&
+[[nodiscard]] constexpr auto &&
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
                                                             std::size_t row,
                                                             std::size_t column)
@@ -165,7 +165,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-[[nodiscard]] inline constexpr auto &&
+[[nodiscard]] constexpr auto &&
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
                                                             std::size_t index)
   requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>
@@ -174,7 +174,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-[[nodiscard]] inline constexpr auto &&
+[[nodiscard]] constexpr auto &&
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
                                                             std::size_t row,
                                                             std::size_t column)
@@ -187,7 +187,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
 //! @todo Can we deduplicate with deducing this?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <std::size_t Row, std::size_t Column>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at()
     -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Row,
                     Column> &
@@ -203,7 +203,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at()
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <std::size_t Row, std::size_t Column>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const
     -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Row,
                     Column>
@@ -219,7 +219,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <std::size_t Index>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at()
     -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Index, 0> &
   requires tla::column<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
@@ -232,7 +232,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at()
 //! @todo Add row-vector overload.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <std::size_t Index>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const
     -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Index, 0>
   requires tla::column<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
@@ -243,7 +243,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-[[nodiscard]] inline constexpr auto &&
+[[nodiscard]] constexpr auto &&
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::data(this auto &&self) {
   return std::forward<decltype(self)>(self).matrix;
 }

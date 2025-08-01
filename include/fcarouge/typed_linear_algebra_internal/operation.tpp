@@ -51,7 +51,7 @@ auto make_typed_matrix(auto &&value) {
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
           typename Matrix2>
-[[nodiscard]] inline constexpr bool
+[[nodiscard]] constexpr bool
 operator==(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
            const typed_matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
   return lhs.data() == rhs.data();
@@ -59,7 +59,7 @@ operator==(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
 
 template <typename Matrix1, typename RowIndexes1, typename ColumnIndexes1,
           typename Matrix2, typename RowIndexes2, typename ColumnIndexes2>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 operator*(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1> &lhs,
           const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &rhs) {
 
@@ -109,7 +109,7 @@ operator*(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1> &lhs,
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
           typename Type>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 operator*(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
           const Type &rhs) {
   using matrix = typed_matrix<Matrix, RowIndexes, ColumnIndexes>;
@@ -120,7 +120,7 @@ operator*(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
           typename Type>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 operator*(const Type &lhs,
           const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
   using matrix = typed_matrix<Matrix, RowIndexes, ColumnIndexes>;
@@ -131,7 +131,7 @@ operator*(const Type &lhs,
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
   requires tla::singleton<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 operator*(const auto &lhs,
           const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
   return lhs *
@@ -141,7 +141,7 @@ operator*(const auto &lhs,
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
   requires tla::singleton<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 operator*(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
           const auto &rhs) {
   return tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, 0, 0>{
@@ -151,7 +151,7 @@ operator*(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
           typename Matrix2>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 operator+(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
           const typed_matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
   return make_typed_matrix<RowIndexes, ColumnIndexes>(lhs.data() + rhs.data());
@@ -159,7 +159,7 @@ operator+(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
 
 template <typename Matrix1, typename RowIndexes1, typename ColumnIndexes1,
           typename Matrix2, typename RowIndexes2, typename ColumnIndexes2>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 operator+(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1> &lhs,
           const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &rhs) {
   //! @todo Verify the resulting types compatibility at compile-time.
@@ -169,7 +169,7 @@ operator+(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1> &lhs,
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
   requires tla::singleton<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 operator+(const auto &lhs,
           const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
   return lhs +
@@ -179,7 +179,7 @@ operator+(const auto &lhs,
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
   requires tla::singleton<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 operator+(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
           const auto &rhs) {
   return tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, 0, 0>{
@@ -190,7 +190,7 @@ operator+(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
 //! @todo Generalize our Matrix2?
 template <typename Matrix1, typename Matrix2, typename RowIndexes,
           typename ColumnIndexes>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 operator-(const typed_matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
           const typed_matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
   return make_typed_matrix<RowIndexes, ColumnIndexes>(lhs.data() - rhs.data());
@@ -198,7 +198,7 @@ operator-(const typed_matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
 
 template <typename Matrix1, typename RowIndexes1, typename ColumnIndexes1,
           typename Matrix2, typename RowIndexes2, typename ColumnIndexes2>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 operator-(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1> &lhs,
           const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &rhs) {
   //! @todo Verify the resulting types compatibility at compile-time.
@@ -209,7 +209,7 @@ operator-(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1> &lhs,
 //! @todo Generalize out the scalar restriction.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
   requires tla::singleton<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 operator-(const auto &lhs,
           const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
   return lhs -
@@ -220,7 +220,7 @@ operator-(const auto &lhs,
 //! @todo Generalize out the scalar restriction.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
   requires tla::singleton<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 operator-(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
           const auto &rhs) {
   return tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, 0, 0>{
@@ -230,7 +230,7 @@ operator-(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
 
 template <typename Matrix1, typename RowIndexes1, typename ColumnIndexes1,
           typename Matrix2, typename RowIndexes2, typename ColumnIndexes2>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 operator/(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1> &lhs,
           const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &rhs) {
 
@@ -253,7 +253,7 @@ operator/(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1> &lhs,
 
 //! @todo Generalize out the scalar restriction.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 operator/(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
           const auto &rhs) {
   return make_typed_matrix<RowIndexes, ColumnIndexes>(lhs.data() / rhs);
@@ -262,7 +262,7 @@ operator/(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
 //! @todo Generalize out the scalar restriction.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
   requires tla::singleton<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
-[[nodiscard]] inline constexpr auto
+[[nodiscard]] constexpr auto
 operator/(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
           const auto &rhs) {
   return tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, 0, 0>{
