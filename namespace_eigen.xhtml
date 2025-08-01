@@ -112,10 +112,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a055f2c87b739a645dfb6edba76d1379e"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a055f2c87b739a645dfb6edba76d1379e">operator/</a> (const Numerator &amp;lhs, const Denominator &amp;rhs) -&gt; <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix</a>&lt; typename Denominator::Scalar, Numerator::RowsAtCompileTime, Denominator::RowsAtCompileTime &gt;</td></tr>
 <tr class="memdesc:a055f2c87b739a645dfb6edba76d1379e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespace_eigen.xhtml">Eigen</a> matrix solution to division.  <br /></td></tr>
 <tr class="separator:a055f2c87b739a645dfb6edba76d1379e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59124d2b29990b7c9b8bdb1f0102897a" id="r_a59124d2b29990b7c9b8bdb1f0102897a"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptfcarouge_1_1eigen_1_1is__eigen.xhtml">fcarouge::eigen::is_eigen</a> Denominator&gt; </td></tr>
+<tr class="memitem:a59124d2b29990b7c9b8bdb1f0102897a"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a59124d2b29990b7c9b8bdb1f0102897a">operator/</a> (const typename Denominator::Scalar &amp;lhs, const Denominator &amp;rhs) -&gt; <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix</a>&lt; typename Denominator::Scalar, 1, Denominator::RowsAtCompileTime &gt;</td></tr>
+<tr class="memdesc:a59124d2b29990b7c9b8bdb1f0102897a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespace_eigen.xhtml">Eigen</a> matrix solution to division.  <br /></td></tr>
+<tr class="separator:a59124d2b29990b7c9b8bdb1f0102897a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a055f2c87b739a645dfb6edba76d1379e" name="a055f2c87b739a645dfb6edba76d1379e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a055f2c87b739a645dfb6edba76d1379e">&#9670;&#160;</a></span>operator/()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a055f2c87b739a645dfb6edba76d1379e">&#9670;&#160;</a></span>operator/() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -155,6 +159,50 @@ template&lt;<a class="el" href="conceptfcarouge_1_1eigen_1_1is__eigen.xhtml">fca
 <div class="line"><span class="lineno">   99</span>      .solve(lhs.transpose())</div>
 <div class="line"><span class="lineno">  100</span>      .transpose();</div>
 <div class="line"><span class="lineno">  101</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a59124d2b29990b7c9b8bdb1f0102897a" name="a59124d2b29990b7c9b8bdb1f0102897a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59124d2b29990b7c9b8bdb1f0102897a">&#9670;&#160;</a></span>operator/() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="conceptfcarouge_1_1eigen_1_1is__eigen.xhtml">fcarouge::eigen::is_eigen</a> Denominator&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto Eigen::operator/ </td>
+          <td>(</td>
+          <td class="paramtype">const typename Denominator::Scalar &amp;</td>          <td class="paramname"><span class="paramname"><em>lhs</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Denominator &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;) -&gt; <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix</a>&lt;typename Denominator::Scalar, 1,
+                               Denominator::RowsAtCompileTime&gt; </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="namespace_eigen.xhtml">Eigen</a> matrix solution to division. </p>
+<p>Argument-dependent lookup (ADL) used for type definition orgering dependencies. This demonstrator uses a householder rank-revealing QR decomposition of a matrix with full pivoting. Other applications could select a different solver. </p>
+
+<p class="definition">Definition at line <a class="el" href="eigen_8hpp_source.xhtml#l00110">110</a> of file <a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  113</span>                                                             {</div>
+<div class="line"><span class="lineno">  114</span>  <span class="keywordflow">return</span> rhs.transpose()</div>
+<div class="line"><span class="lineno">  115</span>      .fullPivHouseholderQr()</div>
+<div class="line"><span class="lineno">  116</span>      .solve(<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix&lt;typename Denominator::Scalar, 1, 1&gt;</a>{lhs})</div>
+<div class="line"><span class="lineno">  117</span>      .transpose();</div>
+<div class="line"><span class="lineno">  118</span>}</div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a01e78c3f356b744543b2f25797bcfa84"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix</a></div><div class="ttdeci">Eigen::Matrix&lt; Type, Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Eigen3 matrix.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00070">eigen.hpp:70</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

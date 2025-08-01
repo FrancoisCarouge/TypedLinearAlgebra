@@ -5,5 +5,6 @@ var eigen_8hpp =
     [ "column_vector", "eigen_8hpp.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c", null ],
     [ "matrix", "eigen_8hpp.xhtml#a01e78c3f356b744543b2f25797bcfa84", null ],
     [ "row_vector", "eigen_8hpp.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b", null ],
-    [ "operator/", "eigen_8hpp.xhtml#a055f2c87b739a645dfb6edba76d1379e", null ]
+    [ "operator/", "eigen_8hpp.xhtml#a055f2c87b739a645dfb6edba76d1379e", null ],
+    [ "operator/", "eigen_8hpp.xhtml#a59124d2b29990b7c9b8bdb1f0102897a", null ]
 ];
