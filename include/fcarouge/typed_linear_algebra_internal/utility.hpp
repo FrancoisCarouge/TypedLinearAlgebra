@@ -38,7 +38,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <type_traits>
 
 namespace fcarouge::typed_linear_algebra_internal {
-
 //! @brief Linear algebra divides expression type specialization point.
 //!
 //! @details Matrix division is a mathematical abuse of terminology. Informally
@@ -50,7 +49,7 @@ namespace fcarouge::typed_linear_algebra_internal {
 //! numerical stability, triangularity, symmetry, space, time, etc. Dividing an
 //! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix.
 template <typename Lhs, typename Rhs> struct divides {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs / rhs);
 };
 
@@ -60,53 +59,53 @@ using quotient =
     std::invoke_result_t<divides<Lhs, Rhs>, const Lhs &, const Rhs &>;
 
 template <> struct divides<std::identity, std::identity> {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const std::identity &lhs,
              const std::identity &rhs) const -> std::identity;
 };
 
 template <typename Lhs> struct divides<Lhs, std::identity> {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const Lhs &lhs, const std::identity &rhs) const -> Lhs;
 };
 
 template <typename Rhs> struct divides<std::identity, Rhs> {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const std::identity &lhs,
              const Rhs &rhs) const -> quotient<quotient<Rhs, Rhs>, Rhs>;
 };
 
 template <typename Lhs, typename... Types>
 struct divides<Lhs, std::tuple<Types...>> {
-  [[nodiscard]] inline constexpr auto
-  operator()(const Lhs &lhs, const std::tuple<Types...> &rhs) const
+  [[nodiscard]] constexpr auto operator()(const Lhs &lhs,
+                                          const std::tuple<Types...> &rhs) const
       -> std::tuple<quotient<Lhs, Types>...>;
 };
 
 template <typename Rhs, typename... Types>
 struct divides<std::tuple<Types...>, Rhs> {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const std::tuple<Types...> &lhs,
              const Rhs &rhs) const -> std::tuple<quotient<Types, Rhs>...>;
 };
 
 template <typename... Types>
 struct divides<std::tuple<Types...>, std::identity> {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const std::tuple<Types...> &lhs,
              const std::identity &rhs) const -> std::tuple<Types...>;
 };
 
 template <typename... Types1, typename... Types2>
 struct divides<std::tuple<Types1...>, std::tuple<Types2...>> {
-  [[nodiscard]] inline constexpr auto
-  operator()(const std::tuple<Types1...> &lhs, const std::tuple<Types2...> &rhs)
+  [[nodiscard]] constexpr auto operator()(const std::tuple<Types1...> &lhs,
+                                          const std::tuple<Types2...> &rhs)
       const -> std::tuple<quotient<Types1, Types2>...>;
 };
 
 //! @brief Type multiplies expression type specialization point.
 template <typename Lhs, typename Rhs> struct multiplies {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs * rhs);
 };
 
@@ -115,53 +114,45 @@ template <typename Lhs, typename Rhs>
 using product = std::invoke_result_t<multiplies<Lhs, Rhs>, Lhs, Rhs>;
 
 template <typename Lhs> struct multiplies<Lhs, std::identity> {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const Lhs &lhs, const std::identity &rhs) const -> Lhs;
 };
 
 template <typename Rhs> struct multiplies<std::identity, Rhs> {
-  [[nodiscard]] inline constexpr auto operator()(const std::identity &lhs,
-                                                 const Rhs &rhs) const -> Rhs;
+  [[nodiscard]] constexpr auto operator()(const std::identity &lhs,
+                                          const Rhs &rhs) const -> Rhs;
 };
 
 template <typename Rhs, typename... Types>
 struct multiplies<std::tuple<Types...>, Rhs> {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const std::tuple<Types...> &lhs,
              const Rhs &rhs) const -> std::tuple<product<Types, Rhs>...>;
 };
 
 template <typename... Types>
 struct multiplies<std::tuple<Types...>, std::identity> {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const std::tuple<Types...> &lhs,
              const std::identity &rhs) const -> std::tuple<Types...>;
 };
 
 template <typename... Types1, typename... Types2>
 struct multiplies<std::tuple<Types1...>, std::tuple<Types2...>> {
-  [[nodiscard]] inline constexpr auto
-  operator()(const std::tuple<Types1...> &lhs, const std::tuple<Types2...> &rhs)
+  [[nodiscard]] constexpr auto operator()(const std::tuple<Types1...> &lhs,
+                                          const std::tuple<Types2...> &rhs)
       const -> std::tuple<product<Types1, Types2>...>;
 };
 
-//! @name Functions
-//! @{
-
-//! @brief Compile-time for loop.
-//!
-//! @details Help compilers with non-type template parameters on members.
 template <std::size_t Begin, std::size_t End, std::size_t Increment,
           typename Function>
-inline constexpr void for_constexpr(Function &&function) {
+constexpr void for_constexpr(Function &&function) {
   if constexpr (Begin < End) {
     function(std::integral_constant<std::size_t, Begin>());
     for_constexpr<Begin + Increment, End, Increment>(
         std::forward<Function>(function));
   }
 }
-
-//! @}
 
 template <typename Type> struct repacker {
   using type = Type;
@@ -179,15 +170,13 @@ template <typename Pack> using repack = repacker<Pack>::type;
 //! @brief Size of tuple-like types.
 //!
 //! @details Convenient short form. In place of `std::tuple_size_v`.
-template <typename Pack>
-inline constexpr std::size_t size{repacker<Pack>::size};
+template <typename Pack> constexpr std::size_t size{repacker<Pack>::size};
 
 //! @brief The underlying storage type of the matrix's elements.
 template <typename Matrix>
 using underlying_t =
     std::remove_cvref_t<decltype(std::declval<Matrix>()(0, 0))>;
 
-//! @brief The type of the element at the given matrix indexes position.
 template <typename Matrix, std::size_t RowIndex, std::size_t ColumnIndex>
 using element = std::remove_cvref_t<product<
     std::tuple_element_t<RowIndex, typename Matrix::row_indexes>,
@@ -242,7 +231,7 @@ concept same_size = size<Pack1> == size<Pack2>;
 //!
 //! @todo Just implement `.transpose()` instead?
 template <typename Type> struct transposes {
-  [[nodiscard]] inline constexpr auto operator()(const Type &value) const {
+  [[nodiscard]] constexpr auto operator()(const Type &value) const {
     return value;
   }
 };
@@ -250,7 +239,7 @@ template <typename Type> struct transposes {
 template <typename Type>
   requires requires(Type value) { value.transpose(); }
 struct transposes<Type> {
-  [[nodiscard]] inline constexpr auto operator()(const Type &value) const {
+  [[nodiscard]] constexpr auto operator()(const Type &value) const {
     return value.transpose();
   }
 };
@@ -272,11 +261,9 @@ template <typename Type, std::size_t Size> struct tupler {
   using type = typename helper<>::type;
 };
 
-//! @brief An alias for making a tuple of the same type.
 template <typename Type, std::size_t Size>
 using tuple_n_type = typename tupler<Type, Size>::type;
 
-//! @brief One-element transparent tuple index.
 using identity_index = std::tuple<std::identity>;
 } // namespace fcarouge::typed_linear_algebra_internal
 
