@@ -81,6 +81,13 @@ struct divides<Lhs, std::tuple<Types...>> {
       -> std::tuple<quotient<Lhs, Types>...>;
 };
 
+template <typename... Types>
+struct divides<std::identity, std::tuple<Types...>> {
+  [[nodiscard]] constexpr auto operator()(const std::identity &lhs,
+                                          const std::tuple<Types...> &rhs) const
+      -> std::tuple<quotient<std::identity, Types>...>;
+};
+
 template <typename Rhs, typename... Types>
 struct divides<std::tuple<Types...>, Rhs> {
   [[nodiscard]] constexpr auto
@@ -120,6 +127,13 @@ template <typename Rhs> struct multiplies<std::identity, Rhs> {
                                           const Rhs &rhs) const -> Rhs;
 };
 
+template <typename Lhs, typename... Types>
+struct multiplies<Lhs, std::tuple<Types...>> {
+  [[nodiscard]] constexpr auto operator()(const Lhs &lhs,
+                                          const std::tuple<Types...> &rhs) const
+      -> std::tuple<product<Lhs, Types>...>;
+};
+
 template <typename Rhs, typename... Types>
 struct multiplies<std::tuple<Types...>, Rhs> {
   [[nodiscard]] constexpr auto
@@ -151,78 +165,58 @@ constexpr void for_constexpr(Function &&function) {
   }
 }
 
-template <typename Type> struct repacker {
-  using type = Type;
-};
-
-template <template <typename...> typename Pack, typename... Types>
-struct repacker<Pack<Types...>> {
-  using type = std::tuple<Types...>;
-
-  static inline constexpr std::size_t size{sizeof...(Types)};
-};
-
-template <typename Pack> using repack = repacker<Pack>::type;
-
-//! @brief Size of tuple-like types.
-//!
-//! @details Convenient short form. In place of `std::tuple_size_v`.
-template <typename Pack> constexpr std::size_t size{repacker<Pack>::size};
-
-//! @brief The underlying storage type of the matrix's elements.
-template <typename Matrix>
+template <typename Type>
 using underlying_t =
-    std::remove_cvref_t<decltype(std::declval<Matrix>()(0, 0))>;
+    std::remove_cvref_t<decltype(std::declval<std::remove_cvref_t<Type>>()(0,
+                                                                           0))>;
 
-template <typename Matrix, std::size_t RowIndex, std::size_t ColumnIndex>
+template <typename Type>
+concept is_typed_matrix = std::same_as<
+    std::remove_cvref_t<Type>,
+    typed_matrix<typename std::remove_cvref_t<Type>::matrix,
+                 typename std::remove_cvref_t<Type>::row_indexes,
+                 typename std::remove_cvref_t<Type>::column_indexes>>;
+
+template <typename Type, std::size_t RowIndex, std::size_t ColumnIndex>
 using element = std::remove_cvref_t<product<
-    std::tuple_element_t<RowIndex, typename Matrix::row_indexes>,
-    std::tuple_element_t<ColumnIndex, typename Matrix::column_indexes>>>;
+    std::tuple_element_t<RowIndex,
+                         typename std::remove_cvref_t<Type>::row_indexes>,
+    std::tuple_element_t<ColumnIndex,
+                         typename std::remove_cvref_t<Type>::column_indexes>>>;
 
-//! @brief Every element types of the matrix are the same.
-//!
-//! @details Matrices with uniform types are type safe even with the traditional
-//! operators.
-//!
-//! @note A matrix may be uniform with different row and column indexes.
-//!
 //! @todo There may be a way to write this concepts via two fold expressions.
-template <typename Matrix>
-concept uniform = []() {
-  bool result{true};
+template <typename Type>
+concept is_uniform_typed_matrix =
+    is_typed_matrix<Type> and ([]() {
+      bool result{true};
 
-  for_constexpr<0, Matrix::rows, 1>([&result](auto i) {
-    for_constexpr<0, Matrix::columns, 1>([&result, &i](auto j) {
-      result &= std::is_same_v<element<Matrix, i, j>, element<Matrix, 0, 0>>;
-    });
-  });
+      for_constexpr<0, std::remove_cvref_t<Type>::rows, 1>([&result](auto i) {
+        for_constexpr<0, std::remove_cvref_t<Type>::columns, 1>([&result,
+                                                                 &i](auto j) {
+          result &= std::is_same_v<element<Type, i, j>, element<Type, 0, 0>>;
+        });
+      });
 
-  return result;
-}();
+      return result;
+    }());
 
-//! @brief The index is within the range, inclusive.
-template <std::size_t Index, std::size_t Begin, std::size_t End>
-concept in_range = Begin <= Index && Index <= End;
+template <typename Type>
+concept is_column_typed_matrix =
+    is_typed_matrix<Type> and (std::remove_cvref_t<Type>::columns == 1);
 
-//! @brief The given matrix is a single column.
-template <typename Matrix>
-concept column = Matrix::columns == 1;
+template <typename Type>
+concept is_row_typed_matrix =
+    is_typed_matrix<Type> and (std::remove_cvref_t<Type>::rows == 1);
 
-//! @brief The matrix is a single row.
-template <typename Matrix>
-concept row = Matrix::rows == 1;
+template <typename Type>
+concept is_one_dimension_typed_matrix =
+    is_typed_matrix<Type> and
+    (is_column_typed_matrix<Type> or is_row_typed_matrix<Type>);
 
-//! @brief The given matrix is a single dimension, that is a row or a column.
-template <typename Matrix>
-concept one_dimension = column<Matrix> || row<Matrix>;
-
-//! @brief The given row and column indexes form a singleton matrix.
-template <typename Matrix>
-concept singleton = column<Matrix> && row<Matrix>;
-
-//! @brief The packs have the same count of types.
-template <typename Pack1, typename Pack2>
-concept same_size = size<Pack1> == size<Pack2>;
+template <typename Type>
+concept is_singleton_typed_matrix =
+    is_typed_matrix<Type> and is_column_typed_matrix<Type> and
+    is_row_typed_matrix<Type>;
 
 template <typename Type, std::size_t Size> struct tupler {
   template <typename = std::make_index_sequence<Size>> struct helper;
