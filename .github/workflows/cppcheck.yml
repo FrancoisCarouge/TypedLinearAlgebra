@@ -27,15 +27,15 @@ jobs:
     - name: Install
       run: |
         ( cd /tmp
-          git clone --depth 1 'https://gitlab.com/libeigen/eigen'
-          cmake -S 'eigen' -B 'eigen/build'
-          cmake --build 'eigen/build' --parallel 4
-          sudo cmake --install 'eigen/build' )
-        ( cd /tmp
           git clone --depth 1 'https://github.com/danmar/cppcheck.git'
           cmake -S 'cppcheck' -B 'cppcheck/build'
           cmake --build 'cppcheck/build' --parallel 4
           sudo cmake --install 'cppcheck/build' )
+        ( cd /tmp
+          git clone --depth 1 'https://gitlab.com/libeigen/eigen'
+          cmake -S 'eigen' -B 'eigen/build'
+          cmake --build 'eigen/build' --parallel 4
+          sudo cmake --install 'eigen/build' )
     - name: Verify
       run: |
         cppcheck \

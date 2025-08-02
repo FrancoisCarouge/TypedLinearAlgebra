@@ -53,7 +53,6 @@ template <typename Lhs, typename Rhs> struct divides {
   operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs / rhs);
 };
 
-//! @brief Divider helper type.
 template <typename Lhs, typename Rhs>
 using quotient =
     std::invoke_result_t<divides<Lhs, Rhs>, const Lhs &, const Rhs &>;
@@ -103,13 +102,11 @@ struct divides<std::tuple<Types1...>, std::tuple<Types2...>> {
       const -> std::tuple<quotient<Types1, Types2>...>;
 };
 
-//! @brief Type multiplies expression type specialization point.
 template <typename Lhs, typename Rhs> struct multiplies {
   [[nodiscard]] constexpr auto
   operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs * rhs);
 };
 
-//! @brief Helper type to deduce the result type of the product.
 template <typename Lhs, typename Rhs>
 using product = std::invoke_result_t<multiplies<Lhs, Rhs>, Lhs, Rhs>;
 
@@ -226,27 +223,6 @@ concept singleton = column<Matrix> && row<Matrix>;
 //! @brief The packs have the same count of types.
 template <typename Pack1, typename Pack2>
 concept same_size = size<Pack1> == size<Pack2>;
-
-//! @brief Linear algebra transposes specialization point.
-//!
-//! @todo Just implement `.transpose()` instead?
-template <typename Type> struct transposes {
-  [[nodiscard]] constexpr auto operator()(const Type &value) const {
-    return value;
-  }
-};
-
-template <typename Type>
-  requires requires(Type value) { value.transpose(); }
-struct transposes<Type> {
-  [[nodiscard]] constexpr auto operator()(const Type &value) const {
-    return value.transpose();
-  }
-};
-
-//! @brief Transposer helper type.
-template <typename Type>
-using transpose = std::invoke_result_t<transposes<Type>, const Type &>;
 
 template <typename Type, std::size_t Size> struct tupler {
   template <typename = std::make_index_sequence<Size>> struct helper;
