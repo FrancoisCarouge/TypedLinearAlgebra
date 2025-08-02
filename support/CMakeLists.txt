@@ -35,7 +35,6 @@ endif()
 
 add_subdirectory("eigen")
 add_subdirectory("eigexed")
-add_subdirectory("kokkos")
 add_subdirectory("main")
 add_subdirectory("mp_units")
 

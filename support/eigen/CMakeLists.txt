@@ -46,5 +46,4 @@ target_sources(
             FILES
             "fcarouge/eigen.hpp"
             "fcarouge/linalg.hpp")
-target_link_libraries(typed_linear_algebra_eigen INTERFACE Eigen3::Eigen
-                                                           tlinalg)
+target_link_libraries(typed_linear_algebra_eigen INTERFACE Eigen3::Eigen linalg)
