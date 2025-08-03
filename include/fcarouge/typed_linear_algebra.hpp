@@ -51,6 +51,41 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
 
+//! @name Concepts
+//! @{
+
+//! @brief Concept of a typed matrix type.
+template <typename Type>
+concept is_typed_matrix = tla::is_typed_matrix<Type>;
+
+//! @brief Concept of a singleton, one-element typed matrix type.
+template <typename Type>
+concept is_singleton_typed_matrix = tla::is_singleton_typed_matrix<Type>;
+
+//! @brief Concept of a typed matrix in which all element types are the same.
+//!
+//! @details Matrices with uniform types are type safe even with the traditional
+//! access operators.
+//!
+//! @note A matrix may be uniform with different row and column indexes.
+template <typename Type>
+concept is_uniform_typed_matrix = tla::is_uniform_typed_matrix<Type>;
+
+//! @brief Concept of a typed matrix with only one dimension, vector, or column.
+template <typename Type>
+concept is_one_dimension_typed_matrix =
+    tla::is_one_dimension_typed_matrix<Type>;
+
+//! @brief Concept of a row typed matrix, vector.
+template <typename Type>
+concept is_row_typed_matrix = tla::is_row_typed_matrix<Type>;
+
+//! @brief Concept of a column typed matrix, vector.
+template <typename Type>
+concept is_column_typed_matrix = tla::is_column_typed_matrix<Type>;
+
+//! @}
+
 //! @name Types
 //! @{
 
