@@ -174,6 +174,13 @@ template <typename Matrix>
 using underlying_t =
     std::remove_cvref_t<decltype(std::declval<Matrix>()(0, 0))>;
 
+template <typename Type>
+concept is_typed_matrix = std::same_as<
+    std::remove_cvref_t<Type>,
+    typed_matrix<typename std::remove_cvref_t<Type>::matrix,
+                 typename std::remove_cvref_t<Type>::row_indexes,
+                 typename std::remove_cvref_t<Type>::column_indexes>>;
+
 template <typename Matrix, std::size_t RowIndex, std::size_t ColumnIndex>
 using element = std::remove_cvref_t<product<
     std::tuple_element_t<RowIndex, typename Matrix::row_indexes>,
@@ -223,6 +230,40 @@ concept singleton = column<Matrix> && row<Matrix>;
 //! @brief The packs have the same count of types.
 template <typename Pack1, typename Pack2>
 concept same_size = size<Pack1> == size<Pack2>;
+
+//! @todo There may be a way to write this concepts via two fold expressions.
+template <typename Type>
+concept is_uniform_typed_matrix =
+    is_typed_matrix<Type> and ([]() {
+      bool result{true};
+
+      for_constexpr<0, std::remove_cvref_t<Type>::rows, 1>([&result](auto i) {
+        for_constexpr<0, std::remove_cvref_t<Type>::columns, 1>([&result,
+                                                                 &i](auto j) {
+          result &= std::is_same_v<element<Type, i, j>, element<Type, 0, 0>>;
+        });
+      });
+
+      return result;
+    }());
+
+template <typename Type>
+concept is_column_typed_matrix =
+    is_typed_matrix<Type> and (std::remove_cvref_t<Type>::columns == 1);
+
+template <typename Type>
+concept is_row_typed_matrix =
+    is_typed_matrix<Type> and (std::remove_cvref_t<Type>::rows == 1);
+
+template <typename Type>
+concept is_one_dimension_typed_matrix =
+    is_typed_matrix<Type> and
+    (is_column_typed_matrix<Type> or is_row_typed_matrix<Type>);
+
+template <typename Type>
+concept is_singleton_typed_matrix =
+    is_typed_matrix<Type> and is_column_typed_matrix<Type> and
+    is_row_typed_matrix<Type>;
 
 template <typename Type, std::size_t Size> struct tupler {
   template <typename = std::make_index_sequence<Size>> struct helper;
