@@ -88,7 +88,7 @@ struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
   constexpr auto
   format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
          FormatContext &format_context) const -> FormatContext::iterator
-    requires fcarouge::typed_linear_algebra_internal::row<
+    requires fcarouge::typed_linear_algebra_internal::is_row_typed_matrix<
         fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
   {
     format_context.advance_to(std::format_to(format_context.out(), "["));
@@ -114,7 +114,7 @@ struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
   constexpr auto
   format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
          FormatContext &format_context) const -> FormatContext::iterator
-    requires fcarouge::typed_linear_algebra_internal::singleton<
+    requires fcarouge::typed_linear_algebra_internal::is_singleton_typed_matrix<
         fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
   {
     format_context.advance_to(

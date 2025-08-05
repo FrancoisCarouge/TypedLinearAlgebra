@@ -193,7 +193,7 @@ public:
   //! @param elements C-style array of elements of identical types.
   explicit constexpr typed_matrix(
       const element<0, 0> (&elements)[rows * columns])
-    requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>;
+    requires is_uniform_typed_matrix<typed_matrix> && is_one_dimension_typed_matrix<typed_matrix>;
 
   //! @brief Convert construct a singleton typed matrix from a single value.
   //!
@@ -201,7 +201,7 @@ public:
   //!
   //! @param value Element of compatible type.
   explicit constexpr typed_matrix(const auto &value)
-    requires tla::singleton<typed_matrix>;
+    requires is_singleton_typed_matrix<typed_matrix>;
 
   //! @brief Convert construct a uniformly typed matrix from list-initializers.
   //!
@@ -211,7 +211,7 @@ public:
   template <typename Type>
   explicit constexpr typed_matrix(
       std::initializer_list<std::initializer_list<Type>> row_list)
-    requires tla::uniform<typed_matrix>;
+    requires is_uniform_typed_matrix<typed_matrix>;
 
   //! @brief Convert construct a row typed vector from elements.
   //!
@@ -220,7 +220,7 @@ public:
   //! @param values Parameter pack of elements.
   template <typename... Types>
   explicit constexpr typed_matrix(const Types &...values)
-    requires tla::row<typed_matrix> && (not tla::column<typed_matrix>) &&
+    requires is_row_typed_matrix<typed_matrix> && (not is_column_typed_matrix<typed_matrix>) &&
              tla::same_size<ColumnIndexes, std::tuple<Types...>>;
 
   //! @brief Convert construct a column typed vector from elements.
@@ -230,7 +230,7 @@ public:
   //! @param values Parameter pack of elements.
   template <typename... Types>
   constexpr typed_matrix(const Types &...values)
-    requires tla::column<typed_matrix> && (not tla::row<typed_matrix>) &&
+    requires is_column_typed_matrix<typed_matrix> && (not is_row_typed_matrix<typed_matrix>) &&
              tla::same_size<RowIndexes, std::tuple<Types...>>;
 
   //! @brief Access the singleton typed matrix element.
@@ -239,7 +239,7 @@ public:
   //! to the unique element of the typed matrix.
   [[nodiscard]] constexpr explicit(false)
   operator element<0, 0> &&(this auto &&self)
-    requires tla::singleton<typed_matrix>;
+    requires is_singleton_typed_matrix<typed_matrix>;
 
   //! @brief Access the specified element.
   //!
@@ -250,7 +250,7 @@ public:
   //! @param self Explicit object parameter deducing this: not user specified.
   //! @param index Position of the element to return.
   [[nodiscard]] constexpr auto &&operator[](this auto &&self, std::size_t index)
-    requires(tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>);
+    requires(is_uniform_typed_matrix<typed_matrix> && is_one_dimension_typed_matrix<typed_matrix>);
 
   //! @brief Access the specified element.
   //!
@@ -262,7 +262,7 @@ public:
   //! @param column Column index of the element to return.
   [[nodiscard]] constexpr auto &&operator[](this auto &&self, std::size_t row,
                                             std::size_t column)
-    requires tla::uniform<typed_matrix>;
+    requires is_uniform_typed_matrix<typed_matrix>;
 
   //! @brief Access the specified element.
   //!
@@ -273,7 +273,7 @@ public:
   //! @param self Explicit object parameter deducing this: not user specified.
   //! @param index Position of the element to return.
   [[nodiscard]] constexpr auto &&operator()(this auto &&self, std::size_t index)
-    requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>;
+    requires is_uniform_typed_matrix<typed_matrix> && is_one_dimension_typed_matrix<typed_matrix>;
 
   //! @brief Access the specified element.
   //!
@@ -285,7 +285,7 @@ public:
   //! @param column Column index of the element to return.
   [[nodiscard]] constexpr auto &&operator()(this auto &&self, std::size_t row,
                                             std::size_t column)
-    requires tla::uniform<typed_matrix>;
+    requires is_uniform_typed_matrix<typed_matrix>;
 
   //! @brief Access the specified element with compile-time bound checking.
   //!
@@ -332,7 +332,7 @@ public:
   [[nodiscard]] constexpr auto at()
       -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Index, 0>
           &
-    requires tla::column<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
+    requires is_column_typed_matrix<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
              tla::in_range<
                  Index, 0,
                  typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows>;
@@ -346,7 +346,7 @@ public:
   template <std::size_t Index>
   [[nodiscard]] constexpr auto at() const
       -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Index, 0>
-    requires tla::column<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
+    requires is_column_typed_matrix<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
              tla::in_range<
                  Index, 0,
                  typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows>;
