@@ -41,18 +41,18 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <typename Matrix2, typename RowIndexes2, typename ColumnIndexes2>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &other)
-    : matrix{other.data()} {}
+    : storage{other.data()} {}
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const Matrix &other)
-    : matrix{other} {}
+    : storage{other} {}
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const element<0, 0> (&elements)[typed_matrix::rows * typed_matrix::columns])
   requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>
-    : matrix{elements} {}
+    : storage{elements} {}
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
@@ -60,7 +60,7 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
   requires tla::singleton<typed_matrix>
 {
   using type = std::remove_cvref_t<decltype(value)>;
-  matrix(std::size_t{0}, std::size_t{0}) = cast<underlying, type>(value);
+  storage(std::size_t{0}, std::size_t{0}) = cast<underlying, type>(value);
 }
 
 //! @todo Verify the list sizes at runtime? Deprecate?
@@ -72,7 +72,7 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 {
   for (std::size_t i{0}; const auto &row : row_list) {
     for (std::size_t j{0}; const auto &value : row) {
-      matrix(std::size_t{i}, std::size_t{j}) = cast<underlying, Type>(value);
+      storage(std::size_t{i}, std::size_t{j}) = cast<underlying, Type>(value);
       ++j;
     }
     ++i;
@@ -94,7 +94,7 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
       [this, &value_pack](auto position) {
         auto value{std::get<position>(value_pack)};
         using type = std::remove_cvref_t<decltype(value)>;
-        matrix(std::size_t{position}) = cast<underlying, type>(value);
+        storage(std::size_t{position}) = cast<underlying, type>(value);
       });
 }
 
@@ -110,7 +110,7 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
       [this, &value_pack](auto position) {
         auto value{std::get<position>(value_pack)};
         using type = std::remove_cvref_t<decltype(value)>;
-        matrix(std::size_t{position}) = cast<underlying, type>(value);
+        storage(std::size_t{position}) = cast<underlying, type>(value);
       });
 }
 
@@ -126,21 +126,21 @@ operator element<0, 0> &&(this auto &&self)
   if constexpr (std::is_lvalue_reference_v<decltype(self) &&>) {
     if constexpr (is_adding_const)
       return cast<element<0, 0>, underlying>(
-          std::forward<decltype(self)>(self).matrix(std::size_t{0},
-                                                    std::size_t{0}));
+          std::forward<decltype(self)>(self).storage(std::size_t{0},
+                                                     std::size_t{0}));
     else
       return cast<element<0, 0> &, underlying &>(
-          std::forward<decltype(self)>(self).matrix(std::size_t{0},
-                                                    std::size_t{0}));
+          std::forward<decltype(self)>(self).storage(std::size_t{0},
+                                                     std::size_t{0}));
   } else {
     if constexpr (is_adding_const)
       return std::move(cast<element<0, 0>, underlying>(
-          std::forward<decltype(self)>(self).matrix(std::size_t{0},
-                                                    std::size_t{0})));
+          std::forward<decltype(self)>(self).storage(std::size_t{0},
+                                                     std::size_t{0})));
     else
       return std::move(cast<element<0, 0> &&, underlying &&>(
-          std::forward<decltype(self)>(self).matrix(std::size_t{0},
-                                                    std::size_t{0})));
+          std::forward<decltype(self)>(self).storage(std::size_t{0},
+                                                     std::size_t{0})));
   }
 }
 
@@ -150,7 +150,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
                                                             std::size_t index)
   requires(tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>)
 {
-  return std::forward<decltype(self)>(self).matrix(std::size_t{index});
+  return std::forward<decltype(self)>(self).storage(std::size_t{index});
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
@@ -160,8 +160,8 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
                                                             std::size_t column)
   requires tla::uniform<typed_matrix>
 {
-  return std::forward<decltype(self)>(self).matrix(std::size_t{row},
-                                                   std::size_t{column});
+  return std::forward<decltype(self)>(self).storage(std::size_t{row},
+                                                    std::size_t{column});
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
@@ -170,7 +170,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
                                                             std::size_t index)
   requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>
 {
-  return std::forward<decltype(self)>(self).matrix(std::size_t{index});
+  return std::forward<decltype(self)>(self).storage(std::size_t{index});
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
@@ -180,8 +180,8 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
                                                             std::size_t column)
   requires tla::uniform<typed_matrix>
 {
-  return std::forward<decltype(self)>(self).matrix(std::size_t{row},
-                                                   std::size_t{column});
+  return std::forward<decltype(self)>(self).storage(std::size_t{row},
+                                                    std::size_t{column});
 }
 
 //! @todo Can we deduplicate with deducing this?
@@ -198,7 +198,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at()
                typed_matrix<Matrix, RowIndexes, ColumnIndexes>::columns>
 {
   return cast<element<Row, Column> &, underlying &>(
-      matrix(std::size_t{Row}, std::size_t{Column}));
+      storage(std::size_t{Row}, std::size_t{Column}));
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
@@ -214,7 +214,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const
                typed_matrix<Matrix, RowIndexes, ColumnIndexes>::columns>
 {
   return cast<element<Row, Column>, underlying>(
-      matrix(std::size_t{Row}, std::size_t{Column}));
+      storage(std::size_t{Row}, std::size_t{Column}));
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
@@ -226,7 +226,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at()
            tla::in_range<Index, 0,
                          typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows>
 {
-  return cast<element<Index, 0> &, underlying &>(matrix(std::size_t{Index}));
+  return cast<element<Index, 0> &, underlying &>(storage(std::size_t{Index}));
 }
 
 //! @todo Add row-vector overload.
@@ -239,13 +239,13 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const
            tla::in_range<Index, 0,
                          typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows>
 {
-  return cast<element<Index, 0>, underlying>(matrix(std::size_t{Index}));
+  return cast<element<Index, 0>, underlying>(storage(std::size_t{Index}));
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] constexpr auto &&
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::data(this auto &&self) {
-  return std::forward<decltype(self)>(self).matrix;
+  return std::forward<decltype(self)>(self).storage;
 }
 
 } // namespace fcarouge
