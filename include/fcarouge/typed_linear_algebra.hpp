@@ -121,14 +121,17 @@ public:
   //! @name Public Member Types
   //! @{
 
-  //! @brief The type of the element's underlying storage.
-  using underlying = tla::underlying_t<Matrix>;
+  //! @brief The type of the composed, stored matrix.
+  using matrix = Matrix;
 
   //! @brief The tuple with the row components of the indexes.
   using row_indexes = RowIndexes;
 
   //! @brief The tuple with the column components of the indexes.
   using column_indexes = ColumnIndexes;
+
+  //! @brief The type of the element's underlying storage.
+  using underlying = tla::underlying_t<Matrix>;
 
   //! @brief The type of the element at the given matrix indexes position.
   template <std::size_t RowIndex, std::size_t ColumnIndex>
@@ -363,7 +366,7 @@ private:
   //! @{
 
   //! @brief Underlying algebraic backend data storage.
-  Matrix matrix;
+  Matrix storage;
 
   //! @}
 };
