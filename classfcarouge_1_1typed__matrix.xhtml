@@ -121,15 +121,18 @@ $(function(){initNavTree('classfcarouge_1_1typed__matrix.xhtml',''); initResizab
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Public Member Types</div></td></tr>
-<tr class="memitem:a9904db59b08b0dfa24fe08ef574039b3" id="r_a9904db59b08b0dfa24fe08ef574039b3"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9904db59b08b0dfa24fe08ef574039b3">underlying</a> = <a class="el" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a1233ce8915a8ea54b53c7912a477afdc">tla::underlying_t</a>&lt;Matrix&gt;</td></tr>
-<tr class="memdesc:a9904db59b08b0dfa24fe08ef574039b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the element's underlying storage.  <br /></td></tr>
-<tr class="separator:a9904db59b08b0dfa24fe08ef574039b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a000f121ceff4e3ab93b1bc333fa15647" id="r_a000f121ceff4e3ab93b1bc333fa15647"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a000f121ceff4e3ab93b1bc333fa15647">matrix</a> = Matrix</td></tr>
+<tr class="memdesc:a000f121ceff4e3ab93b1bc333fa15647"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the composed, stored matrix.  <br /></td></tr>
+<tr class="separator:a000f121ceff4e3ab93b1bc333fa15647"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67a638bf31384a9120a5def3c74b641a" id="r_a67a638bf31384a9120a5def3c74b641a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67a638bf31384a9120a5def3c74b641a">row_indexes</a> = RowIndexes</td></tr>
 <tr class="memdesc:a67a638bf31384a9120a5def3c74b641a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The tuple with the row components of the indexes.  <br /></td></tr>
 <tr class="separator:a67a638bf31384a9120a5def3c74b641a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab04e1fa2704c503f7d6189238704c53a" id="r_ab04e1fa2704c503f7d6189238704c53a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab04e1fa2704c503f7d6189238704c53a">column_indexes</a> = ColumnIndexes</td></tr>
 <tr class="memdesc:ab04e1fa2704c503f7d6189238704c53a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The tuple with the column components of the indexes.  <br /></td></tr>
 <tr class="separator:ab04e1fa2704c503f7d6189238704c53a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9904db59b08b0dfa24fe08ef574039b3" id="r_a9904db59b08b0dfa24fe08ef574039b3"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9904db59b08b0dfa24fe08ef574039b3">underlying</a> = <a class="el" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a1233ce8915a8ea54b53c7912a477afdc">tla::underlying_t</a>&lt;Matrix&gt;</td></tr>
+<tr class="memdesc:a9904db59b08b0dfa24fe08ef574039b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the element's underlying storage.  <br /></td></tr>
+<tr class="separator:a9904db59b08b0dfa24fe08ef574039b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6be5fe000ae7ae363a9a01fec688d57" id="r_af6be5fe000ae7ae363a9a01fec688d57"><td class="memTemplParams" colspan="2">template&lt;std::size_t RowIndex, std::size_t ColumnIndex&gt; </td></tr>
 <tr class="memitem:af6be5fe000ae7ae363a9a01fec688d57"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#af6be5fe000ae7ae363a9a01fec688d57">element</a> = <a class="el" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#ae127796f29a91fe39cd110accd6c82c5">tla::element</a>&lt;<a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>, RowIndex, ColumnIndex&gt;</td></tr>
 <tr class="memdesc:af6be5fe000ae7ae363a9a01fec688d57"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the element at the given matrix indexes position.  <br /></td></tr>
@@ -148,9 +151,9 @@ Static Public Attributes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Private Member Variables</div></td></tr>
-<tr class="memitem:a5f144200de2ce80361d661fe80c8000f" id="r_a5f144200de2ce80361d661fe80c8000f"><td class="memItemLeft" align="right" valign="top">Matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f144200de2ce80361d661fe80c8000f">matrix</a></td></tr>
-<tr class="memdesc:a5f144200de2ce80361d661fe80c8000f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Underlying algebraic backend data storage.  <br /></td></tr>
-<tr class="separator:a5f144200de2ce80361d661fe80c8000f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4329fed7250ec71b8b0312accb3ddff6" id="r_a4329fed7250ec71b8b0312accb3ddff6"><td class="memItemLeft" align="right" valign="top">Matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4329fed7250ec71b8b0312accb3ddff6">storage</a></td></tr>
+<tr class="memdesc:a4329fed7250ec71b8b0312accb3ddff6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Underlying algebraic backend data storage.  <br /></td></tr>
+<tr class="separator:a4329fed7250ec71b8b0312accb3ddff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader">Public Member Functions</h2></td></tr>
 <tr class="memitem:abb5f21aff9424d8482223bc9a5a0edae" id="r_abb5f21aff9424d8482223bc9a5a0edae"><td class="memItemLeft" align="right" valign="top">constexpr &amp;&amp;this auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb5f21aff9424d8482223bc9a5a0edae">self</a></td></tr>
@@ -300,7 +303,27 @@ template&lt;std::size_t RowIndex, std::size_t ColumnIndex&gt; </div>
 
 <p>The type of the element at the given matrix indexes position. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00135">135</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00138">138</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a000f121ceff4e3ab93b1bc333fa15647" name="a000f121ceff4e3ab93b1bc333fa15647"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a000f121ceff4e3ab93b1bc333fa15647">&#9670;&#160;</a></span>matrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix = Matrix</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The type of the composed, stored matrix. </p>
+
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00125">125</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
@@ -340,7 +363,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p>The type of the element's underlying storage. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00125">125</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00134">134</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
@@ -1190,38 +1213,10 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p>The count of rows. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00146">146</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  146</span>{<a class="code hl_variable" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aef655fff0379b424e1493f0e13f75682">tla::size&lt;column_indexes&gt;</a>};</div>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00149">149</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  149</span>{<a class="code hl_variable" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aef655fff0379b424e1493f0e13f75682">tla::size&lt;column_indexes&gt;</a>};</div>
 <div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra__internal_xhtml_aef655fff0379b424e1493f0e13f75682"><div class="ttname"><a href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aef655fff0379b424e1493f0e13f75682">fcarouge::typed_linear_algebra_internal::size</a></div><div class="ttdeci">constexpr std::size_t size</div><div class="ttdoc">Size of tuple-like types.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00170">utility.hpp:170</a></div></div>
 </div><!-- fragment -->
-</div>
-</div>
-<a id="a5f144200de2ce80361d661fe80c8000f" name="a5f144200de2ce80361d661fe80c8000f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f144200de2ce80361d661fe80c8000f">&#9670;&#160;</a></span>matrix</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Matrix <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Underlying algebraic backend data storage. </p>
-
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00366">366</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
-
 </div>
 </div>
 <a id="a15d0673c2c5a8f97ec7d6d6120bc37a4" name="a15d0673c2c5a8f97ec7d6d6120bc37a4"></a>
@@ -1248,8 +1243,8 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p>The count of rows. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00143">143</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  143</span>{<a class="code hl_variable" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aef655fff0379b424e1493f0e13f75682">tla::size&lt;row_indexes&gt;</a>};</div>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00146">146</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  146</span>{<a class="code hl_variable" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aef655fff0379b424e1493f0e13f75682">tla::size&lt;row_indexes&gt;</a>};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1267,7 +1262,35 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00241">241</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00244">244</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a4329fed7250ec71b8b0312accb3ddff6" name="a4329fed7250ec71b8b0312accb3ddff6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4329fed7250ec71b8b0312accb3ddff6">&#9670;&#160;</a></span>storage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Matrix <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::storage</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Underlying algebraic backend data storage. </p>
+
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00369">369</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>

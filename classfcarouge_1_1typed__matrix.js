@@ -2,6 +2,7 @@ var classfcarouge_1_1typed__matrix =
 [
     [ "column_indexes", "classfcarouge_1_1typed__matrix.xhtml#ab04e1fa2704c503f7d6189238704c53a", null ],
     [ "element", "classfcarouge_1_1typed__matrix.xhtml#af6be5fe000ae7ae363a9a01fec688d57", null ],
+    [ "matrix", "classfcarouge_1_1typed__matrix.xhtml#a000f121ceff4e3ab93b1bc333fa15647", null ],
     [ "row_indexes", "classfcarouge_1_1typed__matrix.xhtml#a67a638bf31384a9120a5def3c74b641a", null ],
     [ "underlying", "classfcarouge_1_1typed__matrix.xhtml#a9904db59b08b0dfa24fe08ef574039b3", null ],
     [ "~typed_matrix", "classfcarouge_1_1typed__matrix.xhtml#a11b18c32111d6f1651c01469c7a0322f", null ],
@@ -28,7 +29,7 @@ var classfcarouge_1_1typed__matrix =
     [ "operator[]", "classfcarouge_1_1typed__matrix.xhtml#aa42ddde16d4609a15886745a2c6dd493", null ],
     [ "operator[]", "classfcarouge_1_1typed__matrix.xhtml#a8b3091e2f8dff596bd524d4c44ed72f4", null ],
     [ "columns", "classfcarouge_1_1typed__matrix.xhtml#a46ef06b82cd1ab3db9a22cd31436b802", null ],
-    [ "matrix", "classfcarouge_1_1typed__matrix.xhtml#a5f144200de2ce80361d661fe80c8000f", null ],
     [ "rows", "classfcarouge_1_1typed__matrix.xhtml#a15d0673c2c5a8f97ec7d6d6120bc37a4", null ],
-    [ "self", "classfcarouge_1_1typed__matrix.xhtml#abb5f21aff9424d8482223bc9a5a0edae", null ]
+    [ "self", "classfcarouge_1_1typed__matrix.xhtml#abb5f21aff9424d8482223bc9a5a0edae", null ],
+    [ "storage", "classfcarouge_1_1typed__matrix.xhtml#a4329fed7250ec71b8b0312accb3ddff6", null ]
 ];
