@@ -247,7 +247,6 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::data(this auto &&self) {
   return std::forward<decltype(self)>(self).storage;
 }
-
 } // namespace fcarouge
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_TYPED_LINEAR_ALGEBRA_TPP

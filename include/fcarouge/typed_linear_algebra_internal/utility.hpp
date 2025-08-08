@@ -120,6 +120,13 @@ template <typename Rhs> struct multiplies<std::identity, Rhs> {
                                           const Rhs &rhs) const -> Rhs;
 };
 
+template <typename Lhs, typename... Types>
+struct multiplies<Lhs, std::tuple<Types...>> {
+  [[nodiscard]] constexpr auto operator()(const Lhs &lhs,
+                                          const std::tuple<Types...> &rhs) const
+      -> std::tuple<product<Lhs, Types>...>;
+};
+
 template <typename Rhs, typename... Types>
 struct multiplies<std::tuple<Types...>, Rhs> {
   [[nodiscard]] constexpr auto
