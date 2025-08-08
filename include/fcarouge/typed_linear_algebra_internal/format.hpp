@@ -47,12 +47,9 @@ struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
                       Char> {
 private:
   using matrix = fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>;
-  using row_indexes = RowIndexes;
-  using column_indexes = ColumnIndexes;
 
-  static inline constexpr std::size_t rows{std::tuple_size_v<row_indexes>};
-  static inline constexpr std::size_t columns{
-      std::tuple_size_v<column_indexes>};
+  static inline constexpr std::size_t rows{matrix::rows};
+  static inline constexpr std::size_t columns{matrix::columns};
 
 public:
   constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
