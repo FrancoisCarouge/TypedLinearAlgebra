@@ -143,10 +143,11 @@ public:
   //! @{
 
   //! @brief The count of rows.
-  static inline constexpr std::size_t rows{tla::size<row_indexes>};
+  static inline constexpr std::size_t rows{std::tuple_size_v<row_indexes>};
 
   //! @brief The count of rows.
-  static inline constexpr std::size_t columns{tla::size<column_indexes>};
+  static inline constexpr std::size_t columns{
+      std::tuple_size_v<column_indexes>};
 
   //! @}
 
