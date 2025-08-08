@@ -186,7 +186,7 @@ public:
   //! @warning Useful for operations implementation where underlying data
   //! constrution is needed. Not recommended for convenience construction due to
   //! absence of type validation.
-  explicit constexpr typed_matrix(const Matrix &other);
+  constexpr explicit typed_matrix(const Matrix &other);
 
   //! @brief Convert construct a one-dimension uniformly typed matrix from
   //! array.
@@ -195,7 +195,7 @@ public:
   //! Applicable to single-type matrix: uniform type of all elements.
   //!
   //! @param elements C-style array of elements of identical types.
-  explicit constexpr typed_matrix(
+  constexpr explicit typed_matrix(
       const element<0, 0> (&elements)[rows * columns])
     requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>;
 
@@ -204,7 +204,7 @@ public:
   //! @details Applicable to singleton matrix: one element.
   //!
   //! @param value Element of compatible type.
-  explicit constexpr typed_matrix(const auto &value)
+  constexpr explicit typed_matrix(const auto &value)
     requires tla::singleton<typed_matrix>;
 
   //! @brief Convert construct a uniformly typed matrix from list-initializers.
@@ -213,7 +213,7 @@ public:
   //!
   //! @param row_list List-initializers of list-initializer of elements.
   template <typename Type>
-  explicit constexpr typed_matrix(
+  constexpr explicit typed_matrix(
       std::initializer_list<std::initializer_list<Type>> row_list)
     requires tla::uniform<typed_matrix>;
 
@@ -223,7 +223,7 @@ public:
   //!
   //! @param values Parameter pack of elements.
   template <typename... Types>
-  explicit constexpr typed_matrix(const Types &...values)
+  constexpr explicit typed_matrix(const Types &...values)
     requires tla::row<typed_matrix> && (not tla::column<typed_matrix>) &&
              tla::same_size<ColumnIndexes, std::tuple<Types...>>;
 
