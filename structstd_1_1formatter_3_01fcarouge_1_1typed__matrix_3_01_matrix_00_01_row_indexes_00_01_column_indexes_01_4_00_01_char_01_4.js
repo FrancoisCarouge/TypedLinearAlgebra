@@ -1,8 +1,6 @@
 var structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4 =
 [
-    [ "column_indexes", "structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#a01ffaa46f8ba8d483aba4ee44b23fde4", null ],
     [ "matrix", "structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#acc11d9b746008621a4da1faff0482026", null ],
-    [ "row_indexes", "structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#a7fc2d3bf29b9fc378e8e4e60f12fb309", null ],
     [ "format", "structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#af597106c6b5a6b07cfb31959d7e465df", null ],
     [ "format", "structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#a6a1374e097aec767beef673e28d33163", null ],
     [ "format", "structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#a6c583a1863225d17352a39105334f49e", null ],
