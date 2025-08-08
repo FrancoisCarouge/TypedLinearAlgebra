@@ -45,8 +45,11 @@ namespace tla = typed_linear_algebra_internal;
 //! absence of type validation.
 template <typename RowIndexes, typename ColumnIndexes>
 auto make_typed_matrix(auto &&value) {
-  return typed_matrix<std::remove_cvref_t<decltype(value)>, RowIndexes,
-                      ColumnIndexes>{std::forward<decltype(value)>(value)};
+  using type = decltype(value);
+  using matrix = std::remove_cvref_t<type>;
+
+  return typed_matrix<matrix, RowIndexes, ColumnIndexes>{
+      std::forward<type>(value)};
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
@@ -57,69 +60,94 @@ operator==(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
   return lhs.data() == rhs.data();
 }
 
-template <typename Matrix1, typename RowIndexes1, typename ColumnIndexes1,
-          typename Matrix2, typename RowIndexes2, typename ColumnIndexes2>
-[[nodiscard]] constexpr auto
-operator*(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1> &lhs,
-          const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &rhs) {
+[[nodiscard]] constexpr auto operator*(const is_typed_matrix auto &lhs,
+                                       const is_typed_matrix auto &rhs) {
   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
   using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
 
-  //! @todo Convert to a requires clause?
   static_assert(lhs_matrix::columns == rhs_matrix::rows,
                 "Matrix multiplication requires compatible sizes.");
 
-  // A valid combination of row, column indexes providing the expected
-  // element types. Any Nth combination, here 0th, of indexes is expected to
-  // be valid.
-  using RowIndexes =
-      tla::product<RowIndexes1, std::tuple_element_t<0, ColumnIndexes1>>;
-  using ColumnIndexes =
-      tla::product<ColumnIndexes2, std::tuple_element_t<0, RowIndexes2>>;
+  using lhs_row_indexes = typename lhs_matrix::row_indexes;
+  using lhs_column_indexes = typename lhs_matrix::column_indexes;
+  using rhs_row_indexes = typename rhs_matrix::row_indexes;
+  using rhs_column_indexes = typename rhs_matrix::column_indexes;
+  using row_indexes = tla::product<lhs_row_indexes,
+                                   std::tuple_element_t<0, lhs_column_indexes>>;
+  using column_indexes = tla::product<rhs_column_indexes,
+                                      std::tuple_element_t<0, rhs_row_indexes>>;
 
-  return make_typed_matrix<RowIndexes, ColumnIndexes>(lhs.data() * rhs.data());
+  // The type resulting of the product of each of the lhs's i-th row-element
+  // with the rhs's i-th column-element must be identical/compatible.
+  tla::for_constexpr<0, std::tuple_size_v<lhs_row_indexes>, 1>([&](auto i) {
+    using lhs_row = tla::product<std::tuple_element_t<i, lhs_row_indexes>,
+                                 lhs_column_indexes>;
+    tla::for_constexpr<0, std::tuple_size_v<rhs_column_indexes>, 1>([&](auto
+                                                                            j) {
+      using rhs_column =
+          tla::product<rhs_row_indexes,
+                       std::tuple_element_t<j, rhs_column_indexes>>;
+      tla::for_constexpr<0, lhs_matrix::columns, 1>([&](auto k) {
+        static_assert(
+            std::is_same_v<tla::product<std::tuple_element_t<k, lhs_row>,
+                                        std::tuple_element_t<k, rhs_column>>,
+                           tla::product<std::tuple_element_t<0, lhs_row>,
+                                        std::tuple_element_t<0, rhs_column>>>,
+            "Matrix multiplication requires compatible types.");
+      });
+    });
+  });
+
+  return make_typed_matrix<row_indexes, column_indexes>(lhs.data() *
+                                                        rhs.data());
 }
 
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
-          typename Type>
-[[nodiscard]] constexpr auto
-operator*(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
-          const Type &rhs) {
-  using matrix = typed_matrix<Matrix, RowIndexes, ColumnIndexes>;
+[[nodiscard]] constexpr auto operator*(const is_typed_matrix auto &lhs,
+                                       const auto &rhs)
+  requires(not is_typed_matrix<decltype(rhs)>)
+{
+  using type = std::remove_cvref_t<decltype(rhs)>;
+  using matrix = std::remove_cvref_t<decltype(lhs)>;
+  using row_indexes = typename matrix::row_indexes;
+  using column_indexes = typename matrix::column_indexes;
   using underlying = typename matrix::underlying;
-  return make_typed_matrix<tla::product<RowIndexes, Type>, ColumnIndexes>(
-      lhs.data() * cast<underlying, Type>(rhs));
+
+  return make_typed_matrix<tla::product<row_indexes, type>, column_indexes>(
+      lhs.data() * cast<underlying, type>(rhs));
 }
 
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
-          typename Type>
-[[nodiscard]] constexpr auto
-operator*(const Type &lhs,
-          const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
-  using matrix = typed_matrix<Matrix, RowIndexes, ColumnIndexes>;
+[[nodiscard]] constexpr auto operator*(const auto &lhs,
+                                       const is_typed_matrix auto &rhs)
+  requires(not is_typed_matrix<decltype(lhs)>)
+{
+  using type = std::remove_cvref_t<decltype(lhs)>;
+  using matrix = std::remove_cvref_t<decltype(rhs)>;
+  using row_indexes = typename matrix::row_indexes;
+  using column_indexes = typename matrix::column_indexes;
   using underlying = typename matrix::underlying;
-  return make_typed_matrix<tla::product<RowIndexes, Type>, ColumnIndexes>(
-      cast<underlying, Type>(lhs) * rhs.data());
+
+  return make_typed_matrix<tla::product<row_indexes, type>, column_indexes>(
+      cast<underlying, type>(lhs) * rhs.data());
 }
 
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-  requires tla::singleton<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
 [[nodiscard]] constexpr auto
-operator*(const auto &lhs,
-          const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
-  return lhs *
-         tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, 0, 0>{
-             rhs.data()};
+operator*(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
+  requires(not is_typed_matrix<decltype(lhs)>)
+{
+  using matrix = decltype(rhs);
+  using element = typename matrix::template element<0, 0>;
+
+  return lhs * element{rhs};
 }
 
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-  requires tla::singleton<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
 [[nodiscard]] constexpr auto
-operator*(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
-          const auto &rhs) {
-  return tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, 0, 0>{
-             lhs.data()} *
-         rhs;
+operator*(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
+  requires(not is_typed_matrix<decltype(rhs)>)
+{
+  using matrix = std::remove_cvref_t<decltype(lhs)>;
+  using element = typename matrix::template element<0, 0>;
+
+  return element{lhs} * rhs;
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes,

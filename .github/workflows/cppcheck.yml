@@ -42,7 +42,8 @@ jobs:
           --enable=all \
           --error-exitcode=1 \
           --suppress=missingIncludeSystem \
-          --suppress=unusedFunction: include/fcarouge/typed_linear_algebra.hpp:448 \
+          --suppress=unusedFunction: include/fcarouge/typed_linear_algebra_internal/format.hpp:58 \
+          --suppress=noExplicitConstructor: include/fcarouge/typed_linear_algebra.hpp \
           --verbose \
           -I include \
           -I support/eigen \
