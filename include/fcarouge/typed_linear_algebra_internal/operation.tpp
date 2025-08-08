@@ -62,10 +62,11 @@ template <typename Matrix1, typename RowIndexes1, typename ColumnIndexes1,
 [[nodiscard]] constexpr auto
 operator*(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1> &lhs,
           const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &rhs) {
+  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
+  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
 
-  //! @todo Simplify the size check with tla::size.
-  static_assert(typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1>::columns ==
-                    typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2>::rows,
+  //! @todo Convert to a requires clause?
+  static_assert(lhs_matrix::columns == rhs_matrix::rows,
                 "Matrix multiplication requires compatible sizes.");
 
   // A valid combination of row, column indexes providing the expected
@@ -75,35 +76,7 @@ operator*(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1> &lhs,
       tla::product<RowIndexes1, std::tuple_element_t<0, ColumnIndexes1>>;
   using ColumnIndexes =
       tla::product<ColumnIndexes2, std::tuple_element_t<0, RowIndexes2>>;
-  /*
-  // Verify every terms of the inner product for every elements is of the same
-  // type. For each of the column indexes of the left-hand-side matrix factor.
-  tla::for_constexpr<0, tla::size<ColumnIndexes1>, 1>([&](auto i) {
-    // Find the type of the first factor of the Ith term of the element's inner
-    // product. That is, the Ith row index tuple.
-    using FirstFactorIthSum =
-        tla::product<RowIndexes1, std::tuple_element_t<i, ColumnIndexes1>>;
-    // For each of the row indexes of the right-hand-side matrix factor.
-    tla::for_constexpr<0, tla::size<RowIndexes2>, 1>([&](auto j) {
-      // Find the type of the second factor of the Jth term of the element's
-      // inner product. That is, the Jth column index tuple.
-      using SecondFactorJthSum =
-          tla::product<ColumnIndexes2, std::tuple_element_t<j, RowIndexes2>>;
-      // For each term of the inner product of the element.
-      tla::for_constexpr<0, tla::size<RowIndexes1>, 1>([&](auto k) {
-        tla::for_constexpr<0, tla::size<ColumnIndexes2>, 1>([&](auto l) {
-          static_assert(
-              std::is_same_v<
-                  tla::product<std::tuple_element_t<k, FirstFactorIthSum>,
-                               std::tuple_element_t<l, SecondFactorJthSum>>,
-                  tla::product<std::tuple_element_t<k, RowIndexes>,
-                               std::tuple_element_t<l, ColumnIndexes>>>,
-              "Matrix multiplication requires compatible types.");
-        });
-      });
-    });
-  });
-  */
+
   return make_typed_matrix<RowIndexes, ColumnIndexes>(lhs.data() * rhs.data());
 }
 
@@ -233,10 +206,10 @@ template <typename Matrix1, typename RowIndexes1, typename ColumnIndexes1,
 [[nodiscard]] constexpr auto
 operator/(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1> &lhs,
           const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &rhs) {
+  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
+  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
 
-  //! @todo Simplify the size check with tla::size.
-  static_assert(typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1>::columns ==
-                    typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2>::columns,
+  static_assert(lhs_matrix::columns == rhs_matrix::columns,
                 "Matrix division requires compatible sizes.");
 
   //! @todo This is likely incorrect, incomplete?
