@@ -247,8 +247,7 @@ public:
   //!
   //! @details Applicable to singleton matrix: one element. Returns a reference
   //! to the unique element of the typed matrix.
-  [[nodiscard]] constexpr explicit(false)
-  operator element<0, 0> &&(this auto &&self)
+  [[nodiscard]] constexpr explicit operator element<0, 0> &&(this auto &&self)
     requires is_singleton_typed_matrix<typed_matrix>;
 
   //! @brief Access the specified element.
@@ -307,15 +306,8 @@ public:
   //! @tparam Row Row index of the element to return.
   //! @tparam Column Column index of the element to return.
   template <std::size_t Row, std::size_t Column>
-  [[nodiscard]] constexpr auto
-  at() -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Row,
-                       Column> &
-    requires tla::in_range<
-                 Row, 0,
-                 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows> &&
-             tla::in_range<
-                 Column, 0,
-                 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::columns>;
+  [[nodiscard]] constexpr auto at() -> element<Row, Column> &
+    requires(Row < rows) and (Column < columns);
 
   //! @brief Access the specified element with compile-time bound checking.
   //!
@@ -324,15 +316,8 @@ public:
   //! @tparam Row Row index of the element to return.
   //! @tparam Column Column index of the element to return.
   template <std::size_t Row, std::size_t Column>
-  [[nodiscard]] constexpr auto
-  at() const -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
-                             Row, Column>
-    requires tla::in_range<
-                 Row, 0,
-                 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows> &&
-             tla::in_range<
-                 Column, 0,
-                 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::columns>;
+  [[nodiscard]] constexpr auto at() const -> element<Row, Column>
+    requires(Row < rows) and (Column < columns);
 
   //! @brief Access the specified element with compile-time bound checking.
   //!
@@ -341,14 +326,8 @@ public:
   //!
   //! @tparam Index Position of the element to return.
   template <std::size_t Index>
-  [[nodiscard]] constexpr auto at()
-      -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Index, 0>
-          &
-    requires is_column_typed_matrix<
-                 typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
-             tla::in_range<
-                 Index, 0,
-                 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows>;
+  [[nodiscard]] constexpr auto at() -> element<Index, 0> &
+    requires is_column_typed_matrix<typed_matrix> and (Index < rows);
 
   //! @brief Access the specified element with compile-time bound checking.
   //!
@@ -357,13 +336,8 @@ public:
   //!
   //! @tparam Index Position of the element to return.
   template <std::size_t Index>
-  [[nodiscard]] constexpr auto at() const
-      -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Index, 0>
-    requires is_column_typed_matrix<
-                 typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
-             tla::in_range<
-                 Index, 0,
-                 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows>;
+  [[nodiscard]] constexpr auto at() const -> element<Index, 0>
+    requires is_column_typed_matrix<typed_matrix> and (Index < rows);
 
   //! @brief Direct access to the underlying storage.
   //!

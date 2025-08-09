@@ -122,28 +122,14 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 operator element<0, 0> &&(this auto &&self)
   requires is_singleton_typed_matrix<typed_matrix>
 {
-  // This is a form of `std::forward_like`, is there a simpler, or more compact
-  // syntax?
-  constexpr bool is_adding_const{
-      std::is_const_v<std::remove_reference_t<decltype(self)>>};
   if constexpr (std::is_lvalue_reference_v<decltype(self) &&>) {
-    if constexpr (is_adding_const)
-      return cast<element<0, 0>, underlying>(
-          std::forward<decltype(self)>(self).storage(std::size_t{0},
-                                                     std::size_t{0}));
-    else
-      return cast<element<0, 0> &, underlying &>(
-          std::forward<decltype(self)>(self).storage(std::size_t{0},
-                                                     std::size_t{0}));
+    return cast<element<0, 0> &, underlying &>(
+        std::forward<decltype(self)>(self).storage(std::size_t{0},
+                                                   std::size_t{0}));
   } else {
-    if constexpr (is_adding_const)
-      return std::move(cast<element<0, 0>, underlying>(
-          std::forward<decltype(self)>(self).storage(std::size_t{0},
-                                                     std::size_t{0})));
-    else
-      return std::move(cast<element<0, 0> &&, underlying &&>(
-          std::forward<decltype(self)>(self).storage(std::size_t{0},
-                                                     std::size_t{0})));
+    return std::move(cast<const element<0, 0> &, const underlying &>(
+        std::forward<decltype(self)>(self).storage(std::size_t{0},
+                                                   std::size_t{0})));
   }
 }
 
@@ -193,14 +179,8 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <std::size_t Row, std::size_t Column>
 [[nodiscard]] constexpr auto
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at()
-    -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Row,
-                    Column> &
-  requires tla::in_range<
-               Row, 0, typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows> &&
-           tla::in_range<
-               Column, 0,
-               typed_matrix<Matrix, RowIndexes, ColumnIndexes>::columns>
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() -> element<Row, Column> &
+  requires(Row < rows) and (Column < columns)
 {
   return cast<element<Row, Column> &, underlying &>(
       storage(std::size_t{Row}, std::size_t{Column}));
@@ -210,13 +190,8 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <std::size_t Row, std::size_t Column>
 [[nodiscard]] constexpr auto
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const
-    -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Row,
-                    Column>
-  requires tla::in_range<
-               Row, 0, typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows> &&
-           tla::in_range<
-               Column, 0,
-               typed_matrix<Matrix, RowIndexes, ColumnIndexes>::columns>
+    -> element<Row, Column>
+  requires(Row < rows) and (Column < columns)
 {
   return cast<element<Row, Column>, underlying>(
       storage(std::size_t{Row}, std::size_t{Column}));
@@ -225,12 +200,8 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <std::size_t Index>
 [[nodiscard]] constexpr auto
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at()
-    -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Index, 0> &
-  requires is_column_typed_matrix<
-               typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
-           tla::in_range<Index, 0,
-                         typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows>
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() -> element<Index, 0> &
+  requires is_column_typed_matrix<typed_matrix> and (Index < rows)
 {
   return cast<element<Index, 0> &, underlying &>(storage(std::size_t{Index}));
 }
@@ -239,12 +210,8 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at()
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <std::size_t Index>
 [[nodiscard]] constexpr auto
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const
-    -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Index, 0>
-  requires is_column_typed_matrix<
-               typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
-           tla::in_range<Index, 0,
-                         typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows>
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const -> element<Index, 0>
+  requires is_column_typed_matrix<typed_matrix> and (Index < rows)
 {
   return cast<element<Index, 0>, underlying>(storage(std::size_t{Index}));
 }
