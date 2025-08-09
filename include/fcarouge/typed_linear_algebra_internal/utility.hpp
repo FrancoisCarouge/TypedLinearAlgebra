@@ -199,27 +199,6 @@ using element = std::remove_cvref_t<product<
     std::tuple_element_t<ColumnIndex,
                          typename std::remove_cvref_t<Type>::column_indexes>>>;
 
-//! @brief Every element types of the matrix are the same.
-//!
-//! @details Matrices with uniform types are type safe even with the traditional
-//! operators.
-//!
-//! @note A matrix may be uniform with different row and column indexes.
-//!
-//! @todo There may be a way to write this concepts via two fold expressions.
-template <typename Matrix>
-concept uniform = []() {
-  bool result{true};
-
-  for_constexpr<0, Matrix::rows, 1>([&result](auto i) {
-    for_constexpr<0, Matrix::columns, 1>([&result, &i](auto j) {
-      result &= std::is_same_v<element<Matrix, i, j>, element<Matrix, 0, 0>>;
-    });
-  });
-
-  return result;
-}();
-
 //! @brief The index is within the range, inclusive.
 template <std::size_t Index, std::size_t Begin, std::size_t End>
 concept in_range = Begin <= Index && Index <= End;
@@ -235,10 +214,6 @@ concept row = Matrix::rows == 1;
 //! @brief The given matrix is a single dimension, that is a row or a column.
 template <typename Matrix>
 concept one_dimension = column<Matrix> || row<Matrix>;
-
-//! @brief The given row and column indexes form a singleton matrix.
-template <typename Matrix>
-concept singleton = column<Matrix> && row<Matrix>;
 
 //! @brief The packs have the same count of types.
 template <typename Pack1, typename Pack2>

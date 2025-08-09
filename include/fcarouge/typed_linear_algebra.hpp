@@ -208,7 +208,7 @@ public:
   //!
   //! @param value Element of compatible type.
   constexpr explicit typed_matrix(const auto &value)
-    requires tla::singleton<typed_matrix>;
+    requires is_singleton_typed_matrix<typed_matrix>;
 
   //! @brief Convert construct a uniformly typed matrix from list-initializers.
   //!
@@ -247,7 +247,7 @@ public:
   //! to the unique element of the typed matrix.
   [[nodiscard]] constexpr explicit(false)
   operator element<0, 0> &&(this auto &&self)
-    requires tla::singleton<typed_matrix>;
+    requires is_singleton_typed_matrix<typed_matrix>;
 
   //! @brief Access the specified element.
   //!
