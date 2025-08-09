@@ -345,7 +345,7 @@ public:
       -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Index, 0>
           &
     requires is_column_typed_matrix<
-             typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
+                 typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
              tla::in_range<
                  Index, 0,
                  typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows>;
@@ -360,7 +360,7 @@ public:
   [[nodiscard]] constexpr auto at() const
       -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Index, 0>
     requires is_column_typed_matrix<
-             typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
+                 typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
              tla::in_range<
                  Index, 0,
                  typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows>;
