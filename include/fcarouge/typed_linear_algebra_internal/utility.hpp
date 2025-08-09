@@ -199,10 +199,6 @@ using element = std::remove_cvref_t<product<
     std::tuple_element_t<ColumnIndex,
                          typename std::remove_cvref_t<Type>::column_indexes>>>;
 
-//! @brief The index is within the range, inclusive.
-template <std::size_t Index, std::size_t Begin, std::size_t End>
-concept in_range = Begin <= Index && Index <= End;
-
 //! @brief The packs have the same count of types.
 template <typename Pack1, typename Pack2>
 concept same_size = size<Pack1> == size<Pack2>;
