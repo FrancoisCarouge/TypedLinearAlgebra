@@ -200,7 +200,7 @@ public:
   constexpr explicit typed_matrix(
       const element<0, 0> (&elements)[rows * columns])
     requires is_uniform_typed_matrix<typed_matrix> &&
-             tla::one_dimension<typed_matrix>;
+             is_one_dimension_typed_matrix<typed_matrix>;
 
   //! @brief Convert construct a singleton typed matrix from a single value.
   //!
@@ -259,7 +259,7 @@ public:
   //! @param index Position of the element to return.
   [[nodiscard]] constexpr auto &&operator[](this auto &&self, std::size_t index)
     requires(is_uniform_typed_matrix<typed_matrix> &&
-             tla::one_dimension<typed_matrix>);
+             is_one_dimension_typed_matrix<typed_matrix>);
 
   //! @brief Access the specified element.
   //!
@@ -283,7 +283,7 @@ public:
   //! @param index Position of the element to return.
   [[nodiscard]] constexpr auto &&operator()(this auto &&self, std::size_t index)
     requires is_uniform_typed_matrix<typed_matrix> &&
-             tla::one_dimension<typed_matrix>;
+             is_one_dimension_typed_matrix<typed_matrix>;
 
   //! @brief Access the specified element.
   //!

@@ -211,10 +211,6 @@ concept column = Matrix::columns == 1;
 template <typename Matrix>
 concept row = Matrix::rows == 1;
 
-//! @brief The given matrix is a single dimension, that is a row or a column.
-template <typename Matrix>
-concept one_dimension = column<Matrix> || row<Matrix>;
-
 //! @brief The packs have the same count of types.
 template <typename Pack1, typename Pack2>
 concept same_size = size<Pack1> == size<Pack2>;
