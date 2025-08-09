@@ -164,7 +164,6 @@ operator*(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
 operator+(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
   requires(not is_typed_matrix<decltype(lhs)>)
 {
-  //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(rhs)>;
   using element = typename matrix::template element<0, 0>;
 
@@ -175,14 +174,12 @@ operator+(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
 operator+(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
   requires(not is_typed_matrix<decltype(rhs)>)
 {
-  //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(lhs)>;
   using element = typename matrix::template element<0, 0>;
 
   return element{lhs} + rhs;
 }
 
-//! @todo Requires, assert that the element types are compatible.
 [[nodiscard]] constexpr auto operator-(const is_typed_matrix auto &lhs,
                                        const is_typed_matrix auto &rhs) {
   using matrix = std::remove_cvref_t<decltype(lhs)>;
@@ -197,7 +194,6 @@ operator+(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
 operator-(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
   requires(not is_typed_matrix<decltype(lhs)>)
 {
-  //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(rhs)>;
   using element = typename matrix::template element<0, 0>;
 
@@ -208,7 +204,6 @@ operator-(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
 operator-(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
   requires(not is_typed_matrix<decltype(rhs)>)
 {
-  //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(rhs)>;
   using element = typename matrix::template element<0, 0>;
 
