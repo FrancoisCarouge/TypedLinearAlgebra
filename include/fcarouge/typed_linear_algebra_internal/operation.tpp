@@ -169,7 +169,8 @@ operator+(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1> &lhs,
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-  requires is_singleton_typed_matrix<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
+  requires is_singleton_typed_matrix<
+      typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
 [[nodiscard]] constexpr auto
 operator+(const auto &lhs,
           const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
@@ -179,7 +180,8 @@ operator+(const auto &lhs,
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-  requires is_singleton_typed_matrix<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
+  requires is_singleton_typed_matrix<
+      typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
 [[nodiscard]] constexpr auto
 operator+(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
           const auto &rhs) {
@@ -209,7 +211,8 @@ operator-(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1> &lhs,
 
 //! @todo Generalize out the scalar restriction.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-  requires is_singleton_typed_matrix<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
+  requires is_singleton_typed_matrix<
+      typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
 [[nodiscard]] constexpr auto
 operator-(const auto &lhs,
           const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
@@ -220,7 +223,8 @@ operator-(const auto &lhs,
 
 //! @todo Generalize out the scalar restriction.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-  requires is_singleton_typed_matrix<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
+  requires is_singleton_typed_matrix<
+      typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
 [[nodiscard]] constexpr auto
 operator-(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
           const auto &rhs) {
@@ -262,7 +266,8 @@ operator/(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
 
 //! @todo Generalize out the scalar restriction.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-  requires is_singleton_typed_matrix<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
+  requires is_singleton_typed_matrix<
+      typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
 [[nodiscard]] constexpr auto
 operator/(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
           const auto &rhs) {
