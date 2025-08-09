@@ -81,6 +81,13 @@ struct divides<Lhs, std::tuple<Types...>> {
       -> std::tuple<quotient<Lhs, Types>...>;
 };
 
+template <typename... Types>
+struct divides<std::identity, std::tuple<Types...>> {
+  [[nodiscard]] constexpr auto operator()(const std::identity &lhs,
+                                          const std::tuple<Types...> &rhs) const
+      -> std::tuple<quotient<std::identity, Types>...>;
+};
+
 template <typename Rhs, typename... Types>
 struct divides<std::tuple<Types...>, Rhs> {
   [[nodiscard]] constexpr auto
@@ -171,15 +178,12 @@ struct repacker<Pack<Types...>> {
 
 template <typename Pack> using repack = repacker<Pack>::type;
 
-//! @brief Size of tuple-like types.
-//!
-//! @details Convenient short form. In place of `std::tuple_size_v`.
 template <typename Pack> constexpr std::size_t size{repacker<Pack>::size};
 
-//! @brief The underlying storage type of the matrix's elements.
-template <typename Matrix>
+template <typename Type>
 using underlying_t =
-    std::remove_cvref_t<decltype(std::declval<Matrix>()(0, 0))>;
+    std::remove_cvref_t<decltype(std::declval<std::remove_cvref_t<Type>>()(0,
+                                                                           0))>;
 
 template <typename Type>
 concept is_typed_matrix = std::same_as<
@@ -188,10 +192,12 @@ concept is_typed_matrix = std::same_as<
                  typename std::remove_cvref_t<Type>::row_indexes,
                  typename std::remove_cvref_t<Type>::column_indexes>>;
 
-template <typename Matrix, std::size_t RowIndex, std::size_t ColumnIndex>
+template <typename Type, std::size_t RowIndex, std::size_t ColumnIndex>
 using element = std::remove_cvref_t<product<
-    std::tuple_element_t<RowIndex, typename Matrix::row_indexes>,
-    std::tuple_element_t<ColumnIndex, typename Matrix::column_indexes>>>;
+    std::tuple_element_t<RowIndex,
+                         typename std::remove_cvref_t<Type>::row_indexes>,
+    std::tuple_element_t<ColumnIndex,
+                         typename std::remove_cvref_t<Type>::column_indexes>>>;
 
 //! @brief Every element types of the matrix are the same.
 //!
