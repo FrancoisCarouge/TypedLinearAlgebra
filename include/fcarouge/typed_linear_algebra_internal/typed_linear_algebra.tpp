@@ -85,7 +85,6 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     std::initializer_list<std::initializer_list<Type>> row_list)
   requires is_uniform_typed_matrix<typed_matrix>
 {
-
   for (std::size_t i{0}; const auto &row : row_list) {
     for (std::size_t j{0}; const auto &value : row) {
       storage(std::size_t{i}, std::size_t{j}) = cast<underlying, Type>(value);

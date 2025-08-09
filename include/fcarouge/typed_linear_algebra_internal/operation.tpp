@@ -159,19 +159,10 @@ operator*(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
   using row_indexes = typename matrix::row_indexes;
   using column_indexes = typename matrix::column_indexes;
 
-template <typename Matrix1, typename RowIndexes1, typename ColumnIndexes1,
-          typename Matrix2, typename RowIndexes2, typename ColumnIndexes2>
-[[nodiscard]] constexpr auto
-operator+(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1> &lhs,
-          const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &rhs) {
-  //! @todo Verify the resulting types compatibility at compile-time.
-  return make_typed_matrix<RowIndexes1, ColumnIndexes1>(lhs.data() +
+  return make_typed_matrix<row_indexes, column_indexes>(lhs.data() +
                                                         rhs.data());
 }
 
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-  requires is_singleton_typed_matrix<
-      typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
 [[nodiscard]] constexpr auto
 operator+(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
   requires(not is_typed_matrix<decltype(lhs)>)
@@ -183,9 +174,6 @@ operator+(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
   return lhs + element{rhs};
 }
 
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-  requires is_singleton_typed_matrix<
-      typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
 [[nodiscard]] constexpr auto
 operator+(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
   requires(not is_typed_matrix<decltype(rhs)>)
@@ -204,20 +192,11 @@ operator+(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
   using row_indexes = typename matrix::row_indexes;
   using column_indexes = typename matrix::column_indexes;
 
-template <typename Matrix1, typename RowIndexes1, typename ColumnIndexes1,
-          typename Matrix2, typename RowIndexes2, typename ColumnIndexes2>
-[[nodiscard]] constexpr auto
-operator-(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1> &lhs,
-          const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &rhs) {
-  //! @todo Verify the resulting types compatibility at compile-time.
-  return make_typed_matrix<RowIndexes1, ColumnIndexes1>(lhs.data() -
+  return make_typed_matrix<row_indexes, column_indexes>(lhs.data() -
                                                         rhs.data());
 }
 
-//! @todo Generalize out the scalar restriction.
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-  requires is_singleton_typed_matrix<
-      typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
+//! @todo Add singleton +/- singleton overloads.
 [[nodiscard]] constexpr auto
 operator-(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
   requires(not is_typed_matrix<decltype(lhs)>)
@@ -229,10 +208,6 @@ operator-(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
   return lhs - element{rhs};
 }
 
-//! @todo Generalize out the scalar restriction.
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-  requires is_singleton_typed_matrix<
-      typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
 [[nodiscard]] constexpr auto
 operator-(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
   requires(not is_typed_matrix<decltype(rhs)>)

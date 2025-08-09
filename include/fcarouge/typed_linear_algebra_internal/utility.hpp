@@ -141,6 +141,7 @@ struct multiplies<std::tuple<Types...>, Rhs> {
              const Rhs &rhs) const -> std::tuple<product<Types, Rhs>...>;
 };
 
+//! @todo Some specialization with identity may be redundant, to remove.
 template <typename... Types>
 struct multiplies<std::tuple<Types...>, std::identity> {
   [[nodiscard]] constexpr auto
