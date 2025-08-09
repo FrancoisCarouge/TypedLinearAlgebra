@@ -227,7 +227,8 @@ template <std::size_t Index>
 [[nodiscard]] constexpr auto
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at()
     -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Index, 0> &
-  requires is_column_typed_matrix<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
+  requires is_column_typed_matrix<
+      typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
            tla::in_range<Index, 0,
                          typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows>
 {
@@ -240,7 +241,8 @@ template <std::size_t Index>
 [[nodiscard]] constexpr auto
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const
     -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Index, 0>
-  requires is_column_typed_matrix<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
+  requires is_column_typed_matrix<
+      typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
            tla::in_range<Index, 0,
                          typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows>
 {
