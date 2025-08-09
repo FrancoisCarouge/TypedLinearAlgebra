@@ -193,11 +193,13 @@ public:
   //!
   //! @details Applicable to one-dimension matrix: column- or row-vector.
   //! Applicable to single-type matrix: uniform type of all elements.
+  //! Single-argument constructors taking arrays of data should get implicit
+  //! constructors.
   //!
   //! @param elements C-style array of elements of identical types.
   constexpr explicit typed_matrix(
       const element<0, 0> (&elements)[rows * columns])
-    requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>;
+    requires is_uniform_typed_matrix<typed_matrix> && tla::one_dimension<typed_matrix>;
 
   //! @brief Convert construct a singleton typed matrix from a single value.
   //!
@@ -209,13 +211,14 @@ public:
 
   //! @brief Convert construct a uniformly typed matrix from list-initializers.
   //!
-  //! @details Applicable to matrix of uniform elements type.
+  //! @details Applicable to matrix of uniform elements type. Single-argument
+  //! constructors taking arrays of data should get implicit constructors.
   //!
   //! @param row_list List-initializers of list-initializer of elements.
   template <typename Type>
   constexpr explicit typed_matrix(
       std::initializer_list<std::initializer_list<Type>> row_list)
-    requires tla::uniform<typed_matrix>;
+    requires is_uniform_typed_matrix<typed_matrix>;
 
   //! @brief Convert construct a row typed vector from elements.
   //!
@@ -254,7 +257,7 @@ public:
   //! @param self Explicit object parameter deducing this: not user specified.
   //! @param index Position of the element to return.
   [[nodiscard]] constexpr auto &&operator[](this auto &&self, std::size_t index)
-    requires(tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>);
+    requires(is_uniform_typed_matrix<typed_matrix> && tla::one_dimension<typed_matrix>);
 
   //! @brief Access the specified element.
   //!
@@ -266,7 +269,7 @@ public:
   //! @param column Column index of the element to return.
   [[nodiscard]] constexpr auto &&operator[](this auto &&self, std::size_t row,
                                             std::size_t column)
-    requires tla::uniform<typed_matrix>;
+    requires is_uniform_typed_matrix<typed_matrix>;
 
   //! @brief Access the specified element.
   //!
@@ -277,7 +280,7 @@ public:
   //! @param self Explicit object parameter deducing this: not user specified.
   //! @param index Position of the element to return.
   [[nodiscard]] constexpr auto &&operator()(this auto &&self, std::size_t index)
-    requires tla::uniform<typed_matrix> && tla::one_dimension<typed_matrix>;
+    requires is_uniform_typed_matrix<typed_matrix> && tla::one_dimension<typed_matrix>;
 
   //! @brief Access the specified element.
   //!
@@ -289,7 +292,7 @@ public:
   //! @param column Column index of the element to return.
   [[nodiscard]] constexpr auto &&operator()(this auto &&self, std::size_t row,
                                             std::size_t column)
-    requires tla::uniform<typed_matrix>;
+    requires is_uniform_typed_matrix<typed_matrix>;
 
   //! @brief Access the specified element with compile-time bound checking.
   //!
