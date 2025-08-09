@@ -228,7 +228,8 @@ public:
   //! @param values Parameter pack of elements.
   template <typename... Types>
   constexpr explicit typed_matrix(const Types &...values)
-    requires is_row_typed_matrix<typed_matrix> and (not is_column_typed_matrix<typed_matrix>) and
+    requires is_row_typed_matrix<typed_matrix> and
+             (not is_column_typed_matrix<typed_matrix>) and
              tla::same_size<ColumnIndexes, std::tuple<Types...>>;
 
   //! @brief Convert construct a column typed vector from elements.
@@ -238,7 +239,8 @@ public:
   //! @param values Parameter pack of elements.
   template <typename... Types>
   constexpr typed_matrix(const Types &...values)
-    requires is_column_typed_matrix<typed_matrix> and (not is_row_typed_matrix<typed_matrix>) and
+    requires is_column_typed_matrix<typed_matrix> and
+             (not is_row_typed_matrix<typed_matrix>) and
              tla::same_size<RowIndexes, std::tuple<Types...>>;
 
   //! @brief Access the singleton typed matrix element.
@@ -342,7 +344,8 @@ public:
   [[nodiscard]] constexpr auto at()
       -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Index, 0>
           &
-    requires is_column_typed_matrix<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
+    requires is_column_typed_matrix<
+        typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
              tla::in_range<
                  Index, 0,
                  typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows>;
@@ -356,7 +359,8 @@ public:
   template <std::size_t Index>
   [[nodiscard]] constexpr auto at() const
       -> tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, Index, 0>
-    requires is_column_typed_matrix<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
+    requires is_column_typed_matrix<
+        typed_matrix<Matrix, RowIndexes, ColumnIndexes>> &&
              tla::in_range<
                  Index, 0,
                  typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows>;
