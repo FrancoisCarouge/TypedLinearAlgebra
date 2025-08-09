@@ -58,7 +58,7 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const auto &value)
-  requires tla::singleton<typed_matrix>
+  requires is_singleton_typed_matrix<typed_matrix>
 {
   using type = std::remove_cvref_t<decltype(value)>;
   storage(std::size_t{0}, std::size_t{0}) = cast<underlying, type>(value);
@@ -118,7 +118,7 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::
 operator element<0, 0> &&(this auto &&self)
-  requires tla::singleton<typed_matrix>
+  requires is_singleton_typed_matrix<typed_matrix>
 {
   // This is a form of `std::forward_like`, is there a simpler, or more compact
   // syntax?
