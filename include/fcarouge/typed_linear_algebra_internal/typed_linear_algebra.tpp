@@ -51,7 +51,8 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const element<0, 0> (&elements)[typed_matrix::rows * typed_matrix::columns])
-  requires is_uniform_typed_matrix<typed_matrix> && tla::one_dimension<typed_matrix>
+  requires is_uniform_typed_matrix<typed_matrix> &&
+           tla::one_dimension<typed_matrix>
     : storage{elements} {}
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
@@ -148,7 +149,8 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] constexpr auto &&
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
                                                             std::size_t index)
-  requires(is_uniform_typed_matrix<typed_matrix> && tla::one_dimension<typed_matrix>)
+  requires(is_uniform_typed_matrix<typed_matrix> &&
+           tla::one_dimension<typed_matrix>)
 {
   return std::forward<decltype(self)>(self).storage(std::size_t{index});
 }
@@ -168,7 +170,8 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] constexpr auto &&
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
                                                             std::size_t index)
-  requires is_uniform_typed_matrix<typed_matrix> && tla::one_dimension<typed_matrix>
+  requires is_uniform_typed_matrix<typed_matrix> &&
+           tla::one_dimension<typed_matrix>
 {
   return std::forward<decltype(self)>(self).storage(std::size_t{index});
 }

@@ -199,7 +199,8 @@ public:
   //! @param elements C-style array of elements of identical types.
   constexpr explicit typed_matrix(
       const element<0, 0> (&elements)[rows * columns])
-    requires is_uniform_typed_matrix<typed_matrix> && tla::one_dimension<typed_matrix>;
+    requires is_uniform_typed_matrix<typed_matrix> &&
+             tla::one_dimension<typed_matrix>;
 
   //! @brief Convert construct a singleton typed matrix from a single value.
   //!
@@ -257,7 +258,8 @@ public:
   //! @param self Explicit object parameter deducing this: not user specified.
   //! @param index Position of the element to return.
   [[nodiscard]] constexpr auto &&operator[](this auto &&self, std::size_t index)
-    requires(is_uniform_typed_matrix<typed_matrix> && tla::one_dimension<typed_matrix>);
+    requires(is_uniform_typed_matrix<typed_matrix> &&
+             tla::one_dimension<typed_matrix>);
 
   //! @brief Access the specified element.
   //!
@@ -280,7 +282,8 @@ public:
   //! @param self Explicit object parameter deducing this: not user specified.
   //! @param index Position of the element to return.
   [[nodiscard]] constexpr auto &&operator()(this auto &&self, std::size_t index)
-    requires is_uniform_typed_matrix<typed_matrix> && tla::one_dimension<typed_matrix>;
+    requires is_uniform_typed_matrix<typed_matrix> &&
+             tla::one_dimension<typed_matrix>;
 
   //! @brief Access the specified element.
   //!
