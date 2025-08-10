@@ -243,7 +243,7 @@ public:
   //!
   //! @details Applicable to singleton matrix: one element. Returns a reference
   //! to the unique element of the typed matrix.
-  [[nodiscard]] constexpr explicit operator element<0, 0> &&(this auto &&self)
+  [[nodiscard]] constexpr explicit operator element<0, 0>(this auto &&self)
     requires is_singleton_typed_matrix<typed_matrix>;
 
   //! @brief Access the specified element.
@@ -370,6 +370,9 @@ using typed_column_vector =
 //! @todo The call operator should be static once MSVC lands the support.
 template <typename To, typename From> struct element_caster {
   [[nodiscard]] constexpr To operator()(From value) const;
+  // [[nodiscard]] constexpr const To & operator()(const From &value) const;
+  // [[nodiscard]] constexpr To & operator()(From &value) const;
+  // [[nodiscard]] constexpr const To operator()(const From value) const;
 };
 
 //! @}

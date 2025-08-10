@@ -120,34 +120,11 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::
-operator element<0, 0> &&(this auto &&self)
+operator element<0, 0>(this auto &&self)
   requires is_singleton_typed_matrix<typed_matrix>
 {
-  // This is a form of `std::forward_like`, is there a simpler, or more compact
-  // syntax?
-  // I don't think this whole this is correct?
-  // We only use this as a const helper...
-  // constexpr bool is_adding_const{
-  //     std::is_const_v<std::remove_reference_t<decltype(self)>>};
-  if constexpr (std::is_lvalue_reference_v<decltype(self) &&>) {
-    // if constexpr (is_adding_const)
-    return cast<element<0, 0> &, underlying &>(
-        std::forward<decltype(self)>(self).storage(std::size_t{0},
-                                                   std::size_t{0}));
-    // else
-    //   return cast<element<0, 0> &, underlying &>(
-    //       std::forward<decltype(self)>(self).storage(std::size_t{0},
-    //                                                  std::size_t{0}));
-  } else {
-    // if constexpr (is_adding_const)
-    return std::move(cast<const element<0, 0> &, const underlying &>(
-        std::forward<decltype(self)>(self).storage(std::size_t{0},
-                                                   std::size_t{0})));
-    // else
-    //   return std::move(cast<element<0, 0> &&, underlying &&>(
-    //       std::forward<decltype(self)>(self).storage(std::size_t{0},
-    //                                                  std::size_t{0})));
-  }
+  return cast<element<0, 0>, underlying>(self.storage(std::size_t{0},
+                                                      std::size_t{0}));
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>

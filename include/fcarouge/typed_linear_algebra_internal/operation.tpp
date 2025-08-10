@@ -135,7 +135,7 @@ operator*(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
   requires(not is_typed_matrix<decltype(lhs)>)
 {
   //! @todo Should there be constraints on the type?
-  using matrix = decltype(rhs);
+  using matrix = std::remove_cvref_t<decltype(rhs)>;
   using element = typename matrix::template element<0, 0>;
 
   return lhs * element{rhs};
@@ -150,6 +150,19 @@ operator*(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
   using element = typename matrix::template element<0, 0>;
 
   return element{lhs} * rhs;
+}
+
+[[nodiscard]] constexpr auto
+operator*(const is_singleton_typed_matrix auto &lhs,
+          const is_singleton_typed_matrix auto &rhs)
+{
+  //! @todo Should there be constraints on the type?
+  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
+  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
+  using lhs_element = typename lhs_matrix::template element<0, 0>;
+  using rhs_element = typename rhs_matrix::template element<0, 0>;
+
+  return lhs_element{lhs} * rhs_element{rhs};
 }
 
 //! @todo Requires, assert that the element types are compatible.
@@ -185,6 +198,19 @@ operator+(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
   return element{lhs} + rhs;
 }
 
+[[nodiscard]] constexpr auto
+operator+(const is_singleton_typed_matrix auto &lhs,
+          const is_singleton_typed_matrix auto &rhs)
+{
+  //! @todo Should there be constraints on the type?
+  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
+  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
+  using lhs_element = typename lhs_matrix::template element<0, 0>;
+  using rhs_element = typename rhs_matrix::template element<0, 0>;
+
+  return lhs_element{lhs} + rhs_element{rhs};
+}
+
 //! @todo Requires, assert that the element types are compatible.
 [[nodiscard]] constexpr auto operator-(const is_typed_matrix auto &lhs,
                                        const is_typed_matrix auto &rhs) {
@@ -196,7 +222,6 @@ operator+(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
                                                         rhs.data());
 }
 
-//! @todo Add singleton +/- singleton overloads.
 [[nodiscard]] constexpr auto
 operator-(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
   requires(not is_typed_matrix<decltype(lhs)>)
@@ -217,6 +242,19 @@ operator-(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
   using element = typename matrix::template element<0, 0>;
 
   return element{lhs} - rhs;
+}
+
+[[nodiscard]] constexpr auto
+operator-(const is_singleton_typed_matrix auto &lhs,
+          const is_singleton_typed_matrix auto &rhs)
+{
+  //! @todo Should there be constraints on the type?
+  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
+  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
+  using lhs_element = typename lhs_matrix::template element<0, 0>;
+  using rhs_element = typename rhs_matrix::template element<0, 0>;
+
+  return lhs_element{lhs} - rhs_element{rhs};
 }
 
 [[nodiscard]] constexpr auto operator/(const is_typed_matrix auto &lhs,
@@ -242,6 +280,30 @@ operator/(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
   using element = typename matrix::template element<0, 0>;
 
   return element{lhs} / rhs;
+}
+
+[[nodiscard]] constexpr auto
+operator/(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
+  requires(not is_typed_matrix<decltype(lhs)>)
+{
+  //! @todo Should there be constraints on the type?
+  using matrix = std::remove_cvref_t<decltype(rhs)>;
+  using element = typename matrix::template element<0, 0>;
+
+  return lhs / element{rhs};
+}
+
+[[nodiscard]] constexpr auto
+operator/(const is_singleton_typed_matrix auto &lhs,
+          const is_singleton_typed_matrix auto &rhs)
+{
+  //! @todo Should there be constraints on the type?
+  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
+  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
+  using lhs_element = typename lhs_matrix::template element<0, 0>;
+  using rhs_element = typename rhs_matrix::template element<0, 0>;
+
+  return lhs_element{lhs} / rhs_element{rhs};
 }
 
 [[nodiscard]] constexpr auto operator/(const auto &lhs,

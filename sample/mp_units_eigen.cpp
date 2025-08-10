@@ -55,24 +55,18 @@ For more information, please refer to <https://unlicense.org> */
 #include <mp-units/systems/si.h>
 
 namespace fcarouge {
-// Teach the typed linear algebra library about mp-units type conversions.
-template <mp_units::Quantity To, typename From>
-struct element_caster<To, From> {
-  [[nodiscard]] constexpr To operator()(const From &value) const {
-    return value * To::reference;
-  }
-};
-
 template <typename To, mp_units::Quantity From>
 struct element_caster<To, From> {
-  [[nodiscard]] constexpr To operator()(const From &value) const {
+  [[nodiscard]] constexpr To operator()(From value) const {
     return value.numerical_value_in(value.unit);
   }
 };
 
-template <typename To, mp_units::Reference From>
+template <mp_units::Quantity To, typename From>
 struct element_caster<To, From> {
-  [[nodiscard]] constexpr To operator()(const From &) const { return 1.; }
+  [[nodiscard]] constexpr To operator()(From value) const {
+    return value * To::reference;
+  }
 };
 
 template <mp_units::Quantity To, typename From>
@@ -80,7 +74,55 @@ struct element_caster<To &, From &> {
   [[nodiscard]] constexpr To &operator()(From &value) const {
     return reinterpret_cast<To &>(value);
   }
+  // [[nodiscard]] constexpr const To &operator()(const From &value) const {
+  //   return reinterpret_cast<const To &>(value);
+  // }
 };
+
+template <typename To, mp_units::Reference From>
+struct element_caster<To, From> {
+  [[nodiscard]] constexpr To operator()(From) const { return 1.; }
+};
+
+// template <typename To, mp_units::Quantity From>
+// struct element_caster<To, From> {
+//   [[nodiscard]] constexpr To & operator()(From &value) const {
+//     return reinterpret_cast<To &>(value);
+//   }
+// };
+
+// Teach the typed linear algebra library about mp-units type conversions.
+// template <mp_units::Quantity To, typename From>
+// struct element_caster<To, From> {
+//   [[nodiscard]] constexpr To operator()(From value) const {
+//     return value * To::reference;
+//   }
+// };
+
+// template <mp_units::Quantity To, typename From>
+// struct element_caster<To &, From &> {
+//   // [[nodiscard]] constexpr To operator()(const From &value) const {
+//   //   return value * To::reference;
+//   // }
+//   [[nodiscard]] constexpr To &operator()(From &value) const {
+//     return reinterpret_cast<To &>(value);
+//   }
+//   [[nodiscard]] constexpr To && operator()(From &&value) const {
+//     return std::move(value * To::reference);
+//   }
+// };
+
+// template <mp_units::Quantity To, typename From>
+// struct element_caster<To &&, From&&> {
+//   [[nodiscard]] constexpr To && operator()(From &&value) const {
+//     return std::move(value * To::reference);
+//   }
+// };
+
+// template <typename To, mp_units::Reference From>
+// struct element_caster<To, From> {
+//   [[nodiscard]] constexpr To operator()(const From &) const { return 1.; }
+// };
 
 namespace sample {
 namespace {
