@@ -36,12 +36,34 @@ namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
 
 //! @todo Verify types and storage (?) compatibility.
-//! @todo Also add the equivalent operator=.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-template <typename Matrix2, typename RowIndexes2, typename ColumnIndexes2>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &other)
+    const is_typed_matrix auto &other)
     : storage{other.data()} {}
+
+//! @todo Verify types and storage (?) compatibility.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
+    const is_typed_matrix auto &other) {
+  storage = other.data();
+  return *this;
+}
+
+//! @todo Verify types and storage (?) compatibility.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
+    const is_typed_matrix auto &&other)
+    : storage{std::forward<decltype(other)>(other).data()} {}
+
+//! @todo Verify types and storage (?) compatibility.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
+    const is_typed_matrix auto &&other) {
+  storage = std::forward<decltype(other)>(other).data();
+  return *this;
+}
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
@@ -55,16 +77,8 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
            is_one_dimension_typed_matrix<typed_matrix>
     : storage{elements} {}
 
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const auto &value)
-  requires is_singleton_typed_matrix<typed_matrix>
-{
-  using type = std::remove_cvref_t<decltype(value)>;
-  storage(std::size_t{0}, std::size_t{0}) = cast<underlying, type>(value);
-}
-
 //! @todo Verify the list sizes at runtime? Deprecate?
+//! @todo Verify `Type` is `element<0, 0>`-compatible-safe?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <typename Type>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
@@ -80,19 +94,17 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
   }
 }
 
-//! @todo Combine the two constructors in ome?
 //! @todo Verify if the types are the same, or assignable, for nicer error?
 //! @todo Rewrite with a fold expression over the pack?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-template <typename... Types>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const Types &...values)
-  requires is_row_typed_matrix<typed_matrix> and
-           (not is_column_typed_matrix<typed_matrix>) and
-           tla::same_size<ColumnIndexes, std::tuple<Types...>>
+    const auto &first_value, const auto &second_value, const auto &...values)
+  requires is_one_dimension_typed_matrix<typed_matrix>
 {
-  std::tuple value_pack{values...};
-  tla::for_constexpr<0, typed_matrix::columns, 1>(
+  //! @todo Move the assert as a require clause when the compilers support it.
+  static_assert(columns * rows == 2 + sizeof...(values), "");
+  std::tuple value_pack{first_value, second_value, values...};
+  tla::for_constexpr<0, typed_matrix::columns * typed_matrix::rows, 1>(
       [this, &value_pack](auto position) {
         auto value{std::get<position>(value_pack)};
         using type = std::remove_cvref_t<decltype(value)>;
@@ -101,36 +113,18 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-template <typename... Types>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const Types &...values)
-  requires is_column_typed_matrix<typed_matrix> and
-           (not is_row_typed_matrix<typed_matrix>) and
-           tla::same_size<RowIndexes, std::tuple<Types...>>
-{
-  std::tuple value_pack{values...};
-  tla::for_constexpr<0, typed_matrix::rows, 1>(
-      [this, &value_pack](auto position) {
-        auto value{std::get<position>(value_pack)};
-        using type = std::remove_cvref_t<decltype(value)>;
-        storage(std::size_t{position}) = cast<underlying, type>(value);
-      });
-}
+    const element<0, 0> &value)
+  requires is_singleton_typed_matrix<typed_matrix>
+    : storage{cast<underlying, element<0, 0>>(value)} {}
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::
-operator element<0, 0> &&(this auto &&self)
+operator element<0, 0>(this auto &&self)
   requires is_singleton_typed_matrix<typed_matrix>
 {
-  if constexpr (std::is_lvalue_reference_v<decltype(self) &&>) {
-    return cast<element<0, 0> &, underlying &>(
-        std::forward<decltype(self)>(self).storage(std::size_t{0},
-                                                   std::size_t{0}));
-  } else {
-    return std::move(cast<const element<0, 0> &, const underlying &>(
-        std::forward<decltype(self)>(self).storage(std::size_t{0},
-                                                   std::size_t{0})));
-  }
+  return cast<element<0, 0>, underlying>(self.storage(std::size_t{0},
+                                                      std::size_t{0}));
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
