@@ -41,27 +41,6 @@ template <typename To, typename From>
 element_caster<To, From>::operator()(From value) const {
   return value;
 }
-
-template <typename To, typename From> struct element_caster<To &, From &> {
-  [[nodiscard]] constexpr To &operator()(From &value) const { return value; }
-  [[nodiscard]] constexpr To &&operator()(From &&value) const {
-    return std::move(value);
-  }
-};
-
-template <typename To, typename From> struct element_caster<To &&, From &&> {
-  [[nodiscard]] constexpr To &&operator()(From &&value) const {
-    return std::move(value);
-  }
-};
-
-template <typename To, typename From>
-  requires requires(const From &value) { value(0, 0); }
-struct element_caster<To, From> {
-  [[nodiscard]] constexpr const To &operator()(const From &value) const {
-    return value(0, 0);
-  }
-};
 } // namespace fcarouge
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
