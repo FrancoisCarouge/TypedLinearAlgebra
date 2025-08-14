@@ -150,6 +150,17 @@ operator*(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
   return element{lhs} * rhs;
 }
 
+[[nodiscard]] constexpr auto
+operator*(const is_singleton_typed_matrix auto &lhs,
+          const is_singleton_typed_matrix auto &rhs) {
+  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
+  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
+  using lhs_element = typename lhs_matrix::template element<0, 0>;
+  using rhs_element = typename rhs_matrix::template element<0, 0>;
+
+  return lhs_element{lhs} * rhs_element{rhs};
+}
+
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
           typename Matrix2>
 [[nodiscard]] constexpr auto

@@ -245,9 +245,9 @@ public:
 
   //! @brief Access the singleton typed matrix element.
   //!
-  //! @details Applicable to singleton matrix: one element. Returns a reference
-  //! to the unique element of the typed matrix.
-  [[nodiscard]] constexpr explicit operator element<0, 0> &&(this auto &&self)
+  //! @details Applicable to singleton matrix: one element. Returns a the unique
+  //! element of the typed matrix.
+  [[nodiscard]] constexpr explicit operator element<0, 0>(this auto &&self)
     requires is_singleton_typed_matrix<typed_matrix>;
 
   //! @brief Access the specified element.
