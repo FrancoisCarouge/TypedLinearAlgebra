@@ -193,22 +193,13 @@ operator+(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
          rhs;
 }
 
-//! @todo Generalize our Matrix2?
-template <typename Matrix1, typename Matrix2, typename RowIndexes,
-          typename ColumnIndexes>
-[[nodiscard]] constexpr auto
-operator-(const typed_matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
-          const typed_matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
-  return make_typed_matrix<RowIndexes, ColumnIndexes>(lhs.data() - rhs.data());
-}
+[[nodiscard]] constexpr auto operator-(const is_typed_matrix auto &lhs,
+                                       const is_typed_matrix auto &rhs) {
+  using matrix = std::remove_cvref_t<decltype(lhs)>;
+  using row_indexes = typename matrix::row_indexes;
+  using column_indexes = typename matrix::column_indexes;
 
-template <typename Matrix1, typename RowIndexes1, typename ColumnIndexes1,
-          typename Matrix2, typename RowIndexes2, typename ColumnIndexes2>
-[[nodiscard]] constexpr auto
-operator-(const typed_matrix<Matrix1, RowIndexes1, ColumnIndexes1> &lhs,
-          const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &rhs) {
-  //! @todo Verify the resulting types compatibility at compile-time.
-  return make_typed_matrix<RowIndexes1, ColumnIndexes1>(lhs.data() -
+  return make_typed_matrix<row_indexes, column_indexes>(lhs.data() -
                                                         rhs.data());
 }
 
