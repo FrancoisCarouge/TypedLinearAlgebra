@@ -60,8 +60,13 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const auto &value)
   requires is_singleton_typed_matrix<typed_matrix>
 {
-  using type = std::remove_cvref_t<decltype(value)>;
-  storage(std::size_t{0}, std::size_t{0}) = cast<underlying, type>(value);
+  if constexpr (requires { value(std::size_t{0}, std::size_t{0}); }) {
+    storage(std::size_t{0}, std::size_t{0}) =
+        underlying{value(std::size_t{0}, std::size_t{0})};
+  } else {
+    using type = std::remove_cvref_t<decltype(value)>;
+    storage(std::size_t{0}, std::size_t{0}) = cast<underlying, type>(value);
+  }
 }
 
 //! @todo Verify the list sizes at runtime? Deprecate?
@@ -118,19 +123,12 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-[[nodiscard]] constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::
-operator element<0, 0> &&(this auto &&self)
+[[nodiscard]] constexpr typed_matrix<
+    Matrix, RowIndexes, ColumnIndexes>::operator element<0, 0>(this auto &&self)
   requires is_singleton_typed_matrix<typed_matrix>
 {
-  if constexpr (std::is_lvalue_reference_v<decltype(self) &&>) {
-    return cast<element<0, 0> &, underlying &>(
-        std::forward<decltype(self)>(self).storage(std::size_t{0},
-                                                   std::size_t{0}));
-  } else {
-    return std::move(cast<const element<0, 0> &, const underlying &>(
-        std::forward<decltype(self)>(self).storage(std::size_t{0},
-                                                   std::size_t{0})));
-  }
+  return cast<element<0, 0>, underlying>(
+      self.storage(std::size_t{0}, std::size_t{0}));
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
