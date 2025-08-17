@@ -176,10 +176,21 @@ public:
   //! @brief Move construct a typed matrix.
   constexpr typed_matrix &operator=(typed_matrix &&other) = default;
 
-  //! @brief Copy construct the typed matrix.
-  template <typename Matrix2, typename RowIndexes2, typename ColumnIndexes2>
-  constexpr typed_matrix(
-      const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &other);
+  //! @brief Copy construct generalization of a compatible typed matrix.
+  //!
+  //! @details Implicit conversions supported.
+  constexpr explicit(false) typed_matrix(const is_typed_matrix auto &other);
+
+  //! @brief Copy assign generalization of a compatible typed matrix.
+  constexpr typed_matrix &operator=(const is_typed_matrix auto &other);
+
+  //! @brief Move construct generalization of a compatible typed matrix.
+  //!
+  //! @details Implicit conversions supported.
+  constexpr explicit(false) typed_matrix(const is_typed_matrix auto &&other);
+
+  //! @brief Move assign generalization of a compatible typed matrix.
+  constexpr typed_matrix &operator=(const is_typed_matrix auto &&other);
 
   //! @brief Convert construct a typed matrix from an underlying matrix.
   //!
@@ -195,10 +206,8 @@ public:
   //! Applicable to single-type matrix: uniform type of all elements.
   //! Single-argument constructors taking arrays of data should get implicit
   //! constructors.
-  //!
-  //! @param elements C-style array of elements of identical types.
-  constexpr explicit typed_matrix(
-      const element<0, 0> (&elements)[rows * columns])
+  constexpr explicit(false)
+      typed_matrix(const element<0, 0> (&elements)[rows * columns])
     requires is_uniform_typed_matrix<typed_matrix> and
              is_one_dimension_typed_matrix<typed_matrix>;
 
@@ -217,35 +226,25 @@ public:
   //!
   //! @param row_list List-initializers of list-initializer of elements.
   template <typename Type>
-  constexpr explicit typed_matrix(
+  constexpr typed_matrix(
       std::initializer_list<std::initializer_list<Type>> row_list)
     requires is_uniform_typed_matrix<typed_matrix>;
 
-  //! @brief Convert construct a row typed vector from elements.
+  //! @brief Convert construct a row or column typed vector from elements.
   //!
-  //! @details Applicable to one-dimension matrix: row-vector.
+  //! @details Applicable to one-dimension matrix. The first and second value
+  //! parameter help in determining which constructor should the compiler call.
   //!
-  //! @param values Parameter pack of elements.
-  template <typename... Types>
-  constexpr explicit typed_matrix(const Types &...values)
-    requires is_row_typed_matrix<typed_matrix> and
-             (not is_column_typed_matrix<typed_matrix>) and
-             tla::same_size<ColumnIndexes, std::tuple<Types...>>;
-
-  //! @brief Convert construct a column typed vector from elements.
-  //!
-  //! @details Applicable to one-dimension matrix: column-vector.
-  //!
-  //! @param values Parameter pack of elements.
-  template <typename... Types>
-  constexpr typed_matrix(const Types &...values)
-    requires is_column_typed_matrix<typed_matrix> and
-             (not is_row_typed_matrix<typed_matrix>) and
-             tla::same_size<RowIndexes, std::tuple<Types...>>;
+  //! @param first_value First element.
+  //! @param second_value Second element.
+  //! @param values Other elements.
+  constexpr typed_matrix(const auto &first_value, const auto &second_value,
+                         const auto &...values)
+    requires is_one_dimension_typed_matrix<typed_matrix>;
 
   //! @brief Access the singleton typed matrix element.
   //!
-  //! @details Applicable to singleton matrix: one element. Returns a the unique
+  //! @details Applicable to singleton matrix: one element. Returns the unique
   //! element of the typed matrix.
   [[nodiscard]] constexpr explicit operator element<0, 0>(this auto &&self)
     requires is_singleton_typed_matrix<typed_matrix>;

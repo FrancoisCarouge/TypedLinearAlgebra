@@ -35,13 +35,31 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
 
-//! @todo Verify types and storage (?) compatibility.
-//! @todo Also add the equivalent operator=.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-template <typename Matrix2, typename RowIndexes2, typename ColumnIndexes2>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const typed_matrix<Matrix2, RowIndexes2, ColumnIndexes2> &other)
+    const is_typed_matrix auto &other)
     : storage{other.data()} {}
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
+    const is_typed_matrix auto &other) {
+  storage = other.data();
+  return *this;
+}
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
+    const is_typed_matrix auto &&other)
+    : storage{std::forward<decltype(other)>(other).data()} {}
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
+    const is_typed_matrix auto &&other) {
+  storage = std::forward<decltype(other)>(other).data();
+  return *this;
+}
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
@@ -69,7 +87,6 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
   }
 }
 
-//! @todo Verify the list sizes at runtime? Deprecate?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <typename Type>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
@@ -85,36 +102,14 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
   }
 }
 
-//! @todo Combine the two constructors in ome?
-//! @todo Verify if the types are the same, or assignable, for nicer error?
-//! @todo Rewrite with a fold expression over the pack?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-template <typename... Types>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const Types &...values)
-  requires is_row_typed_matrix<typed_matrix> and
-           (not is_column_typed_matrix<typed_matrix>) and
-           tla::same_size<ColumnIndexes, std::tuple<Types...>>
+    const auto &first_value, const auto &second_value, const auto &...values)
+  requires is_one_dimension_typed_matrix<typed_matrix>
 {
-  std::tuple value_pack{values...};
-  tla::for_constexpr<0, typed_matrix::columns, 1>(
-      [this, &value_pack](auto position) {
-        auto value{std::get<position>(value_pack)};
-        using type = std::remove_cvref_t<decltype(value)>;
-        storage(std::size_t{position}) = cast<underlying, type>(value);
-      });
-}
-
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-template <typename... Types>
-constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const Types &...values)
-  requires is_column_typed_matrix<typed_matrix> and
-           (not is_row_typed_matrix<typed_matrix>) and
-           tla::same_size<RowIndexes, std::tuple<Types...>>
-{
-  std::tuple value_pack{values...};
-  tla::for_constexpr<0, typed_matrix::rows, 1>(
+  static_assert(columns * rows == 2 + sizeof...(values), "");
+  std::tuple value_pack{first_value, second_value, values...};
+  tla::for_constexpr<0, typed_matrix::columns * typed_matrix::rows, 1>(
       [this, &value_pack](auto position) {
         auto value{std::get<position>(value_pack)};
         using type = std::remove_cvref_t<decltype(value)>;
@@ -173,7 +168,6 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
                                                     std::size_t{column});
 }
 
-//! @todo Can we deduplicate with deducing this?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <std::size_t Row, std::size_t Column>
 [[nodiscard]] constexpr auto
@@ -204,7 +198,6 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() -> element<Index, 0> &
   return cast<element<Index, 0> &, underlying &>(storage(std::size_t{Index}));
 }
 
-//! @todo Add row-vector overload.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <std::size_t Index>
 [[nodiscard]] constexpr auto
