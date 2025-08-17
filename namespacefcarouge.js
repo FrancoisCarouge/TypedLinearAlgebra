@@ -8,11 +8,9 @@ var namespacefcarouge =
       [ "identity_index", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a2963e691119d8b2ac7bdeac82688b5b9", null ],
       [ "product", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a174364178a20af0590ffe5c549e13e66", null ],
       [ "quotient", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#ad9aae459061728b7d7b2ae70196f2028", null ],
-      [ "repack", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a8beb8d3741b310de71851a081557455e", null ],
       [ "tuple_n_type", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a4dd57b09634fe03c0fd59b866657ad86", null ],
       [ "underlying_t", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a850ffce4253219f2b82c441cc4de8efc", null ],
-      [ "for_constexpr", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a9a86c642ba2610ed4f92a3d84baf5b00", null ],
-      [ "size", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aef655fff0379b424e1493f0e13f75682", null ]
+      [ "for_constexpr", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a9a86c642ba2610ed4f92a3d84baf5b00", null ]
     ] ],
     [ "element_caster", "structfcarouge_1_1element__caster.xhtml", "structfcarouge_1_1element__caster" ],
     [ "typed_matrix", "classfcarouge_1_1typed__matrix.xhtml", "classfcarouge_1_1typed__matrix" ],
