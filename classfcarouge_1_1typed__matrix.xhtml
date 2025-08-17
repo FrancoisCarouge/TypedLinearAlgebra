@@ -138,9 +138,26 @@ Public Types</h2></td></tr>
 <tr class="memdesc:af6be5fe000ae7ae363a9a01fec688d57"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the element at the given matrix indexes position.  <br /></td></tr>
 <tr class="separator:af6be5fe000ae7ae363a9a01fec688d57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr><td colspan="2"><div class="groupHeader">Public Member Functions</div></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Public Member Variables</div></td></tr>
+<tr class="memitem:a15d0673c2c5a8f97ec7d6d6120bc37a4" id="r_a15d0673c2c5a8f97ec7d6d6120bc37a4"><td class="memItemLeft" align="right" valign="top">static constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">rows</a> {std::tuple_size_v&lt;<a class="el" href="#a67a638bf31384a9120a5def3c74b641a">row_indexes</a>&gt;}</td></tr>
+<tr class="memdesc:a15d0673c2c5a8f97ec7d6d6120bc37a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The count of rows.  <br /></td></tr>
+<tr class="separator:a15d0673c2c5a8f97ec7d6d6120bc37a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46ef06b82cd1ab3db9a22cd31436b802" id="r_a46ef06b82cd1ab3db9a22cd31436b802"><td class="memItemLeft" align="right" valign="top">static constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46ef06b82cd1ab3db9a22cd31436b802">columns</a></td></tr>
+<tr class="memdesc:a46ef06b82cd1ab3db9a22cd31436b802"><td class="mdescLeft">&#160;</td><td class="mdescRight">The count of rows.  <br /></td></tr>
+<tr class="separator:a46ef06b82cd1ab3db9a22cd31436b802"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Private Member Variables</div></td></tr>
+<tr class="memitem:a4329fed7250ec71b8b0312accb3ddff6" id="r_a4329fed7250ec71b8b0312accb3ddff6"><td class="memItemLeft" align="right" valign="top">Matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4329fed7250ec71b8b0312accb3ddff6">storage</a></td></tr>
+<tr class="memdesc:a4329fed7250ec71b8b0312accb3ddff6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Underlying algebraic backend data storage.  <br /></td></tr>
+<tr class="separator:a4329fed7250ec71b8b0312accb3ddff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Public Member Functions</h2></td></tr>
+<tr class="memitem:a1dbac912178622f1297d2f9086394806" id="r_a1dbac912178622f1297d2f9086394806"><td class="memItemLeft" align="right" valign="top">constexpr(&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1dbac912178622f1297d2f9086394806">elements</a> )[<a class="el" href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">rows</a> *<a class="el" href="#a46ef06b82cd1ab3db9a22cd31436b802">columns</a>]</td></tr>
+<tr class="separator:a1dbac912178622f1297d2f9086394806"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11b18c32111d6f1651c01469c7a0322f" id="r_a11b18c32111d6f1651c01469c7a0322f"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11b18c32111d6f1651c01469c7a0322f">~typed_matrix</a> ()=default</td></tr>
 <tr class="memdesc:a11b18c32111d6f1651c01469c7a0322f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destruct a default typed matrix.  <br /></td></tr>
 <tr class="separator:a11b18c32111d6f1651c01469c7a0322f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -159,16 +176,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a79f8df9c51f9f86dd6070ac319ba815d" id="r_a79f8df9c51f9f86dd6070ac319ba815d"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79f8df9c51f9f86dd6070ac319ba815d">operator=</a> (<a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a> &amp;&amp;other)=default</td></tr>
 <tr class="memdesc:a79f8df9c51f9f86dd6070ac319ba815d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move construct a typed matrix.  <br /></td></tr>
 <tr class="separator:a79f8df9c51f9f86dd6070ac319ba815d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7394501da0d230e9d76fb73d396ada18" id="r_a7394501da0d230e9d76fb73d396ada18"><td class="memTemplParams" colspan="2">template&lt;typename Matrix2 , typename RowIndexes2 , typename ColumnIndexes2 &gt; </td></tr>
-<tr class="memitem:a7394501da0d230e9d76fb73d396ada18"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7394501da0d230e9d76fb73d396ada18">typed_matrix</a> (const <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&lt; Matrix2, RowIndexes2, ColumnIndexes2 &gt; &amp;other)</td></tr>
-<tr class="memdesc:a7394501da0d230e9d76fb73d396ada18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy construct the typed matrix.  <br /></td></tr>
-<tr class="separator:a7394501da0d230e9d76fb73d396ada18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae297251bee803ba3cabb0e070b4733c8" id="r_ae297251bee803ba3cabb0e070b4733c8"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae297251bee803ba3cabb0e070b4733c8">explicit</a> (false) <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>(const is_typed_matrix auto &amp;other)</td></tr>
+<tr class="memdesc:ae297251bee803ba3cabb0e070b4733c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy construct generalization of a compatible typed matrix.  <br /></td></tr>
+<tr class="separator:ae297251bee803ba3cabb0e070b4733c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42c4740ad1a2d7e2f30088e3c69b8662" id="r_a42c4740ad1a2d7e2f30088e3c69b8662"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42c4740ad1a2d7e2f30088e3c69b8662">operator=</a> (const is_typed_matrix auto &amp;other)</td></tr>
+<tr class="memdesc:a42c4740ad1a2d7e2f30088e3c69b8662"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy assign generalization of a compatible typed matrix.  <br /></td></tr>
+<tr class="separator:a42c4740ad1a2d7e2f30088e3c69b8662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c193bbe6bcf23da495d1366a26637d0" id="r_a6c193bbe6bcf23da495d1366a26637d0"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c193bbe6bcf23da495d1366a26637d0">explicit</a> (false) <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>(const is_typed_matrix auto &amp;&amp;other)</td></tr>
+<tr class="memdesc:a6c193bbe6bcf23da495d1366a26637d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move construct generalization of a compatible typed matrix.  <br /></td></tr>
+<tr class="separator:a6c193bbe6bcf23da495d1366a26637d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a077440e871c28f28cf97896dc72b31ea" id="r_a077440e871c28f28cf97896dc72b31ea"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a077440e871c28f28cf97896dc72b31ea">operator=</a> (const is_typed_matrix auto &amp;&amp;other)</td></tr>
+<tr class="memdesc:a077440e871c28f28cf97896dc72b31ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assign generalization of a compatible typed matrix.  <br /></td></tr>
+<tr class="separator:a077440e871c28f28cf97896dc72b31ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cb6909ad42c9f4560dbf7c51e5ed1e4" id="r_a4cb6909ad42c9f4560dbf7c51e5ed1e4"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4cb6909ad42c9f4560dbf7c51e5ed1e4">typed_matrix</a> (const Matrix &amp;other)</td></tr>
 <tr class="memdesc:a4cb6909ad42c9f4560dbf7c51e5ed1e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert construct a typed matrix from an underlying matrix.  <br /></td></tr>
 <tr class="separator:a4cb6909ad42c9f4560dbf7c51e5ed1e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a979d556e4738c6c4a404bef9ccda45fc" id="r_a979d556e4738c6c4a404bef9ccda45fc"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a979d556e4738c6c4a404bef9ccda45fc">typed_matrix</a> (const <a class="el" href="#af6be5fe000ae7ae363a9a01fec688d57">element</a>&lt; 0, 0 &gt;(&amp;elements)[<a class="el" href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">rows</a> *<a class="el" href="#a46ef06b82cd1ab3db9a22cd31436b802">columns</a>])</td></tr>
-<tr class="memdesc:a979d556e4738c6c4a404bef9ccda45fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert construct a one-dimension uniformly typed matrix from array.  <br /></td></tr>
-<tr class="separator:a979d556e4738c6c4a404bef9ccda45fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8ec9e22e3a2c343032a1b861ada464d" id="r_ae8ec9e22e3a2c343032a1b861ada464d"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8ec9e22e3a2c343032a1b861ada464d">explicit</a> (false) <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>(const <a class="el" href="#af6be5fe000ae7ae363a9a01fec688d57">element</a>&lt; 0</td></tr>
+<tr class="memdesc:ae8ec9e22e3a2c343032a1b861ada464d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert construct a one-dimension uniformly typed matrix from array.  <br /></td></tr>
+<tr class="separator:ae8ec9e22e3a2c343032a1b861ada464d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd492d3339906f59085bc2a2475c76cb" id="r_abd492d3339906f59085bc2a2475c76cb"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd492d3339906f59085bc2a2475c76cb">typed_matrix</a> (const auto &amp;value)</td></tr>
 <tr class="memdesc:abd492d3339906f59085bc2a2475c76cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert construct a singleton typed matrix from a single value.  <br /></td></tr>
 <tr class="separator:abd492d3339906f59085bc2a2475c76cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,16 +202,9 @@ requires is_uniform_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__
 <tr class="memitem:a1386b0ad6fbcf7df82a4eda98d669e24"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a1386b0ad6fbcf7df82a4eda98d669e24">typed_matrix</a> (std::initializer_list&lt; std::initializer_list&lt; Type &gt; &gt; row_list)</td></tr>
 <tr class="memdesc:a1386b0ad6fbcf7df82a4eda98d669e24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert construct a uniformly typed matrix from list-initializers.  <br /></td></tr>
 <tr class="separator:a1386b0ad6fbcf7df82a4eda98d669e24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac01202341914409c3b2c251c3af07e67" id="r_ac01202341914409c3b2c251c3af07e67"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; <br />
-requires is_row_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&gt; and (not is_column_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&gt;) and tla::same_size&lt;ColumnIndexes, std::tuple&lt;Types...&gt;&gt;</td></tr>
-<tr class="memitem:ac01202341914409c3b2c251c3af07e67"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ac01202341914409c3b2c251c3af07e67">typed_matrix</a> (const Types &amp;...values)</td></tr>
-<tr class="memdesc:ac01202341914409c3b2c251c3af07e67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert construct a row typed vector from elements.  <br /></td></tr>
-<tr class="separator:ac01202341914409c3b2c251c3af07e67"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46710939db0e9fcbe4bc00e2e92b451a" id="r_a46710939db0e9fcbe4bc00e2e92b451a"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; <br />
-requires is_column_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&gt; and (not is_row_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&gt;) and tla::same_size&lt;RowIndexes, std::tuple&lt;Types...&gt;&gt;</td></tr>
-<tr class="memitem:a46710939db0e9fcbe4bc00e2e92b451a"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a46710939db0e9fcbe4bc00e2e92b451a">typed_matrix</a> (const Types &amp;...values)</td></tr>
-<tr class="memdesc:a46710939db0e9fcbe4bc00e2e92b451a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert construct a column typed vector from elements.  <br /></td></tr>
-<tr class="separator:a46710939db0e9fcbe4bc00e2e92b451a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87b3f1c5454bc967dd304d15cf281810" id="r_a87b3f1c5454bc967dd304d15cf281810"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87b3f1c5454bc967dd304d15cf281810">typed_matrix</a> (const auto &amp;first_value, const auto &amp;second_value, const auto &amp;...values)</td></tr>
+<tr class="memdesc:a87b3f1c5454bc967dd304d15cf281810"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert construct a row or column typed vector from elements.  <br /></td></tr>
+<tr class="separator:a87b3f1c5454bc967dd304d15cf281810"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab32e2fdaa8598afab67fa824667ac84f" id="r_ab32e2fdaa8598afab67fa824667ac84f"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab32e2fdaa8598afab67fa824667ac84f">operator element&lt; 0, 0 &gt;</a> (this auto &amp;&amp;self)</td></tr>
 <tr class="memdesc:ab32e2fdaa8598afab67fa824667ac84f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the singleton typed matrix element.  <br /></td></tr>
 <tr class="separator:ab32e2fdaa8598afab67fa824667ac84f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -223,23 +241,6 @@ requires is_column_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__m
 <tr class="memitem:a7689ad2fa80eb2439d08296618b71a62" id="r_a7689ad2fa80eb2439d08296618b71a62"><td class="memItemLeft" align="right" valign="top">constexpr auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7689ad2fa80eb2439d08296618b71a62">data</a> (this auto &amp;&amp;self)</td></tr>
 <tr class="memdesc:a7689ad2fa80eb2439d08296618b71a62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Direct access to the underlying storage.  <br /></td></tr>
 <tr class="separator:a7689ad2fa80eb2439d08296618b71a62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr><td colspan="2"><div class="groupHeader">Public Member Variables</div></td></tr>
-<tr class="memitem:a15d0673c2c5a8f97ec7d6d6120bc37a4" id="r_a15d0673c2c5a8f97ec7d6d6120bc37a4"><td class="memItemLeft" align="right" valign="top">static constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">rows</a> {std::tuple_size_v&lt;<a class="el" href="#a67a638bf31384a9120a5def3c74b641a">row_indexes</a>&gt;}</td></tr>
-<tr class="memdesc:a15d0673c2c5a8f97ec7d6d6120bc37a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The count of rows.  <br /></td></tr>
-<tr class="separator:a15d0673c2c5a8f97ec7d6d6120bc37a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46ef06b82cd1ab3db9a22cd31436b802" id="r_a46ef06b82cd1ab3db9a22cd31436b802"><td class="memItemLeft" align="right" valign="top">static constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46ef06b82cd1ab3db9a22cd31436b802">columns</a></td></tr>
-<tr class="memdesc:a46ef06b82cd1ab3db9a22cd31436b802"><td class="mdescLeft">&#160;</td><td class="mdescRight">The count of rows.  <br /></td></tr>
-<tr class="separator:a46ef06b82cd1ab3db9a22cd31436b802"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr><td colspan="2"><div class="groupHeader">Private Member Variables</div></td></tr>
-<tr class="memitem:a4329fed7250ec71b8b0312accb3ddff6" id="r_a4329fed7250ec71b8b0312accb3ddff6"><td class="memItemLeft" align="right" valign="top">Matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4329fed7250ec71b8b0312accb3ddff6">storage</a></td></tr>
-<tr class="memdesc:a4329fed7250ec71b8b0312accb3ddff6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Underlying algebraic backend data storage.  <br /></td></tr>
-<tr class="separator:a4329fed7250ec71b8b0312accb3ddff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Matrix, typename RowIndexes, typename ColumnIndexes&gt;<br />
@@ -396,7 +397,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div>
 </div>
 <a id="a7003e001bcb6a08ca1346bafbc9b31f3" name="a7003e001bcb6a08ca1346bafbc9b31f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7003e001bcb6a08ca1346bafbc9b31f3">&#9670;&#160;</a></span>typed_matrix() <span class="overload">[1/10]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7003e001bcb6a08ca1346bafbc9b31f3">&#9670;&#160;</a></span>typed_matrix() <span class="overload">[1/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -426,7 +427,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div>
 </div>
 <a id="a61debbe8e973b969b79ed4efad933054" name="a61debbe8e973b969b79ed4efad933054"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61debbe8e973b969b79ed4efad933054">&#9670;&#160;</a></span>typed_matrix() <span class="overload">[2/10]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a61debbe8e973b969b79ed4efad933054">&#9670;&#160;</a></span>typed_matrix() <span class="overload">[2/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -455,7 +456,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div>
 </div>
 <a id="a01a3060309b0adf3a17736a0c2e0331e" name="a01a3060309b0adf3a17736a0c2e0331e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a01a3060309b0adf3a17736a0c2e0331e">&#9670;&#160;</a></span>typed_matrix() <span class="overload">[3/10]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a01a3060309b0adf3a17736a0c2e0331e">&#9670;&#160;</a></span>typed_matrix() <span class="overload">[3/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -483,39 +484,8 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 </div>
 </div>
-<a id="a7394501da0d230e9d76fb73d396ada18" name="a7394501da0d230e9d76fb73d396ada18"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7394501da0d230e9d76fb73d396ada18">&#9670;&#160;</a></span>typed_matrix() <span class="overload">[4/10]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
-<div class="memtemplate">
-template&lt;typename Matrix2 , typename RowIndexes2 , typename ColumnIndexes2 &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::typed_matrix </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&lt; Matrix2, RowIndexes2, ColumnIndexes2 &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Copy construct the typed matrix. </p>
-
-</div>
-</div>
 <a id="a4cb6909ad42c9f4560dbf7c51e5ed1e4" name="a4cb6909ad42c9f4560dbf7c51e5ed1e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4cb6909ad42c9f4560dbf7c51e5ed1e4">&#9670;&#160;</a></span>typed_matrix() <span class="overload">[5/10]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cb6909ad42c9f4560dbf7c51e5ed1e4">&#9670;&#160;</a></span>typed_matrix() <span class="overload">[4/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -544,44 +514,8 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 </div>
 </div>
-<a id="a979d556e4738c6c4a404bef9ccda45fc" name="a979d556e4738c6c4a404bef9ccda45fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a979d556e4738c6c4a404bef9ccda45fc">&#9670;&#160;</a></span>typed_matrix() <span class="overload">[6/10]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::typed_matrix </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="#af6be5fe000ae7ae363a9a01fec688d57">element</a>&lt; 0, 0 &gt;(&amp;)</td>          <td class="paramname"><span class="paramname"><em>elements</em></span>[rows *columns]</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Convert construct a one-dimension uniformly typed matrix from array. </p>
-<p>Applicable to one-dimension matrix: column- or row-vector. Applicable to single-type matrix: uniform type of all elements. Single-argument constructors taking arrays of data should get implicit constructors.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">elements</td><td>C-style array of elements of identical types. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="abd492d3339906f59085bc2a2475c76cb" name="abd492d3339906f59085bc2a2475c76cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd492d3339906f59085bc2a2475c76cb">&#9670;&#160;</a></span>typed_matrix() <span class="overload">[7/10]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#abd492d3339906f59085bc2a2475c76cb">&#9670;&#160;</a></span>typed_matrix() <span class="overload">[5/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -617,7 +551,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div>
 </div>
 <a id="a1386b0ad6fbcf7df82a4eda98d669e24" name="a1386b0ad6fbcf7df82a4eda98d669e24"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1386b0ad6fbcf7df82a4eda98d669e24">&#9670;&#160;</a></span>typed_matrix() <span class="overload">[8/10]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1386b0ad6fbcf7df82a4eda98d669e24">&#9670;&#160;</a></span>typed_matrix() <span class="overload">[6/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -639,7 +573,7 @@ requires is_uniform_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -655,16 +589,13 @@ requires is_uniform_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__
 
 </div>
 </div>
-<a id="ac01202341914409c3b2c251c3af07e67" name="ac01202341914409c3b2c251c3af07e67"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac01202341914409c3b2c251c3af07e67">&#9670;&#160;</a></span>typed_matrix() <span class="overload">[9/10]</span></h2>
+<a id="a87b3f1c5454bc967dd304d15cf281810" name="a87b3f1c5454bc967dd304d15cf281810"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87b3f1c5454bc967dd304d15cf281810">&#9670;&#160;</a></span>typed_matrix() <span class="overload">[7/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
-<div class="memtemplate">
-template&lt;typename... Types&gt; <br />
-requires is_row_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&gt; and (not is_column_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&gt;) and tla::same_size&lt;ColumnIndexes, std::tuple&lt;Types...&gt;&gt;</div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -672,47 +603,17 @@ requires is_row_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matr
         <tr>
           <td class="memname"><a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::typed_matrix </td>
           <td>(</td>
-          <td class="paramtype">const Types &amp;...</td>          <td class="paramname"><span class="paramname"><em>values</em></span></td><td>)</td>
-          <td></td>
+          <td class="paramtype">const auto &amp;</td>          <td class="paramname"><span class="paramname"><em>first_value</em></span>, </td>
         </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Convert construct a row typed vector from elements. </p>
-<p>Applicable to one-dimension matrix: row-vector.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">values</td><td>Parameter pack of elements. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a46710939db0e9fcbe4bc00e2e92b451a" name="a46710939db0e9fcbe4bc00e2e92b451a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a46710939db0e9fcbe4bc00e2e92b451a">&#9670;&#160;</a></span>typed_matrix() <span class="overload">[10/10]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
-<div class="memtemplate">
-template&lt;typename... Types&gt; <br />
-requires is_column_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&gt; and (not is_row_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&gt;) and tla::same_size&lt;RowIndexes, std::tuple&lt;Types...&gt;&gt;</div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::typed_matrix </td>
-          <td>(</td>
-          <td class="paramtype">const Types &amp;...</td>          <td class="paramname"><span class="paramname"><em>values</em></span></td><td>)</td>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const auto &amp;</td>          <td class="paramname"><span class="paramname"><em>second_value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const auto &amp;...</td>          <td class="paramname"><span class="paramname"><em>values</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -722,11 +623,13 @@ requires is_column_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__m
 </table>
 </div><div class="memdoc">
 
-<p>Convert construct a column typed vector from elements. </p>
-<p>Applicable to one-dimension matrix: column-vector.</p>
+<p>Convert construct a row or column typed vector from elements. </p>
+<p>Applicable to one-dimension matrix. The first and second value parameter help in determining which constructor should the compiler call.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">values</td><td>Parameter pack of elements. </td></tr>
+    <tr><td class="paramname">first_value</td><td>First element. </td></tr>
+    <tr><td class="paramname">second_value</td><td>Second element. </td></tr>
+    <tr><td class="paramname">values</td><td>Other elements. </td></tr>
   </table>
   </dd>
 </dl>
@@ -920,6 +823,96 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 </div>
 </div>
+<a id="ae8ec9e22e3a2c343032a1b861ada464d" name="ae8ec9e22e3a2c343032a1b861ada464d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8ec9e22e3a2c343032a1b861ada464d">&#9670;&#160;</a></span>explicit() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::explicit </td>
+          <td>(</td>
+          <td class="paramtype">false</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convert construct a one-dimension uniformly typed matrix from array. </p>
+<p>Applicable to one-dimension matrix: column- or row-vector. Applicable to single-type matrix: uniform type of all elements. Single-argument constructors taking arrays of data should get implicit constructors. </p>
+
+</div>
+</div>
+<a id="a6c193bbe6bcf23da495d1366a26637d0" name="a6c193bbe6bcf23da495d1366a26637d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c193bbe6bcf23da495d1366a26637d0">&#9670;&#160;</a></span>explicit() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::explicit </td>
+          <td>(</td>
+          <td class="paramtype">false</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const &amp;&amp;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Move construct generalization of a compatible typed matrix. </p>
+<p>Implicit conversions supported. </p>
+
+</div>
+</div>
+<a id="ae297251bee803ba3cabb0e070b4733c8" name="ae297251bee803ba3cabb0e070b4733c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae297251bee803ba3cabb0e070b4733c8">&#9670;&#160;</a></span>explicit() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::explicit </td>
+          <td>(</td>
+          <td class="paramtype">false</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const &amp;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Copy construct generalization of a compatible typed matrix. </p>
+<p>Implicit conversions supported. </p>
+
+</div>
+</div>
 <a id="ab32e2fdaa8598afab67fa824667ac84f" name="ab32e2fdaa8598afab67fa824667ac84f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab32e2fdaa8598afab67fa824667ac84f">&#9670;&#160;</a></span>operator element&lt; 0, 0 &gt;()</h2>
 
@@ -946,7 +939,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div><div class="memdoc">
 
 <p>Access the singleton typed matrix element. </p>
-<p>Applicable to singleton matrix: one element. Returns a the unique element of the typed matrix. </p>
+<p>Applicable to singleton matrix: one element. Returns the unique element of the typed matrix. </p>
 
 </div>
 </div>
@@ -1038,8 +1031,66 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 </div>
 </div>
+<a id="a077440e871c28f28cf97896dc72b31ea" name="a077440e871c28f28cf97896dc72b31ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a077440e871c28f28cf97896dc72b31ea">&#9670;&#160;</a></span>operator=() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a> &amp; <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const is_typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Move assign generalization of a compatible typed matrix. </p>
+
+</div>
+</div>
+<a id="a42c4740ad1a2d7e2f30088e3c69b8662" name="a42c4740ad1a2d7e2f30088e3c69b8662"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42c4740ad1a2d7e2f30088e3c69b8662">&#9670;&#160;</a></span>operator=() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a> &amp; <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const is_typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; auto &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Copy assign generalization of a compatible typed matrix. </p>
+
+</div>
+</div>
 <a id="a7ec9fac774b1a9517b6ecf001c9387b1" name="a7ec9fac774b1a9517b6ecf001c9387b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ec9fac774b1a9517b6ecf001c9387b1">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ec9fac774b1a9517b6ecf001c9387b1">&#9670;&#160;</a></span>operator=() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1068,7 +1119,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div>
 </div>
 <a id="a79f8df9c51f9f86dd6070ac319ba815d" name="a79f8df9c51f9f86dd6070ac319ba815d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79f8df9c51f9f86dd6070ac319ba815d">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a79f8df9c51f9f86dd6070ac319ba815d">&#9670;&#160;</a></span>operator=() <span class="overload">[4/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1217,6 +1268,24 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a1dbac912178622f1297d2f9086394806" name="a1dbac912178622f1297d2f9086394806"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dbac912178622f1297d2f9086394806">&#9670;&#160;</a></span>elements</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr(&amp; <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::elements)[<a class="el" href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">rows</a> *<a class="el" href="#a46ef06b82cd1ab3db9a22cd31436b802">columns</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00209">209</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a15d0673c2c5a8f97ec7d6d6120bc37a4" name="a15d0673c2c5a8f97ec7d6d6120bc37a4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">&#9670;&#160;</a></span>rows</h2>
 
@@ -1270,7 +1339,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p>Underlying algebraic backend data storage. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00354">354</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00353">353</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
