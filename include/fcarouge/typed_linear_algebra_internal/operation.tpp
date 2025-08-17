@@ -171,26 +171,24 @@ operator*(const is_singleton_typed_matrix auto &lhs,
                                                         rhs.data());
 }
 
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-  requires is_singleton_typed_matrix<
-      typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
 [[nodiscard]] constexpr auto
-operator+(const auto &lhs,
-          const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
-  return lhs +
-         tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, 0, 0>{
-             rhs.data()};
+operator+(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
+  requires(not is_typed_matrix<decltype(lhs)>)
+{
+  using matrix = std::remove_cvref_t<decltype(rhs)>;
+  using element = typename matrix::template element<0, 0>;
+
+  return lhs + element{rhs};
 }
 
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-  requires is_singleton_typed_matrix<
-      typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
 [[nodiscard]] constexpr auto
-operator+(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
-          const auto &rhs) {
-  return tla::element<typed_matrix<Matrix, RowIndexes, ColumnIndexes>, 0, 0>{
-             lhs.data()} +
-         rhs;
+operator+(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
+  requires(not is_typed_matrix<decltype(rhs)>)
+{
+  using matrix = std::remove_cvref_t<decltype(lhs)>;
+  using element = typename matrix::template element<0, 0>;
+
+  return element{lhs} + rhs;
 }
 
 [[nodiscard]] constexpr auto
