@@ -165,21 +165,6 @@ constexpr void for_constexpr(Function &&function) {
   }
 }
 
-template <typename Type> struct repacker {
-  using type = Type;
-};
-
-template <template <typename...> typename Pack, typename... Types>
-struct repacker<Pack<Types...>> {
-  using type = std::tuple<Types...>;
-
-  static inline constexpr std::size_t size{sizeof...(Types)};
-};
-
-template <typename Pack> using repack = repacker<Pack>::type;
-
-template <typename Pack> constexpr std::size_t size{repacker<Pack>::size};
-
 template <typename Type>
 using underlying_t =
     std::remove_cvref_t<decltype(std::declval<std::remove_cvref_t<Type>>()(0,
@@ -198,10 +183,6 @@ using element = std::remove_cvref_t<product<
                          typename std::remove_cvref_t<Type>::row_indexes>,
     std::tuple_element_t<ColumnIndex,
                          typename std::remove_cvref_t<Type>::column_indexes>>>;
-
-//! @brief The packs have the same count of types.
-template <typename Pack1, typename Pack2>
-concept same_size = size<Pack1> == size<Pack2>;
 
 //! @todo There may be a way to write this concepts via two fold expressions.
 template <typename Type>
