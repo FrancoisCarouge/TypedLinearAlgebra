@@ -297,12 +297,33 @@ operator/(const is_singleton_typed_matrix auto &lhs,
   return lhs_element{lhs} / rhs_element{rhs};
 }
 
-//! @todo Generalize out the scalar restriction.
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-[[nodiscard]] constexpr auto
-operator/(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
-          const auto &rhs) {
-  return make_typed_matrix<RowIndexes, ColumnIndexes>(lhs.data() / rhs);
+[[nodiscard]] constexpr auto operator/(const auto &lhs,
+                                       const is_column_typed_matrix auto &rhs)
+  requires(not is_typed_matrix<decltype(lhs)>)
+{
+  using type = std::remove_cvref_t<decltype(lhs)>;
+  using matrix = std::remove_cvref_t<decltype(rhs)>;
+  using underlying = typename matrix::underlying;
+  using row_indexes = tla::quotient<type, typename matrix::column_indexes>;
+  using column_indexes =
+      tla::quotient<std::identity, typename matrix::row_indexes>;
+
+  return make_typed_matrix<row_indexes, column_indexes>(
+      cast<underlying, type>(lhs) / rhs.data());
+}
+
+[[nodiscard]] constexpr auto operator/(const is_typed_matrix auto &lhs,
+                                       const auto &rhs)
+  requires(not is_typed_matrix<decltype(rhs)>)
+{
+  using type = std::remove_cvref_t<decltype(rhs)>;
+  using matrix = std::remove_cvref_t<decltype(lhs)>;
+  using underlying = typename matrix::underlying;
+  using row_indexes = tla::quotient<typename matrix::row_indexes, type>;
+  using column_indexes = typename matrix::column_indexes;
+
+  return make_typed_matrix<row_indexes, column_indexes>(
+      lhs.data() / cast<underlying, type>(rhs));
 }
 } // namespace fcarouge
 
