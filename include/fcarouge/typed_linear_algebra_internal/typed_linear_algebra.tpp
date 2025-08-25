@@ -35,11 +35,13 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
 
+//! @todo Verify types and storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const is_typed_matrix auto &other)
     : storage{other.data()} {}
 
+//! @todo Verify types and storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
@@ -48,11 +50,13 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
   return *this;
 }
 
+//! @todo Verify types and storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const is_typed_matrix auto &&other)
     : storage{std::forward<decltype(other)>(other).data()} {}
 
+//! @todo Verify types and storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
@@ -87,6 +91,8 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
   }
 }
 
+//! @todo Verify the list sizes at runtime? Deprecate?
+//! @todo Verify `Type` is `element<0, 0>`-compatible-safe?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <typename Type>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
@@ -102,11 +108,14 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
   }
 }
 
+//! @todo Verify if the types are the same, or assignable, for nicer error?
+//! @todo Rewrite with a fold expression over the pack?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const auto &first_value, const auto &second_value, const auto &...values)
   requires is_one_dimension_typed_matrix<typed_matrix>
 {
+  //! @todo Move the assert as a require clause when the compilers support it.
   static_assert(columns * rows == 2 + sizeof...(values), "");
   std::tuple value_pack{first_value, second_value, values...};
   tla::for_constexpr<0, typed_matrix::columns * typed_matrix::rows, 1>(
