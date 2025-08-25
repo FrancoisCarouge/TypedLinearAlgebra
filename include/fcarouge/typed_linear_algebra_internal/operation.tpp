@@ -52,11 +52,9 @@ auto make_typed_matrix(auto &&value) {
       std::forward<type>(value)};
 }
 
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
-          typename Matrix2>
-[[nodiscard]] constexpr bool
-operator==(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
-           const typed_matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
+//! @todo Requires, assert that the element types are compatible.
+[[nodiscard]] constexpr bool operator==(const is_typed_matrix auto &lhs,
+                                        const is_typed_matrix auto &rhs) {
   return lhs.data() == rhs.data();
 }
 
@@ -106,6 +104,7 @@ operator==(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
                                        const auto &rhs)
   requires(not is_typed_matrix<decltype(rhs)>)
 {
+  //! @todo Should there be constraints on the type?
   using type = std::remove_cvref_t<decltype(rhs)>;
   using matrix = std::remove_cvref_t<decltype(lhs)>;
   using row_indexes = typename matrix::row_indexes;
@@ -120,6 +119,7 @@ operator==(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
                                        const is_typed_matrix auto &rhs)
   requires(not is_typed_matrix<decltype(lhs)>)
 {
+  //! @todo Should there be constraints on the type?
   using type = std::remove_cvref_t<decltype(lhs)>;
   using matrix = std::remove_cvref_t<decltype(rhs)>;
   using row_indexes = typename matrix::row_indexes;
@@ -134,7 +134,8 @@ operator==(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
 operator*(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
   requires(not is_typed_matrix<decltype(lhs)>)
 {
-  using matrix = decltype(rhs);
+  //! @todo Should there be constraints on the type?
+  using matrix = std::remove_cvref_t<decltype(rhs)>;
   using element = typename matrix::template element<0, 0>;
 
   return lhs * element{rhs};
@@ -144,6 +145,7 @@ operator*(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
 operator*(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
   requires(not is_typed_matrix<decltype(rhs)>)
 {
+  //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(lhs)>;
   using element = typename matrix::template element<0, 0>;
 
@@ -161,6 +163,7 @@ operator*(const is_singleton_typed_matrix auto &lhs,
   return lhs_element{lhs} * rhs_element{rhs};
 }
 
+//! @todo Requires, assert that the element types are compatible.
 [[nodiscard]] constexpr auto operator+(const is_typed_matrix auto &lhs,
                                        const is_typed_matrix auto &rhs) {
   using matrix = std::remove_cvref_t<decltype(lhs)>;
@@ -175,6 +178,7 @@ operator*(const is_singleton_typed_matrix auto &lhs,
 operator+(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
   requires(not is_typed_matrix<decltype(lhs)>)
 {
+  //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(rhs)>;
   using element = typename matrix::template element<0, 0>;
 
@@ -185,6 +189,7 @@ operator+(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
 operator+(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
   requires(not is_typed_matrix<decltype(rhs)>)
 {
+  //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(lhs)>;
   using element = typename matrix::template element<0, 0>;
 
@@ -194,6 +199,7 @@ operator+(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
 [[nodiscard]] constexpr auto
 operator+(const is_singleton_typed_matrix auto &lhs,
           const is_singleton_typed_matrix auto &rhs) {
+  //! @todo Should there be constraints on the type?
   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
   using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
   using lhs_element = typename lhs_matrix::template element<0, 0>;
@@ -202,6 +208,7 @@ operator+(const is_singleton_typed_matrix auto &lhs,
   return lhs_element{lhs} + rhs_element{rhs};
 }
 
+//! @todo Requires, assert that the element types are compatible.
 [[nodiscard]] constexpr auto operator-(const is_typed_matrix auto &lhs,
                                        const is_typed_matrix auto &rhs) {
   using matrix = std::remove_cvref_t<decltype(lhs)>;
@@ -216,6 +223,7 @@ operator+(const is_singleton_typed_matrix auto &lhs,
 operator-(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
   requires(not is_typed_matrix<decltype(lhs)>)
 {
+  //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(rhs)>;
   using element = typename matrix::template element<0, 0>;
 
@@ -226,6 +234,7 @@ operator-(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
 operator-(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
   requires(not is_typed_matrix<decltype(rhs)>)
 {
+  //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(rhs)>;
   using element = typename matrix::template element<0, 0>;
 
@@ -235,6 +244,7 @@ operator-(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
 [[nodiscard]] constexpr auto
 operator-(const is_singleton_typed_matrix auto &lhs,
           const is_singleton_typed_matrix auto &rhs) {
+  //! @todo Should there be constraints on the type?
   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
   using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
   using lhs_element = typename lhs_matrix::template element<0, 0>;
@@ -251,11 +261,14 @@ operator-(const is_singleton_typed_matrix auto &lhs,
 //! ways to decompose and solve the equation. Implementations trade off
 //! numerical stability, triangularity, symmetry, space, time, etc. Dividing an
 //! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix.
+//!
+//! @todo Combine? Generalize?
 [[nodiscard]] constexpr auto operator/(const is_typed_matrix auto &lhs,
                                        const is_typed_matrix auto &rhs) {
   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
   using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
 
+  //! @todo Convert to a requires clause?
   static_assert(lhs_matrix::columns == rhs_matrix::columns,
                 "Matrix division requires compatible sizes.");
 
@@ -269,6 +282,9 @@ operator-(const is_singleton_typed_matrix auto &lhs,
   using column_indexes =
       tla::quotient<std::tuple_element_t<0, rhs_column_indexes>,
                     rhs_row_indexes>;
+
+  //! @todo Add type verification, perhaps with a generalization of the
+  //! multiplication verification?
 
   return make_typed_matrix<row_indexes, column_indexes>(lhs.data() /
                                                         rhs.data());
@@ -288,6 +304,7 @@ operator/(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
 operator/(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
   requires(not is_typed_matrix<decltype(lhs)>)
 {
+  //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(rhs)>;
   using element = typename matrix::template element<0, 0>;
 
@@ -297,6 +314,7 @@ operator/(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
 [[nodiscard]] constexpr auto
 operator/(const is_singleton_typed_matrix auto &lhs,
           const is_singleton_typed_matrix auto &rhs) {
+  //! @todo Should there be constraints on the type?
   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
   using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
   using lhs_element = typename lhs_matrix::template element<0, 0>;
@@ -309,12 +327,16 @@ operator/(const is_singleton_typed_matrix auto &lhs,
                                        const is_column_typed_matrix auto &rhs)
   requires(not is_typed_matrix<decltype(lhs)>)
 {
+  //! @todo Should there be constraints on the type?
   using type = std::remove_cvref_t<decltype(lhs)>;
   using matrix = std::remove_cvref_t<decltype(rhs)>;
   using underlying = typename matrix::underlying;
   using row_indexes = tla::quotient<type, typename matrix::column_indexes>;
   using column_indexes =
       tla::quotient<std::identity, typename matrix::row_indexes>;
+
+  //! @todo Add type verification, perhaps with a generalization of the
+  //! multiplication verification?
 
   return make_typed_matrix<row_indexes, column_indexes>(
       cast<underlying, type>(lhs) / rhs.data());
@@ -324,6 +346,7 @@ operator/(const is_singleton_typed_matrix auto &lhs,
                                        const auto &rhs)
   requires(not is_typed_matrix<decltype(rhs)>)
 {
+  //! @todo Should there be constraints on the type?
   using type = std::remove_cvref_t<decltype(rhs)>;
   using matrix = std::remove_cvref_t<decltype(lhs)>;
   using underlying = typename matrix::underlying;

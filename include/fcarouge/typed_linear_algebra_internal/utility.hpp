@@ -141,6 +141,7 @@ struct multiplies<std::tuple<Types...>, Rhs> {
              const Rhs &rhs) const -> std::tuple<product<Types, Rhs>...>;
 };
 
+//! @todo Some specialization with identity may be redundant, to remove.
 template <typename... Types>
 struct multiplies<std::tuple<Types...>, std::identity> {
   [[nodiscard]] constexpr auto
@@ -177,6 +178,7 @@ concept is_typed_matrix = std::same_as<
                  typename std::remove_cvref_t<Type>::row_indexes,
                  typename std::remove_cvref_t<Type>::column_indexes>>;
 
+//! @todo Constrain Type to is_matrix_type?
 template <typename Type, std::size_t RowIndex, std::size_t ColumnIndex>
 using element = std::remove_cvref_t<product<
     std::tuple_element_t<RowIndex,
