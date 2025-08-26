@@ -234,6 +234,8 @@ public:
   //! Applicable to single-type matrix: uniform type of all elements.
   //! Single-argument constructors taking arrays of data should get implicit
   //! constructors.
+  //!
+  //! @param elements C-style array of elements of identical types.
   constexpr explicit(false)
       typed_matrix(const element<> (&elements)[rows * columns])
     requires uniform_typed_matrix<typed_matrix> and
@@ -245,6 +247,8 @@ public:
   //! Applicable to single-type matrix: uniform type of all elements.
   //! Single-argument constructors taking arrays of data should get implicit
   //! constructors.
+  //!
+  //! @param elements C-style array of elements of identical types.
   constexpr typed_matrix &operator=(const element<> (&elements)[rows * columns])
     requires uniform_typed_matrix<typed_matrix> and
              one_dimension_typed_matrix<typed_matrix>;
@@ -256,8 +260,8 @@ public:
   //!
   //! @param row_list List-initializers of list-initializer of elements.
   template <typename Type>
-  constexpr typed_matrix(
-      std::initializer_list<std::initializer_list<Type>> row_list)
+  constexpr explicit(false)
+      typed_matrix(std::initializer_list<std::initializer_list<Type>> row_list)
     requires uniform_typed_matrix<typed_matrix>;
 
   //! @brief Convert construct a row or column typed vector from elements.
