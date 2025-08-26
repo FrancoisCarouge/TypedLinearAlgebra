@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "Typed Linear Algebra", "index.xhtml", [
+    [ "Examples", "index.xhtml#examples", null ],
     [ "Installation", "index.xhtml#installation-1", null ],
     [ "Reference", "index.xhtml#reference", [
       [ "Class Typed Matrix", "index.xhtml#class-typed-matrix", [
@@ -117,7 +118,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "addition_8cpp.xhtml",
-"multiplication__sxc_8cpp.xhtml#abc8a545ea253c8527bde70a912d1d036"
+"multiplication__sxc_8cpp.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
