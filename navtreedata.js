@@ -32,8 +32,10 @@ var NAVTREE =
         [ "Declaration", "index.xhtml#declaration", null ],
         [ "Template Parameters", "index.xhtml#template-parameters", null ],
         [ "Member Types", "index.xhtml#member-types", null ],
+        [ "Member Variables", "index.xhtml#member-variables", null ],
         [ "Member Functions", "index.xhtml#member-functions", null ]
       ] ],
+      [ "Operations", "index.xhtml#operations", null ],
       [ "Structure Element Caster", "index.xhtml#structure-element-caster", null ],
       [ "Aliases", "index.xhtml#aliases", null ],
       [ "Format", "index.xhtml#format", null ]
@@ -118,7 +120,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "addition_8cpp.xhtml",
-"multiplication__sxc_8cpp.xhtml"
+"multiplication__rxc_8cpp.xhtml#aff0c20ccc75350c173ea93708af0fffb"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -162,13 +162,25 @@ Member Types</h3>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Member Type   </th><th class="markdownTableHeadNone">Definition    </th></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>matrix</code>   </td><td class="markdownTableBodyNone">The type of the composed matrix.    </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>underlying</code>   </td><td class="markdownTableBodyNone">The type of the element's underlying storage.    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>row_indexes</code>   </td><td class="markdownTableBodyNone">The tuple with the row components of the indexes.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>column_indexes</code>   </td><td class="markdownTableBodyNone">The tuple with the column components of the indexes.    </td></tr>
+<td class="markdownTableBodyNone"><code>row_indexes</code>   </td><td class="markdownTableBodyNone">The tuple with the row components of the indexes.    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>column_indexes</code>   </td><td class="markdownTableBodyNone">The tuple with the column components of the indexes.    </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>element&lt;i, j&gt;</code>   </td><td class="markdownTableBodyNone">The type of the element at the given matrix indexes position.   </td></tr>
+</table>
+<h3><a class="anchor" id="member-variables"></a>
+Member Variables</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Member Variable   </th><th class="markdownTableHeadNone">Definition    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>rows</code>   </td><td class="markdownTableBodyNone">The count of rows.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>columns</code>   </td><td class="markdownTableBodyNone">The count of columns.   </td></tr>
 </table>
 <h3><a class="anchor" id="member-functions"></a>
 Member Functions</h3>
@@ -186,23 +198,50 @@ Member Functions</h3>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>(default move assignment operator)</code>   </td><td class="markdownTableBodyNone">Move construct a typed matrix.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Copy construct the typed matrix from another typed matrix with a compatible underlying matrix or from a compatible underlying matrix.    </td></tr>
+<td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Copy construct generalization of a compatible typed matrix.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Copy construct the typed column-vector from a parameter pack or C-style array.    </td></tr>
+<td class="markdownTableBodyNone"><code>(conversion copy assignment operator)</code>   </td><td class="markdownTableBodyNone">Copy assign generalization of a compatible typed matrix.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Copy construct the typed row-vector from a parameter pack or C-style array.    </td></tr>
+<td class="markdownTableBodyNone"><code>(conversion move constructor)</code>   </td><td class="markdownTableBodyNone">Move construct generalization of a compatible typed matrix.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Copy construct the typed singletin matrix from the sole element.    </td></tr>
+<td class="markdownTableBodyNone"><code>(conversion move assignment operator)</code>   </td><td class="markdownTableBodyNone">Move assign generalization of a compatible typed matrix.    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Convert construct a typed matrix from an underlying matrix.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Convert construct a one-dimension uniformly typed matrix from array.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Convert construct a uniformly typed matrix from list-initializers.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Convert construct a row or column typed vector from elements.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Convert construct a singleton typed matrix from a single value.    </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>operator[i, j]</code>   </td><td class="markdownTableBodyNone">Access the specified element.    </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>operator(i, j)</code>   </td><td class="markdownTableBodyNone">Access the specified element.    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>at&lt;i, j&gt;()</code>   </td><td class="markdownTableBodyNone">Access the specified element.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>(conversion operator)</code>   </td><td class="markdownTableBodyNone">Access the singleton element.    </td></tr>
+<td class="markdownTableBodyNone"><code>at&lt;i, j&gt;()</code>   </td><td class="markdownTableBodyNone">Access the specified element.    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>(conversion operator)</code>   </td><td class="markdownTableBodyNone">Access the singleton typed matrix element.    </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>(destructor)</code>   </td><td class="markdownTableBodyNone">Destruct a default typed matrix.   </td></tr>
+</table>
+<h2><a class="anchor" id="operations"></a>
+Operations</h2>
+<p>The following useful operations are supported. This library attempts to align its nomenclature aligned with that of the primitives provided by <code>std::linalg</code>. This library attempts some compatibility with other C++ standard library primitives, ranges, and iterators.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Operation   </th><th class="markdownTableHeadNone">Definition    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>+</code>   </td><td class="markdownTableBodyNone">Addition where the terms are of identical shapes and addable types.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>-</code>   </td><td class="markdownTableBodyNone">Substraction where the terms are of identical shapes and substractable types.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>*</code>   </td><td class="markdownTableBodyNone">Multiplication where the factors are of multipliable shapes and multipliable types.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>/</code>   </td><td class="markdownTableBodyNone">Solution, if there exists one, to the inverse multiplication, where the factor are of compatible shapes and types.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>==</code>   </td><td class="markdownTableBodyNone">Direct, strict equality comparison, with traditional floating-point comparison pitfalls.   </td></tr>
 </table>
 <h2><a class="anchor" id="structure-element-caster"></a>
 Structure Element Caster</h2>
