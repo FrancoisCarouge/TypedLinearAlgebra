@@ -70,10 +70,18 @@ class typed_matrix
 
 | Member Type | Definition |
 | --- | --- |
+| `matrix` | The type of the composed matrix. |
 | `underlying` | The type of the element's underlying storage. |
 | `row_indexes` | The tuple with the row components of the indexes. |
 | `column_indexes` | The tuple with the column components of the indexes. |
 | `element<i, j>` | The type of the element at the given matrix indexes position. |
+
+### Member Variables
+
+| Member Variable | Definition |
+| --- | --- |
+| `rows` | The count of rows. |
+| `columns` | The count of columns. |
 
 ### Member Functions
 
@@ -84,15 +92,32 @@ class typed_matrix
 | `(default copy assignment operator)` | Copy assign a typed matrix. |
 | `(default move constructor)` | Move construct a typed matrix. |
 | `(default move assignment operator)` | Move construct a typed matrix. |
-| `(conversion copy constructor)` | Copy construct the typed matrix from another typed matrix with a compatible underlying matrix or from a compatible underlying matrix. |
-| `(conversion copy constructor)` | Copy construct the typed column-vector from a parameter pack or C-style array. |
-| `(conversion copy constructor)` | Copy construct the typed row-vector from a parameter pack or C-style array. |
-| `(conversion copy constructor)` | Copy construct the typed singletin matrix from the sole element. |
+| `(conversion copy constructor)` | Copy construct generalization of a compatible typed matrix. |
+| `(conversion copy assignment operator)` | Copy assign generalization of a compatible typed matrix. |
+| `(conversion move constructor)` | Move construct generalization of a compatible typed matrix. |
+| `(conversion move assignment operator)` | Move assign generalization of a compatible typed matrix. |
+| `(conversion copy constructor)` | Convert construct a typed matrix from an underlying matrix. |
+| `(conversion copy constructor)` | Convert construct a one-dimension uniformly typed matrix from array. |
+| `(conversion copy constructor)` | Convert construct a uniformly typed matrix from list-initializers. |
+| `(conversion copy constructor)` | Convert construct a row or column typed vector from elements. |
+| `(conversion copy constructor)` | Convert construct a singleton typed matrix from a single value. |
 | `operator[i, j]` | Access the specified element. |
 | `operator(i, j)` | Access the specified element. |
 | `at<i, j>()` | Access the specified element. |
-| `(conversion operator)` | Access the singleton element. |
+| `(conversion operator)` | Access the singleton typed matrix element. |
 | `(destructor)` | Destruct a default typed matrix. |
+
+## Operations
+
+The following useful operations are supported. This library attempts to align its nomenclature aligned with that of the primitives provided by `std::linalg`. This library attempts some compatibility with other C++ standard library primitives, ranges, and iterators.
+
+| Operation | Definition |
+| --- | --- |
+| `+` | Addition where the terms are of identical shapes and addable types. |
+| `-` | Substraction where the terms are of identical shapes and substractable types. |
+| `*` | Multiplication where the factors are of multipliable shapes and multipliable types. |
+| `/` | Solution, if there exists one, to the inverse multiplication, where the factor are of compatible shapes and types. |
+| `==` | Direct, strict equality comparison, with traditional floating-point comparison pitfalls. |
 
 ## Structure Element Caster
 
