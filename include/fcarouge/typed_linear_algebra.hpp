@@ -121,7 +121,7 @@ public:
   //! @name Public Member Types
   //! @{
 
-  //! @brief The type of the composed, stored matrix.
+  //! @brief The type of the composed matrix.
   using matrix = Matrix;
 
   //! @brief The tuple with the row components of the indexes.
