@@ -243,11 +243,7 @@ Operations</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>==</code>   </td><td class="markdownTableBodyNone">Direct, strict equality comparison, with traditional floating-point comparison pitfalls.   </td></tr>
 </table>
-<h2><a class="anchor" id="structure-element-caster"></a>
-Structure Element Caster</h2>
-<p>Typed matrix element conversions customization point. Specialize this template to allow conversion of element's type and underlying type.</p>
-<div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> To, <span class="keyword">typename</span> From&gt; <span class="keyword">struct </span>element_caster</div>
-</div><!-- fragment --><h2><a class="anchor" id="aliases"></a>
+<h2><a class="anchor" id="aliases"></a>
 Aliases</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Matrix, <span class="keyword">typename</span>... ColumnIndexes&gt;</div>
 <div class="line">typed_row_vector;</div>
@@ -257,7 +253,29 @@ Aliases</h2>
 </div><!-- fragment --><h2><a class="anchor" id="format"></a>
 Format</h2>
 <p>A specialization of the standard formatter is provided for the typed matrix. Use <code>std::format</code> to store a formatted representation of the matrix. Standard format parameters to be supported.</p>
-<h1><a class="anchor" id="considerations"></a>
+<h2><a class="anchor" id="concepts"></a>
+Concepts</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Concept   </th><th class="markdownTableHeadNone">Definition    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>is_typed_matrix</code>   </td><td class="markdownTableBodyNone">Concept of a typed matrix type.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>is_singleton_typed_matrix</code>   </td><td class="markdownTableBodyNone">Concept of a singleton, one-element typed matrix type.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>is_uniform_typed_matrix</code>   </td><td class="markdownTableBodyNone">Concept of a typed matrix in which all element types are the same.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>is_one_dimension_typed_matrix</code>   </td><td class="markdownTableBodyNone">Concept of a typed matrix with only one dimension, row, or column.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>is_row_typed_matrix</code>   </td><td class="markdownTableBodyNone">Concept of a row typed matrix, vector.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>is_column_typed_matrix</code>   </td><td class="markdownTableBodyNone">Concept of a column typed matrix, vector.   </td></tr>
+</table>
+<h2><a class="anchor" id="structure-element-caster"></a>
+Structure Element Caster</h2>
+<p>Typed matrix element conversions customization point. Specialize this template to allow conversion of element's type and underlying type.</p>
+<div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> To, <span class="keyword">typename</span> From&gt; <span class="keyword">struct </span>element_caster</div>
+</div><!-- fragment --><h1><a class="anchor" id="considerations"></a>
 Considerations</h1>
 <h2><a class="anchor" id="lessons-learned"></a>
 Lessons Learned</h2>
