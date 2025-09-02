@@ -117,7 +117,9 @@ template <typename Lhs, typename Rhs> struct multiplies {
 template <typename Lhs, typename Rhs>
 using product = std::invoke_result_t<multiplies<Lhs, Rhs>, Lhs, Rhs>;
 
-template <typename Lhs> struct multiplies<Lhs, std::identity> {
+template <typename Lhs>
+  requires(not std::same_as<Lhs, std::identity>)
+struct multiplies<Lhs, std::identity> {
   [[nodiscard]] constexpr auto
   operator()(const Lhs &lhs, const std::identity &rhs) const -> Lhs;
 };
@@ -128,6 +130,7 @@ template <typename Rhs> struct multiplies<std::identity, Rhs> {
 };
 
 template <typename Lhs, typename... Types>
+  requires(not std::same_as<Lhs, std::identity>)
 struct multiplies<Lhs, std::tuple<Types...>> {
   [[nodiscard]] constexpr auto operator()(const Lhs &lhs,
                                           const std::tuple<Types...> &rhs) const
