@@ -68,10 +68,13 @@ concept is_singleton_typed_matrix = tla::is_singleton_typed_matrix<Type>;
 //! access operators.
 //!
 //! @note A matrix may be uniform with different row and column indexes.
+//!
+//! @todo Identical types may be too conservative. Convertible may be
+//! intended.
 template <typename Type>
 concept is_uniform_typed_matrix = tla::is_uniform_typed_matrix<Type>;
 
-//! @brief Concept of a typed matrix with only one dimension, vector, or column.
+//! @brief Concept of a typed matrix with only one dimension, row, or column.
 template <typename Type>
 concept is_one_dimension_typed_matrix =
     tla::is_one_dimension_typed_matrix<Type>;
