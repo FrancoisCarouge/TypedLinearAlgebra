@@ -119,14 +119,6 @@ The following useful operations are supported. This library attempts to align it
 | `/` | Solution, if there exists one, to the inverse multiplication, where the factor are of compatible shapes and types. |
 | `==` | Direct, strict equality comparison, with traditional floating-point comparison pitfalls. |
 
-## Structure Element Caster
-
-Typed matrix element conversions customization point. Specialize this template to allow conversion of element's type and underlying type.
-
-```cpp
-template <typename To, typename From> struct element_caster
-```
-
 ## Aliases
 
 ```cpp
@@ -140,6 +132,25 @@ typed_column_vector;
 ## Format
 
 A specialization of the standard formatter is provided for the typed matrix. Use `std::format` to store a formatted representation of the matrix. Standard format parameters to be supported.
+
+## Concepts
+
+| Concept | Definition |
+| --- | --- |
+| `is_typed_matrix` | Concept of a typed matrix type. |
+| `is_singleton_typed_matrix` | Concept of a singleton, one-element typed matrix type. |
+| `is_uniform_typed_matrix` | Concept of a typed matrix in which all element types are the same. |
+| `is_one_dimension_typed_matrix` | Concept of a typed matrix with only one dimension, row, or column. |
+| `is_row_typed_matrix` | Concept of a row typed matrix, vector. |
+| `is_column_typed_matrix` | Concept of a column typed matrix, vector. |
+
+## Structure Element Caster
+
+Typed matrix element conversions customization point. Specialize this template to allow conversion of element's type and underlying type.
+
+```cpp
+template <typename To, typename From> struct element_caster
+```
 
 # Considerations
 
