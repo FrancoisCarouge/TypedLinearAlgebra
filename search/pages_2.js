@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['installation_0',['Installation',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml',1,'']]]
+  ['eigen_20mp_20units_0',['Quantity-Safe Linear Algebra Use Case: Eigen + mp-units',['../md__2github_2workspace_2sample_2mp__units__eigen.xhtml',1,'']]]
 ];

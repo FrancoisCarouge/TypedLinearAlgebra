@@ -241,7 +241,9 @@ Operations</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>/</code>   </td><td class="markdownTableBodyNone">Solution, if there exists one, to the inverse multiplication, where the factor are of compatible shapes and types.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>==</code>   </td><td class="markdownTableBodyNone">Direct, strict equality comparison, with traditional floating-point comparison pitfalls.   </td></tr>
+<td class="markdownTableBodyNone"><code>==</code>   </td><td class="markdownTableBodyNone">Direct, strict equality comparison, with traditional floating-point comparison pitfalls.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>transposed</code>   </td><td class="markdownTableBodyNone">Transpose the input matrix.   </td></tr>
 </table>
 <h2><a class="anchor" id="aliases"></a>
 Aliases</h2>
@@ -274,7 +276,8 @@ Concepts</h2>
 <h2><a class="anchor" id="structure-element-caster"></a>
 Structure Element Caster</h2>
 <p>Typed matrix element conversions customization point. Specialize this template to allow conversion of element's type and underlying type.</p>
-<div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> To, <span class="keyword">typename</span> From&gt; <span class="keyword">struct </span>element_caster</div>
+<div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> To, <span class="keyword">typename</span> From&gt;</div>
+<div class="line"><span class="keyword">struct </span>element_caster;</div>
 </div><!-- fragment --><h1><a class="anchor" id="considerations"></a>
 Considerations</h1>
 <h2><a class="anchor" id="lessons-learned"></a>
