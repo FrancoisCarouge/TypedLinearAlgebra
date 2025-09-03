@@ -9,7 +9,7 @@ state x{3. * m,
         2. * m / s,
         1. * m / s2};
 
-std::println("{}", x * transpose(x));
+std::println("{}", x * transposed(x));
 
 // [[9 m²,    6 m²/s,  3 m²/s²],
 //  [6 m²/s,  4 m²/s², 2 m²/s³],
