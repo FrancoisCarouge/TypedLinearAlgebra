@@ -93,6 +93,22 @@ concept singleton_typed_matrix = tla::singleton_typed_matrix<Type>;
 template <typename Lhs, typename Rhs>
 concept same_shape = tla::same_shape<Lhs, Rhs>;
 
+//! @brief Concept of a copy constructible typed matrix from another.
+template <typename Lhs, typename Rhs>
+concept copy_constructible_from = tla::copy_constructible_from<Lhs, Rhs>;
+
+//! @brief Concept of an assignable typed matrix from another.
+template <typename Lhs, typename Rhs>
+concept assignable_from = tla::assignable_from<Lhs, Rhs>;
+
+//! @brief Concept of a move constructible typed matrix from another.
+template <typename Lhs, typename Rhs>
+concept move_constructible_from = tla::move_constructible_from<Lhs, Rhs>;
+
+//! @brief Concept of a movable typed matrix from another.
+template <typename Lhs, typename Rhs>
+concept movable_from = tla::movable_from<Lhs, Rhs>;
+
 //! @}
 
 //! @name Types
@@ -398,7 +414,9 @@ template <typename RowIndexes, typename ColumnIndexes>
 #include "typed_linear_algebra_internal/algorithm/add.tpp"
 #include "typed_linear_algebra_internal/algorithm/divide.tpp"
 #include "typed_linear_algebra_internal/algorithm/equal_to.tpp"
+#include "typed_linear_algebra_internal/algorithm/matrix_product.tpp"
 #include "typed_linear_algebra_internal/algorithm/product.tpp"
+#include "typed_linear_algebra_internal/algorithm/scale.tpp"
 #include "typed_linear_algebra_internal/algorithm/substract.tpp"
 #include "typed_linear_algebra_internal/algorithm/transposed.tpp"
 #include "typed_linear_algebra_internal/cast.tpp"

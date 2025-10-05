@@ -32,23 +32,26 @@ For more information, please refer to <https://unlicense.org> ]]
 add_library(tlinalg INTERFACE)
 target_sources(
   tlinalg
-  INTERFACE FILE_SET
-            "typed_linear_algebra_headers"
-            TYPE
-            "HEADERS"
-            FILES
-            "fcarouge/typed_linear_algebra_forward.hpp"
-            "fcarouge/typed_linear_algebra_internal/algorithm/add.tpp"
-            "fcarouge/typed_linear_algebra_internal/algorithm/divide.tpp"
-            "fcarouge/typed_linear_algebra_internal/algorithm/equal_to.tpp"
-            "fcarouge/typed_linear_algebra_internal/algorithm/product.tpp"
-            "fcarouge/typed_linear_algebra_internal/algorithm/substract.tpp"
-            "fcarouge/typed_linear_algebra_internal/algorithm/transposed.tpp"
-            "fcarouge/typed_linear_algebra_internal/cast.tpp"
-            "fcarouge/typed_linear_algebra_internal/format.hpp"
-            "fcarouge/typed_linear_algebra_internal/typed_linear_algebra.tpp"
-            "fcarouge/typed_linear_algebra_internal/utility.hpp"
-            "fcarouge/typed_linear_algebra.hpp")
+  INTERFACE
+    FILE_SET
+    "typed_linear_algebra_headers"
+    TYPE
+    "HEADERS"
+    FILES
+    "fcarouge/typed_linear_algebra_forward.hpp"
+    "fcarouge/typed_linear_algebra_internal/algorithm/add.tpp"
+    "fcarouge/typed_linear_algebra_internal/algorithm/divide.tpp"
+    "fcarouge/typed_linear_algebra_internal/algorithm/equal_to.tpp"
+    "fcarouge/typed_linear_algebra_internal/algorithm/matrix_product.tpp"
+    "fcarouge/typed_linear_algebra_internal/algorithm/product.tpp"
+    "fcarouge/typed_linear_algebra_internal/algorithm/scale.tpp"
+    "fcarouge/typed_linear_algebra_internal/algorithm/substract.tpp"
+    "fcarouge/typed_linear_algebra_internal/algorithm/transposed.tpp"
+    "fcarouge/typed_linear_algebra_internal/cast.tpp"
+    "fcarouge/typed_linear_algebra_internal/format.hpp"
+    "fcarouge/typed_linear_algebra_internal/typed_linear_algebra.tpp"
+    "fcarouge/typed_linear_algebra_internal/utility.hpp"
+    "fcarouge/typed_linear_algebra.hpp")
 install(
   TARGETS tlinalg
   EXPORT "fcarouge-typed-linear-algebra-target"
