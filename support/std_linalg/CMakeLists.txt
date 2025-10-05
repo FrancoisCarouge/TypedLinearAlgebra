@@ -29,35 +29,48 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-add_library(tlinalg INTERFACE)
+FetchContent_Declare(
+  mdspan
+  GIT_REPOSITORY "https://github.com/kokkos/mdspan.git"
+  GIT_TAG "stable"
+  FIND_PACKAGE_ARGS NAMES mdspan)
+FetchContent_MakeAvailable(mdspan)
+
+# @todo Fix Kokkos' mdspan upstream.
+add_library(std::mdspan ALIAS mdspan)
+
+FetchContent_Declare(
+  linalg
+  GIT_REPOSITORY "https://github.com/kokkos/stdBLAS.git"
+  GIT_TAG "main"
+  FIND_PACKAGE_ARGS NAMES linalg)
+FetchContent_MakeAvailable(linalg)
+
+add_library(typed_linear_algebra_stdlinalg INTERFACE)
 target_sources(
-  tlinalg
+  typed_linear_algebra_stdlinalg
   INTERFACE FILE_SET
             "typed_linear_algebra_headers"
             TYPE
             "HEADERS"
             FILES
-            "fcarouge/typed_linear_algebra_forward.hpp"
-            "fcarouge/typed_linear_algebra_internal/algorithm/add.tpp"
-            "fcarouge/typed_linear_algebra_internal/algorithm/divide.tpp"
-            "fcarouge/typed_linear_algebra_internal/algorithm/equal_to.tpp"
-            "fcarouge/typed_linear_algebra_internal/algorithm/product.tpp"
-            "fcarouge/typed_linear_algebra_internal/algorithm/scale.tpp"
-            "fcarouge/typed_linear_algebra_internal/algorithm/substract.tpp"
-            "fcarouge/typed_linear_algebra_internal/algorithm/transposed.tpp"
-            "fcarouge/typed_linear_algebra_internal/cast.tpp"
-            "fcarouge/typed_linear_algebra_internal/format.hpp"
-            "fcarouge/typed_linear_algebra_internal/typed_linear_algebra.tpp"
-            "fcarouge/typed_linear_algebra_internal/utility.hpp"
-            "fcarouge/typed_linear_algebra.hpp")
-install(
-  TARGETS tlinalg
-  EXPORT "fcarouge-typed-linear-algebra-target"
-  FILE_SET "typed_linear_algebra_headers")
+            "fcarouge/linalg"
+            "fcarouge/mdspan")
+target_include_directories(typed_linear_algebra_stdlinalg INTERFACE "fcarouge")
+target_link_libraries(typed_linear_algebra_stdlinalg INTERFACE linalg)
 
-# Conditionally provide the namespace alias target which may be an imported
-# target from a package, or an aliased target if built as part of the same
-# buildsystem.
-if(NOT TARGET fcarouge-typed-linear-algebra::tlinalg)
-  add_library(fcarouge-typed-linear-algebra::tlinalg ALIAS tlinalg)
-endif()
+# @todo Fix Kokkos' linalg upstream.
+target_include_directories(
+  typed_linear_algebra_stdlinalg
+  INTERFACE ${linalg_BINARY_DIR}/include/experimental
+            ${linalg_SOURCE_DIR}/include/experimental)
+
+# @todo Fix Kokkos' linalg upstream.
+target_compile_options(
+  typed_linear_algebra_stdlinalg
+  INTERFACE "-Wno-unused-local-typedefs" "-Wno-shadow" "-Wno-unused-parameter")
+
+target_compile_definitions(
+  typed_linear_algebra_stdlinalg
+  INTERFACE "MDSPAN_IMPL_STANDARD_NAMESPACE=Kokkos"
+            "MDSPAN_IMPL_PROPOSED_NAMESPACE=experimental")
