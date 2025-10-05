@@ -42,6 +42,7 @@ target_sources(
             "fcarouge/typed_linear_algebra_internal/algorithm/divide.tpp"
             "fcarouge/typed_linear_algebra_internal/algorithm/equal_to.tpp"
             "fcarouge/typed_linear_algebra_internal/algorithm/product.tpp"
+            "fcarouge/typed_linear_algebra_internal/algorithm/scale.tpp"
             "fcarouge/typed_linear_algebra_internal/algorithm/substract.tpp"
             "fcarouge/typed_linear_algebra_internal/algorithm/transposed.tpp"
             "fcarouge/typed_linear_algebra_internal/cast.tpp"

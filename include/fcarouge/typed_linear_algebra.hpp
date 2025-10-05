@@ -93,6 +93,22 @@ concept singleton_typed_matrix = tla::singleton_typed_matrix<Type>;
 template <typename Lhs, typename Rhs>
 concept same_shape = tla::same_shape<Lhs, Rhs>;
 
+//! @brief Concept of a copy constructible typed matrix from another.
+template <typename Lhs, typename Rhs>
+concept copy_constructible_from = tla::copy_constructible_from<Lhs, Rhs>;
+
+//! @brief Concept of an assignable typed matrix from another.
+template <typename Lhs, typename Rhs>
+concept assignable_from = tla::assignable_from<Lhs, Rhs>;
+
+//! @brief Concept of a move constructible typed matrix from another.
+template <typename Lhs, typename Rhs>
+concept move_constructible_from = tla::move_constructible_from<Lhs, Rhs>;
+
+//! @brief Concept of a movable typed matrix from another.
+template <typename Lhs, typename Rhs>
+concept movable_from = tla::movable_from<Lhs, Rhs>;
+
 //! @}
 
 //! @name Types
@@ -166,12 +182,9 @@ public:
   //! @brief Destruct a default typed matrix.
   constexpr ~typed_matrix() = default;
 
-  //! @brief Construct a default typed matrix.
-  //!
-  //! @warning The initialization of the underlying matrix's storage follows the
-  //! initialization behavior of the underlying matrix's type, which for some
-  //! type means no initialization.
-  constexpr typed_matrix() = default;
+  //! @brief Construct a zero-initialized typed matrix.
+  constexpr typed_matrix()
+    requires std::default_initializable<Matrix>;
 
   //! @brief Copy construct a typed matrix.
   constexpr typed_matrix(const typed_matrix &other) = default;
@@ -197,6 +210,8 @@ public:
   //! @brief Move construct generalization of a compatible typed matrix.
   //!
   //! @details Implicit conversions expected per default equivalency.
+  //!
+  //! @todo Bug: Extraneous const in parameters?
   constexpr explicit(false)
       typed_matrix(const same_as_typed_matrix auto &&other);
 
@@ -445,6 +460,7 @@ template <typename RowIndexes, typename ColumnIndexes>
 #include "typed_linear_algebra_internal/algorithm/divide.tpp"
 #include "typed_linear_algebra_internal/algorithm/equal_to.tpp"
 #include "typed_linear_algebra_internal/algorithm/product.tpp"
+#include "typed_linear_algebra_internal/algorithm/scale.tpp"
 #include "typed_linear_algebra_internal/algorithm/substract.tpp"
 #include "typed_linear_algebra_internal/algorithm/transposed.tpp"
 #include "typed_linear_algebra_internal/cast.tpp"
