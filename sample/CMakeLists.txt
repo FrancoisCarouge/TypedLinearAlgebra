@@ -44,4 +44,15 @@ else()
             typed_linear_algebra_options typed_linear_algebra_unit_mp_units)
   add_test(NAME typed_linear_algebra_sample_mp_units_eigen
            COMMAND typed_linear_algebra_sample_mp_units_eigen_driver)
+
+  add_executable(typed_linear_algebra_sample_mp_units_std_driver
+                 "mp_units_std.cpp")
+  target_link_libraries(
+    typed_linear_algebra_sample_mp_units_std_driver
+    PRIVATE tlinalg typed_linear_algebra_main typed_linear_algebra_options
+            typed_linear_algebra_unit_mp_units typed_linear_algebra_stdlinalg)
+  target_compile_definitions(typed_linear_algebra_sample_mp_units_std_driver
+                             PRIVATE __cpp_lib_linalg)
+  add_test(NAME typed_linear_algebra_sample_mp_units_std
+           COMMAND typed_linear_algebra_sample_mp_units_std_driver)
 endif()
