@@ -29,17 +29,17 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
+#ifndef FCAROUGE_LINALG_HPP
+#define FCAROUGE_LINALG_HPP
 
-namespace fcarouge {
+//! @todo Remove this by supporting square brackets.
+#define MDSPAN_USE_PAREN_OPERATOR 1
 
-//! @todo Deduplicate, generalize the built-in casts.
-template <typename To, typename From>
-[[nodiscard]] constexpr To
-element_caster<To, From>::operator()(From value) const {
-  return value;
+#include <experimental/linalg>
+
+namespace std {
+namespace linalg =
+    MDSPAN_IMPL_STANDARD_NAMESPACE::MDSPAN_IMPL_PROPOSED_NAMESPACE::linalg;
 }
-} // namespace fcarouge
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
+#endif // FCAROUGE_LINALG_HPP

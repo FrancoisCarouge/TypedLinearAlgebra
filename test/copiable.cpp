@@ -29,17 +29,35 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
+#include "fcarouge/linalg.hpp"
 
-namespace fcarouge {
+#include <cassert>
 
-//! @todo Deduplicate, generalize the built-in casts.
-template <typename To, typename From>
-[[nodiscard]] constexpr To
-element_caster<To, From>::operator()(From value) const {
-  return value;
-}
-} // namespace fcarouge
+namespace fcarouge::test {
+namespace {
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
+using representation = double;
+template <typename RowIndexes, typename ColumnIndexes>
+using matrix =
+    typed_matrix<Eigen::Matrix<representation, std::tuple_size_v<RowIndexes>,
+                               std::tuple_size_v<ColumnIndexes>>,
+                 RowIndexes, ColumnIndexes>;
+
+//! @test Verifies the compatible copy constructor.
+//!
+//! @todo Make this test actually effective.
+[[maybe_unused]] auto test{[] {
+  using matrix_df =
+      matrix<std::tuple<double, double>, std::tuple<float, float>>;
+  using matrix_fd =
+      matrix<std::tuple<float, float>, std::tuple<double, double>>;
+
+  const matrix_df m{{1., 0.}, {0., 1.}};
+  const matrix_fd c{m};
+
+  assert((c == matrix_df{{1., 0.}, {0., 1.}}));
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
