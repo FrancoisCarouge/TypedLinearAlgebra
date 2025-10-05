@@ -36,7 +36,12 @@ namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
 
 [[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
-                                       const same_as_typed_matrix auto &rhs) {
+                                       const same_as_typed_matrix auto &rhs)
+// requires(std::remove_cvref_t<decltype(lhs)>::columns ==
+//          std::remove_cvref_t<decltype(rhs)>::rows) and
+//         ((not singleton_typed_matrix<decltype(lhs)>) or
+//          (not singleton_typed_matrix<decltype(rhs)>))
+{
   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
   using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
 

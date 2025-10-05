@@ -35,6 +35,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
 
+//! @todo Is there a general and simpler initialization implementation?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix()
   requires std::default_initializable<Matrix>
@@ -46,32 +47,40 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix()
   }
 }
 
-//! @todo Verify types and storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const same_as_typed_matrix auto &other)
-    : storage{other.data()} {}
+    : storage{other.data()} {
+  //! @todo Move the requirement up to the declaration when Clang ICE resolved.
+  static_assert(copy_constructible_from<decltype(*this), decltype(other)>);
+}
 
-//! @todo Verify types and storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
     const same_as_typed_matrix auto &other) {
+  //! @todo Move the requirement up to the declaration when Clang ICE resolved.
+  static_assert(assignable_from<decltype(*this), decltype(other)>);
+
   storage = other.data();
   return *this;
 }
 
-//! @todo Verify types and storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     same_as_typed_matrix auto &&other)
-    : storage{std::forward<decltype(other)>(other).data()} {}
+    : storage{std::forward<decltype(other)>(other).data()} {
+  //! @todo Move the requirement up to the declaration when Clang ICE resolved.
+  static_assert(move_constructible_from<decltype(*this), decltype(other)>);
+}
 
-//! @todo Verify types and storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
     same_as_typed_matrix auto &&other) {
+  //! @todo Move the requirement up to the declaration when Clang ICE resolved.
+  static_assert(movable_from<decltype(*this), decltype(other)>);
+
   storage = std::forward<decltype(other)>(other).data();
   return *this;
 }
@@ -208,7 +217,8 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <std::size_t Row, std::size_t Column>
 [[nodiscard]] constexpr auto
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() -> element<Row, Column> &
-  requires(Row < rows) and (Column < columns)
+  requires(Row < rows) and (Column < columns) and
+          (not one_dimension_typed_matrix<typed_matrix>)
 {
   return cast<element<Row, Column> &, underlying &>(
       storage(std::size_t{Row}, std::size_t{Column}));
@@ -219,7 +229,8 @@ template <std::size_t Row, std::size_t Column>
 [[nodiscard]] constexpr auto
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const
     -> element<Row, Column>
-  requires(Row < rows) and (Column < columns)
+  requires(Row < rows) and (Column < columns) and
+          (not one_dimension_typed_matrix<typed_matrix>)
 {
   return cast<element<Row, Column>, underlying>(
       storage(std::size_t{Row}, std::size_t{Column}));
@@ -241,10 +252,33 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() -> element<Index, 0> &
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <std::size_t Index>
 [[nodiscard]] constexpr auto
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() -> element<0, Index> &
+  requires row_typed_matrix<typed_matrix> and (Index < columns)
+{
+  if constexpr (requires { storage(std::size_t{Index}); }) {
+    return cast<element<0, Index> &, underlying &>(storage(std::size_t{Index}));
+  } else {
+    return cast<element<0, Index> &, underlying &>(storage(0, Index));
+  }
+}
+
+// AMBIGUOUS FOR SINGLETON, COMBINE, FIX.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+template <std::size_t Index>
+[[nodiscard]] constexpr auto
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const -> element<Index, 0>
   requires column_typed_matrix<typed_matrix> and (Index < rows)
 {
   return cast<element<Index, 0>, underlying>(storage(std::size_t{Index}));
+}
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+template <std::size_t Index>
+[[nodiscard]] constexpr auto
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const -> element<0, Index>
+  requires row_typed_matrix<typed_matrix> and (Index < columns)
+{
+  return cast<element<0, Index>, underlying>(storage(std::size_t{Index}));
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>

@@ -81,8 +81,13 @@ public:
                       std::format_to(format_context.out(), ", "));
                 }
 
-                format_context.advance_to(std::format_to(
-                    format_context.out(), "{}", value.template at<i, j>()));
+                if constexpr (columns > 1) {
+                  format_context.advance_to(std::format_to(
+                      format_context.out(), "{}", value.template at<i, j>()));
+                } else {
+                  format_context.advance_to(std::format_to(
+                      format_context.out(), "{}", value.template at<i>()));
+                }
               });
 
           format_context.advance_to(std::format_to(format_context.out(), "]"));
@@ -108,8 +113,8 @@ public:
                 std::format_to(format_context.out(), ", "));
           }
 
-          format_context.advance_to(std::format_to(
-              format_context.out(), "{}", value.template at<0, position>()));
+            format_context.advance_to(std::format_to(
+                format_context.out(), "{}", value.template at<position>()));
         });
 
     format_context.advance_to(std::format_to(format_context.out(), "]"));
@@ -124,8 +129,10 @@ public:
     requires fcarouge::typed_linear_algebra_internal::singleton_typed_matrix<
         matrix>
   {
-    format_context.advance_to(
-        std::format_to(format_context.out(), "{}", value.template at<0>()));
+    using t = typename matrix::template element<0, 0>;
+    t v{value};
+    // TODO: There's still some friction on the access API variations.
+    format_context.advance_to(std::format_to(format_context.out(), "{}", v));
 
     return format_context.out();
   }

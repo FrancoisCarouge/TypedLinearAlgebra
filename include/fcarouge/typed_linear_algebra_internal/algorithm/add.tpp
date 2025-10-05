@@ -77,6 +77,28 @@ namespace fcarouge {
 
   return lhs_element{lhs} + rhs_element{rhs};
 }
+
 } // namespace fcarouge
 
+//! @todo Remove the feature check when supporting native C++26.
+#ifdef __cpp_lib_linalg
+
+#include <linalg>
+
+namespace fcarouge {
+
+//! @brief Element-wise addition of two typed matrices.
+//!
+//! @see std::linalg::add
+//!
+//! @todo Requires, assert that the element types are compatible.
+constexpr void add(const same_as_typed_matrix auto &lhs,
+                   const same_as_typed_matrix auto &rhs,
+                   same_as_typed_matrix auto &result) {
+  using std::linalg::add;
+  add(lhs.data(), rhs.data(), result.data());
+}
+} // namespace fcarouge
+
+#endif
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_ADD_TPP
