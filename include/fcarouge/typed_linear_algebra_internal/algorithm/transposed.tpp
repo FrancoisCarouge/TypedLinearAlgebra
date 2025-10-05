@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.1.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,30 +27,29 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-if(NOT BUILD_TESTING)
-  return()
-endif()
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
 
-if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-  message(STATUS "${SAMPLE_NAME} not yet compatible with MSVC/mp-units.")
-else()
-  add_executable(typed_linear_algebra_sample_mp_units_eigen_driver
-                 "mp_units_eigen.cpp")
-  target_link_libraries(
-    typed_linear_algebra_sample_mp_units_eigen_driver
-    PRIVATE linalg typed_linear_algebra_eigen typed_linear_algebra_main
-            typed_linear_algebra_options typed_linear_algebra_unit_mp_units)
-  add_test(NAME typed_linear_algebra_sample_mp_units_eigen
-           COMMAND typed_linear_algebra_sample_mp_units_eigen_driver)
-endif()
+namespace fcarouge {
+namespace tla = typed_linear_algebra_internal;
 
-add_executable(typed_linear_algebra_sample_mp_units_std_driver
-               "mp_units_std.cpp")
-target_link_libraries(
-  typed_linear_algebra_sample_mp_units_std_driver
-  PRIVATE linalg typed_linear_algebra_main typed_linear_algebra_options
-          typed_linear_algebra_unit_mp_units)
-add_test(NAME typed_linear_algebra_sample_mp_units_std
-         COMMAND typed_linear_algebra_sample_mp_units_std_driver)
+[[nodiscard]] constexpr auto
+transposed(const same_as_typed_matrix auto &value) {
+  using matrix = std::remove_cvref_t<decltype(value)>;
+  using row_indexes = typename matrix::row_indexes;
+  using column_indexes = typename matrix::column_indexes;
+  using transposed_row_indexes = column_indexes;
+  using transposed_column_indexes = row_indexes;
+
+  //! @todo Add other common transpose interfaces.
+  //! @todo Add transpose customization point object.
+  if constexpr (requires { value.data().transpose(); }) {
+    return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
+        value.data().transpose());
+  }
+}
+} // namespace fcarouge
+
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
