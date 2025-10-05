@@ -35,6 +35,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
 
+//! @todo Is there a general and simpler initialization implementation?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix()
   requires std::default_initializable<Matrix>
@@ -42,34 +43,43 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix()
   if constexpr (requires { Matrix::Zero(); }) {
     storage = Matrix::Zero();
   }
+  // THIS IS MISSING INITIALIZATION GUARANTEES?
 }
 
-//! @todo Verify types and storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const same_as_typed_matrix auto &other)
-    : storage{other.data()} {}
+    : storage{other.data()} {
+  //! @todo Move the requirement up to the declaration when Clang ICE resolved.
+  static_assert(copy_constructible_from<decltype(*this), decltype(other)>);
+}
 
-//! @todo Verify types and storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
     const same_as_typed_matrix auto &other) {
+  //! @todo Move the requirement up to the declaration when Clang ICE resolved.
+  static_assert(assignable_from<decltype(*this), decltype(other)>);
+
   storage = other.data();
   return *this;
 }
 
-//! @todo Verify types and storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     same_as_typed_matrix auto &&other)
-    : storage{std::forward<decltype(other)>(other).data()} {}
+    : storage{std::forward<decltype(other)>(other).data()} {
+  //! @todo Move the requirement up to the declaration when Clang ICE resolved.
+  static_assert(move_constructible_from<decltype(*this), decltype(other)>);
+}
 
-//! @todo Verify types and storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
     same_as_typed_matrix auto &&other) {
+  //! @todo Move the requirement up to the declaration when Clang ICE resolved.
+  static_assert(movable_from<decltype(*this), decltype(other)>);
+
   storage = std::forward<decltype(other)>(other).data();
   return *this;
 }
@@ -223,14 +233,14 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
           std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
 
       return cast<qualified_element, qualified_underlying>(
-          self.storage[std::get<0>(std::tuple{Indexes...})]);
+          self.storage[0, std::get<0>(std::tuple{Indexes...})]);
     } else {
       using element_t = element<std::get<0>(std::tuple{Indexes...}), 0>;
       using qualified_element =
           std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
 
       return cast<qualified_element, qualified_underlying>(
-          self.storage[std::get<0>(std::tuple{Indexes...})]);
+          self.storage[std::get<0>(std::tuple{Indexes...}), 0]);
     }
   } else {
     using element_t = element<0, 0>;
