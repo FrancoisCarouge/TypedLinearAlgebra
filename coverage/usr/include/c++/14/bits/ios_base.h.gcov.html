@@ -1,0 +1,1234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - FrancoisCarouge/TypedLinearAlgebra - usr/include/c++/14/bits/ios_base.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../../../../../index.html">top level</a> - <a href="index.html">/usr/include/c++/14/bits</a> - ios_base.h<span style="font-size: 80%;"> (source / <a href="ios_base.h.func-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">FrancoisCarouge/TypedLinearAlgebra</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryLo">20.0&nbsp;%</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">2</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2025-10-10 01:44:13</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryLo">33.3&nbsp;%</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">1</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Legend:</td>
+            <td class="headerValueLeg">            Lines:
+            <span class="coverLegendCov">hit</span>
+            <span class="coverLegendNoCov">not hit</span>
+            | Branches:
+            <span class="coverLegendCov">+</span> taken
+            <span class="coverLegendNoCov">-</span> not taken
+            <span class="coverLegendNoCov">#</span> not executed
+</td>
+            <td></td>
+            <td class="headerItem">Branches:</td>
+            <td class="headerCovTableEntryHi">-</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+                  <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">             Branch data     Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>                 :             : // Iostreams base classes -*- C++ -*-</span>
+<span id="L2"><span class="lineNum">       2</span>                 :             : </span>
+<span id="L3"><span class="lineNum">       3</span>                 :             : // Copyright (C) 1997-2024 Free Software Foundation, Inc.</span>
+<span id="L4"><span class="lineNum">       4</span>                 :             : //</span>
+<span id="L5"><span class="lineNum">       5</span>                 :             : // This file is part of the GNU ISO C++ Library.  This library is free</span>
+<span id="L6"><span class="lineNum">       6</span>                 :             : // software; you can redistribute it and/or modify it under the</span>
+<span id="L7"><span class="lineNum">       7</span>                 :             : // terms of the GNU General Public License as published by the</span>
+<span id="L8"><span class="lineNum">       8</span>                 :             : // Free Software Foundation; either version 3, or (at your option)</span>
+<span id="L9"><span class="lineNum">       9</span>                 :             : // any later version.</span>
+<span id="L10"><span class="lineNum">      10</span>                 :             : </span>
+<span id="L11"><span class="lineNum">      11</span>                 :             : // This library is distributed in the hope that it will be useful,</span>
+<span id="L12"><span class="lineNum">      12</span>                 :             : // but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span id="L13"><span class="lineNum">      13</span>                 :             : // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span id="L14"><span class="lineNum">      14</span>                 :             : // GNU General Public License for more details.</span>
+<span id="L15"><span class="lineNum">      15</span>                 :             : </span>
+<span id="L16"><span class="lineNum">      16</span>                 :             : // Under Section 7 of GPL version 3, you are granted additional</span>
+<span id="L17"><span class="lineNum">      17</span>                 :             : // permissions described in the GCC Runtime Library Exception, version</span>
+<span id="L18"><span class="lineNum">      18</span>                 :             : // 3.1, as published by the Free Software Foundation.</span>
+<span id="L19"><span class="lineNum">      19</span>                 :             : </span>
+<span id="L20"><span class="lineNum">      20</span>                 :             : // You should have received a copy of the GNU General Public License and</span>
+<span id="L21"><span class="lineNum">      21</span>                 :             : // a copy of the GCC Runtime Library Exception along with this program;</span>
+<span id="L22"><span class="lineNum">      22</span>                 :             : // see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see</span>
+<span id="L23"><span class="lineNum">      23</span>                 :             : // &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span id="L24"><span class="lineNum">      24</span>                 :             : </span>
+<span id="L25"><span class="lineNum">      25</span>                 :             : /** @file bits/ios_base.h</span>
+<span id="L26"><span class="lineNum">      26</span>                 :             :  *  This is an internal header file, included by other library headers.</span>
+<span id="L27"><span class="lineNum">      27</span>                 :             :  *  Do not attempt to use it directly. @headername{ios}</span>
+<span id="L28"><span class="lineNum">      28</span>                 :             :  */</span>
+<span id="L29"><span class="lineNum">      29</span>                 :             : </span>
+<span id="L30"><span class="lineNum">      30</span>                 :             : //</span>
+<span id="L31"><span class="lineNum">      31</span>                 :             : // ISO C++ 14882: 27.4  Iostreams base classes</span>
+<span id="L32"><span class="lineNum">      32</span>                 :             : //</span>
+<span id="L33"><span class="lineNum">      33</span>                 :             : </span>
+<span id="L34"><span class="lineNum">      34</span>                 :             : #ifndef _IOS_BASE_H</span>
+<span id="L35"><span class="lineNum">      35</span>                 :             : #define _IOS_BASE_H 1</span>
+<span id="L36"><span class="lineNum">      36</span>                 :             : </span>
+<span id="L37"><span class="lineNum">      37</span>                 :             : #pragma GCC system_header</span>
+<span id="L38"><span class="lineNum">      38</span>                 :             : </span>
+<span id="L39"><span class="lineNum">      39</span>                 :             : #include &lt;ext/atomicity.h&gt;</span>
+<span id="L40"><span class="lineNum">      40</span>                 :             : #include &lt;bits/localefwd.h&gt;</span>
+<span id="L41"><span class="lineNum">      41</span>                 :             : #include &lt;bits/locale_classes.h&gt;</span>
+<span id="L42"><span class="lineNum">      42</span>                 :             : </span>
+<span id="L43"><span class="lineNum">      43</span>                 :             : #if __cplusplus &lt; 201103L</span>
+<span id="L44"><span class="lineNum">      44</span>                 :             : # include &lt;stdexcept&gt;</span>
+<span id="L45"><span class="lineNum">      45</span>                 :             : #else</span>
+<span id="L46"><span class="lineNum">      46</span>                 :             : # include &lt;system_error&gt;</span>
+<span id="L47"><span class="lineNum">      47</span>                 :             : #endif</span>
+<span id="L48"><span class="lineNum">      48</span>                 :             : </span>
+<span id="L49"><span class="lineNum">      49</span>                 :             : namespace std _GLIBCXX_VISIBILITY(default)</span>
+<span id="L50"><span class="lineNum">      50</span>                 :             : {</span>
+<span id="L51"><span class="lineNum">      51</span>                 :             : _GLIBCXX_BEGIN_NAMESPACE_VERSION</span>
+<span id="L52"><span class="lineNum">      52</span>                 :             : </span>
+<span id="L53"><span class="lineNum">      53</span>                 :             :   // The following definitions of bitmask types are enums, not ints,</span>
+<span id="L54"><span class="lineNum">      54</span>                 :             :   // as permitted (but not required) in the standard, in order to provide</span>
+<span id="L55"><span class="lineNum">      55</span>                 :             :   // better type safety in iostream calls.  A side effect is that in C++98</span>
+<span id="L56"><span class="lineNum">      56</span>                 :             :   // expressions involving them are not compile-time constants.</span>
+<span id="L57"><span class="lineNum">      57</span>                 :             :   enum _Ios_Fmtflags </span>
+<span id="L58"><span class="lineNum">      58</span>                 :             :     { </span>
+<span id="L59"><span class="lineNum">      59</span>                 :             :       _S_boolalpha      = 1L &lt;&lt; 0,</span>
+<span id="L60"><span class="lineNum">      60</span>                 :             :       _S_dec            = 1L &lt;&lt; 1,</span>
+<span id="L61"><span class="lineNum">      61</span>                 :             :       _S_fixed          = 1L &lt;&lt; 2,</span>
+<span id="L62"><span class="lineNum">      62</span>                 :             :       _S_hex            = 1L &lt;&lt; 3,</span>
+<span id="L63"><span class="lineNum">      63</span>                 :             :       _S_internal       = 1L &lt;&lt; 4,</span>
+<span id="L64"><span class="lineNum">      64</span>                 :             :       _S_left           = 1L &lt;&lt; 5,</span>
+<span id="L65"><span class="lineNum">      65</span>                 :             :       _S_oct            = 1L &lt;&lt; 6,</span>
+<span id="L66"><span class="lineNum">      66</span>                 :             :       _S_right          = 1L &lt;&lt; 7,</span>
+<span id="L67"><span class="lineNum">      67</span>                 :             :       _S_scientific     = 1L &lt;&lt; 8,</span>
+<span id="L68"><span class="lineNum">      68</span>                 :             :       _S_showbase       = 1L &lt;&lt; 9,</span>
+<span id="L69"><span class="lineNum">      69</span>                 :             :       _S_showpoint      = 1L &lt;&lt; 10,</span>
+<span id="L70"><span class="lineNum">      70</span>                 :             :       _S_showpos        = 1L &lt;&lt; 11,</span>
+<span id="L71"><span class="lineNum">      71</span>                 :             :       _S_skipws         = 1L &lt;&lt; 12,</span>
+<span id="L72"><span class="lineNum">      72</span>                 :             :       _S_unitbuf        = 1L &lt;&lt; 13,</span>
+<span id="L73"><span class="lineNum">      73</span>                 :             :       _S_uppercase      = 1L &lt;&lt; 14,</span>
+<span id="L74"><span class="lineNum">      74</span>                 :             :       _S_adjustfield    = _S_left | _S_right | _S_internal,</span>
+<span id="L75"><span class="lineNum">      75</span>                 :             :       _S_basefield      = _S_dec | _S_oct | _S_hex,</span>
+<span id="L76"><span class="lineNum">      76</span>                 :             :       _S_floatfield     = _S_scientific | _S_fixed,</span>
+<span id="L77"><span class="lineNum">      77</span>                 :             :       _S_ios_fmtflags_end = 1L &lt;&lt; 16,</span>
+<span id="L78"><span class="lineNum">      78</span>                 :             :       _S_ios_fmtflags_max = __INT_MAX__,</span>
+<span id="L79"><span class="lineNum">      79</span>                 :             :       _S_ios_fmtflags_min = ~__INT_MAX__</span>
+<span id="L80"><span class="lineNum">      80</span>                 :             :     };</span>
+<span id="L81"><span class="lineNum">      81</span>                 :             : </span>
+<span id="L82"><span class="lineNum">      82</span>                 :             :   _GLIBCXX_NODISCARD _GLIBCXX_CONSTEXPR</span>
+<span id="L83"><span class="lineNum">      83</span>                 :             :   inline _Ios_Fmtflags</span>
+<span id="L84"><span class="lineNum">      84</span>                 :             :   operator&amp;(_Ios_Fmtflags __a, _Ios_Fmtflags __b) _GLIBCXX_NOTHROW</span>
+<span id="L85"><span class="lineNum">      85</span>                 :             :   { return _Ios_Fmtflags(static_cast&lt;int&gt;(__a) &amp; static_cast&lt;int&gt;(__b)); }</span>
+<span id="L86"><span class="lineNum">      86</span>                 :             : </span>
+<span id="L87"><span class="lineNum">      87</span>                 :             :   _GLIBCXX_NODISCARD _GLIBCXX_CONSTEXPR</span>
+<span id="L88"><span class="lineNum">      88</span>                 :             :   inline _Ios_Fmtflags</span>
+<span id="L89"><span class="lineNum">      89</span>                 :             :   operator|(_Ios_Fmtflags __a, _Ios_Fmtflags __b) _GLIBCXX_NOTHROW</span>
+<span id="L90"><span class="lineNum">      90</span>                 :             :   { return _Ios_Fmtflags(static_cast&lt;int&gt;(__a) | static_cast&lt;int&gt;(__b)); }</span>
+<span id="L91"><span class="lineNum">      91</span>                 :             : </span>
+<span id="L92"><span class="lineNum">      92</span>                 :             :   _GLIBCXX_NODISCARD _GLIBCXX_CONSTEXPR</span>
+<span id="L93"><span class="lineNum">      93</span>                 :             :   inline _Ios_Fmtflags</span>
+<span id="L94"><span class="lineNum">      94</span>                 :             :   operator^(_Ios_Fmtflags __a, _Ios_Fmtflags __b) _GLIBCXX_NOTHROW</span>
+<span id="L95"><span class="lineNum">      95</span>                 :             :   { return _Ios_Fmtflags(static_cast&lt;int&gt;(__a) ^ static_cast&lt;int&gt;(__b)); }</span>
+<span id="L96"><span class="lineNum">      96</span>                 :             : </span>
+<span id="L97"><span class="lineNum">      97</span>                 :             :   _GLIBCXX_NODISCARD _GLIBCXX_CONSTEXPR</span>
+<span id="L98"><span class="lineNum">      98</span>                 :             :   inline _Ios_Fmtflags</span>
+<span id="L99"><span class="lineNum">      99</span>                 :             :   operator~(_Ios_Fmtflags __a) _GLIBCXX_NOTHROW</span>
+<span id="L100"><span class="lineNum">     100</span>                 :             :   { return _Ios_Fmtflags(~static_cast&lt;int&gt;(__a)); }</span>
+<span id="L101"><span class="lineNum">     101</span>                 :             : </span>
+<span id="L102"><span class="lineNum">     102</span>                 :             :   _GLIBCXX14_CONSTEXPR</span>
+<span id="L103"><span class="lineNum">     103</span>                 :             :   inline const _Ios_Fmtflags&amp;</span>
+<span id="L104"><span class="lineNum">     104</span>                 :             :   operator|=(_Ios_Fmtflags&amp; __a, _Ios_Fmtflags __b) _GLIBCXX_NOTHROW</span>
+<span id="L105"><span class="lineNum">     105</span>                 :             :   { return __a = __a | __b; }</span>
+<span id="L106"><span class="lineNum">     106</span>                 :             : </span>
+<span id="L107"><span class="lineNum">     107</span>                 :             :   _GLIBCXX14_CONSTEXPR</span>
+<span id="L108"><span class="lineNum">     108</span>                 :             :   inline const _Ios_Fmtflags&amp;</span>
+<span id="L109"><span class="lineNum">     109</span>                 :             :   operator&amp;=(_Ios_Fmtflags&amp; __a, _Ios_Fmtflags __b) _GLIBCXX_NOTHROW</span>
+<span id="L110"><span class="lineNum">     110</span>                 :             :   { return __a = __a &amp; __b; }</span>
+<span id="L111"><span class="lineNum">     111</span>                 :             : </span>
+<span id="L112"><span class="lineNum">     112</span>                 :             :   _GLIBCXX14_CONSTEXPR</span>
+<span id="L113"><span class="lineNum">     113</span>                 :             :   inline const _Ios_Fmtflags&amp;</span>
+<span id="L114"><span class="lineNum">     114</span>                 :             :   operator^=(_Ios_Fmtflags&amp; __a, _Ios_Fmtflags __b) _GLIBCXX_NOTHROW</span>
+<span id="L115"><span class="lineNum">     115</span>                 :             :   { return __a = __a ^ __b; }</span>
+<span id="L116"><span class="lineNum">     116</span>                 :             : </span>
+<span id="L117"><span class="lineNum">     117</span>                 :             : </span>
+<span id="L118"><span class="lineNum">     118</span>                 :             :   enum _Ios_Openmode </span>
+<span id="L119"><span class="lineNum">     119</span>                 :             :     { </span>
+<span id="L120"><span class="lineNum">     120</span>                 :             :       _S_app            = 1L &lt;&lt; 0,</span>
+<span id="L121"><span class="lineNum">     121</span>                 :             :       _S_ate            = 1L &lt;&lt; 1,</span>
+<span id="L122"><span class="lineNum">     122</span>                 :             :       _S_bin            = 1L &lt;&lt; 2,</span>
+<span id="L123"><span class="lineNum">     123</span>                 :             :       _S_in             = 1L &lt;&lt; 3,</span>
+<span id="L124"><span class="lineNum">     124</span>                 :             :       _S_out            = 1L &lt;&lt; 4,</span>
+<span id="L125"><span class="lineNum">     125</span>                 :             :       _S_trunc          = 1L &lt;&lt; 5,</span>
+<span id="L126"><span class="lineNum">     126</span>                 :             :       _S_noreplace      = 1L &lt;&lt; 6,</span>
+<span id="L127"><span class="lineNum">     127</span>                 :             :       _S_ios_openmode_end = 1L &lt;&lt; 16,</span>
+<span id="L128"><span class="lineNum">     128</span>                 :             :       _S_ios_openmode_max = __INT_MAX__,</span>
+<span id="L129"><span class="lineNum">     129</span>                 :             :       _S_ios_openmode_min = ~__INT_MAX__</span>
+<span id="L130"><span class="lineNum">     130</span>                 :             :     };</span>
+<span id="L131"><span class="lineNum">     131</span>                 :             : </span>
+<span id="L132"><span class="lineNum">     132</span>                 :             :   _GLIBCXX_NODISCARD _GLIBCXX_CONSTEXPR</span>
+<span id="L133"><span class="lineNum">     133</span>                 :             :   inline _Ios_Openmode</span>
+<span id="L134"><span class="lineNum">     134</span>                 :             :   operator&amp;(_Ios_Openmode __a, _Ios_Openmode __b) _GLIBCXX_NOTHROW</span>
+<span id="L135"><span class="lineNum">     135</span>                 :             :   { return _Ios_Openmode(static_cast&lt;int&gt;(__a) &amp; static_cast&lt;int&gt;(__b)); }</span>
+<span id="L136"><span class="lineNum">     136</span>                 :             : </span>
+<span id="L137"><span class="lineNum">     137</span>                 :             :   _GLIBCXX_NODISCARD _GLIBCXX_CONSTEXPR</span>
+<span id="L138"><span class="lineNum">     138</span>                 :             :   inline _Ios_Openmode</span>
+<span id="L139"><span class="lineNum">     139</span>                 :             :   operator|(_Ios_Openmode __a, _Ios_Openmode __b) _GLIBCXX_NOTHROW</span>
+<span id="L140"><span class="lineNum">     140</span>                 :             :   { return _Ios_Openmode(static_cast&lt;int&gt;(__a) | static_cast&lt;int&gt;(__b)); }</span>
+<span id="L141"><span class="lineNum">     141</span>                 :             : </span>
+<span id="L142"><span class="lineNum">     142</span>                 :             :   _GLIBCXX_NODISCARD _GLIBCXX_CONSTEXPR</span>
+<span id="L143"><span class="lineNum">     143</span>                 :             :   inline _Ios_Openmode</span>
+<span id="L144"><span class="lineNum">     144</span>                 :             :   operator^(_Ios_Openmode __a, _Ios_Openmode __b) _GLIBCXX_NOTHROW</span>
+<span id="L145"><span class="lineNum">     145</span>                 :             :   { return _Ios_Openmode(static_cast&lt;int&gt;(__a) ^ static_cast&lt;int&gt;(__b)); }</span>
+<span id="L146"><span class="lineNum">     146</span>                 :             : </span>
+<span id="L147"><span class="lineNum">     147</span>                 :             :   _GLIBCXX_NODISCARD _GLIBCXX_CONSTEXPR</span>
+<span id="L148"><span class="lineNum">     148</span>                 :             :   inline _Ios_Openmode</span>
+<span id="L149"><span class="lineNum">     149</span>                 :             :   operator~(_Ios_Openmode __a) _GLIBCXX_NOTHROW</span>
+<span id="L150"><span class="lineNum">     150</span>                 :             :   { return _Ios_Openmode(~static_cast&lt;int&gt;(__a)); }</span>
+<span id="L151"><span class="lineNum">     151</span>                 :             : </span>
+<span id="L152"><span class="lineNum">     152</span>                 :             :   _GLIBCXX14_CONSTEXPR</span>
+<span id="L153"><span class="lineNum">     153</span>                 :             :   inline const _Ios_Openmode&amp;</span>
+<span id="L154"><span class="lineNum">     154</span>                 :             :   operator|=(_Ios_Openmode&amp; __a, _Ios_Openmode __b) _GLIBCXX_NOTHROW</span>
+<span id="L155"><span class="lineNum">     155</span>                 :             :   { return __a = __a | __b; }</span>
+<span id="L156"><span class="lineNum">     156</span>                 :             : </span>
+<span id="L157"><span class="lineNum">     157</span>                 :             :   _GLIBCXX14_CONSTEXPR</span>
+<span id="L158"><span class="lineNum">     158</span>                 :             :   inline const _Ios_Openmode&amp;</span>
+<span id="L159"><span class="lineNum">     159</span>                 :             :   operator&amp;=(_Ios_Openmode&amp; __a, _Ios_Openmode __b) _GLIBCXX_NOTHROW</span>
+<span id="L160"><span class="lineNum">     160</span>                 :             :   { return __a = __a &amp; __b; }</span>
+<span id="L161"><span class="lineNum">     161</span>                 :             : </span>
+<span id="L162"><span class="lineNum">     162</span>                 :             :   _GLIBCXX14_CONSTEXPR</span>
+<span id="L163"><span class="lineNum">     163</span>                 :             :   inline const _Ios_Openmode&amp;</span>
+<span id="L164"><span class="lineNum">     164</span>                 :             :   operator^=(_Ios_Openmode&amp; __a, _Ios_Openmode __b) _GLIBCXX_NOTHROW</span>
+<span id="L165"><span class="lineNum">     165</span>                 :             :   { return __a = __a ^ __b; }</span>
+<span id="L166"><span class="lineNum">     166</span>                 :             : </span>
+<span id="L167"><span class="lineNum">     167</span>                 :             : </span>
+<span id="L168"><span class="lineNum">     168</span>                 :             :   enum _Ios_Iostate</span>
+<span id="L169"><span class="lineNum">     169</span>                 :             :     { </span>
+<span id="L170"><span class="lineNum">     170</span>                 :             :       _S_goodbit                = 0,</span>
+<span id="L171"><span class="lineNum">     171</span>                 :             :       _S_badbit                 = 1L &lt;&lt; 0,</span>
+<span id="L172"><span class="lineNum">     172</span>                 :             :       _S_eofbit                 = 1L &lt;&lt; 1,</span>
+<span id="L173"><span class="lineNum">     173</span>                 :             :       _S_failbit                = 1L &lt;&lt; 2,</span>
+<span id="L174"><span class="lineNum">     174</span>                 :             :       _S_ios_iostate_end = 1L &lt;&lt; 16,</span>
+<span id="L175"><span class="lineNum">     175</span>                 :             :       _S_ios_iostate_max = __INT_MAX__,</span>
+<span id="L176"><span class="lineNum">     176</span>                 :             :       _S_ios_iostate_min = ~__INT_MAX__</span>
+<span id="L177"><span class="lineNum">     177</span>                 :             :     };</span>
+<span id="L178"><span class="lineNum">     178</span>                 :             : </span>
+<span id="L179"><span class="lineNum">     179</span>                 :             :   _GLIBCXX_NODISCARD _GLIBCXX_CONSTEXPR</span>
+<span id="L180"><span class="lineNum">     180</span>                 :             :   inline _Ios_Iostate</span>
+<span id="L181"><span class="lineNum">     181</span>                 :             :   operator&amp;(_Ios_Iostate __a, _Ios_Iostate __b) _GLIBCXX_NOTHROW</span>
+<span id="L182"><span class="lineNum">     182</span>                 :             :   { return _Ios_Iostate(static_cast&lt;int&gt;(__a) &amp; static_cast&lt;int&gt;(__b)); }</span>
+<span id="L183"><span class="lineNum">     183</span>                 :             : </span>
+<span id="L184"><span class="lineNum">     184</span>                 :             :   _GLIBCXX_NODISCARD _GLIBCXX_CONSTEXPR</span>
+<span id="L185"><span class="lineNum">     185</span>                 :             :   inline _Ios_Iostate</span>
+<span id="L186"><span class="lineNum">     186</span>                 :             :   operator|(_Ios_Iostate __a, _Ios_Iostate __b) _GLIBCXX_NOTHROW</span>
+<span id="L187"><span class="lineNum">     187</span>                 :             :   { return _Ios_Iostate(static_cast&lt;int&gt;(__a) | static_cast&lt;int&gt;(__b)); }</span>
+<span id="L188"><span class="lineNum">     188</span>                 :             : </span>
+<span id="L189"><span class="lineNum">     189</span>                 :             :   _GLIBCXX_NODISCARD _GLIBCXX_CONSTEXPR</span>
+<span id="L190"><span class="lineNum">     190</span>                 :             :   inline _Ios_Iostate</span>
+<span id="L191"><span class="lineNum">     191</span>                 :             :   operator^(_Ios_Iostate __a, _Ios_Iostate __b) _GLIBCXX_NOTHROW</span>
+<span id="L192"><span class="lineNum">     192</span>                 :             :   { return _Ios_Iostate(static_cast&lt;int&gt;(__a) ^ static_cast&lt;int&gt;(__b)); }</span>
+<span id="L193"><span class="lineNum">     193</span>                 :             : </span>
+<span id="L194"><span class="lineNum">     194</span>                 :             :   _GLIBCXX_NODISCARD _GLIBCXX_CONSTEXPR</span>
+<span id="L195"><span class="lineNum">     195</span>                 :             :   inline _Ios_Iostate</span>
+<span id="L196"><span class="lineNum">     196</span>                 :             :   operator~(_Ios_Iostate __a) _GLIBCXX_NOTHROW</span>
+<span id="L197"><span class="lineNum">     197</span>                 :             :   { return _Ios_Iostate(~static_cast&lt;int&gt;(__a)); }</span>
+<span id="L198"><span class="lineNum">     198</span>                 :             : </span>
+<span id="L199"><span class="lineNum">     199</span>                 :             :   _GLIBCXX14_CONSTEXPR</span>
+<span id="L200"><span class="lineNum">     200</span>                 :             :   inline const _Ios_Iostate&amp;</span>
+<span id="L201"><span class="lineNum">     201</span>                 :             :   operator|=(_Ios_Iostate&amp; __a, _Ios_Iostate __b) _GLIBCXX_NOTHROW</span>
+<span id="L202"><span class="lineNum">     202</span>                 :             :   { return __a = __a | __b; }</span>
+<span id="L203"><span class="lineNum">     203</span>                 :             : </span>
+<span id="L204"><span class="lineNum">     204</span>                 :             :   _GLIBCXX14_CONSTEXPR</span>
+<span id="L205"><span class="lineNum">     205</span>                 :             :   inline const _Ios_Iostate&amp;</span>
+<span id="L206"><span class="lineNum">     206</span>                 :             :   operator&amp;=(_Ios_Iostate&amp; __a, _Ios_Iostate __b) _GLIBCXX_NOTHROW</span>
+<span id="L207"><span class="lineNum">     207</span>                 :             :   { return __a = __a &amp; __b; }</span>
+<span id="L208"><span class="lineNum">     208</span>                 :             : </span>
+<span id="L209"><span class="lineNum">     209</span>                 :             :   _GLIBCXX14_CONSTEXPR</span>
+<span id="L210"><span class="lineNum">     210</span>                 :             :   inline const _Ios_Iostate&amp;</span>
+<span id="L211"><span class="lineNum">     211</span>                 :             :   operator^=(_Ios_Iostate&amp; __a, _Ios_Iostate __b) _GLIBCXX_NOTHROW</span>
+<span id="L212"><span class="lineNum">     212</span>                 :             :   { return __a = __a ^ __b; }</span>
+<span id="L213"><span class="lineNum">     213</span>                 :             : </span>
+<span id="L214"><span class="lineNum">     214</span>                 :             : </span>
+<span id="L215"><span class="lineNum">     215</span>                 :             :   enum _Ios_Seekdir </span>
+<span id="L216"><span class="lineNum">     216</span>                 :             :     { </span>
+<span id="L217"><span class="lineNum">     217</span>                 :             :       _S_beg = 0,</span>
+<span id="L218"><span class="lineNum">     218</span>                 :             :       _S_cur = _GLIBCXX_STDIO_SEEK_CUR,</span>
+<span id="L219"><span class="lineNum">     219</span>                 :             :       _S_end = _GLIBCXX_STDIO_SEEK_END,</span>
+<span id="L220"><span class="lineNum">     220</span>                 :             :       _S_ios_seekdir_end = 1L &lt;&lt; 16 </span>
+<span id="L221"><span class="lineNum">     221</span>                 :             :     };</span>
+<span id="L222"><span class="lineNum">     222</span>                 :             : </span>
+<span id="L223"><span class="lineNum">     223</span>                 :             : #if __cplusplus &gt;= 201103L</span>
+<span id="L224"><span class="lineNum">     224</span>                 :             :   /// I/O error code</span>
+<span id="L225"><span class="lineNum">     225</span>                 :             :   enum class io_errc { stream = 1 };</span>
+<span id="L226"><span class="lineNum">     226</span>                 :             : </span>
+<span id="L227"><span class="lineNum">     227</span>                 :             :   template &lt;&gt; struct is_error_code_enum&lt;io_errc&gt; : public true_type { };</span>
+<span id="L228"><span class="lineNum">     228</span>                 :             : </span>
+<span id="L229"><span class="lineNum">     229</span>                 :             :   [[__nodiscard__, __gnu__::__const__]]</span>
+<span id="L230"><span class="lineNum">     230</span>                 :             :   const error_category&amp;</span>
+<span id="L231"><span class="lineNum">     231</span>                 :             :   iostream_category() noexcept;</span>
+<span id="L232"><span class="lineNum">     232</span>                 :             : </span>
+<span id="L233"><span class="lineNum">     233</span>                 :             :   [[__nodiscard__]]</span>
+<span id="L234"><span class="lineNum">     234</span>                 :             :   inline error_code</span>
+<span id="L235"><span class="lineNum">     235</span>                 :             :   make_error_code(io_errc __e) noexcept</span>
+<span id="L236"><span class="lineNum">     236</span>                 :             :   { return error_code(static_cast&lt;int&gt;(__e), iostream_category()); }</span>
+<span id="L237"><span class="lineNum">     237</span>                 :             : </span>
+<span id="L238"><span class="lineNum">     238</span>                 :             :   [[__nodiscard__]]</span>
+<span id="L239"><span class="lineNum">     239</span>                 :             :   inline error_condition</span>
+<span id="L240"><span class="lineNum">     240</span>                 :             :   make_error_condition(io_errc __e) noexcept</span>
+<span id="L241"><span class="lineNum">     241</span>                 :             :   { return error_condition(static_cast&lt;int&gt;(__e), iostream_category()); }</span>
+<span id="L242"><span class="lineNum">     242</span>                 :             : #endif</span>
+<span id="L243"><span class="lineNum">     243</span>                 :             : </span>
+<span id="L244"><span class="lineNum">     244</span>                 :             :   // 27.4.2  Class ios_base</span>
+<span id="L245"><span class="lineNum">     245</span>                 :             :   /**</span>
+<span id="L246"><span class="lineNum">     246</span>                 :             :    *  @brief  The base of the I/O class hierarchy.</span>
+<span id="L247"><span class="lineNum">     247</span>                 :             :    *  @ingroup io</span>
+<span id="L248"><span class="lineNum">     248</span>                 :             :    *</span>
+<span id="L249"><span class="lineNum">     249</span>                 :             :    *  This class defines everything that can be defined about I/O that does</span>
+<span id="L250"><span class="lineNum">     250</span>                 :             :    *  not depend on the type of characters being input or output.  Most</span>
+<span id="L251"><span class="lineNum">     251</span>                 :             :    *  people will only see @c ios_base when they need to specify the full</span>
+<span id="L252"><span class="lineNum">     252</span>                 :             :    *  name of the various I/O flags (e.g., the openmodes).</span>
+<span id="L253"><span class="lineNum">     253</span>                 :             :   */</span>
+<span id="L254"><span class="lineNum">     254</span>                 :             :   class ios_base</span>
+<span id="L255"><span class="lineNum">     255</span>                 :             :   {</span>
+<span id="L256"><span class="lineNum">     256</span>                 :             : #if _GLIBCXX_USE_CXX11_ABI</span>
+<span id="L257"><span class="lineNum">     257</span>                 :             : #if __cplusplus &lt; 201103L</span>
+<span id="L258"><span class="lineNum">     258</span>                 :             :     // Type that is layout-compatible with std::system_error</span>
+<span id="L259"><span class="lineNum">     259</span>                 :             :     struct system_error : std::runtime_error</span>
+<span id="L260"><span class="lineNum">     260</span>                 :             :     {</span>
+<span id="L261"><span class="lineNum">     261</span>                 :             :       // Type that is layout-compatible with std::error_code</span>
+<span id="L262"><span class="lineNum">     262</span>                 :             :       struct error_code</span>
+<span id="L263"><span class="lineNum">     263</span>                 :             :       {</span>
+<span id="L264"><span class="lineNum">     264</span>                 :             :         error_code() { }</span>
+<span id="L265"><span class="lineNum">     265</span>                 :             :       private:</span>
+<span id="L266"><span class="lineNum">     266</span>                 :             :         int             _M_value;</span>
+<span id="L267"><span class="lineNum">     267</span>                 :             :         const void*     _M_cat;</span>
+<span id="L268"><span class="lineNum">     268</span>                 :             :       } _M_code;</span>
+<span id="L269"><span class="lineNum">     269</span>                 :             :     };</span>
+<span id="L270"><span class="lineNum">     270</span>                 :             : #endif</span>
+<span id="L271"><span class="lineNum">     271</span>                 :             : #endif</span>
+<span id="L272"><span class="lineNum">     272</span>                 :             :   public:</span>
+<span id="L273"><span class="lineNum">     273</span>                 :             : </span>
+<span id="L274"><span class="lineNum">     274</span>                 :             :     /** </span>
+<span id="L275"><span class="lineNum">     275</span>                 :             :      *  @brief These are thrown to indicate problems with io.</span>
+<span id="L276"><span class="lineNum">     276</span>                 :             :      *  @ingroup exceptions</span>
+<span id="L277"><span class="lineNum">     277</span>                 :             :      *</span>
+<span id="L278"><span class="lineNum">     278</span>                 :             :      *  27.4.2.1.1  Class ios_base::failure</span>
+<span id="L279"><span class="lineNum">     279</span>                 :             :      */</span>
+<span id="L280"><span class="lineNum">     280</span>                 :             : #if _GLIBCXX_USE_CXX11_ABI</span>
+<span id="L281"><span class="lineNum">     281</span>                 :             :     class _GLIBCXX_ABI_TAG_CXX11 failure : public system_error</span>
+<span id="L282"><span class="lineNum">     282</span>                 :             :     {</span>
+<span id="L283"><span class="lineNum">     283</span>                 :             :     public:</span>
+<span id="L284"><span class="lineNum">     284</span>                 :             :       explicit</span>
+<span id="L285"><span class="lineNum">     285</span>                 :             :       failure(const string&amp; __str);</span>
+<span id="L286"><span class="lineNum">     286</span>                 :             : </span>
+<span id="L287"><span class="lineNum">     287</span>                 :             : #if __cplusplus &gt;= 201103L</span>
+<span id="L288"><span class="lineNum">     288</span>                 :             :       explicit</span>
+<span id="L289"><span class="lineNum">     289</span>                 :             :       failure(const string&amp;, const error_code&amp;);</span>
+<span id="L290"><span class="lineNum">     290</span>                 :             : </span>
+<span id="L291"><span class="lineNum">     291</span>                 :             :       explicit</span>
+<span id="L292"><span class="lineNum">     292</span>                 :             :       failure(const char*, const error_code&amp; = io_errc::stream);</span>
+<span id="L293"><span class="lineNum">     293</span>                 :             : #endif</span>
+<span id="L294"><span class="lineNum">     294</span>                 :             : </span>
+<span id="L295"><span class="lineNum">     295</span>                 :             :       virtual</span>
+<span id="L296"><span class="lineNum">     296</span>                 :             :       ~failure() throw();</span>
+<span id="L297"><span class="lineNum">     297</span>                 :             : </span>
+<span id="L298"><span class="lineNum">     298</span>                 :             :       virtual const char*</span>
+<span id="L299"><span class="lineNum">     299</span>                 :             :       what() const throw();</span>
+<span id="L300"><span class="lineNum">     300</span>                 :             :     };</span>
+<span id="L301"><span class="lineNum">     301</span>                 :             : #else</span>
+<span id="L302"><span class="lineNum">     302</span>                 :             :     class failure : public exception</span>
+<span id="L303"><span class="lineNum">     303</span>                 :             :     {</span>
+<span id="L304"><span class="lineNum">     304</span>                 :             :     public:</span>
+<span id="L305"><span class="lineNum">     305</span>                 :             :       // _GLIBCXX_RESOLVE_LIB_DEFECTS</span>
+<span id="L306"><span class="lineNum">     306</span>                 :             :       // 48.  Use of non-existent exception constructor</span>
+<span id="L307"><span class="lineNum">     307</span>                 :             :       explicit</span>
+<span id="L308"><span class="lineNum">     308</span>                 :             :       failure(const string&amp; __str) throw();</span>
+<span id="L309"><span class="lineNum">     309</span>                 :             : </span>
+<span id="L310"><span class="lineNum">     310</span>                 :             :       // This declaration is not useless:</span>
+<span id="L311"><span class="lineNum">     311</span>                 :             :       // http://gcc.gnu.org/onlinedocs/gcc-4.3.2/gcc/Vague-Linkage.html</span>
+<span id="L312"><span class="lineNum">     312</span>                 :             :       virtual</span>
+<span id="L313"><span class="lineNum">     313</span>                 :             :       ~failure() throw();</span>
+<span id="L314"><span class="lineNum">     314</span>                 :             : </span>
+<span id="L315"><span class="lineNum">     315</span>                 :             :       virtual const char*</span>
+<span id="L316"><span class="lineNum">     316</span>                 :             :       what() const throw();</span>
+<span id="L317"><span class="lineNum">     317</span>                 :             : </span>
+<span id="L318"><span class="lineNum">     318</span>                 :             : #if __cplusplus &gt;= 201103L</span>
+<span id="L319"><span class="lineNum">     319</span>                 :             :       // Define the new members required by C++11,</span>
+<span id="L320"><span class="lineNum">     320</span>                 :             :       // even though the error_code cannot be stored.</span>
+<span id="L321"><span class="lineNum">     321</span>                 :             : </span>
+<span id="L322"><span class="lineNum">     322</span>                 :             :       explicit</span>
+<span id="L323"><span class="lineNum">     323</span>                 :             :       failure(const string&amp; __s, const error_code&amp;) noexcept</span>
+<span id="L324"><span class="lineNum">     324</span>                 :             :       : failure(__s)</span>
+<span id="L325"><span class="lineNum">     325</span>                 :             :       { }</span>
+<span id="L326"><span class="lineNum">     326</span>                 :             : </span>
+<span id="L327"><span class="lineNum">     327</span>                 :             :       explicit</span>
+<span id="L328"><span class="lineNum">     328</span>                 :             :       failure(const char* __s, const error_code&amp; = error_code{})</span>
+<span id="L329"><span class="lineNum">     329</span>                 :             :       : failure(string(__s))</span>
+<span id="L330"><span class="lineNum">     330</span>                 :             :       { }</span>
+<span id="L331"><span class="lineNum">     331</span>                 :             : </span>
+<span id="L332"><span class="lineNum">     332</span>                 :             :       // Stand-in for system_error::code() but returning by value.</span>
+<span id="L333"><span class="lineNum">     333</span>                 :             :       error_code code() const noexcept { return error_code{}; }</span>
+<span id="L334"><span class="lineNum">     334</span>                 :             : #endif</span>
+<span id="L335"><span class="lineNum">     335</span>                 :             : </span>
+<span id="L336"><span class="lineNum">     336</span>                 :             :     private:</span>
+<span id="L337"><span class="lineNum">     337</span>                 :             :       string _M_msg;</span>
+<span id="L338"><span class="lineNum">     338</span>                 :             :     };</span>
+<span id="L339"><span class="lineNum">     339</span>                 :             : #endif</span>
+<span id="L340"><span class="lineNum">     340</span>                 :             : </span>
+<span id="L341"><span class="lineNum">     341</span>                 :             :     // 27.4.2.1.2  Type ios_base::fmtflags</span>
+<span id="L342"><span class="lineNum">     342</span>                 :             :     /**</span>
+<span id="L343"><span class="lineNum">     343</span>                 :             :      *  @brief This is a bitmask type.</span>
+<span id="L344"><span class="lineNum">     344</span>                 :             :      *</span>
+<span id="L345"><span class="lineNum">     345</span>                 :             :      *  @c @a _Ios_Fmtflags is implementation-defined, but it is valid to</span>
+<span id="L346"><span class="lineNum">     346</span>                 :             :      *  perform bitwise operations on these values and expect the Right</span>
+<span id="L347"><span class="lineNum">     347</span>                 :             :      *  Thing to happen.  Defined objects of type fmtflags are:</span>
+<span id="L348"><span class="lineNum">     348</span>                 :             :      *  - boolalpha</span>
+<span id="L349"><span class="lineNum">     349</span>                 :             :      *  - dec</span>
+<span id="L350"><span class="lineNum">     350</span>                 :             :      *  - fixed</span>
+<span id="L351"><span class="lineNum">     351</span>                 :             :      *  - hex</span>
+<span id="L352"><span class="lineNum">     352</span>                 :             :      *  - internal</span>
+<span id="L353"><span class="lineNum">     353</span>                 :             :      *  - left</span>
+<span id="L354"><span class="lineNum">     354</span>                 :             :      *  - oct</span>
+<span id="L355"><span class="lineNum">     355</span>                 :             :      *  - right</span>
+<span id="L356"><span class="lineNum">     356</span>                 :             :      *  - scientific</span>
+<span id="L357"><span class="lineNum">     357</span>                 :             :      *  - showbase</span>
+<span id="L358"><span class="lineNum">     358</span>                 :             :      *  - showpoint</span>
+<span id="L359"><span class="lineNum">     359</span>                 :             :      *  - showpos</span>
+<span id="L360"><span class="lineNum">     360</span>                 :             :      *  - skipws</span>
+<span id="L361"><span class="lineNum">     361</span>                 :             :      *  - unitbuf</span>
+<span id="L362"><span class="lineNum">     362</span>                 :             :      *  - uppercase</span>
+<span id="L363"><span class="lineNum">     363</span>                 :             :      *  - adjustfield</span>
+<span id="L364"><span class="lineNum">     364</span>                 :             :      *  - basefield</span>
+<span id="L365"><span class="lineNum">     365</span>                 :             :      *  - floatfield</span>
+<span id="L366"><span class="lineNum">     366</span>                 :             :     */</span>
+<span id="L367"><span class="lineNum">     367</span>                 :             :     typedef _Ios_Fmtflags fmtflags;</span>
+<span id="L368"><span class="lineNum">     368</span>                 :             : </span>
+<span id="L369"><span class="lineNum">     369</span>                 :             :     /// Insert/extract @c bool in alphabetic rather than numeric format.</span>
+<span id="L370"><span class="lineNum">     370</span>                 :             :     static const fmtflags boolalpha =   _S_boolalpha;</span>
+<span id="L371"><span class="lineNum">     371</span>                 :             : </span>
+<span id="L372"><span class="lineNum">     372</span>                 :             :     /// Converts integer input or generates integer output in decimal base.</span>
+<span id="L373"><span class="lineNum">     373</span>                 :             :     static const fmtflags dec =         _S_dec;</span>
+<span id="L374"><span class="lineNum">     374</span>                 :             : </span>
+<span id="L375"><span class="lineNum">     375</span>                 :             :     /// Generate floating-point output in fixed-point notation.</span>
+<span id="L376"><span class="lineNum">     376</span>                 :             :     static const fmtflags fixed =       _S_fixed;</span>
+<span id="L377"><span class="lineNum">     377</span>                 :             : </span>
+<span id="L378"><span class="lineNum">     378</span>                 :             :     /// Converts integer input or generates integer output in hexadecimal base.</span>
+<span id="L379"><span class="lineNum">     379</span>                 :             :     static const fmtflags hex =         _S_hex;</span>
+<span id="L380"><span class="lineNum">     380</span>                 :             : </span>
+<span id="L381"><span class="lineNum">     381</span>                 :             :     /// Adds fill characters at a designated internal point in certain</span>
+<span id="L382"><span class="lineNum">     382</span>                 :             :     /// generated output, or identical to @c right if no such point is</span>
+<span id="L383"><span class="lineNum">     383</span>                 :             :     /// designated.</span>
+<span id="L384"><span class="lineNum">     384</span>                 :             :     static const fmtflags internal =    _S_internal;</span>
+<span id="L385"><span class="lineNum">     385</span>                 :             : </span>
+<span id="L386"><span class="lineNum">     386</span>                 :             :     /// Adds fill characters on the right (final positions) of certain</span>
+<span id="L387"><span class="lineNum">     387</span>                 :             :     /// generated output.  (I.e., the thing you print is flush left.)</span>
+<span id="L388"><span class="lineNum">     388</span>                 :             :     static const fmtflags left =        _S_left;</span>
+<span id="L389"><span class="lineNum">     389</span>                 :             : </span>
+<span id="L390"><span class="lineNum">     390</span>                 :             :     /// Converts integer input or generates integer output in octal base.</span>
+<span id="L391"><span class="lineNum">     391</span>                 :             :     static const fmtflags oct =         _S_oct;</span>
+<span id="L392"><span class="lineNum">     392</span>                 :             : </span>
+<span id="L393"><span class="lineNum">     393</span>                 :             :     /// Adds fill characters on the left (initial positions) of certain</span>
+<span id="L394"><span class="lineNum">     394</span>                 :             :     /// generated output.  (I.e., the thing you print is flush right.)</span>
+<span id="L395"><span class="lineNum">     395</span>                 :             :     static const fmtflags right =       _S_right;</span>
+<span id="L396"><span class="lineNum">     396</span>                 :             : </span>
+<span id="L397"><span class="lineNum">     397</span>                 :             :     /// Generates floating-point output in scientific notation.</span>
+<span id="L398"><span class="lineNum">     398</span>                 :             :     static const fmtflags scientific =  _S_scientific;</span>
+<span id="L399"><span class="lineNum">     399</span>                 :             : </span>
+<span id="L400"><span class="lineNum">     400</span>                 :             :     /// Generates a prefix indicating the numeric base of generated integer</span>
+<span id="L401"><span class="lineNum">     401</span>                 :             :     /// output.</span>
+<span id="L402"><span class="lineNum">     402</span>                 :             :     static const fmtflags showbase =    _S_showbase;</span>
+<span id="L403"><span class="lineNum">     403</span>                 :             : </span>
+<span id="L404"><span class="lineNum">     404</span>                 :             :     /// Generates a decimal-point character unconditionally in generated</span>
+<span id="L405"><span class="lineNum">     405</span>                 :             :     /// floating-point output.</span>
+<span id="L406"><span class="lineNum">     406</span>                 :             :     static const fmtflags showpoint =   _S_showpoint;</span>
+<span id="L407"><span class="lineNum">     407</span>                 :             : </span>
+<span id="L408"><span class="lineNum">     408</span>                 :             :     /// Generates a + sign in non-negative generated numeric output.</span>
+<span id="L409"><span class="lineNum">     409</span>                 :             :     static const fmtflags showpos =     _S_showpos;</span>
+<span id="L410"><span class="lineNum">     410</span>                 :             : </span>
+<span id="L411"><span class="lineNum">     411</span>                 :             :     /// Skips leading white space before certain input operations.</span>
+<span id="L412"><span class="lineNum">     412</span>                 :             :     static const fmtflags skipws =      _S_skipws;</span>
+<span id="L413"><span class="lineNum">     413</span>                 :             : </span>
+<span id="L414"><span class="lineNum">     414</span>                 :             :     /// Flushes output after each output operation.</span>
+<span id="L415"><span class="lineNum">     415</span>                 :             :     static const fmtflags unitbuf =     _S_unitbuf;</span>
+<span id="L416"><span class="lineNum">     416</span>                 :             : </span>
+<span id="L417"><span class="lineNum">     417</span>                 :             :     /// Replaces certain lowercase letters with their uppercase equivalents</span>
+<span id="L418"><span class="lineNum">     418</span>                 :             :     /// in generated output.</span>
+<span id="L419"><span class="lineNum">     419</span>                 :             :     static const fmtflags uppercase =   _S_uppercase;</span>
+<span id="L420"><span class="lineNum">     420</span>                 :             : </span>
+<span id="L421"><span class="lineNum">     421</span>                 :             :     /// A mask of left|right|internal.  Useful for the 2-arg form of @c setf.</span>
+<span id="L422"><span class="lineNum">     422</span>                 :             :     static const fmtflags adjustfield = _S_adjustfield;</span>
+<span id="L423"><span class="lineNum">     423</span>                 :             : </span>
+<span id="L424"><span class="lineNum">     424</span>                 :             :     /// A mask of dec|oct|hex.  Useful for the 2-arg form of @c setf.</span>
+<span id="L425"><span class="lineNum">     425</span>                 :             :     static const fmtflags basefield =   _S_basefield;</span>
+<span id="L426"><span class="lineNum">     426</span>                 :             : </span>
+<span id="L427"><span class="lineNum">     427</span>                 :             :     /// A mask of scientific|fixed.  Useful for the 2-arg form of @c setf.</span>
+<span id="L428"><span class="lineNum">     428</span>                 :             :     static const fmtflags floatfield =  _S_floatfield;</span>
+<span id="L429"><span class="lineNum">     429</span>                 :             : </span>
+<span id="L430"><span class="lineNum">     430</span>                 :             :     // 27.4.2.1.3  Type ios_base::iostate</span>
+<span id="L431"><span class="lineNum">     431</span>                 :             :     /**</span>
+<span id="L432"><span class="lineNum">     432</span>                 :             :      *  @brief This is a bitmask type.</span>
+<span id="L433"><span class="lineNum">     433</span>                 :             :      *</span>
+<span id="L434"><span class="lineNum">     434</span>                 :             :      *  @c @a _Ios_Iostate is implementation-defined, but it is valid to</span>
+<span id="L435"><span class="lineNum">     435</span>                 :             :      *  perform bitwise operations on these values and expect the Right</span>
+<span id="L436"><span class="lineNum">     436</span>                 :             :      *  Thing to happen.  Defined objects of type iostate are:</span>
+<span id="L437"><span class="lineNum">     437</span>                 :             :      *  - badbit</span>
+<span id="L438"><span class="lineNum">     438</span>                 :             :      *  - eofbit</span>
+<span id="L439"><span class="lineNum">     439</span>                 :             :      *  - failbit</span>
+<span id="L440"><span class="lineNum">     440</span>                 :             :      *  - goodbit</span>
+<span id="L441"><span class="lineNum">     441</span>                 :             :     */</span>
+<span id="L442"><span class="lineNum">     442</span>                 :             :     typedef _Ios_Iostate iostate;</span>
+<span id="L443"><span class="lineNum">     443</span>                 :             : </span>
+<span id="L444"><span class="lineNum">     444</span>                 :             :     /// Indicates a loss of integrity in an input or output sequence (such</span>
+<span id="L445"><span class="lineNum">     445</span>                 :             :     /// as an irrecoverable read error from a file).</span>
+<span id="L446"><span class="lineNum">     446</span>                 :             :     static const iostate badbit =       _S_badbit;</span>
+<span id="L447"><span class="lineNum">     447</span>                 :             : </span>
+<span id="L448"><span class="lineNum">     448</span>                 :             :     /// Indicates that an input operation reached the end of an input sequence.</span>
+<span id="L449"><span class="lineNum">     449</span>                 :             :     static const iostate eofbit =       _S_eofbit;</span>
+<span id="L450"><span class="lineNum">     450</span>                 :             : </span>
+<span id="L451"><span class="lineNum">     451</span>                 :             :     /// Indicates that an input operation failed to read the expected</span>
+<span id="L452"><span class="lineNum">     452</span>                 :             :     /// characters, or that an output operation failed to generate the</span>
+<span id="L453"><span class="lineNum">     453</span>                 :             :     /// desired characters.</span>
+<span id="L454"><span class="lineNum">     454</span>                 :             :     static const iostate failbit =      _S_failbit;</span>
+<span id="L455"><span class="lineNum">     455</span>                 :             : </span>
+<span id="L456"><span class="lineNum">     456</span>                 :             :     /// Indicates all is well.</span>
+<span id="L457"><span class="lineNum">     457</span>                 :             :     static const iostate goodbit =      _S_goodbit;</span>
+<span id="L458"><span class="lineNum">     458</span>                 :             : </span>
+<span id="L459"><span class="lineNum">     459</span>                 :             :     // 27.4.2.1.4  Type ios_base::openmode</span>
+<span id="L460"><span class="lineNum">     460</span>                 :             :     /**</span>
+<span id="L461"><span class="lineNum">     461</span>                 :             :      *  @brief This is a bitmask type.</span>
+<span id="L462"><span class="lineNum">     462</span>                 :             :      *</span>
+<span id="L463"><span class="lineNum">     463</span>                 :             :      *  @c @a _Ios_Openmode is implementation-defined, but it is valid to</span>
+<span id="L464"><span class="lineNum">     464</span>                 :             :      *  perform bitwise operations on these values and expect the Right</span>
+<span id="L465"><span class="lineNum">     465</span>                 :             :      *  Thing to happen.  Defined objects of type openmode are:</span>
+<span id="L466"><span class="lineNum">     466</span>                 :             :      *  - app</span>
+<span id="L467"><span class="lineNum">     467</span>                 :             :      *  - ate</span>
+<span id="L468"><span class="lineNum">     468</span>                 :             :      *  - binary</span>
+<span id="L469"><span class="lineNum">     469</span>                 :             :      *  - in</span>
+<span id="L470"><span class="lineNum">     470</span>                 :             :      *  - out</span>
+<span id="L471"><span class="lineNum">     471</span>                 :             :      *  - trunc</span>
+<span id="L472"><span class="lineNum">     472</span>                 :             :     */</span>
+<span id="L473"><span class="lineNum">     473</span>                 :             :     typedef _Ios_Openmode openmode;</span>
+<span id="L474"><span class="lineNum">     474</span>                 :             : </span>
+<span id="L475"><span class="lineNum">     475</span>                 :             :     /// Seek to end before each write.</span>
+<span id="L476"><span class="lineNum">     476</span>                 :             :     static const openmode app =         _S_app;</span>
+<span id="L477"><span class="lineNum">     477</span>                 :             : </span>
+<span id="L478"><span class="lineNum">     478</span>                 :             :     /// Open and seek to end immediately after opening.</span>
+<span id="L479"><span class="lineNum">     479</span>                 :             :     static const openmode ate =         _S_ate;</span>
+<span id="L480"><span class="lineNum">     480</span>                 :             : </span>
+<span id="L481"><span class="lineNum">     481</span>                 :             :     /// Perform input and output in binary mode (as opposed to text mode).</span>
+<span id="L482"><span class="lineNum">     482</span>                 :             :     /// This is probably not what you think it is; see</span>
+<span id="L483"><span class="lineNum">     483</span>                 :             :     /// https://gcc.gnu.org/onlinedocs/libstdc++/manual/fstreams.html#std.io.filestreams.binary</span>
+<span id="L484"><span class="lineNum">     484</span>                 :             :     static const openmode binary =      _S_bin;</span>
+<span id="L485"><span class="lineNum">     485</span>                 :             : </span>
+<span id="L486"><span class="lineNum">     486</span>                 :             :     /// Open for input.  Default for @c ifstream and fstream.</span>
+<span id="L487"><span class="lineNum">     487</span>                 :             :     static const openmode in =          _S_in;</span>
+<span id="L488"><span class="lineNum">     488</span>                 :             : </span>
+<span id="L489"><span class="lineNum">     489</span>                 :             :     /// Open for output.  Default for @c ofstream and fstream.</span>
+<span id="L490"><span class="lineNum">     490</span>                 :             :     static const openmode out =         _S_out;</span>
+<span id="L491"><span class="lineNum">     491</span>                 :             : </span>
+<span id="L492"><span class="lineNum">     492</span>                 :             :     /// Truncate an existing stream when opening.  Default for @c ofstream.</span>
+<span id="L493"><span class="lineNum">     493</span>                 :             :     static const openmode trunc =       _S_trunc;</span>
+<span id="L494"><span class="lineNum">     494</span>                 :             : </span>
+<span id="L495"><span class="lineNum">     495</span>                 :             :     static const openmode __noreplace = _S_noreplace;</span>
+<span id="L496"><span class="lineNum">     496</span>                 :             : </span>
+<span id="L497"><span class="lineNum">     497</span>                 :             : #ifdef __glibcxx_ios_noreplace // C++ &gt;= 23 &amp;&amp; HOSTED</span>
+<span id="L498"><span class="lineNum">     498</span>                 :             :     /// Open a file in exclusive mode.</span>
+<span id="L499"><span class="lineNum">     499</span>                 :             :     static const openmode noreplace =   _S_noreplace;</span>
+<span id="L500"><span class="lineNum">     500</span>                 :             : #endif</span>
+<span id="L501"><span class="lineNum">     501</span>                 :             : </span>
+<span id="L502"><span class="lineNum">     502</span>                 :             :     // 27.4.2.1.5  Type ios_base::seekdir</span>
+<span id="L503"><span class="lineNum">     503</span>                 :             :     /**</span>
+<span id="L504"><span class="lineNum">     504</span>                 :             :      *  @brief This is an enumerated type.</span>
+<span id="L505"><span class="lineNum">     505</span>                 :             :      *</span>
+<span id="L506"><span class="lineNum">     506</span>                 :             :      *  @c @a _Ios_Seekdir is implementation-defined.  Defined values</span>
+<span id="L507"><span class="lineNum">     507</span>                 :             :      *  of type seekdir are:</span>
+<span id="L508"><span class="lineNum">     508</span>                 :             :      *  - beg</span>
+<span id="L509"><span class="lineNum">     509</span>                 :             :      *  - cur, equivalent to @c SEEK_CUR in the C standard library.</span>
+<span id="L510"><span class="lineNum">     510</span>                 :             :      *  - end, equivalent to @c SEEK_END in the C standard library.</span>
+<span id="L511"><span class="lineNum">     511</span>                 :             :     */</span>
+<span id="L512"><span class="lineNum">     512</span>                 :             :     typedef _Ios_Seekdir seekdir;</span>
+<span id="L513"><span class="lineNum">     513</span>                 :             : </span>
+<span id="L514"><span class="lineNum">     514</span>                 :             :     /// Request a seek relative to the beginning of the stream.</span>
+<span id="L515"><span class="lineNum">     515</span>                 :             :     static const seekdir beg =          _S_beg;</span>
+<span id="L516"><span class="lineNum">     516</span>                 :             : </span>
+<span id="L517"><span class="lineNum">     517</span>                 :             :     /// Request a seek relative to the current position within the sequence.</span>
+<span id="L518"><span class="lineNum">     518</span>                 :             :     static const seekdir cur =          _S_cur;</span>
+<span id="L519"><span class="lineNum">     519</span>                 :             : </span>
+<span id="L520"><span class="lineNum">     520</span>                 :             :     /// Request a seek relative to the current end of the sequence.</span>
+<span id="L521"><span class="lineNum">     521</span>                 :             :     static const seekdir end =          _S_end;</span>
+<span id="L522"><span class="lineNum">     522</span>                 :             : </span>
+<span id="L523"><span class="lineNum">     523</span>                 :             : #if __cplusplus &lt;= 201402L</span>
+<span id="L524"><span class="lineNum">     524</span>                 :             :     // Annex D.6 (removed in C++17)</span>
+<span id="L525"><span class="lineNum">     525</span>                 :             :     typedef int io_state</span>
+<span id="L526"><span class="lineNum">     526</span>                 :             :       _GLIBCXX_DEPRECATED_SUGGEST(&quot;std::iostate&quot;);</span>
+<span id="L527"><span class="lineNum">     527</span>                 :             :     typedef int open_mode</span>
+<span id="L528"><span class="lineNum">     528</span>                 :             :       _GLIBCXX_DEPRECATED_SUGGEST(&quot;std::openmode&quot;);</span>
+<span id="L529"><span class="lineNum">     529</span>                 :             :     typedef int seek_dir</span>
+<span id="L530"><span class="lineNum">     530</span>                 :             :       _GLIBCXX_DEPRECATED_SUGGEST(&quot;std::seekdir&quot;);</span>
+<span id="L531"><span class="lineNum">     531</span>                 :             : </span>
+<span id="L532"><span class="lineNum">     532</span>                 :             :     typedef std::streampos streampos</span>
+<span id="L533"><span class="lineNum">     533</span>                 :             :       _GLIBCXX_DEPRECATED_SUGGEST(&quot;std::streampos&quot;);</span>
+<span id="L534"><span class="lineNum">     534</span>                 :             :     typedef std::streamoff streamoff</span>
+<span id="L535"><span class="lineNum">     535</span>                 :             :       _GLIBCXX_DEPRECATED_SUGGEST(&quot;std::streamoff&quot;);</span>
+<span id="L536"><span class="lineNum">     536</span>                 :             : #endif</span>
+<span id="L537"><span class="lineNum">     537</span>                 :             : </span>
+<span id="L538"><span class="lineNum">     538</span>                 :             :     // Callbacks;</span>
+<span id="L539"><span class="lineNum">     539</span>                 :             :     /**</span>
+<span id="L540"><span class="lineNum">     540</span>                 :             :      *  @brief  The set of events that may be passed to an event callback.</span>
+<span id="L541"><span class="lineNum">     541</span>                 :             :      *</span>
+<span id="L542"><span class="lineNum">     542</span>                 :             :      *  erase_event is used during ~ios() and copyfmt().  imbue_event is used</span>
+<span id="L543"><span class="lineNum">     543</span>                 :             :      *  during imbue().  copyfmt_event is used during copyfmt().</span>
+<span id="L544"><span class="lineNum">     544</span>                 :             :     */</span>
+<span id="L545"><span class="lineNum">     545</span>                 :             :     enum event</span>
+<span id="L546"><span class="lineNum">     546</span>                 :             :     {</span>
+<span id="L547"><span class="lineNum">     547</span>                 :             :       erase_event,</span>
+<span id="L548"><span class="lineNum">     548</span>                 :             :       imbue_event,</span>
+<span id="L549"><span class="lineNum">     549</span>                 :             :       copyfmt_event</span>
+<span id="L550"><span class="lineNum">     550</span>                 :             :     };</span>
+<span id="L551"><span class="lineNum">     551</span>                 :             : </span>
+<span id="L552"><span class="lineNum">     552</span>                 :             :     /**</span>
+<span id="L553"><span class="lineNum">     553</span>                 :             :      *  @brief  The type of an event callback function.</span>
+<span id="L554"><span class="lineNum">     554</span>                 :             :      *  @param  __e  One of the members of the event enum.</span>
+<span id="L555"><span class="lineNum">     555</span>                 :             :      *  @param  __b  Reference to the ios_base object.</span>
+<span id="L556"><span class="lineNum">     556</span>                 :             :      *  @param  __i  The integer provided when the callback was registered.</span>
+<span id="L557"><span class="lineNum">     557</span>                 :             :      *</span>
+<span id="L558"><span class="lineNum">     558</span>                 :             :      *  Event callbacks are user defined functions that get called during</span>
+<span id="L559"><span class="lineNum">     559</span>                 :             :      *  several ios_base and basic_ios functions, specifically imbue(),</span>
+<span id="L560"><span class="lineNum">     560</span>                 :             :      *  copyfmt(), and ~ios().</span>
+<span id="L561"><span class="lineNum">     561</span>                 :             :     */</span>
+<span id="L562"><span class="lineNum">     562</span>                 :             :     typedef void (*event_callback) (event __e, ios_base&amp; __b, int __i);</span>
+<span id="L563"><span class="lineNum">     563</span>                 :             : </span>
+<span id="L564"><span class="lineNum">     564</span>                 :             :     /**</span>
+<span id="L565"><span class="lineNum">     565</span>                 :             :      *  @brief  Add the callback __fn with parameter __index.</span>
+<span id="L566"><span class="lineNum">     566</span>                 :             :      *  @param  __fn  The function to add.</span>
+<span id="L567"><span class="lineNum">     567</span>                 :             :      *  @param  __index  The integer to pass to the function when invoked.</span>
+<span id="L568"><span class="lineNum">     568</span>                 :             :      *</span>
+<span id="L569"><span class="lineNum">     569</span>                 :             :      *  Registers a function as an event callback with an integer parameter to</span>
+<span id="L570"><span class="lineNum">     570</span>                 :             :      *  be passed to the function when invoked.  Multiple copies of the</span>
+<span id="L571"><span class="lineNum">     571</span>                 :             :      *  function are allowed.  If there are multiple callbacks, they are</span>
+<span id="L572"><span class="lineNum">     572</span>                 :             :      *  invoked in the order they were registered.</span>
+<span id="L573"><span class="lineNum">     573</span>                 :             :     */</span>
+<span id="L574"><span class="lineNum">     574</span>                 :             :     void</span>
+<span id="L575"><span class="lineNum">     575</span>                 :             :     register_callback(event_callback __fn, int __index);</span>
+<span id="L576"><span class="lineNum">     576</span>                 :             : </span>
+<span id="L577"><span class="lineNum">     577</span>                 :             :   protected:</span>
+<span id="L578"><span class="lineNum">     578</span>                 :             :     streamsize          _M_precision;</span>
+<span id="L579"><span class="lineNum">     579</span>                 :             :     streamsize          _M_width;</span>
+<span id="L580"><span class="lineNum">     580</span>                 :             :     fmtflags            _M_flags;</span>
+<span id="L581"><span class="lineNum">     581</span>                 :             :     iostate             _M_exception;</span>
+<span id="L582"><span class="lineNum">     582</span>                 :             :     iostate             _M_streambuf_state;</span>
+<span id="L583"><span class="lineNum">     583</span>                 :             : </span>
+<span id="L584"><span class="lineNum">     584</span>                 :             :     // 27.4.2.6  Members for callbacks</span>
+<span id="L585"><span class="lineNum">     585</span>                 :             :     // 27.4.2.6  ios_base callbacks</span>
+<span id="L586"><span class="lineNum">     586</span>                 :             :     struct _Callback_list</span>
+<span id="L587"><span class="lineNum">     587</span>                 :             :     {</span>
+<span id="L588"><span class="lineNum">     588</span>                 :             :       // Data Members</span>
+<span id="L589"><span class="lineNum">     589</span>                 :             :       _Callback_list*           _M_next;</span>
+<span id="L590"><span class="lineNum">     590</span>                 :             :       ios_base::event_callback  _M_fn;</span>
+<span id="L591"><span class="lineNum">     591</span>                 :             :       int                       _M_index;</span>
+<span id="L592"><span class="lineNum">     592</span>                 :             :       _Atomic_word              _M_refcount;  // 0 means one reference.</span>
+<span id="L593"><span class="lineNum">     593</span>                 :             : </span>
+<span id="L594"><span class="lineNum">     594</span>                 :             :       _Callback_list(ios_base::event_callback __fn, int __index,</span>
+<span id="L595"><span class="lineNum">     595</span>                 :             :                      _Callback_list* __cb)</span>
+<span id="L596"><span class="lineNum">     596</span>                 :             :       : _M_next(__cb), _M_fn(__fn), _M_index(__index), _M_refcount(0) { }</span>
+<span id="L597"><span class="lineNum">     597</span>                 :             : </span>
+<span id="L598"><span class="lineNum">     598</span>                 :             :       void</span>
+<span id="L599"><span class="lineNum">     599</span>                 :             :       _M_add_reference() { __gnu_cxx::__atomic_add_dispatch(&amp;_M_refcount, 1); }</span>
+<span id="L600"><span class="lineNum">     600</span>                 :             : </span>
+<span id="L601"><span class="lineNum">     601</span>                 :             :       // 0 =&gt; OK to delete.</span>
+<span id="L602"><span class="lineNum">     602</span>                 :             :       int</span>
+<span id="L603"><span class="lineNum">     603</span>                 :             :       _M_remove_reference() </span>
+<span id="L604"><span class="lineNum">     604</span>                 :             :       {</span>
+<span id="L605"><span class="lineNum">     605</span>                 :             :         // Be race-detector-friendly.  For more info see bits/c++config.</span>
+<span id="L606"><span class="lineNum">     606</span>                 :             :         _GLIBCXX_SYNCHRONIZATION_HAPPENS_BEFORE(&amp;_M_refcount);</span>
+<span id="L607"><span class="lineNum">     607</span>                 :             :         int __res = __gnu_cxx::__exchange_and_add_dispatch(&amp;_M_refcount, -1);</span>
+<span id="L608"><span class="lineNum">     608</span>                 :             :         if (__res == 0)</span>
+<span id="L609"><span class="lineNum">     609</span>                 :             :           {</span>
+<span id="L610"><span class="lineNum">     610</span>                 :             :             _GLIBCXX_SYNCHRONIZATION_HAPPENS_AFTER(&amp;_M_refcount);</span>
+<span id="L611"><span class="lineNum">     611</span>                 :             :           }</span>
+<span id="L612"><span class="lineNum">     612</span>                 :             :         return __res;</span>
+<span id="L613"><span class="lineNum">     613</span>                 :             :       }</span>
+<span id="L614"><span class="lineNum">     614</span>                 :             :     };</span>
+<span id="L615"><span class="lineNum">     615</span>                 :             : </span>
+<span id="L616"><span class="lineNum">     616</span>                 :             :      _Callback_list*    _M_callbacks;</span>
+<span id="L617"><span class="lineNum">     617</span>                 :             : </span>
+<span id="L618"><span class="lineNum">     618</span>                 :             :     void</span>
+<span id="L619"><span class="lineNum">     619</span>                 :             :     _M_call_callbacks(event __ev) throw();</span>
+<span id="L620"><span class="lineNum">     620</span>                 :             : </span>
+<span id="L621"><span class="lineNum">     621</span>                 :             :     void</span>
+<span id="L622"><span class="lineNum">     622</span>                 :             :     _M_dispose_callbacks(void) throw();</span>
+<span id="L623"><span class="lineNum">     623</span>                 :             : </span>
+<span id="L624"><span class="lineNum">     624</span>                 :             :     // 27.4.2.5  Members for iword/pword storage</span>
+<span id="L625"><span class="lineNum">     625</span>                 :             :     struct _Words</span>
+<span id="L626"><span class="lineNum">     626</span>                 :             :     {</span>
+<span id="L627"><span class="lineNum">     627</span>                 :             :       void*     _M_pword;</span>
+<span id="L628"><span class="lineNum">     628</span>                 :             :       long      _M_iword;</span>
+<span id="L629"><span class="lineNum">     629</span>                 :             :       _Words() : _M_pword(0), _M_iword(0) { }</span>
+<span id="L630"><span class="lineNum">     630</span>                 :             :     };</span>
+<span id="L631"><span class="lineNum">     631</span>                 :             : </span>
+<span id="L632"><span class="lineNum">     632</span>                 :             :     // Only for failed iword/pword calls.</span>
+<span id="L633"><span class="lineNum">     633</span>                 :             :     _Words              _M_word_zero;</span>
+<span id="L634"><span class="lineNum">     634</span>                 :             : </span>
+<span id="L635"><span class="lineNum">     635</span>                 :             :     // Guaranteed storage.</span>
+<span id="L636"><span class="lineNum">     636</span>                 :             :     // The first 5 iword and pword slots are reserved for internal use.</span>
+<span id="L637"><span class="lineNum">     637</span>                 :             :     enum { _S_local_word_size = 8 };</span>
+<span id="L638"><span class="lineNum">     638</span>                 :             :     _Words              _M_local_word[_S_local_word_size];</span>
+<span id="L639"><span class="lineNum">     639</span>                 :             : </span>
+<span id="L640"><span class="lineNum">     640</span>                 :             :     // Allocated storage.</span>
+<span id="L641"><span class="lineNum">     641</span>                 :             :     int                 _M_word_size;</span>
+<span id="L642"><span class="lineNum">     642</span>                 :             :     _Words*             _M_word;</span>
+<span id="L643"><span class="lineNum">     643</span>                 :             : </span>
+<span id="L644"><span class="lineNum">     644</span>                 :             :     _Words&amp;</span>
+<span id="L645"><span class="lineNum">     645</span>                 :             :     _M_grow_words(int __index, bool __iword);</span>
+<span id="L646"><span class="lineNum">     646</span>                 :             : </span>
+<span id="L647"><span class="lineNum">     647</span>                 :             :     // Members for locale and locale caching.</span>
+<span id="L648"><span class="lineNum">     648</span>                 :             :     locale              _M_ios_locale;</span>
+<span id="L649"><span class="lineNum">     649</span>                 :             : </span>
+<span id="L650"><span class="lineNum">     650</span>                 :             :     void</span>
+<span id="L651"><span class="lineNum">     651</span>                 :             :     _M_init() throw();</span>
+<span id="L652"><span class="lineNum">     652</span>                 :             : </span>
+<span id="L653"><span class="lineNum">     653</span>                 :             :   public:</span>
+<span id="L654"><span class="lineNum">     654</span>                 :             : </span>
+<span id="L655"><span class="lineNum">     655</span>                 :             :     // 27.4.2.1.6  Class ios_base::Init</span>
+<span id="L656"><span class="lineNum">     656</span>                 :             :     // Used to initialize standard streams. In theory, g++ could use</span>
+<span id="L657"><span class="lineNum">     657</span>                 :             :     // -finit-priority to order this stuff correctly without going</span>
+<span id="L658"><span class="lineNum">     658</span>                 :             :     // through these machinations.</span>
+<span id="L659"><span class="lineNum">     659</span>                 :             :     class Init</span>
+<span id="L660"><span class="lineNum">     660</span>                 :             :     {</span>
+<span id="L661"><span class="lineNum">     661</span>                 :             :       friend class ios_base;</span>
+<span id="L662"><span class="lineNum">     662</span>                 :             :     public:</span>
+<span id="L663"><span class="lineNum">     663</span>                 :             :       Init();</span>
+<span id="L664"><span class="lineNum">     664</span>                 :             :       ~Init();</span>
+<span id="L665"><span class="lineNum">     665</span>                 :             : </span>
+<span id="L666"><span class="lineNum">     666</span>                 :             : #if __cplusplus &gt;= 201103L</span>
+<span id="L667"><span class="lineNum">     667</span>                 :             :       Init(const Init&amp;) = default;</span>
+<span id="L668"><span class="lineNum">     668</span>                 :             :       Init&amp; operator=(const Init&amp;) = default;</span>
+<span id="L669"><span class="lineNum">     669</span>                 :             : #endif</span>
+<span id="L670"><span class="lineNum">     670</span>                 :             : </span>
+<span id="L671"><span class="lineNum">     671</span>                 :             :     private:</span>
+<span id="L672"><span class="lineNum">     672</span>                 :             :       static _Atomic_word       _S_refcount;</span>
+<span id="L673"><span class="lineNum">     673</span>                 :             :       static bool               _S_synced_with_stdio;</span>
+<span id="L674"><span class="lineNum">     674</span>                 :             :     };</span>
+<span id="L675"><span class="lineNum">     675</span>                 :             : </span>
+<span id="L676"><span class="lineNum">     676</span>                 :             :     // [27.4.2.2] fmtflags state functions</span>
+<span id="L677"><span class="lineNum">     677</span>                 :             :     /**</span>
+<span id="L678"><span class="lineNum">     678</span>                 :             :      *  @brief  Access to format flags.</span>
+<span id="L679"><span class="lineNum">     679</span>                 :             :      *  @return  The format control flags for both input and output.</span>
+<span id="L680"><span class="lineNum">     680</span>                 :             :     */</span>
+<span id="L681"><span class="lineNum">     681</span>                 :             :     fmtflags</span>
+<span id="L682"><span class="lineNum">     682</span>                 :             :     flags() const</span>
+<span id="L683"><span class="lineNum">     683</span>                 :             :     { return _M_flags; }</span>
+<span id="L684"><span class="lineNum">     684</span>                 :             : </span>
+<span id="L685"><span class="lineNum">     685</span>                 :             :     /**</span>
+<span id="L686"><span class="lineNum">     686</span>                 :             :      *  @brief  Setting new format flags all at once.</span>
+<span id="L687"><span class="lineNum">     687</span>                 :             :      *  @param  __fmtfl  The new flags to set.</span>
+<span id="L688"><span class="lineNum">     688</span>                 :             :      *  @return  The previous format control flags.</span>
+<span id="L689"><span class="lineNum">     689</span>                 :             :      *</span>
+<span id="L690"><span class="lineNum">     690</span>                 :             :      *  This function overwrites all the format flags with @a __fmtfl.</span>
+<span id="L691"><span class="lineNum">     691</span>                 :             :     */</span>
+<span id="L692"><span class="lineNum">     692</span>                 :             :     fmtflags</span>
+<span id="L693"><span class="lineNum">     693</span>                 :             :     flags(fmtflags __fmtfl)</span>
+<span id="L694"><span class="lineNum">     694</span>                 :             :     {</span>
+<span id="L695"><span class="lineNum">     695</span>                 :             :       fmtflags __old = _M_flags;</span>
+<span id="L696"><span class="lineNum">     696</span>                 :             :       _M_flags = __fmtfl;</span>
+<span id="L697"><span class="lineNum">     697</span>                 :             :       return __old;</span>
+<span id="L698"><span class="lineNum">     698</span>                 :             :     }</span>
+<span id="L699"><span class="lineNum">     699</span>                 :             : </span>
+<span id="L700"><span class="lineNum">     700</span>                 :             :     /**</span>
+<span id="L701"><span class="lineNum">     701</span>                 :             :      *  @brief  Setting new format flags.</span>
+<span id="L702"><span class="lineNum">     702</span>                 :             :      *  @param  __fmtfl  Additional flags to set.</span>
+<span id="L703"><span class="lineNum">     703</span>                 :             :      *  @return  The previous format control flags.</span>
+<span id="L704"><span class="lineNum">     704</span>                 :             :      *</span>
+<span id="L705"><span class="lineNum">     705</span>                 :             :      *  This function sets additional flags in format control.  Flags that</span>
+<span id="L706"><span class="lineNum">     706</span>                 :             :      *  were previously set remain set.</span>
+<span id="L707"><span class="lineNum">     707</span>                 :             :     */</span>
+<span id="L708"><span class="lineNum">     708</span>                 :             :     fmtflags</span>
+<span id="L709"><span class="lineNum">     709</span>                 :             :     setf(fmtflags __fmtfl)</span>
+<span id="L710"><span class="lineNum">     710</span>                 :             :     {</span>
+<span id="L711"><span class="lineNum">     711</span>                 :             :       fmtflags __old = _M_flags;</span>
+<span id="L712"><span class="lineNum">     712</span>                 :             :       _M_flags |= __fmtfl;</span>
+<span id="L713"><span class="lineNum">     713</span>                 :             :       return __old;</span>
+<span id="L714"><span class="lineNum">     714</span>                 :             :     }</span>
+<span id="L715"><span class="lineNum">     715</span>                 :             : </span>
+<span id="L716"><span class="lineNum">     716</span>                 :             :     /**</span>
+<span id="L717"><span class="lineNum">     717</span>                 :             :      *  @brief  Setting new format flags.</span>
+<span id="L718"><span class="lineNum">     718</span>                 :             :      *  @param  __fmtfl  Additional flags to set.</span>
+<span id="L719"><span class="lineNum">     719</span>                 :             :      *  @param  __mask  The flags mask for @a fmtfl.</span>
+<span id="L720"><span class="lineNum">     720</span>                 :             :      *  @return  The previous format control flags.</span>
+<span id="L721"><span class="lineNum">     721</span>                 :             :      *</span>
+<span id="L722"><span class="lineNum">     722</span>                 :             :      *  This function clears @a mask in the format flags, then sets</span>
+<span id="L723"><span class="lineNum">     723</span>                 :             :      *  @a fmtfl @c &amp; @a mask.  An example mask is @c ios_base::adjustfield.</span>
+<span id="L724"><span class="lineNum">     724</span>                 :             :     */</span>
+<span id="L725"><span class="lineNum">     725</span>                 :             :     fmtflags</span>
+<span id="L726"><span class="lineNum">     726</span>                 :             :     setf(fmtflags __fmtfl, fmtflags __mask)</span>
+<span id="L727"><span class="lineNum">     727</span>                 :             :     {</span>
+<span id="L728"><span class="lineNum">     728</span>                 :             :       fmtflags __old = _M_flags;</span>
+<span id="L729"><span class="lineNum">     729</span>                 :             :       _M_flags &amp;= ~__mask;</span>
+<span id="L730"><span class="lineNum">     730</span>                 :             :       _M_flags |= (__fmtfl &amp; __mask);</span>
+<span id="L731"><span class="lineNum">     731</span>                 :             :       return __old;</span>
+<span id="L732"><span class="lineNum">     732</span>                 :             :     }</span>
+<span id="L733"><span class="lineNum">     733</span>                 :             : </span>
+<span id="L734"><span class="lineNum">     734</span>                 :             :     /**</span>
+<span id="L735"><span class="lineNum">     735</span>                 :             :      *  @brief  Clearing format flags.</span>
+<span id="L736"><span class="lineNum">     736</span>                 :             :      *  @param  __mask  The flags to unset.</span>
+<span id="L737"><span class="lineNum">     737</span>                 :             :      *</span>
+<span id="L738"><span class="lineNum">     738</span>                 :             :      *  This function clears @a __mask in the format flags.</span>
+<span id="L739"><span class="lineNum">     739</span>                 :             :     */</span>
+<span id="L740"><span class="lineNum">     740</span>                 :             :     void</span>
+<span id="L741"><span class="lineNum">     741</span>                 :             :     unsetf(fmtflags __mask)</span>
+<span id="L742"><span class="lineNum">     742</span>                 :             :     { _M_flags &amp;= ~__mask; }</span>
+<span id="L743"><span class="lineNum">     743</span>                 :             : </span>
+<span id="L744"><span class="lineNum">     744</span>                 :             :     /**</span>
+<span id="L745"><span class="lineNum">     745</span>                 :             :      *  @brief  Flags access.</span>
+<span id="L746"><span class="lineNum">     746</span>                 :             :      *  @return  The precision to generate on certain output operations.</span>
+<span id="L747"><span class="lineNum">     747</span>                 :             :      *</span>
+<span id="L748"><span class="lineNum">     748</span>                 :             :      *  Be careful if you try to give a definition of @a precision here; see</span>
+<span id="L749"><span class="lineNum">     749</span>                 :             :      *  DR 189.</span>
+<span id="L750"><span class="lineNum">     750</span>                 :             :     */</span>
+<span id="L751"><span class="lineNum">     751</span>                 :             :     streamsize</span>
+<span id="L752"><span class="lineNum">     752</span>                 :             :     precision() const</span>
+<span id="L753"><span class="lineNum">     753</span>                 :             :     { return _M_precision; }</span>
+<span id="L754"><span class="lineNum">     754</span>                 :             : </span>
+<span id="L755"><span class="lineNum">     755</span>                 :             :     /**</span>
+<span id="L756"><span class="lineNum">     756</span>                 :             :      *  @brief  Changing flags.</span>
+<span id="L757"><span class="lineNum">     757</span>                 :             :      *  @param  __prec  The new precision value.</span>
+<span id="L758"><span class="lineNum">     758</span>                 :             :      *  @return  The previous value of precision().</span>
+<span id="L759"><span class="lineNum">     759</span>                 :             :     */</span>
+<span id="L760"><span class="lineNum">     760</span>                 :             :     streamsize</span>
+<span id="L761"><span class="lineNum">     761</span>                 :<span class="tlaUNC tlaBgUNC">           0 :     precision(streamsize __prec)</span></span>
+<span id="L762"><span class="lineNum">     762</span>                 :             :     {</span>
+<span id="L763"><span class="lineNum">     763</span>                 :<span class="tlaUNC">           0 :       streamsize __old = _M_precision;</span></span>
+<span id="L764"><span class="lineNum">     764</span>                 :<span class="tlaUNC">           0 :       _M_precision = __prec;</span></span>
+<span id="L765"><span class="lineNum">     765</span>                 :<span class="tlaUNC">           0 :       return __old;</span></span>
+<span id="L766"><span class="lineNum">     766</span>                 :             :     }</span>
+<span id="L767"><span class="lineNum">     767</span>                 :             : </span>
+<span id="L768"><span class="lineNum">     768</span>                 :             :     /**</span>
+<span id="L769"><span class="lineNum">     769</span>                 :             :      *  @brief  Flags access.</span>
+<span id="L770"><span class="lineNum">     770</span>                 :             :      *  @return  The minimum field width to generate on output operations.</span>
+<span id="L771"><span class="lineNum">     771</span>                 :             :      *</span>
+<span id="L772"><span class="lineNum">     772</span>                 :             :      *  &lt;em&gt;Minimum field width&lt;/em&gt; refers to the number of characters.</span>
+<span id="L773"><span class="lineNum">     773</span>                 :             :     */</span>
+<span id="L774"><span class="lineNum">     774</span>                 :             :     streamsize</span>
+<span id="L775"><span class="lineNum">     775</span>                 :<span class="tlaGNC tlaBgGNC">           3 :     width() const</span></span>
+<span id="L776"><span class="lineNum">     776</span>                 :<span class="tlaGNC">           3 :     { return _M_width; }</span></span>
+<span id="L777"><span class="lineNum">     777</span>                 :             : </span>
+<span id="L778"><span class="lineNum">     778</span>                 :             :     /**</span>
+<span id="L779"><span class="lineNum">     779</span>                 :             :      *  @brief  Changing flags.</span>
+<span id="L780"><span class="lineNum">     780</span>                 :             :      *  @param  __wide  The new width value.</span>
+<span id="L781"><span class="lineNum">     781</span>                 :             :      *  @return  The previous value of width().</span>
+<span id="L782"><span class="lineNum">     782</span>                 :             :     */</span>
+<span id="L783"><span class="lineNum">     783</span>                 :             :     streamsize</span>
+<span id="L784"><span class="lineNum">     784</span>                 :<span class="tlaUNC tlaBgUNC">           0 :     width(streamsize __wide)</span></span>
+<span id="L785"><span class="lineNum">     785</span>                 :             :     {</span>
+<span id="L786"><span class="lineNum">     786</span>                 :<span class="tlaUNC">           0 :       streamsize __old = _M_width;</span></span>
+<span id="L787"><span class="lineNum">     787</span>                 :<span class="tlaUNC">           0 :       _M_width = __wide;</span></span>
+<span id="L788"><span class="lineNum">     788</span>                 :<span class="tlaUNC">           0 :       return __old;</span></span>
+<span id="L789"><span class="lineNum">     789</span>                 :             :     }</span>
+<span id="L790"><span class="lineNum">     790</span>                 :             : </span>
+<span id="L791"><span class="lineNum">     791</span>                 :             :     // [27.4.2.4] ios_base static members</span>
+<span id="L792"><span class="lineNum">     792</span>                 :             :     /**</span>
+<span id="L793"><span class="lineNum">     793</span>                 :             :      *  @brief  Interaction with the standard C I/O objects.</span>
+<span id="L794"><span class="lineNum">     794</span>                 :             :      *  @param  __sync  Whether to synchronize or not.</span>
+<span id="L795"><span class="lineNum">     795</span>                 :             :      *  @return  True if the standard streams were previously synchronized.</span>
+<span id="L796"><span class="lineNum">     796</span>                 :             :      *</span>
+<span id="L797"><span class="lineNum">     797</span>                 :             :      *  The synchronization referred to is @e only that between the standard</span>
+<span id="L798"><span class="lineNum">     798</span>                 :             :      *  C facilities (e.g., stdout) and the standard C++ objects (e.g.,</span>
+<span id="L799"><span class="lineNum">     799</span>                 :             :      *  cout).  User-declared streams are unaffected.  See</span>
+<span id="L800"><span class="lineNum">     800</span>                 :             :      *  https://gcc.gnu.org/onlinedocs/libstdc++/manual/fstreams.html#std.io.filestreams.binary</span>
+<span id="L801"><span class="lineNum">     801</span>                 :             :     */</span>
+<span id="L802"><span class="lineNum">     802</span>                 :             :     static bool</span>
+<span id="L803"><span class="lineNum">     803</span>                 :             :     sync_with_stdio(bool __sync = true);</span>
+<span id="L804"><span class="lineNum">     804</span>                 :             : </span>
+<span id="L805"><span class="lineNum">     805</span>                 :             :     // [27.4.2.3] ios_base locale functions</span>
+<span id="L806"><span class="lineNum">     806</span>                 :             :     /**</span>
+<span id="L807"><span class="lineNum">     807</span>                 :             :      *  @brief  Setting a new locale.</span>
+<span id="L808"><span class="lineNum">     808</span>                 :             :      *  @param  __loc  The new locale.</span>
+<span id="L809"><span class="lineNum">     809</span>                 :             :      *  @return  The previous locale.</span>
+<span id="L810"><span class="lineNum">     810</span>                 :             :      *</span>
+<span id="L811"><span class="lineNum">     811</span>                 :             :      *  Sets the new locale for this stream, and then invokes each callback</span>
+<span id="L812"><span class="lineNum">     812</span>                 :             :      *  with imbue_event.</span>
+<span id="L813"><span class="lineNum">     813</span>                 :             :     */</span>
+<span id="L814"><span class="lineNum">     814</span>                 :             :     locale</span>
+<span id="L815"><span class="lineNum">     815</span>                 :             :     imbue(const locale&amp; __loc) throw();</span>
+<span id="L816"><span class="lineNum">     816</span>                 :             : </span>
+<span id="L817"><span class="lineNum">     817</span>                 :             :     /**</span>
+<span id="L818"><span class="lineNum">     818</span>                 :             :      *  @brief  Locale access</span>
+<span id="L819"><span class="lineNum">     819</span>                 :             :      *  @return  A copy of the current locale.</span>
+<span id="L820"><span class="lineNum">     820</span>                 :             :      *</span>
+<span id="L821"><span class="lineNum">     821</span>                 :             :      *  If @c imbue(loc) has previously been called, then this function</span>
+<span id="L822"><span class="lineNum">     822</span>                 :             :      *  returns @c loc.  Otherwise, it returns a copy of @c std::locale(),</span>
+<span id="L823"><span class="lineNum">     823</span>                 :             :      *  the global C++ locale.</span>
+<span id="L824"><span class="lineNum">     824</span>                 :             :     */</span>
+<span id="L825"><span class="lineNum">     825</span>                 :             :     locale</span>
+<span id="L826"><span class="lineNum">     826</span>                 :             :     getloc() const</span>
+<span id="L827"><span class="lineNum">     827</span>                 :             :     { return _M_ios_locale; }</span>
+<span id="L828"><span class="lineNum">     828</span>                 :             : </span>
+<span id="L829"><span class="lineNum">     829</span>                 :             :     /**</span>
+<span id="L830"><span class="lineNum">     830</span>                 :             :      *  @brief  Locale access</span>
+<span id="L831"><span class="lineNum">     831</span>                 :             :      *  @return  A reference to the current locale.</span>
+<span id="L832"><span class="lineNum">     832</span>                 :             :      *</span>
+<span id="L833"><span class="lineNum">     833</span>                 :             :      *  Like getloc above, but returns a reference instead of</span>
+<span id="L834"><span class="lineNum">     834</span>                 :             :      *  generating a copy.</span>
+<span id="L835"><span class="lineNum">     835</span>                 :             :     */</span>
+<span id="L836"><span class="lineNum">     836</span>                 :             :     const locale&amp;</span>
+<span id="L837"><span class="lineNum">     837</span>                 :             :     _M_getloc() const</span>
+<span id="L838"><span class="lineNum">     838</span>                 :             :     { return _M_ios_locale; }</span>
+<span id="L839"><span class="lineNum">     839</span>                 :             : </span>
+<span id="L840"><span class="lineNum">     840</span>                 :             :     // [27.4.2.5] ios_base storage functions</span>
+<span id="L841"><span class="lineNum">     841</span>                 :             :     /**</span>
+<span id="L842"><span class="lineNum">     842</span>                 :             :      *  @brief  Access to unique indices.</span>
+<span id="L843"><span class="lineNum">     843</span>                 :             :      *  @return  An integer different from all previous calls.</span>
+<span id="L844"><span class="lineNum">     844</span>                 :             :      *</span>
+<span id="L845"><span class="lineNum">     845</span>                 :             :      *  This function returns a unique integer every time it is called.  It</span>
+<span id="L846"><span class="lineNum">     846</span>                 :             :      *  can be used for any purpose, but is primarily intended to be a unique</span>
+<span id="L847"><span class="lineNum">     847</span>                 :             :      *  index for the iword and pword functions.  The expectation is that an</span>
+<span id="L848"><span class="lineNum">     848</span>                 :             :      *  application calls xalloc in order to obtain an index in the iword and</span>
+<span id="L849"><span class="lineNum">     849</span>                 :             :      *  pword arrays that can be used without fear of conflict.</span>
+<span id="L850"><span class="lineNum">     850</span>                 :             :      *</span>
+<span id="L851"><span class="lineNum">     851</span>                 :             :      *  The implementation maintains a static variable that is incremented and</span>
+<span id="L852"><span class="lineNum">     852</span>                 :             :      *  returned on each invocation.  xalloc is guaranteed to return an index</span>
+<span id="L853"><span class="lineNum">     853</span>                 :             :      *  that is safe to use in the iword and pword arrays.</span>
+<span id="L854"><span class="lineNum">     854</span>                 :             :     */</span>
+<span id="L855"><span class="lineNum">     855</span>                 :             :     static int</span>
+<span id="L856"><span class="lineNum">     856</span>                 :             :     xalloc() throw();</span>
+<span id="L857"><span class="lineNum">     857</span>                 :             : </span>
+<span id="L858"><span class="lineNum">     858</span>                 :             :     /**</span>
+<span id="L859"><span class="lineNum">     859</span>                 :             :      *  @brief  Access to integer array.</span>
+<span id="L860"><span class="lineNum">     860</span>                 :             :      *  @param  __ix  Index into the array.</span>
+<span id="L861"><span class="lineNum">     861</span>                 :             :      *  @return  A reference to an integer associated with the index.</span>
+<span id="L862"><span class="lineNum">     862</span>                 :             :      *</span>
+<span id="L863"><span class="lineNum">     863</span>                 :             :      *  The iword function provides access to an array of integers that can be</span>
+<span id="L864"><span class="lineNum">     864</span>                 :             :      *  used for any purpose.  The array grows as required to hold the</span>
+<span id="L865"><span class="lineNum">     865</span>                 :             :      *  supplied index.  All integers in the array are initialized to 0.</span>
+<span id="L866"><span class="lineNum">     866</span>                 :             :      *</span>
+<span id="L867"><span class="lineNum">     867</span>                 :             :      *  The implementation reserves several indices.  You should use xalloc to</span>
+<span id="L868"><span class="lineNum">     868</span>                 :             :      *  obtain an index that is safe to use.  Also note that since the array</span>
+<span id="L869"><span class="lineNum">     869</span>                 :             :      *  can grow dynamically, it is not safe to hold onto the reference.</span>
+<span id="L870"><span class="lineNum">     870</span>                 :             :     */</span>
+<span id="L871"><span class="lineNum">     871</span>                 :             :     long&amp;</span>
+<span id="L872"><span class="lineNum">     872</span>                 :             :     iword(int __ix)</span>
+<span id="L873"><span class="lineNum">     873</span>                 :             :     {</span>
+<span id="L874"><span class="lineNum">     874</span>                 :             :       _Words&amp; __word = ((unsigned)__ix &lt; (unsigned)_M_word_size)</span>
+<span id="L875"><span class="lineNum">     875</span>                 :             :                         ? _M_word[__ix] : _M_grow_words(__ix, true);</span>
+<span id="L876"><span class="lineNum">     876</span>                 :             :       return __word._M_iword;</span>
+<span id="L877"><span class="lineNum">     877</span>                 :             :     }</span>
+<span id="L878"><span class="lineNum">     878</span>                 :             : </span>
+<span id="L879"><span class="lineNum">     879</span>                 :             :     /**</span>
+<span id="L880"><span class="lineNum">     880</span>                 :             :      *  @brief  Access to void pointer array.</span>
+<span id="L881"><span class="lineNum">     881</span>                 :             :      *  @param  __ix  Index into the array.</span>
+<span id="L882"><span class="lineNum">     882</span>                 :             :      *  @return  A reference to a void* associated with the index.</span>
+<span id="L883"><span class="lineNum">     883</span>                 :             :      *</span>
+<span id="L884"><span class="lineNum">     884</span>                 :             :      *  The pword function provides access to an array of pointers that can be</span>
+<span id="L885"><span class="lineNum">     885</span>                 :             :      *  used for any purpose.  The array grows as required to hold the</span>
+<span id="L886"><span class="lineNum">     886</span>                 :             :      *  supplied index.  All pointers in the array are initialized to 0.</span>
+<span id="L887"><span class="lineNum">     887</span>                 :             :      *</span>
+<span id="L888"><span class="lineNum">     888</span>                 :             :      *  The implementation reserves several indices.  You should use xalloc to</span>
+<span id="L889"><span class="lineNum">     889</span>                 :             :      *  obtain an index that is safe to use.  Also note that since the array</span>
+<span id="L890"><span class="lineNum">     890</span>                 :             :      *  can grow dynamically, it is not safe to hold onto the reference.</span>
+<span id="L891"><span class="lineNum">     891</span>                 :             :     */</span>
+<span id="L892"><span class="lineNum">     892</span>                 :             :     void*&amp;</span>
+<span id="L893"><span class="lineNum">     893</span>                 :             :     pword(int __ix)</span>
+<span id="L894"><span class="lineNum">     894</span>                 :             :     {</span>
+<span id="L895"><span class="lineNum">     895</span>                 :             :       _Words&amp; __word = ((unsigned)__ix &lt; (unsigned)_M_word_size)</span>
+<span id="L896"><span class="lineNum">     896</span>                 :             :                         ? _M_word[__ix] : _M_grow_words(__ix, false);</span>
+<span id="L897"><span class="lineNum">     897</span>                 :             :       return __word._M_pword;</span>
+<span id="L898"><span class="lineNum">     898</span>                 :             :     }</span>
+<span id="L899"><span class="lineNum">     899</span>                 :             : </span>
+<span id="L900"><span class="lineNum">     900</span>                 :             :     // Destructor</span>
+<span id="L901"><span class="lineNum">     901</span>                 :             :     /**</span>
+<span id="L902"><span class="lineNum">     902</span>                 :             :      *  Invokes each callback with erase_event.  Destroys local storage.</span>
+<span id="L903"><span class="lineNum">     903</span>                 :             :      *</span>
+<span id="L904"><span class="lineNum">     904</span>                 :             :      *  Note that the ios_base object for the standard streams never gets</span>
+<span id="L905"><span class="lineNum">     905</span>                 :             :      *  destroyed.  As a result, any callbacks registered with the standard</span>
+<span id="L906"><span class="lineNum">     906</span>                 :             :      *  streams will not get invoked with erase_event (unless copyfmt is</span>
+<span id="L907"><span class="lineNum">     907</span>                 :             :      *  used).</span>
+<span id="L908"><span class="lineNum">     908</span>                 :             :     */</span>
+<span id="L909"><span class="lineNum">     909</span>                 :             :     virtual ~ios_base();</span>
+<span id="L910"><span class="lineNum">     910</span>                 :             : </span>
+<span id="L911"><span class="lineNum">     911</span>                 :             :   protected:</span>
+<span id="L912"><span class="lineNum">     912</span>                 :             :     ios_base() throw ();</span>
+<span id="L913"><span class="lineNum">     913</span>                 :             : </span>
+<span id="L914"><span class="lineNum">     914</span>                 :             : #if __cplusplus &lt; 201103L</span>
+<span id="L915"><span class="lineNum">     915</span>                 :             :   // _GLIBCXX_RESOLVE_LIB_DEFECTS</span>
+<span id="L916"><span class="lineNum">     916</span>                 :             :   // 50.  Copy constructor and assignment operator of ios_base</span>
+<span id="L917"><span class="lineNum">     917</span>                 :             :   private:</span>
+<span id="L918"><span class="lineNum">     918</span>                 :             :     ios_base(const ios_base&amp;);</span>
+<span id="L919"><span class="lineNum">     919</span>                 :             : </span>
+<span id="L920"><span class="lineNum">     920</span>                 :             :     ios_base&amp;</span>
+<span id="L921"><span class="lineNum">     921</span>                 :             :     operator=(const ios_base&amp;);</span>
+<span id="L922"><span class="lineNum">     922</span>                 :             : #else</span>
+<span id="L923"><span class="lineNum">     923</span>                 :             :   public:</span>
+<span id="L924"><span class="lineNum">     924</span>                 :             :     ios_base(const ios_base&amp;) = delete;</span>
+<span id="L925"><span class="lineNum">     925</span>                 :             : </span>
+<span id="L926"><span class="lineNum">     926</span>                 :             :     ios_base&amp;</span>
+<span id="L927"><span class="lineNum">     927</span>                 :             :     operator=(const ios_base&amp;) = delete;</span>
+<span id="L928"><span class="lineNum">     928</span>                 :             : </span>
+<span id="L929"><span class="lineNum">     929</span>                 :             :   protected:</span>
+<span id="L930"><span class="lineNum">     930</span>                 :             :     void</span>
+<span id="L931"><span class="lineNum">     931</span>                 :             :     _M_move(ios_base&amp;) noexcept;</span>
+<span id="L932"><span class="lineNum">     932</span>                 :             : </span>
+<span id="L933"><span class="lineNum">     933</span>                 :             :     void</span>
+<span id="L934"><span class="lineNum">     934</span>                 :             :     _M_swap(ios_base&amp; __rhs) noexcept;</span>
+<span id="L935"><span class="lineNum">     935</span>                 :             : #endif</span>
+<span id="L936"><span class="lineNum">     936</span>                 :             :   };</span>
+<span id="L937"><span class="lineNum">     937</span>                 :             : </span>
+<span id="L938"><span class="lineNum">     938</span>                 :             :   // [27.4.5.1] fmtflags manipulators</span>
+<span id="L939"><span class="lineNum">     939</span>                 :             :   /// Calls base.setf(ios_base::boolalpha).</span>
+<span id="L940"><span class="lineNum">     940</span>                 :             :   inline ios_base&amp;</span>
+<span id="L941"><span class="lineNum">     941</span>                 :             :   boolalpha(ios_base&amp; __base)</span>
+<span id="L942"><span class="lineNum">     942</span>                 :             :   {</span>
+<span id="L943"><span class="lineNum">     943</span>                 :             :     __base.setf(ios_base::boolalpha);</span>
+<span id="L944"><span class="lineNum">     944</span>                 :             :     return __base;</span>
+<span id="L945"><span class="lineNum">     945</span>                 :             :   }</span>
+<span id="L946"><span class="lineNum">     946</span>                 :             : </span>
+<span id="L947"><span class="lineNum">     947</span>                 :             :   /// Calls base.unsetf(ios_base::boolalpha).</span>
+<span id="L948"><span class="lineNum">     948</span>                 :             :   inline ios_base&amp;</span>
+<span id="L949"><span class="lineNum">     949</span>                 :             :   noboolalpha(ios_base&amp; __base)</span>
+<span id="L950"><span class="lineNum">     950</span>                 :             :   {</span>
+<span id="L951"><span class="lineNum">     951</span>                 :             :     __base.unsetf(ios_base::boolalpha);</span>
+<span id="L952"><span class="lineNum">     952</span>                 :             :     return __base;</span>
+<span id="L953"><span class="lineNum">     953</span>                 :             :   }</span>
+<span id="L954"><span class="lineNum">     954</span>                 :             : </span>
+<span id="L955"><span class="lineNum">     955</span>                 :             :   /// Calls base.setf(ios_base::showbase).</span>
+<span id="L956"><span class="lineNum">     956</span>                 :             :   inline ios_base&amp;</span>
+<span id="L957"><span class="lineNum">     957</span>                 :             :   showbase(ios_base&amp; __base)</span>
+<span id="L958"><span class="lineNum">     958</span>                 :             :   {</span>
+<span id="L959"><span class="lineNum">     959</span>                 :             :     __base.setf(ios_base::showbase);</span>
+<span id="L960"><span class="lineNum">     960</span>                 :             :     return __base;</span>
+<span id="L961"><span class="lineNum">     961</span>                 :             :   }</span>
+<span id="L962"><span class="lineNum">     962</span>                 :             : </span>
+<span id="L963"><span class="lineNum">     963</span>                 :             :   /// Calls base.unsetf(ios_base::showbase).</span>
+<span id="L964"><span class="lineNum">     964</span>                 :             :   inline ios_base&amp;</span>
+<span id="L965"><span class="lineNum">     965</span>                 :             :   noshowbase(ios_base&amp; __base)</span>
+<span id="L966"><span class="lineNum">     966</span>                 :             :   {</span>
+<span id="L967"><span class="lineNum">     967</span>                 :             :     __base.unsetf(ios_base::showbase);</span>
+<span id="L968"><span class="lineNum">     968</span>                 :             :     return __base;</span>
+<span id="L969"><span class="lineNum">     969</span>                 :             :   }</span>
+<span id="L970"><span class="lineNum">     970</span>                 :             : </span>
+<span id="L971"><span class="lineNum">     971</span>                 :             :   /// Calls base.setf(ios_base::showpoint).</span>
+<span id="L972"><span class="lineNum">     972</span>                 :             :   inline ios_base&amp;</span>
+<span id="L973"><span class="lineNum">     973</span>                 :             :   showpoint(ios_base&amp; __base)</span>
+<span id="L974"><span class="lineNum">     974</span>                 :             :   {</span>
+<span id="L975"><span class="lineNum">     975</span>                 :             :     __base.setf(ios_base::showpoint);</span>
+<span id="L976"><span class="lineNum">     976</span>                 :             :     return __base;</span>
+<span id="L977"><span class="lineNum">     977</span>                 :             :   }</span>
+<span id="L978"><span class="lineNum">     978</span>                 :             : </span>
+<span id="L979"><span class="lineNum">     979</span>                 :             :   /// Calls base.unsetf(ios_base::showpoint).</span>
+<span id="L980"><span class="lineNum">     980</span>                 :             :   inline ios_base&amp;</span>
+<span id="L981"><span class="lineNum">     981</span>                 :             :   noshowpoint(ios_base&amp; __base)</span>
+<span id="L982"><span class="lineNum">     982</span>                 :             :   {</span>
+<span id="L983"><span class="lineNum">     983</span>                 :             :     __base.unsetf(ios_base::showpoint);</span>
+<span id="L984"><span class="lineNum">     984</span>                 :             :     return __base;</span>
+<span id="L985"><span class="lineNum">     985</span>                 :             :   }</span>
+<span id="L986"><span class="lineNum">     986</span>                 :             : </span>
+<span id="L987"><span class="lineNum">     987</span>                 :             :   /// Calls base.setf(ios_base::showpos).</span>
+<span id="L988"><span class="lineNum">     988</span>                 :             :   inline ios_base&amp;</span>
+<span id="L989"><span class="lineNum">     989</span>                 :             :   showpos(ios_base&amp; __base)</span>
+<span id="L990"><span class="lineNum">     990</span>                 :             :   {</span>
+<span id="L991"><span class="lineNum">     991</span>                 :             :     __base.setf(ios_base::showpos);</span>
+<span id="L992"><span class="lineNum">     992</span>                 :             :     return __base;</span>
+<span id="L993"><span class="lineNum">     993</span>                 :             :   }</span>
+<span id="L994"><span class="lineNum">     994</span>                 :             : </span>
+<span id="L995"><span class="lineNum">     995</span>                 :             :   /// Calls base.unsetf(ios_base::showpos).</span>
+<span id="L996"><span class="lineNum">     996</span>                 :             :   inline ios_base&amp;</span>
+<span id="L997"><span class="lineNum">     997</span>                 :             :   noshowpos(ios_base&amp; __base)</span>
+<span id="L998"><span class="lineNum">     998</span>                 :             :   {</span>
+<span id="L999"><span class="lineNum">     999</span>                 :             :     __base.unsetf(ios_base::showpos);</span>
+<span id="L1000"><span class="lineNum">    1000</span>                 :             :     return __base;</span>
+<span id="L1001"><span class="lineNum">    1001</span>                 :             :   }</span>
+<span id="L1002"><span class="lineNum">    1002</span>                 :             : </span>
+<span id="L1003"><span class="lineNum">    1003</span>                 :             :   /// Calls base.setf(ios_base::skipws).</span>
+<span id="L1004"><span class="lineNum">    1004</span>                 :             :   inline ios_base&amp;</span>
+<span id="L1005"><span class="lineNum">    1005</span>                 :             :   skipws(ios_base&amp; __base)</span>
+<span id="L1006"><span class="lineNum">    1006</span>                 :             :   {</span>
+<span id="L1007"><span class="lineNum">    1007</span>                 :             :     __base.setf(ios_base::skipws);</span>
+<span id="L1008"><span class="lineNum">    1008</span>                 :             :     return __base;</span>
+<span id="L1009"><span class="lineNum">    1009</span>                 :             :   }</span>
+<span id="L1010"><span class="lineNum">    1010</span>                 :             : </span>
+<span id="L1011"><span class="lineNum">    1011</span>                 :             :   /// Calls base.unsetf(ios_base::skipws).</span>
+<span id="L1012"><span class="lineNum">    1012</span>                 :             :   inline ios_base&amp;</span>
+<span id="L1013"><span class="lineNum">    1013</span>                 :             :   noskipws(ios_base&amp; __base)</span>
+<span id="L1014"><span class="lineNum">    1014</span>                 :             :   {</span>
+<span id="L1015"><span class="lineNum">    1015</span>                 :             :     __base.unsetf(ios_base::skipws);</span>
+<span id="L1016"><span class="lineNum">    1016</span>                 :             :     return __base;</span>
+<span id="L1017"><span class="lineNum">    1017</span>                 :             :   }</span>
+<span id="L1018"><span class="lineNum">    1018</span>                 :             : </span>
+<span id="L1019"><span class="lineNum">    1019</span>                 :             :   /// Calls base.setf(ios_base::uppercase).</span>
+<span id="L1020"><span class="lineNum">    1020</span>                 :             :   inline ios_base&amp;</span>
+<span id="L1021"><span class="lineNum">    1021</span>                 :             :   uppercase(ios_base&amp; __base)</span>
+<span id="L1022"><span class="lineNum">    1022</span>                 :             :   {</span>
+<span id="L1023"><span class="lineNum">    1023</span>                 :             :     __base.setf(ios_base::uppercase);</span>
+<span id="L1024"><span class="lineNum">    1024</span>                 :             :     return __base;</span>
+<span id="L1025"><span class="lineNum">    1025</span>                 :             :   }</span>
+<span id="L1026"><span class="lineNum">    1026</span>                 :             : </span>
+<span id="L1027"><span class="lineNum">    1027</span>                 :             :   /// Calls base.unsetf(ios_base::uppercase).</span>
+<span id="L1028"><span class="lineNum">    1028</span>                 :             :   inline ios_base&amp;</span>
+<span id="L1029"><span class="lineNum">    1029</span>                 :             :   nouppercase(ios_base&amp; __base)</span>
+<span id="L1030"><span class="lineNum">    1030</span>                 :             :   {</span>
+<span id="L1031"><span class="lineNum">    1031</span>                 :             :     __base.unsetf(ios_base::uppercase);</span>
+<span id="L1032"><span class="lineNum">    1032</span>                 :             :     return __base;</span>
+<span id="L1033"><span class="lineNum">    1033</span>                 :             :   }</span>
+<span id="L1034"><span class="lineNum">    1034</span>                 :             : </span>
+<span id="L1035"><span class="lineNum">    1035</span>                 :             :   /// Calls base.setf(ios_base::unitbuf).</span>
+<span id="L1036"><span class="lineNum">    1036</span>                 :             :   inline ios_base&amp;</span>
+<span id="L1037"><span class="lineNum">    1037</span>                 :             :   unitbuf(ios_base&amp; __base)</span>
+<span id="L1038"><span class="lineNum">    1038</span>                 :             :   {</span>
+<span id="L1039"><span class="lineNum">    1039</span>                 :             :      __base.setf(ios_base::unitbuf);</span>
+<span id="L1040"><span class="lineNum">    1040</span>                 :             :      return __base;</span>
+<span id="L1041"><span class="lineNum">    1041</span>                 :             :   }</span>
+<span id="L1042"><span class="lineNum">    1042</span>                 :             : </span>
+<span id="L1043"><span class="lineNum">    1043</span>                 :             :   /// Calls base.unsetf(ios_base::unitbuf).</span>
+<span id="L1044"><span class="lineNum">    1044</span>                 :             :   inline ios_base&amp;</span>
+<span id="L1045"><span class="lineNum">    1045</span>                 :             :   nounitbuf(ios_base&amp; __base)</span>
+<span id="L1046"><span class="lineNum">    1046</span>                 :             :   {</span>
+<span id="L1047"><span class="lineNum">    1047</span>                 :             :      __base.unsetf(ios_base::unitbuf);</span>
+<span id="L1048"><span class="lineNum">    1048</span>                 :             :      return __base;</span>
+<span id="L1049"><span class="lineNum">    1049</span>                 :             :   }</span>
+<span id="L1050"><span class="lineNum">    1050</span>                 :             : </span>
+<span id="L1051"><span class="lineNum">    1051</span>                 :             :   // [27.4.5.2] adjustfield manipulators</span>
+<span id="L1052"><span class="lineNum">    1052</span>                 :             :   /// Calls base.setf(ios_base::internal, ios_base::adjustfield).</span>
+<span id="L1053"><span class="lineNum">    1053</span>                 :             :   inline ios_base&amp;</span>
+<span id="L1054"><span class="lineNum">    1054</span>                 :             :   internal(ios_base&amp; __base)</span>
+<span id="L1055"><span class="lineNum">    1055</span>                 :             :   {</span>
+<span id="L1056"><span class="lineNum">    1056</span>                 :             :      __base.setf(ios_base::internal, ios_base::adjustfield);</span>
+<span id="L1057"><span class="lineNum">    1057</span>                 :             :      return __base;</span>
+<span id="L1058"><span class="lineNum">    1058</span>                 :             :   }</span>
+<span id="L1059"><span class="lineNum">    1059</span>                 :             : </span>
+<span id="L1060"><span class="lineNum">    1060</span>                 :             :   /// Calls base.setf(ios_base::left, ios_base::adjustfield).</span>
+<span id="L1061"><span class="lineNum">    1061</span>                 :             :   inline ios_base&amp;</span>
+<span id="L1062"><span class="lineNum">    1062</span>                 :             :   left(ios_base&amp; __base)</span>
+<span id="L1063"><span class="lineNum">    1063</span>                 :             :   {</span>
+<span id="L1064"><span class="lineNum">    1064</span>                 :             :     __base.setf(ios_base::left, ios_base::adjustfield);</span>
+<span id="L1065"><span class="lineNum">    1065</span>                 :             :     return __base;</span>
+<span id="L1066"><span class="lineNum">    1066</span>                 :             :   }</span>
+<span id="L1067"><span class="lineNum">    1067</span>                 :             : </span>
+<span id="L1068"><span class="lineNum">    1068</span>                 :             :   /// Calls base.setf(ios_base::right, ios_base::adjustfield).</span>
+<span id="L1069"><span class="lineNum">    1069</span>                 :             :   inline ios_base&amp;</span>
+<span id="L1070"><span class="lineNum">    1070</span>                 :             :   right(ios_base&amp; __base)</span>
+<span id="L1071"><span class="lineNum">    1071</span>                 :             :   {</span>
+<span id="L1072"><span class="lineNum">    1072</span>                 :             :     __base.setf(ios_base::right, ios_base::adjustfield);</span>
+<span id="L1073"><span class="lineNum">    1073</span>                 :             :     return __base;</span>
+<span id="L1074"><span class="lineNum">    1074</span>                 :             :   }</span>
+<span id="L1075"><span class="lineNum">    1075</span>                 :             : </span>
+<span id="L1076"><span class="lineNum">    1076</span>                 :             :   // [27.4.5.3] basefield manipulators</span>
+<span id="L1077"><span class="lineNum">    1077</span>                 :             :   /// Calls base.setf(ios_base::dec, ios_base::basefield).</span>
+<span id="L1078"><span class="lineNum">    1078</span>                 :             :   inline ios_base&amp;</span>
+<span id="L1079"><span class="lineNum">    1079</span>                 :             :   dec(ios_base&amp; __base)</span>
+<span id="L1080"><span class="lineNum">    1080</span>                 :             :   {</span>
+<span id="L1081"><span class="lineNum">    1081</span>                 :             :     __base.setf(ios_base::dec, ios_base::basefield);</span>
+<span id="L1082"><span class="lineNum">    1082</span>                 :             :     return __base;</span>
+<span id="L1083"><span class="lineNum">    1083</span>                 :             :   }</span>
+<span id="L1084"><span class="lineNum">    1084</span>                 :             : </span>
+<span id="L1085"><span class="lineNum">    1085</span>                 :             :   /// Calls base.setf(ios_base::hex, ios_base::basefield).</span>
+<span id="L1086"><span class="lineNum">    1086</span>                 :             :   inline ios_base&amp;</span>
+<span id="L1087"><span class="lineNum">    1087</span>                 :             :   hex(ios_base&amp; __base)</span>
+<span id="L1088"><span class="lineNum">    1088</span>                 :             :   {</span>
+<span id="L1089"><span class="lineNum">    1089</span>                 :             :     __base.setf(ios_base::hex, ios_base::basefield);</span>
+<span id="L1090"><span class="lineNum">    1090</span>                 :             :     return __base;</span>
+<span id="L1091"><span class="lineNum">    1091</span>                 :             :   }</span>
+<span id="L1092"><span class="lineNum">    1092</span>                 :             : </span>
+<span id="L1093"><span class="lineNum">    1093</span>                 :             :   /// Calls base.setf(ios_base::oct, ios_base::basefield).</span>
+<span id="L1094"><span class="lineNum">    1094</span>                 :             :   inline ios_base&amp;</span>
+<span id="L1095"><span class="lineNum">    1095</span>                 :             :   oct(ios_base&amp; __base)</span>
+<span id="L1096"><span class="lineNum">    1096</span>                 :             :   {</span>
+<span id="L1097"><span class="lineNum">    1097</span>                 :             :     __base.setf(ios_base::oct, ios_base::basefield);</span>
+<span id="L1098"><span class="lineNum">    1098</span>                 :             :     return __base;</span>
+<span id="L1099"><span class="lineNum">    1099</span>                 :             :   }</span>
+<span id="L1100"><span class="lineNum">    1100</span>                 :             : </span>
+<span id="L1101"><span class="lineNum">    1101</span>                 :             :   // [27.4.5.4] floatfield manipulators</span>
+<span id="L1102"><span class="lineNum">    1102</span>                 :             :   /// Calls base.setf(ios_base::fixed, ios_base::floatfield).</span>
+<span id="L1103"><span class="lineNum">    1103</span>                 :             :   inline ios_base&amp;</span>
+<span id="L1104"><span class="lineNum">    1104</span>                 :             :   fixed(ios_base&amp; __base)</span>
+<span id="L1105"><span class="lineNum">    1105</span>                 :             :   {</span>
+<span id="L1106"><span class="lineNum">    1106</span>                 :             :     __base.setf(ios_base::fixed, ios_base::floatfield);</span>
+<span id="L1107"><span class="lineNum">    1107</span>                 :             :     return __base;</span>
+<span id="L1108"><span class="lineNum">    1108</span>                 :             :   }</span>
+<span id="L1109"><span class="lineNum">    1109</span>                 :             : </span>
+<span id="L1110"><span class="lineNum">    1110</span>                 :             :   /// Calls base.setf(ios_base::scientific, ios_base::floatfield).</span>
+<span id="L1111"><span class="lineNum">    1111</span>                 :             :   inline ios_base&amp;</span>
+<span id="L1112"><span class="lineNum">    1112</span>                 :             :   scientific(ios_base&amp; __base)</span>
+<span id="L1113"><span class="lineNum">    1113</span>                 :             :   {</span>
+<span id="L1114"><span class="lineNum">    1114</span>                 :             :     __base.setf(ios_base::scientific, ios_base::floatfield);</span>
+<span id="L1115"><span class="lineNum">    1115</span>                 :             :     return __base;</span>
+<span id="L1116"><span class="lineNum">    1116</span>                 :             :   }</span>
+<span id="L1117"><span class="lineNum">    1117</span>                 :             : </span>
+<span id="L1118"><span class="lineNum">    1118</span>                 :             : #if __cplusplus &gt;= 201103L</span>
+<span id="L1119"><span class="lineNum">    1119</span>                 :             :   // New C++11 floatfield manipulators</span>
+<span id="L1120"><span class="lineNum">    1120</span>                 :             : </span>
+<span id="L1121"><span class="lineNum">    1121</span>                 :             :   /// Calls</span>
+<span id="L1122"><span class="lineNum">    1122</span>                 :             :   /// base.setf(ios_base::fixed|ios_base::scientific, ios_base::floatfield)</span>
+<span id="L1123"><span class="lineNum">    1123</span>                 :             :   inline ios_base&amp;</span>
+<span id="L1124"><span class="lineNum">    1124</span>                 :             :   hexfloat(ios_base&amp; __base)</span>
+<span id="L1125"><span class="lineNum">    1125</span>                 :             :   {</span>
+<span id="L1126"><span class="lineNum">    1126</span>                 :             :     __base.setf(ios_base::fixed | ios_base::scientific, ios_base::floatfield);</span>
+<span id="L1127"><span class="lineNum">    1127</span>                 :             :     return __base;</span>
+<span id="L1128"><span class="lineNum">    1128</span>                 :             :   }</span>
+<span id="L1129"><span class="lineNum">    1129</span>                 :             : </span>
+<span id="L1130"><span class="lineNum">    1130</span>                 :             :   /// Calls @c base.unsetf(ios_base::floatfield)</span>
+<span id="L1131"><span class="lineNum">    1131</span>                 :             :   inline ios_base&amp;</span>
+<span id="L1132"><span class="lineNum">    1132</span>                 :             :   defaultfloat(ios_base&amp; __base)</span>
+<span id="L1133"><span class="lineNum">    1133</span>                 :             :   {</span>
+<span id="L1134"><span class="lineNum">    1134</span>                 :             :     __base.unsetf(ios_base::floatfield);</span>
+<span id="L1135"><span class="lineNum">    1135</span>                 :             :     return __base;</span>
+<span id="L1136"><span class="lineNum">    1136</span>                 :             :   }</span>
+<span id="L1137"><span class="lineNum">    1137</span>                 :             : #endif</span>
+<span id="L1138"><span class="lineNum">    1138</span>                 :             : </span>
+<span id="L1139"><span class="lineNum">    1139</span>                 :             : _GLIBCXX_END_NAMESPACE_VERSION</span>
+<span id="L1140"><span class="lineNum">    1140</span>                 :             : } // namespace</span>
+<span id="L1141"><span class="lineNum">    1141</span>                 :             : </span>
+<span id="L1142"><span class="lineNum">    1142</span>                 :             : #endif /* _IOS_BASE_H */</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>
