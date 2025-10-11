@@ -284,7 +284,7 @@ using row_vector =
   using estimate_uncertainty =
       matrix<std::tuple<position, velocity, acceleration>,
              std::tuple<position, velocity, acceleration>>;
-  estimate_uncertainty p{estimate_uncertainty::matrix::Zero()};
+  estimate_uncertainty p;
   p.at<0, 0>() = 500. * m2;
   p.at<1, 1>() = 500. * m2 / s2;
   p.at<2, 2>() = 500. * m2 / s4;
