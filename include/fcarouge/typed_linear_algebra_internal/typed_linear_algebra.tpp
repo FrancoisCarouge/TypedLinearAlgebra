@@ -116,9 +116,10 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
   requires is_one_dimension_typed_matrix<typed_matrix>
 {
   //! @todo Move the assert as a require clause when the compilers support it.
-  static_assert(columns * rows == 2 + sizeof...(values), "");
+  static_assert(columns * rows == 2 + sizeof...(values),
+                "The count of parameters must match the size of the vector.");
   std::tuple value_pack{first_value, second_value, values...};
-  tla::for_constexpr<0, typed_matrix::columns * typed_matrix::rows, 1>(
+  tla::for_constexpr<0, typed_matrix::rows * typed_matrix::columns, 1>(
       [this, &value_pack](auto position) {
         auto value{std::get<position>(value_pack)};
         using type = std::remove_cvref_t<decltype(value)>;
