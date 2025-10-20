@@ -294,12 +294,16 @@ using row_vector =
   //     [  0 m²/s²,  0 m²/s³, 500 m²/s⁴]]
 
   using process_uncertainty = estimate_uncertainty;
-  process_uncertainty q{process_uncertainty::matrix::Ones() * 0.2 * 0.2};
-  q.at<0, 0>() *= 0.25;
-  q.at<0, 1>() *= 0.5;
-  q.at<0, 2>() *= 0.5;
-  q.at<1, 0>() *= 0.5;
-  q.at<2, 0>() *= 0.5;
+  process_uncertainty q;
+  q.at<0, 0>() = 0.01 * m2;
+  q.at<0, 1>() = 0.02 * m2 / s;
+  q.at<0, 2>() = 0.02 * m2 / s2;
+  q.at<1, 0>() = 0.02 * m2 / s;
+  q.at<1, 1>() = 0.04 * m2 / s2;
+  q.at<1, 2>() = 0.04 * m2 / s3;
+  q.at<2, 0>() = 0.02 * m2 / s2;
+  q.at<2, 1>() = 0.04 * m2 / s3;
+  q.at<2, 2>() = 0.04 * m2 / s4;
   std::println("Q: {}", q);
   // Q: [[0.01 m²,    0.02 m²/s,  0.02 m²/s²],
   //     [0.02 m²/s,  0.04 m²/s², 0.04 m²/s³],
@@ -311,7 +315,6 @@ using row_vector =
   // R: 9 m²
 
   using output_model = row_vector<quantity<one>, quantity<s>, quantity<s2>>;
-  // output_model h{1., 0., 0.}; // WHY NOT FAILING COMPIL?
   output_model h{output_model::matrix::Identity()};
   std::println("H: {}", h);
   // H: [1, 0 s, 0 s²]

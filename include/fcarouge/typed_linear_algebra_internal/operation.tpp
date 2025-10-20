@@ -77,26 +77,24 @@ auto make_typed_matrix(auto &&value) {
 
   // The type resulting of the product of each of the lhs's i-th row-element
   // with the rhs's i-th column-element must be identical/compatible.
-  tla::for_constexpr<0, std::tuple_size_v<lhs_row_indexes>, 1>([&](auto i) {
+  tla::for_constexpr<0, lhs_matrix::rows, 1>([&](auto i) {
     using lhs_row = tla::product<std::tuple_element_t<i, lhs_row_indexes>,
                                  lhs_column_indexes>;
-    tla::for_constexpr<0, std::tuple_size_v<rhs_column_indexes>, 1>(
-        [&](auto j) {
-          using rhs_column =
-              tla::product<rhs_row_indexes,
-                           std::tuple_element_t<j, rhs_column_indexes>>;
-          tla::for_constexpr<0, lhs_matrix::columns, 1>([&](auto k) {
-            //! @todo The compiler failure is unreadable. Find ways to inform
-            //! which types are failing.
-            static_assert(
-                std::is_convertible_v<
-                    tla::product<std::tuple_element_t<k, lhs_row>,
-                                 std::tuple_element_t<k, rhs_column>>,
-                    tla::product<std::tuple_element_t<0, lhs_row>,
-                                 std::tuple_element_t<0, rhs_column>>>,
-                "Matrix multiplication requires compatible types.");
-          });
-        });
+    tla::for_constexpr<0, rhs_matrix::columns, 1>([&](auto j) {
+      using rhs_column =
+          tla::product<rhs_row_indexes,
+                       std::tuple_element_t<j, rhs_column_indexes>>;
+      tla::for_constexpr<0, lhs_matrix::columns, 1>([&](auto k) {
+        //! @todo The compiler failure is unreadable. Find ways to inform
+        //! which types are failing.
+        static_assert(std::is_convertible_v<
+                          tla::product<std::tuple_element_t<k, lhs_row>,
+                                       std::tuple_element_t<k, rhs_column>>,
+                          tla::product<std::tuple_element_t<0, lhs_row>,
+                                       std::tuple_element_t<0, rhs_column>>>,
+                      "Matrix multiplication requires compatible types.");
+      });
+    });
   });
 
   return make_typed_matrix<row_indexes, column_indexes>(lhs.data() *

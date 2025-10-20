@@ -58,10 +58,6 @@ namespace tla = typed_linear_algebra_internal;
 template <typename Type>
 concept is_typed_matrix = tla::is_typed_matrix<Type>;
 
-//! @brief Concept of a singleton, one-element typed matrix type.
-template <typename Type>
-concept is_singleton_typed_matrix = tla::is_singleton_typed_matrix<Type>;
-
 //! @brief Concept of a typed matrix in which all element types are the same.
 //!
 //! @details Matrices with uniform types are type safe even with the traditional
@@ -79,13 +75,24 @@ template <typename Type>
 concept is_one_dimension_typed_matrix =
     tla::is_one_dimension_typed_matrix<Type>;
 
-//! @brief Concept of a row typed matrix, vector.
+//! @brief Concept of a row, one-dimension typed matrix, vector.
 template <typename Type>
 concept is_row_typed_matrix = tla::is_row_typed_matrix<Type>;
 
-//! @brief Concept of a column typed matrix, vector.
+//! @brief Concept of a column, one-dimension typed matrix, vector.
 template <typename Type>
 concept is_column_typed_matrix = tla::is_column_typed_matrix<Type>;
+
+//! @brief Concept of a singleton, one-element, one-dimension typed matrix type.
+template <typename Type>
+concept is_singleton_typed_matrix = tla::is_singleton_typed_matrix<Type>;
+
+//! @brief Concept of matrices of the same shape.
+//!
+//! @details The same shape of the matrices, that is they have the same number
+//! of rows and columns.
+template <typename Lhs, typename Rhs>
+concept is_same_shape = tla::is_same_shape<Lhs, Rhs>;
 
 //! @}
 

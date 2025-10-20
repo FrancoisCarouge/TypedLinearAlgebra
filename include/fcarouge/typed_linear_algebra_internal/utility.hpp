@@ -223,6 +223,16 @@ concept is_singleton_typed_matrix =
     is_typed_matrix<Type> and is_column_typed_matrix<Type> and
     is_row_typed_matrix<Type>;
 
+template <typename Lhs, typename Rhs>
+concept is_same_shape =
+    is_typed_matrix<Lhs> and is_typed_matrix<Rhs> and ([]() {
+      using lhs_matrix = std::remove_cvref_t<Lhs>;
+      using rhs_matrix = std::remove_cvref_t<Rhs>;
+
+      return (lhs_matrix::rows == rhs_matrix::rows) &&
+             (lhs_matrix::columns == rhs_matrix::columns);
+    }());
+
 template <typename Type, std::size_t Size> struct tupler {
   template <typename = std::make_index_sequence<Size>> struct helper;
 
