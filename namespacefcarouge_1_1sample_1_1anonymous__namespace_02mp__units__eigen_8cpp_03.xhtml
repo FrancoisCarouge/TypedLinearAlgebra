@@ -151,7 +151,7 @@ template&lt;typename... Types&gt; </div>
 <div class="line">    <a class="code hl_typedef" href="namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58">typed_column_vector</a>&lt;Eigen::Vector&lt;<a class="code hl_typedef" href="#a3c3e455061e1c9775f216253f0fc5541">representation</a>, <span class="keyword">sizeof</span>...(Types)&gt;,</div>
 <div class="line">                        Types...&gt;</div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_a3c3e455061e1c9775f216253f0fc5541"><div class="ttname"><a href="#a3c3e455061e1c9775f216253f0fc5541">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::representation</a></div><div class="ttdeci">double representation</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00089">mp_units_eigen.cpp:89</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a96fea71ab24114a61950988fdac23f58"><div class="ttname"><a href="namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58">fcarouge::typed_column_vector</a></div><div class="ttdeci">typed_matrix&lt; Matrix, std::tuple&lt; RowIndexes... &gt;, tla::identity_index &gt; typed_column_vector</div><div class="ttdoc">Strongly typed column vector.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00368">typed_linear_algebra.hpp:368</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a96fea71ab24114a61950988fdac23f58"><div class="ttname"><a href="namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58">fcarouge::typed_column_vector</a></div><div class="ttdeci">typed_matrix&lt; Matrix, std::tuple&lt; RowIndexes... &gt;, tla::identity_index &gt; typed_column_vector</div><div class="ttdoc">Strongly typed column vector.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00375">typed_linear_algebra.hpp:375</a></div></div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="mp__units__eigen_8cpp_source.xhtml#l00107">107</a> of file <a class="el" href="mp__units__eigen_8cpp_source.xhtml">mp_units_eigen.cpp</a>.</p>
 
@@ -251,7 +251,7 @@ template&lt;typename... Types&gt; </div>
 <b>Initial value:</b><div class="fragment"><div class="line"> </div>
 <div class="line">    <a class="code hl_typedef" href="namespacefcarouge.xhtml#a7558e7ccc03031fb7de678cf4977e1bf">typed_row_vector</a>&lt;Eigen::RowVector&lt;<a class="code hl_typedef" href="#a3c3e455061e1c9775f216253f0fc5541">representation</a>, <span class="keyword">sizeof</span>...(Types)&gt;,</div>
 <div class="line">                     Types...&gt;</div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a7558e7ccc03031fb7de678cf4977e1bf"><div class="ttname"><a href="namespacefcarouge.xhtml#a7558e7ccc03031fb7de678cf4977e1bf">fcarouge::typed_row_vector</a></div><div class="ttdeci">typed_matrix&lt; Matrix, tla::identity_index, std::tuple&lt; ColumnIndexes... &gt; &gt; typed_row_vector</div><div class="ttdoc">Strongly typed row vector.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00363">typed_linear_algebra.hpp:363</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a7558e7ccc03031fb7de678cf4977e1bf"><div class="ttname"><a href="namespacefcarouge.xhtml#a7558e7ccc03031fb7de678cf4977e1bf">fcarouge::typed_row_vector</a></div><div class="ttdeci">typed_matrix&lt; Matrix, tla::identity_index, std::tuple&lt; ColumnIndexes... &gt; &gt; typed_row_vector</div><div class="ttdoc">Strongly typed row vector.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00370">typed_linear_algebra.hpp:370</a></div></div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="mp__units__eigen_8cpp_source.xhtml#l00112">112</a> of file <a class="el" href="mp__units__eigen_8cpp_source.xhtml">mp_units_eigen.cpp</a>.</p>
 
@@ -426,79 +426,82 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">  294</span>  <span class="comment">//     [  0 m²/s²,  0 m²/s³, 500 m²/s⁴]]</span></div>
 <div class="line"><span class="lineno">  295</span> </div>
 <div class="line"><span class="lineno">  296</span>  <span class="keyword">using </span>process_uncertainty = estimate_uncertainty;</div>
-<div class="line"><span class="lineno">  297</span>  process_uncertainty q{process_uncertainty::matrix::Ones() * 0.2 * 0.2};</div>
-<div class="line"><span class="lineno">  298</span>  q.at&lt;0, 0&gt;() *= 0.25;</div>
-<div class="line"><span class="lineno">  299</span>  q.at&lt;0, 1&gt;() *= 0.5;</div>
-<div class="line"><span class="lineno">  300</span>  q.at&lt;0, 2&gt;() *= 0.5;</div>
-<div class="line"><span class="lineno">  301</span>  q.at&lt;1, 0&gt;() *= 0.5;</div>
-<div class="line"><span class="lineno">  302</span>  q.at&lt;2, 0&gt;() *= 0.5;</div>
-<div class="line"><span class="lineno">  303</span>  std::println(<span class="stringliteral">&quot;Q: {}&quot;</span>, q);</div>
-<div class="line"><span class="lineno">  304</span>  <span class="comment">// Q: [[0.01 m²,    0.02 m²/s,  0.02 m²/s²],</span></div>
-<div class="line"><span class="lineno">  305</span>  <span class="comment">//     [0.02 m²/s,  0.04 m²/s², 0.04 m²/s³],</span></div>
-<div class="line"><span class="lineno">  306</span>  <span class="comment">//     [0.02 m²/s², 0.04 m²/s³, 0.04 m²/s⁴]]</span></div>
-<div class="line"><span class="lineno">  307</span> </div>
-<div class="line"><span class="lineno">  308</span>  <span class="keyword">using </span>output_uncertainty = quantity&lt;m2&gt;;</div>
-<div class="line"><span class="lineno">  309</span>  output_uncertainty r{9. * m2};</div>
-<div class="line"><span class="lineno">  310</span>  std::println(<span class="stringliteral">&quot;R: {}&quot;</span>, r);</div>
-<div class="line"><span class="lineno">  311</span>  <span class="comment">// R: 9 m²</span></div>
-<div class="line"><span class="lineno">  312</span> </div>
-<div class="line"><span class="lineno">  313</span>  <span class="keyword">using </span>output_model = row_vector&lt;quantity&lt;one&gt;, quantity&lt;s&gt;, quantity&lt;s2&gt;&gt;;</div>
-<div class="line"><span class="lineno">  314</span>  <span class="comment">// output_model h{1., 0., 0.}; // WHY NOT FAILING COMPIL?</span></div>
-<div class="line"><span class="lineno">  315</span>  output_model h{output_model::matrix::Identity()};</div>
-<div class="line"><span class="lineno">  316</span>  std::println(<span class="stringliteral">&quot;H: {}&quot;</span>, h);</div>
-<div class="line"><span class="lineno">  317</span>  <span class="comment">// H: [1, 0 s, 0 s²]</span></div>
-<div class="line"><span class="lineno">  318</span> </div>
-<div class="line"><span class="lineno">  319</span>  <span class="keyword">using </span>state_transition =</div>
-<div class="line"><span class="lineno">  320</span>      matrix&lt;std::tuple&lt;position, velocity, acceleration&gt;,</div>
-<div class="line"><span class="lineno">  321</span>             std::tuple&lt;<a class="code hl_typedef" href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">quantity</a>&lt;one / m&gt;, <a class="code hl_typedef" href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">quantity</a>&lt;s / m&gt;, <a class="code hl_typedef" href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">quantity</a>&lt;s2 / m&gt;&gt;&gt;;</div>
-<div class="line"><span class="lineno">  322</span>  state_transition f{state_transition::matrix::Identity()};</div>
-<div class="line"><span class="lineno">  323</span>  f.at&lt;0, 1&gt;() = 1. * s;</div>
-<div class="line"><span class="lineno">  324</span>  f.at&lt;0, 2&gt;() = 0.5 * s2;</div>
-<div class="line"><span class="lineno">  325</span>  f.at&lt;1, 2&gt;() = 1. * s;</div>
-<div class="line"><span class="lineno">  326</span>  std::println(<span class="stringliteral">&quot;F: {}&quot;</span>, f);</div>
-<div class="line"><span class="lineno">  327</span>  <span class="comment">// F: [[1, 1 s, 0.5 s²],</span></div>
-<div class="line"><span class="lineno">  328</span>  <span class="comment">//     [0 1/s, 1, 1 s],</span></div>
-<div class="line"><span class="lineno">  329</span>  <span class="comment">//     [0 1/s², 0 1/s, 1]]</span></div>
-<div class="line"><span class="lineno">  330</span> </div>
-<div class="line"><span class="lineno">  331</span>  <span class="comment">// Prediction stage of the filter estimated state.</span></div>
-<div class="line"><span class="lineno">  332</span>  x = f * x;</div>
-<div class="line"><span class="lineno">  333</span>  p = f * p * transposed(f) + q;</div>
-<div class="line"><span class="lineno">  334</span> </div>
-<div class="line"><span class="lineno">  335</span>  <span class="comment">// Update stage of the filter from output measurements.</span></div>
-<div class="line"><span class="lineno">  336</span>  <span class="keyword">using </span>output = position;</div>
-<div class="line"><span class="lineno">  337</span>  output z{-393.66 * m};</div>
-<div class="line"><span class="lineno">  338</span> </div>
-<div class="line"><span class="lineno">  339</span>  <span class="keyword">using </span>innovation_uncertainty = output_uncertainty;</div>
-<div class="line"><span class="lineno">  340</span>  innovation_uncertainty si{h * p * transposed(h) + r};</div>
+<div class="line"><span class="lineno">  297</span>  process_uncertainty q;</div>
+<div class="line"><span class="lineno">  298</span>  q.at&lt;0, 0&gt;() = 0.01 * m2;</div>
+<div class="line"><span class="lineno">  299</span>  q.at&lt;0, 1&gt;() = 0.02 * m2 / s;</div>
+<div class="line"><span class="lineno">  300</span>  q.at&lt;0, 2&gt;() = 0.02 * m2 / s2;</div>
+<div class="line"><span class="lineno">  301</span>  q.at&lt;1, 0&gt;() = 0.02 * m2 / s;</div>
+<div class="line"><span class="lineno">  302</span>  q.at&lt;1, 1&gt;() = 0.04 * m2 / s2;</div>
+<div class="line"><span class="lineno">  303</span>  q.at&lt;1, 2&gt;() = 0.04 * m2 / s3;</div>
+<div class="line"><span class="lineno">  304</span>  q.at&lt;2, 0&gt;() = 0.02 * m2 / s2;</div>
+<div class="line"><span class="lineno">  305</span>  q.at&lt;2, 1&gt;() = 0.04 * m2 / s3;</div>
+<div class="line"><span class="lineno">  306</span>  q.at&lt;2, 2&gt;() = 0.04 * m2 / s4;</div>
+<div class="line"><span class="lineno">  307</span>  std::println(<span class="stringliteral">&quot;Q: {}&quot;</span>, q);</div>
+<div class="line"><span class="lineno">  308</span>  <span class="comment">// Q: [[0.01 m²,    0.02 m²/s,  0.02 m²/s²],</span></div>
+<div class="line"><span class="lineno">  309</span>  <span class="comment">//     [0.02 m²/s,  0.04 m²/s², 0.04 m²/s³],</span></div>
+<div class="line"><span class="lineno">  310</span>  <span class="comment">//     [0.02 m²/s², 0.04 m²/s³, 0.04 m²/s⁴]]</span></div>
+<div class="line"><span class="lineno">  311</span> </div>
+<div class="line"><span class="lineno">  312</span>  <span class="keyword">using </span>output_uncertainty = quantity&lt;m2&gt;;</div>
+<div class="line"><span class="lineno">  313</span>  output_uncertainty r{9. * m2};</div>
+<div class="line"><span class="lineno">  314</span>  std::println(<span class="stringliteral">&quot;R: {}&quot;</span>, r);</div>
+<div class="line"><span class="lineno">  315</span>  <span class="comment">// R: 9 m²</span></div>
+<div class="line"><span class="lineno">  316</span> </div>
+<div class="line"><span class="lineno">  317</span>  <span class="keyword">using </span>output_model = row_vector&lt;quantity&lt;one&gt;, quantity&lt;s&gt;, quantity&lt;s2&gt;&gt;;</div>
+<div class="line"><span class="lineno">  318</span>  output_model h{output_model::matrix::Identity()};</div>
+<div class="line"><span class="lineno">  319</span>  std::println(<span class="stringliteral">&quot;H: {}&quot;</span>, h);</div>
+<div class="line"><span class="lineno">  320</span>  <span class="comment">// H: [1, 0 s, 0 s²]</span></div>
+<div class="line"><span class="lineno">  321</span> </div>
+<div class="line"><span class="lineno">  322</span>  <span class="keyword">using </span>state_transition =</div>
+<div class="line"><span class="lineno">  323</span>      matrix&lt;std::tuple&lt;position, velocity, acceleration&gt;,</div>
+<div class="line"><span class="lineno">  324</span>             std::tuple&lt;<a class="code hl_typedef" href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">quantity</a>&lt;one / m&gt;, <a class="code hl_typedef" href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">quantity</a>&lt;s / m&gt;, <a class="code hl_typedef" href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">quantity</a>&lt;s2 / m&gt;&gt;&gt;;</div>
+<div class="line"><span class="lineno">  325</span>  state_transition f{state_transition::matrix::Identity()};</div>
+<div class="line"><span class="lineno">  326</span>  f.at&lt;0, 1&gt;() = 1. * s;</div>
+<div class="line"><span class="lineno">  327</span>  f.at&lt;0, 2&gt;() = 0.5 * s2;</div>
+<div class="line"><span class="lineno">  328</span>  f.at&lt;1, 2&gt;() = 1. * s;</div>
+<div class="line"><span class="lineno">  329</span>  std::println(<span class="stringliteral">&quot;F: {}&quot;</span>, f);</div>
+<div class="line"><span class="lineno">  330</span>  <span class="comment">// F: [[1, 1 s, 0.5 s²],</span></div>
+<div class="line"><span class="lineno">  331</span>  <span class="comment">//     [0 1/s, 1, 1 s],</span></div>
+<div class="line"><span class="lineno">  332</span>  <span class="comment">//     [0 1/s², 0 1/s, 1]]</span></div>
+<div class="line"><span class="lineno">  333</span> </div>
+<div class="line"><span class="lineno">  334</span>  <span class="comment">// Prediction stage of the filter estimated state.</span></div>
+<div class="line"><span class="lineno">  335</span>  x = f * x;</div>
+<div class="line"><span class="lineno">  336</span>  p = f * p * transposed(f) + q;</div>
+<div class="line"><span class="lineno">  337</span> </div>
+<div class="line"><span class="lineno">  338</span>  <span class="comment">// Update stage of the filter from output measurements.</span></div>
+<div class="line"><span class="lineno">  339</span>  <span class="keyword">using </span>output = position;</div>
+<div class="line"><span class="lineno">  340</span>  output z{-393.66 * m};</div>
 <div class="line"><span class="lineno">  341</span> </div>
-<div class="line"><span class="lineno">  342</span>  <span class="keyword">using </span>unevaluated_gain =</div>
-<div class="line"><span class="lineno">  343</span>      <span class="keyword">decltype</span>(std::declval&lt;state&gt;() / std::declval&lt;output&gt;());</div>
-<div class="line"><span class="lineno">  344</span>  <span class="keyword">using </span>gain =</div>
-<div class="line"><span class="lineno">  345</span>      matrix&lt;unevaluated_gain::row_indexes, unevaluated_gain::column_indexes&gt;;</div>
-<div class="line"><span class="lineno">  346</span>  gain k{p * transposed(h) / si};</div>
-<div class="line"><span class="lineno">  347</span> </div>
-<div class="line"><span class="lineno">  348</span>  <span class="keyword">using </span>innovation = output;</div>
-<div class="line"><span class="lineno">  349</span>  innovation y{z - h * x};</div>
-<div class="line"><span class="lineno">  350</span>  x = x + k * y;</div>
-<div class="line"><span class="lineno">  351</span> </div>
-<div class="line"><span class="lineno">  352</span>  std::println(<span class="stringliteral">&quot;X: {}&quot;</span>, x);</div>
-<div class="line"><span class="lineno">  353</span>  <span class="comment">// X: [[-390.53 m],</span></div>
-<div class="line"><span class="lineno">  354</span>  <span class="comment">//     [-260.36 m/s],</span></div>
-<div class="line"><span class="lineno">  355</span>  <span class="comment">//     [ -86.79 m/s²]]</span></div>
-<div class="line"><span class="lineno">  356</span> </div>
-<div class="line"><span class="lineno">  357</span>  <span class="keyword">using </span>unevaluated_kh =</div>
-<div class="line"><span class="lineno">  358</span>      <span class="keyword">decltype</span>(std::declval&lt;gain&gt;() * std::declval&lt;output_model&gt;());</div>
-<div class="line"><span class="lineno">  359</span>  <span class="keyword">using </span>kh =</div>
-<div class="line"><span class="lineno">  360</span>      matrix&lt;unevaluated_kh::row_indexes, unevaluated_kh::column_indexes&gt;;</div>
-<div class="line"><span class="lineno">  361</span>  kh i{state_transition::matrix::Identity()};</div>
-<div class="line"><span class="lineno">  362</span>  p = (i - k * h) * p * transposed(i - k * h) + k * r * transposed(k);</div>
-<div class="line"><span class="lineno">  363</span>  std::println(<span class="stringliteral">&quot;P: {}&quot;</span>, p);</div>
-<div class="line"><span class="lineno">  364</span>  <span class="comment">// P: [[8.92 m²,      5.95 m²/s,    1.98 m²/s²],</span></div>
-<div class="line"><span class="lineno">  365</span>  <span class="comment">//     [5.95 m²/s,  503.98 m²/s², 334.67 m²/s³],</span></div>
-<div class="line"><span class="lineno">  366</span>  <span class="comment">//     [1.98 m²/s², 334.67 m²/s³, 444.91 m²/s⁴]]</span></div>
-<div class="line"><span class="lineno">  367</span> </div>
-<div class="line"><span class="lineno">  368</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  369</span>}()};</div>
+<div class="line"><span class="lineno">  342</span>  <span class="keyword">using </span>innovation_uncertainty = output_uncertainty;</div>
+<div class="line"><span class="lineno">  343</span>  innovation_uncertainty si{h * p * transposed(h) + r};</div>
+<div class="line"><span class="lineno">  344</span> </div>
+<div class="line"><span class="lineno">  345</span>  <span class="keyword">using </span>unevaluated_gain =</div>
+<div class="line"><span class="lineno">  346</span>      <span class="keyword">decltype</span>(std::declval&lt;state&gt;() / std::declval&lt;output&gt;());</div>
+<div class="line"><span class="lineno">  347</span>  <span class="keyword">using </span>gain =</div>
+<div class="line"><span class="lineno">  348</span>      matrix&lt;unevaluated_gain::row_indexes, unevaluated_gain::column_indexes&gt;;</div>
+<div class="line"><span class="lineno">  349</span>  gain k{p * transposed(h) / si};</div>
+<div class="line"><span class="lineno">  350</span> </div>
+<div class="line"><span class="lineno">  351</span>  <span class="keyword">using </span>innovation = output;</div>
+<div class="line"><span class="lineno">  352</span>  innovation y{z - h * x};</div>
+<div class="line"><span class="lineno">  353</span>  x = x + k * y;</div>
+<div class="line"><span class="lineno">  354</span> </div>
+<div class="line"><span class="lineno">  355</span>  std::println(<span class="stringliteral">&quot;X: {}&quot;</span>, x);</div>
+<div class="line"><span class="lineno">  356</span>  <span class="comment">// X: [[-390.53 m],</span></div>
+<div class="line"><span class="lineno">  357</span>  <span class="comment">//     [-260.36 m/s],</span></div>
+<div class="line"><span class="lineno">  358</span>  <span class="comment">//     [ -86.79 m/s²]]</span></div>
+<div class="line"><span class="lineno">  359</span> </div>
+<div class="line"><span class="lineno">  360</span>  <span class="keyword">using </span>unevaluated_kh =</div>
+<div class="line"><span class="lineno">  361</span>      <span class="keyword">decltype</span>(std::declval&lt;gain&gt;() * std::declval&lt;output_model&gt;());</div>
+<div class="line"><span class="lineno">  362</span>  <span class="keyword">using </span>kh =</div>
+<div class="line"><span class="lineno">  363</span>      matrix&lt;unevaluated_kh::row_indexes, unevaluated_kh::column_indexes&gt;;</div>
+<div class="line"><span class="lineno">  364</span>  kh i{state_transition::matrix::Identity()};</div>
+<div class="line"><span class="lineno">  365</span>  p = (i - k * h) * p * transposed(i - k * h) + k * r * transposed(k);</div>
+<div class="line"><span class="lineno">  366</span>  std::println(<span class="stringliteral">&quot;P: {}&quot;</span>, p);</div>
+<div class="line"><span class="lineno">  367</span>  <span class="comment">// P: [[8.92 m²,      5.95 m²/s,    1.98 m²/s²],</span></div>
+<div class="line"><span class="lineno">  368</span>  <span class="comment">//     [5.95 m²/s,  503.98 m²/s², 334.67 m²/s³],</span></div>
+<div class="line"><span class="lineno">  369</span>  <span class="comment">//     [1.98 m²/s², 334.67 m²/s³, 444.91 m²/s⁴]]</span></div>
+<div class="line"><span class="lineno">  370</span> </div>
+<div class="line"><span class="lineno">  371</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  372</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a3aae575a4aa6b608a99d02f58b0fc86c"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00078">eigen.hpp:78</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_a3ad842428e2a263b2bdee6a8f7a9bb9a"><div class="ttname"><a href="#a3ad842428e2a263b2bdee6a8f7a9bb9a">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::matrix</a></div><div class="ttdeci">typed_matrix&lt; Eigen::Matrix&lt; representation, std::tuple_size_v&lt; RowIndexes &gt;, std::tuple_size_v&lt; ColumnIndexes &gt; &gt;, RowIndexes, ColumnIndexes &gt; matrix</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00101">mp_units_eigen.cpp:101</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_a8b2e65b7992ae2a7bbf9fe0554c970ea"><div class="ttname"><a href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::quantity</a></div><div class="ttdeci">mp_units::quantity&lt; QuantityReference, representation &gt; quantity</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00092">mp_units_eigen.cpp:92</a></div></div>

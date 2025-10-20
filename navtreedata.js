@@ -144,7 +144,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "addition_8cpp.xhtml",
-"md__2github_2workspace_2sample_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis"
+"md__2github_2workspace_2sample_2mp__units__eigen.xhtml#abstract"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
