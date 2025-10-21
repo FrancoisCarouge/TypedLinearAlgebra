@@ -56,7 +56,7 @@ namespace tla = typed_linear_algebra_internal;
 
 //! @brief Concept of a typed matrix type.
 template <typename Type>
-concept is_typed_matrix = tla::is_typed_matrix<Type>;
+concept same_as_typed_matrix = tla::same_as_typed_matrix<Type>;
 
 //! @brief Concept of a typed matrix in which all element types are the same.
 //!
@@ -68,31 +68,30 @@ concept is_typed_matrix = tla::is_typed_matrix<Type>;
 //! @todo Identical types may be too conservative. Convertible may be
 //! intended.
 template <typename Type>
-concept is_uniform_typed_matrix = tla::is_uniform_typed_matrix<Type>;
+concept uniform_typed_matrix = tla::uniform_typed_matrix<Type>;
 
 //! @brief Concept of a typed matrix with only one dimension, row, or column.
 template <typename Type>
-concept is_one_dimension_typed_matrix =
-    tla::is_one_dimension_typed_matrix<Type>;
+concept one_dimension_typed_matrix = tla::one_dimension_typed_matrix<Type>;
 
 //! @brief Concept of a row, one-dimension typed matrix, vector.
 template <typename Type>
-concept is_row_typed_matrix = tla::is_row_typed_matrix<Type>;
+concept row_typed_matrix = tla::row_typed_matrix<Type>;
 
 //! @brief Concept of a column, one-dimension typed matrix, vector.
 template <typename Type>
-concept is_column_typed_matrix = tla::is_column_typed_matrix<Type>;
+concept column_typed_matrix = tla::column_typed_matrix<Type>;
 
 //! @brief Concept of a singleton, one-element, one-dimension typed matrix type.
 template <typename Type>
-concept is_singleton_typed_matrix = tla::is_singleton_typed_matrix<Type>;
+concept singleton_typed_matrix = tla::singleton_typed_matrix<Type>;
 
 //! @brief Concept of matrices of the same shape.
 //!
 //! @details The same shape of the matrices, that is they have the same number
 //! of rows and columns.
 template <typename Lhs, typename Rhs>
-concept is_same_shape = tla::is_same_shape<Lhs, Rhs>;
+concept same_shape = tla::same_shape<Lhs, Rhs>;
 
 //! @}
 
@@ -189,18 +188,20 @@ public:
   //! @brief Copy construct generalization of a compatible typed matrix.
   //!
   //! @details Implicit conversions supported.
-  constexpr explicit(false) typed_matrix(const is_typed_matrix auto &other);
+  constexpr explicit(false)
+      typed_matrix(const same_as_typed_matrix auto &other);
 
   //! @brief Copy assign generalization of a compatible typed matrix.
-  constexpr typed_matrix &operator=(const is_typed_matrix auto &other);
+  constexpr typed_matrix &operator=(const same_as_typed_matrix auto &other);
 
   //! @brief Move construct generalization of a compatible typed matrix.
   //!
   //! @details Implicit conversions supported.
-  constexpr explicit(false) typed_matrix(const is_typed_matrix auto &&other);
+  constexpr explicit(false)
+      typed_matrix(const same_as_typed_matrix auto &&other);
 
   //! @brief Move assign generalization of a compatible typed matrix.
-  constexpr typed_matrix &operator=(const is_typed_matrix auto &&other);
+  constexpr typed_matrix &operator=(const same_as_typed_matrix auto &&other);
 
   //! @brief Convert construct a typed matrix from an underlying matrix.
   //!
@@ -218,8 +219,8 @@ public:
   //! constructors.
   constexpr explicit(false)
       typed_matrix(const element<0, 0> (&elements)[rows * columns])
-    requires is_uniform_typed_matrix<typed_matrix> and
-             is_one_dimension_typed_matrix<typed_matrix>;
+    requires uniform_typed_matrix<typed_matrix> and
+             one_dimension_typed_matrix<typed_matrix>;
 
   //! @brief Convert construct a singleton typed matrix from a single value.
   //!
@@ -227,7 +228,7 @@ public:
   //!
   //! @param value Element of compatible type.
   constexpr explicit typed_matrix(const auto &value)
-    requires is_singleton_typed_matrix<typed_matrix>;
+    requires singleton_typed_matrix<typed_matrix>;
 
   //! @brief Convert construct a uniformly typed matrix from list-initializers.
   //!
@@ -238,7 +239,7 @@ public:
   template <typename Type>
   constexpr typed_matrix(
       std::initializer_list<std::initializer_list<Type>> row_list)
-    requires is_uniform_typed_matrix<typed_matrix>;
+    requires uniform_typed_matrix<typed_matrix>;
 
   //! @brief Convert construct a row or column typed vector from elements.
   //!
@@ -250,14 +251,14 @@ public:
   //! @param values Other elements.
   constexpr typed_matrix(const auto &first_value, const auto &second_value,
                          const auto &...values)
-    requires is_one_dimension_typed_matrix<typed_matrix>;
+    requires one_dimension_typed_matrix<typed_matrix>;
 
   //! @brief Access the singleton typed matrix element.
   //!
   //! @details Applicable to singleton matrix: one element. Returns the unique
   //! element of the typed matrix.
   [[nodiscard]] constexpr explicit operator element<0, 0>(this auto &&self)
-    requires is_singleton_typed_matrix<typed_matrix>;
+    requires singleton_typed_matrix<typed_matrix>;
 
   //! @brief Access the specified element.
   //!
@@ -268,8 +269,8 @@ public:
   //! @param self Explicit object parameter deducing this: not user specified.
   //! @param index Position of the element to return.
   [[nodiscard]] constexpr auto &&operator[](this auto &&self, std::size_t index)
-    requires(is_uniform_typed_matrix<typed_matrix> and
-             is_one_dimension_typed_matrix<typed_matrix>);
+    requires(uniform_typed_matrix<typed_matrix> and
+             one_dimension_typed_matrix<typed_matrix>);
 
   //! @brief Access the specified element.
   //!
@@ -281,7 +282,7 @@ public:
   //! @param column Column index of the element to return.
   [[nodiscard]] constexpr auto &&operator[](this auto &&self, std::size_t row,
                                             std::size_t column)
-    requires is_uniform_typed_matrix<typed_matrix>;
+    requires uniform_typed_matrix<typed_matrix>;
 
   //! @brief Access the specified element.
   //!
@@ -292,8 +293,8 @@ public:
   //! @param self Explicit object parameter deducing this: not user specified.
   //! @param index Position of the element to return.
   [[nodiscard]] constexpr auto &&operator()(this auto &&self, std::size_t index)
-    requires is_uniform_typed_matrix<typed_matrix> and
-             is_one_dimension_typed_matrix<typed_matrix>;
+    requires uniform_typed_matrix<typed_matrix> and
+             one_dimension_typed_matrix<typed_matrix>;
 
   //! @brief Access the specified element.
   //!
@@ -305,7 +306,7 @@ public:
   //! @param column Column index of the element to return.
   [[nodiscard]] constexpr auto &&operator()(this auto &&self, std::size_t row,
                                             std::size_t column)
-    requires is_uniform_typed_matrix<typed_matrix>;
+    requires uniform_typed_matrix<typed_matrix>;
 
   //! @brief Access the specified element with compile-time bound checking.
   //!
@@ -336,7 +337,7 @@ public:
   //! @tparam Index Position of the element to return.
   template <std::size_t Index>
   [[nodiscard]] constexpr auto at() -> element<Index, 0> &
-    requires is_column_typed_matrix<typed_matrix> and (Index < rows);
+    requires column_typed_matrix<typed_matrix> and (Index < rows);
 
   //! @brief Access the specified element with compile-time bound checking.
   //!
@@ -346,7 +347,7 @@ public:
   //! @tparam Index Position of the element to return.
   template <std::size_t Index>
   [[nodiscard]] constexpr auto at() const -> element<Index, 0>
-    requires is_column_typed_matrix<typed_matrix> and (Index < rows);
+    requires column_typed_matrix<typed_matrix> and (Index < rows);
 
   //! @brief Direct access to the underlying storage.
   //!

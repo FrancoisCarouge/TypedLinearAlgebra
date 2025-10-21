@@ -53,13 +53,13 @@ auto make_typed_matrix(auto &&value) {
 }
 
 //! @todo Requires, assert that the element types are compatible.
-[[nodiscard]] constexpr bool operator==(const is_typed_matrix auto &lhs,
-                                        const is_typed_matrix auto &rhs) {
+[[nodiscard]] constexpr bool operator==(const same_as_typed_matrix auto &lhs,
+                                        const same_as_typed_matrix auto &rhs) {
   return lhs.data() == rhs.data();
 }
 
-[[nodiscard]] constexpr auto operator*(const is_typed_matrix auto &lhs,
-                                       const is_typed_matrix auto &rhs) {
+[[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
+                                       const same_as_typed_matrix auto &rhs) {
   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
   using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
 
@@ -101,9 +101,9 @@ auto make_typed_matrix(auto &&value) {
                                                         rhs.data());
 }
 
-[[nodiscard]] constexpr auto operator*(const is_typed_matrix auto &lhs,
+[[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
                                        const auto &rhs)
-  requires(not is_typed_matrix<decltype(rhs)>)
+  requires(not same_as_typed_matrix<decltype(rhs)>)
 {
   //! @todo Should there be constraints on the type?
   using type = std::remove_cvref_t<decltype(rhs)>;
@@ -117,8 +117,8 @@ auto make_typed_matrix(auto &&value) {
 }
 
 [[nodiscard]] constexpr auto operator*(const auto &lhs,
-                                       const is_typed_matrix auto &rhs)
-  requires(not is_typed_matrix<decltype(lhs)>)
+                                       const same_as_typed_matrix auto &rhs)
+  requires(not same_as_typed_matrix<decltype(lhs)>)
 {
   //! @todo Should there be constraints on the type?
   using type = std::remove_cvref_t<decltype(lhs)>;
@@ -131,9 +131,9 @@ auto make_typed_matrix(auto &&value) {
       cast<underlying, type>(lhs) * rhs.data());
 }
 
-[[nodiscard]] constexpr auto
-operator*(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
-  requires(not is_typed_matrix<decltype(lhs)>)
+[[nodiscard]] constexpr auto operator*(const auto &lhs,
+                                       const singleton_typed_matrix auto &rhs)
+  requires(not same_as_typed_matrix<decltype(lhs)>)
 {
   //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(rhs)>;
@@ -142,9 +142,9 @@ operator*(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
   return lhs * element{rhs};
 }
 
-[[nodiscard]] constexpr auto
-operator*(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
-  requires(not is_typed_matrix<decltype(rhs)>)
+[[nodiscard]] constexpr auto operator*(const singleton_typed_matrix auto &lhs,
+                                       const auto &rhs)
+  requires(not same_as_typed_matrix<decltype(rhs)>)
 {
   //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(lhs)>;
@@ -153,9 +153,8 @@ operator*(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
   return element{lhs} * rhs;
 }
 
-[[nodiscard]] constexpr auto
-operator*(const is_singleton_typed_matrix auto &lhs,
-          const is_singleton_typed_matrix auto &rhs) {
+[[nodiscard]] constexpr auto operator*(const singleton_typed_matrix auto &lhs,
+                                       const singleton_typed_matrix auto &rhs) {
   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
   using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
   using lhs_element = typename lhs_matrix::template element<0, 0>;
@@ -165,8 +164,8 @@ operator*(const is_singleton_typed_matrix auto &lhs,
 }
 
 //! @todo Requires, assert that the element types are compatible.
-[[nodiscard]] constexpr auto operator+(const is_typed_matrix auto &lhs,
-                                       const is_typed_matrix auto &rhs) {
+[[nodiscard]] constexpr auto operator+(const same_as_typed_matrix auto &lhs,
+                                       const same_as_typed_matrix auto &rhs) {
   using matrix = std::remove_cvref_t<decltype(lhs)>;
   using row_indexes = typename matrix::row_indexes;
   using column_indexes = typename matrix::column_indexes;
@@ -175,9 +174,9 @@ operator*(const is_singleton_typed_matrix auto &lhs,
                                                         rhs.data());
 }
 
-[[nodiscard]] constexpr auto
-operator+(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
-  requires(not is_typed_matrix<decltype(lhs)>)
+[[nodiscard]] constexpr auto operator+(const auto &lhs,
+                                       const singleton_typed_matrix auto &rhs)
+  requires(not same_as_typed_matrix<decltype(lhs)>)
 {
   //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(rhs)>;
@@ -186,9 +185,9 @@ operator+(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
   return lhs + element{rhs};
 }
 
-[[nodiscard]] constexpr auto
-operator+(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
-  requires(not is_typed_matrix<decltype(rhs)>)
+[[nodiscard]] constexpr auto operator+(const singleton_typed_matrix auto &lhs,
+                                       const auto &rhs)
+  requires(not same_as_typed_matrix<decltype(rhs)>)
 {
   //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(lhs)>;
@@ -197,9 +196,8 @@ operator+(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
   return element{lhs} + rhs;
 }
 
-[[nodiscard]] constexpr auto
-operator+(const is_singleton_typed_matrix auto &lhs,
-          const is_singleton_typed_matrix auto &rhs) {
+[[nodiscard]] constexpr auto operator+(const singleton_typed_matrix auto &lhs,
+                                       const singleton_typed_matrix auto &rhs) {
   //! @todo Should there be constraints on the type?
   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
   using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
@@ -210,8 +208,8 @@ operator+(const is_singleton_typed_matrix auto &lhs,
 }
 
 //! @todo Requires, assert that the element types are compatible.
-[[nodiscard]] constexpr auto operator-(const is_typed_matrix auto &lhs,
-                                       const is_typed_matrix auto &rhs) {
+[[nodiscard]] constexpr auto operator-(const same_as_typed_matrix auto &lhs,
+                                       const same_as_typed_matrix auto &rhs) {
   using matrix = std::remove_cvref_t<decltype(lhs)>;
   using row_indexes = typename matrix::row_indexes;
   using column_indexes = typename matrix::column_indexes;
@@ -220,9 +218,9 @@ operator+(const is_singleton_typed_matrix auto &lhs,
                                                         rhs.data());
 }
 
-[[nodiscard]] constexpr auto
-operator-(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
-  requires(not is_typed_matrix<decltype(lhs)>)
+[[nodiscard]] constexpr auto operator-(const auto &lhs,
+                                       const singleton_typed_matrix auto &rhs)
+  requires(not same_as_typed_matrix<decltype(lhs)>)
 {
   //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(rhs)>;
@@ -231,9 +229,9 @@ operator-(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
   return lhs - element{rhs};
 }
 
-[[nodiscard]] constexpr auto
-operator-(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
-  requires(not is_typed_matrix<decltype(rhs)>)
+[[nodiscard]] constexpr auto operator-(const singleton_typed_matrix auto &lhs,
+                                       const auto &rhs)
+  requires(not same_as_typed_matrix<decltype(rhs)>)
 {
   //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(rhs)>;
@@ -242,9 +240,8 @@ operator-(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
   return element{lhs} - rhs;
 }
 
-[[nodiscard]] constexpr auto
-operator-(const is_singleton_typed_matrix auto &lhs,
-          const is_singleton_typed_matrix auto &rhs) {
+[[nodiscard]] constexpr auto operator-(const singleton_typed_matrix auto &lhs,
+                                       const singleton_typed_matrix auto &rhs) {
   //! @todo Should there be constraints on the type?
   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
   using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
@@ -264,8 +261,8 @@ operator-(const is_singleton_typed_matrix auto &lhs,
 //! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix.
 //!
 //! @todo Combine? Generalize?
-[[nodiscard]] constexpr auto operator/(const is_typed_matrix auto &lhs,
-                                       const is_typed_matrix auto &rhs) {
+[[nodiscard]] constexpr auto operator/(const same_as_typed_matrix auto &lhs,
+                                       const same_as_typed_matrix auto &rhs) {
   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
   using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
 
@@ -291,9 +288,9 @@ operator-(const is_singleton_typed_matrix auto &lhs,
                                                         rhs.data());
 }
 
-[[nodiscard]] constexpr auto
-operator/(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
-  requires(not is_typed_matrix<decltype(rhs)>)
+[[nodiscard]] constexpr auto operator/(const singleton_typed_matrix auto &lhs,
+                                       const auto &rhs)
+  requires(not same_as_typed_matrix<decltype(rhs)>)
 {
   using matrix = std::remove_cvref_t<decltype(lhs)>;
   using element = typename matrix::template element<0, 0>;
@@ -301,9 +298,9 @@ operator/(const is_singleton_typed_matrix auto &lhs, const auto &rhs)
   return element{lhs} / rhs;
 }
 
-[[nodiscard]] constexpr auto
-operator/(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
-  requires(not is_typed_matrix<decltype(lhs)>)
+[[nodiscard]] constexpr auto operator/(const auto &lhs,
+                                       const singleton_typed_matrix auto &rhs)
+  requires(not same_as_typed_matrix<decltype(lhs)>)
 {
   //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(rhs)>;
@@ -312,9 +309,8 @@ operator/(const auto &lhs, const is_singleton_typed_matrix auto &rhs)
   return lhs / element{rhs};
 }
 
-[[nodiscard]] constexpr auto
-operator/(const is_singleton_typed_matrix auto &lhs,
-          const is_singleton_typed_matrix auto &rhs) {
+[[nodiscard]] constexpr auto operator/(const singleton_typed_matrix auto &lhs,
+                                       const singleton_typed_matrix auto &rhs) {
   //! @todo Should there be constraints on the type?
   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
   using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
@@ -325,8 +321,8 @@ operator/(const is_singleton_typed_matrix auto &lhs,
 }
 
 [[nodiscard]] constexpr auto operator/(const auto &lhs,
-                                       const is_column_typed_matrix auto &rhs)
-  requires(not is_typed_matrix<decltype(lhs)>)
+                                       const column_typed_matrix auto &rhs)
+  requires(not same_as_typed_matrix<decltype(lhs)>)
 {
   //! @todo Should there be constraints on the type?
   using type = std::remove_cvref_t<decltype(lhs)>;
@@ -343,9 +339,9 @@ operator/(const is_singleton_typed_matrix auto &lhs,
       cast<underlying, type>(lhs) / rhs.data());
 }
 
-[[nodiscard]] constexpr auto operator/(const is_typed_matrix auto &lhs,
+[[nodiscard]] constexpr auto operator/(const same_as_typed_matrix auto &lhs,
                                        const auto &rhs)
-  requires(not is_typed_matrix<decltype(rhs)>)
+  requires(not same_as_typed_matrix<decltype(rhs)>)
 {
   //! @todo Should there be constraints on the type?
   using type = std::remove_cvref_t<decltype(rhs)>;
@@ -358,7 +354,8 @@ operator/(const is_singleton_typed_matrix auto &lhs,
       lhs.data() / cast<underlying, type>(rhs));
 }
 
-[[nodiscard]] constexpr auto transposed(const is_typed_matrix auto &value) {
+[[nodiscard]] constexpr auto
+transposed(const same_as_typed_matrix auto &value) {
   using matrix = std::remove_cvref_t<decltype(value)>;
   using row_indexes = typename matrix::row_indexes;
   using column_indexes = typename matrix::column_indexes;

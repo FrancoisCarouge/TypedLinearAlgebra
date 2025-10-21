@@ -175,7 +175,7 @@ using underlying_t =
                                                                            0))>;
 
 template <typename Type>
-concept is_typed_matrix = std::same_as<
+concept same_as_typed_matrix = std::same_as<
     std::remove_cvref_t<Type>,
     typed_matrix<typename std::remove_cvref_t<Type>::matrix,
                  typename std::remove_cvref_t<Type>::row_indexes,
@@ -191,8 +191,8 @@ using element = std::remove_cvref_t<product<
 
 //! @todo There may be a way to write this concepts via two fold expressions.
 template <typename Type>
-concept is_uniform_typed_matrix =
-    is_typed_matrix<Type> and ([]() {
+concept uniform_typed_matrix =
+    same_as_typed_matrix<Type> and ([]() {
       bool result{true};
 
       for_constexpr<0, std::remove_cvref_t<Type>::rows, 1>([&result](auto i) {
@@ -206,26 +206,26 @@ concept is_uniform_typed_matrix =
     }());
 
 template <typename Type>
-concept is_column_typed_matrix =
-    is_typed_matrix<Type> and (std::remove_cvref_t<Type>::columns == 1);
+concept column_typed_matrix =
+    same_as_typed_matrix<Type> and (std::remove_cvref_t<Type>::columns == 1);
 
 template <typename Type>
-concept is_row_typed_matrix =
-    is_typed_matrix<Type> and (std::remove_cvref_t<Type>::rows == 1);
+concept row_typed_matrix =
+    same_as_typed_matrix<Type> and (std::remove_cvref_t<Type>::rows == 1);
 
 template <typename Type>
-concept is_one_dimension_typed_matrix =
-    is_typed_matrix<Type> and
-    (is_column_typed_matrix<Type> or is_row_typed_matrix<Type>);
+concept one_dimension_typed_matrix =
+    same_as_typed_matrix<Type> and
+    (column_typed_matrix<Type> or row_typed_matrix<Type>);
 
 template <typename Type>
-concept is_singleton_typed_matrix =
-    is_typed_matrix<Type> and is_column_typed_matrix<Type> and
-    is_row_typed_matrix<Type>;
+concept singleton_typed_matrix =
+    same_as_typed_matrix<Type> and column_typed_matrix<Type> and
+    row_typed_matrix<Type>;
 
 template <typename Lhs, typename Rhs>
-concept is_same_shape =
-    is_typed_matrix<Lhs> and is_typed_matrix<Rhs> and ([]() {
+concept same_shape =
+    same_as_typed_matrix<Lhs> and same_as_typed_matrix<Rhs> and ([]() {
       using lhs_matrix = std::remove_cvref_t<Lhs>;
       using rhs_matrix = std::remove_cvref_t<Rhs>;
 
