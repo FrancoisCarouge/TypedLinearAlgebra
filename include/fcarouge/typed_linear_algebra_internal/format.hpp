@@ -96,8 +96,7 @@ public:
   constexpr auto
   format(const matrix &value,
          FormatContext &format_context) const -> FormatContext::iterator
-    requires fcarouge::typed_linear_algebra_internal::is_row_typed_matrix<
-        matrix>
+    requires fcarouge::typed_linear_algebra_internal::row_typed_matrix<matrix>
   {
     format_context.advance_to(std::format_to(format_context.out(), "["));
 
@@ -121,7 +120,7 @@ public:
   constexpr auto
   format(const matrix &value,
          FormatContext &format_context) const -> FormatContext::iterator
-    requires fcarouge::typed_linear_algebra_internal::is_singleton_typed_matrix<
+    requires fcarouge::typed_linear_algebra_internal::singleton_typed_matrix<
         matrix>
   {
     format_context.advance_to(
