@@ -233,7 +233,8 @@ using row_vector =
       column_vector<representation, representation, representation>;
   using velocity3d = column_vector<velocity, velocity, velocity>;
 
-  velocity3d v0{vector3d{1., 2., 3.} * mp_units::isq::velocity[m / s]};
+  vector3d v{1., 2., 3.};
+  velocity3d v0{v * m / s};
   assert(std::format("{}", v0) == "[[1 m/s], [2 m/s], [3 m/s]]");
 
   // Beware of non-evaluated template expression: these types are not the same.
