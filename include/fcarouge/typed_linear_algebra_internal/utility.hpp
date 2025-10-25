@@ -159,6 +159,7 @@ struct multiplies<std::tuple<Types1...>, std::tuple<Types2...>> {
       const -> std::tuple<product<Types1, Types2>...>;
 };
 
+//! @todo Remove for C++26 P1789 Library Support for Expansion Statements.
 template <std::size_t Begin, std::size_t End, std::size_t Increment,
           typename Function>
 constexpr void for_constexpr(Function &&function) {

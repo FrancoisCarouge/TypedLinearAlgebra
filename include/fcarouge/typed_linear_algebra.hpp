@@ -187,7 +187,7 @@ public:
 
   //! @brief Copy construct generalization of a compatible typed matrix.
   //!
-  //! @details Implicit conversions supported.
+  //! @details Implicit conversions expected per default equivalency.
   constexpr explicit(false)
       typed_matrix(const same_as_typed_matrix auto &other);
 
@@ -196,7 +196,7 @@ public:
 
   //! @brief Move construct generalization of a compatible typed matrix.
   //!
-  //! @details Implicit conversions supported.
+  //! @details Implicit conversions expected per default equivalency.
   constexpr explicit(false)
       typed_matrix(const same_as_typed_matrix auto &&other);
 
@@ -208,6 +208,9 @@ public:
   //! @warning Useful for operations implementation where underlying data
   //! constrution is needed. Not recommended for convenience construction due to
   //! absence of type validation.
+  //!
+  //! @note Alternative design could evaluate feasability of private
+  //! constructor, operator friendship, attorney-client, or key idioms.
   constexpr explicit typed_matrix(const Matrix &other);
 
   //! @brief Convert construct a one-dimension uniformly typed matrix from
@@ -352,6 +355,10 @@ public:
   //! @brief Direct access to the underlying storage.
   //!
   //! @details Reference to the underlying element storage.
+  //!
+  //! @warning Useful for operations implementation where underlying data
+  //! access is needed. Not recommended for convenience access due to
+  //! absence of type validation.
   [[nodiscard]] constexpr auto &&data(this auto &&self);
 
   //! @}
