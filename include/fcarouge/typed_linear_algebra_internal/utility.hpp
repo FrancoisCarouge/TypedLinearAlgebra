@@ -226,13 +226,9 @@ concept singleton_typed_matrix =
 
 template <typename Lhs, typename Rhs>
 concept same_shape =
-    same_as_typed_matrix<Lhs> and same_as_typed_matrix<Rhs> and ([]() {
-      using lhs_matrix = std::remove_cvref_t<Lhs>;
-      using rhs_matrix = std::remove_cvref_t<Rhs>;
-
-      return (lhs_matrix::rows == rhs_matrix::rows) &&
-             (lhs_matrix::columns == rhs_matrix::columns);
-    }());
+    same_as_typed_matrix<Lhs> and same_as_typed_matrix<Rhs> and
+    (std::remove_cvref_t<Lhs>::rows == std::remove_cvref_t<Rhs>::rows) &&
+    (std::remove_cvref_t<Lhs>::columns == std::remove_cvref_t<Rhs>::columns);
 
 template <typename Type, std::size_t Size> struct tupler {
   template <typename = std::make_index_sequence<Size>> struct helper;
