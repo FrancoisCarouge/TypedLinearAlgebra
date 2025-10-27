@@ -395,12 +395,28 @@ template <typename To, typename From> struct element_caster {
 
 //! @}
 
+//! @name Algorithms
+//! @{
+
+[[nodiscard]] constexpr bool operator==(const same_as_typed_matrix auto &lhs,
+                                        const same_as_typed_matrix auto &rhs);
+
+[[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
+                                       const same_as_typed_matrix auto &rhs);
+//! @}
+
+//! @name Adaptors
+//! @{
+
 //! @brief Matrix element conversion customization point.
 //!
 //! @details Specialization of the element caster function objects allows the
 //! end-user to permit underlying type conversions.
 template <typename To, typename From>
 static inline constexpr element_caster<To, From> cast{};
+
+//! @}
+
 } // namespace fcarouge
 
 #include "typed_linear_algebra_internal/cast.tpp"
