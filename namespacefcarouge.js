@@ -28,5 +28,7 @@ var namespacefcarouge =
     [ "matrix", "namespacefcarouge.xhtml#a2d5d861aa25651be3549e278fd1e21e6", null ],
     [ "typed_column_vector", "namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58", null ],
     [ "typed_row_vector", "namespacefcarouge.xhtml#a7558e7ccc03031fb7de678cf4977e1bf", null ],
+    [ "operator*", "namespacefcarouge.xhtml#a37ad0c6ac7df201ab1ffbf86e277506b", null ],
+    [ "operator==", "namespacefcarouge.xhtml#ac201eb6dbabe90e8e35d2efa46b7ad1f", null ],
     [ "cast", "namespacefcarouge.xhtml#aa6f7f6a8d1b65520e70b3e1330e880d2", null ]
 ];
