@@ -40,7 +40,7 @@ else()
                  "mp_units_eigen.cpp")
   target_link_libraries(
     typed_linear_algebra_sample_mp_units_eigen_driver
-    PRIVATE linalg typed_linear_algebra_eigen typed_linear_algebra_main
+    PRIVATE tlinalg typed_linear_algebra_eigen typed_linear_algebra_main
             typed_linear_algebra_options typed_linear_algebra_unit_mp_units)
   add_test(NAME typed_linear_algebra_sample_mp_units_eigen
            COMMAND typed_linear_algebra_sample_mp_units_eigen_driver)
