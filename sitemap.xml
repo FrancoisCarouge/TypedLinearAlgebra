@@ -5,9 +5,6 @@
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
       http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/typed__linear__algebra_8hpp_source.xhtml</loc>
-  </url>
-  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/typed__linear__algebra__forward_8hpp_source.xhtml</loc>
   </url>
   <url>
@@ -15,6 +12,9 @@
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/utility_8hpp_source.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/typed__linear__algebra_8hpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mp__units__eigen_8cpp_source.xhtml</loc>
@@ -44,10 +44,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/constructor__1x1_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/constructor__1x1__array_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/constructor__1xn_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/constructor__1xn_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/constructor__1x1__array_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/constructor__1xn__array_8cpp_source.xhtml</loc>
@@ -59,13 +59,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/constructor__nx1_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/constructor__nx1__array_8cpp_source.xhtml</loc>
-  </url>
-  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/copy_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/format__1xn_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/constructor__nx1__array_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/format__1x1_8cpp_source.xhtml</loc>
@@ -74,13 +71,16 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/format__mx1_8cpp_source.xhtml</loc>
   </url>
   <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/format__1xn_8cpp_source.xhtml</loc>
+  </url>
+  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/format__mxn_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/identity_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/multiplication__arithmetic_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/multiplication__arithmetic_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/identity_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/multiplication__rxc_8cpp_source.xhtml</loc>
@@ -104,10 +104,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/_c_o_n_t_r_i_b_u_t_i_n_g_8md.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/typed__linear__algebra_8hpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/documentation_8dox.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/documentation_8dox.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/typed__linear__algebra_8hpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/typed__linear__algebra__forward_8hpp.xhtml</loc>
@@ -224,10 +224,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/format__mx1_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/format__mxn_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/identity_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/identity_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/format__mxn_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/multiplication__arithmetic_8cpp.xhtml</loc>
