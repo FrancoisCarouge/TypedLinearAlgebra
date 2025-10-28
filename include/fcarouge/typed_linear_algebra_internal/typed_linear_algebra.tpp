@@ -222,6 +222,15 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::data(this auto &&self) {
   return std::forward<decltype(self)>(self).storage;
 }
+
+template <typename RowIndexes, typename ColumnIndexes>
+[[nodiscard]] constexpr auto make_typed_matrix(auto &&value) {
+  using type = decltype(value);
+  using matrix = std::remove_cvref_t<type>;
+
+  return typed_matrix<matrix, RowIndexes, ColumnIndexes>{
+      std::forward<type>(value)};
+}
 } // namespace fcarouge
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_TYPED_LINEAR_ALGEBRA_TPP
