@@ -35,23 +35,6 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
 
-//! @brief Factory function in support of syntaxic reduction.
-//!
-//! @todo Should this be an internal only tool? Should, can there be a safe
-//! public version?
-//!
-//! @warning Useful for operations implementation where underlying data
-//! constrution is needed. Not recommended for convenience construction due to
-//! absence of type validation.
-template <typename RowIndexes, typename ColumnIndexes>
-auto make_typed_matrix(auto &&value) {
-  using type = decltype(value);
-  using matrix = std::remove_cvref_t<type>;
-
-  return typed_matrix<matrix, RowIndexes, ColumnIndexes>{
-      std::forward<type>(value)};
-}
-
 //! @todo Requires, assert that the element types are compatible.
 [[nodiscard]] constexpr bool operator==(const same_as_typed_matrix auto &lhs,
                                         const same_as_typed_matrix auto &rhs) {

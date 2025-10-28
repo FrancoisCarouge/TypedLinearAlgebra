@@ -415,6 +415,16 @@ template <typename To, typename From> struct element_caster {
 template <typename To, typename From>
 static inline constexpr element_caster<To, From> cast{};
 
+//! @brief Factory function for partial template deduction.
+//!
+//! @warning Useful for operations implementation where underlying data
+//! constrution is needed. Not recommended for convenience construction due to
+//! absence of type validation.
+//!
+//! @note Alternative design could evaluate feasability of hiding this support.
+template <typename RowIndexes, typename ColumnIndexes>
+[[nodiscard]] constexpr auto make_typed_matrix(auto &&value);
+
 //! @}
 
 } // namespace fcarouge
