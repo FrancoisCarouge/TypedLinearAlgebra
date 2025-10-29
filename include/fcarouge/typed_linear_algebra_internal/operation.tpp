@@ -336,22 +336,6 @@ namespace tla = typed_linear_algebra_internal;
   return make_typed_matrix<row_indexes, column_indexes>(
       lhs.data() / cast<underlying, type>(rhs));
 }
-
-[[nodiscard]] constexpr auto
-transposed(const same_as_typed_matrix auto &value) {
-  using matrix = std::remove_cvref_t<decltype(value)>;
-  using row_indexes = typename matrix::row_indexes;
-  using column_indexes = typename matrix::column_indexes;
-  using transposed_row_indexes = column_indexes;
-  using transposed_column_indexes = row_indexes;
-
-  //! @todo Add other common transpose interfaces.
-  //! @todo Add transpose customization point object.
-  if constexpr (requires { value.data().transpose(); }) {
-    return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
-        value.data().transpose());
-  }
-}
 } // namespace fcarouge
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_OPERATION_TPP
