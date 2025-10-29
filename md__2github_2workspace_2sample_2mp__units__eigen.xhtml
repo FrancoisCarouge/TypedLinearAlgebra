@@ -190,20 +190,20 @@ Introduction</h1>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Predict</span></div>
 <div class="line">x = f * x;</div>
-<div class="line">p = f * p * transposed(f) + q;</div>
+<div class="line">p = f * p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(f) + q;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Update</span></div>
 <div class="line"><span class="keyword">using </span>output = position;</div>
 <div class="line">output z{-393.66 * m};</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">using </span>innovation_uncertainty = output_uncertainty;</div>
-<div class="line">innovation_uncertainty si{h * p * transposed(h) + r};</div>
+<div class="line">innovation_uncertainty si{h * p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(h) + r};</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">using </span>unevaluated_gain =</div>
 <div class="line">    <span class="keyword">decltype</span>(std::declval&lt;state&gt;() / std::declval&lt;output&gt;());</div>
 <div class="line"><span class="keyword">using </span>gain =</div>
 <div class="line">    matrix&lt;unevaluated_gain::row_indexes, unevaluated_gain::column_indexes&gt;;</div>
-<div class="line">gain k{p * transposed(h) / si};</div>
+<div class="line">gain k{p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(h) / si};</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">using </span>innovation = output;</div>
 <div class="line">innovation y{z - h * x};</div>
@@ -219,12 +219,13 @@ Introduction</h1>
 <div class="line"><span class="keyword">using </span>kh =</div>
 <div class="line">    matrix&lt;unevaluated_kh::row_indexes, unevaluated_kh::column_indexes&gt;;</div>
 <div class="line">kh i{state_transition::matrix::Identity()};</div>
-<div class="line">p = (i - k * h) * p * transposed(i - k * h) + k * r * transposed(k);</div>
+<div class="line">p = (i - k * h) * p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(i - k * h) + k * r * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(k);</div>
 <div class="line">std::println(<span class="stringliteral">&quot;P: {}&quot;</span>, p);</div>
 <div class="line"><span class="comment">// P: [[8.92 m²,      5.95 m²/s,    1.98 m²/s²],</span></div>
 <div class="line"><span class="comment">//     [5.95 m²/s,  503.98 m²/s², 334.67 m²/s³],</span></div>
 <div class="line"><span class="comment">//     [1.98 m²/s², 334.67 m²/s³, 444.91 m²/s⁴]]</span></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_a8b2e65b7992ae2a7bbf9fe0554c970ea"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a8b2e65b7992ae2a7bbf9fe0554c970ea">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::quantity</a></div><div class="ttdeci">mp_units::quantity&lt; QuantityReference, representation &gt; quantity</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00092">mp_units_eigen.cpp:92</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a39c15f9009b3d9cfed2a5d90b56a5ac3"><div class="ttname"><a href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">fcarouge::transposed</a></div><div class="ttdeci">constexpr auto transposed(const same_as_typed_matrix auto &amp;value)</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md5-library-reference"></a>
 5 Library Reference</h1>
 <h2><a class="anchor" id="class-typed-matrix-1"></a>
