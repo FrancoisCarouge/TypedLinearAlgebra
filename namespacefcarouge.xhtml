@@ -191,13 +191,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a37ad0c6ac7df201ab1ffbf86e277506b" id="r_a37ad0c6ac7df201ab1ffbf86e277506b"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37ad0c6ac7df201ab1ffbf86e277506b">operator*</a> (const same_as_typed_matrix auto &amp;lhs, const same_as_typed_matrix auto &amp;rhs)</td></tr>
 <tr class="separator:a37ad0c6ac7df201ab1ffbf86e277506b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr><td colspan="2"><div class="groupHeader">Adaptors</div></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Adaptors</h2></td></tr>
 <tr class="memitem:aa6f7f6a8d1b65520e70b3e1330e880d2" id="r_aa6f7f6a8d1b65520e70b3e1330e880d2"><td class="memTemplParams" colspan="2">template&lt;typename To , typename From &gt; </td></tr>
 <tr class="memitem:aa6f7f6a8d1b65520e70b3e1330e880d2"><td class="memTemplItemLeft" align="right" valign="top">static constexpr <a class="el" href="structfcarouge_1_1element__caster.xhtml">element_caster</a>&lt; To, From &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aa6f7f6a8d1b65520e70b3e1330e880d2">cast</a> {}</td></tr>
 <tr class="memdesc:aa6f7f6a8d1b65520e70b3e1330e880d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix element conversion customization point.  <br /></td></tr>
 <tr class="separator:aa6f7f6a8d1b65520e70b3e1330e880d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4073b31d56e98e110bf4a993ed190c80" id="r_a4073b31d56e98e110bf4a993ed190c80"><td class="memTemplParams" colspan="2">template&lt;typename RowIndexes , typename ColumnIndexes &gt; </td></tr>
+<tr class="memitem:a4073b31d56e98e110bf4a993ed190c80"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a4073b31d56e98e110bf4a993ed190c80">make_typed_matrix</a> (auto &amp;&amp;value)</td></tr>
+<tr class="memdesc:a4073b31d56e98e110bf4a993ed190c80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory function for partial template deduction.  <br /></td></tr>
+<tr class="separator:a4073b31d56e98e110bf4a993ed190c80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Francois Carouge's projects namespace. </p>
@@ -292,6 +294,37 @@ template&lt;typename Matrix , typename... ColumnIndexes&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a4073b31d56e98e110bf4a993ed190c80" name="a4073b31d56e98e110bf4a993ed190c80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4073b31d56e98e110bf4a993ed190c80">&#9670;&#160;</a></span>make_typed_matrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename RowIndexes , typename ColumnIndexes &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto fcarouge::make_typed_matrix </td>
+          <td>(</td>
+          <td class="paramtype">auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Factory function for partial template deduction. </p>
+<dl class="section warning"><dt>Warning</dt><dd>Useful for operations implementation where underlying data constrution is needed. Not recommended for convenience construction due to absence of type validation.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Alternative design could evaluate feasability of hiding this support. </dd></dl>
+
+</div>
+</div>
 <a id="a37ad0c6ac7df201ab1ffbf86e277506b" name="a37ad0c6ac7df201ab1ffbf86e277506b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a37ad0c6ac7df201ab1ffbf86e277506b">&#9670;&#160;</a></span>operator*()</h2>
 
