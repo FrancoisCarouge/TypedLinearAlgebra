@@ -190,50 +190,6 @@ namespace tla = typed_linear_algebra_internal;
   return lhs_element{lhs} + rhs_element{rhs};
 }
 
-//! @todo Requires, assert that the element types are compatible.
-[[nodiscard]] constexpr auto operator-(const same_as_typed_matrix auto &lhs,
-                                       const same_as_typed_matrix auto &rhs) {
-  using matrix = std::remove_cvref_t<decltype(lhs)>;
-  using row_indexes = typename matrix::row_indexes;
-  using column_indexes = typename matrix::column_indexes;
-
-  return make_typed_matrix<row_indexes, column_indexes>(lhs.data() -
-                                                        rhs.data());
-}
-
-[[nodiscard]] constexpr auto operator-(const auto &lhs,
-                                       const singleton_typed_matrix auto &rhs)
-  requires(not same_as_typed_matrix<decltype(lhs)>)
-{
-  //! @todo Should there be constraints on the type?
-  using matrix = std::remove_cvref_t<decltype(rhs)>;
-  using element = typename matrix::template element<0, 0>;
-
-  return lhs - element{rhs};
-}
-
-[[nodiscard]] constexpr auto operator-(const singleton_typed_matrix auto &lhs,
-                                       const auto &rhs)
-  requires(not same_as_typed_matrix<decltype(rhs)>)
-{
-  //! @todo Should there be constraints on the type?
-  using matrix = std::remove_cvref_t<decltype(rhs)>;
-  using element = typename matrix::template element<0, 0>;
-
-  return element{lhs} - rhs;
-}
-
-[[nodiscard]] constexpr auto operator-(const singleton_typed_matrix auto &lhs,
-                                       const singleton_typed_matrix auto &rhs) {
-  //! @todo Should there be constraints on the type?
-  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
-  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
-  using lhs_element = typename lhs_matrix::template element<0, 0>;
-  using rhs_element = typename rhs_matrix::template element<0, 0>;
-
-  return lhs_element{lhs} - rhs_element{rhs};
-}
-
 //! @details Matrix division is a mathematical abuse of terminology. Informally
 //! defined as multiplication by the inverse. Similarly to division by zero in
 //! real numbers, there exists matrices that are not invertible. Remember the
