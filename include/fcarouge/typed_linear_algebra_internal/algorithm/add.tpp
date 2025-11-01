@@ -29,23 +29,23 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_SUBSTRACT_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_SUBSTRACT_TPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_ADD_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_ADD_TPP
 
 namespace fcarouge {
 
 //! @todo Requires, assert that the element types are compatible.
-[[nodiscard]] constexpr auto operator-(const same_as_typed_matrix auto &lhs,
+[[nodiscard]] constexpr auto operator+(const same_as_typed_matrix auto &lhs,
                                        const same_as_typed_matrix auto &rhs) {
   using matrix = std::remove_cvref_t<decltype(lhs)>;
   using row_indexes = typename matrix::row_indexes;
   using column_indexes = typename matrix::column_indexes;
 
-  return make_typed_matrix<row_indexes, column_indexes>(lhs.data() -
+  return make_typed_matrix<row_indexes, column_indexes>(lhs.data() +
                                                         rhs.data());
 }
 
-[[nodiscard]] constexpr auto operator-(const auto &lhs,
+[[nodiscard]] constexpr auto operator+(const auto &lhs,
                                        const singleton_typed_matrix auto &rhs)
   requires(not same_as_typed_matrix<decltype(lhs)>)
 {
@@ -53,21 +53,21 @@ namespace fcarouge {
   using matrix = std::remove_cvref_t<decltype(rhs)>;
   using element = typename matrix::template element<0, 0>;
 
-  return lhs - element{rhs};
+  return lhs + element{rhs};
 }
 
-[[nodiscard]] constexpr auto operator-(const singleton_typed_matrix auto &lhs,
+[[nodiscard]] constexpr auto operator+(const singleton_typed_matrix auto &lhs,
                                        const auto &rhs)
   requires(not same_as_typed_matrix<decltype(rhs)>)
 {
   //! @todo Should there be constraints on the type?
-  using matrix = std::remove_cvref_t<decltype(rhs)>;
+  using matrix = std::remove_cvref_t<decltype(lhs)>;
   using element = typename matrix::template element<0, 0>;
 
-  return element{lhs} - rhs;
+  return element{lhs} + rhs;
 }
 
-[[nodiscard]] constexpr auto operator-(const singleton_typed_matrix auto &lhs,
+[[nodiscard]] constexpr auto operator+(const singleton_typed_matrix auto &lhs,
                                        const singleton_typed_matrix auto &rhs) {
   //! @todo Should there be constraints on the type?
   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
@@ -75,8 +75,8 @@ namespace fcarouge {
   using lhs_element = typename lhs_matrix::template element<0, 0>;
   using rhs_element = typename rhs_matrix::template element<0, 0>;
 
-  return lhs_element{lhs} - rhs_element{rhs};
+  return lhs_element{lhs} + rhs_element{rhs};
 }
 } // namespace fcarouge
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_SUBSTRACT_TPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_ADD_TPP

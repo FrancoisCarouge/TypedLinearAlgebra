@@ -38,6 +38,7 @@ target_sources(
             "HEADERS"
             FILES
             "fcarouge/typed_linear_algebra_forward.hpp"
+            "fcarouge/typed_linear_algebra_internal/algorithm/add.tpp"
             "fcarouge/typed_linear_algebra_internal/algorithm/substract.tpp"
             "fcarouge/typed_linear_algebra_internal/algorithm/transposed.tpp"
             "fcarouge/typed_linear_algebra_internal/cast.tpp"
