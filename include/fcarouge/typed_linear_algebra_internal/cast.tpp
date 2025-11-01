@@ -33,7 +33,6 @@ For more information, please refer to <https://unlicense.org> */
 #define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
 
 namespace fcarouge {
-namespace tla = typed_linear_algebra_internal;
 
 //! @todo Deduplicate, generalize the built-in casts.
 template <typename To, typename From>
