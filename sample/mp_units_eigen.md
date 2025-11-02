@@ -2,7 +2,7 @@
 
 François Carouge (francois.carouge@gmail.com)
 
-September 3, 2025
+October 11, 2025
 
 ## Abstract
 
@@ -56,7 +56,7 @@ std::println("X: {}", x);
 using estimate_uncertainty =
     matrix<std::tuple<position, velocity, acceleration>,
             std::tuple<position, velocity, acceleration>>;
-estimate_uncertainty p{estimate_uncertainty::matrix::Zero()};
+estimate_uncertainty p;
 p.at<0, 0>() = 500. * m2;
 p.at<1, 1>() = 500. * m2 / s2;
 p.at<2, 2>() = 500. * m2 / s4;
@@ -65,17 +65,21 @@ std::println("P: {}", p);
 //     [  0 m²/s, 500 m²/s²,   0 m²/s³],
 //     [  0 m²/s²,  0 m²/s³, 500 m²/s⁴]]
 
-using process_uncertainty = estimate_uncertainty;
-process_uncertainty q{process_uncertainty::matrix::Ones() * 0.2 * 0.2};
-q.at<0, 0>() *= 0.25;
-q.at<0, 1>() *= 0.5;
-q.at<0, 2>() *= 0.5;
-q.at<1, 0>() *= 0.5;
-q.at<2, 0>() *= 0.5;
-std::println("Q: {}", q);
-// Q: [[0.01 m²,    0.02 m²/s,  0.02 m²/s²],
-//     [0.02 m²/s,  0.04 m²/s², 0.04 m²/s³],
-//     [0.02 m²/s², 0.04 m²/s³, 0.04 m²/s⁴]]
+  using process_uncertainty = estimate_uncertainty;
+  process_uncertainty q;
+  q.at<0, 0>() = 0.01 * m2;
+  q.at<0, 1>() = 0.02 * m2 / s;
+  q.at<0, 2>() = 0.02 * m2 / s2;
+  q.at<1, 0>() = 0.02 * m2 / s;
+  q.at<1, 1>() = 0.04 * m2 / s2;
+  q.at<1, 2>() = 0.04 * m2 / s2;
+  q.at<2, 0>() = 0.02 * m2 / s2;
+  q.at<2, 1>() = 0.04 * m2 / s3;
+  q.at<2, 2>() = 0.04 * m2 / s4;
+  std::println("Q: {}", q);
+  // Q: [[0.01 m²,    0.02 m²/s,  0.02 m²/s²],
+  //     [0.02 m²/s,  0.04 m²/s², 0.04 m²/s³],
+  //     [0.02 m²/s², 0.04 m²/s³, 0.04 m²/s⁴]]
 
 using output_uncertainty = quantity<m2>;
 output_uncertainty r{9. * m2};
@@ -239,6 +243,7 @@ A specialization of the standard formatter is provided for the typed matrix. Use
 | `one_dimension_typed_matrix` | Concept of a typed matrix with only one dimension, row, or column. |
 | `row_typed_matrix` | Concept of a row typed matrix, vector. |
 | `column_typed_matrix` | Concept of a column typed matrix, vector. |
+| `same_shape` | Concept of typed matrices of the same shape, that is they have the same number of rows and columns. |
 
 ### Structure Element Caster
 
@@ -249,15 +254,23 @@ template <typename To, typename From>
 struct element_caster;
 ```
 
-## 6 Beyond Unit Safety
+## 6 Open Questions
 
-Type safety cannot be guaranteed at compilation time without index-type safety. The indexes can either be non-type template parameters or strong types overloadings. Converting a runtime index to a dependent template type is not possible in C++. A proxy reference could be used to allow traditional assignment syntax but the runtime check and extra indirection are not interesting tradeoffs. A template call operator can be used for getting a type safe value but impractical syntax to set values. Without index safety, the accepted tradeoff is a templated index `at<i, j>()` method over the unchecked `operator[i, j]` and `operator(i, j)` accessors. Daniel Withopf [[6](https://www.youtube.com/watch?v=4LmMwhM8ODI)] uses strongly typed indexed to provide index safety complementing the quantity-safe linear algebra approach. Other types of safeties should be considered such as reference frames and coordinate systems or taxonomy of the matrix.
+**Index-Type Safety Required:** Type safety cannot be guaranteed at compilation time without index-type safety. The indexes can either be non-type template parameters or strong types overloadings. Converting a runtime index to a dependent template type is not possible in C++23. A proxy reference could be used to allow traditional assignment syntax but the runtime check and extra indirection are not interesting tradeoffs. A template call operator can be used for getting a type safe value but impractical syntax to set values. Without index safety, the accepted tradeoff is a templated index `at<i, j>()` method over the unchecked `operator[i, j]` and `operator(i, j)` accessors. Daniel Withopf [[6](https://www.youtube.com/watch?v=4LmMwhM8ODI)] uses strongly typed indexed to provide index safety complementing the quantity-safe linear algebra approach. A strongly-typed linear algebra must include index-type safety. Other types of safeties should be considered: reference frames, coordinate systems, or taxonomy of the matrix.
 
-The performance of the typed linear algebra should be identical to the performance of the underlying linear algebra backend. The composition is intended to be a zero-cost abstraction. Measuring and comparing the library to their equivalent counterpart is left as a future exercise.
+**Zero-Cost Abstraction Required:** The performance of the typed linear algebra should be identical to the performance of the underlying linear algebra backend, considering the types. The composition is intended to be a zero-cost abstraction. Measuring and comparing the library to their equivalent counterpart is left as a future exercise.
+
+**Type Conversions:** The conversion from the underlying matrix element type references to the quantity type references is achieved through a `reinterpret_cast` conversion which works by reinterpreting the underlying bit pattern forgoing aliasing and alignement rules. The safety of the `element_caster` implementation is dubious and safer alternatives to be identified. The quantity type library only provide partial type conversion to and from standard types. It may be appropriate for the type library to extend its safe conversion support: to/from, by-value/reference, not/constant, and l/rvalue. A single template specialization could then suffice to customize the type conversions.
+
+**No Unsafe API:** Three methods of the matrix class present risks: the default constructor, the conversion constructor for underlying matrix, and the underlying data access method:
+* The default constructor could construct the underlying matrix according to its default linear algebra backend initialization, or lack thereof. Backends without guaranteed initialization have shown to result in uninitialized memory defects. The default constructor should be safe by default under all corner cases, or be gone. Adding an explicitely uninitialized constructor could be considered.
+* One of the conversion constructor permits the construction of a typed matrix from its untyped, underlying matrix data. Although practical for the user and operation implementations, the constructor however defeats the purpose of the type safety and re-introduces the risk the typed matrix set out to resolve. Additional contruction strategies should help the user in constructing type safe matrices without using an unsafe construction methodology.
+* The underlying data access method permits accessing the untyped underlying matrix data of a typed matrix. Although practical for the user and operation implementations, the method however defeats the purpose of the type safety and re-introduces the risk the typed matrix set out to resolve. Privatization, friendship of operations, ADL may prove useful in resolving this issue.
+
+## 7 Beyond Unit Safety
 
 There are more operations used in linear algebra than the ones presented in this document. More or all operations from the Eigen or the `std::linalg` would form a practical operation catalog. Identifying the most commonly used operations are implementing their facades are left as future exercises. Similarly for the exploration and integration with compatible standard library support such as algorithms, ranges, or mdspan.
 
-The conversion from underlying matrix element types references to quantity types is achieved through a `reinterpret_cast` conversion which works by reinterpreting the underlying bit pattern forgoing aliasing and alignement rules. The safety of the `element_caster` implementation is dubious and safer alternatives to be identified.
 
 An interesting research venue would be to elevate, generalize the dimension of the matrices beyond the rank-2 matrices present in common linear algebra. Replacing the row- and column-index tuples by a pack of index tuples is left for a future exploration.
 
