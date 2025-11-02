@@ -1,7 +1,7 @@
 var searchData=
 [
   ['safe_20linear_20algebra_20use_20case_3a_20eigen_20mp_20units_0',['Quantity-Safe Linear Algebra Use Case: Eigen + mp-units',['../md__2github_2workspace_2sample_2mp__units__eigen.xhtml',1,'']]],
-  ['safety_1',['6 Beyond Unit Safety',['../md__2github_2workspace_2sample_2mp__units__eigen.xhtml#autotoc_md6-beyond-unit-safety',1,'']]],
+  ['safety_1',['7 Beyond Unit Safety',['../md__2github_2workspace_2sample_2mp__units__eigen.xhtml#autotoc_md7-beyond-unit-safety',1,'']]],
   ['safety_20linear_20algebra_20and_20dimensional_20analysis_2',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md__2github_2workspace_2sample_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],
   ['sample_3',['sample',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a21786fcdeff8521c91f594655772d63a',1,'fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}']]],
   ['scope_4',['Scope',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#scope',1,'']]],

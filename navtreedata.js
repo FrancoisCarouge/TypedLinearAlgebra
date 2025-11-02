@@ -101,7 +101,8 @@ var NAVTREE =
         [ "Concepts", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#concepts-1", null ],
         [ "Structure Element Caster", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#structure-element-caster-1", null ]
       ] ],
-      [ "6 Beyond Unit Safety", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#autotoc_md6-beyond-unit-safety", null ],
+      [ "6 Open Questions", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#autotoc_md6-open-questions", null ],
+      [ "7 Beyond Unit Safety", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#autotoc_md7-beyond-unit-safety", null ],
       [ "7 Conclusion", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#autotoc_md7-conclusion", null ]
     ] ],
     [ "Security Policy", "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml", [

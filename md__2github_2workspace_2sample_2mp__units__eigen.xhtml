@@ -105,7 +105,7 @@ $(function(){initNavTree('md__2github_2workspace_2sample_2mp__units__eigen.xhtml
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="quantity-safe-linear-algebra-use-case-eigen--mp-units"></a></p>
 <p>François Carouge (<a href="#" onclick="location.href='mai'+'lto:'+'fra'+'nc'+'ois'+'.c'+'aro'+'ug'+'e@g'+'ma'+'il.'+'co'+'m'; return false;">franc<span class="obfuscator">.nosp@m.</span>ois.<span class="obfuscator">.nosp@m.</span>carou<span class="obfuscator">.nosp@m.</span>ge@g<span class="obfuscator">.nosp@m.</span>mail.<span class="obfuscator">.nosp@m.</span>com</a>)</p>
-<p>September 3, 2025</p>
+<p>October 11, 2025</p>
 <h1><a class="anchor" id="abstract"></a>
 Abstract</h1>
 <p>This work presents a practical approach to achieving quantity-safe linear algebra in C++ through the composition of the <a href="https://eigen.tuxfamily.org/">Eigen</a> and <a href="https://mpusz.github.io/mp-units">mp-units</a> libraries, enabled by the <a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra">FrancoisCarouge/TypedLinearAlgebra</a> library. The proposed method integrates dimensional analysis directly into linear algebra computations, ensuring compile-time enforcement of unit correctness while preserving the efficiency and flexibility of established numerical backends. By separating type semantics from data storage, the design maintains compatibility with Eigen’s expression templates while extending type safety to operations on physical quantities. The paper documents the library’s design principles, implementation strategies, and accumulated experience, including trade-offs in type representation and performance considerations. Lessons learned highlight the feasibility and challenges of embedding strong typing into numerical computation, while preliminary extensions demonstrate the applicability of the approach beyond physical units. This contribution offers both a demonstration of safe, dimensionally consistent linear algebra and a foundation for extending type-aware computation into broader C++ scientific and engineering domains.</p>
@@ -144,7 +144,7 @@ Introduction</h1>
 <div class="line"><span class="keyword">using </span>estimate_uncertainty =</div>
 <div class="line">    matrix&lt;std::tuple&lt;position, velocity, acceleration&gt;,</div>
 <div class="line">            std::tuple&lt;position, velocity, acceleration&gt;&gt;;</div>
-<div class="line">estimate_uncertainty p{estimate_uncertainty::matrix::Zero()};</div>
+<div class="line">estimate_uncertainty p;</div>
 <div class="line">p.at&lt;0, 0&gt;() = 500. * m2;</div>
 <div class="line">p.at&lt;1, 1&gt;() = 500. * m2 / s2;</div>
 <div class="line">p.at&lt;2, 2&gt;() = 500. * m2 / s4;</div>
@@ -153,17 +153,21 @@ Introduction</h1>
 <div class="line"><span class="comment">//     [  0 m²/s, 500 m²/s²,   0 m²/s³],</span></div>
 <div class="line"><span class="comment">//     [  0 m²/s²,  0 m²/s³, 500 m²/s⁴]]</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using </span>process_uncertainty = estimate_uncertainty;</div>
-<div class="line">process_uncertainty q{process_uncertainty::matrix::Ones() * 0.2 * 0.2};</div>
-<div class="line">q.at&lt;0, 0&gt;() *= 0.25;</div>
-<div class="line">q.at&lt;0, 1&gt;() *= 0.5;</div>
-<div class="line">q.at&lt;0, 2&gt;() *= 0.5;</div>
-<div class="line">q.at&lt;1, 0&gt;() *= 0.5;</div>
-<div class="line">q.at&lt;2, 0&gt;() *= 0.5;</div>
-<div class="line">std::println(<span class="stringliteral">&quot;Q: {}&quot;</span>, q);</div>
-<div class="line"><span class="comment">// Q: [[0.01 m²,    0.02 m²/s,  0.02 m²/s²],</span></div>
-<div class="line"><span class="comment">//     [0.02 m²/s,  0.04 m²/s², 0.04 m²/s³],</span></div>
-<div class="line"><span class="comment">//     [0.02 m²/s², 0.04 m²/s³, 0.04 m²/s⁴]]</span></div>
+<div class="line">  <span class="keyword">using </span>process_uncertainty = estimate_uncertainty;</div>
+<div class="line">  process_uncertainty q;</div>
+<div class="line">  q.at&lt;0, 0&gt;() = 0.01 * m2;</div>
+<div class="line">  q.at&lt;0, 1&gt;() = 0.02 * m2 / s;</div>
+<div class="line">  q.at&lt;0, 2&gt;() = 0.02 * m2 / s2;</div>
+<div class="line">  q.at&lt;1, 0&gt;() = 0.02 * m2 / s;</div>
+<div class="line">  q.at&lt;1, 1&gt;() = 0.04 * m2 / s2;</div>
+<div class="line">  q.at&lt;1, 2&gt;() = 0.04 * m2 / s2;</div>
+<div class="line">  q.at&lt;2, 0&gt;() = 0.02 * m2 / s2;</div>
+<div class="line">  q.at&lt;2, 1&gt;() = 0.04 * m2 / s3;</div>
+<div class="line">  q.at&lt;2, 2&gt;() = 0.04 * m2 / s4;</div>
+<div class="line">  std::println(<span class="stringliteral">&quot;Q: {}&quot;</span>, q);</div>
+<div class="line">  <span class="comment">// Q: [[0.01 m²,    0.02 m²/s,  0.02 m²/s²],</span></div>
+<div class="line">  <span class="comment">//     [0.02 m²/s,  0.04 m²/s², 0.04 m²/s³],</span></div>
+<div class="line">  <span class="comment">//     [0.02 m²/s², 0.04 m²/s³, 0.04 m²/s⁴]]</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">using </span>output_uncertainty = quantity&lt;m2&gt;;</div>
 <div class="line">output_uncertainty r{9. * m2};</div>
@@ -363,19 +367,28 @@ Concepts</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>row_typed_matrix</code>   </td><td class="markdownTableBodyNone">Concept of a row typed matrix, vector.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>column_typed_matrix</code>   </td><td class="markdownTableBodyNone">Concept of a column typed matrix, vector.   </td></tr>
+<td class="markdownTableBodyNone"><code>column_typed_matrix</code>   </td><td class="markdownTableBodyNone">Concept of a column typed matrix, vector.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>same_shape</code>   </td><td class="markdownTableBodyNone">Concept of typed matrices of the same shape, that is they have the same number of rows and columns.   </td></tr>
 </table>
 <h2><a class="anchor" id="structure-element-caster-1"></a>
 Structure Element Caster</h2>
 <p>Typed matrix element conversions customization point. Specialize this template to allow conversion of element's type and underlying type.</p>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> To, <span class="keyword">typename</span> From&gt;</div>
 <div class="line"><span class="keyword">struct </span>element_caster;</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md6-beyond-unit-safety"></a>
-6 Beyond Unit Safety</h1>
-<p>Type safety cannot be guaranteed at compilation time without index-type safety. The indexes can either be non-type template parameters or strong types overloadings. Converting a runtime index to a dependent template type is not possible in C++. A proxy reference could be used to allow traditional assignment syntax but the runtime check and extra indirection are not interesting tradeoffs. A template call operator can be used for getting a type safe value but impractical syntax to set values. Without index safety, the accepted tradeoff is a templated index <code>at&lt;i, j&gt;()</code> method over the unchecked <code>operator[i, j]</code> and <code>operator(i, j)</code> accessors. Daniel Withopf [<a href="https://www.youtube.com/watch?v=4LmMwhM8ODI">6</a>] uses strongly typed indexed to provide index safety complementing the quantity-safe linear algebra approach. Other types of safeties should be considered such as reference frames and coordinate systems or taxonomy of the matrix.</p>
-<p>The performance of the typed linear algebra should be identical to the performance of the underlying linear algebra backend. The composition is intended to be a zero-cost abstraction. Measuring and comparing the library to their equivalent counterpart is left as a future exercise.</p>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md6-open-questions"></a>
+6 Open Questions</h1>
+<p><b>Index-Type Safety Required:</b> Type safety cannot be guaranteed at compilation time without index-type safety. The indexes can either be non-type template parameters or strong types overloadings. Converting a runtime index to a dependent template type is not possible in C++23. A proxy reference could be used to allow traditional assignment syntax but the runtime check and extra indirection are not interesting tradeoffs. A template call operator can be used for getting a type safe value but impractical syntax to set values. Without index safety, the accepted tradeoff is a templated index <code>at&lt;i, j&gt;()</code> method over the unchecked <code>operator[i, j]</code> and <code>operator(i, j)</code> accessors. Daniel Withopf [<a href="https://www.youtube.com/watch?v=4LmMwhM8ODI">6</a>] uses strongly typed indexed to provide index safety complementing the quantity-safe linear algebra approach. A strongly-typed linear algebra must include index-type safety. Other types of safeties should be considered: reference frames, coordinate systems, or taxonomy of the matrix.</p>
+<p><b>Zero-Cost Abstraction Required:</b> The performance of the typed linear algebra should be identical to the performance of the underlying linear algebra backend, considering the types. The composition is intended to be a zero-cost abstraction. Measuring and comparing the library to their equivalent counterpart is left as a future exercise.</p>
+<p><b>Type Conversions:</b> The conversion from the underlying matrix element type references to the quantity type references is achieved through a <code>reinterpret_cast</code> conversion which works by reinterpreting the underlying bit pattern forgoing aliasing and alignement rules. The safety of the <code>element_caster</code> implementation is dubious and safer alternatives to be identified. The quantity type library only provide partial type conversion to and from standard types. It may be appropriate for the type library to extend its safe conversion support: to/from, by-value/reference, not/constant, and l/rvalue. A single template specialization could then suffice to customize the type conversions.</p>
+<p><b>No Unsafe API:</b> Three methods of the matrix class present risks: the default constructor, the conversion constructor for underlying matrix, and the underlying data access method:</p><ul>
+<li>The default constructor could construct the underlying matrix according to its default linear algebra backend initialization, or lack thereof. Backends without guaranteed initialization have shown to result in uninitialized memory defects. The default constructor should be safe by default under all corner cases, or be gone. Adding an explicitely uninitialized constructor could be considered.</li>
+<li>One of the conversion constructor permits the construction of a typed matrix from its untyped, underlying matrix data. Although practical for the user and operation implementations, the constructor however defeats the purpose of the type safety and re-introduces the risk the typed matrix set out to resolve. Additional contruction strategies should help the user in constructing type safe matrices without using an unsafe construction methodology.</li>
+<li>The underlying data access method permits accessing the untyped underlying matrix data of a typed matrix. Although practical for the user and operation implementations, the method however defeats the purpose of the type safety and re-introduces the risk the typed matrix set out to resolve. Privatization, friendship of operations, ADL may prove useful in resolving this issue.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md7-beyond-unit-safety"></a>
+7 Beyond Unit Safety</h1>
 <p>There are more operations used in linear algebra than the ones presented in this document. More or all operations from the <a class="el" href="namespace_eigen.xhtml">Eigen</a> or the <code>std::linalg</code> would form a practical operation catalog. Identifying the most commonly used operations are implementing their facades are left as future exercises. Similarly for the exploration and integration with compatible standard library support such as algorithms, ranges, or mdspan.</p>
-<p>The conversion from underlying matrix element types references to quantity types is achieved through a <code>reinterpret_cast</code> conversion which works by reinterpreting the underlying bit pattern forgoing aliasing and alignement rules. The safety of the <code>element_caster</code> implementation is dubious and safer alternatives to be identified.</p>
 <p>An interesting research venue would be to elevate, generalize the dimension of the matrices beyond the rank-2 matrices present in common linear algebra. Replacing the row- and column-index tuples by a pack of index tuples is left for a future exploration.</p>
 <h1><a class="anchor" id="autotoc_md7-conclusion"></a>
 7 Conclusion</h1>
