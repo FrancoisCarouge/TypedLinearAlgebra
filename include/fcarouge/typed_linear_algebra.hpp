@@ -443,10 +443,11 @@ template <typename RowIndexes, typename ColumnIndexes>
 
 #include "typed_linear_algebra_internal/algorithm/add.tpp"
 #include "typed_linear_algebra_internal/algorithm/divide.tpp"
+#include "typed_linear_algebra_internal/algorithm/equal_to.tpp"
+#include "typed_linear_algebra_internal/algorithm/product.tpp"
 #include "typed_linear_algebra_internal/algorithm/substract.tpp"
 #include "typed_linear_algebra_internal/algorithm/transposed.tpp"
 #include "typed_linear_algebra_internal/cast.tpp"
-#include "typed_linear_algebra_internal/operation.tpp"
 #include "typed_linear_algebra_internal/typed_linear_algebra.tpp"
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_HPP

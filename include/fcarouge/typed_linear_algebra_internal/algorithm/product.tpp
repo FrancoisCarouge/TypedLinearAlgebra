@@ -29,17 +29,11 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_OPERATION_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_OPERATION_TPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_PRODUCT_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_PRODUCT_TPP
 
 namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
-
-//! @todo Requires, assert that the element types are compatible.
-[[nodiscard]] constexpr bool operator==(const same_as_typed_matrix auto &lhs,
-                                        const same_as_typed_matrix auto &rhs) {
-  return lhs.data() == rhs.data();
-}
 
 [[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
                                        const same_as_typed_matrix auto &rhs) {
@@ -147,4 +141,4 @@ namespace tla = typed_linear_algebra_internal;
 }
 } // namespace fcarouge
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_OPERATION_TPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_PRODUCT_TPP
