@@ -410,6 +410,9 @@ template <typename To, typename From> struct element_caster {
 [[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
                                        const same_as_typed_matrix auto &rhs);
 
+[[nodiscard]] constexpr auto operator/(const same_as_typed_matrix auto &lhs,
+                                       const same_as_typed_matrix auto &rhs);
+
 [[nodiscard]] constexpr auto transposed(const same_as_typed_matrix auto &value);
 
 //! @}
@@ -439,6 +442,7 @@ template <typename RowIndexes, typename ColumnIndexes>
 } // namespace fcarouge
 
 #include "typed_linear_algebra_internal/algorithm/add.tpp"
+#include "typed_linear_algebra_internal/algorithm/divide.tpp"
 #include "typed_linear_algebra_internal/algorithm/substract.tpp"
 #include "typed_linear_algebra_internal/algorithm/transposed.tpp"
 #include "typed_linear_algebra_internal/cast.tpp"
