@@ -40,11 +40,12 @@ target_sources(
             "fcarouge/typed_linear_algebra_forward.hpp"
             "fcarouge/typed_linear_algebra_internal/algorithm/add.tpp"
             "fcarouge/typed_linear_algebra_internal/algorithm/divide.tpp"
+            "fcarouge/typed_linear_algebra_internal/algorithm/equal_to.tpp"
+            "fcarouge/typed_linear_algebra_internal/algorithm/product.tpp"
             "fcarouge/typed_linear_algebra_internal/algorithm/substract.tpp"
             "fcarouge/typed_linear_algebra_internal/algorithm/transposed.tpp"
             "fcarouge/typed_linear_algebra_internal/cast.tpp"
             "fcarouge/typed_linear_algebra_internal/format.hpp"
-            "fcarouge/typed_linear_algebra_internal/operation.tpp"
             "fcarouge/typed_linear_algebra_internal/typed_linear_algebra.tpp"
             "fcarouge/typed_linear_algebra_internal/utility.hpp"
             "fcarouge/typed_linear_algebra.hpp")
