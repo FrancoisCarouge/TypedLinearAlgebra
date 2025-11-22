@@ -48,7 +48,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
   target_compile_options(
     typed_linear_algebra_options
     INTERFACE "-D_FORTIFY_SOURCE=3"
-              "-D_GLIBCXX_ASSERTIONS"
+              "-D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_FAST"
               "-fcf-protection=full"
               "-fno-builtin-std-forward_like"
               "-fno-check-new"
@@ -58,6 +58,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
               "-fstrict-aliasing"
               "-ftrivial-auto-var-init=pattern"
               "-pedantic"
+              "-stdlib=libc++"
               "-Wall"
               "-Wcast-align"
               "-Wdouble-promotion"
@@ -74,8 +75,8 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
               "-Wundef"
               "-Wunused-local-typedefs"
               "-Wwrite-strings")
-  target_link_options(typed_linear_algebra_options INTERFACE "LINKER:-pie")
-  target_link_libraries(typed_linear_algebra_options INTERFACE "stdc++")
+  target_link_options(typed_linear_algebra_options INTERFACE "-stdlib=libc++"
+                      "LINKER:-pie")
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   target_compile_options(
     typed_linear_algebra_options

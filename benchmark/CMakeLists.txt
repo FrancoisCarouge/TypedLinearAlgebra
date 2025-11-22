@@ -40,6 +40,8 @@ FetchContent_Declare(
   FIND_PACKAGE_ARGS NAMES nanobench)
 FetchContent_MakeAvailable(nanobench)
 
+target_link_libraries(nanobench PRIVATE typed_linear_algebra_options)
+
 if(BUILD_BENCHMARKING)
   FetchContent_Declare(
     matplotplusplus
