@@ -19,6 +19,7 @@ jobs:
       matrix:
         include:
         - { os: 'ubuntu-24.04', cxx: 'clang++-18', cc: 'clang-18', generator: 'Ninja', cpack_generator: 'DEB' }
+        - { os: 'ubuntu-24.04', cxx: 'clang++-19', cc: 'clang-19', generator: 'Ninja', cpack_generator: 'DEB' }
         - { os: 'ubuntu-24.04', cxx: 'clang++-20', cc: 'clang-20', generator: 'Ninja', cpack_generator: 'DEB' }
         - { os: 'ubuntu-24.04', cxx: 'clang++-21', cc: 'clang-21', generator: 'Ninja', cpack_generator: 'DEB' }
         - { os: 'ubuntu-24.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', cpack_generator: 'DEB' }
@@ -44,6 +45,9 @@ jobs:
         sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
         sudo apt update
         sudo apt install -y gcc-15 g++-15
+    - name: 'Install: Clang 19'
+      if: ${{ matrix.cxx == 'clang++-19' }}
+      run: sudo apt update && sudo apt install -y clang-19 clang-tools-19
     - name: 'Install: Clang 20'
       if: ${{ matrix.cxx == 'clang++-20' }}
       run: sudo apt update && sudo apt install -y clang-20 clang-tools-20
