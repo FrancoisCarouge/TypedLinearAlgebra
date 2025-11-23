@@ -36,7 +36,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the assignment operator.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] auto test{[]() noexcept [[clang::nonblocking]] {
   const matrix<double, 2, 2> a{{1.0, 2.0}, {3.0, 4.0}};
   const matrix<double, 2, 1> b{3.0, 4.0};
   const matrix<double, 2, 1> r{a * b};
@@ -46,5 +46,16 @@ namespace {
 
   return 0;
 }()};
+
+
+//! @test Verifies the assignment operator.
+[[maybe_unused]] auto test2{[]() noexcept [[clang::nonblocking]] {
+  
+  int * i = new int(42);
+  delete i;
+
+  return 0;
+}()};
+
 } // namespace
 } // namespace fcarouge::test
