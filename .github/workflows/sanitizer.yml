@@ -24,6 +24,10 @@ jobs:
         - name: 'Leak'
           cpp_flags: '-g -O0 -fsanitize=leak'
           run_flags: 'LSAN_OPTIONS=verbosity=1'
+        - name: 'Realtime'
+          cpp_flags: '-g -O0 -fsanitize=realtime -Wfunction-effects'
+          run_flags: 'RTSAN_OPTIONS=verbosity=1'
+          instrument: 'find . -name "*.cpp" -exec sed --in-place "s/test{\[\]/test{\[\]\(\) noexcept \[\[clang::nonblocking\]\]/g" {} +'
         - name: 'Thread'
           cpp_flags: '-g -O0 -fsanitize=thread'
           run_flags: 'TSAN_OPTIONS=verbosity=1'
@@ -45,10 +49,17 @@ jobs:
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
     - name: 'Install: Latest CMake'
       uses: ssrobins/install-cmake@da13ba26f50a41d3b03cfe8ca7265903f04a8932 # v1.0.0
+    - name: 'Install: Clang 21'
+      run: |
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x llvm.sh
+        sudo ./llvm.sh 21 all
+    - name: 'Instrument'
+      run: '${{ matrix.sanitizer.instrument }}'
     - name: 'Configure'
       env:
-        CXX: 'g++-14'
-        CC: 'gcc-14'
+        CXX: 'clang++-21'
+        CC: 'clang-21'
       run: cmake -S . -B 'build'
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
