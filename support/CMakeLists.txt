@@ -60,6 +60,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
               "-Werror"
               "-Wextra"
               "-Wformat-security"
+              "-Wfunction-effects"
               "-Wno-long-long"
               "-Wno-psabi"
               "-Wno-variadic-macros"
