@@ -71,6 +71,30 @@ var NAVTREE =
       [ "Security Policy", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#security-policy", null ]
     ] ],
     [ "Unit Test Code Coverage", "unit_test_coverage.xhtml", null ],
+    [ "Quantity-Safe Linear Algebra Use Case: Eigen + mp-units", "md_paper_2mp__units__eigen.xhtml", [
+      [ "Abstract", "md_paper_2mp__units__eigen.xhtml#abstract", null ],
+      [ "Introduction", "md_paper_2mp__units__eigen.xhtml#introduction", null ],
+      [ "2 Type safety, Linear Algebra, and Dimensional Analysis", "md_paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis", null ],
+      [ "3 Typed Linear Algebra", "md_paper_2mp__units__eigen.xhtml#autotoc_md3-typed-linear-algebra", null ],
+      [ "4 Case Study", "md_paper_2mp__units__eigen.xhtml#autotoc_md4-case-study", null ],
+      [ "5 Library Reference", "md_paper_2mp__units__eigen.xhtml#autotoc_md5-library-reference", [
+        [ "Class Typed Matrix", "md_paper_2mp__units__eigen.xhtml#class-typed-matrix-1", [
+          [ "Declaration", "md_paper_2mp__units__eigen.xhtml#declaration-1", null ],
+          [ "Template Parameters", "md_paper_2mp__units__eigen.xhtml#template-parameters-1", null ],
+          [ "Member Types", "md_paper_2mp__units__eigen.xhtml#member-types-1", null ],
+          [ "Member Variables", "md_paper_2mp__units__eigen.xhtml#member-variables-1", null ],
+          [ "Member Functions", "md_paper_2mp__units__eigen.xhtml#member-functions-1", null ]
+        ] ],
+        [ "Operations", "md_paper_2mp__units__eigen.xhtml#operations-1", null ],
+        [ "Aliases", "md_paper_2mp__units__eigen.xhtml#aliases-1", null ],
+        [ "Format", "md_paper_2mp__units__eigen.xhtml#format-1", null ],
+        [ "Concepts", "md_paper_2mp__units__eigen.xhtml#concepts-1", null ],
+        [ "Structure Element Caster", "md_paper_2mp__units__eigen.xhtml#structure-element-caster-1", null ]
+      ] ],
+      [ "6 Open Questions", "md_paper_2mp__units__eigen.xhtml#autotoc_md6-open-questions", null ],
+      [ "7 Beyond Unit Safety", "md_paper_2mp__units__eigen.xhtml#autotoc_md7-beyond-unit-safety", null ],
+      [ "7 Conclusion", "md_paper_2mp__units__eigen.xhtml#autotoc_md7-conclusion", null ]
+    ] ],
     [ "Installation", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml", [
       [ "Development Build & Run", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run", [
         [ "Tests", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#tests", null ],
@@ -80,30 +104,6 @@ var NAVTREE =
           [ "Windows", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#windows", null ]
         ] ]
       ] ]
-    ] ],
-    [ "Quantity-Safe Linear Algebra Use Case: Eigen + mp-units", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml", [
-      [ "Abstract", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#abstract", null ],
-      [ "Introduction", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#introduction", null ],
-      [ "2 Type safety, Linear Algebra, and Dimensional Analysis", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis", null ],
-      [ "3 Typed Linear Algebra", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#autotoc_md3-typed-linear-algebra", null ],
-      [ "4 Case Study", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#autotoc_md4-case-study", null ],
-      [ "5 Library Reference", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#autotoc_md5-library-reference", [
-        [ "Class Typed Matrix", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#class-typed-matrix-1", [
-          [ "Declaration", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#declaration-1", null ],
-          [ "Template Parameters", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#template-parameters-1", null ],
-          [ "Member Types", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#member-types-1", null ],
-          [ "Member Variables", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#member-variables-1", null ],
-          [ "Member Functions", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#member-functions-1", null ]
-        ] ],
-        [ "Operations", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#operations-1", null ],
-        [ "Aliases", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#aliases-1", null ],
-        [ "Format", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#format-1", null ],
-        [ "Concepts", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#concepts-1", null ],
-        [ "Structure Element Caster", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#structure-element-caster-1", null ]
-      ] ],
-      [ "6 Open Questions", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#autotoc_md6-open-questions", null ],
-      [ "7 Beyond Unit Safety", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#autotoc_md7-beyond-unit-safety", null ],
-      [ "7 Conclusion", "md__2github_2workspace_2sample_2mp__units__eigen.xhtml#autotoc_md7-conclusion", null ]
     ] ],
     [ "Security Policy", "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml", [
       [ "Supported Versions", "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#supported-versions", null ],
@@ -145,7 +145,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "addition_8cpp.xhtml",
-"md__2github_2workspace_2sample_2mp__units__eigen.xhtml#abstract"
+"md_paper_2mp__units__eigen.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

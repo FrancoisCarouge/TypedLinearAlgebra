@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['safe_20linear_20algebra_20use_20case_3a_20eigen_20mp_20units_0',['Quantity-Safe Linear Algebra Use Case: Eigen + mp-units',['../md__2github_2workspace_2sample_2mp__units__eigen.xhtml',1,'']]],
-  ['safety_1',['7 Beyond Unit Safety',['../md__2github_2workspace_2sample_2mp__units__eigen.xhtml#autotoc_md7-beyond-unit-safety',1,'']]],
-  ['safety_20linear_20algebra_20and_20dimensional_20analysis_2',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md__2github_2workspace_2sample_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],
+  ['safe_20linear_20algebra_20use_20case_3a_20eigen_20mp_20units_0',['Quantity-Safe Linear Algebra Use Case: Eigen + mp-units',['../md_paper_2mp__units__eigen.xhtml',1,'']]],
+  ['safety_1',['7 Beyond Unit Safety',['../md_paper_2mp__units__eigen.xhtml#autotoc_md7-beyond-unit-safety',1,'']]],
+  ['safety_20linear_20algebra_20and_20dimensional_20analysis_2',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md_paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],
   ['sample_3',['sample',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a21786fcdeff8521c91f594655772d63a',1,'fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}']]],
   ['scope_4',['Scope',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#scope',1,'']]],
   ['security_20policy_5',['Security Policy',['../md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml',1,'Security Policy'],['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#security-policy',1,'Security Policy']]],
@@ -12,7 +12,7 @@ var searchData=
   ['sponsors_9',['Sponsors',['../index.xhtml#sponsors',1,'']]],
   ['standards_10',['Our Standards',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-standards',1,'']]],
   ['storage_11',['storage',['../classfcarouge_1_1typed__matrix.xhtml#a4329fed7250ec71b8b0312accb3ddff6',1,'fcarouge::typed_matrix']]],
-  ['structure_20element_20caster_12',['Structure Element Caster',['../index.xhtml#structure-element-caster',1,'Structure Element Caster'],['../md__2github_2workspace_2sample_2mp__units__eigen.xhtml#structure-element-caster-1',1,'Structure Element Caster']]],
-  ['study_13',['4 Case Study',['../md__2github_2workspace_2sample_2mp__units__eigen.xhtml#autotoc_md4-case-study',1,'']]],
+  ['structure_20element_20caster_12',['Structure Element Caster',['../index.xhtml#structure-element-caster',1,'Structure Element Caster'],['../md_paper_2mp__units__eigen.xhtml#structure-element-caster-1',1,'Structure Element Caster']]],
+  ['study_13',['4 Case Study',['../md_paper_2mp__units__eigen.xhtml#autotoc_md4-case-study',1,'']]],
   ['supported_20versions_14',['Supported Versions',['../md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#supported-versions',1,'']]]
 ];
