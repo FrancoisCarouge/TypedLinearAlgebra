@@ -53,14 +53,14 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
 //! @todo Verify types and storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const same_as_typed_matrix auto &&other)
+    same_as_typed_matrix auto &&other)
     : storage{std::forward<decltype(other)>(other).data()} {}
 
 //! @todo Verify types and storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
-    const same_as_typed_matrix auto &&other) {
+    same_as_typed_matrix auto &&other) {
   storage = std::forward<decltype(other)>(other).data();
   return *this;
 }
