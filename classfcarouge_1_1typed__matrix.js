@@ -6,7 +6,7 @@ var classfcarouge_1_1typed__matrix =
     [ "row_indexes", "classfcarouge_1_1typed__matrix.xhtml#a67a638bf31384a9120a5def3c74b641a", null ],
     [ "underlying", "classfcarouge_1_1typed__matrix.xhtml#a9904db59b08b0dfa24fe08ef574039b3", null ],
     [ "~typed_matrix", "classfcarouge_1_1typed__matrix.xhtml#a11b18c32111d6f1651c01469c7a0322f", null ],
-    [ "typed_matrix", "classfcarouge_1_1typed__matrix.xhtml#a7003e001bcb6a08ca1346bafbc9b31f3", null ],
+    [ "typed_matrix", "classfcarouge_1_1typed__matrix.xhtml#a6ff67c3079ecd22045c71eec9f030a85", null ],
     [ "typed_matrix", "classfcarouge_1_1typed__matrix.xhtml#a61debbe8e973b969b79ed4efad933054", null ],
     [ "typed_matrix", "classfcarouge_1_1typed__matrix.xhtml#a01a3060309b0adf3a17736a0c2e0331e", null ],
     [ "typed_matrix", "classfcarouge_1_1typed__matrix.xhtml#a4cb6909ad42c9f4560dbf7c51e5ed1e4", null ],

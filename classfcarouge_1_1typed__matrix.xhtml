@@ -161,9 +161,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a11b18c32111d6f1651c01469c7a0322f" id="r_a11b18c32111d6f1651c01469c7a0322f"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11b18c32111d6f1651c01469c7a0322f">~typed_matrix</a> ()=default</td></tr>
 <tr class="memdesc:a11b18c32111d6f1651c01469c7a0322f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destruct a default typed matrix.  <br /></td></tr>
 <tr class="separator:a11b18c32111d6f1651c01469c7a0322f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7003e001bcb6a08ca1346bafbc9b31f3" id="r_a7003e001bcb6a08ca1346bafbc9b31f3"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7003e001bcb6a08ca1346bafbc9b31f3">typed_matrix</a> ()=default</td></tr>
-<tr class="memdesc:a7003e001bcb6a08ca1346bafbc9b31f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a default typed matrix.  <br /></td></tr>
-<tr class="separator:a7003e001bcb6a08ca1346bafbc9b31f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ff67c3079ecd22045c71eec9f030a85" id="r_a6ff67c3079ecd22045c71eec9f030a85"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ff67c3079ecd22045c71eec9f030a85">typed_matrix</a> ()</td></tr>
+<tr class="memdesc:a6ff67c3079ecd22045c71eec9f030a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a zero-initialized typed matrix.  <br /></td></tr>
+<tr class="separator:a6ff67c3079ecd22045c71eec9f030a85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61debbe8e973b969b79ed4efad933054" id="r_a61debbe8e973b969b79ed4efad933054"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61debbe8e973b969b79ed4efad933054">typed_matrix</a> (const <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a> &amp;other)=default</td></tr>
 <tr class="memdesc:a61debbe8e973b969b79ed4efad933054"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy construct a typed matrix.  <br /></td></tr>
 <tr class="separator:a61debbe8e973b969b79ed4efad933054"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -396,8 +396,8 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 </div>
 </div>
-<a id="a7003e001bcb6a08ca1346bafbc9b31f3" name="a7003e001bcb6a08ca1346bafbc9b31f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7003e001bcb6a08ca1346bafbc9b31f3">&#9670;&#160;</a></span>typed_matrix() <span class="overload">[1/7]</span></h2>
+<a id="a6ff67c3079ecd22045c71eec9f030a85" name="a6ff67c3079ecd22045c71eec9f030a85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ff67c3079ecd22045c71eec9f030a85">&#9670;&#160;</a></span>typed_matrix() <span class="overload">[1/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -416,13 +416,12 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Construct a default typed matrix. </p>
-<dl class="section warning"><dt>Warning</dt><dd>The initialization of the underlying matrix's storage follows the initialization behavior of the underlying matrix's type, which for some type means no initialization. </dd></dl>
+<p>Construct a zero-initialized typed matrix. </p>
 
 </div>
 </div>
@@ -1284,7 +1283,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00222">222</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00219">219</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
@@ -1341,7 +1340,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p>Underlying algebraic backend data storage. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00370">370</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00367">367</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
