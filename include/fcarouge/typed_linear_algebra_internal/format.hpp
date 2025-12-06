@@ -54,7 +54,8 @@ private:
 public:
   //! @todo Add a pretty, multi-line, aligned format option?
   //! @todo Add a debug, showing index-types, format option?
-  constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
+  static constexpr auto
+  parse(std::basic_format_parse_context<Char> &parse_context) {
     return parse_context.begin();
   }
 
