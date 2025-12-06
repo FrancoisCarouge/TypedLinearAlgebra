@@ -21,6 +21,10 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{constructor_1xn_array.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02constructor__1xn__array_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02constructor__1xn__array_8cpp_03.xhtml#af74bea09bf6b20e3e19a0391ef9e6e75", null ]
     ] ],
+    [ "anonymous_namespace{constructor_copy.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02constructor__copy_8cpp_03.xhtml", [
+      [ "matrix", "namespacefcarouge_1_1test_1_1anonymous__namespace_02constructor__copy_8cpp_03.xhtml#a85b13d6f2ecc880c43866ebcc7edad43", null ],
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02constructor__copy_8cpp_03.xhtml#a07cf8f8d09f045ed908511306699be36", null ]
+    ] ],
     [ "anonymous_namespace{constructor_initializer_lists.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02constructor__initializer__lists_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02constructor__initializer__lists_8cpp_03.xhtml#a313ba6bae8552fa27bbddced0d220c8a", null ]
     ] ],
