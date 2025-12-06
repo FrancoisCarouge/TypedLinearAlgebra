@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-12-06 04:01:36</td>
+            <td class="headerValue">2025-12-06 04:17:33</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryMed">88.9&nbsp;%</td>
@@ -3892,10 +3892,10 @@
 <span id="L3814"><span class="lineNum">    3814</span>                 :             :   /// Returns true only when called during constant evaluation.</span>
 <span id="L3815"><span class="lineNum">    3815</span>                 :             :   /// @since C++20</span>
 <span id="L3816"><span class="lineNum">    3816</span>                 :             :   constexpr inline bool</span>
-<span id="L3817"><span class="lineNum">    3817</span>                 :<span class="tlaGNC">        1730 :   is_constant_evaluated() noexcept</span></span>
+<span id="L3817"><span class="lineNum">    3817</span>                 :<span class="tlaGNC">        1724 :   is_constant_evaluated() noexcept</span></span>
 <span id="L3818"><span class="lineNum">    3818</span>                 :             :   {</span>
 <span id="L3819"><span class="lineNum">    3819</span>                 :             : #if __cpp_if_consteval &gt;= 202106L</span>
-<span id="L3820"><span class="lineNum">    3820</span>                 :<span class="tlaGNC">        1730 :     if consteval { return true; } else { return false; }</span></span>
+<span id="L3820"><span class="lineNum">    3820</span>                 :<span class="tlaGNC">        1724 :     if consteval { return true; } else { return false; }</span></span>
 <span id="L3821"><span class="lineNum">    3821</span>                 :             : #else</span>
 <span id="L3822"><span class="lineNum">    3822</span>                 :             :     return __builtin_is_constant_evaluated();</span>
 <span id="L3823"><span class="lineNum">    3823</span>                 :             : #endif</span>

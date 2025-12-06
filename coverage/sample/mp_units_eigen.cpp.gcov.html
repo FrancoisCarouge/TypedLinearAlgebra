@@ -32,17 +32,17 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
-            <td class="headerCovTableEntry">96</td>
-            <td class="headerCovTableEntry">96</td>
+            <td class="headerCovTableEntry">103</td>
+            <td class="headerCovTableEntry">103</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-12-06 04:01:36</td>
+            <td class="headerValue">2025-12-06 04:17:33</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
-            <td class="headerCovTableEntry">50</td>
-            <td class="headerCovTableEntry">50</td>
+            <td class="headerCovTableEntry">54</td>
+            <td class="headerCovTableEntry">54</td>
           </tr>
           <tr>
             <td class="headerItem">Legend:</td>
@@ -57,8 +57,8 @@
             <td></td>
             <td class="headerItem">Branches:</td>
             <td class="headerCovTableEntryLo">50.0&nbsp;%</td>
-            <td class="headerCovTableEntry">532</td>
-            <td class="headerCovTableEntry">266</td>
+            <td class="headerCovTableEntry">538</td>
+            <td class="headerCovTableEntry">269</td>
           </tr>
                   <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -151,8 +151,8 @@
 <span id="L73"><span class="lineNum">      73</span>                 :             : </span>
 <span id="L74"><span class="lineNum">      74</span>                 :             : template &lt;mp_units::Quantity To, typename From&gt;</span>
 <span id="L75"><span class="lineNum">      75</span>                 :             : struct element_caster&lt;To &amp;, From &amp;&gt; {</span>
-<span id="L76"><span class="lineNum">      76</span>                 :<span class="tlaGNC">          17 :   [[nodiscard]] constexpr To &amp;operator()(From &amp;value) const {</span></span>
-<span id="L77"><span class="lineNum">      77</span>                 :<span class="tlaGNC">          17 :     return reinterpret_cast&lt;To &amp;&gt;(value);</span></span>
+<span id="L76"><span class="lineNum">      76</span>                 :<span class="tlaGNC">          24 :   [[nodiscard]] constexpr To &amp;operator()(From &amp;value) const {</span></span>
+<span id="L77"><span class="lineNum">      77</span>                 :<span class="tlaGNC">          24 :     return reinterpret_cast&lt;To &amp;&gt;(value);</span></span>
 <span id="L78"><span class="lineNum">      78</span>                 :             :   }</span>
 <span id="L79"><span class="lineNum">      79</span>                 :             : };</span>
 <span id="L80"><span class="lineNum">      80</span>                 :             : </span>
@@ -411,7 +411,7 @@
 <span id="L285"><span class="lineNum">     285</span>                 :             :   using estimate_uncertainty =</span>
 <span id="L286"><span class="lineNum">     286</span>                 :             :       matrix&lt;std::tuple&lt;position, velocity, acceleration&gt;,</span>
 <span id="L287"><span class="lineNum">     287</span>                 :             :              std::tuple&lt;position, velocity, acceleration&gt;&gt;;</span>
-<span id="L288"><span class="lineNum">     288</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span>]:<span class="tlaGNC">           1 :   estimate_uncertainty p{estimate_uncertainty::matrix::Zero()};</span></span>
+<span id="L288"><span class="lineNum">     288</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :   estimate_uncertainty p;</span></span>
 <span id="L289"><span class="lineNum">     289</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           1 :   p.at&lt;0, 0&gt;() = 500. * m2;</span></span>
 <span class="lineNum">        </span>          <span class="tlaGBC" title="Branch 4 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span>]
 <span id="L290"><span class="lineNum">     290</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           1 :   p.at&lt;1, 1&gt;() = 500. * m2 / s2;</span></span>
@@ -454,78 +454,85 @@
 <span id="L316"><span class="lineNum">     316</span>                 :             :   // R: 9 m²</span>
 <span id="L317"><span class="lineNum">     317</span>                 :             : </span>
 <span id="L318"><span class="lineNum">     318</span>                 :             :   using output_model = row_vector&lt;quantity&lt;one&gt;, quantity&lt;s&gt;, quantity&lt;s2&gt;&gt;;</span>
-<span id="L319"><span class="lineNum">     319</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span>]:<span class="tlaGNC">           1 :   output_model h{output_model::matrix::Identity()};</span></span>
-<span id="L320"><span class="lineNum">     320</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :   std::println(&quot;H: {}&quot;, h);</span></span>
-<span id="L321"><span class="lineNum">     321</span>                 :             :   // H: [1, 0 s, 0 s²]</span>
-<span id="L322"><span class="lineNum">     322</span>                 :             : </span>
-<span id="L323"><span class="lineNum">     323</span>                 :             :   using state_transition =</span>
-<span id="L324"><span class="lineNum">     324</span>                 :             :       matrix&lt;std::tuple&lt;position, velocity, acceleration&gt;,</span>
-<span id="L325"><span class="lineNum">     325</span>                 :             :              std::tuple&lt;quantity&lt;one / m&gt;, quantity&lt;s / m&gt;, quantity&lt;s2 / m&gt;&gt;&gt;;</span>
-<span id="L326"><span class="lineNum">     326</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span>]:<span class="tlaGNC">           1 :   state_transition f{state_transition::matrix::Identity()};</span></span>
-<span id="L327"><span class="lineNum">     327</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           1 :   f.at&lt;0, 1&gt;() = 1. * s;</span></span>
+<span id="L319"><span class="lineNum">     319</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :   output_model h;</span></span>
+<span id="L320"><span class="lineNum">     320</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :   h.at&lt;0, 0&gt;() = 1.;</span></span>
+<span id="L321"><span class="lineNum">     321</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :   std::println(&quot;H: {}&quot;, h);</span></span>
+<span id="L322"><span class="lineNum">     322</span>                 :             :   // H: [1, 0 s, 0 s²]</span>
+<span id="L323"><span class="lineNum">     323</span>                 :             : </span>
+<span id="L324"><span class="lineNum">     324</span>                 :             :   using state_transition =</span>
+<span id="L325"><span class="lineNum">     325</span>                 :             :       matrix&lt;std::tuple&lt;position, velocity, acceleration&gt;,</span>
+<span id="L326"><span class="lineNum">     326</span>                 :             :              std::tuple&lt;quantity&lt;one / m&gt;, quantity&lt;s / m&gt;, quantity&lt;s2 / m&gt;&gt;&gt;;</span>
+<span id="L327"><span class="lineNum">     327</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :   state_transition f;</span></span>
+<span id="L328"><span class="lineNum">     328</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :   f.at&lt;0, 0&gt;() = 1.;</span></span>
+<span id="L329"><span class="lineNum">     329</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           1 :   f.at&lt;0, 1&gt;() = 1. * s;</span></span>
 <span class="lineNum">        </span>          <span class="tlaGBC" title="Branch 4 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span>]
-<span id="L328"><span class="lineNum">     328</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           1 :   f.at&lt;0, 2&gt;() = 0.5 * s2;</span></span>
+<span id="L330"><span class="lineNum">     330</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           1 :   f.at&lt;0, 2&gt;() = 0.5 * s2;</span></span>
 <span class="lineNum">        </span>          <span class="tlaGBC" title="Branch 4 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span>]
-<span id="L329"><span class="lineNum">     329</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           1 :   f.at&lt;1, 2&gt;() = 1. * s;</span></span>
+<span id="L331"><span class="lineNum">     331</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :   f.at&lt;1, 1&gt;() = 1.;</span></span>
+<span id="L332"><span class="lineNum">     332</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           1 :   f.at&lt;1, 2&gt;() = 1. * s;</span></span>
 <span class="lineNum">        </span>          <span class="tlaGBC" title="Branch 4 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span>]
-<span id="L330"><span class="lineNum">     330</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :   std::println(&quot;F: {}&quot;, f);</span></span>
-<span id="L331"><span class="lineNum">     331</span>                 :             :   // F: [[1, 1 s, 0.5 s²],</span>
-<span id="L332"><span class="lineNum">     332</span>                 :             :   //     [0 1/s, 1, 1 s],</span>
-<span id="L333"><span class="lineNum">     333</span>                 :             :   //     [0 1/s², 0 1/s, 1]]</span>
-<span id="L334"><span class="lineNum">     334</span>                 :             : </span>
-<span id="L335"><span class="lineNum">     335</span>                 :             :   // Prediction stage of the filter estimated state.</span>
-<span id="L336"><span class="lineNum">     336</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span>]:<span class="tlaGNC">           1 :   x = f * x;</span></span>
-<span id="L337"><span class="lineNum">     337</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           1 :   p = f * p * transposed(f) + q;</span></span>
-<span class="lineNum">        </span> <span class="tlaGBC" title="Branch 4 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span><span class="tlaGBC" title="Branch 6 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 7 was not taken"> - </span><span class="tlaGBC" title="Branch 8 was taken 1 time"> + </span> 
-<span class="lineNum">        </span>             <span class="tlaUNC" title="Branch 9 was not taken"> - </span>]
+<span id="L333"><span class="lineNum">     333</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :   f.at&lt;2, 2&gt;() = 1.;</span></span>
+<span id="L334"><span class="lineNum">     334</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :   std::println(&quot;F: {}&quot;, f);</span></span>
+<span id="L335"><span class="lineNum">     335</span>                 :             :   // F: [[1, 1 s, 0.5 s²],</span>
+<span id="L336"><span class="lineNum">     336</span>                 :             :   //     [0 1/s, 1, 1 s],</span>
+<span id="L337"><span class="lineNum">     337</span>                 :             :   //     [0 1/s², 0 1/s, 1]]</span>
 <span id="L338"><span class="lineNum">     338</span>                 :             : </span>
-<span id="L339"><span class="lineNum">     339</span>                 :             :   // Update stage of the filter from output measurements.</span>
-<span id="L340"><span class="lineNum">     340</span>                 :             :   using output = position;</span>
-<span id="L341"><span class="lineNum">     341</span>                 :<span class="tlaGNC">           1 :   output z{-393.66 * m};</span></span>
-<span id="L342"><span class="lineNum">     342</span>                 :             : </span>
-<span id="L343"><span class="lineNum">     343</span>                 :             :   using innovation_uncertainty = output_uncertainty;</span>
-<span id="L344"><span class="lineNum">     344</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           1 :   innovation_uncertainty si{h * p * transposed(h) + r};</span></span>
+<span id="L339"><span class="lineNum">     339</span>                 :             :   // Prediction stage of the filter estimated state.</span>
+<span id="L340"><span class="lineNum">     340</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span>]:<span class="tlaGNC">           1 :   x = f * x;</span></span>
+<span id="L341"><span class="lineNum">     341</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           1 :   p = f * p * transposed(f) + q;</span></span>
 <span class="lineNum">        </span> <span class="tlaGBC" title="Branch 4 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span><span class="tlaGBC" title="Branch 6 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 7 was not taken"> - </span><span class="tlaGBC" title="Branch 8 was taken 1 time"> + </span> 
 <span class="lineNum">        </span>             <span class="tlaUNC" title="Branch 9 was not taken"> - </span>]
-<span id="L345"><span class="lineNum">     345</span>                 :             : </span>
-<span id="L346"><span class="lineNum">     346</span>                 :             :   using unevaluated_gain =</span>
-<span id="L347"><span class="lineNum">     347</span>                 :             :       decltype(std::declval&lt;state&gt;() / std::declval&lt;output&gt;());</span>
-<span id="L348"><span class="lineNum">     348</span>                 :             :   using gain =</span>
-<span id="L349"><span class="lineNum">     349</span>                 :             :       matrix&lt;unevaluated_gain::row_indexes, unevaluated_gain::column_indexes&gt;;</span>
-<span id="L350"><span class="lineNum">     350</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           1 :   gain k{p * transposed(h) / si};</span></span>
+<span id="L342"><span class="lineNum">     342</span>                 :             : </span>
+<span id="L343"><span class="lineNum">     343</span>                 :             :   // Update stage of the filter from output measurements.</span>
+<span id="L344"><span class="lineNum">     344</span>                 :             :   using output = position;</span>
+<span id="L345"><span class="lineNum">     345</span>                 :<span class="tlaGNC">           1 :   output z{-393.66 * m};</span></span>
+<span id="L346"><span class="lineNum">     346</span>                 :             : </span>
+<span id="L347"><span class="lineNum">     347</span>                 :             :   using innovation_uncertainty = output_uncertainty;</span>
+<span id="L348"><span class="lineNum">     348</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           1 :   innovation_uncertainty si{h * p * transposed(h) + r};</span></span>
+<span class="lineNum">        </span> <span class="tlaGBC" title="Branch 4 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span><span class="tlaGBC" title="Branch 6 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 7 was not taken"> - </span><span class="tlaGBC" title="Branch 8 was taken 1 time"> + </span> 
+<span class="lineNum">        </span>             <span class="tlaUNC" title="Branch 9 was not taken"> - </span>]
+<span id="L349"><span class="lineNum">     349</span>                 :             : </span>
+<span id="L350"><span class="lineNum">     350</span>                 :             :   using unevaluated_gain =</span>
+<span id="L351"><span class="lineNum">     351</span>                 :             :       decltype(std::declval&lt;state&gt;() / std::declval&lt;output&gt;());</span>
+<span id="L352"><span class="lineNum">     352</span>                 :             :   using gain =</span>
+<span id="L353"><span class="lineNum">     353</span>                 :             :       matrix&lt;unevaluated_gain::row_indexes, unevaluated_gain::column_indexes&gt;;</span>
+<span id="L354"><span class="lineNum">     354</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           1 :   gain k{p * transposed(h) / si};</span></span>
 <span class="lineNum">        </span>    <span class="tlaGBC" title="Branch 4 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span><span class="tlaGBC" title="Branch 6 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 7 was not taken"> - </span>]
-<span id="L351"><span class="lineNum">     351</span>                 :             : </span>
-<span id="L352"><span class="lineNum">     352</span>                 :             :   using innovation = output;</span>
-<span id="L353"><span class="lineNum">     353</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span>]:<span class="tlaGNC">           1 :   innovation y{z - h * x};</span></span>
-<span id="L354"><span class="lineNum">     354</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           1 :   x = x + k * y;</span></span>
-<span class="lineNum">        </span>          <span class="tlaGBC" title="Branch 4 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span>]
 <span id="L355"><span class="lineNum">     355</span>                 :             : </span>
-<span id="L356"><span class="lineNum">     356</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :   std::println(&quot;X: {}&quot;, x);</span></span>
-<span id="L357"><span class="lineNum">     357</span>                 :             :   // X: [[-390.53 m],</span>
-<span id="L358"><span class="lineNum">     358</span>                 :             :   //     [-260.36 m/s],</span>
-<span id="L359"><span class="lineNum">     359</span>                 :             :   //     [ -86.79 m/s²]]</span>
-<span id="L360"><span class="lineNum">     360</span>                 :             : </span>
-<span id="L361"><span class="lineNum">     361</span>                 :             :   using unevaluated_kh =</span>
-<span id="L362"><span class="lineNum">     362</span>                 :             :       decltype(std::declval&lt;gain&gt;() * std::declval&lt;output_model&gt;());</span>
-<span id="L363"><span class="lineNum">     363</span>                 :             :   using kh =</span>
-<span id="L364"><span class="lineNum">     364</span>                 :             :       matrix&lt;unevaluated_kh::row_indexes, unevaluated_kh::column_indexes&gt;;</span>
-<span id="L365"><span class="lineNum">     365</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span>]:<span class="tlaGNC">           1 :   kh i{state_transition::matrix::Identity()};</span></span>
-<span id="L366"><span class="lineNum">     366</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           1 :   p = (i - k * h) * p * transposed(i - k * h) + k * r * transposed(k);</span></span>
+<span id="L356"><span class="lineNum">     356</span>                 :             :   using innovation = output;</span>
+<span id="L357"><span class="lineNum">     357</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span>]:<span class="tlaGNC">           1 :   innovation y{z - h * x};</span></span>
+<span id="L358"><span class="lineNum">     358</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           1 :   x = x + k * y;</span></span>
+<span class="lineNum">        </span>          <span class="tlaGBC" title="Branch 4 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span>]
+<span id="L359"><span class="lineNum">     359</span>                 :             : </span>
+<span id="L360"><span class="lineNum">     360</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :   std::println(&quot;X: {}&quot;, x);</span></span>
+<span id="L361"><span class="lineNum">     361</span>                 :             :   // X: [[-390.53 m],</span>
+<span id="L362"><span class="lineNum">     362</span>                 :             :   //     [-260.36 m/s],</span>
+<span id="L363"><span class="lineNum">     363</span>                 :             :   //     [ -86.79 m/s²]]</span>
+<span id="L364"><span class="lineNum">     364</span>                 :             : </span>
+<span id="L365"><span class="lineNum">     365</span>                 :             :   using unevaluated_kh =</span>
+<span id="L366"><span class="lineNum">     366</span>                 :             :       decltype(std::declval&lt;gain&gt;() * std::declval&lt;output_model&gt;());</span>
+<span id="L367"><span class="lineNum">     367</span>                 :             :   using kh =</span>
+<span id="L368"><span class="lineNum">     368</span>                 :             :       matrix&lt;unevaluated_kh::row_indexes, unevaluated_kh::column_indexes&gt;;</span>
+<span id="L369"><span class="lineNum">     369</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :   kh i;</span></span>
+<span id="L370"><span class="lineNum">     370</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :   i.at&lt;0, 0&gt;() = 1.;</span></span>
+<span id="L371"><span class="lineNum">     371</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :   i.at&lt;1, 1&gt;() = 1.;</span></span>
+<span id="L372"><span class="lineNum">     372</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :   i.at&lt;2, 2&gt;() = 1.;</span></span>
+<span id="L373"><span class="lineNum">     373</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           1 :   p = (i - k * h) * p * transposed(i - k * h) + k * r * transposed(k);</span></span>
 <span class="lineNum">        </span> <span class="tlaGBC" title="Branch 4 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span><span class="tlaGBC" title="Branch 6 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 7 was not taken"> - </span><span class="tlaGBC" title="Branch 8 was taken 1 time"> + </span> 
 <span class="lineNum">        </span> <span class="tlaUNC" title="Branch 9 was not taken"> - </span><span class="tlaGBC" title="Branch 10 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 11 was not taken"> - </span><span class="tlaGBC" title="Branch 12 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 13 was not taken"> - </span> 
 <span class="lineNum">        </span> <span class="tlaGBC" title="Branch 14 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 15 was not taken"> - </span><span class="tlaGBC" title="Branch 16 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 17 was not taken"> - </span><span class="tlaGBC" title="Branch 18 was taken 1 time"> + </span> 
 <span class="lineNum">        </span>    <span class="tlaUNC" title="Branch 19 was not taken"> - </span><span class="tlaGBC" title="Branch 20 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 21 was not taken"> - </span><span class="tlaGBC" title="Branch 22 was taken 1 time"> + </span> 
 <span class="lineNum">        </span>             <span class="tlaUNC" title="Branch 23 was not taken"> - </span>]
-<span id="L367"><span class="lineNum">     367</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :   std::println(&quot;P: {}&quot;, p);</span></span>
-<span id="L368"><span class="lineNum">     368</span>                 :             :   // P: [[8.92 m²,      5.95 m²/s,    1.98 m²/s²],</span>
-<span id="L369"><span class="lineNum">     369</span>                 :             :   //     [5.95 m²/s,  503.98 m²/s², 334.67 m²/s³],</span>
-<span id="L370"><span class="lineNum">     370</span>                 :             :   //     [1.98 m²/s², 334.67 m²/s³, 444.91 m²/s⁴]]</span>
-<span id="L371"><span class="lineNum">     371</span>                 :             : </span>
-<span id="L372"><span class="lineNum">     372</span>                 :<span class="tlaGNC">           1 :   return 0;</span></span>
-<span id="L373"><span class="lineNum">     373</span>                 :             : }()};</span>
-<span id="L374"><span class="lineNum">     374</span>                 :             : } // namespace</span>
-<span id="L375"><span class="lineNum">     375</span>                 :             : } // namespace sample</span>
-<span id="L376"><span class="lineNum">     376</span>                 :             : } // namespace fcarouge</span>
+<span id="L374"><span class="lineNum">     374</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :   std::println(&quot;P: {}&quot;, p);</span></span>
+<span id="L375"><span class="lineNum">     375</span>                 :             :   // P: [[8.92 m²,      5.95 m²/s,    1.98 m²/s²],</span>
+<span id="L376"><span class="lineNum">     376</span>                 :             :   //     [5.95 m²/s,  503.98 m²/s², 334.67 m²/s³],</span>
+<span id="L377"><span class="lineNum">     377</span>                 :             :   //     [1.98 m²/s², 334.67 m²/s³, 444.91 m²/s⁴]]</span>
+<span id="L378"><span class="lineNum">     378</span>                 :             : </span>
+<span id="L379"><span class="lineNum">     379</span>                 :<span class="tlaGNC">           1 :   return 0;</span></span>
+<span id="L380"><span class="lineNum">     380</span>                 :             : }()};</span>
+<span id="L381"><span class="lineNum">     381</span>                 :             : } // namespace</span>
+<span id="L382"><span class="lineNum">     382</span>                 :             : } // namespace sample</span>
+<span id="L383"><span class="lineNum">     383</span>                 :             : } // namespace fcarouge</span>
         </pre>
               </td>
             </tr>
