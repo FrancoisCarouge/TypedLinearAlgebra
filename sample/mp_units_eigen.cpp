@@ -237,6 +237,10 @@ using row_vector =
   velocity3d v0{v * m / s};
   assert(std::format("{}", v0) == "[[1 m/s], [2 m/s], [3 m/s]]");
 
+  velocity a[]{1. * m / s, 2. * m / s, 3. * m / s};
+  velocity3d v1{a};
+  assert(std::format("{}", v1) == "[[1 m/s], [2 m/s], [3 m/s]]");
+
   // Beware of non-evaluated template expression: these types are not the same.
   auto a0{vector3d{1., 2., 3.} * mp_units::isq::velocity[m / s]};
   static_assert(not std::is_same_v<decltype(a0), velocity3d>);
