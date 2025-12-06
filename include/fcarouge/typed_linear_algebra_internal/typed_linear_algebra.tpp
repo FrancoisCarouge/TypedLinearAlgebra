@@ -86,7 +86,18 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const element<0, 0> (&elements)[typed_matrix::rows * typed_matrix::columns])
   requires uniform_typed_matrix<typed_matrix> and
            one_dimension_typed_matrix<typed_matrix>
-    : storage{elements} {}
+{
+  if constexpr (requires { storage = elements; }) {
+    storage = elements;
+  } else {
+    using type = element<0, 0>;
+    tla::for_constexpr<0, typed_matrix::rows * typed_matrix::columns, 1>(
+        [this, &elements](auto position) {
+          storage(std::size_t{position}) =
+              cast<underlying, type>(elements[position]);
+        });
+  }
+}
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
@@ -119,8 +130,6 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
   }
 }
 
-//! @todo Verify if the types are the same, or assignable, for nicer error?
-//! @todo Rewrite with a fold expression over the pack?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const auto &first_value, const auto &second_value, const auto &...values)
@@ -134,6 +143,12 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
       [this, &value_pack](auto position) {
         auto value{std::get<position>(value_pack)};
         using type = std::remove_cvref_t<decltype(value)>;
+        static_assert(
+            std::is_assignable_v<
+                element<(typed_matrix::rows == 1 ? 0 : position),
+                        (typed_matrix::columns == 1 ? 0 : position)> &,
+                type>,
+            "The parameter type is not compatible with the element type.");
         storage(std::size_t{position}) = cast<underlying, type>(value);
       });
 }
@@ -216,7 +231,11 @@ template <std::size_t Index>
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() -> element<Index, 0> &
   requires column_typed_matrix<typed_matrix> and (Index < rows)
 {
-  return cast<element<Index, 0> &, underlying &>(storage(std::size_t{Index}));
+  if constexpr (requires { storage(std::size_t{Index}); }) {
+    return cast<element<Index, 0> &, underlying &>(storage(std::size_t{Index}));
+  } else {
+    return cast<element<Index, 0> &, underlying &>(storage(Index, 0));
+  }
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
