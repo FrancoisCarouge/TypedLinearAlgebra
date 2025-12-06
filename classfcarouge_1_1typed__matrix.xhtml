@@ -182,12 +182,12 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a497563ee76d9b2c72977689c6362de05" id="r_a497563ee76d9b2c72977689c6362de05"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a497563ee76d9b2c72977689c6362de05">operator=</a> (const same_as_typed_matrix auto &amp;other)</td></tr>
 <tr class="memdesc:a497563ee76d9b2c72977689c6362de05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy assign generalization of a compatible typed matrix.  <br /></td></tr>
 <tr class="separator:a497563ee76d9b2c72977689c6362de05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b1fe6127e30029715ed522aa6959c7b" id="r_a0b1fe6127e30029715ed522aa6959c7b"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b1fe6127e30029715ed522aa6959c7b">explicit</a> (false) <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>(const same_as_typed_matrix auto &amp;&amp;other)</td></tr>
-<tr class="memdesc:a0b1fe6127e30029715ed522aa6959c7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move construct generalization of a compatible typed matrix.  <br /></td></tr>
-<tr class="separator:a0b1fe6127e30029715ed522aa6959c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fcfbad68e34b7182a43b51ef6cadfb5" id="r_a6fcfbad68e34b7182a43b51ef6cadfb5"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fcfbad68e34b7182a43b51ef6cadfb5">operator=</a> (const same_as_typed_matrix auto &amp;&amp;other)</td></tr>
-<tr class="memdesc:a6fcfbad68e34b7182a43b51ef6cadfb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assign generalization of a compatible typed matrix.  <br /></td></tr>
-<tr class="separator:a6fcfbad68e34b7182a43b51ef6cadfb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab640b378259edec3a845ea08c11030e2" id="r_ab640b378259edec3a845ea08c11030e2"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab640b378259edec3a845ea08c11030e2">explicit</a> (false) <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>(same_as_typed_matrix auto &amp;&amp;other)</td></tr>
+<tr class="memdesc:ab640b378259edec3a845ea08c11030e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move construct generalization of a compatible typed matrix.  <br /></td></tr>
+<tr class="separator:ab640b378259edec3a845ea08c11030e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c35da75a3f4b1f1897d2bfcd925eaf5" id="r_a8c35da75a3f4b1f1897d2bfcd925eaf5"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c35da75a3f4b1f1897d2bfcd925eaf5">operator=</a> (same_as_typed_matrix auto &amp;&amp;other)</td></tr>
+<tr class="memdesc:a8c35da75a3f4b1f1897d2bfcd925eaf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assign generalization of a compatible typed matrix.  <br /></td></tr>
+<tr class="separator:a8c35da75a3f4b1f1897d2bfcd925eaf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cb6909ad42c9f4560dbf7c51e5ed1e4" id="r_a4cb6909ad42c9f4560dbf7c51e5ed1e4"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4cb6909ad42c9f4560dbf7c51e5ed1e4">typed_matrix</a> (const Matrix &amp;other)</td></tr>
 <tr class="memdesc:a4cb6909ad42c9f4560dbf7c51e5ed1e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert construct a typed matrix from an underlying matrix.  <br /></td></tr>
 <tr class="separator:a4cb6909ad42c9f4560dbf7c51e5ed1e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -855,38 +855,8 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 </div>
 </div>
-<a id="a0b1fe6127e30029715ed522aa6959c7b" name="a0b1fe6127e30029715ed522aa6959c7b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b1fe6127e30029715ed522aa6959c7b">&#9670;&#160;</a></span>explicit() <span class="overload">[2/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::explicit </td>
-          <td>(</td>
-          <td class="paramtype">false</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const &amp;&amp;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Move construct generalization of a compatible typed matrix. </p>
-<p>Implicit conversions expected per default equivalency. </p>
-
-</div>
-</div>
 <a id="a16857257759870c394e7038923b581e3" name="a16857257759870c394e7038923b581e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a16857257759870c394e7038923b581e3">&#9670;&#160;</a></span>explicit() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a16857257759870c394e7038923b581e3">&#9670;&#160;</a></span>explicit() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -911,6 +881,36 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div><div class="memdoc">
 
 <p>Copy construct generalization of a compatible typed matrix. </p>
+<p>Implicit conversions expected per default equivalency. </p>
+
+</div>
+</div>
+<a id="ab640b378259edec3a845ea08c11030e2" name="ab640b378259edec3a845ea08c11030e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab640b378259edec3a845ea08c11030e2">&#9670;&#160;</a></span>explicit() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::explicit </td>
+          <td>(</td>
+          <td class="paramtype">false</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> &amp;&amp;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Move construct generalization of a compatible typed matrix. </p>
 <p>Implicit conversions expected per default equivalency. </p>
 
 </div>
@@ -1033,37 +1033,8 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 </div>
 </div>
-<a id="a6fcfbad68e34b7182a43b51ef6cadfb5" name="a6fcfbad68e34b7182a43b51ef6cadfb5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6fcfbad68e34b7182a43b51ef6cadfb5">&#9670;&#160;</a></span>operator=() <span class="overload">[1/4]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a> &amp; <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::operator= </td>
-          <td>(</td>
-          <td class="paramtype">const same_as_typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Move assign generalization of a compatible typed matrix. </p>
-
-</div>
-</div>
 <a id="a497563ee76d9b2c72977689c6362de05" name="a497563ee76d9b2c72977689c6362de05"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a497563ee76d9b2c72977689c6362de05">&#9670;&#160;</a></span>operator=() <span class="overload">[2/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a497563ee76d9b2c72977689c6362de05">&#9670;&#160;</a></span>operator=() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1092,7 +1063,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div>
 </div>
 <a id="a7ec9fac774b1a9517b6ecf001c9387b1" name="a7ec9fac774b1a9517b6ecf001c9387b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ec9fac774b1a9517b6ecf001c9387b1">&#9670;&#160;</a></span>operator=() <span class="overload">[3/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ec9fac774b1a9517b6ecf001c9387b1">&#9670;&#160;</a></span>operator=() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1117,6 +1088,35 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div><div class="memdoc">
 
 <p>Copy assign a typed matrix. </p>
+
+</div>
+</div>
+<a id="a8c35da75a3f4b1f1897d2bfcd925eaf5" name="a8c35da75a3f4b1f1897d2bfcd925eaf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c35da75a3f4b1f1897d2bfcd925eaf5">&#9670;&#160;</a></span>operator=() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a> &amp; <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">same_as_typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Move assign generalization of a compatible typed matrix. </p>
 
 </div>
 </div>
@@ -1284,7 +1284,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00223">223</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00222">222</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
@@ -1341,7 +1341,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p>Underlying algebraic backend data storage. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00371">371</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00370">370</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
