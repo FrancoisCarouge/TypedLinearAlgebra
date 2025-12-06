@@ -285,7 +285,7 @@ using row_vector =
   using estimate_uncertainty =
       matrix<std::tuple<position, velocity, acceleration>,
              std::tuple<position, velocity, acceleration>>;
-  estimate_uncertainty p{estimate_uncertainty::matrix::Zero()};
+  estimate_uncertainty p;
   p.at<0, 0>() = 500. * m2;
   p.at<1, 1>() = 500. * m2 / s2;
   p.at<2, 2>() = 500. * m2 / s4;
@@ -316,17 +316,21 @@ using row_vector =
   // R: 9 m²
 
   using output_model = row_vector<quantity<one>, quantity<s>, quantity<s2>>;
-  output_model h{output_model::matrix::Identity()};
+  output_model h;
+  h.at<0, 0>() = 1.;
   std::println("H: {}", h);
   // H: [1, 0 s, 0 s²]
 
   using state_transition =
       matrix<std::tuple<position, velocity, acceleration>,
              std::tuple<quantity<one / m>, quantity<s / m>, quantity<s2 / m>>>;
-  state_transition f{state_transition::matrix::Identity()};
+  state_transition f;
+  f.at<0, 0>() = 1.;
   f.at<0, 1>() = 1. * s;
   f.at<0, 2>() = 0.5 * s2;
+  f.at<1, 1>() = 1.;
   f.at<1, 2>() = 1. * s;
+  f.at<2, 2>() = 1.;
   std::println("F: {}", f);
   // F: [[1, 1 s, 0.5 s²],
   //     [0 1/s, 1, 1 s],
@@ -362,7 +366,10 @@ using row_vector =
       decltype(std::declval<gain>() * std::declval<output_model>());
   using kh =
       matrix<unevaluated_kh::row_indexes, unevaluated_kh::column_indexes>;
-  kh i{state_transition::matrix::Identity()};
+  kh i;
+  i.at<0, 0>() = 1.;
+  i.at<1, 1>() = 1.;
+  i.at<2, 2>() = 1.;
   p = (i - k * h) * p * transposed(i - k * h) + k * r * transposed(k);
   std::println("P: {}", p);
   // P: [[8.92 m²,      5.95 m²/s,    1.98 m²/s²],

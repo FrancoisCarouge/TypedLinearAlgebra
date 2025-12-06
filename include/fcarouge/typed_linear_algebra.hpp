@@ -166,12 +166,9 @@ public:
   //! @brief Destruct a default typed matrix.
   constexpr ~typed_matrix() = default;
 
-  //! @brief Construct a default typed matrix.
-  //!
-  //! @warning The initialization of the underlying matrix's storage follows the
-  //! initialization behavior of the underlying matrix's type, which for some
-  //! type means no initialization.
-  constexpr typed_matrix() = default;
+  //! @brief Construct a zero-initialized typed matrix.
+  constexpr typed_matrix()
+    requires std::default_initializable<Matrix>;
 
   //! @brief Copy construct a typed matrix.
   constexpr typed_matrix(const typed_matrix &other) = default;
