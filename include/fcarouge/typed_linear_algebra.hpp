@@ -197,11 +197,10 @@ public:
   //! @brief Move construct generalization of a compatible typed matrix.
   //!
   //! @details Implicit conversions expected per default equivalency.
-  constexpr explicit(false)
-      typed_matrix(const same_as_typed_matrix auto &&other);
+  constexpr explicit(false) typed_matrix(same_as_typed_matrix auto &&other);
 
   //! @brief Move assign generalization of a compatible typed matrix.
-  constexpr typed_matrix &operator=(const same_as_typed_matrix auto &&other);
+  constexpr typed_matrix &operator=(same_as_typed_matrix auto &&other);
 
   //! @brief Convert construct a typed matrix from an underlying matrix.
   //!
