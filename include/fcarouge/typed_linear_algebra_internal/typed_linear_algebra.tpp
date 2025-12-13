@@ -248,9 +248,9 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const -> element<Index, 0>
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-[[nodiscard]] constexpr auto &&
+[[nodiscard]] constexpr decltype(auto)
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::data(this auto &&self) {
-  return std::forward<decltype(self)>(self).storage;
+  return std::forward_like<decltype(self)>(self.storage);
 }
 
 template <typename RowIndexes, typename ColumnIndexes>

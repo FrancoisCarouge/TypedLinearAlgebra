@@ -355,7 +355,7 @@ public:
   //! @warning Useful for operations implementation where underlying data
   //! access is needed. Not recommended for convenience access due to
   //! absence of type validation.
-  [[nodiscard]] constexpr auto &&data(this auto &&self);
+  [[nodiscard]] constexpr decltype(auto) data(this auto &&self);
 
   //! @}
 
