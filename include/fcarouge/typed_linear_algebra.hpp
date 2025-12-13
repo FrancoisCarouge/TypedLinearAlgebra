@@ -309,23 +309,12 @@ public:
 
   //! @brief Access the specified element with compile-time bound checking.
   //!
-  //! @details Returns a strongly typed reference to the element at the
-  //! specified location.
-  //!
-  //! @tparam Row Row index of the element to return.
-  //! @tparam Column Column index of the element to return.
-  template <std::size_t Row, std::size_t Column>
-  [[nodiscard]] constexpr auto at() -> element<Row, Column> &
-    requires(Row < rows) and (Column < columns);
-
-  //! @brief Access the specified element with compile-time bound checking.
-  //!
   //! @details Returns a strongly typed element at the specified location.
   //!
   //! @tparam Row Row index of the element to return.
   //! @tparam Column Column index of the element to return.
   template <std::size_t Row, std::size_t Column>
-  [[nodiscard]] constexpr auto at() const -> element<Row, Column>
+  [[nodiscard]] constexpr decltype(auto) at(this auto &&self)
     requires(Row < rows) and (Column < columns);
 
   //! @brief Access the specified element with compile-time bound checking.

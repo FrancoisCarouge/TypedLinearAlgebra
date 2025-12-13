@@ -206,23 +206,22 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <std::size_t Row, std::size_t Column>
-[[nodiscard]] constexpr auto
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() -> element<Row, Column> &
+[[nodiscard]] constexpr decltype(auto)
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
   requires(Row < rows) and (Column < columns)
 {
-  return cast<element<Row, Column> &, underlying &>(
-      storage(std::size_t{Row}, std::size_t{Column}));
-}
+  // -> element<Row, Column> &
+  // return cast<element<Row, Column> &, underlying &>(
+  //     storage(std::size_t{Row}, std::size_t{Column}));
 
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-template <std::size_t Row, std::size_t Column>
-[[nodiscard]] constexpr auto
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const
-    -> element<Row, Column>
-  requires(Row < rows) and (Column < columns)
-{
-  return cast<element<Row, Column>, underlying>(
-      storage(std::size_t{Row}, std::size_t{Column}));
+  using e = decltype(std::forward_like<decltype(self)>(
+      std::declval<element<Row, Column>>()));
+  using u =
+      decltype(std::forward_like<decltype(self)>(std::declval<underlying>()));
+
+  return std::forward_like<decltype(self)>(
+      cast<e, u>(std::forward_like<decltype(self)>(
+          self.storage(std::size_t{Row}, std::size_t{Column}))));
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
