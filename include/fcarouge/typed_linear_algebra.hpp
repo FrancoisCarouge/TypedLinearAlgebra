@@ -386,7 +386,7 @@ using typed_column_vector =
 //!
 //! @todo The call operator should be static once MSVC lands the support.
 template <typename To, typename From> struct element_caster {
-  [[nodiscard]] constexpr To operator()(From value) const;
+  [[nodiscard]] static constexpr To operator()(From value);
 };
 
 //! @}
