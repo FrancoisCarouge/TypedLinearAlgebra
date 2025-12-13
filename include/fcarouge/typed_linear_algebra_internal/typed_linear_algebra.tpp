@@ -206,23 +206,22 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <std::size_t Row, std::size_t Column>
-[[nodiscard]] constexpr auto
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() -> element<Row, Column> &
+[[nodiscard]] constexpr decltype(auto)
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
   requires(Row < rows) and (Column < columns)
 {
-  return cast<element<Row, Column> &, underlying &>(
-      storage(std::size_t{Row}, std::size_t{Column}));
-}
+  // The returned element may not simply be forwarded like the type of self.
+  // Self may be a temporary. Evaluation of the temporary expression templates
+  // appears needed.
+  using self_t = std::remove_reference_t<decltype(self)>;
+  using element_t = element<Row, Column>;
+  using qualified_element =
+      std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
+  using qualified_underlying =
+      std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
 
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-template <std::size_t Row, std::size_t Column>
-[[nodiscard]] constexpr auto
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const
-    -> element<Row, Column>
-  requires(Row < rows) and (Column < columns)
-{
-  return cast<element<Row, Column>, underlying>(
-      storage(std::size_t{Row}, std::size_t{Column}));
+  return cast<qualified_element, qualified_underlying>(
+      self.storage(std::size_t{Row}, std::size_t{Column}));
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
