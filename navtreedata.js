@@ -145,7 +145,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "addition_8cpp.xhtml",
-"md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#windows"
+"md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#reporting-a-vulnerability"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

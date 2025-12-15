@@ -1,7 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#windows":[12,0,2,1],
-"md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml":[13],
 "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#reporting-a-vulnerability":[13,1],
 "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#supported-versions":[13,0],
 "md_paper_2mp__units__eigen.xhtml":[11],

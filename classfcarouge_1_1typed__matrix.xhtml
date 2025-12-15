@@ -220,14 +220,11 @@ requires uniform_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__mat
 <tr class="memitem:a8bd52927abdfcb20330cc0b0fbd46018" id="r_a8bd52927abdfcb20330cc0b0fbd46018"><td class="memItemLeft" align="right" valign="top">constexpr auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8bd52927abdfcb20330cc0b0fbd46018">operator()</a> (this auto &amp;&amp;self, std::size_t row, std::size_t column)</td></tr>
 <tr class="memdesc:a8bd52927abdfcb20330cc0b0fbd46018"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the specified element.  <br /></td></tr>
 <tr class="separator:a8bd52927abdfcb20330cc0b0fbd46018"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeaaffa18c7c9c8eb23412bc435b20eb4" id="r_aeaaffa18c7c9c8eb23412bc435b20eb4"><td class="memTemplParams" colspan="2">template&lt;std::size_t Row, std::size_t Column&gt; </td></tr>
-<tr class="memitem:aeaaffa18c7c9c8eb23412bc435b20eb4"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aeaaffa18c7c9c8eb23412bc435b20eb4">at</a> () -&gt; <a class="el" href="#af6be5fe000ae7ae363a9a01fec688d57">element</a>&lt; Row, Column &gt; &amp;requires(Row&lt; <a class="el" href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">rows</a>) and(Column&lt; <a class="el" href="#a46ef06b82cd1ab3db9a22cd31436b802">columns</a>)</td></tr>
-<tr class="memdesc:aeaaffa18c7c9c8eb23412bc435b20eb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the specified element with compile-time bound checking.  <br /></td></tr>
-<tr class="separator:aeaaffa18c7c9c8eb23412bc435b20eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a751a999e2779db1e44cbabb3e1bd8054" id="r_a751a999e2779db1e44cbabb3e1bd8054"><td class="memTemplParams" colspan="2">template&lt;std::size_t Row, std::size_t Column&gt; </td></tr>
-<tr class="memitem:a751a999e2779db1e44cbabb3e1bd8054"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a751a999e2779db1e44cbabb3e1bd8054">at</a> () const -&gt; <a class="el" href="#af6be5fe000ae7ae363a9a01fec688d57">element</a>&lt; Row, Column &gt; requires(Row&lt; <a class="el" href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">rows</a>) and(Column&lt; <a class="el" href="#a46ef06b82cd1ab3db9a22cd31436b802">columns</a>)</td></tr>
-<tr class="memdesc:a751a999e2779db1e44cbabb3e1bd8054"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the specified element with compile-time bound checking.  <br /></td></tr>
-<tr class="separator:a751a999e2779db1e44cbabb3e1bd8054"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a822519903881b8cb622832ef25c193ac" id="r_a822519903881b8cb622832ef25c193ac"><td class="memTemplParams" colspan="2">template&lt;std::size_t Row, std::size_t Column&gt; <br />
+requires (Row &lt; <a class="el" href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">rows</a>) and (Column &lt; <a class="el" href="#a46ef06b82cd1ab3db9a22cd31436b802">columns</a>)</td></tr>
+<tr class="memitem:a822519903881b8cb622832ef25c193ac"><td class="memTemplItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a822519903881b8cb622832ef25c193ac">at</a> (this auto &amp;&amp;self)</td></tr>
+<tr class="memdesc:a822519903881b8cb622832ef25c193ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the specified element with compile-time bound checking.  <br /></td></tr>
+<tr class="separator:a822519903881b8cb622832ef25c193ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af19ff26f8e2bc078890bf2f2f6e4a5e2" id="r_af19ff26f8e2bc078890bf2f2f6e4a5e2"><td class="memTemplParams" colspan="2">template&lt;std::size_t Index&gt; <br />
 requires column_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&gt; and (Index &lt; <a class="el" href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">rows</a>)</td></tr>
 <tr class="memitem:af19ff26f8e2bc078890bf2f2f6e4a5e2"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#af19ff26f8e2bc078890bf2f2f6e4a5e2">at</a> () -&gt; <a class="el" href="#af6be5fe000ae7ae363a9a01fec688d57">element</a>&lt; Index, 0 &gt; &amp;</td></tr>
@@ -638,7 +635,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="af19ff26f8e2bc078890bf2f2f6e4a5e2" name="af19ff26f8e2bc078890bf2f2f6e4a5e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af19ff26f8e2bc078890bf2f2f6e4a5e2">&#9670;&#160;</a></span>at() <span class="overload">[1/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af19ff26f8e2bc078890bf2f2f6e4a5e2">&#9670;&#160;</a></span>at() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -676,47 +673,8 @@ requires column_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matr
 
 </div>
 </div>
-<a id="aeaaffa18c7c9c8eb23412bc435b20eb4" name="aeaaffa18c7c9c8eb23412bc435b20eb4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeaaffa18c7c9c8eb23412bc435b20eb4">&#9670;&#160;</a></span>at() <span class="overload">[2/4]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
-<div class="memtemplate">
-template&lt;std::size_t Row, std::size_t Column&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::at </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> -&gt;  <a class="el" href="#af6be5fe000ae7ae363a9a01fec688d57">element</a>&lt; Row, Column &gt; &amp;requires(Row&lt; <a class="el" href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">rows</a>) and(Column&lt; <a class="el" href="#a46ef06b82cd1ab3db9a22cd31436b802">columns</a>)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Access the specified element with compile-time bound checking. </p>
-<p>Returns a strongly typed reference to the element at the specified location.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Row</td><td>Row index of the element to return. </td></tr>
-    <tr><td class="paramname">Column</td><td>Column index of the element to return. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="a5e3fcb1a4981c816279c7cb11d0208df" name="a5e3fcb1a4981c816279c7cb11d0208df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e3fcb1a4981c816279c7cb11d0208df">&#9670;&#160;</a></span>at() <span class="overload">[3/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e3fcb1a4981c816279c7cb11d0208df">&#9670;&#160;</a></span>at() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -754,24 +712,25 @@ requires column_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matr
 
 </div>
 </div>
-<a id="a751a999e2779db1e44cbabb3e1bd8054" name="a751a999e2779db1e44cbabb3e1bd8054"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a751a999e2779db1e44cbabb3e1bd8054">&#9670;&#160;</a></span>at() <span class="overload">[4/4]</span></h2>
+<a id="a822519903881b8cb622832ef25c193ac" name="a822519903881b8cb622832ef25c193ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a822519903881b8cb622832ef25c193ac">&#9670;&#160;</a></span>at() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
 <div class="memtemplate">
-template&lt;std::size_t Row, std::size_t Column&gt; </div>
+template&lt;std::size_t Row, std::size_t Column&gt; <br />
+requires (Row &lt; <a class="el" href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">rows</a>) and (Column &lt; <a class="el" href="#a46ef06b82cd1ab3db9a22cd31436b802">columns</a>)</div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::at </td>
+          <td class="memname">decltype(auto) <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::at </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const -&gt;  <a class="el" href="#af6be5fe000ae7ae363a9a01fec688d57">element</a>&lt; Row, Column &gt; requires(Row&lt; <a class="el" href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">rows</a>) and(Column&lt; <a class="el" href="#a46ef06b82cd1ab3db9a22cd31436b802">columns</a>)</td>
+          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -782,7 +741,7 @@ template&lt;std::size_t Row, std::size_t Column&gt; </div>
 </div><div class="memdoc">
 
 <p>Access the specified element with compile-time bound checking. </p>
-<p>Returns a strongly typed element at the specified location.</p>
+<p>Returns a strongly typed element at the specified location. A reference is returned for non-const calls.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Row</td><td>Row index of the element to return. </td></tr>
@@ -1340,7 +1299,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p>Underlying algebraic backend data storage. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00367">367</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00357">357</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
