@@ -261,13 +261,26 @@ public:
 
   //! @brief Access the specified element.
   //!
+  //! @details Applicable to single-type matrix: uniform type of all elements.
+  //! Returns a reference to the element at the specified location.
+  //!
+  //! @param self Explicit object parameter deducing this: not user specified.
+  //! @param row Row index of the element to return.
+  //! @param column Column index of the element to return.
+  [[nodiscard]] constexpr decltype(auto)
+  operator[](this auto &&self, std::size_t row, std::size_t column)
+    requires uniform_typed_matrix<typed_matrix>;
+
+  //! @brief Access the specified element.
+  //!
   //! @details Applicable to one-dimension matrix: column- or row-vector.
   //! Applicable to single-type matrix: uniform type of all elements.
   //! Returns a reference to the element at the specified location.
   //!
   //! @param self Explicit object parameter deducing this: not user specified.
   //! @param index Position of the element to return.
-  [[nodiscard]] constexpr auto &&operator[](this auto &&self, std::size_t index)
+  [[nodiscard]] constexpr decltype(auto) operator[](this auto &&self,
+                                                    std::size_t index)
     requires(uniform_typed_matrix<typed_matrix> and
              one_dimension_typed_matrix<typed_matrix>);
 
@@ -279,8 +292,8 @@ public:
   //! @param self Explicit object parameter deducing this: not user specified.
   //! @param row Row index of the element to return.
   //! @param column Column index of the element to return.
-  [[nodiscard]] constexpr auto &&operator[](this auto &&self, std::size_t row,
-                                            std::size_t column)
+  [[nodiscard]] constexpr decltype(auto)
+  operator()(this auto &&self, std::size_t row, std::size_t column)
     requires uniform_typed_matrix<typed_matrix>;
 
   //! @brief Access the specified element.
@@ -291,21 +304,10 @@ public:
   //!
   //! @param self Explicit object parameter deducing this: not user specified.
   //! @param index Position of the element to return.
-  [[nodiscard]] constexpr auto &&operator()(this auto &&self, std::size_t index)
+  [[nodiscard]] constexpr decltype(auto) operator()(this auto &&self,
+                                                    std::size_t index)
     requires uniform_typed_matrix<typed_matrix> and
              one_dimension_typed_matrix<typed_matrix>;
-
-  //! @brief Access the specified element.
-  //!
-  //! @details Applicable to single-type matrix: uniform type of all elements.
-  //! Returns a reference to the element at the specified location.
-  //!
-  //! @param self Explicit object parameter deducing this: not user specified.
-  //! @param row Row index of the element to return.
-  //! @param column Column index of the element to return.
-  [[nodiscard]] constexpr auto &&operator()(this auto &&self, std::size_t row,
-                                            std::size_t column)
-    requires uniform_typed_matrix<typed_matrix>;
 
   //! @brief Access the specified element with compile-time bound checking.
   //!
