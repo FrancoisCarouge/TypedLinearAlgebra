@@ -225,16 +225,11 @@ requires (Row &lt; <a class="el" href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">rows<
 <tr class="memitem:a822519903881b8cb622832ef25c193ac"><td class="memTemplItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a822519903881b8cb622832ef25c193ac">at</a> (this auto &amp;&amp;self)</td></tr>
 <tr class="memdesc:a822519903881b8cb622832ef25c193ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the specified element with compile-time bound checking.  <br /></td></tr>
 <tr class="separator:a822519903881b8cb622832ef25c193ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af19ff26f8e2bc078890bf2f2f6e4a5e2" id="r_af19ff26f8e2bc078890bf2f2f6e4a5e2"><td class="memTemplParams" colspan="2">template&lt;std::size_t Index&gt; <br />
+<tr class="memitem:ac91ba641bf285a5ae0a7068f4f6d9cc0" id="r_ac91ba641bf285a5ae0a7068f4f6d9cc0"><td class="memTemplParams" colspan="2">template&lt;std::size_t Index&gt; <br />
 requires column_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&gt; and (Index &lt; <a class="el" href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">rows</a>)</td></tr>
-<tr class="memitem:af19ff26f8e2bc078890bf2f2f6e4a5e2"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#af19ff26f8e2bc078890bf2f2f6e4a5e2">at</a> () -&gt; <a class="el" href="#af6be5fe000ae7ae363a9a01fec688d57">element</a>&lt; Index, 0 &gt; &amp;</td></tr>
-<tr class="memdesc:af19ff26f8e2bc078890bf2f2f6e4a5e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the specified element with compile-time bound checking.  <br /></td></tr>
-<tr class="separator:af19ff26f8e2bc078890bf2f2f6e4a5e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e3fcb1a4981c816279c7cb11d0208df" id="r_a5e3fcb1a4981c816279c7cb11d0208df"><td class="memTemplParams" colspan="2">template&lt;std::size_t Index&gt; <br />
-requires column_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&gt; and (Index &lt; <a class="el" href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">rows</a>)</td></tr>
-<tr class="memitem:a5e3fcb1a4981c816279c7cb11d0208df"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a5e3fcb1a4981c816279c7cb11d0208df">at</a> () const -&gt; <a class="el" href="#af6be5fe000ae7ae363a9a01fec688d57">element</a>&lt; Index, 0 &gt;</td></tr>
-<tr class="memdesc:a5e3fcb1a4981c816279c7cb11d0208df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the specified element with compile-time bound checking.  <br /></td></tr>
-<tr class="separator:a5e3fcb1a4981c816279c7cb11d0208df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac91ba641bf285a5ae0a7068f4f6d9cc0"><td class="memTemplItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ac91ba641bf285a5ae0a7068f4f6d9cc0">at</a> (this auto &amp;&amp;self)</td></tr>
+<tr class="memdesc:ac91ba641bf285a5ae0a7068f4f6d9cc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the specified element with compile-time bound checking.  <br /></td></tr>
+<tr class="separator:ac91ba641bf285a5ae0a7068f4f6d9cc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a032880fe707e41d14c7a9dfa3f321fee" id="r_a032880fe707e41d14c7a9dfa3f321fee"><td class="memItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a032880fe707e41d14c7a9dfa3f321fee">data</a> (this auto &amp;&amp;self)</td></tr>
 <tr class="memdesc:a032880fe707e41d14c7a9dfa3f321fee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Direct access to the underlying storage.  <br /></td></tr>
 <tr class="separator:a032880fe707e41d14c7a9dfa3f321fee"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -634,86 +629,8 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="af19ff26f8e2bc078890bf2f2f6e4a5e2" name="af19ff26f8e2bc078890bf2f2f6e4a5e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af19ff26f8e2bc078890bf2f2f6e4a5e2">&#9670;&#160;</a></span>at() <span class="overload">[1/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
-<div class="memtemplate">
-template&lt;std::size_t Index&gt; <br />
-requires column_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&gt; and (Index &lt; <a class="el" href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">rows</a>)</div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::at </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> -&gt;  <a class="el" href="#af6be5fe000ae7ae363a9a01fec688d57">element</a>&lt; Index, 0 &gt; &amp;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Access the specified element with compile-time bound checking. </p>
-<p>Returns a strongly typed element at the specified location. Applicable to one-dimension matrix: column-vector.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Index</td><td>Position of the element to return. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a5e3fcb1a4981c816279c7cb11d0208df" name="a5e3fcb1a4981c816279c7cb11d0208df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e3fcb1a4981c816279c7cb11d0208df">&#9670;&#160;</a></span>at() <span class="overload">[2/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
-<div class="memtemplate">
-template&lt;std::size_t Index&gt; <br />
-requires column_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&gt; and (Index &lt; <a class="el" href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">rows</a>)</div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::at </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const -&gt;  <a class="el" href="#af6be5fe000ae7ae363a9a01fec688d57">element</a>&lt; Index, 0 &gt;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Access the specified element with compile-time bound checking. </p>
-<p>Returns a strongly typed element at the specified location. Applicable to one-dimension matrix: column-vector.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Index</td><td>Position of the element to return. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="a822519903881b8cb622832ef25c193ac" name="a822519903881b8cb622832ef25c193ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a822519903881b8cb622832ef25c193ac">&#9670;&#160;</a></span>at() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a822519903881b8cb622832ef25c193ac">&#9670;&#160;</a></span>at() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -746,6 +663,45 @@ requires (Row &lt; <a class="el" href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">rows<
   <table class="tparams">
     <tr><td class="paramname">Row</td><td>Row index of the element to return. </td></tr>
     <tr><td class="paramname">Column</td><td>Column index of the element to return. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac91ba641bf285a5ae0a7068f4f6d9cc0" name="ac91ba641bf285a5ae0a7068f4f6d9cc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac91ba641bf285a5ae0a7068f4f6d9cc0">&#9670;&#160;</a></span>at() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+<div class="memtemplate">
+template&lt;std::size_t Index&gt; <br />
+requires column_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&gt; and (Index &lt; <a class="el" href="#a15d0673c2c5a8f97ec7d6d6120bc37a4">rows</a>)</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">decltype(auto) <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::at </td>
+          <td>(</td>
+          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Access the specified element with compile-time bound checking. </p>
+<p>Returns a strongly typed element at the specified location. A reference is returned for non-const calls. Applicable to one-dimension matrix: column-vector.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Index</td><td>Position of the element to return. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1299,7 +1255,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p>Underlying algebraic backend data storage. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00357">357</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00348">348</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
