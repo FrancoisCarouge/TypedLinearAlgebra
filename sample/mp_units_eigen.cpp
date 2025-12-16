@@ -203,8 +203,14 @@ using row_vector =
   s1[0] = 11. * A / mol;
   assert((s1[0] == 11. * A / mol));
 
-  s1.at() = 1. * A / mol;
-  assert(s1.at() == 1. * A / mol);
+  s1.at() = 3. * A / mol;
+  assert(s1.at() == 3. * A / mol);
+
+  s1() = 2. * A / mol;
+  assert(s1() == 2. * A / mol);
+
+  s1[] = 1. * A / mol;
+  assert(s1[] == 1. * A / mol);
 
   // The singleton element can be accessed by conversion to its element type.
   using e = decltype(s1)::element<0, 0>;
