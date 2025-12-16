@@ -163,45 +163,75 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-[[nodiscard]] constexpr auto &&
+[[nodiscard]] constexpr decltype(auto)
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
+                                                            std::size_t row,
+                                                            std::size_t column)
+  requires uniform_typed_matrix<typed_matrix>
+{
+  using self_t = std::remove_reference_t<decltype(self)>;
+  using element_t = element<0, 0>;
+  using qualified_element =
+      std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
+  using qualified_underlying =
+      std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
+
+  return cast<qualified_element, qualified_underlying>(
+      self.storage(std::size_t{row}, std::size_t{column}));
+}
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+[[nodiscard]] constexpr decltype(auto)
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
                                                             std::size_t index)
   requires(uniform_typed_matrix<typed_matrix> and
            one_dimension_typed_matrix<typed_matrix>)
 {
-  return std::forward<decltype(self)>(self).storage(std::size_t{index});
+  using self_t = std::remove_reference_t<decltype(self)>;
+  using element_t = element<0, 0>;
+  using qualified_element =
+      std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
+  using qualified_underlying =
+      std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
+
+  return cast<qualified_element, qualified_underlying>(
+      self.storage(std::size_t{index}));
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-[[nodiscard]] constexpr auto &&
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
+[[nodiscard]] constexpr decltype(auto)
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
                                                             std::size_t row,
                                                             std::size_t column)
   requires uniform_typed_matrix<typed_matrix>
 {
-  return std::forward<decltype(self)>(self).storage(std::size_t{row},
-                                                    std::size_t{column});
+  using self_t = std::remove_reference_t<decltype(self)>;
+  using element_t = element<0, 0>;
+  using qualified_element =
+      std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
+  using qualified_underlying =
+      std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
+
+  return cast<qualified_element, qualified_underlying>(
+      self.storage(std::size_t{row}, std::size_t{column}));
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-[[nodiscard]] constexpr auto &&
+[[nodiscard]] constexpr decltype(auto)
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
                                                             std::size_t index)
   requires uniform_typed_matrix<typed_matrix> and
            one_dimension_typed_matrix<typed_matrix>
 {
-  return std::forward<decltype(self)>(self).storage(std::size_t{index});
-}
+  using self_t = std::remove_reference_t<decltype(self)>;
+  using element_t = element<0, 0>;
+  using qualified_element =
+      std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
+  using qualified_underlying =
+      std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
 
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-[[nodiscard]] constexpr auto &&
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
-                                                            std::size_t row,
-                                                            std::size_t column)
-  requires uniform_typed_matrix<typed_matrix>
-{
-  return std::forward<decltype(self)>(self).storage(std::size_t{row},
-                                                    std::size_t{column});
+  return cast<qualified_element, qualified_underlying>(
+      self.storage(std::size_t{index}));
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>

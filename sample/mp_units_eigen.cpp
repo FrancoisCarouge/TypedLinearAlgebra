@@ -241,6 +241,16 @@ using row_vector =
   velocity3d v1{a};
   assert(std::format("{}", v1) == "[[1 m/s], [2 m/s], [3 m/s]]");
 
+  // Vector typed access.
+  v0.at<1>() = 4. * m / s;
+  assert(v0.at<1>() == 4. * m / s);
+
+  // Vector and uniform typed access.
+  v0[1] = 3. * m / s;
+  assert(v0[1] == 3. * m / s);
+  v0(1) = 2. * m / s;
+  assert(v0(1) == 2. * m / s);
+
   // Beware of non-evaluated template expression: these types are not the same.
   auto a0{vector3d{1., 2., 3.} * mp_units::isq::velocity[m / s]};
   static_assert(not std::is_same_v<decltype(a0), velocity3d>);
@@ -257,6 +267,15 @@ using row_vector =
   // character.
   //! @todo Add additional valid forms for other matrices.
   assert(std::format("{}", v0 - v0) == "[[0 m/s], [0 m/s], [0 m/s]]");
+
+  // Matrix and uniform typed access.
+  using position_2d_uncertainty =
+      matrix<std::tuple<position, position>, std::tuple<position, position>>;
+  position_2d_uncertainty p0;
+  p0[0, 1] = 9. * m2;
+  assert((p0[0, 1] == 9. * m2));
+  p0(0, 1) = 16. * m2;
+  assert((p0(0, 1) == 16. * m2));
 
   //! @todo Modulo where both arguments should be of the same quantity kind and
   //! character.
