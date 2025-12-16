@@ -226,24 +226,19 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <std::size_t Index>
-[[nodiscard]] constexpr auto
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() -> element<Index, 0> &
+[[nodiscard]] constexpr decltype(auto)
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
   requires column_typed_matrix<typed_matrix> and (Index < rows)
 {
-  if constexpr (requires { storage(std::size_t{Index}); }) {
-    return cast<element<Index, 0> &, underlying &>(storage(std::size_t{Index}));
-  } else {
-    return cast<element<Index, 0> &, underlying &>(storage(Index, 0));
-  }
-}
+  using self_t = std::remove_reference_t<decltype(self)>;
+  using element_t = element<Index, 0>;
+  using qualified_element =
+      std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
+  using qualified_underlying =
+      std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
 
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-template <std::size_t Index>
-[[nodiscard]] constexpr auto
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at() const -> element<Index, 0>
-  requires column_typed_matrix<typed_matrix> and (Index < rows)
-{
-  return cast<element<Index, 0>, underlying>(storage(std::size_t{Index}));
+  return cast<qualified_element, qualified_underlying>(
+      self.storage(std::size_t{Index}));
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>

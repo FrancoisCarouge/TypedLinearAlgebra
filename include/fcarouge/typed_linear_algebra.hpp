@@ -320,22 +320,13 @@ public:
 
   //! @brief Access the specified element with compile-time bound checking.
   //!
-  //! @details Returns a strongly typed element at the specified location.
-  //! Applicable to one-dimension matrix: column-vector.
+  //! @details Returns a strongly typed element at the specified location. A
+  //! reference is returned for non-const calls. Applicable to one-dimension
+  //! matrix: column-vector.
   //!
   //! @tparam Index Position of the element to return.
   template <std::size_t Index>
-  [[nodiscard]] constexpr auto at() -> element<Index, 0> &
-    requires column_typed_matrix<typed_matrix> and (Index < rows);
-
-  //! @brief Access the specified element with compile-time bound checking.
-  //!
-  //! @details Returns a strongly typed element at the specified location.
-  //! Applicable to one-dimension matrix: column-vector.
-  //!
-  //! @tparam Index Position of the element to return.
-  template <std::size_t Index>
-  [[nodiscard]] constexpr auto at() const -> element<Index, 0>
+  [[nodiscard]] constexpr decltype(auto) at(this auto &&self)
     requires column_typed_matrix<typed_matrix> and (Index < rows);
 
   //! @brief Direct access to the underlying storage.
