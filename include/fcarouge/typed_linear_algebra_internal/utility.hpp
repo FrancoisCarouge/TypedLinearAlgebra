@@ -170,10 +170,21 @@ constexpr void for_constexpr(Function &&function) {
   }
 }
 
+template <typename Type> struct underlying {
+  [[nodiscard]] static constexpr auto operator()()
+    requires requires { typename Type::underlying; }
+  {
+    return typename Type::underlying{};
+  }
+  [[nodiscard]] static constexpr auto operator()()
+    requires requires { typename Type::Scalar; }
+  {
+    return typename Type::Scalar{};
+  }
+};
+
 template <typename Type>
-using underlying_t =
-    std::remove_cvref_t<decltype(std::declval<std::remove_cvref_t<Type>>()(0,
-                                                                           0))>;
+using underlying_t = std::invoke_result_t<underlying<Type>>;
 
 template <typename Type>
 concept same_as_typed_matrix = std::same_as<
