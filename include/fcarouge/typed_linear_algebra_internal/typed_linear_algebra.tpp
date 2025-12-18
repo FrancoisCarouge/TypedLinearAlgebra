@@ -38,11 +38,9 @@ namespace tla = typed_linear_algebra_internal;
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix()
   requires std::default_initializable<Matrix>
-{
+    : storage{} {
   if constexpr (requires { Matrix::Zero(); }) {
     storage = Matrix::Zero();
-  } else {
-    static_assert(false, "A zero-constructor implementation is missing.");
   }
 }
 
