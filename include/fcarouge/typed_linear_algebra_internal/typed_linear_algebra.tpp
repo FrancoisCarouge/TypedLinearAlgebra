@@ -38,11 +38,9 @@ namespace tla = typed_linear_algebra_internal;
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix()
   requires std::default_initializable<Matrix>
-{
+    : storage{} {
   if constexpr (requires { Matrix::Zero(); }) {
     storage = Matrix::Zero();
-  } else {
-    static_assert(false, "A zero-constructor implementation is missing.");
   }
 }
 
@@ -234,15 +232,14 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
           std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
 
       return cast<qualified_element, qualified_underlying>(
-          self.storage(std::size_t{std::get<0>(std::tuple{Indexes...})}));
+          self.storage(std::get<0>(std::tuple{Indexes...})));
     }
   } else {
     using element_t = element<0, 0>;
     using qualified_element =
         std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
 
-    return cast<qualified_element, qualified_underlying>(
-        self.storage(std::size_t{0}, std::size_t{0}));
+    return cast<qualified_element, qualified_underlying>(self.storage(0, 0));
   }
 }
 
