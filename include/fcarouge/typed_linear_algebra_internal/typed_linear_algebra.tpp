@@ -235,40 +235,55 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-template <std::size_t Row, std::size_t Column>
+template <std::size_t... Indexes>
 [[nodiscard]] constexpr decltype(auto)
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
-  requires(Row < rows) and (Column < columns)
+  requires((sizeof...(Indexes) == 2) and
+           (std::get<0>(std::tuple{Indexes...}) < rows) and
+           (std::get<1>(std::tuple{Indexes...}) < columns)) or
+          ((sizeof...(Indexes) == 1) and column_typed_matrix<typed_matrix> and
+           (std::get<0>(std::tuple{Indexes...}) < rows)) or
+          ((sizeof...(Indexes) == 1) and row_typed_matrix<typed_matrix> and
+           (std::get<1>(std::tuple{Indexes...}) < columns)) or
+          ((sizeof...(Indexes) == 0) and singleton_typed_matrix<typed_matrix>)
 {
-  // The returned element may not simply be forwarded like the type of self.
-  // Self may be a temporary. Evaluation of the temporary expression templates
-  // appears needed.
   using self_t = std::remove_reference_t<decltype(self)>;
-  using element_t = element<Row, Column>;
-  using qualified_element =
-      std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
   using qualified_underlying =
       std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
 
-  return cast<qualified_element, qualified_underlying>(
-      self.storage(std::size_t{Row}, std::size_t{Column}));
-}
+  if constexpr (sizeof...(Indexes) == 2) {
+    using element_t = element<std::get<0>(std::tuple{Indexes...}),
+                              std::get<1>(std::tuple{Indexes...})>;
+    using qualified_element =
+        std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
 
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-template <std::size_t Index>
-[[nodiscard]] constexpr decltype(auto)
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
-  requires column_typed_matrix<typed_matrix> and (Index < rows)
-{
-  using self_t = std::remove_reference_t<decltype(self)>;
-  using element_t = element<Index, 0>;
-  using qualified_element =
-      std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
-  using qualified_underlying =
-      std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
+    return cast<qualified_element, qualified_underlying>(
+        self.storage(std::get<0>(std::tuple{Indexes...}),
+                     std::get<1>(std::tuple{Indexes...})));
+  } else if constexpr (sizeof...(Indexes) == 1) {
+    if constexpr (rows == 1) {
+      using element_t = element<0, std::get<0>(std::tuple{Indexes...})>;
+      using qualified_element =
+          std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
 
-  return cast<qualified_element, qualified_underlying>(
-      self.storage(std::size_t{Index}));
+      return cast<qualified_element, qualified_underlying>(
+          self.storage(std::get<0>(std::tuple{Indexes...})));
+    } else {
+      using element_t = element<std::get<0>(std::tuple{Indexes...}), 0>;
+      using qualified_element =
+          std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
+
+      return cast<qualified_element, qualified_underlying>(
+          self.storage(std::size_t{std::get<0>(std::tuple{Indexes...})}));
+    }
+  } else {
+    using element_t = element<0, 0>;
+    using qualified_element =
+        std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
+
+    return cast<qualified_element, qualified_underlying>(
+        self.storage(std::size_t{0}, std::size_t{0}));
+  }
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>

@@ -314,22 +314,20 @@ public:
   //! @details Returns a strongly typed element at the specified location. A
   //! reference is returned for non-const calls.
   //!
-  //! @tparam Row Row index of the element to return.
-  //! @tparam Column Column index of the element to return.
-  template <std::size_t Row, std::size_t Column>
+  //! @tparam Indexes Position(s) of the element to return. Both row and column
+  //! indexes for any matrix, one index for one-dimension matrices, no index for
+  //! singleton matrices.
+  template <std::size_t... Indexes>
   [[nodiscard]] constexpr decltype(auto) at(this auto &&self)
-    requires(Row < rows) and (Column < columns);
-
-  //! @brief Access the specified element with compile-time bound checking.
-  //!
-  //! @details Returns a strongly typed element at the specified location. A
-  //! reference is returned for non-const calls. Applicable to one-dimension
-  //! matrix: column-vector.
-  //!
-  //! @tparam Index Position of the element to return.
-  template <std::size_t Index>
-  [[nodiscard]] constexpr decltype(auto) at(this auto &&self)
-    requires column_typed_matrix<typed_matrix> and (Index < rows);
+    requires((sizeof...(Indexes) == 2) and
+             (std::get<0>(std::tuple{Indexes...}) < rows) and
+             (std::get<1>(std::tuple{Indexes...}) < columns)) or
+            ((sizeof...(Indexes) == 1) and column_typed_matrix<typed_matrix> and
+             (std::get<0>(std::tuple{Indexes...}) < rows)) or
+            ((sizeof...(Indexes) == 1) and row_typed_matrix<typed_matrix> and
+             (std::get<1>(std::tuple{Indexes...}) < columns)) or
+            ((sizeof...(Indexes) == 0) and singleton_typed_matrix<typed_matrix>)
+  ;
 
   //! @brief Direct access to the underlying storage.
   //!
