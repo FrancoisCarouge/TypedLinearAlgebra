@@ -158,6 +158,9 @@ public:
   static inline constexpr std::size_t columns{
       std::tuple_size_v<column_indexes>};
 
+  //! @brief The number of dimensions in the matrix.
+  static inline constexpr std::size_t rank{tla::rank<rows, columns>};
+
   //! @}
 
   //! @name Public Member Functions
@@ -265,16 +268,15 @@ public:
   //! checking. Returns a strongly typed element at the specified location. A
   //! reference is returned for non-const calls.
   //!
+  //! @tparam Indexes Type(s) of the indexes. Use a template pack because some
+  //! compilers have internal compiler errors with a placeholder type specifier.
   //! @param self Explicit object parameter deducing this: not user specified.
-  //! @tparam indexes Position(s) of the element to return.
+  //! @param indexes Position(s) of the element to return.
+  template <typename... Indexes>
   [[nodiscard]] constexpr decltype(auto) operator[](this auto &&self,
-                                                    auto... indexes)
-    requires uniform_typed_matrix<typed_matrix> and
-             ((sizeof...(indexes) == 2) or
-              ((sizeof...(indexes) == 1) and
-               one_dimension_typed_matrix<typed_matrix>) or
-              ((sizeof...(indexes) == 0) and
-               singleton_typed_matrix<typed_matrix>));
+                                                    Indexes... indexes)
+    requires uniform_typed_matrix<typed_matrix> and (sizeof...(Indexes) >= rank)
+  ;
 
   //! @brief Access the specified element.
   //!
@@ -282,16 +284,15 @@ public:
   //! checking. Returns a strongly typed element at the specified location. A
   //! reference is returned for non-const calls.
   //!
+  //! @tparam Indexes Type(s) of the indexes. Use a template pack because some
+  //! compilers have internal compiler errors with a placeholder type specifier.
   //! @param self Explicit object parameter deducing this: not user specified.
-  //! @tparam indexes Position(s) of the element to return.
+  //! @param indexes Position(s) of the element to return.
+  template <typename... Indexes>
   [[nodiscard]] constexpr decltype(auto) operator()(this auto &&self,
-                                                    auto... indexes)
-    requires uniform_typed_matrix<typed_matrix> and
-             ((sizeof...(indexes) == 2) or
-              ((sizeof...(indexes) == 1) and
-               one_dimension_typed_matrix<typed_matrix>) or
-              ((sizeof...(indexes) == 0) and
-               singleton_typed_matrix<typed_matrix>));
+                                                    Indexes... indexes)
+    requires uniform_typed_matrix<typed_matrix> and (sizeof...(Indexes) >= rank)
+  ;
 
   //! @brief Access the specified element with compile-time bound checking.
   //!
@@ -303,15 +304,7 @@ public:
   //! singleton matrices.
   template <std::size_t... Indexes>
   [[nodiscard]] constexpr decltype(auto) at(this auto &&self)
-    requires((sizeof...(Indexes) == 2) and
-             (std::get<0>(std::tuple{Indexes...}) < rows) and
-             (std::get<1>(std::tuple{Indexes...}) < columns)) or
-            ((sizeof...(Indexes) == 1) and column_typed_matrix<typed_matrix> and
-             (std::get<0>(std::tuple{Indexes...}) < rows)) or
-            ((sizeof...(Indexes) == 1) and row_typed_matrix<typed_matrix> and
-             (std::get<1>(std::tuple{Indexes...}) < columns)) or
-            ((sizeof...(Indexes) == 0) and singleton_typed_matrix<typed_matrix>)
-  ;
+    requires(sizeof...(Indexes) >= rank);
 
   //! @brief Direct access to the underlying storage.
   //!

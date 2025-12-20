@@ -247,6 +247,18 @@ template <typename Type, std::size_t Size>
 using tuple_n_type = typename tupler<Type, Size>::type;
 
 using identity_index = std::tuple<std::identity>;
+
+template <std::size_t Rows, std::size_t Columns>
+constexpr std::size_t rank{[] {
+  if (Rows > 1 && Columns > 1) {
+    return 2;
+  }
+  if (Rows == 1 && Columns == 1) {
+    return 0;
+  }
+  return 1;
+}()};
+
 } // namespace fcarouge::typed_linear_algebra_internal
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_UTILITY_HPP
