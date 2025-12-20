@@ -162,52 +162,21 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+template <typename... Indexes>
 [[nodiscard]] constexpr decltype(auto)
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
-                                                            auto... indexes)
-  requires uniform_typed_matrix<typed_matrix> and
-           ((sizeof...(indexes) == 2) or
-            ((sizeof...(indexes) == 1) and
-             one_dimension_typed_matrix<typed_matrix>) or
-            ((sizeof...(indexes) == 0) and
-             singleton_typed_matrix<typed_matrix>))
+                                                            Indexes... indexes)
+  requires uniform_typed_matrix<typed_matrix> and (sizeof...(Indexes) >= rank)
 {
-  // Clang-18 ICE when the implementation is:
-  // return self.operator()(indexes...);
-
-  using self_t = std::remove_reference_t<decltype(self)>;
-  using qualified_underlying =
-      std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
-  using element_t = element<0, 0>;
-  using qualified_element =
-      std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
-
-  std::size_t i{0};
-  std::size_t j{0};
-
-  if constexpr (sizeof...(indexes) == 2) {
-    i = std::get<0>(std::tuple{indexes...});
-    j = std::get<1>(std::tuple{indexes...});
-  }
-  if constexpr ((sizeof...(indexes) == 1) && (columns == 1)) {
-    i = std::get<0>(std::tuple{indexes...});
-  }
-  if constexpr ((sizeof...(indexes) == 1) && (rows == 1)) {
-    j = std::get<0>(std::tuple{indexes...});
-  }
-  return cast<qualified_element, qualified_underlying>(self.storage(i, j));
+  return self.operator()(indexes...);
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+template <typename... Indexes>
 [[nodiscard]] constexpr decltype(auto)
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
-                                                            auto... indexes)
-  requires uniform_typed_matrix<typed_matrix> and
-           ((sizeof...(indexes) == 2) or
-            ((sizeof...(indexes) == 1) and
-             one_dimension_typed_matrix<typed_matrix>) or
-            ((sizeof...(indexes) == 0) and
-             singleton_typed_matrix<typed_matrix>))
+                                                            Indexes... indexes)
+  requires uniform_typed_matrix<typed_matrix> and (sizeof...(Indexes) >= rank)
 {
   using self_t = std::remove_reference_t<decltype(self)>;
   using qualified_underlying =
@@ -236,14 +205,7 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <std::size_t... Indexes>
 [[nodiscard]] constexpr decltype(auto)
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
-  requires((sizeof...(Indexes) == 2) and
-           (std::get<0>(std::tuple{Indexes...}) < rows) and
-           (std::get<1>(std::tuple{Indexes...}) < columns)) or
-          ((sizeof...(Indexes) == 1) and column_typed_matrix<typed_matrix> and
-           (std::get<0>(std::tuple{Indexes...}) < rows)) or
-          ((sizeof...(Indexes) == 1) and row_typed_matrix<typed_matrix> and
-           (std::get<1>(std::tuple{Indexes...}) < columns)) or
-          ((sizeof...(Indexes) == 0) and singleton_typed_matrix<typed_matrix>)
+  requires(sizeof...(Indexes) >= rank)
 {
   using self_t = std::remove_reference_t<decltype(self)>;
   using qualified_underlying =
