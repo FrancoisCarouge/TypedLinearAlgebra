@@ -1,7 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"md_paper_2mp__units__eigen.xhtml":[11],
-"md_paper_2mp__units__eigen.xhtml#abstract":[11,0],
 "md_paper_2mp__units__eigen.xhtml#aliases-1":[11,5,2],
 "md_paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis":[11,2],
 "md_paper_2mp__units__eigen.xhtml#autotoc_md3-typed-linear-algebra":[11,3],
