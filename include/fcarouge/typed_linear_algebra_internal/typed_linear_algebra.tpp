@@ -158,8 +158,7 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
     Matrix, RowIndexes, ColumnIndexes>::operator element<0, 0>(this auto &&self)
   requires singleton_typed_matrix<typed_matrix>
 {
-  return cast<element<0, 0>, underlying>(
-      self.storage(std::size_t{0}, std::size_t{0}));
+  return self.at();
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
