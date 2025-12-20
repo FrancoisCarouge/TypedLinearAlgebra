@@ -184,6 +184,35 @@ using row_vector =
       1. * A / mol};
   assert(std::format("{}", s1) == "1 A/mol");
 
+  // Ways to access the singleton matrix.
+  s1.at<0, 0>() = 23. * A / mol;
+  assert((s1.at<0, 0>() == 23. * A / mol));
+
+  s1(0, 0) = 22. * A / mol;
+  assert((s1(0, 0) == 22. * A / mol));
+
+  s1[0, 0] = 21. * A / mol;
+  assert((s1[0, 0] == 21. * A / mol));
+
+  s1.at<0>() = 13. * A / mol;
+  assert(s1.at<0>() == 13. * A / mol);
+
+  s1(0) = 12. * A / mol;
+  assert((s1(0) == 12. * A / mol));
+
+  s1[0] = 11. * A / mol;
+  assert((s1[0] == 11. * A / mol));
+
+  s1.at() = 1. * A / mol;
+  assert(s1.at() == 1. * A / mol);
+
+  // The singleton element can be accessed by conversion to its element type.
+  using e = decltype(s1)::element<0, 0>;
+  assert(e{s1} == 1. * A / mol);
+  // But the element type may not be the same as could be expected.
+  static_assert(
+      not std::is_same_v<decltype(A / mol), decltype(s1)::element<0, 0>>);
+
   // More forms of multiplication with a scalar factor.
   assert(std::format("{}", x5 * 2.) == "[[6 m], [4 m/s], [2 m/s²]]");
   assert(std::format("{}", 2. * x5) == "[[6 m], [4 m/s], [2 m/s²]]");
@@ -248,6 +277,7 @@ using row_vector =
   // Vector and uniform typed access.
   v0[1] = 3. * m / s;
   assert(v0[1] == 3. * m / s);
+
   v0(1) = 2. * m / s;
   assert(v0(1) == 2. * m / s);
 
@@ -272,8 +302,10 @@ using row_vector =
   using position_2d_uncertainty =
       matrix<std::tuple<position, position>, std::tuple<position, position>>;
   position_2d_uncertainty p0;
+
   p0[0, 1] = 9. * m2;
   assert((p0[0, 1] == 9. * m2));
+
   p0(0, 1) = 16. * m2;
   assert((p0(0, 1) == 16. * m2));
 
