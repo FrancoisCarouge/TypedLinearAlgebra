@@ -286,28 +286,21 @@ public:
 
   //! @brief Access the specified element.
   //!
-  //! @details Applicable to single-type matrix: uniform type of all elements.
-  //! Returns a reference to the element at the specified location.
+  //! @details Applicable to matrices with identical element types. No bound
+  //! checking. Returns a strongly typed element at the specified location. A
+  //! reference is returned for non-const calls.
   //!
   //! @param self Explicit object parameter deducing this: not user specified.
-  //! @param row Row index of the element to return.
-  //! @param column Column index of the element to return.
+  //! @tparam indexes Position(s) of the element to return.
   [[nodiscard]] constexpr decltype(auto)
-  operator()(this auto &&self, std::size_t row, std::size_t column)
-    requires uniform_typed_matrix<typed_matrix>;
-
-  //! @brief Access the specified element.
-  //!
-  //! @details Applicable to one-dimension matrix: column- or row-vector.
-  //! Applicable to single-type matrix: uniform type of all elements.
-  //! Returns a reference to the element at the specified location.
-  //!
-  //! @param self Explicit object parameter deducing this: not user specified.
-  //! @param index Position of the element to return.
-  [[nodiscard]] constexpr decltype(auto) operator()(this auto &&self,
-                                                    std::size_t index)
-    requires uniform_typed_matrix<typed_matrix> and
-             one_dimension_typed_matrix<typed_matrix>;
+  operator()(this auto &&self, [[maybe_unused]] auto... indexes)
+    // requires uniform_typed_matrix<typed_matrix> and
+    //          ((sizeof...(indexes) == 2) or
+    //           ((sizeof...(indexes) == 1) and
+    //            one_dimension_typed_matrix<typed_matrix>) or
+    //           ((sizeof...(indexes) == 0) and
+    //            singleton_typed_matrix<typed_matrix>))
+    ;
 
   //! @brief Access the specified element with compile-time bound checking.
   //!
