@@ -6,5 +6,6 @@ var utility_8hpp =
     [ "quotient", "utility_8hpp.xhtml#ad9aae459061728b7d7b2ae70196f2028", null ],
     [ "tuple_n_type", "utility_8hpp.xhtml#a4dd57b09634fe03c0fd59b866657ad86", null ],
     [ "underlying_t", "utility_8hpp.xhtml#a850ffce4253219f2b82c441cc4de8efc", null ],
-    [ "for_constexpr", "utility_8hpp.xhtml#a9a86c642ba2610ed4f92a3d84baf5b00", null ]
+    [ "for_constexpr", "utility_8hpp.xhtml#a9a86c642ba2610ed4f92a3d84baf5b00", null ],
+    [ "rank", "utility_8hpp.xhtml#aded6eca464a23970fc0a04a24a164209", null ]
 ];

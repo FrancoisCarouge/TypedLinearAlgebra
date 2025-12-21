@@ -11,7 +11,8 @@ var namespacefcarouge =
       [ "quotient", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#ad9aae459061728b7d7b2ae70196f2028", null ],
       [ "tuple_n_type", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a4dd57b09634fe03c0fd59b866657ad86", null ],
       [ "underlying_t", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a850ffce4253219f2b82c441cc4de8efc", null ],
-      [ "for_constexpr", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a9a86c642ba2610ed4f92a3d84baf5b00", null ]
+      [ "for_constexpr", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a9a86c642ba2610ed4f92a3d84baf5b00", null ],
+      [ "rank", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aded6eca464a23970fc0a04a24a164209", null ]
     ] ],
     [ "element_caster", "structfcarouge_1_1element__caster.xhtml", "structfcarouge_1_1element__caster" ],
     [ "element_caster< To &, From & >", "structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4.xhtml", "structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4" ],

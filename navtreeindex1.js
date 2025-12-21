@@ -1,7 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"md_paper_2mp__units__eigen.xhtml#aliases-1":[11,5,2],
-"md_paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis":[11,2],
 "md_paper_2mp__units__eigen.xhtml#autotoc_md3-typed-linear-algebra":[11,3],
 "md_paper_2mp__units__eigen.xhtml#autotoc_md4-case-study":[11,4],
 "md_paper_2mp__units__eigen.xhtml#autotoc_md5-library-reference":[11,5],
@@ -122,6 +120,7 @@ var NAVTREEINDEX1 =
 "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a850ffce4253219f2b82c441cc4de8efc":[16,0,1,4,5],
 "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a9a86c642ba2610ed4f92a3d84baf5b00":[16,0,1,4,6],
 "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#ad9aae459061728b7d7b2ae70196f2028":[16,0,1,4,3],
+"namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aded6eca464a23970fc0a04a24a164209":[16,0,1,4,7],
 "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#ae0dc82c981c93af3822ced28330e2071":[16,0,1,4,0],
 "namespacemembers.xhtml":[16,1,0],
 "namespacemembers_func.xhtml":[16,1,1],
@@ -188,6 +187,7 @@ var NAVTREEINDEX1 =
 "utility_8hpp.xhtml#a850ffce4253219f2b82c441cc4de8efc":[19,0,1,0,0,1,5],
 "utility_8hpp.xhtml#a9a86c642ba2610ed4f92a3d84baf5b00":[19,0,1,0,0,1,6],
 "utility_8hpp.xhtml#ad9aae459061728b7d7b2ae70196f2028":[19,0,1,0,0,1,3],
+"utility_8hpp.xhtml#aded6eca464a23970fc0a04a24a164209":[19,0,1,0,0,1,7],
 "utility_8hpp.xhtml#ae0dc82c981c93af3822ced28330e2071":[19,0,1,0,0,1,0],
 "utility_8hpp_source.xhtml":[19,0,1,0,0,1],
 "zero_8cpp.xhtml":[19,0,6,22],

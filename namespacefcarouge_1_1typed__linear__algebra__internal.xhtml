@@ -104,7 +104,8 @@ $(function(){initNavTree('namespacefcarouge_1_1typed__linear__algebra__internal.
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#concepts">Concepts</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">fcarouge::typed_linear_algebra_internal Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -172,6 +173,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a9a86c642ba2610ed4f92a3d84baf5b00" id="r_a9a86c642ba2610ed4f92a3d84baf5b00"><td class="memTemplParams" colspan="2">template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename Function &gt; </td></tr>
 <tr class="memitem:a9a86c642ba2610ed4f92a3d84baf5b00"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a9a86c642ba2610ed4f92a3d84baf5b00">for_constexpr</a> (Function &amp;&amp;function)</td></tr>
 <tr class="separator:a9a86c642ba2610ed4f92a3d84baf5b00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:aded6eca464a23970fc0a04a24a164209" id="r_aded6eca464a23970fc0a04a24a164209"><td class="memTemplParams" colspan="2">template&lt;std::size_t Rows, std::size_t Columns&gt; </td></tr>
+<tr class="memitem:aded6eca464a23970fc0a04a24a164209"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aded6eca464a23970fc0a04a24a164209">rank</a></td></tr>
+<tr class="separator:aded6eca464a23970fc0a04a24a164209"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="ae0dc82c981c93af3822ced28330e2071" name="ae0dc82c981c93af3822ced28330e2071"></a>
@@ -346,6 +353,51 @@ template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename 
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra__internal_a9a86c642ba2610ed4f92a3d84baf5b00_icgraph.svg" width="396" height="98"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="aded6eca464a23970fc0a04a24a164209" name="aded6eca464a23970fc0a04a24a164209"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aded6eca464a23970fc0a04a24a164209">&#9670;&#160;</a></span>rank</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t Rows, std::size_t Columns&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t fcarouge::typed_linear_algebra_internal::rank</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
+<div class="line">  <span class="keywordflow">if</span> (Rows &gt; 1 &amp;&amp; Columns &gt; 1) {</div>
+<div class="line">    <span class="keywordflow">return</span> 2;</div>
+<div class="line">  }</div>
+<div class="line">  <span class="keywordflow">if</span> (Rows == 1 &amp;&amp; Columns == 1) {</div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">  }</div>
+<div class="line">  <span class="keywordflow">return</span> 1;</div>
+<div class="line">}()}</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00252">252</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  252</span>                        {[] {</div>
+<div class="line"><span class="lineno">  253</span>  <span class="keywordflow">if</span> (Rows &gt; 1 &amp;&amp; Columns &gt; 1) {</div>
+<div class="line"><span class="lineno">  254</span>    <span class="keywordflow">return</span> 2;</div>
+<div class="line"><span class="lineno">  255</span>  }</div>
+<div class="line"><span class="lineno">  256</span>  <span class="keywordflow">if</span> (Rows == 1 &amp;&amp; Columns == 1) {</div>
+<div class="line"><span class="lineno">  257</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  258</span>  }</div>
+<div class="line"><span class="lineno">  259</span>  <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  260</span>}()};</div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

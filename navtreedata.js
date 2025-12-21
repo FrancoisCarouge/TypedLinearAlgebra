@@ -145,7 +145,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "addition_8cpp.xhtml",
-"md_paper_2mp__units__eigen.xhtml#aliases-1"
+"md_paper_2mp__units__eigen.xhtml#autotoc_md3-typed-linear-algebra"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
