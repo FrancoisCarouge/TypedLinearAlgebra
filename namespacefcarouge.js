@@ -10,7 +10,7 @@ var namespacefcarouge =
       [ "product", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a174364178a20af0590ffe5c549e13e66", null ],
       [ "quotient", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#ad9aae459061728b7d7b2ae70196f2028", null ],
       [ "tuple_n_type", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a4dd57b09634fe03c0fd59b866657ad86", null ],
-      [ "underlying_t", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a850ffce4253219f2b82c441cc4de8efc", null ],
+      [ "underlying_t", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a72e4ccaf08999b259f656412682b37dd", null ],
       [ "for_constexpr", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a9a86c642ba2610ed4f92a3d84baf5b00", null ],
       [ "rank", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aded6eca464a23970fc0a04a24a164209", null ]
     ] ],
@@ -27,6 +27,8 @@ var namespacefcarouge =
     [ "same_shape", "conceptfcarouge_1_1same__shape.xhtml", null ],
     [ "column_vector", "namespacefcarouge.xhtml#ad06bb441aa2dcec149c52de0c297a967", null ],
     [ "matrix", "namespacefcarouge.xhtml#a2d5d861aa25651be3549e278fd1e21e6", null ],
+    [ "matrix0", "namespacefcarouge.xhtml#a3b972ee10c035046a3dfc868c04c1f34", null ],
+    [ "matrix1", "namespacefcarouge.xhtml#a91b71a78a046ec556c54d9448f680a93", null ],
     [ "typed_column_vector", "namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58", null ],
     [ "typed_row_vector", "namespacefcarouge.xhtml#a7558e7ccc03031fb7de678cf4977e1bf", null ],
     [ "make_typed_matrix", "namespacefcarouge.xhtml#a4073b31d56e98e110bf4a993ed190c80", null ],

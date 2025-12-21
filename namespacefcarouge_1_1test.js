@@ -67,6 +67,9 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{operator_equality.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__equality_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__equality_8cpp_03.xhtml#aa4f5c1315941f0ebe0e5ae429b293796", null ]
     ] ],
+    [ "anonymous_namespace{underlying.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02underlying_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02underlying_8cpp_03.xhtml#acb228faaa3d0b7d931e91d22176726ba", null ]
+    ] ],
     [ "anonymous_namespace{zero.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02zero_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02zero_8cpp_03.xhtml#a4299f6c575a03106b5b8afaf327ba95e", null ]
     ] ]

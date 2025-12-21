@@ -103,7 +103,8 @@ $(function(){initNavTree('namespacefcarouge.xhtml',''); initResizable(true); });
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#concepts">Concepts</a>  </div>
+<a href="#concepts">Concepts</a> &#124;
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle"><div class="title">fcarouge Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -165,6 +166,12 @@ Concepts</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:a3b972ee10c035046a3dfc868c04c1f34" id="r_a3b972ee10c035046a3dfc868c04c1f34"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1&gt; </td></tr>
+<tr class="memitem:a3b972ee10c035046a3dfc868c04c1f34"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a3b972ee10c035046a3dfc868c04c1f34">matrix0</a></td></tr>
+<tr class="separator:a3b972ee10c035046a3dfc868c04c1f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91b71a78a046ec556c54d9448f680a93" id="r_a91b71a78a046ec556c54d9448f680a93"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1&gt; </td></tr>
+<tr class="memitem:a91b71a78a046ec556c54d9448f680a93"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a91b71a78a046ec556c54d9448f680a93">matrix1</a></td></tr>
+<tr class="separator:a91b71a78a046ec556c54d9448f680a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Types</div></td></tr>
 <tr class="memitem:a7558e7ccc03031fb7de678cf4977e1bf" id="r_a7558e7ccc03031fb7de678cf4977e1bf"><td class="memTemplParams" colspan="2">template&lt;typename Matrix , typename... ColumnIndexes&gt; </td></tr>
 <tr class="memitem:a7558e7ccc03031fb7de678cf4977e1bf"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7558e7ccc03031fb7de678cf4977e1bf">typed_row_vector</a></td></tr>
@@ -254,6 +261,50 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 <p>Scalar type matrix with <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations. </p>
 
 <p class="definition">Definition at line <a class="el" href="eigexed_2fcarouge_2linalg_8hpp_source.xhtml#l00050">50</a> of file <a class="el" href="eigexed_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a3b972ee10c035046a3dfc868c04c1f34" name="a3b972ee10c035046a3dfc868c04c1f34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b972ee10c035046a3dfc868c04c1f34">&#9670;&#160;</a></span>matrix0</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a3b972ee10c035046a3dfc868c04c1f34">fcarouge::matrix0</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line">    typed_matrix&lt;eigen::matrix&lt;Type, Row, Column&gt;,</div>
+<div class="line">                 typed_linear_algebra_internal::tuple_n_type&lt;Type, Row&gt;,</div>
+<div class="line">                 typed_linear_algebra_internal::tuple_n_type&lt;Type, Column&gt;&gt;</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="nested__typed__eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00046">46</a> of file <a class="el" href="nested__typed__eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a91b71a78a046ec556c54d9448f680a93" name="a91b71a78a046ec556c54d9448f680a93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91b71a78a046ec556c54d9448f680a93">&#9670;&#160;</a></span>matrix1</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a91b71a78a046ec556c54d9448f680a93">fcarouge::matrix1</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line">    typed_matrix&lt;matrix0&lt;Type, Row, Column&gt;,</div>
+<div class="line">                 typed_linear_algebra_internal::tuple_n_type&lt;Type, Row&gt;,</div>
+<div class="line">                 typed_linear_algebra_internal::tuple_n_type&lt;Type, Column&gt;&gt;</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="nested__typed__eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00052">52</a> of file <a class="el" href="nested__typed__eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 
 </div>
 </div>
