@@ -260,7 +260,7 @@ $(function(){initNavTree('typed__linear__algebra_8hpp_source.xhtml',''); initRes
 <div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    requires <a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix</a>&lt;<a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&gt; and (sizeof...(Indexes) &gt;= <a class="code hl_variable" href="classfcarouge_1_1typed__matrix.xhtml#a324a10e482724dce12511b5ea8075959">rank</a>)</div>
 <div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>  ;</div>
 <div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span> </div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>  template &lt;std::<span class="keywordtype">size_t</span>... Indexes&gt;</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>  template &lt;auto... Indexes&gt;</div>
 <div class="line"><a id="l00306" name="l00306"></a><span class="lineno"><a class="line" href="classfcarouge_1_1typed__matrix.xhtml#a5d3f12d8a8fd48799ad6adadaec7b9b7">  306</a></span>  [[nodiscard]] constexpr decltype(auto) <a class="code hl_function" href="classfcarouge_1_1typed__matrix.xhtml#a5d3f12d8a8fd48799ad6adadaec7b9b7">at</a>(this auto &amp;&amp;self)</div>
 <div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    requires(sizeof...(Indexes) &gt;= <a class="code hl_variable" href="classfcarouge_1_1typed__matrix.xhtml#a324a10e482724dce12511b5ea8075959">rank</a>);</div>
 <div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span> </div>

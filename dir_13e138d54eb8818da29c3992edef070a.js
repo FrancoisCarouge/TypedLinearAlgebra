@@ -20,6 +20,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "multiplication_arithmetic.cpp", "multiplication__arithmetic_8cpp.xhtml", "multiplication__arithmetic_8cpp" ],
     [ "multiplication_rxc.cpp", "multiplication__rxc_8cpp.xhtml", "multiplication__rxc_8cpp" ],
     [ "multiplication_sxc.cpp", "multiplication__sxc_8cpp.xhtml", "multiplication__sxc_8cpp" ],
+    [ "nested.cpp", "nested_8cpp.xhtml", "nested_8cpp" ],
     [ "operator_bracket.cpp", "operator__bracket_8cpp.xhtml", "operator__bracket_8cpp" ],
     [ "operator_equality.cpp", "operator__equality_8cpp.xhtml", "operator__equality_8cpp" ],
     [ "underlying.cpp", "underlying_8cpp.xhtml", "underlying_8cpp" ],

@@ -26,9 +26,10 @@ var searchData=
   ['fcarouge_3a_3atest_3a_3aanonymous_5fnamespace_7bmultiplication_5farithmetic_2ecpp_7d_23',['anonymous_namespace{multiplication_arithmetic.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02multiplication__arithmetic_8cpp_03.xhtml',1,'fcarouge::test']]],
   ['fcarouge_3a_3atest_3a_3aanonymous_5fnamespace_7bmultiplication_5frxc_2ecpp_7d_24',['anonymous_namespace{multiplication_rxc.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02multiplication__rxc_8cpp_03.xhtml',1,'fcarouge::test']]],
   ['fcarouge_3a_3atest_3a_3aanonymous_5fnamespace_7bmultiplication_5fsxc_2ecpp_7d_25',['anonymous_namespace{multiplication_sxc.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02multiplication__sxc_8cpp_03.xhtml',1,'fcarouge::test']]],
-  ['fcarouge_3a_3atest_3a_3aanonymous_5fnamespace_7boperator_5fbracket_2ecpp_7d_26',['anonymous_namespace{operator_bracket.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__bracket_8cpp_03.xhtml',1,'fcarouge::test']]],
-  ['fcarouge_3a_3atest_3a_3aanonymous_5fnamespace_7boperator_5fequality_2ecpp_7d_27',['anonymous_namespace{operator_equality.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__equality_8cpp_03.xhtml',1,'fcarouge::test']]],
-  ['fcarouge_3a_3atest_3a_3aanonymous_5fnamespace_7bunderlying_2ecpp_7d_28',['anonymous_namespace{underlying.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02underlying_8cpp_03.xhtml',1,'fcarouge::test']]],
-  ['fcarouge_3a_3atest_3a_3aanonymous_5fnamespace_7bzero_2ecpp_7d_29',['anonymous_namespace{zero.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02zero_8cpp_03.xhtml',1,'fcarouge::test']]],
-  ['fcarouge_3a_3atyped_5flinear_5falgebra_5finternal_30',['typed_linear_algebra_internal',['../namespacefcarouge_1_1typed__linear__algebra__internal.xhtml',1,'fcarouge']]]
+  ['fcarouge_3a_3atest_3a_3aanonymous_5fnamespace_7bnested_2ecpp_7d_26',['anonymous_namespace{nested.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02nested_8cpp_03.xhtml',1,'fcarouge::test']]],
+  ['fcarouge_3a_3atest_3a_3aanonymous_5fnamespace_7boperator_5fbracket_2ecpp_7d_27',['anonymous_namespace{operator_bracket.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__bracket_8cpp_03.xhtml',1,'fcarouge::test']]],
+  ['fcarouge_3a_3atest_3a_3aanonymous_5fnamespace_7boperator_5fequality_2ecpp_7d_28',['anonymous_namespace{operator_equality.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__equality_8cpp_03.xhtml',1,'fcarouge::test']]],
+  ['fcarouge_3a_3atest_3a_3aanonymous_5fnamespace_7bunderlying_2ecpp_7d_29',['anonymous_namespace{underlying.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02underlying_8cpp_03.xhtml',1,'fcarouge::test']]],
+  ['fcarouge_3a_3atest_3a_3aanonymous_5fnamespace_7bzero_2ecpp_7d_30',['anonymous_namespace{zero.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02zero_8cpp_03.xhtml',1,'fcarouge::test']]],
+  ['fcarouge_3a_3atyped_5flinear_5falgebra_5finternal_31',['typed_linear_algebra_internal',['../namespacefcarouge_1_1typed__linear__algebra__internal.xhtml',1,'fcarouge']]]
 ];

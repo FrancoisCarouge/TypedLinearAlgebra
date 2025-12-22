@@ -221,7 +221,7 @@ requires uniform_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__mat
 <tr class="memitem:a15f0d8c532eed8687ecb483cea1b5ba2"><td class="memTemplItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a15f0d8c532eed8687ecb483cea1b5ba2">operator()</a> (this auto &amp;&amp;self, Indexes... indexes)</td></tr>
 <tr class="memdesc:a15f0d8c532eed8687ecb483cea1b5ba2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the specified element.  <br /></td></tr>
 <tr class="separator:a15f0d8c532eed8687ecb483cea1b5ba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d3f12d8a8fd48799ad6adadaec7b9b7" id="r_a5d3f12d8a8fd48799ad6adadaec7b9b7"><td class="memTemplParams" colspan="2">template&lt;std::size_t... Indexes&gt; <br />
+<tr class="memitem:a5d3f12d8a8fd48799ad6adadaec7b9b7" id="r_a5d3f12d8a8fd48799ad6adadaec7b9b7"><td class="memTemplParams" colspan="2">template&lt;auto... Indexes&gt; <br />
 requires (sizeof...(Indexes) &gt;= <a class="el" href="#a324a10e482724dce12511b5ea8075959">rank</a>)</td></tr>
 <tr class="memitem:a5d3f12d8a8fd48799ad6adadaec7b9b7"><td class="memTemplItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a5d3f12d8a8fd48799ad6adadaec7b9b7">at</a> (this auto &amp;&amp;self)</td></tr>
 <tr class="memdesc:a5d3f12d8a8fd48799ad6adadaec7b9b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the specified element with compile-time bound checking.  <br /></td></tr>
@@ -633,7 +633,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 <div class="memtemplate">
 template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
 <div class="memtemplate">
-template&lt;std::size_t... Indexes&gt; <br />
+template&lt;auto... Indexes&gt; <br />
 requires (sizeof...(Indexes) &gt;= <a class="el" href="#a324a10e482724dce12511b5ea8075959">rank</a>)</div>
 <table class="mlabels">
   <tr>

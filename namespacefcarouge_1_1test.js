@@ -61,6 +61,9 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{multiplication_sxc.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02multiplication__sxc_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02multiplication__sxc_8cpp_03.xhtml#abc8a545ea253c8527bde70a912d1d036", null ]
     ] ],
+    [ "anonymous_namespace{nested.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02nested_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02nested_8cpp_03.xhtml#addfcaf2a189be0c460e25bc5a21594e5", null ]
+    ] ],
     [ "anonymous_namespace{operator_bracket.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__bracket_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__bracket_8cpp_03.xhtml#a387809abbabd32ccf146eb51b8ce07d1", null ]
     ] ],
