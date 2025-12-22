@@ -302,7 +302,7 @@ public:
   //! @tparam Indexes Position(s) of the element to return. Both row and column
   //! indexes for any matrix, one index for one-dimension matrices, no index for
   //! singleton matrices.
-  template <std::size_t... Indexes>
+  template <auto... Indexes>
   [[nodiscard]] constexpr decltype(auto) at(this auto &&self)
     requires(sizeof...(Indexes) >= rank);
 
