@@ -378,7 +378,7 @@ using row_vector =
 
   using output_model = row_vector<quantity<one>, quantity<s>, quantity<s2>>;
   output_model h;
-  h.at<0, 0>() = 1.;
+  h.at<0>() = 1.;
   std::println("H: {}", h);
   // H: [1, 0 s, 0 s²]
 
