@@ -510,7 +510,7 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">  378</span> </div>
 <div class="line"><span class="lineno">  379</span>  <span class="keyword">using </span>output_model = row_vector&lt;quantity&lt;one&gt;, quantity&lt;s&gt;, quantity&lt;s2&gt;&gt;;</div>
 <div class="line"><span class="lineno">  380</span>  output_model h;</div>
-<div class="line"><span class="lineno">  381</span>  h.at&lt;0, 0&gt;() = 1.;</div>
+<div class="line"><span class="lineno">  381</span>  h.at&lt;0&gt;() = 1.;</div>
 <div class="line"><span class="lineno">  382</span>  std::println(<span class="stringliteral">&quot;H: {}&quot;</span>, h);</div>
 <div class="line"><span class="lineno">  383</span>  <span class="comment">// H: [1, 0 s, 0 s²]</span></div>
 <div class="line"><span class="lineno">  384</span> </div>
