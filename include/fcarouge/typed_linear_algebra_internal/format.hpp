@@ -109,7 +109,7 @@ public:
           }
 
           format_context.advance_to(std::format_to(
-              format_context.out(), "{}", value.template at<0, position>()));
+              format_context.out(), "{}", value.template at<position>()));
         });
 
     format_context.advance_to(std::format_to(format_context.out(), "]"));
@@ -125,7 +125,7 @@ public:
         matrix>
   {
     format_context.advance_to(
-        std::format_to(format_context.out(), "{}", value.template at<0>()));
+        std::format_to(format_context.out(), "{}", value.at()));
 
     return format_context.out();
   }
