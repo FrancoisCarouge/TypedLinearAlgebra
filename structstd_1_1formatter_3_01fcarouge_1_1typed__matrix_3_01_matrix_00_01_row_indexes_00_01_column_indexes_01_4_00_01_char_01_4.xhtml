@@ -306,7 +306,7 @@ requires fcarouge::typed_linear_algebra_internal::row_typed_matrix&lt;<a class="
 <div class="line"><span class="lineno">  109</span>          }</div>
 <div class="line"><span class="lineno">  110</span> </div>
 <div class="line"><span class="lineno">  111</span>          format_context.advance_to(std::format_to(</div>
-<div class="line"><span class="lineno">  112</span>              format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>, value.template at&lt;0, position&gt;()));</div>
+<div class="line"><span class="lineno">  112</span>              format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>, value.template at&lt;position&gt;()));</div>
 <div class="line"><span class="lineno">  113</span>        });</div>
 <div class="line"><span class="lineno">  114</span> </div>
 <div class="line"><span class="lineno">  115</span>    format_context.advance_to(std::format_to(format_context.out(), <span class="stringliteral">&quot;]&quot;</span>));</div>
@@ -361,7 +361,7 @@ requires fcarouge::typed_linear_algebra_internal::singleton_typed_matrix&lt; <a 
 <p class="definition">Definition at line <a class="el" href="format_8hpp_source.xhtml#l00122">122</a> of file <a class="el" href="format_8hpp_source.xhtml">format.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  126</span>  {</div>
 <div class="line"><span class="lineno">  127</span>    format_context.advance_to(</div>
-<div class="line"><span class="lineno">  128</span>        std::format_to(format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>, value.template at&lt;0&gt;()));</div>
+<div class="line"><span class="lineno">  128</span>        std::format_to(format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>, value.at()));</div>
 <div class="line"><span class="lineno">  129</span> </div>
 <div class="line"><span class="lineno">  130</span>    <span class="keywordflow">return</span> format_context.out();</div>
 <div class="line"><span class="lineno">  131</span>  }</div>

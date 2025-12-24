@@ -215,7 +215,7 @@ $(function(){initNavTree('format_8hpp_source.xhtml',''); initResizable(true); })
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>          }</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>          format_context.advance_to(std::format_to(</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>              format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>, value.template at&lt;0, position&gt;()));</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>              format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>, value.template at&lt;position&gt;()));</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        });</div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    format_context.advance_to(std::format_to(format_context.out(), <span class="stringliteral">&quot;]&quot;</span>));</div>
@@ -233,7 +233,7 @@ $(function(){initNavTree('format_8hpp_source.xhtml',''); initResizable(true); })
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a>&gt;</div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  {</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    format_context.advance_to(</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        std::format_to(format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>, value.template at&lt;0&gt;()));</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        std::format_to(format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>, value.at()));</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordflow">return</span> format_context.out();</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  }</div>
