@@ -42,12 +42,13 @@ jobs:
           --enable=all \
           --error-exitcode=1 \
           --suppress=missingIncludeSystem \
-          --suppress=unusedFunction: include/fcarouge/typed_linear_algebra_internal/format.hpp:58 \
           --suppress=noExplicitConstructor: include/fcarouge/typed_linear_algebra.hpp \
+          --suppress=unusedFunction: include/fcarouge/typed_linear_algebra_internal/format.hpp:58 \
           --verbose \
           -I include \
           -I support/eigen \
           -I support/eigexed \
+          -I support/kokkos \
           -I support/main \
           -I support/mp_units \
           -I support/nested_typed_eigen \
