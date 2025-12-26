@@ -111,21 +111,23 @@ $(function(){initNavTree('structfcarouge_1_1element__caster_3_01_to_01_6_00_01_f
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4__coll__graph.svg" width="167" height="92"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4__coll__graph.svg" width="167" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a69491ceb57f6465f66859118575f4502" id="r_a69491ceb57f6465f66859118575f4502"><td class="memItemLeft" align="right" valign="top">constexpr To &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69491ceb57f6465f66859118575f4502">operator()</a> (From &amp;value) const</td></tr>
 <tr class="separator:a69491ceb57f6465f66859118575f4502"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69491ceb57f6465f66859118575f4502" id="r_a69491ceb57f6465f66859118575f4502"><td class="memItemLeft" align="right" valign="top">constexpr To &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69491ceb57f6465f66859118575f4502">operator()</a> (From &amp;value) const</td></tr>
+<tr class="separator:a69491ceb57f6465f66859118575f4502"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;mp_units::Quantity To, typename From&gt;<br />
 struct fcarouge::element_caster&lt; To &amp;, From &amp; &gt;</div>
-<p class="definition">Definition at line <a class="el" href="mp__units__eigen_8cpp_source.xhtml#l00075">75</a> of file <a class="el" href="mp__units__eigen_8cpp_source.xhtml">mp_units_eigen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mp__units__std_8cpp_source.xhtml#l00077">77</a> of file <a class="el" href="mp__units__std_8cpp_source.xhtml">mp_units_std.cpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a69491ceb57f6465f66859118575f4502" name="a69491ceb57f6465f66859118575f4502"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69491ceb57f6465f66859118575f4502">&#9670;&#160;</a></span>operator()()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a69491ceb57f6465f66859118575f4502">&#9670;&#160;</a></span>operator()() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -156,8 +158,41 @@ template&lt;mp_units::Quantity To, typename From &gt; </div>
 </div><!-- fragment -->
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a id="a69491ceb57f6465f66859118575f4502" name="a69491ceb57f6465f66859118575f4502"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69491ceb57f6465f66859118575f4502">&#9670;&#160;</a></span>operator()() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;mp_units::Quantity To, typename From &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">To &amp; <a class="el" href="structfcarouge_1_1element__caster.xhtml">fcarouge::element_caster</a>&lt; To &amp;, From &amp; &gt;::operator() </td>
+          <td>(</td>
+          <td class="paramtype">From &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="mp__units__std_8cpp_source.xhtml#l00078">78</a> of file <a class="el" href="mp__units__std_8cpp_source.xhtml">mp_units_std.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   78</span>                                                            {</div>
+<div class="line"><span class="lineno">   79</span>    <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span>To &amp;<span class="keyword">&gt;</span>(value);</div>
+<div class="line"><span class="lineno">   80</span>  }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li>/github/workspace/sample/<a class="el" href="mp__units__eigen_8cpp_source.xhtml">mp_units_eigen.cpp</a></li>
+<li>/github/workspace/sample/<a class="el" href="mp__units__std_8cpp_source.xhtml">mp_units_std.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

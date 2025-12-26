@@ -172,22 +172,18 @@ $(function(){initNavTree('mp__units__eigen_8cpp_source.xhtml',''); initResizable
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>};</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keyword">template</span> &lt;mp_units::Quantity To, <span class="keyword">typename</span> From&gt;</div>
-<div class="foldopen" id="foldopen00075" data-start="{" data-end="};">
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4.xhtml">   75</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structfcarouge_1_1element__caster.xhtml">element_caster</a>&lt;To &amp;, From &amp;&gt; {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">struct </span>element_caster&lt;To &amp;, From &amp;&gt; {</div>
 <div class="foldopen" id="foldopen00076" data-start="{" data-end="}">
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4.xhtml#a69491ceb57f6465f66859118575f4502">   76</a></span>  [[nodiscard]] <span class="keyword">constexpr</span> To &amp;<a class="code hl_function" href="structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4.xhtml#a69491ceb57f6465f66859118575f4502">operator()</a>(From &amp;value)<span class="keyword"> const </span>{</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span>To &amp;<span class="keyword">&gt;</span>(value);</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  }</div>
 </div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>};</div>
-</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> To, mp_units::Reference From&gt;</div>
-<div class="foldopen" id="foldopen00082" data-start="{" data-end="};">
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml">   82</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structfcarouge_1_1element__caster.xhtml">element_caster</a>&lt;To, From&gt; {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">struct </span>element_caster&lt;To, From&gt; {</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml#a2d0491292ccc4e7e2ccc449ecdd3c48a">   83</a></span>  [[nodiscard]] <span class="keyword">constexpr</span> To <a class="code hl_function" href="structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml#a2d0491292ccc4e7e2ccc449ecdd3c48a">operator()</a>(From)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> 1.; }</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>};</div>
-</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
 <div class="foldopen" id="foldopen00086" data-start="{" data-end="}">
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample.xhtml">   86</a></span><span class="keyword">namespace </span>sample {</div>
@@ -536,7 +532,6 @@ $(function(){initNavTree('mp__units__eigen_8cpp_source.xhtml',''); initResizable
 <div class="ttc" id="astructfcarouge_1_1element__caster_3_01_to_00_01_from_01_4_xhtml_a2d0491292ccc4e7e2ccc449ecdd3c48a"><div class="ttname"><a href="structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml#a2d0491292ccc4e7e2ccc449ecdd3c48a">fcarouge::element_caster&lt; To, From &gt;::operator()</a></div><div class="ttdeci">constexpr To operator()(From) const</div><div class="ttdef"><b>Definition</b> <a href="#l00083">mp_units_eigen.cpp:83</a></div></div>
 <div class="ttc" id="astructfcarouge_1_1element__caster_3_01_to_00_01_from_01_4_xhtml_a71f73c9fbddaa49c74331c740a292d8b"><div class="ttname"><a href="structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml#a71f73c9fbddaa49c74331c740a292d8b">fcarouge::element_caster&lt; To, From &gt;::operator()</a></div><div class="ttdeci">constexpr To operator()(From value) const</div><div class="ttdef"><b>Definition</b> <a href="#l00062">mp_units_eigen.cpp:62</a></div></div>
 <div class="ttc" id="astructfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4_xhtml_a69491ceb57f6465f66859118575f4502"><div class="ttname"><a href="structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4.xhtml#a69491ceb57f6465f66859118575f4502">fcarouge::element_caster&lt; To &amp;, From &amp; &gt;::operator()</a></div><div class="ttdeci">constexpr To &amp; operator()(From &amp;value) const</div><div class="ttdef"><b>Definition</b> <a href="#l00076">mp_units_eigen.cpp:76</a></div></div>
-<div class="ttc" id="astructfcarouge_1_1element__caster_xhtml"><div class="ttname"><a href="structfcarouge_1_1element__caster.xhtml">fcarouge::element_caster</a></div><div class="ttdoc">Typed matrix element conversions customization point.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__forward_8hpp_source.xhtml#l00044">typed_linear_algebra_forward.hpp:44</a></div></div>
 <div class="ttc" id="atyped__linear__algebra_8hpp_xhtml"><div class="ttname"><a href="typed__linear__algebra_8hpp.xhtml">typed_linear_algebra.hpp</a></div><div class="ttdoc">Typed linear algebra implementation.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
