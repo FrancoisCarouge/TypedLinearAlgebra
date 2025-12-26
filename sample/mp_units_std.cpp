@@ -142,7 +142,6 @@ constexpr std::size_t extents_size{[] {
   using mp_units::si::unit_symbols::s;
   using mp_units::si::unit_symbols::s2;
   using mp_units::si::unit_symbols::s3;
-  // constexpr auto s4{pow<4>(s)};
   using mp_units::one;
   using mp_units::si::unit_symbols::A;
   using mp_units::si::unit_symbols::mol;
@@ -173,14 +172,6 @@ constexpr std::size_t extents_size{[] {
   // Multiplication with a scalar factor.
   scale(3., x0);
   assert(std::format("{}", x0) == "[[9 m], [7.5 m/s], [3 m/s²]]");
-
-  // // Division with a scalar divisor.
-  // state x2{x1 / 2.};
-  // assert(std::format("{}", x2) == "[[4.5 m], [3.75 m/s], [1.5 m/s²]]");
-
-  // // Substraction of two vectors of the same types.
-  // state x3{x2 - x0};
-  // assert(std::format("{}", x3) == "[[1.5 m], [1.25 m/s], [0.5 m/s²]]");
 
   std::vector v4(extents_size<column_extents<3>>, representation{});
   std::mdspan s4{v4.data(), column_extents<3>{}};
