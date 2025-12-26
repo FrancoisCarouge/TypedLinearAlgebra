@@ -93,22 +93,6 @@ concept singleton_typed_matrix = tla::singleton_typed_matrix<Type>;
 template <typename Lhs, typename Rhs>
 concept same_shape = tla::same_shape<Lhs, Rhs>;
 
-//! @brief Concept of a copy constructible typed matrix from another.
-template <typename Lhs, typename Rhs>
-concept copy_constructible_from = tla::copy_constructible_from<Lhs, Rhs>;
-
-//! @brief Concept of an assignable typed matrix from another.
-template <typename Lhs, typename Rhs>
-concept assignable_from = tla::assignable_from<Lhs, Rhs>;
-
-//! @brief Concept of a move constructible typed matrix from another.
-template <typename Lhs, typename Rhs>
-concept move_constructible_from = tla::move_constructible_from<Lhs, Rhs>;
-
-//! @brief Concept of a movable typed matrix from another.
-template <typename Lhs, typename Rhs>
-concept movable_from = tla::movable_from<Lhs, Rhs>;
-
 //! @}
 
 //! @name Types
