@@ -188,29 +188,32 @@ using row_vector =
   s1.at<0, 0>() = 23. * A / mol;
   assert((s1.at<0, 0>() == 23. * A / mol));
 
-  s1(0, 0) = 22. * A / mol;
-  assert((s1(0, 0) == 22. * A / mol));
+  s1[0, 0] = 22. * A / mol;
+  assert((s1[0, 0] == 22. * A / mol));
 
-  s1[0, 0] = 21. * A / mol;
-  assert((s1[0, 0] == 21. * A / mol));
+  s1(0, 0) = 21. * A / mol;
+  assert((s1(0, 0) == 21. * A / mol));
 
   s1.at<0>() = 13. * A / mol;
   assert(s1.at<0>() == 13. * A / mol);
 
-  s1(0) = 12. * A / mol;
-  assert((s1(0) == 12. * A / mol));
+  s1[0] = 12. * A / mol;
+  assert((s1[0] == 12. * A / mol));
 
-  s1[0] = 11. * A / mol;
-  assert((s1[0] == 11. * A / mol));
+  s1(0) = 11. * A / mol;
+  assert((s1(0) == 11. * A / mol));
 
   s1.at() = 3. * A / mol;
   assert(s1.at() == 3. * A / mol);
 
-  s1() = 2. * A / mol;
-  assert(s1() == 2. * A / mol);
+#ifndef _MSC_VER
+  // https://developercommunity.visualstudio.com/t/C23-Subscript-Operator-Internal-Comp/11021748
+  s1[] = 2. * A / mol;
+  assert(s1[] == 2. * A / mol);
+#endif
 
-  s1[] = 1. * A / mol;
-  assert(s1[] == 1. * A / mol);
+  s1() = 1. * A / mol;
+  assert(s1() == 1. * A / mol);
 
   // The singleton element can be accessed by conversion to its element type.
   using e = decltype(s1)::element<0, 0>;
