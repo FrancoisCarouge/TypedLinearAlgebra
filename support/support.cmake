@@ -41,12 +41,6 @@ function(test TEST_NAME)
                         "${multiValueArgs}")
 
   foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
-    if((CMAKE_CXX_COMPILER_ID STREQUAL "MSVC") AND (BACKEND STREQUAL "quantity"
-                                                   ))
-      message(STATUS "${TEST_NAME} not yet compatible with MSVC/mp-units.")
-      continue()
-    endif()
-
     add_executable(typed_linear_algebra_test_${BACKEND}_${TEST_NAME}_driver
                    "${TEST_NAME}.cpp")
     target_link_libraries(
