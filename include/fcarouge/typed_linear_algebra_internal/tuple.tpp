@@ -29,22 +29,20 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_EQUAL_TO_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_EQUAL_TO_TPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_TUPLE_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_TUPLE_TPP
 
-namespace fcarouge {
+//! @brief Tuple size specialization in support of structured bindings.
+template <fcarouge::one_dimension_typed_matrix Type>
+struct std::tuple_size<Type>
+    : std::integral_constant<std::size_t, Type::rows * Type::columns> {};
 
-//! @todo Requires, assert that the element types are compatible.
-[[nodiscard]] constexpr bool operator==(const same_as_typed_matrix auto &lhs,
-                                        const same_as_typed_matrix auto &rhs) {
-  return lhs.data() == rhs.data();
-}
+//! @brief Tuple element specialization in support of structured bindings.
+template <std::size_t Index, fcarouge::one_dimension_typed_matrix Type>
+  requires(Index < std::tuple_size_v<Type>)
+struct std::tuple_element<Index, Type> {
+  using type = typename Type::template element<Index / Type::columns,
+                                               Index % Type::columns>;
+};
 
-[[nodiscard]] constexpr bool operator==(const singleton_typed_matrix auto &lhs,
-                                        const auto &rhs) {
-  return lhs.template at<0, 0>() == rhs;
-}
-
-} // namespace fcarouge
-
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_EQUAL_TO_TPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_TUPLE_TPP

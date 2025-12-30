@@ -38,7 +38,7 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the initializer lists constructor.
 [[maybe_unused]] auto test{[] {
-  const matrix<int, 1, 3> m{{1, 2, 3}};
+  const matrix<int, 1, 3> m{1, 2, 3};
 
   assert(std::format("{}", m) == "[1, 2, 3]");
 
