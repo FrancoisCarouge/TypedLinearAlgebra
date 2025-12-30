@@ -202,18 +202,23 @@ public:
   //! @brief Move assign generalization of a compatible typed matrix.
   constexpr typed_matrix &operator=(same_as_typed_matrix auto &&other);
 
-  //! @brief Convert construct a typed matrix from an underlying matrix.
+  //! @brief Convert construct a singleton typed matrix from a single value.
   //!
-  //! @warning Useful for operations implementation where underlying data
-  //! constrution is needed. Not recommended for convenience construction due to
-  //! absence of type validation.
+  //! @details Applicable to singleton matrix: one element.
   //!
-  //! @note Alternative design could evaluate feasability of private
-  //! constructor, operator friendship, attorney-client, or key idioms.
-  constexpr explicit typed_matrix(const Matrix &other);
+  //! @param value Element of compatible type.
+  constexpr explicit typed_matrix(const auto &value)
+    requires singleton_typed_matrix<typed_matrix>;
 
-  //! @brief Convert construct a one-dimension uniformly typed matrix from
-  //! array.
+  //! @brief Convert copy assign a singleton typed matrix from a single value.
+  //!
+  //! @details Applicable to singleton matrix: one element.
+  //!
+  //! @param value Element of compatible type.
+  constexpr typed_matrix &operator=(const auto &value)
+    requires singleton_typed_matrix<typed_matrix>;
+
+  //! @brief Convert construct one-dimension uniformly typed matrix from array.
   //!
   //! @details Applicable to one-dimension matrix: column- or row-vector.
   //! Applicable to single-type matrix: uniform type of all elements.
@@ -224,13 +229,16 @@ public:
     requires uniform_typed_matrix<typed_matrix> and
              one_dimension_typed_matrix<typed_matrix>;
 
-  //! @brief Convert construct a singleton typed matrix from a single value.
+  //! @brief Copy assign one-dimension uniformly typed matrix from array.
   //!
-  //! @details Applicable to singleton matrix: one element.
-  //!
-  //! @param value Element of compatible type.
-  constexpr explicit typed_matrix(const auto &value)
-    requires singleton_typed_matrix<typed_matrix>;
+  //! @details Applicable to one-dimension matrix: column- or row-vector.
+  //! Applicable to single-type matrix: uniform type of all elements.
+  //! Single-argument constructors taking arrays of data should get implicit
+  //! constructors.
+  constexpr typed_matrix &
+  operator=(const element<0, 0> (&elements)[rows * columns])
+    requires uniform_typed_matrix<typed_matrix> and
+             one_dimension_typed_matrix<typed_matrix>;
 
   //! @brief Convert construct a uniformly typed matrix from list-initializers.
   //!
@@ -254,6 +262,16 @@ public:
   constexpr typed_matrix(const auto &first_value, const auto &second_value,
                          const auto &...values)
     requires one_dimension_typed_matrix<typed_matrix>;
+
+  //! @brief Convert construct a typed matrix from an underlying matrix.
+  //!
+  //! @warning Useful for operations implementation where underlying data
+  //! constrution is needed. Not recommended for convenience construction due to
+  //! absence of type validation.
+  //!
+  //! @note Alternative design could evaluate feasability of private
+  //! constructor, operator friendship, attorney-client, or key idioms.
+  constexpr explicit typed_matrix(const Matrix &other);
 
   //! @brief Access the singleton typed matrix element.
   //!
@@ -352,6 +370,8 @@ template <typename To, typename From> struct element_caster {
 
 [[nodiscard]] constexpr bool operator==(const same_as_typed_matrix auto &lhs,
                                         const same_as_typed_matrix auto &rhs);
+[[nodiscard]] constexpr bool operator==(const singleton_typed_matrix auto &lhs,
+                                        const auto &rhs);
 
 [[nodiscard]] constexpr auto operator+(const same_as_typed_matrix auto &lhs,
                                        const same_as_typed_matrix auto &rhs);
@@ -389,6 +409,12 @@ static inline constexpr element_caster<To, From> cast{};
 template <typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] constexpr auto make_typed_matrix(auto &&value);
 
+//! @brief Get function argument-dependent lookup overload.
+//!
+//! @details Also provides support for structured bindings.
+template <int Index>
+decltype(auto) get(one_dimension_typed_matrix auto &&value);
+
 //! @}
 
 } // namespace fcarouge
@@ -402,6 +428,7 @@ template <typename RowIndexes, typename ColumnIndexes>
 #include "typed_linear_algebra_internal/algorithm/substract.tpp"
 #include "typed_linear_algebra_internal/algorithm/transposed.tpp"
 #include "typed_linear_algebra_internal/cast.tpp"
+#include "typed_linear_algebra_internal/tuple.tpp"
 #include "typed_linear_algebra_internal/typed_linear_algebra.tpp"
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_HPP

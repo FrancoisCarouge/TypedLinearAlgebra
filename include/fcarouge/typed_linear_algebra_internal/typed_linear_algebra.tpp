@@ -97,6 +97,26 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
+    const element<0, 0> (&elements)[typed_matrix::rows * typed_matrix::columns])
+  requires uniform_typed_matrix<typed_matrix> and
+           one_dimension_typed_matrix<typed_matrix>
+{
+  if constexpr (requires { storage = elements; }) {
+    storage = elements;
+  } else {
+    using type = element<0, 0>;
+    tla::for_constexpr<0, typed_matrix::rows * typed_matrix::columns, 1>(
+        [this, &elements](auto position) {
+          storage[position] = cast<underlying, type>(elements[position]);
+        });
+  }
+  return *this;
+}
+
+//! @todo Verify types and storage (?) compatibility.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const auto &value)
   requires singleton_typed_matrix<typed_matrix>
@@ -107,6 +127,21 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     using type = std::remove_cvref_t<decltype(value)>;
     storage[0, 0] = cast<underlying, type>(value);
   }
+}
+
+//! @todo Verify types and storage (?) compatibility.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(const auto &value)
+  requires singleton_typed_matrix<typed_matrix>
+{
+  if constexpr (requires { value[0, 0]; }) {
+    storage[0, 0] = underlying{value[0, 0]};
+  } else {
+    using type = std::remove_cvref_t<decltype(value)>;
+    storage[0, 0] = cast<underlying, type>(value);
+  }
+  return *this;
 }
 
 //! @todo Verify the list sizes at runtime? Deprecate?
@@ -254,6 +289,16 @@ template <typename RowIndexes, typename ColumnIndexes>
 
   return typed_matrix<matrix, RowIndexes, ColumnIndexes>{
       std::forward<type>(value)};
+}
+
+//! @todo How should structured bindings be done over a matrix with more than
+//! one dimension? The layout policy may be a solution to consider. For now,
+//! limit the support to one dimension matrices.
+template <int Index>
+decltype(auto) get(one_dimension_typed_matrix auto &&value) {
+  using type = std::remove_cvref_t<decltype(value)>;
+
+  return (value.template at<Index / type::columns, Index % type::columns>());
 }
 } // namespace fcarouge
 

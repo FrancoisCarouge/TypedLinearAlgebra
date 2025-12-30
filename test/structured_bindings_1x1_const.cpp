@@ -29,22 +29,20 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_EQUAL_TO_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_EQUAL_TO_TPP
+#include "fcarouge/linalg.hpp"
 
-namespace fcarouge {
+#include <cassert>
 
-//! @todo Requires, assert that the element types are compatible.
-[[nodiscard]] constexpr bool operator==(const same_as_typed_matrix auto &lhs,
-                                        const same_as_typed_matrix auto &rhs) {
-  return lhs.data() == rhs.data();
-}
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the structured bindings.
+[[maybe_unused]] auto test{[] {
+  const matrix<int, 1, 1> m{7};
+  const auto &[a]{m};
 
-[[nodiscard]] constexpr bool operator==(const singleton_typed_matrix auto &lhs,
-                                        const auto &rhs) {
-  return lhs.template at<0, 0>() == rhs;
-}
+  assert(a == 7);
 
-} // namespace fcarouge
-
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_EQUAL_TO_TPP
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
