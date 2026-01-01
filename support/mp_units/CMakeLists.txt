@@ -52,3 +52,26 @@ target_sources(
   INTERFACE FILE_SET "unit_headers" TYPE "HEADERS" FILES "fcarouge/unit.hpp")
 target_link_libraries(typed_linear_algebra_unit_mp_units
                       INTERFACE typed_linear_algebra_options mp-units::mp-units)
+
+# Function to remove a specified compile flag from a target
+function(remove_compiler_flag _target _flag_to_remove)
+  # Get the existing compile options as a list
+  get_target_property(_flags_list ${_target} COMPILE_OPTIONS)
+
+  if(_flags_list)
+    # Remove the specific flag from the list
+    list(REMOVE_ITEM _flags_list "${_flag_to_remove}")
+
+    # Set the modified list back to the target property
+    set_target_properties(${_target} PROPERTIES COMPILE_OPTIONS
+                                                "${_flags_list}")
+  endif()
+endfunction()
+
+# Example Usage: add_executable(my_app main.cpp)
+
+# Add some initial flags to the target target_compile_options(my_app PRIVATE
+# -Wall -Werror -O3)
+
+# Now, remove a specific flag (e.g., "-O3") from "my_app"
+remove_compiler_flag(typed_linear_algebra_unit_mp_units "-fno-exceptions")

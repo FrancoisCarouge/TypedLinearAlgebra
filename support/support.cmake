@@ -53,5 +53,10 @@ function(test TEST_NAME)
       COMMAND
         ${TEST_COMMAND}
         $<TARGET_FILE:typed_linear_algebra_test_${BACKEND}_${TEST_NAME}_driver>)
+
+    remove_compiler_flag(
+      typed_linear_algebra_test_${BACKEND}_${TEST_NAME}_driver
+      "-fno-exceptions")
+
   endforeach()
 endfunction(test)
