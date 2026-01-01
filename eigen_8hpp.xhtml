@@ -112,8 +112,12 @@ $(function(){initNavTree('eigen_8hpp.xhtml',''); initResizable(true); });
 <p>Linear algebra facade for Eigen3 third party implementation.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="typed__linear__algebra_8hpp_source.xhtml">fcarouge/typed_linear_algebra.hpp</a>&quot;</code><br />
+<code>#include &lt;concepts&gt;</code><br />
+<code>#include &lt;cstddef&gt;</code><br />
 <code>#include &lt;format&gt;</code><br />
 <code>#include &lt;sstream&gt;</code><br />
+<code>#include &lt;tuple&gt;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
 <code>#include &lt;Eigen/Eigen&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for eigen.hpp:</div>
@@ -137,6 +141,12 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml">std::formatter&lt; fcarouge::eigen::matrix&lt; Type, Row, Column &gt;, Char &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization of the standard formatter for the <a class="el" href="namespace_eigen.xhtml">Eigen</a> matrix.  <a href="structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstd_1_1tuple__size_3_01_type_01_4.xhtml">std::tuple_size&lt; Type &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tuple size specialization of <a class="el" href="namespace_eigen.xhtml">Eigen</a> types for structured bindings.  <a href="structstd_1_1tuple__size_3_01_type_01_4.xhtml#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstd_1_1tuple__element_3_01_index_00_01_type_01_4.xhtml">std::tuple_element&lt; Index, Type &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tuple element specialization of <a class="el" href="namespace_eigen.xhtml">Eigen</a> types for structured bindings.  <a href="structstd_1_1tuple__element_3_01_index_00_01_type_01_4.xhtml#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -152,6 +162,10 @@ Namespaces</h2></td></tr>
 Concepts</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1eigen_1_1is__eigen.xhtml">fcarouge::eigen::is_eigen</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An Eigen3 algebraic concept. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1eigen_1_1derived__from__eigen__base.xhtml">fcarouge::eigen::derived_from_eigen_base</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1eigen_1_1statically__sized.xhtml">fcarouge::eigen::statically_sized</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -180,6 +194,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a59124d2b29990b7c9b8bdb1f0102897a"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_eigen.xhtml#a59124d2b29990b7c9b8bdb1f0102897a">Eigen::operator/</a> (const typename Denominator::Scalar &amp;lhs, const Denominator &amp;rhs) -&gt; <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix</a>&lt; typename Denominator::Scalar, 1, Denominator::RowsAtCompileTime &gt;</td></tr>
 <tr class="memdesc:a59124d2b29990b7c9b8bdb1f0102897a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespace_eigen.xhtml">Eigen</a> matrix solution to division.  <br /></td></tr>
 <tr class="separator:a59124d2b29990b7c9b8bdb1f0102897a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa14385071099d51a51186085a1af04a3" id="r_aa14385071099d51a51186085a1af04a3"><td class="memTemplParams" colspan="2">template&lt;std::size_t Index, typename Derived &gt; </td></tr>
+<tr class="memitem:aa14385071099d51a51186085a1af04a3"><td class="memTemplItemLeft" align="right" valign="top">auto &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_eigen.xhtml#aa14385071099d51a51186085a1af04a3">Eigen::get</a> (DenseCoeffsBase&lt; Derived, WriteAccessors &gt; &amp;base)</td></tr>
+<tr class="memdesc:aa14385071099d51a51186085a1af04a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get function ADL overload of <a class="el" href="namespace_eigen.xhtml">Eigen</a> types for structured bindings.  <br /></td></tr>
+<tr class="separator:aa14385071099d51a51186085a1af04a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94c336baa87c869a13a4cb01324f82aa" id="r_a94c336baa87c869a13a4cb01324f82aa"><td class="memTemplParams" colspan="2">template&lt;std::size_t Index, typename Derived &gt; </td></tr>
+<tr class="memitem:a94c336baa87c869a13a4cb01324f82aa"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_eigen.xhtml#a94c336baa87c869a13a4cb01324f82aa">Eigen::get</a> (const DenseCoeffsBase&lt; Derived, ReadOnlyAccessors &gt; &amp;base)</td></tr>
+<tr class="memdesc:a94c336baa87c869a13a4cb01324f82aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get function ADL overload of <a class="el" href="namespace_eigen.xhtml">Eigen</a> types for structured bindings.  <br /></td></tr>
+<tr class="separator:a94c336baa87c869a13a4cb01324f82aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Linear algebra facade for Eigen3 third party implementation. </p>

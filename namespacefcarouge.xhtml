@@ -195,6 +195,8 @@ Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Algorithms</div></td></tr>
 <tr class="memitem:ac201eb6dbabe90e8e35d2efa46b7ad1f" id="r_ac201eb6dbabe90e8e35d2efa46b7ad1f"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac201eb6dbabe90e8e35d2efa46b7ad1f">operator==</a> (const same_as_typed_matrix auto &amp;lhs, const same_as_typed_matrix auto &amp;rhs)</td></tr>
 <tr class="separator:ac201eb6dbabe90e8e35d2efa46b7ad1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43b980ba1f09a7aa7a28261c22e1905b" id="r_a43b980ba1f09a7aa7a28261c22e1905b"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43b980ba1f09a7aa7a28261c22e1905b">operator==</a> (const singleton_typed_matrix auto &amp;lhs, const auto &amp;rhs)</td></tr>
+<tr class="separator:a43b980ba1f09a7aa7a28261c22e1905b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63c8577955512de91859104b75c34802" id="r_a63c8577955512de91859104b75c34802"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63c8577955512de91859104b75c34802">operator+</a> (const same_as_typed_matrix auto &amp;lhs, const same_as_typed_matrix auto &amp;rhs)</td></tr>
 <tr class="separator:a63c8577955512de91859104b75c34802"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3d099c43d8b3d4c028b1790f89ed590" id="r_ae3d099c43d8b3d4c028b1790f89ed590"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3d099c43d8b3d4c028b1790f89ed590">operator-</a> (const same_as_typed_matrix auto &amp;lhs, const same_as_typed_matrix auto &amp;rhs)</td></tr>
@@ -215,6 +217,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a4073b31d56e98e110bf4a993ed190c80"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a4073b31d56e98e110bf4a993ed190c80">make_typed_matrix</a> (auto &amp;&amp;value)</td></tr>
 <tr class="memdesc:a4073b31d56e98e110bf4a993ed190c80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory function for partial template deduction.  <br /></td></tr>
 <tr class="separator:a4073b31d56e98e110bf4a993ed190c80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00847bef6ae7994243aa1c897f51d271" id="r_a00847bef6ae7994243aa1c897f51d271"><td class="memTemplParams" colspan="2">template&lt;int Index&gt; </td></tr>
+<tr class="memitem:a00847bef6ae7994243aa1c897f51d271"><td class="memTemplItemLeft" align="right" valign="top">decltype(auto)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a00847bef6ae7994243aa1c897f51d271">get</a> (one_dimension_typed_matrix auto &amp;&amp;value)</td></tr>
+<tr class="memdesc:a00847bef6ae7994243aa1c897f51d271"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get function argument-dependent lookup overload.  <br /></td></tr>
+<tr class="separator:a00847bef6ae7994243aa1c897f51d271"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Francois Carouge's projects namespace. </p>
@@ -326,7 +332,7 @@ template&lt;typename Matrix , typename... RowIndexes&gt; </div>
 </div><!-- fragment -->
 <p>Strongly typed column vector. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00337">337</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00355">355</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
@@ -348,11 +354,33 @@ template&lt;typename Matrix , typename... ColumnIndexes&gt; </div>
 </div><!-- fragment -->
 <p>Strongly typed row vector. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00332">332</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00350">350</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a00847bef6ae7994243aa1c897f51d271" name="a00847bef6ae7994243aa1c897f51d271"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00847bef6ae7994243aa1c897f51d271">&#9670;&#160;</a></span>get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int Index&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">decltype(auto) fcarouge::get </td>
+          <td>(</td>
+          <td class="paramtype">one_dimension_typed_matrix auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get function argument-dependent lookup overload. </p>
+<p>Also provides support for structured bindings. </p>
+
+</div>
+</div>
 <a id="a4073b31d56e98e110bf4a993ed190c80" name="a4073b31d56e98e110bf4a993ed190c80"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4073b31d56e98e110bf4a993ed190c80">&#9670;&#160;</a></span>make_typed_matrix()</h2>
 
@@ -501,7 +529,7 @@ template&lt;typename RowIndexes , typename ColumnIndexes &gt; </div>
 </div>
 </div>
 <a id="ac201eb6dbabe90e8e35d2efa46b7ad1f" name="ac201eb6dbabe90e8e35d2efa46b7ad1f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac201eb6dbabe90e8e35d2efa46b7ad1f">&#9670;&#160;</a></span>operator==()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac201eb6dbabe90e8e35d2efa46b7ad1f">&#9670;&#160;</a></span>operator==() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -518,6 +546,35 @@ template&lt;typename RowIndexes , typename ColumnIndexes &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const same_as_typed_matrix auto &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a43b980ba1f09a7aa7a28261c22e1905b" name="a43b980ba1f09a7aa7a28261c22e1905b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43b980ba1f09a7aa7a28261c22e1905b">&#9670;&#160;</a></span>operator==() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fcarouge::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const singleton_typed_matrix auto &amp;</td>          <td class="paramname"><span class="paramname"><em>lhs</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const auto &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -580,8 +637,8 @@ template&lt;typename To , typename From &gt; </div>
 <p>Matrix element conversion customization point. </p>
 <p>Specialization of the element caster function objects allows the end-user to permit underlying type conversions. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00380">380</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  380</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00400">400</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  400</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>

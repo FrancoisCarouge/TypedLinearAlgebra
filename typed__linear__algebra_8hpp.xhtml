@@ -128,6 +128,7 @@ $(function(){initNavTree('typed__linear__algebra_8hpp.xhtml',''); initResizable(
 <code>#include &quot;typed_linear_algebra_internal/algorithm/substract.tpp&quot;</code><br />
 <code>#include &quot;typed_linear_algebra_internal/algorithm/transposed.tpp&quot;</code><br />
 <code>#include &quot;typed_linear_algebra_internal/cast.tpp&quot;</code><br />
+<code>#include &quot;typed_linear_algebra_internal/tuple.tpp&quot;</code><br />
 <code>#include &quot;typed_linear_algebra_internal/typed_linear_algebra.tpp&quot;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for typed_linear_algebra.hpp:</div>
@@ -202,6 +203,8 @@ Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Algorithms</div></td></tr>
 <tr class="memitem:ac201eb6dbabe90e8e35d2efa46b7ad1f" id="r_ac201eb6dbabe90e8e35d2efa46b7ad1f"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ac201eb6dbabe90e8e35d2efa46b7ad1f">fcarouge::operator==</a> (const same_as_typed_matrix auto &amp;lhs, const same_as_typed_matrix auto &amp;rhs)</td></tr>
 <tr class="separator:ac201eb6dbabe90e8e35d2efa46b7ad1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43b980ba1f09a7aa7a28261c22e1905b" id="r_a43b980ba1f09a7aa7a28261c22e1905b"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a43b980ba1f09a7aa7a28261c22e1905b">fcarouge::operator==</a> (const singleton_typed_matrix auto &amp;lhs, const auto &amp;rhs)</td></tr>
+<tr class="separator:a43b980ba1f09a7aa7a28261c22e1905b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63c8577955512de91859104b75c34802" id="r_a63c8577955512de91859104b75c34802"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a63c8577955512de91859104b75c34802">fcarouge::operator+</a> (const same_as_typed_matrix auto &amp;lhs, const same_as_typed_matrix auto &amp;rhs)</td></tr>
 <tr class="separator:a63c8577955512de91859104b75c34802"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3d099c43d8b3d4c028b1790f89ed590" id="r_ae3d099c43d8b3d4c028b1790f89ed590"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ae3d099c43d8b3d4c028b1790f89ed590">fcarouge::operator-</a> (const same_as_typed_matrix auto &amp;lhs, const same_as_typed_matrix auto &amp;rhs)</td></tr>
@@ -222,6 +225,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a4073b31d56e98e110bf4a993ed190c80"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a4073b31d56e98e110bf4a993ed190c80">fcarouge::make_typed_matrix</a> (auto &amp;&amp;value)</td></tr>
 <tr class="memdesc:a4073b31d56e98e110bf4a993ed190c80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory function for partial template deduction.  <br /></td></tr>
 <tr class="separator:a4073b31d56e98e110bf4a993ed190c80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00847bef6ae7994243aa1c897f51d271" id="r_a00847bef6ae7994243aa1c897f51d271"><td class="memTemplParams" colspan="2">template&lt;int Index&gt; </td></tr>
+<tr class="memitem:a00847bef6ae7994243aa1c897f51d271"><td class="memTemplItemLeft" align="right" valign="top">decltype(auto)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a00847bef6ae7994243aa1c897f51d271">fcarouge::get</a> (one_dimension_typed_matrix auto &amp;&amp;value)</td></tr>
+<tr class="memdesc:a00847bef6ae7994243aa1c897f51d271"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get function argument-dependent lookup overload.  <br /></td></tr>
+<tr class="separator:a00847bef6ae7994243aa1c897f51d271"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Typed linear algebra implementation. </p>

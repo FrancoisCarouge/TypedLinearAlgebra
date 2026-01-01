@@ -32,6 +32,7 @@ var menudata={children:[
 {text:"c",url:"namespacemembers.xhtml#index_c"},
 {text:"e",url:"namespacemembers.xhtml#index_e"},
 {text:"f",url:"namespacemembers.xhtml#index_f"},
+{text:"g",url:"namespacemembers.xhtml#index_g"},
 {text:"i",url:"namespacemembers.xhtml#index_i"},
 {text:"m",url:"namespacemembers.xhtml#index_m"},
 {text:"o",url:"namespacemembers.xhtml#index_o"},
@@ -42,12 +43,18 @@ var menudata={children:[
 {text:"t",url:"namespacemembers.xhtml#index_t"},
 {text:"u",url:"namespacemembers.xhtml#index_u"}]},
 {text:"Functions",url:"namespacemembers_func.xhtml"},
-{text:"Variables",url:"namespacemembers_vars.xhtml"},
+{text:"Variables",url:"namespacemembers_vars.xhtml",children:[
+{text:"c",url:"namespacemembers_vars.xhtml#index_c"},
+{text:"e",url:"namespacemembers_vars.xhtml#index_e"},
+{text:"r",url:"namespacemembers_vars.xhtml#index_r"},
+{text:"s",url:"namespacemembers_vars.xhtml#index_s"},
+{text:"t",url:"namespacemembers_vars.xhtml#index_t"}]},
 {text:"Typedefs",url:"namespacemembers_type.xhtml"}]}]},
 {text:"Concepts",url:"concepts.xhtml"},
 {text:"Classes",url:"annotated.xhtml",children:[
 {text:"Class List",url:"annotated.xhtml"},
 {text:"Class Index",url:"classes.xhtml"},
+{text:"Class Hierarchy",url:"inherits.xhtml"},
 {text:"Class Members",url:"functions.xhtml",children:[
 {text:"All",url:"functions.xhtml",children:[
 {text:"a",url:"functions.xhtml#index_a"},

@@ -151,7 +151,7 @@ template&lt;typename... Types&gt; </div>
 <div class="line">    <a class="code hl_typedef" href="namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58">typed_column_vector</a>&lt;Eigen::Vector&lt;<a class="code hl_typedef" href="#a3c3e455061e1c9775f216253f0fc5541">representation</a>, <span class="keyword">sizeof</span>...(Types)&gt;,</div>
 <div class="line">                        Types...&gt;</div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_a3c3e455061e1c9775f216253f0fc5541"><div class="ttname"><a href="#a3c3e455061e1c9775f216253f0fc5541">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::representation</a></div><div class="ttdeci">double representation</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00089">mp_units_eigen.cpp:89</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a96fea71ab24114a61950988fdac23f58"><div class="ttname"><a href="namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58">fcarouge::typed_column_vector</a></div><div class="ttdeci">typed_matrix&lt; Matrix, std::tuple&lt; RowIndexes... &gt;, tla::identity_index &gt; typed_column_vector</div><div class="ttdoc">Strongly typed column vector.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00337">typed_linear_algebra.hpp:337</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a96fea71ab24114a61950988fdac23f58"><div class="ttname"><a href="namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58">fcarouge::typed_column_vector</a></div><div class="ttdeci">typed_matrix&lt; Matrix, std::tuple&lt; RowIndexes... &gt;, tla::identity_index &gt; typed_column_vector</div><div class="ttdoc">Strongly typed column vector.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00355">typed_linear_algebra.hpp:355</a></div></div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="mp__units__eigen_8cpp_source.xhtml#l00107">107</a> of file <a class="el" href="mp__units__eigen_8cpp_source.xhtml">mp_units_eigen.cpp</a>.</p>
 
@@ -251,7 +251,7 @@ template&lt;typename... Types&gt; </div>
 <b>Initial value:</b><div class="fragment"><div class="line"> </div>
 <div class="line">    <a class="code hl_typedef" href="namespacefcarouge.xhtml#a7558e7ccc03031fb7de678cf4977e1bf">typed_row_vector</a>&lt;Eigen::RowVector&lt;<a class="code hl_typedef" href="#a3c3e455061e1c9775f216253f0fc5541">representation</a>, <span class="keyword">sizeof</span>...(Types)&gt;,</div>
 <div class="line">                     Types...&gt;</div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a7558e7ccc03031fb7de678cf4977e1bf"><div class="ttname"><a href="namespacefcarouge.xhtml#a7558e7ccc03031fb7de678cf4977e1bf">fcarouge::typed_row_vector</a></div><div class="ttdeci">typed_matrix&lt; Matrix, tla::identity_index, std::tuple&lt; ColumnIndexes... &gt; &gt; typed_row_vector</div><div class="ttdoc">Strongly typed row vector.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00332">typed_linear_algebra.hpp:332</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a7558e7ccc03031fb7de678cf4977e1bf"><div class="ttname"><a href="namespacefcarouge.xhtml#a7558e7ccc03031fb7de678cf4977e1bf">fcarouge::typed_row_vector</a></div><div class="ttdeci">typed_matrix&lt; Matrix, tla::identity_index, std::tuple&lt; ColumnIndexes... &gt; &gt; typed_row_vector</div><div class="ttdoc">Strongly typed row vector.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00350">typed_linear_algebra.hpp:350</a></div></div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="mp__units__eigen_8cpp_source.xhtml#l00112">112</a> of file <a class="el" href="mp__units__eigen_8cpp_source.xhtml">mp_units_eigen.cpp</a>.</p>
 
@@ -335,246 +335,268 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">  178</span>                                        <span class="stringliteral">&quot; [6 m²/s, 4 m²/s², 2 m²/s³],&quot;</span> <span class="comment">//</span></div>
 <div class="line"><span class="lineno">  179</span>                                        <span class="stringliteral">&quot; [3 m²/s², 2 m²/s³, 1 m²/s⁴]]&quot;</span>);</div>
 <div class="line"><span class="lineno">  180</span> </div>
-<div class="line"><span class="lineno">  181</span>  <span class="comment">// Singleton matrix declaration, for example, but perhaps not a recommended</span></div>
-<div class="line"><span class="lineno">  182</span>  <span class="comment">// replacement for what should normally just be a `quantity{1. * A / mol}`.</span></div>
-<div class="line"><span class="lineno">  183</span>  <a class="code hl_typedef" href="#a3ad842428e2a263b2bdee6a8f7a9bb9a">matrix</a>&lt;std::tuple&lt;<span class="keyword">decltype</span>(1. * A)&gt;, std::tuple&lt;<span class="keyword">decltype</span>(1. / mol)&gt;&gt; s1{</div>
-<div class="line"><span class="lineno">  184</span>      1. * A / mol};</div>
-<div class="line"><span class="lineno">  185</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, s1) == <span class="stringliteral">&quot;1 A/mol&quot;</span>);</div>
-<div class="line"><span class="lineno">  186</span> </div>
-<div class="line"><span class="lineno">  187</span>  <span class="comment">// Ways to access the singleton matrix.</span></div>
-<div class="line"><span class="lineno">  188</span>  s1.at&lt;0, 0&gt;() = 23. * A / mol;</div>
-<div class="line"><span class="lineno">  189</span>  assert((s1.at&lt;0, 0&gt;() == 23. * A / mol));</div>
-<div class="line"><span class="lineno">  190</span> </div>
-<div class="line"><span class="lineno">  191</span>  s1[0, 0] = 22. * A / mol;</div>
-<div class="line"><span class="lineno">  192</span>  assert((s1[0, 0] == 22. * A / mol));</div>
+<div class="line"><span class="lineno">  181</span>  <span class="comment">// Structured bindings supported.</span></div>
+<div class="line"><span class="lineno">  182</span>  state x6{3. * m, 2. * m / s, 1. * m / s2};</div>
+<div class="line"><span class="lineno">  183</span>  <span class="keyword">auto</span> &amp;[p6, v6, a6]{x6};</div>
+<div class="line"><span class="lineno">  184</span>  assert(p6 == 3. * m);</div>
+<div class="line"><span class="lineno">  185</span>  assert(v6 == 2. * m / s);</div>
+<div class="line"><span class="lineno">  186</span>  assert(a6 == 1. * m / s2);</div>
+<div class="line"><span class="lineno">  187</span>  p6 = 4. * m;</div>
+<div class="line"><span class="lineno">  188</span>  v6 = 3. * m / s;</div>
+<div class="line"><span class="lineno">  189</span>  a6 = 2. * m / s2;</div>
+<div class="line"><span class="lineno">  190</span>  assert(p6 == 4. * m);</div>
+<div class="line"><span class="lineno">  191</span>  assert(v6 == 3. * m / s);</div>
+<div class="line"><span class="lineno">  192</span>  assert(a6 == 2. * m / s2);</div>
 <div class="line"><span class="lineno">  193</span> </div>
-<div class="line"><span class="lineno">  194</span>  s1(0, 0) = 21. * A / mol;</div>
-<div class="line"><span class="lineno">  195</span>  assert((s1(0, 0) == 21. * A / mol));</div>
-<div class="line"><span class="lineno">  196</span> </div>
-<div class="line"><span class="lineno">  197</span>  s1.at&lt;0&gt;() = 13. * A / mol;</div>
-<div class="line"><span class="lineno">  198</span>  assert(s1.at&lt;0&gt;() == 13. * A / mol);</div>
+<div class="line"><span class="lineno">  194</span>  <span class="comment">// Singleton matrix declaration, for example, but perhaps not a recommended</span></div>
+<div class="line"><span class="lineno">  195</span>  <span class="comment">// replacement for what should normally just be a `quantity{1. * A / mol}`.</span></div>
+<div class="line"><span class="lineno">  196</span>  <a class="code hl_typedef" href="#a3ad842428e2a263b2bdee6a8f7a9bb9a">matrix</a>&lt;std::tuple&lt;<span class="keyword">decltype</span>(1. * A)&gt;, std::tuple&lt;<span class="keyword">decltype</span>(1. / mol)&gt;&gt; s1{</div>
+<div class="line"><span class="lineno">  197</span>      1. * A / mol};</div>
+<div class="line"><span class="lineno">  198</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, s1) == <span class="stringliteral">&quot;1 A/mol&quot;</span>);</div>
 <div class="line"><span class="lineno">  199</span> </div>
-<div class="line"><span class="lineno">  200</span>  s1[0] = 12. * A / mol;</div>
-<div class="line"><span class="lineno">  201</span>  assert((s1[0] == 12. * A / mol));</div>
-<div class="line"><span class="lineno">  202</span> </div>
-<div class="line"><span class="lineno">  203</span>  s1(0) = 11. * A / mol;</div>
-<div class="line"><span class="lineno">  204</span>  assert((s1(0) == 11. * A / mol));</div>
-<div class="line"><span class="lineno">  205</span> </div>
-<div class="line"><span class="lineno">  206</span>  s1.at() = 3. * A / mol;</div>
-<div class="line"><span class="lineno">  207</span>  assert(s1.at() == 3. * A / mol);</div>
-<div class="line"><span class="lineno">  208</span> </div>
-<div class="line"><span class="lineno">  209</span><span class="preprocessor">#ifndef _MSC_VER</span></div>
-<div class="line"><span class="lineno">  210</span>  <span class="comment">// https://developercommunity.visualstudio.com/t/C23-Subscript-Operator-Internal-Comp/11021748</span></div>
-<div class="line"><span class="lineno">  211</span>  s1[] = 2. * A / mol;</div>
-<div class="line"><span class="lineno">  212</span>  assert(s1[] == 2. * A / mol);</div>
-<div class="line"><span class="lineno">  213</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">  214</span> </div>
-<div class="line"><span class="lineno">  215</span>  s1() = 1. * A / mol;</div>
-<div class="line"><span class="lineno">  216</span>  assert(s1() == 1. * A / mol);</div>
-<div class="line"><span class="lineno">  217</span> </div>
-<div class="line"><span class="lineno">  218</span>  <span class="comment">// The singleton element can be accessed by conversion to its element type.</span></div>
-<div class="line"><span class="lineno">  219</span>  <span class="keyword">using </span>e = <span class="keyword">decltype</span>(s1)::element&lt;0, 0&gt;;</div>
-<div class="line"><span class="lineno">  220</span>  assert(e{s1} == 1. * A / mol);</div>
-<div class="line"><span class="lineno">  221</span>  <span class="comment">// But the element type may not be the same as could be expected.</span></div>
-<div class="line"><span class="lineno">  222</span>  <span class="keyword">static_assert</span>(</div>
-<div class="line"><span class="lineno">  223</span>      not std::is_same_v&lt;<span class="keyword">decltype</span>(A / mol), <span class="keyword">decltype</span>(s1)::element&lt;0, 0&gt;&gt;);</div>
-<div class="line"><span class="lineno">  224</span> </div>
-<div class="line"><span class="lineno">  225</span>  <span class="comment">// More forms of multiplication with a scalar factor.</span></div>
-<div class="line"><span class="lineno">  226</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x5 * 2.) == <span class="stringliteral">&quot;[[6 m], [4 m/s], [2 m/s²]]&quot;</span>);</div>
-<div class="line"><span class="lineno">  227</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, 2. * x5) == <span class="stringliteral">&quot;[[6 m], [4 m/s], [2 m/s²]]&quot;</span>);</div>
-<div class="line"><span class="lineno">  228</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, xt5 * 2.) == <span class="stringliteral">&quot;[6 m, 4 m/s, 2 m/s²]&quot;</span>);</div>
-<div class="line"><span class="lineno">  229</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, 2. * xt5) == <span class="stringliteral">&quot;[6 m, 4 m/s, 2 m/s²]&quot;</span>);</div>
-<div class="line"><span class="lineno">  230</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, (x5 * xt5) * 2.) == <span class="stringliteral">&quot;[[18 m², 12 m²/s, 6 m²/s²],&quot;</span></div>
-<div class="line"><span class="lineno">  231</span>                                               <span class="stringliteral">&quot; [12 m²/s, 8 m²/s², 4 m²/s³],&quot;</span></div>
-<div class="line"><span class="lineno">  232</span>                                               <span class="stringliteral">&quot; [6 m²/s², 4 m²/s³, 2 m²/s⁴]]&quot;</span>);</div>
-<div class="line"><span class="lineno">  233</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, 2. * (x5 * xt5)) == <span class="stringliteral">&quot;[[18 m², 12 m²/s, 6 m²/s²],&quot;</span></div>
-<div class="line"><span class="lineno">  234</span>                                               <span class="stringliteral">&quot; [12 m²/s, 8 m²/s², 4 m²/s³],&quot;</span></div>
-<div class="line"><span class="lineno">  235</span>                                               <span class="stringliteral">&quot; [6 m²/s², 4 m²/s³, 2 m²/s⁴]]&quot;</span>);</div>
-<div class="line"><span class="lineno">  236</span> </div>
-<div class="line"><span class="lineno">  237</span>  <span class="comment">// More forms of multiplication with a strongly typed factor.</span></div>
-<div class="line"><span class="lineno">  238</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x5 * (2. * m)) == <span class="stringliteral">&quot;[[6 m²], [4 m²/s], [2 m²/s²]]&quot;</span>);</div>
-<div class="line"><span class="lineno">  239</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, (2. * m) * x5) == <span class="stringliteral">&quot;[[6 m²], [4 m²/s], [2 m²/s²]]&quot;</span>);</div>
-<div class="line"><span class="lineno">  240</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, xt5 * (2. * m)) == <span class="stringliteral">&quot;[6 m², 4 m²/s, 2 m²/s²]&quot;</span>);</div>
-<div class="line"><span class="lineno">  241</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, (2. * m) * xt5) == <span class="stringliteral">&quot;[6 m², 4 m²/s, 2 m²/s²]&quot;</span>);</div>
-<div class="line"><span class="lineno">  242</span> </div>
-<div class="line"><span class="lineno">  243</span>  <span class="comment">// More forms of multiplication with typed matrices.</span></div>
-<div class="line"><span class="lineno">  244</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x5 * s1) == <span class="stringliteral">&quot;[[3 A m/mol],&quot;</span></div>
-<div class="line"><span class="lineno">  245</span>                                       <span class="stringliteral">&quot; [2 A m mol⁻¹ s⁻¹],&quot;</span></div>
-<div class="line"><span class="lineno">  246</span>                                       <span class="stringliteral">&quot; [1 A m mol⁻¹ s⁻²]]&quot;</span>);</div>
-<div class="line"><span class="lineno">  247</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, s1 * xt5) ==</div>
-<div class="line"><span class="lineno">  248</span>         <span class="stringliteral">&quot;[3 A m/mol, 2 A m mol⁻¹ s⁻¹, 1 A m mol⁻¹ s⁻²]&quot;</span>);</div>
-<div class="line"><span class="lineno">  249</span> </div>
-<div class="line"><span class="lineno">  250</span>  <span class="comment">// More forms of division with a scalar term.</span></div>
-<div class="line"><span class="lineno">  251</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x5 / 2.) == <span class="stringliteral">&quot;[[1.5 m], [1 m/s], [0.5 m/s²]]&quot;</span>);</div>
-<div class="line"><span class="lineno">  252</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, 1. / x5) ==</div>
-<div class="line"><span class="lineno">  253</span>         <span class="stringliteral">&quot;[0.3333333333333333 1/m, 0 s/m, 0 s²/m]&quot;</span>);</div>
-<div class="line"><span class="lineno">  254</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, xt5 / 2.) == <span class="stringliteral">&quot;[1.5 m, 1 m/s, 0.5 m/s²]&quot;</span>);</div>
-<div class="line"><span class="lineno">  255</span> </div>
-<div class="line"><span class="lineno">  256</span>  <span class="comment">// More forms of division with a strongly typed factor.</span></div>
-<div class="line"><span class="lineno">  257</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x5 / (2. * m)) == <span class="stringliteral">&quot;[[1.5], [1 1/s], [0.5 1/s²]]&quot;</span>);</div>
-<div class="line"><span class="lineno">  258</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, (1. * m) / x5) == <span class="stringliteral">&quot;[0.3333333333333333, 0 s, 0 s²]&quot;</span>);</div>
-<div class="line"><span class="lineno">  259</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, xt5 / (2. * m)) == <span class="stringliteral">&quot;[1.5, 1 1/s, 0.5 1/s²]&quot;</span>);</div>
-<div class="line"><span class="lineno">  260</span> </div>
-<div class="line"><span class="lineno">  261</span>  <span class="comment">// More forms of division with typed matrices.</span></div>
-<div class="line"><span class="lineno">  262</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, s1 / s1) == <span class="stringliteral">&quot;1&quot;</span>);</div>
-<div class="line"><span class="lineno">  263</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x5 / x5) == <span class="stringliteral">&quot;[[1, 0 s, 0 s²],&quot;</span></div>
-<div class="line"><span class="lineno">  264</span>                                       <span class="stringliteral">&quot; [0.6666666666666666 1/s, 0, 0 s],&quot;</span></div>
-<div class="line"><span class="lineno">  265</span>                                       <span class="stringliteral">&quot; [0.3333333333333333 1/s², 0 1/s, 0]]&quot;</span>);</div>
-<div class="line"><span class="lineno">  266</span> </div>
-<div class="line"><span class="lineno">  268</span> </div>
-<div class="line"><span class="lineno">  269</span>  <span class="comment">// Homogeneously quantity typed vector.</span></div>
-<div class="line"><span class="lineno">  270</span>  <span class="keyword">using </span>vector3d =</div>
-<div class="line"><span class="lineno">  271</span>      column_vector&lt;representation, representation, representation&gt;;</div>
-<div class="line"><span class="lineno">  272</span>  <span class="keyword">using </span>velocity3d = column_vector&lt;velocity, velocity, velocity&gt;;</div>
-<div class="line"><span class="lineno">  273</span> </div>
-<div class="line"><span class="lineno">  274</span>  vector3d v{1., 2., 3.};</div>
-<div class="line"><span class="lineno">  275</span>  velocity3d v0{v * m / s};</div>
-<div class="line"><span class="lineno">  276</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, v0) == <span class="stringliteral">&quot;[[1 m/s], [2 m/s], [3 m/s]]&quot;</span>);</div>
+<div class="line"><span class="lineno">  200</span>  <span class="comment">// Many ways to access the singleton matrix by index(es).</span></div>
+<div class="line"><span class="lineno">  201</span>  s1.at&lt;0, 0&gt;() = 23. * A / mol;</div>
+<div class="line"><span class="lineno">  202</span>  assert((s1.at&lt;0, 0&gt;() == 23. * A / mol));</div>
+<div class="line"><span class="lineno">  203</span> </div>
+<div class="line"><span class="lineno">  204</span>  s1[0, 0] = 22. * A / mol;</div>
+<div class="line"><span class="lineno">  205</span>  assert((s1[0, 0] == 22. * A / mol));</div>
+<div class="line"><span class="lineno">  206</span> </div>
+<div class="line"><span class="lineno">  207</span>  s1(0, 0) = 21. * A / mol;</div>
+<div class="line"><span class="lineno">  208</span>  assert((s1(0, 0) == 21. * A / mol));</div>
+<div class="line"><span class="lineno">  209</span> </div>
+<div class="line"><span class="lineno">  210</span>  s1.at&lt;0&gt;() = 13. * A / mol;</div>
+<div class="line"><span class="lineno">  211</span>  assert(s1.at&lt;0&gt;() == 13. * A / mol);</div>
+<div class="line"><span class="lineno">  212</span> </div>
+<div class="line"><span class="lineno">  213</span>  s1[0] = 12. * A / mol;</div>
+<div class="line"><span class="lineno">  214</span>  assert((s1[0] == 12. * A / mol));</div>
+<div class="line"><span class="lineno">  215</span> </div>
+<div class="line"><span class="lineno">  216</span>  s1(0) = 11. * A / mol;</div>
+<div class="line"><span class="lineno">  217</span>  assert((s1(0) == 11. * A / mol));</div>
+<div class="line"><span class="lineno">  218</span> </div>
+<div class="line"><span class="lineno">  219</span>  s1.at() = 3. * A / mol;</div>
+<div class="line"><span class="lineno">  220</span>  assert(s1.at() == 3. * A / mol);</div>
+<div class="line"><span class="lineno">  221</span> </div>
+<div class="line"><span class="lineno">  222</span><span class="preprocessor">#ifndef _MSC_VER</span></div>
+<div class="line"><span class="lineno">  223</span>  <span class="comment">// https://developercommunity.visualstudio.com/t/C23-Subscript-Operator-Internal-Comp/11021748</span></div>
+<div class="line"><span class="lineno">  224</span>  s1[] = 2. * A / mol;</div>
+<div class="line"><span class="lineno">  225</span>  assert(s1[] == 2. * A / mol);</div>
+<div class="line"><span class="lineno">  226</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  227</span> </div>
+<div class="line"><span class="lineno">  228</span>  s1() = 1. * A / mol;</div>
+<div class="line"><span class="lineno">  229</span>  assert(s1() == 1. * A / mol);</div>
+<div class="line"><span class="lineno">  230</span> </div>
+<div class="line"><span class="lineno">  231</span>  <span class="comment">// Beware the element type may not be the same as could be expected.</span></div>
+<div class="line"><span class="lineno">  232</span>  <span class="keyword">static_assert</span>(</div>
+<div class="line"><span class="lineno">  233</span>      not std::is_same_v&lt;<span class="keyword">decltype</span>(A / mol), <span class="keyword">decltype</span>(s1)::element&lt;0, 0&gt;&gt;);</div>
+<div class="line"><span class="lineno">  234</span> </div>
+<div class="line"><span class="lineno">  235</span>  <span class="comment">// The singleton element can be accessed by conversion to its element type.</span></div>
+<div class="line"><span class="lineno">  236</span>  s1 = 10. * A / mol;</div>
+<div class="line"><span class="lineno">  237</span>  <span class="keyword">using </span>single_element = <span class="keyword">decltype</span>(s1)::element&lt;0, 0&gt;;</div>
+<div class="line"><span class="lineno">  238</span>  assert(single_element{s1} == 10. * A / mol);</div>
+<div class="line"><span class="lineno">  239</span>  assert(s1 == 10. * A / mol);</div>
+<div class="line"><span class="lineno">  240</span> </div>
+<div class="line"><span class="lineno">  241</span>  <span class="comment">// The singleton element can be accessed by structured bindings.</span></div>
+<div class="line"><span class="lineno">  242</span>  <span class="keyword">auto</span> &amp;[sb1]{s1};</div>
+<div class="line"><span class="lineno">  243</span>  sb1 = 1. * A / mol;</div>
+<div class="line"><span class="lineno">  244</span>  <span class="keyword">const</span> <span class="keyword">auto</span> &amp;[sb2]{s1};</div>
+<div class="line"><span class="lineno">  245</span>  assert(sb2 == 1. * A / mol);</div>
+<div class="line"><span class="lineno">  246</span> </div>
+<div class="line"><span class="lineno">  247</span>  <span class="comment">// More forms of multiplication with a scalar factor.</span></div>
+<div class="line"><span class="lineno">  248</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x5 * 2.) == <span class="stringliteral">&quot;[[6 m], [4 m/s], [2 m/s²]]&quot;</span>);</div>
+<div class="line"><span class="lineno">  249</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, 2. * x5) == <span class="stringliteral">&quot;[[6 m], [4 m/s], [2 m/s²]]&quot;</span>);</div>
+<div class="line"><span class="lineno">  250</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, xt5 * 2.) == <span class="stringliteral">&quot;[6 m, 4 m/s, 2 m/s²]&quot;</span>);</div>
+<div class="line"><span class="lineno">  251</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, 2. * xt5) == <span class="stringliteral">&quot;[6 m, 4 m/s, 2 m/s²]&quot;</span>);</div>
+<div class="line"><span class="lineno">  252</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, (x5 * xt5) * 2.) == <span class="stringliteral">&quot;[[18 m², 12 m²/s, 6 m²/s²],&quot;</span></div>
+<div class="line"><span class="lineno">  253</span>                                               <span class="stringliteral">&quot; [12 m²/s, 8 m²/s², 4 m²/s³],&quot;</span></div>
+<div class="line"><span class="lineno">  254</span>                                               <span class="stringliteral">&quot; [6 m²/s², 4 m²/s³, 2 m²/s⁴]]&quot;</span>);</div>
+<div class="line"><span class="lineno">  255</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, 2. * (x5 * xt5)) == <span class="stringliteral">&quot;[[18 m², 12 m²/s, 6 m²/s²],&quot;</span></div>
+<div class="line"><span class="lineno">  256</span>                                               <span class="stringliteral">&quot; [12 m²/s, 8 m²/s², 4 m²/s³],&quot;</span></div>
+<div class="line"><span class="lineno">  257</span>                                               <span class="stringliteral">&quot; [6 m²/s², 4 m²/s³, 2 m²/s⁴]]&quot;</span>);</div>
+<div class="line"><span class="lineno">  258</span> </div>
+<div class="line"><span class="lineno">  259</span>  <span class="comment">// More forms of multiplication with a strongly typed factor.</span></div>
+<div class="line"><span class="lineno">  260</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x5 * (2. * m)) == <span class="stringliteral">&quot;[[6 m²], [4 m²/s], [2 m²/s²]]&quot;</span>);</div>
+<div class="line"><span class="lineno">  261</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, (2. * m) * x5) == <span class="stringliteral">&quot;[[6 m²], [4 m²/s], [2 m²/s²]]&quot;</span>);</div>
+<div class="line"><span class="lineno">  262</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, xt5 * (2. * m)) == <span class="stringliteral">&quot;[6 m², 4 m²/s, 2 m²/s²]&quot;</span>);</div>
+<div class="line"><span class="lineno">  263</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, (2. * m) * xt5) == <span class="stringliteral">&quot;[6 m², 4 m²/s, 2 m²/s²]&quot;</span>);</div>
+<div class="line"><span class="lineno">  264</span> </div>
+<div class="line"><span class="lineno">  265</span>  <span class="comment">// More forms of multiplication with typed matrices.</span></div>
+<div class="line"><span class="lineno">  266</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x5 * s1) == <span class="stringliteral">&quot;[[3 A m/mol],&quot;</span></div>
+<div class="line"><span class="lineno">  267</span>                                       <span class="stringliteral">&quot; [2 A m mol⁻¹ s⁻¹],&quot;</span></div>
+<div class="line"><span class="lineno">  268</span>                                       <span class="stringliteral">&quot; [1 A m mol⁻¹ s⁻²]]&quot;</span>);</div>
+<div class="line"><span class="lineno">  269</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, s1 * xt5) ==</div>
+<div class="line"><span class="lineno">  270</span>         <span class="stringliteral">&quot;[3 A m/mol, 2 A m mol⁻¹ s⁻¹, 1 A m mol⁻¹ s⁻²]&quot;</span>);</div>
+<div class="line"><span class="lineno">  271</span> </div>
+<div class="line"><span class="lineno">  272</span>  <span class="comment">// More forms of division with a scalar term.</span></div>
+<div class="line"><span class="lineno">  273</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x5 / 2.) == <span class="stringliteral">&quot;[[1.5 m], [1 m/s], [0.5 m/s²]]&quot;</span>);</div>
+<div class="line"><span class="lineno">  274</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, 1. / x5) ==</div>
+<div class="line"><span class="lineno">  275</span>         <span class="stringliteral">&quot;[0.3333333333333333 1/m, 0 s/m, 0 s²/m]&quot;</span>);</div>
+<div class="line"><span class="lineno">  276</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, xt5 / 2.) == <span class="stringliteral">&quot;[1.5 m, 1 m/s, 0.5 m/s²]&quot;</span>);</div>
 <div class="line"><span class="lineno">  277</span> </div>
-<div class="line"><span class="lineno">  278</span>  velocity a[]{1. * m / s, 2. * m / s, 3. * m / s};</div>
-<div class="line"><span class="lineno">  279</span>  velocity3d v1{a};</div>
-<div class="line"><span class="lineno">  280</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, v1) == <span class="stringliteral">&quot;[[1 m/s], [2 m/s], [3 m/s]]&quot;</span>);</div>
-<div class="line"><span class="lineno">  281</span> </div>
-<div class="line"><span class="lineno">  282</span>  <span class="comment">// Vector typed access.</span></div>
-<div class="line"><span class="lineno">  283</span>  v0.at&lt;1&gt;() = 4. * m / s;</div>
-<div class="line"><span class="lineno">  284</span>  assert(v0.at&lt;1&gt;() == 4. * m / s);</div>
-<div class="line"><span class="lineno">  285</span> </div>
-<div class="line"><span class="lineno">  286</span>  <span class="comment">// Vector and uniform typed access.</span></div>
-<div class="line"><span class="lineno">  287</span>  v0[1] = 3. * m / s;</div>
-<div class="line"><span class="lineno">  288</span>  assert(v0[1] == 3. * m / s);</div>
-<div class="line"><span class="lineno">  289</span> </div>
-<div class="line"><span class="lineno">  290</span>  v0(1) = 2. * m / s;</div>
-<div class="line"><span class="lineno">  291</span>  assert(v0(1) == 2. * m / s);</div>
-<div class="line"><span class="lineno">  292</span> </div>
-<div class="line"><span class="lineno">  293</span>  <span class="comment">// Beware of non-evaluated template expression: these types are not the same.</span></div>
-<div class="line"><span class="lineno">  294</span>  <span class="keyword">auto</span> a0{vector3d{1., 2., 3.} * mp_units::isq::velocity[m / s]};</div>
-<div class="line"><span class="lineno">  295</span>  <span class="keyword">static_assert</span>(not std::is_same_v&lt;<span class="keyword">decltype</span>(a0), velocity3d&gt;);</div>
-<div class="line"><span class="lineno">  296</span> </div>
+<div class="line"><span class="lineno">  278</span>  <span class="comment">// More forms of division with a strongly typed factor.</span></div>
+<div class="line"><span class="lineno">  279</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x5 / (2. * m)) == <span class="stringliteral">&quot;[[1.5], [1 1/s], [0.5 1/s²]]&quot;</span>);</div>
+<div class="line"><span class="lineno">  280</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, (1. * m) / x5) == <span class="stringliteral">&quot;[0.3333333333333333, 0 s, 0 s²]&quot;</span>);</div>
+<div class="line"><span class="lineno">  281</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, xt5 / (2. * m)) == <span class="stringliteral">&quot;[1.5, 1 1/s, 0.5 1/s²]&quot;</span>);</div>
+<div class="line"><span class="lineno">  282</span> </div>
+<div class="line"><span class="lineno">  283</span>  <span class="comment">// More forms of division with typed matrices.</span></div>
+<div class="line"><span class="lineno">  284</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, s1 / s1) == <span class="stringliteral">&quot;1&quot;</span>);</div>
+<div class="line"><span class="lineno">  285</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x5 / x5) == <span class="stringliteral">&quot;[[1, 0 s, 0 s²],&quot;</span></div>
+<div class="line"><span class="lineno">  286</span>                                       <span class="stringliteral">&quot; [0.6666666666666666 1/s, 0, 0 s],&quot;</span></div>
+<div class="line"><span class="lineno">  287</span>                                       <span class="stringliteral">&quot; [0.3333333333333333 1/s², 0 1/s, 0]]&quot;</span>);</div>
+<div class="line"><span class="lineno">  288</span> </div>
+<div class="line"><span class="lineno">  290</span> </div>
+<div class="line"><span class="lineno">  291</span>  <span class="comment">// Homogeneously quantity typed vector.</span></div>
+<div class="line"><span class="lineno">  292</span>  <span class="keyword">using </span>vector3d =</div>
+<div class="line"><span class="lineno">  293</span>      column_vector&lt;representation, representation, representation&gt;;</div>
+<div class="line"><span class="lineno">  294</span>  <span class="keyword">using </span>velocity3d = column_vector&lt;velocity, velocity, velocity&gt;;</div>
+<div class="line"><span class="lineno">  295</span> </div>
+<div class="line"><span class="lineno">  296</span>  vector3d v{1., 2., 3.};</div>
+<div class="line"><span class="lineno">  297</span>  velocity3d v0{v * m / s};</div>
+<div class="line"><span class="lineno">  298</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, v0) == <span class="stringliteral">&quot;[[1 m/s], [2 m/s], [3 m/s]]&quot;</span>);</div>
 <div class="line"><span class="lineno">  299</span> </div>
-<div class="line"><span class="lineno">  300</span>  <span class="comment">// Addition where both arguments should be of the same quantity kind and</span></div>
-<div class="line"><span class="lineno">  301</span>  <span class="comment">// character.</span></div>
-<div class="line"><span class="lineno">  303</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, v0 + v0) == <span class="stringliteral">&quot;[[2 m/s], [4 m/s], [6 m/s]]&quot;</span>);</div>
-<div class="line"><span class="lineno">  304</span> </div>
-<div class="line"><span class="lineno">  305</span>  <span class="comment">// Subtraction where both arguments should be of the same quantity kind and</span></div>
-<div class="line"><span class="lineno">  306</span>  <span class="comment">// character.</span></div>
-<div class="line"><span class="lineno">  308</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, v0 - v0) == <span class="stringliteral">&quot;[[0 m/s], [0 m/s], [0 m/s]]&quot;</span>);</div>
-<div class="line"><span class="lineno">  309</span> </div>
-<div class="line"><span class="lineno">  310</span>  <span class="comment">// Matrix and uniform typed access.</span></div>
-<div class="line"><span class="lineno">  311</span>  <span class="keyword">using </span>position_2d_uncertainty =</div>
-<div class="line"><span class="lineno">  312</span>      matrix&lt;std::tuple&lt;position, position&gt;, std::tuple&lt;position, position&gt;&gt;;</div>
-<div class="line"><span class="lineno">  313</span>  position_2d_uncertainty p0;</div>
+<div class="line"><span class="lineno">  300</span>  velocity a[]{1. * m / s, 2. * m / s, 3. * m / s};</div>
+<div class="line"><span class="lineno">  301</span>  velocity3d v1{a};</div>
+<div class="line"><span class="lineno">  302</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, v1) == <span class="stringliteral">&quot;[[1 m/s], [2 m/s], [3 m/s]]&quot;</span>);</div>
+<div class="line"><span class="lineno">  303</span> </div>
+<div class="line"><span class="lineno">  304</span>  <span class="comment">// Vector typed access.</span></div>
+<div class="line"><span class="lineno">  305</span>  v0.at&lt;1&gt;() = 4. * m / s;</div>
+<div class="line"><span class="lineno">  306</span>  assert(v0.at&lt;1&gt;() == 4. * m / s);</div>
+<div class="line"><span class="lineno">  307</span> </div>
+<div class="line"><span class="lineno">  308</span>  <span class="comment">// Vector and uniform typed access.</span></div>
+<div class="line"><span class="lineno">  309</span>  v0[1] = 3. * m / s;</div>
+<div class="line"><span class="lineno">  310</span>  assert(v0[1] == 3. * m / s);</div>
+<div class="line"><span class="lineno">  311</span> </div>
+<div class="line"><span class="lineno">  312</span>  v0(1) = 2. * m / s;</div>
+<div class="line"><span class="lineno">  313</span>  assert(v0(1) == 2. * m / s);</div>
 <div class="line"><span class="lineno">  314</span> </div>
-<div class="line"><span class="lineno">  315</span>  p0[0, 1] = 9. * m2;</div>
-<div class="line"><span class="lineno">  316</span>  assert((p0[0, 1] == 9. * m2));</div>
-<div class="line"><span class="lineno">  317</span> </div>
-<div class="line"><span class="lineno">  318</span>  p0(0, 1) = 16. * m2;</div>
-<div class="line"><span class="lineno">  319</span>  assert((p0(0, 1) == 16. * m2));</div>
-<div class="line"><span class="lineno">  320</span> </div>
-<div class="line"><span class="lineno">  341</span> </div>
-<div class="line"><span class="lineno">  342</span>  <span class="comment">// 1-D vehicle location Kalman estimation.</span></div>
-<div class="line"><span class="lineno">  343</span>  state x{0. * m, 0. * m / s, 0. * m / s2};</div>
-<div class="line"><span class="lineno">  344</span>  std::println(<span class="stringliteral">&quot;X: {}&quot;</span>, x);</div>
-<div class="line"><span class="lineno">  345</span>  <span class="comment">// X: [[0 m],</span></div>
-<div class="line"><span class="lineno">  346</span>  <span class="comment">//     [0 m/s],</span></div>
-<div class="line"><span class="lineno">  347</span>  <span class="comment">//     [0 m/s²]]</span></div>
-<div class="line"><span class="lineno">  348</span> </div>
-<div class="line"><span class="lineno">  349</span>  <span class="keyword">using </span>estimate_uncertainty =</div>
-<div class="line"><span class="lineno">  350</span>      matrix&lt;std::tuple&lt;position, velocity, acceleration&gt;,</div>
-<div class="line"><span class="lineno">  351</span>             std::tuple&lt;position, velocity, acceleration&gt;&gt;;</div>
-<div class="line"><span class="lineno">  352</span>  estimate_uncertainty p;</div>
-<div class="line"><span class="lineno">  353</span>  p.at&lt;0, 0&gt;() = 500. * m2;</div>
-<div class="line"><span class="lineno">  354</span>  p.at&lt;1, 1&gt;() = 500. * m2 / s2;</div>
-<div class="line"><span class="lineno">  355</span>  p.at&lt;2, 2&gt;() = 500. * m2 / s4;</div>
-<div class="line"><span class="lineno">  356</span>  std::println(<span class="stringliteral">&quot;P: {}&quot;</span>, p);</div>
-<div class="line"><span class="lineno">  357</span>  <span class="comment">// P: [[500 m²,     0 m²/s,    0 m²/s²],</span></div>
-<div class="line"><span class="lineno">  358</span>  <span class="comment">//     [  0 m²/s, 500 m²/s²,   0 m²/s³],</span></div>
-<div class="line"><span class="lineno">  359</span>  <span class="comment">//     [  0 m²/s²,  0 m²/s³, 500 m²/s⁴]]</span></div>
-<div class="line"><span class="lineno">  360</span> </div>
-<div class="line"><span class="lineno">  361</span>  <span class="keyword">using </span>process_uncertainty = estimate_uncertainty;</div>
-<div class="line"><span class="lineno">  362</span>  process_uncertainty q;</div>
-<div class="line"><span class="lineno">  363</span>  q.at&lt;0, 0&gt;() = 0.01 * m2;</div>
-<div class="line"><span class="lineno">  364</span>  q.at&lt;0, 1&gt;() = 0.02 * m2 / s;</div>
-<div class="line"><span class="lineno">  365</span>  q.at&lt;0, 2&gt;() = 0.02 * m2 / s2;</div>
-<div class="line"><span class="lineno">  366</span>  q.at&lt;1, 0&gt;() = 0.02 * m2 / s;</div>
-<div class="line"><span class="lineno">  367</span>  q.at&lt;1, 1&gt;() = 0.04 * m2 / s2;</div>
-<div class="line"><span class="lineno">  368</span>  q.at&lt;1, 2&gt;() = 0.04 * m2 / s3;</div>
-<div class="line"><span class="lineno">  369</span>  q.at&lt;2, 0&gt;() = 0.02 * m2 / s2;</div>
-<div class="line"><span class="lineno">  370</span>  q.at&lt;2, 1&gt;() = 0.04 * m2 / s3;</div>
-<div class="line"><span class="lineno">  371</span>  q.at&lt;2, 2&gt;() = 0.04 * m2 / s4;</div>
-<div class="line"><span class="lineno">  372</span>  std::println(<span class="stringliteral">&quot;Q: {}&quot;</span>, q);</div>
-<div class="line"><span class="lineno">  373</span>  <span class="comment">// Q: [[0.01 m²,    0.02 m²/s,  0.02 m²/s²],</span></div>
-<div class="line"><span class="lineno">  374</span>  <span class="comment">//     [0.02 m²/s,  0.04 m²/s², 0.04 m²/s³],</span></div>
-<div class="line"><span class="lineno">  375</span>  <span class="comment">//     [0.02 m²/s², 0.04 m²/s³, 0.04 m²/s⁴]]</span></div>
-<div class="line"><span class="lineno">  376</span> </div>
-<div class="line"><span class="lineno">  377</span>  <span class="keyword">using </span>output_uncertainty = quantity&lt;m2&gt;;</div>
-<div class="line"><span class="lineno">  378</span>  output_uncertainty r{9. * m2};</div>
-<div class="line"><span class="lineno">  379</span>  std::println(<span class="stringliteral">&quot;R: {}&quot;</span>, r);</div>
-<div class="line"><span class="lineno">  380</span>  <span class="comment">// R: 9 m²</span></div>
-<div class="line"><span class="lineno">  381</span> </div>
-<div class="line"><span class="lineno">  382</span>  <span class="keyword">using </span>output_model = row_vector&lt;quantity&lt;one&gt;, quantity&lt;s&gt;, quantity&lt;s2&gt;&gt;;</div>
-<div class="line"><span class="lineno">  383</span>  output_model h;</div>
-<div class="line"><span class="lineno">  384</span>  h.at&lt;0&gt;() = 1.;</div>
-<div class="line"><span class="lineno">  385</span>  std::println(<span class="stringliteral">&quot;H: {}&quot;</span>, h);</div>
-<div class="line"><span class="lineno">  386</span>  <span class="comment">// H: [1, 0 s, 0 s²]</span></div>
-<div class="line"><span class="lineno">  387</span> </div>
-<div class="line"><span class="lineno">  388</span>  <span class="keyword">using </span>state_transition =</div>
-<div class="line"><span class="lineno">  389</span>      matrix&lt;std::tuple&lt;position, velocity, acceleration&gt;,</div>
-<div class="line"><span class="lineno">  390</span>             std::tuple&lt;<a class="code hl_typedef" href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">quantity</a>&lt;one / m&gt;, <a class="code hl_typedef" href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">quantity</a>&lt;s / m&gt;, <a class="code hl_typedef" href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">quantity</a>&lt;s2 / m&gt;&gt;&gt;;</div>
-<div class="line"><span class="lineno">  391</span>  state_transition f;</div>
-<div class="line"><span class="lineno">  392</span>  f.at&lt;0, 0&gt;() = 1.;</div>
-<div class="line"><span class="lineno">  393</span>  f.at&lt;0, 1&gt;() = 1. * s;</div>
-<div class="line"><span class="lineno">  394</span>  f.at&lt;0, 2&gt;() = 0.5 * s2;</div>
-<div class="line"><span class="lineno">  395</span>  f.at&lt;1, 1&gt;() = 1.;</div>
-<div class="line"><span class="lineno">  396</span>  f.at&lt;1, 2&gt;() = 1. * s;</div>
-<div class="line"><span class="lineno">  397</span>  f.at&lt;2, 2&gt;() = 1.;</div>
-<div class="line"><span class="lineno">  398</span>  std::println(<span class="stringliteral">&quot;F: {}&quot;</span>, f);</div>
-<div class="line"><span class="lineno">  399</span>  <span class="comment">// F: [[1, 1 s, 0.5 s²],</span></div>
-<div class="line"><span class="lineno">  400</span>  <span class="comment">//     [0 1/s, 1, 1 s],</span></div>
-<div class="line"><span class="lineno">  401</span>  <span class="comment">//     [0 1/s², 0 1/s, 1]]</span></div>
-<div class="line"><span class="lineno">  402</span> </div>
-<div class="line"><span class="lineno">  403</span>  <span class="comment">// Prediction stage of the filter estimated state.</span></div>
-<div class="line"><span class="lineno">  404</span>  x = f * x;</div>
-<div class="line"><span class="lineno">  405</span>  p = f * p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(f) + q;</div>
-<div class="line"><span class="lineno">  406</span> </div>
-<div class="line"><span class="lineno">  407</span>  <span class="comment">// Update stage of the filter from output measurements.</span></div>
-<div class="line"><span class="lineno">  408</span>  <span class="keyword">using </span>output = position;</div>
-<div class="line"><span class="lineno">  409</span>  output z{-393.66 * m};</div>
-<div class="line"><span class="lineno">  410</span> </div>
-<div class="line"><span class="lineno">  411</span>  <span class="keyword">using </span>innovation_uncertainty = output_uncertainty;</div>
-<div class="line"><span class="lineno">  412</span>  innovation_uncertainty si{h * p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(h) + r};</div>
-<div class="line"><span class="lineno">  413</span> </div>
-<div class="line"><span class="lineno">  414</span>  <span class="keyword">using </span>unevaluated_gain =</div>
-<div class="line"><span class="lineno">  415</span>      <span class="keyword">decltype</span>(std::declval&lt;state&gt;() / std::declval&lt;output&gt;());</div>
-<div class="line"><span class="lineno">  416</span>  <span class="keyword">using </span>gain =</div>
-<div class="line"><span class="lineno">  417</span>      matrix&lt;unevaluated_gain::row_indexes, unevaluated_gain::column_indexes&gt;;</div>
-<div class="line"><span class="lineno">  418</span>  gain k{p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(h) / si};</div>
-<div class="line"><span class="lineno">  419</span> </div>
-<div class="line"><span class="lineno">  420</span>  <span class="keyword">using </span>innovation = output;</div>
-<div class="line"><span class="lineno">  421</span>  innovation y{z - h * x};</div>
-<div class="line"><span class="lineno">  422</span>  x = x + k * y;</div>
-<div class="line"><span class="lineno">  423</span> </div>
-<div class="line"><span class="lineno">  424</span>  std::println(<span class="stringliteral">&quot;X: {}&quot;</span>, x);</div>
-<div class="line"><span class="lineno">  425</span>  <span class="comment">// X: [[-390.53 m],</span></div>
-<div class="line"><span class="lineno">  426</span>  <span class="comment">//     [-260.36 m/s],</span></div>
-<div class="line"><span class="lineno">  427</span>  <span class="comment">//     [ -86.79 m/s²]]</span></div>
+<div class="line"><span class="lineno">  315</span>  <span class="comment">// Beware of non-evaluated template expression: these types are not the same.</span></div>
+<div class="line"><span class="lineno">  316</span>  <span class="keyword">auto</span> a0{vector3d{1., 2., 3.} * mp_units::isq::velocity[m / s]};</div>
+<div class="line"><span class="lineno">  317</span>  <span class="keyword">static_assert</span>(not std::is_same_v&lt;<span class="keyword">decltype</span>(a0), velocity3d&gt;);</div>
+<div class="line"><span class="lineno">  318</span> </div>
+<div class="line"><span class="lineno">  321</span> </div>
+<div class="line"><span class="lineno">  322</span>  <span class="comment">// Addition where both arguments should be of the same quantity kind and</span></div>
+<div class="line"><span class="lineno">  323</span>  <span class="comment">// character.</span></div>
+<div class="line"><span class="lineno">  325</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, v0 + v0) == <span class="stringliteral">&quot;[[2 m/s], [4 m/s], [6 m/s]]&quot;</span>);</div>
+<div class="line"><span class="lineno">  326</span> </div>
+<div class="line"><span class="lineno">  327</span>  <span class="comment">// Subtraction where both arguments should be of the same quantity kind and</span></div>
+<div class="line"><span class="lineno">  328</span>  <span class="comment">// character.</span></div>
+<div class="line"><span class="lineno">  330</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, v0 - v0) == <span class="stringliteral">&quot;[[0 m/s], [0 m/s], [0 m/s]]&quot;</span>);</div>
+<div class="line"><span class="lineno">  331</span> </div>
+<div class="line"><span class="lineno">  332</span>  <span class="comment">// Matrix and uniform typed access.</span></div>
+<div class="line"><span class="lineno">  333</span>  <span class="keyword">using </span>position_2d_uncertainty =</div>
+<div class="line"><span class="lineno">  334</span>      matrix&lt;std::tuple&lt;position, position&gt;, std::tuple&lt;position, position&gt;&gt;;</div>
+<div class="line"><span class="lineno">  335</span>  position_2d_uncertainty p0;</div>
+<div class="line"><span class="lineno">  336</span> </div>
+<div class="line"><span class="lineno">  337</span>  p0[0, 1] = 9. * m2;</div>
+<div class="line"><span class="lineno">  338</span>  assert((p0[0, 1] == 9. * m2));</div>
+<div class="line"><span class="lineno">  339</span> </div>
+<div class="line"><span class="lineno">  340</span>  p0(0, 1) = 16. * m2;</div>
+<div class="line"><span class="lineno">  341</span>  assert((p0(0, 1) == 16. * m2));</div>
+<div class="line"><span class="lineno">  342</span> </div>
+<div class="line"><span class="lineno">  363</span> </div>
+<div class="line"><span class="lineno">  364</span>  <span class="comment">// 1-D vehicle location Kalman estimation.</span></div>
+<div class="line"><span class="lineno">  365</span>  state x{0. * m, 0. * m / s, 0. * m / s2};</div>
+<div class="line"><span class="lineno">  366</span>  std::println(<span class="stringliteral">&quot;X: {}&quot;</span>, x);</div>
+<div class="line"><span class="lineno">  367</span>  <span class="comment">// X: [[0 m],</span></div>
+<div class="line"><span class="lineno">  368</span>  <span class="comment">//     [0 m/s],</span></div>
+<div class="line"><span class="lineno">  369</span>  <span class="comment">//     [0 m/s²]]</span></div>
+<div class="line"><span class="lineno">  370</span> </div>
+<div class="line"><span class="lineno">  371</span>  <span class="keyword">using </span>estimate_uncertainty =</div>
+<div class="line"><span class="lineno">  372</span>      matrix&lt;std::tuple&lt;position, velocity, acceleration&gt;,</div>
+<div class="line"><span class="lineno">  373</span>             std::tuple&lt;position, velocity, acceleration&gt;&gt;;</div>
+<div class="line"><span class="lineno">  374</span>  estimate_uncertainty p;</div>
+<div class="line"><span class="lineno">  375</span>  p.at&lt;0, 0&gt;() = 500. * m2;</div>
+<div class="line"><span class="lineno">  376</span>  p.at&lt;1, 1&gt;() = 500. * m2 / s2;</div>
+<div class="line"><span class="lineno">  377</span>  p.at&lt;2, 2&gt;() = 500. * m2 / s4;</div>
+<div class="line"><span class="lineno">  378</span>  std::println(<span class="stringliteral">&quot;P: {}&quot;</span>, p);</div>
+<div class="line"><span class="lineno">  379</span>  <span class="comment">// P: [[500 m²,     0 m²/s,    0 m²/s²],</span></div>
+<div class="line"><span class="lineno">  380</span>  <span class="comment">//     [  0 m²/s, 500 m²/s²,   0 m²/s³],</span></div>
+<div class="line"><span class="lineno">  381</span>  <span class="comment">//     [  0 m²/s²,  0 m²/s³, 500 m²/s⁴]]</span></div>
+<div class="line"><span class="lineno">  382</span> </div>
+<div class="line"><span class="lineno">  383</span>  <span class="keyword">using </span>process_uncertainty = estimate_uncertainty;</div>
+<div class="line"><span class="lineno">  384</span>  process_uncertainty q;</div>
+<div class="line"><span class="lineno">  385</span>  q.at&lt;0, 0&gt;() = 0.01 * m2;</div>
+<div class="line"><span class="lineno">  386</span>  q.at&lt;0, 1&gt;() = 0.02 * m2 / s;</div>
+<div class="line"><span class="lineno">  387</span>  q.at&lt;0, 2&gt;() = 0.02 * m2 / s2;</div>
+<div class="line"><span class="lineno">  388</span>  q.at&lt;1, 0&gt;() = 0.02 * m2 / s;</div>
+<div class="line"><span class="lineno">  389</span>  q.at&lt;1, 1&gt;() = 0.04 * m2 / s2;</div>
+<div class="line"><span class="lineno">  390</span>  q.at&lt;1, 2&gt;() = 0.04 * m2 / s3;</div>
+<div class="line"><span class="lineno">  391</span>  q.at&lt;2, 0&gt;() = 0.02 * m2 / s2;</div>
+<div class="line"><span class="lineno">  392</span>  q.at&lt;2, 1&gt;() = 0.04 * m2 / s3;</div>
+<div class="line"><span class="lineno">  393</span>  q.at&lt;2, 2&gt;() = 0.04 * m2 / s4;</div>
+<div class="line"><span class="lineno">  394</span>  std::println(<span class="stringliteral">&quot;Q: {}&quot;</span>, q);</div>
+<div class="line"><span class="lineno">  395</span>  <span class="comment">// Q: [[0.01 m²,    0.02 m²/s,  0.02 m²/s²],</span></div>
+<div class="line"><span class="lineno">  396</span>  <span class="comment">//     [0.02 m²/s,  0.04 m²/s², 0.04 m²/s³],</span></div>
+<div class="line"><span class="lineno">  397</span>  <span class="comment">//     [0.02 m²/s², 0.04 m²/s³, 0.04 m²/s⁴]]</span></div>
+<div class="line"><span class="lineno">  398</span> </div>
+<div class="line"><span class="lineno">  399</span>  <span class="keyword">using </span>output_uncertainty = quantity&lt;m2&gt;;</div>
+<div class="line"><span class="lineno">  400</span>  output_uncertainty r{9. * m2};</div>
+<div class="line"><span class="lineno">  401</span>  std::println(<span class="stringliteral">&quot;R: {}&quot;</span>, r);</div>
+<div class="line"><span class="lineno">  402</span>  <span class="comment">// R: 9 m²</span></div>
+<div class="line"><span class="lineno">  403</span> </div>
+<div class="line"><span class="lineno">  404</span>  <span class="keyword">using </span>output_model = row_vector&lt;quantity&lt;one&gt;, quantity&lt;s&gt;, quantity&lt;s2&gt;&gt;;</div>
+<div class="line"><span class="lineno">  405</span>  output_model h;</div>
+<div class="line"><span class="lineno">  406</span>  h.at&lt;0&gt;() = 1.;</div>
+<div class="line"><span class="lineno">  407</span>  std::println(<span class="stringliteral">&quot;H: {}&quot;</span>, h);</div>
+<div class="line"><span class="lineno">  408</span>  <span class="comment">// H: [1, 0 s, 0 s²]</span></div>
+<div class="line"><span class="lineno">  409</span> </div>
+<div class="line"><span class="lineno">  410</span>  <span class="keyword">using </span>state_transition =</div>
+<div class="line"><span class="lineno">  411</span>      matrix&lt;std::tuple&lt;position, velocity, acceleration&gt;,</div>
+<div class="line"><span class="lineno">  412</span>             std::tuple&lt;<a class="code hl_typedef" href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">quantity</a>&lt;one / m&gt;, <a class="code hl_typedef" href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">quantity</a>&lt;s / m&gt;, <a class="code hl_typedef" href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">quantity</a>&lt;s2 / m&gt;&gt;&gt;;</div>
+<div class="line"><span class="lineno">  413</span>  state_transition f;</div>
+<div class="line"><span class="lineno">  414</span>  f.at&lt;0, 0&gt;() = 1.;</div>
+<div class="line"><span class="lineno">  415</span>  f.at&lt;0, 1&gt;() = 1. * s;</div>
+<div class="line"><span class="lineno">  416</span>  f.at&lt;0, 2&gt;() = 0.5 * s2;</div>
+<div class="line"><span class="lineno">  417</span>  f.at&lt;1, 1&gt;() = 1.;</div>
+<div class="line"><span class="lineno">  418</span>  f.at&lt;1, 2&gt;() = 1. * s;</div>
+<div class="line"><span class="lineno">  419</span>  f.at&lt;2, 2&gt;() = 1.;</div>
+<div class="line"><span class="lineno">  420</span>  std::println(<span class="stringliteral">&quot;F: {}&quot;</span>, f);</div>
+<div class="line"><span class="lineno">  421</span>  <span class="comment">// F: [[1, 1 s, 0.5 s²],</span></div>
+<div class="line"><span class="lineno">  422</span>  <span class="comment">//     [0 1/s, 1, 1 s],</span></div>
+<div class="line"><span class="lineno">  423</span>  <span class="comment">//     [0 1/s², 0 1/s, 1]]</span></div>
+<div class="line"><span class="lineno">  424</span> </div>
+<div class="line"><span class="lineno">  425</span>  <span class="comment">// Prediction stage of the filter estimated state.</span></div>
+<div class="line"><span class="lineno">  426</span>  x = f * x;</div>
+<div class="line"><span class="lineno">  427</span>  p = f * p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(f) + q;</div>
 <div class="line"><span class="lineno">  428</span> </div>
-<div class="line"><span class="lineno">  429</span>  <span class="keyword">using </span>unevaluated_kh =</div>
-<div class="line"><span class="lineno">  430</span>      <span class="keyword">decltype</span>(std::declval&lt;gain&gt;() * std::declval&lt;output_model&gt;());</div>
-<div class="line"><span class="lineno">  431</span>  <span class="keyword">using </span>kh =</div>
-<div class="line"><span class="lineno">  432</span>      matrix&lt;unevaluated_kh::row_indexes, unevaluated_kh::column_indexes&gt;;</div>
-<div class="line"><span class="lineno">  433</span>  kh i;</div>
-<div class="line"><span class="lineno">  434</span>  i.at&lt;0, 0&gt;() = 1.;</div>
-<div class="line"><span class="lineno">  435</span>  i.at&lt;1, 1&gt;() = 1.;</div>
-<div class="line"><span class="lineno">  436</span>  i.at&lt;2, 2&gt;() = 1.;</div>
-<div class="line"><span class="lineno">  437</span>  p = (i - k * h) * p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(i - k * h) + k * r * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(k);</div>
-<div class="line"><span class="lineno">  438</span>  std::println(<span class="stringliteral">&quot;P: {}&quot;</span>, p);</div>
-<div class="line"><span class="lineno">  439</span>  <span class="comment">// P: [[8.92 m²,      5.95 m²/s,    1.98 m²/s²],</span></div>
-<div class="line"><span class="lineno">  440</span>  <span class="comment">//     [5.95 m²/s,  503.98 m²/s², 334.67 m²/s³],</span></div>
-<div class="line"><span class="lineno">  441</span>  <span class="comment">//     [1.98 m²/s², 334.67 m²/s³, 444.91 m²/s⁴]]</span></div>
-<div class="line"><span class="lineno">  442</span> </div>
-<div class="line"><span class="lineno">  443</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  444</span>}()};</div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a3aae575a4aa6b608a99d02f58b0fc86c"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00078">eigen.hpp:78</a></div></div>
+<div class="line"><span class="lineno">  429</span>  <span class="comment">// Update stage of the filter from output measurements.</span></div>
+<div class="line"><span class="lineno">  430</span>  <span class="keyword">using </span>output = position;</div>
+<div class="line"><span class="lineno">  431</span>  output z{-393.66 * m};</div>
+<div class="line"><span class="lineno">  432</span> </div>
+<div class="line"><span class="lineno">  433</span>  <span class="keyword">using </span>innovation_uncertainty = output_uncertainty;</div>
+<div class="line"><span class="lineno">  434</span>  innovation_uncertainty si{h * p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(h) + r};</div>
+<div class="line"><span class="lineno">  435</span> </div>
+<div class="line"><span class="lineno">  436</span>  <span class="keyword">using </span>unevaluated_gain =</div>
+<div class="line"><span class="lineno">  437</span>      <span class="keyword">decltype</span>(std::declval&lt;state&gt;() / std::declval&lt;output&gt;());</div>
+<div class="line"><span class="lineno">  438</span>  <span class="keyword">using </span>gain =</div>
+<div class="line"><span class="lineno">  439</span>      matrix&lt;unevaluated_gain::row_indexes, unevaluated_gain::column_indexes&gt;;</div>
+<div class="line"><span class="lineno">  440</span>  gain k{p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(h) / si};</div>
+<div class="line"><span class="lineno">  441</span> </div>
+<div class="line"><span class="lineno">  442</span>  <span class="keyword">using </span>innovation = output;</div>
+<div class="line"><span class="lineno">  443</span>  innovation y{z - h * x};</div>
+<div class="line"><span class="lineno">  444</span>  x = x + k * y;</div>
+<div class="line"><span class="lineno">  445</span> </div>
+<div class="line"><span class="lineno">  446</span>  std::println(<span class="stringliteral">&quot;X: {}&quot;</span>, x);</div>
+<div class="line"><span class="lineno">  447</span>  <span class="comment">// X: [[-390.53 m],</span></div>
+<div class="line"><span class="lineno">  448</span>  <span class="comment">//     [-260.36 m/s],</span></div>
+<div class="line"><span class="lineno">  449</span>  <span class="comment">//     [ -86.79 m/s²]]</span></div>
+<div class="line"><span class="lineno">  450</span> </div>
+<div class="line"><span class="lineno">  451</span>  <span class="keyword">using </span>unevaluated_kh =</div>
+<div class="line"><span class="lineno">  452</span>      <span class="keyword">decltype</span>(std::declval&lt;gain&gt;() * std::declval&lt;output_model&gt;());</div>
+<div class="line"><span class="lineno">  453</span>  <span class="keyword">using </span>kh =</div>
+<div class="line"><span class="lineno">  454</span>      matrix&lt;unevaluated_kh::row_indexes, unevaluated_kh::column_indexes&gt;;</div>
+<div class="line"><span class="lineno">  455</span>  kh i;</div>
+<div class="line"><span class="lineno">  456</span>  i.at&lt;0, 0&gt;() = 1.;</div>
+<div class="line"><span class="lineno">  457</span>  i.at&lt;1, 1&gt;() = 1.;</div>
+<div class="line"><span class="lineno">  458</span>  i.at&lt;2, 2&gt;() = 1.;</div>
+<div class="line"><span class="lineno">  459</span>  p = (i - k * h) * p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(i - k * h) + k * r * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(k);</div>
+<div class="line"><span class="lineno">  460</span>  std::println(<span class="stringliteral">&quot;P: {}&quot;</span>, p);</div>
+<div class="line"><span class="lineno">  461</span>  <span class="comment">// P: [[8.92 m²,      5.95 m²/s,    1.98 m²/s²],</span></div>
+<div class="line"><span class="lineno">  462</span>  <span class="comment">//     [5.95 m²/s,  503.98 m²/s², 334.67 m²/s³],</span></div>
+<div class="line"><span class="lineno">  463</span>  <span class="comment">//     [1.98 m²/s², 334.67 m²/s³, 444.91 m²/s⁴]]</span></div>
+<div class="line"><span class="lineno">  464</span> </div>
+<div class="line"><span class="lineno">  465</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  466</span>}()};</div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a3aae575a4aa6b608a99d02f58b0fc86c"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00090">eigen.hpp:90</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_a3ad842428e2a263b2bdee6a8f7a9bb9a"><div class="ttname"><a href="#a3ad842428e2a263b2bdee6a8f7a9bb9a">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::matrix</a></div><div class="ttdeci">typed_matrix&lt; Eigen::Matrix&lt; representation, std::tuple_size_v&lt; RowIndexes &gt;, std::tuple_size_v&lt; ColumnIndexes &gt; &gt;, RowIndexes, ColumnIndexes &gt; matrix</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00101">mp_units_eigen.cpp:101</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_a8b2e65b7992ae2a7bbf9fe0554c970ea"><div class="ttname"><a href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::quantity</a></div><div class="ttdeci">mp_units::quantity&lt; QuantityReference, representation &gt; quantity</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00092">mp_units_eigen.cpp:92</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a39c15f9009b3d9cfed2a5d90b56a5ac3"><div class="ttname"><a href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">fcarouge::transposed</a></div><div class="ttdeci">constexpr auto transposed(const same_as_typed_matrix auto &amp;value)</div></div>

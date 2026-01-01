@@ -31,12 +31,14 @@ var namespacefcarouge =
     [ "matrix1", "namespacefcarouge.xhtml#a91b71a78a046ec556c54d9448f680a93", null ],
     [ "typed_column_vector", "namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58", null ],
     [ "typed_row_vector", "namespacefcarouge.xhtml#a7558e7ccc03031fb7de678cf4977e1bf", null ],
+    [ "get", "namespacefcarouge.xhtml#a00847bef6ae7994243aa1c897f51d271", null ],
     [ "make_typed_matrix", "namespacefcarouge.xhtml#a4073b31d56e98e110bf4a993ed190c80", null ],
     [ "operator*", "namespacefcarouge.xhtml#a37ad0c6ac7df201ab1ffbf86e277506b", null ],
     [ "operator+", "namespacefcarouge.xhtml#a63c8577955512de91859104b75c34802", null ],
     [ "operator-", "namespacefcarouge.xhtml#ae3d099c43d8b3d4c028b1790f89ed590", null ],
     [ "operator/", "namespacefcarouge.xhtml#a4a42c4c8d581da180467e6b5596343ff", null ],
     [ "operator==", "namespacefcarouge.xhtml#ac201eb6dbabe90e8e35d2efa46b7ad1f", null ],
+    [ "operator==", "namespacefcarouge.xhtml#a43b980ba1f09a7aa7a28261c22e1905b", null ],
     [ "transposed", "namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3", null ],
     [ "cast", "namespacefcarouge.xhtml#aa6f7f6a8d1b65520e70b3e1330e880d2", null ]
 ];

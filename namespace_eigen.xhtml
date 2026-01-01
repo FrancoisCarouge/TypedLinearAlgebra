@@ -116,8 +116,71 @@ Functions</h2></td></tr>
 <tr class="memitem:a59124d2b29990b7c9b8bdb1f0102897a"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a59124d2b29990b7c9b8bdb1f0102897a">operator/</a> (const typename Denominator::Scalar &amp;lhs, const Denominator &amp;rhs) -&gt; <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix</a>&lt; typename Denominator::Scalar, 1, Denominator::RowsAtCompileTime &gt;</td></tr>
 <tr class="memdesc:a59124d2b29990b7c9b8bdb1f0102897a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespace_eigen.xhtml">Eigen</a> matrix solution to division.  <br /></td></tr>
 <tr class="separator:a59124d2b29990b7c9b8bdb1f0102897a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa14385071099d51a51186085a1af04a3" id="r_aa14385071099d51a51186085a1af04a3"><td class="memTemplParams" colspan="2">template&lt;std::size_t Index, typename Derived &gt; </td></tr>
+<tr class="memitem:aa14385071099d51a51186085a1af04a3"><td class="memTemplItemLeft" align="right" valign="top">auto &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aa14385071099d51a51186085a1af04a3">get</a> (DenseCoeffsBase&lt; Derived, WriteAccessors &gt; &amp;base)</td></tr>
+<tr class="memdesc:aa14385071099d51a51186085a1af04a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get function ADL overload of <a class="el" href="namespace_eigen.xhtml">Eigen</a> types for structured bindings.  <br /></td></tr>
+<tr class="separator:aa14385071099d51a51186085a1af04a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94c336baa87c869a13a4cb01324f82aa" id="r_a94c336baa87c869a13a4cb01324f82aa"><td class="memTemplParams" colspan="2">template&lt;std::size_t Index, typename Derived &gt; </td></tr>
+<tr class="memitem:a94c336baa87c869a13a4cb01324f82aa"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a94c336baa87c869a13a4cb01324f82aa">get</a> (const DenseCoeffsBase&lt; Derived, ReadOnlyAccessors &gt; &amp;base)</td></tr>
+<tr class="memdesc:a94c336baa87c869a13a4cb01324f82aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get function ADL overload of <a class="el" href="namespace_eigen.xhtml">Eigen</a> types for structured bindings.  <br /></td></tr>
+<tr class="separator:a94c336baa87c869a13a4cb01324f82aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a94c336baa87c869a13a4cb01324f82aa" name="a94c336baa87c869a13a4cb01324f82aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94c336baa87c869a13a4cb01324f82aa">&#9670;&#160;</a></span>get() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t Index, typename Derived &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">auto Eigen::get </td>
+          <td>(</td>
+          <td class="paramtype">const DenseCoeffsBase&lt; Derived, ReadOnlyAccessors &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>base</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get function ADL overload of <a class="el" href="namespace_eigen.xhtml">Eigen</a> types for structured bindings. </p>
+
+<p class="definition">Definition at line <a class="el" href="eigen_8hpp_source.xhtml#l00144">144</a> of file <a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  144</span>                                                                  {</div>
+<div class="line"><span class="lineno">  145</span>  <span class="keywordflow">return</span> base.coeff(Index / Derived::ColsAtCompileTime,</div>
+<div class="line"><span class="lineno">  146</span>                    Index % Derived::ColsAtCompileTime);</div>
+<div class="line"><span class="lineno">  147</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa14385071099d51a51186085a1af04a3" name="aa14385071099d51a51186085a1af04a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa14385071099d51a51186085a1af04a3">&#9670;&#160;</a></span>get() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t Index, typename Derived &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">auto &amp; Eigen::get </td>
+          <td>(</td>
+          <td class="paramtype">DenseCoeffsBase&lt; Derived, WriteAccessors &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>base</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get function ADL overload of <a class="el" href="namespace_eigen.xhtml">Eigen</a> types for structured bindings. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000008">Todo</a></b></dt><dd>How should structured bindings be done over a matrix with more than one dimension? The layout policy may be a solution to consider. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="eigen_8hpp_source.xhtml#l00137">137</a> of file <a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  137</span>                                                          {</div>
+<div class="line"><span class="lineno">  138</span>  <span class="keywordflow">return</span> base.coeffRef(Index / Derived::ColsAtCompileTime,</div>
+<div class="line"><span class="lineno">  139</span>                       Index % Derived::ColsAtCompileTime);</div>
+<div class="line"><span class="lineno">  140</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a055f2c87b739a645dfb6edba76d1379e" name="a055f2c87b739a645dfb6edba76d1379e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a055f2c87b739a645dfb6edba76d1379e">&#9670;&#160;</a></span>operator/() <span class="overload">[1/2]</span></h2>
 
@@ -152,13 +215,13 @@ template&lt;<a class="el" href="conceptfcarouge_1_1eigen_1_1is__eigen.xhtml">fca
 <p><a class="el" href="namespace_eigen.xhtml">Eigen</a> matrix solution to division. </p>
 <p>Argument-dependent lookup (ADL) used for type definition orgering dependencies. This demonstrator uses a householder rank-revealing QR decomposition of a matrix with full pivoting. Other applications could select a different solver. </p>
 
-<p class="definition">Definition at line <a class="el" href="eigen_8hpp_source.xhtml#l00093">93</a> of file <a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   96</span>                                                             {</div>
-<div class="line"><span class="lineno">   97</span>  <span class="keywordflow">return</span> rhs.transpose()</div>
-<div class="line"><span class="lineno">   98</span>      .fullPivHouseholderQr()</div>
-<div class="line"><span class="lineno">   99</span>      .solve(lhs.transpose())</div>
-<div class="line"><span class="lineno">  100</span>      .transpose();</div>
-<div class="line"><span class="lineno">  101</span>}</div>
+<p class="definition">Definition at line <a class="el" href="eigen_8hpp_source.xhtml#l00105">105</a> of file <a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  108</span>                                                             {</div>
+<div class="line"><span class="lineno">  109</span>  <span class="keywordflow">return</span> rhs.transpose()</div>
+<div class="line"><span class="lineno">  110</span>      .fullPivHouseholderQr()</div>
+<div class="line"><span class="lineno">  111</span>      .solve(lhs.transpose())</div>
+<div class="line"><span class="lineno">  112</span>      .transpose();</div>
+<div class="line"><span class="lineno">  113</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -195,14 +258,14 @@ template&lt;<a class="el" href="conceptfcarouge_1_1eigen_1_1is__eigen.xhtml">fca
 <p><a class="el" href="namespace_eigen.xhtml">Eigen</a> matrix solution to division. </p>
 <p>Argument-dependent lookup (ADL) used for type definition orgering dependencies. This demonstrator uses a householder rank-revealing QR decomposition of a matrix with full pivoting. Other applications could select a different solver. </p>
 
-<p class="definition">Definition at line <a class="el" href="eigen_8hpp_source.xhtml#l00110">110</a> of file <a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  113</span>                                                             {</div>
-<div class="line"><span class="lineno">  114</span>  <span class="keywordflow">return</span> rhs.transpose()</div>
-<div class="line"><span class="lineno">  115</span>      .fullPivHouseholderQr()</div>
-<div class="line"><span class="lineno">  116</span>      .solve(<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix&lt;typename Denominator::Scalar, 1, 1&gt;</a>{lhs})</div>
-<div class="line"><span class="lineno">  117</span>      .transpose();</div>
-<div class="line"><span class="lineno">  118</span>}</div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a01e78c3f356b744543b2f25797bcfa84"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix</a></div><div class="ttdeci">Eigen::Matrix&lt; Type, Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Eigen3 matrix.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00070">eigen.hpp:70</a></div></div>
+<p class="definition">Definition at line <a class="el" href="eigen_8hpp_source.xhtml#l00122">122</a> of file <a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  125</span>                                                             {</div>
+<div class="line"><span class="lineno">  126</span>  <span class="keywordflow">return</span> rhs.transpose()</div>
+<div class="line"><span class="lineno">  127</span>      .fullPivHouseholderQr()</div>
+<div class="line"><span class="lineno">  128</span>      .solve(<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix&lt;typename Denominator::Scalar, 1, 1&gt;</a>{lhs})</div>
+<div class="line"><span class="lineno">  129</span>      .transpose();</div>
+<div class="line"><span class="lineno">  130</span>}</div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a01e78c3f356b744543b2f25797bcfa84"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix</a></div><div class="ttdeci">Eigen::Matrix&lt; Type, Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Eigen3 matrix.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00082">eigen.hpp:82</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

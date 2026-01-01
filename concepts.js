@@ -2,7 +2,9 @@ var concepts =
 [
     [ "fcarouge", "namespacefcarouge.xhtml", [
       [ "eigen", "namespacefcarouge_1_1eigen.xhtml", [
-        [ "is_eigen", "conceptfcarouge_1_1eigen_1_1is__eigen.xhtml", null ]
+        [ "is_eigen", "conceptfcarouge_1_1eigen_1_1is__eigen.xhtml", null ],
+        [ "derived_from_eigen_base", "conceptfcarouge_1_1eigen_1_1derived__from__eigen__base.xhtml", null ],
+        [ "statically_sized", "conceptfcarouge_1_1eigen_1_1statically__sized.xhtml", null ]
       ] ],
       [ "same_as_typed_matrix", "conceptfcarouge_1_1same__as__typed__matrix.xhtml", null ],
       [ "uniform_typed_matrix", "conceptfcarouge_1_1uniform__typed__matrix.xhtml", null ],

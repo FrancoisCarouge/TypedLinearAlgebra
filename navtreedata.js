@@ -124,6 +124,7 @@ var NAVTREE =
     [ "Classes", "annotated.xhtml", [
       [ "Class List", "annotated.xhtml", "annotated_dup" ],
       [ "Class Index", "classes.xhtml", null ],
+      [ "Class Hierarchy", "hierarchy.xhtml", "hierarchy" ],
       [ "Class Members", "functions.xhtml", [
         [ "All", "functions.xhtml", null ],
         [ "Functions", "functions_func.xhtml", null ],
@@ -145,7 +146,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "addition_8cpp.xhtml",
-"md_paper_2mp__units__eigen.xhtml#abstract"
+"md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml",
+"structured__bindings__mx1_8cpp.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
