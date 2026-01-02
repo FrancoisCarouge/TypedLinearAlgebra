@@ -183,10 +183,6 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a91b71a78a046ec556c54d9448f680a93" id="r_a91b71a78a046ec556c54d9448f680a93"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1&gt; </td></tr>
 <tr class="memitem:a91b71a78a046ec556c54d9448f680a93"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a91b71a78a046ec556c54d9448f680a93">matrix1</a></td></tr>
 <tr class="separator:a91b71a78a046ec556c54d9448f680a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30fd019eecebace40572712dbf29451f" id="r_a30fd019eecebace40572712dbf29451f"><td class="memTemplParams" colspan="2">template&lt;typename Representation , typename... Types&gt; </td></tr>
-<tr class="memitem:a30fd019eecebace40572712dbf29451f"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a30fd019eecebace40572712dbf29451f">row_vector</a></td></tr>
-<tr class="memdesc:a30fd019eecebace40572712dbf29451f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quantity row vector with mp-units and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.  <br /></td></tr>
-<tr class="separator:a30fd019eecebace40572712dbf29451f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Types</div></td></tr>
 <tr class="memitem:a7558e7ccc03031fb7de678cf4977e1bf" id="r_a7558e7ccc03031fb7de678cf4977e1bf"><td class="memTemplParams" colspan="2">template&lt;typename Matrix , typename... ColumnIndexes&gt; </td></tr>
 <tr class="memitem:a7558e7ccc03031fb7de678cf4977e1bf"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7558e7ccc03031fb7de678cf4977e1bf">typed_row_vector</a></td></tr>
@@ -204,6 +200,10 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ad06bb441aa2dcec149c52de0c297a967"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ad06bb441aa2dcec149c52de0c297a967">column_vector</a> = <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix</a>&lt;Type, Row, 1&gt;</td></tr>
 <tr class="memdesc:ad06bb441aa2dcec149c52de0c297a967"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scalar type column vector with <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.  <br /></td></tr>
 <tr class="separator:ad06bb441aa2dcec149c52de0c297a967"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60b6b92762905569a26339025d4b0821" id="r_a60b6b92762905569a26339025d4b0821"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, std::size_t Column = 1&gt; </td></tr>
+<tr class="memitem:a60b6b92762905569a26339025d4b0821"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a60b6b92762905569a26339025d4b0821">row_vector</a> = <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix</a>&lt;Type, 1, Column&gt;</td></tr>
+<tr class="memdesc:a60b6b92762905569a26339025d4b0821"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scalar type row vector with <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.  <br /></td></tr>
+<tr class="separator:a60b6b92762905569a26339025d4b0821"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -386,27 +386,24 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 
 </div>
 </div>
-<a id="a30fd019eecebace40572712dbf29451f" name="a30fd019eecebace40572712dbf29451f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30fd019eecebace40572712dbf29451f">&#9670;&#160;</a></span>row_vector</h2>
+<a id="a60b6b92762905569a26339025d4b0821" name="a60b6b92762905569a26339025d4b0821"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60b6b92762905569a26339025d4b0821">&#9670;&#160;</a></span>row_vector</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Representation , typename... Types&gt; </div>
+template&lt;typename Type  = double, std::size_t Column = 1&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b">fcarouge::row_vector</a></td>
+          <td class="memname">using <a class="el" href="namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b">fcarouge::row_vector</a> = <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix</a>&lt;Type, 1, Column&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"> </div>
-<div class="line">    <a class="code hl_typedef" href="#a7558e7ccc03031fb7de678cf4977e1bf">typed_row_vector</a>&lt;eigen::row_vector&lt;Representation, <span class="keyword">sizeof</span>...(Types)&gt;,</div>
-<div class="line">                     Types...&gt;</div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a7558e7ccc03031fb7de678cf4977e1bf"><div class="ttname"><a href="#a7558e7ccc03031fb7de678cf4977e1bf">fcarouge::typed_row_vector</a></div><div class="ttdeci">typed_matrix&lt; Matrix, tla::identity_index, std::tuple&lt; ColumnIndexes... &gt; &gt; typed_row_vector</div><div class="ttdoc">Strongly typed row vector.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00350">typed_linear_algebra.hpp:350</a></div></div>
-</div><!-- fragment -->
+
+<p>Scalar type row vector with <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations. </p>
 <p>Quantity row vector with mp-units and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations. </p>
 
-<p class="definition">Definition at line <a class="el" href="quantity_2fcarouge_2linalg_8hpp_source.xhtml#l00101">101</a> of file <a class="el" href="quantity_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="eigexed_2fcarouge_2linalg_8hpp_source.xhtml#l00061">61</a> of file <a class="el" href="eigexed_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 
 </div>
 </div>

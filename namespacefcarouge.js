@@ -32,7 +32,7 @@ var namespacefcarouge =
     [ "matrix0", "namespacefcarouge.xhtml#a3b972ee10c035046a3dfc868c04c1f34", null ],
     [ "matrix1", "namespacefcarouge.xhtml#a91b71a78a046ec556c54d9448f680a93", null ],
     [ "position", "namespacefcarouge.xhtml#a13e1c6087b005b8dceeaab42ccbde47d", null ],
-    [ "row_vector", "namespacefcarouge.xhtml#a30fd019eecebace40572712dbf29451f", null ],
+    [ "row_vector", "namespacefcarouge.xhtml#a60b6b92762905569a26339025d4b0821", null ],
     [ "temperature", "namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1", null ],
     [ "typed_column_vector", "namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58", null ],
     [ "typed_row_vector", "namespacefcarouge.xhtml#a7558e7ccc03031fb7de678cf4977e1bf", null ],
