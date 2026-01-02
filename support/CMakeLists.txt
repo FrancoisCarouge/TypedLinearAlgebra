@@ -38,6 +38,7 @@ add_subdirectory("eigexed")
 add_subdirectory("kokkos")
 add_subdirectory("main")
 add_subdirectory("mp_units")
+add_subdirectory("quantity")
 add_subdirectory("nested_typed_eigen")
 
 add_library(typed_linear_algebra_options INTERFACE)
