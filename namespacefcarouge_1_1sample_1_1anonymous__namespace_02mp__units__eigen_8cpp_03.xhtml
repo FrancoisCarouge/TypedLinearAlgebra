@@ -280,13 +280,13 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">  123</span>  <span class="keyword">using </span>mp_units::si::unit_symbols::s;</div>
 <div class="line"><span class="lineno">  124</span>  <span class="keyword">using </span>mp_units::si::unit_symbols::s2;</div>
 <div class="line"><span class="lineno">  125</span>  <span class="keyword">using </span>mp_units::si::unit_symbols::s3;</div>
-<div class="line"><span class="lineno">  126</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> s4{pow&lt;4&gt;(s)};</div>
+<div class="line"><span class="lineno">  126</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436">s4</a>{pow&lt;4&gt;(s)};</div>
 <div class="line"><span class="lineno">  127</span>  <span class="keyword">using </span>mp_units::one;</div>
 <div class="line"><span class="lineno">  128</span>  <span class="keyword">using </span>mp_units::si::unit_symbols::A;</div>
 <div class="line"><span class="lineno">  129</span>  <span class="keyword">using </span>mp_units::si::unit_symbols::mol;</div>
-<div class="line"><span class="lineno">  130</span>  <span class="keyword">using </span>position = quantity&lt;mp_units::isq::length[m]&gt;;</div>
-<div class="line"><span class="lineno">  131</span>  <span class="keyword">using </span>velocity = quantity&lt;mp_units::isq::velocity[m / s]&gt;;</div>
-<div class="line"><span class="lineno">  132</span>  <span class="keyword">using </span>acceleration = quantity&lt;mp_units::isq::acceleration[m / s2]&gt;;</div>
+<div class="line"><span class="lineno">  130</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge.xhtml#a13e1c6087b005b8dceeaab42ccbde47d">position</a> = quantity&lt;mp_units::isq::length[m]&gt;;</div>
+<div class="line"><span class="lineno">  131</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge.xhtml#ac2dd0eba1b86197287e408d5d4c3e641">velocity</a> = quantity&lt;mp_units::isq::velocity[m / s]&gt;;</div>
+<div class="line"><span class="lineno">  132</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge.xhtml#a54efd5a19e1fb79c2c421f891d436020">acceleration</a> = quantity&lt;mp_units::isq::acceleration[m / s2]&gt;;</div>
 <div class="line"><span class="lineno">  133</span>  <span class="keyword">using </span>state = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector&lt;position, velocity, acceleration&gt;</a>;</div>
 <div class="line"><span class="lineno">  134</span> </div>
 <div class="line"><span class="lineno">  135</span>  <span class="comment">// Column-vector declaration.</span></div>
@@ -362,16 +362,16 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">  205</span>  assert((s1[0, 0] == 22. * A / mol));</div>
 <div class="line"><span class="lineno">  206</span> </div>
 <div class="line"><span class="lineno">  207</span>  s1(0, 0) = 21. * A / mol;</div>
-<div class="line"><span class="lineno">  208</span>  assert((s1(0, 0) == 21. * A / mol));</div>
+<div class="line"><span class="lineno">  208</span>  assert(s1(0, 0) == 21. * A / mol);</div>
 <div class="line"><span class="lineno">  209</span> </div>
 <div class="line"><span class="lineno">  210</span>  s1.at&lt;0&gt;() = 13. * A / mol;</div>
 <div class="line"><span class="lineno">  211</span>  assert(s1.at&lt;0&gt;() == 13. * A / mol);</div>
 <div class="line"><span class="lineno">  212</span> </div>
 <div class="line"><span class="lineno">  213</span>  s1[0] = 12. * A / mol;</div>
-<div class="line"><span class="lineno">  214</span>  assert((s1[0] == 12. * A / mol));</div>
+<div class="line"><span class="lineno">  214</span>  assert(s1[0] == 12. * A / mol);</div>
 <div class="line"><span class="lineno">  215</span> </div>
 <div class="line"><span class="lineno">  216</span>  s1(0) = 11. * A / mol;</div>
-<div class="line"><span class="lineno">  217</span>  assert((s1(0) == 11. * A / mol));</div>
+<div class="line"><span class="lineno">  217</span>  assert(s1(0) == 11. * A / mol);</div>
 <div class="line"><span class="lineno">  218</span> </div>
 <div class="line"><span class="lineno">  219</span>  s1.at() = 3. * A / mol;</div>
 <div class="line"><span class="lineno">  220</span>  assert(s1.at() == 3. * A / mol);</div>
@@ -453,7 +453,7 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">  297</span>  velocity3d v0{v * m / s};</div>
 <div class="line"><span class="lineno">  298</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, v0) == <span class="stringliteral">&quot;[[1 m/s], [2 m/s], [3 m/s]]&quot;</span>);</div>
 <div class="line"><span class="lineno">  299</span> </div>
-<div class="line"><span class="lineno">  300</span>  velocity a[]{1. * m / s, 2. * m / s, 3. * m / s};</div>
+<div class="line"><span class="lineno">  300</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#ac2dd0eba1b86197287e408d5d4c3e641">velocity</a> a[]{1. * m / s, 2. * m / s, 3. * m / s};</div>
 <div class="line"><span class="lineno">  301</span>  velocity3d v1{a};</div>
 <div class="line"><span class="lineno">  302</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, v1) == <span class="stringliteral">&quot;[[1 m/s], [2 m/s], [3 m/s]]&quot;</span>);</div>
 <div class="line"><span class="lineno">  303</span> </div>
@@ -559,7 +559,7 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">  427</span>  p = f * p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(f) + q;</div>
 <div class="line"><span class="lineno">  428</span> </div>
 <div class="line"><span class="lineno">  429</span>  <span class="comment">// Update stage of the filter from output measurements.</span></div>
-<div class="line"><span class="lineno">  430</span>  <span class="keyword">using </span>output = position;</div>
+<div class="line"><span class="lineno">  430</span>  <span class="keyword">using </span>output = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a13e1c6087b005b8dceeaab42ccbde47d">position</a>;</div>
 <div class="line"><span class="lineno">  431</span>  output z{-393.66 * m};</div>
 <div class="line"><span class="lineno">  432</span> </div>
 <div class="line"><span class="lineno">  433</span>  <span class="keyword">using </span>innovation_uncertainty = output_uncertainty;</div>
@@ -599,7 +599,11 @@ template&lt;typename... Types&gt; </div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a3aae575a4aa6b608a99d02f58b0fc86c"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00090">eigen.hpp:90</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_a3ad842428e2a263b2bdee6a8f7a9bb9a"><div class="ttname"><a href="#a3ad842428e2a263b2bdee6a8f7a9bb9a">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::matrix</a></div><div class="ttdeci">typed_matrix&lt; Eigen::Matrix&lt; representation, std::tuple_size_v&lt; RowIndexes &gt;, std::tuple_size_v&lt; ColumnIndexes &gt; &gt;, RowIndexes, ColumnIndexes &gt; matrix</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00101">mp_units_eigen.cpp:101</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_a8b2e65b7992ae2a7bbf9fe0554c970ea"><div class="ttname"><a href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::quantity</a></div><div class="ttdeci">mp_units::quantity&lt; QuantityReference, representation &gt; quantity</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00092">mp_units_eigen.cpp:92</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a0aadf374ff49533297b0971d8a66b436"><div class="ttname"><a href="namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436">fcarouge::s4</a></div><div class="ttdeci">constexpr auto s4</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00056">unit.hpp:56</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a13e1c6087b005b8dceeaab42ccbde47d"><div class="ttname"><a href="namespacefcarouge.xhtml#a13e1c6087b005b8dceeaab42ccbde47d">fcarouge::position</a></div><div class="ttdeci">mp_units::quantity&lt; mp_units::isq::length[m]&gt; position</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00060">unit.hpp:60</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a39c15f9009b3d9cfed2a5d90b56a5ac3"><div class="ttname"><a href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">fcarouge::transposed</a></div><div class="ttdeci">constexpr auto transposed(const same_as_typed_matrix auto &amp;value)</div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a54efd5a19e1fb79c2c421f891d436020"><div class="ttname"><a href="namespacefcarouge.xhtml#a54efd5a19e1fb79c2c421f891d436020">fcarouge::acceleration</a></div><div class="ttdeci">mp_units::quantity&lt; mp_units::isq::acceleration[m/s2]&gt; acceleration</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00062">unit.hpp:62</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_ac2dd0eba1b86197287e408d5d4c3e641"><div class="ttname"><a href="namespacefcarouge.xhtml#ac2dd0eba1b86197287e408d5d4c3e641">fcarouge::velocity</a></div><div class="ttdeci">mp_units::quantity&lt; mp_units::isq::velocity[m/s]&gt; velocity</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00061">unit.hpp:61</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

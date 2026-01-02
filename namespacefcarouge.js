@@ -25,12 +25,18 @@ var namespacefcarouge =
     [ "column_typed_matrix", "conceptfcarouge_1_1column__typed__matrix.xhtml", null ],
     [ "singleton_typed_matrix", "conceptfcarouge_1_1singleton__typed__matrix.xhtml", null ],
     [ "same_shape", "conceptfcarouge_1_1same__shape.xhtml", null ],
+    [ "acceleration", "namespacefcarouge.xhtml#a54efd5a19e1fb79c2c421f891d436020", null ],
     [ "column_vector", "namespacefcarouge.xhtml#ad06bb441aa2dcec149c52de0c297a967", null ],
+    [ "height", "namespacefcarouge.xhtml#a9b124da26de87a5e94ff3b815915769f", null ],
     [ "matrix", "namespacefcarouge.xhtml#a2d5d861aa25651be3549e278fd1e21e6", null ],
     [ "matrix0", "namespacefcarouge.xhtml#a3b972ee10c035046a3dfc868c04c1f34", null ],
     [ "matrix1", "namespacefcarouge.xhtml#a91b71a78a046ec556c54d9448f680a93", null ],
+    [ "position", "namespacefcarouge.xhtml#a13e1c6087b005b8dceeaab42ccbde47d", null ],
+    [ "row_vector", "namespacefcarouge.xhtml#a30fd019eecebace40572712dbf29451f", null ],
+    [ "temperature", "namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1", null ],
     [ "typed_column_vector", "namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58", null ],
     [ "typed_row_vector", "namespacefcarouge.xhtml#a7558e7ccc03031fb7de678cf4977e1bf", null ],
+    [ "velocity", "namespacefcarouge.xhtml#ac2dd0eba1b86197287e408d5d4c3e641", null ],
     [ "get", "namespacefcarouge.xhtml#a00847bef6ae7994243aa1c897f51d271", null ],
     [ "make_typed_matrix", "namespacefcarouge.xhtml#a4073b31d56e98e110bf4a993ed190c80", null ],
     [ "operator*", "namespacefcarouge.xhtml#a37ad0c6ac7df201ab1ffbf86e277506b", null ],
@@ -40,5 +46,7 @@ var namespacefcarouge =
     [ "operator==", "namespacefcarouge.xhtml#ac201eb6dbabe90e8e35d2efa46b7ad1f", null ],
     [ "operator==", "namespacefcarouge.xhtml#a43b980ba1f09a7aa7a28261c22e1905b", null ],
     [ "transposed", "namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3", null ],
-    [ "cast", "namespacefcarouge.xhtml#aa6f7f6a8d1b65520e70b3e1330e880d2", null ]
+    [ "cast", "namespacefcarouge.xhtml#aa6f7f6a8d1b65520e70b3e1330e880d2", null ],
+    [ "deg_C2", "namespacefcarouge.xhtml#a5a8a206bd21b1225ecfea4798c26d775", null ],
+    [ "s4", "namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436", null ]
 ];
