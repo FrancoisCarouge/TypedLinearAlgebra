@@ -29,39 +29,38 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_LINALG_HPP
-#define FCAROUGE_LINALG_HPP
+#include "fcarouge/linalg.hpp"
 
-//! @file
-//! @brief Scalar type linear algebra with Eigen implementation.
+#include <cassert>
 
-#include "fcarouge/eigen.hpp"
-#include "fcarouge/typed_linear_algebra.hpp"
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the at member accessor.
+[[maybe_unused]] auto test{[] {
+  matrix<double, 3, 3> m{{1., 2., 3.}, {4., 5., 6.}};
 
-#include <cstddef>
+  assert((m.at<0, 0>() == 1.));
+  assert((m.at<0, 1>() == 2.));
+  assert((m.at<0, 2>() == 3.));
+  assert((m.at<1, 0>() == 4.));
+  assert((m.at<1, 1>() == 5.));
+  assert((m.at<1, 2>() == 6.));
 
-namespace fcarouge {
+  m.at<0, 0>() = 11.;
+  m.at<0, 1>() = 12.;
+  m.at<0, 2>() = 13.;
+  m.at<1, 0>() = 14.;
+  m.at<1, 1>() = 15.;
+  m.at<1, 2>() = 16.;
 
-//! @name Types
-//! @{
+  assert((m.at<0, 0>() == 11.));
+  assert((m.at<0, 1>() == 12.));
+  assert((m.at<0, 2>() == 13.));
+  assert((m.at<1, 0>() == 14.));
+  assert((m.at<1, 1>() == 15.));
+  assert((m.at<1, 2>() == 16.));
 
-//! @brief Scalar type matrix with Eigen implementations.
-template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
-using matrix =
-    typed_matrix<eigen::matrix<Type, Row, Column>,
-                 typed_linear_algebra_internal::tuple_n_type<Type, Row>,
-                 typed_linear_algebra_internal::tuple_n_type<Type, Column>>;
-
-//! @brief Scalar type column vector with Eigen implementations.
-template <typename Type = double, std::size_t Row = 1>
-using column_vector = matrix<Type, Row, 1>;
-
-//! @brief Scalar type row vector with Eigen implementations.
-template <typename Type = double, std::size_t Column = 1>
-using row_vector = matrix<Type, 1, Column>;
-
-//! @}
-
-} // namespace fcarouge
-
-#endif // FCAROUGE_LINALG_HPP
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

@@ -29,39 +29,24 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_LINALG_HPP
-#define FCAROUGE_LINALG_HPP
+#include "fcarouge/linalg.hpp"
 
-//! @file
-//! @brief Scalar type linear algebra with Eigen implementation.
+#include <cassert>
 
-#include "fcarouge/eigen.hpp"
-#include "fcarouge/typed_linear_algebra.hpp"
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the operator subscript accessor.
+[[maybe_unused]] auto test{[] {
+  const matrix<double, 3, 3> m{{1., 2., 3.}, {4., 5., 6.}};
 
-#include <cstddef>
+  assert((m[0, 0] == 1.));
+  assert((m[0, 1] == 2.));
+  assert((m[0, 2] == 3.));
+  assert((m[1, 0] == 4.));
+  assert((m[1, 1] == 5.));
+  assert((m[1, 2] == 6.));
 
-namespace fcarouge {
-
-//! @name Types
-//! @{
-
-//! @brief Scalar type matrix with Eigen implementations.
-template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
-using matrix =
-    typed_matrix<eigen::matrix<Type, Row, Column>,
-                 typed_linear_algebra_internal::tuple_n_type<Type, Row>,
-                 typed_linear_algebra_internal::tuple_n_type<Type, Column>>;
-
-//! @brief Scalar type column vector with Eigen implementations.
-template <typename Type = double, std::size_t Row = 1>
-using column_vector = matrix<Type, Row, 1>;
-
-//! @brief Scalar type row vector with Eigen implementations.
-template <typename Type = double, std::size_t Column = 1>
-using row_vector = matrix<Type, 1, Column>;
-
-//! @}
-
-} // namespace fcarouge
-
-#endif // FCAROUGE_LINALG_HPP
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

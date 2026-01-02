@@ -35,20 +35,30 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the identity matrices values are unit diagonals.
+//! @test Verifies the operator subscript accessor.
 [[maybe_unused]] auto test{[] {
-  //! @todo Support a const version of `at()`.
-  matrix<double, 3, 3> i{{1., 0., 0.}, {0., 1., 0.}, {0., 0., 1.}};
+  matrix<double, 3, 3> m{{1., 2., 3.}, {4., 5., 6.}};
 
-  assert((i.at<0, 0>() == 1.0));
-  assert((i.at<0, 1>() == 0.0));
-  assert((i.at<0, 2>() == 0.0));
-  assert((i.at<1, 0>() == 0.0));
-  assert((i.at<1, 1>() == 1.0));
-  assert((i.at<1, 2>() == 0.0));
-  assert((i.at<2, 0>() == 0.0));
-  assert((i.at<2, 1>() == 0.0));
-  assert((i.at<2, 2>() == 1.0));
+  assert((m[0, 0] == 1.));
+  assert((m[0, 1] == 2.));
+  assert((m[0, 2] == 3.));
+  assert((m[1, 0] == 4.));
+  assert((m[1, 1] == 5.));
+  assert((m[1, 2] == 6.));
+
+  m[0, 0] = 11.;
+  m[0, 1] = 12.;
+  m[0, 2] = 13.;
+  m[1, 0] = 14.;
+  m[1, 1] = 15.;
+  m[1, 2] = 16.;
+
+  assert((m[0, 0] == 11.));
+  assert((m[0, 1] == 12.));
+  assert((m[0, 2] == 13.));
+  assert((m[1, 0] == 14.));
+  assert((m[1, 1] == 15.));
+  assert((m[1, 2] == 16.));
 
   return 0;
 }()};
