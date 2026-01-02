@@ -143,8 +143,8 @@ public:
   using underlying = tla::underlying_t<Matrix>;
 
   //! @brief The type of the element at the given matrix indexes position.
-  template <std::size_t RowIndex, std::size_t ColumnIndex>
-  using element = tla::element<typed_matrix, RowIndex, ColumnIndex>;
+  template <auto... Indexes>
+  using element = tla::element<typed_matrix, Indexes...>;
 
   //! @}
 
@@ -152,14 +152,13 @@ public:
   //! @{
 
   //! @brief The count of rows.
-  static inline constexpr std::size_t rows{std::tuple_size_v<row_indexes>};
+  static inline constexpr auto rows{std::tuple_size_v<row_indexes>};
 
   //! @brief The count of rows.
-  static inline constexpr std::size_t columns{
-      std::tuple_size_v<column_indexes>};
+  static inline constexpr auto columns{std::tuple_size_v<column_indexes>};
 
   //! @brief The number of dimensions in the matrix.
-  static inline constexpr std::size_t rank{tla::rank<rows, columns>};
+  static inline constexpr auto rank{tla::rank<rows, columns>};
 
   //! @}
 
@@ -208,7 +207,7 @@ public:
   //!
   //! @param value Element of compatible type.
   constexpr explicit typed_matrix(
-      const std::convertible_to<element<0, 0>> auto &value)
+      const std::convertible_to<element<>> auto &value)
     requires singleton_typed_matrix<typed_matrix>;
 
   //! @brief Convert copy assign a singleton typed matrix from a single value.
@@ -226,7 +225,7 @@ public:
   //! Single-argument constructors taking arrays of data should get implicit
   //! constructors.
   constexpr explicit(false)
-      typed_matrix(const element<0, 0> (&elements)[rows * columns])
+      typed_matrix(const element<> (&elements)[rows * columns])
     requires uniform_typed_matrix<typed_matrix> and
              one_dimension_typed_matrix<typed_matrix>;
 
@@ -236,8 +235,7 @@ public:
   //! Applicable to single-type matrix: uniform type of all elements.
   //! Single-argument constructors taking arrays of data should get implicit
   //! constructors.
-  constexpr typed_matrix &
-  operator=(const element<0, 0> (&elements)[rows * columns])
+  constexpr typed_matrix &operator=(const element<> (&elements)[rows * columns])
     requires uniform_typed_matrix<typed_matrix> and
              one_dimension_typed_matrix<typed_matrix>;
 
@@ -278,7 +276,7 @@ public:
   //!
   //! @details Applicable to singleton matrix: one element. Returns the unique
   //! element of the typed matrix.
-  [[nodiscard]] constexpr explicit operator element<0, 0>(this auto &&self)
+  [[nodiscard]] constexpr explicit operator element<>(this auto &&self)
     requires singleton_typed_matrix<typed_matrix>;
 
   //! @brief Access the specified element.

@@ -29,41 +29,26 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_UNIT_HPP
-#define FCAROUGE_UNIT_HPP
+#include "fcarouge/linalg.hpp"
 
-//! @file
-//! @brief Quantities and units facade for mp-units third party implementation.
+#include <cassert>
+#include <type_traits>
+
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the element type of the matrix.
 //!
-//! @details Supporting quantities, values, and functions.
+//! @todo Add const and rank variations and negative tests.
+[[maybe_unused]] auto test{[] {
+  using matrix = matrix<double, std::tuple<decltype(1. * m)>,
+                        std::tuple<decltype(1. * m)>>;
+  using quantity = decltype(1. * m2);
 
-#include <mp-units/framework/quantity.h>
-#include <mp-units/framework/quantity_point.h>
-#include <mp-units/math.h>
-#include <mp-units/systems/isq/thermodynamics.h>
-#include <mp-units/systems/si.h>
+  static_assert(std::same_as<matrix::element<0, 0>, quantity>);
+  static_assert(std::same_as<matrix::element<0>, quantity>);
+  static_assert(std::same_as<matrix::element<>, quantity>);
 
-namespace fcarouge {
-using mp_units::delta;
-using mp_units::point;
-using mp_units::si::unit_symbols::A;
-using mp_units::si::unit_symbols::deg_C;
-using mp_units::si::unit_symbols::m;
-using mp_units::si::unit_symbols::m2;
-using mp_units::si::unit_symbols::N;
-using mp_units::si::unit_symbols::s;
-using mp_units::si::unit_symbols::s2;
-using mp_units::si::unit_symbols::s3;
-
-inline constexpr auto s4{pow<4>(s)};
-inline constexpr auto deg_C2{pow<2>(deg_C)};
-
-using height = mp_units::quantity<mp_units::isq::height[m]>;
-using position = mp_units::quantity<mp_units::isq::length[m]>;
-using velocity = mp_units::quantity<mp_units::isq::velocity[m / s]>;
-using acceleration = mp_units::quantity<mp_units::isq::acceleration[m / s2]>;
-using temperature =
-    mp_units::quantity_point<mp_units::isq::Celsius_temperature[deg_C]>;
-} // namespace fcarouge
-
-#endif // FCAROUGE_UNIT_HPP
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

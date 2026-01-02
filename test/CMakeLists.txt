@@ -54,6 +54,8 @@ test("constructor_initializer_lists" BACKENDS "eigen" "eigexed"
 test("constructor_nx1_array" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
 test("constructor_nx1" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
 test("copy" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("element_1x1" BACKENDS "quantity")
+test("element_mxn" BACKENDS "quantity")
 test("format_1x1" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
 test("format_1xn" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
 test("format_mx1" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
