@@ -63,6 +63,9 @@ using matrix =
 template <typename Type = double, std::size_t Row = 1>
 using column_vector = matrix<Type, Row, 1>;
 
+template <typename Type = double, std::size_t Column = 1>
+using row_vector = matrix<Type, 1, Column>;
+
 } // namespace fcarouge
 
 #endif // FCAROUGE_LINALG_HPP

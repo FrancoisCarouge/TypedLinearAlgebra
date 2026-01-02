@@ -35,13 +35,16 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the 1x1 matrix bracket operator.
+//! @test Verifies the call operator accessor.
 [[maybe_unused]] auto test{[] {
-  const matrix<> m{42.0};
+  const row_vector<double, 3> m{1., 2., 3.};
 
-  assert(m(0) == 42.0);
-  assert(m(0, 0) == 42.0);
-  assert(m[0] == 42.0);
+  assert((m(0, 0) == 1.));
+  assert((m(0, 1) == 2.));
+  assert((m(0, 2) == 3.));
+  assert(m(0) == 1.);
+  assert(m(1) == 2.);
+  assert(m(2) == 3.);
 
   return 0;
 }()};
