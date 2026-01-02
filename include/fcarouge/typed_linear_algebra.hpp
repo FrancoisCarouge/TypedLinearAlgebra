@@ -207,7 +207,8 @@ public:
   //! @details Applicable to singleton matrix: one element.
   //!
   //! @param value Element of compatible type.
-  constexpr explicit typed_matrix(const auto &value)
+  constexpr explicit typed_matrix(
+      const std::convertible_to<element<0, 0>> auto &value)
     requires singleton_typed_matrix<typed_matrix>;
 
   //! @brief Convert copy assign a singleton typed matrix from a single value.

@@ -118,7 +118,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
 //! @todo Verify types and storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const auto &value)
+    const std::convertible_to<element<0, 0>> auto &value)
   requires singleton_typed_matrix<typed_matrix>
 {
   if constexpr (requires { value[0, 0]; }) {
