@@ -38,11 +38,17 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the initializer lists constructor.
 [[maybe_unused]] auto test{[] {
-  const matrix<double, std::tuple<decltype(1. * m)>,
-               std::tuple<decltype(1. * m)>>
-      m{42.0 * m2};
+  const matrix<double, std::tuple<decltype(1. * s)>,
+               std::tuple<decltype(1. * s)>>
+      m{42.0 * s2};
 
-  assert(m(0, 0) == 42.0 * m2);
+  assert(m(0, 0) == 42.0 * s2);
+
+  static_assert(
+      not std::is_constructible_v<matrix<double, std::tuple<decltype(1. * s)>,
+                                         std::tuple<decltype(1. * s)>>,
+                                  decltype(1. * s3)>,
+      "The copy conversion constructor cannot accept non-convertible types.");
 
   return 0;
 }()};

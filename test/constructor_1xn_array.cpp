@@ -35,7 +35,7 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the initializer lists constructor.
+//! @test Verifies the array constructor.
 [[maybe_unused]] auto test{[] {
   const double a[3]{42.0, 43.0, 44.0};
   const matrix<double, 1, 3> m{a};
