@@ -81,17 +81,16 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const element<0, 0> (&elements)[typed_matrix::rows * typed_matrix::columns])
+    const element<> (&elements)[typed_matrix::rows * typed_matrix::columns])
   requires uniform_typed_matrix<typed_matrix> and
            one_dimension_typed_matrix<typed_matrix>
 {
   if constexpr (requires { storage = elements; }) {
     storage = elements;
   } else {
-    using type = element<0, 0>;
     tla::for_constexpr<0, typed_matrix::rows * typed_matrix::columns, 1>(
         [this, &elements](auto position) {
-          storage[position] = cast<underlying, type>(elements[position]);
+          storage[position] = cast<underlying, element<>>(elements[position]);
         });
   }
 }
@@ -99,17 +98,16 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
-    const element<0, 0> (&elements)[typed_matrix::rows * typed_matrix::columns])
+    const element<> (&elements)[typed_matrix::rows * typed_matrix::columns])
   requires uniform_typed_matrix<typed_matrix> and
            one_dimension_typed_matrix<typed_matrix>
 {
   if constexpr (requires { storage = elements; }) {
     storage = elements;
   } else {
-    using type = element<0, 0>;
     tla::for_constexpr<0, typed_matrix::rows * typed_matrix::columns, 1>(
         [this, &elements](auto position) {
-          storage[position] = cast<underlying, type>(elements[position]);
+          storage[position] = cast<underlying, element<>>(elements[position]);
         });
   }
   return *this;
@@ -118,7 +116,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
 //! @todo Verify types and storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const std::convertible_to<element<0, 0>> auto &value)
+    const std::convertible_to<element<>> auto &value)
   requires singleton_typed_matrix<typed_matrix>
 {
   if constexpr (requires { value[0, 0]; }) {
@@ -186,7 +184,7 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] constexpr typed_matrix<
-    Matrix, RowIndexes, ColumnIndexes>::operator element<0, 0>(this auto &&self)
+    Matrix, RowIndexes, ColumnIndexes>::operator element<>(this auto &&self)
   requires singleton_typed_matrix<typed_matrix>
 {
   return self.at();
@@ -212,9 +210,8 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
   using self_t = std::remove_reference_t<decltype(self)>;
   using qualified_underlying =
       std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
-  using element_t = element<0, 0>;
   using qualified_element =
-      std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
+      std::conditional_t<std::is_const_v<self_t>, element<>, element<> &>;
 
   std::size_t i{0};
   std::size_t j{0};

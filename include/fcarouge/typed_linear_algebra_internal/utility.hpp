@@ -198,15 +198,29 @@ concept same_as_typed_matrix = std::same_as<
                  typename std::remove_cvref_t<Type>::row_indexes,
                  typename std::remove_cvref_t<Type>::column_indexes>>;
 
-//! @todo Constrain Type to is_matrix_type?
-template <typename Type, std::size_t RowIndex, std::size_t ColumnIndex>
-using element = std::remove_cvref_t<product<
-    std::tuple_element_t<RowIndex,
-                         typename std::remove_cvref_t<Type>::row_indexes>,
-    std::tuple_element_t<ColumnIndex,
-                         typename std::remove_cvref_t<Type>::column_indexes>>>;
+template <typename Type, std::size_t... Indexes> struct element_t {};
 
-//! @todo There may be a way to write this concepts via two fold expressions.
+template <typename Type, std::size_t RowIndex, std::size_t ColumnIndex>
+struct element_t<Type, RowIndex, ColumnIndex> {
+  using type = std::remove_cvref_t<product<
+      std::tuple_element_t<RowIndex,
+                           typename std::remove_cvref_t<Type>::row_indexes>,
+      std::tuple_element_t<
+          ColumnIndex, typename std::remove_cvref_t<Type>::column_indexes>>>;
+};
+
+template <typename Type, std::size_t Index> struct element_t<Type, Index> {
+  using type =
+      element_t<Type, Index / Type::columns, Index % Type::columns>::type;
+};
+
+template <typename Type> struct element_t<Type> {
+  using type = element_t<Type, 0, 0>::type;
+};
+
+template <typename Type, std::size_t... Indexes>
+using element = element_t<Type, Indexes...>::type;
+
 template <typename Type>
 concept uniform_typed_matrix =
     same_as_typed_matrix<Type> and ([]() {
