@@ -20,6 +20,8 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "constructor_nx1.cpp", "constructor__nx1_8cpp.xhtml", "constructor__nx1_8cpp" ],
     [ "constructor_nx1_array.cpp", "constructor__nx1__array_8cpp.xhtml", "constructor__nx1__array_8cpp" ],
     [ "copy.cpp", "copy_8cpp.xhtml", "copy_8cpp" ],
+    [ "element_1x1.cpp", "element__1x1_8cpp.xhtml", "element__1x1_8cpp" ],
+    [ "element_mxn.cpp", "element__mxn_8cpp.xhtml", "element__mxn_8cpp" ],
     [ "format_1x1.cpp", "format__1x1_8cpp.xhtml", "format__1x1_8cpp" ],
     [ "format_1xn.cpp", "format__1xn_8cpp.xhtml", "format__1xn_8cpp" ],
     [ "format_mx1.cpp", "format__mx1_8cpp.xhtml", "format__mx1_8cpp" ],

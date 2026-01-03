@@ -131,6 +131,14 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>divides&lt; std::tuple&lt; Types1... &gt;, std::tuple&lt; Types2... &gt; &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>element_t</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>element_t&lt; Type &gt;</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>element_t&lt; Type, Index &gt;</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>element_t&lt; Type, RowIndex, ColumnIndex &gt;</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>multiplies</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>multiplies&lt; Lhs, std::identity &gt;</b></td></tr>
@@ -161,9 +169,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a72e4ccaf08999b259f656412682b37dd" id="r_a72e4ccaf08999b259f656412682b37dd"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
 <tr class="memitem:a72e4ccaf08999b259f656412682b37dd"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a72e4ccaf08999b259f656412682b37dd">underlying_t</a> = std::invoke_result_t&lt;underlying&lt;Type&gt;&gt;</td></tr>
 <tr class="separator:a72e4ccaf08999b259f656412682b37dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0dc82c981c93af3822ced28330e2071" id="r_ae0dc82c981c93af3822ced28330e2071"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::size_t RowIndex, std::size_t ColumnIndex&gt; </td></tr>
-<tr class="memitem:ae0dc82c981c93af3822ced28330e2071"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae0dc82c981c93af3822ced28330e2071">element</a></td></tr>
-<tr class="separator:ae0dc82c981c93af3822ced28330e2071"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89cc53c1b6d742d0f50660c6895896cc" id="r_a89cc53c1b6d742d0f50660c6895896cc"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::size_t... Indexes&gt; </td></tr>
+<tr class="memitem:a89cc53c1b6d742d0f50660c6895896cc"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a89cc53c1b6d742d0f50660c6895896cc">element</a> = element_t&lt;Type, Indexes...&gt;::type</td></tr>
+<tr class="separator:a89cc53c1b6d742d0f50660c6895896cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4dd57b09634fe03c0fd59b866657ad86" id="r_a4dd57b09634fe03c0fd59b866657ad86"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::size_t Size&gt; </td></tr>
 <tr class="memitem:a4dd57b09634fe03c0fd59b866657ad86"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a4dd57b09634fe03c0fd59b866657ad86">tuple_n_type</a> = typename tupler&lt;Type, Size&gt;::type</td></tr>
 <tr class="separator:a4dd57b09634fe03c0fd59b866657ad86"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,28 +191,21 @@ Variables</h2></td></tr>
 <tr class="separator:aded6eca464a23970fc0a04a24a164209"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="ae0dc82c981c93af3822ced28330e2071" name="ae0dc82c981c93af3822ced28330e2071"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0dc82c981c93af3822ced28330e2071">&#9670;&#160;</a></span>element</h2>
+<a id="a89cc53c1b6d742d0f50660c6895896cc" name="a89cc53c1b6d742d0f50660c6895896cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89cc53c1b6d742d0f50660c6895896cc">&#9670;&#160;</a></span>element</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type , std::size_t RowIndex, std::size_t ColumnIndex&gt; </div>
+template&lt;typename Type , std::size_t... Indexes&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#ae0dc82c981c93af3822ced28330e2071">fcarouge::typed_linear_algebra_internal::element</a></td>
+          <td class="memname">using <a class="el" href="#a89cc53c1b6d742d0f50660c6895896cc">fcarouge::typed_linear_algebra_internal::element</a> = element_t&lt;Type, Indexes...&gt;::type</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"> std::remove_cvref_t&lt;<a class="code hl_typedef" href="#a174364178a20af0590ffe5c549e13e66">product</a>&lt;</div>
-<div class="line">    std::tuple_element_t&lt;RowIndex,</div>
-<div class="line">                         <span class="keyword">typename</span> std::remove_cvref_t&lt;Type&gt;::row_indexes&gt;,</div>
-<div class="line">    std::tuple_element_t&lt;ColumnIndex,</div>
-<div class="line">                         <span class="keyword">typename</span> std::remove_cvref_t&lt;Type&gt;::column_indexes&gt;&gt;&gt;</div>
-<div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra__internal_xhtml_a174364178a20af0590ffe5c549e13e66"><div class="ttname"><a href="#a174364178a20af0590ffe5c549e13e66">fcarouge::typed_linear_algebra_internal::product</a></div><div class="ttdeci">std::invoke_result_t&lt; multiplies&lt; Lhs, Rhs &gt;, Lhs, Rhs &gt; product</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00118">utility.hpp:118</a></div></div>
-</div><!-- fragment --><dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000004">Todo</a></b></dt><dd>Constrain Type to is_matrix_type? </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00203">203</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00222">222</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -220,7 +221,7 @@ template&lt;typename Type , std::size_t RowIndex, std::size_t ColumnIndex&gt; </
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00265">265</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00279">279</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -276,7 +277,7 @@ template&lt;typename Type , std::size_t Size&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00263">263</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00277">277</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -386,16 +387,16 @@ template&lt;std::size_t Rows, std::size_t Columns&gt; </div>
 <div class="line">  <span class="keywordflow">return</span> 1;</div>
 <div class="line">}()}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00268">268</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  268</span>                        {[] {</div>
-<div class="line"><span class="lineno">  269</span>  <span class="keywordflow">if</span> (Rows &gt; 1 &amp;&amp; Columns &gt; 1) {</div>
-<div class="line"><span class="lineno">  270</span>    <span class="keywordflow">return</span> 2;</div>
-<div class="line"><span class="lineno">  271</span>  }</div>
-<div class="line"><span class="lineno">  272</span>  <span class="keywordflow">if</span> (Rows == 1 &amp;&amp; Columns == 1) {</div>
-<div class="line"><span class="lineno">  273</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  274</span>  }</div>
-<div class="line"><span class="lineno">  275</span>  <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  276</span>}()};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00282">282</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  282</span>                        {[] {</div>
+<div class="line"><span class="lineno">  283</span>  <span class="keywordflow">if</span> (Rows &gt; 1 &amp;&amp; Columns &gt; 1) {</div>
+<div class="line"><span class="lineno">  284</span>    <span class="keywordflow">return</span> 2;</div>
+<div class="line"><span class="lineno">  285</span>  }</div>
+<div class="line"><span class="lineno">  286</span>  <span class="keywordflow">if</span> (Rows == 1 &amp;&amp; Columns == 1) {</div>
+<div class="line"><span class="lineno">  287</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  288</span>  }</div>
+<div class="line"><span class="lineno">  289</span>  <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  290</span>}()};</div>
 </div><!-- fragment -->
 </div>
 </div>
