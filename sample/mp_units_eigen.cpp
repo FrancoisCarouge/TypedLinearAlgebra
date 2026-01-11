@@ -130,6 +130,32 @@ using row_vector =
   using position = quantity<mp_units::isq::length[m]>;
   using velocity = quantity<mp_units::isq::velocity[m / s]>;
   using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
+
+  {
+    std::println("\n\n\n");
+    using state = column_vector<position, velocity>;
+    using stateᵀ = row_vector<position, velocity>;
+    ///////////////////////////////////////////////////////////////////////////
+
+    state x0{3. * m, 2. * m / s};
+
+    std::println("{}", x0); // Output: [[3 m], [2 m/s]]
+
+    x0.at<1>() = 2.5 * m / s;
+
+    std::println("{}", x0.at<1>()); // Output: 2.5 m/s
+
+    stateᵀ x0ᵀ{transposed(x0)};
+
+    std::println(
+        "{}", x0 * x0ᵀ); // Output: [[9 m², 7.5 m²/s], [7.5 m²/s, 6.25 m²/s²]]
+
+    std::println("{}", x0ᵀ * x0); // error: static assertion failed: Matrix multiplication requires compatible types.
+
+    ///////////////////////////////////////////////////////////////////////////
+    std::println("\n\n\n");
+  }
+
   using state = column_vector<position, velocity, acceleration>;
 
   // Column-vector declaration.
