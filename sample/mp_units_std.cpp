@@ -183,6 +183,12 @@ constexpr std::size_t extents_size{[] {
 
   using state_transpose = row_vector<position, velocity, acceleration>;
 
+  // Transposed.
+  auto xt4{transposed(x4)};
+  assert(xt4.at<0>() == 18. * m);
+  assert(xt4.at<1>() == 15. * m / s);
+  assert(xt4.at<2>() == 6. * m / s2);
+
   std::vector v5(extents_size<row_extents<3>>, representation{});
   std::mdspan s5{v5.data(), row_extents<3>{}};
   state_transpose xt5{s5};

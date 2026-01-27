@@ -33,9 +33,13 @@ For more information, please refer to <https://unlicense.org> */
 #define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
 
 #ifdef __cpp_lib_linalg
+<<<<<<< HEAD
 
 #include <linalg>
 
+=======
+#include <linalg>
+>>>>>>> e6f2ac49f ([documentation] review comments on presentation)
 #endif
 
 namespace fcarouge {
