@@ -170,8 +170,6 @@ constexpr void for_constexpr(Function &&function) {
   }
 }
 
-// Can this be combined back into one? invoke result of (0, 0)? Even with
-// std::mdspan?
 template <typename Type> struct underlying {
   [[nodiscard]] static constexpr auto operator()()
     requires requires { typename Type::underlying; }
