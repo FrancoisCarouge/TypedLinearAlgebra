@@ -235,7 +235,6 @@ template <auto... Indexes>
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
   requires(sizeof...(Indexes) >= rank)
 {
-  // There may exist a canonical form?
   using self_t = std::remove_reference_t<decltype(self)>;
   using qualified_underlying =
       std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
