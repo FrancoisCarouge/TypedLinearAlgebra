@@ -131,6 +131,10 @@ using row_vector =
   using velocity = quantity<mp_units::isq::velocity[m / s]>;
   using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
   using state = column_vector<position, velocity, acceleration>;
+  using state_transpose = row_vector<position, velocity, acceleration>;
+  using estimate_uncertainty =
+      matrix<std::tuple<position, velocity, acceleration>,
+             std::tuple<position, velocity, acceleration>>;
 
   // Column-vector declaration.
   state x0{3. * m, 2. * m / s, 1. * m / s2};
@@ -167,8 +171,6 @@ using row_vector =
   assert(std::format("{}", x5 * (2. * m)) == "[[6 m²], [4 m²/s], [2 m²/s²]]");
   assert(std::format("{}", (0.5 / m) * x5) == "[[1.5], [1 1/s], [0.5 1/s²]]");
 
-  using state_transpose = row_vector<position, velocity, acceleration>;
-
   // Row-vector declaration.
   state_transpose xt5{3. * m, 2. * m / s, 1. * m / s2};
   assert(std::format("{}", xt5) == "[3 m, 2 m/s, 1 m/s²]");
@@ -190,6 +192,15 @@ using row_vector =
   assert(p6 == 4. * m);
   assert(v6 == 3. * m / s);
   assert(a6 == 2. * m / s2);
+
+  // Transposed.
+  state_transpose xt6{transposed(x6)};
+  assert(xt6.at<0>() == 4. * m);
+  assert(xt6.at<1>() == 3. * m / s);
+  assert(xt6.at<2>() == 2. * m / s2);
+
+  // Beware of non-evaluated template expression: these types are not the same.
+  static_assert(not std::is_same_v<decltype(transposed(x6)), state_transpose>);
 
   // Singleton matrix declaration, for example, but perhaps not a recommended
   // replacement for what should normally just be a `quantity{1. * A / mol}`.
@@ -340,6 +351,19 @@ using row_vector =
   p0(0, 1) = 16. * m2;
   assert((p0(0, 1) == 16. * m2));
 
+  // std::linalg add
+
+  // std::linalg scale
+  state x10{3. * m, 2. * m / s, 1. * m / s2};
+  scale(2., x10);
+  assert(std::format("{}", x10) == "[[6 m], [4 m/s], [2 m/s²]]");
+
+  // std::lianlg matrix_product
+  state x11{3. * m, 2. * m / s, 1. * m / s2};
+  state_transpose xt11{3. * m, 2. * m / s, 1. * m / s2};
+  estimate_uncertainty p11;
+  matrix_product(x11, xt11, p11);
+
   //! @todo Modulo where both arguments should be of the same quantity kind and
   //! character.
   //! @todo Dot product of two vectors: a ⋅ b.
@@ -368,9 +392,6 @@ using row_vector =
   //     [0 m/s],
   //     [0 m/s²]]
 
-  using estimate_uncertainty =
-      matrix<std::tuple<position, velocity, acceleration>,
-             std::tuple<position, velocity, acceleration>>;
   estimate_uncertainty p;
   p.at<0, 0>() = 500. * m2;
   p.at<1, 1>() = 500. * m2 / s2;
