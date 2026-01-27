@@ -1,9 +1,9 @@
 var searchData=
 [
   ['s4_0',['s4',['../namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436',1,'fcarouge']]],
-  ['safe_20linear_20algebra_20use_20case_3a_20eigen_20mp_20units_1',['Quantity-Safe Linear Algebra Use Case: Eigen + mp-units',['../md_paper_2mp__units__eigen.xhtml',1,'']]],
-  ['safety_2',['7 Beyond Unit Safety',['../md_paper_2mp__units__eigen.xhtml#autotoc_md7-beyond-unit-safety',1,'']]],
-  ['safety_20linear_20algebra_20and_20dimensional_20analysis_3',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md_paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],
+  ['safe_20linear_20algebra_20use_20case_3a_20eigen_20mp_20units_1',['Quantity-Safe Linear Algebra Use Case: Eigen + mp-units',['../md_html_2paper_2mp__units__eigen.xhtml',1,'']]],
+  ['safety_2',['7 Beyond Unit Safety',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md7-beyond-unit-safety',1,'']]],
+  ['safety_20linear_20algebra_20and_20dimensional_20analysis_3',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],
   ['sample_4',['sample',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a21786fcdeff8521c91f594655772d63a',1,'fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::sample'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#a79be95f177f33b369adaac9a2027149e',1,'fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::sample']]],
   ['scope_5',['Scope',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#scope',1,'']]],
   ['security_20policy_6',['Security Policy',['../md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml',1,'Security Policy'],['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#security-policy',1,'Security Policy']]],
@@ -13,13 +13,13 @@ var searchData=
   ['sponsors_10',['Sponsors',['../index.xhtml#sponsors',1,'']]],
   ['standards_11',['Our Standards',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-standards',1,'']]],
   ['storage_12',['storage',['../classfcarouge_1_1typed__matrix.xhtml#a4329fed7250ec71b8b0312accb3ddff6',1,'fcarouge::typed_matrix']]],
-  ['structure_20element_20caster_13',['Structure Element Caster',['../index.xhtml#structure-element-caster',1,'Structure Element Caster'],['../md_paper_2mp__units__eigen.xhtml#structure-element-caster-1',1,'Structure Element Caster']]],
+  ['structure_20element_20caster_13',['Structure Element Caster',['../index.xhtml#structure-element-caster',1,'Structure Element Caster'],['../md_html_2paper_2mp__units__eigen.xhtml#structure-element-caster-1',1,'Structure Element Caster']]],
   ['structured_5fbindings_5f1x1_2ecpp_14',['structured_bindings_1x1.cpp',['../structured__bindings__1x1_8cpp.xhtml',1,'']]],
   ['structured_5fbindings_5f1x1_5fconst_2ecpp_15',['structured_bindings_1x1_const.cpp',['../structured__bindings__1x1__const_8cpp.xhtml',1,'']]],
   ['structured_5fbindings_5f1xn_2ecpp_16',['structured_bindings_1xn.cpp',['../structured__bindings__1xn_8cpp.xhtml',1,'']]],
   ['structured_5fbindings_5f1xn_5fconst_2ecpp_17',['structured_bindings_1xn_const.cpp',['../structured__bindings__1xn__const_8cpp.xhtml',1,'']]],
   ['structured_5fbindings_5fmx1_2ecpp_18',['structured_bindings_mx1.cpp',['../structured__bindings__mx1_8cpp.xhtml',1,'']]],
   ['structured_5fbindings_5fmx1_5fconst_2ecpp_19',['structured_bindings_mx1_const.cpp',['../structured__bindings__mx1__const_8cpp.xhtml',1,'']]],
-  ['study_20',['4 Case Study',['../md_paper_2mp__units__eigen.xhtml#autotoc_md4-case-study',1,'']]],
+  ['study_20',['4 Case Study',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md4-case-study',1,'']]],
   ['supported_20versions_21',['Supported Versions',['../md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#supported-versions',1,'']]]
 ];
