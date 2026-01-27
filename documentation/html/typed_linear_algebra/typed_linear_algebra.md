@@ -2,7 +2,6 @@
 theme : "black"
 transition: "slide"
 highlightTheme: "monokai"
-# logoImg: "logo.png"
 slideNumber: true
 title: "Typed Linear Algebra"
 ---
@@ -256,7 +255,7 @@ typed_matrix(
 <aside class="notes">
 The destructor is not shown here. You can imagine a default constexpr destructor.
 Neither I will show the copy- and move- assignment operators equivalent to these constructors.
-Most matrice libraries made the choice of an unitialized default constructor for historical or performance reason. For a safer linear algebra library, it is appropriate to have a zero-initialized default constructor if the tyoe erased third party matrix type supports a default initialization.
+Most matrice libraries made the choice of an unitialized default constructor for historical or performance reason. For a safer linear algebra library, it is appropriate to have a zero-initialized default constructor if the type-erased third party matrix type supports a default initialization. The implementation, not shown here, ensures zero-initialization.
 The compatible copy conversion provide support for safely convertible but not strictly identical typed matrix. One example is that of a matrix where the rows and indexes types are merely transposed. Another example is that of the element types represent the same physical quantity type but the C++ template are not quite identical. Similarly for compatible move conversion. 
 The singleton constructor helps the typed matrix to behavior more like built-in types where it can.
 </aside>
@@ -292,7 +291,7 @@ typed_matrix(const auto &first_value,
   requires one_dimension_typed_matrix<typed_matrix>;
 
 // ! Underlying matrix conversion:
-typed_matrix(const Matrix &other);
+explicit typed_matrix(const Matrix &other);
 ```
 
 <aside class="notes">
@@ -330,9 +329,9 @@ same_as_typed_matrix<Type> and ([]() { bool result{true};
 
 <aside class="notes">
 The constructors of the typed matrix used concepts to ensure they are meanigful for a given template instantiation of a typed matrix. We show here a couple interesting concepts among the the 10 or so concepts present and used in the library.
-In some cases, we want to enable behavior solely for typed matrices. This concept presented with an interesting challenge in its definition: the template parameters of the typed matrix could not be passed in the concept nor deduced. The neat idiom to permit usage of the concept while passing only the single type to check was to re-use the type's under evaluation for its member types. Note the Type parameter is found on both sides of the same type concept.
-FRAGMENT
-There will be constructors, members that are only valid, only enabled if the typed matrix is in the special case of a uniformely typed matrix. All element types are the same. The same? Is same type too restrictive? Wouldn't convertible types be a sufficient condition? But convertible to what? A common type? To one another? Exhaustively? Some questions remain open. Also note that the constexpr for or template for expression statement can often be re-written as a fold expression, we haven't found a practical nested fold expression equivalent to the nested for loops here.
+In some cases, we want to enable behavior solely for typed matrices. This concept presented with an interesting challenge in its definition: the template parameters of the typed matrix could not be passed in the concept nor deduced. The neat idiom to permit usage of the concept while passing only the single type to check was to re-use the type's under evaluation for its member types. Note the Type parameter is found on both sides of the same type concept.<br />
+FRAGMENT<br />
+There will be constructors, members that are only valid, only enabled if the typed matrix is in the special case of a uniformely typed matrix. All element types are the same. The same? Is same type too restrictive? Wouldn't convertible types be a sufficient condition? But convertible to what? A common type? To one another? Exhaustively? Some questions remain open. Also note that the constexpr for or template for expression statement can often be re-written as a fold expression, we haven't found a practical nested fold expression equivalent to the nested for loops here. Note that in C++26 template for expansion statement will replace these constexpr for templates. 
 </aside>
 
 ---
@@ -367,8 +366,8 @@ decltype(auto) data(this auto &&self);
 It seems the best we can do for type-safe compile-time bound-checked access is the standard `at` member, providing the i-th, j-th position as non-type template parameters. I omitted the atttributes nodiscard, constexpr, rvalue/lvalue/const variants of this member. I also omit the one dimension variation of the at member.
 Next is the subscript operator, another sharp edge, here we see it with deducing this to deduplicate operators. The example shown here is that of the square bracket index operator. There is also the identical historical parentheses index operator not shown here. One difficulty with this operator is the lack of possibilities to provide compile-time bound checking. Another difficulty is that in C++ the return type is fixed at compile-time. We cannot vary the return type based on the element accessed at runtime. Therefore we limit this syntax to uniform matrices to preserve our type safety. This is a problem. It may be judicious to not support this accessor at all. Similarly for the parentheses-based index access operator not shown here.
 Lastly we show the third and last sharp edge, the traditional underlying data accessor member function in the typical standard. Again this will be useful for implementing operations.
-Compilers still had some difficulties with the deducing this syntax in this form here in addition to the decltype(auto) return types. Some of the compilers defects have been fixed in newer version and we may be able to reduce the duplication in the library.
-FRAGMENT
+Compilers still had some difficulties with the deducing this syntax in this form here in addition to the decltype(auto) return types. Some of the compilers defects have been fixed in newer version and we may be able to reduce the duplication in the library.<br />
+FRAGMENT<br />
 And that's it for typed matrix class declaration, we will then see interesing implementations for some of these members and operations.
 </aside>
 
@@ -483,10 +482,10 @@ using stateᵀ   = row_vector<position, velocity>;
 </span>
 <aside class="notes">
 So far we have seen some of the principles of the library. Before we take a look at the implementation, we can see a few usage examples. We start with a little bit of boilerplate.
-This first example fragment shows the customization of the element cast. It teachs the library how to cast an element from its underlying type to its strong type. I don't show here the other conversions, from element to underlying, or the reference conversion.
-FRAGMENT
-This second fragment shows the type of a strongly typed column vector using the Eigen vector as storage.
-FRAGMENT
+This first example fragment shows the customization of the element cast. It teachs the library how to cast an element from its underlying type to its strong type. I don't show here the other conversions, from element to underlying, or the reference conversion.<br />
+FRAGMENT<br />
+This second fragment shows the type of a strongly typed column vector using the Eigen vector as storage.<br />
+FRAGMENT<br />
 This third fragment shows a state strong column vector type with position and velocity element, and a transposed, row vector.
 </aside>
 
@@ -523,10 +522,10 @@ std::println("{}", x0 * x0ᵀ);
 <aside class="notes">
 And now the actual usage. The state column vector x0 is a heterogenously typed vector of position and velocity. The library's std::formatter specialization makes the vector printable.
 The at member permits to access the element both to write a new value to the element, or to read the element value.
-What do you think is the result of the row-vector--column-vector product?
-FRAGMENT
-A compilation error. In traditional libraries this incorrect operation compiles and returns a one element matrix. However with typed linear algebra, the programming error is caught at compilation time.
-FRAGMENT
+What do you think is the result of the row-vector--column-vector product?<br />
+FRAGMENT<br />
+A compilation error. In traditional libraries this incorrect operation compiles and returns a one element matrix. However with typed linear algebra, the programming error is caught at compilation time.<br />
+FRAGMENT<br />
 The intended operation was the column-vector--row-vector product and yields a 2-by-2 matrix.
 </aside>
 
@@ -656,7 +655,7 @@ And we can see here a typical naive compile-time assertion over the types of the
 
 ---
 
-## Next
+###### Next
 
 <p>
 <b>Compose More Safeties</b><br />
@@ -665,15 +664,16 @@ Frame<br />
 Taxonomy
 </p>
 
-<aside class="notes">
-+ more operations 
-+ benchmarking
-  Print Format</li>
-  <li>Template For</li>
-  <li>Compiler Compliance</li>
-  <li>Benchmarking</li>
-  <li>std::linalg</li>
+<span class="fragment">
+Compliance, Ergonomics<br />
+Regression, Performance<br />
+Ecosystem<br />
+</span>
 
+<aside class="notes">
+I will close today's session by looking toward the future. We've now seen the principles driving a strongly typed linear algebra with examples of implementation and usage. That's only the beginning. Unfortunately unit and dimension are incomplete for a more comprehensive safe physical linear algebra! Additional safety capabilities are critical to consider such as quantity kind, character semantics, index access, or reference frames. I want to explore these areas, perhaps with yet another composition.<br />
+FRAGMENT<br />
+Additionally, we need greater compatibility, support with the standard library, `std::linalg`, third party linear algebra, and third party types. I believe typed linear algebra could be a drop-in retrofit in existing high order libraries while maintaining zero-cost for performance.
 </aside>
 
 ---
@@ -697,18 +697,12 @@ I believe this is the first extensive open source and permissive implementation 
 
 ###### Abstract
 
-<small><p>
-Typed Linear Algebra<br />
-Quantity-Safe Linear Algebra Use Case: Eigen + mp-units
-
+<small><p style="text-align: justify;">
+<b>Typed Linear Algebra</b><br />
+Quantity-Safe Linear Algebra Use Case: Eigen + mp-units<br />
+<br />
 A practical approach to achieving quantity-safe linear algebra in C++ through the composition of the Eigen and mp-units libraries. The proposed method integrates dimensional analysis in linear algebra computations, ensuring compile-time enforcement of unit correctness while preserving the efficiency and flexibility of established numerical backends. Design principles, implementation strategies, and accumulated experience, including trade-offs in type representation and performance considerations. Lessons learned highlight the feasibility and challenges of embedding strong typing into numerical computation, while preliminary extensions demonstrate the applicability of the approach beyond physical units.
 </p></small>
-
----
-
-Unfortunately unit and dimension are incomplete for a more comprehensive safe physical linear algebra! 
-We will alude to additional safety capabilities to consider such as quantity kind, character
-semantics, index access, or reference frame compatibility.
 
 ---
 

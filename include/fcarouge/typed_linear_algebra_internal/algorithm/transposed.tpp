@@ -47,6 +47,10 @@ transposed(const same_as_typed_matrix auto &value) {
     return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
         value.data().transpose());
   }
+
+  // the intent was to imitate std::linalg, then this should return a transposed
+  // view of the elements, without actually moving any elements.
+
 }
 } // namespace fcarouge
 

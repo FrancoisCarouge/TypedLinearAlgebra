@@ -330,6 +330,11 @@ public:
   //! @warning Useful for operations implementation where underlying data
   //! access is needed. Not recommended for convenience access due to
   //! absence of type validation.
+  //
+  // Potential API defect: Is this meant to return a reference to the underlying
+  // matrix? If so, then that goes against the Standard Library convention
+  // (in e.g., `vector` and `span`) that reserves `data` for a pointer to the
+  // beginning of a contiguous range.
   [[nodiscard]] constexpr decltype(auto) data(this auto &&self);
 
   //! @}
