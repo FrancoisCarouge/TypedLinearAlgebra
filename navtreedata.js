@@ -96,13 +96,6 @@ var NAVTREE =
       [ "7 Conclusion", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md7-conclusion", null ]
     ] ],
     [ "typed_linear_algebra", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml", [
-      [ "logoImg: \"logo.png\"", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#logoimg-logopng", [
-        [ "ianchortyped_linear_algebra-typed_linear_algebrailinebr", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#ianchortyped_linear_algebra-typed_linear_algebrailinebr", null ],
-        [ "title: \"Typed Linear Algebra\"", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#title-typed-linear-algebra", null ],
-        [ "Typed Linear Algebra", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#typed-linear-algebra-1", null ],
-        [ "Next", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#next", null ],
-        [ "Typed Linear Algebra", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#typed-linear-algebra-2", null ]
-      ] ],
       [ "Parking", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#parking", null ]
     ] ],
     [ "Installation", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml", [
@@ -157,7 +150,7 @@ var NAVTREEINDEX =
 [
 "addition_8cpp.xhtml",
 "index.xhtml#declaration",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__subscript__mxn_8cpp_03.xhtml"
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02structured__bindings__1x1__const_8cpp_03.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

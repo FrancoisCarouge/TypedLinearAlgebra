@@ -12,7 +12,5 @@ var searchData=
   ['linear_20algebra_20and_20dimensional_20analysis_9',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],
   ['linear_20algebra_20use_20case_3a_20eigen_20mp_20units_10',['Quantity-Safe Linear Algebra Use Case: Eigen + mp-units',['../md_html_2paper_2mp__units__eigen.xhtml',1,'']]],
   ['linux_11',['Linux',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#linux',1,'']]],
-  ['list_12',['List',['../test.xhtml',1,'Test List'],['../todo.xhtml',1,'Todo List']]],
-  ['logo_20png_13',['logoImg: &quot;logo.png&quot;',['../md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#logoimg-logopng',1,'']]],
-  ['logoimg_3a_20logo_20png_14',['logoImg: &quot;logo.png&quot;',['../md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#logoimg-logopng',1,'']]]
+  ['list_12',['List',['../test.xhtml',1,'Test List'],['../todo.xhtml',1,'Todo List']]]
 ];
