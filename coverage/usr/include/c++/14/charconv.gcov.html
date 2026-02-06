@@ -1,0 +1,1031 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - FrancoisCarouge/TypedLinearAlgebra - usr/include/c++/14/charconv</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">/usr/include/c++/14</a> - charconv<span style="font-size: 80%;"> (source / <a href="charconv.func-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">FrancoisCarouge/TypedLinearAlgebra</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntry">141</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2026-02-06 02:30:33</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntry">28</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Legend:</td>
+            <td class="headerValueLeg">            Lines:
+            <span class="coverLegendCov">hit</span>
+            <span class="coverLegendNoCov">not hit</span>
+            | Branches:
+            <span class="coverLegendCov">+</span> taken
+            <span class="coverLegendNoCov">-</span> not taken
+            <span class="coverLegendNoCov">#</span> not executed
+</td>
+            <td></td>
+            <td class="headerItem">Branches:</td>
+            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntry">57</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+                  <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">             Branch data     Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>                 :             : // Primitive numeric conversions (to_chars and from_chars) -*- C++ -*-</span>
+<span id="L2"><span class="lineNum">       2</span>                 :             : </span>
+<span id="L3"><span class="lineNum">       3</span>                 :             : // Copyright (C) 2017-2024 Free Software Foundation, Inc.</span>
+<span id="L4"><span class="lineNum">       4</span>                 :             : //</span>
+<span id="L5"><span class="lineNum">       5</span>                 :             : // This file is part of the GNU ISO C++ Library.  This library is free</span>
+<span id="L6"><span class="lineNum">       6</span>                 :             : // software; you can redistribute it and/or modify it under the</span>
+<span id="L7"><span class="lineNum">       7</span>                 :             : // terms of the GNU General Public License as published by the</span>
+<span id="L8"><span class="lineNum">       8</span>                 :             : // Free Software Foundation; either version 3, or (at your option)</span>
+<span id="L9"><span class="lineNum">       9</span>                 :             : // any later version.</span>
+<span id="L10"><span class="lineNum">      10</span>                 :             : </span>
+<span id="L11"><span class="lineNum">      11</span>                 :             : // This library is distributed in the hope that it will be useful,</span>
+<span id="L12"><span class="lineNum">      12</span>                 :             : // but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span id="L13"><span class="lineNum">      13</span>                 :             : // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span id="L14"><span class="lineNum">      14</span>                 :             : // GNU General Public License for more details.</span>
+<span id="L15"><span class="lineNum">      15</span>                 :             : </span>
+<span id="L16"><span class="lineNum">      16</span>                 :             : // Under Section 7 of GPL version 3, you are granted additional</span>
+<span id="L17"><span class="lineNum">      17</span>                 :             : // permissions described in the GCC Runtime Library Exception, version</span>
+<span id="L18"><span class="lineNum">      18</span>                 :             : // 3.1, as published by the Free Software Foundation.</span>
+<span id="L19"><span class="lineNum">      19</span>                 :             : </span>
+<span id="L20"><span class="lineNum">      20</span>                 :             : // You should have received a copy of the GNU General Public License and</span>
+<span id="L21"><span class="lineNum">      21</span>                 :             : // a copy of the GCC Runtime Library Exception along with this program;</span>
+<span id="L22"><span class="lineNum">      22</span>                 :             : // see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see</span>
+<span id="L23"><span class="lineNum">      23</span>                 :             : // &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span id="L24"><span class="lineNum">      24</span>                 :             : </span>
+<span id="L25"><span class="lineNum">      25</span>                 :             : /** @file include/charconv</span>
+<span id="L26"><span class="lineNum">      26</span>                 :             :  *  This is a Standard C++ Library header.</span>
+<span id="L27"><span class="lineNum">      27</span>                 :             :  */</span>
+<span id="L28"><span class="lineNum">      28</span>                 :             : </span>
+<span id="L29"><span class="lineNum">      29</span>                 :             : #ifndef _GLIBCXX_CHARCONV</span>
+<span id="L30"><span class="lineNum">      30</span>                 :             : #define _GLIBCXX_CHARCONV 1</span>
+<span id="L31"><span class="lineNum">      31</span>                 :             : </span>
+<span id="L32"><span class="lineNum">      32</span>                 :             : #pragma GCC system_header</span>
+<span id="L33"><span class="lineNum">      33</span>                 :             : </span>
+<span id="L34"><span class="lineNum">      34</span>                 :             : #include &lt;bits/requires_hosted.h&gt; // for error codes</span>
+<span id="L35"><span class="lineNum">      35</span>                 :             : </span>
+<span id="L36"><span class="lineNum">      36</span>                 :             : // As an extension we support &lt;charconv&gt; in C++14, but this header should not</span>
+<span id="L37"><span class="lineNum">      37</span>                 :             : // be included by any other library headers in C++14 mode. This ensures that</span>
+<span id="L38"><span class="lineNum">      38</span>                 :             : // the names defined in this header are not added to namespace std unless a</span>
+<span id="L39"><span class="lineNum">      39</span>                 :             : // user explicitly includes &lt;charconv&gt; in C++14 code.</span>
+<span id="L40"><span class="lineNum">      40</span>                 :             : #if __cplusplus &gt;= 201402L</span>
+<span id="L41"><span class="lineNum">      41</span>                 :             : </span>
+<span id="L42"><span class="lineNum">      42</span>                 :             : #include &lt;type_traits&gt;</span>
+<span id="L43"><span class="lineNum">      43</span>                 :             : #include &lt;bit&gt;                    // for __bit_width</span>
+<span id="L44"><span class="lineNum">      44</span>                 :             : #include &lt;bits/charconv.h&gt;        // for __to_chars_len, __to_chars_10_impl</span>
+<span id="L45"><span class="lineNum">      45</span>                 :             : #include &lt;bits/error_constants.h&gt; // for std::errc</span>
+<span id="L46"><span class="lineNum">      46</span>                 :             : #include &lt;ext/numeric_traits.h&gt;</span>
+<span id="L47"><span class="lineNum">      47</span>                 :             : </span>
+<span id="L48"><span class="lineNum">      48</span>                 :             : #define __glibcxx_want_to_chars</span>
+<span id="L49"><span class="lineNum">      49</span>                 :             : #define __glibcxx_want_constexpr_charconv</span>
+<span id="L50"><span class="lineNum">      50</span>                 :             : #include &lt;bits/version.h&gt;</span>
+<span id="L51"><span class="lineNum">      51</span>                 :             : </span>
+<span id="L52"><span class="lineNum">      52</span>                 :             : namespace std _GLIBCXX_VISIBILITY(default)</span>
+<span id="L53"><span class="lineNum">      53</span>                 :             : {</span>
+<span id="L54"><span class="lineNum">      54</span>                 :             : _GLIBCXX_BEGIN_NAMESPACE_VERSION</span>
+<span id="L55"><span class="lineNum">      55</span>                 :             : </span>
+<span id="L56"><span class="lineNum">      56</span>                 :             :   /// Result type of std::to_chars</span>
+<span id="L57"><span class="lineNum">      57</span>                 :             :   struct to_chars_result</span>
+<span id="L58"><span class="lineNum">      58</span>                 :             :   {</span>
+<span id="L59"><span class="lineNum">      59</span>                 :             :     char* ptr;</span>
+<span id="L60"><span class="lineNum">      60</span>                 :             :     errc ec;</span>
+<span id="L61"><span class="lineNum">      61</span>                 :             : </span>
+<span id="L62"><span class="lineNum">      62</span>                 :             : #if __cplusplus &gt; 201703L &amp;&amp; __cpp_impl_three_way_comparison &gt;= 201907L</span>
+<span id="L63"><span class="lineNum">      63</span>                 :             :     friend bool</span>
+<span id="L64"><span class="lineNum">      64</span>                 :             :     operator==(const to_chars_result&amp;, const to_chars_result&amp;) = default;</span>
+<span id="L65"><span class="lineNum">      65</span>                 :             : #endif</span>
+<span id="L66"><span class="lineNum">      66</span>                 :             : #if __cplusplus &gt; 202302L</span>
+<span id="L67"><span class="lineNum">      67</span>                 :             :     constexpr explicit operator bool() const noexcept { return ec == errc{}; }</span>
+<span id="L68"><span class="lineNum">      68</span>                 :             : #endif</span>
+<span id="L69"><span class="lineNum">      69</span>                 :             :   };</span>
+<span id="L70"><span class="lineNum">      70</span>                 :             : </span>
+<span id="L71"><span class="lineNum">      71</span>                 :             :   /// Result type of std::from_chars</span>
+<span id="L72"><span class="lineNum">      72</span>                 :             :   struct from_chars_result</span>
+<span id="L73"><span class="lineNum">      73</span>                 :             :   {</span>
+<span id="L74"><span class="lineNum">      74</span>                 :             :     const char* ptr;</span>
+<span id="L75"><span class="lineNum">      75</span>                 :             :     errc ec;</span>
+<span id="L76"><span class="lineNum">      76</span>                 :             : </span>
+<span id="L77"><span class="lineNum">      77</span>                 :             : #if __cplusplus &gt; 201703L &amp;&amp; __cpp_impl_three_way_comparison &gt;= 201907L</span>
+<span id="L78"><span class="lineNum">      78</span>                 :             :     friend bool</span>
+<span id="L79"><span class="lineNum">      79</span>                 :             :     operator==(const from_chars_result&amp;, const from_chars_result&amp;) = default;</span>
+<span id="L80"><span class="lineNum">      80</span>                 :             : #endif</span>
+<span id="L81"><span class="lineNum">      81</span>                 :             : #if __cplusplus &gt; 202302L</span>
+<span id="L82"><span class="lineNum">      82</span>                 :             :     constexpr explicit operator bool() const noexcept { return ec == errc{}; }</span>
+<span id="L83"><span class="lineNum">      83</span>                 :             : #endif</span>
+<span id="L84"><span class="lineNum">      84</span>                 :             :   };</span>
+<span id="L85"><span class="lineNum">      85</span>                 :             : </span>
+<span id="L86"><span class="lineNum">      86</span>                 :             : namespace __detail</span>
+<span id="L87"><span class="lineNum">      87</span>                 :             : {</span>
+<span id="L88"><span class="lineNum">      88</span>                 :             :   // Pick an unsigned type of suitable size. This is used to reduce the</span>
+<span id="L89"><span class="lineNum">      89</span>                 :             :   // number of specializations of __to_chars_len, __to_chars etc. that</span>
+<span id="L90"><span class="lineNum">      90</span>                 :             :   // get instantiated. For example, to_chars&lt;char&gt; and to_chars&lt;short&gt;</span>
+<span id="L91"><span class="lineNum">      91</span>                 :             :   // and to_chars&lt;unsigned&gt; will all use the same code, and so will</span>
+<span id="L92"><span class="lineNum">      92</span>                 :             :   // to_chars&lt;long&gt; when sizeof(int) == sizeof(long).</span>
+<span id="L93"><span class="lineNum">      93</span>                 :             :   template&lt;typename _Tp&gt;</span>
+<span id="L94"><span class="lineNum">      94</span>                 :             :     struct __to_chars_unsigned_type : __make_unsigned_selector_base</span>
+<span id="L95"><span class="lineNum">      95</span>                 :             :     {</span>
+<span id="L96"><span class="lineNum">      96</span>                 :             :       using _UInts = _List&lt;unsigned int, unsigned long, unsigned long long</span>
+<span id="L97"><span class="lineNum">      97</span>                 :             : #if __SIZEOF_INT128__ &gt; __SIZEOF_LONG_LONG__</span>
+<span id="L98"><span class="lineNum">      98</span>                 :             :         , unsigned __int128</span>
+<span id="L99"><span class="lineNum">      99</span>                 :             : #endif</span>
+<span id="L100"><span class="lineNum">     100</span>                 :             :         &gt;;</span>
+<span id="L101"><span class="lineNum">     101</span>                 :             :       using type = typename __select&lt;sizeof(_Tp), _UInts&gt;::__type;</span>
+<span id="L102"><span class="lineNum">     102</span>                 :             :     };</span>
+<span id="L103"><span class="lineNum">     103</span>                 :             : </span>
+<span id="L104"><span class="lineNum">     104</span>                 :             :   template&lt;typename _Tp&gt;</span>
+<span id="L105"><span class="lineNum">     105</span>                 :             :     using __unsigned_least_t = typename __to_chars_unsigned_type&lt;_Tp&gt;::type;</span>
+<span id="L106"><span class="lineNum">     106</span>                 :             : </span>
+<span id="L107"><span class="lineNum">     107</span>                 :             :   // Generic implementation for arbitrary bases.</span>
+<span id="L108"><span class="lineNum">     108</span>                 :             :   // Defined in &lt;bits/charconv.h&gt;.</span>
+<span id="L109"><span class="lineNum">     109</span>                 :             :   template&lt;typename _Tp&gt;</span>
+<span id="L110"><span class="lineNum">     110</span>                 :             :     constexpr unsigned</span>
+<span id="L111"><span class="lineNum">     111</span>                 :             :     __to_chars_len(_Tp __value, int __base /* = 10 */) noexcept;</span>
+<span id="L112"><span class="lineNum">     112</span>                 :             : </span>
+<span id="L113"><span class="lineNum">     113</span>                 :             :   template&lt;typename _Tp&gt;</span>
+<span id="L114"><span class="lineNum">     114</span>                 :             :     constexpr unsigned</span>
+<span id="L115"><span class="lineNum">     115</span>                 :<span class="tlaUNC tlaBgUNC">           0 :     __to_chars_len_2(_Tp __value) noexcept</span></span>
+<span id="L116"><span class="lineNum">     116</span>                 :<span class="tlaUNC">           0 :     { return std::__bit_width(__value); }</span></span>
+<span id="L117"><span class="lineNum">     117</span>                 :             : </span>
+<span id="L118"><span class="lineNum">     118</span>                 :             :   // Generic implementation for arbitrary bases.</span>
+<span id="L119"><span class="lineNum">     119</span>                 :             :   template&lt;typename _Tp&gt;</span>
+<span id="L120"><span class="lineNum">     120</span>                 :             :     constexpr to_chars_result</span>
+<span id="L121"><span class="lineNum">     121</span>                 :<span class="tlaUNC">           0 :     __to_chars(char* __first, char* __last, _Tp __val, int __base) noexcept</span></span>
+<span id="L122"><span class="lineNum">     122</span>                 :             :     {</span>
+<span id="L123"><span class="lineNum">     123</span>                 :             :       static_assert(__integer_to_chars_is_unsigned&lt;_Tp&gt;, &quot;implementation bug&quot;);</span>
+<span id="L124"><span class="lineNum">     124</span>                 :             : </span>
+<span id="L125"><span class="lineNum">     125</span>                 :<span class="tlaUNC">           0 :       to_chars_result __res;</span></span>
+<span id="L126"><span class="lineNum">     126</span>                 :             : </span>
+<span id="L127"><span class="lineNum">     127</span>                 :<span class="tlaUNC">           0 :       const unsigned __len = __to_chars_len(__val, __base);</span></span>
+<span id="L128"><span class="lineNum">     128</span>                 :             : </span>
+<span id="L129"><span class="lineNum">     129</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :       if (__builtin_expect((__last - __first) &lt; __len, 0))</span></span>
+<span id="L130"><span class="lineNum">     130</span>                 :             :         {</span>
+<span id="L131"><span class="lineNum">     131</span>                 :<span class="tlaUNC">           0 :           __res.ptr = __last;</span></span>
+<span id="L132"><span class="lineNum">     132</span>                 :<span class="tlaUNC">           0 :           __res.ec = errc::value_too_large;</span></span>
+<span id="L133"><span class="lineNum">     133</span>                 :<span class="tlaUNC">           0 :           return __res;</span></span>
+<span id="L134"><span class="lineNum">     134</span>                 :             :         }</span>
+<span id="L135"><span class="lineNum">     135</span>                 :             : </span>
+<span id="L136"><span class="lineNum">     136</span>                 :<span class="tlaUNC">           0 :       unsigned __pos = __len - 1;</span></span>
+<span id="L137"><span class="lineNum">     137</span>                 :             : </span>
+<span id="L138"><span class="lineNum">     138</span>                 :<span class="tlaUNC">           0 :       constexpr char __digits[] = {</span></span>
+<span id="L139"><span class="lineNum">     139</span>                 :             :         '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',</span>
+<span id="L140"><span class="lineNum">     140</span>                 :             :         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',</span>
+<span id="L141"><span class="lineNum">     141</span>                 :             :         'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',</span>
+<span id="L142"><span class="lineNum">     142</span>                 :             :         'u', 'v', 'w', 'x', 'y', 'z'</span>
+<span id="L143"><span class="lineNum">     143</span>                 :             :       };</span>
+<span id="L144"><span class="lineNum">     144</span>                 :             : </span>
+<span id="L145"><span class="lineNum">     145</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :       while (__val &gt;= (unsigned)__base)</span></span>
+<span id="L146"><span class="lineNum">     146</span>                 :             :         {</span>
+<span id="L147"><span class="lineNum">     147</span>                 :<span class="tlaUNC">           0 :           auto const __quo = __val / __base;</span></span>
+<span id="L148"><span class="lineNum">     148</span>                 :<span class="tlaUNC">           0 :           auto const __rem = __val % __base;</span></span>
+<span id="L149"><span class="lineNum">     149</span>                 :<span class="tlaUNC">           0 :           __first[__pos--] = __digits[__rem];</span></span>
+<span id="L150"><span class="lineNum">     150</span>                 :<span class="tlaUNC">           0 :           __val = __quo;</span></span>
+<span id="L151"><span class="lineNum">     151</span>                 :             :         }</span>
+<span id="L152"><span class="lineNum">     152</span>                 :<span class="tlaUNC">           0 :       *__first = __digits[__val];</span></span>
+<span id="L153"><span class="lineNum">     153</span>                 :             : </span>
+<span id="L154"><span class="lineNum">     154</span>                 :<span class="tlaUNC">           0 :       __res.ptr = __first + __len;</span></span>
+<span id="L155"><span class="lineNum">     155</span>                 :<span class="tlaUNC">           0 :       __res.ec = {};</span></span>
+<span id="L156"><span class="lineNum">     156</span>                 :<span class="tlaUNC">           0 :       return __res;</span></span>
+<span id="L157"><span class="lineNum">     157</span>                 :             :     }</span>
+<span id="L158"><span class="lineNum">     158</span>                 :             : </span>
+<span id="L159"><span class="lineNum">     159</span>                 :             :   template&lt;typename _Tp&gt;</span>
+<span id="L160"><span class="lineNum">     160</span>                 :             :     constexpr to_chars_result</span>
+<span id="L161"><span class="lineNum">     161</span>                 :<span class="tlaUNC">           0 :     __to_chars_16(char* __first, char* __last, _Tp __val) noexcept</span></span>
+<span id="L162"><span class="lineNum">     162</span>                 :             :     {</span>
+<span id="L163"><span class="lineNum">     163</span>                 :             :       static_assert(__integer_to_chars_is_unsigned&lt;_Tp&gt;, &quot;implementation bug&quot;);</span>
+<span id="L164"><span class="lineNum">     164</span>                 :             : </span>
+<span id="L165"><span class="lineNum">     165</span>                 :<span class="tlaUNC">           0 :       to_chars_result __res;</span></span>
+<span id="L166"><span class="lineNum">     166</span>                 :             : </span>
+<span id="L167"><span class="lineNum">     167</span>                 :<span class="tlaUNC">           0 :       const unsigned __len = (__to_chars_len_2(__val) + 3) / 4;</span></span>
+<span id="L168"><span class="lineNum">     168</span>                 :             : </span>
+<span id="L169"><span class="lineNum">     169</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :       if (__builtin_expect((__last - __first) &lt; __len, 0))</span></span>
+<span id="L170"><span class="lineNum">     170</span>                 :             :         {</span>
+<span id="L171"><span class="lineNum">     171</span>                 :<span class="tlaUNC">           0 :           __res.ptr = __last;</span></span>
+<span id="L172"><span class="lineNum">     172</span>                 :<span class="tlaUNC">           0 :           __res.ec = errc::value_too_large;</span></span>
+<span id="L173"><span class="lineNum">     173</span>                 :<span class="tlaUNC">           0 :           return __res;</span></span>
+<span id="L174"><span class="lineNum">     174</span>                 :             :         }</span>
+<span id="L175"><span class="lineNum">     175</span>                 :             : </span>
+<span id="L176"><span class="lineNum">     176</span>                 :<span class="tlaUNC">           0 :       constexpr char __digits[] = {</span></span>
+<span id="L177"><span class="lineNum">     177</span>                 :             :         '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',</span>
+<span id="L178"><span class="lineNum">     178</span>                 :             :         'a', 'b', 'c', 'd', 'e', 'f'</span>
+<span id="L179"><span class="lineNum">     179</span>                 :             :       };</span>
+<span id="L180"><span class="lineNum">     180</span>                 :<span class="tlaUNC">           0 :       unsigned __pos = __len - 1;</span></span>
+<span id="L181"><span class="lineNum">     181</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :       while (__val &gt;= 0x100)</span></span>
+<span id="L182"><span class="lineNum">     182</span>                 :             :         {</span>
+<span id="L183"><span class="lineNum">     183</span>                 :<span class="tlaUNC">           0 :           auto __num = __val &amp; 0xF;</span></span>
+<span id="L184"><span class="lineNum">     184</span>                 :<span class="tlaUNC">           0 :           __val &gt;&gt;= 4;</span></span>
+<span id="L185"><span class="lineNum">     185</span>                 :<span class="tlaUNC">           0 :           __first[__pos] = __digits[__num];</span></span>
+<span id="L186"><span class="lineNum">     186</span>                 :<span class="tlaUNC">           0 :           __num = __val &amp; 0xF;</span></span>
+<span id="L187"><span class="lineNum">     187</span>                 :<span class="tlaUNC">           0 :           __val &gt;&gt;= 4;</span></span>
+<span id="L188"><span class="lineNum">     188</span>                 :<span class="tlaUNC">           0 :           __first[__pos - 1] = __digits[__num];</span></span>
+<span id="L189"><span class="lineNum">     189</span>                 :<span class="tlaUNC">           0 :           __pos -= 2;</span></span>
+<span id="L190"><span class="lineNum">     190</span>                 :             :         }</span>
+<span id="L191"><span class="lineNum">     191</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :       if (__val &gt;= 0x10)</span></span>
+<span id="L192"><span class="lineNum">     192</span>                 :             :         {</span>
+<span id="L193"><span class="lineNum">     193</span>                 :<span class="tlaUNC">           0 :           const auto __num = __val &amp; 0xF;</span></span>
+<span id="L194"><span class="lineNum">     194</span>                 :<span class="tlaUNC">           0 :           __val &gt;&gt;= 4;</span></span>
+<span id="L195"><span class="lineNum">     195</span>                 :<span class="tlaUNC">           0 :           __first[1] = __digits[__num];</span></span>
+<span id="L196"><span class="lineNum">     196</span>                 :<span class="tlaUNC">           0 :           __first[0] = __digits[__val];</span></span>
+<span id="L197"><span class="lineNum">     197</span>                 :             :         }</span>
+<span id="L198"><span class="lineNum">     198</span>                 :             :       else</span>
+<span id="L199"><span class="lineNum">     199</span>                 :<span class="tlaUNC">           0 :         __first[0] = __digits[__val];</span></span>
+<span id="L200"><span class="lineNum">     200</span>                 :<span class="tlaUNC">           0 :       __res.ptr = __first + __len;</span></span>
+<span id="L201"><span class="lineNum">     201</span>                 :<span class="tlaUNC">           0 :       __res.ec = {};</span></span>
+<span id="L202"><span class="lineNum">     202</span>                 :<span class="tlaUNC">           0 :       return __res;</span></span>
+<span id="L203"><span class="lineNum">     203</span>                 :             :     }</span>
+<span id="L204"><span class="lineNum">     204</span>                 :             : </span>
+<span id="L205"><span class="lineNum">     205</span>                 :             :   template&lt;typename _Tp&gt;</span>
+<span id="L206"><span class="lineNum">     206</span>                 :             :     constexpr to_chars_result</span>
+<span id="L207"><span class="lineNum">     207</span>                 :<span class="tlaUNC">           0 :     __to_chars_10(char* __first, char* __last, _Tp __val) noexcept</span></span>
+<span id="L208"><span class="lineNum">     208</span>                 :             :     {</span>
+<span id="L209"><span class="lineNum">     209</span>                 :             :       static_assert(__integer_to_chars_is_unsigned&lt;_Tp&gt;, &quot;implementation bug&quot;);</span>
+<span id="L210"><span class="lineNum">     210</span>                 :             : </span>
+<span id="L211"><span class="lineNum">     211</span>                 :<span class="tlaUNC">           0 :       to_chars_result __res;</span></span>
+<span id="L212"><span class="lineNum">     212</span>                 :             : </span>
+<span id="L213"><span class="lineNum">     213</span>                 :<span class="tlaUNC">           0 :       const unsigned __len = __to_chars_len(__val, 10);</span></span>
+<span id="L214"><span class="lineNum">     214</span>                 :             : </span>
+<span id="L215"><span class="lineNum">     215</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :       if (__builtin_expect((__last - __first) &lt; __len, 0))</span></span>
+<span id="L216"><span class="lineNum">     216</span>                 :             :         {</span>
+<span id="L217"><span class="lineNum">     217</span>                 :<span class="tlaUNC">           0 :           __res.ptr = __last;</span></span>
+<span id="L218"><span class="lineNum">     218</span>                 :<span class="tlaUNC">           0 :           __res.ec = errc::value_too_large;</span></span>
+<span id="L219"><span class="lineNum">     219</span>                 :<span class="tlaUNC">           0 :           return __res;</span></span>
+<span id="L220"><span class="lineNum">     220</span>                 :             :         }</span>
+<span id="L221"><span class="lineNum">     221</span>                 :             : </span>
+<span id="L222"><span class="lineNum">     222</span>                 :<span class="tlaUNC">           0 :       __detail::__to_chars_10_impl(__first, __len, __val);</span></span>
+<span id="L223"><span class="lineNum">     223</span>                 :<span class="tlaUNC">           0 :       __res.ptr = __first + __len;</span></span>
+<span id="L224"><span class="lineNum">     224</span>                 :<span class="tlaUNC">           0 :       __res.ec = {};</span></span>
+<span id="L225"><span class="lineNum">     225</span>                 :<span class="tlaUNC">           0 :       return __res;</span></span>
+<span id="L226"><span class="lineNum">     226</span>                 :             :     }</span>
+<span id="L227"><span class="lineNum">     227</span>                 :             : </span>
+<span id="L228"><span class="lineNum">     228</span>                 :             :   template&lt;typename _Tp&gt;</span>
+<span id="L229"><span class="lineNum">     229</span>                 :             :     constexpr to_chars_result</span>
+<span id="L230"><span class="lineNum">     230</span>                 :<span class="tlaUNC">           0 :     __to_chars_8(char* __first, char* __last, _Tp __val) noexcept</span></span>
+<span id="L231"><span class="lineNum">     231</span>                 :             :     {</span>
+<span id="L232"><span class="lineNum">     232</span>                 :             :       static_assert(__integer_to_chars_is_unsigned&lt;_Tp&gt;, &quot;implementation bug&quot;);</span>
+<span id="L233"><span class="lineNum">     233</span>                 :             : </span>
+<span id="L234"><span class="lineNum">     234</span>                 :<span class="tlaUNC">           0 :       to_chars_result __res;</span></span>
+<span id="L235"><span class="lineNum">     235</span>                 :<span class="tlaUNC">           0 :       unsigned __len = 0;</span></span>
+<span id="L236"><span class="lineNum">     236</span>                 :             : </span>
+<span id="L237"><span class="lineNum">     237</span>                 :             :       if _GLIBCXX17_CONSTEXPR (__gnu_cxx::__int_traits&lt;_Tp&gt;::__digits &lt;= 16)</span>
+<span id="L238"><span class="lineNum">     238</span>                 :             :         {</span>
+<span id="L239"><span class="lineNum">     239</span>                 :             :           __len = __val &gt; 077777u ? 6u</span>
+<span id="L240"><span class="lineNum">     240</span>                 :             :             : __val &gt; 07777u ? 5u</span>
+<span id="L241"><span class="lineNum">     241</span>                 :             :             : __val &gt; 0777u ? 4u</span>
+<span id="L242"><span class="lineNum">     242</span>                 :             :             : __val &gt; 077u ? 3u</span>
+<span id="L243"><span class="lineNum">     243</span>                 :             :             : __val &gt; 07u ? 2u</span>
+<span id="L244"><span class="lineNum">     244</span>                 :             :             : 1u;</span>
+<span id="L245"><span class="lineNum">     245</span>                 :             :         }</span>
+<span id="L246"><span class="lineNum">     246</span>                 :             :       else</span>
+<span id="L247"><span class="lineNum">     247</span>                 :<span class="tlaUNC">           0 :         __len = (__to_chars_len_2(__val) + 2) / 3;</span></span>
+<span id="L248"><span class="lineNum">     248</span>                 :             : </span>
+<span id="L249"><span class="lineNum">     249</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :       if (__builtin_expect((__last - __first) &lt; __len, 0))</span></span>
+<span id="L250"><span class="lineNum">     250</span>                 :             :         {</span>
+<span id="L251"><span class="lineNum">     251</span>                 :<span class="tlaUNC">           0 :           __res.ptr = __last;</span></span>
+<span id="L252"><span class="lineNum">     252</span>                 :<span class="tlaUNC">           0 :           __res.ec = errc::value_too_large;</span></span>
+<span id="L253"><span class="lineNum">     253</span>                 :<span class="tlaUNC">           0 :           return __res;</span></span>
+<span id="L254"><span class="lineNum">     254</span>                 :             :         }</span>
+<span id="L255"><span class="lineNum">     255</span>                 :             : </span>
+<span id="L256"><span class="lineNum">     256</span>                 :<span class="tlaUNC">           0 :       unsigned __pos = __len - 1;</span></span>
+<span id="L257"><span class="lineNum">     257</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :       while (__val &gt;= 0100)</span></span>
+<span id="L258"><span class="lineNum">     258</span>                 :             :         {</span>
+<span id="L259"><span class="lineNum">     259</span>                 :<span class="tlaUNC">           0 :           auto __num = __val &amp; 7;</span></span>
+<span id="L260"><span class="lineNum">     260</span>                 :<span class="tlaUNC">           0 :           __val &gt;&gt;= 3;</span></span>
+<span id="L261"><span class="lineNum">     261</span>                 :<span class="tlaUNC">           0 :           __first[__pos] = '0' + __num;</span></span>
+<span id="L262"><span class="lineNum">     262</span>                 :<span class="tlaUNC">           0 :           __num = __val &amp; 7;</span></span>
+<span id="L263"><span class="lineNum">     263</span>                 :<span class="tlaUNC">           0 :           __val &gt;&gt;= 3;</span></span>
+<span id="L264"><span class="lineNum">     264</span>                 :<span class="tlaUNC">           0 :           __first[__pos - 1] = '0' + __num;</span></span>
+<span id="L265"><span class="lineNum">     265</span>                 :<span class="tlaUNC">           0 :           __pos -= 2;</span></span>
+<span id="L266"><span class="lineNum">     266</span>                 :             :         }</span>
+<span id="L267"><span class="lineNum">     267</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :       if (__val &gt;= 010)</span></span>
+<span id="L268"><span class="lineNum">     268</span>                 :             :         {</span>
+<span id="L269"><span class="lineNum">     269</span>                 :<span class="tlaUNC">           0 :           auto const __num = __val &amp; 7;</span></span>
+<span id="L270"><span class="lineNum">     270</span>                 :<span class="tlaUNC">           0 :           __val &gt;&gt;= 3;</span></span>
+<span id="L271"><span class="lineNum">     271</span>                 :<span class="tlaUNC">           0 :           __first[1] = '0' + __num;</span></span>
+<span id="L272"><span class="lineNum">     272</span>                 :<span class="tlaUNC">           0 :           __first[0] = '0' + __val;</span></span>
+<span id="L273"><span class="lineNum">     273</span>                 :             :         }</span>
+<span id="L274"><span class="lineNum">     274</span>                 :             :       else</span>
+<span id="L275"><span class="lineNum">     275</span>                 :<span class="tlaUNC">           0 :         __first[0] = '0' + __val;</span></span>
+<span id="L276"><span class="lineNum">     276</span>                 :<span class="tlaUNC">           0 :       __res.ptr = __first + __len;</span></span>
+<span id="L277"><span class="lineNum">     277</span>                 :<span class="tlaUNC">           0 :       __res.ec = {};</span></span>
+<span id="L278"><span class="lineNum">     278</span>                 :<span class="tlaUNC">           0 :       return __res;</span></span>
+<span id="L279"><span class="lineNum">     279</span>                 :             :     }</span>
+<span id="L280"><span class="lineNum">     280</span>                 :             : </span>
+<span id="L281"><span class="lineNum">     281</span>                 :             :   template&lt;typename _Tp&gt;</span>
+<span id="L282"><span class="lineNum">     282</span>                 :             :     constexpr to_chars_result</span>
+<span id="L283"><span class="lineNum">     283</span>                 :<span class="tlaUNC">           0 :     __to_chars_2(char* __first, char* __last, _Tp __val) noexcept</span></span>
+<span id="L284"><span class="lineNum">     284</span>                 :             :     {</span>
+<span id="L285"><span class="lineNum">     285</span>                 :             :       static_assert(__integer_to_chars_is_unsigned&lt;_Tp&gt;, &quot;implementation bug&quot;);</span>
+<span id="L286"><span class="lineNum">     286</span>                 :             : </span>
+<span id="L287"><span class="lineNum">     287</span>                 :<span class="tlaUNC">           0 :       to_chars_result __res;</span></span>
+<span id="L288"><span class="lineNum">     288</span>                 :             : </span>
+<span id="L289"><span class="lineNum">     289</span>                 :<span class="tlaUNC">           0 :       const unsigned __len = __to_chars_len_2(__val);</span></span>
+<span id="L290"><span class="lineNum">     290</span>                 :             : </span>
+<span id="L291"><span class="lineNum">     291</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :       if (__builtin_expect((__last - __first) &lt; __len, 0))</span></span>
+<span id="L292"><span class="lineNum">     292</span>                 :             :         {</span>
+<span id="L293"><span class="lineNum">     293</span>                 :<span class="tlaUNC">           0 :           __res.ptr = __last;</span></span>
+<span id="L294"><span class="lineNum">     294</span>                 :<span class="tlaUNC">           0 :           __res.ec = errc::value_too_large;</span></span>
+<span id="L295"><span class="lineNum">     295</span>                 :<span class="tlaUNC">           0 :           return __res;</span></span>
+<span id="L296"><span class="lineNum">     296</span>                 :             :         }</span>
+<span id="L297"><span class="lineNum">     297</span>                 :             : </span>
+<span id="L298"><span class="lineNum">     298</span>                 :<span class="tlaUNC">           0 :       unsigned __pos = __len - 1;</span></span>
+<span id="L299"><span class="lineNum">     299</span>                 :             : </span>
+<span id="L300"><span class="lineNum">     300</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :       while (__pos)</span></span>
+<span id="L301"><span class="lineNum">     301</span>                 :             :         {</span>
+<span id="L302"><span class="lineNum">     302</span>                 :<span class="tlaUNC">           0 :           __first[__pos--] = '0' + (__val &amp; 1);</span></span>
+<span id="L303"><span class="lineNum">     303</span>                 :<span class="tlaUNC">           0 :           __val &gt;&gt;= 1;</span></span>
+<span id="L304"><span class="lineNum">     304</span>                 :             :         }</span>
+<span id="L305"><span class="lineNum">     305</span>                 :             :       // First digit is always '1' because __to_chars_len_2 skips</span>
+<span id="L306"><span class="lineNum">     306</span>                 :             :       // leading zero bits and std::to_chars handles zero values</span>
+<span id="L307"><span class="lineNum">     307</span>                 :             :       // directly.</span>
+<span id="L308"><span class="lineNum">     308</span>                 :<span class="tlaUNC">           0 :       __first[0] = '1';</span></span>
+<span id="L309"><span class="lineNum">     309</span>                 :             : </span>
+<span id="L310"><span class="lineNum">     310</span>                 :<span class="tlaUNC">           0 :       __res.ptr = __first + __len;</span></span>
+<span id="L311"><span class="lineNum">     311</span>                 :<span class="tlaUNC">           0 :       __res.ec = {};</span></span>
+<span id="L312"><span class="lineNum">     312</span>                 :<span class="tlaUNC">           0 :       return __res;</span></span>
+<span id="L313"><span class="lineNum">     313</span>                 :             :     }</span>
+<span id="L314"><span class="lineNum">     314</span>                 :             : </span>
+<span id="L315"><span class="lineNum">     315</span>                 :             : } // namespace __detail</span>
+<span id="L316"><span class="lineNum">     316</span>                 :             : </span>
+<span id="L317"><span class="lineNum">     317</span>                 :             :   template&lt;typename _Tp&gt;</span>
+<span id="L318"><span class="lineNum">     318</span>                 :             :     constexpr to_chars_result</span>
+<span id="L319"><span class="lineNum">     319</span>                 :<span class="tlaUNC">           0 :     __to_chars_i(char* __first, char* __last, _Tp __value, int __base = 10)</span></span>
+<span id="L320"><span class="lineNum">     320</span>                 :             :     {</span>
+<span id="L321"><span class="lineNum">     321</span>   [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span><span class="tlaUNC" title="Branch 2 was not executed"> # </span><span class="tlaUNC" title="Branch 3 was not executed"> # </span> :<span class="tlaUNC">           0 :       __glibcxx_assert(2 &lt;= __base &amp;&amp; __base &lt;= 36);</span></span>
+<span class="lineNum">        </span>          <span class="tlaUNC" title="Branch 4 was not executed"> # </span><span class="tlaUNC" title="Branch 5 was not executed"> # </span>]
+<span id="L322"><span class="lineNum">     322</span>                 :             : </span>
+<span id="L323"><span class="lineNum">     323</span>                 :             :       using _Up = __detail::__unsigned_least_t&lt;_Tp&gt;;</span>
+<span id="L324"><span class="lineNum">     324</span>                 :<span class="tlaUNC">           0 :       _Up __unsigned_val = __value;</span></span>
+<span id="L325"><span class="lineNum">     325</span>                 :             : </span>
+<span id="L326"><span class="lineNum">     326</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :       if (__first == __last) [[__unlikely__]]</span></span>
+<span id="L327"><span class="lineNum">     327</span>                 :<span class="tlaUNC">           0 :         return { __last, errc::value_too_large };</span></span>
+<span id="L328"><span class="lineNum">     328</span>                 :             : </span>
+<span id="L329"><span class="lineNum">     329</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :       if (__value == 0)</span></span>
+<span id="L330"><span class="lineNum">     330</span>                 :             :         {</span>
+<span id="L331"><span class="lineNum">     331</span>                 :<span class="tlaUNC">           0 :           *__first = '0';</span></span>
+<span id="L332"><span class="lineNum">     332</span>                 :<span class="tlaUNC">           0 :           return { __first + 1, errc{} };</span></span>
+<span id="L333"><span class="lineNum">     333</span>                 :             :         }</span>
+<span id="L334"><span class="lineNum">     334</span>                 :             :       else if _GLIBCXX17_CONSTEXPR (std::is_signed&lt;_Tp&gt;::value)</span>
+<span id="L335"><span class="lineNum">     335</span>                 :             :         if (__value &lt; 0)</span>
+<span id="L336"><span class="lineNum">     336</span>                 :             :           {</span>
+<span id="L337"><span class="lineNum">     337</span>                 :             :             *__first++ = '-';</span>
+<span id="L338"><span class="lineNum">     338</span>                 :             :             __unsigned_val = _Up(~__value) + _Up(1);</span>
+<span id="L339"><span class="lineNum">     339</span>                 :             :           }</span>
+<span id="L340"><span class="lineNum">     340</span>                 :             : </span>
+<span id="L341"><span class="lineNum">     341</span>   [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span><span class="tlaUNC" title="Branch 2 was not executed"> # </span><span class="tlaUNC" title="Branch 3 was not executed"> # </span> :<span class="tlaUNC">           0 :       switch (__base)</span></span>
+<span class="lineNum">        </span>             <span class="tlaUNC" title="Branch 4 was not executed"> # </span>]
+<span id="L342"><span class="lineNum">     342</span>                 :             :       {</span>
+<span id="L343"><span class="lineNum">     343</span>                 :<span class="tlaUNC">           0 :       case 16:</span></span>
+<span id="L344"><span class="lineNum">     344</span>                 :<span class="tlaUNC">           0 :         return __detail::__to_chars_16(__first, __last, __unsigned_val);</span></span>
+<span id="L345"><span class="lineNum">     345</span>                 :<span class="tlaUNC">           0 :       case 10:</span></span>
+<span id="L346"><span class="lineNum">     346</span>                 :<span class="tlaUNC">           0 :         return __detail::__to_chars_10(__first, __last, __unsigned_val);</span></span>
+<span id="L347"><span class="lineNum">     347</span>                 :<span class="tlaUNC">           0 :       case 8:</span></span>
+<span id="L348"><span class="lineNum">     348</span>                 :<span class="tlaUNC">           0 :         return __detail::__to_chars_8(__first, __last, __unsigned_val);</span></span>
+<span id="L349"><span class="lineNum">     349</span>                 :<span class="tlaUNC">           0 :       case 2:</span></span>
+<span id="L350"><span class="lineNum">     350</span>                 :<span class="tlaUNC">           0 :         return __detail::__to_chars_2(__first, __last, __unsigned_val);</span></span>
+<span id="L351"><span class="lineNum">     351</span>                 :<span class="tlaUNC">           0 :       default:</span></span>
+<span id="L352"><span class="lineNum">     352</span>                 :<span class="tlaUNC">           0 :         return __detail::__to_chars(__first, __last, __unsigned_val, __base);</span></span>
+<span id="L353"><span class="lineNum">     353</span>                 :             :       }</span>
+<span id="L354"><span class="lineNum">     354</span>                 :             :     }</span>
+<span id="L355"><span class="lineNum">     355</span>                 :             : </span>
+<span id="L356"><span class="lineNum">     356</span>                 :             : #define _GLIBCXX_TO_CHARS(T) \</span>
+<span id="L357"><span class="lineNum">     357</span>                 :             :   _GLIBCXX23_CONSTEXPR inline to_chars_result \</span>
+<span id="L358"><span class="lineNum">     358</span>                 :             :   to_chars(char* __first, char* __last, T __value, int __base = 10) \</span>
+<span id="L359"><span class="lineNum">     359</span>                 :             :   { return std::__to_chars_i&lt;T&gt;(__first, __last, __value, __base); }</span>
+<span id="L360"><span class="lineNum">     360</span>                 :             : _GLIBCXX_TO_CHARS(char)</span>
+<span id="L361"><span class="lineNum">     361</span>                 :             : _GLIBCXX_TO_CHARS(signed char)</span>
+<span id="L362"><span class="lineNum">     362</span>                 :             : _GLIBCXX_TO_CHARS(unsigned char)</span>
+<span id="L363"><span class="lineNum">     363</span>                 :             : _GLIBCXX_TO_CHARS(signed short)</span>
+<span id="L364"><span class="lineNum">     364</span>                 :             : _GLIBCXX_TO_CHARS(unsigned short)</span>
+<span id="L365"><span class="lineNum">     365</span>                 :             : _GLIBCXX_TO_CHARS(signed int)</span>
+<span id="L366"><span class="lineNum">     366</span>                 :             : _GLIBCXX_TO_CHARS(unsigned int)</span>
+<span id="L367"><span class="lineNum">     367</span>                 :             : _GLIBCXX_TO_CHARS(signed long)</span>
+<span id="L368"><span class="lineNum">     368</span>                 :<span class="tlaUNC">           0 : _GLIBCXX_TO_CHARS(unsigned long)</span></span>
+<span id="L369"><span class="lineNum">     369</span>                 :             : _GLIBCXX_TO_CHARS(signed long long)</span>
+<span id="L370"><span class="lineNum">     370</span>                 :             : _GLIBCXX_TO_CHARS(unsigned long long)</span>
+<span id="L371"><span class="lineNum">     371</span>                 :             : #if defined(__GLIBCXX_TYPE_INT_N_0)</span>
+<span id="L372"><span class="lineNum">     372</span>                 :             : _GLIBCXX_TO_CHARS(signed __GLIBCXX_TYPE_INT_N_0)</span>
+<span id="L373"><span class="lineNum">     373</span>                 :             : _GLIBCXX_TO_CHARS(unsigned __GLIBCXX_TYPE_INT_N_0)</span>
+<span id="L374"><span class="lineNum">     374</span>                 :             : #endif</span>
+<span id="L375"><span class="lineNum">     375</span>                 :             : #if defined(__GLIBCXX_TYPE_INT_N_1)</span>
+<span id="L376"><span class="lineNum">     376</span>                 :             : _GLIBCXX_TO_CHARS(signed __GLIBCXX_TYPE_INT_N_1)</span>
+<span id="L377"><span class="lineNum">     377</span>                 :             : _GLIBCXX_TO_CHARS(unsigned __GLIBCXX_TYPE_INT_N_1)</span>
+<span id="L378"><span class="lineNum">     378</span>                 :             : #endif</span>
+<span id="L379"><span class="lineNum">     379</span>                 :             : #if defined(__GLIBCXX_TYPE_INT_N_2)</span>
+<span id="L380"><span class="lineNum">     380</span>                 :             : _GLIBCXX_TO_CHARS(signed __GLIBCXX_TYPE_INT_N_2)</span>
+<span id="L381"><span class="lineNum">     381</span>                 :             : _GLIBCXX_TO_CHARS(unsigned __GLIBCXX_TYPE_INT_N_2)</span>
+<span id="L382"><span class="lineNum">     382</span>                 :             : #endif</span>
+<span id="L383"><span class="lineNum">     383</span>                 :             : #if defined(__GLIBCXX_TYPE_INT_N_3)</span>
+<span id="L384"><span class="lineNum">     384</span>                 :             : _GLIBCXX_TO_CHARS(signed __GLIBCXX_TYPE_INT_N_3)</span>
+<span id="L385"><span class="lineNum">     385</span>                 :             : _GLIBCXX_TO_CHARS(unsigned __GLIBCXX_TYPE_INT_N_3)</span>
+<span id="L386"><span class="lineNum">     386</span>                 :             : #endif</span>
+<span id="L387"><span class="lineNum">     387</span>                 :             : #undef _GLIBCXX_TO_CHARS</span>
+<span id="L388"><span class="lineNum">     388</span>                 :             : </span>
+<span id="L389"><span class="lineNum">     389</span>                 :             :   // _GLIBCXX_RESOLVE_LIB_DEFECTS</span>
+<span id="L390"><span class="lineNum">     390</span>                 :             :   // 3266. to_chars(bool) should be deleted</span>
+<span id="L391"><span class="lineNum">     391</span>                 :             :   to_chars_result to_chars(char*, char*, bool, int = 10) = delete;</span>
+<span id="L392"><span class="lineNum">     392</span>                 :             : </span>
+<span id="L393"><span class="lineNum">     393</span>                 :             : namespace __detail</span>
+<span id="L394"><span class="lineNum">     394</span>                 :             : {</span>
+<span id="L395"><span class="lineNum">     395</span>                 :             :   template&lt;typename _Tp&gt;</span>
+<span id="L396"><span class="lineNum">     396</span>                 :             :     constexpr bool</span>
+<span id="L397"><span class="lineNum">     397</span>                 :<span class="tlaUNC">           0 :     __raise_and_add(_Tp&amp; __val, int __base, unsigned char __c)</span></span>
+<span id="L398"><span class="lineNum">     398</span>                 :             :     {</span>
+<span id="L399"><span class="lineNum">     399</span>                 :<span class="tlaUNC">           0 :       if (__builtin_mul_overflow(__val, __base, &amp;__val)</span></span>
+<span id="L400"><span class="lineNum">     400</span>   [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span><span class="tlaUNC" title="Branch 2 was not executed"> # </span><span class="tlaUNC" title="Branch 3 was not executed"> # </span> :<span class="tlaUNC">           0 :           || __builtin_add_overflow(__val, __c, &amp;__val))</span></span>
+<span class="lineNum">        </span>          <span class="tlaUNC" title="Branch 4 was not executed"> # </span><span class="tlaUNC" title="Branch 5 was not executed"> # </span>]
+<span id="L401"><span class="lineNum">     401</span>                 :<span class="tlaUNC">           0 :         return false;</span></span>
+<span id="L402"><span class="lineNum">     402</span>                 :<span class="tlaUNC">           0 :       return true;</span></span>
+<span id="L403"><span class="lineNum">     403</span>                 :             :     }</span>
+<span id="L404"><span class="lineNum">     404</span>                 :             : </span>
+<span id="L405"><span class="lineNum">     405</span>                 :             :   template&lt;bool _DecOnly&gt;</span>
+<span id="L406"><span class="lineNum">     406</span>                 :             :     struct __from_chars_alnum_to_val_table</span>
+<span id="L407"><span class="lineNum">     407</span>                 :             :     {</span>
+<span id="L408"><span class="lineNum">     408</span>                 :             :       struct type { unsigned char __data[1u &lt;&lt; __CHAR_BIT__] = {}; };</span>
+<span id="L409"><span class="lineNum">     409</span>                 :             : </span>
+<span id="L410"><span class="lineNum">     410</span>                 :             :       // Construct and return a lookup table that maps 0-9, A-Z and a-z to their</span>
+<span id="L411"><span class="lineNum">     411</span>                 :             :       // corresponding base-36 value and maps all other characters to 127.</span>
+<span id="L412"><span class="lineNum">     412</span>                 :             :       static constexpr type</span>
+<span id="L413"><span class="lineNum">     413</span>                 :             :       _S_make_table()</span>
+<span id="L414"><span class="lineNum">     414</span>                 :             :       {</span>
+<span id="L415"><span class="lineNum">     415</span>                 :             :         constexpr unsigned char __lower_letters[27] = &quot;abcdefghijklmnopqrstuvwxyz&quot;;</span>
+<span id="L416"><span class="lineNum">     416</span>                 :             :         constexpr unsigned char __upper_letters[27] = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;;</span>
+<span id="L417"><span class="lineNum">     417</span>                 :             :         type __table;</span>
+<span id="L418"><span class="lineNum">     418</span>                 :             :         for (auto&amp; __entry : __table.__data)</span>
+<span id="L419"><span class="lineNum">     419</span>                 :             :           __entry = 127;</span>
+<span id="L420"><span class="lineNum">     420</span>                 :             :         for (int __i = 0; __i &lt; 10; ++__i)</span>
+<span id="L421"><span class="lineNum">     421</span>                 :             :           __table.__data['0' + __i] = __i;</span>
+<span id="L422"><span class="lineNum">     422</span>                 :             :         for (int __i = 0; __i &lt; 26; ++__i)</span>
+<span id="L423"><span class="lineNum">     423</span>                 :             :           {</span>
+<span id="L424"><span class="lineNum">     424</span>                 :             :             __table.__data[__lower_letters[__i]] = 10 + __i;</span>
+<span id="L425"><span class="lineNum">     425</span>                 :             :             __table.__data[__upper_letters[__i]] = 10 + __i;</span>
+<span id="L426"><span class="lineNum">     426</span>                 :             :           }</span>
+<span id="L427"><span class="lineNum">     427</span>                 :             :         return __table;</span>
+<span id="L428"><span class="lineNum">     428</span>                 :             :       }</span>
+<span id="L429"><span class="lineNum">     429</span>                 :             : </span>
+<span id="L430"><span class="lineNum">     430</span>                 :             :       // This initializer is made superficially dependent in order</span>
+<span id="L431"><span class="lineNum">     431</span>                 :             :       // to prevent the compiler from wastefully constructing the</span>
+<span id="L432"><span class="lineNum">     432</span>                 :             :       // table ahead of time when it's not needed.</span>
+<span id="L433"><span class="lineNum">     433</span>                 :             :       static constexpr type value = (_DecOnly, _S_make_table());</span>
+<span id="L434"><span class="lineNum">     434</span>                 :             :     };</span>
+<span id="L435"><span class="lineNum">     435</span>                 :             : </span>
+<span id="L436"><span class="lineNum">     436</span>                 :             : #if ! __cpp_inline_variables</span>
+<span id="L437"><span class="lineNum">     437</span>                 :             :   template&lt;bool _DecOnly&gt;</span>
+<span id="L438"><span class="lineNum">     438</span>                 :             :     const typename __from_chars_alnum_to_val_table&lt;_DecOnly&gt;::type</span>
+<span id="L439"><span class="lineNum">     439</span>                 :             :       __from_chars_alnum_to_val_table&lt;_DecOnly&gt;::value;</span>
+<span id="L440"><span class="lineNum">     440</span>                 :             : #endif</span>
+<span id="L441"><span class="lineNum">     441</span>                 :             : </span>
+<span id="L442"><span class="lineNum">     442</span>                 :             :   // If _DecOnly is true: if the character is a decimal digit, then</span>
+<span id="L443"><span class="lineNum">     443</span>                 :             :   // return its corresponding base-10 value, otherwise return a value &gt;= 127.</span>
+<span id="L444"><span class="lineNum">     444</span>                 :             :   // If _DecOnly is false: if the character is an alphanumeric digit, then</span>
+<span id="L445"><span class="lineNum">     445</span>                 :             :   // return its corresponding base-36 value, otherwise return a value &gt;= 127.</span>
+<span id="L446"><span class="lineNum">     446</span>                 :             :   template&lt;bool _DecOnly = false&gt;</span>
+<span id="L447"><span class="lineNum">     447</span>                 :             :     _GLIBCXX20_CONSTEXPR unsigned char</span>
+<span id="L448"><span class="lineNum">     448</span>                 :<span class="tlaUNC">           0 :     __from_chars_alnum_to_val(unsigned char __c)</span></span>
+<span id="L449"><span class="lineNum">     449</span>                 :             :     {</span>
+<span id="L450"><span class="lineNum">     450</span>                 :             :       if _GLIBCXX17_CONSTEXPR (_DecOnly)</span>
+<span id="L451"><span class="lineNum">     451</span>                 :<span class="tlaUNC">           0 :         return static_cast&lt;unsigned char&gt;(__c - '0');</span></span>
+<span id="L452"><span class="lineNum">     452</span>                 :             :       else</span>
+<span id="L453"><span class="lineNum">     453</span>                 :<span class="tlaUNC">           0 :         return __from_chars_alnum_to_val_table&lt;_DecOnly&gt;::value.__data[__c];</span></span>
+<span id="L454"><span class="lineNum">     454</span>                 :             :     }</span>
+<span id="L455"><span class="lineNum">     455</span>                 :             : </span>
+<span id="L456"><span class="lineNum">     456</span>                 :             :   /// std::from_chars implementation for integers in a power-of-two base.</span>
+<span id="L457"><span class="lineNum">     457</span>                 :             :   /// If _DecOnly is true, then we may assume __base is at most 8.</span>
+<span id="L458"><span class="lineNum">     458</span>                 :             :   template&lt;bool _DecOnly, typename _Tp&gt;</span>
+<span id="L459"><span class="lineNum">     459</span>                 :             :     _GLIBCXX23_CONSTEXPR bool</span>
+<span id="L460"><span class="lineNum">     460</span>                 :             :     __from_chars_pow2_base(const char*&amp; __first, const char* __last, _Tp&amp; __val,</span>
+<span id="L461"><span class="lineNum">     461</span>                 :             :                            int __base)</span>
+<span id="L462"><span class="lineNum">     462</span>                 :             :     {</span>
+<span id="L463"><span class="lineNum">     463</span>                 :             :       static_assert(is_integral&lt;_Tp&gt;::value, &quot;implementation bug&quot;);</span>
+<span id="L464"><span class="lineNum">     464</span>                 :             :       static_assert(is_unsigned&lt;_Tp&gt;::value, &quot;implementation bug&quot;);</span>
+<span id="L465"><span class="lineNum">     465</span>                 :             : </span>
+<span id="L466"><span class="lineNum">     466</span>                 :             :       // __glibcxx_assert((__base &amp; (__base - 1)) == 0);</span>
+<span id="L467"><span class="lineNum">     467</span>                 :             :       // __glibcxx_assert(_DecOnly ? __base &lt;= 8 : __base &lt;= 32);</span>
+<span id="L468"><span class="lineNum">     468</span>                 :             :       const int __log2_base = __countr_zero(unsigned(__base &amp; 0x3f));</span>
+<span id="L469"><span class="lineNum">     469</span>                 :             : </span>
+<span id="L470"><span class="lineNum">     470</span>                 :             :       const ptrdiff_t __len = __last - __first;</span>
+<span id="L471"><span class="lineNum">     471</span>                 :             :       ptrdiff_t __i = 0;</span>
+<span id="L472"><span class="lineNum">     472</span>                 :             :       while (__i &lt; __len &amp;&amp; __first[__i] == '0')</span>
+<span id="L473"><span class="lineNum">     473</span>                 :             :         ++__i;</span>
+<span id="L474"><span class="lineNum">     474</span>                 :             :       const ptrdiff_t __leading_zeroes = __i;</span>
+<span id="L475"><span class="lineNum">     475</span>                 :             :       if (__i &gt;= __len) [[__unlikely__]]</span>
+<span id="L476"><span class="lineNum">     476</span>                 :             :         {</span>
+<span id="L477"><span class="lineNum">     477</span>                 :             :           __first += __i;</span>
+<span id="L478"><span class="lineNum">     478</span>                 :             :           return true;</span>
+<span id="L479"><span class="lineNum">     479</span>                 :             :         }</span>
+<span id="L480"><span class="lineNum">     480</span>                 :             : </span>
+<span id="L481"><span class="lineNum">     481</span>                 :             :       // Remember the leading significant digit value if necessary.</span>
+<span id="L482"><span class="lineNum">     482</span>                 :             :       unsigned char __leading_c = 0;</span>
+<span id="L483"><span class="lineNum">     483</span>                 :             :       if (__base != 2)</span>
+<span id="L484"><span class="lineNum">     484</span>                 :             :         {</span>
+<span id="L485"><span class="lineNum">     485</span>                 :             :           __leading_c = __from_chars_alnum_to_val&lt;_DecOnly&gt;(__first[__i]);</span>
+<span id="L486"><span class="lineNum">     486</span>                 :             :           // __glibcxx_assert(__leading_c != 0);</span>
+<span id="L487"><span class="lineNum">     487</span>                 :             :           if (__leading_c &gt;= __base) [[__unlikely__]]</span>
+<span id="L488"><span class="lineNum">     488</span>                 :             :             {</span>
+<span id="L489"><span class="lineNum">     489</span>                 :             :               __first += __i;</span>
+<span id="L490"><span class="lineNum">     490</span>                 :             :               return true;</span>
+<span id="L491"><span class="lineNum">     491</span>                 :             :             }</span>
+<span id="L492"><span class="lineNum">     492</span>                 :             :           __val = __leading_c;</span>
+<span id="L493"><span class="lineNum">     493</span>                 :             :           ++__i;</span>
+<span id="L494"><span class="lineNum">     494</span>                 :             :         }</span>
+<span id="L495"><span class="lineNum">     495</span>                 :             : </span>
+<span id="L496"><span class="lineNum">     496</span>                 :             :       for (; __i &lt; __len; ++__i)</span>
+<span id="L497"><span class="lineNum">     497</span>                 :             :         {</span>
+<span id="L498"><span class="lineNum">     498</span>                 :             :           const unsigned char __c = __from_chars_alnum_to_val&lt;_DecOnly&gt;(__first[__i]);</span>
+<span id="L499"><span class="lineNum">     499</span>                 :             :           if (__c &gt;= __base)</span>
+<span id="L500"><span class="lineNum">     500</span>                 :             :             break;</span>
+<span id="L501"><span class="lineNum">     501</span>                 :             :           __val = (__val &lt;&lt; __log2_base) | __c;</span>
+<span id="L502"><span class="lineNum">     502</span>                 :             :         }</span>
+<span id="L503"><span class="lineNum">     503</span>                 :             :       __first += __i;</span>
+<span id="L504"><span class="lineNum">     504</span>                 :             :       auto __significant_bits = (__i - __leading_zeroes) * __log2_base;</span>
+<span id="L505"><span class="lineNum">     505</span>                 :             :       if (__base != 2)</span>
+<span id="L506"><span class="lineNum">     506</span>                 :             :         // Compensate for a leading significant digit that didn't use all</span>
+<span id="L507"><span class="lineNum">     507</span>                 :             :         // of its available bits.</span>
+<span id="L508"><span class="lineNum">     508</span>                 :             :         __significant_bits -= __log2_base - __bit_width(__leading_c);</span>
+<span id="L509"><span class="lineNum">     509</span>                 :             :       // __glibcxx_assert(__significant_bits &gt;= 0);</span>
+<span id="L510"><span class="lineNum">     510</span>                 :             :       return __significant_bits &lt;= __gnu_cxx::__int_traits&lt;_Tp&gt;::__digits;</span>
+<span id="L511"><span class="lineNum">     511</span>                 :             :     }</span>
+<span id="L512"><span class="lineNum">     512</span>                 :             : </span>
+<span id="L513"><span class="lineNum">     513</span>                 :             :   /// std::from_chars implementation for integers in any base.</span>
+<span id="L514"><span class="lineNum">     514</span>                 :             :   /// If _DecOnly is true, then we may assume __base is at most 10.</span>
+<span id="L515"><span class="lineNum">     515</span>                 :             :   template&lt;bool _DecOnly, typename _Tp&gt;</span>
+<span id="L516"><span class="lineNum">     516</span>                 :             :     constexpr bool</span>
+<span id="L517"><span class="lineNum">     517</span>                 :<span class="tlaUNC">           0 :     __from_chars_alnum(const char*&amp; __first, const char* __last, _Tp&amp; __val,</span></span>
+<span id="L518"><span class="lineNum">     518</span>                 :             :                        int __base)</span>
+<span id="L519"><span class="lineNum">     519</span>                 :             :     {</span>
+<span id="L520"><span class="lineNum">     520</span>                 :             :       // __glibcxx_assert(_DecOnly ? __base &lt;= 10 : __base &lt;= 36);</span>
+<span id="L521"><span class="lineNum">     521</span>                 :             : </span>
+<span id="L522"><span class="lineNum">     522</span>                 :<span class="tlaUNC">           0 :       const int __bits_per_digit = __bit_width(unsigned(__base &amp; 0x3f));</span></span>
+<span id="L523"><span class="lineNum">     523</span>                 :<span class="tlaUNC">           0 :       int __unused_bits_lower_bound = __gnu_cxx::__int_traits&lt;_Tp&gt;::__digits;</span></span>
+<span id="L524"><span class="lineNum">     524</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :       for (; __first != __last; ++__first)</span></span>
+<span id="L525"><span class="lineNum">     525</span>                 :             :         {</span>
+<span id="L526"><span class="lineNum">     526</span>                 :<span class="tlaUNC">           0 :           const unsigned char __c = __from_chars_alnum_to_val&lt;_DecOnly&gt;(*__first);</span></span>
+<span id="L527"><span class="lineNum">     527</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :           if (__c &gt;= __base)</span></span>
+<span id="L528"><span class="lineNum">     528</span>                 :<span class="tlaUNC">           0 :             return true;</span></span>
+<span id="L529"><span class="lineNum">     529</span>                 :             : </span>
+<span id="L530"><span class="lineNum">     530</span>                 :<span class="tlaUNC">           0 :           __unused_bits_lower_bound -= __bits_per_digit;</span></span>
+<span id="L531"><span class="lineNum">     531</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :           if (__unused_bits_lower_bound &gt;= 0) [[__likely__]]</span></span>
+<span id="L532"><span class="lineNum">     532</span>                 :             :             // We're definitely not going to overflow.</span>
+<span id="L533"><span class="lineNum">     533</span>                 :<span class="tlaUNC">           0 :             __val = __val * __base + __c;</span></span>
+<span id="L534"><span class="lineNum">     534</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :           else if (!__raise_and_add(__val, __base, __c)) [[__unlikely__]]</span></span>
+<span id="L535"><span class="lineNum">     535</span>                 :             :             {</span>
+<span id="L536"><span class="lineNum">     536</span>                 :<span class="tlaUNC">           0 :               while (++__first != __last</span></span>
+<span id="L537"><span class="lineNum">     537</span>   [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span><span class="tlaUNC" title="Branch 2 was not executed"> # </span><span class="tlaUNC" title="Branch 3 was not executed"> # </span> :<span class="tlaUNC">           0 :                      &amp;&amp; __from_chars_alnum_to_val&lt;_DecOnly&gt;(*__first) &lt; __base)</span></span>
+<span class="lineNum">        </span>          <span class="tlaUNC" title="Branch 4 was not executed"> # </span><span class="tlaUNC" title="Branch 5 was not executed"> # </span>]
+<span id="L538"><span class="lineNum">     538</span>                 :             :                 ;</span>
+<span id="L539"><span class="lineNum">     539</span>                 :<span class="tlaUNC">           0 :               return false;</span></span>
+<span id="L540"><span class="lineNum">     540</span>                 :             :             }</span>
+<span id="L541"><span class="lineNum">     541</span>                 :             :         }</span>
+<span id="L542"><span class="lineNum">     542</span>                 :<span class="tlaUNC">           0 :       return true;</span></span>
+<span id="L543"><span class="lineNum">     543</span>                 :             :     }</span>
+<span id="L544"><span class="lineNum">     544</span>                 :             : </span>
+<span id="L545"><span class="lineNum">     545</span>                 :             : } // namespace __detail</span>
+<span id="L546"><span class="lineNum">     546</span>                 :             : </span>
+<span id="L547"><span class="lineNum">     547</span>                 :             :   /// std::from_chars for integral types.</span>
+<span id="L548"><span class="lineNum">     548</span>                 :             :   template&lt;typename _Tp,</span>
+<span id="L549"><span class="lineNum">     549</span>                 :             :            enable_if_t&lt;__or_&lt;__is_standard_integer&lt;_Tp&gt;,</span>
+<span id="L550"><span class="lineNum">     550</span>                 :             :                              is_same&lt;char, remove_cv_t&lt;_Tp&gt;&gt;&gt;::value, int&gt; = 0&gt;</span>
+<span id="L551"><span class="lineNum">     551</span>                 :             :     _GLIBCXX23_CONSTEXPR from_chars_result</span>
+<span id="L552"><span class="lineNum">     552</span>                 :             :     from_chars(const char* __first, const char* __last, _Tp&amp; __value,</span>
+<span id="L553"><span class="lineNum">     553</span>                 :             :                int __base = 10)</span>
+<span id="L554"><span class="lineNum">     554</span>                 :             :     {</span>
+<span id="L555"><span class="lineNum">     555</span>                 :             :       __glibcxx_assert(2 &lt;= __base &amp;&amp; __base &lt;= 36);</span>
+<span id="L556"><span class="lineNum">     556</span>                 :             : </span>
+<span id="L557"><span class="lineNum">     557</span>                 :             :       from_chars_result __res{__first, {}};</span>
+<span id="L558"><span class="lineNum">     558</span>                 :             : </span>
+<span id="L559"><span class="lineNum">     559</span>                 :             :       int __sign = 1;</span>
+<span id="L560"><span class="lineNum">     560</span>                 :             :       if _GLIBCXX17_CONSTEXPR (std::is_signed&lt;_Tp&gt;::value)</span>
+<span id="L561"><span class="lineNum">     561</span>                 :             :         if (__first != __last &amp;&amp; *__first == '-')</span>
+<span id="L562"><span class="lineNum">     562</span>                 :             :           {</span>
+<span id="L563"><span class="lineNum">     563</span>                 :             :             __sign = -1;</span>
+<span id="L564"><span class="lineNum">     564</span>                 :             :             ++__first;</span>
+<span id="L565"><span class="lineNum">     565</span>                 :             :           }</span>
+<span id="L566"><span class="lineNum">     566</span>                 :             : </span>
+<span id="L567"><span class="lineNum">     567</span>                 :             :       using _Up = __detail::__unsigned_least_t&lt;_Tp&gt;;</span>
+<span id="L568"><span class="lineNum">     568</span>                 :             :       _Up __val = 0;</span>
+<span id="L569"><span class="lineNum">     569</span>                 :             : </span>
+<span id="L570"><span class="lineNum">     570</span>                 :             :       const auto __start = __first;</span>
+<span id="L571"><span class="lineNum">     571</span>                 :             :       bool __valid;</span>
+<span id="L572"><span class="lineNum">     572</span>                 :             :       if ((__base &amp; (__base - 1)) == 0)</span>
+<span id="L573"><span class="lineNum">     573</span>                 :             :         {</span>
+<span id="L574"><span class="lineNum">     574</span>                 :             :           if (__base &lt;= 8)</span>
+<span id="L575"><span class="lineNum">     575</span>                 :             :             __valid = __detail::__from_chars_pow2_base&lt;true&gt;(__first, __last, __val, __base);</span>
+<span id="L576"><span class="lineNum">     576</span>                 :             :           else</span>
+<span id="L577"><span class="lineNum">     577</span>                 :             :             __valid = __detail::__from_chars_pow2_base&lt;false&gt;(__first, __last, __val, __base);</span>
+<span id="L578"><span class="lineNum">     578</span>                 :             :         }</span>
+<span id="L579"><span class="lineNum">     579</span>                 :             :       else if (__base &lt;= 10)</span>
+<span id="L580"><span class="lineNum">     580</span>                 :             :         __valid = __detail::__from_chars_alnum&lt;true&gt;(__first, __last, __val, __base);</span>
+<span id="L581"><span class="lineNum">     581</span>                 :             :       else</span>
+<span id="L582"><span class="lineNum">     582</span>                 :             :         __valid = __detail::__from_chars_alnum&lt;false&gt;(__first, __last, __val, __base);</span>
+<span id="L583"><span class="lineNum">     583</span>                 :             : </span>
+<span id="L584"><span class="lineNum">     584</span>                 :             :       if (__builtin_expect(__first == __start, 0))</span>
+<span id="L585"><span class="lineNum">     585</span>                 :             :         __res.ec = errc::invalid_argument;</span>
+<span id="L586"><span class="lineNum">     586</span>                 :             :       else</span>
+<span id="L587"><span class="lineNum">     587</span>                 :             :         {</span>
+<span id="L588"><span class="lineNum">     588</span>                 :             :           __res.ptr = __first;</span>
+<span id="L589"><span class="lineNum">     589</span>                 :             :           if (!__valid)</span>
+<span id="L590"><span class="lineNum">     590</span>                 :             :             __res.ec = errc::result_out_of_range;</span>
+<span id="L591"><span class="lineNum">     591</span>                 :             :           else</span>
+<span id="L592"><span class="lineNum">     592</span>                 :             :             {</span>
+<span id="L593"><span class="lineNum">     593</span>                 :             :               if _GLIBCXX17_CONSTEXPR (std::is_signed&lt;_Tp&gt;::value)</span>
+<span id="L594"><span class="lineNum">     594</span>                 :             :                 {</span>
+<span id="L595"><span class="lineNum">     595</span>                 :             :                   _Tp __tmp;</span>
+<span id="L596"><span class="lineNum">     596</span>                 :             :                   if (__builtin_mul_overflow(__val, __sign, &amp;__tmp))</span>
+<span id="L597"><span class="lineNum">     597</span>                 :             :                     __res.ec = errc::result_out_of_range;</span>
+<span id="L598"><span class="lineNum">     598</span>                 :             :                   else</span>
+<span id="L599"><span class="lineNum">     599</span>                 :             :                     __value = __tmp;</span>
+<span id="L600"><span class="lineNum">     600</span>                 :             :                 }</span>
+<span id="L601"><span class="lineNum">     601</span>                 :             :               else</span>
+<span id="L602"><span class="lineNum">     602</span>                 :             :                 {</span>
+<span id="L603"><span class="lineNum">     603</span>                 :             :                   if _GLIBCXX17_CONSTEXPR (__gnu_cxx::__int_traits&lt;_Up&gt;::__max</span>
+<span id="L604"><span class="lineNum">     604</span>                 :             :                       &gt; __gnu_cxx::__int_traits&lt;_Tp&gt;::__max)</span>
+<span id="L605"><span class="lineNum">     605</span>                 :             :                     {</span>
+<span id="L606"><span class="lineNum">     606</span>                 :             :                       if (__val &gt; __gnu_cxx::__int_traits&lt;_Tp&gt;::__max)</span>
+<span id="L607"><span class="lineNum">     607</span>                 :             :                         __res.ec = errc::result_out_of_range;</span>
+<span id="L608"><span class="lineNum">     608</span>                 :             :                       else</span>
+<span id="L609"><span class="lineNum">     609</span>                 :             :                         __value = __val;</span>
+<span id="L610"><span class="lineNum">     610</span>                 :             :                     }</span>
+<span id="L611"><span class="lineNum">     611</span>                 :             :                   else</span>
+<span id="L612"><span class="lineNum">     612</span>                 :             :                     __value = __val;</span>
+<span id="L613"><span class="lineNum">     613</span>                 :             :                 }</span>
+<span id="L614"><span class="lineNum">     614</span>                 :             :             }</span>
+<span id="L615"><span class="lineNum">     615</span>                 :             :         }</span>
+<span id="L616"><span class="lineNum">     616</span>                 :             :       return __res;</span>
+<span id="L617"><span class="lineNum">     617</span>                 :             :     }</span>
+<span id="L618"><span class="lineNum">     618</span>                 :             : </span>
+<span id="L619"><span class="lineNum">     619</span>                 :             :   /// floating-point format for primitive numerical conversion</span>
+<span id="L620"><span class="lineNum">     620</span>                 :             :   enum class chars_format</span>
+<span id="L621"><span class="lineNum">     621</span>                 :             :   {</span>
+<span id="L622"><span class="lineNum">     622</span>                 :             :     scientific = 1, fixed = 2, hex = 4, general = fixed | scientific</span>
+<span id="L623"><span class="lineNum">     623</span>                 :             :   };</span>
+<span id="L624"><span class="lineNum">     624</span>                 :             : </span>
+<span id="L625"><span class="lineNum">     625</span>                 :             :   [[nodiscard]]</span>
+<span id="L626"><span class="lineNum">     626</span>                 :             :   constexpr chars_format</span>
+<span id="L627"><span class="lineNum">     627</span>                 :             :   operator|(chars_format __lhs, chars_format __rhs) noexcept</span>
+<span id="L628"><span class="lineNum">     628</span>                 :             :   { return (chars_format)((unsigned)__lhs | (unsigned)__rhs); }</span>
+<span id="L629"><span class="lineNum">     629</span>                 :             : </span>
+<span id="L630"><span class="lineNum">     630</span>                 :             :   [[nodiscard]]</span>
+<span id="L631"><span class="lineNum">     631</span>                 :             :   constexpr chars_format</span>
+<span id="L632"><span class="lineNum">     632</span>                 :             :   operator&amp;(chars_format __lhs, chars_format __rhs) noexcept</span>
+<span id="L633"><span class="lineNum">     633</span>                 :             :   { return (chars_format)((unsigned)__lhs &amp; (unsigned)__rhs); }</span>
+<span id="L634"><span class="lineNum">     634</span>                 :             : </span>
+<span id="L635"><span class="lineNum">     635</span>                 :             :   [[nodiscard]]</span>
+<span id="L636"><span class="lineNum">     636</span>                 :             :   constexpr chars_format</span>
+<span id="L637"><span class="lineNum">     637</span>                 :             :   operator^(chars_format __lhs, chars_format __rhs) noexcept</span>
+<span id="L638"><span class="lineNum">     638</span>                 :             :   { return (chars_format)((unsigned)__lhs ^ (unsigned)__rhs); }</span>
+<span id="L639"><span class="lineNum">     639</span>                 :             : </span>
+<span id="L640"><span class="lineNum">     640</span>                 :             :   [[nodiscard]]</span>
+<span id="L641"><span class="lineNum">     641</span>                 :             :   constexpr chars_format</span>
+<span id="L642"><span class="lineNum">     642</span>                 :             :   operator~(chars_format __fmt) noexcept</span>
+<span id="L643"><span class="lineNum">     643</span>                 :             :   { return (chars_format)~(unsigned)__fmt; }</span>
+<span id="L644"><span class="lineNum">     644</span>                 :             : </span>
+<span id="L645"><span class="lineNum">     645</span>                 :             :   constexpr chars_format&amp;</span>
+<span id="L646"><span class="lineNum">     646</span>                 :             :   operator|=(chars_format&amp; __lhs, chars_format __rhs) noexcept</span>
+<span id="L647"><span class="lineNum">     647</span>                 :             :   { return __lhs = __lhs | __rhs; }</span>
+<span id="L648"><span class="lineNum">     648</span>                 :             : </span>
+<span id="L649"><span class="lineNum">     649</span>                 :             :   constexpr chars_format&amp;</span>
+<span id="L650"><span class="lineNum">     650</span>                 :             :   operator&amp;=(chars_format&amp; __lhs, chars_format __rhs) noexcept</span>
+<span id="L651"><span class="lineNum">     651</span>                 :             :   { return __lhs = __lhs &amp; __rhs; }</span>
+<span id="L652"><span class="lineNum">     652</span>                 :             : </span>
+<span id="L653"><span class="lineNum">     653</span>                 :             :   constexpr chars_format&amp;</span>
+<span id="L654"><span class="lineNum">     654</span>                 :             :   operator^=(chars_format&amp; __lhs, chars_format __rhs) noexcept</span>
+<span id="L655"><span class="lineNum">     655</span>                 :             :   { return __lhs = __lhs ^ __rhs; }</span>
+<span id="L656"><span class="lineNum">     656</span>                 :             : </span>
+<span id="L657"><span class="lineNum">     657</span>                 :             : #if defined __cpp_lib_to_chars || _GLIBCXX_HAVE_USELOCALE</span>
+<span id="L658"><span class="lineNum">     658</span>                 :             :   from_chars_result</span>
+<span id="L659"><span class="lineNum">     659</span>                 :             :   from_chars(const char* __first, const char* __last, float&amp; __value,</span>
+<span id="L660"><span class="lineNum">     660</span>                 :             :              chars_format __fmt = chars_format::general) noexcept;</span>
+<span id="L661"><span class="lineNum">     661</span>                 :             : </span>
+<span id="L662"><span class="lineNum">     662</span>                 :             :   from_chars_result</span>
+<span id="L663"><span class="lineNum">     663</span>                 :             :   from_chars(const char* __first, const char* __last, double&amp; __value,</span>
+<span id="L664"><span class="lineNum">     664</span>                 :             :              chars_format __fmt = chars_format::general) noexcept;</span>
+<span id="L665"><span class="lineNum">     665</span>                 :             : </span>
+<span id="L666"><span class="lineNum">     666</span>                 :             :   from_chars_result</span>
+<span id="L667"><span class="lineNum">     667</span>                 :             :   from_chars(const char* __first, const char* __last, long double&amp; __value,</span>
+<span id="L668"><span class="lineNum">     668</span>                 :             :              chars_format __fmt = chars_format::general) noexcept;</span>
+<span id="L669"><span class="lineNum">     669</span>                 :             : </span>
+<span id="L670"><span class="lineNum">     670</span>                 :             :   // Library routines for 16-bit extended floating point formats</span>
+<span id="L671"><span class="lineNum">     671</span>                 :             :   // using float as interchange format.</span>
+<span id="L672"><span class="lineNum">     672</span>                 :             :   from_chars_result</span>
+<span id="L673"><span class="lineNum">     673</span>                 :             :   __from_chars_float16_t(const char* __first, const char* __last,</span>
+<span id="L674"><span class="lineNum">     674</span>                 :             :                          float&amp; __value,</span>
+<span id="L675"><span class="lineNum">     675</span>                 :             :                          chars_format __fmt = chars_format::general) noexcept;</span>
+<span id="L676"><span class="lineNum">     676</span>                 :             :   from_chars_result</span>
+<span id="L677"><span class="lineNum">     677</span>                 :             :   __from_chars_bfloat16_t(const char* __first, const char* __last,</span>
+<span id="L678"><span class="lineNum">     678</span>                 :             :                           float&amp; __value,</span>
+<span id="L679"><span class="lineNum">     679</span>                 :             :                           chars_format __fmt = chars_format::general) noexcept;</span>
+<span id="L680"><span class="lineNum">     680</span>                 :             : </span>
+<span id="L681"><span class="lineNum">     681</span>                 :             : #if defined(__STDCPP_FLOAT16_T__) &amp;&amp; defined(_GLIBCXX_FLOAT_IS_IEEE_BINARY32) \</span>
+<span id="L682"><span class="lineNum">     682</span>                 :             :     &amp;&amp; defined(__cpp_lib_to_chars)</span>
+<span id="L683"><span class="lineNum">     683</span>                 :             :   inline from_chars_result</span>
+<span id="L684"><span class="lineNum">     684</span>                 :             :   from_chars(const char* __first, const char* __last, _Float16&amp; __value,</span>
+<span id="L685"><span class="lineNum">     685</span>                 :             :              chars_format __fmt = chars_format::general) noexcept</span>
+<span id="L686"><span class="lineNum">     686</span>                 :             :   {</span>
+<span id="L687"><span class="lineNum">     687</span>                 :             :     float __val;</span>
+<span id="L688"><span class="lineNum">     688</span>                 :             :     from_chars_result __res</span>
+<span id="L689"><span class="lineNum">     689</span>                 :             :       = __from_chars_float16_t(__first, __last, __val, __fmt);</span>
+<span id="L690"><span class="lineNum">     690</span>                 :             :     if (__res.ec == errc{})</span>
+<span id="L691"><span class="lineNum">     691</span>                 :             :       __value = _Float16(__val);</span>
+<span id="L692"><span class="lineNum">     692</span>                 :             :     return __res;</span>
+<span id="L693"><span class="lineNum">     693</span>                 :             :   }</span>
+<span id="L694"><span class="lineNum">     694</span>                 :             : #endif</span>
+<span id="L695"><span class="lineNum">     695</span>                 :             : </span>
+<span id="L696"><span class="lineNum">     696</span>                 :             : #if defined(__STDCPP_FLOAT32_T__) &amp;&amp; defined(_GLIBCXX_FLOAT_IS_IEEE_BINARY32)</span>
+<span id="L697"><span class="lineNum">     697</span>                 :             :   inline from_chars_result</span>
+<span id="L698"><span class="lineNum">     698</span>                 :             :   from_chars(const char* __first, const char* __last, _Float32&amp; __value,</span>
+<span id="L699"><span class="lineNum">     699</span>                 :             :              chars_format __fmt = chars_format::general) noexcept</span>
+<span id="L700"><span class="lineNum">     700</span>                 :             :   {</span>
+<span id="L701"><span class="lineNum">     701</span>                 :             :     float __val;</span>
+<span id="L702"><span class="lineNum">     702</span>                 :             :     from_chars_result __res = from_chars(__first, __last, __val, __fmt);</span>
+<span id="L703"><span class="lineNum">     703</span>                 :             :     if (__res.ec == errc{})</span>
+<span id="L704"><span class="lineNum">     704</span>                 :             :       __value = _Float32(__val);</span>
+<span id="L705"><span class="lineNum">     705</span>                 :             :     return __res;</span>
+<span id="L706"><span class="lineNum">     706</span>                 :             :   }</span>
+<span id="L707"><span class="lineNum">     707</span>                 :             : #endif</span>
+<span id="L708"><span class="lineNum">     708</span>                 :             : </span>
+<span id="L709"><span class="lineNum">     709</span>                 :             : #if defined(__STDCPP_FLOAT64_T__) &amp;&amp; defined(_GLIBCXX_DOUBLE_IS_IEEE_BINARY64)</span>
+<span id="L710"><span class="lineNum">     710</span>                 :             :   inline from_chars_result</span>
+<span id="L711"><span class="lineNum">     711</span>                 :             :   from_chars(const char* __first, const char* __last, _Float64&amp; __value,</span>
+<span id="L712"><span class="lineNum">     712</span>                 :             :              chars_format __fmt = chars_format::general) noexcept</span>
+<span id="L713"><span class="lineNum">     713</span>                 :             :   {</span>
+<span id="L714"><span class="lineNum">     714</span>                 :             :     double __val;</span>
+<span id="L715"><span class="lineNum">     715</span>                 :             :     from_chars_result __res = from_chars(__first, __last, __val, __fmt);</span>
+<span id="L716"><span class="lineNum">     716</span>                 :             :     if (__res.ec == errc{})</span>
+<span id="L717"><span class="lineNum">     717</span>                 :             :       __value = _Float64(__val);</span>
+<span id="L718"><span class="lineNum">     718</span>                 :             :     return __res;</span>
+<span id="L719"><span class="lineNum">     719</span>                 :             :   }</span>
+<span id="L720"><span class="lineNum">     720</span>                 :             : #endif</span>
+<span id="L721"><span class="lineNum">     721</span>                 :             : </span>
+<span id="L722"><span class="lineNum">     722</span>                 :             : #if defined(__STDCPP_FLOAT128_T__) &amp;&amp; defined(_GLIBCXX_LDOUBLE_IS_IEEE_BINARY128)</span>
+<span id="L723"><span class="lineNum">     723</span>                 :             :   inline from_chars_result</span>
+<span id="L724"><span class="lineNum">     724</span>                 :             :   from_chars(const char* __first, const char* __last, _Float128&amp; __value,</span>
+<span id="L725"><span class="lineNum">     725</span>                 :             :              chars_format __fmt = chars_format::general) noexcept</span>
+<span id="L726"><span class="lineNum">     726</span>                 :             :   {</span>
+<span id="L727"><span class="lineNum">     727</span>                 :             :     long double __val;</span>
+<span id="L728"><span class="lineNum">     728</span>                 :             :     from_chars_result __res = from_chars(__first, __last, __val, __fmt);</span>
+<span id="L729"><span class="lineNum">     729</span>                 :             :     if (__res.ec == errc{})</span>
+<span id="L730"><span class="lineNum">     730</span>                 :             :       __value = _Float128(__val);</span>
+<span id="L731"><span class="lineNum">     731</span>                 :             :     return __res;</span>
+<span id="L732"><span class="lineNum">     732</span>                 :             :   }</span>
+<span id="L733"><span class="lineNum">     733</span>                 :             : #elif defined(__STDCPP_FLOAT128_T__) &amp;&amp; defined(_GLIBCXX_HAVE_FLOAT128_MATH)</span>
+<span id="L734"><span class="lineNum">     734</span>                 :             : #ifdef _GLIBCXX_LONG_DOUBLE_ALT128_COMPAT</span>
+<span id="L735"><span class="lineNum">     735</span>                 :             :   __extension__ from_chars_result</span>
+<span id="L736"><span class="lineNum">     736</span>                 :             :   from_chars(const char* __first, const char* __last, __ieee128&amp; __value,</span>
+<span id="L737"><span class="lineNum">     737</span>                 :             :              chars_format __fmt = chars_format::general) noexcept;</span>
+<span id="L738"><span class="lineNum">     738</span>                 :             : </span>
+<span id="L739"><span class="lineNum">     739</span>                 :             :   inline from_chars_result</span>
+<span id="L740"><span class="lineNum">     740</span>                 :             :   from_chars(const char* __first, const char* __last, _Float128&amp; __value,</span>
+<span id="L741"><span class="lineNum">     741</span>                 :             :              chars_format __fmt = chars_format::general) noexcept</span>
+<span id="L742"><span class="lineNum">     742</span>                 :             :   {</span>
+<span id="L743"><span class="lineNum">     743</span>                 :             :     __extension__ __ieee128 __val;</span>
+<span id="L744"><span class="lineNum">     744</span>                 :             :     from_chars_result __res = from_chars(__first, __last, __val, __fmt);</span>
+<span id="L745"><span class="lineNum">     745</span>                 :             :     if (__res.ec == errc{})</span>
+<span id="L746"><span class="lineNum">     746</span>                 :             :       __value = _Float128(__val);</span>
+<span id="L747"><span class="lineNum">     747</span>                 :             :     return __res;</span>
+<span id="L748"><span class="lineNum">     748</span>                 :             :   }</span>
+<span id="L749"><span class="lineNum">     749</span>                 :             : #else</span>
+<span id="L750"><span class="lineNum">     750</span>                 :             :   from_chars_result</span>
+<span id="L751"><span class="lineNum">     751</span>                 :             :   from_chars(const char* __first, const char* __last, _Float128&amp; __value,</span>
+<span id="L752"><span class="lineNum">     752</span>                 :             :              chars_format __fmt = chars_format::general) noexcept;</span>
+<span id="L753"><span class="lineNum">     753</span>                 :             : #endif</span>
+<span id="L754"><span class="lineNum">     754</span>                 :             : #endif</span>
+<span id="L755"><span class="lineNum">     755</span>                 :             : </span>
+<span id="L756"><span class="lineNum">     756</span>                 :             : #if defined(__STDCPP_BFLOAT16_T__) &amp;&amp; defined(_GLIBCXX_FLOAT_IS_IEEE_BINARY32) \</span>
+<span id="L757"><span class="lineNum">     757</span>                 :             :     &amp;&amp; defined(__cpp_lib_to_chars)</span>
+<span id="L758"><span class="lineNum">     758</span>                 :             :   inline from_chars_result</span>
+<span id="L759"><span class="lineNum">     759</span>                 :             :   from_chars(const char* __first, const char* __last,</span>
+<span id="L760"><span class="lineNum">     760</span>                 :             :              __gnu_cxx::__bfloat16_t &amp; __value,</span>
+<span id="L761"><span class="lineNum">     761</span>                 :             :              chars_format __fmt = chars_format::general) noexcept</span>
+<span id="L762"><span class="lineNum">     762</span>                 :             :   {</span>
+<span id="L763"><span class="lineNum">     763</span>                 :             :     float __val;</span>
+<span id="L764"><span class="lineNum">     764</span>                 :             :     from_chars_result __res</span>
+<span id="L765"><span class="lineNum">     765</span>                 :             :       = __from_chars_bfloat16_t(__first, __last, __val, __fmt);</span>
+<span id="L766"><span class="lineNum">     766</span>                 :             :     if (__res.ec == errc{})</span>
+<span id="L767"><span class="lineNum">     767</span>                 :             :       __value = __gnu_cxx::__bfloat16_t(__val);</span>
+<span id="L768"><span class="lineNum">     768</span>                 :             :     return __res;</span>
+<span id="L769"><span class="lineNum">     769</span>                 :             :   }</span>
+<span id="L770"><span class="lineNum">     770</span>                 :             : #endif</span>
+<span id="L771"><span class="lineNum">     771</span>                 :             : #endif</span>
+<span id="L772"><span class="lineNum">     772</span>                 :             : </span>
+<span id="L773"><span class="lineNum">     773</span>                 :             : #if defined __cpp_lib_to_chars</span>
+<span id="L774"><span class="lineNum">     774</span>                 :             :   // Floating-point std::to_chars</span>
+<span id="L775"><span class="lineNum">     775</span>                 :             : </span>
+<span id="L776"><span class="lineNum">     776</span>                 :             :   // Overloads for float.</span>
+<span id="L777"><span class="lineNum">     777</span>                 :             :   to_chars_result to_chars(char* __first, char* __last, float __value) noexcept;</span>
+<span id="L778"><span class="lineNum">     778</span>                 :             :   to_chars_result to_chars(char* __first, char* __last, float __value,</span>
+<span id="L779"><span class="lineNum">     779</span>                 :             :                            chars_format __fmt) noexcept;</span>
+<span id="L780"><span class="lineNum">     780</span>                 :             :   to_chars_result to_chars(char* __first, char* __last, float __value,</span>
+<span id="L781"><span class="lineNum">     781</span>                 :             :                            chars_format __fmt, int __precision) noexcept;</span>
+<span id="L782"><span class="lineNum">     782</span>                 :             : </span>
+<span id="L783"><span class="lineNum">     783</span>                 :             :   // Overloads for double.</span>
+<span id="L784"><span class="lineNum">     784</span>                 :             :   to_chars_result to_chars(char* __first, char* __last, double __value) noexcept;</span>
+<span id="L785"><span class="lineNum">     785</span>                 :             :   to_chars_result to_chars(char* __first, char* __last, double __value,</span>
+<span id="L786"><span class="lineNum">     786</span>                 :             :                            chars_format __fmt) noexcept;</span>
+<span id="L787"><span class="lineNum">     787</span>                 :             :   to_chars_result to_chars(char* __first, char* __last, double __value,</span>
+<span id="L788"><span class="lineNum">     788</span>                 :             :                            chars_format __fmt, int __precision) noexcept;</span>
+<span id="L789"><span class="lineNum">     789</span>                 :             : </span>
+<span id="L790"><span class="lineNum">     790</span>                 :             :   // Overloads for long double.</span>
+<span id="L791"><span class="lineNum">     791</span>                 :             :   to_chars_result to_chars(char* __first, char* __last, long double __value)</span>
+<span id="L792"><span class="lineNum">     792</span>                 :             :     noexcept;</span>
+<span id="L793"><span class="lineNum">     793</span>                 :             :   to_chars_result to_chars(char* __first, char* __last, long double __value,</span>
+<span id="L794"><span class="lineNum">     794</span>                 :             :                            chars_format __fmt) noexcept;</span>
+<span id="L795"><span class="lineNum">     795</span>                 :             :   to_chars_result to_chars(char* __first, char* __last, long double __value,</span>
+<span id="L796"><span class="lineNum">     796</span>                 :             :                            chars_format __fmt, int __precision) noexcept;</span>
+<span id="L797"><span class="lineNum">     797</span>                 :             : </span>
+<span id="L798"><span class="lineNum">     798</span>                 :             :   // Library routines for 16-bit extended floating point formats</span>
+<span id="L799"><span class="lineNum">     799</span>                 :             :   // using float as interchange format.</span>
+<span id="L800"><span class="lineNum">     800</span>                 :             :   to_chars_result __to_chars_float16_t(char* __first, char* __last,</span>
+<span id="L801"><span class="lineNum">     801</span>                 :             :                                        float __value,</span>
+<span id="L802"><span class="lineNum">     802</span>                 :             :                                        chars_format __fmt) noexcept;</span>
+<span id="L803"><span class="lineNum">     803</span>                 :             :   to_chars_result __to_chars_bfloat16_t(char* __first, char* __last,</span>
+<span id="L804"><span class="lineNum">     804</span>                 :             :                                         float __value,</span>
+<span id="L805"><span class="lineNum">     805</span>                 :             :                                         chars_format __fmt) noexcept;</span>
+<span id="L806"><span class="lineNum">     806</span>                 :             : </span>
+<span id="L807"><span class="lineNum">     807</span>                 :             : #if defined(__STDCPP_FLOAT16_T__) &amp;&amp; defined(_GLIBCXX_FLOAT_IS_IEEE_BINARY32)</span>
+<span id="L808"><span class="lineNum">     808</span>                 :             :   inline to_chars_result</span>
+<span id="L809"><span class="lineNum">     809</span>                 :             :   to_chars(char* __first, char* __last, _Float16 __value) noexcept</span>
+<span id="L810"><span class="lineNum">     810</span>                 :             :   {</span>
+<span id="L811"><span class="lineNum">     811</span>                 :             :     return __to_chars_float16_t(__first, __last, float(__value),</span>
+<span id="L812"><span class="lineNum">     812</span>                 :             :                                 chars_format{});</span>
+<span id="L813"><span class="lineNum">     813</span>                 :             :   }</span>
+<span id="L814"><span class="lineNum">     814</span>                 :             :   inline to_chars_result</span>
+<span id="L815"><span class="lineNum">     815</span>                 :             :   to_chars(char* __first, char* __last, _Float16 __value,</span>
+<span id="L816"><span class="lineNum">     816</span>                 :             :            chars_format __fmt) noexcept</span>
+<span id="L817"><span class="lineNum">     817</span>                 :             :   { return __to_chars_float16_t(__first, __last, float(__value), __fmt); }</span>
+<span id="L818"><span class="lineNum">     818</span>                 :             :   inline to_chars_result</span>
+<span id="L819"><span class="lineNum">     819</span>                 :             :   to_chars(char* __first, char* __last, _Float16 __value,</span>
+<span id="L820"><span class="lineNum">     820</span>                 :             :            chars_format __fmt, int __precision) noexcept</span>
+<span id="L821"><span class="lineNum">     821</span>                 :             :   { return to_chars(__first, __last, float(__value), __fmt, __precision); }</span>
+<span id="L822"><span class="lineNum">     822</span>                 :             : #endif</span>
+<span id="L823"><span class="lineNum">     823</span>                 :             : </span>
+<span id="L824"><span class="lineNum">     824</span>                 :             : #if defined(__STDCPP_FLOAT32_T__) &amp;&amp; defined(_GLIBCXX_FLOAT_IS_IEEE_BINARY32)</span>
+<span id="L825"><span class="lineNum">     825</span>                 :             :   inline to_chars_result</span>
+<span id="L826"><span class="lineNum">     826</span>                 :             :   to_chars(char* __first, char* __last, _Float32 __value) noexcept</span>
+<span id="L827"><span class="lineNum">     827</span>                 :             :   { return to_chars(__first, __last, float(__value)); }</span>
+<span id="L828"><span class="lineNum">     828</span>                 :             :   inline to_chars_result</span>
+<span id="L829"><span class="lineNum">     829</span>                 :             :   to_chars(char* __first, char* __last, _Float32 __value,</span>
+<span id="L830"><span class="lineNum">     830</span>                 :             :            chars_format __fmt) noexcept</span>
+<span id="L831"><span class="lineNum">     831</span>                 :             :   { return to_chars(__first, __last, float(__value), __fmt); }</span>
+<span id="L832"><span class="lineNum">     832</span>                 :             :   inline to_chars_result</span>
+<span id="L833"><span class="lineNum">     833</span>                 :             :   to_chars(char* __first, char* __last, _Float32 __value,</span>
+<span id="L834"><span class="lineNum">     834</span>                 :             :            chars_format __fmt, int __precision) noexcept</span>
+<span id="L835"><span class="lineNum">     835</span>                 :             :   { return to_chars(__first, __last, float(__value), __fmt, __precision); }</span>
+<span id="L836"><span class="lineNum">     836</span>                 :             : #endif</span>
+<span id="L837"><span class="lineNum">     837</span>                 :             : </span>
+<span id="L838"><span class="lineNum">     838</span>                 :             : #if defined(__STDCPP_FLOAT64_T__) &amp;&amp; defined(_GLIBCXX_DOUBLE_IS_IEEE_BINARY64)</span>
+<span id="L839"><span class="lineNum">     839</span>                 :             :   inline to_chars_result</span>
+<span id="L840"><span class="lineNum">     840</span>                 :             :   to_chars(char* __first, char* __last, _Float64 __value) noexcept</span>
+<span id="L841"><span class="lineNum">     841</span>                 :             :   { return to_chars(__first, __last, double(__value)); }</span>
+<span id="L842"><span class="lineNum">     842</span>                 :             :   inline to_chars_result</span>
+<span id="L843"><span class="lineNum">     843</span>                 :             :   to_chars(char* __first, char* __last, _Float64 __value,</span>
+<span id="L844"><span class="lineNum">     844</span>                 :             :            chars_format __fmt) noexcept</span>
+<span id="L845"><span class="lineNum">     845</span>                 :             :   { return to_chars(__first, __last, double(__value), __fmt); }</span>
+<span id="L846"><span class="lineNum">     846</span>                 :             :   inline to_chars_result</span>
+<span id="L847"><span class="lineNum">     847</span>                 :             :   to_chars(char* __first, char* __last, _Float64 __value,</span>
+<span id="L848"><span class="lineNum">     848</span>                 :             :            chars_format __fmt, int __precision) noexcept</span>
+<span id="L849"><span class="lineNum">     849</span>                 :             :   { return to_chars(__first, __last, double(__value), __fmt, __precision); }</span>
+<span id="L850"><span class="lineNum">     850</span>                 :             : #endif</span>
+<span id="L851"><span class="lineNum">     851</span>                 :             : </span>
+<span id="L852"><span class="lineNum">     852</span>                 :             : #if defined(__STDCPP_FLOAT128_T__) &amp;&amp; defined(_GLIBCXX_LDOUBLE_IS_IEEE_BINARY128)</span>
+<span id="L853"><span class="lineNum">     853</span>                 :             :   inline to_chars_result</span>
+<span id="L854"><span class="lineNum">     854</span>                 :             :   to_chars(char* __first, char* __last, _Float128 __value) noexcept</span>
+<span id="L855"><span class="lineNum">     855</span>                 :             :   { return to_chars(__first, __last, static_cast&lt;long double&gt;(__value)); }</span>
+<span id="L856"><span class="lineNum">     856</span>                 :             :   inline to_chars_result</span>
+<span id="L857"><span class="lineNum">     857</span>                 :             :   to_chars(char* __first, char* __last, _Float128 __value,</span>
+<span id="L858"><span class="lineNum">     858</span>                 :             :            chars_format __fmt) noexcept</span>
+<span id="L859"><span class="lineNum">     859</span>                 :             :   {</span>
+<span id="L860"><span class="lineNum">     860</span>                 :             :     return to_chars(__first, __last, static_cast&lt;long double&gt;(__value), __fmt);</span>
+<span id="L861"><span class="lineNum">     861</span>                 :             :   }</span>
+<span id="L862"><span class="lineNum">     862</span>                 :             :   inline to_chars_result</span>
+<span id="L863"><span class="lineNum">     863</span>                 :             :   to_chars(char* __first, char* __last, _Float128 __value,</span>
+<span id="L864"><span class="lineNum">     864</span>                 :             :            chars_format __fmt, int __precision) noexcept</span>
+<span id="L865"><span class="lineNum">     865</span>                 :             :   {</span>
+<span id="L866"><span class="lineNum">     866</span>                 :             :     return to_chars(__first, __last, static_cast&lt;long double&gt;(__value), __fmt,</span>
+<span id="L867"><span class="lineNum">     867</span>                 :             :                     __precision);</span>
+<span id="L868"><span class="lineNum">     868</span>                 :             :   }</span>
+<span id="L869"><span class="lineNum">     869</span>                 :             : #elif defined(__STDCPP_FLOAT128_T__) &amp;&amp; defined(_GLIBCXX_HAVE_FLOAT128_MATH)</span>
+<span id="L870"><span class="lineNum">     870</span>                 :             : #ifdef _GLIBCXX_LONG_DOUBLE_ALT128_COMPAT</span>
+<span id="L871"><span class="lineNum">     871</span>                 :             :   __extension__ to_chars_result</span>
+<span id="L872"><span class="lineNum">     872</span>                 :             :   to_chars(char* __first, char* __last, __float128 __value) noexcept;</span>
+<span id="L873"><span class="lineNum">     873</span>                 :             :   __extension__ to_chars_result</span>
+<span id="L874"><span class="lineNum">     874</span>                 :             :   to_chars(char* __first, char* __last, __float128 __value,</span>
+<span id="L875"><span class="lineNum">     875</span>                 :             :            chars_format __fmt) noexcept;</span>
+<span id="L876"><span class="lineNum">     876</span>                 :             :   __extension__ to_chars_result</span>
+<span id="L877"><span class="lineNum">     877</span>                 :             :   to_chars(char* __first, char* __last, __float128 __value,</span>
+<span id="L878"><span class="lineNum">     878</span>                 :             :            chars_format __fmt, int __precision) noexcept;</span>
+<span id="L879"><span class="lineNum">     879</span>                 :             : </span>
+<span id="L880"><span class="lineNum">     880</span>                 :             :   inline to_chars_result</span>
+<span id="L881"><span class="lineNum">     881</span>                 :             :   to_chars(char* __first, char* __last, _Float128 __value) noexcept</span>
+<span id="L882"><span class="lineNum">     882</span>                 :             :   {</span>
+<span id="L883"><span class="lineNum">     883</span>                 :             :     return __extension__ to_chars(__first, __last,</span>
+<span id="L884"><span class="lineNum">     884</span>                 :             :                                   static_cast&lt;__float128&gt;(__value));</span>
+<span id="L885"><span class="lineNum">     885</span>                 :             :   }</span>
+<span id="L886"><span class="lineNum">     886</span>                 :             :   inline to_chars_result</span>
+<span id="L887"><span class="lineNum">     887</span>                 :             :   to_chars(char* __first, char* __last, _Float128 __value,</span>
+<span id="L888"><span class="lineNum">     888</span>                 :             :            chars_format __fmt) noexcept</span>
+<span id="L889"><span class="lineNum">     889</span>                 :             :   {</span>
+<span id="L890"><span class="lineNum">     890</span>                 :             : </span>
+<span id="L891"><span class="lineNum">     891</span>                 :             :     return __extension__ to_chars(__first, __last,</span>
+<span id="L892"><span class="lineNum">     892</span>                 :             :                                   static_cast&lt;__float128&gt;(__value), __fmt);</span>
+<span id="L893"><span class="lineNum">     893</span>                 :             :   }</span>
+<span id="L894"><span class="lineNum">     894</span>                 :             :   inline to_chars_result</span>
+<span id="L895"><span class="lineNum">     895</span>                 :             :   to_chars(char* __first, char* __last, _Float128 __value,</span>
+<span id="L896"><span class="lineNum">     896</span>                 :             :            chars_format __fmt, int __precision) noexcept</span>
+<span id="L897"><span class="lineNum">     897</span>                 :             :   {</span>
+<span id="L898"><span class="lineNum">     898</span>                 :             : </span>
+<span id="L899"><span class="lineNum">     899</span>                 :             :     return __extension__ to_chars(__first, __last,</span>
+<span id="L900"><span class="lineNum">     900</span>                 :             :                                   static_cast&lt;__float128&gt;(__value), __fmt,</span>
+<span id="L901"><span class="lineNum">     901</span>                 :             :                                   __precision);</span>
+<span id="L902"><span class="lineNum">     902</span>                 :             :   }</span>
+<span id="L903"><span class="lineNum">     903</span>                 :             : #else</span>
+<span id="L904"><span class="lineNum">     904</span>                 :             :   to_chars_result to_chars(char* __first, char* __last, _Float128 __value)</span>
+<span id="L905"><span class="lineNum">     905</span>                 :             :     noexcept;</span>
+<span id="L906"><span class="lineNum">     906</span>                 :             :   to_chars_result to_chars(char* __first, char* __last, _Float128 __value,</span>
+<span id="L907"><span class="lineNum">     907</span>                 :             :                            chars_format __fmt) noexcept;</span>
+<span id="L908"><span class="lineNum">     908</span>                 :             :   to_chars_result to_chars(char* __first, char* __last, _Float128 __value,</span>
+<span id="L909"><span class="lineNum">     909</span>                 :             :                            chars_format __fmt, int __precision) noexcept;</span>
+<span id="L910"><span class="lineNum">     910</span>                 :             : #endif</span>
+<span id="L911"><span class="lineNum">     911</span>                 :             : #endif</span>
+<span id="L912"><span class="lineNum">     912</span>                 :             : </span>
+<span id="L913"><span class="lineNum">     913</span>                 :             : #if defined(__STDCPP_BFLOAT16_T__) &amp;&amp; defined(_GLIBCXX_FLOAT_IS_IEEE_BINARY32)</span>
+<span id="L914"><span class="lineNum">     914</span>                 :             :   inline to_chars_result</span>
+<span id="L915"><span class="lineNum">     915</span>                 :             :   to_chars(char* __first, char* __last,</span>
+<span id="L916"><span class="lineNum">     916</span>                 :             :            __gnu_cxx::__bfloat16_t __value) noexcept</span>
+<span id="L917"><span class="lineNum">     917</span>                 :             :   {</span>
+<span id="L918"><span class="lineNum">     918</span>                 :             :     return __to_chars_bfloat16_t(__first, __last, float(__value),</span>
+<span id="L919"><span class="lineNum">     919</span>                 :             :                                  chars_format{});</span>
+<span id="L920"><span class="lineNum">     920</span>                 :             :   }</span>
+<span id="L921"><span class="lineNum">     921</span>                 :             :   inline to_chars_result</span>
+<span id="L922"><span class="lineNum">     922</span>                 :             :   to_chars(char* __first, char* __last, __gnu_cxx::__bfloat16_t __value,</span>
+<span id="L923"><span class="lineNum">     923</span>                 :             :            chars_format __fmt) noexcept</span>
+<span id="L924"><span class="lineNum">     924</span>                 :             :   { return __to_chars_bfloat16_t(__first, __last, float(__value), __fmt); }</span>
+<span id="L925"><span class="lineNum">     925</span>                 :             :   inline to_chars_result</span>
+<span id="L926"><span class="lineNum">     926</span>                 :             :   to_chars(char* __first, char* __last, __gnu_cxx::__bfloat16_t __value,</span>
+<span id="L927"><span class="lineNum">     927</span>                 :             :            chars_format __fmt, int __precision) noexcept</span>
+<span id="L928"><span class="lineNum">     928</span>                 :             :   { return to_chars(__first, __last, float(__value), __fmt, __precision); }</span>
+<span id="L929"><span class="lineNum">     929</span>                 :             : #endif</span>
+<span id="L930"><span class="lineNum">     930</span>                 :             : #endif</span>
+<span id="L931"><span class="lineNum">     931</span>                 :             : </span>
+<span id="L932"><span class="lineNum">     932</span>                 :             : _GLIBCXX_END_NAMESPACE_VERSION</span>
+<span id="L933"><span class="lineNum">     933</span>                 :             : } // namespace std</span>
+<span id="L934"><span class="lineNum">     934</span>                 :             : #endif // C++14</span>
+<span id="L935"><span class="lineNum">     935</span>                 :             : #endif // _GLIBCXX_CHARCONV</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>
