@@ -93,6 +93,12 @@ concept singleton_typed_matrix = tla::singleton_typed_matrix<Type>;
 template <typename Lhs, typename Rhs>
 concept same_shape = tla::same_shape<Lhs, Rhs>;
 
+//! @brief Concept of any type other than the typed matrix type.
+//!
+//! @details Practical for disambiguation.
+template <typename Type>
+concept other = not tla::same_as_typed_matrix<Type>;
+
 //! @}
 
 //! @name Types

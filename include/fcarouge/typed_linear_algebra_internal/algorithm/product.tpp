@@ -79,9 +79,7 @@ namespace tla = typed_linear_algebra_internal;
 }
 
 [[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
-                                       const auto &rhs)
-  requires(not same_as_typed_matrix<decltype(rhs)>)
-{
+                                       const other auto &rhs) {
   //! @todo Should there be constraints on the type?
   using type = std::remove_cvref_t<decltype(rhs)>;
   using matrix = std::remove_cvref_t<decltype(lhs)>;
@@ -93,10 +91,8 @@ namespace tla = typed_linear_algebra_internal;
       lhs.data() * cast<underlying, type>(rhs));
 }
 
-[[nodiscard]] constexpr auto operator*(const auto &lhs,
-                                       const same_as_typed_matrix auto &rhs)
-  requires(not same_as_typed_matrix<decltype(lhs)>)
-{
+[[nodiscard]] constexpr auto operator*(const other auto &lhs,
+                                       const same_as_typed_matrix auto &rhs) {
   //! @todo Should there be constraints on the type?
   using type = std::remove_cvref_t<decltype(lhs)>;
   using matrix = std::remove_cvref_t<decltype(rhs)>;
@@ -108,10 +104,8 @@ namespace tla = typed_linear_algebra_internal;
       cast<underlying, type>(lhs) * rhs.data());
 }
 
-[[nodiscard]] constexpr auto operator*(const auto &lhs,
-                                       const singleton_typed_matrix auto &rhs)
-  requires(not same_as_typed_matrix<decltype(lhs)>)
-{
+[[nodiscard]] constexpr auto operator*(const other auto &lhs,
+                                       const singleton_typed_matrix auto &rhs) {
   //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(rhs)>;
   using element = typename matrix::template element<0, 0>;
@@ -120,9 +114,7 @@ namespace tla = typed_linear_algebra_internal;
 }
 
 [[nodiscard]] constexpr auto operator*(const singleton_typed_matrix auto &lhs,
-                                       const auto &rhs)
-  requires(not same_as_typed_matrix<decltype(rhs)>)
-{
+                                       const other auto &rhs) {
   //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(lhs)>;
   using element = typename matrix::template element<0, 0>;
