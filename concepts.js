@@ -12,6 +12,7 @@ var concepts =
       [ "row_typed_matrix", "conceptfcarouge_1_1row__typed__matrix.xhtml", null ],
       [ "column_typed_matrix", "conceptfcarouge_1_1column__typed__matrix.xhtml", null ],
       [ "singleton_typed_matrix", "conceptfcarouge_1_1singleton__typed__matrix.xhtml", null ],
-      [ "same_shape", "conceptfcarouge_1_1same__shape.xhtml", null ]
+      [ "same_shape", "conceptfcarouge_1_1same__shape.xhtml", null ],
+      [ "other", "conceptfcarouge_1_1other.xhtml", null ]
     ] ]
 ];

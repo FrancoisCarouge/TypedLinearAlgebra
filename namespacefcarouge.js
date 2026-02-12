@@ -25,6 +25,7 @@ var namespacefcarouge =
     [ "column_typed_matrix", "conceptfcarouge_1_1column__typed__matrix.xhtml", null ],
     [ "singleton_typed_matrix", "conceptfcarouge_1_1singleton__typed__matrix.xhtml", null ],
     [ "same_shape", "conceptfcarouge_1_1same__shape.xhtml", null ],
+    [ "other", "conceptfcarouge_1_1other.xhtml", null ],
     [ "acceleration", "namespacefcarouge.xhtml#a54efd5a19e1fb79c2c421f891d436020", null ],
     [ "column_vector", "namespacefcarouge.xhtml#ad06bb441aa2dcec149c52de0c297a967", null ],
     [ "height", "namespacefcarouge.xhtml#a9b124da26de87a5e94ff3b815915769f", null ],

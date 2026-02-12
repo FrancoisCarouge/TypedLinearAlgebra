@@ -106,6 +106,8 @@ var NAVTREEINDEX0 =
 "conceptfcarouge_1_1eigen_1_1statically__sized.xhtml":[18,0,0,2],
 "conceptfcarouge_1_1one__dimension__typed__matrix.xhtml":[17,0,1,11],
 "conceptfcarouge_1_1one__dimension__typed__matrix.xhtml":[18,0,3],
+"conceptfcarouge_1_1other.xhtml":[17,0,1,16],
+"conceptfcarouge_1_1other.xhtml":[18,0,8],
 "conceptfcarouge_1_1row__typed__matrix.xhtml":[17,0,1,12],
 "conceptfcarouge_1_1row__typed__matrix.xhtml":[18,0,4],
 "conceptfcarouge_1_1same__as__typed__matrix.xhtml":[17,0,1,9],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "index.xhtml#aliases":[2,2],
 "index.xhtml#class-typed-matrix":[2,0],
 "index.xhtml#concepts":[2,4],
-"index.xhtml#considerations":[3],
-"index.xhtml#continuous-integration--deployment-actions":[6],
-"index.xhtml#corporations--institutions":[5,1,0]
+"index.xhtml#considerations":[3]
 };
