@@ -113,11 +113,14 @@ The following useful operations are supported. This library attempts to align it
 
 | Operation | Definition |
 | --- | --- |
-| `+` | Addition where the terms are of identical shapes and addable types. |
 | `-` | Substraction where the terms are of identical shapes and substractable types. |
 | `*` | Multiplication where the factors are of multipliable shapes and multipliable types. |
 | `/` | Solution, if there exists one, to the inverse multiplication, where the factor are of compatible shapes and types. |
+| `+` | Addition where the terms are of identical shapes and addable types. |
 | `==` | Direct, strict equality comparison, with traditional floating-point comparison pitfalls. |
+| `add` | Element-wise add two matrices. |
+| `matrix_product` | General matrix-matrix product. |
+| `scale` | Multiply matrix elements by a scalar. |
 | `transposed` | Transpose the input matrix. |
 
 ## Aliases
