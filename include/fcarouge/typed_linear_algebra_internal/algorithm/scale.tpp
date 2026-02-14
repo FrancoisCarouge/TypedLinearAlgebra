@@ -37,6 +37,8 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <linalg>
 
+#endif
+
 //! @todo Reflect over the std::linalg algorithms to provide the typed bindings?
 
 namespace fcarouge {
@@ -45,10 +47,17 @@ namespace fcarouge {
 //!
 //! @see std::linalg::scale
 constexpr void scale(const auto &α, same_as_typed_matrix auto &x) {
-  using std::linalg::scale;
-  scale(α, x.data());
+  if constexpr (requires { α *x; }) {
+    x = α * x;
+  }
+
+#ifdef __cpp_lib_linalg
+  else {
+    using std::linalg::scale;
+    scale(α, x.data());
+  }
+#endif
 }
 } // namespace fcarouge
 
-#endif
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_SCALE_TPP

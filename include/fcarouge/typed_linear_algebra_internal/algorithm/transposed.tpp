@@ -32,6 +32,10 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
 #define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
 
+#ifdef __cpp_lib_linalg
+#include <linalg>
+#endif
+
 namespace fcarouge {
 [[nodiscard]] constexpr auto
 transposed(const same_as_typed_matrix auto &value) {
@@ -47,6 +51,14 @@ transposed(const same_as_typed_matrix auto &value) {
     return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
         value.data().transpose());
   }
+
+#ifdef __cpp_lib_linalg
+  else {
+    using std::linalg::transposed;
+    return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
+        transposed(value.data()));
+  }
+#endif
 }
 } // namespace fcarouge
 

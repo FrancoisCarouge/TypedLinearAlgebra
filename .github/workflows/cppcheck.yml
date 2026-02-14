@@ -44,7 +44,6 @@ jobs:
           --error-exitcode=1 \
           --suppress=missingIncludeSystem \
           --suppress=unhandledChar \
-          --suppress=unusedFunction: include/fcarouge/typed_linear_algebra_internal/format.hpp:58 \
           --verbose \
           -I include \
           -I support/eigen \

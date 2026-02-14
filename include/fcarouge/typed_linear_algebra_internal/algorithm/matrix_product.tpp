@@ -37,6 +37,8 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <linalg>
 
+#endif
+
 namespace fcarouge {
 
 //! @brief
@@ -47,10 +49,16 @@ namespace fcarouge {
 constexpr void matrix_product(const same_as_typed_matrix auto &lhs,
                               const same_as_typed_matrix auto &rhs,
                               same_as_typed_matrix auto &result) {
-  using std::linalg::matrix_product;
-  matrix_product(lhs.data(), rhs.data(), result.data());
-}
+  if constexpr (requires { lhs.data() * rhs.data(); }) {
+    result = lhs * rhs;
+  }
+
+#ifdef __cpp_lib_linalg
+  else {
+    using std::linalg::matrix_product;
+    matrix_product(lhs.data(), rhs.data(), result.data());
+  }
+#endif
 } // namespace fcarouge
 
-#endif
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MATRIX_PRODUCT_TPP

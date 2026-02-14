@@ -336,6 +336,11 @@ public:
   //! @warning Useful for operations implementation where underlying data
   //! access is needed. Not recommended for convenience access due to
   //! absence of type validation.
+  //
+  // Potential API defect: Is this meant to return a reference to the underlying
+  // matrix? If so, then that goes against the Standard Library convention
+  // (in e.g., `vector` and `span`) that reserves `data` for a pointer to the
+  // beginning of a contiguous range.
   [[nodiscard]] constexpr decltype(auto) data(this auto &&self);
 
   //! @}
@@ -387,6 +392,10 @@ template <typename To, typename From> struct element_caster {
 [[nodiscard]] constexpr auto operator+(const other auto &lhs,
                                        const singleton_typed_matrix auto &rhs);
 
+constexpr void add(const same_as_typed_matrix auto &lhs,
+                   const same_as_typed_matrix auto &rhs,
+                   same_as_typed_matrix auto &result);
+
 [[nodiscard]] constexpr auto operator-(const same_as_typed_matrix auto &lhs,
                                        const same_as_typed_matrix auto &rhs);
 [[nodiscard]] constexpr auto operator-(const singleton_typed_matrix auto &lhs,
@@ -408,6 +417,12 @@ template <typename To, typename From> struct element_caster {
                                        const other auto &rhs);
 [[nodiscard]] constexpr auto operator*(const other auto &lhs,
                                        const singleton_typed_matrix auto &rhs);
+
+constexpr void matrix_product(const same_as_typed_matrix auto &lhs,
+                              const same_as_typed_matrix auto &rhs,
+                              same_as_typed_matrix auto &result);
+
+constexpr void scale(const auto &α, same_as_typed_matrix auto &x);
 
 [[nodiscard]] constexpr auto operator/(const same_as_typed_matrix auto &lhs,
                                        const same_as_typed_matrix auto &rhs);
