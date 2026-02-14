@@ -380,15 +380,45 @@ template <typename To, typename From> struct element_caster {
 
 [[nodiscard]] constexpr auto operator+(const same_as_typed_matrix auto &lhs,
                                        const same_as_typed_matrix auto &rhs);
+[[nodiscard]] constexpr auto operator+(const singleton_typed_matrix auto &lhs,
+                                       const singleton_typed_matrix auto &rhs);
+[[nodiscard]] constexpr auto operator+(const singleton_typed_matrix auto &lhs,
+                                       const other auto &rhs);
+[[nodiscard]] constexpr auto operator+(const other auto &lhs,
+                                       const singleton_typed_matrix auto &rhs);
 
 [[nodiscard]] constexpr auto operator-(const same_as_typed_matrix auto &lhs,
                                        const same_as_typed_matrix auto &rhs);
+[[nodiscard]] constexpr auto operator-(const singleton_typed_matrix auto &lhs,
+                                       const singleton_typed_matrix auto &rhs);
+[[nodiscard]] constexpr auto operator-(const singleton_typed_matrix auto &lhs,
+                                       const other auto &rhs);
+[[nodiscard]] constexpr auto operator-(const other auto &lhs,
+                                       const singleton_typed_matrix auto &rhs);
 
 [[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
                                        const same_as_typed_matrix auto &rhs);
+[[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
+                                       const other auto &rhs);
+[[nodiscard]] constexpr auto operator*(const other auto &lhs,
+                                       const same_as_typed_matrix auto &rhs);
+[[nodiscard]] constexpr auto operator*(const singleton_typed_matrix auto &lhs,
+                                       const singleton_typed_matrix auto &rhs);
+[[nodiscard]] constexpr auto operator*(const singleton_typed_matrix auto &lhs,
+                                       const other auto &rhs);
+[[nodiscard]] constexpr auto operator*(const other auto &lhs,
+                                       const singleton_typed_matrix auto &rhs);
 
 [[nodiscard]] constexpr auto operator/(const same_as_typed_matrix auto &lhs,
                                        const same_as_typed_matrix auto &rhs);
+[[nodiscard]] constexpr auto operator/(const same_as_typed_matrix auto &lhs,
+                                       const other auto &rhs);
+[[nodiscard]] constexpr auto operator/(const singleton_typed_matrix auto &lhs,
+                                       const singleton_typed_matrix auto &rhs);
+[[nodiscard]] constexpr auto operator/(const other auto &lhs,
+                                       const singleton_typed_matrix auto &rhs);
+[[nodiscard]] constexpr auto operator/(const other auto &lhs,
+                                       const column_typed_matrix auto &rhs);
 
 [[nodiscard]] constexpr auto transposed(const same_as_typed_matrix auto &value);
 
