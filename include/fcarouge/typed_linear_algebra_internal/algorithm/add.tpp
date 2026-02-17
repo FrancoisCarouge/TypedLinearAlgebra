@@ -80,8 +80,6 @@ namespace fcarouge {
   return lhs_element{lhs} + rhs_element{rhs};
 }
 
-#ifdef __cpp_lib_linalg
-
 //! @brief Element-wise addition of two typed matrices.
 //!
 //! @see std::linalg::add
@@ -90,12 +88,17 @@ namespace fcarouge {
 constexpr void add(const same_as_typed_matrix auto &lhs,
                    const same_as_typed_matrix auto &rhs,
                    same_as_typed_matrix auto &result) {
-  using std::linalg::add;
-  add(lhs.data(), rhs.data(), result.data());
-}
+  if constexpr (requires { lhs.data() + rhs.data(); }) {
+    result = lhs + rhs;
+  }
 
+#ifdef __cpp_lib_linalg
+  else {
+    using std::linalg::add;
+    add(lhs.data(), rhs.data(), result.data());
+  }
 #endif
-
+}
 } // namespace fcarouge
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_ADD_TPP
