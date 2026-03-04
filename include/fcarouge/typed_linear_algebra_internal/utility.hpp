@@ -33,6 +33,7 @@ For more information, please refer to <https://unlicense.org> */
 #define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_UTILITY_HPP
 
 #include <concepts>
+#include <cstddef>
 #include <functional>
 #include <tuple>
 #include <type_traits>
@@ -289,6 +290,21 @@ constexpr std::size_t rank{[] {
   return 1;
 }()};
 
+template <typename T> struct is_integral_constant_t;
+
+template <size_t i>
+struct is_integral_constant_t<std::integral_constant<size_t, i>>
+    : std::bool_constant<true> {};
+
+template <typename T>
+struct is_integral_constant_t : std::bool_constant<false> {};
+
+template <char... d> constexpr size_t parse_digits() {
+  static_assert((('0' <= d && d <= '9') && ...), "Must be decimal");
+  size_t num = 0;
+  ((num = num * 10 + (d - '0')), ...);
+  return num;
+}
 } // namespace fcarouge::typed_linear_algebra_internal
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_UTILITY_HPP

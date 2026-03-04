@@ -51,6 +51,12 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
 
+namespace index_literals {
+template <char... digit> constexpr auto operator""_i() noexcept {
+  return std::integral_constant<size_t, tla::parse_digits<digit...>()>{};
+}
+} // namespace index_literals
+
 //! @name Concepts
 //! @{
 
@@ -98,6 +104,9 @@ concept same_shape = tla::same_shape<Lhs, Rhs>;
 //! @details Practical for disambiguation.
 template <typename Type>
 concept other = not tla::same_as_typed_matrix<Type>;
+
+template <typename Type>
+concept index = tla::is_integral_constant_t<Type>::value;
 
 //! @}
 
@@ -291,6 +300,20 @@ public:
   //! checking. Returns a strongly typed element at the specified location. A
   //! reference is returned for non-const calls.
   //!
+  //! @tparam Indexes Type(s) of the indexes. Use std::integral_constant<size_t>
+  //! @param self Explicit object parameter deducing this: not user specified.
+  //! @param indexes Position(s) of the element to return.
+  template <index Index, index... Indexes>
+  [[nodiscard]] constexpr decltype(auto) operator[](this auto &&self, Index,
+                                                    Indexes... indexes)
+    requires(sizeof...(Indexes) + 1 >= rank);
+
+  //! @brief Access the specified element.
+  //!
+  //! @details Applicable to matrices with identical element types. No bound
+  //! checking. Returns a strongly typed element at the specified location. A
+  //! reference is returned for non-const calls.
+  //!
   //! @tparam Indexes Type(s) of the indexes. Use a template pack because some
   //! compilers have internal compiler errors with a placeholder type specifier.
   //! @param self Explicit object parameter deducing this: not user specified.
@@ -300,6 +323,21 @@ public:
                                                     Indexes... indexes)
     requires uniform_typed_matrix<typed_matrix> and (sizeof...(Indexes) >= rank)
   ;
+
+  //! @brief Access the specified element.
+  //!
+  //! @details Applicable to matrices with identical element types. No bound
+  //! checking. Returns a strongly typed element at the specified location. A
+  //! reference is returned for non-const calls.
+  //!
+  //! @tparam Indexes Type(s) of the indexes. Use a template pack because some
+  //! compilers have internal compiler errors with a placeholder type specifier.
+  //! @param self Explicit object parameter deducing this: not user specified.
+  //! @param indexes Position(s) of the element to return.
+  template <index Index, index... Indexes>
+  [[nodiscard]] constexpr decltype(auto) operator()(this auto &&self, Index,
+                                                    Indexes... indexes)
+    requires(sizeof...(Indexes) + 1 >= rank);
 
   //! @brief Access the specified element.
   //!
