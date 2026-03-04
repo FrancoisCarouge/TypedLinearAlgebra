@@ -371,9 +371,11 @@ using row_vector =
   using estimate_uncertainty =
       matrix<std::tuple<position, velocity, acceleration>,
              std::tuple<position, velocity, acceleration>>;
+  using namespace fcarouge::index_literals;
   estimate_uncertainty p;
   p.at<0, 0>() = 500. * m2;
   p.at<1, 1>() = 500. * m2 / s2;
+  p[1_i, 1_i] = 500. * m2 / s2;
   p.at<2, 2>() = 500. * m2 / s4;
   std::println("P: {}", p);
   // P: [[500 m²,     0 m²/s,    0 m²/s²],
