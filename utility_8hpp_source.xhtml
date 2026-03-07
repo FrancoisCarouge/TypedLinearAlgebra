@@ -378,13 +378,13 @@ $(function(){initNavTree('utility_8hpp_source.xhtml',''); initResizable(true); }
 <div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span><span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> Rows, std::<span class="keywordtype">size_t</span> Columns&gt;</div>
 <div class="foldopen" id="foldopen00283" data-start="{" data-end="};">
 <div class="line"><a id="l00283" name="l00283"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aded6eca464a23970fc0a04a24a164209">  283</a></span><span class="keyword">constexpr</span> std::size_t <a class="code hl_variable" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aded6eca464a23970fc0a04a24a164209">rank</a>{[] {</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>  <span class="keywordflow">if</span> (Rows &gt; 1 &amp;&amp; Columns &gt; 1) {</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows &gt; 1 &amp;&amp; Columns &gt; 1) {</div>
 <div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    <span class="keywordflow">return</span> 2;</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>  }</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>  <span class="keywordflow">if</span> (Rows == 1 &amp;&amp; Columns == 1) {</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>  }</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>  <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows == 1 &amp;&amp; Columns == 1) {</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>  }</div>
 <div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>}()};</div>
 </div>
 <div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span> </div>

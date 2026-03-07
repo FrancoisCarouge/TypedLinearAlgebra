@@ -429,24 +429,24 @@ template&lt;std::size_t Rows, std::size_t Columns&gt; </div>
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
-<div class="line">  <span class="keywordflow">if</span> (Rows &gt; 1 &amp;&amp; Columns &gt; 1) {</div>
+<div class="line">  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows &gt; 1 &amp;&amp; Columns &gt; 1) {</div>
 <div class="line">    <span class="keywordflow">return</span> 2;</div>
-<div class="line">  }</div>
-<div class="line">  <span class="keywordflow">if</span> (Rows == 1 &amp;&amp; Columns == 1) {</div>
+<div class="line">  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows == 1 &amp;&amp; Columns == 1) {</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">  } <span class="keywordflow">else</span> {</div>
+<div class="line">    <span class="keywordflow">return</span> 1;</div>
 <div class="line">  }</div>
-<div class="line">  <span class="keywordflow">return</span> 1;</div>
 <div class="line">}()}</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00283">283</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  283</span>                        {[] {</div>
-<div class="line"><span class="lineno">  284</span>  <span class="keywordflow">if</span> (Rows &gt; 1 &amp;&amp; Columns &gt; 1) {</div>
+<div class="line"><span class="lineno">  284</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows &gt; 1 &amp;&amp; Columns &gt; 1) {</div>
 <div class="line"><span class="lineno">  285</span>    <span class="keywordflow">return</span> 2;</div>
-<div class="line"><span class="lineno">  286</span>  }</div>
-<div class="line"><span class="lineno">  287</span>  <span class="keywordflow">if</span> (Rows == 1 &amp;&amp; Columns == 1) {</div>
-<div class="line"><span class="lineno">  288</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  289</span>  }</div>
-<div class="line"><span class="lineno">  290</span>  <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  286</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows == 1 &amp;&amp; Columns == 1) {</div>
+<div class="line"><span class="lineno">  287</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  288</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  289</span>    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  290</span>  }</div>
 <div class="line"><span class="lineno">  291</span>}()};</div>
 </div><!-- fragment -->
 </div>
