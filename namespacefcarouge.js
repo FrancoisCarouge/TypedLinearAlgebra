@@ -1,6 +1,9 @@
 var namespacefcarouge =
 [
     [ "eigen", "namespacefcarouge_1_1eigen.xhtml", "namespacefcarouge_1_1eigen" ],
+    [ "index_literals", "namespacefcarouge_1_1index__literals.xhtml", [
+      [ "operator\"\"_i", "namespacefcarouge_1_1index__literals.xhtml#aa2376c1b89a3c0540f810de0440e36ec", null ]
+    ] ],
     [ "internal", "namespacefcarouge_1_1internal.xhtml", null ],
     [ "sample", "namespacefcarouge_1_1sample.xhtml", "namespacefcarouge_1_1sample" ],
     [ "test", "namespacefcarouge_1_1test.xhtml", "namespacefcarouge_1_1test" ],
@@ -12,6 +15,7 @@ var namespacefcarouge =
       [ "tuple_n_type", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a4dd57b09634fe03c0fd59b866657ad86", null ],
       [ "underlying_t", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a72e4ccaf08999b259f656412682b37dd", null ],
       [ "for_constexpr", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a9a86c642ba2610ed4f92a3d84baf5b00", null ],
+      [ "parse_digits", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a606fd5f920ff1640324dd50370c410f6", null ],
       [ "rank", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aded6eca464a23970fc0a04a24a164209", null ]
     ] ],
     [ "element_caster", "structfcarouge_1_1element__caster.xhtml", "structfcarouge_1_1element__caster" ],
@@ -26,6 +30,7 @@ var namespacefcarouge =
     [ "singleton_typed_matrix", "conceptfcarouge_1_1singleton__typed__matrix.xhtml", null ],
     [ "same_shape", "conceptfcarouge_1_1same__shape.xhtml", null ],
     [ "other", "conceptfcarouge_1_1other.xhtml", null ],
+    [ "index", "conceptfcarouge_1_1index.xhtml", null ],
     [ "acceleration", "namespacefcarouge.xhtml#a54efd5a19e1fb79c2c421f891d436020", null ],
     [ "column_vector", "namespacefcarouge.xhtml#ad06bb441aa2dcec149c52de0c297a967", null ],
     [ "height", "namespacefcarouge.xhtml#a9b124da26de87a5e94ff3b815915769f", null ],
