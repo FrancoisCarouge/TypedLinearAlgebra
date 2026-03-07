@@ -174,8 +174,8 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
         using type = std::remove_cvref_t<decltype(value)>;
         static_assert(
             std::is_assignable_v<
-                element<(typed_matrix::rows == 1 ? 0 : position),
-                        (typed_matrix::columns == 1 ? 0 : position)> &,
+                element<(typed_matrix::rows == 1 ? 0UZ : position),
+                        (typed_matrix::columns == 1 ? 0UZ : position)> &,
                 type>,
             "The parameter type is not compatible with the element type.");
         storage(std::size_t{position}) = cast<underlying, type>(value);
