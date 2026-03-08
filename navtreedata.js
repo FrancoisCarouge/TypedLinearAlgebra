@@ -95,6 +95,7 @@ var NAVTREE =
       [ "7 Beyond Unit Safety", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md7-beyond-unit-safety", null ],
       [ "7 Conclusion", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md7-conclusion", null ]
     ] ],
+    [ "<a href=\"https://francoiscarouge.github.io/TypedLinearAlgebra/typed_linear_algebra/index.html\" >Typed Linear Algebra</a>", "md_html_2typed__linear__algebra_2_r_e_a_d_m_e.xhtml", null ],
     [ "typed_linear_algebra", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml", [
       [ "Parking", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#parking", null ]
     ] ],
@@ -150,7 +151,7 @@ var NAVTREEINDEX =
 [
 "addition_8cpp.xhtml",
 "identity_8cpp_source.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__call__mx1__const_8cpp_03.xhtml#a4d9c0c33950433b565cb22fb2bfad2da"
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__call__mx1__const_8cpp_03.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

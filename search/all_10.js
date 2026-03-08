@@ -9,8 +9,9 @@ var searchData=
   ['license_2etxt_6',['LICENSE.txt',['../_l_i_c_e_n_s_e_8txt.xhtml',1,'']]],
   ['linalg_2ehpp_7',['linalg.hpp',['../eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../eigexed_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../nested__typed__eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../quantity_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)']]],
   ['linear_20algebra_8',['Linear Algebra',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md3-typed-linear-algebra',1,'3 Typed Linear Algebra'],['../md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#title-typed-linear-algebra',1,'title: &quot;Typed Linear Algebra&quot;'],['../index.xhtml',1,'Typed Linear Algebra'],['../md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#typed-linear-algebra-1',1,'Typed Linear Algebra'],['../md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#typed-linear-algebra-2',1,'Typed Linear Algebra']]],
-  ['linear_20algebra_20and_20dimensional_20analysis_9',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],
-  ['linear_20algebra_20use_20case_3a_20eigen_20mp_20units_10',['Quantity-Safe Linear Algebra Use Case: Eigen + mp-units',['../md_html_2paper_2mp__units__eigen.xhtml',1,'']]],
-  ['linux_11',['Linux',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#linux',1,'']]],
-  ['list_12',['List',['../test.xhtml',1,'Test List'],['../todo.xhtml',1,'Todo List']]]
+  ['linear_20algebra_20a_9',['&lt;a href=&quot;https://francoiscarouge.github.io/TypedLinearAlgebra/typed_linear_algebra/index.html&quot; &gt;Typed Linear Algebra&lt;/a&gt;',['../md_html_2typed__linear__algebra_2_r_e_a_d_m_e.xhtml',1,'']]],
+  ['linear_20algebra_20and_20dimensional_20analysis_10',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],
+  ['linear_20algebra_20use_20case_3a_20eigen_20mp_20units_11',['Quantity-Safe Linear Algebra Use Case: Eigen + mp-units',['../md_html_2paper_2mp__units__eigen.xhtml',1,'']]],
+  ['linux_12',['Linux',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#linux',1,'']]],
+  ['list_13',['List',['../test.xhtml',1,'Test List'],['../todo.xhtml',1,'Todo List']]]
 ];
