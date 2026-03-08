@@ -18,10 +18,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - { os: 'ubuntu-24.04', cxx: 'clang++-18', cc: 'clang-18', generator: 'Ninja', cpack_generator: 'DEB', packages: 'clang-18' }
-        - { os: 'ubuntu-24.04', cxx: 'clang++-20', cc: 'clang-20', generator: 'Ninja', cpack_generator: 'DEB', packages: 'clang-20' }
-        - { os: 'ubuntu-24.04', cxx: 'clang++-21', cc: 'clang-21', generator: 'Ninja', cpack_generator: 'DEB', packages: 'clang-21' }
-        - { os: 'ubuntu-24.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', cpack_generator: 'DEB', packages: 'g++-14' }
+        - { os: 'ubuntu-24.04', cxx: 'clang++-20', cc: 'clang-20', generator: 'Ninja', cpack_generator: 'DEB', packages: 'clang-20 clang-tools-20' }
+        - { os: 'ubuntu-24.04', cxx: 'clang++-21', cc: 'clang-21', generator: 'Ninja', cpack_generator: 'DEB' }
+        - { os: 'ubuntu-24.04', cxx: 'clang++-22', cc: 'clang-22', generator: 'Ninja', cpack_generator: 'DEB' }
+        - { os: 'ubuntu-24.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', cpack_generator: 'DEB' }
         - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', cpack_generator: 'WIX', config: 'Debug' }
         - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', cpack_generator: 'WIX', config: 'Release' }
         - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', cpack_generator: 'WIX', config: 'Debug' }
@@ -37,15 +37,21 @@ jobs:
         egress-policy: audit
     - name: 'Checkout'
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-    - name: 'Install: Clang 20'
-      if: ${{ matrix.cxx == 'clang++-20' }}
-      run: sudo apt update && sudo apt install -y clang-20 clang-tools-20
+    - name: 'Install Compiler'
+      if: ${{ matrix.packages }}
+      run: sudo apt update && sudo apt install -y ${{ matrix.packages }}
     - name: 'Install: Clang 21'
       if: ${{ matrix.cxx == 'clang++-21' }}
       run: |
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
         sudo ./llvm.sh 21 all
+    - name: 'Install: Clang 22'
+      if: ${{ matrix.cxx == 'clang++-22' }}
+      run: |
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x llvm.sh
+        sudo ./llvm.sh 22 all
     - name: 'Install: Latest CMake'
       uses: ssrobins/install-cmake@c54bb968401dd4ff9e6c9d697df5b843ee3b783b # v1.0.0
     - name: 'Configure'
