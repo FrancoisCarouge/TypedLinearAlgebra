@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.1.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,31 +27,46 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-# Add a given test.
-#
-# * NAME The name of the test file without extension. Add a given test.
-#
-# * NAME The name of the test file without extension.
-# * BACKENDS Optional list of backends to use against the test.
-function(test TEST_NAME)
-  set(multiValueArgs BACKENDS)
-  cmake_parse_arguments(PARSE_ARGV 0 TEST "" "${oneValueArgs}"
-                        "${multiValueArgs}")
+#include "fcarouge/linalg.hpp"
 
-  foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
-    add_executable(typed_linear_algebra_test_${BACKEND}_${TEST_NAME}_driver
-                   "${TEST_NAME}.cpp")
-    target_link_libraries(
-      typed_linear_algebra_test_${BACKEND}_${TEST_NAME}_driver
-      PRIVATE typed_linear_algebra_options typed_linear_algebra_main
-              typed_linear_algebra_${BACKEND})
-    separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
-    add_test(
-      NAME typed_linear_algebra_test_${BACKEND}_${TEST_NAME}
-      COMMAND
-        ${TEST_COMMAND}
-        $<TARGET_FILE:typed_linear_algebra_test_${BACKEND}_${TEST_NAME}_driver>)
-  endforeach()
-endfunction(test)
+#include <cassert>
+#include <cstddef>
+#include <mdspan>
+#include <tuple>
+
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the transposed algorithm.
+[[maybe_unused]] auto test{[] {
+  double storage{9.};
+  std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
+  matrix<double, std::tuple<decltype(1. * s)>, std::tuple<decltype(1. * s2)>> n{
+      span};
+
+  assert(n == 9. * s3);
+  static_assert(
+      std::same_as<decltype(n)::row_indexes, std::tuple<decltype(1. * s)>>);
+  static_assert(
+      std::same_as<decltype(n)::column_indexes, std::tuple<decltype(1. * s2)>>);
+
+  n = 42. * s3;
+
+  assert(n == 42. * s3);
+
+  auto nᵀ{transposed(n)};
+
+  assert(nᵀ == 42. * s3);
+  static_assert(
+      std::same_as<decltype(nᵀ)::row_indexes, std::tuple<decltype(1. * s2)>>);
+  static_assert(
+      std::same_as<decltype(nᵀ)::column_indexes, std::tuple<decltype(1. * s)>>);
+
+  n = 24. * s3;
+  assert(nᵀ == 24. * s3);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

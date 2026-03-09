@@ -39,6 +39,7 @@ add_subdirectory("kokkos")
 add_subdirectory("main")
 add_subdirectory("mp_units")
 add_subdirectory("quantity_eigen")
+add_subdirectory("quantity_std")
 add_subdirectory("nested_typed_eigen")
 
 add_library(typed_linear_algebra_options INTERFACE)

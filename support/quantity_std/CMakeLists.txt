@@ -29,29 +29,12 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-# Add a given test.
-#
-# * NAME The name of the test file without extension. Add a given test.
-#
-# * NAME The name of the test file without extension.
-# * BACKENDS Optional list of backends to use against the test.
-function(test TEST_NAME)
-  set(multiValueArgs BACKENDS)
-  cmake_parse_arguments(PARSE_ARGV 0 TEST "" "${oneValueArgs}"
-                        "${multiValueArgs}")
-
-  foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
-    add_executable(typed_linear_algebra_test_${BACKEND}_${TEST_NAME}_driver
-                   "${TEST_NAME}.cpp")
-    target_link_libraries(
-      typed_linear_algebra_test_${BACKEND}_${TEST_NAME}_driver
-      PRIVATE typed_linear_algebra_options typed_linear_algebra_main
-              typed_linear_algebra_${BACKEND})
-    separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
-    add_test(
-      NAME typed_linear_algebra_test_${BACKEND}_${TEST_NAME}
-      COMMAND
-        ${TEST_COMMAND}
-        $<TARGET_FILE:typed_linear_algebra_test_${BACKEND}_${TEST_NAME}_driver>)
-  endforeach()
-endfunction(test)
+add_library(typed_linear_algebra_quantity_std INTERFACE)
+target_sources(
+  typed_linear_algebra_quantity_std
+  INTERFACE FILE_SET "typed_linear_algebra_headers" TYPE "HEADERS" FILES
+            "fcarouge/linalg.hpp")
+target_link_libraries(
+  typed_linear_algebra_quantity_std
+  INTERFACE typed_linear_algebra_kokkos typed_linear_algebra_unit_mp_units
+            tlinalg)
