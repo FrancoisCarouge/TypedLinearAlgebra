@@ -29,8 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_LINALG_HPP
-#define FCAROUGE_LINALG_HPP
+#ifndef FCAROUGE_LINALG
+#define FCAROUGE_LINALG
 
 #define MDSPAN_USE_PAREN_OPERATOR 1
 
@@ -41,4 +41,4 @@ namespace linalg =
     MDSPAN_IMPL_STANDARD_NAMESPACE::MDSPAN_IMPL_PROPOSED_NAMESPACE::linalg;
 }
 
-#endif // FCAROUGE_LINALG_HPP
+#endif // FCAROUGE_LINALG

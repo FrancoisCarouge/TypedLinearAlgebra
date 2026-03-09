@@ -29,8 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_MDSPAN_HPP
-#define FCAROUGE_MDSPAN_HPP
+#ifndef FCAROUGE_MDSPAN
+#define FCAROUGE_MDSPAN
 
 #include <experimental/mdspan>
 
@@ -39,4 +39,4 @@ using Kokkos::extents;
 using Kokkos::mdspan;
 } // namespace std
 
-#endif // FCAROUGE_MDSPAN_HPP
+#endif // FCAROUGE_MDSPAN
