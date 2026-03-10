@@ -40,9 +40,9 @@ namespace {
 [[maybe_unused]] auto test{[] {
   const matrix<double, std::tuple<decltype(1. * s)>,
                std::tuple<decltype(1. * s)>>
-      n{42.0 * s2};
+      n{42. * s2};
 
-  assert(n(0, 0) == 42.0 * s2);
+  assert(n(0, 0) == 42. * s2);
 
   static_assert(
       not std::is_constructible_v<matrix<double, std::tuple<decltype(1. * s)>,
