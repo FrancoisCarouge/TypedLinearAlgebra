@@ -72,4 +72,4 @@ endif()
 target_compile_definitions(
   typed_linear_algebra_kokkos
   INTERFACE "MDSPAN_IMPL_STANDARD_NAMESPACE=Kokkos"
-            "MDSPAN_IMPL_PROPOSED_NAMESPACE=experimental")
+            "MDSPAN_IMPL_PROPOSED_NAMESPACE=experimental" "__cpp_lib_linalg")
