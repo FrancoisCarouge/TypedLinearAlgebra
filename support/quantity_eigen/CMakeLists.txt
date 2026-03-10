@@ -29,12 +29,12 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-add_library(typed_linear_algebra_quantity INTERFACE)
+add_library(typed_linear_algebra_quantity_eigen INTERFACE)
 target_sources(
-  typed_linear_algebra_quantity
+  typed_linear_algebra_quantity_eigen
   INTERFACE FILE_SET "typed_linear_algebra_headers" TYPE "HEADERS" FILES
             "fcarouge/linalg.hpp")
 target_link_libraries(
-  typed_linear_algebra_quantity
+  typed_linear_algebra_quantity_eigen
   INTERFACE typed_linear_algebra_eigen typed_linear_algebra_unit_mp_units
             tlinalg)
