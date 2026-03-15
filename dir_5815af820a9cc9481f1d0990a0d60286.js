@@ -6,5 +6,6 @@ var dir_5815af820a9cc9481f1d0990a0d60286 =
     [ "main", "dir_77010ae1c659866f3d80deb588daf66a.xhtml", "dir_77010ae1c659866f3d80deb588daf66a" ],
     [ "mp_units", "dir_ad3aec80637e09f6ac03fe9cf2951131.xhtml", "dir_ad3aec80637e09f6ac03fe9cf2951131" ],
     [ "nested_typed_eigen", "dir_ebfce32cc1e861c03f168700fe78b91e.xhtml", "dir_ebfce32cc1e861c03f168700fe78b91e" ],
-    [ "quantity_eigen", "dir_28fa0c21df95b2fb2bbf6309f49fc2af.xhtml", "dir_28fa0c21df95b2fb2bbf6309f49fc2af" ]
+    [ "quantity_eigen", "dir_28fa0c21df95b2fb2bbf6309f49fc2af.xhtml", "dir_28fa0c21df95b2fb2bbf6309f49fc2af" ],
+    [ "quantity_std", "dir_e3b4440706c45509af2e8be9d829226e.xhtml", "dir_e3b4440706c45509af2e8be9d829226e" ]
 ];

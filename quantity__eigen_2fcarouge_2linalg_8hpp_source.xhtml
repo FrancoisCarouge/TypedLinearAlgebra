@@ -180,26 +180,22 @@ $(function(){initNavTree('quantity__eigen_2fcarouge_2linalg_8hpp_source.xhtml','
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>};</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="keyword">template</span> &lt;mp_units::QuantityPo<span class="keywordtype">int</span> To, <span class="keyword">typename</span> From&gt;</div>
-<div class="foldopen" id="foldopen00073" data-start="{" data-end="};">
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml">   73</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structfcarouge_1_1element__caster.xhtml">element_caster</a>&lt;To, From&gt; {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="keyword">struct </span>element_caster&lt;To, From&gt; {</div>
 <div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml#a9f373963c88ebd20ed905b41e16e3a15">   74</a></span>  [[nodiscard]] <span class="keyword">static</span> <span class="keyword">constexpr</span> To <a class="code hl_function" href="structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml#a9f373963c88ebd20ed905b41e16e3a15">operator()</a>(<span class="keyword">const</span> From &amp;value) {</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordflow">return</span> {value * To::unit, mp_units::default_point_origin(To::unit)};</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  }</div>
 </div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>};</div>
-</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="keyword">template</span> &lt;mp_units::QuantityPo<span class="keywordtype">int</span> To, <span class="keyword">typename</span> From&gt;</div>
-<div class="foldopen" id="foldopen00080" data-start="{" data-end="};">
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4.xhtml">   80</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structfcarouge_1_1element__caster.xhtml">element_caster</a>&lt;To &amp;, From &amp;&gt; {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keyword">struct </span>element_caster&lt;To &amp;, From &amp;&gt; {</div>
 <div class="foldopen" id="foldopen00081" data-start="{" data-end="}">
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4.xhtml#acdd029619a6de68b7f4fa65403c3289e">   81</a></span>  [[nodiscard]] <span class="keyword">static</span> <span class="keyword">constexpr</span> To &amp;<a class="code hl_function" href="structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4.xhtml#acdd029619a6de68b7f4fa65403c3289e">operator()</a>(From &amp;value) {</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span>To &amp;<span class="keyword">&gt;</span>(value);</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  }</div>
 </div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>};</div>
-</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Representation, <span class="keyword">typename</span> RowIndexes, <span class="keyword">typename</span> ColumnIndexes&gt;</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix</a> =</div>
@@ -228,7 +224,6 @@ $(function(){initNavTree('quantity__eigen_2fcarouge_2linalg_8hpp_source.xhtml','
 <div class="ttc" id="anamespacefcarouge_xhtml_a96fea71ab24114a61950988fdac23f58"><div class="ttname"><a href="namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58">fcarouge::typed_column_vector</a></div><div class="ttdeci">typed_matrix&lt; Matrix, std::tuple&lt; RowIndexes... &gt;, tla::identity_index &gt; typed_column_vector</div><div class="ttdoc">Strongly typed column vector.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00401">typed_linear_algebra.hpp:401</a></div></div>
 <div class="ttc" id="astructfcarouge_1_1element__caster_3_01_to_00_01_from_01_4_xhtml_a9f373963c88ebd20ed905b41e16e3a15"><div class="ttname"><a href="structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml#a9f373963c88ebd20ed905b41e16e3a15">fcarouge::element_caster&lt; To, From &gt;::operator()</a></div><div class="ttdeci">static constexpr To operator()(const From &amp;value)</div><div class="ttdef"><b>Definition</b> <a href="#l00046">linalg.hpp:46</a></div></div>
 <div class="ttc" id="astructfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4_xhtml_acdd029619a6de68b7f4fa65403c3289e"><div class="ttname"><a href="structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4.xhtml#acdd029619a6de68b7f4fa65403c3289e">fcarouge::element_caster&lt; To &amp;, From &amp; &gt;::operator()</a></div><div class="ttdeci">static constexpr To &amp; operator()(From &amp;value)</div><div class="ttdef"><b>Definition</b> <a href="#l00060">linalg.hpp:60</a></div></div>
-<div class="ttc" id="astructfcarouge_1_1element__caster_xhtml"><div class="ttname"><a href="structfcarouge_1_1element__caster.xhtml">fcarouge::element_caster</a></div><div class="ttdoc">Typed matrix element conversions customization point.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__forward_8hpp_source.xhtml#l00044">typed_linear_algebra_forward.hpp:44</a></div></div>
 <div class="ttc" id="atyped__linear__algebra_8hpp_xhtml"><div class="ttname"><a href="typed__linear__algebra_8hpp.xhtml">typed_linear_algebra.hpp</a></div><div class="ttdoc">Typed linear algebra implementation.</div></div>
 <div class="ttc" id="aunit_8hpp_xhtml"><div class="ttname"><a href="unit_8hpp.xhtml">unit.hpp</a></div><div class="ttdoc">Quantities and units facade for mp-units third party implementation.</div></div>
 </div><!-- fragment --></div><!-- contents -->
