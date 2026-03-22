@@ -141,7 +141,7 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>is_integral_constant_t</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>is_integral_constant_t&lt; std::integral_constant&lt; size_t, i &gt; &gt;</b></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>is_integral_constant_t&lt; std::integral_constant&lt; std::size_t, Index &gt; &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>multiplies</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -187,9 +187,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a9a86c642ba2610ed4f92a3d84baf5b00" id="r_a9a86c642ba2610ed4f92a3d84baf5b00"><td class="memTemplParams" colspan="2">template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename Function &gt; </td></tr>
 <tr class="memitem:a9a86c642ba2610ed4f92a3d84baf5b00"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a9a86c642ba2610ed4f92a3d84baf5b00">for_constexpr</a> (Function &amp;&amp;function)</td></tr>
 <tr class="separator:a9a86c642ba2610ed4f92a3d84baf5b00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a606fd5f920ff1640324dd50370c410f6" id="r_a606fd5f920ff1640324dd50370c410f6"><td class="memTemplParams" colspan="2">template&lt;char... d&gt; </td></tr>
-<tr class="memitem:a606fd5f920ff1640324dd50370c410f6"><td class="memTemplItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a606fd5f920ff1640324dd50370c410f6">parse_digits</a> ()</td></tr>
-<tr class="separator:a606fd5f920ff1640324dd50370c410f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbba9c02ba0de394e79a3aa4866c0bd1" id="r_abbba9c02ba0de394e79a3aa4866c0bd1"><td class="memTemplParams" colspan="2">template&lt;char... Digits&gt; </td></tr>
+<tr class="memitem:abbba9c02ba0de394e79a3aa4866c0bd1"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#abbba9c02ba0de394e79a3aa4866c0bd1">parse_digits</a> ()</td></tr>
+<tr class="separator:abbba9c02ba0de394e79a3aa4866c0bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -362,19 +362,19 @@ template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename 
 
 </div>
 </div>
-<a id="a606fd5f920ff1640324dd50370c410f6" name="a606fd5f920ff1640324dd50370c410f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a606fd5f920ff1640324dd50370c410f6">&#9670;&#160;</a></span>parse_digits()</h2>
+<a id="abbba9c02ba0de394e79a3aa4866c0bd1" name="abbba9c02ba0de394e79a3aa4866c0bd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbba9c02ba0de394e79a3aa4866c0bd1">&#9670;&#160;</a></span>parse_digits()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;char... d&gt; </div>
+template&lt;char... Digits&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">size_t fcarouge::typed_linear_algebra_internal::parse_digits </td>
+          <td class="memname">std::size_t fcarouge::typed_linear_algebra_internal::parse_digits </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -387,13 +387,16 @@ template&lt;char... d&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00302">302</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  302</span>                                                     {</div>
-<div class="line"><span class="lineno">  303</span>  <span class="keyword">static_assert</span>(((<span class="charliteral">&#39;0&#39;</span> &lt;= d &amp;&amp; d &lt;= <span class="charliteral">&#39;9&#39;</span>) &amp;&amp; ...), <span class="stringliteral">&quot;Must be decimal&quot;</span>);</div>
-<div class="line"><span class="lineno">  304</span>  <span class="keywordtype">size_t</span> num = 0;</div>
-<div class="line"><span class="lineno">  305</span>  ((num = num * 10 + (d - <span class="charliteral">&#39;0&#39;</span>)), ...);</div>
-<div class="line"><span class="lineno">  306</span>  <span class="keywordflow">return</span> num;</div>
-<div class="line"><span class="lineno">  307</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00305">305</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  305</span>                                                             {</div>
+<div class="line"><span class="lineno">  306</span>  <span class="keyword">static_assert</span>(((<span class="charliteral">&#39;0&#39;</span> &lt;= Digits &amp;&amp; Digits &lt;= <span class="charliteral">&#39;9&#39;</span>) &amp;&amp; ...),</div>
+<div class="line"><span class="lineno">  307</span>                <span class="stringliteral">&quot;Characters must only be digits.&quot;</span>);</div>
+<div class="line"><span class="lineno">  308</span> </div>
+<div class="line"><span class="lineno">  309</span>  std::size_t number{0};</div>
+<div class="line"><span class="lineno">  310</span>  ((number = number * 10 + (Digits - <span class="charliteral">&#39;0&#39;</span>)), ...);</div>
+<div class="line"><span class="lineno">  311</span> </div>
+<div class="line"><span class="lineno">  312</span>  <span class="keywordflow">return</span> number;</div>
+<div class="line"><span class="lineno">  313</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
