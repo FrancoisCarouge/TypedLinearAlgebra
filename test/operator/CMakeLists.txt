@@ -29,7 +29,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-test("operator_equality" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
 test("operator_call_1x1_const" BACKENDS "eigexed" "nested_typed_eigen")
 test("operator_call_1x1" BACKENDS "eigexed" "nested_typed_eigen")
 test("operator_call_1xn_const" BACKENDS "eigexed" "nested_typed_eigen")
@@ -38,6 +37,8 @@ test("operator_call_mx1_const" BACKENDS "eigexed" "nested_typed_eigen")
 test("operator_call_mx1" BACKENDS "eigexed" "nested_typed_eigen")
 test("operator_call_mxn_const" BACKENDS "eigexed" "nested_typed_eigen")
 test("operator_call_mxn" BACKENDS "eigexed" "nested_typed_eigen")
+test("operator_equality" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("operator_literal_mxn" BACKENDS "eigexed" "nested_typed_eigen")
 test("operator_subscript_1x1_const" BACKENDS "eigexed" "nested_typed_eigen")
 test("operator_subscript_1x1" BACKENDS "eigexed" "nested_typed_eigen")
 test("operator_subscript_1xn_const" BACKENDS "eigexed" "nested_typed_eigen")
