@@ -51,12 +51,6 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
 
-namespace index_literals {
-template <char... digit> constexpr auto operator""_i() noexcept {
-  return std::integral_constant<size_t, tla::parse_digits<digit...>()>{};
-}
-} // namespace index_literals
-
 //! @name Concepts
 //! @{
 
@@ -490,6 +484,16 @@ template <typename RowIndexes, typename ColumnIndexes>
 //! @details Also provides support for structured bindings.
 template <int Index>
 decltype(auto) get(one_dimension_typed_matrix auto &&value);
+
+namespace index_literals {
+//! @brief Integer literal operator to compile-time index.
+//!
+//! @details Converts an integer to am integral constant typed index which
+//! permits compile-time indexing for the access operators.
+template <char... Digits> constexpr auto operator""_i() noexcept {
+  return std::integral_constant<size_t, tla::parse_digits<Digits...>()>{};
+}
+} // namespace index_literals
 
 //! @}
 
