@@ -108,8 +108,9 @@ $(function(){initNavTree('namespacefcarouge_1_1index__literals.xhtml',''); initR
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa2376c1b89a3c0540f810de0440e36ec" id="r_aa2376c1b89a3c0540f810de0440e36ec"><td class="memTemplParams" colspan="2">template&lt;char... digit&gt; </td></tr>
+<tr class="memitem:aa2376c1b89a3c0540f810de0440e36ec" id="r_aa2376c1b89a3c0540f810de0440e36ec"><td class="memTemplParams" colspan="2">template&lt;char... Digits&gt; </td></tr>
 <tr class="memitem:aa2376c1b89a3c0540f810de0440e36ec"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aa2376c1b89a3c0540f810de0440e36ec">operator&quot;&quot;_i</a> () noexcept</td></tr>
+<tr class="memdesc:aa2376c1b89a3c0540f810de0440e36ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer literal operator to compile-time index.  <br /></td></tr>
 <tr class="separator:aa2376c1b89a3c0540f810de0440e36ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -119,7 +120,7 @@ Functions</h2></td></tr>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;char... digit&gt; </div>
+template&lt;char... Digits&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -138,20 +139,14 @@ template&lt;char... digit&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00055">55</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   55</span>                                                                {</div>
-<div class="line"><span class="lineno">   56</span>  <span class="keywordflow">return</span> std::integral_constant&lt;size_t, tla::parse_digits&lt;digit...&gt;()&gt;{};</div>
-<div class="line"><span class="lineno">   57</span>}</div>
-</div><!-- fragment -->
-<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00302">fcarouge::typed_linear_algebra_internal::parse_digits()</a>.</p>
-<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1index__literals_aa2376c1b89a3c0540f810de0440e36ec_cgraph.svg" width="368" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<p>Integer literal operator to compile-time index. </p>
+<p>Converts an integer to am integral constant typed index which permits compile-time indexing for the access operators. </p>
 
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00493">493</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  493</span>                                                                 {</div>
+<div class="line"><span class="lineno">  494</span>  <span class="keywordflow">return</span> std::integral_constant&lt;size_t, tla::parse_digits&lt;Digits...&gt;()&gt;{};</div>
+<div class="line"><span class="lineno">  495</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
