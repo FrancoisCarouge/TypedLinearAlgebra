@@ -229,6 +229,12 @@ using row_vector =
   s1.at<0_i>() = 16. * A / mol;
   assert(s1.at<0_i>() == 16. * A / mol);
 
+  s1[0_i] = 15. * A / mol;
+  assert(s1[0_i] == 15. * A / mol);
+
+  s1(0_i) = 14. * A / mol;
+  assert(s1(0_i) == 14. * A / mol);
+
   s1.at() = 3. * A / mol;
   assert(s1.at() == 3. * A / mol);
 

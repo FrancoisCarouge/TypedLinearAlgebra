@@ -289,27 +289,12 @@ public:
   [[nodiscard]] constexpr explicit operator element<>(this auto &&self)
     requires singleton_typed_matrix<typed_matrix>;
 
-  //! @brief Access the specified element with compile-time bounds checking.
-  //!
-  //! @details Returns a strongly typed element at the specified location. A
-  //! reference is returned for non-const calls.
-  //!
-  //! @tparam The first `std::integral_constant<std::size_t>` index type
-  //! @tparam Indexes The other `std::integral_constant<std::size_t>` index
-  //! types.
-  //! @param self Explicit object parameter deducing this: not user specified.
-  //! @param  index The first position of the element to return.
-  //! @param indexes The other positions of the element to return.
-  template <index Index, index... Indexes>
-  [[nodiscard]] constexpr decltype(auto) operator[](this auto &&self, Index,
-                                                    Indexes... indexes)
-    requires(sizeof...(Indexes) + 1 >= rank);
-
   //! @brief Access the specified element.
   //!
-  //! @details Applicable to matrices with identical element types. No bound
-  //! checking. Returns a strongly typed element at the specified location. A
-  //! reference is returned for non-const calls.
+  //! @details Returns a strongly typed element at the specified location. A
+  //! reference is returned for non-const calls. Bound checking is performed for
+  //! compile-time indexes. This access operator cannot exist for heterogeneous
+  //! matrices with runtime indexes.
   //!
   //! @tparam Indexes Type(s) of the indexes. Use a template pack because some
   //! compilers have internal compiler errors with a placeholder type specifier.
@@ -318,30 +303,14 @@ public:
   template <typename... Indexes>
   [[nodiscard]] constexpr decltype(auto) operator[](this auto &&self,
                                                     Indexes... indexes)
-    requires uniform_typed_matrix<typed_matrix> and (sizeof...(Indexes) >= rank)
-  ;
-
-  //! @brief Access the specified element with compile-time bounds checking.
-  //!
-  //! @details Returns a strongly typed element at the specified location. A
-  //! reference is returned for non-const calls.
-  //!
-  //! @tparam The first `std::integral_constant<std::size_t>` index type
-  //! @tparam Indexes The other `std::integral_constant<std::size_t>` index
-  //! types.
-  //! @param self Explicit object parameter deducing this: not user specified.
-  //! @param  index The first position of the element to return.
-  //! @param indexes The other positions of the element to return.
-  template <index Index, index... Indexes>
-  [[nodiscard]] constexpr decltype(auto) operator()(this auto &&self, Index,
-                                                    Indexes... indexes)
-    requires(sizeof...(Indexes) + 1 >= rank);
+    requires(sizeof...(Indexes) >= rank);
 
   //! @brief Access the specified element.
   //!
-  //! @details Applicable to matrices with identical element types. No bound
-  //! checking. Returns a strongly typed element at the specified location. A
-  //! reference is returned for non-const calls.
+  //! @details Returns a strongly typed element at the specified location. A
+  //! reference is returned for non-const calls. Bound checking is performed for
+  //! compile-time indexes. This access operator cannot exist for heterogeneous
+  //! matrices with runtime indexes.
   //!
   //! @tparam Indexes Type(s) of the indexes. Use a template pack because some
   //! compilers have internal compiler errors with a placeholder type specifier.
@@ -350,8 +319,7 @@ public:
   template <typename... Indexes>
   [[nodiscard]] constexpr decltype(auto) operator()(this auto &&self,
                                                     Indexes... indexes)
-    requires uniform_typed_matrix<typed_matrix> and (sizeof...(Indexes) >= rank)
-  ;
+    requires(sizeof...(Indexes) >= rank);
 
   //! @brief Access the specified element with compile-time bound checking.
   //!
