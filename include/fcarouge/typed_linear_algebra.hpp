@@ -99,8 +99,9 @@ concept same_shape = tla::same_shape<Lhs, Rhs>;
 template <typename Type>
 concept other = not tla::same_as_typed_matrix<Type>;
 
+//! @brief Concept of compile-time index.
 template <typename Type>
-concept index = tla::is_integral_constant_t<Type>::value;
+concept index = tla::index<Type>;
 
 //! @}
 
@@ -488,7 +489,7 @@ decltype(auto) get(one_dimension_typed_matrix auto &&value);
 namespace index_literals {
 //! @brief Integer literal operator to compile-time index.
 //!
-//! @details Converts an integer to am integral constant typed index which
+//! @details Converts an integer to an integral constant typed index which
 //! permits compile-time indexing for the access operators.
 template <char... Digits> constexpr auto operator""_i() noexcept {
   return std::integral_constant<size_t, tla::parse_digits<Digits...>()>{};
