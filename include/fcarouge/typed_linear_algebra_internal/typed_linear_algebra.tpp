@@ -191,24 +191,17 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-template <index Index, index... Indexes>
-[[nodiscard]] constexpr decltype(auto)
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
-                                                            Index index,
-                                                            Indexes... indexes)
-  requires(sizeof...(Indexes) + 1 >= rank)
-{
-  return self.template at<index(), (static_cast<size_t>(indexes))...>();
-}
-
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <typename... Indexes>
 [[nodiscard]] constexpr decltype(auto)
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
                                                             Indexes... indexes)
-  requires uniform_typed_matrix<typed_matrix> and (sizeof...(Indexes) >= rank)
+  requires(sizeof...(Indexes) >= rank)
 {
-  return self.operator()(indexes...);
+  if constexpr ((index<Indexes> && ...)) {
+    return self.template at<indexes...>();
+  } else {
+    return self.operator()(indexes...);
+  }
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
