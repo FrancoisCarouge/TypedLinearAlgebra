@@ -118,6 +118,7 @@ using row_vector =
 //! @details A variety of activities of strongly typed linear algebra with Eigen
 //! and mp-units.
 [[maybe_unused]] auto sample{[] {
+  using namespace fcarouge::index_literals;
   using mp_units::si::unit_symbols::m;
   using mp_units::si::unit_symbols::m2;
   using mp_units::si::unit_symbols::s;
@@ -207,6 +208,15 @@ using row_vector =
   s1(0, 0) = 21. * A / mol;
   assert(s1(0, 0) == 21. * A / mol);
 
+  s1.at<0_i, 0_i>() = 26. * A / mol;
+  assert((s1.at<0_i, 0_i>() == 26. * A / mol));
+
+  s1[0_i, 0_i] = 25. * A / mol;
+  assert((s1[0_i, 0_i] == 25. * A / mol));
+
+  s1(0_i, 0_i) = 24. * A / mol;
+  assert(s1(0_i, 0_i) == 24. * A / mol);
+
   s1.at<0>() = 13. * A / mol;
   assert(s1.at<0>() == 13. * A / mol);
 
@@ -215,6 +225,9 @@ using row_vector =
 
   s1(0) = 11. * A / mol;
   assert(s1(0) == 11. * A / mol);
+
+  s1.at<0_i>() = 16. * A / mol;
+  assert(s1.at<0_i>() == 16. * A / mol);
 
   s1.at() = 3. * A / mol;
   assert(s1.at() == 3. * A / mol);
@@ -371,11 +384,9 @@ using row_vector =
   using estimate_uncertainty =
       matrix<std::tuple<position, velocity, acceleration>,
              std::tuple<position, velocity, acceleration>>;
-  using namespace fcarouge::index_literals;
   estimate_uncertainty p;
   p.at<0, 0>() = 500. * m2;
   p.at<1, 1>() = 500. * m2 / s2;
-  p(1_i, 1_i) = 500. * m2 / s2;
   p.at<2, 2>() = 500. * m2 / s4;
   std::println("P: {}", p);
   // P: [[500 m²,     0 m²/s,    0 m²/s²],
