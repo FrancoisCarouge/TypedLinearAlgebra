@@ -29,10 +29,6 @@ cmake --build "build" --config "Debug" --parallel
 ctest --test-dir "build" --build-config "Debug" --output-on-failure --parallel
 ```
 
-## Benchmarks
-
-See the [Benchmark](https://github.com/FrancoisCarouge/TypedLinearAlgebra/tree/master/benchmark) section.
-
 ## Installation Packages
 
 ### Linux
