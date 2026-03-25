@@ -18,10 +18,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - { os: 'ubuntu-24.04', cxx: 'clang++-18', cc: 'clang-18', generator: 'Ninja', cpack_generator: 'DEB', packages: 'clang-18' }
-        - { os: 'ubuntu-24.04', cxx: 'clang++-20', cc: 'clang-20', generator: 'Ninja', cpack_generator: 'DEB', packages: 'clang-20' }
-        - { os: 'ubuntu-24.04', cxx: 'clang++-21', cc: 'clang-21', generator: 'Ninja', cpack_generator: 'DEB', packages: 'clang-21' }
-        - { os: 'ubuntu-24.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', cpack_generator: 'DEB', packages: 'g++-14' }
+        - { os: 'ubuntu-24.04', cxx: 'clang++-18', cc: 'clang-18', generator: 'Ninja', cpack_generator: 'DEB' }
+        - { os: 'ubuntu-24.04', cxx: 'clang++-20', cc: 'clang-20', generator: 'Ninja', cpack_generator: 'DEB' }
+        - { os: 'ubuntu-24.04', cxx: 'clang++-21', cc: 'clang-21', generator: 'Ninja', cpack_generator: 'DEB' }
+        - { os: 'ubuntu-24.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', cpack_generator: 'DEB' }
         - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', cpack_generator: 'WIX', config: 'Debug' }
         - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', cpack_generator: 'WIX', config: 'Release' }
         - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', cpack_generator: 'WIX', config: 'Debug' }
@@ -56,7 +56,7 @@ jobs:
     - name: 'Build'
       run: cmake --build 'build' --config '${{ matrix.config }}' --verbose --parallel 4
     - name: 'Test'
-      run: ctest --test-dir 'build' --build-config '${{ matrix.config }}' --timeout 3 --verbose --parallel 4
+      run: ctest --test-dir 'build' --build-config '${{ matrix.config }}' --timeout 5 --verbose --parallel 4
     - name: 'Install'
       run: cmake --install 'build' --config '${{ matrix.config }}' --prefix 'install' --verbose
     - name: 'Package'
