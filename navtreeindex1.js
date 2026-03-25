@@ -41,12 +41,11 @@ var NAVTREEINDEX1 =
 "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#requesting-features":[9,2],
 "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#security-policy":[9,3],
 "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml":[14],
-"md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#benchmarks":[14,0,1],
 "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run":[14,0],
-"md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#installation-packages":[14,0,2],
-"md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#linux":[14,0,2,0],
+"md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#installation-packages":[14,0,1],
+"md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#linux":[14,0,1,0],
 "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#tests":[14,0,0],
-"md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#windows":[14,0,2,1],
+"md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#windows":[14,0,1,1],
 "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml":[15],
 "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#reporting-a-vulnerability":[15,1],
 "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#supported-versions":[15,0],
@@ -249,5 +248,6 @@ var NAVTREEINDEX1 =
 "namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__call__mx1_8cpp_03.xhtml":[18,0,1,4,35],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__call__mx1_8cpp_03.xhtml#a6e96fddb9744b388956890762de37b3c":[18,0,1,4,35,0],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__call__mx1__const_8cpp_03.xhtml":[18,0,1,4,36],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__call__mx1__const_8cpp_03.xhtml#a4d9c0c33950433b565cb22fb2bfad2da":[18,0,1,4,36,0]
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__call__mx1__const_8cpp_03.xhtml#a4d9c0c33950433b565cb22fb2bfad2da":[18,0,1,4,36,0],
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__call__mxn_8cpp_03.xhtml":[18,0,1,4,37]
 };

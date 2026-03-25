@@ -102,7 +102,6 @@ var NAVTREE =
     [ "Installation", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml", [
       [ "Development Build & Run", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run", [
         [ "Tests", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#tests", null ],
-        [ "Benchmarks", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#benchmarks", null ],
         [ "Installation Packages", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#installation-packages", [
           [ "Linux", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#linux", null ],
           [ "Windows", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#windows", null ]
@@ -151,8 +150,8 @@ var NAVTREEINDEX =
 [
 "addition_8cpp.xhtml",
 "index.xhtml#aliases",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__call__mxn_8cpp_03.xhtml",
-"unit_8hpp.xhtml#a5a8a206bd21b1225ecfea4798c26d775"
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__call__mxn_8cpp_03.xhtml#a49540ac0849cb2262e64b631e88067e6",
+"unit_8hpp.xhtml#a9b124da26de87a5e94ff3b815915769f"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
