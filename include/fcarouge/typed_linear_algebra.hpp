@@ -303,7 +303,8 @@ public:
   template <typename... Indexes>
   [[nodiscard]] constexpr decltype(auto) operator[](this auto &&self,
                                                     Indexes... indexes)
-    requires(sizeof...(Indexes) >= rank);
+    requires(sizeof...(Indexes) >= rank) and
+            ((index<Indexes> && ...) or uniform_typed_matrix<typed_matrix>);
 
   //! @brief Access the specified element.
   //!
@@ -319,7 +320,8 @@ public:
   template <typename... Indexes>
   [[nodiscard]] constexpr decltype(auto) operator()(this auto &&self,
                                                     Indexes... indexes)
-    requires(sizeof...(Indexes) >= rank);
+    requires(sizeof...(Indexes) >= rank) and
+            ((index<Indexes> && ...) or uniform_typed_matrix<typed_matrix>);
 
   //! @brief Access the specified element with compile-time bound checking.
   //!
