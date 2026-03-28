@@ -29,21 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-if(NOT BUILD_TESTING)
-  return()
-endif()
-
-add_subdirectory("addition")
-add_subdirectory("assign")
-add_subdirectory("at")
-add_subdirectory("constructor")
-add_subdirectory("element")
-add_subdirectory("format")
-add_subdirectory("multiplication")
-add_subdirectory("operator")
-add_subdirectory("structured_bindings")
-add_subdirectory("transposed")
-
-test("copy" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-test("nested" BACKENDS "nested_typed_eigen")
-test("underlying" BACKENDS "eigexed" "nested_typed_eigen")
+test("format_1x1" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("format_1xn" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("format_mx1" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("format_mxn" BACKENDS "eigen" "eigexed" "nested_typed_eigen")

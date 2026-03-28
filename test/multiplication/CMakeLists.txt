@@ -1,4 +1,4 @@
-/* Typed Linear Algebra
+#[[ Typed Linear Algebra
 Version 0.2.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,29 +27,9 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> */
+For more information, please refer to <https://unlicense.org> ]]
 
-#include "fcarouge/linalg.hpp"
-
-#include <cassert>
-
-namespace fcarouge::test {
-namespace {
-//! @test Verifies the zero matrices values are null.
-[[maybe_unused]] auto test{[] {
-  const matrix<double, 3, 3> z{{0., 0., 0.}, {0., 0., 0.}, {0., 0., 0.}};
-
-  assert(z(0, 0) == 0.);
-  assert(z(0, 1) == 0.);
-  assert(z(0, 2) == 0.);
-  assert(z(1, 0) == 0.);
-  assert(z(1, 1) == 0.);
-  assert(z(1, 2) == 0.);
-  assert(z(2, 0) == 0.);
-  assert(z(2, 1) == 0.);
-  assert(z(2, 2) == 0.);
-
-  return 0;
-}()};
-} // namespace
-} // namespace fcarouge::test
+test("multiplication_arithmetic" BACKENDS "eigen" "eigexed"
+     "nested_typed_eigen")
+test("multiplication_rxc" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("multiplication_sxc" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
