@@ -83,6 +83,8 @@ struct element_caster<To, From> {
   [[nodiscard]] constexpr To operator()(From) const { return 1.; }
 };
 
+using index_literals::operator""_i;
+
 namespace sample {
 namespace {
 // Set up heterogenously unit typed linear algebra types.
@@ -118,7 +120,6 @@ using row_vector =
 //! @details A variety of activities of strongly typed linear algebra with Eigen
 //! and mp-units.
 [[maybe_unused]] auto sample{[] {
-  using namespace fcarouge::index_literals;
   using mp_units::si::unit_symbols::m;
   using mp_units::si::unit_symbols::m2;
   using mp_units::si::unit_symbols::s;
