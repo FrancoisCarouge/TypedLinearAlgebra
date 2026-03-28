@@ -135,7 +135,7 @@ using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
 // Set up a heterogenous column vector type for the sample.
 using state = column_vector<position, velocity, acceleration>;
 
-using index_literals::operator""_i;
+using literals::operator""_i;
 
 //! @brief Strongly typed linear algebra samples.
 //!
