@@ -29,7 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-test("format_1x1" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-test("format_1xn" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-test("format_mx1" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-test("format_mxn" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("1x1" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("1xn" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("mx1" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("mxn" BACKENDS "eigen" "eigexed" "nested_typed_eigen")

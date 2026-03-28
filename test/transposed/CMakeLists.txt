@@ -29,5 +29,5 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-test("transposed_1xn_std_unit" BACKENDS "quantity_std")
-test("transposed_1x1_std_unit" BACKENDS "quantity_std")
+test("1xn_std_unit" BACKENDS "quantity_std")
+test("1x1_std_unit" BACKENDS "quantity_std")

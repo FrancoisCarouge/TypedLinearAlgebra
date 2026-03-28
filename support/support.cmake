@@ -40,18 +40,23 @@ function(test TEST_NAME)
   cmake_parse_arguments(PARSE_ARGV 0 TEST "" "${oneValueArgs}"
                         "${multiValueArgs}")
 
+  get_filename_component(CALLER "${CMAKE_PARENT_LIST_FILE}" DIRECTORY)
+  get_filename_component(CALLER "${CALLER}" NAME)
+
   foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
-    add_executable(typed_linear_algebra_test_${BACKEND}_${TEST_NAME}_driver
-                   "${TEST_NAME}.cpp")
+    add_executable(
+      typed_linear_algebra_test_${BACKEND}_${CALLER}_${TEST_NAME}_driver
+      "${TEST_NAME}.cpp")
     target_link_libraries(
-      typed_linear_algebra_test_${BACKEND}_${TEST_NAME}_driver
+      typed_linear_algebra_test_${BACKEND}_${CALLER}_${TEST_NAME}_driver
       PRIVATE typed_linear_algebra_options typed_linear_algebra_main
               typed_linear_algebra_${BACKEND})
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(
-      NAME typed_linear_algebra_test_${BACKEND}_${TEST_NAME}
+      NAME typed_linear_algebra_test_${BACKEND}_${CALLER}_${TEST_NAME}
       COMMAND
         ${TEST_COMMAND}
-        $<TARGET_FILE:typed_linear_algebra_test_${BACKEND}_${TEST_NAME}_driver>)
+        $<TARGET_FILE:typed_linear_algebra_test_${BACKEND}_${CALLER}_${TEST_NAME}_driver>
+    )
   endforeach()
 endfunction(test)
