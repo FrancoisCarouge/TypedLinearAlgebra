@@ -50,6 +50,7 @@ using mp_units::si::unit_symbols::A;
 using mp_units::si::unit_symbols::deg_C;
 using mp_units::si::unit_symbols::m;
 using mp_units::si::unit_symbols::m2;
+using mp_units::si::unit_symbols::m3;
 using mp_units::si::unit_symbols::N;
 using mp_units::si::unit_symbols::s;
 using mp_units::si::unit_symbols::s2;
