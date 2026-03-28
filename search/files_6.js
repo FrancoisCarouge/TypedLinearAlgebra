@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['license_2etxt_0',['LICENSE.txt',['../_l_i_c_e_n_s_e_8txt.xhtml',1,'']]],
-  ['linalg_2ehpp_1',['linalg.hpp',['../eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../eigexed_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../nested__typed__eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../quantity__eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../quantity__std_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)']]]
+  ['initializer_5flists_2ecpp_0',['initializer_lists.cpp',['../initializer__lists_8cpp.xhtml',1,'']]],
+  ['install_2emd_1',['INSTALL.md',['../_i_n_s_t_a_l_l_8md.xhtml',1,'']]]
 ];

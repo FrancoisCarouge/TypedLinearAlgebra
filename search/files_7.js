@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['main_2ecpp_0',['main.cpp',['../main_8cpp.xhtml',1,'']]],
-  ['mp_5funits_5feigen_2ecpp_1',['mp_units_eigen.cpp',['../mp__units__eigen_8cpp.xhtml',1,'']]],
-  ['mp_5funits_5feigen_2emd_2',['mp_units_eigen.md',['../mp__units__eigen_8md.xhtml',1,'']]],
-  ['mp_5funits_5fstd_2ecpp_3',['mp_units_std.cpp',['../mp__units__std_8cpp.xhtml',1,'']]],
-  ['multiplication_5farithmetic_2ecpp_4',['multiplication_arithmetic.cpp',['../multiplication__arithmetic_8cpp.xhtml',1,'']]],
-  ['multiplication_5frxc_2ecpp_5',['multiplication_rxc.cpp',['../multiplication__rxc_8cpp.xhtml',1,'']]],
-  ['multiplication_5fsxc_2ecpp_6',['multiplication_sxc.cpp',['../multiplication__sxc_8cpp.xhtml',1,'']]]
+  ['license_2etxt_0',['LICENSE.txt',['../_l_i_c_e_n_s_e_8txt.xhtml',1,'']]],
+  ['linalg_2ehpp_1',['linalg.hpp',['../eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../eigexed_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../nested__typed__eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../quantity__eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../quantity__std_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)']]],
+  ['literal_5fmxn_2ecpp_2',['literal_mxn.cpp',['../literal__mxn_8cpp.xhtml',1,'']]]
 ];

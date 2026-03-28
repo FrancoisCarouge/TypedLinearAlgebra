@@ -10,7 +10,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "operator", "dir_ad90eb67f5c466639c693c5233f213d0.xhtml", "dir_ad90eb67f5c466639c693c5233f213d0" ],
     [ "structured_bindings", "dir_bb833da45de611d79770d70c20939231.xhtml", "dir_bb833da45de611d79770d70c20939231" ],
     [ "transposed", "dir_1a6ddf7e0d22624ef70b722ca0f63316.xhtml", "dir_1a6ddf7e0d22624ef70b722ca0f63316" ],
-    [ "copy.cpp", "copy_8cpp.xhtml", "copy_8cpp" ],
+    [ "copy.cpp", "copy_8cpp.xhtml", null ],
     [ "nested.cpp", "nested_8cpp.xhtml", "nested_8cpp" ],
     [ "underlying.cpp", "underlying_8cpp.xhtml", "underlying_8cpp" ]
 ];

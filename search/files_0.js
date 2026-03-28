@@ -1,13 +1,12 @@
 var searchData=
 [
-  ['addition_2ecpp_0',['addition.cpp',['../addition_8cpp.xhtml',1,'']]],
-  ['assign_2ecpp_1',['assign.cpp',['../assign_8cpp.xhtml',1,'']]],
-  ['at_5f1x1_2ecpp_2',['at_1x1.cpp',['../at__1x1_8cpp.xhtml',1,'']]],
-  ['at_5f1x1_5fconst_2ecpp_3',['at_1x1_const.cpp',['../at__1x1__const_8cpp.xhtml',1,'']]],
-  ['at_5f1xn_2ecpp_4',['at_1xn.cpp',['../at__1xn_8cpp.xhtml',1,'']]],
-  ['at_5f1xn_5fconst_2ecpp_5',['at_1xn_const.cpp',['../at__1xn__const_8cpp.xhtml',1,'']]],
-  ['at_5fmx1_2ecpp_6',['at_mx1.cpp',['../at__mx1_8cpp.xhtml',1,'']]],
-  ['at_5fmx1_5fconst_2ecpp_7',['at_mx1_const.cpp',['../at__mx1__const_8cpp.xhtml',1,'']]],
-  ['at_5fmxn_2ecpp_8',['at_mxn.cpp',['../at__mxn_8cpp.xhtml',1,'']]],
-  ['at_5fmxn_5fconst_2ecpp_9',['at_mxn_const.cpp',['../at__mxn__const_8cpp.xhtml',1,'']]]
+  ['1x1_2ecpp_0',['1x1.cpp',['../at_21x1_8cpp.xhtml',1,'(Global Namespace)'],['../constructor_21x1_8cpp.xhtml',1,'(Global Namespace)'],['../element_21x1_8cpp.xhtml',1,'(Global Namespace)'],['../format_21x1_8cpp.xhtml',1,'(Global Namespace)'],['../structured__bindings_21x1_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['1x1_5farray_2ecpp_1',['1x1_array.cpp',['../1x1__array_8cpp.xhtml',1,'']]],
+  ['1x1_5fconst_2ecpp_2',['1x1_const.cpp',['../at_21x1__const_8cpp.xhtml',1,'(Global Namespace)'],['../structured__bindings_21x1__const_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['1x1_5fstd_5funit_2ecpp_3',['1x1_std_unit.cpp',['../1x1__std__unit_8cpp.xhtml',1,'']]],
+  ['1x1_5funit_2ecpp_4',['1x1_unit.cpp',['../1x1__unit_8cpp.xhtml',1,'']]],
+  ['1xn_2ecpp_5',['1xn.cpp',['../at_21xn_8cpp.xhtml',1,'(Global Namespace)'],['../constructor_21xn_8cpp.xhtml',1,'(Global Namespace)'],['../format_21xn_8cpp.xhtml',1,'(Global Namespace)'],['../structured__bindings_21xn_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['1xn_5farray_2ecpp_6',['1xn_array.cpp',['../1xn__array_8cpp.xhtml',1,'']]],
+  ['1xn_5fconst_2ecpp_7',['1xn_const.cpp',['../at_21xn__const_8cpp.xhtml',1,'(Global Namespace)'],['../structured__bindings_21xn__const_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['1xn_5fstd_5funit_2ecpp_8',['1xn_std_unit.cpp',['../1xn__std__unit_8cpp.xhtml',1,'']]]
 ];
