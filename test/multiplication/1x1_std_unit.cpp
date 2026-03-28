@@ -34,14 +34,49 @@ For more information, please refer to <https://unlicense.org> */
 #include <cassert>
 
 namespace fcarouge::test {
-namespace {
-//! @test Verifies the row by column matrix multiplication operator.
-[[maybe_unused]] auto test{[] {
-  const matrix<double, 1, 2> a{1., 2.};
-  const matrix<double, 2, 1> b{3., 4.};
-  const matrix<double, 1, 1> r{a * b};
+using index_literals::operator""_i;
+using representation = double;
 
-  assert(r(0, 0) == 11.);
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+
+namespace {
+//! @test Verifies the singleton by singleton matrix multiplication operator.
+[[maybe_unused]] auto test{[] {
+  using length = quantity<mp_units::isq::length[m]>;
+  using area = quantity<mp_units::isq::area[m2]>;
+
+  double storage_a{0.};
+  double storage_b{0.};
+  double storage_c{0.};
+
+  std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
+  std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
+  std::mdspan span_c{&storage_c, std::extents<std::size_t, 1, 1>{}};
+
+  row_vector<representation, length> a{span_a};
+  row_vector<representation, length> b{span_b};
+  row_vector<representation, area> r{span_c};
+
+  a = 2. * m;
+  b = 3. * m;
+  r = a * b;
+
+  assert((6. * m2 == r(0, 0)));
+  assert((6. * m2 == r[0, 0]));
+  assert((6. * m2 == r.at<0, 0>()));
+  assert((6. * m2 == r(0_i, 0_i)));
+  assert((6. * m2 == r[0_i, 0_i]));
+  assert((6. * m2 == r.at<0_i, 0_i>()));
+  assert((6. * m2 == r(0)));
+  assert((6. * m2 == r[0]));
+  assert((6. * m2 == r.at<0>()));
+  assert((6. * m2 == r(0_i)));
+  assert((6. * m2 == r[0_i]));
+  assert((6. * m2 == r.at<0_i>()));
+  assert((6. * m2 == r()));
+  assert((6. * m2 == r));
+  assert((6. * m2 == r.at()));
 
   return 0;
 }()};

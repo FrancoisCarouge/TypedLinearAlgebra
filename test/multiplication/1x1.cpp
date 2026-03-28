@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.2.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,11 +27,39 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-test("arithmetic" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-test("rxc" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-test("1x1" BACKENDS "eigexed" "nested_typed_eigen")
-test("1x1_eigen_unit" BACKENDS "quantity_eigen")
-test("1x1_std_unit" BACKENDS "quantity_std")
-test("sxc" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+#include "fcarouge/linalg.hpp"
+
+#include <cassert>
+
+namespace fcarouge::test {
+using index_literals::operator""_i;
+
+namespace {
+//! @test Verifies the singleton by singleton matrix multiplication operator.
+[[maybe_unused]] auto test{[] {
+  const matrix<double, 1, 1> a{2.};
+  const matrix<double, 1, 1> b{3.};
+  const matrix<double, 1, 1> r{a * b};
+
+  assert((6. == r(0, 0)));
+  assert((6. == r[0, 0]));
+  assert((6. == r.at<0, 0>()));
+  assert((6. == r(0_i, 0_i)));
+  assert((6. == r[0_i, 0_i]));
+  assert((6. == r.at<0_i, 0_i>()));
+  assert((6. == r(0)));
+  assert((6. == r[0]));
+  assert((6. == r.at<0>()));
+  assert((6. == r(0_i)));
+  assert((6. == r[0_i]));
+  assert((6. == r.at<0_i>()));
+  assert((6. == r()));
+  assert((6. == r));
+  assert((6. == r.at()));
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

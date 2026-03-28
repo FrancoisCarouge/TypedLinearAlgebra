@@ -35,7 +35,7 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the assignment operator.
+//! @test Verifies the square by column matrix multiplication operator.
 [[maybe_unused]] auto test{[] {
   const matrix<double, 2, 2> a{{1., 2.}, {3., 4.}};
   const matrix<double, 2, 1> b{3., 4.};
