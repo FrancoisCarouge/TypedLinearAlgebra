@@ -369,16 +369,16 @@ using row_vector =
   //! @todo Inner product of tensor and vector: a ⋅ b.
   //! @todo Scalar product of two tensors: a : b.
   //! @todo Further compatibility with STL/Ranges/std::linalg: sum_v=accumulate(
-  //! v.cbegin()+1,v.cend()-1,0.0)
-  //! @todo prod_v=accumulate(v.cbegin(),v.cend(),1.0,std::multiplies<float>())
+  //! v.cbegin()+1,v.cend()-1,0.)
+  //! @todo prod_v=accumulate(v.cbegin(),v.cend(),1.,std::multiplies<float>())
   //! @todo is_all_zero=std::ranges::all_of(v,[](floatf){returnf==0;})
-  //! @todo count_v=std::ranges::count_if(v,[](floatf){returnf>5.0;})
+  //! @todo count_v=std::ranges::count_if(v,[](floatf){returnf>5.;})
   //! @todo max_v=*std::ranges::max_element(v)
-  //! @todo std::ranges::fill(v,5.0)
+  //! @todo std::ranges::fill(v,5.)
   //! @todo std::ranges::copy(v,w.begin())
-  //! @todo std::ranges::copy_if(v,w.begin(),[](floatf){returnf>5.0;})
-  //! @todo std::ranges::transform(v,w.begin(),[](floatf){returnf+1.0;})
-  //! @todo x=inner_product(v.cbegin(),v.cend(),w.begin(),0.0)
+  //! @todo std::ranges::copy_if(v,w.begin(),[](floatf){returnf>5.;})
+  //! @todo std::ranges::transform(v,w.begin(),[](floatf){returnf+1.;})
+  //! @todo x=inner_product(v.cbegin(),v.cend(),w.begin(),0.)
 
   // 1-D vehicle location Kalman estimation.
   state x{0. * m, 0. * m / s, 0. * m / s2};

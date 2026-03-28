@@ -39,11 +39,11 @@ namespace {
 //!
 //! @todo Also test this edge case converts to the underlying type.
 [[maybe_unused]] auto test{[] {
-  const matrix<double, 1, 2> a{1.0, 2.0};
-  const matrix<double, 2, 1> b{3.0, 4.0};
+  const matrix<double, 1, 2> a{1., 2.};
+  const matrix<double, 2, 1> b{3., 4.};
   const matrix<double, 1, 1> r{a * b};
 
-  assert(r(0, 0) == 11.0);
+  assert(r(0, 0) == 11.);
 
   return 0;
 }()};

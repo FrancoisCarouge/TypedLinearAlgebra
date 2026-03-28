@@ -39,15 +39,15 @@ namespace {
 [[maybe_unused]] auto test{[] {
   const matrix<double, 3, 3> i{{1., 0., 0.}, {0., 1., 0.}, {0., 0., 1.}};
 
-  assert(i(0, 0) == 1.0);
-  assert(i(0, 1) == 0.0);
-  assert(i(0, 2) == 0.0);
-  assert(i(1, 0) == 0.0);
-  assert(i(1, 1) == 1.0);
-  assert(i(1, 2) == 0.0);
-  assert(i(2, 0) == 0.0);
-  assert(i(2, 1) == 0.0);
-  assert(i(2, 2) == 1.0);
+  assert(i(0, 0) == 1.);
+  assert(i(0, 1) == 0.);
+  assert(i(0, 2) == 0.);
+  assert(i(1, 0) == 0.);
+  assert(i(1, 1) == 1.);
+  assert(i(1, 2) == 0.);
+  assert(i(2, 0) == 0.);
+  assert(i(2, 1) == 0.);
+  assert(i(2, 2) == 1.);
 
   return 0;
 }()};

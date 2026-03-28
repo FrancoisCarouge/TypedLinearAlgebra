@@ -37,13 +37,13 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the scalar multiplication operator.
 [[maybe_unused]] auto test{[] {
-  const matrix<double, 2, 2> a{{1.0, 2.0}, {3.0, 4.0}};
-  const matrix<double, 2, 2> r{a * 2.0};
+  const matrix<double, 2, 2> a{{1., 2.}, {3., 4.}};
+  const matrix<double, 2, 2> r{a * 2.};
 
-  assert(r(0, 0) == 2.0);
-  assert(r(0, 1) == 4.0);
-  assert(r(1, 0) == 6.0);
-  assert(r(1, 1) == 8.0);
+  assert(r(0, 0) == 2.);
+  assert(r(0, 1) == 4.);
+  assert(r(1, 0) == 6.);
+  assert(r(1, 1) == 8.);
 
   return 0;
 }()};
