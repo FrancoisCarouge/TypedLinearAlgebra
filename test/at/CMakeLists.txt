@@ -29,11 +29,11 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-test("at_1x1_const" BACKENDS "eigexed" "nested_typed_eigen")
-test("at_1x1" BACKENDS "eigexed" "nested_typed_eigen")
-test("at_1xn_const" BACKENDS "eigexed" "nested_typed_eigen")
-test("at_1xn" BACKENDS "eigexed" "nested_typed_eigen")
-test("at_mx1_const" BACKENDS "eigexed" "nested_typed_eigen")
-test("at_mx1" BACKENDS "eigexed" "nested_typed_eigen")
-test("at_mxn_const" BACKENDS "eigexed" "nested_typed_eigen")
-test("at_mxn" BACKENDS "eigexed" "nested_typed_eigen")
+test("1x1_const" BACKENDS "eigexed" "nested_typed_eigen")
+test("1x1" BACKENDS "eigexed" "nested_typed_eigen")
+test("1xn_const" BACKENDS "eigexed" "nested_typed_eigen")
+test("1xn" BACKENDS "eigexed" "nested_typed_eigen")
+test("mx1_const" BACKENDS "eigexed" "nested_typed_eigen")
+test("mx1" BACKENDS "eigexed" "nested_typed_eigen")
+test("mxn_const" BACKENDS "eigexed" "nested_typed_eigen")
+test("mxn" BACKENDS "eigexed" "nested_typed_eigen")

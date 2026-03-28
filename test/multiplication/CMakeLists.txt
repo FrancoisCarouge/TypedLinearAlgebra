@@ -29,7 +29,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-test("multiplication_arithmetic" BACKENDS "eigen" "eigexed"
-     "nested_typed_eigen")
-test("multiplication_rxc" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-test("multiplication_sxc" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("arithmetic" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("rxc" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("sxc" BACKENDS "eigen" "eigexed" "nested_typed_eigen")

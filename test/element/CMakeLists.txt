@@ -29,5 +29,5 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-test("element_1x1" BACKENDS "quantity_eigen")
-test("element_mxn" BACKENDS "quantity_eigen")
+test("1x1" BACKENDS "quantity_eigen")
+test("mxn" BACKENDS "quantity_eigen")

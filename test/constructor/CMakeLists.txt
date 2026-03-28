@@ -29,13 +29,12 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-test("constructor_1x1_array" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-test("constructor_1x1_unit" BACKENDS "quantity_eigen")
-test("constructor_1x1" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-test("constructor_1xn_array" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-test("constructor_1xn" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-test("constructor_copy" BACKENDS "eigexed" "nested_typed_eigen")
-test("constructor_initializer_lists" BACKENDS "eigen" "eigexed"
-     "nested_typed_eigen")
-test("constructor_nx1_array" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-test("constructor_nx1" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("1x1_array" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("1x1_unit" BACKENDS "quantity_eigen")
+test("1x1" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("1xn_array" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("1xn" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("copy" BACKENDS "eigexed" "nested_typed_eigen")
+test("initializer_lists" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("nx1_array" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+test("nx1" BACKENDS "eigen" "eigexed" "nested_typed_eigen")

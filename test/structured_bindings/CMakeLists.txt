@@ -29,9 +29,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-test("structured_bindings_1x1_const" BACKENDS "eigen" "eigexed")
-test("structured_bindings_1x1" BACKENDS "eigen" "eigexed")
-test("structured_bindings_1xn_const" BACKENDS "eigen" "eigexed")
-test("structured_bindings_1xn" BACKENDS "eigen" "eigexed")
-test("structured_bindings_mx1_const" BACKENDS "eigen" "eigexed")
-test("structured_bindings_mx1" BACKENDS "eigen" "eigexed")
+test("1x1_const" BACKENDS "eigen" "eigexed")
+test("1x1" BACKENDS "eigen" "eigexed")
+test("1xn_const" BACKENDS "eigen" "eigexed")
+test("1xn" BACKENDS "eigen" "eigexed")
+test("mx1_const" BACKENDS "eigen" "eigexed")
+test("mx1" BACKENDS "eigen" "eigexed")
