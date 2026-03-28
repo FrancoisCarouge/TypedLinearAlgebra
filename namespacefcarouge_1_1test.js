@@ -118,6 +118,9 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{operator_equality.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__equality_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__equality_8cpp_03.xhtml#aa4f5c1315941f0ebe0e5ae429b293796", null ]
     ] ],
+    [ "anonymous_namespace{operator_literal_mxn.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__literal__mxn_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__literal__mxn_8cpp_03.xhtml#a6146a49dd11eda3534e295d9d9dc43e8", null ]
+    ] ],
     [ "anonymous_namespace{operator_subscript_1x1.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__subscript__1x1_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__subscript__1x1_8cpp_03.xhtml#a0251634996161d423e46bc1e0b2f3079", null ]
     ] ],
