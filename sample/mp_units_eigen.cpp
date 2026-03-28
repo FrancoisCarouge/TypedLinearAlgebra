@@ -86,8 +86,6 @@ struct element_caster<To, From> {
   }
 };
 
-using index_literals::operator""_i;
-
 namespace sample {
 namespace {
 // Set up heterogenously unit typed linear algebra types.
@@ -118,25 +116,32 @@ using row_vector =
     typed_row_vector<Eigen::RowVector<representation, sizeof...(Types)>,
                      Types...>;
 
+// Expose a few mp-units types and unit symbols.
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::m2;
+using mp_units::si::unit_symbols::s;
+using mp_units::si::unit_symbols::s2;
+using mp_units::si::unit_symbols::s3;
+constexpr auto s4{pow<4>(s)};
+using mp_units::one;
+using mp_units::si::unit_symbols::A;
+using mp_units::si::unit_symbols::mol;
+
+// Shorten some mp-units quantities.
+using position = quantity<mp_units::isq::length[m]>;
+using velocity = quantity<mp_units::isq::velocity[m / s]>;
+using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
+
+// Set up a heterogenous column vector type for the sample.
+using state = column_vector<position, velocity, acceleration>;
+
+using index_literals::operator""_i;
+
 //! @brief Strongly typed linear algebra samples.
 //!
 //! @details A variety of activities of strongly typed linear algebra with Eigen
 //! and mp-units.
 [[maybe_unused]] auto sample{[] {
-  using mp_units::si::unit_symbols::m;
-  using mp_units::si::unit_symbols::m2;
-  using mp_units::si::unit_symbols::s;
-  using mp_units::si::unit_symbols::s2;
-  using mp_units::si::unit_symbols::s3;
-  constexpr auto s4{pow<4>(s)};
-  using mp_units::one;
-  using mp_units::si::unit_symbols::A;
-  using mp_units::si::unit_symbols::mol;
-  using position = quantity<mp_units::isq::length[m]>;
-  using velocity = quantity<mp_units::isq::velocity[m / s]>;
-  using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
-  using state = column_vector<position, velocity, acceleration>;
-
   // Column-vector declaration.
   state x0{3. * m, 2. * m / s, 1. * m / s2};
 

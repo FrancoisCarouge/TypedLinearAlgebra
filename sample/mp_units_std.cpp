@@ -135,24 +135,29 @@ constexpr std::size_t extents_size{[] {
   return size;
 }()};
 
+// Expose a few mp-units types and unit symbols.
+using mp_units::one;
+using mp_units::si::unit_symbols::A;
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::m2;
+using mp_units::si::unit_symbols::mol;
+using mp_units::si::unit_symbols::s;
+using mp_units::si::unit_symbols::s2;
+using mp_units::si::unit_symbols::s3;
+
+// Shorten some mp-units quantities.
+using position = quantity<mp_units::isq::length[m]>;
+using velocity = quantity<mp_units::isq::velocity[m / s]>;
+using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
+
+// Set up a heterogenous column vector type.
+using state = column_vector<position, velocity, acceleration>;
+
 //! @brief Strongly typed linear algebra samples.
 //!
 //! @details A variety of activities of strongly typed linear algebra with
 //! std::mdspan, std::linalg, and mp-units.
 [[maybe_unused]] auto sample{[] {
-  using mp_units::si::unit_symbols::m;
-  using mp_units::si::unit_symbols::m2;
-  using mp_units::si::unit_symbols::s;
-  using mp_units::si::unit_symbols::s2;
-  using mp_units::si::unit_symbols::s3;
-  using mp_units::one;
-  using mp_units::si::unit_symbols::A;
-  using mp_units::si::unit_symbols::mol;
-  using position = quantity<mp_units::isq::length[m]>;
-  using velocity = quantity<mp_units::isq::velocity[m / s]>;
-  using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
-  using state = column_vector<position, velocity, acceleration>;
-
   std::vector v0(extents_size<column_extents<3>>, representation{});
   std::mdspan s0{v0.data(), column_extents<3>{}};
   state x0{s0};
