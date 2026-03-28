@@ -35,19 +35,40 @@ For more information, please refer to <https://unlicense.org> */
 #include <tuple>
 
 namespace fcarouge::test {
+using index_literals::operator""_i;
+using representation = double;
+
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+
 namespace {
 //! @test Verifies the initializer lists constructor.
 [[maybe_unused]] auto test{[] {
-  const matrix<double, std::tuple<decltype(1. * s)>,
-               std::tuple<decltype(1. * s)>>
-      n{42. * s2};
+  using length = quantity<mp_units::isq::length[m]>;
 
-  assert(n(0, 0) == 42. * s2);
+  const matrix<representation, std::tuple<length>, std::tuple<length>> r{42. *
+                                                                         m2};
+
+  assert((42. * m2 == r(0, 0)));
+  assert((42. * m2 == r[0, 0]));
+  assert((42. * m2 == r.at<0, 0>()));
+  assert((42. * m2 == r(0_i, 0_i)));
+  assert((42. * m2 == r[0_i, 0_i]));
+  assert((42. * m2 == r.at<0_i, 0_i>()));
+  assert((42. * m2 == r(0)));
+  assert((42. * m2 == r[0]));
+  assert((42. * m2 == r.at<0>()));
+  assert((42. * m2 == r(0_i)));
+  assert((42. * m2 == r[0_i]));
+  assert((42. * m2 == r.at<0_i>()));
+  assert((42. * m2 == r()));
+  assert((42. * m2 == r));
+  assert((42. * m2 == r.at()));
 
   static_assert(
-      not std::is_constructible_v<matrix<double, std::tuple<decltype(1. * s)>,
-                                         std::tuple<decltype(1. * s)>>,
-                                  decltype(1. * s3)>,
+      not std::is_constructible_v<
+          matrix<double, std::tuple<length>, std::tuple<length>>,
+          decltype(1. * m3)>,
       "The copy conversion constructor cannot accept non-convertible types.");
 
   return 0;

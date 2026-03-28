@@ -34,12 +34,28 @@ For more information, please refer to <https://unlicense.org> */
 #include <cassert>
 
 namespace fcarouge::test {
+using index_literals::operator""_i;
+
 namespace {
 //! @test Verifies the initializer lists constructor.
 [[maybe_unused]] auto test{[] {
-  const matrix<double, 1, 1> m{42.};
+  const matrix<double, 1, 1> r{42.};
 
-  assert(m(0, 0) == 42.);
+  assert((42. == r(0, 0)));
+  assert((42. == r[0, 0]));
+  assert((42. == r.at<0, 0>()));
+  assert((42. == r(0_i, 0_i)));
+  assert((42. == r[0_i, 0_i]));
+  assert((42. == r.at<0_i, 0_i>()));
+  assert((42. == r(0)));
+  assert((42. == r[0]));
+  assert((42. == r.at<0>()));
+  assert((42. == r(0_i)));
+  assert((42. == r[0_i]));
+  assert((42. == r.at<0_i>()));
+  assert((42. == r()));
+  assert((42. == r));
+  assert((42. == r.at()));
 
   return 0;
 }()};
