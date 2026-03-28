@@ -9,6 +9,9 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{1x1_const.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__const_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__const_8cpp_03.xhtml#ad47364907666836e3a0be1d7bfd11a98", null ]
     ] ],
+    [ "anonymous_namespace{1x1_eigen_unit.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__eigen__unit_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__eigen__unit_8cpp_03.xhtml#adb017cc58a4e4dcf6587d79c0d01cead", null ]
+    ] ],
     [ "anonymous_namespace{1x1_std_unit.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__std__unit_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__std__unit_8cpp_03.xhtml#a9c13e6827adf41c60e5f1277aace7547", null ]
     ] ],
