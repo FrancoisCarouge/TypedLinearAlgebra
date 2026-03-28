@@ -1,7 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"index.xhtml#aliases":[2,2],
-"index.xhtml#class-typed-matrix":[2,0],
 "index.xhtml#concepts":[2,4],
 "index.xhtml#considerations":[3],
 "index.xhtml#continuous-integration--deployment-actions":[6],
@@ -249,5 +247,7 @@ var NAVTREEINDEX1 =
 "namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__call__mx1_8cpp_03.xhtml#a6e96fddb9744b388956890762de37b3c":[18,0,1,4,35,0],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__call__mx1__const_8cpp_03.xhtml":[18,0,1,4,36],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__call__mx1__const_8cpp_03.xhtml#a4d9c0c33950433b565cb22fb2bfad2da":[18,0,1,4,36,0],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__call__mxn_8cpp_03.xhtml":[18,0,1,4,37]
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__call__mxn_8cpp_03.xhtml":[18,0,1,4,37],
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__call__mxn_8cpp_03.xhtml#a49540ac0849cb2262e64b631e88067e6":[18,0,1,4,37,0],
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02operator__call__mxn__const_8cpp_03.xhtml":[18,0,1,4,38]
 };
