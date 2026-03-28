@@ -1,4 +1,4 @@
-/* Typed Linear Algebra
+#[[ Typed Linear Algebra
 Version 0.2.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,29 +27,6 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> */
+For more information, please refer to <https://unlicense.org> ]]
 
-#include "fcarouge/linalg.hpp"
-
-#include <cassert>
-
-namespace fcarouge::test {
-namespace {
-//! @test Verifies the identity matrices values are unit diagonals.
-[[maybe_unused]] auto test{[] {
-  const matrix<double, 3, 3> i{{1., 0., 0.}, {0., 1., 0.}, {0., 0., 1.}};
-
-  assert(i(0, 0) == 1.);
-  assert(i(0, 1) == 0.);
-  assert(i(0, 2) == 0.);
-  assert(i(1, 0) == 0.);
-  assert(i(1, 1) == 1.);
-  assert(i(1, 2) == 0.);
-  assert(i(2, 0) == 0.);
-  assert(i(2, 1) == 0.);
-  assert(i(2, 2) == 1.);
-
-  return 0;
-}()};
-} // namespace
-} // namespace fcarouge::test
+test("addition" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
