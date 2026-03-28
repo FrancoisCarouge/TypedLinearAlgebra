@@ -29,9 +29,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-test("arithmetic" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-test("rxc" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-test("1x1" BACKENDS "eigexed" "nested_typed_eigen")
-test("1x1_eigen_unit" BACKENDS "quantity_eigen")
-test("1x1_std_unit" BACKENDS "quantity_std")
-test("sxc" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+pass("arithmetic" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+pass("rxc" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+pass("1x1" BACKENDS "eigexed" "nested_typed_eigen")
+pass("1x1_eigen_unit" BACKENDS "quantity_eigen")
+pass("1x1_std_unit" BACKENDS "quantity_std")
+pass("sxc" BACKENDS "eigen" "eigexed" "nested_typed_eigen")

@@ -29,5 +29,5 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-test("1x1" BACKENDS "quantity_eigen")
-test("mxn" BACKENDS "quantity_eigen")
+pass("1x1" BACKENDS "quantity_eigen")
+pass("mxn" BACKENDS "quantity_eigen")

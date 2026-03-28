@@ -29,5 +29,5 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-test("1xn_std_unit" BACKENDS "quantity_std")
-test("1x1_std_unit" BACKENDS "quantity_std")
+pass("1xn_std_unit" BACKENDS "quantity_std")
+pass("1x1_std_unit" BACKENDS "quantity_std")

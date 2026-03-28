@@ -29,4 +29,4 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-test("assign" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+pass("assign" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
