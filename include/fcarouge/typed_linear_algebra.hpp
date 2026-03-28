@@ -460,7 +460,7 @@ template <typename RowIndexes, typename ColumnIndexes>
 template <int Index>
 decltype(auto) get(one_dimension_typed_matrix auto &&value);
 
-namespace index_literals {
+namespace literals {
 //! @brief Integer literal operator to compile-time index.
 //!
 //! @details Converts an integer to an integral constant typed index which
@@ -468,7 +468,7 @@ namespace index_literals {
 template <char... Digits> constexpr auto operator""_i() noexcept {
   return std::integral_constant<size_t, tla::parse_digits<Digits...>()>{};
 }
-} // namespace index_literals
+} // namespace literals
 
 //! @}
 

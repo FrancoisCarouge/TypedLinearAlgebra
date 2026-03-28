@@ -35,7 +35,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <tuple>
 
 namespace fcarouge::test {
-using index_literals::operator""_i;
+using literals::operator""_i;
 using representation = double;
 
 template <auto QuantityReference>

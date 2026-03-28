@@ -45,10 +45,9 @@ For more information, please refer to <https://unlicense.org> */
 #include <mp-units/systems/isq/thermodynamics.h>
 #include <mp-units/systems/si.h>
 
-namespace fcarouge {
-using index_literals::operator""_i;
+namespace fcarouge::test {
+using literals::operator""_i;
 
-namespace test {
 using representation = double;
 
 template <auto QuantityReference>
@@ -80,5 +79,4 @@ namespace {
   return 0;
 }()};
 } // namespace
-} // namespace test
-} // namespace fcarouge
+} // namespace fcarouge::test

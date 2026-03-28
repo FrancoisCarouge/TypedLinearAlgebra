@@ -34,7 +34,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <cassert>
 
 namespace fcarouge::test {
-using index_literals::operator""_i;
+using literals::operator""_i;
 
 namespace {
 //! @test Verifies the initializer lists constructor.
