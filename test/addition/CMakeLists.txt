@@ -29,5 +29,5 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-test("1x2_unit" BACKENDS "quantity_eigen")
-test("addition" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+pass("1x2_unit" BACKENDS "quantity_eigen")
+pass("addition" BACKENDS "eigen" "eigexed" "nested_typed_eigen")

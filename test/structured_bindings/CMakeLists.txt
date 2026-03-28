@@ -29,9 +29,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-test("1x1_const" BACKENDS "eigen" "eigexed")
-test("1x1" BACKENDS "eigen" "eigexed")
-test("1xn_const" BACKENDS "eigen" "eigexed")
-test("1xn" BACKENDS "eigen" "eigexed")
-test("mx1_const" BACKENDS "eigen" "eigexed")
-test("mx1" BACKENDS "eigen" "eigexed")
+pass("1x1_const" BACKENDS "eigen" "eigexed")
+pass("1x1" BACKENDS "eigen" "eigexed")
+pass("1xn_const" BACKENDS "eigen" "eigexed")
+pass("1xn" BACKENDS "eigen" "eigexed")
+pass("mx1_const" BACKENDS "eigen" "eigexed")
+pass("mx1" BACKENDS "eigen" "eigexed")
