@@ -59,28 +59,31 @@ namespace fcarouge {
 // scalar types to and from mp-units' types.
 template <typename To, mp_units::Quantity From>
 struct element_caster<To, From> {
-  [[nodiscard]] constexpr To operator()(From value) const {
+  [[nodiscard]] constexpr auto operator()(From value) const -> To {
     return value.numerical_value_in(value.unit);
   }
 };
 
 template <mp_units::Quantity To, typename From>
 struct element_caster<To, From> {
-  [[nodiscard]] constexpr To operator()(From value) const {
+  [[nodiscard]] constexpr auto operator()(From value) const -> To {
     return value * To::reference;
   }
 };
 
 template <mp_units::Quantity To, typename From>
 struct element_caster<To &, From &> {
-  [[nodiscard]] constexpr To &operator()(From &value) const {
+  [[nodiscard]] constexpr auto operator()(From &value) const -> To & {
     return reinterpret_cast<To &>(value);
   }
 };
 
 template <typename To, mp_units::Reference From>
 struct element_caster<To, From> {
-  [[nodiscard]] constexpr To operator()(From) const { return 1.; }
+  [[nodiscard]] constexpr auto
+  operator()([[maybe_unused]] From value) const -> To {
+    return 1.;
+  }
 };
 
 using index_literals::operator""_i;
