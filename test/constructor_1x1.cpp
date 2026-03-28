@@ -37,9 +37,9 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the initializer lists constructor.
 [[maybe_unused]] auto test{[] {
-  const matrix<double, 1, 1> m{42.0};
+  const matrix<double, 1, 1> m{42.};
 
-  assert(m(0, 0) == 42.0);
+  assert(m(0, 0) == 42.);
 
   return 0;
 }()};

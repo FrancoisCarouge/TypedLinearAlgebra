@@ -37,12 +37,12 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the assignment operator.
 [[maybe_unused]] auto test{[] {
-  const matrix<double, 2, 2> a{{1.0, 2.0}, {3.0, 4.0}};
-  const matrix<double, 2, 1> b{3.0, 4.0};
+  const matrix<double, 2, 2> a{{1., 2.}, {3., 4.}};
+  const matrix<double, 2, 1> b{3., 4.};
   const matrix<double, 2, 1> r{a * b};
 
-  assert(r(0, 0) == 11.0);
-  assert(r(1, 0) == 25.0);
+  assert(r(0, 0) == 11.);
+  assert(r(1, 0) == 25.);
 
   return 0;
 }()};

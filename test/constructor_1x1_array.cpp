@@ -37,10 +37,10 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the array constructor.
 [[maybe_unused]] auto test{[] {
-  const double a[1]{42.0};
+  const double a[1]{42.};
   const matrix<double, 1, 1> m{a};
 
-  assert(m(0, 0) == 42.0);
+  assert(m(0, 0) == 42.);
 
   return 0;
 }()};
