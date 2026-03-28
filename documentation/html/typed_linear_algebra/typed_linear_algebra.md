@@ -6,12 +6,8 @@ slideNumber: true
 title: "Typed Linear Algebra"
 ---
 
-## Typed Linear Algebra
-
-<small>François Carouge<br />
-github.com/FrancoisCarouge</small>
-
-<img src="repo_qr.png" height="250px">
+<section data-background-image="welcome.png" data-background-size="contain">
+</section>
 
 <aside class="notes">
 Hello, my name is François Carouge. Thank you for welcoming me to present in this session of Cpp Bay Area.<br />
@@ -112,19 +108,19 @@ matrix m0{{1. * m,     2. * m / s },
 </span>
 
 <aside class="notes">
-More difficulties arise when the linear algebra vectors have heterogenous types. The existing linear algebra libraries are simply not equipped to allow such idiomatic code.<br />
+More difficulties arise when the linear algebra vectors have heterogenous types. You can store the heterogenous type in a `std::tuple`. What about the linear algebra operations? The existing linear algebra libraries are simply not equipped to allow such idiomatic code.<br />
 FRAGMENT<br />
-And finally, C++ itself does not permit the constuction of heterogenous initializer-lists without additional syntaxic sugar. Heterogenous initializer-lists had a tendency to trigger internal compiler errors. <b>What do you think? Can we still design strongly typed linear algebra using yet another level of indirection?</b><br />
-The idea is to use an abstraction, preferably zero-cost, to provide to the user a composition of strong types and linear algebra. And down the rabbit hole of template metaprogramming we may go.
+And finally, C++ itself does not permit the constuction of multi-dimensional heterogenous initializer-lists without additional syntaxic sugar. Heterogenous initializer-lists had a tendency to trigger internal compiler errors. <b>What do you think? Can we still design strongly typed linear algebra using yet another level of indirection?</b><br />
+The idea is to use an abstraction, necessarily zero-cost, to provide to the user a composition of strong types and linear algebra. And down the rabbit hole of template metaprogramming we may go.
 </aside>
 
 ---
 
 <img src="1995_hart.png" height="150px">
 <img src="2002_hall.png" height="150px">
-<img src="2020_units.png" height="150px">
+<img src="2019_units_cppnow.png" height="150px">
 <img src="2021_units_algebra.png" height="150px">
-<img src="2022_next_level.png" height="150px">
+<img src="2022_next_level_cppnow.png" height="150px">
 <img src="2023_linalg.png" height="150px">
 <img src="2024_eigen.png" height="150px">
 
@@ -185,14 +181,6 @@ class typed_matrix {
 <span class="fragment">
 
 ```cpp
-// Naive underlying data storage type:
-using underlying = decltype(std::declval<Matrix>()(0, 0));
-```
-
-</span>
-<span class="fragment">
-
-```cpp
 // [i-th, j-th] element type:
 template <int RowIndex,
           int ColumnIndex>
@@ -208,9 +196,7 @@ using element =
 <aside class="notes">
 We declare the `typed_matrix` class with its three template parameters. These template parameters are also available as member types, not shown here in this class declaration since they are merely aliases.<br />
 FRAGMENT<br />
-The underlying element type, such as floats or doubles of the storage matrix, will be useful for the library itself and for end-users. A naive implementation if the backend is made of built-in types is that of the first element of the underlying matrix. In reality, we account for the available API from the backend libraries.<br />
-FRAGMENT<br />
-A second interesting member type is a template one. The strong type of the i-th, j-th element, for example the velocity in meter per seconds from the quantity library. The resulting type is formed by the result type of product of the i-th type of the row indexes by the j-th type of the column indexes. Importantly, note that the product template used here is not equivalent to the `std::multiplies` functional structure of the standard library. It is instead the resulting type of a multiplication that respect the strong types: the product of two lengths is an area. This is an example of the standard library not considering strong type semantic results. This alternative product type here is implemented in terms of the resulting type from invoking the call operator of a specialized multiplication structure. These abstractions allow for template specializations to resolve the varied use cases of template product types such as the general N-by-M case or decayed use cases for vectors or singleton matrices. 
+An interesting member type is the template element type. The strong type of the i-th, j-th element, for example the velocity in meter per seconds from the quantity library. The resulting type is formed by the result type of product of the i-th type of the row indexes by the j-th type of the column indexes. Importantly, note that the product template used here is not equivalent to the `std::multiplies` functional structure of the standard library. It is instead the resulting type of a multiplication that respect the strong types: the product of two lengths is an area. This is an example of the standard library not considering strong type semantic results. This alternative product type here is implemented in terms of the resulting type from invoking the call operator of a specialized multiplication structure. These abstractions allow for template specializations to resolve the varied use cases of template product types such as the general N-by-M case or decayed use cases for vectors or singleton matrices. As an astute observer you may have noted the product of types may not directly support jacobian or information matrices seen in previous approaches. We leave this important detail aside today.
 </aside>
 
 ---
@@ -314,13 +300,9 @@ template <typename Type> concept same_as_typed_matrix =
 
 ```cpp
 // A uniformly typed matrix concept:
-template <typename Type> concept uniform_typed_matrix =
-same_as_typed_matrix<Type> and ([]() { bool result{true};
-  for_constexpr<0, Type::rows, 1>([&result](auto i) {
-    for_constexpr<0, Type::columns, 1>([&result, &i](auto j) {
-      result &= std::is_same_v<element<Type, i, j>,
-                               element<Type, 0, 0>>;
-    }); }); return result; }());
+template <typename Type> concept uniform_typed_matrix = // ...
+  // is a typed matrix, and
+  // each element are of the same type.
 ```
 
 </span>
@@ -345,8 +327,9 @@ decltype(auto) at(this auto &&self)
 // ! Subscript operator access:
 template <typename... Indexes>
 decltype(auto) operator[](this auto &&self, Indexes... indexes)
-  requires uniform_typed_matrix<typed_matrix>
-       and (sizeof...(Indexes) >= rank)
+  requires(sizeof...(Indexes) >= rank)
+       and((index<Indexes> && ...)
+        or uniform_typed_matrix<typed_matrix>);
 
 // ! Underlying data access:
 decltype(auto) data(this auto &&self);
@@ -375,18 +358,20 @@ And that's it for typed matrix class declaration, we will then see interesing im
 ###### Some Algorithms
 
 ```cpp
-auto operator+  (const same_as_typed_matrix auto &lhs,
-                 const same_as_typed_matrix auto &rhs);
-auto operator+  (const auto &lhs,
-                 const singleton_typed_matrix auto &rhs)
+auto operator+      (const same_as_typed_matrix auto &lhs,
+                     const same_as_typed_matrix auto &rhs);
 
-auto operator*  (const same_as_typed_matrix auto &lhs,
-                 const same_as_typed_matrix auto &rhs);
+auto operator*      (const same_as_typed_matrix auto &lhs,
+                     const same_as_typed_matrix auto &rhs);
 
-auto transposed (const same_as_typed_matrix auto &value);
+void matrix_product (const same_as_typed_matrix auto &lhs,
+                     const same_as_typed_matrix auto &rhs,
+                           same_as_typed_matrix auto &result);
 
-void scale      (const auto &α,
-                 same_as_typed_matrix auto &x);
+auto transposed     (const same_as_typed_matrix auto &value);
+
+void scale          (const auto &α,
+                     same_as_typed_matrix auto &x);
 ```
 
 <aside class="notes">
@@ -424,18 +409,19 @@ Where would you place the typed linear algebra support in this table? Perhaps so
 ###### Explored Implementation
 
 <small>
+<p>
 
 | Layer | Implementation |
 | --- | --- |
 | High-Level | Kalman |
-| Low-Level | Eigen<br />LAPACK |
+| Low-Level | Eigen<br />std::mdspan<br />LAPACK |
 | Primitives | BLAS<br />NVBLAS<br />std::linalg |
+<br />
+</p>
 
 <p>
-<b>Element Type</b><br />
-mp-units<br />
-std::chrono<br />
-fundamental types
+<b>Element Type:</b><br />
+mp-units, std::chrono, fundamental types
 </p>
 
 </small>
@@ -453,7 +439,9 @@ As far as element type goes, we've talked here about mp-units, and std::chrono. 
 ```cpp
 template <typename To, mp_units::Quantity From>
 struct element_caster<To, From> {
-  To operator()(From value) const {
+  To operator()(From value) {
+    static_assert(std::same_as<To, typename From::rep>);
+
     return value.numerical_value_in(value.unit);
   }
 };
@@ -490,10 +478,8 @@ This third fragment shows a state strong column vector type with position and ve
 ---
 
 ```cpp
-state x0{3. * m, 2. * m / s};
-std::println("{}", x0); // [[3 m], [2 m/s]]
-
-x0.at<1>() = 2.5 * m / s;
+state x0{3. * m, 2.5 * m / s};
+std::println("{}", x0); // [[3 m], [2.5 m/s]]
 std::println("{}", x0.at<1>()); // 2.5 m/s
 
 stateᵀ x0ᵀ{transposed(x0)};
@@ -547,9 +533,6 @@ std::vector v0(2, 0.);
 std::mdspan s0{v0.data(), std::extents<std::size_t, 2, 1>{}};
 state x0{s0};
 
-x0.at<0>() = 3. * m;
-x0.at<1>() = 2.5 * m / s;
-
 // ...
 
 matrix_product(x0, x0ᵀ, p);
@@ -562,28 +545,6 @@ std::println("{}", p);
 Interestingly, no memory ownership assumption constrain the typed matrix. Therefore the typed matrix can compose a `std::mdspan`. Here, the typed column vector is defined with `std::mdspan`, the chosen underlying data representation, and an equivalent column `std::extends`.<br />
 FRAGMENT<br />
 In this example, the data owning storage is a `std::vector`, the fundamental matrix is the `std::mdspan`, and the typed matrix becomes the performance primitive. The `std::linalg` operations and solvers are overloaded, composed into their equivalent strongly typed functions. The owning, or non-owning nature of the typed matrix is transparent. A compilation error occurs when the user attempts an incompatible operation. For example, when trying to use an operator, let's say a sum, of two matrices. The operation fails to compile because there cannot be memory allocation for the returned result.
-</aside>
-
----
-
-###### at
-
-```cpp
-template <auto... Indexes>
-decltype(auto) at(this auto &&self)
-  requires(sizeof...(Indexes) >= rank);
-{
-  if constexpr (sizeof...(Indexes) == 2) {
-    // ...
-    return cast<qualified_element, qualified_underlying>(
-        self.storage[std::get<0>(std::tuple{Indexes...}),
-                     std::get<1>(std::tuple{Indexes...})]);
-  } // else ...
-}
-```
-
-<aside class="notes">
-Let's get back to implementation of the typed matrix methods. The simplified implementation of the `at` member function shown here introduces the customization point object `cast`. This element caster objet allows the end-user to teach the library how it can convert underlying type to and from quantity types. This single abstraction is the only place where the explicit conversions take place. For the mp-units quantity library the template specializations of the customization point use the explicit `numerical_value_in` quantity member function to obtain the underlying type value or inversely equip the underlying type value with the reference unit. Note the difficulties in preserving the value category of the type for rvalues and lvalues. The implementation can be thought of the equivalent of the standard library forward-like utility, with an injected cast, and index look up and verification.
 </aside>
 
 ---
@@ -650,6 +611,124 @@ for_constexpr<0, lhs::rows, 1>([&](auto i) {
 A second requirement is that each of the element products are compatible, convertible to their sums.
 And we can see here a typical naive compile-time assertion over the types of the matrix-matrix product. One issue here is that the compiler error is unreadable when the user attempts an invalid product. Another issue is an apparent equivalent reimplementation of the underlying backend operation for the purpose of type verication, a good argument for the library backend to support strong types directly. 
 </aside>
+
+---
+
+###### PERFORMANCE
+
+<aside class="notes">
+Todo:
+* eigen product
+* mdpsan product
+</aside>
+
+---
+
+###### at
+
+```cpp
+template <auto... Indexes>
+decltype(auto) at(this auto &&self)
+  requires(sizeof...(Indexes) >= rank);
+{
+  // ...
+  return cast<qualified_element, qualified_underlying>(
+      self.storage[std::get<0>(std::tuple{Indexes...}),
+                    std::get<1>(std::tuple{Indexes...})]);
+}
+```
+
+<aside class="notes">
+Let's get back to implementation of the typed matrix methods. The simplified implementation of the `at` member function shown here introduces the customization point object `cast`. This element caster objet allows the end-user to teach the library how it can convert underlying type to and from quantity types. This single abstraction is the only place where the explicit conversions take place. For the mp-units quantity library the template specializations of the customization point use the explicit `numerical_value_in` quantity member function to obtain the underlying type value or inversely equip the underlying type value with the reference unit. Note the difficulties in preserving the value category of the type for rvalues and lvalues. The implementation can be thought of the equivalent of the standard library forward-like utility, with an injected cast, and index look up and verification.
+</aside>
+
+---
+
+###### User Defined Literal
+
+```cpp
+template <char... Digits>
+constexpr auto operator""_i(); // Returns an integral constant.
+```
+
+```cpp
+// Equivalents for heterogenous matrices:
+x0.at<0, 0>()
+x0[0_i, 0_i]
+x0(0_i, 0_i)
+```
+
+<aside class="notes">
+
+</aside>
+
+---
+
+###### At Conversion
+
+```cpp
+state x0{3. * m, 2.5 * m / s};
+x0.at<0>() = 2 * m / s; // lvalue reference assignment?
+```
+
+<span class="fragment">
+
+```cpp
+template <mp_units::Quantity To, typename From>
+struct element_caster<To &, From &> {
+  To & operator()(From &value) {
+```
+
+</span>
+<span class="fragment">
+
+```cpp
+    static_assert(std::same_as<typename To::rep, From>);
+    static_assert(sizeof(To) == sizeof(From));
+    static_assert(alignof(To) == alignof(From));
+   
+    To __attribute__((__may_alias__)) *q{
+      reinterpret_cast<To *>(&value)};
+```
+
+</span>
+<span class="fragment">
+
+```cpp
+    return *q; // 𐄂 Undefined Behavior
+  }
+};
+```
+
+</span>
+
+<aside class="notes">
+// This conversion is Undefined Behavior (UB): strict-aliasing violation,
+// type punning dereferencing. The `reinterpret_cast` is not a constant
+// expression. The function can never be evaluated at compile-time. The
+// function will never be `constexpr`.
+
+</aside>
+
+---
+
+###### Alternatives
+
+| Alternative | Drawback |
+| --- | --- |
+| lvalue reference | Undefined behavior. Loss of constexpr. |
+| setter | Loss of ergonomics. Loss of structured bindings. |
+| reference wrapper | Loss of ergonomics. Loss of structured bindings. Requires type support. |
+| strong storage | Performance loss. |
+
+---
+
+###### Tuple Sizes
+
+
+---
+
+###### Index Safety
 
 ---
 
@@ -754,4 +833,34 @@ Finally, there are Jacobian and Information matrices which may need an additiona
 These are just a few of the next steps.
 </aside>
 
+---
+
+
+<aside class="notes">
+Mp-units six safety levels:
+* Dimension Safety - Prevents mixing incompatible dimensions
+* Unit Safety - Prevents unit mismatches and eliminates manual scaling factors
+* Representation Safety - Protects against overflows and precision loss
+* Quantity Kind Safety - Prevents arithmetic on quantities of different kinds
+* Quantity Safety - Enforces correct quantity relationships and equations
+* Mathematical Space Safety - Distinguishes points, absolute quantities, and deltas
+
+Daniel Withopf linear algebra desired properties:
+* Compile-time bounds
+* Expressive entry names
+* Heterogenously typed vectors/matrices
+* Typed checks for all operation
+* Coordinate frame annotations.
+
+Motivation:
+[Ariane flight V88] - Ariane 5 rocket destroyed due to unit conversion error ($370M loss)
+[Mars Orbiter] - Lost due to pound-force vs. Newton confusion ($327M loss)
+[Columbus] - Got Americas “wrong” due to distance unit misunderstandings
+
+Slide ideas:
+* The whole mess of returning a quantity reference from rep storage.
+* The whole mess of returning a reference quantity with its side effects.
+* Alternatives to storage: e.g. storing quantities.
+
+</aside>
 ---
