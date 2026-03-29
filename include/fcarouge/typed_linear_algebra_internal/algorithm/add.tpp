@@ -43,12 +43,38 @@ namespace fcarouge {
 //! @todo Requires, assert that the element types are compatible.
 [[nodiscard]] constexpr auto operator+(const same_as_typed_matrix auto &lhs,
                                        const same_as_typed_matrix auto &rhs) {
-  using matrix = std::remove_cvref_t<decltype(lhs)>;
-  using row_indexes = typename matrix::row_indexes;
-  using column_indexes = typename matrix::column_indexes;
+  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
+  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
 
-  return make_typed_matrix<row_indexes, column_indexes>(lhs.data() +
-                                                        rhs.data());
+  static_assert(same_shape<lhs_matrix, rhs_matrix>,
+                "Matrix addition requires matrices of the same shapes, sizes.");
+
+  // Each typed element of the lhs matrix must be addable to the corresponding
+  // typed element of the rhs matrix.
+  tla::for_constexpr<0, lhs_matrix::rows, 1>([&](auto i) {
+    tla::for_constexpr<0, lhs_matrix::columns, 1>([&](auto j) {
+      using lhs_element = typename lhs_matrix::template element<i, j>;
+      using rhs_element = typename rhs_matrix::template element<i, j>;
+
+      static_assert(
+          requires {
+            std::declval<lhs_element>() + std::declval<rhs_element>();
+          }, "Matrix addition requires compatible element types.");
+    });
+  });
+
+  using row_indexes = typename lhs_matrix::row_indexes;
+  using column_indexes = typename lhs_matrix::column_indexes;
+
+  if constexpr (lhs_matrix::rank > 0) {
+    return make_typed_matrix<row_indexes, column_indexes>(lhs.data() +
+                                                          rhs.data());
+  } else {
+    using lhs_element = typename lhs_matrix::template element<0, 0>;
+    using rhs_element = typename rhs_matrix::template element<0, 0>;
+
+    return lhs_element{lhs} + rhs_element{rhs};
+  }
 }
 
 [[nodiscard]] constexpr auto operator+(const other auto &lhs,
@@ -67,17 +93,6 @@ namespace fcarouge {
   using element = typename matrix::template element<0, 0>;
 
   return element{lhs} + rhs;
-}
-
-[[nodiscard]] constexpr auto operator+(const singleton_typed_matrix auto &lhs,
-                                       const singleton_typed_matrix auto &rhs) {
-  //! @todo Should there be constraints on the type?
-  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
-  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
-  using lhs_element = typename lhs_matrix::template element<0, 0>;
-  using rhs_element = typename rhs_matrix::template element<0, 0>;
-
-  return lhs_element{lhs} + rhs_element{rhs};
 }
 
 #ifdef __cpp_lib_linalg
