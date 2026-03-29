@@ -41,11 +41,7 @@ namespace {
 
   assert((m[0, 0] == 42.));
   assert(m[0] == 42.);
-
-#ifndef _MSC_VER
-  // https://developercommunity.visualstudio.com/t/C23-Subscript-Operator-Internal-Comp/11021748
   assert(m[] == 42.);
-#endif
 
   return 0;
 }()};
