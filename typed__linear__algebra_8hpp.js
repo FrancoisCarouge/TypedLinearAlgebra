@@ -25,7 +25,6 @@ var typed__linear__algebra_8hpp =
     [ "operator+", "typed__linear__algebra_8hpp.xhtml#a4781430b6ac0d50474767b529e93689e", null ],
     [ "operator+", "typed__linear__algebra_8hpp.xhtml#a63c8577955512de91859104b75c34802", null ],
     [ "operator+", "typed__linear__algebra_8hpp.xhtml#af02b1b42b9e9375531cdc06d3a23a2d7", null ],
-    [ "operator+", "typed__linear__algebra_8hpp.xhtml#a19384912b95883045a127e6824ced121", null ],
     [ "operator-", "typed__linear__algebra_8hpp.xhtml#a9f2eaf5121581e51242ca94f69312436", null ],
     [ "operator-", "typed__linear__algebra_8hpp.xhtml#ae3d099c43d8b3d4c028b1790f89ed590", null ],
     [ "operator-", "typed__linear__algebra_8hpp.xhtml#a82a7f8a2b265bd808ccd20c62a3e3ea6", null ],
