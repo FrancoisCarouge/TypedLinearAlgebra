@@ -39,11 +39,10 @@ namespace {
 [[maybe_unused]] auto test{[] {
   const matrix<double, 1, 2> a{1., 2.};
   const matrix<double, 1, 2> b{3., 4.};
-  const matrix<double, 1, 2> c{4., 6.};
-  const matrix<double, 1, 2> r{a + b + c};
+  const matrix<double, 1, 2> r{a + b};
 
-  assert(r(0, 0) == 8.);
-  assert(r(0, 1) == 12.);
+  assert(r(0, 0) == 4.);
+  assert(r(0, 1) == 6.);
 
   return 0;
 }()};

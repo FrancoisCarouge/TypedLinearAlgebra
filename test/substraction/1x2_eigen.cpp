@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.2.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,11 +27,24 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-fail("1x1_unit_eigen_fail" BACKENDS "unit_eigen")
-fail("1x2_unit_eigen_fail" BACKENDS "unit_eigen")
+#include "fcarouge/linalg.hpp"
 
-pass("1x1_unit_eigen" BACKENDS "unit_eigen")
-pass("1x2_unit_eigen" BACKENDS "unit_eigen")
-pass("1x2_eigen" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+#include <cassert>
+
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the substraction operator.
+[[maybe_unused]] auto test{[] {
+  const matrix<double, 1, 2> a{3., 4.};
+  const matrix<double, 1, 2> b{1., 3.};
+  const matrix<double, 1, 2> r{a - b};
+
+  assert(r(0, 0) == 2.);
+  assert(r(0, 1) == 1.);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
