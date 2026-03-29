@@ -42,9 +42,6 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{1xn_unit_std.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021xn__unit__std_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021xn__unit__std_8cpp_03.xhtml#ab68bc9ba4d4ca160dae3a63c354400b3", null ]
     ] ],
-    [ "anonymous_namespace{arithmetic.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02arithmetic_8cpp_03.xhtml", [
-      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02arithmetic_8cpp_03.xhtml#a5d0ce2c9f3e2abf0e7bbf7023590568f", null ]
-    ] ],
     [ "anonymous_namespace{assign.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02assign_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02assign_8cpp_03.xhtml#a499d508ce683e3f36d6bcbe2bb71820f", null ]
     ] ],
@@ -108,6 +105,12 @@ var namespacefcarouge_1_1test =
     ] ],
     [ "anonymous_namespace{rxc.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02rxc_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02rxc_8cpp_03.xhtml#a6e11b2f3170d77c1dcdfa2770906c7aa", null ]
+    ] ],
+    [ "anonymous_namespace{scalar.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02scalar_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02scalar_8cpp_03.xhtml#af5eececa00cabeca9f04aaf3eb5340bf", null ]
+    ] ],
+    [ "anonymous_namespace{scalar_unit_eigen.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02scalar__unit__eigen_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02scalar__unit__eigen_8cpp_03.xhtml#a616653c15e84f83a8e751c2303b5d49b", null ]
     ] ],
     [ "anonymous_namespace{subscript_1x1.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02subscript__1x1_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02subscript__1x1_8cpp_03.xhtml#a53618fb3b1ea8aa3850f7117f35c4ed0", null ]

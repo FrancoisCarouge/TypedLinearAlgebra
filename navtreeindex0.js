@@ -32,9 +32,6 @@ var NAVTREEINDEX0 =
 "addition_21x2__unit__eigen__fail_8cpp.xhtml#a277d41fd989846f838a009fa74ad3866":[21,0,6,0,5,0],
 "addition_21x2__unit__eigen__fail_8cpp_source.xhtml":[21,0,6,0,5],
 "annotated.xhtml":[20,0],
-"arithmetic_8cpp.xhtml":[21,0,6,6,3],
-"arithmetic_8cpp.xhtml#a5d0ce2c9f3e2abf0e7bbf7023590568f":[21,0,6,6,3,0],
-"arithmetic_8cpp_source.xhtml":[21,0,6,6,3],
 "assign_8cpp.xhtml":[21,0,6,1,0],
 "assign_8cpp.xhtml#a499d508ce683e3f36d6bcbe2bb71820f":[21,0,6,1,0,0],
 "assign_8cpp_source.xhtml":[21,0,6,1,0],
@@ -249,5 +246,8 @@ var NAVTREEINDEX0 =
 "format_21xn_8cpp_source.xhtml":[21,0,6,5,1],
 "format_2mx1_8cpp.xhtml":[21,0,6,5,2],
 "format_2mx1_8cpp_source.xhtml":[21,0,6,5,2],
-"format_2mxn_8cpp.xhtml":[21,0,6,5,3]
+"format_2mxn_8cpp.xhtml":[21,0,6,5,3],
+"format_2mxn_8cpp_source.xhtml":[21,0,6,5,3],
+"format_8hpp.xhtml":[21,0,2,0,0,0],
+"format_8hpp_source.xhtml":[21,0,2,0,0,0]
 };
