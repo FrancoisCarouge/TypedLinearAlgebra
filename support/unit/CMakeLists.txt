@@ -46,9 +46,9 @@ FetchContent_MakeAvailable(mp-units)
 target_compile_options(mp-units INTERFACE $<IF:$<CXX_COMPILER_ID:MSVC>, ,
                                           -Wno-double-promotion -Wno-undef>)
 
-add_library(typed_linear_algebra_unit_mp_units INTERFACE)
+add_library(typed_linear_algebra_unit INTERFACE)
 target_sources(
-  typed_linear_algebra_unit_mp_units
-  INTERFACE FILE_SET "unit_headers" TYPE "HEADERS" FILES "fcarouge/unit.hpp")
-target_link_libraries(typed_linear_algebra_unit_mp_units
+  typed_linear_algebra_unit INTERFACE FILE_SET "unit_headers" TYPE "HEADERS"
+                                      FILES "fcarouge/unit.hpp")
+target_link_libraries(typed_linear_algebra_unit
                       INTERFACE typed_linear_algebra_options mp-units::mp-units)

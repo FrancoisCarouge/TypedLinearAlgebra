@@ -29,5 +29,5 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-pass("1x2_unit" BACKENDS "quantity_eigen")
+pass("1x2_unit_eigen" BACKENDS "unit_eigen")
 pass("addition" BACKENDS "eigen" "eigexed" "nested_typed_eigen")

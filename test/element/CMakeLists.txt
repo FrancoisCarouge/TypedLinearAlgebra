@@ -29,5 +29,5 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-pass("1x1" BACKENDS "quantity_eigen")
-pass("mxn" BACKENDS "quantity_eigen")
+pass("1x1" BACKENDS "unit_eigen")
+pass("mxn" BACKENDS "unit_eigen")
