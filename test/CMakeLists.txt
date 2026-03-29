@@ -42,6 +42,7 @@ add_subdirectory("format")
 add_subdirectory("multiplication")
 add_subdirectory("operator")
 add_subdirectory("structured_bindings")
+add_subdirectory("substraction")
 add_subdirectory("transposed")
 
 pass("copy" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
