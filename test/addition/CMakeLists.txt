@@ -33,5 +33,7 @@ fail("1x1_unit_eigen_fail" BACKENDS "unit_eigen")
 fail("1x2_unit_eigen_fail" BACKENDS "unit_eigen")
 
 pass("1x1_unit_eigen" BACKENDS "unit_eigen")
-pass("1x2_unit_eigen" BACKENDS "unit_eigen")
+pass("1x1_unit_std" BACKENDS "unit_std")
 pass("1x2_eigen" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+pass("1x2_unit_eigen" BACKENDS "unit_eigen")
+pass("1x2_unit_std" BACKENDS "unit_std")

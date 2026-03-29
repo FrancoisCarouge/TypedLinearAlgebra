@@ -39,8 +39,6 @@ For more information, please refer to <https://unlicense.org> */
 #endif
 
 namespace fcarouge {
-
-//! @todo Requires, assert that the element types are compatible.
 [[nodiscard]] constexpr auto operator+(const same_as_typed_matrix auto &lhs,
                                        const same_as_typed_matrix auto &rhs) {
   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
@@ -79,7 +77,6 @@ namespace fcarouge {
 
 [[nodiscard]] constexpr auto operator+(const other auto &lhs,
                                        const singleton_typed_matrix auto &rhs) {
-  //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(rhs)>;
   using element = typename matrix::template element<0, 0>;
 
@@ -88,7 +85,6 @@ namespace fcarouge {
 
 [[nodiscard]] constexpr auto operator+(const singleton_typed_matrix auto &lhs,
                                        const other auto &rhs) {
-  //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(lhs)>;
   using element = typename matrix::template element<0, 0>;
 
@@ -100,11 +96,34 @@ namespace fcarouge {
 //! @brief Element-wise addition of two typed matrices.
 //!
 //! @see std::linalg::add
-//!
-//! @todo Requires, assert that the element types are compatible.
 constexpr void add(const same_as_typed_matrix auto &lhs,
                    const same_as_typed_matrix auto &rhs,
                    same_as_typed_matrix auto &result) {
+
+  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
+  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
+  using result_matrix = std::remove_cvref_t<decltype(result)>;
+
+  static_assert(same_shape<lhs_matrix, rhs_matrix>,
+                "Matrix addition requires matrices of the same shapes, sizes.");
+
+  // Each typed element of the lhs matrix must be addable to the corresponding
+  // typed element of the rhs matrix and assignable to the corresponding typed
+  // element of the result matrix.
+  tla::for_constexpr<0, lhs_matrix::rows, 1>([&](auto i) {
+    tla::for_constexpr<0, lhs_matrix::columns, 1>([&](auto j) {
+      using lhs_element = typename lhs_matrix::template element<i, j>;
+      using rhs_element = typename rhs_matrix::template element<i, j>;
+      using result_element = typename result_matrix::template element<i, j>;
+
+      static_assert(
+          requires {
+            std::declval<result_element>() =
+                std::declval<lhs_element>() + std::declval<rhs_element>();
+          }, "Matrix addition requires compatible element types.");
+    });
+  });
+
   using std::linalg::add;
   add(lhs.data(), rhs.data(), result.data());
 }

@@ -32,7 +32,6 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
-#include <cstddef>
 
 namespace fcarouge::test {
 using literals::operator""_i;
@@ -42,10 +41,9 @@ template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
 namespace {
-//! @test Verifies the singleton by singleton matrix multiplication operator.
+//! @test Verifies the singleton by singleton matrix addition operator.
 [[maybe_unused]] auto test{[] {
   using length = quantity<mp_units::isq::length[m]>;
-  using area = quantity<mp_units::isq::area[m2]>;
 
   double storage_a{0.};
   double storage_b{0.};
@@ -57,27 +55,27 @@ namespace {
 
   row_vector<representation, length> a{span_a};
   row_vector<representation, length> b{span_b};
-  row_vector<representation, area> r{span_r};
+  row_vector<representation, length> r{span_r};
 
   a = 2. * m;
   b = 3. * m;
-  r = a * b;
+  add(a, b, r);
 
-  assert((6. * m2 == r(0, 0)));
-  assert((6. * m2 == r[0, 0]));
-  assert((6. * m2 == r.at<0, 0>()));
-  assert((6. * m2 == r(0_i, 0_i)));
-  assert((6. * m2 == r[0_i, 0_i]));
-  assert((6. * m2 == r.at<0_i, 0_i>()));
-  assert((6. * m2 == r(0)));
-  assert((6. * m2 == r[0]));
-  assert((6. * m2 == r.at<0>()));
-  assert((6. * m2 == r(0_i)));
-  assert((6. * m2 == r[0_i]));
-  assert((6. * m2 == r.at<0_i>()));
-  assert((6. * m2 == r()));
-  assert((6. * m2 == r));
-  assert((6. * m2 == r.at()));
+  assert((5. * m == r(0, 0)));
+  assert((5. * m == r[0, 0]));
+  assert((5. * m == r.at<0, 0>()));
+  assert((5. * m == r(0_i, 0_i)));
+  assert((5. * m == r[0_i, 0_i]));
+  assert((5. * m == r.at<0_i, 0_i>()));
+  assert((5. * m == r(0)));
+  assert((5. * m == r[0]));
+  assert((5. * m == r.at<0>()));
+  assert((5. * m == r(0_i)));
+  assert((5. * m == r[0_i]));
+  assert((5. * m == r.at<0_i>()));
+  assert((5. * m == r()));
+  assert((5. * m == r));
+  assert((5. * m == r.at()));
 
   return 0;
 }()};
