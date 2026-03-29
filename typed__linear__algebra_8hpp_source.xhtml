@@ -359,13 +359,13 @@ $(function(){initNavTree('typed__linear__algebra_8hpp_source.xhtml',''); initRes
 <div class="line"><a id="l00461" name="l00461"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#a00847bef6ae7994243aa1c897f51d271">  461</a></span><span class="keyword">decltype</span>(<span class="keyword">auto</span>) <a class="code hl_function" href="namespacefcarouge.xhtml#a00847bef6ae7994243aa1c897f51d271">get</a>(<a class="code hl_concept" href="conceptfcarouge_1_1one__dimension__typed__matrix.xhtml">one_dimension_typed_matrix</a> <span class="keyword">auto</span> &amp;&amp;value);</div>
 <div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span> </div>
 <div class="foldopen" id="foldopen00463" data-start="{" data-end="}">
-<div class="line"><a id="l00463" name="l00463"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1index__literals.xhtml">  463</a></span><span class="keyword">namespace </span>index_literals {</div>
+<div class="line"><a id="l00463" name="l00463"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1literals.xhtml">  463</a></span><span class="keyword">namespace </span>literals {</div>
 <div class="foldopen" id="foldopen00468" data-start="{" data-end="}">
-<div class="line"><a id="l00468" name="l00468"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1index__literals.xhtml#aa2376c1b89a3c0540f810de0440e36ec">  468</a></span><span class="keyword">template</span> &lt;<span class="keywordtype">char</span>... Digits&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <span class="keyword">operator</span><span class="stringliteral">&quot;&quot;</span>_i() noexcept {</div>
+<div class="line"><a id="l00468" name="l00468"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1literals.xhtml#a96bdab646ac7be1505482cf553b9650b">  468</a></span><span class="keyword">template</span> &lt;<span class="keywordtype">char</span>... Digits&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <span class="keyword">operator</span><span class="stringliteral">&quot;&quot;</span>_i() noexcept {</div>
 <div class="line"><a id="l00469" name="l00469"></a><span class="lineno">  469</span>  <span class="keywordflow">return</span> std::integral_constant&lt;size_t, tla::parse_digits&lt;Digits...&gt;()&gt;{};</div>
 <div class="line"><a id="l00470" name="l00470"></a><span class="lineno">  470</span>}</div>
 </div>
-<div class="line"><a id="l00471" name="l00471"></a><span class="lineno">  471</span>} <span class="comment">// namespace index_literals</span></div>
+<div class="line"><a id="l00471" name="l00471"></a><span class="lineno">  471</span>} <span class="comment">// namespace literals</span></div>
 </div>
 <div class="line"><a id="l00472" name="l00472"></a><span class="lineno">  472</span> </div>
 <div class="line"><a id="l00474" name="l00474"></a><span class="lineno">  474</span> </div>

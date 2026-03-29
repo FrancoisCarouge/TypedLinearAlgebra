@@ -1,10 +1,10 @@
 var namespacefcarouge =
 [
     [ "eigen", "namespacefcarouge_1_1eigen.xhtml", "namespacefcarouge_1_1eigen" ],
-    [ "index_literals", "namespacefcarouge_1_1index__literals.xhtml", [
-      [ "operator\"\"_i", "namespacefcarouge_1_1index__literals.xhtml#aa2376c1b89a3c0540f810de0440e36ec", null ]
-    ] ],
     [ "internal", "namespacefcarouge_1_1internal.xhtml", null ],
+    [ "literals", "namespacefcarouge_1_1literals.xhtml", [
+      [ "operator\"\"_i", "namespacefcarouge_1_1literals.xhtml#a96bdab646ac7be1505482cf553b9650b", null ]
+    ] ],
     [ "sample", "namespacefcarouge_1_1sample.xhtml", "namespacefcarouge_1_1sample" ],
     [ "test", "namespacefcarouge_1_1test.xhtml", "namespacefcarouge_1_1test" ],
     [ "typed_linear_algebra_internal", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml", [

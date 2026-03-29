@@ -15,7 +15,7 @@ var typed__linear__algebra_8hpp =
     [ "typed_row_vector", "typed__linear__algebra_8hpp.xhtml#a7558e7ccc03031fb7de678cf4977e1bf", null ],
     [ "get", "typed__linear__algebra_8hpp.xhtml#a00847bef6ae7994243aa1c897f51d271", null ],
     [ "make_typed_matrix", "typed__linear__algebra_8hpp.xhtml#a4073b31d56e98e110bf4a993ed190c80", null ],
-    [ "operator\"\"_i", "typed__linear__algebra_8hpp.xhtml#aa2376c1b89a3c0540f810de0440e36ec", null ],
+    [ "operator\"\"_i", "typed__linear__algebra_8hpp.xhtml#a96bdab646ac7be1505482cf553b9650b", null ],
     [ "operator*", "typed__linear__algebra_8hpp.xhtml#a6f98d198d18c9c551d21f2eb602cdfd2", null ],
     [ "operator*", "typed__linear__algebra_8hpp.xhtml#a642ea31e25b6c8b81e15382c917bd23b", null ],
     [ "operator*", "typed__linear__algebra_8hpp.xhtml#a9343adf455a88982fd1efabe086673b7", null ],
