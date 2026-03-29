@@ -4,7 +4,7 @@ var searchData=
   ['a_20href_20https_3a_20francoiscarouge_20github_20io_20typedlinearalgebra_20typed_5flinear_5falgebra_20index_20html_20typed_20linear_20algebra_20a_1',['&lt;a href=&quot;https://francoiscarouge.github.io/TypedLinearAlgebra/typed_linear_algebra/index.html&quot; &gt;Typed Linear Algebra&lt;/a&gt;',['../md_html_2typed__linear__algebra_2_r_e_a_d_m_e.xhtml',1,'']]],
   ['a_20vulnerability_2',['Reporting a Vulnerability',['../md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#reporting-a-vulnerability',1,'']]],
   ['abstract_3',['Abstract',['../md_html_2paper_2mp__units__eigen.xhtml#abstract',1,'']]],
-  ['acceleration_4',['acceleration',['../namespacefcarouge.xhtml#a54efd5a19e1fb79c2c421f891d436020',1,'fcarouge']]],
+  ['acceleration_4',['acceleration',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#ada484be0783b5d9d405634f67bb9d0f9',1,'fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::acceleration'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#afbc261b1054d2dca1459c359f5a8058a',1,'fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::acceleration'],['../namespacefcarouge.xhtml#a54efd5a19e1fb79c2c421f891d436020',1,'fcarouge::acceleration']]],
   ['acknowledgement_5',['Third Party Acknowledgement',['../index.xhtml#third-party-acknowledgement',1,'']]],
   ['actions_6',['Continuous Integration &amp; Deployment Actions',['../index.xhtml#continuous-integration--deployment-actions',1,'']]],
   ['addition_2ecpp_7',['addition.cpp',['../addition_8cpp.xhtml',1,'']]],

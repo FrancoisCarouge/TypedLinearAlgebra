@@ -139,16 +139,32 @@ $(function(){initNavTree('constructor_21x1_8cpp_source.xhtml',''); initResizable
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a> {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">namespace </span>{</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>[[maybe_unused]] <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__unit_8cpp_03.xhtml#ad2fb3c0ceb4044a6d6f0d3f46de0b27a">test</a>{[] {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;double, 1, 1&gt;</a> m{42.};</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  assert(m(0, 0) == 42.);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">using </span>index_literals::operator<span class="stringliteral">&quot;&quot;</span>_i;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">namespace </span>{</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>[[maybe_unused]] <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__unit_8cpp_03.xhtml#ad2fb3c0ceb4044a6d6f0d3f46de0b27a">test</a>{[] {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;double, 1, 1&gt;</a> r{42.};</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}()};</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>} <span class="comment">// namespace</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>} <span class="comment">// namespace fcarouge::test</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  assert((42. == r(0, 0)));</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  assert((42. == r[0, 0]));</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  assert((42. == r.at&lt;0, 0&gt;()));</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  assert((42. == r(0_i, 0_i)));</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  assert((42. == r[0_i, 0_i]));</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  assert((42. == r.at&lt;0_i, 0_i&gt;()));</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  assert((42. == r(0)));</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  assert((42. == r[0]));</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  assert((42. == r.at&lt;0&gt;()));</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  assert((42. == r(0_i)));</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  assert((42. == r[0_i]));</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  assert((42. == r.at&lt;0_i&gt;()));</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  assert((42. == r()));</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  assert((42. == r));</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  assert((42. == r.at()));</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>}()};</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>} <span class="comment">// namespace fcarouge::test</span></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a01e78c3f356b744543b2f25797bcfa84"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix</a></div><div class="ttdeci">Eigen::Matrix&lt; Type, Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Eigen3 matrix.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00082">eigen.hpp:82</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_021x2__unit_8cpp_03_xhtml_ad2fb3c0ceb4044a6d6f0d3f46de0b27a"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__unit_8cpp_03.xhtml#ad2fb3c0ceb4044a6d6f0d3f46de0b27a">fcarouge::test::anonymous_namespace{1x2_unit.cpp}::test</a></div><div class="ttdeci">auto test</div><div class="ttdef"><b>Definition</b> <a href="1x2__unit_8cpp_source.xhtml#l00059">1x2_unit.cpp:59</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a></div><div class="ttdoc">Unit, integration, regression, and usage tests.</div></div>

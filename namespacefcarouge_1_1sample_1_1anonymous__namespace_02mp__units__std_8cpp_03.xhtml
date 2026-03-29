@@ -130,6 +130,14 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ab83f17b19ceb5d7d83389cc44a1684f5" id="r_ab83f17b19ceb5d7d83389cc44a1684f5"><td class="memTemplParams" colspan="2">template&lt;std::size_t Columns&gt; </td></tr>
 <tr class="memitem:ab83f17b19ceb5d7d83389cc44a1684f5"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab83f17b19ceb5d7d83389cc44a1684f5">row_extents</a> = std::extents&lt;std::size_t, 1, Columns&gt;</td></tr>
 <tr class="separator:ab83f17b19ceb5d7d83389cc44a1684f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd406f490d56f485399dbc56ea600d92" id="r_abd406f490d56f485399dbc56ea600d92"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd406f490d56f485399dbc56ea600d92">position</a> = <a class="el" href="#a880cd5f1a8f1c7ebaa36ee843db729eb">quantity</a>&lt;mp_units::isq::length[m]&gt;</td></tr>
+<tr class="separator:abd406f490d56f485399dbc56ea600d92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e439af319622c8b449ced74cab8f061" id="r_a2e439af319622c8b449ced74cab8f061"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e439af319622c8b449ced74cab8f061">velocity</a> = <a class="el" href="#a880cd5f1a8f1c7ebaa36ee843db729eb">quantity</a>&lt;mp_units::isq::velocity[m / s]&gt;</td></tr>
+<tr class="separator:a2e439af319622c8b449ced74cab8f061"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbc261b1054d2dca1459c359f5a8058a" id="r_afbc261b1054d2dca1459c359f5a8058a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbc261b1054d2dca1459c359f5a8058a">acceleration</a> = <a class="el" href="#a880cd5f1a8f1c7ebaa36ee843db729eb">quantity</a>&lt;mp_units::isq::acceleration[m / s2]&gt;</td></tr>
+<tr class="separator:afbc261b1054d2dca1459c359f5a8058a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5826168a34d54fe9f9c302391c4f7907" id="r_a5826168a34d54fe9f9c302391c4f7907"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5826168a34d54fe9f9c302391c4f7907">state</a> = <a class="el" href="#aee35d2e06cec7b66f2a4ccb8954621c4">column_vector</a>&lt;<a class="el" href="#abd406f490d56f485399dbc56ea600d92">position</a>, <a class="el" href="#a2e439af319622c8b449ced74cab8f061">velocity</a>, <a class="el" href="#afbc261b1054d2dca1459c359f5a8058a">acceleration</a>&gt;</td></tr>
+<tr class="separator:a5826168a34d54fe9f9c302391c4f7907"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -141,6 +149,22 @@ Variables</h2></td></tr>
 <tr class="separator:a79be95f177f33b369adaac9a2027149e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
+<a id="afbc261b1054d2dca1459c359f5a8058a" name="afbc261b1054d2dca1459c359f5a8058a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbc261b1054d2dca1459c359f5a8058a">&#9670;&#160;</a></span>acceleration</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::acceleration = <a class="el" href="#a880cd5f1a8f1c7ebaa36ee843db729eb">quantity</a>&lt;mp_units::isq::acceleration[m / s2]&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="mp__units__std_8cpp_source.xhtml#l00151">151</a> of file <a class="el" href="mp__units__std_8cpp_source.xhtml">mp_units_std.cpp</a>.</p>
+
+</div>
+</div>
 <a id="a732541603d6fc0a976587e0ccd726a8d" name="a732541603d6fc0a976587e0ccd726a8d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a732541603d6fc0a976587e0ccd726a8d">&#9670;&#160;</a></span>column_extents</h2>
 
@@ -201,6 +225,22 @@ template&lt;typename RowIndexes , typename ColumnIndexes &gt; </div>
 <div class="line">    RowIndexes, ColumnIndexes&gt;</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="mp__units__std_8cpp_source.xhtml#l00106">106</a> of file <a class="el" href="mp__units__std_8cpp_source.xhtml">mp_units_std.cpp</a>.</p>
+
+</div>
+</div>
+<a id="abd406f490d56f485399dbc56ea600d92" name="abd406f490d56f485399dbc56ea600d92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd406f490d56f485399dbc56ea600d92">&#9670;&#160;</a></span>position</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::position = <a class="el" href="#a880cd5f1a8f1c7ebaa36ee843db729eb">quantity</a>&lt;mp_units::isq::length[m]&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="mp__units__std_8cpp_source.xhtml#l00149">149</a> of file <a class="el" href="mp__units__std_8cpp_source.xhtml">mp_units_std.cpp</a>.</p>
 
 </div>
 </div>
@@ -284,6 +324,38 @@ template&lt;typename... Types&gt; </div>
 
 </div>
 </div>
+<a id="a5826168a34d54fe9f9c302391c4f7907" name="a5826168a34d54fe9f9c302391c4f7907"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5826168a34d54fe9f9c302391c4f7907">&#9670;&#160;</a></span>state</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::state = <a class="el" href="#aee35d2e06cec7b66f2a4ccb8954621c4">column_vector</a>&lt;<a class="el" href="#abd406f490d56f485399dbc56ea600d92">position</a>, <a class="el" href="#a2e439af319622c8b449ced74cab8f061">velocity</a>, <a class="el" href="#afbc261b1054d2dca1459c359f5a8058a">acceleration</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="mp__units__std_8cpp_source.xhtml#l00154">154</a> of file <a class="el" href="mp__units__std_8cpp_source.xhtml">mp_units_std.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a2e439af319622c8b449ced74cab8f061" name="a2e439af319622c8b449ced74cab8f061"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e439af319622c8b449ced74cab8f061">&#9670;&#160;</a></span>velocity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::velocity = <a class="el" href="#a880cd5f1a8f1c7ebaa36ee843db729eb">quantity</a>&lt;mp_units::isq::velocity[m / s]&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="mp__units__std_8cpp_source.xhtml#l00150">150</a> of file <a class="el" href="mp__units__std_8cpp_source.xhtml">mp_units_std.cpp</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="abadda8a5417037ae0b6596f861948290" name="abadda8a5417037ae0b6596f861948290"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abadda8a5417037ae0b6596f861948290">&#9670;&#160;</a></span>extents_size</h2>
@@ -342,85 +414,67 @@ template&lt;typename Extents &gt; </div>
 <p>Strongly typed linear algebra samples. </p>
 <p>A variety of activities of strongly typed linear algebra with std::mdspan, std::linalg, and mp-units. </p>
 
-<p class="definition">Definition at line <a class="el" href="mp__units__std_8cpp_source.xhtml#l00142">142</a> of file <a class="el" href="mp__units__std_8cpp_source.xhtml">mp_units_std.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  142</span>                            {[] {</div>
-<div class="line"><span class="lineno">  143</span>  <span class="keyword">using </span>mp_units::si::unit_symbols::m;</div>
-<div class="line"><span class="lineno">  144</span>  <span class="keyword">using </span>mp_units::si::unit_symbols::m2;</div>
-<div class="line"><span class="lineno">  145</span>  <span class="keyword">using </span>mp_units::si::unit_symbols::s;</div>
-<div class="line"><span class="lineno">  146</span>  <span class="keyword">using </span>mp_units::si::unit_symbols::s2;</div>
-<div class="line"><span class="lineno">  147</span>  <span class="keyword">using </span>mp_units::si::unit_symbols::s3;</div>
-<div class="line"><span class="lineno">  148</span>  <span class="keyword">using </span>mp_units::one;</div>
-<div class="line"><span class="lineno">  149</span>  <span class="keyword">using </span>mp_units::si::unit_symbols::A;</div>
-<div class="line"><span class="lineno">  150</span>  <span class="keyword">using </span>mp_units::si::unit_symbols::mol;</div>
-<div class="line"><span class="lineno">  151</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge.xhtml#a13e1c6087b005b8dceeaab42ccbde47d">position</a> = <a class="code hl_typedef" href="#a880cd5f1a8f1c7ebaa36ee843db729eb">quantity&lt;mp_units::isq::length[m]&gt;</a>;</div>
-<div class="line"><span class="lineno">  152</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge.xhtml#ac2dd0eba1b86197287e408d5d4c3e641">velocity</a> = <a class="code hl_typedef" href="#a880cd5f1a8f1c7ebaa36ee843db729eb">quantity</a>&lt;mp_units::isq::velocity[m / s]&gt;;</div>
-<div class="line"><span class="lineno">  153</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge.xhtml#a54efd5a19e1fb79c2c421f891d436020">acceleration</a> = <a class="code hl_typedef" href="#a880cd5f1a8f1c7ebaa36ee843db729eb">quantity</a>&lt;mp_units::isq::acceleration[m / s2]&gt;;</div>
-<div class="line"><span class="lineno">  154</span>  <span class="keyword">using </span>state = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">column_vector&lt;position, velocity, acceleration&gt;</a>;</div>
-<div class="line"><span class="lineno">  155</span> </div>
-<div class="line"><span class="lineno">  156</span>  std::vector v0(extents_size&lt;<a class="code hl_typedef" href="#a732541603d6fc0a976587e0ccd726a8d">column_extents&lt;3&gt;</a>&gt;, representation{});</div>
-<div class="line"><span class="lineno">  157</span>  std::mdspan s0{v0.data(), column_extents&lt;3&gt;{}};</div>
-<div class="line"><span class="lineno">  158</span>  state x0{s0};</div>
-<div class="line"><span class="lineno">  159</span> </div>
-<div class="line"><span class="lineno">  160</span>  <span class="comment">// Elements asignment.</span></div>
-<div class="line"><span class="lineno">  161</span>  x0.<a class="code hl_function" href="classfcarouge_1_1typed__matrix.xhtml#a5d3f12d8a8fd48799ad6adadaec7b9b7">at</a>&lt;0&gt;() = 3. * m;</div>
-<div class="line"><span class="lineno">  162</span>  x0.at&lt;1&gt;() = 2. * m / s;</div>
-<div class="line"><span class="lineno">  163</span>  x0.at&lt;2&gt;() = 1. * m / s2;</div>
+<p class="definition">Definition at line <a class="el" href="mp__units__std_8cpp_source.xhtml#l00160">160</a> of file <a class="el" href="mp__units__std_8cpp_source.xhtml">mp_units_std.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  160</span>                            {[] {</div>
+<div class="line"><span class="lineno">  161</span>  std::vector v0(extents_size&lt;<a class="code hl_typedef" href="#a732541603d6fc0a976587e0ccd726a8d">column_extents&lt;3&gt;</a>&gt;, representation{});</div>
+<div class="line"><span class="lineno">  162</span>  std::mdspan s0{v0.data(), column_extents&lt;3&gt;{}};</div>
+<div class="line"><span class="lineno">  163</span>  state x0{s0};</div>
 <div class="line"><span class="lineno">  164</span> </div>
-<div class="line"><span class="lineno">  165</span>  <span class="comment">// Printable.</span></div>
-<div class="line"><span class="lineno">  166</span>  std::println(<span class="stringliteral">&quot;x0 = {}&quot;</span>, x0);</div>
-<div class="line"><span class="lineno">  167</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x0) == <span class="stringliteral">&quot;[[3 m], [2 m/s], [1 m/s²]]&quot;</span>);</div>
-<div class="line"><span class="lineno">  168</span> </div>
-<div class="line"><span class="lineno">  169</span>  <span class="comment">// Element assignment and access.</span></div>
-<div class="line"><span class="lineno">  170</span>  x0.at&lt;1&gt;() = 2.5 * m / s;</div>
-<div class="line"><span class="lineno">  171</span>  <span class="keyword">auto</span> x0_1{x0.at&lt;1&gt;()};</div>
-<div class="line"><span class="lineno">  172</span>  assert(x0_1 == 2.5 * m / s);</div>
-<div class="line"><span class="lineno">  173</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x0_1) == <span class="stringliteral">&quot;2.5 m/s&quot;</span>);</div>
-<div class="line"><span class="lineno">  174</span> </div>
-<div class="line"><span class="lineno">  175</span>  <span class="comment">// Multiplication with a scalar factor.</span></div>
-<div class="line"><span class="lineno">  176</span>  scale(3., x0);</div>
-<div class="line"><span class="lineno">  177</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x0) == <span class="stringliteral">&quot;[[9 m], [7.5 m/s], [3 m/s²]]&quot;</span>);</div>
-<div class="line"><span class="lineno">  178</span> </div>
-<div class="line"><span class="lineno">  179</span>  std::vector v4(extents_size&lt;column_extents&lt;3&gt;&gt;, representation{});</div>
-<div class="line"><span class="lineno">  180</span>  std::mdspan <a class="code hl_variable" href="namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436">s4</a>{v4.data(), column_extents&lt;3&gt;{}};</div>
-<div class="line"><span class="lineno">  181</span>  state x4{<a class="code hl_variable" href="namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436">s4</a>};</div>
-<div class="line"><span class="lineno">  182</span> </div>
-<div class="line"><span class="lineno">  183</span>  <span class="comment">// Additions of two vectors of the same types.</span></div>
-<div class="line"><span class="lineno">  184</span>  add(x0, x0, x4);</div>
-<div class="line"><span class="lineno">  185</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x4) == <span class="stringliteral">&quot;[[18 m], [15 m/s], [6 m/s²]]&quot;</span>);</div>
-<div class="line"><span class="lineno">  186</span> </div>
-<div class="line"><span class="lineno">  187</span>  <span class="keyword">using </span>state_transpose = row_vector&lt;position, velocity, acceleration&gt;;</div>
-<div class="line"><span class="lineno">  188</span> </div>
-<div class="line"><span class="lineno">  189</span>  std::vector v5(extents_size&lt;row_extents&lt;3&gt;&gt;, representation{});</div>
-<div class="line"><span class="lineno">  190</span>  std::mdspan s5{v5.data(), row_extents&lt;3&gt;{}};</div>
-<div class="line"><span class="lineno">  191</span>  state_transpose xt5{s5};</div>
-<div class="line"><span class="lineno">  192</span>  xt5.at&lt;0&gt;() = 3. * m;</div>
-<div class="line"><span class="lineno">  193</span>  xt5.at&lt;1&gt;() = 2. * m / s;</div>
-<div class="line"><span class="lineno">  194</span>  xt5.at&lt;2&gt;() = 1. * m / s2;</div>
-<div class="line"><span class="lineno">  195</span> </div>
-<div class="line"><span class="lineno">  196</span>  <span class="keyword">using </span>estimate_uncertainty =</div>
-<div class="line"><span class="lineno">  197</span>      matrix&lt;std::tuple&lt;position, velocity, acceleration&gt;,</div>
-<div class="line"><span class="lineno">  198</span>             std::tuple&lt;position, velocity, acceleration&gt;&gt;;</div>
-<div class="line"><span class="lineno">  199</span>  std::vector v6(extents_size&lt;std::extents&lt;std::size_t, 3, 3&gt;&gt;,</div>
-<div class="line"><span class="lineno">  200</span>                 representation{});</div>
-<div class="line"><span class="lineno">  201</span>  std::mdspan s6{v6.data(), std::extents&lt;std::size_t, 3, 3&gt;{}};</div>
-<div class="line"><span class="lineno">  202</span>  estimate_uncertainty p6{s6};</div>
-<div class="line"><span class="lineno">  203</span> </div>
-<div class="line"><span class="lineno">  204</span>  <span class="comment">// Column-row matrix product.</span></div>
-<div class="line"><span class="lineno">  205</span>  matrix_product(x0, xt5, p6);</div>
-<div class="line"><span class="lineno">  206</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, p6) == <span class="stringliteral">&quot;[[27 m², 18 m²/s, 9 m²/s²],&quot;</span>        <span class="comment">//</span></div>
-<div class="line"><span class="lineno">  207</span>                                  <span class="stringliteral">&quot; [22.5 m²/s, 15 m²/s², 7.5 m²/s³],&quot;</span> <span class="comment">//</span></div>
-<div class="line"><span class="lineno">  208</span>                                  <span class="stringliteral">&quot; [9 m²/s², 6 m²/s³, 3 m²/s⁴]]&quot;</span>);</div>
-<div class="line"><span class="lineno">  209</span> </div>
-<div class="line"><span class="lineno">  210</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  211</span>}()};</div>
-<div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a></div><div class="ttdoc">Strongly typed matrix.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__forward_8hpp_source.xhtml#l00043">typed_linear_algebra_forward.hpp:43</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml_a5d3f12d8a8fd48799ad6adadaec7b9b7"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml#a5d3f12d8a8fd48799ad6adadaec7b9b7">fcarouge::typed_matrix::at</a></div><div class="ttdeci">constexpr decltype(auto) at(this auto &amp;&amp;self)</div><div class="ttdoc">Access the specified element with compile-time bound checking.</div></div>
+<div class="line"><span class="lineno">  165</span>  <span class="comment">// Elements asignment.</span></div>
+<div class="line"><span class="lineno">  166</span>  x0.at&lt;0&gt;() = 3. * m;</div>
+<div class="line"><span class="lineno">  167</span>  x0.at&lt;1&gt;() = 2. * m / s;</div>
+<div class="line"><span class="lineno">  168</span>  x0.at&lt;2&gt;() = 1. * m / s2;</div>
+<div class="line"><span class="lineno">  169</span> </div>
+<div class="line"><span class="lineno">  170</span>  <span class="comment">// Printable.</span></div>
+<div class="line"><span class="lineno">  171</span>  std::println(<span class="stringliteral">&quot;x0 = {}&quot;</span>, x0);</div>
+<div class="line"><span class="lineno">  172</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x0) == <span class="stringliteral">&quot;[[3 m], [2 m/s], [1 m/s²]]&quot;</span>);</div>
+<div class="line"><span class="lineno">  173</span> </div>
+<div class="line"><span class="lineno">  174</span>  <span class="comment">// Element assignment and access.</span></div>
+<div class="line"><span class="lineno">  175</span>  x0.at&lt;1&gt;() = 2.5 * m / s;</div>
+<div class="line"><span class="lineno">  176</span>  <span class="keyword">auto</span> x0_1{x0.at&lt;1&gt;()};</div>
+<div class="line"><span class="lineno">  177</span>  assert(x0_1 == 2.5 * m / s);</div>
+<div class="line"><span class="lineno">  178</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x0_1) == <span class="stringliteral">&quot;2.5 m/s&quot;</span>);</div>
+<div class="line"><span class="lineno">  179</span> </div>
+<div class="line"><span class="lineno">  180</span>  <span class="comment">// Multiplication with a scalar factor.</span></div>
+<div class="line"><span class="lineno">  181</span>  scale(3., x0);</div>
+<div class="line"><span class="lineno">  182</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x0) == <span class="stringliteral">&quot;[[9 m], [7.5 m/s], [3 m/s²]]&quot;</span>);</div>
+<div class="line"><span class="lineno">  183</span> </div>
+<div class="line"><span class="lineno">  184</span>  std::vector v4(extents_size&lt;column_extents&lt;3&gt;&gt;, representation{});</div>
+<div class="line"><span class="lineno">  185</span>  std::mdspan <a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a7999c059bab4175033fa4fda78bd9137">s4</a>{v4.data(), column_extents&lt;3&gt;{}};</div>
+<div class="line"><span class="lineno">  186</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#abc06c9fcc2ebb041416919e7d482ac84">state</a> x4{<a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a7999c059bab4175033fa4fda78bd9137">s4</a>};</div>
+<div class="line"><span class="lineno">  187</span> </div>
+<div class="line"><span class="lineno">  188</span>  <span class="comment">// Additions of two vectors of the same types.</span></div>
+<div class="line"><span class="lineno">  189</span>  add(x0, x0, x4);</div>
+<div class="line"><span class="lineno">  190</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x4) == <span class="stringliteral">&quot;[[18 m], [15 m/s], [6 m/s²]]&quot;</span>);</div>
+<div class="line"><span class="lineno">  191</span> </div>
+<div class="line"><span class="lineno">  192</span>  <span class="keyword">using </span>state_transpose = row_vector&lt;position, velocity, acceleration&gt;;</div>
+<div class="line"><span class="lineno">  193</span> </div>
+<div class="line"><span class="lineno">  194</span>  std::vector v5(extents_size&lt;row_extents&lt;3&gt;&gt;, representation{});</div>
+<div class="line"><span class="lineno">  195</span>  std::mdspan s5{v5.data(), row_extents&lt;3&gt;{}};</div>
+<div class="line"><span class="lineno">  196</span>  state_transpose xt5{s5};</div>
+<div class="line"><span class="lineno">  197</span>  xt5.at&lt;0&gt;() = 3. * m;</div>
+<div class="line"><span class="lineno">  198</span>  xt5.at&lt;1&gt;() = 2. * m / s;</div>
+<div class="line"><span class="lineno">  199</span>  xt5.at&lt;2&gt;() = 1. * m / s2;</div>
+<div class="line"><span class="lineno">  200</span> </div>
+<div class="line"><span class="lineno">  201</span>  <span class="keyword">using </span>estimate_uncertainty =</div>
+<div class="line"><span class="lineno">  202</span>      matrix&lt;std::tuple&lt;position, velocity, acceleration&gt;,</div>
+<div class="line"><span class="lineno">  203</span>             std::tuple&lt;position, velocity, acceleration&gt;&gt;;</div>
+<div class="line"><span class="lineno">  204</span>  std::vector v6(extents_size&lt;std::extents&lt;std::size_t, 3, 3&gt;&gt;,</div>
+<div class="line"><span class="lineno">  205</span>                 representation{});</div>
+<div class="line"><span class="lineno">  206</span>  std::mdspan s6{v6.data(), std::extents&lt;std::size_t, 3, 3&gt;{}};</div>
+<div class="line"><span class="lineno">  207</span>  estimate_uncertainty p6{s6};</div>
+<div class="line"><span class="lineno">  208</span> </div>
+<div class="line"><span class="lineno">  209</span>  <span class="comment">// Column-row matrix product.</span></div>
+<div class="line"><span class="lineno">  210</span>  matrix_product(x0, xt5, p6);</div>
+<div class="line"><span class="lineno">  211</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, p6) == <span class="stringliteral">&quot;[[27 m², 18 m²/s, 9 m²/s²],&quot;</span>        <span class="comment">//</span></div>
+<div class="line"><span class="lineno">  212</span>                                  <span class="stringliteral">&quot; [22.5 m²/s, 15 m²/s², 7.5 m²/s³],&quot;</span> <span class="comment">//</span></div>
+<div class="line"><span class="lineno">  213</span>                                  <span class="stringliteral">&quot; [9 m²/s², 6 m²/s³, 3 m²/s⁴]]&quot;</span>);</div>
+<div class="line"><span class="lineno">  214</span> </div>
+<div class="line"><span class="lineno">  215</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  216</span>}()};</div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_a7999c059bab4175033fa4fda78bd9137"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a7999c059bab4175033fa4fda78bd9137">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::s4</a></div><div class="ttdeci">constexpr auto s4</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00125">mp_units_eigen.cpp:125</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_abc06c9fcc2ebb041416919e7d482ac84"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#abc06c9fcc2ebb041416919e7d482ac84">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::state</a></div><div class="ttdeci">column_vector&lt; position, velocity, acceleration &gt; state</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00136">mp_units_eigen.cpp:136</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03_xhtml_a732541603d6fc0a976587e0ccd726a8d"><div class="ttname"><a href="#a732541603d6fc0a976587e0ccd726a8d">fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::column_extents</a></div><div class="ttdeci">std::extents&lt; std::size_t, Rows, 1 &gt; column_extents</div><div class="ttdef"><b>Definition</b> <a href="mp__units__std_8cpp_source.xhtml#l00123">mp_units_std.cpp:123</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03_xhtml_a880cd5f1a8f1c7ebaa36ee843db729eb"><div class="ttname"><a href="#a880cd5f1a8f1c7ebaa36ee843db729eb">fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::quantity</a></div><div class="ttdeci">mp_units::quantity&lt; QuantityReference, representation &gt; quantity</div><div class="ttdef"><b>Definition</b> <a href="mp__units__std_8cpp_source.xhtml#l00097">mp_units_std.cpp:97</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a0aadf374ff49533297b0971d8a66b436"><div class="ttname"><a href="namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436">fcarouge::s4</a></div><div class="ttdeci">constexpr auto s4</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00058">unit.hpp:58</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a13e1c6087b005b8dceeaab42ccbde47d"><div class="ttname"><a href="namespacefcarouge.xhtml#a13e1c6087b005b8dceeaab42ccbde47d">fcarouge::position</a></div><div class="ttdeci">mp_units::quantity&lt; mp_units::isq::length[m]&gt; position</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00062">unit.hpp:62</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a54efd5a19e1fb79c2c421f891d436020"><div class="ttname"><a href="namespacefcarouge.xhtml#a54efd5a19e1fb79c2c421f891d436020">fcarouge::acceleration</a></div><div class="ttdeci">mp_units::quantity&lt; mp_units::isq::acceleration[m/s2]&gt; acceleration</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00064">unit.hpp:64</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_ac2dd0eba1b86197287e408d5d4c3e641"><div class="ttname"><a href="namespacefcarouge.xhtml#ac2dd0eba1b86197287e408d5d4c3e641">fcarouge::velocity</a></div><div class="ttdeci">mp_units::quantity&lt; mp_units::isq::velocity[m/s]&gt; velocity</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00063">unit.hpp:63</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
