@@ -47,7 +47,11 @@ namespace {
   using velocity = quantity<mp_units::isq::velocity[m / s]>;
 
   row_vector<representation, position, velocity> a{1. * m, 2. * m / s};
-  row_vector<representation, position, velocity> b{3. * m, 4. * m / s};
+
+  // Intended:
+  // row_vector<representation, position, velocity> b{3. * m, 4. * m / s};
+  row_vector<representation, velocity, position> b{3. * m / s, 4. * m};
+
   row_vector<representation, position, velocity> r{a + b};
 
   assert((4. * m == r.at<0, 0>()));

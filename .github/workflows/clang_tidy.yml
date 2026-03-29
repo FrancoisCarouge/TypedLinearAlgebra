@@ -34,6 +34,8 @@ jobs:
     - name: Verify
       run: |
         FILES=`find . \
-          -type f -path './source/*.cpp' -o \
-          -type f -path './test/*.cpp'`
+          -type f \( \
+            -path './source/*.cpp' -o \
+            -path './test/*.cpp' \) \
+            ! -name '*_fail.cpp'`
         run-clang-tidy -j 4 -p 'build' $FILES

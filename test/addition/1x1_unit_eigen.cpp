@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.2.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,11 +27,45 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-fail("1x1_unit_eigen_fail" BACKENDS "unit_eigen")
-fail("1x2_unit_eigen_fail" BACKENDS "unit_eigen")
+#include "fcarouge/linalg.hpp"
 
-pass("1x1_unit_eigen" BACKENDS "unit_eigen")
-pass("1x2_unit_eigen" BACKENDS "unit_eigen")
-pass("addition" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+#include <cassert>
+
+namespace fcarouge::test {
+using literals::operator""_i;
+using representation = double;
+
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+
+namespace {
+//! @test Verifies the singleton by singleton matrix addition operator.
+[[maybe_unused]] auto test{[] {
+  using length = quantity<mp_units::isq::length[m]>;
+
+  const row_vector<representation, length> a{2. * m};
+  const row_vector<representation, length> b{3. * m};
+  const row_vector<representation, length> r{a + b};
+
+  assert((5. * m == r(0, 0)));
+  assert((5. * m == r[0, 0]));
+  assert((5. * m == r.at<0, 0>()));
+  assert((5. * m == r(0_i, 0_i)));
+  assert((5. * m == r[0_i, 0_i]));
+  assert((5. * m == r.at<0_i, 0_i>()));
+  assert((5. * m == r(0)));
+  assert((5. * m == r[0]));
+  assert((5. * m == r.at<0>()));
+  assert((5. * m == r(0_i)));
+  assert((5. * m == r[0_i]));
+  assert((5. * m == r.at<0_i>()));
+  assert((5. * m == r()));
+  assert((5. * m == r));
+  assert((5. * m == r.at()));
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

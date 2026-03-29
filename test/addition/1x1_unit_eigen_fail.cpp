@@ -41,32 +41,34 @@ template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
 namespace {
-//! @test Verifies the addition operator with non-trivial types.
+//! @test Verifies the singleton by singleton matrix addition operator.
 [[maybe_unused]] auto test{[] {
-  using position = quantity<mp_units::isq::length[m]>;
-  using velocity = quantity<mp_units::isq::velocity[m / s]>;
+  using length = quantity<mp_units::isq::length[m]>;
+  using area = quantity<mp_units::isq::area[m2]>;
 
-  row_vector<representation, position, velocity> a{1. * m, 2. * m / s};
-  row_vector<representation, position, velocity> b{3. * m, 4. * m / s};
-  row_vector<representation, position, velocity> r{a + b};
+  // Intended:
+  // const row_vector<representation, length> a{3. * m};
+  const row_vector<representation, area> a{3. * m2};
 
-  assert((4. * m == r.at<0, 0>()));
-  assert((4. * m == r(0_i, 0_i)));
-  assert((4. * m == r[0_i, 0_i]));
-  assert((4. * m == r.at<0_i, 0_i>()));
-  assert((4. * m == r.at<0>()));
-  assert((4. * m == r(0_i)));
-  assert((4. * m == r[0_i]));
-  assert((4. * m == r.at<0_i>()));
+  const row_vector<representation, length> b{2. * m};
 
-  assert((6. * m / s == r.at<0, 1>()));
-  assert((6. * m / s == r(0_i, 1_i)));
-  assert((6. * m / s == r[0_i, 1_i]));
-  assert((6. * m / s == r.at<0_i, 1_i>()));
-  assert((6. * m / s == r.at<1>()));
-  assert((6. * m / s == r(1_i)));
-  assert((6. * m / s == r[1_i]));
-  assert((6. * m / s == r.at<1_i>()));
+  const row_vector<representation, length> r{a + b};
+
+  assert((5. * m == r(0, 0)));
+  assert((5. * m == r[0, 0]));
+  assert((5. * m == r.at<0, 0>()));
+  assert((5. * m == r(0_i, 0_i)));
+  assert((5. * m == r[0_i, 0_i]));
+  assert((5. * m == r.at<0_i, 0_i>()));
+  assert((5. * m == r(0)));
+  assert((5. * m == r[0]));
+  assert((5. * m == r.at<0>()));
+  assert((5. * m == r(0_i)));
+  assert((5. * m == r[0_i]));
+  assert((5. * m == r.at<0_i>()));
+  assert((5. * m == r()));
+  assert((5. * m == r));
+  assert((5. * m == r.at()));
 
   return 0;
 }()};
