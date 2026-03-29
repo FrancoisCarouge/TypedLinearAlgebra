@@ -29,5 +29,5 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-pass("1xn_std_unit" BACKENDS "quantity_std")
-pass("1x1_std_unit" BACKENDS "quantity_std")
+pass("1xn_unit_std" BACKENDS "unit_std")
+pass("1x1_unit_std" BACKENDS "unit_std")
