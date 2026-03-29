@@ -41,41 +41,25 @@ namespace {
 
   assert((m[0, 0] == 42.));
   assert(m[0] == 42.);
-
-#ifndef _MSC_VER
-  // https://developercommunity.visualstudio.com/t/C23-Subscript-Operator-Internal-Comp/11021748
   assert(m[] == 42.);
-#endif
 
   m[0, 0] = 43.;
 
   assert((m[0, 0] == 43.));
   assert(m[0] == 43.);
-
-#ifndef _MSC_VER
-  // https://developercommunity.visualstudio.com/t/C23-Subscript-Operator-Internal-Comp/11021748
   assert(m[] == 43.);
-#endif
 
   m[0] = 44.;
 
   assert((m[0, 0] == 44.));
   assert(m[0] == 44.);
-
-#ifndef _MSC_VER
-  // https://developercommunity.visualstudio.com/t/C23-Subscript-Operator-Internal-Comp/11021748
   assert(m[] == 44.);
-#endif
 
   m.at() = 45.;
 
   assert((m[0, 0] == 45.));
   assert(m[0] == 45.);
-
-#ifndef _MSC_VER
-  // https://developercommunity.visualstudio.com/t/C23-Subscript-Operator-Internal-Comp/11021748
   assert(m[] == 45.);
-#endif
 
   return 0;
 }()};

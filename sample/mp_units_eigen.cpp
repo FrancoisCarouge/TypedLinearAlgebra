@@ -247,11 +247,8 @@ using literals::operator""_i;
   s1.at() = 3. * A / mol;
   assert(s1.at() == 3. * A / mol);
 
-#ifndef _MSC_VER
-  // https://developercommunity.visualstudio.com/t/C23-Subscript-Operator-Internal-Comp/11021748
   s1[] = 2. * A / mol;
   assert(s1[] == 2. * A / mol);
-#endif
 
   s1() = 1. * A / mol;
   assert(s1() == 1. * A / mol);
