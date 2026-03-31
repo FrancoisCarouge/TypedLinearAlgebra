@@ -160,12 +160,27 @@ m[1_i, 2_i] = 4.; // Same as: m.at<1, 2>() = 4.
 
 ## Structure Element Caster
 
-Typed matrix element conversions customization point. Specialize this template to allow conversion of element's type and underlying type.
+Typed matrix element conversions customization point. Specialize this template to allow conversion to and from the element's type and underlying type.
 
 ```cpp
 template <typename To, typename From>
 struct element_caster;
 ```
+
+The library uses a static instance of `element_caster` to make a call to the function call operator allowing the instance to be called as if it were a conversion function. This idiom permits the conversion to be externally defined and found through template specialization lookup.
+
+```cpp
+// Specialize the conversion class for your types:
+template <typename To, typename From>
+struct element_caster<To, From> {
+  [[nodiscard]] static constexpr auto operator()(From value) -> To {
+    // Implement the conversion for this specialization:
+    return result;
+  }
+};
+```
+
+A variety of conversions may be needed, notably value and reference conversions. Performance considerations may influence the value conversion implementation and whether the converted value is provided by a value parameter or by a constant reference parameter.
 
 # Considerations
 
