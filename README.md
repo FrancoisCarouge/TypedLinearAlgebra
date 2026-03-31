@@ -137,6 +137,15 @@ typed_column_vector;
 
 A specialization of the standard formatter is provided for the typed matrix. Use `std::format` to store a formatted representation of the matrix. Standard format parameters to be supported.
 
+## Literals
+
+A user-defined literal `_i` operator in the `fcarouge::literals` namespace that converts a decimal integer literal into a compile-time index type permitting the use of traditional accessor operator with strong types.
+
+```cpp
+using literals::operator""_i;
+m[1_i, 2_i] = 4.; // Same as: m.at<1, 2>() = 4.
+```
+
 ## Concepts
 
 | Concept | Definition |
