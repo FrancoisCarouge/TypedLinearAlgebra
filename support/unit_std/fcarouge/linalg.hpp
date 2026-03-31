@@ -46,14 +46,14 @@ namespace fcarouge {
 // to and from mp-units' types.
 template <typename To, mp_units::Quantity From>
 struct element_caster<To, From> {
-  [[nodiscard]] static constexpr auto operator()(const From &value) -> To {
+  [[nodiscard]] static constexpr auto operator()(From value) -> To {
     return value.numerical_value_in(value.unit);
   }
 };
 
 template <mp_units::Quantity To, typename From>
 struct element_caster<To, From> {
-  [[nodiscard]] static constexpr auto operator()(const From &value) -> To {
+  [[nodiscard]] static constexpr auto operator()(From value) -> To {
     return value * To::reference;
   }
 };
@@ -67,14 +67,14 @@ struct element_caster<To &, From &> {
 
 template <typename To, mp_units::QuantityPoint From>
 struct element_caster<To, From> {
-  [[nodiscard]] static constexpr auto operator()(const From &value) -> To {
+  [[nodiscard]] static constexpr auto operator()(From value) -> To {
     return value.quantity_from_zero().numerical_value_in(value.unit);
   }
 };
 
 template <mp_units::QuantityPoint To, typename From>
 struct element_caster<To, From> {
-  [[nodiscard]] static constexpr auto operator()(const From &value) -> To {
+  [[nodiscard]] static constexpr auto operator()(From value) -> To {
     return {value * To::unit, mp_units::default_point_origin(To::unit)};
   }
 };
