@@ -261,7 +261,12 @@ Aliases</h2>
 </div><!-- fragment --><h2><a class="anchor" id="format"></a>
 Format</h2>
 <p>A specialization of the standard formatter is provided for the typed matrix. Use <code>std::format</code> to store a formatted representation of the matrix. Standard format parameters to be supported.</p>
-<h2><a class="anchor" id="concepts"></a>
+<h2><a class="anchor" id="literals"></a>
+Literals</h2>
+<p>A user-defined literal <code>_i</code> operator in the <code><a class="el" href="namespacefcarouge_1_1literals.xhtml">fcarouge::literals</a></code> namespace that converts a decimal integer literal into a compile-time index type permitting the use of traditional accessor operator with strong types.</p>
+<div class="fragment"><div class="line"><span class="keyword">using </span>literals::operator<span class="stringliteral">&quot;&quot;</span>_i;</div>
+<div class="line">m[1_i, 2_i] = 4.; <span class="comment">// Same as: m.at&lt;1, 2&gt;() = 4.</span></div>
+</div><!-- fragment --><h2><a class="anchor" id="concepts"></a>
 Concepts</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">

@@ -14,5 +14,6 @@ var searchData=
   ['linear_20algebra_20use_20case_3a_20eigen_20mp_20units_11',['Quantity-Safe Linear Algebra Use Case: Eigen + mp-units',['../md_html_2paper_2mp__units__eigen.xhtml',1,'']]],
   ['linux_12',['Linux',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#linux',1,'']]],
   ['list_13',['List',['../test.xhtml',1,'Test List'],['../todo.xhtml',1,'Todo List']]],
-  ['literal_5fmxn_2ecpp_14',['literal_mxn.cpp',['../literal__mxn_8cpp.xhtml',1,'']]]
+  ['literal_5fmxn_2ecpp_14',['literal_mxn.cpp',['../literal__mxn_8cpp.xhtml',1,'']]],
+  ['literals_15',['Literals',['../index.xhtml#literals',1,'']]]
 ];

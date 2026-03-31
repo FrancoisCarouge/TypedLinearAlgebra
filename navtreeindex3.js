@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"typed__linear__algebra_8hpp.xhtml#a37ad0c6ac7df201ab1ffbf86e277506b":[21,0,2,0,1,19],
 "typed__linear__algebra_8hpp.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3":[21,0,2,0,1,35],
 "typed__linear__algebra_8hpp.xhtml#a3e42862751053dc88a7c5fca2ff88aeb":[21,0,2,0,1,29],
 "typed__linear__algebra_8hpp.xhtml#a4073b31d56e98e110bf4a993ed190c80":[21,0,2,0,1,14],

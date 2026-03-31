@@ -38,6 +38,7 @@ var NAVTREE =
       [ "Operations", "index.xhtml#operations", null ],
       [ "Aliases", "index.xhtml#aliases", null ],
       [ "Format", "index.xhtml#format", null ],
+      [ "Literals", "index.xhtml#literals", null ],
       [ "Concepts", "index.xhtml#concepts", null ],
       [ "Structure Element Caster", "index.xhtml#structure-element-caster", null ]
     ] ],
@@ -150,8 +151,8 @@ var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
 "functions.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021xn_8cpp_03.xhtml",
-"typed__linear__algebra_8hpp.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3"
+"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__unit__std_8cpp_03.xhtml#a25b00ee658443628d14008e10a7a1e12",
+"typed__linear__algebra_8hpp.xhtml#a37ad0c6ac7df201ab1ffbf86e277506b"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

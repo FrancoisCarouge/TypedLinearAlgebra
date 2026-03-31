@@ -35,7 +35,7 @@ var NAVTREEINDEX1 =
 "index.xhtml":[],
 "index.xhtml#aliases":[2,2],
 "index.xhtml#class-typed-matrix":[2,0],
-"index.xhtml#concepts":[2,4],
+"index.xhtml#concepts":[2,5],
 "index.xhtml#considerations":[3],
 "index.xhtml#continuous-integration--deployment-actions":[6],
 "index.xhtml#corporations--institutions":[5,1,0],
@@ -46,6 +46,7 @@ var NAVTREEINDEX1 =
 "index.xhtml#installation-1":[1],
 "index.xhtml#lessons-learned":[3,0],
 "index.xhtml#license":[7],
+"index.xhtml#literals":[2,4],
 "index.xhtml#member-functions":[2,0,4],
 "index.xhtml#member-types":[2,0,2],
 "index.xhtml#member-variables":[2,0,3],
@@ -55,7 +56,7 @@ var NAVTREEINDEX1 =
 "index.xhtml#reference":[2],
 "index.xhtml#resources":[5],
 "index.xhtml#sponsors":[5,1],
-"index.xhtml#structure-element-caster":[2,5],
+"index.xhtml#structure-element-caster":[2,6],
 "index.xhtml#template-parameters":[2,0,1],
 "index.xhtml#third-party-acknowledgement":[5,0],
 "initializer__lists_8cpp.xhtml":[21,0,6,3,6],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__unit__eigen_8cpp_03.xhtml#a309eba7e417b91c91aad53c406b2ebae":[18,0,1,4,7,0],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__unit__eigen__fail_8cpp_03.xhtml":[18,0,1,4,8],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__unit__eigen__fail_8cpp_03.xhtml#a277d41fd989846f838a009fa74ad3866":[18,0,1,4,8,0],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__unit__std_8cpp_03.xhtml":[18,0,1,4,9],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__unit__std_8cpp_03.xhtml#a25b00ee658443628d14008e10a7a1e12":[18,0,1,4,9,0]
+"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__unit__std_8cpp_03.xhtml":[18,0,1,4,9]
 };
