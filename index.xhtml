@@ -288,10 +288,20 @@ Concepts</h2>
 </table>
 <h2><a class="anchor" id="structure-element-caster"></a>
 Structure Element Caster</h2>
-<p>Typed matrix element conversions customization point. Specialize this template to allow conversion of element's type and underlying type.</p>
+<p>Typed matrix element conversions customization point. Specialize this template to allow conversion to and from the element's type and underlying type.</p>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> To, <span class="keyword">typename</span> From&gt;</div>
 <div class="line"><span class="keyword">struct </span>element_caster;</div>
-</div><!-- fragment --><h1><a class="anchor" id="considerations"></a>
+</div><!-- fragment --><p>The library uses a static instance of <code>element_caster</code> to make a call to the function call operator allowing the instance to be called as if it were a conversion function. This idiom permits the conversion to be externally defined and found through template specialization lookup.</p>
+<div class="fragment"><div class="line"><span class="comment">// Specialize the conversion class for your types:</span></div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> To, <span class="keyword">typename</span> From&gt;</div>
+<div class="line"><span class="keyword">struct </span>element_caster&lt;To, From&gt; {</div>
+<div class="line">  [[nodiscard]] <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> operator()(From value) -&gt; To {</div>
+<div class="line">    <span class="comment">// Implement the conversion for this specialization:</span></div>
+<div class="line">    <span class="keywordflow">return</span> result;</div>
+<div class="line">  }</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>A variety of conversions may be needed, notably value and reference conversions. Performance considerations may influence the value conversion implementation and whether the converted value is provided by a value parameter or by a constant reference parameter.</p>
+<h1><a class="anchor" id="considerations"></a>
 Considerations</h1>
 <h2><a class="anchor" id="lessons-learned"></a>
 Lessons Learned</h2>
