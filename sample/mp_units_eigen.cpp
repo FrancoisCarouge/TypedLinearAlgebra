@@ -74,8 +74,127 @@ struct element_caster<To, From> {
 template <mp_units::Quantity To, typename From>
 struct element_caster<To &, From &> {
   [[nodiscard]] static constexpr auto operator()(From &value) -> To & {
-    return reinterpret_cast<To &>(value);
+    return reinterpret_cast<To __attribute__((__may_alias__)) &>(value);
   }
+
+  // Problem: Is this cast undefined behavior?
+  // (1) return reinterpret_cast<To &>(value);
+  // (2) return *reinterpret_cast<To *>(&value);
+
+  // Analysis scope reduction for sanity:
+  static_assert(std::same_as<double, From>,
+                "In this particular sample, we only deal in doubles. We "
+                "restrict the analysis to double for now, before generalizing "
+                "to others.");
+
+  // Usage pre-requisites:
+  static_assert(std::same_as<typename To::rep, From>,
+                "Only conversion between identical mp-units quantity type "
+                "representation and the linear algebra storage type is "
+                "intended and expected to be supported here.");
+
+  // Known properties:
+  static_assert(std::is_standard_layout_v<To>,
+                "mp-units quantities are standard layout.");
+  static_assert(std::is_standard_layout_v<From>,
+                "Linear algebra storage types are standard layout.");
+
+  // Strict Aliasing
+
+  // The strict aliasing rule is a provision that allows the compiler to assume
+  // that pointers (or references) of unrelated types do not point to the same
+  // memory location. This assumption is critical for Type-Based Alias Analysis
+  // (TBAA), enabling aggressive optimizations such as reordering instructions
+  // and keeping values in registers.
+
+  // Every object has an effective type, which determines which lvalue accesses
+  // are valid and which violate the strict aliasing rules.
+
+  // Obvious pre-condition:
+  static_assert(
+      sizeof(To) == sizeof(From),
+      "The mp-units quantity type and the linear algebra storage type "
+      "must have the same size as one of the early conditions for this cast to "
+      "be correct: memory can't be accessed out of bounds.");
+
+  // Given an object with effective type T1, using an lvalue expression
+  // (typically, dereferencing a pointer) of a different type T2 is undefined
+  // behavior, unless:
+
+  // * T2 and T1 are compatible types.
+  // --> No:
+  // https://en.cppreference.com/w/c/language/compatible_type.html#Compatible_types
+
+  // * T2 is cvr-qualified version of a type that is compatible with T1.
+  // --> No
+
+  // * T2 is a signed or unsigned version of a type that is compatible with T1.
+  // --> No
+
+  // * T2 is a character type (char, signed char, or unsigned char).
+  // --> No
+
+  // * T2 is an aggregate type or union type type that includes one of the
+  // aforementioned types among its members (including, recursively, a member of
+  // a subaggregate or contained union).
+  // --> Maybe?
+
+  // Alignment requirements are also necessary:
+  static_assert(
+      alignof(To) == alignof(From),
+      "The mp-units quantity type and the linear algebra storage type "
+      "must have the same alignment as one of the early conditions for "
+      "this cast to be correct: memory can't be accessed misaligned.");
+
+  // mp-units quantity types are structural types with this (simplified)
+  // declaration: `struct quantity { double value; };`
+  // https://github.com/mpusz/mp-units/blob/4130644b3162912b793d38a1e529d7ca4c290b4e/src/core/include/mp-units/framework/quantity.h#L230
+
+  // Uh oh!? Expected. Not relevant here.
+  static_assert(not std::is_layout_compatible_v<To, From>);
+
+  // --> No. Not an aggregate type.
+  // It turns out this was not the even applicable exception to consider!
+  // https://en.cppreference.com/w/cpp/language/aggregate_initialization.html
+  static_assert(not std::is_aggregate_v<To>,
+                "mp-units quantity types are not agregate types: they have "
+                "user-declared constuctors!");
+
+  // Another learning:
+  // is_pointer_interconvertible_with_class actually means
+  // is_member_pointer_convertible_to_class_pointer! And it is not commutative.
+  static_assert(
+      std::is_pointer_interconvertible_with_class(
+          &To::numerical_value_is_an_implementation_detail_),
+      "The mp-units quantity type is pointer-interconvertible with its "
+      "first non-static data member, which is the numerical value.");
+
+  // Conclusion:
+
+  // This conversion does not fall under the exception to the rule of:
+  // Given an object with effective type T1, using an lvalue expression
+  // of a different type T2 is undefined behavior.
+
+  // The conversion dereferences the pointer, uses the reference and makes it
+  // undefined behavior. It becomes obvious when we note that there does not
+  // exists a quantity object for the pointer. The compiler is allowed to assume
+  // the pointers point to the different memory location. The program is not
+  // correct.
+
+  // The project uses various optimization level, sanitizers, and the
+  // "-fstrict-aliasing" flag. The UB did not manifest in tooling or behavior.
+  // I needed to crank up the compilers aliasing level warning to its aggressive
+  // setting "-Wstrict-aliasing=1" to start receiving feedback. The default
+  // level was "3" from the compilers because this warning gives false
+  // positives.
+
+  // Where to now?
+
+  // We can use the non-standard "may_alias" attribute to tell the compiler that
+  // the type may alias other types. The undefined behavior is avoided.
+  // It permits to use an lvalue quantity reference. The usage is natural for
+  // users. We avoid ergonomics issues with solutions returning an auxiliary
+  // type. But was it worth it?
 };
 
 template <typename To, mp_units::QuantityPoint From>
