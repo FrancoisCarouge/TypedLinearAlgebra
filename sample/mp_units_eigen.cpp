@@ -75,6 +75,8 @@ template <mp_units::Quantity To, typename From>
 struct element_caster<To &, From &> {
   [[nodiscard]] static constexpr auto operator()(From &value) -> To & {
     return reinterpret_cast<To &>(value);
+    // Idea: Solve this UB with a proxy reference type that performs the
+    // conversion on access and assignment. E.g.: quantity<si::metre, double&>
   }
 };
 
