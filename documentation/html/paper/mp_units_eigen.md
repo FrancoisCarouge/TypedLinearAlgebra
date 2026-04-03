@@ -260,6 +260,7 @@ struct element_caster;
 
 **Zero-Cost Abstraction Required:** The performance of the typed linear algebra should be identical to the performance of the underlying linear algebra backend, considering the types. The composition is intended to be a zero-cost abstraction. Measuring and comparing the library to their equivalent counterpart is left as a future exercise.
 
+Rewrite this: 
 **Type Conversions:** The conversion from the underlying matrix element type references to the quantity type references is achieved through a `reinterpret_cast` conversion which works by reinterpreting the underlying bit pattern forgoing aliasing and alignement rules. The safety of the `element_caster` implementation is dubious and safer alternatives to be identified. The quantity type library only provide partial type conversion to and from standard types. It may be appropriate for the type library to extend its safe conversion support: to/from, by-value/reference, not/constant, and l/rvalue. A single template specialization could then suffice to customize the type conversions.
 
 **No Unsafe API:** Three methods of the matrix class present risks: the default constructor, the conversion constructor for underlying matrix, and the underlying data access method:

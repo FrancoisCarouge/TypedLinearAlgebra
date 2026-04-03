@@ -71,13 +71,6 @@ struct element_caster<To, From> {
   }
 };
 
-template <mp_units::Quantity To, typename From>
-struct element_caster<To &, From &> {
-  [[nodiscard]] static constexpr auto operator()(From &value) -> To & {
-    return reinterpret_cast<To &>(value);
-  }
-};
-
 template <typename To, mp_units::QuantityPoint From>
 struct element_caster<To, From> {
   [[nodiscard]] static constexpr auto operator()(From value) -> To {
@@ -89,13 +82,6 @@ template <mp_units::QuantityPoint To, typename From>
 struct element_caster<To, From> {
   [[nodiscard]] static constexpr auto operator()(From value) -> To {
     return {value * To::unit, mp_units::default_point_origin(To::unit)};
-  }
-};
-
-template <mp_units::QuantityPoint To, typename From>
-struct element_caster<To &, From &> {
-  [[nodiscard]] static constexpr auto operator()(From &value) -> To & {
-    return reinterpret_cast<To &>(value);
   }
 };
 
