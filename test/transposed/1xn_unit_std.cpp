@@ -39,7 +39,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the transposed algorithm.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   double storage[]{9., 10.};
   std::mdspan span{&storage[0], std::extents<std::size_t, 2, 1>{}};
   column_vector<double, decltype(1. * s), decltype(1. * s2)> n{span};

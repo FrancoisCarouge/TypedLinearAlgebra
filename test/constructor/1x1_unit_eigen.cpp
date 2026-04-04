@@ -43,7 +43,7 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 
 namespace {
 //! @test Verifies the initializer lists constructor.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   using length = quantity<mp_units::isq::length[m]>;
 
   const matrix<representation, std::tuple<length>, std::tuple<length>> r{42. *

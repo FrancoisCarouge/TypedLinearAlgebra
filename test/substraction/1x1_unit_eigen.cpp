@@ -42,7 +42,7 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 
 namespace {
 //! @test Verifies the singleton by singleton matrix substraction operator.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   using length = quantity<mp_units::isq::length[m]>;
 
   const row_vector<representation, length> a{2. * m};

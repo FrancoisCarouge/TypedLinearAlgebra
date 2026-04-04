@@ -44,7 +44,7 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 
 namespace {
 //! @test Verifies the addition operator with non-trivial types.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   using position = quantity<mp_units::isq::length[m]>;
   using velocity = quantity<mp_units::isq::velocity[m / s]>;
 

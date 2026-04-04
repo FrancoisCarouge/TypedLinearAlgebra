@@ -37,7 +37,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the element type of the matrix.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   using matrix =
       matrix<double, std::tuple<decltype(1. * m), decltype(1. * m / s)>,
              std::tuple<decltype(1. * N), decltype(1. / A)>>;

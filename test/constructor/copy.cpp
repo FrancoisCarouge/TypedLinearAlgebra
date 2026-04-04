@@ -44,7 +44,7 @@ using matrix =
                  RowIndexes, ColumnIndexes>;
 
 //! @test Verifies the compatible conversion copy constructor.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   using matrix_df =
       matrix<std::tuple<double, double>, std::tuple<float, float>>;
   using matrix_fd =

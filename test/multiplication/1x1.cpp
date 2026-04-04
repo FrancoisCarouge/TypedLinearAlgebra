@@ -38,7 +38,7 @@ using literals::operator""_i;
 
 namespace {
 //! @test Verifies the singleton by singleton matrix multiplication operator.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   const matrix<double, 1, 1> a{2.};
   const matrix<double, 1, 1> b{3.};
   const matrix<double, 1, 1> r{a * b};

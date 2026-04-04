@@ -36,7 +36,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the at member accessor.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   const matrix<double, 3, 3> m{{1., 2., 3.}, {4., 5., 6.}};
 
   assert((m.at<0, 0>() == 1.));

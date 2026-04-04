@@ -36,7 +36,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the call operator accessor.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   matrix<double, 3, 3> m{{1., 2., 3.}, {4., 5., 6.}};
 
   assert((m(0, 0) == 1.));

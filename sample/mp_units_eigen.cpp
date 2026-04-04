@@ -162,7 +162,7 @@ using literals::operator""_i;
 //!
 //! @details A variety of activities of strongly typed linear algebra with Eigen
 //! and mp-units.
-[[maybe_unused]] auto sample{[] {
+[[maybe_unused]] const auto sample{[] {
   // Column-vector declaration.
   state x0{3. * m, 2. * m / s, 1. * m / s2};
 

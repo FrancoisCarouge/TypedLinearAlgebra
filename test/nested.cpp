@@ -37,7 +37,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the nested type of the matrix.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   matrix<double, 3, 3> z;
 
   static_assert(

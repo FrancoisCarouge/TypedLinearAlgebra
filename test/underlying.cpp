@@ -37,7 +37,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the underlying type of the matrix.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   const matrix<double, 3, 3> z;
 
   using underlying = typename decltype(z)::underlying;
