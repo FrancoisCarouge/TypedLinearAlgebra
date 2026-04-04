@@ -65,6 +65,58 @@ using velocity = mp_units::quantity<mp_units::isq::velocity[m / s]>;
 using acceleration = mp_units::quantity<mp_units::isq::acceleration[m / s2]>;
 using temperature =
     mp_units::quantity_point<mp_units::isq::Celsius_temperature[deg_C]>;
+
+// Teach the typed linear algebra library how to convert underlying scalar types
+// to and from mp-units' types.
+template <typename To, mp_units::Quantity From>
+struct element_caster<To, From> {
+  [[nodiscard]] static constexpr auto operator()(From value) -> To {
+    return value.numerical_value_in(value.unit);
+  }
+};
+
+template <mp_units::Quantity To, typename From>
+struct element_caster<To, From> {
+  [[nodiscard]] static constexpr auto operator()(From value) -> To {
+    return value * To::reference;
+  }
+};
+
+template <mp_units::Quantity To, typename From>
+struct element_caster<To &, From &> {
+  [[nodiscard]] static constexpr auto operator()(From &value) -> To & {
+    return reinterpret_cast<To &>(value);
+  }
+};
+
+template <typename To, mp_units::QuantityPoint From>
+struct element_caster<To, From> {
+  [[nodiscard]] static constexpr auto operator()(From value) -> To {
+    return value.quantity_from_zero().numerical_value_in(value.unit);
+  }
+};
+
+template <mp_units::QuantityPoint To, typename From>
+struct element_caster<To, From> {
+  [[nodiscard]] static constexpr auto operator()(From value) -> To {
+    return {value * To::unit, mp_units::default_point_origin(To::unit)};
+  }
+};
+
+template <mp_units::QuantityPoint To, typename From>
+struct element_caster<To &, From &> {
+  [[nodiscard]] static constexpr auto operator()(From &value) -> To & {
+    return reinterpret_cast<To &>(value);
+  }
+};
+
+template <typename To, mp_units::Reference From>
+struct element_caster<To, From> {
+  [[nodiscard]] static constexpr auto
+  operator()([[maybe_unused]] From value) -> To {
+    return 1.;
+  }
+};
 } // namespace fcarouge
 
 #endif // FCAROUGE_UNIT_HPP
