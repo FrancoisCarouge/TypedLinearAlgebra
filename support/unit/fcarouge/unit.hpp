@@ -65,8 +65,6 @@ using height = mp_units::quantity<mp_units::isq::height[m]>;
 using position = mp_units::quantity<mp_units::isq::length[m]>;
 using velocity = mp_units::quantity<mp_units::isq::velocity[m / s]>;
 using acceleration = mp_units::quantity<mp_units::isq::acceleration[m / s2]>;
-using temperature =
-    mp_units::quantity_point<mp_units::isq::Celsius_temperature[deg_C]>;
 
 // Teach the typed linear algebra library how to convert underlying scalar types
 // to and from mp-units' types.
