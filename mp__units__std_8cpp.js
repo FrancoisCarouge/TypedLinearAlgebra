@@ -14,5 +14,5 @@ var mp__units__std_8cpp =
     [ "state", "mp__units__std_8cpp.xhtml#a5826168a34d54fe9f9c302391c4f7907", null ],
     [ "velocity", "mp__units__std_8cpp.xhtml#a2e439af319622c8b449ced74cab8f061", null ],
     [ "extents_size", "mp__units__std_8cpp.xhtml#abadda8a5417037ae0b6596f861948290", null ],
-    [ "sample", "mp__units__std_8cpp.xhtml#a79be95f177f33b369adaac9a2027149e", null ]
+    [ "sample", "mp__units__std_8cpp.xhtml#a616147988d0965e7c76da2e488a5e771", null ]
 ];

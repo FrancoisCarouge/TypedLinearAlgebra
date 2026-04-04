@@ -28,7 +28,7 @@ var NAVTREEINDEX3 =
 "typed__linear__algebra__forward_8hpp.xhtml":[21,0,2,0,2],
 "typed__linear__algebra__forward_8hpp_source.xhtml":[21,0,2,0,2],
 "underlying_8cpp.xhtml":[21,0,6,13],
-"underlying_8cpp.xhtml#acb228faaa3d0b7d931e91d22176726ba":[21,0,6,13,0],
+"underlying_8cpp.xhtml#ae337e6d7e2e77329f3f4f5141ad525d0":[21,0,6,13,0],
 "underlying_8cpp_source.xhtml":[21,0,6,13],
 "unit_8hpp.xhtml":[21,0,5,5,0,0],
 "unit_8hpp.xhtml#a0aadf374ff49533297b0971d8a66b436":[21,0,5,5,0,0,6],
