@@ -178,7 +178,7 @@ using state = column_vector<position, velocity, acceleration>;
 //!
 //! @details A variety of activities of strongly typed linear algebra with
 //! std::mdspan, std::linalg, and mp-units.
-[[maybe_unused]] auto sample{[] {
+[[maybe_unused]] const auto sample{[] {
   std::vector v0(extents_size<column_extents<3>>, representation{});
   std::mdspan s0{v0.data(), column_extents<3>{}};
   state x0{s0};

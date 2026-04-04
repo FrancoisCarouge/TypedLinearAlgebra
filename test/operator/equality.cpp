@@ -36,7 +36,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the equality operator.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   const matrix<double, 5, 5> m{{0., 0., 0., 0., 0.},
                                {0., 0., 0., 0., 0.},
                                {0., 0., 0., 0., 0.},

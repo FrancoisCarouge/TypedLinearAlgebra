@@ -39,7 +39,7 @@ namespace {
 //! @test Verifies the element type of the matrix.
 //!
 //! @todo Add const and rank variations and negative tests.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   using matrix = matrix<double, std::tuple<decltype(1. * m)>,
                         std::tuple<decltype(1. * m)>>;
   using quantity = decltype(1. * m2);

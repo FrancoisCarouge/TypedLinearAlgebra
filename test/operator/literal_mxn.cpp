@@ -38,7 +38,7 @@ using literals::operator""_i;
 
 namespace {
 //! @test Verifies the integral literal operator accessor.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   matrix<double, 2, 2> m{{1., 2.}, {3., 4.}};
 
   assert((m(0_i, 0_i) == 1.));

@@ -36,7 +36,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the row by column matrix multiplication operator.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   const matrix<double, 1, 2> a{1., 2.};
   const matrix<double, 2, 1> b{3., 4.};
   const matrix<double, 1, 1> r{a * b};

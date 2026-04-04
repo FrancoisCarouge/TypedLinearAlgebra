@@ -38,7 +38,7 @@ using literals::operator""_i;
 
 namespace {
 //! @test Verifies the initializer lists constructor.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   const matrix<double, 1, 1> r{42.};
 
   assert((42. == r(0, 0)));
