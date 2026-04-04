@@ -132,7 +132,7 @@ Static Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename To, mp_units::Reference From&gt;<br />
 struct fcarouge::element_caster&lt; To, From &gt;</div>
-<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00114">114</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00170">170</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="af56923b5cacc6eb1ec7529eb821b8f65" name="af56923b5cacc6eb1ec7529eb821b8f65"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af56923b5cacc6eb1ec7529eb821b8f65">&#9670;&#160;</a></span>operator()() <span class="overload">[1/5]</span></h2>
@@ -159,10 +159,15 @@ template&lt;typename To , mp_units::Reference From&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00073">73</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   73</span>                                                                   {</div>
-<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">return</span> value.numerical_value_in(value.unit);</div>
-<div class="line"><span class="lineno">   75</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00075">75</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   75</span>                                                                   {</div>
+<div class="line"><span class="lineno">   76</span>    <span class="keyword">static_assert</span>(std::same_as&lt;To, typename From::rep&gt;,</div>
+<div class="line"><span class="lineno">   77</span>                  <span class="stringliteral">&quot;The underlying storage type must be identical to the &quot;</span></div>
+<div class="line"><span class="lineno">   78</span>                  <span class="stringliteral">&quot;quantity representation type to guarantee the conversion is &quot;</span></div>
+<div class="line"><span class="lineno">   79</span>                  <span class="stringliteral">&quot;explicitely decided by the end-user.&quot;</span>);</div>
+<div class="line"><span class="lineno">   80</span> </div>
+<div class="line"><span class="lineno">   81</span>    <span class="keywordflow">return</span> value.numerical_value_in(value.unit);</div>
+<div class="line"><span class="lineno">   82</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -191,10 +196,15 @@ template&lt;typename To , mp_units::Reference From&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00080">80</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   80</span>                                                                   {</div>
-<div class="line"><span class="lineno">   81</span>    <span class="keywordflow">return</span> value * To::reference;</div>
-<div class="line"><span class="lineno">   82</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00087">87</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   87</span>                                                                   {</div>
+<div class="line"><span class="lineno">   88</span>    <span class="keyword">static_assert</span>(std::same_as&lt;typename To::rep, From&gt;,</div>
+<div class="line"><span class="lineno">   89</span>                  <span class="stringliteral">&quot;The underlying storage type must be identical to the &quot;</span></div>
+<div class="line"><span class="lineno">   90</span>                  <span class="stringliteral">&quot;quantity representation type to guarantee the conversion is &quot;</span></div>
+<div class="line"><span class="lineno">   91</span>                  <span class="stringliteral">&quot;explicitely decided by the end-user.&quot;</span>);</div>
+<div class="line"><span class="lineno">   92</span> </div>
+<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">return</span> value * To::reference;</div>
+<div class="line"><span class="lineno">   94</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -223,10 +233,15 @@ template&lt;typename To , mp_units::Reference From&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00094">94</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   94</span>                                                                   {</div>
-<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">return</span> value.quantity_from_zero().numerical_value_in(value.unit);</div>
-<div class="line"><span class="lineno">   96</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00123">123</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  123</span>                                                                   {</div>
+<div class="line"><span class="lineno">  124</span>    <span class="keyword">static_assert</span>(std::same_as&lt;To, typename From::rep&gt;,</div>
+<div class="line"><span class="lineno">  125</span>                  <span class="stringliteral">&quot;The underlying storage type must be identical to the &quot;</span></div>
+<div class="line"><span class="lineno">  126</span>                  <span class="stringliteral">&quot;quantity representation type to guarantee the conversion is &quot;</span></div>
+<div class="line"><span class="lineno">  127</span>                  <span class="stringliteral">&quot;explicitely decided by the end-user.&quot;</span>);</div>
+<div class="line"><span class="lineno">  128</span> </div>
+<div class="line"><span class="lineno">  129</span>    <span class="keywordflow">return</span> value.quantity_from_zero().numerical_value_in(value.unit);</div>
+<div class="line"><span class="lineno">  130</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -255,10 +270,15 @@ template&lt;typename To , mp_units::Reference From&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00101">101</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  101</span>                                                                   {</div>
-<div class="line"><span class="lineno">  102</span>    <span class="keywordflow">return</span> {value * To::unit, mp_units::default_point_origin(To::unit)};</div>
-<div class="line"><span class="lineno">  103</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00135">135</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  135</span>                                                                   {</div>
+<div class="line"><span class="lineno">  136</span>    <span class="keyword">static_assert</span>(std::same_as&lt;To, typename From::rep&gt;,</div>
+<div class="line"><span class="lineno">  137</span>                  <span class="stringliteral">&quot;The underlying storage type must be identical to the &quot;</span></div>
+<div class="line"><span class="lineno">  138</span>                  <span class="stringliteral">&quot;quantity representation type to guarantee the conversion is &quot;</span></div>
+<div class="line"><span class="lineno">  139</span>                  <span class="stringliteral">&quot;explicitely decided by the end-user.&quot;</span>);</div>
+<div class="line"><span class="lineno">  140</span> </div>
+<div class="line"><span class="lineno">  141</span>    <span class="keywordflow">return</span> {value * To::unit, mp_units::default_point_origin(To::unit)};</div>
+<div class="line"><span class="lineno">  142</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -287,10 +307,10 @@ template&lt;typename To , mp_units::Reference From&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00116">116</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  116</span>                                                {</div>
-<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">return</span> 1.;</div>
-<div class="line"><span class="lineno">  118</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00172">172</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  172</span>                                                {</div>
+<div class="line"><span class="lineno">  173</span>    <span class="keywordflow">return</span> 1.;</div>
+<div class="line"><span class="lineno">  174</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
