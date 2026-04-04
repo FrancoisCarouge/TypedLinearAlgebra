@@ -198,12 +198,14 @@ template <typename Type> struct underlying {
 template <typename Type>
 using underlying_t = std::invoke_result_t<underlying<Type>>;
 
+template <typename Type> constexpr bool is_typed_matrix_v{false};
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+constexpr bool
+    is_typed_matrix_v<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>{true};
+
 template <typename Type>
-concept same_as_typed_matrix = std::same_as<
-    std::remove_cvref_t<Type>,
-    typed_matrix<typename std::remove_cvref_t<Type>::matrix,
-                 typename std::remove_cvref_t<Type>::row_indexes,
-                 typename std::remove_cvref_t<Type>::column_indexes>>;
+concept same_as_typed_matrix = is_typed_matrix_v<std::remove_cvref_t<Type>>;
 
 template <std::size_t Rows, std::size_t Columns>
 constexpr std::size_t rank{[] {

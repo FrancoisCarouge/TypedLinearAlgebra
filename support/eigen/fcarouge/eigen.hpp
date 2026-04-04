@@ -54,6 +54,18 @@ namespace fcarouge::eigen {
 //! @name Concepts
 //! @{
 
+//! @brief Whether the type is a specialization of `std::tuple`.
+//!
+//! @details Guards the structured bindings specializations below from ever
+//! evaluating the Eigen-specific constraints against an unrelated
+//! `std::tuple`: doing so would require completing that tuple, which is
+//! already in progress when the query originates from `std::tuple_size`
+//! itself, and recurses.
+template <typename Type> constexpr bool is_std_tuple_v{false};
+
+template <typename... Types>
+constexpr bool is_std_tuple_v<std::tuple<Types...>>{true};
+
 //! @brief An Eigen3 algebraic concept.
 template <typename Type>
 concept is_eigen = requires { typename Type::PlainMatrix; };
@@ -214,17 +226,19 @@ struct std::formatter<fcarouge::eigen::matrix<Type, Row, Column>, Char> {
 
 //! @brief Tuple size specialization of Eigen types for structured bindings.
 template <typename Type>
-  requires fcarouge::eigen::derived_from_eigen_base<Type> &&
-           fcarouge::eigen::statically_sized<Type>
+  requires(!fcarouge::eigen::is_std_tuple_v<Type>) &&
+          fcarouge::eigen::derived_from_eigen_base<Type> &&
+          fcarouge::eigen::statically_sized<Type>
 struct std::tuple_size<Type>
     : std::integral_constant<std::size_t, Type::RowsAtCompileTime *
                                               Type::ColsAtCompileTime> {};
 
 //! @brief Tuple element specialization of Eigen types for structured bindings.
 template <std::size_t Index, typename Type>
-  requires fcarouge::eigen::derived_from_eigen_base<Type> &&
-           fcarouge::eigen::statically_sized<Type> &&
-           (Index < std::tuple_size_v<Type>)
+  requires(!fcarouge::eigen::is_std_tuple_v<Type>) &&
+          fcarouge::eigen::derived_from_eigen_base<Type> &&
+          fcarouge::eigen::statically_sized<Type> &&
+          (Index < std::tuple_size_v<Type>)
 struct std::tuple_element<Index, Type> {
   using type = typename Type::Scalar;
 };
