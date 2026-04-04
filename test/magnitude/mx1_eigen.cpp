@@ -38,7 +38,7 @@ namespace {
 //! @test Verifies the magnitude of a column vector, the Euclidean L2 norm.
 //! Also verifies negative components square away to a positive magnitude,
 //! and that the zero vector has a zero magnitude.
-[[maybe_unused]] const auto test{[] {
+[[maybe_unused]] const auto test{[] -> int {
   const matrix<double, 2, 1> v2{{-3.}, {4.}};
 
   assert(magnitude(v2) == 5.);

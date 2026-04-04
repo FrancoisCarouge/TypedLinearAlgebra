@@ -163,8 +163,8 @@ struct element_caster<To &, From &> {
 
 template <typename To, mp_units::Reference From>
 struct element_caster<To, From> {
-  [[nodiscard]] static constexpr auto
-  operator()([[maybe_unused]] From value) -> To {
+  [[nodiscard]] static constexpr auto operator()([[maybe_unused]] From value)
+      -> To {
     return 1.;
   }
 };

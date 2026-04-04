@@ -36,7 +36,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the minus unary operator on a column vector.
-[[maybe_unused]] const auto test{[] {
+[[maybe_unused]] const auto test{[] -> int {
   const column_vector<double, 3> a{1., -2., 3.};
   const column_vector<double, 3> b{-a};
 

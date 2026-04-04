@@ -66,7 +66,7 @@ using row_vector = row_vector<representation, Types...>;
 //!
 //! @details A variety of activities of strongly typed linear algebra with Eigen
 //! and mp-units.
-[[maybe_unused]] const auto sample{[] {
+[[maybe_unused]] const auto sample{[] -> int {
   // Set up a heterogenous column vector type for the sample.
   using state = column_vector<position, velocity, acceleration>;
 

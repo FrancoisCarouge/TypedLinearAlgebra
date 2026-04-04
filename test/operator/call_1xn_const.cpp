@@ -38,7 +38,7 @@ using literals::operator""_i;
 
 namespace {
 //! @test Verifies the call operator accessor.
-[[maybe_unused]] const auto test{[] {
+[[maybe_unused]] const auto test{[] -> int {
   const row_vector<double, 3> m{1., 2., 3.};
 
   assert(m.at<0_i>() == 1.);

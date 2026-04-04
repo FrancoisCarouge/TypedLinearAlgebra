@@ -34,7 +34,7 @@ jobs:
           cpp_flags: '-fsanitize=undefined -O0 -g -fno-sanitize-recover=all -fno-omit-frame-pointer'
           run_flags: 'UBSAN_OPTIONS=verbosity=1:abort_on_error=1'
     name: '${{ matrix.sanitizer.name }}'
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     permissions:
       contents: read
     env:
