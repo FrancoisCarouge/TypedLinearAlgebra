@@ -19,16 +19,16 @@ jobs:
       matrix:
         sanitizer:
         - name: 'Address'
-          cpp_flags: '-g -O0 -fsanitize=address'
+          cpp_flags: '-fsanitize=address -O0 -g'
           run_flags: 'ASAN_OPTIONS=verbosity=1:strict_string_checks=1:detect_stack_use_after_return=1:check_initialization_order=1:strict_init_order=1'
         - name: 'Leak'
-          cpp_flags: '-g -O0 -fsanitize=leak'
+          cpp_flags: '-fsanitize=leak -O0 -g'
           run_flags: 'LSAN_OPTIONS=verbosity=1'
         - name: 'Thread'
-          cpp_flags: '-g -O0 -fsanitize=thread'
+          cpp_flags: '-fsanitize=thread -O0 -g'
           run_flags: 'TSAN_OPTIONS=verbosity=1'
         - name: 'Undefined'
-          cpp_flags: '-g -O0 -fsanitize=undefined'
+          cpp_flags: '-fsanitize=undefined -O0 -g'
           run_flags: 'UBSAN_OPTIONS=verbosity=1'
     name: '${{ matrix.sanitizer.name }}'
     runs-on: ubuntu-24.04
