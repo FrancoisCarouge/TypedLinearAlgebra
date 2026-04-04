@@ -19,17 +19,20 @@ jobs:
       matrix:
         sanitizer:
         - name: 'Address'
-          cpp_flags: '-fsanitize=address -O0 -g'
-          run_flags: 'ASAN_OPTIONS=verbosity=1:strict_string_checks=1:detect_stack_use_after_return=1:check_initialization_order=1:strict_init_order=1'
+          cpp_flags: '-fsanitize=address -O0 -g -fno-sanitize-recover=all -fno-omit-frame-pointer'
+          run_flags: 'ASAN_OPTIONS=verbosity=1:abort_on_error=1:strict_string_checks=1:detect_stack_use_after_return=1:check_initialization_order=1:strict_init_order=1'
         - name: 'Leak'
-          cpp_flags: '-fsanitize=leak -O0 -g'
-          run_flags: 'LSAN_OPTIONS=verbosity=1'
+          cpp_flags: '-fsanitize=leak -O0 -g -fno-sanitize-recover=all -fno-omit-frame-pointer'
+          run_flags: 'LSAN_OPTIONS=verbosity=1:abort_on_error=1'
         - name: 'Thread'
-          cpp_flags: '-fsanitize=thread -O0 -g'
-          run_flags: 'TSAN_OPTIONS=verbosity=1'
+          cpp_flags: '-fsanitize=thread -O0 -g -fno-sanitize-recover=all -fno-omit-frame-pointer'
+          run_flags: 'TSAN_OPTIONS=verbosity=1:abort_on_error=1'
+        - name: 'Type'
+          cpp_flags: '-fsanitize=type -O0 -g -fno-sanitize-recover=all -fno-omit-frame-pointer -fno-optimize-sibling-calls'
+          run_flags: 'TYSAN_OPTIONS=verbosity=1:abort_on_error=1:print_stacktrace=1'
         - name: 'Undefined'
-          cpp_flags: '-fsanitize=undefined -O0 -g'
-          run_flags: 'UBSAN_OPTIONS=verbosity=1'
+          cpp_flags: '-fsanitize=undefined -O0 -g -fno-sanitize-recover=all -fno-omit-frame-pointer'
+          run_flags: 'UBSAN_OPTIONS=verbosity=1:abort_on_error=1'
     name: '${{ matrix.sanitizer.name }}'
     runs-on: ubuntu-24.04
     permissions:
@@ -45,12 +48,17 @@ jobs:
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
     - name: 'Install: Latest CMake'
       uses: ssrobins/install-cmake@da13ba26f50a41d3b03cfe8ca7265903f04a8932 # v1.0.0
+    - name: 'Install: Clang 21'
+      run: |
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x llvm.sh
+        sudo ./llvm.sh 21 all
     - name: 'Configure'
       env:
-        CXX: 'g++-14'
-        CC: 'gcc-14'
+        CXX: 'clang++-21'
+        CC: 'clang-21'
       run: cmake -S . -B 'build'
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
     - name: 'Test'
-      run: ${{ matrix.sanitizer.run_flags }} ctest --test-dir 'build' --timeout 30 --tests-regex 'typed_linear_algebra_test' --verbose --parallel 4
+      run: ${{ matrix.sanitizer.run_flags }} ctest --test-dir 'build' --timeout 30 --verbose --parallel 1
