@@ -39,6 +39,7 @@ For more information, please refer to <https://unlicense.org> */
 //! the linear algebra backend. This sample uses mp-units types for the strongly
 //! typed units.
 
+#include "fcarouge/linalg.hpp"
 #include "fcarouge/typed_linear_algebra.hpp"
 
 #include <cstddef>
@@ -50,66 +51,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <type_traits>
 #include <vector>
 
-#include <mp-units/framework/quantity.h>
-#include <mp-units/framework/quantity_point.h>
-#include <mp-units/math.h>
-#include <mp-units/systems/isq/thermodynamics.h>
-#include <mp-units/systems/si.h>
-
-namespace fcarouge {
-// Teach the typed linear algebra library how to convert underlying scalar types
-// to and from mp-units' types.
-template <typename To, mp_units::Quantity From>
-struct element_caster<To, From> {
-  [[nodiscard]] static constexpr auto operator()(From value) -> To {
-    return value.numerical_value_in(value.unit);
-  }
-};
-
-template <mp_units::Quantity To, typename From>
-struct element_caster<To, From> {
-  [[nodiscard]] static constexpr auto operator()(From value) -> To {
-    return value * To::reference;
-  }
-};
-
-template <mp_units::Quantity To, typename From>
-struct element_caster<To &, From &> {
-  [[nodiscard]] static constexpr auto operator()(From &value) -> To & {
-    return reinterpret_cast<To &>(value);
-  }
-};
-
-template <typename To, mp_units::QuantityPoint From>
-struct element_caster<To, From> {
-  [[nodiscard]] static constexpr auto operator()(From value) -> To {
-    return value.quantity_from_zero().numerical_value_in(value.unit);
-  }
-};
-
-template <mp_units::QuantityPoint To, typename From>
-struct element_caster<To, From> {
-  [[nodiscard]] static constexpr auto operator()(From value) -> To {
-    return {value * To::unit, mp_units::default_point_origin(To::unit)};
-  }
-};
-
-template <mp_units::QuantityPoint To, typename From>
-struct element_caster<To &, From &> {
-  [[nodiscard]] static constexpr auto operator()(From &value) -> To & {
-    return reinterpret_cast<To &>(value);
-  }
-};
-
-template <typename To, mp_units::Reference From>
-struct element_caster<To, From> {
-  [[nodiscard]] static constexpr auto
-  operator()([[maybe_unused]] From value) -> To {
-    return 1.;
-  }
-};
-
-namespace sample {
+namespace fcarouge::sample {
 namespace {
 // Set up heterogenously unit typed linear algebra types.
 using representation = double;
@@ -203,8 +145,8 @@ using state = column_vector<position, velocity, acceleration>;
   assert(std::format("{}", x0) == "[[9 m], [7.5 m/s], [3 m/s²]]");
 
   std::vector v4(extents_size<column_extents<3>>, representation{});
-  std::mdspan s4{v4.data(), column_extents<3>{}};
-  state x4{s4};
+  std::mdspan sp4{v4.data(), column_extents<3>{}};
+  state x4{sp4};
 
   // Additions of two vectors of the same types.
   add(x0, x0, x4);
@@ -236,5 +178,4 @@ using state = column_vector<position, velocity, acceleration>;
   return 0;
 }()};
 } // namespace
-} // namespace sample
-} // namespace fcarouge
+} // namespace fcarouge::sample
