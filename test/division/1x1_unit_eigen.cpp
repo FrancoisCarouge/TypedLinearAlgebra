@@ -41,7 +41,7 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 
 namespace {
 //! @test Verifies the quantity by singleton matrix division operator.
-[[maybe_unused]] const auto test{[] {
+[[maybe_unused]] const auto test{[] -> int {
   using length = quantity<mp_units::isq::length[m]>;
 
   const length a{3. * m};

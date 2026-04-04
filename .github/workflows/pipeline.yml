@@ -18,11 +18,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - { os: 'ubuntu-24.04', cxx: 'clang++-18', cc: 'clang-18', generator: 'Ninja', cpack_generator: 'DEB' }
-        - { os: 'ubuntu-24.04', cxx: 'clang++-20', cc: 'clang-20', generator: 'Ninja', cpack_generator: 'DEB' }
-        - { os: 'ubuntu-24.04', cxx: 'clang++-21', cc: 'clang-21', generator: 'Ninja', cpack_generator: 'DEB' }
-        - { os: 'ubuntu-24.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', cpack_generator: 'DEB' }
-        - { os: 'ubuntu-24.04', cxx: 'g++-15', cc: 'gcc-15', generator: 'Unix Makefiles', cpack_generator: 'DEB' }
+        - { os: 'ubuntu-26.04', cxx: 'clang++-20', cc: 'clang-20', generator: 'Ninja', cpack_generator: 'DEB' }
+        - { os: 'ubuntu-26.04', cxx: 'clang++-21', cc: 'clang-21', generator: 'Ninja', cpack_generator: 'DEB' }
+        - { os: 'ubuntu-26.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', cpack_generator: 'DEB' }
+        - { os: 'ubuntu-26.04', cxx: 'g++-15', cc: 'gcc-15', generator: 'Unix Makefiles', cpack_generator: 'DEB' }
         - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 18 2026', cpack_generator: 'WIX', config: 'Debug' }
         - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 18 2026', cpack_generator: 'WIX', config: 'Release' }
     name: '${{ matrix.os }} / ${{ matrix.cxx }} / ${{ matrix.generator }} / ${{ matrix.config }}'
@@ -49,10 +48,7 @@ jobs:
       run: sudo apt update && sudo apt install -y clang-20 clang-tools-20
     - name: 'Install: Clang 21'
       if: ${{ matrix.cxx == 'clang++-21' }}
-      run: |
-        wget https://apt.llvm.org/llvm.sh
-        chmod +x llvm.sh
-        sudo ./llvm.sh 21 all
+      run: sudo apt update && sudo apt install -y clang-21 clang-tools-21
     - name: 'Configure'
       env:
         CXX: '${{ matrix.cxx }}'

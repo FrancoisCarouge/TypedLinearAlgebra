@@ -42,7 +42,7 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 
 namespace {
 //! @test Verifies the quantity by column vector division operator.
-[[maybe_unused]] const auto test{[] {
+[[maybe_unused]] const auto test{[] -> int {
   using length = quantity<mp_units::isq::length[m]>;
   using area = quantity<mp_units::isq::area[m2]>;
 

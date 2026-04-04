@@ -40,7 +40,7 @@ namespace {
 //!
 //! @details The count of indexes must match the rank of the matrix: one
 //! index for a column vector.
-[[maybe_unused]] const auto test{[] {
+[[maybe_unused]] const auto test{[] -> int {
   using matrix =
       matrix<double, std::tuple<decltype(1. * m), decltype(1. * m / s)>,
              std::tuple<decltype(1. * N)>>;

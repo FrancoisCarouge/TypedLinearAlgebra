@@ -43,7 +43,7 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 namespace {
 //! @test Verifies the magnitude, the Euclidean L2 norm, of a column vector
 //! of quantities.
-[[maybe_unused]] const auto test{[] {
+[[maybe_unused]] const auto test{[] -> int {
   using force = quantity<mp_units::isq::force[N]>;
 
   const column_vector<representation, force, force, force> v3{2. * N, 3. * N,

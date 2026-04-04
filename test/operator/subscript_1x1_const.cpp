@@ -36,7 +36,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the operator subscript accessor.
-[[maybe_unused]] const auto test{[] {
+[[maybe_unused]] const auto test{[] -> int {
   const matrix<> m{42.};
 
   assert(m[] == 42.);

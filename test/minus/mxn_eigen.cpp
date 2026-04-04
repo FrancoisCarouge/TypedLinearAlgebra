@@ -37,7 +37,7 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the minus unary operator on a regular, two-dimension
 //! matrix.
-[[maybe_unused]] const auto test{[] {
+[[maybe_unused]] const auto test{[] -> int {
   const matrix<double, 2, 3> a{{1., -2., 3.}, {-4., 5., -6.}};
   const matrix<double, 2, 3> b{-a};
 

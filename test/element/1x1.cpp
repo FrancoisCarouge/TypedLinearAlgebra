@@ -40,7 +40,7 @@ namespace {
 //!
 //! @details The count of indexes must match the rank of the matrix: no
 //! index for a singleton matrix.
-[[maybe_unused]] const auto test{[] {
+[[maybe_unused]] const auto test{[] -> int {
   using matrix = matrix<double, std::tuple<decltype(1. * m)>,
                         std::tuple<decltype(1. * m)>>;
   using quantity = decltype(1. * m2);

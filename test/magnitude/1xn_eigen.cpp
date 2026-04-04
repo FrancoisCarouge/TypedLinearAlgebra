@@ -36,7 +36,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the magnitude of a row vector, the Euclidean L2 norm.
-[[maybe_unused]] const auto test{[] {
+[[maybe_unused]] const auto test{[] -> int {
   const matrix<double, 1, 2> v2{3., 4.};
 
   assert(magnitude(v2) == 5.);

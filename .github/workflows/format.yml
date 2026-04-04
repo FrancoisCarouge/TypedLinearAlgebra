@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     permissions:
       contents: read
     steps:
@@ -33,7 +33,7 @@ jobs:
           -o -iname '*.cpp' \
           -o -iname '*.tpp' \
           | xargs \
-          clang-format-18 --Werror --dry-run --verbose -style=file
+          clang-format-20 --Werror --dry-run --verbose -style=file
         find . \
           -iname 'CMakeLists.txt' \
           -o -iname '*.cmake.in' \

@@ -43,7 +43,7 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 
 namespace {
 //! @test Verifies the initializer lists constructor.
-[[maybe_unused]] const auto test{[] {
+[[maybe_unused]] const auto test{[] -> int {
   using length = quantity<mp_units::isq::length[m]>;
 
   double storage{0.};

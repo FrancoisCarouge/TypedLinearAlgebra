@@ -73,7 +73,7 @@ template <std::size_t Columns>
 using row_extents = std::extents<std::size_t, 1, Columns>;
 
 template <typename Extents>
-constexpr std::size_t extents_size{[] {
+constexpr std::size_t extents_size{[] -> auto {
   std::size_t size{1};
   Extents extents{};
   for (std::size_t i{0}; i < Extents::rank(); ++i) {
@@ -86,7 +86,7 @@ constexpr std::size_t extents_size{[] {
 //!
 //! @details A variety of activities of strongly typed linear algebra with
 //! std::mdspan, std::linalg, and mp-units.
-[[maybe_unused]] const auto sample{[] {
+[[maybe_unused]] const auto sample{[] -> int {
   // Set up a heterogenous column vector type for the sample.
   using state = column_vector<position, velocity, acceleration>;
 

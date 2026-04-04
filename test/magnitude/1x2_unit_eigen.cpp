@@ -44,7 +44,7 @@ namespace {
 //! @test Verifies the magnitude, the Euclidean L2 norm, of a row vector of
 //! quantities. The result carries the same unit as the vector's uniform
 //! element type.
-[[maybe_unused]] const auto test{[] {
+[[maybe_unused]] const auto test{[] -> int {
   using velocity = quantity<mp_units::isq::velocity[m / s]>;
 
   const row_vector<representation, velocity, velocity> v2{3. * m / s,
