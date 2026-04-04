@@ -151,7 +151,8 @@ using literals::operator""_i;
 
   // Structured bindings supported.
   state x6{3. * m, 2. * m / s, 1. * m / s2};
-  auto &[p6, v6, a6]{x6};
+  auto &[p6, v6, a6]{x6}; // WHY IS THIS COMPILING?
+  static_assert(std::same_as<int, decltype(p6)>);
   assert(p6 == 3. * m);
   assert(v6 == 2. * m / s);
   assert(a6 == 1. * m / s2);
@@ -227,8 +228,11 @@ using literals::operator""_i;
   // The singleton element can be accessed by structured bindings.
   auto &[sb1]{s1};
   sb1 = 1. * A / mol;
-  const auto &[sb2]{s1};
-  assert(sb2 == 1. * A / mol);
+  // s1 = 1. * A / mol;
+  assert(s1 == 1. * A / mol);
+
+  // const auto &[sb2]{s1};
+  // assert(sb2 == 1. * A / mol);
 
   // More forms of multiplication with a scalar factor.
   assert(std::format("{}", x5 * 2.) == "[[6 m], [4 m/s], [2 m/s²]]");

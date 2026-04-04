@@ -262,6 +262,12 @@ struct element_caster;
 
 **Type Conversions:** The conversion from the underlying matrix element type references to the quantity type references is achieved through a `reinterpret_cast` conversion which works by reinterpreting the underlying bit pattern forgoing aliasing and alignement rules. The safety of the `element_caster` implementation is dubious and safer alternatives to be identified. The quantity type library only provide partial type conversion to and from standard types. It may be appropriate for the type library to extend its safe conversion support: to/from, by-value/reference, not/constant, and l/rvalue. A single template specialization could then suffice to customize the type conversions.
 
+**Quantity Reference**: Strongly typed lvalue reference semantic permits natural C++ syntax `m[1, 2] = 42. * m / s;` while providing type safety. The linear algebra storage types are standard floating point types. The type conversion for lvalue reference aims to convert the underlying type reference into a strongly typed reference `double & --> quantity<...> &`. Initialy a `reinterpret_cast` was used. This conversion is (likely) undefined behavior. What to do?
+* Remove this conversion altogether? How to set values?
+** `m.set(1, 2, 42. * m / s)` ? `m[1, 2](42. m * s)` ?
+* Return an object offering lvalue reference semantic? A `quantity<Ref, Rep &>`?
+** We loose structured bindings because the proxied reference is not reference and cannot fails temporary conversion.
+
 **No Unsafe API:** Three methods of the matrix class present risks: the default constructor, the conversion constructor for underlying matrix, and the underlying data access method:
 * The default constructor could construct the underlying matrix according to its default linear algebra backend initialization, or lack thereof. Backends without guaranteed initialization have shown to result in uninitialized memory defects. The default constructor should be safe by default under all corner cases, or be gone. Adding an explicitely uninitialized constructor could be considered.
 * One of the conversion constructor permits the construction of a typed matrix from its untyped, underlying matrix data. Although practical for the user and operation implementations, the constructor however defeats the purpose of the type safety and re-introduces the risk the typed matrix set out to resolve. Additional contruction strategies should help the user in constructing type safe matrices without using an unsafe construction methodology.

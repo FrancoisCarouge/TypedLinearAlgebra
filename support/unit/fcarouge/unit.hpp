@@ -68,6 +68,8 @@ using acceleration = mp_units::quantity<mp_units::isq::acceleration[m / s2]>;
 
 // Teach the typed linear algebra library how to convert underlying scalar types
 // to and from mp-units' types.
+template <typename To, typename From> class proxy;
+
 template <typename To, mp_units::Quantity From>
 struct element_caster<To, From> {
   [[nodiscard]] static constexpr auto operator()(From value) -> To {
@@ -94,25 +96,13 @@ struct element_caster<To, From> {
 
 template <mp_units::Quantity To, typename From>
 struct element_caster<To &, From &> {
-  [[nodiscard]] static auto operator()(From &value) -> To & {
+  [[nodiscard]] static constexpr auto operator()(From &value) {
     static_assert(std::same_as<typename To::rep, From>,
                   "The underlying storage type must be identical to the "
                   "quantity representation type to guarantee the conversion is "
                   "explicitely decided by the end-user.");
-    static_assert(sizeof(To) == sizeof(From),
-                  "The underlying storage and the quantity types must have the "
-                  "same size to have any hope of functional conversion.");
-    static_assert(alignof(To) == alignof(From),
-                  "The underlying storage and the quantity types must have the "
-                  "same alignment to have any hope of functional conversion.");
 
-    To MAY_ALIAS *q{reinterpret_cast<To *>(&value)};
-
-    // This conversion is Undefined Behavior (UB): strict-aliasing violation,
-    // type punning dereferencing. The `reinterpret_cast` is not a constant
-    // expression. The function can never be evaluated at compile-time. The
-    // function will never be `constexpr`.
-    return *q; // UB here.
+    return proxy<To, From>{value};
   }
 };
 
@@ -142,25 +132,12 @@ struct element_caster<To, From> {
 
 template <mp_units::QuantityPoint To, typename From>
 struct element_caster<To &, From &> {
-  [[nodiscard]] static auto operator()(From &value) -> To & {
+  [[nodiscard]] static constexpr auto operator()(From &value) {
     static_assert(std::same_as<typename To::rep, From>,
                   "The underlying storage type must be identical to the "
                   "quantity representation type to guarantee the conversion is "
                   "explicitely decided by the end-user.");
-    static_assert(sizeof(To) == sizeof(From),
-                  "The underlying storage and the quantity types must have the "
-                  "same size to have any hope of functional conversion.");
-    static_assert(alignof(To) == alignof(From),
-                  "The underlying storage and the quantity types must have the "
-                  "same alignment to have any hope of functional conversion.");
-
-    To MAY_ALIAS *q{reinterpret_cast<To *>(&value)};
-
-    // This conversion is Undefined Behavior (UB): strict-aliasing violation,
-    // type punning dereferencing. The `reinterpret_cast` is not a constant
-    // expression. The function can never be evaluated at compile-time. The
-    // function will never be `constexpr`.
-    return *q; // UB here.
+    return proxy<To, From>{value};
   }
 };
 
@@ -171,6 +148,41 @@ struct element_caster<To, From> {
     return 1.;
   }
 };
+
+// Another way to express with idiom would be a `mp_units::quantity<Ref, Rep
+// &>`.
+// * We lose native C++ syntax
+// * We lose reference structured bindings.
+// * We need to define every operations needed that can implicitely convert.
+// * We lose formatter
+// We don't like this! We want native C++ syntax and semantic in our library.
+template <typename To, typename From> class proxy {
+public:
+  explicit proxy(From &value) : storage(value) {}
+
+  operator To() { return To{storage, To::unit}; }
+
+  bool operator==(To value) { return storage == cast<From, To>(value); }
+
+  proxy &operator=(To value) {
+    storage = cast<From, To>(value);
+    return *this;
+  }
+
+private:
+  From &storage;
+};
 } // namespace fcarouge
+
+template <typename To, typename From, typename Char>
+struct std::formatter<typename fcarouge::proxy<To, From>, Char>
+    : std::formatter<To, Char> {};
+
+// template <typename To, typename From, typename Char>
+// decltype(auto) get(fcarouge::proxy<To, From> auto &&value) {
+//   using type = std::remove_cvref_t<decltype(value)>;
+
+//   return (value.template at<Index / type::columns, Index % type::columns>());
+// }
 
 #endif // FCAROUGE_UNIT_HPP
