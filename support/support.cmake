@@ -40,8 +40,7 @@ function(pass TEST_NAME)
   cmake_parse_arguments(PARSE_ARGV 0 TEST "" "${oneValueArgs}"
                         "${multiValueArgs}")
 
-  get_filename_component(CALLER "${CMAKE_PARENT_LIST_FILE}" DIRECTORY)
-  get_filename_component(CALLER "${CALLER}" NAME)
+  get_filename_component(CALLER "${CMAKE_CURRENT_SOURCE_DIR}" NAME)
 
   foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
     add_executable(
@@ -72,8 +71,7 @@ function(fail TEST_NAME)
   cmake_parse_arguments(PARSE_ARGV 0 TEST "" "${oneValueArgs}"
                         "${multiValueArgs}")
 
-  get_filename_component(CALLER "${CMAKE_PARENT_LIST_FILE}" DIRECTORY)
-  get_filename_component(CALLER "${CALLER}" NAME)
+  get_filename_component(CALLER "${CMAKE_CURRENT_SOURCE_DIR}" NAME)
 
   foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
     add_executable(
