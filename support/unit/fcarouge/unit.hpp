@@ -80,41 +80,65 @@ struct element_caster<To, From> {
   }
 };
 
-template <mp_units::Quantity To, typename From>
-struct element_caster<To, From> {
-  [[nodiscard]] static constexpr auto operator()(From value) -> To {
-    static_assert(std::same_as<typename To::rep, From>,
-                  "The underlying storage type must be identical to the "
-                  "quantity representation type to guarantee the conversion is "
-                  "explicitely decided by the end-user.");
+// template <mp_units::Quantity To, typename From>
+// struct element_caster<To, From> {
+//   [[nodiscard]] static constexpr auto operator()(From value) -> To {
+//     static_assert(std::same_as<typename To::rep, From>,
+//                   "The underlying storage type must be identical to the "
+//                   "quantity representation type to guarantee the conversion
+//                   is " "explicitely decided by the end-user.");
 
-    return value * To::reference;
-  }
-};
+//     return value * To::reference;
+//   }
+// };
+
+// template <typename To, typename... From>
+// struct element_caster<To, std::variant<From...>> {
+//   [[nodiscard]] static constexpr auto operator()(double &value) -> To {
+//     return value * To::reference;
+//   }
+// };
 
 template <mp_units::Quantity To, typename From>
 struct element_caster<To &, From &> {
-  [[nodiscard]] static auto operator()(From &value) -> To & {
-    static_assert(std::same_as<typename To::rep, From>,
-                  "The underlying storage type must be identical to the "
-                  "quantity representation type to guarantee the conversion is "
-                  "explicitely decided by the end-user.");
-    static_assert(sizeof(To) == sizeof(From),
-                  "The underlying storage and the quantity types must have the "
-                  "same size to have any hope of functional conversion.");
-    static_assert(alignof(To) == alignof(From),
-                  "The underlying storage and the quantity types must have the "
-                  "same alignment to have any hope of functional conversion.");
-
-    To MAY_ALIAS *q{reinterpret_cast<To *>(&value)};
-
-    // This conversion is Undefined Behavior (UB): strict-aliasing violation,
-    // type punning dereferencing. The `reinterpret_cast` is not a constant
-    // expression. The function can never be evaluated at compile-time. The
-    // function will never be `constexpr`.
-    return *q; // UB here.
+  [[nodiscard]] static constexpr auto operator()(From &value) -> To & {
+    To *q = std::get_if<To>(&value);
+    return *q;
   }
+  // [[nodiscard]] static constexpr auto operator()(const auto &value) -> To {
+  //   return std::get<To>(value);
+  // }
 };
+
+// template <mp_units::Quantity To, typename From>
+// struct element_caster<To &, From &> {
+//   [[nodiscard]] static auto operator()(From &value) -> To & {
+//     static_assert(std::same_as<typename To::rep, From>,
+//                   "The underlying storage type must be identical to the "
+//                   "quantity representation type to guarantee the
+//                   conversion is " "explicitely decided by the
+//                   end-user.");
+//     static_assert(sizeof(To) == sizeof(From),
+//                   "The underlying storage and the quantity types must
+//                   have the " "same size to have any hope of functional
+//                   conversion.");
+//     static_assert(alignof(To) == alignof(From),
+//                   "The underlying storage and the quantity types must
+//                   have the " "same alignment to have any hope of
+//                   functional conversion.");
+
+//     To MAY_ALIAS *q{reinterpret_cast<To *>(&value)};
+
+//     // This conversion is Undefined Behavior (UB): strict-aliasing
+//     violation,
+//     // type punning dereferencing. The `reinterpret_cast` is not a
+//     constant
+//     // expression. The function can never be evaluated at compile-time.
+//     The
+//     // function will never be `constexpr`.
+//     return *q; // UB here.
+//   }
+// };
 
 template <typename To, mp_units::QuantityPoint From>
 struct element_caster<To, From> {
@@ -125,7 +149,7 @@ struct element_caster<To, From> {
                   "explicitely decided by the end-user.");
 
     return value.quantity_from_zero().numerical_value_in(value.unit);
-  }
+  } // namespace fcarouge
 };
 
 template <mp_units::QuantityPoint To, typename From>
