@@ -52,11 +52,3 @@ target_sources(
                                       FILES "fcarouge/unit.hpp")
 target_link_libraries(typed_linear_algebra_unit
                       INTERFACE typed_linear_algebra_options mp-units::mp-units)
-
-if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-  target_compile_definitions(typed_linear_algebra_unit INTERFACE "MAY_ALIAS=")
-else()
-  target_compile_definitions(
-    typed_linear_algebra_unit
-    INTERFACE "MAY_ALIAS=__attribute__((__may_alias__))")
-endif()
