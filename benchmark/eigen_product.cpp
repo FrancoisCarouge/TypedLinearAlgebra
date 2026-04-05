@@ -29,21 +29,57 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/linalg.hpp"
+#include <fstream>
+#include <iostream>
+#include <print>
+#include <random>
 
-#include <cassert>
-#include <type_traits>
+#include <nanobench.h>
 
-namespace fcarouge::test {
+#include <fcarouge/eigen.hpp>
+
+namespace fcarouge::benchmark {
 namespace {
-//! @test Verifies the underlying type of the matrix.
-[[maybe_unused]] const auto test{[] {
-  const matrix<double, 3, 3> z;
+void bench() {
+  constexpr std::size_t N{16};
 
-  using underlying = typename decltype(z)::template underlying<>;
-  static_assert(std::is_same_v<double, underlying>);
+  eigen::matrix<double, N, N> a;
+  eigen::matrix<double, N, N> b;
+  
+//   std::vector<double> storage_a(N * N);
+//   std::vector<double> storage_b(N * N);
+//   std::vector<double> storage_c(N * N);
 
-  return 0;
-}()};
+  std::random_device device;
+  std::mt19937 generator{device()};
+  std::uniform_real_distribution<> distribution{0., 1.};
+
+  for (std::size_t i = 0; i < N; ++i) {
+    for (std::size_t j = 0; j < N; ++j) {
+    a(i, j) = distribution(generator);
+    b[i, j] = distribution(generator);
+    }
+  }
+
+//   using matrix = std::mdspan<double, std::extents<std::size_t, N, N>>;
+
+//   matrix a{storage_a.data()};
+//   matrix b{storage_b.data()};
+//   matrix c{storage_c.data()};
+
+//   std::ofstream results{"benchmark/matrix_product_mdspan.csv", std::ios::app};
+
+  ankerl::nanobench::Bench()
+      // .output(nullptr)
+      .name("eigen_product")
+      .run([&]() { 
+        eigen::matrix<double, N, N> r = a * b;
+        ankerl::nanobench::doNotOptimizeAway(r);
+      })
+      // .render(csv.c_str(), results)
+      ;
+}
 } // namespace
-} // namespace fcarouge::test
+} // namespace fcarouge::benchmark
+
+int main() { fcarouge::benchmark::bench(); }

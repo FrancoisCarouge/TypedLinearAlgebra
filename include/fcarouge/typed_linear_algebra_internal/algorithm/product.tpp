@@ -85,7 +85,9 @@ namespace tla = typed_linear_algebra_internal;
   using matrix = std::remove_cvref_t<decltype(lhs)>;
   using row_indexes = typename matrix::row_indexes;
   using column_indexes = typename matrix::column_indexes;
-  using underlying = typename matrix::underlying;
+
+  // Not quite right anymore?
+  using underlying = typename matrix::template underlying<>;
 
   return make_typed_matrix<tla::product<row_indexes, type>, column_indexes>(
       lhs.data() * cast<underlying, type>(rhs));
@@ -98,7 +100,7 @@ namespace tla = typed_linear_algebra_internal;
   using matrix = std::remove_cvref_t<decltype(rhs)>;
   using row_indexes = typename matrix::row_indexes;
   using column_indexes = typename matrix::column_indexes;
-  using underlying = typename matrix::underlying;
+  using underlying = typename matrix::template underlying<>;
 
   return make_typed_matrix<tla::product<row_indexes, type>, column_indexes>(
       cast<underlying, type>(lhs) * rhs.data());

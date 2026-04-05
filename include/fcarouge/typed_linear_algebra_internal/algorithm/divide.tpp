@@ -105,7 +105,6 @@ namespace tla = typed_linear_algebra_internal;
   //! @todo Should there be constraints on the type?
   using type = std::remove_cvref_t<decltype(lhs)>;
   using matrix = std::remove_cvref_t<decltype(rhs)>;
-  using underlying = typename matrix::underlying;
   using row_indexes = tla::quotient<type, typename matrix::column_indexes>;
   using column_indexes =
       tla::quotient<std::identity, typename matrix::row_indexes>;
@@ -113,6 +112,8 @@ namespace tla = typed_linear_algebra_internal;
   //! @todo Add type verification, perhaps with a generalization of the
   //! multiplication verification?
 
+  // Not quite right anymore?
+  using underlying = typename matrix::template underlying<>;
   return make_typed_matrix<row_indexes, column_indexes>(
       cast<underlying, type>(lhs) / rhs.data());
 }
@@ -122,9 +123,11 @@ namespace tla = typed_linear_algebra_internal;
   //! @todo Should there be constraints on the type?
   using type = std::remove_cvref_t<decltype(rhs)>;
   using matrix = std::remove_cvref_t<decltype(lhs)>;
-  using underlying = typename matrix::underlying;
   using row_indexes = tla::quotient<typename matrix::row_indexes, type>;
   using column_indexes = typename matrix::column_indexes;
+
+  // Not quite right anymore.
+  using underlying = typename matrix::template underlying<>;
 
   return make_typed_matrix<row_indexes, column_indexes>(
       lhs.data() / cast<underlying, type>(rhs));
