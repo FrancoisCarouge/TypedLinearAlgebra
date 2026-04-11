@@ -32,10 +32,8 @@ For more information, please refer to <https://unlicense.org> ]]
 # Add a given test.
 #
 # * NAME The name of the test file without extension.
-#
-# * NAME The name of the test file without extension.
 # * BACKENDS Optional list of backends to use against the test.
-function(pass TEST_NAME)
+function(pass NAME)
   set(multiValueArgs BACKENDS)
   cmake_parse_arguments(PARSE_ARGV 0 TEST "" "${oneValueArgs}"
                         "${multiValueArgs}")
@@ -43,19 +41,18 @@ function(pass TEST_NAME)
   get_filename_component(CALLER "${CMAKE_CURRENT_SOURCE_DIR}" NAME)
 
   foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
-    add_executable(
-      typed_linear_algebra_test_${BACKEND}_${CALLER}_${TEST_NAME}_driver
-      "${TEST_NAME}.cpp")
+    add_executable(typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_driver
+                   "${NAME}.cpp")
     target_link_libraries(
-      typed_linear_algebra_test_${BACKEND}_${CALLER}_${TEST_NAME}_driver
+      typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_driver
       PRIVATE typed_linear_algebra_options typed_linear_algebra_main
               typed_linear_algebra_${BACKEND})
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(
-      NAME typed_linear_algebra_test_${BACKEND}_${CALLER}_${TEST_NAME}
+      NAME typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}
       COMMAND
         ${TEST_COMMAND}
-        $<TARGET_FILE:typed_linear_algebra_test_${BACKEND}_${CALLER}_${TEST_NAME}_driver>
+        $<TARGET_FILE:typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_driver>
     )
   endforeach()
 endfunction(pass)
@@ -63,10 +60,8 @@ endfunction(pass)
 # Add a given compile-fail test.
 #
 # * NAME The name of the test file without extension.
-#
-# * NAME The name of the test file without extension.
 # * BACKENDS Optional list of backends to use against the test.
-function(fail TEST_NAME)
+function(fail NAME)
   set(multiValueArgs BACKENDS)
   cmake_parse_arguments(PARSE_ARGV 0 TEST "" "${oneValueArgs}"
                         "${multiValueArgs}")
@@ -74,24 +69,52 @@ function(fail TEST_NAME)
   get_filename_component(CALLER "${CMAKE_CURRENT_SOURCE_DIR}" NAME)
 
   foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
-    add_executable(
-      typed_linear_algebra_test_${BACKEND}_${CALLER}_${TEST_NAME}_driver
-      "${TEST_NAME}.cpp")
+    add_executable(typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_driver
+                   "${NAME}.cpp")
     target_link_libraries(
-      typed_linear_algebra_test_${BACKEND}_${CALLER}_${TEST_NAME}_driver
+      typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_driver
       PRIVATE typed_linear_algebra_options typed_linear_algebra_main
               typed_linear_algebra_${BACKEND})
     set_target_properties(
-      typed_linear_algebra_test_${BACKEND}_${CALLER}_${TEST_NAME}_driver
+      typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_driver
       PROPERTIES EXCLUDE_FROM_ALL TRUE)
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(
-      NAME typed_linear_algebra_test_${BACKEND}_${CALLER}_${TEST_NAME}
+      NAME typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}
       COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target
-              typed_linear_algebra_test_${BACKEND}_${CALLER}_${TEST_NAME}_driver
-    )
-    set_tests_properties(
-      typed_linear_algebra_test_${BACKEND}_${CALLER}_${TEST_NAME}
-      PROPERTIES WILL_FAIL TRUE)
+              typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_driver)
+    set_tests_properties(typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}
+                         PROPERTIES WILL_FAIL TRUE)
   endforeach()
 endfunction(fail)
+
+# Add a given benchmark.
+#
+# * NAME The name of the benchmark file without extension.
+# * SIZE The size factor under measurement.
+# * BACKENDS Optional list of backends to use against the benchmark.
+function(bench NAME SIZE)
+  set(multiValueArgs BACKENDS)
+  cmake_parse_arguments(PARSE_ARGV 0 TEST "" "${oneValueArgs}"
+                        "${multiValueArgs}")
+
+  get_filename_component(CALLER "${CMAKE_CURRENT_SOURCE_DIR}" NAME)
+
+  foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
+    configure_file("${NAME}.cpp" "${NAME}_${SIZE}.cpp")
+    add_executable(
+      typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_${SIZE}_driver
+      "${NAME}_${SIZE}.cpp")
+    target_link_libraries(
+      typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_${SIZE}_driver
+      PRIVATE typed_linear_algebra_options typed_linear_algebra_main
+              typed_linear_algebra_${BACKEND} nanobench::nanobench)
+    separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
+    add_test(
+      NAME typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_${SIZE}
+      COMMAND
+        ${TEST_COMMAND}
+        $<TARGET_FILE:typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_${SIZE}_driver>
+    )
+  endforeach()
+endfunction(bench)
