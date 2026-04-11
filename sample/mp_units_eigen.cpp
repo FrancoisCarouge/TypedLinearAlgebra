@@ -111,7 +111,7 @@ using literals::operator""_i;
   assert(std::format("{}", x0) == "[[3 m], [2 m/s], [1 m/s²]]");
 
   // Element assignment and access.
-  x0.at<1>() = 2.5 * m / s;
+  x0.set<1>(2.5 * m / s);
   auto x0_1{x0.at<1>()};
   assert(x0_1 == 2.5 * m / s);
   assert(std::format("{}", x0_1) == "2.5 m/s");
@@ -169,49 +169,49 @@ using literals::operator""_i;
   assert(std::format("{}", s1) == "1 A/mol");
 
   // Many ways to access the singleton matrix by index(es).
-  s1.at<0, 0>() = 23. * A / mol;
+  s1.set<0, 0>(23. * A / mol);
   assert((s1.at<0, 0>() == 23. * A / mol));
 
-  s1[0, 0] = 22. * A / mol;
+  s1.set<0, 0>(22. * A / mol);
   assert((s1[0, 0] == 22. * A / mol));
 
-  s1(0, 0) = 21. * A / mol;
+  s1.set<0, 0>(21. * A / mol);
   assert(s1(0, 0) == 21. * A / mol);
 
-  s1.at<0_i, 0_i>() = 26. * A / mol;
+  s1.set<0_i, 0_i>(26. * A / mol);
   assert((s1.at<0_i, 0_i>() == 26. * A / mol));
 
-  s1[0_i, 0_i] = 25. * A / mol;
+  s1.set<0_i, 0_i>(25. * A / mol);
   assert((s1[0_i, 0_i] == 25. * A / mol));
 
-  s1(0_i, 0_i) = 24. * A / mol;
+  s1.set<0_i, 0_i>(24. * A / mol);
   assert(s1(0_i, 0_i) == 24. * A / mol);
 
-  s1.at<0>() = 13. * A / mol;
+  s1.set<0>(13. * A / mol);
   assert(s1.at<0>() == 13. * A / mol);
 
-  s1[0] = 12. * A / mol;
+  s1.set<0>(12. * A / mol);
   assert(s1[0] == 12. * A / mol);
 
-  s1(0) = 11. * A / mol;
+  s1.set<0>(11. * A / mol);
   assert(s1(0) == 11. * A / mol);
 
-  s1.at<0_i>() = 16. * A / mol;
+  s1.set<0_i>(16. * A / mol);
   assert(s1.at<0_i>() == 16. * A / mol);
 
-  s1[0_i] = 15. * A / mol;
+  s1.set<0_i>(15. * A / mol);
   assert(s1[0_i] == 15. * A / mol);
 
-  s1(0_i) = 14. * A / mol;
+  s1.set<0_i>(14. * A / mol);
   assert(s1(0_i) == 14. * A / mol);
 
-  s1.at() = 3. * A / mol;
+  s1.set(3. * A / mol);
   assert(s1.at() == 3. * A / mol);
 
-  s1[] = 2. * A / mol;
+  s1.set(2. * A / mol);
   assert(s1[] == 2. * A / mol);
 
-  s1() = 1. * A / mol;
+  s1.set(1. * A / mol);
   assert(s1() == 1. * A / mol);
 
   // Beware the element type may not be the same as could be expected.
@@ -223,12 +223,13 @@ using literals::operator""_i;
   using single_element = decltype(s1)::element<0, 0>;
   assert(single_element{s1} == 10. * A / mol);
   assert(s1 == 10. * A / mol);
+  s1 = 1. * A / mol;
 
   // The singleton element can be accessed by structured bindings.
-  auto &[sb1]{s1};
-  sb1 = 1. * A / mol;
-  const auto &[sb2]{s1};
-  assert(sb2 == 1. * A / mol);
+  //   auto &[sb1]{s1};
+  //   sb1 = 1. * A / mol;
+  //   const auto &[sb2]{s1};
+  //   assert(sb2 == 1. * A / mol);
 
   // More forms of multiplication with a scalar factor.
   assert(std::format("{}", x5 * 2.) == "[[6 m], [4 m/s], [2 m/s²]]");
@@ -288,14 +289,14 @@ using literals::operator""_i;
   assert(std::format("{}", v1) == "[[1 m/s], [2 m/s], [3 m/s]]");
 
   // Vector typed access.
-  v0.at<1>() = 4. * m / s;
+  v0.set<1>(4. * m / s);
   assert(v0.at<1>() == 4. * m / s);
 
   // Vector and uniform typed access.
-  v0[1] = 3. * m / s;
+  v0.set<1>(3. * m / s);
   assert(v0[1] == 3. * m / s);
 
-  v0(1) = 2. * m / s;
+  v0.set<1>(2. * m / s);
   assert(v0(1) == 2. * m / s);
 
   // Beware of non-evaluated template expression: these types are not the same.
@@ -320,10 +321,10 @@ using literals::operator""_i;
       matrix<std::tuple<position, position>, std::tuple<position, position>>;
   position_2d_uncertainty p0;
 
-  p0[0, 1] = 9. * m2;
+  p0.set<0, 1>(9. * m2);
   assert((p0[0, 1] == 9. * m2));
 
-  p0(0, 1) = 16. * m2;
+  p0.set<0, 1>(16. * m2);
   assert((p0(0, 1) == 16. * m2));
 
   //! @todo Modulo where both arguments should be of the same quantity kind and

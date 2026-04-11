@@ -171,27 +171,6 @@ constexpr void for_constexpr(Function &&function) {
   }
 }
 
-template <typename Type> struct underlying {
-  [[nodiscard]] static constexpr auto operator()()
-    requires requires { typename Type::underlying; }
-  {
-    return typename Type::underlying{};
-  }
-  [[nodiscard]] static constexpr auto operator()()
-    requires requires { typename Type::Scalar; }
-  {
-    return typename Type::Scalar{};
-  }
-  [[nodiscard]] static constexpr auto operator()()
-    requires requires { typename Type::element_type; }
-  {
-    return std::remove_cvref_t<typename Type::element_type>{};
-  }
-};
-
-template <typename Type>
-using underlying_t = std::invoke_result_t<underlying<Type>>;
-
 template <typename Type>
 concept same_as_typed_matrix = std::same_as<
     std::remove_cvref_t<Type>,
@@ -221,6 +200,32 @@ template <typename Type> struct element_t<Type> {
 
 template <typename Type, std::size_t... Indexes>
 using element = element_t<Type, Indexes...>::type;
+
+template <typename Matrix, typename TypedMatrix, std::size_t... Indexes>
+struct underlying {
+  [[nodiscard]] static constexpr auto operator()()
+    requires requires { typename Matrix::underlying; }
+  {
+    return typename Matrix::underlying{};
+  }
+  [[nodiscard]] static constexpr auto operator()()
+    requires requires { typename Matrix::Scalar; }
+  {
+    return typename Matrix::Scalar{};
+  }
+  [[nodiscard]] static constexpr auto operator()()
+    requires requires { typename Matrix::element_type; }
+  {
+    return std::remove_cvref_t<typename Matrix::element_type>{};
+  }
+  [[nodiscard]] static constexpr auto operator()() {
+    return element<TypedMatrix, Indexes...>{};
+  }
+};
+
+template <typename Matrix, typename TypedMatrix, std::size_t... Indexes>
+using underlying_t =
+    std::invoke_result_t<underlying<Matrix, TypedMatrix, Indexes...>>;
 
 template <typename Type>
 concept uniform_typed_matrix =

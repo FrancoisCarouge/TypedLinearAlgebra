@@ -116,64 +116,81 @@ using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
 // Set up a heterogenous column vector type.
 using state = column_vector<position, velocity, acceleration>;
 
+// TYPE CARTESIAN PRODUCT
+// 1. Crosses a single tuple of accumulated types `Ts...` with a list of new
+// types `Us...`. Example: tuple<A, B> x tuple<C, D> -> tuple<tuple<A,B,C>,
+// tuple<A,B,D>>
+template <typename Tuple, typename Types> struct cross_one_tuple;
+
+template <typename... Ts, typename... Us>
+struct cross_one_tuple<std::tuple<Ts...>, std::tuple<Us...>> {
+  using type = std::tuple<std::tuple<Ts..., Us>...>;
+};
+
+// 2. Crosses a list of tuples with a list of types.
+// We use decltype(std::tuple_cat(...)) to cleanly and efficiently flatten the
+// nested tuples.
+template <typename Tuples, typename Types> struct cross_one;
+
+template <typename... Tuples, typename Types>
+struct cross_one<std::tuple<Tuples...>, Types> {
+  using type = decltype(std::tuple_cat(
+      std::declval<typename cross_one_tuple<Tuples, Types>::type>()...));
+};
+
+// 3. Recursively applies `cross_one` over all provided lists.
+template <typename Tuples, typename... Lists> struct cross_all {
+  using type = Tuples; // Base case: no more lists to cross
+};
+
+template <typename Tuples, typename L1, typename... Ls>
+struct cross_all<Tuples, L1, Ls...> {
+  using type =
+      typename cross_all<typename cross_one<Tuples, L1>::type, Ls...>::type;
+};
+
+// 4. Applies a metafunction `F` to the expanded elements of a tuple.
+template <template <typename...> class F, typename Tuple>
+struct apply_f_to_tuple;
+
+template <template <typename...> class F, typename... Ts>
+struct apply_f_to_tuple<F, std::tuple<Ts...>> {
+  using type = F<Ts...>;
+};
+
+// 5. Maps the metafunction `F` over a list of tuples.
+template <template <typename...> class F, typename TupleOfTuples>
+struct map_apply;
+
+template <template <typename...> class F, typename... Tuples>
+struct map_apply<F, std::tuple<Tuples...>> {
+  using type = std::tuple<typename apply_f_to_tuple<F, Tuples>::type...>;
+};
+
+// The main algorithm
+// Computes the Cartesian product of the provided lists and applies F to each
+// combination.
+template <template <typename...> class F, typename... Lists>
+using mp_product = typename map_apply<
+    F, typename cross_all<std::tuple<std::tuple<>>, Lists...>::type>::type;
+
+template <typename RowIndexes, typename ColumnIndexes>
+using tuple = mp_product<fcarouge::tla::product, RowIndexes, ColumnIndexes>;
+
+template <typename RowIndexes, typename ColumnIndexes>
+using typed_matrix = fcarouge::typed_matrix<tuple<RowIndexes, ColumnIndexes>,
+                                            RowIndexes, ColumnIndexes>;
+
 //! @brief Strongly typed linear algebra samples.
-//!
-//! @details A variety of activities of strongly typed linear algebra with
-//! std::mdspan, std::linalg, and mp-units.
 [[maybe_unused]] const auto sample{[] {
-  std::vector v0(extents_size<column_extents<3>>, representation{});
-  std::mdspan s0{v0.data(), column_extents<3>{}};
-  state x0{s0};
+  [[maybe_unused]] typed_matrix<std::tuple<position, velocity>,
+                                std::tuple<position, velocity>> a;
 
-  // Elements asignment.
-  x0.set<0>(3. * m);
-  x0.set<1>(2. * m / s);
-  x0.set<2>(1. * m / s2);
+  a.at<0, 0>() = 33. * m2;
 
-  // Printable.
-  std::println("x0 = {}", x0);
-  assert(std::format("{}", x0) == "[[3 m], [2 m/s], [1 m/s²]]");
-
-  // Element assignment and access.
-  x0.set<1>(2.5 * m / s);
-  auto x0_1{x0.at<1>()};
-  assert(x0_1 == 2.5 * m / s);
-  assert(std::format("{}", x0_1) == "2.5 m/s");
-
-  // Multiplication with a scalar factor.
-  scale(3., x0);
-  assert(std::format("{}", x0) == "[[9 m], [7.5 m/s], [3 m/s²]]");
-
-  std::vector v4(extents_size<column_extents<3>>, representation{});
-  std::mdspan sp4{v4.data(), column_extents<3>{}};
-  state x4{sp4};
-
-  // Additions of two vectors of the same types.
-  add(x0, x0, x4);
-  assert(std::format("{}", x4) == "[[18 m], [15 m/s], [6 m/s²]]");
-
-  using state_transpose = row_vector<position, velocity, acceleration>;
-
-  std::vector v5(extents_size<row_extents<3>>, representation{});
-  std::mdspan s5{v5.data(), row_extents<3>{}};
-  state_transpose xt5{s5};
-  xt5.set<0>(3. * m);
-  xt5.set<1>(2. * m / s);
-  xt5.set<2>(1. * m / s2);
-
-  using estimate_uncertainty =
-      matrix<std::tuple<position, velocity, acceleration>,
-             std::tuple<position, velocity, acceleration>>;
-  std::vector v6(extents_size<std::extents<std::size_t, 3, 3>>,
-                 representation{});
-  std::mdspan s6{v6.data(), std::extents<std::size_t, 3, 3>{}};
-  estimate_uncertainty p6{s6};
-
-  // Column-row matrix product.
-  matrix_product(x0, xt5, p6);
-  assert(std::format("{}", p6) == "[[27 m², 18 m²/s, 9 m²/s²],"        //
-                                  " [22.5 m²/s, 15 m²/s², 7.5 m²/s³]," //
-                                  " [9 m²/s², 6 m²/s³, 3 m²/s⁴]]");
+  // WIP...
+  assert((33. * m2 == a.at<0, 0>()));
+  // operations...
 
   return 0;
 }()};

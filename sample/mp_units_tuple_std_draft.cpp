@@ -1,0 +1,446 @@
+/* Typed Linear Algebra
+Version 0.2.0
+https://github.com/FrancoisCarouge/TypedLinearAlgebra
+
+SPDX-License-Identifier: Unlicense
+
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to <https://unlicense.org> */
+
+//! @file
+//! @brief Unit safe linear algebra with mp-units and Eigen.
+//!
+//! @details Demonstrate a variety of linear algebra operations with mp-units
+//! and Eigen. This library composes Eigen as the matrix' linear algebra backend
+//! with index typed as mp-units types. This sample explicitly uses double
+//! precision floating point numbers. This sample uses Eigen linear algebra as
+//! the linear algebra backend. This sample uses mp-units types for the strongly
+//! typed units.
+
+#include "fcarouge/linalg.hpp"
+#include "fcarouge/typed_linear_algebra.hpp"
+
+#include <cstddef>
+#include <format>
+#include <linalg>
+#include <mdspan>
+#include <print>
+#include <tuple>
+#include <type_traits>
+#include <vector>
+
+namespace fcarouge::sample {
+namespace {
+// Set up heterogenously unit typed linear algebra types.
+using representation = double;
+
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+
+template <mp_units::Reference auto QuantityReference>
+using quantity_point =
+    mp_units::quantity_point<QuantityReference,
+                             mp_units::default_point_origin(QuantityReference),
+                             representation>;
+
+template <typename RowIndexes, typename ColumnIndexes>
+using matrix = typed_matrix<
+    std::mdspan<representation,
+                std::extents<std::size_t, std::tuple_size_v<RowIndexes>,
+                             std::tuple_size_v<ColumnIndexes>>>,
+    RowIndexes, ColumnIndexes>;
+
+template <typename... Types>
+using column_vector = typed_column_vector<
+    std::mdspan<representation, std::extents<std::size_t, sizeof...(Types), 1>>,
+    Types...>;
+
+template <typename... Types>
+using row_vector = typed_row_vector<
+    std::mdspan<representation, std::extents<std::size_t, 1, sizeof...(Types)>>,
+    Types...>;
+
+template <std::size_t Rows>
+using column_extents = std::extents<std::size_t, Rows, 1>;
+
+template <std::size_t Columns>
+using row_extents = std::extents<std::size_t, 1, Columns>;
+
+template <typename Extents>
+constexpr std::size_t extents_size{[] {
+  std::size_t size{1};
+  Extents extents{};
+  for (std::size_t i{0}; i < Extents::rank(); ++i) {
+    size *= extents.extent(i);
+  }
+  return size;
+}()};
+
+// Expose a few mp-units types and unit symbols.
+using mp_units::one;
+using mp_units::si::unit_symbols::A;
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::m2;
+using mp_units::si::unit_symbols::mol;
+using mp_units::si::unit_symbols::s;
+using mp_units::si::unit_symbols::s2;
+using mp_units::si::unit_symbols::s3;
+
+// Shorten some mp-units quantities.
+using position = quantity<mp_units::isq::length[m]>;
+using velocity = quantity<mp_units::isq::velocity[m / s]>;
+using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
+
+// Set up a heterogenous column vector type.
+using state = column_vector<position, velocity, acceleration>;
+
+// TYPE CARTESIAN PRODUCT
+// 1. Crosses a single tuple of accumulated types `Ts...` with a list of new
+// types `Us...`. Example: tuple<A, B> x tuple<C, D> -> tuple<tuple<A,B,C>,
+// tuple<A,B,D>>
+template <typename Tuple, typename Types> struct cross_one_tuple;
+
+template <typename... Ts, typename... Us>
+struct cross_one_tuple<std::tuple<Ts...>, std::tuple<Us...>> {
+  using type = std::tuple<std::tuple<Ts..., Us>...>;
+};
+
+// 2. Crosses a list of tuples with a list of types.
+// We use decltype(std::tuple_cat(...)) to cleanly and efficiently flatten the
+// nested tuples.
+template <typename Tuples, typename Types> struct cross_one;
+
+template <typename... Tuples, typename Types>
+struct cross_one<std::tuple<Tuples...>, Types> {
+  using type = decltype(std::tuple_cat(
+      std::declval<typename cross_one_tuple<Tuples, Types>::type>()...));
+};
+
+// 3. Recursively applies `cross_one` over all provided lists.
+template <typename Tuples, typename... Lists> struct cross_all {
+  using type = Tuples; // Base case: no more lists to cross
+};
+
+template <typename Tuples, typename L1, typename... Ls>
+struct cross_all<Tuples, L1, Ls...> {
+  using type =
+      typename cross_all<typename cross_one<Tuples, L1>::type, Ls...>::type;
+};
+
+// 4. Applies a metafunction `F` to the expanded elements of a tuple.
+template <template <typename...> class F, typename Tuple>
+struct apply_f_to_tuple;
+
+template <template <typename...> class F, typename... Ts>
+struct apply_f_to_tuple<F, std::tuple<Ts...>> {
+  using type = F<Ts...>;
+};
+
+// 5. Maps the metafunction `F` over a list of tuples.
+template <template <typename...> class F, typename TupleOfTuples>
+struct map_apply;
+
+template <template <typename...> class F, typename... Tuples>
+struct map_apply<F, std::tuple<Tuples...>> {
+  using type = std::tuple<typename apply_f_to_tuple<F, Tuples>::type...>;
+};
+
+// The main algorithm
+// Computes the Cartesian product of the provided lists and applies F to each
+// combination.
+template <template <typename...> class F, typename... Lists>
+using mp_product = typename map_apply<
+    F, typename cross_all<std::tuple<std::tuple<>>, Lists...>::type>::type;
+
+namespace mp {
+
+namespace detail {
+
+// Deduce the return type from I = 0
+template <class F>
+using result_t =
+    decltype(std::declval<F>()(std::integral_constant<std::size_t, 0>{}));
+
+template <std::size_t I, std::size_t N> struct with_index_impl {
+  template <class F> static constexpr result_t<F> call(std::size_t i, F &&f) {
+    if (i == I) {
+      return std::forward<F>(f)(std::integral_constant<std::size_t, I>{});
+    } else {
+      return with_index_impl<I + 1, N>::call(i, std::forward<F>(f));
+    }
+  }
+};
+
+// Base case
+template <std::size_t N> struct with_index_impl<N, N> {
+  template <class F> static constexpr result_t<F> call(std::size_t, F &&) {
+    throw std::out_of_range("mp_with_index: index out of range");
+  }
+};
+
+} // namespace detail
+
+template <std::size_t N, class F>
+constexpr auto mp_with_index(std::size_t i, F &&f) -> detail::result_t<F> {
+  return detail::with_index_impl<0, N>::call(i, std::forward<F>(f));
+}
+
+} // namespace mp
+
+// Accessor
+template <typename T> struct accessor {
+  using element_type = double;
+  using reference = double &;
+  using data_handle_type = T *;
+  using offset_policy = accessor;
+
+  constexpr accessor() = default;
+
+  constexpr reference access(data_handle_type p, std::size_t i) const noexcept {
+    constexpr std::size_t N = std::tuple_size_v<std::remove_reference_t<T>>;
+
+    return mp::mp_with_index<N>(i, [&](auto I) -> double & {
+      return std::get<I>(*p).numerical_value_ref_in(std::get<I>(*p).unit);
+    });
+  }
+
+  // constexpr element_type &typed_access(data_handle_type p,
+  //                                      std::size_t i) noexcept {
+  //   return p[i];
+  // }
+
+  // Required: offset
+  constexpr data_handle_type offset(data_handle_type p,
+                                    std::size_t i) const noexcept {
+    return p;
+  }
+};
+
+// Alternative form:
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+class tt_matrix {
+public:
+  using matrix = Matrix;
+
+  using row_indexes = RowIndexes;
+
+  using column_indexes = ColumnIndexes;
+
+  // using underlying = tla::underlying_t<Matrix>;
+
+  template <auto... Indexes>
+  using element = tla::element<tt_matrix, Indexes...>;
+
+  static inline constexpr auto rows{std::tuple_size_v<row_indexes>};
+
+  static inline constexpr auto columns{std::tuple_size_v<column_indexes>};
+
+  static inline constexpr auto rank{tla::rank<rows, columns>};
+
+  constexpr ~tt_matrix() = default;
+
+  constexpr tt_matrix()
+    requires std::default_initializable<Matrix>
+  {}
+
+  // constexpr tt_matrix(const tt_matrix &other) = default;
+  // constexpr tt_matrix &operator=(const tt_matrix &other) = default;
+  // constexpr tt_matrix(tt_matrix &&other) = default;
+  // constexpr tt_matrix &operator=(tt_matrix &&other) = default;
+  // constexpr explicit(false)
+  //     tt_matrix(const same_as_tt_matrix auto &other);
+  // constexpr tt_matrix &operator=(const same_as_tt_matrix auto &other);
+  // constexpr explicit(false) tt_matrix(same_as_tt_matrix auto &&other);
+  // constexpr tt_matrix &operator=(same_as_tt_matrix auto &&other);
+  // constexpr explicit tt_matrix(
+  //     const std::convertible_to<element<>> auto &value)
+  //   requires singleton_tt_matrix<tt_matrix>;
+  // constexpr tt_matrix &operator=(const auto &value)
+  //   requires singleton_tt_matrix<tt_matrix>;
+  // constexpr explicit(false)
+  //     tt_matrix(const element<> (&elements)[rows * columns])
+  //   requires uniform_tt_matrix<tt_matrix> and
+  //            one_dimension_tt_matrix<tt_matrix>;
+  // constexpr tt_matrix &operator=(const element<> (&elements)[rows * columns])
+  //   requires uniform_tt_matrix<tt_matrix> and
+  //            one_dimension_tt_matrix<tt_matrix>;
+  // template <typename Type>
+  // constexpr explicit(false)
+  //     tt_matrix(std::initializer_list<std::initializer_list<Type>> row_list)
+  //   requires uniform_tt_matrix<tt_matrix>;
+  // constexpr tt_matrix(const auto &first_value, const auto &second_value,
+  //                        const auto &...values)
+  //   requires one_dimension_tt_matrix<tt_matrix>;
+  // constexpr explicit tt_matrix(const Matrix &other);
+  // [[nodiscard]] constexpr explicit operator element<>(this auto &&self)
+  //   requires singleton_tt_matrix<tt_matrix>;
+  // template <typename... Indexes>
+  // [[nodiscard]] constexpr decltype(auto) operator[](this auto &&self,
+  //                                                   Indexes... indexes)
+  //   requires(sizeof...(Indexes) >= rank) and
+  //           ((index<Indexes> && ...) or uniform_tt_matrix<tt_matrix>);
+  // template <typename... Indexes>
+  // [[nodiscard]] constexpr decltype(auto) operator()(this auto &&self,
+  //                                                   Indexes... indexes)
+  //   requires(sizeof...(Indexes) >= rank) and
+  //           ((index<Indexes> && ...) or uniform_tt_matrix<tt_matrix>);
+
+  template <auto... Indexes>
+  [[nodiscard]] constexpr decltype(auto) at(this auto &&self)
+    requires(sizeof...(Indexes) >= rank)
+  {
+    return std::get<std::get<0>(std::tuple{Indexes...}) * columns +
+                    std::get<1>(std::tuple{Indexes...})>(self.storage);
+  }
+
+  //   [[nodiscard]] constexpr decltype(auto) data(this auto &&self) {
+  //     return std::forward_like<decltype(self)>(self.storage);
+  //   }
+
+  // private:
+  Matrix storage;
+};
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+constexpr void add(tt_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
+                   tt_matrix<Matrix, RowIndexes, ColumnIndexes> &rhs,
+                   tt_matrix<Matrix, RowIndexes, ColumnIndexes> &result) {
+
+  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
+  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
+  using result_matrix = std::remove_cvref_t<decltype(result)>;
+
+  // static_assert(same_shape<lhs_matrix, rhs_matrix>,
+  //               "Matrix addition requires matrices of the same shapes,
+  //               sizes.");
+
+  // Each typed element of the lhs matrix must be addable to the corresponding
+  // typed element of the rhs matrix and assignable to the corresponding typed
+  // element of the result matrix.
+  tla::for_constexpr<0, lhs_matrix::rows, 1>([&](auto i) {
+    tla::for_constexpr<0, lhs_matrix::columns, 1>([&](auto j) {
+      using lhs_element = typename lhs_matrix::template element<i, j>;
+      using rhs_element = typename rhs_matrix::template element<i, j>;
+      using result_element = typename result_matrix::template element<i, j>;
+
+      static_assert(
+          requires {
+            std::declval<result_element>() =
+                std::declval<lhs_element>() + std::declval<rhs_element>();
+          }, "Matrix addition requires compatible element types.");
+    });
+  });
+
+  using tuple_span = std::mdspan<double, std::extents<std::size_t, 2, 2>,
+                                 Kokkos::layout_right, accessor<Matrix>>;
+
+  tuple_span span_lhs{&lhs.storage, std::extents<std::size_t, 2, 2>()};
+  tuple_span span_rhs{&rhs.storage, std::extents<std::size_t, 2, 2>()};
+  tuple_span span_result{&result.storage, std::extents<std::size_t, 2, 2>()};
+
+  std::linalg::add(span_lhs, span_rhs, span_result);
+}
+
+//! @brief Strongly typed linear algebra samples.
+//!
+//! @details A variety of activities of strongly typed linear algebra with
+//! std::mdspan, std::linalg, and mp-units stored as a tuple of quantities.
+[[maybe_unused]] const auto sample{[] {
+  using storage_t =
+      mp_product<fcarouge::tla::product, std::tuple<position, velocity>,
+                 std::tuple<position, velocity>>;
+
+  [[maybe_unused]] tt_matrix<storage_t, std::tuple<position, velocity>,
+                             std::tuple<position, velocity>> a;
+
+  a.at<0, 0>() = 33. * m2;
+  assert((33. * m2 == a.at<0, 0>()));
+
+  [[maybe_unused]] tt_matrix<storage_t, std::tuple<position, velocity>,
+                             std::tuple<position, velocity>> b;
+  [[maybe_unused]] tt_matrix<storage_t, std::tuple<position, velocity>,
+                             std::tuple<position, velocity>> r;
+
+  add(a, b, r);
+
+  /////////////////////////////////////////////////////////////////////////////
+
+  // A tuple with four quantity types created from 2x2 types. Just for
+  // convenience to look like our matrices.
+  // using storage_t =
+  //     mp_product<fcarouge::tla::product, std::tuple<position, velocity>,
+  //                std::tuple<position, velocity>>;
+
+  // storage_t storage_a{1. * m2, 2. * m2 / s, 11. * m2 / s, 22. * m2 / s2};
+
+  // TODAY'S LEARNING:
+  // Don't put the span in the typed_matrix: put the tuple in the typed matrix.
+  // Use the span in the linalg ops: ~~ `tupple_to_span(m.data())`
+  // because we must have strong type lvalue reference.
+
+  // static_assert(sizeof(storage_t) == sizeof(double) * 4);
+  // static_assert(alignof(storage_t) == alignof(double));
+
+  // // Our span: 2x2 double with an accessor templated on the whole storage
+  // type! using tuple_span = std::mdspan<double, std::extents<std::size_t, 2,
+  // 2>,
+  //                                Kokkos::layout_right, accessor<storage_t>>;
+
+  // tuple_span span_a{&storage_a, std::extents<std::size_t, 2, 2>()};
+
+  // typed_matrix<tuple_span, std::tuple<position, velocity>,
+  //              std::tuple<position, velocity>>
+  //     a{span_a};
+
+  // // assert((1. * m2 == a.at<0, 0>()));
+  // a.at<0, 0>() = 33. * m2;
+  // // assert((33. * m2 == a.at<0, 0>()));
+  // // std::println("### {}", a.at<0, 0>());
+
+  // // storage_t storage_b{1. * m2, 2. * m2 / s, 11. * m2 / s, 22. * m2 / s2};
+  // // storage_t storage_r{1. * m2, 2. * m2 / s, 11. * m2 / s, 22. * m2 / s2};
+  // // tuple_span span_b{&storage_b, std::extents<std::size_t, 2, 2>()};
+  // // tuple_span span_r{&storage_r, std::extents<std::size_t, 2, 2>()};
+  // // typed_matrix<tuple_span, std::tuple<position, velocity>,
+  // //              std::tuple<position, velocity>>
+  // //     b{span_b};
+  // // typed_matrix<tuple_span, std::tuple<position, velocity>,
+  // //              std::tuple<position, velocity>>
+  // //     r{span_r};
+
+  // // add(a, b, r); // typed
+  // // assert((34. * m2 == r.at<0, 0>()));
+  // // std::println("### {}", r.at<0, 0>());
+
+  // // a.at<0, 0>() = 9. * m2;
+  // // std::linalg::add(span_a, span_b, span_r); // not typed.
+  // // assert((10. == span_r[0, 0]));            // Unprotected storage.
+  // // assert((10. * m2 == r.at<0, 0>()));       // Protected typed matrix.
+  // // std::println("### {}", r.at<0, 0>());
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::sample

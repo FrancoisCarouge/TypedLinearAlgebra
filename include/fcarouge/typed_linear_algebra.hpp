@@ -150,7 +150,8 @@ public:
   using column_indexes = ColumnIndexes;
 
   //! @brief The type of the element's underlying storage.
-  using underlying = tla::underlying_t<Matrix>;
+  template <auto... Indexes>
+  using underlying = tla::underlying_t<Matrix, typed_matrix, Indexes...>;
 
   //! @brief The type of the element at the given matrix indexes position.
   template <auto... Indexes>
@@ -216,6 +217,9 @@ public:
   //! @details Applicable to singleton matrix: one element.
   //!
   //! @param value Element of compatible type.
+  //!
+  //! @todo We shoud probably use by value for element all over the place for
+  //! performance.
   constexpr explicit typed_matrix(
       const std::convertible_to<element<>> auto &value)
     requires singleton_typed_matrix<typed_matrix>;
@@ -337,6 +341,13 @@ public:
   //! singleton matrices.
   template <auto... Indexes>
   [[nodiscard]] constexpr decltype(auto) at(this auto &&self)
+    requires(sizeof...(Indexes) >= rank);
+
+  // Your storage isn't type safe, you don't get strongly typed lvalue
+  // references to it! (For now)
+  //  Use set to unblock development...
+  template <auto... Indexes>
+  constexpr void set(std::convertible_to<element<Indexes...>> auto value)
     requires(sizeof...(Indexes) >= rank);
 
   //! @brief Direct access to the underlying storage.

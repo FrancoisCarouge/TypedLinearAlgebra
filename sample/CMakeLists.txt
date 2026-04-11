@@ -50,3 +50,12 @@ target_link_libraries(
           typed_linear_algebra_unit_std)
 add_test(NAME typed_linear_algebra_sample_mp_units_std
          COMMAND typed_linear_algebra_sample_mp_units_std_driver)
+
+add_executable(typed_linear_algebra_sample_mp_units_tuple_driver
+               "mp_units_tuple.cpp")
+target_link_libraries(
+  typed_linear_algebra_sample_mp_units_tuple_driver
+  PRIVATE typed_linear_algebra_main typed_linear_algebra_options
+          typed_linear_algebra_unit_std)
+add_test(NAME typed_linear_algebra_sample_mp_units_tuple
+         COMMAND typed_linear_algebra_sample_mp_units_tuple_driver)
