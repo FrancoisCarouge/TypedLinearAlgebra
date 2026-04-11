@@ -35,6 +35,7 @@ jobs:
       run: |
         FILES=`find . \
           -type f \( \
+            -path './benchmark/*.cpp' -o \
             -path './sample/*.cpp' -o \
             -path './support/*.cpp' -o \
             -path './test/*.cpp' \) \
