@@ -114,7 +114,11 @@ var NAVTREEINDEX1 =
 "md_html_2paper_2mp__units__eigen.xhtml#template-parameters-1":[11,5,0,1],
 "md_html_2typed__linear__algebra_2_r_e_a_d_m_e.xhtml":[12],
 "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml":[13],
+"md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#aside":[13,0,3],
+"md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#ianchortyped_linear_algebra-typed_linear_algebrailinebr":[0],
 "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#parking":[13,0],
+"md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#title-typed-linear-algebra":[1],
+"md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#typed-linear-algebra-1":[2],
 "mp__units__eigen_8cpp.xhtml":[21,0,4,0],
 "mp__units__eigen_8cpp.xhtml#a139d2e55c4175d874221ef84f1e39dcb":[21,0,4,0,1],
 "mp__units__eigen_8cpp.xhtml#a22a3c1053bf655206ee12e8608f8f0ba":[21,0,4,0,5],
@@ -245,9 +249,5 @@ var NAVTREEINDEX1 =
 "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__unit__std_8cpp_03.xhtml":[18,0,1,4,5],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__unit__std_8cpp_03.xhtml#a660c1e2b6edff3c92bac2132f51983bd":[18,0,1,4,5,0],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__eigen_8cpp_03.xhtml":[18,0,1,4,6],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__eigen_8cpp_03.xhtml#aad6fb4d9d8300dafa20d7e0fe2ae0b8e":[18,0,1,4,6,0],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__unit__eigen_8cpp_03.xhtml":[18,0,1,4,7],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__unit__eigen_8cpp_03.xhtml#a20d8a4c5ea1455ee959eabea02aa6d03":[18,0,1,4,7,0],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__unit__eigen__fail_8cpp_03.xhtml":[18,0,1,4,8],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__unit__eigen__fail_8cpp_03.xhtml#a15c61ee49231a0c4b5952fe461ba5927":[18,0,1,4,8,0]
+"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__eigen_8cpp_03.xhtml#aad6fb4d9d8300dafa20d7e0fe2ae0b8e":[18,0,1,4,6,0]
 };

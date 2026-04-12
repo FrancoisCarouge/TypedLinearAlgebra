@@ -98,7 +98,12 @@ var NAVTREE =
     ] ],
     [ "<a href=\"https://francoiscarouge.github.io/TypedLinearAlgebra/typed_linear_algebra/index.html\" >Typed Linear Algebra</a>", "md_html_2typed__linear__algebra_2_r_e_a_d_m_e.xhtml", null ],
     [ "typed_linear_algebra", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml", [
-      [ "Parking", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#parking", null ]
+      [ "Parking", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#parking", [
+        [ "ianchortyped_linear_algebra-typed_linear_algebrailinebr", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#ianchortyped_linear_algebra-typed_linear_algebrailinebr", null ],
+        [ "title: \"Typed Linear Algebra\"", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#title-typed-linear-algebra", null ],
+        [ "Typed Linear Algebra", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#typed-linear-algebra-1", null ],
+        [ "</aside>", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#aside", null ]
+      ] ]
     ] ],
     [ "Installation", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml", [
       [ "Development Build & Run", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run", [
@@ -151,8 +156,8 @@ var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
 "format_8hpp.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__unit__std_8cpp_03.xhtml",
-"unit__std_2fcarouge_2linalg_8hpp_source.xhtml"
+"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__unit__eigen_8cpp_03.xhtml",
+"unit_8hpp_source.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

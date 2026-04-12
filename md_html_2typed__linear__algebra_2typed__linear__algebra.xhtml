@@ -108,11 +108,7 @@ ianchortyped_linear_algebra-typed_linear_algebrailinebr</h2>
 <p>theme : "black" transition: "slide" highlightTheme: "monokai" slideNumber: true </p>
 <h2><a class="anchor" id="title-typed-linear-algebra"></a>
 title: "Typed Linear Algebra"</h2>
-<h2><a class="anchor" id="typed-linear-algebra-1"></a>
-Typed Linear Algebra</h2>
-<p><small>François Carouge<br  />
- github.com/FrancoisCarouge</small></p>
-<p><img src="repo_qr.png" alt="" height="250px" class="inline"/></p>
+<p>&lt;section data-background-image="welcome.png" data-background-size="contain"&gt; &lt;/section&gt;</p>
 <p>&lt;aside class="notes"&gt; Hello, my name is François Carouge. Thank you for welcoming me to present in this session of Cpp Bay Area.<br  />
  Today we are going to talk about yet another type of safety in programming languages. That would be quantity or unit safety with support of the C++ type system. We will try to implement unit safety in linear algebra applications. My objective is to share with you my practical learnings about type safe matrices. I will motivate the problem, explore the ideas, introduce a solution, and share takeaways.<br  />
 You can find this talk and the full library on GitHub at the location linked, or by taking a picture of this QR code.<br  />
@@ -170,12 +166,12 @@ You can find this talk and the full library on GitHub at the location linked, or
 <div class="line"><span class="comment">// matrix type??? </span></div>
 </div><!-- fragment --><p></span></p>
 <p><span class="fragment"></span></p>
-<p>&lt;aside class="notes"&gt; More difficulties arise when the linear algebra vectors have heterogenous types. The existing linear algebra libraries are simply not equipped to allow such idiomatic code.<br  />
+<p>&lt;aside class="notes"&gt; More difficulties arise when the linear algebra vectors have heterogenous types. You can store the heterogenous type in a <code>std::tuple</code>. What about the linear algebra operations? The existing linear algebra libraries are simply not equipped to allow such idiomatic code.<br  />
  FRAGMENT<br  />
- And finally, C++ itself does not permit the constuction of heterogenous initializer-lists without additional syntaxic sugar. Heterogenous initializer-lists had a tendency to trigger internal compiler errors. <b>What do you think? Can we still design strongly typed linear algebra using yet another level of indirection?</b><br  />
- The idea is to use an abstraction, preferably zero-cost, to provide to the user a composition of strong types and linear algebra. And down the rabbit hole of template metaprogramming we may go. &lt;/aside&gt;</p>
+ And finally, C++ itself does not permit the constuction of multi-dimensional heterogenous initializer-lists without additional syntaxic sugar. Heterogenous initializer-lists had a tendency to trigger internal compiler errors. <b>What do you think? Can we still design strongly typed linear algebra using yet another level of indirection?</b><br  />
+ The idea is to use an abstraction, necessarily zero-cost, to provide to the user a composition of strong types and linear algebra. And down the rabbit hole of template metaprogramming we may go. &lt;/aside&gt;</p>
 <hr  />
-<p><img src="1995_hart.png" alt="" height="150px" class="inline"/> <img src="2002_hall.png" alt="" height="150px" class="inline"/> <img src="2020_units.png" alt="" height="150px" class="inline"/> <img src="2021_units_algebra.png" alt="" height="150px" class="inline"/> <img src="2022_next_level.png" alt="" height="150px" class="inline"/> <img src="2023_linalg.png" alt="" height="150px" class="inline"/> <img src="2024_eigen.png" alt="" height="150px" class="inline"/></p>
+<p><img src="1995_hart.png" alt="" height="150px" class="inline"/> <img src="2002_hall.png" alt="" height="150px" class="inline"/> <img src="2019_units_cppnow.png" alt="" height="150px" class="inline"/> <img src="2021_units_algebra.png" alt="" height="150px" class="inline"/> <img src="2022_next_level_cppnow.png" alt="" height="150px" class="inline"/> <img src="2023_linalg.png" alt="" height="150px" class="inline"/> <img src="2024_eigen.png" alt="" height="150px" class="inline"/></p>
 <p>&lt;aside class="notes"&gt; Before I detail these references that helped me prepare this library: <b>Who is familiar with the 1878 Bertrand-Buckingham π theorem?</b> The theorem proves linear systems can be rewritten in terms of a set of dimensionless parameters. So technically we could always transform the linear systems to use dimensionless parameters. Unfortunately usage in implementation is hardly systematic. Anyway the theorem does not help in exchanging physical algebraic information through software interfaces. The Bertrand-Buckingham π theorem is insufficient.<br  />
  In 1995 George Hart informed us on the mathematical properties of dimensioned quantities. In 2002 Blair Hall identified conceptual elements of physical quantities applied to software frameworks. In 2020 Mateusz Pusz presented a C++ physical unit library. In 2021 Chip Hogg shared C++ lessons about units in matrices. In 2022 Daniel Withopf formalized a C++ physical unit matrix. In 2023 Mark Hoemmen presented C++26 std::linalg based on a subset of the BLAS standard. In 2024 Daniel Hanson showed us interoperability of <a class="el" href="namespace_eigen.xhtml">Eigen</a> and std::linalg.<br  />
  Daniel Withopf and Chip Hogg informed us there already exists several closed-source, proprietary typed linear algebra implementations. And we can even find various open-source typed linear algebra attempts over the years. We are trying to make a general, open-source, and permissive typed linear algebra library solution. &lt;/aside&gt;</p>
@@ -208,10 +204,6 @@ You can find this talk and the full library on GitHub at the location linked, or
 <div class="line"><span class="keyword">class </span>typed_matrix {</div>
 </div><!-- fragment --><h6>Some Public Member Types</h6>
 <p><span class="fragment"></span></p>
-<p><span class="fragment"></p><div class="fragment"><div class="line"><span class="comment">// Naive underlying data storage type:</span></div>
-<div class="line"><span class="keyword">using </span>underlying = <span class="keyword">decltype</span>(std::declval&lt;Matrix&gt;()(0, 0));</div>
-</div><!-- fragment --><p></span></p>
-<p><span class="fragment"></span> <span class="fragment"></span></p>
 <p><span class="fragment"></p><div class="fragment"><div class="line"><span class="comment">// [i-th, j-th] element type:</span></div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keywordtype">int</span> RowIndex,</div>
 <div class="line">          <span class="keywordtype">int</span> ColumnIndex&gt;</div>
@@ -224,9 +216,7 @@ You can find this talk and the full library on GitHub at the location linked, or
 <p><span class="fragment"></span></p>
 <p>&lt;aside class="notes"&gt; We declare the <code>typed_matrix</code> class with its three template parameters. These template parameters are also available as member types, not shown here in this class declaration since they are merely aliases.<br  />
  FRAGMENT<br  />
- The underlying element type, such as floats or doubles of the storage matrix, will be useful for the library itself and for end-users. A naive implementation if the backend is made of built-in types is that of the first element of the underlying matrix. In reality, we account for the available API from the backend libraries.<br  />
- FRAGMENT<br  />
- A second interesting member type is a template one. The strong type of the i-th, j-th element, for example the velocity in meter per seconds from the quantity library. The resulting type is formed by the result type of product of the i-th type of the row indexes by the j-th type of the column indexes. Importantly, note that the product template used here is not equivalent to the <code>std::multiplies</code> functional structure of the standard library. It is instead the resulting type of a multiplication that respect the strong types: the product of two lengths is an area. This is an example of the standard library not considering strong type semantic results. This alternative product type here is implemented in terms of the resulting type from invoking the call operator of a specialized multiplication structure. These abstractions allow for template specializations to resolve the varied use cases of template product types such as the general N-by-M case or decayed use cases for vectors or singleton matrices. &lt;/aside&gt;</p>
+ An interesting member type is the template element type. The strong type of the i-th, j-th element, for example the velocity in meter per seconds from the quantity library. The resulting type is formed by the result type of product of the i-th type of the row indexes by the j-th type of the column indexes. Importantly, note that the product template used here is not equivalent to the <code>std::multiplies</code> functional structure of the standard library. It is instead the resulting type of a multiplication that respect the strong types: the product of two lengths is an area. This is an example of the standard library not considering strong type semantic results. This alternative product type here is implemented in terms of the resulting type from invoking the call operator of a specialized multiplication structure. These abstractions allow for template specializations to resolve the varied use cases of template product types such as the general N-by-M case or decayed use cases for vectors or singleton matrices. As an astute observer you may have noted the product of types may not directly support jacobian or information matrices seen in previous approaches. We leave this important detail aside today. &lt;/aside&gt;</p>
 <hr  />
 <h6>Some Member Variables</h6>
 <div class="fragment"><div class="line"><span class="comment">// Sizes are static inline constexpr:</span></div>
@@ -282,13 +272,9 @@ You can find this talk and the full library on GitHub at the location linked, or
 <div class="line">                                  <span class="keyword">typename</span> Type::column_indexes&gt;&gt;;</div>
 </div><!-- fragment --><p><span class="fragment"></span></p>
 <p><span class="fragment"></p><div class="fragment"><div class="line"><span class="comment">// A uniformly typed matrix concept:</span></div>
-<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type&gt; <span class="keyword">concept </span>uniform_typed_matrix =</div>
-<div class="line">same_as_typed_matrix&lt;Type&gt; and ([]() { <span class="keywordtype">bool</span> result{<span class="keyword">true</span>};</div>
-<div class="line">  for_constexpr&lt;0, Type::rows, 1&gt;([&amp;result](<span class="keyword">auto</span> i) {</div>
-<div class="line">    for_constexpr&lt;0, Type::columns, 1&gt;([&amp;result, &amp;i](<span class="keyword">auto</span> j) {</div>
-<div class="line">      result &amp;= std::is_same_v&lt;element&lt;Type, i, j&gt;,</div>
-<div class="line">                               element&lt;Type, 0, 0&gt;&gt;;</div>
-<div class="line">    }); }); <span class="keywordflow">return</span> result; }());</div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type&gt; <span class="keyword">concept </span>uniform_typed_matrix = <span class="comment">// ...</span></div>
+<div class="line">  <span class="comment">// is a typed matrix, and</span></div>
+<div class="line">  <span class="comment">// each element are of the same type.</span></div>
 </div><!-- fragment --><p></span></p>
 <p><span class="fragment"></span></p>
 <p>&lt;aside class="notes"&gt; The constructors of the typed matrix used concepts to ensure they are meanigful for a given template instantiation of a typed matrix. We show here a couple interesting concepts among the the 10 or so concepts present and used in the library. In some cases, we want to enable behavior solely for typed matrices. This concept presented with an interesting challenge in its definition: the template parameters of the typed matrix could not be passed in the concept nor deduced. The neat idiom to permit usage of the concept while passing only the single type to check was to re-use the type's under evaluation for its member types. Note the Type parameter is found on both sides of the same type concept.<br  />
@@ -304,8 +290,9 @@ You can find this talk and the full library on GitHub at the location linked, or
 <div class="line"><span class="comment">// ! Subscript operator access:</span></div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Indexes&gt;</div>
 <div class="line"><span class="keyword">decltype</span>(<span class="keyword">auto</span>) <span class="keyword">operator</span>[](<span class="keyword">this</span> <span class="keyword">auto</span> &amp;&amp;self, Indexes... indexes)</div>
-<div class="line">  <span class="keyword">requires</span> uniform_typed_matrix&lt;typed_matrix&gt;</div>
-<div class="line">       and (<span class="keyword">sizeof</span>...(Indexes) &gt;= rank)</div>
+<div class="line">  <span class="keyword">requires</span>(<span class="keyword">sizeof</span>...(Indexes) &gt;= rank)</div>
+<div class="line">       and((index&lt;Indexes&gt; &amp;&amp; ...)</div>
+<div class="line">        or uniform_typed_matrix&lt;typed_matrix&gt;);</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// ! Underlying data access:</span></div>
 <div class="line"><span class="keyword">decltype</span>(<span class="keyword">auto</span>) data(<span class="keyword">this</span> <span class="keyword">auto</span> &amp;&amp;self);</div>
@@ -318,18 +305,20 @@ You can find this talk and the full library on GitHub at the location linked, or
  And that's it for typed matrix class declaration, we will then see interesing implementations for some of these members and operations. &lt;/aside&gt;</p>
 <hr  />
 <h6>Some Algorithms</h6>
-<div class="fragment"><div class="line"><span class="keyword">auto</span> operator+  (<span class="keyword">const</span> same_as_typed_matrix <span class="keyword">auto</span> &amp;lhs,</div>
-<div class="line">                 <span class="keyword">const</span> same_as_typed_matrix <span class="keyword">auto</span> &amp;rhs);</div>
-<div class="line"><span class="keyword">auto</span> operator+  (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;lhs,</div>
-<div class="line">                 <span class="keyword">const</span> singleton_typed_matrix <span class="keyword">auto</span> &amp;rhs)</div>
+<div class="fragment"><div class="line"><span class="keyword">auto</span> operator+      (<span class="keyword">const</span> same_as_typed_matrix <span class="keyword">auto</span> &amp;lhs,</div>
+<div class="line">                     <span class="keyword">const</span> same_as_typed_matrix <span class="keyword">auto</span> &amp;rhs);</div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">auto</span> operator*  (<span class="keyword">const</span> same_as_typed_matrix <span class="keyword">auto</span> &amp;lhs,</div>
-<div class="line">                 <span class="keyword">const</span> same_as_typed_matrix <span class="keyword">auto</span> &amp;rhs);</div>
+<div class="line"><span class="keyword">auto</span> operator*      (<span class="keyword">const</span> same_as_typed_matrix <span class="keyword">auto</span> &amp;lhs,</div>
+<div class="line">                     <span class="keyword">const</span> same_as_typed_matrix <span class="keyword">auto</span> &amp;rhs);</div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">auto</span> transposed (<span class="keyword">const</span> same_as_typed_matrix <span class="keyword">auto</span> &amp;value);</div>
+<div class="line"><span class="keywordtype">void</span> matrix_product (<span class="keyword">const</span> same_as_typed_matrix <span class="keyword">auto</span> &amp;lhs,</div>
+<div class="line">                     <span class="keyword">const</span> same_as_typed_matrix <span class="keyword">auto</span> &amp;rhs,</div>
+<div class="line">                           same_as_typed_matrix <span class="keyword">auto</span> &amp;result);</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> scale      (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;α,</div>
-<div class="line">                 same_as_typed_matrix <span class="keyword">auto</span> &amp;x);</div>
+<div class="line"><span class="keyword">auto</span> transposed     (<span class="keyword">const</span> same_as_typed_matrix <span class="keyword">auto</span> &amp;value);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> scale          (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;α,</div>
+<div class="line">                     same_as_typed_matrix <span class="keyword">auto</span> &amp;x);</div>
 </div><!-- fragment --><p>&lt;aside class="notes"&gt; Adding algorithms, or operations against the typed matrix is merely done by adding functions. We've made the choice to avoid the friendship coupling to enable extensibility. The first two operators, the additions, are two overloads among four variations: adding two matrices, and adding a value to a 1-by-1 matrix. There are conditions on the types added, size of the matrix, convetibility of the types. The matrix-matrix-product operator shown here is the general case product among six other overloads. The matrix-matrix-divison operator, also has six overloads. It has the particularity to be configurable via yet another customization point object to select the end-user's prefered division implementation from a matrix decomposition solver. Matrix division divides the community. Pun intended. Should it exist? In which cases? Remember linear algebra is not commutative, a matrix may not have an inverse, and there may exists multiple different solutions to the same division. Should the transposed operation shown here be done in place? The scale operation, alpha x, done in place here, imposes a dimension-less restriction on the scalar, because the index types of the typed matrix are fixed. All in all the library wants to provide a drop-in support for both <a class="el" href="namespace_eigen.xhtml">Eigen</a> and <code>std::linalg</code> matrix algorithms were possible. &lt;/aside&gt;</p>
 <hr  />
 <h6>Linear Algebra Layers</h6>
@@ -351,6 +340,7 @@ You can find this talk and the full library on GitHub at the location linked, or
 <p>&lt;aside class="notes"&gt; At CppCon 2023 Mark Hoemmen introduced us to <code>std::linalg</code> coming to the standard. His talk included an abstraction layer nomenclature that I paraphrased here. On top of the hardware we find the fundamental support, used by performance primitives where specialized performance hardware implementation are reasonable. Themselves used by the low-level linear algebra mathematics which can be applied to domain specific problems such as statistical inference, physical simulation, control theory. Where would you place the typed linear algebra support in this table? Perhaps somewhere between application specific high-level mathematics and/or around low-level mathematics? Experimentation seems to support either. &lt;/aside&gt;</p>
 <hr  />
 <h6>Explored Implementation</h6>
+<p><small> </small></p>
 <p><small></small></p>
 <p><small></p><table class="markdownTable">
 <tr class="markdownTableHead">
@@ -359,18 +349,19 @@ You can find this talk and the full library on GitHub at the location linked, or
 <td class="markdownTableBodyNone">High-Level   </td><td class="markdownTableBodyNone">Kalman    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Low-Level   </td><td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a><br  />
+std::mdspan<br  />
 LAPACK    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">Primitives   </td><td class="markdownTableBodyNone">BLAS<br  />
 NVBLAS<br  />
 std::linalg   </td></tr>
 </table>
-<p></small></p>
+<p><br  />
+ </small></p>
 <p><small></small></p>
-<p><small> <b>Element Type</b><br  />
- mp-units<br  />
- std::chrono<br  />
- fundamental types </small></p>
+<p><small></small></p>
+<p><small> <b>Element Type:</b><br  />
+ mp-units, std::chrono, fundamental types </small></p>
 <p><small></small></p>
 <p><small></small></p>
 <p>&lt;aside class="notes"&gt; A variety of implementation compositions were explored. At the high-level math applications the Kalman algortihms were the principal motivation. For low level math, both <a class="el" href="namespace_eigen.xhtml">Eigen</a> and LAPACK have shown to be usable. And the underlying performance primitives, operations, and solvers can be chosen at linking, loading time. The native <a class="el" href="namespace_eigen.xhtml">Eigen</a> kernels, the BLAS implementation, or Nvidia BLAS implementation, and C++26 std::linalg have shown to be usable. As far as element type goes, we've talked here about mp-units, and std::chrono. There is a quirky property that emerges from the compositions. It turns out, that fundamental are valid element types, after all, they are in the classical linear algebra. This property allows to create a drop-in replacement typed linear algegra type. Even more curious, the underlying matrix type of the typed matrix can be a nested typed matrix itself! This property will come in handy in future work.&lt;/aside&gt;</p>
@@ -378,7 +369,9 @@ std::linalg   </td></tr>
 <h6>Examples</h6>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> To, mp_units::Quantity From&gt;</div>
 <div class="line"><span class="keyword">struct </span>element_caster&lt;To, From&gt; {</div>
-<div class="line">  To operator()(From value)<span class="keyword"> const </span>{</div>
+<div class="line">  To operator()(From value) {</div>
+<div class="line">    <span class="keyword">static_assert</span>(std::same_as&lt;To, typename From::rep&gt;);</div>
+<div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> value.numerical_value_in(value.unit);</div>
 <div class="line">  }</div>
 <div class="line">};</div>
@@ -399,10 +392,8 @@ std::linalg   </td></tr>
  FRAGMENT<br  />
  This third fragment shows a state strong column vector type with position and velocity element, and a transposed, row vector. &lt;/aside&gt;</p>
 <hr  />
-<div class="fragment"><div class="line">state x0{3. * m, 2. * m / s};</div>
-<div class="line">std::println(<span class="stringliteral">&quot;{}&quot;</span>, x0); <span class="comment">// [[3 m], [2 m/s]]</span></div>
-<div class="line"> </div>
-<div class="line">x0.at&lt;1&gt;() = 2.5 * m / s;</div>
+<div class="fragment"><div class="line">state x0{3. * m, 2.5 * m / s};</div>
+<div class="line">std::println(<span class="stringliteral">&quot;{}&quot;</span>, x0); <span class="comment">// [[3 m], [2.5 m/s]]</span></div>
 <div class="line">std::println(<span class="stringliteral">&quot;{}&quot;</span>, x0.at&lt;1&gt;()); <span class="comment">// 2.5 m/s</span></div>
 <div class="line"> </div>
 <div class="line">stateᵀ x0ᵀ{transposed(x0)};</div>
@@ -437,9 +428,6 @@ std::linalg   </td></tr>
 <div class="line">std::mdspan s0{v0.data(), std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
 <div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#abc06c9fcc2ebb041416919e7d482ac84">state</a> x0{s0};</div>
 <div class="line"> </div>
-<div class="line">x0.at&lt;0&gt;() = 3. * m;</div>
-<div class="line">x0.at&lt;1&gt;() = 2.5 * m / s;</div>
-<div class="line"> </div>
 <div class="line"><span class="comment">// ...</span></div>
 <div class="line"> </div>
 <div class="line">matrix_product(x0, x0ᵀ, p);</div>
@@ -450,24 +438,6 @@ std::linalg   </td></tr>
 <p><span class="fragment"><span class="fragment"></span> &lt;aside class="notes"&gt; Interestingly, no memory ownership assumption constrain the typed matrix. Therefore the typed matrix can compose a <code>std::mdspan</code>. Here, the typed column vector is defined with <code>std::mdspan</code>, the chosen underlying data representation, and an equivalent column <code>std::extends</code>.<br  />
  FRAGMENT<br  />
  In this example, the data owning storage is a <code>std::vector</code>, the fundamental matrix is the <code>std::mdspan</code>, and the typed matrix becomes the performance primitive. The <code>std::linalg</code> operations and solvers are overloaded, composed into their equivalent strongly typed functions. The owning, or non-owning nature of the typed matrix is transparent. A compilation error occurs when the user attempts an incompatible operation. For example, when trying to use an operator, let's say a sum, of two matrices. The operation fails to compile because there cannot be memory allocation for the returned result. &lt;/aside&gt;</span></p>
-<p><span class="fragment"></p><hr  />
-<p></span></p>
-<p><span class="fragment"></p><h6>at</h6>
-<p></span></p>
-<p><span class="fragment"></span></p>
-<p><span class="fragment"></p><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">auto</span>... Indexes&gt;</div>
-<div class="line"><span class="keyword">decltype</span>(<span class="keyword">auto</span>) at(<span class="keyword">this</span> <span class="keyword">auto</span> &amp;&amp;self)</div>
-<div class="line">  <span class="keyword">requires</span>(<span class="keyword">sizeof</span>...(Indexes) &gt;= rank);</div>
-<div class="line">{</div>
-<div class="line">  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">sizeof</span>...(Indexes) == 2) {</div>
-<div class="line">    <span class="comment">// ...</span></div>
-<div class="line">    <span class="keywordflow">return</span> cast&lt;qualified_element, qualified_underlying&gt;(</div>
-<div class="line">        self.storage[std::get&lt;0&gt;(std::tuple{Indexes...}),</div>
-<div class="line">                     std::get&lt;1&gt;(std::tuple{Indexes...})]);</div>
-<div class="line">  } <span class="comment">// else ...</span></div>
-<div class="line">}</div>
-</div><!-- fragment --><p></span></p>
-<p><span class="fragment">&lt;aside class="notes"&gt; Let's get back to implementation of the typed matrix methods. The simplified implementation of the <code>at</code> member function shown here introduces the customization point object <code>cast</code>. This element caster objet allows the end-user to teach the library how it can convert underlying type to and from quantity types. This single abstraction is the only place where the explicit conversions take place. For the mp-units quantity library the template specializations of the customization point use the explicit <code>numerical_value_in</code> quantity member function to obtain the underlying type value or inversely equip the underlying type value with the reference unit. Note the difficulties in preserving the value category of the type for rvalues and lvalues. The implementation can be thought of the equivalent of the standard library forward-like utility, with an injected cast, and index look up and verification. &lt;/aside&gt;</span></p>
 <p><span class="fragment"></p><hr  />
 <p></span></p>
 <p><span class="fragment"></p><h6>Matrix-Matrix Product</h6>
@@ -514,6 +484,104 @@ std::linalg   </td></tr>
 <p><span class="fragment">&lt;aside class="notes"&gt; A second requirement is that each of the element products are compatible, convertible to their sums. And we can see here a typical naive compile-time assertion over the types of the matrix-matrix product. One issue here is that the compiler error is unreadable when the user attempts an invalid product. Another issue is an apparent equivalent reimplementation of the underlying backend operation for the purpose of type verication, a good argument for the library backend to support strong types directly. &lt;/aside&gt;</span></p>
 <p><span class="fragment"></p><hr  />
 <p></span></p>
+<p><span class="fragment"></p><h6>PERFORMANCE</h6>
+<p></span></p>
+<p><span class="fragment"></span></p>
+<p><span class="fragment">&lt;aside class="notes"&gt; Todo:</p><ul>
+<li>eigen product</li>
+<li>mdpsan product &lt;/aside&gt;</li>
+</ul>
+<p></span></p>
+<p><span class="fragment"></p><hr  />
+<p></span></p>
+<p><span class="fragment"></p><h6>at</h6>
+<p></span></p>
+<p><span class="fragment"></span></p>
+<p><span class="fragment"></p><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">auto</span>... Indexes&gt;</div>
+<div class="line"><span class="keyword">decltype</span>(<span class="keyword">auto</span>) at(<span class="keyword">this</span> <span class="keyword">auto</span> &amp;&amp;self)</div>
+<div class="line">  <span class="keyword">requires</span>(<span class="keyword">sizeof</span>...(Indexes) &gt;= rank);</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">// ...</span></div>
+<div class="line">  <span class="keywordflow">return</span> cast&lt;qualified_element, qualified_underlying&gt;(</div>
+<div class="line">      self.storage[std::get&lt;0&gt;(std::tuple{Indexes...}),</div>
+<div class="line">                    std::get&lt;1&gt;(std::tuple{Indexes...})]);</div>
+<div class="line">}</div>
+</div><!-- fragment --><p></span></p>
+<p><span class="fragment">&lt;aside class="notes"&gt; Let's get back to implementation of the typed matrix methods. The simplified implementation of the <code>at</code> member function shown here introduces the customization point object <code>cast</code>. This element caster objet allows the end-user to teach the library how it can convert underlying type to and from quantity types. This single abstraction is the only place where the explicit conversions take place. For the mp-units quantity library the template specializations of the customization point use the explicit <code>numerical_value_in</code> quantity member function to obtain the underlying type value or inversely equip the underlying type value with the reference unit. Note the difficulties in preserving the value category of the type for rvalues and lvalues. The implementation can be thought of the equivalent of the standard library forward-like utility, with an injected cast, and index look up and verification. &lt;/aside&gt;</span></p>
+<p><span class="fragment"></p><hr  />
+<p></span></p>
+<p><span class="fragment"></p><h6>User Defined Literal</h6>
+<p></span></p>
+<p><span class="fragment"></span></p>
+<p><span class="fragment"></p><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keywordtype">char</span>... Digits&gt;</div>
+<div class="line"><span class="keyword">constexpr</span> <span class="keyword">auto</span> <span class="keyword">operator</span><span class="stringliteral">&quot;&quot;</span>_i(); <span class="comment">// Returns an integral constant.</span></div>
+</div><!-- fragment --><p></span></p>
+<p><span class="fragment"></p><div class="fragment"><div class="line"><span class="comment">// Equivalents for heterogenous matrices:</span></div>
+<div class="line">x0.at&lt;0, 0&gt;()</div>
+<div class="line">x0[0_i, 0_i]</div>
+<div class="line">x0(0_i, 0_i)</div>
+</div><!-- fragment --><p></span></p>
+<p><span class="fragment">&lt;aside class="notes"&gt;</span></p>
+<p><span class="fragment">&lt;/aside&gt;</span></p>
+<p><span class="fragment"></p><hr  />
+<p></span></p>
+<p><span class="fragment"></p><h6>At Conversion</h6>
+<p></span></p>
+<p><span class="fragment"></span></p>
+<p><span class="fragment"></p><div class="fragment"><div class="line">state x0{3. * m, 2.5 * m / s};</div>
+<div class="line">x0.at&lt;0&gt;() = 2 * m / s; <span class="comment">// lvalue reference assignment?</span></div>
+</div><!-- fragment --><p></span></p>
+<p><span class="fragment"><span class="fragment"></span></span></p>
+<p><span class="fragment"><span class="fragment"></p><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;mp_units::Quantity To, <span class="keyword">typename</span> From&gt;</div>
+<div class="line"><span class="keyword">struct </span>element_caster&lt;To &amp;, From &amp;&gt; {</div>
+<div class="line">  To &amp; operator()(From &amp;value) {</div>
+</div><!-- fragment --><p></span></span></p>
+<p><span class="fragment"><span class="fragment"></span> <span class="fragment"></span></span></p>
+<p><span class="fragment"><span class="fragment"></p><div class="fragment"><div class="line"><span class="keyword">static_assert</span>(std::same_as&lt;typename To::rep, From&gt;);</div>
+<div class="line"><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(To) == <span class="keyword">sizeof</span>(From));</div>
+<div class="line"><span class="keyword">static_assert</span>(<span class="keyword">alignof</span>(To) == <span class="keyword">alignof</span>(From));</div>
+<div class="line"> </div>
+<div class="line">To __attribute__((__may_alias__)) *q{</div>
+<div class="line">  <span class="keyword">reinterpret_cast&lt;</span>To *<span class="keyword">&gt;</span>(&amp;value)};</div>
+</div><!-- fragment --><p></span></span></p>
+<p><span class="fragment"><span class="fragment"></span> <span class="fragment"></span></span></p>
+<p><span class="fragment"><span class="fragment"></p><div class="fragment"><div class="line">    <span class="keywordflow">return</span> *q; <span class="comment">// 𐄂 Undefined Behavior</span></div>
+<div class="line">  }</div>
+<div class="line">};</div>
+</div><!-- fragment --><p></span></span></p>
+<p><span class="fragment"><span class="fragment"></span></span></p>
+<p><span class="fragment">&lt;aside class="notes"&gt; // This conversion is Undefined Behavior (UB): strict-aliasing violation, // type punning dereferencing. The <code>reinterpret_cast</code> is not a constant // expression. The function can never be evaluated at compile-time. The // function will never be <code>constexpr</code>.</span></p>
+<p><span class="fragment">&lt;/aside&gt;</span></p>
+<p><span class="fragment"></p><hr  />
+<p></span></p>
+<p><span class="fragment"></p><h6>Alternatives</h6>
+<p></span></p>
+<p><span class="fragment"></span></p>
+<p><span class="fragment"></p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Alternative   </th><th class="markdownTableHeadNone">Drawback    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">lvalue reference   </td><td class="markdownTableBodyNone">Undefined behavior. Loss of constexpr.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">setter   </td><td class="markdownTableBodyNone">Loss of ergonomics. Loss of structured bindings.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">reference wrapper   </td><td class="markdownTableBodyNone">Loss of ergonomics. Loss of structured bindings. Requires type support.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">strong storage   </td><td class="markdownTableBodyNone">Performance loss.   </td></tr>
+</table>
+<p></span></p>
+<p><span class="fragment"></p><hr  />
+<p></span></p>
+<p><span class="fragment"></p><h6>Tuple Sizes</h6>
+<p></span></p>
+<p><span class="fragment"></span></p>
+<p><span class="fragment"></p><hr  />
+<p></span></p>
+<p><span class="fragment"></p><h6>Index Safety</h6>
+<p></span></p>
+<p><span class="fragment"></span></p>
+<p><span class="fragment"></p><hr  />
+<p></span></p>
 <p><span class="fragment"></p><h6>Next</h6>
 <p></span></p>
 <p><span class="fragment"></span></p>
@@ -533,7 +601,7 @@ std::linalg   </td></tr>
 <p><span class="fragment"></p><hr  />
 <p></span></p>
 <p><span class="fragment"></span></p>
-<h2><a class="anchor" id="typed-linear-algebra-2"></a>
+<h2><a class="anchor" id="typed-linear-algebra-1"></a>
 <span class="fragment">Typed Linear Algebra</span></h2>
 <p><span class="fragment"></span></p>
 <p><span class="fragment"><small>François Carouge<br  />
@@ -605,7 +673,35 @@ Taxonomy Safety </li>
 <p></span></p>
 <p><span class="fragment">&lt;aside class="notes"&gt; The design presents many improvement opportunities. A low hanging opportunity is the printing format which is a minimal implementation that follows the standard library default without any of its formatting options. There may be opportunities to simplify the implementation with the C++26 template for expansion statement. Another opportunity is the library supports the latest versions of the three major compilers and the tip of the supporting libraries. Compatibility and stability is a fun challenge a number of bug reports and fixes have been generated in these projects. Benchmarking is required to demonstrate the abstraction remains zero cost to enable adoption. <code>std::linalg</code> in C++ 26 comes with many more operations to support. I wonder if reflection could help in generating the operation wrappers for the typed matrices. I have reached a similar conclusion to Daniel Withopf presentation in 2022 that is, safe linear algebra with physical quantities require index safety. The at member should not use i, j indexes but strongly typed indexes encoding things like the reference frame, character of the quantity, or additional semantic. I suspect there exists an opportunity to implement index safety by yet another composition over the typed matrix, perhaps an indexed matrix. Finally, there are Jacobian and Information matrices which may need an additional exponent for their type collections to differentiate their taxonomy in operations. These are just a few of the next steps. &lt;/aside&gt;</span></p>
 <p><span class="fragment"></p><hr  />
-<p> </span></p>
+<p></span></p>
+<p><span class="fragment">&lt;aside class="notes"&gt; Mp-units six safety levels:</p><ul>
+<li>Dimension Safety - Prevents mixing incompatible dimensions</li>
+<li>Unit Safety - Prevents unit mismatches and eliminates manual scaling factors</li>
+<li>Representation Safety - Protects against overflows and precision loss</li>
+<li>Quantity Kind Safety - Prevents arithmetic on quantities of different kinds</li>
+<li>Quantity Safety - Enforces correct quantity relationships and equations</li>
+<li>Mathematical Space Safety - Distinguishes points, absolute quantities, and deltas</li>
+</ul>
+<p></span></p>
+<p><span class="fragment">Daniel Withopf linear algebra desired properties:</p><ul>
+<li>Compile-time bounds</li>
+<li>Expressive entry names</li>
+<li>Heterogenously typed vectors/matrices</li>
+<li>Typed checks for all operation</li>
+<li>Coordinate frame annotations.</li>
+</ul>
+<p></span></p>
+<p><span class="fragment">Motivation: [Ariane flight V88] - Ariane 5 rocket destroyed due to unit conversion error ($370M loss) [Mars Orbiter] - Lost due to pound-force vs. Newton confusion ($327M loss) [Columbus] - Got Americas “wrong” due to distance unit misunderstandings</span></p>
+<p><span class="fragment">Slide ideas:</p><ul>
+<li>The whole mess of returning a quantity reference from rep storage.</li>
+<li>The whole mess of returning a reference quantity with its side effects.</li>
+<li>Alternatives to storage: e.g. storing quantities.</li>
+</ul>
+<p></span></p>
+<p><span class="fragment"></span></p>
+<h2><a class="anchor" id="aside"></a>
+<span class="fragment">&lt;/aside&gt;</span></h2>
+<p><span class="fragment"> </span></p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
