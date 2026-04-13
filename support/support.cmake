@@ -107,8 +107,8 @@ function(bench NAME SIZE)
       "${NAME}_${SIZE}.cpp")
     target_link_libraries(
       typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_${SIZE}_driver
-      PRIVATE typed_linear_algebra_options typed_linear_algebra_main
-              typed_linear_algebra_${BACKEND} nanobench::nanobench)
+      PRIVATE typed_linear_algebra_options typed_linear_algebra_${BACKEND}
+              nanobench::nanobench)
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(
       NAME typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_${SIZE}
