@@ -35,7 +35,8 @@ For more information, please refer to <https://unlicense.org> */
 #include <random>
 #include <string>
 
-#include <Eigen/Eigen>
+#include "fcarouge/linalg.hpp"
+
 #include <nanobench.h>
 
 namespace fcarouge::benchmark {
@@ -46,10 +47,10 @@ const std::string csv{std::format(
     "{{{{medianAbsolutePercentError(elapsed)}}}} |{{{{/result}}}}\n",
     Size, Size)};
 
-//! @benchmark Eigen square matrix-matrix product.
+//! @benchmark Typed Eigen square matrix-matrix product.
 template <auto Size> void bench() {
-  Eigen::Matrix<double, Size, Size> a;
-  Eigen::Matrix<double, Size, Size> b;
+  matrix<double, Size, Size> a;
+  matrix<double, Size, Size> b;
   std::random_device device;
   std::mt19937 generator{device()};
   std::uniform_real_distribution<> distribution{0., 1.};
@@ -64,9 +65,9 @@ template <auto Size> void bench() {
   std::ofstream results{"results.txt", std::ios::app};
   ankerl::nanobench::Bench()
       .output(nullptr)
-      .title("Eigen Matrix-Matrix Product")
+      .title("Typed Eigen Matrix-Matrix Product")
       .run([&]() {
-        Eigen::Matrix<double, Size, Size> r{a * b};
+        matrix<double, Size, Size> r{a * b};
         ankerl::nanobench::doNotOptimizeAway(r);
       })
       .render(csv<Size>.c_str(), results);
