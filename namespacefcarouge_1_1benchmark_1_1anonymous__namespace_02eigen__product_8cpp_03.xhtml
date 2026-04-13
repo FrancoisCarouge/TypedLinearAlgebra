@@ -101,89 +101,90 @@ $(function(){initNavTree('namespacefcarouge_1_1benchmark_1_1anonymous__namespace
 
 <div class="header">
   <div class="summary">
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">fcarouge::benchmark::anonymous_namespace{eigen_product.cpp} Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ab49bbbd5b834f012d21908bd9edfd062" id="r_ab49bbbd5b834f012d21908bd9edfd062"><td class="memTemplParams" colspan="2">template&lt;auto Size&gt; </td></tr>
+<tr class="memitem:ab49bbbd5b834f012d21908bd9edfd062"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab49bbbd5b834f012d21908bd9edfd062">bench</a> ()</td></tr>
+<tr class="separator:ab49bbbd5b834f012d21908bd9edfd062"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a5d7ff03b46a9a9d5758e853541e85bf7" id="r_a5d7ff03b46a9a9d5758e853541e85bf7"><td class="memTemplParams" colspan="2">template&lt;auto Size&gt; </td></tr>
 <tr class="memitem:a5d7ff03b46a9a9d5758e853541e85bf7"><td class="memTemplItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a5d7ff03b46a9a9d5758e853541e85bf7">csv</a></td></tr>
 <tr class="separator:a5d7ff03b46a9a9d5758e853541e85bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a518e68169754fd6a52ff0429a7b4e2af" id="r_a518e68169754fd6a52ff0429a7b4e2af"><td class="memItemLeft" align="right" valign="top">const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a518e68169754fd6a52ff0429a7b4e2af">bench</a></td></tr>
-<tr class="separator:a518e68169754fd6a52ff0429a7b4e2af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a518e68169754fd6a52ff0429a7b4e2af" name="a518e68169754fd6a52ff0429a7b4e2af"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a518e68169754fd6a52ff0429a7b4e2af">&#9670;&#160;</a></span>bench</h2>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ab49bbbd5b834f012d21908bd9edfd062" name="ab49bbbd5b834f012d21908bd9edfd062"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab49bbbd5b834f012d21908bd9edfd062">&#9670;&#160;</a></span>bench()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;auto Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const auto fcarouge::benchmark::anonymous_namespace{eigen_product.cpp}::bench</td>
+          <td class="memname">void fcarouge::benchmark::anonymous_namespace{eigen_product.cpp}::bench </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{[]&lt;<span class="keyword">auto</span> Size&gt;() {</div>
-<div class="line">  Eigen::Matrix&lt;double, Size, Size&gt; a;</div>
-<div class="line">  Eigen::Matrix&lt;double, Size, Size&gt; b;</div>
-<div class="line">  std::random_device device;</div>
-<div class="line">  std::mt19937 generator{device()};</div>
-<div class="line">  std::uniform_real_distribution&lt;&gt; distribution{0., 1.};</div>
-<div class="line"> </div>
-<div class="line">  <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; Size; ++i) {</div>
-<div class="line">    <span class="keywordflow">for</span> (std::size_t j = 0; j &lt; Size; ++j) {</div>
-<div class="line">      a(i, j) = distribution(generator);</div>
-<div class="line">      b(i, j) = distribution(generator);</div>
-<div class="line">    }</div>
-<div class="line">  }</div>
-<div class="line"> </div>
-<div class="line">  std::ofstream results{<span class="stringliteral">&quot;benchmark.csv&quot;</span>, std::ios::app};</div>
-<div class="line">  ankerl::nanobench::Bench()</div>
-<div class="line">      .output(<span class="keyword">nullptr</span>)</div>
-<div class="line">      .title(<span class="stringliteral">&quot;Eigen Matrix-Matrix Product&quot;</span>)</div>
-<div class="line">      .run([&amp;]() {</div>
-<div class="line">        Eigen::Matrix&lt;double, Size, Size&gt; r = a * b;</div>
-<div class="line">        ankerl::nanobench::doNotOptimizeAway(r);</div>
-<div class="line">      })</div>
-<div class="line">      .render(csv&lt;Size&gt;.c_str(), results);</div>
-<div class="line"> </div>
-<div class="line">  <span class="keywordflow">return</span> 0;</div>
-<div class="line">}.operator()&lt;${SIZE}&gt;()}</div>
-</div><!-- fragment --><dl class="section user"><dt>Benchmark</dt><dd><a class="el" href="namespace_eigen.xhtml">Eigen</a> square matrix-matrix product. </dd></dl>
+<dl class="section user"><dt>Benchmark</dt><dd><a class="el" href="namespace_eigen.xhtml">Eigen</a> square matrix-matrix product. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="eigen__product_8cpp_source.xhtml#l00049">49</a> of file <a class="el" href="eigen__product_8cpp_source.xhtml">eigen_product.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>                                 {[]&lt;<span class="keyword">auto</span> Size&gt;() {</div>
-<div class="line"><span class="lineno">   50</span>  Eigen::Matrix&lt;double, Size, Size&gt; a;</div>
-<div class="line"><span class="lineno">   51</span>  Eigen::Matrix&lt;double, Size, Size&gt; b;</div>
-<div class="line"><span class="lineno">   52</span>  std::random_device device;</div>
-<div class="line"><span class="lineno">   53</span>  std::mt19937 generator{device()};</div>
-<div class="line"><span class="lineno">   54</span>  std::uniform_real_distribution&lt;&gt; distribution{0., 1.};</div>
-<div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>  <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; Size; ++i) {</div>
-<div class="line"><span class="lineno">   57</span>    <span class="keywordflow">for</span> (std::size_t j = 0; j &lt; Size; ++j) {</div>
-<div class="line"><span class="lineno">   58</span>      a(i, j) = distribution(generator);</div>
-<div class="line"><span class="lineno">   59</span>      b(i, j) = distribution(generator);</div>
-<div class="line"><span class="lineno">   60</span>    }</div>
-<div class="line"><span class="lineno">   61</span>  }</div>
-<div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>  std::ofstream results{<span class="stringliteral">&quot;benchmark.csv&quot;</span>, std::ios::app};</div>
-<div class="line"><span class="lineno">   64</span>  ankerl::nanobench::Bench()</div>
-<div class="line"><span class="lineno">   65</span>      .output(<span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">   66</span>      .title(<span class="stringliteral">&quot;Eigen Matrix-Matrix Product&quot;</span>)</div>
-<div class="line"><span class="lineno">   67</span>      .run([&amp;]() {</div>
-<div class="line"><span class="lineno">   68</span>        Eigen::Matrix&lt;double, Size, Size&gt; r = a * b;</div>
-<div class="line"><span class="lineno">   69</span>        ankerl::nanobench::doNotOptimizeAway(r);</div>
-<div class="line"><span class="lineno">   70</span>      })</div>
-<div class="line"><span class="lineno">   71</span>      .render(csv&lt;Size&gt;.c_str(), results);</div>
-<div class="line"><span class="lineno">   72</span> </div>
-<div class="line"><span class="lineno">   73</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   74</span>}.operator()&lt;${SIZE}&gt;()};</div>
+<p class="definition">Definition at line <a class="el" href="eigen__product_8cpp_source.xhtml#l00050">50</a> of file <a class="el" href="eigen__product_8cpp_source.xhtml">eigen_product.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   50</span>                                  {</div>
+<div class="line"><span class="lineno">   51</span>  Eigen::Matrix&lt;double, Size, Size&gt; a;</div>
+<div class="line"><span class="lineno">   52</span>  Eigen::Matrix&lt;double, Size, Size&gt; b;</div>
+<div class="line"><span class="lineno">   53</span>  std::random_device device;</div>
+<div class="line"><span class="lineno">   54</span>  std::mt19937 generator{device()};</div>
+<div class="line"><span class="lineno">   55</span>  std::uniform_real_distribution&lt;&gt; distribution{0., 1.};</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>  <span class="keywordflow">for</span> (std::size_t i{0}; i &lt; Size; ++i) {</div>
+<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">for</span> (std::size_t j{0}; j &lt; Size; ++j) {</div>
+<div class="line"><span class="lineno">   59</span>      a(i, j) = distribution(generator);</div>
+<div class="line"><span class="lineno">   60</span>      b(i, j) = distribution(generator);</div>
+<div class="line"><span class="lineno">   61</span>    }</div>
+<div class="line"><span class="lineno">   62</span>  }</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>  std::ofstream results{<span class="stringliteral">&quot;results.txt&quot;</span>, std::ios::app};</div>
+<div class="line"><span class="lineno">   65</span>  ankerl::nanobench::Bench()</div>
+<div class="line"><span class="lineno">   66</span>      .output(<span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   67</span>      .title(<span class="stringliteral">&quot;Eigen Matrix-Matrix Product&quot;</span>)</div>
+<div class="line"><span class="lineno">   68</span>      .run([&amp;]() {</div>
+<div class="line"><span class="lineno">   69</span>        Eigen::Matrix&lt;double, Size, Size&gt; r{a * b};</div>
+<div class="line"><span class="lineno">   70</span>        ankerl::nanobench::doNotOptimizeAway(r);</div>
+<div class="line"><span class="lineno">   71</span>      })</div>
+<div class="line"><span class="lineno">   72</span>      .render(csv&lt;Size&gt;.c_str(), results);</div>
+<div class="line"><span class="lineno">   73</span>}</div>
 </div><!-- fragment -->
+<p class="reference">References <a class="el" href="eigen__product_8cpp_source.xhtml#l00050">bench()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="eigen__product_8cpp_source.xhtml#l00050">bench()</a>.</p>
+<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__product_8cpp_03_ab49bbbd5b834f012d21908bd9edfd062_cgraph.svg" width="190" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__product_8cpp_03_ab49bbbd5b834f012d21908bd9edfd062_icgraph.svg" width="190" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
 </div>
 </div>
+<h2 class="groupheader">Variable Documentation</h2>
 <a id="a5d7ff03b46a9a9d5758e853541e85bf7" name="a5d7ff03b46a9a9d5758e853541e85bf7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5d7ff03b46a9a9d5758e853541e85bf7">&#9670;&#160;</a></span>csv</h2>
 
@@ -202,11 +203,11 @@ template&lt;auto Size&gt; </div>
 <div class="line">    <span class="stringliteral">&quot;{{{{medianAbsolutePercentError(elapsed)}}}} |{{{{/result}}}}\n&quot;</span>,</div>
 <div class="line">    Size, Size)}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="eigen__product_8cpp_source.xhtml#l00043">43</a> of file <a class="el" href="eigen__product_8cpp_source.xhtml">eigen_product.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   43</span>                   {std::format(</div>
-<div class="line"><span class="lineno">   44</span>    <span class="stringliteral">&quot;{{{{#result}}}}| {{{{title}}}} | {:5d}x{:&lt;5d} | {{{{median(elapsed)}}}} | &quot;</span></div>
-<div class="line"><span class="lineno">   45</span>    <span class="stringliteral">&quot;{{{{medianAbsolutePercentError(elapsed)}}}} |{{{{/result}}}}\n&quot;</span>,</div>
-<div class="line"><span class="lineno">   46</span>    Size, Size)};</div>
+<p class="definition">Definition at line <a class="el" href="eigen__product_8cpp_source.xhtml#l00044">44</a> of file <a class="el" href="eigen__product_8cpp_source.xhtml">eigen_product.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   44</span>                   {std::format(</div>
+<div class="line"><span class="lineno">   45</span>    <span class="stringliteral">&quot;{{{{#result}}}}| {{{{title}}}} | {:5d}x{:&lt;5d} | {{{{median(elapsed)}}}} | &quot;</span></div>
+<div class="line"><span class="lineno">   46</span>    <span class="stringliteral">&quot;{{{{medianAbsolutePercentError(elapsed)}}}} |{{{{/result}}}}\n&quot;</span>,</div>
+<div class="line"><span class="lineno">   47</span>    Size, Size)};</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -1,5 +1,14 @@
 var NAVTREEINDEX3 =
 {
+"typed__linear__algebra_8hpp.xhtml#aa6f7f6a8d1b65520e70b3e1330e880d2":[22,0,3,0,1,36],
+"typed__linear__algebra_8hpp.xhtml#ac201eb6dbabe90e8e35d2efa46b7ad1f":[22,0,3,0,1,33],
+"typed__linear__algebra_8hpp.xhtml#ae3d099c43d8b3d4c028b1790f89ed590":[22,0,3,0,1,26],
+"typed__linear__algebra_8hpp.xhtml#aedee8a59ff22ed2211c8113ce4c3b4df":[22,0,3,0,1,20],
+"typed__linear__algebra_8hpp.xhtml#af02b1b42b9e9375531cdc06d3a23a2d7":[22,0,3,0,1,24],
+"typed__linear__algebra_8hpp.xhtml#af2da947d4c73c863f03aa04a4fe99f90":[22,0,3,0,1,32],
+"typed__linear__algebra_8hpp.xhtml#aff2f70ca99030562d79527d2c291d50e":[22,0,3,0,1,30],
+"typed__linear__algebra_8hpp_source.xhtml":[22,0,3,0,1],
+"typed__linear__algebra__forward_8hpp.xhtml":[22,0,3,0,2],
 "typed__linear__algebra__forward_8hpp_source.xhtml":[22,0,3,0,2],
 "underlying_8cpp.xhtml":[22,0,7,13],
 "underlying_8cpp.xhtml#ae337e6d7e2e77329f3f4f5141ad525d0":[22,0,7,13,0],
