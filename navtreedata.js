@@ -57,6 +57,9 @@ var NAVTREE =
     ] ],
     [ "Continuous Integration & Deployment Actions", "index.xhtml#continuous-integration--deployment-actions", null ],
     [ "License", "index.xhtml#license", null ],
+    [ "Benchmarks", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml", [
+      [ "Results", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#results", null ]
+    ] ],
     [ "Contributor Covenant Code of Conduct", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml", [
       [ "Our Pledge", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-pledge", null ],
       [ "Our Standards", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-standards", null ],
@@ -155,9 +158,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
-"format_8hpp.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__unit__eigen_8cpp_03.xhtml",
-"unit_8hpp_source.xhtml"
+"format_21xn_8cpp_source.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__array_8cpp_03.xhtml#af9156f2b70433354203d61ec76c8a488",
+"typed__linear__algebra__forward_8hpp_source.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

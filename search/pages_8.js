@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['mp_20units_0',['Quantity-Safe Linear Algebra Use Case: Eigen + mp-units',['../md_html_2paper_2mp__units__eigen.xhtml',1,'']]]
+  ['linear_20algebra_0',['Typed Linear Algebra',['../index.xhtml',1,'']]],
+  ['linear_20algebra_20a_1',['&lt;a href=&quot;https://francoiscarouge.github.io/TypedLinearAlgebra/typed_linear_algebra/index.html&quot; &gt;Typed Linear Algebra&lt;/a&gt;',['../md_html_2typed__linear__algebra_2_r_e_a_d_m_e.xhtml',1,'']]],
+  ['linear_20algebra_20use_20case_3a_20eigen_20mp_20units_2',['Quantity-Safe Linear Algebra Use Case: Eigen + mp-units',['../md_html_2paper_2mp__units__eigen.xhtml',1,'']]],
+  ['list_3',['List',['../test.xhtml',1,'Test List'],['../todo.xhtml',1,'Todo List']]]
 ];
