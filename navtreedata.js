@@ -75,6 +75,7 @@ var NAVTREE =
       [ "Security Policy", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#security-policy", null ]
     ] ],
     [ "Unit Test Code Coverage", "unit_test_coverage.xhtml", null ],
+    [ "Compile-Time Traces", "time_trace.xhtml", null ],
     [ "Quantity-Safe Linear Algebra Use Case: Eigen + mp-units", "md_html_2paper_2mp__units__eigen.xhtml", [
       [ "Abstract", "md_html_2paper_2mp__units__eigen.xhtml#abstract", null ],
       [ "Introduction", "md_html_2paper_2mp__units__eigen.xhtml#introduction", null ],
@@ -162,7 +163,7 @@ var NAVTREEINDEX =
 "1x1__array_8cpp.xhtml",
 "equality_8cpp.xhtml#aed14f7a75b88125c81303b1bb1a2c06f",
 "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#abadda8a5417037ae0b6596f861948290",
-"typed__linear__algebra_8hpp.xhtml#a9f2eaf5121581e51242ca94f69312436"
+"typed__linear__algebra_8hpp.xhtml#a96fea71ab24114a61950988fdac23f58"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
