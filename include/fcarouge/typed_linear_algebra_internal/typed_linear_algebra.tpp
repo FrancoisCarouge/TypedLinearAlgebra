@@ -88,7 +88,7 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
   if constexpr (requires { storage = elements; }) {
     storage = elements;
   } else {
-    tla::for_constexpr<0, typed_matrix::rows * typed_matrix::columns, 1>(
+    tla::for_constexpr<typed_matrix::rows * typed_matrix::columns>(
         [this, &elements](auto position) {
           storage[position] = cast<underlying, element<>>(elements[position]);
         });
@@ -105,7 +105,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
   if constexpr (requires { storage = elements; }) {
     storage = elements;
   } else {
-    tla::for_constexpr<0, typed_matrix::rows * typed_matrix::columns, 1>(
+    tla::for_constexpr<typed_matrix::rows * typed_matrix::columns>(
         [this, &elements](auto position) {
           storage[position] = cast<underlying, element<>>(elements[position]);
         });
@@ -168,7 +168,7 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
   static_assert(columns * rows == 2 + sizeof...(values),
                 "The count of parameters must match the size of the vector.");
   std::tuple value_pack{first_value, second_value, values...};
-  tla::for_constexpr<0, typed_matrix::rows * typed_matrix::columns, 1>(
+  tla::for_constexpr<typed_matrix::rows * typed_matrix::columns>(
       [this, &value_pack](auto position) {
         auto value{std::get<position>(value_pack)};
         using type = std::remove_cvref_t<decltype(value)>;

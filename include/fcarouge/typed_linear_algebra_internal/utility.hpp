@@ -160,15 +160,16 @@ struct multiplies<std::tuple<Types1...>, std::tuple<Types2...>> {
       -> std::tuple<product<Types1, Types2>...>;
 };
 
+template <std::size_t... Is, typename F>
+constexpr void for_constexpr_detail(std::index_sequence<Is...>, F &&f) {
+  (f(std::integral_constant<std::size_t, Is>{}), ...);
+}
+
 //! @todo Remove for C++26 P1789 Library Support for Expansion Statements.
-template <std::size_t Begin, std::size_t End, std::size_t Increment,
-          typename Function>
+template <std::size_t Size, typename Function>
 constexpr void for_constexpr(Function &&function) {
-  if constexpr (Begin < End) {
-    function(std::integral_constant<std::size_t, Begin>());
-    for_constexpr<Begin + Increment, End, Increment>(
-        std::forward<Function>(function));
-  }
+  for_constexpr_detail(std::make_index_sequence<Size>{},
+                       std::forward<Function>(function));
 }
 
 template <typename Type> struct underlying {
@@ -227,9 +228,9 @@ concept uniform_typed_matrix =
     same_as_typed_matrix<Type> and ([]() {
       bool result{true};
 
-      for_constexpr<0, std::remove_cvref_t<Type>::rows, 1>([&result](auto i) {
-        for_constexpr<0, std::remove_cvref_t<Type>::columns, 1>([&result,
-                                                                 &i](auto j) {
+      for_constexpr<std::remove_cvref_t<Type>::rows>([&result](auto i) {
+        for_constexpr<std::remove_cvref_t<Type>::columns>([&result,
+                                                           &i](auto j) {
           result &= std::is_same_v<element<Type, i, j>, element<Type, 0, 0>>;
         });
       });

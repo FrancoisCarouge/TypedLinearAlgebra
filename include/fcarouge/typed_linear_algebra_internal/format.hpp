@@ -65,7 +65,7 @@ public:
          FormatContext &format_context) const -> FormatContext::iterator {
     format_context.advance_to(std::format_to(format_context.out(), "["));
 
-    fcarouge::typed_linear_algebra_internal::for_constexpr<0, rows, 1>(
+    fcarouge::typed_linear_algebra_internal::for_constexpr<rows>(
         [&value, &format_context](auto i) {
           if (i > 0) {
             format_context.advance_to(
@@ -74,7 +74,7 @@ public:
 
           format_context.advance_to(std::format_to(format_context.out(), "["));
 
-          fcarouge::typed_linear_algebra_internal::for_constexpr<0, columns, 1>(
+          fcarouge::typed_linear_algebra_internal::for_constexpr<columns>(
               [&value, &format_context, &i](auto j) {
                 if (j > 0) {
                   format_context.advance_to(
@@ -101,7 +101,7 @@ public:
   {
     format_context.advance_to(std::format_to(format_context.out(), "["));
 
-    fcarouge::typed_linear_algebra_internal::for_constexpr<0, columns, 1>(
+    fcarouge::typed_linear_algebra_internal::for_constexpr<columns>(
         [&value, &format_context](auto position) {
           if (position > 0) {
             format_context.advance_to(

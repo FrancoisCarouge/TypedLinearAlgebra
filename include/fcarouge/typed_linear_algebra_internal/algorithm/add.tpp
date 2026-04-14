@@ -49,8 +49,8 @@ namespace fcarouge {
 
   // Each typed element of the lhs matrix must be addable to the corresponding
   // typed element of the rhs matrix.
-  tla::for_constexpr<0, lhs_matrix::rows, 1>([&](auto i) {
-    tla::for_constexpr<0, lhs_matrix::columns, 1>([&](auto j) {
+  tla::for_constexpr<lhs_matrix::rows>([&](auto i) {
+    tla::for_constexpr<lhs_matrix::columns>([&](auto j) {
       using lhs_element = typename lhs_matrix::template element<i, j>;
       using rhs_element = typename rhs_matrix::template element<i, j>;
 
@@ -110,8 +110,8 @@ constexpr void add(const same_as_typed_matrix auto &lhs,
   // Each typed element of the lhs matrix must be addable to the corresponding
   // typed element of the rhs matrix and assignable to the corresponding typed
   // element of the result matrix.
-  tla::for_constexpr<0, lhs_matrix::rows, 1>([&](auto i) {
-    tla::for_constexpr<0, lhs_matrix::columns, 1>([&](auto j) {
+  tla::for_constexpr<lhs_matrix::rows>([&](auto i) {
+    tla::for_constexpr<lhs_matrix::columns>([&](auto j) {
       using lhs_element = typename lhs_matrix::template element<i, j>;
       using rhs_element = typename rhs_matrix::template element<i, j>;
       using result_element = typename result_matrix::template element<i, j>;
