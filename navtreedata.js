@@ -99,7 +99,9 @@ var NAVTREE =
       [ "7 Beyond Unit Safety", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md7-beyond-unit-safety", null ],
       [ "7 Conclusion", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md7-conclusion", null ]
     ] ],
-    [ "<a href=\"https://francoiscarouge.github.io/TypedLinearAlgebra/typed_linear_algebra/index.html\" >Typed Linear Algebra</a>", "md_html_2typed__linear__algebra_2_r_e_a_d_m_e.xhtml", null ],
+    [ "Slide Deck", "md_html_2typed__linear__algebra_2_r_e_a_d_m_e.xhtml", [
+      [ "Typed Linear Algebra", "md_html_2typed__linear__algebra_2_r_e_a_d_m_e.xhtml#typed-linear-algebrahttpsfrancoiscarougegithubiotypedlinearalgebratyped_linear_algebraindexhtml", null ]
+    ] ],
     [ "typed_linear_algebra", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml", [
       [ "Parking", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#parking", [
         [ "ianchortyped_linear_algebra-typed_linear_algebrailinebr", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#ianchortyped_linear_algebra-typed_linear_algebrailinebr", null ],
@@ -159,8 +161,8 @@ var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
 "equality_8cpp.xhtml#aed14f7a75b88125c81303b1bb1a2c06f",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#abd406f490d56f485399dbc56ea600d92",
-"typed__linear__algebra_8hpp.xhtml#aa6f7f6a8d1b65520e70b3e1330e880d2"
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#abadda8a5417037ae0b6596f861948290",
+"typed__linear__algebra_8hpp.xhtml#a9f2eaf5121581e51242ca94f69312436"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
