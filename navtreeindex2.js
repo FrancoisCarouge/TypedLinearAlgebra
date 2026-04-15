@@ -108,10 +108,11 @@ var NAVTREEINDEX2 =
 "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a4dd57b09634fe03c0fd59b866657ad86":[20,0,1,6,4],
 "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a72e4ccaf08999b259f656412682b37dd":[20,0,1,6,5],
 "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a89cc53c1b6d742d0f50660c6895896cc":[20,0,1,6,0],
-"namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a9a86c642ba2610ed4f92a3d84baf5b00":[20,0,1,6,6],
-"namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#abbba9c02ba0de394e79a3aa4866c0bd1":[20,0,1,6,7],
+"namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aab4670c6313954d8840239709b688878":[20,0,1,6,7],
+"namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#abbba9c02ba0de394e79a3aa4866c0bd1":[20,0,1,6,8],
+"namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#abcda1ee8b10a813ac3a16d25343603c7":[20,0,1,6,6],
 "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#ad9aae459061728b7d7b2ae70196f2028":[20,0,1,6,3],
-"namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aded6eca464a23970fc0a04a24a164209":[20,0,1,6,8],
+"namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aded6eca464a23970fc0a04a24a164209":[20,0,1,6,9],
 "namespacemembers.xhtml":[20,1,0],
 "namespacemembers_func.xhtml":[20,1,1],
 "namespacemembers_type.xhtml":[20,1,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "typed__linear__algebra_8hpp.xhtml#a6f98d198d18c9c551d21f2eb602cdfd2":[23,0,3,0,1,16],
 "typed__linear__algebra_8hpp.xhtml#a7558e7ccc03031fb7de678cf4977e1bf":[23,0,3,0,1,12],
 "typed__linear__algebra_8hpp.xhtml#a82a7f8a2b265bd808ccd20c62a3e3ea6":[23,0,3,0,1,27],
-"typed__linear__algebra_8hpp.xhtml#a9343adf455a88982fd1efabe086673b7":[23,0,3,0,1,18],
-"typed__linear__algebra_8hpp.xhtml#a96bdab646ac7be1505482cf553b9650b":[23,0,3,0,1,15]
+"typed__linear__algebra_8hpp.xhtml#a9343adf455a88982fd1efabe086673b7":[23,0,3,0,1,18]
 };

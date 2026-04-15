@@ -15,7 +15,8 @@ var namespacefcarouge =
       [ "quotient", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#ad9aae459061728b7d7b2ae70196f2028", null ],
       [ "tuple_n_type", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a4dd57b09634fe03c0fd59b866657ad86", null ],
       [ "underlying_t", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a72e4ccaf08999b259f656412682b37dd", null ],
-      [ "for_constexpr", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a9a86c642ba2610ed4f92a3d84baf5b00", null ],
+      [ "for_constexpr", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#abcda1ee8b10a813ac3a16d25343603c7", null ],
+      [ "for_constexpr_detail", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aab4670c6313954d8840239709b688878", null ],
       [ "parse_digits", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#abbba9c02ba0de394e79a3aa4866c0bd1", null ],
       [ "rank", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aded6eca464a23970fc0a04a24a164209", null ]
     ] ],

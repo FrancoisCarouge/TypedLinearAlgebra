@@ -184,9 +184,12 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a9a86c642ba2610ed4f92a3d84baf5b00" id="r_a9a86c642ba2610ed4f92a3d84baf5b00"><td class="memTemplParams" colspan="2">template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename Function &gt; </td></tr>
-<tr class="memitem:a9a86c642ba2610ed4f92a3d84baf5b00"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a9a86c642ba2610ed4f92a3d84baf5b00">for_constexpr</a> (Function &amp;&amp;function)</td></tr>
-<tr class="separator:a9a86c642ba2610ed4f92a3d84baf5b00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab4670c6313954d8840239709b688878" id="r_aab4670c6313954d8840239709b688878"><td class="memTemplParams" colspan="2">template&lt;std::size_t... Is, typename F &gt; </td></tr>
+<tr class="memitem:aab4670c6313954d8840239709b688878"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aab4670c6313954d8840239709b688878">for_constexpr_detail</a> (std::index_sequence&lt; Is... &gt;, F &amp;&amp;f)</td></tr>
+<tr class="separator:aab4670c6313954d8840239709b688878"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcda1ee8b10a813ac3a16d25343603c7" id="r_abcda1ee8b10a813ac3a16d25343603c7"><td class="memTemplParams" colspan="2">template&lt;std::size_t Size, typename Function &gt; </td></tr>
+<tr class="memitem:abcda1ee8b10a813ac3a16d25343603c7"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#abcda1ee8b10a813ac3a16d25343603c7">for_constexpr</a> (Function &amp;&amp;function)</td></tr>
+<tr class="separator:abcda1ee8b10a813ac3a16d25343603c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbba9c02ba0de394e79a3aa4866c0bd1" id="r_abbba9c02ba0de394e79a3aa4866c0bd1"><td class="memTemplParams" colspan="2">template&lt;char... Digits&gt; </td></tr>
 <tr class="memitem:abbba9c02ba0de394e79a3aa4866c0bd1"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#abbba9c02ba0de394e79a3aa4866c0bd1">parse_digits</a> ()</td></tr>
 <tr class="separator:abbba9c02ba0de394e79a3aa4866c0bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -212,7 +215,7 @@ template&lt;typename Type , std::size_t... Indexes&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00223">223</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00224">224</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -228,7 +231,7 @@ template&lt;typename Type , std::size_t... Indexes&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00280">280</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00281">281</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -284,7 +287,7 @@ template&lt;typename Type , std::size_t Size&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00278">278</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00279">279</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -302,18 +305,18 @@ template&lt;typename Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00193">193</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00194">194</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a9a86c642ba2610ed4f92a3d84baf5b00" name="a9a86c642ba2610ed4f92a3d84baf5b00"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a86c642ba2610ed4f92a3d84baf5b00">&#9670;&#160;</a></span>for_constexpr()</h2>
+<a id="abcda1ee8b10a813ac3a16d25343603c7" name="abcda1ee8b10a813ac3a16d25343603c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcda1ee8b10a813ac3a16d25343603c7">&#9670;&#160;</a></span>for_constexpr()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename Function &gt; </div>
+template&lt;std::size_t Size, typename Function &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -333,31 +336,74 @@ template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename 
 </div><div class="memdoc">
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000003">Todo</a></b></dt><dd>Remove for C++26 P1789 Library Support for Expansion Statements. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00166">166</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  166</span>                                                  {</div>
-<div class="line"><span class="lineno">  167</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Begin &lt; End) {</div>
-<div class="line"><span class="lineno">  168</span>    function(std::integral_constant&lt;std::size_t, Begin&gt;());</div>
-<div class="line"><span class="lineno">  169</span>    for_constexpr&lt;Begin + Increment, End, Increment&gt;(</div>
-<div class="line"><span class="lineno">  170</span>        std::forward&lt;Function&gt;(function));</div>
-<div class="line"><span class="lineno">  171</span>  }</div>
-<div class="line"><span class="lineno">  172</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00170">170</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  170</span>                                                  {</div>
+<div class="line"><span class="lineno">  171</span>  <a class="code hl_function" href="#aab4670c6313954d8840239709b688878">for_constexpr_detail</a>(std::make_index_sequence&lt;Size&gt;{},</div>
+<div class="line"><span class="lineno">  172</span>                       std::forward&lt;Function&gt;(function));</div>
+<div class="line"><span class="lineno">  173</span>}</div>
+<div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra__internal_xhtml_aab4670c6313954d8840239709b688878"><div class="ttname"><a href="#aab4670c6313954d8840239709b688878">fcarouge::typed_linear_algebra_internal::for_constexpr_detail</a></div><div class="ttdeci">constexpr void for_constexpr_detail(std::index_sequence&lt; Is... &gt;, F &amp;&amp;f)</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00164">utility.hpp:164</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00166">for_constexpr()</a>.</p>
+<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00164">for_constexpr_detail()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00166">for_constexpr()</a>, and <a class="el" href="format_8hpp_source.xhtml#l00064">std::formatter&lt; fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;, Char &gt;::format()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="format_8hpp_source.xhtml#l00064">std::formatter&lt; fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;, Char &gt;::format()</a>.</p>
 <div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra__internal_a9a86c642ba2610ed4f92a3d84baf5b00_cgraph.svg" width="158" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra__internal_abcda1ee8b10a813ac3a16d25343603c7_cgraph.svg" width="352" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra__internal_a9a86c642ba2610ed4f92a3d84baf5b00_icgraph.svg" width="396" height="98"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra__internal_abcda1ee8b10a813ac3a16d25343603c7_icgraph.svg" width="396" height="82"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="aab4670c6313954d8840239709b688878" name="aab4670c6313954d8840239709b688878"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab4670c6313954d8840239709b688878">&#9670;&#160;</a></span>for_constexpr_detail()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t... Is, typename F &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fcarouge::typed_linear_algebra_internal::for_constexpr_detail </td>
+          <td>(</td>
+          <td class="paramtype">std::index_sequence&lt; Is... &gt;</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">F &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>f</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00164">164</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  164</span>                                                                     {</div>
+<div class="line"><span class="lineno">  165</span>  (f(std::integral_constant&lt;std::size_t, Is&gt;{}), ...);</div>
+<div class="line"><span class="lineno">  166</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00170">for_constexpr()</a>.</p>
+<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra__internal_aab4670c6313954d8840239709b688878_icgraph.svg" width="591" height="82"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -387,16 +433,16 @@ template&lt;char... Digits&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00305">305</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  305</span>                                                             {</div>
-<div class="line"><span class="lineno">  306</span>  <span class="keyword">static_assert</span>(((<span class="charliteral">&#39;0&#39;</span> &lt;= Digits &amp;&amp; Digits &lt;= <span class="charliteral">&#39;9&#39;</span>) &amp;&amp; ...),</div>
-<div class="line"><span class="lineno">  307</span>                <span class="stringliteral">&quot;Characters must only be digits.&quot;</span>);</div>
-<div class="line"><span class="lineno">  308</span> </div>
-<div class="line"><span class="lineno">  309</span>  std::size_t number{0};</div>
-<div class="line"><span class="lineno">  310</span>  ((number = number * 10 + (Digits - <span class="charliteral">&#39;0&#39;</span>)), ...);</div>
-<div class="line"><span class="lineno">  311</span> </div>
-<div class="line"><span class="lineno">  312</span>  <span class="keywordflow">return</span> number;</div>
-<div class="line"><span class="lineno">  313</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00306">306</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  306</span>                                                             {</div>
+<div class="line"><span class="lineno">  307</span>  <span class="keyword">static_assert</span>(((<span class="charliteral">&#39;0&#39;</span> &lt;= Digits &amp;&amp; Digits &lt;= <span class="charliteral">&#39;9&#39;</span>) &amp;&amp; ...),</div>
+<div class="line"><span class="lineno">  308</span>                <span class="stringliteral">&quot;Characters must only be digits.&quot;</span>);</div>
+<div class="line"><span class="lineno">  309</span> </div>
+<div class="line"><span class="lineno">  310</span>  std::size_t number{0};</div>
+<div class="line"><span class="lineno">  311</span>  ((number = number * 10 + (Digits - <span class="charliteral">&#39;0&#39;</span>)), ...);</div>
+<div class="line"><span class="lineno">  312</span> </div>
+<div class="line"><span class="lineno">  313</span>  <span class="keywordflow">return</span> number;</div>
+<div class="line"><span class="lineno">  314</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -432,16 +478,16 @@ template&lt;std::size_t Rows, std::size_t Columns&gt; </div>
 <div class="line">  }</div>
 <div class="line">}()}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00283">283</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  283</span>                        {[] {</div>
-<div class="line"><span class="lineno">  284</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows &gt; 1 &amp;&amp; Columns &gt; 1) {</div>
-<div class="line"><span class="lineno">  285</span>    <span class="keywordflow">return</span> 2;</div>
-<div class="line"><span class="lineno">  286</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows == 1 &amp;&amp; Columns == 1) {</div>
-<div class="line"><span class="lineno">  287</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  288</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  289</span>    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  290</span>  }</div>
-<div class="line"><span class="lineno">  291</span>}()};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00284">284</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  284</span>                        {[] {</div>
+<div class="line"><span class="lineno">  285</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows &gt; 1 &amp;&amp; Columns &gt; 1) {</div>
+<div class="line"><span class="lineno">  286</span>    <span class="keywordflow">return</span> 2;</div>
+<div class="line"><span class="lineno">  287</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows == 1 &amp;&amp; Columns == 1) {</div>
+<div class="line"><span class="lineno">  288</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  289</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  290</span>    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  291</span>  }</div>
+<div class="line"><span class="lineno">  292</span>}()};</div>
 </div><!-- fragment -->
 </div>
 </div>
