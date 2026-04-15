@@ -41,18 +41,18 @@ function(pass NAME)
   get_filename_component(CALLER "${CMAKE_CURRENT_SOURCE_DIR}" NAME)
 
   foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
-    add_executable(typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_driver
+    add_executable(typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_pass_driver
                    "${NAME}.cpp")
     target_link_libraries(
-      typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_driver
+      typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_pass_driver
       PRIVATE typed_linear_algebra_options typed_linear_algebra_main
               typed_linear_algebra_${BACKEND})
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(
-      NAME typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}
+      NAME typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_pass
       COMMAND
         ${TEST_COMMAND}
-        $<TARGET_FILE:typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_driver>
+        $<TARGET_FILE:typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_pass_driver>
     )
   endforeach()
 endfunction(pass)
@@ -69,21 +69,20 @@ function(fail NAME)
   get_filename_component(CALLER "${CMAKE_CURRENT_SOURCE_DIR}" NAME)
 
   foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
-    add_executable(typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_driver
+    add_executable(typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_driver
                    "${NAME}.cpp")
     target_link_libraries(
-      typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_driver
+      typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_driver
       PRIVATE typed_linear_algebra_options typed_linear_algebra_main
               typed_linear_algebra_${BACKEND})
     set_target_properties(
-      typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_driver
+      typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_driver
       PROPERTIES EXCLUDE_FROM_ALL TRUE)
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
-    add_test(
-      NAME typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}
-      COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target
-              typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_driver)
-    set_tests_properties(typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}
+    add_test(NAME typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}
+             COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target
+                     typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_driver)
+    set_tests_properties(typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}
                          PROPERTIES WILL_FAIL TRUE)
   endforeach()
 endfunction(fail)
@@ -103,18 +102,18 @@ function(bench NAME SIZE)
   foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
     configure_file("${NAME}.cpp" "${NAME}_${SIZE}.cpp")
     add_executable(
-      typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_${SIZE}_driver
+      typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench_driver
       "${NAME}_${SIZE}.cpp")
     target_link_libraries(
-      typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_${SIZE}_driver
+      typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench_driver
       PRIVATE typed_linear_algebra_options typed_linear_algebra_${BACKEND}
               nanobench::nanobench)
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(
-      NAME typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_${SIZE}
+      NAME typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench
       COMMAND
         ${TEST_COMMAND}
-        $<TARGET_FILE:typed_linear_algebra_test_${BACKEND}_${CALLER}_${NAME}_${SIZE}_driver>
+        $<TARGET_FILE:typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench_driver>
     )
   endforeach()
 endfunction(bench)
