@@ -112,6 +112,7 @@ template <auto Size> void bench() {
       typed_matrix<mdspan,
                    typed_linear_algebra_internal::tuple_n_type<double, Size>,
                    typed_linear_algebra_internal::tuple_n_type<double, Size>>;
+
   tuple storage_a;
   tuple storage_b;
   tuple storage_r;
@@ -135,7 +136,7 @@ template <auto Size> void bench() {
   std::ofstream results{"results.txt", std::ios::app};
   ankerl::nanobench::Bench()
       .output(nullptr)
-      .title("Typed std::mdspan/tuple Matrix-Matrix Product")
+      .title("typed matrix from std::mdspan from std::tuple")
       .run([&]() {
         matrix_product(a, b, r);
         ankerl::nanobench::doNotOptimizeAway(r);

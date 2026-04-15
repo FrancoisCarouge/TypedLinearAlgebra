@@ -65,7 +65,7 @@ template <auto Size> void bench() {
   std::ofstream results{"results.txt", std::ios::app};
   ankerl::nanobench::Bench()
       .output(nullptr)
-      .title("Typed Eigen Matrix-Matrix Product")
+      .title("typed matrix from Eigen::Matrix")
       .run([&]() {
         matrix<double, Size, Size> r{a * b};
         ankerl::nanobench::doNotOptimizeAway(r);
