@@ -29,6 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "fcarouge/typed_linear_algebra.hpp"
+
 #include <nanobench.h>
 
 #include <cstddef>
@@ -50,12 +52,26 @@ const std::string csv{std::format(
 
 //! @benchmark `std::mdspan` square matrix-matrix product.
 template <auto Size> void bench() {
+  using mdspan =
+      std::mdspan<double, std::extents<std::size_t, Size, Size>,
+                  Kokkos::layout_right, Kokkos::default_accessor<double>>;
+  using matrix =
+      typed_matrix<mdspan,
+                   typed_linear_algebra_internal::tuple_n_type<double, Size>,
+                   typed_linear_algebra_internal::tuple_n_type<double, Size>>;
+
   std::vector<double> storage_a(Size * Size);
   std::vector<double> storage_b(Size * Size);
   std::vector<double> storage_r(Size * Size);
-  std::mdspan a{storage_a.data(), std::extents<std::size_t, Size, Size>{}};
-  std::mdspan b{storage_b.data(), std::extents<std::size_t, Size, Size>{}};
-  std::mdspan r{storage_r.data(), std::extents<std::size_t, Size, Size>{}};
+  std::mdspan mdspan_a{storage_a.data(),
+                       std::extents<std::size_t, Size, Size>{}};
+  std::mdspan mdspan_b{storage_b.data(),
+                       std::extents<std::size_t, Size, Size>{}};
+  std::mdspan mdspan_r{storage_r.data(),
+                       std::extents<std::size_t, Size, Size>{}};
+  matrix a{mdspan_a};
+  matrix b{mdspan_b};
+  matrix r{mdspan_r};
   std::random_device device;
   std::mt19937 generator{device()};
   std::uniform_real_distribution<> distribution{0., 1.};
@@ -70,9 +86,9 @@ template <auto Size> void bench() {
   std::ofstream results{"results.txt", std::ios::app};
   ankerl::nanobench::Bench()
       .output(nullptr)
-      .title("std::mdspan")
+      .title("typed matrix from std::mdspan")
       .run([&]() {
-        std::linalg::matrix_product(a, b, r);
+        matrix_product(a, b, r);
         ankerl::nanobench::doNotOptimizeAway(r);
       })
       .render(csv<Size>.c_str(), results);

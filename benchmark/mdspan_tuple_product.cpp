@@ -129,7 +129,7 @@ template <auto Size> void bench() {
   std::ofstream results{"results.txt", std::ios::app};
   ankerl::nanobench::Bench()
       .output(nullptr)
-      .title("std::mdspan/tuple Matrix-Matrix Product")
+      .title("std::mdspan from std::tuple")
       .run([&]() {
         std::linalg::matrix_product(a, b, r);
         ankerl::nanobench::doNotOptimizeAway(r);

@@ -159,7 +159,7 @@ int main() {
 
   matplot::xlabel("Matrix Size NxN");
   matplot::ylabel("Time (ns)");
-  matplot::title("Matrix-Matrix Product Benchmark");
+  matplot::title("Matrix-Matrix Product - MSVC 19.50.35728.0 - x64 Release");
   matplot::legend()->location(matplot::legend::general_alignment::bottomright);
   matplot::grid(matplot::on);
   matplot::gca()->x_axis().scale(matplot::axis_type::axis_scale::log);
