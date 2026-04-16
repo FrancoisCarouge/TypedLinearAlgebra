@@ -107,44 +107,61 @@ $(function(){initNavTree('md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml'
 <p>Build and run the benchmarks on Windows platform:</p>
 <div class="fragment"><div class="line">git clone --depth 1 &quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra&quot; &quot;linalg&quot;</div>
 <div class="line">Remove-Item -Path build -Force -Recurse</div>
-<div class="line">cmake -S &quot;linalg&quot; -B &quot;build&quot; -G &quot;Visual Studio 18 2026&quot;</div>
+<div class="line">cmake -S &quot;linalg&quot; -B &quot;build&quot; -G &quot;Visual Studio 18 2026&quot; -DBUILD_BENCHMARKING=ON</div>
 <div class="line">cmake --build &quot;build&quot; --config &quot;Release&quot; --parallel</div>
 <div class="line">ctest --test-dir &quot;build&quot; --build-config &quot;Release&quot; --tests-regex &quot;benchmark&quot; --parallel 1</div>
 <div class="line">type build/benchmark/results.txt</div>
 </div><!-- fragment --><h1><a class="anchor" id="results"></a>
 Results</h1>
 <p>Disclaimer: naive benchmark results for illustration purposes only.</p>
+<p>MSVC 19.50.35728.0</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Title   </th><th class="markdownTableHeadNone">Size   </th><th class="markdownTableHeadNone">Median Elapsed Time (s)   </th><th class="markdownTableHeadNone">Median Absolute Error (%)    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">1x1   </td><td class="markdownTableBodyNone">3.89693150707904e-10   </td><td class="markdownTableBodyNone">0.00649927099426216    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">1x1   </td><td class="markdownTableBodyNone">5.79392722831808e-10   </td><td class="markdownTableBodyNone">0.00144623780651739    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">2x2   </td><td class="markdownTableBodyNone">1.9543461792134e-09   </td><td class="markdownTableBodyNone">0.00396471231832233    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">2x2   </td><td class="markdownTableBodyNone">1.95589001618936e-09   </td><td class="markdownTableBodyNone">0.00269177459439564    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">4x4   </td><td class="markdownTableBodyNone">5.80756561197589e-09   </td><td class="markdownTableBodyNone">0.00451574571252226    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">4x4   </td><td class="markdownTableBodyNone">5.81199851000211e-09   </td><td class="markdownTableBodyNone">0.00518763823073691    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">8x8   </td><td class="markdownTableBodyNone">8.76893203883495e-08   </td><td class="markdownTableBodyNone">0.00250655516972582    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">8x8   </td><td class="markdownTableBodyNone">8.80302913221544e-08   </td><td class="markdownTableBodyNone">0.00416339388806324    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">16x16   </td><td class="markdownTableBodyNone">4.78992983904251e-07   </td><td class="markdownTableBodyNone">0.00591234324719731    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">16x16   </td><td class="markdownTableBodyNone">4.75733774286895e-07   </td><td class="markdownTableBodyNone">0.00480277383354175    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">32x32   </td><td class="markdownTableBodyNone">3.20365853658537e-06   </td><td class="markdownTableBodyNone">0.0023648375755153    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">32x32   </td><td class="markdownTableBodyNone">3.20241286863271e-06   </td><td class="markdownTableBodyNone">0.000558270738808668    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">64x64   </td><td class="markdownTableBodyNone">2.47113636363636e-05   </td><td class="markdownTableBodyNone">0.00246791254965643    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">64x64   </td><td class="markdownTableBodyNone">2.44744680851064e-05   </td><td class="markdownTableBodyNone">0.00139287890659009    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">128x128   </td><td class="markdownTableBodyNone">0.0001862   </td><td class="markdownTableBodyNone">0.00359324469996406    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">128x128   </td><td class="markdownTableBodyNone">0.000187566666666667   </td><td class="markdownTableBodyNone">0.00860369241799612    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Typed <a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">1x1   </td><td class="markdownTableBodyNone">5.81106608661144e-10   </td><td class="markdownTableBodyNone">0.00165715285785163    </td></tr>
+<td class="markdownTableBodyNone">Typed <a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">1x1   </td><td class="markdownTableBodyNone">3.8802152457711e-10   </td><td class="markdownTableBodyNone">0.00600626775460243    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Typed <a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">2x2   </td><td class="markdownTableBodyNone">1.94718378048236e-09   </td><td class="markdownTableBodyNone">0.00337954547229306    </td></tr>
+<td class="markdownTableBodyNone">Typed <a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">2x2   </td><td class="markdownTableBodyNone">2.3254118233246e-09   </td><td class="markdownTableBodyNone">0.00473804888396924    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Typed <a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">4x4   </td><td class="markdownTableBodyNone">5.80331713854917e-09   </td><td class="markdownTableBodyNone">0.00312892572857658    </td></tr>
+<td class="markdownTableBodyNone">Typed <a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">4x4   </td><td class="markdownTableBodyNone">5.79325954965105e-09   </td><td class="markdownTableBodyNone">0.00240710034370305    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Typed <a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">8x8   </td><td class="markdownTableBodyNone">8.76508107277338e-08   </td><td class="markdownTableBodyNone">0.00531984945419938    </td></tr>
+<td class="markdownTableBodyNone">Typed <a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">8x8   </td><td class="markdownTableBodyNone">8.81667375584858e-08   </td><td class="markdownTableBodyNone">0.00815057380692842    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Typed <a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">16x16   </td><td class="markdownTableBodyNone">4.74411231884058e-07   </td><td class="markdownTableBodyNone">0.00513657374075729    </td></tr>
+<td class="markdownTableBodyNone">Typed <a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">16x16   </td><td class="markdownTableBodyNone">4.77938432835821e-07   </td><td class="markdownTableBodyNone">0.00472518473777041    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Typed <a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">32x32   </td><td class="markdownTableBodyNone">3.23988764044944e-06   </td><td class="markdownTableBodyNone">0.00237182653569531   </td></tr>
+<td class="markdownTableBodyNone">Typed <a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">32x32   </td><td class="markdownTableBodyNone">3.18621700879765e-06   </td><td class="markdownTableBodyNone">0.00283102217796413    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">std::mdspan Matrix-Matrix Product   </td><td class="markdownTableBodyNone">1x1   </td><td class="markdownTableBodyNone">4.1379977341181e-10   </td><td class="markdownTableBodyNone">0.0692817846067371    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">std::mdspan Matrix-Matrix Product   </td><td class="markdownTableBodyNone">2x2   </td><td class="markdownTableBodyNone">2.16724909570229e-09   </td><td class="markdownTableBodyNone">0.0122684458015465    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">std::mdspan Matrix-Matrix Product   </td><td class="markdownTableBodyNone">4x4   </td><td class="markdownTableBodyNone">1.16626640363668e-08   </td><td class="markdownTableBodyNone">0.00660626950214691    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">std::mdspan Matrix-Matrix Product   </td><td class="markdownTableBodyNone">8x8   </td><td class="markdownTableBodyNone">7.46279564177518e-08   </td><td class="markdownTableBodyNone">0.00247378901236277    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">std::mdspan Matrix-Matrix Product   </td><td class="markdownTableBodyNone">16x16   </td><td class="markdownTableBodyNone">6.0378408458542e-07   </td><td class="markdownTableBodyNone">0.00360272025138946    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">std::mdspan Matrix-Matrix Product   </td><td class="markdownTableBodyNone">32x32   </td><td class="markdownTableBodyNone">5.41064814814815e-06   </td><td class="markdownTableBodyNone">0.00574930294847302    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">std::mdspan Matrix-Matrix Product   </td><td class="markdownTableBodyNone">64x64   </td><td class="markdownTableBodyNone">5.47904761904762e-05   </td><td class="markdownTableBodyNone">0.00229536614792269    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">std::mdspan Matrix-Matrix Product   </td><td class="markdownTableBodyNone">128x128   </td><td class="markdownTableBodyNone">0.000741   </td><td class="markdownTableBodyNone">0.00134770889487874   </td></tr>
 </table>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
