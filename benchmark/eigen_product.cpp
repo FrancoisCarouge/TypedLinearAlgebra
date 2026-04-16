@@ -29,14 +29,14 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include <Eigen/Eigen>
+#include <nanobench.h>
+
 #include <cstddef>
 #include <format>
 #include <fstream>
 #include <random>
 #include <string>
-
-#include <Eigen/Eigen>
-#include <nanobench.h>
 
 namespace fcarouge::benchmark {
 namespace {

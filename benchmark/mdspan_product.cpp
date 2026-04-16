@@ -29,6 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include <nanobench.h>
+
 #include <cstddef>
 #include <format>
 #include <fstream>
@@ -37,8 +39,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <random>
 #include <string>
 #include <vector>
-
-#include <nanobench.h>
 
 namespace fcarouge::benchmark {
 namespace {
