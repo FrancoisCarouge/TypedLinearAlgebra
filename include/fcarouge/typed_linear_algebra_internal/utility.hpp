@@ -32,6 +32,8 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_UTILITY_HPP
 #define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_UTILITY_HPP
 
+#include "fcarouge/typed_linear_algebra_forward.hpp"
+
 #include <concepts>
 #include <cstddef>
 #include <functional>

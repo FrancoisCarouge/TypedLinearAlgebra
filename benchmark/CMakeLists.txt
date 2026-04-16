@@ -73,3 +73,12 @@ if(BUILD_BENCHMARKING)
   bench("mdspan_product" "64" BACKENDS "kokkos")
   bench("mdspan_product" "128" BACKENDS "kokkos")
 endif()
+
+bench("mdspan_tuple_product" "1" BACKENDS "unit_std")
+
+if(BUILD_BENCHMARKING)
+  bench("mdspan_tuple_product" "2" BACKENDS "unit_std")
+  bench("mdspan_tuple_product" "4" BACKENDS "unit_std")
+  bench("mdspan_tuple_product" "8" BACKENDS "unit_std")
+  bench("mdspan_tuple_product" "16" BACKENDS "unit_std")
+endif()

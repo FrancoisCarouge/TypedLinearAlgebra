@@ -29,15 +29,18 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/linalg.hpp"
+#include "fcarouge/typed_linear_algebra_internal/utility.hpp"
 
 #include <nanobench.h>
 
 #include <cstddef>
 #include <format>
 #include <fstream>
+#include <linalg>
+#include <mdspan>
 #include <random>
 #include <string>
+#include <vector>
 
 namespace fcarouge::benchmark {
 namespace {
@@ -47,10 +50,71 @@ const std::string csv{std::format(
     "{{{{medianAbsolutePercentError(elapsed)}}}} |{{{{/result}}}}\n",
     Size, Size)};
 
-//! @benchmark Typed Eigen square matrix-matrix product.
+template <typename Tuple,
+          typename Indices =
+              std::make_index_sequence<std::tuple_size<Tuple>::value>>
+struct lookup;
+
+template <typename Tuple, std::size_t... Indices>
+struct lookup<Tuple, std::index_sequence<Indices...>> {
+  using result = typename std::tuple_element<0, Tuple>::type &;
+  using pointer = result (*)(Tuple &) noexcept;
+
+  static constexpr pointer table[std::tuple_size<Tuple>::value] = {
+      &std::get<Indices>...};
+};
+
+template <typename Tuple, std::size_t... Indices>
+constexpr
+    typename lookup<Tuple, std::index_sequence<Indices...>>::pointer lookup<
+        Tuple,
+        std::index_sequence<Indices...>>::table[std::tuple_size<Tuple>::value];
+
+template <typename Tuple>
+constexpr typename std::tuple_element<
+    0, typename std::remove_reference<Tuple>::type>::type &
+get(std::size_t index, Tuple &&tuple) {
+  using tuple_type = typename std::remove_reference<Tuple>::type;
+
+  if (index >= std::tuple_size<tuple_type>::value) {
+    throw std::runtime_error("Out of range");
+  }
+
+  return lookup<tuple_type>::table[index](tuple);
+}
+
+template <typename Tuple, typename Type> struct accessor {
+  using element_type = Type;
+  using reference = Type &;
+  using data_handle_type = Tuple *;
+  using offset_policy = accessor;
+
+  static inline constexpr auto size{std::tuple_size_v<Tuple>};
+
+  [[nodiscard]] static constexpr reference access(data_handle_type data,
+                                                  std::size_t index) {
+    return get(index, *data);
+  }
+
+  [[nodiscard]] static constexpr data_handle_type
+  offset(data_handle_type data, [[maybe_unused]] std::size_t index) noexcept {
+    return data;
+  }
+};
+
+//! @benchmark `std::mdspan` square matrix-matrix product.
 template <auto Size> void bench() {
-  matrix<double, Size, Size> a;
-  matrix<double, Size, Size> b;
+  using tuple =
+      fcarouge::typed_linear_algebra_internal::tuple_n_type<double,
+                                                            Size * Size>;
+  using mdspan = std::mdspan<double, std::extents<std::size_t, Size, Size>,
+                             Kokkos::layout_right, accessor<tuple, double>>;
+  tuple storage_a;
+  tuple storage_b;
+  tuple storage_r;
+  mdspan a{&storage_a};
+  mdspan b{&storage_b};
+  mdspan r{&storage_r};
   std::random_device device;
   std::mt19937 generator{device()};
   std::uniform_real_distribution<> distribution{0., 1.};
@@ -65,9 +129,9 @@ template <auto Size> void bench() {
   std::ofstream results{"results.txt", std::ios::app};
   ankerl::nanobench::Bench()
       .output(nullptr)
-      .title("Typed Eigen Matrix-Matrix Product")
+      .title("std::mdspan/tuple Matrix-Matrix Product")
       .run([&]() {
-        matrix<double, Size, Size> r{a * b};
+        std::linalg::matrix_product(a, b, r);
         ankerl::nanobench::doNotOptimizeAway(r);
       })
       .render(csv<Size>.c_str(), results);
