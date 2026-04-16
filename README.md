@@ -1,6 +1,6 @@
 # Typed Linear Algebra
 
-This library provides a C++ strongly-typed facade to a matrix linear algebra backend.
+A C++ strongly-typed facade to a matrix linear algebra backend. Brings type safety to matrix operations. Enforces dimensional consistency and unit compatibility. Prevents common errors in scientific and engineering computations.
 
 # Examples
 
@@ -206,6 +206,8 @@ The library is designed, developed, and tested with the help of third-party tool
 
 - [actions-gh-pages](https://github.com/peaceiris/actions-gh-pages) to upload the documentation to GitHub pages.
 - [Clang](https://clang.llvm.org) for compilation and code sanitizers.
+- [clang-format](https://clang.llvm.org/docs/ClangFormat.html) for code formatting.
+- [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) for static analysis.
 - [CMake](https://cmake.org) for build automation.
 - [cmakelang](https://pypi.org/project/cmakelang) for pretty CMake list files.
 - [cppcheck](https://cppcheck.sourceforge.io) for static analysis.
@@ -213,9 +215,13 @@ The library is designed, developed, and tested with the help of third-party tool
 - [Doxygen Awesome](https://github.com/jothepro/doxygen-awesome-css) for pretty documentation.
 - [Eigen](https://eigen.tuxfamily.org/) for linear algebra.
 - [GCC](https://gcc.gnu.org) for compilation and code sanitizers.
+- [gsl-lite](https://github.com/gsl-lite/gsl-lite) for guidelines support library.
+- [Kokkos](https://github.com/kokkos/kokkos) for performance-portable parallel programming.
 - [lcov](http://ltp.sourceforge.net/coverage/lcov.php) to process coverage information.
+- [mdspan](https://github.com/kokkos/mdspan) for multidimensional array views.
 - [mp-units](https://github.com/mpusz/mp-units) the quantities and units library for C++.
 - [MSVC](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist) for compilation and code sanitizers.
+- [stdBLAS](https://github.com/kokkos/stdBLAS) for standard BLAS interface.
 - [Valgrind](https://valgrind.org) to check for correct memory management.
 
 ## Sponsors
