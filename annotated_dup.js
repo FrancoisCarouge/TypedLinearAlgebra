@@ -6,6 +6,11 @@ var annotated_dup =
           [ "accessor", "structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1accessor.xhtml", "structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1accessor" ],
           [ "lookup", "structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1lookup.xhtml", null ],
           [ "lookup< Tuple, std::index_sequence< Indices... > >", "structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1lookup_3b299f5c7aa92788bf7430e8496a9663f.xhtml", "structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1lookup_3b299f5c7aa92788bf7430e8496a9663f" ]
+        ] ],
+        [ "anonymous_namespace{typed_mdspan_tupled_product.cpp}", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03.xhtml", [
+          [ "accessor", "structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor.xhtml", "structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor" ],
+          [ "lookup", "structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1lookup.xhtml", null ],
+          [ "lookup< Tuple, std::index_sequence< Indices... > >", "structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_15386429b33ff9e937e5c930e789c80a9.xhtml", "structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_15386429b33ff9e937e5c930e789c80a9" ]
         ] ]
       ] ],
       [ "element_caster", "structfcarouge_1_1element__caster.xhtml", "structfcarouge_1_1element__caster" ],

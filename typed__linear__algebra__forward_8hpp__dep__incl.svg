@@ -47,7 +47,7 @@
   </g>
 </defs>
 <script type="application/ecmascript">
-var viewWidth = 739;
+var viewWidth = 926;
 var viewHeight = 427;
 var sectionId = 'dynsection-0';
 </script>
@@ -59,10 +59,10 @@ var sectionId = 'dynsection-0';
 <g id="Node000001" class="node">
 <title>Node1</title>
 <g id="a_Node000001"><a xlink:title="Authoritative forward declaration header.">
-<polygon fill="#999999" stroke="#666666" points="433.62,-419.25 304.38,-419.25 304.38,-377.5 433.62,-377.5 433.62,-419.25"/>
-<text text-anchor="start" x="312.38" y="-405.75" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/include</text>
-<text text-anchor="start" x="312.38" y="-394.5" font-family="Helvetica,sans-Serif" font-size="10.00">/fcarouge/typed_linear</text>
-<text text-anchor="middle" x="369" y="-383.25" font-family="Helvetica,sans-Serif" font-size="10.00">_algebra_forward.hpp</text>
+<polygon fill="#999999" stroke="#666666" points="574.12,-419.25 444.88,-419.25 444.88,-377.5 574.12,-377.5 574.12,-419.25"/>
+<text text-anchor="start" x="452.88" y="-405.75" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/include</text>
+<text text-anchor="start" x="452.88" y="-394.5" font-family="Helvetica,sans-Serif" font-size="10.00">/fcarouge/typed_linear</text>
+<text text-anchor="middle" x="509.5" y="-383.25" font-family="Helvetica,sans-Serif" font-size="10.00">_algebra_forward.hpp</text>
 </a>
 </g>
 </g>
@@ -70,10 +70,10 @@ var sectionId = 'dynsection-0';
 <g id="Node000002" class="node">
 <title>Node2</title>
 <g id="a_Node000002"><a xlink:href="typed__linear__algebra_8hpp.xhtml" target="_top" xlink:title="Typed linear algebra implementation.">
-<polygon fill="white" stroke="#666666" points="463.62,-186 334.38,-186 334.38,-144.25 463.62,-144.25 463.62,-186"/>
-<text text-anchor="start" x="342.38" y="-172.5" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/include</text>
-<text text-anchor="start" x="342.38" y="-161.25" font-family="Helvetica,sans-Serif" font-size="10.00">/fcarouge/typed_linear</text>
-<text text-anchor="middle" x="399" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00">_algebra.hpp</text>
+<polygon fill="white" stroke="#666666" points="604.12,-186 474.88,-186 474.88,-144.25 604.12,-144.25 604.12,-186"/>
+<text text-anchor="start" x="482.88" y="-172.5" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/include</text>
+<text text-anchor="start" x="482.88" y="-161.25" font-family="Helvetica,sans-Serif" font-size="10.00">/fcarouge/typed_linear</text>
+<text text-anchor="middle" x="539.5" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00">_algebra.hpp</text>
 </a>
 </g>
 </g>
@@ -81,38 +81,38 @@ var sectionId = 'dynsection-0';
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node1&#45;&gt;Node2</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M387.8,-367.05C391.9,-359.02 395.71,-350.17 398,-341.5 412.45,-286.9 406.48,-219.34 402.1,-186.28"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="384.78,-365.26 383.05,-375.71 390.92,-368.62 384.78,-365.26"/>
+<path fill="none" stroke="#63b8ff" d="M528.3,-367.05C532.4,-359.02 536.21,-350.17 538.5,-341.5 552.95,-286.9 546.98,-219.34 542.6,-186.28"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="525.28,-365.26 523.55,-375.71 531.42,-368.62 525.28,-365.26"/>
 </a>
 </g>
 </g>
-<!-- Node11 -->
-<g id="Node000011" class="node">
-<title>Node11</title>
-<g id="a_Node000011"><a xlink:href="utility_8hpp.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="388.5,-341.5 255.5,-341.5 255.5,-299.75 388.5,-299.75 388.5,-341.5"/>
-<text text-anchor="start" x="263.5" y="-328" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/include</text>
-<text text-anchor="start" x="263.5" y="-316.75" font-family="Helvetica,sans-Serif" font-size="10.00">/fcarouge/typed_linear</text>
-<text text-anchor="middle" x="322" y="-305.5" font-family="Helvetica,sans-Serif" font-size="10.00">_algebra_internal/utility.hpp</text>
+<!-- Node12 -->
+<g id="Node000012" class="node">
+<title>Node12</title>
+<g id="a_Node000012"><a xlink:href="utility_8hpp.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="529,-341.5 396,-341.5 396,-299.75 529,-299.75 529,-341.5"/>
+<text text-anchor="start" x="404" y="-328" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/include</text>
+<text text-anchor="start" x="404" y="-316.75" font-family="Helvetica,sans-Serif" font-size="10.00">/fcarouge/typed_linear</text>
+<text text-anchor="middle" x="462.5" y="-305.5" font-family="Helvetica,sans-Serif" font-size="10.00">_algebra_internal/utility.hpp</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node11 -->
-<g id="edge13_Node000001_Node000011" class="edge">
-<title>Node1&#45;&gt;Node11</title>
-<g id="a_edge13_Node000001_Node000011"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M350.42,-367.43C345.12,-358.89 339.48,-349.8 334.63,-341.98"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="347.36,-369.14 355.61,-375.79 353.31,-365.45 347.36,-369.14"/>
+<!-- Node1&#45;&gt;Node12 -->
+<g id="edge14_Node000001_Node000012" class="edge">
+<title>Node1&#45;&gt;Node12</title>
+<g id="a_edge14_Node000001_Node000012"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M490.92,-367.43C485.62,-358.89 479.98,-349.8 475.13,-341.98"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="487.86,-369.14 496.11,-375.79 493.81,-365.45 487.86,-369.14"/>
 </a>
 </g>
 </g>
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="mp__units__eigen_8cpp.xhtml" target="_top" xlink:title="Unit safe linear algebra with mp&#45;units and Eigen.">
-<polygon fill="white" stroke="#666666" points="130,-108.25 0,-108.25 0,-77.75 130,-77.75 130,-108.25"/>
-<text text-anchor="start" x="8" y="-94.75" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/sample</text>
-<text text-anchor="middle" x="65" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">/mp_units_eigen.cpp</text>
+<g id="a_Node000003"><a xlink:href="typed__mdspan__tupled__product_8cpp.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="169,-108.25 0,-108.25 0,-77.75 169,-77.75 169,-108.25"/>
+<text text-anchor="start" x="8" y="-94.75" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/benchmark</text>
+<text text-anchor="middle" x="84.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">/typed_mdspan_tupled_product.cpp</text>
 </a>
 </g>
 </g>
@@ -120,18 +120,18 @@ var sectionId = 'dynsection-0';
 <g id="edge2_Node000002_Node000003" class="edge">
 <title>Node2&#45;&gt;Node3</title>
 <g id="a_edge2_Node000002_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M323.25,-148.22C265.17,-136.03 185.82,-119.37 130.47,-107.75"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="322.22,-151.58 332.72,-150.21 323.66,-144.73 322.22,-151.58"/>
+<path fill="none" stroke="#63b8ff" d="M463.65,-152.43C382.36,-139.91 253.64,-120.07 169.12,-107.04"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="462.88,-155.86 473.3,-153.92 463.95,-148.94 462.88,-155.86"/>
 </a>
 </g>
 </g>
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="mp__units__std_8cpp.xhtml" target="_top" xlink:title="Unit safe linear algebra with mp&#45;units and Eigen.">
-<polygon fill="white" stroke="#666666" points="278,-108.25 148,-108.25 148,-77.75 278,-77.75 278,-108.25"/>
-<text text-anchor="start" x="156" y="-94.75" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/sample</text>
-<text text-anchor="middle" x="213" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">/mp_units_std.cpp</text>
+<g id="a_Node000004"><a xlink:href="mp__units__eigen_8cpp.xhtml" target="_top" xlink:title="Unit safe linear algebra with mp&#45;units and Eigen.">
+<polygon fill="white" stroke="#666666" points="317.5,-108.25 187.5,-108.25 187.5,-77.75 317.5,-77.75 317.5,-108.25"/>
+<text text-anchor="start" x="195.5" y="-94.75" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/sample</text>
+<text text-anchor="middle" x="252.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">/mp_units_eigen.cpp</text>
 </a>
 </g>
 </g>
@@ -139,18 +139,18 @@ var sectionId = 'dynsection-0';
 <g id="edge3_Node000002_Node000004" class="edge">
 <title>Node2&#45;&gt;Node4</title>
 <g id="a_edge3_Node000002_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M334.47,-139.8C306.97,-129.43 275.79,-117.67 251.91,-108.67"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="333.19,-143.06 343.78,-143.31 335.66,-136.51 333.19,-143.06"/>
+<path fill="none" stroke="#63b8ff" d="M463.28,-145.5C416.07,-133.97 356.3,-119.36 312.47,-108.65"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="462.36,-148.88 472.9,-147.85 464.02,-142.08 462.36,-148.88"/>
 </a>
 </g>
 </g>
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="eigen_8hpp.xhtml" target="_top" xlink:title="Linear algebra facade for Eigen3 third party implementation.">
-<polygon fill="white" stroke="#666666" points="464.38,-108.25 333.62,-108.25 333.62,-77.75 464.38,-77.75 464.38,-108.25"/>
-<text text-anchor="start" x="341.62" y="-94.75" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/support</text>
-<text text-anchor="middle" x="399" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">/eigen/fcarouge/eigen.hpp</text>
+<g id="a_Node000005"><a xlink:href="mp__units__std_8cpp.xhtml" target="_top" xlink:title="Unit safe linear algebra with mp&#45;units and Eigen.">
+<polygon fill="white" stroke="#666666" points="465.5,-108.25 335.5,-108.25 335.5,-77.75 465.5,-77.75 465.5,-108.25"/>
+<text text-anchor="start" x="343.5" y="-94.75" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/sample</text>
+<text text-anchor="middle" x="400.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">/mp_units_std.cpp</text>
 </a>
 </g>
 </g>
@@ -158,38 +158,37 @@ var sectionId = 'dynsection-0';
 <g id="edge4_Node000002_Node000005" class="edge">
 <title>Node2&#45;&gt;Node5</title>
 <g id="a_edge4_Node000002_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M399,-132.38C399,-124.02 399,-115.4 399,-108.45"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="395.5,-132.33 399,-142.33 402.5,-132.33 395.5,-132.33"/>
+<path fill="none" stroke="#63b8ff" d="M489.08,-138.69C469.08,-128.6 446.79,-117.36 429.58,-108.67"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="487.44,-141.78 497.94,-143.16 490.59,-135.53 487.44,-141.78"/>
 </a>
 </g>
 </g>
-<!-- Node7 -->
-<g id="Node000007" class="node">
-<title>Node7</title>
-<g id="a_Node000007"><a xlink:href="eigexed_2fcarouge_2linalg_8hpp.xhtml" target="_top" xlink:title="Scalar type linear algebra with Eigen implementation.">
-<polygon fill="white" stroke="#666666" points="253,-36.12 117,-36.12 117,-5.62 253,-5.62 253,-36.12"/>
-<text text-anchor="start" x="125" y="-22.62" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/support</text>
-<text text-anchor="middle" x="185" y="-11.38" font-family="Helvetica,sans-Serif" font-size="10.00">/eigexed/fcarouge/linalg.hpp</text>
+<!-- Node6 -->
+<g id="Node000006" class="node">
+<title>Node6</title>
+<g id="a_Node000006"><a xlink:href="eigen_8hpp.xhtml" target="_top" xlink:title="Linear algebra facade for Eigen3 third party implementation.">
+<polygon fill="white" stroke="#666666" points="651.88,-108.25 521.12,-108.25 521.12,-77.75 651.88,-77.75 651.88,-108.25"/>
+<text text-anchor="start" x="529.12" y="-94.75" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/support</text>
+<text text-anchor="middle" x="586.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">/eigen/fcarouge/eigen.hpp</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node7 -->
-<g id="edge9_Node000002_Node000007" class="edge">
-<title>Node2&#45;&gt;Node7</title>
-<g id="a_edge9_Node000002_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M362.86,-137.17C350.77,-128.06 337.25,-117.79 325,-108.25 307.91,-94.95 305.01,-89.78 287,-77.75 263.66,-62.16 235.59,-47.03 214.82,-36.45"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="360.48,-139.76 370.58,-142.97 364.69,-134.17 360.48,-139.76"/>
+<!-- Node2&#45;&gt;Node6 -->
+<g id="edge5_Node000002_Node000006" class="edge">
+<title>Node2&#45;&gt;Node6</title>
+<g id="a_edge5_Node000002_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M559.42,-134.4C565.44,-125.42 571.78,-115.96 576.81,-108.45"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="556.6,-132.33 553.94,-142.58 562.41,-136.23 556.6,-132.33"/>
 </a>
 </g>
 </g>
 <!-- Node8 -->
 <g id="Node000008" class="node">
 <title>Node8</title>
-<g id="a_Node000008"><a xlink:href="nested__typed__eigen_2fcarouge_2linalg_8hpp.xhtml" target="_top" xlink:title="Scalar type nested linear algebra with Eigen implementation.">
-<polygon fill="white" stroke="#666666" points="564.88,-41.75 419.12,-41.75 419.12,0 564.88,0 564.88,-41.75"/>
-<text text-anchor="start" x="427.12" y="-28.25" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/support</text>
-<text text-anchor="start" x="427.12" y="-17" font-family="Helvetica,sans-Serif" font-size="10.00">/nested_typed_eigen/fcarouge</text>
-<text text-anchor="middle" x="492" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">/linalg.hpp</text>
+<g id="a_Node000008"><a xlink:href="eigexed_2fcarouge_2linalg_8hpp.xhtml" target="_top" xlink:title="Scalar type linear algebra with Eigen implementation.">
+<polygon fill="white" stroke="#666666" points="440.5,-36.12 304.5,-36.12 304.5,-5.62 440.5,-5.62 440.5,-36.12"/>
+<text text-anchor="start" x="312.5" y="-22.62" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/support</text>
+<text text-anchor="middle" x="372.5" y="-11.38" font-family="Helvetica,sans-Serif" font-size="10.00">/eigexed/fcarouge/linalg.hpp</text>
 </a>
 </g>
 </g>
@@ -197,18 +196,19 @@ var sectionId = 'dynsection-0';
 <g id="edge10_Node000002_Node000008" class="edge">
 <title>Node2&#45;&gt;Node8</title>
 <g id="a_edge10_Node000002_Node000008"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M445.22,-137.17C455.72,-129.08 465.87,-119.36 473,-108.25 485.85,-88.22 490.1,-60.78 491.46,-42.25"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="443.25,-134.28 437.18,-142.96 447.34,-139.95 443.25,-134.28"/>
+<path fill="none" stroke="#63b8ff" d="M521.67,-134.31C509.89,-116.37 493.21,-93.94 474.5,-77.75 454.5,-60.44 428.26,-46.21 407.4,-36.45"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="518.71,-136.19 527.04,-142.74 524.62,-132.42 518.71,-136.19"/>
 </a>
 </g>
 </g>
 <!-- Node9 -->
 <g id="Node000009" class="node">
 <title>Node9</title>
-<g id="a_Node000009"><a xlink:href="unit__eigen_2fcarouge_2linalg_8hpp.xhtml" target="_top" xlink:title="Indexed&#45;based linear algebra with mp&#45;units with Eigen implementations.">
-<polygon fill="white" stroke="#666666" points="730.62,-36.12 583.38,-36.12 583.38,-5.62 730.62,-5.62 730.62,-36.12"/>
-<text text-anchor="start" x="591.38" y="-22.62" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/support</text>
-<text text-anchor="middle" x="657" y="-11.38" font-family="Helvetica,sans-Serif" font-size="10.00">/unit_eigen/fcarouge/linalg.hpp</text>
+<g id="a_Node000009"><a xlink:href="nested__typed__eigen_2fcarouge_2linalg_8hpp.xhtml" target="_top" xlink:title="Scalar type nested linear algebra with Eigen implementation.">
+<polygon fill="white" stroke="#666666" points="752.38,-41.75 606.62,-41.75 606.62,0 752.38,0 752.38,-41.75"/>
+<text text-anchor="start" x="614.62" y="-28.25" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/support</text>
+<text text-anchor="start" x="614.62" y="-17" font-family="Helvetica,sans-Serif" font-size="10.00">/nested_typed_eigen/fcarouge</text>
+<text text-anchor="middle" x="679.5" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">/linalg.hpp</text>
 </a>
 </g>
 </g>
@@ -216,18 +216,18 @@ var sectionId = 'dynsection-0';
 <g id="edge11_Node000002_Node000009" class="edge">
 <title>Node2&#45;&gt;Node9</title>
 <g id="a_edge11_Node000002_Node000009"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M442.97,-138.11C472.71,-120.69 512.98,-97.42 549,-77.75 575.49,-63.28 606.09,-47.54 627.93,-36.47"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="441.46,-134.94 434.61,-143.02 445.01,-140.97 441.46,-134.94"/>
+<path fill="none" stroke="#63b8ff" d="M614.51,-142.37C631.78,-134.17 648.56,-123.1 660.5,-108.25 675.61,-89.47 679.33,-61.23 679.95,-42.21"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="613.44,-139.02 605.71,-146.26 616.27,-145.42 613.44,-139.02"/>
 </a>
 </g>
 </g>
 <!-- Node10 -->
 <g id="Node000010" class="node">
 <title>Node10</title>
-<g id="a_Node000010"><a xlink:href="unit__std_2fcarouge_2linalg_8hpp.xhtml" target="_top" xlink:title="Indexed&#45;based linear algebra with mp&#45;units with Eigen implementations.">
-<polygon fill="white" stroke="#666666" points="695.75,-108.25 558.25,-108.25 558.25,-77.75 695.75,-77.75 695.75,-108.25"/>
-<text text-anchor="start" x="566.25" y="-94.75" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/support</text>
-<text text-anchor="middle" x="627" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">/unit_std/fcarouge/linalg.hpp</text>
+<g id="a_Node000010"><a xlink:href="unit__eigen_2fcarouge_2linalg_8hpp.xhtml" target="_top" xlink:title="Indexed&#45;based linear algebra with mp&#45;units with Eigen implementations.">
+<polygon fill="white" stroke="#666666" points="918.12,-36.12 770.88,-36.12 770.88,-5.62 918.12,-5.62 918.12,-36.12"/>
+<text text-anchor="start" x="778.88" y="-22.62" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/support</text>
+<text text-anchor="middle" x="844.5" y="-11.38" font-family="Helvetica,sans-Serif" font-size="10.00">/unit_eigen/fcarouge/linalg.hpp</text>
 </a>
 </g>
 </g>
@@ -235,111 +235,130 @@ var sectionId = 'dynsection-0';
 <g id="edge12_Node000002_Node000010" class="edge">
 <title>Node2&#45;&gt;Node10</title>
 <g id="a_edge12_Node000002_Node000010"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M475.01,-140.75C509.45,-130.15 549.11,-117.96 579.28,-108.68"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="474.01,-137.39 465.48,-143.68 476.06,-144.08 474.01,-137.39"/>
+<path fill="none" stroke="#63b8ff" d="M606.93,-139.68C630.78,-130.49 657.6,-119.52 681.5,-108.25 706.78,-96.33 711.86,-90.95 736.5,-77.75 763.11,-63.49 793.69,-47.73 815.5,-36.59"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="605.71,-136.4 597.61,-143.23 608.21,-142.94 605.71,-136.4"/>
 </a>
 </g>
 </g>
-<!-- Node6 -->
-<g id="Node000006" class="node">
-<title>Node6</title>
-<g id="a_Node000006"><a xlink:href="eigen_2fcarouge_2linalg_8hpp.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="401.38,-36.12 270.62,-36.12 270.62,-5.62 401.38,-5.62 401.38,-36.12"/>
-<text text-anchor="start" x="278.62" y="-22.62" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/support</text>
-<text text-anchor="middle" x="336" y="-11.38" font-family="Helvetica,sans-Serif" font-size="10.00">/eigen/fcarouge/linalg.hpp</text>
+<!-- Node11 -->
+<g id="Node000011" class="node">
+<title>Node11</title>
+<g id="a_Node000011"><a xlink:href="unit__std_2fcarouge_2linalg_8hpp.xhtml" target="_top" xlink:title="Indexed&#45;based linear algebra with mp&#45;units with Eigen implementations.">
+<polygon fill="white" stroke="#666666" points="883.25,-108.25 745.75,-108.25 745.75,-77.75 883.25,-77.75 883.25,-108.25"/>
+<text text-anchor="start" x="753.75" y="-94.75" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/support</text>
+<text text-anchor="middle" x="814.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">/unit_std/fcarouge/linalg.hpp</text>
 </a>
 </g>
 </g>
-<!-- Node5&#45;&gt;Node6 -->
-<g id="edge5_Node000005_Node000006" class="edge">
-<title>Node5&#45;&gt;Node6</title>
-<g id="a_edge5_Node000005_Node000006"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M378.3,-68.96C368.66,-58.23 357.48,-45.78 349.04,-36.39"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="375.65,-71.24 384.93,-76.34 380.86,-66.57 375.65,-71.24"/>
+<!-- Node2&#45;&gt;Node11 -->
+<g id="edge13_Node000002_Node000011" class="edge">
+<title>Node2&#45;&gt;Node11</title>
+<g id="a_edge13_Node000002_Node000011"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M615.46,-144.76C660.25,-133.33 716.01,-119.11 757.12,-108.63"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="614.61,-141.36 605.79,-147.22 616.34,-148.14 614.61,-141.36"/>
 </a>
 </g>
 </g>
-<!-- Node5&#45;&gt;Node7 -->
-<g id="edge6_Node000005_Node000007" class="edge">
-<title>Node5&#45;&gt;Node7</title>
-<g id="a_edge6_Node000005_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M343.5,-73.81C308.13,-62.22 262.89,-47.4 229.8,-36.56"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="342.11,-77.04 352.7,-76.83 344.29,-70.39 342.11,-77.04"/>
+<!-- Node7 -->
+<g id="Node000007" class="node">
+<title>Node7</title>
+<g id="a_Node000007"><a xlink:href="eigen_2fcarouge_2linalg_8hpp.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="588.88,-36.12 458.12,-36.12 458.12,-5.62 588.88,-5.62 588.88,-36.12"/>
+<text text-anchor="start" x="466.12" y="-22.62" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/support</text>
+<text text-anchor="middle" x="523.5" y="-11.38" font-family="Helvetica,sans-Serif" font-size="10.00">/eigen/fcarouge/linalg.hpp</text>
 </a>
 </g>
 </g>
-<!-- Node5&#45;&gt;Node8 -->
-<g id="edge7_Node000005_Node000008" class="edge">
-<title>Node5&#45;&gt;Node8</title>
-<g id="a_edge7_Node000005_Node000008"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M427.38,-70.6C439.34,-61.58 453.19,-51.14 465,-42.24"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="425.36,-67.74 419.48,-76.56 429.57,-73.33 425.36,-67.74"/>
+<!-- Node6&#45;&gt;Node7 -->
+<g id="edge6_Node000006_Node000007" class="edge">
+<title>Node6&#45;&gt;Node7</title>
+<g id="a_edge6_Node000006_Node000007"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M565.8,-68.96C556.16,-58.23 544.98,-45.78 536.54,-36.39"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="563.15,-71.24 572.43,-76.34 568.36,-66.57 563.15,-71.24"/>
 </a>
 </g>
 </g>
-<!-- Node5&#45;&gt;Node9 -->
-<g id="edge8_Node000005_Node000009" class="edge">
-<title>Node5&#45;&gt;Node9</title>
-<g id="a_edge8_Node000005_Node000009"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M463.99,-74.34C506.91,-62.67 562.5,-47.56 602.99,-36.56"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="463.28,-70.9 454.55,-76.9 465.11,-77.66 463.28,-70.9"/>
+<!-- Node6&#45;&gt;Node8 -->
+<g id="edge7_Node000006_Node000008" class="edge">
+<title>Node6&#45;&gt;Node8</title>
+<g id="a_edge7_Node000006_Node000008"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M531,-73.81C495.63,-62.22 450.39,-47.4 417.3,-36.56"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="529.61,-77.04 540.2,-76.83 531.79,-70.39 529.61,-77.04"/>
 </a>
 </g>
 </g>
-<!-- Node11&#45;&gt;Node2 -->
-<g id="edge15_Node000011_Node000002" class="edge">
-<title>Node11&#45;&gt;Node2</title>
-<g id="a_edge15_Node000011_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M357.99,-291.6C366.36,-283.46 374.44,-273.98 380,-263.75 393.28,-239.33 397.37,-207.01 398.58,-186.39"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="355.74,-288.92 350.72,-298.25 360.46,-294.08 355.74,-288.92"/>
+<!-- Node6&#45;&gt;Node9 -->
+<g id="edge8_Node000006_Node000009" class="edge">
+<title>Node6&#45;&gt;Node9</title>
+<g id="a_edge8_Node000006_Node000009"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M614.88,-70.6C626.84,-61.58 640.69,-51.14 652.5,-42.24"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="612.86,-67.74 606.98,-76.56 617.07,-73.33 612.86,-67.74"/>
 </a>
 </g>
 </g>
-<!-- Node12 -->
-<g id="Node000012" class="node">
-<title>Node12</title>
-<g id="a_Node000012"><a xlink:href="mdspan__tuple__product_8cpp.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="215.25,-258.12 68.75,-258.12 68.75,-227.62 215.25,-227.62 215.25,-258.12"/>
-<text text-anchor="start" x="76.75" y="-244.62" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/benchmark</text>
-<text text-anchor="middle" x="142" y="-233.38" font-family="Helvetica,sans-Serif" font-size="10.00">/mdspan_tuple_product.cpp</text>
+<!-- Node6&#45;&gt;Node10 -->
+<g id="edge9_Node000006_Node000010" class="edge">
+<title>Node6&#45;&gt;Node10</title>
+<g id="a_edge9_Node000006_Node000010"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M651.49,-74.34C694.41,-62.67 750,-47.56 790.49,-36.56"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="650.78,-70.9 642.05,-76.9 652.61,-77.66 650.78,-70.9"/>
 </a>
 </g>
 </g>
-<!-- Node11&#45;&gt;Node12 -->
-<g id="edge14_Node000011_Node000012" class="edge">
-<title>Node11&#45;&gt;Node12</title>
-<g id="a_edge14_Node000011_Node000012"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M263.48,-295C234.91,-282.97 201.5,-268.91 176.95,-258.58"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="261.79,-298.09 272.37,-298.74 264.51,-291.63 261.79,-298.09"/>
+<!-- Node12&#45;&gt;Node2 -->
+<g id="edge16_Node000012_Node000002" class="edge">
+<title>Node12&#45;&gt;Node2</title>
+<g id="a_edge16_Node000012_Node000002"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M498.49,-291.6C506.86,-283.46 514.94,-273.98 520.5,-263.75 533.78,-239.33 537.87,-207.01 539.08,-186.39"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="496.24,-288.92 491.22,-298.25 500.96,-294.08 496.24,-288.92"/>
 </a>
 </g>
 </g>
 <!-- Node13 -->
 <g id="Node000013" class="node">
 <title>Node13</title>
-<g id="a_Node000013"><a xlink:href="format_8hpp.xhtml" target="_top" xlink:title="Formatting support for the typed matrix.">
-<polygon fill="white" stroke="#666666" points="371.12,-263.75 232.88,-263.75 232.88,-222 371.12,-222 371.12,-263.75"/>
-<text text-anchor="start" x="240.88" y="-250.25" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/include</text>
-<text text-anchor="start" x="240.88" y="-239" font-family="Helvetica,sans-Serif" font-size="10.00">/fcarouge/typed_linear</text>
-<text text-anchor="middle" x="302" y="-227.75" font-family="Helvetica,sans-Serif" font-size="10.00">_algebra_internal/format.hpp</text>
+<g id="a_Node000013"><a xlink:href="mdspan__tuple__product_8cpp.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="355.75,-258.12 209.25,-258.12 209.25,-227.62 355.75,-227.62 355.75,-258.12"/>
+<text text-anchor="start" x="217.25" y="-244.62" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/benchmark</text>
+<text text-anchor="middle" x="282.5" y="-233.38" font-family="Helvetica,sans-Serif" font-size="10.00">/mdspan_tuple_product.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node11&#45;&gt;Node13 -->
-<g id="edge16_Node000011_Node000013" class="edge">
-<title>Node11&#45;&gt;Node13</title>
-<g id="a_edge16_Node000011_Node000013"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M313.72,-288.28C311.58,-280.16 309.33,-271.62 307.37,-264.23"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="310.32,-289.09 316.25,-297.86 317.09,-287.3 310.32,-289.09"/>
+<!-- Node12&#45;&gt;Node13 -->
+<g id="edge15_Node000012_Node000013" class="edge">
+<title>Node12&#45;&gt;Node13</title>
+<g id="a_edge15_Node000012_Node000013"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M403.98,-295C375.41,-282.97 342,-268.91 317.45,-258.58"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="402.29,-298.09 412.87,-298.74 405.01,-291.63 402.29,-298.09"/>
 </a>
 </g>
 </g>
-<!-- Node13&#45;&gt;Node2 -->
-<g id="edge17_Node000013_Node000002" class="edge">
-<title>Node13&#45;&gt;Node2</title>
-<g id="a_edge17_Node000013_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M336.82,-214.69C348.73,-205.39 361.83,-195.15 372.93,-186.48"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="334.91,-211.73 329.19,-220.64 339.22,-217.25 334.91,-211.73"/>
+<!-- Node14 -->
+<g id="Node000014" class="node">
+<title>Node14</title>
+<g id="a_Node000014"><a xlink:href="format_8hpp.xhtml" target="_top" xlink:title="Formatting support for the typed matrix.">
+<polygon fill="white" stroke="#666666" points="511.62,-263.75 373.38,-263.75 373.38,-222 511.62,-222 511.62,-263.75"/>
+<text text-anchor="start" x="381.38" y="-250.25" font-family="Helvetica,sans-Serif" font-size="10.00">/github/workspace/include</text>
+<text text-anchor="start" x="381.38" y="-239" font-family="Helvetica,sans-Serif" font-size="10.00">/fcarouge/typed_linear</text>
+<text text-anchor="middle" x="442.5" y="-227.75" font-family="Helvetica,sans-Serif" font-size="10.00">_algebra_internal/format.hpp</text>
+</a>
+</g>
+</g>
+<!-- Node12&#45;&gt;Node14 -->
+<g id="edge17_Node000012_Node000014" class="edge">
+<title>Node12&#45;&gt;Node14</title>
+<g id="a_edge17_Node000012_Node000014"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M454.22,-288.28C452.08,-280.16 449.83,-271.62 447.87,-264.23"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="450.82,-289.09 456.75,-297.86 457.59,-287.3 450.82,-289.09"/>
+</a>
+</g>
+</g>
+<!-- Node14&#45;&gt;Node2 -->
+<g id="edge18_Node000014_Node000002" class="edge">
+<title>Node14&#45;&gt;Node2</title>
+<g id="a_edge18_Node000014_Node000002"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M477.32,-214.69C489.23,-205.39 502.33,-195.15 513.43,-186.48"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="475.41,-211.73 469.69,-220.64 479.72,-217.25 475.41,-211.73"/>
 </a>
 </g>
 </g>
