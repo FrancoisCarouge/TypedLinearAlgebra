@@ -19,30 +19,35 @@ MSVC 19.50.35728.0
 
 | Title | Size | Median Elapsed Time (s) | Median Absolute Error (%) |
 | --- | --- | --- | --- |
-| Eigen Matrix-Matrix Product |     1x1     | 5.79280640443907e-10 | 0.00149738964412317 |
-| Eigen Matrix-Matrix Product |     2x2     | 2.35519984347582e-09 | 0.0150145464563847 |
-| Eigen Matrix-Matrix Product |     4x4     | 5.80984338866267e-09 | 0.00604399015185017 |
-| Eigen Matrix-Matrix Product |     8x8     | 8.74154030669065e-08 | 0.0046562539557634 |
-| Eigen Matrix-Matrix Product |    16x16    | 4.79342934293429e-07 | 0.00755936512081264 |
-| Eigen Matrix-Matrix Product |    32x32    | 3.20851063829787e-06 | 0.00475280948785159 |
-| Eigen Matrix-Matrix Product |    64x64    | 2.47531914893617e-05 | 0.003131611321132 |
-| Eigen Matrix-Matrix Product |   128x128   | 0.000185733333333333 | 0.00336266723903551 |
-| Typed Eigen Matrix-Matrix Product |     1x1     | 5.81548538614975e-10 | 0.00376989768395853 |
-| Typed Eigen Matrix-Matrix Product |     2x2     | 2.13931264173522e-09 | 0.00450181246383349 |
-| Typed Eigen Matrix-Matrix Product |     4x4     | 5.80778608488658e-09 | 0.00407707131372669 |
-| Typed Eigen Matrix-Matrix Product |     8x8     | 8.91929099982791e-08 | 0.010134591604394 |
-| Typed Eigen Matrix-Matrix Product |    16x16    | 4.80356327089995e-07 | 0.00283070127249361 |
-| Typed Eigen Matrix-Matrix Product |    32x32    | 3.18421052631579e-06 | 0.00250651024946968 |
-| std::mdspan Matrix-Matrix Product |     1x1     | 3.89847953144399e-10 | 0.0109093295398069 |
-| std::mdspan Matrix-Matrix Product |     2x2     | 2.17775642474226e-09 | 0.00893159004026262 |
-| std::mdspan Matrix-Matrix Product |     4x4     | 1.16537275337658e-08 | 0.0093594516510802 |
-| std::mdspan Matrix-Matrix Product |     8x8     | 7.45213751458176e-08 | 0.00164401529064526 |
-| std::mdspan Matrix-Matrix Product |    16x16    | 6.03575547866205e-07 | 0.00323663159095816 |
-| std::mdspan Matrix-Matrix Product |    32x32    | 5.33222748815166e-06 | 0.00638206037613696 |
-| std::mdspan Matrix-Matrix Product |    64x64    | 5.50105263157895e-05 | 0.00384172109104879 |
-| std::mdspan Matrix-Matrix Product |   128x128   | 0.0007491 | 0.00252996005326231 |
-| std::mdspan/tuple Matrix-Matrix Product |     1x1     | 2.32929721125891e-09 | 0.00272458857567422 |
-| std::mdspan/tuple Matrix-Matrix Product |     2x2     | 2.20989384370261e-08 | 0.001428002001545 |
-| std::mdspan/tuple Matrix-Matrix Product |     4x4     | 2.04769874476987e-07 | 0.0191008736903228 |
-| std::mdspan/tuple Matrix-Matrix Product |     8x8     | 2.94362244897959e-06 | 0.00302726988184359 |
-| std::mdspan/tuple Matrix-Matrix Product |    16x16    | 4.91695652173913e-05 | 0.00375315404415025 |
+| Eigen Matrix-Matrix Product |     1x1     | 3.86926308934042e-10 | 0.00362170772453916 |
+| Eigen Matrix-Matrix Product |     2x2     | 2.1422574761891e-09 | 0.0047132763352075 |
+| Eigen Matrix-Matrix Product |     4x4     | 5.79035495617265e-09 | 0.00263924084699713 |
+| Eigen Matrix-Matrix Product |     8x8     | 8.82471891935614e-08 | 0.00197539274178802 |
+| Eigen Matrix-Matrix Product |    16x16    | 4.81097046413502e-07 | 0.00607296084493375 |
+| Eigen Matrix-Matrix Product |    32x32    | 3.1941348973607e-06 | 0.0031633792869026 |
+| Eigen Matrix-Matrix Product |    64x64    | 2.441875e-05 | 0.000866107153313199 |
+| Eigen Matrix-Matrix Product |   128x128   | 0.00018515 | 0.00144235103218254 |
+| Typed Eigen Matrix-Matrix Product |     1x1     | 5.79379930032255e-10 | 0.000702695077781357 |
+| Typed Eigen Matrix-Matrix Product |     2x2     | 2.14140880945798e-09 | 0.00355914946730552 |
+| Typed Eigen Matrix-Matrix Product |     4x4     | 5.79967653021709e-09 | 0.00210146423312762 |
+| Typed Eigen Matrix-Matrix Product |     8x8     | 8.78154348713761e-08 | 0.00488743624686649 |
+| Typed Eigen Matrix-Matrix Product |    16x16    | 4.79429987608426e-07 | 0.00162202324815421 |
+| Typed Eigen Matrix-Matrix Product |    32x32    | 3.185e-06 | 0.00201527791737873 |
+| std::mdspan Matrix-Matrix Product |     1x1     | 3.88496058575182e-10 | 0.00308631590095693 |
+| std::mdspan Matrix-Matrix Product |     2x2     | 2.17730207449334e-09 | 0.0107109395221211 |
+| std::mdspan Matrix-Matrix Product |     4x4     | 1.1645345319388e-08 | 0.0012460454495222 |
+| std::mdspan Matrix-Matrix Product |     8x8     | 7.47712762456394e-08 | 0.00265945900784587 |
+| std::mdspan Matrix-Matrix Product |    16x16    | 6.01623740201568e-07 | 0.00110916614981304 |
+| std::mdspan Matrix-Matrix Product |    32x32    | 5.42979797979798e-06 | 0.00140469106799371 |
+| std::mdspan Matrix-Matrix Product |    64x64    | 5.4655e-05 | 0.00161881490531467 |
+| std::mdspan Matrix-Matrix Product |   128x128   | 0.0007057 | 0.00498433494730835 |
+| std::mdspan/tuple Matrix-Matrix Product |     1x1     | 2.32316768458827e-09 | 0.000836487956535696 |
+| std::mdspan/tuple Matrix-Matrix Product |     2x2     | 2.21534194128103e-08 | 0.00171143975547006 |
+| std::mdspan/tuple Matrix-Matrix Product |     4x4     | 2.02108662613982e-07 | 0.00449747941789824 |
+| std::mdspan/tuple Matrix-Matrix Product |     8x8     | 2.95777777777778e-06 | 0.0104089219330855 |
+| std::mdspan/tuple Matrix-Matrix Product |    16x16    | 4.90681818181818e-05 | 0.00208765050727594 |
+| Typed std::mdspan/tuple Matrix-Matrix Product |     1x1     | 2.32535507064431e-09 | 0.0015576140277047 |
+| Typed std::mdspan/tuple Matrix-Matrix Product |     2x2     | 2.26439157394784e-08 | 0.00122223329852446 |
+| Typed std::mdspan/tuple Matrix-Matrix Product |     4x4     | 2.00973053892216e-07 | 0.000494009371200135 |
+| Typed std::mdspan/tuple Matrix-Matrix Product |     8x8     | 3.25163043478261e-06 | 0.0031593568021656 |
+| Typed std::mdspan/tuple Matrix-Matrix Product |    16x16    | 4.91428571428571e-05 | 0.00590143016640947 |
