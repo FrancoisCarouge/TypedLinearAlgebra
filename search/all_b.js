@@ -10,9 +10,10 @@ var searchData=
   ['element_5fcaster_7',['element_caster',['../structfcarouge_1_1element__caster.xhtml',1,'fcarouge']]],
   ['element_5fcaster_3c_20to_20_26_2c_20from_20_26_20_3e_8',['element_caster&lt; To &amp;, From &amp; &gt;',['../structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4.xhtml',1,'fcarouge']]],
   ['element_5fcaster_3c_20to_2c_20from_20_3e_9',['element_caster&lt; To, From &gt;',['../structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml',1,'fcarouge']]],
-  ['enforcement_10',['Enforcement',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#enforcement',1,'']]],
-  ['equality_2ecpp_11',['equality.cpp',['../equality_8cpp.xhtml',1,'']]],
-  ['examples_12',['Examples',['../index.xhtml#examples',1,'']]],
-  ['explicit_13',['explicit',['../classfcarouge_1_1typed__matrix.xhtml#a16857257759870c394e7038923b581e3',1,'fcarouge::typed_matrix::explicit(false) typed_matrix(const same_as_typed_matrix auto &amp;other)'],['../classfcarouge_1_1typed__matrix.xhtml#ab640b378259edec3a845ea08c11030e2',1,'fcarouge::typed_matrix::explicit(false) typed_matrix(same_as_typed_matrix auto &amp;&amp;other)'],['../classfcarouge_1_1typed__matrix.xhtml#a3d7db63ea24871c86c2e3af41926cab5',1,'fcarouge::typed_matrix::explicit(false) typed_matrix(const element&lt;&gt;(&amp;elements)[rows *columns])']]],
-  ['extents_5fsize_14',['extents_size',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#abadda8a5417037ae0b6596f861948290',1,'fcarouge::sample::anonymous_namespace{mp_units_std.cpp}']]]
+  ['element_5ftype_10',['element_type',['../structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1accessor.xhtml#a9eb8fd7ce608aae613f5f17b849de804',1,'fcarouge::benchmark::anonymous_namespace{mdspan_tuple_product.cpp}::accessor']]],
+  ['enforcement_11',['Enforcement',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#enforcement',1,'']]],
+  ['equality_2ecpp_12',['equality.cpp',['../equality_8cpp.xhtml',1,'']]],
+  ['examples_13',['Examples',['../index.xhtml#examples',1,'']]],
+  ['explicit_14',['explicit',['../classfcarouge_1_1typed__matrix.xhtml#a16857257759870c394e7038923b581e3',1,'fcarouge::typed_matrix::explicit(false) typed_matrix(const same_as_typed_matrix auto &amp;other)'],['../classfcarouge_1_1typed__matrix.xhtml#ab640b378259edec3a845ea08c11030e2',1,'fcarouge::typed_matrix::explicit(false) typed_matrix(same_as_typed_matrix auto &amp;&amp;other)'],['../classfcarouge_1_1typed__matrix.xhtml#a3d7db63ea24871c86c2e3af41926cab5',1,'fcarouge::typed_matrix::explicit(false) typed_matrix(const element&lt;&gt;(&amp;elements)[rows *columns])']]],
+  ['extents_5fsize_15',['extents_size',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#abadda8a5417037ae0b6596f861948290',1,'fcarouge::sample::anonymous_namespace{mp_units_std.cpp}']]]
 ];

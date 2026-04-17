@@ -11,5 +11,6 @@ var namespacefcarouge_1_1benchmark =
     [ "anonymous_namespace{mdspan_product.cpp}", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__product_8cpp_03.xhtml", [
       [ "bench", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__product_8cpp_03.xhtml#a8f22864eff8e6dcdd69511bd6b832bb6", null ],
       [ "csv", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__product_8cpp_03.xhtml#a5bdc908c95df4c92afe8ee7cc9be30dc", null ]
-    ] ]
+    ] ],
+    [ "anonymous_namespace{mdspan_tuple_product.cpp}", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03.xhtml", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03" ]
 ];

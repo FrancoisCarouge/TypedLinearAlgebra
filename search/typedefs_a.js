@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['tuple_5fn_5ftype_0',['tuple_n_type',['../namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a4dd57b09634fe03c0fd59b866657ad86',1,'fcarouge::typed_linear_algebra_internal']]],
-  ['type_1',['type',['../structstd_1_1tuple__element_3_01_index_00_01_type_01_4.xhtml#ad03dca9c733705a2353f943513262d65',1,'std::tuple_element&lt; Index, Type &gt;']]],
-  ['typed_5fcolumn_5fvector_2',['typed_column_vector',['../namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58',1,'fcarouge']]],
-  ['typed_5frow_5fvector_3',['typed_row_vector',['../namespacefcarouge.xhtml#a7558e7ccc03031fb7de678cf4977e1bf',1,'fcarouge']]]
+  ['reference_0',['reference',['../structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1accessor.xhtml#a05056645419ecc84e33ed2633db92d16',1,'fcarouge::benchmark::anonymous_namespace{mdspan_tuple_product.cpp}::accessor']]],
+  ['representation_1',['representation',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a3c3e455061e1c9775f216253f0fc5541',1,'fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}']]],
+  ['result_2',['result',['../structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1lookup_3b299f5c7aa92788bf7430e8496a9663f.xhtml#a3ff940c74d0f67d66ca87344bc83dcbc',1,'fcarouge::benchmark::anonymous_namespace{mdspan_tuple_product.cpp}::lookup&lt; Tuple, std::index_sequence&lt; Indices... &gt; &gt;']]],
+  ['row_5fextents_3',['row_extents',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#ab83f17b19ceb5d7d83389cc44a1684f5',1,'fcarouge::sample::anonymous_namespace{mp_units_std.cpp}']]],
+  ['row_5findexes_4',['row_indexes',['../classfcarouge_1_1typed__matrix.xhtml#a67a638bf31384a9120a5def3c74b641a',1,'fcarouge::typed_matrix']]],
+  ['row_5fvector_5',['row_vector',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a49493e629eb806d800abe69834c8bcdf',1,'fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::row_vector'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#a6a1f5632f7faf5ed8167f94133feb6bd',1,'fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::row_vector'],['../namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b',1,'fcarouge::eigen::row_vector'],['../namespacefcarouge.xhtml#a60b6b92762905569a26339025d4b0821',1,'fcarouge::row_vector']]]
 ];

@@ -2,5 +2,6 @@ var dir_44cec6e3ea30e076b9313c4641539d9f =
 [
     [ "eigen_product.cpp", "eigen__product_8cpp.xhtml", "eigen__product_8cpp" ],
     [ "eigexed_product.cpp", "eigexed__product_8cpp.xhtml", "eigexed__product_8cpp" ],
-    [ "mdspan_product.cpp", "mdspan__product_8cpp.xhtml", "mdspan__product_8cpp" ]
+    [ "mdspan_product.cpp", "mdspan__product_8cpp.xhtml", "mdspan__product_8cpp" ],
+    [ "mdspan_tuple_product.cpp", "mdspan__tuple__product_8cpp.xhtml", "mdspan__tuple__product_8cpp" ]
 ];
