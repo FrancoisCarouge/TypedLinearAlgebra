@@ -73,3 +73,11 @@ For more information, please refer to <https://unlicense.org> */
 //! https://github.com/FrancoisCarouge/TypedLinearAlgebra/tree/gh-pages/time_trace
 //!
 //! Use a tool like <a href="https://ui.perfetto.dev/">perfetto.dev</a> to review the traces.
+
+//! @page call_trace Run-Time Call Traces
+//!
+//!
+//! The runtime-time call traces are downloadable from the `gh-pages` branch:
+//! https://github.com/FrancoisCarouge/TypedLinearAlgebra/tree/gh-pages/call_trace
+//!
+//! Use a tool like `kcachegrind` to review the traces.

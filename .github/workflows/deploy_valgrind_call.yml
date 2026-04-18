@@ -1,0 +1,44 @@
+name: 'Deploy / Valgrind / Call'
+
+on:
+  workflow_run:
+    workflows: ['Deploy Doxygen']
+    types:
+      - completed
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-26.04
+    permissions:
+      contents: write
+    steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+      with:
+        egress-policy: audit
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - name: 'Install: Latest CMake'
+      uses: ssrobins/install-cmake@da13ba26f50a41d3b03cfe8ca7265903f04a8932 # v1.0.0
+    - name: 'Install'
+      run: sudo apt update && sudo apt install valgrind
+    - name: 'Configure'
+      env:
+        CXX: 'g++-15'
+        CC: 'gcc-15'
+        COMMAND: 'sh -c "mkdir -p \"\$GITHUB_WORKSPACE/call_trace\" && valgrind --tool=callgrind --dump-instr=yes --dump-line=yes --collect-jumps=yes --error-exitcode=1 --callgrind-out-file=\"\$GITHUB_WORKSPACE/call_trace/callgrind.out.\${1##*/}\" \"\$1\"" --'
+      run: cmake -S . -B 'build'
+    - name: 'Build'
+      run: cmake --build 'build' --verbose --parallel 4
+    - name: 'Test'
+      run: ctest --test-dir 'build' --timeout 60 --verbose --parallel 1
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./call_trace
+        destination_dir: ./call_trace
