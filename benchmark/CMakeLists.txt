@@ -40,54 +40,54 @@ FetchContent_Declare(
   FIND_PACKAGE_ARGS NAMES nanobench)
 FetchContent_MakeAvailable(nanobench)
 
-bench("eigen_product" "1" BACKENDS "eigen")
-
 if(BUILD_BENCHMARKING)
+  bench("eigen_product" "1" BACKENDS "eigen")
   bench("eigen_product" "2" BACKENDS "eigen")
   bench("eigen_product" "4" BACKENDS "eigen")
   bench("eigen_product" "8" BACKENDS "eigen")
-  bench("eigen_product" "16" BACKENDS "eigen")
+endif()
+
+bench("eigen_product" "16" BACKENDS "eigen")
+
+if(BUILD_BENCHMARKING)
   bench("eigen_product" "32" BACKENDS "eigen")
   bench("eigen_product" "64" BACKENDS "eigen")
   bench("eigen_product" "128" BACKENDS "eigen")
-endif()
-
-bench("typed_eigen_product" "1" BACKENDS "eigexed")
-
-if(BUILD_BENCHMARKING)
+  bench("typed_eigen_product" "1" BACKENDS "eigexed")
   bench("typed_eigen_product" "2" BACKENDS "eigexed")
   bench("typed_eigen_product" "4" BACKENDS "eigexed")
   bench("typed_eigen_product" "8" BACKENDS "eigexed")
-  bench("typed_eigen_product" "16" BACKENDS "eigexed")
-  bench("typed_eigen_product" "32" BACKENDS "eigexed")
 endif()
 
-bench("mdspan_product" "1" BACKENDS "kokkos")
+bench("typed_eigen_product" "16" BACKENDS "eigexed")
 
 if(BUILD_BENCHMARKING)
+  bench("typed_eigen_product" "32" BACKENDS "eigexed")
+  bench("mdspan_product" "1" BACKENDS "kokkos")
   bench("mdspan_product" "2" BACKENDS "kokkos")
   bench("mdspan_product" "4" BACKENDS "kokkos")
   bench("mdspan_product" "8" BACKENDS "kokkos")
-  bench("mdspan_product" "16" BACKENDS "kokkos")
+endif()
+
+bench("mdspan_product" "16" BACKENDS "kokkos")
+
+if(BUILD_BENCHMARKING)
   bench("mdspan_product" "32" BACKENDS "kokkos")
   bench("mdspan_product" "64" BACKENDS "kokkos")
   bench("mdspan_product" "128" BACKENDS "kokkos")
-endif()
-
-bench("mdspan_tuple_product" "1" BACKENDS "unit_std")
-
-if(BUILD_BENCHMARKING)
+  bench("mdspan_tuple_product" "1" BACKENDS "unit_std")
   bench("mdspan_tuple_product" "2" BACKENDS "unit_std")
   bench("mdspan_tuple_product" "4" BACKENDS "unit_std")
   bench("mdspan_tuple_product" "8" BACKENDS "unit_std")
-  bench("mdspan_tuple_product" "16" BACKENDS "unit_std")
 endif()
 
-bench("typed_mdspan_tupled_product" "1" BACKENDS "unit_std")
+bench("mdspan_tuple_product" "16" BACKENDS "unit_std")
 
 if(BUILD_BENCHMARKING)
+  bench("typed_mdspan_tupled_product" "1" BACKENDS "unit_std")
   bench("typed_mdspan_tupled_product" "2" BACKENDS "unit_std")
   bench("typed_mdspan_tupled_product" "4" BACKENDS "unit_std")
   bench("typed_mdspan_tupled_product" "8" BACKENDS "unit_std")
-  bench("typed_mdspan_tupled_product" "16" BACKENDS "unit_std")
 endif()
+
+bench("typed_mdspan_tupled_product" "16" BACKENDS "unit_std")
