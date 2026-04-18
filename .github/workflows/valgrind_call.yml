@@ -1,0 +1,40 @@
+name: 'Test Call: Valgrind'
+
+on:
+  push:
+    branches: [ 'master' ]
+  pull_request:
+    branches: [ 'master' ]
+  schedule:
+  - cron: '0 0 * * */5'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@f808768d1510423e83855289c910610ca9b43176 # v2.17.0
+      with:
+        egress-policy: audit
+    - name: Checkout
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+    - name: 'Install: Latest CMake'
+      uses: ssrobins/install-cmake@da13ba26f50a41d3b03cfe8ca7265903f04a8932 # v1.0.0
+    - name: 'Install'
+      run: sudo apt update && sudo apt install valgrind
+    - name: Build
+      env:
+        CXX: 'g++-14'
+        CC: 'gcc-14'
+        COMMAND: 'sh -c "valgrind --tool=callgrind --dump-instr=yes --dump-line=yes --collect-jumps=yes --error-exitcode=1 --callgrind-out-file=\"callgrind.out.\${1##*/}\" \"\$1\"" --'
+      run: cmake -S . -B 'build'
+    - name: 'Build'
+      run: cmake --build 'build' --verbose --parallel 4
+    - name: 'Test'
+      run: ctest --test-dir 'build' --timeout 60 --verbose --parallel 1
