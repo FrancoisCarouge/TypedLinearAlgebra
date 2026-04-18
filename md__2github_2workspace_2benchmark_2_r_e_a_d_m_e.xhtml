@@ -109,12 +109,12 @@ $(function(){initNavTree('md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml'
 <div class="line">Remove-Item -Path build -Force -Recurse</div>
 <div class="line">cmake -S &quot;linalg&quot; -B &quot;build&quot; -G &quot;Visual Studio 18 2026&quot; -DBUILD_BENCHMARKING=ON</div>
 <div class="line">cmake --build &quot;build&quot; --config &quot;Release&quot; --parallel</div>
-<div class="line">ctest --test-dir &quot;build&quot; --build-config &quot;Release&quot; --tests-regex &quot;benchmark&quot; --parallel 1</div>
-<div class="line">type build/benchmark/results.txt</div>
+<div class="line">ctest --test-dir &quot;build&quot; --build-config &quot;Release&quot; --tests-regex &quot;bench&quot; --parallel 1</div>
 </div><!-- fragment --><h1><a class="anchor" id="results"></a>
 Results</h1>
 <p>Disclaimer: naive benchmark results for illustration purposes only.</p>
 <p>MSVC 19.50.35728.0</p>
+<p><img src="plot.png" alt="" class="inline"/></p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Title   </th><th class="markdownTableHeadNone">Size   </th><th class="markdownTableHeadNone">Median Elapsed Time (s)   </th><th class="markdownTableHeadNone">Median Absolute Error (%)    </th></tr>
