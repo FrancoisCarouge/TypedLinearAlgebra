@@ -41,6 +41,15 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(nanobench)
 
 if(BUILD_BENCHMARKING)
+  FetchContent_Declare(
+    matplotplusplus
+    GIT_REPOSITORY "https://github.com/alandefreitas/matplotplusplus.git"
+    GIT_SHALLOW TRUE
+    FIND_PACKAGE_ARGS NAMES matplot)
+  FetchContent_MakeAvailable(matplotplusplus)
+
+  set(DEPENDENCIES "")
+
   bench("eigen_product" "1" BACKENDS "eigen")
   bench("eigen_product" "2" BACKENDS "eigen")
   bench("eigen_product" "4" BACKENDS "eigen")
@@ -91,3 +100,10 @@ if(BUILD_BENCHMARKING)
 endif()
 
 bench("typed_mdspan_tupled_product" "16" BACKENDS "unit_std")
+
+if(BUILD_BENCHMARKING)
+  add_executable(plot plot.cpp)
+  target_link_libraries(plot PRIVATE Matplot++::matplot)
+  add_test(NAME typed_linear_algebra_plot_bench COMMAND $<TARGET_FILE:plot>
+                                                        DEPENDS ${DEPENDENCIES})
+endif()

@@ -115,5 +115,9 @@ function(bench NAME SIZE)
         ${TEST_COMMAND}
         $<TARGET_FILE:typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench_driver>
     )
+    if(DEFINED DEPENDENCIES)
+      list(APPEND ${DEPENDENCIES}
+           "typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench")
+    endif()
   endforeach()
 endfunction(bench)
