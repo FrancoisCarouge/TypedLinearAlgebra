@@ -7,8 +7,7 @@ git clone --depth 1 "https://github.com/FrancoisCarouge/TypedLinearAlgebra" "lin
 Remove-Item -Path build -Force -Recurse
 cmake -S "linalg" -B "build" -G "Visual Studio 18 2026" -DBUILD_BENCHMARKING=ON
 cmake --build "build" --config "Release" --parallel
-ctest --test-dir "build" --build-config "Release" --tests-regex "benchmark" --parallel 1
-type build/benchmark/results.txt
+ctest --test-dir "build" --build-config "Release" --tests-regex "bench" --parallel 1
 ```
 
 # Results
@@ -16,6 +15,8 @@ type build/benchmark/results.txt
 Disclaimer: naive benchmark results for illustration purposes only.
 
 MSVC 19.50.35728.0
+
+<img src="plot.png">
 
 | Title | Size | Median Elapsed Time (s) | Median Absolute Error (%) |
 | --- | --- | --- | --- |
