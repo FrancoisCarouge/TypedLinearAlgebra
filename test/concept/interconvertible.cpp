@@ -29,29 +29,16 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/linalg.hpp"
+#include "fcarouge/typed_linear_algebra.hpp"
 
 #include <cassert>
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the at member accessor.
+//! @test Verifies the interconvertible concept.
 [[maybe_unused]] const auto test{[] {
-  matrix<> m{42.};
-
-  assert(m.at() == 42.);
-  assert(m.at<>() == 42.);
-  assert(m.at<double>() == 42.);
-
-  m.at(43.);
-
-  assert(m.at() == 43.);
-  assert(m.at<>() == 43.);
-  assert(m.at<double>() == 43.);
-
-  static_assert(std::same_as<decltype(m.at()), double &>);
-  static_assert(std::same_as<decltype(m.at<>()), double &>);
-  static_assert(std::same_as<decltype(m.at<double>()), double &>);
+  static_assert(tla::are_interconvertible<double, double>);
+  static_assert(tla::are_not_interconvertible<double, double *>);
 
   return 0;
 }()};

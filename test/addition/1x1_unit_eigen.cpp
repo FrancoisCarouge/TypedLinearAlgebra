@@ -49,10 +49,18 @@ namespace {
   const row_vector<representation, length> b{3. * m};
   const row_vector<representation, length> r{a + b};
 
-  assert(5. * m == r.at());
-  assert(5. * m == r[]);
-  assert(5. * m == r());
   assert(5. * m == r);
+  assert(5. * m == r());
+  assert(5. * m == r[]);
+  assert(5. * m == r.at());
+  assert(5. * m == r.at<>());
+  assert(5. * m == r.at<length>());
+
+  static_assert(std::same_as<decltype(r()), length>); // WHY THIS NOT CONST?
+  static_assert(std::same_as<decltype(r[]), length>);
+  static_assert(std::same_as<decltype(r.at()), length>);
+  static_assert(std::same_as<decltype(r.at<>()), length>);
+  static_assert(std::same_as<decltype(r.at<length>()), length>);
 
   return 0;
 }()};

@@ -70,6 +70,18 @@ concept same_as_typed_matrix = tla::same_as_typed_matrix<Type>;
 template <typename Type>
 concept uniform_typed_matrix = tla::uniform_typed_matrix<Type>;
 
+//! @brief Concept of a typed matrix with no implicitly convertible elements.
+//!
+//! @details There does not exist an element type of the matrix that can be
+//! implicitely converted to another element type of the matrix.
+//! Each element is explicitly strongly typed.
+//!
+//! @note This is not the negation of uniform typed matrix because some element
+//! types may be convertible but not all. This is a stronger requirement than
+//! non-uniformity.
+template <typename Type>
+concept distinct_typed_matrix = tla::distinct_typed_matrix<Type>;
+
 //! @brief Concept of a row, one-dimension typed matrix, vector.
 template <typename Type>
 concept row_typed_matrix = tla::row_typed_matrix<Type>;
@@ -335,18 +347,47 @@ public:
   //! @brief Read the specified element.
   //!
   //! @details Returns a strongly typed element at the specified compile-time
-  //! bound checked location element. A reference is returned for non-const
-  //! calls.
+  //! bound checked location element.
   //!
   //! @tparam Indexes Position(s) of the element to return. Both row and column
   //! indexes for any matrix, one index for one-dimension matrices, no index for
   //! singleton matrices.
   //!
-  //! @return A reference to the strongly typed element at the specified
-  //! location for non-const access, or a prvalue otherwise.
+  //! @return The strongly typed element at the specified location.
   template <auto... Indexes>
   [[nodiscard]] constexpr decltype(auto) at(this auto &&self)
     requires(sizeof...(Indexes) == rank);
+
+  //! @brief Read the specified element.
+  //!
+  //! @details Returns a strongly typed element at the specified looked-up index
+  //! by type. Only supported for typed matrices where each element has a
+  //! distinct type. Bound checking is performed for compile-time indexes.
+  //!
+  //! @tparam Type The type of the element to return.
+  //!
+  //! @return The strongly typed element at the specified location.
+  template <typename Type>
+  [[nodiscard]] constexpr decltype(auto) at(this auto &&self)
+    requires distinct_typed_matrix<typed_matrix>
+  {
+    using tuple = tla::tuple_typed_matrix<typed_matrix>;
+
+    constexpr std::size_t I = tla::find_first_convertible_index<Type, tuple>();
+
+    static_assert(I != std::tuple_size_v<std::remove_reference_t<tuple>>,
+                  "No convertible type found in tuple");
+
+    // convert?
+    if constexpr (rank_typed_matrix<typed_matrix, 2>) {
+      return self.template at<I / columns, I % columns>();
+    } else if constexpr (rank_typed_matrix<typed_matrix, 1>) {
+      return self.template at<I>();
+    } else if constexpr (rank_typed_matrix<typed_matrix, 0>) {
+      // TODO VERIFY TYPE? INDEX?
+      return self.template at<>();
+    }
+  }
 
   //! @brief Write the specified element.
   //!
