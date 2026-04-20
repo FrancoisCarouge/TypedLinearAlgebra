@@ -7,13 +7,22 @@ title: "Typed Linear Algebra"
 ---
 
 <section data-background-image="welcome.png" data-background-size="contain">
+<aside class="notes">
+Typed Linear Algebra
+How to Not Crash on Mars
+Hello, my name is François Carouge. Thank you for welcoming me to present in this session of Cpp Bay Area.<br />
+Today we are going to talk about yet another type of safety in programming languages. That would be quantity or unit safety with support of the C++ type system. We will try to implement unit safety in linear algebra applications. My objective is to share with you my practical learnings about type safe matrices. I will motivate the problem, explore the ideas, introduce a solution, and share takeaways.<br />
+As-is customary at CppNow, please interrupt me with your questions, or note down the slide number if you prefer to bring it up during the Q&A. Let us start today with a real-world, motivating problem.
+</aside>
 </section>
 
+---
+
+<section data-background-image="jnj.png" data-background-size="contain">
 <aside class="notes">
-Hello, my name is François Carouge. Thank you for welcoming me to present in this session of Cpp Bay Area.<br />
-Today we are going to talk about yet another type of safety in programming languages. That would be quantity or unit safety with support of the C++ type system. We will try to implement unit safety in linear algebra applications. My objective is to share with you my practical learnings about type safe matrices. I will motivate the problem, explore the ideas, introduce a solution, and share takeaways.<br />You can find this talk and the full library on GitHub at the location linked, or by taking a picture of this QR code.<br />
-Please interrupt me with your questions, or note down the slide number if you prefer to bring it up during the Q&A. Let us start today with a real-world, motivating problem.
+I would like to thank my employer Johnson & Johnson MedTech for supporting my attendance at this conference. We provide an inclusive work environment to service our patients and communities. The opinions expressed are my own and do not reflect the views of my employer. We make remarkable robots and we are hiring. 
 </aside>
+</section>
 
 ---
 
@@ -489,7 +498,7 @@ std::println("{}", x0ᵀ * x0); // ?
 ```cpp
 //                       ^~
 // error: static assertion failed:
-// Matrix multiplication requires compatible types.
+// Matrix product requires compatible types.
 ```
 
 </span>
@@ -735,30 +744,48 @@ There is a number of transformations and techniques we use to avoid this issue. 
 
 ---
 
-###### Index Safety
+###### Future
 
----
+```cpp
+state x{3. * m,
+        2. * m / s,
+        1. * m / s2};
 
-###### Next
+// Index Safety:
+std::println("{}", x.at<velocity>());
+// 2 m/s
+```
 
-<p>
-<b>Compose More Safeties</b><br />
-Index<br />
-Frame<br />
-Taxonomy
-</p>
-
+<small>
 <span class="fragment">
+
+* More Safety: frames, coordinate systems, taxonomy.
+* Decide: memory non/ownership
+* Operations: P1673 / Eigen
+
+</span>
+</small>
+
+<aside class="notes">
 Compliance, Ergonomics<br />
 Regression, Performance<br />
 Ecosystem<br />
-</span>
-
-<aside class="notes">
 I will close today's session by looking toward the future. We've now seen the principles driving a strongly typed linear algebra with examples of implementation and usage. That's only the beginning. Unfortunately unit and dimension are incomplete for a more comprehensive safe physical linear algebra! Additional safety capabilities are critical to consider such as quantity kind, character semantics, index access, or reference frames. I want to explore these areas, perhaps with yet another composition.<br />
 FRAGMENT<br />
 Additionally, we need greater compatibility, support with the standard library, `std::linalg`, third party linear algebra, and third party types. I believe typed linear algebra could be a drop-in retrofit in existing high order libraries while maintaining zero-cost for performance.
 </aside>
+
+---
+
+###### Learnings
+
+<ul><li>
+Strong type propagation
+</li><span class="fragment"><li>
+std::tuple scalability
+</li></span><span class="fragment"><li>
+Index safety
+</li></span></ul>
 
 ---
 
@@ -770,7 +797,7 @@ github.com/FrancoisCarouge</small>
 <img src="repo_qr.png" height="250px">
 
 <aside class="notes">
-I believe this is the first extensive open source and permissive implementation of a typed linear algebra library. I hope this talk will help you build safer linear algebra applications. This QR code and link will take you to the library. At this time I would like to thank you and I would welcome any question.
+I believe this is the first extensive open source and permissive implementation of a typed linear algebra library. I hope this talk will help you build safer linear algebra applications. You can find this talk and the full library on GitHub at the location linked, or by taking a picture of this QR code. At this time I would like to thank you and I would welcome any more question.
 </aside>
 
 ---
