@@ -108,7 +108,7 @@ $(function(){initNavTree('md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml'
 <div class="fragment"><div class="line">git clone --depth 1 &quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra&quot; &quot;linalg&quot;</div>
 <div class="line">Remove-Item -Path build -Force -Recurse</div>
 <div class="line">cmake -S &quot;linalg&quot; -B &quot;build&quot; -G &quot;Visual Studio 18 2026&quot; -DBUILD_BENCHMARKING=ON</div>
-<div class="line">cmake --build &quot;build&quot; --config &quot;Release&quot; --parallel</div>
+<div class="line">cmake --build &quot;build&quot; --config &quot;Release&quot; --parallel 1</div>
 <div class="line">ctest --test-dir &quot;build&quot; --build-config &quot;Release&quot; --tests-regex &quot;bench&quot; --parallel 1</div>
 </div><!-- fragment --><h1><a class="anchor" id="results"></a>
 Results</h1>
@@ -119,69 +119,81 @@ Results</h1>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Title   </th><th class="markdownTableHeadNone">Size   </th><th class="markdownTableHeadNone">Median Elapsed Time (s)   </th><th class="markdownTableHeadNone">Median Absolute Error (%)    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">1x1   </td><td class="markdownTableBodyNone">3.86926308934042e-10   </td><td class="markdownTableBodyNone">0.00362170772453916    </td></tr>
+<td class="markdownTableBodyNone">Eigen::Matrix   </td><td class="markdownTableBodyNone">1x1   </td><td class="markdownTableBodyNone">3.87771386512016e-10   </td><td class="markdownTableBodyNone">0.00538872883190906    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">2x2   </td><td class="markdownTableBodyNone">2.1422574761891e-09   </td><td class="markdownTableBodyNone">0.0047132763352075    </td></tr>
+<td class="markdownTableBodyNone">Eigen::Matrix   </td><td class="markdownTableBodyNone">2x2   </td><td class="markdownTableBodyNone">2.1351601012727e-09   </td><td class="markdownTableBodyNone">0.00105165925212321    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">4x4   </td><td class="markdownTableBodyNone">5.79035495617265e-09   </td><td class="markdownTableBodyNone">0.00263924084699713    </td></tr>
+<td class="markdownTableBodyNone">Eigen::Matrix   </td><td class="markdownTableBodyNone">4x4   </td><td class="markdownTableBodyNone">5.80896895063472e-09   </td><td class="markdownTableBodyNone">0.00206230836566979    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">8x8   </td><td class="markdownTableBodyNone">8.82471891935614e-08   </td><td class="markdownTableBodyNone">0.00197539274178802    </td></tr>
+<td class="markdownTableBodyNone">Eigen::Matrix   </td><td class="markdownTableBodyNone">8x8   </td><td class="markdownTableBodyNone">8.82150833190173e-08   </td><td class="markdownTableBodyNone">0.00636310746770291    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">16x16   </td><td class="markdownTableBodyNone">4.81097046413502e-07   </td><td class="markdownTableBodyNone">0.00607296084493375    </td></tr>
+<td class="markdownTableBodyNone">Eigen::Matrix   </td><td class="markdownTableBodyNone">16x16   </td><td class="markdownTableBodyNone">4.81609195402299e-07   </td><td class="markdownTableBodyNone">0.00553949572120116    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">32x32   </td><td class="markdownTableBodyNone">3.1941348973607e-06   </td><td class="markdownTableBodyNone">0.0031633792869026    </td></tr>
+<td class="markdownTableBodyNone">Eigen::Matrix   </td><td class="markdownTableBodyNone">32x32   </td><td class="markdownTableBodyNone">3.20642458100559e-06   </td><td class="markdownTableBodyNone">0.00310933918515592    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">64x64   </td><td class="markdownTableBodyNone">2.441875e-05   </td><td class="markdownTableBodyNone">0.000866107153313199    </td></tr>
+<td class="markdownTableBodyNone">Eigen::Matrix   </td><td class="markdownTableBodyNone">64x64   </td><td class="markdownTableBodyNone">2.45040816326531e-05   </td><td class="markdownTableBodyNone">0.00122316643192698    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">128x128   </td><td class="markdownTableBodyNone">0.00018515   </td><td class="markdownTableBodyNone">0.00144235103218254    </td></tr>
+<td class="markdownTableBodyNone">Eigen::Matrix   </td><td class="markdownTableBodyNone">128x128   </td><td class="markdownTableBodyNone">0.00018674   </td><td class="markdownTableBodyNone">0.00527562446167087    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Typed <a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">1x1   </td><td class="markdownTableBodyNone">5.79379930032255e-10   </td><td class="markdownTableBodyNone">0.000702695077781357    </td></tr>
+<td class="markdownTableBodyNone">typed matrix from Eigen::Matrix   </td><td class="markdownTableBodyNone">1x1   </td><td class="markdownTableBodyNone">5.80222304380841e-10   </td><td class="markdownTableBodyNone">0.00234271518047659    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Typed <a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">2x2   </td><td class="markdownTableBodyNone">2.14140880945798e-09   </td><td class="markdownTableBodyNone">0.00355914946730552    </td></tr>
+<td class="markdownTableBodyNone">typed matrix from Eigen::Matrix   </td><td class="markdownTableBodyNone">2x2   </td><td class="markdownTableBodyNone">1.95578082670628e-09   </td><td class="markdownTableBodyNone">0.00757158029212781    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Typed <a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">4x4   </td><td class="markdownTableBodyNone">5.79967653021709e-09   </td><td class="markdownTableBodyNone">0.00210146423312762    </td></tr>
+<td class="markdownTableBodyNone">typed matrix from Eigen::Matrix   </td><td class="markdownTableBodyNone">4x4   </td><td class="markdownTableBodyNone">5.82380065620289e-09   </td><td class="markdownTableBodyNone">0.00354615746619045    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Typed <a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">8x8   </td><td class="markdownTableBodyNone">8.78154348713761e-08   </td><td class="markdownTableBodyNone">0.00488743624686649    </td></tr>
+<td class="markdownTableBodyNone">typed matrix from Eigen::Matrix   </td><td class="markdownTableBodyNone">8x8   </td><td class="markdownTableBodyNone">8.79135665664081e-08   </td><td class="markdownTableBodyNone">0.00376541518675338    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Typed <a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">16x16   </td><td class="markdownTableBodyNone">4.79429987608426e-07   </td><td class="markdownTableBodyNone">0.00162202324815421    </td></tr>
+<td class="markdownTableBodyNone">typed matrix from Eigen::Matrix   </td><td class="markdownTableBodyNone">16x16   </td><td class="markdownTableBodyNone">4.81799075241698e-07   </td><td class="markdownTableBodyNone">0.0068258799481259    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Typed <a class="el" href="namespace_eigen.xhtml">Eigen</a> Matrix-Matrix Product   </td><td class="markdownTableBodyNone">32x32   </td><td class="markdownTableBodyNone">3.185e-06   </td><td class="markdownTableBodyNone">0.00201527791737873    </td></tr>
+<td class="markdownTableBodyNone">typed matrix from Eigen::Matrix   </td><td class="markdownTableBodyNone">32x32   </td><td class="markdownTableBodyNone">3.18402203856749e-06   </td><td class="markdownTableBodyNone">0.00464654136650976    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">std::mdspan Matrix-Matrix Product   </td><td class="markdownTableBodyNone">1x1   </td><td class="markdownTableBodyNone">3.88496058575182e-10   </td><td class="markdownTableBodyNone">0.00308631590095693    </td></tr>
+<td class="markdownTableBodyNone">std::mdspan   </td><td class="markdownTableBodyNone">1x1   </td><td class="markdownTableBodyNone">3.9203347453668e-10   </td><td class="markdownTableBodyNone">0.014576617073535    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">std::mdspan Matrix-Matrix Product   </td><td class="markdownTableBodyNone">2x2   </td><td class="markdownTableBodyNone">2.17730207449334e-09   </td><td class="markdownTableBodyNone">0.0107109395221211    </td></tr>
+<td class="markdownTableBodyNone">std::mdspan   </td><td class="markdownTableBodyNone">2x2   </td><td class="markdownTableBodyNone">2.16613117637008e-09   </td><td class="markdownTableBodyNone">0.00854977222211279    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">std::mdspan Matrix-Matrix Product   </td><td class="markdownTableBodyNone">4x4   </td><td class="markdownTableBodyNone">1.1645345319388e-08   </td><td class="markdownTableBodyNone">0.0012460454495222    </td></tr>
+<td class="markdownTableBodyNone">std::mdspan   </td><td class="markdownTableBodyNone">4x4   </td><td class="markdownTableBodyNone">1.17157248713773e-08   </td><td class="markdownTableBodyNone">0.00628431019065444    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">std::mdspan Matrix-Matrix Product   </td><td class="markdownTableBodyNone">8x8   </td><td class="markdownTableBodyNone">7.47712762456394e-08   </td><td class="markdownTableBodyNone">0.00265945900784587    </td></tr>
+<td class="markdownTableBodyNone">std::mdspan   </td><td class="markdownTableBodyNone">8x8   </td><td class="markdownTableBodyNone">7.46247996502987e-08   </td><td class="markdownTableBodyNone">0.00246572419649173    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">std::mdspan Matrix-Matrix Product   </td><td class="markdownTableBodyNone">16x16   </td><td class="markdownTableBodyNone">6.01623740201568e-07   </td><td class="markdownTableBodyNone">0.00110916614981304    </td></tr>
+<td class="markdownTableBodyNone">std::mdspan   </td><td class="markdownTableBodyNone">16x16   </td><td class="markdownTableBodyNone">6.03748680042239e-07   </td><td class="markdownTableBodyNone">0.00379745275307134    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">std::mdspan Matrix-Matrix Product   </td><td class="markdownTableBodyNone">32x32   </td><td class="markdownTableBodyNone">5.42979797979798e-06   </td><td class="markdownTableBodyNone">0.00140469106799371    </td></tr>
+<td class="markdownTableBodyNone">std::mdspan   </td><td class="markdownTableBodyNone">32x32   </td><td class="markdownTableBodyNone">5.43271028037383e-06   </td><td class="markdownTableBodyNone">0.00252122924297414    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">std::mdspan Matrix-Matrix Product   </td><td class="markdownTableBodyNone">64x64   </td><td class="markdownTableBodyNone">5.4655e-05   </td><td class="markdownTableBodyNone">0.00161881490531467    </td></tr>
+<td class="markdownTableBodyNone">std::mdspan   </td><td class="markdownTableBodyNone">64x64   </td><td class="markdownTableBodyNone">5.45894736842105e-05   </td><td class="markdownTableBodyNone">0.00250048086170408    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">std::mdspan Matrix-Matrix Product   </td><td class="markdownTableBodyNone">128x128   </td><td class="markdownTableBodyNone">0.0007057   </td><td class="markdownTableBodyNone">0.00498433494730835    </td></tr>
+<td class="markdownTableBodyNone">std::mdspan   </td><td class="markdownTableBodyNone">128x128   </td><td class="markdownTableBodyNone">0.0007067   </td><td class="markdownTableBodyNone">0.00688589094997183    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">std::mdspan/tuple Matrix-Matrix Product   </td><td class="markdownTableBodyNone">1x1   </td><td class="markdownTableBodyNone">2.32316768458827e-09   </td><td class="markdownTableBodyNone">0.000836487956535696    </td></tr>
+<td class="markdownTableBodyNone">typed matrix from std::mdspan   </td><td class="markdownTableBodyNone">1x1   </td><td class="markdownTableBodyNone">4.0251135383016e-10   </td><td class="markdownTableBodyNone">0.0415372123392322    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">std::mdspan/tuple Matrix-Matrix Product   </td><td class="markdownTableBodyNone">2x2   </td><td class="markdownTableBodyNone">2.21534194128103e-08   </td><td class="markdownTableBodyNone">0.00171143975547006    </td></tr>
+<td class="markdownTableBodyNone">typed matrix from std::mdspan   </td><td class="markdownTableBodyNone">2x2   </td><td class="markdownTableBodyNone">2.18066853838217e-09   </td><td class="markdownTableBodyNone">0.00853373531597857    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">std::mdspan/tuple Matrix-Matrix Product   </td><td class="markdownTableBodyNone">4x4   </td><td class="markdownTableBodyNone">2.02108662613982e-07   </td><td class="markdownTableBodyNone">0.00449747941789824    </td></tr>
+<td class="markdownTableBodyNone">typed matrix from std::mdspan   </td><td class="markdownTableBodyNone">4x4   </td><td class="markdownTableBodyNone">1.19625453850564e-08   </td><td class="markdownTableBodyNone">0.00575635449177043    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">std::mdspan/tuple Matrix-Matrix Product   </td><td class="markdownTableBodyNone">8x8   </td><td class="markdownTableBodyNone">2.95777777777778e-06   </td><td class="markdownTableBodyNone">0.0104089219330855    </td></tr>
+<td class="markdownTableBodyNone">typed matrix from std::mdspan   </td><td class="markdownTableBodyNone">8x8   </td><td class="markdownTableBodyNone">7.49313491008947e-08   </td><td class="markdownTableBodyNone">0.00280541684762946    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">std::mdspan/tuple Matrix-Matrix Product   </td><td class="markdownTableBodyNone">16x16   </td><td class="markdownTableBodyNone">4.90681818181818e-05   </td><td class="markdownTableBodyNone">0.00208765050727594    </td></tr>
+<td class="markdownTableBodyNone">typed matrix from std::mdspan   </td><td class="markdownTableBodyNone">16x16   </td><td class="markdownTableBodyNone">6.03710247349823e-07   </td><td class="markdownTableBodyNone">0.00263030856332186    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Typed std::mdspan/tuple Matrix-Matrix Product   </td><td class="markdownTableBodyNone">1x1   </td><td class="markdownTableBodyNone">2.32535507064431e-09   </td><td class="markdownTableBodyNone">0.0015576140277047    </td></tr>
+<td class="markdownTableBodyNone">typed matrix from std::mdspan   </td><td class="markdownTableBodyNone">32x32   </td><td class="markdownTableBodyNone">5.46612903225806e-06   </td><td class="markdownTableBodyNone">0.00490970365005946    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Typed std::mdspan/tuple Matrix-Matrix Product   </td><td class="markdownTableBodyNone">2x2   </td><td class="markdownTableBodyNone">2.26439157394784e-08   </td><td class="markdownTableBodyNone">0.00122223329852446    </td></tr>
+<td class="markdownTableBodyNone">std::mdspan from std::tuple   </td><td class="markdownTableBodyNone">1x1   </td><td class="markdownTableBodyNone">2.33409641032824e-09   </td><td class="markdownTableBodyNone">0.00461088654682818    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Typed std::mdspan/tuple Matrix-Matrix Product   </td><td class="markdownTableBodyNone">4x4   </td><td class="markdownTableBodyNone">2.00973053892216e-07   </td><td class="markdownTableBodyNone">0.000494009371200135    </td></tr>
+<td class="markdownTableBodyNone">std::mdspan from std::tuple   </td><td class="markdownTableBodyNone">2x2   </td><td class="markdownTableBodyNone">2.22298122503053e-08   </td><td class="markdownTableBodyNone">0.00130157821595603    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Typed std::mdspan/tuple Matrix-Matrix Product   </td><td class="markdownTableBodyNone">8x8   </td><td class="markdownTableBodyNone">3.25163043478261e-06   </td><td class="markdownTableBodyNone">0.0031593568021656    </td></tr>
+<td class="markdownTableBodyNone">std::mdspan from std::tuple   </td><td class="markdownTableBodyNone">4x4   </td><td class="markdownTableBodyNone">2.01255539143279e-07   </td><td class="markdownTableBodyNone">0.00106235441111578    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Typed std::mdspan/tuple Matrix-Matrix Product   </td><td class="markdownTableBodyNone">16x16   </td><td class="markdownTableBodyNone">4.91428571428571e-05   </td><td class="markdownTableBodyNone">0.00590143016640947   </td></tr>
+<td class="markdownTableBodyNone">std::mdspan from std::tuple   </td><td class="markdownTableBodyNone">8x8   </td><td class="markdownTableBodyNone">2.94166666666667e-06   </td><td class="markdownTableBodyNone">0.00749697894803798    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">std::mdspan from std::tuple   </td><td class="markdownTableBodyNone">16x16   </td><td class="markdownTableBodyNone">4.92409090909091e-05   </td><td class="markdownTableBodyNone">0.00248094125941906    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">typed matrix from std::mdspan from std::tuple   </td><td class="markdownTableBodyNone">1x1   </td><td class="markdownTableBodyNone">2.33872770351826e-09   </td><td class="markdownTableBodyNone">0.00737212389527389    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">typed matrix from std::mdspan from std::tuple   </td><td class="markdownTableBodyNone">2x2   </td><td class="markdownTableBodyNone">2.22671644886953e-08   </td><td class="markdownTableBodyNone">0.00292630696616741    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">typed matrix from std::mdspan from std::tuple   </td><td class="markdownTableBodyNone">4x4   </td><td class="markdownTableBodyNone">2.01591668304185e-07   </td><td class="markdownTableBodyNone">0.0038063912684703    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">typed matrix from std::mdspan from std::tuple   </td><td class="markdownTableBodyNone">8x8   </td><td class="markdownTableBodyNone">3.23577464788732e-06   </td><td class="markdownTableBodyNone">0.00523916174533996    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">typed matrix from std::mdspan from std::tuple   </td><td class="markdownTableBodyNone">16x16   </td><td class="markdownTableBodyNone">4.88857142857143e-05   </td><td class="markdownTableBodyNone">0.00247095985327078   </td></tr>
 </table>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

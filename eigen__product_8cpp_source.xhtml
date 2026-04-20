@@ -173,7 +173,7 @@ $(function(){initNavTree('eigen__product_8cpp_source.xhtml',''); initResizable(t
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  std::ofstream results{<span class="stringliteral">&quot;results.txt&quot;</span>, std::ios::app};</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  ankerl::nanobench::Bench()</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>      .output(<span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>      .title(<span class="stringliteral">&quot;Eigen Matrix-Matrix Product&quot;</span>)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>      .title(<span class="stringliteral">&quot;Eigen::Matrix&quot;</span>)</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>      .run([&amp;]() {</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        Eigen::Matrix&lt;double, Size, Size&gt; r{a * b};</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        ankerl::nanobench::doNotOptimizeAway(r);</div>

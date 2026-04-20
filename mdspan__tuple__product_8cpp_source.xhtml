@@ -249,7 +249,7 @@ $(function(){initNavTree('mdspan__tuple__product_8cpp_source.xhtml',''); initRes
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  std::ofstream results{<span class="stringliteral">&quot;results.txt&quot;</span>, std::ios::app};</div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  ankerl::nanobench::Bench()</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>      .output(<span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>      .title(<span class="stringliteral">&quot;std::mdspan/tuple Matrix-Matrix Product&quot;</span>)</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>      .title(<span class="stringliteral">&quot;std::mdspan from std::tuple&quot;</span>)</div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>      .run([&amp;]() {</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        std::linalg::matrix_product(a, b, r);</div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        ankerl::nanobench::doNotOptimizeAway(r);</div>

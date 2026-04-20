@@ -160,7 +160,7 @@ template&lt;auto Size&gt; </div>
 <div class="line"><span class="lineno">   70</span>  std::ofstream results{<span class="stringliteral">&quot;results.txt&quot;</span>, std::ios::app};</div>
 <div class="line"><span class="lineno">   71</span>  ankerl::nanobench::Bench()</div>
 <div class="line"><span class="lineno">   72</span>      .output(<span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">   73</span>      .title(<span class="stringliteral">&quot;std::mdspan Matrix-Matrix Product&quot;</span>)</div>
+<div class="line"><span class="lineno">   73</span>      .title(<span class="stringliteral">&quot;std::mdspan&quot;</span>)</div>
 <div class="line"><span class="lineno">   74</span>      .run([&amp;]() {</div>
 <div class="line"><span class="lineno">   75</span>        std::linalg::matrix_product(a, b, r);</div>
 <div class="line"><span class="lineno">   76</span>        ankerl::nanobench::doNotOptimizeAway(r);</div>

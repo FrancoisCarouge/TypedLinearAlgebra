@@ -209,7 +209,7 @@ int rows    = std::tuple_size_v<row_indexes>;
 int columns = std::tuple_size_v<column_indexes>;
 
 private:
-// Underlying algebraic backend data:
+// Underlying algebraic backend:
 Matrix storage;
 ```
 
@@ -330,9 +330,6 @@ decltype(auto) operator[](this auto &&self, Indexes... indexes)
   requires(sizeof...(Indexes) >= rank)
        and((index<Indexes> && ...)
         or uniform_typed_matrix<typed_matrix>);
-
-// ! Underlying data access:
-decltype(auto) data(this auto &&self);
 ```
 
 <span class="fragment">
@@ -346,10 +343,8 @@ decltype(auto) data(this auto &&self);
 <aside class="notes">
 It seems the best we can do for type-safe compile-time bound-checked access is the standard `at` member, providing the i-th, j-th position as non-type template parameters.
 Next is the subscript operator, another sharp edge, here we see it with deducing this to deduplicate operators. The example shown here is that of the square bracket index operator. There is also the identical historical parentheses index operator not shown here. One difficulty with this operator is the lack of possibilities to provide compile-time bound checking. Another difficulty is that in C++ the return type is fixed at compile-time. We cannot vary the return type based on the element accessed at runtime. Therefore we limit this syntax to uniform matrices to preserve our type safety. This is a problem. It may be judicious to not support this accessor at all. Similarly for the parentheses-based index access operator not shown here.
-Lastly we show the third and last sharp edge, the traditional underlying data accessor member function in the typical standard. Again this will be useful for implementing operations.
-Compilers still had some difficulties with the deducing this syntax in this form here in addition to the decltype(auto) return types. Some of the compilers defects have been fixed in newer version and we may be able to reduce the duplication in the library.<br />
 FRAGMENT<br />
-And that's it for typed matrix class declaration, we will then see interesing implementations for some of these members and operations.
+And that's almost it for typed matrix class declaration, we will then see interesing implementations for some of these members and operations.
 </aside>
 
 
@@ -434,7 +429,7 @@ As far as element type goes, we've talked here about mp-units, and std::chrono. 
 
 ---
 
-###### Examples
+###### Support
 
 ```cpp
 template <typename To, mp_units::Quantity From>
@@ -476,6 +471,8 @@ This third fragment shows a state strong column vector type with position and ve
 </aside>
 
 ---
+
+###### Example
 
 ```cpp
 state x0{3. * m, 2.5 * m / s};
@@ -609,17 +606,7 @@ for_constexpr<0, lhs::rows, 1>([&](auto i) {
 
 <aside class="notes">
 A second requirement is that each of the element products are compatible, convertible to their sums.
-And we can see here a typical naive compile-time assertion over the types of the matrix-matrix product. One issue here is that the compiler error is unreadable when the user attempts an invalid product. Another issue is an apparent equivalent reimplementation of the underlying backend operation for the purpose of type verication, a good argument for the library backend to support strong types directly. 
-</aside>
-
----
-
-###### PERFORMANCE
-
-<aside class="notes">
-Todo:
-* eigen product
-* mdpsan product
+And we can see here a typical naive compile-time assertion over the types of the matrix-matrix product. One issue here is that the compiler error is unreadable when the user attempts an invalid product. Another issue is an apparent equivalent reimplementation of the underlying backend operation for the purpose of type verication, a good argument for the library backend to support strong types directly.<br />
 </aside>
 
 ---
@@ -714,17 +701,37 @@ struct element_caster<To &, From &> {
 
 ###### Alternatives
 
+<small>
+
 | Alternative | Drawback |
 | --- | --- |
-| lvalue reference | Undefined behavior. Loss of constexpr. |
-| setter | Loss of ergonomics. Loss of structured bindings. |
-| reference wrapper | Loss of ergonomics. Loss of structured bindings. Requires type support. |
-| strong storage | Performance loss. |
+| lvalue reference | Undefined behavior.<br />Loss of constexpr. |
+| setter | Loss of ergonomics.<br />Loss of structured bindings. |
+| reference wrapper | Loss of ergonomics.<br />Loss of structured bindings.<br />Requires type support. |
+| strong storage | Performance loss? |
+
+</small>
 
 ---
 
-###### Tuple Sizes
+<img src="performance.png">
 
+<aside class="notes">
+Let's dig into the runtime performance of matrix-matrix product for different types of matrices and typed matrices. The row-column size on the X axis. Time in nanoseconds on the Y axis. Different types of matrices with and without this library.<br />
+The matrix-matrix product performance for Eigen and std::mdspan are equivalent.<br />
+The matrix-matrix product performance for the typed matrix version for Eigen and std::mdspan are identical to their underlying linear algebra backend. A known result from previous work by other authors.<br />
+However the performance for the matrix-matrix product of both std::mdspan and typed matrices over std::mdspan are not meeting their baselines when the underlying storage is a strongly typed std::tuple.<br />Differential profiling indicates the cost comes from getting the tuple value in the accessor policy of std::mdspan. It makes sense: the tuple is not an array. The tuple may have different element alignment, padding, order, and non-standard-layout. Using a strongly typed underlying storage may mean reduced runtime perfomance at this time. Meaning we keep using the classical Eigen and std::mdspan for our underlying algebraic needs.<br />
+Additionaly there are limits to the usage of std::tuple for type-lists either for the data storage or for the row and column type lists. Compilers, standard library implementations have limits in how many types can be found in type-lists. Similarly for recursive template instantiation. 
+</aside>
+
+---
+
+<img src="tuple_trace.png">
+
+<aside class="notes">
+About recursive template instantiation. This figure shows a compile-time trace of a 32x32 matrix-matrix-product with naive recursive template instantiation for the template type list and operations. This trace is 16 seconds, to compare with a baseline of 3 seconds for its non-typed matrix equivalent. Beyond the long compile-time, this implementation suffer from extreme memory usage, deep recursive template instantion. We hit limits in memory consumption. We hit limits in depths of instantiation.
+There is a number of transformations and techniques we use to avoid this issue. For example, we don't instantiate types for evaluation in expressions, and we use iterative template implementation instead of recursive implementations. These techniques can be insufficient and as the type lists grow large we hit compilers, implementation, and platform limits.
+</aside>
 
 ---
 

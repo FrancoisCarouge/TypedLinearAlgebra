@@ -173,7 +173,7 @@ $(function(){initNavTree('typed__eigen__product_8cpp_source.xhtml',''); initResi
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  std::ofstream results{<span class="stringliteral">&quot;results.txt&quot;</span>, std::ios::app};</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  ankerl::nanobench::Bench()</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>      .output(<span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>      .title(<span class="stringliteral">&quot;Typed Eigen Matrix-Matrix Product&quot;</span>)</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>      .title(<span class="stringliteral">&quot;typed matrix from Eigen::Matrix&quot;</span>)</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>      .run([&amp;]() {</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;double, Size, Size&gt;</a> r{a * b};</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        ankerl::nanobench::doNotOptimizeAway(r);</div>

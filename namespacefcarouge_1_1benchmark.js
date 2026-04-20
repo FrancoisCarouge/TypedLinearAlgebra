@@ -13,5 +13,9 @@ var namespacefcarouge_1_1benchmark =
       [ "bench", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__eigen__product_8cpp_03.xhtml#adf9f1c1263f54f8440979ddb0f64d273", null ],
       [ "csv", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__eigen__product_8cpp_03.xhtml#a137a2931c2ede40891ccbb86cdf10c52", null ]
     ] ],
+    [ "anonymous_namespace{typed_mdspan_product.cpp}", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__product_8cpp_03.xhtml", [
+      [ "bench", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__product_8cpp_03.xhtml#aa973806915d202cff1bdd241a18832ec", null ],
+      [ "csv", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__product_8cpp_03.xhtml#a808953a95d96ba9521add427681f129d", null ]
+    ] ],
     [ "anonymous_namespace{typed_mdspan_tupled_product.cpp}", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03.xhtml", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03" ]
 ];

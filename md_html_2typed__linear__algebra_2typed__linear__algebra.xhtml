@@ -224,7 +224,7 @@ You can find this talk and the full library on GitHub at the location linked, or
 <div class="line"><span class="keywordtype">int</span> columns = std::tuple_size_v&lt;column_indexes&gt;;</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">private</span>:</div>
-<div class="line"><span class="comment">// Underlying algebraic backend data:</span></div>
+<div class="line"><span class="comment">// Underlying algebraic backend:</span></div>
 <div class="line">Matrix storage;</div>
 </div><!-- fragment --><p>&lt;aside class="notes"&gt; The count of rows and columns will be useful as public member variables. And the rank, or dimension of the matrix, not shown here. These members are static inline constexpr. We will omit all attribtutes (constexpr, nodiscard, and the occasional <code>std::remove_cvref_t</code>) in the slideware today for readability. The code is also slightly simplified at times, see the library on GitHub for the details. Please, mentally fill in attributes as we go. We will also not deal with dynamically sized matrices today. &lt;/aside&gt;</p>
 <hr  />
@@ -293,16 +293,12 @@ You can find this talk and the full library on GitHub at the location linked, or
 <div class="line">  <span class="keyword">requires</span>(<span class="keyword">sizeof</span>...(Indexes) &gt;= rank)</div>
 <div class="line">       and((index&lt;Indexes&gt; &amp;&amp; ...)</div>
 <div class="line">        or uniform_typed_matrix&lt;typed_matrix&gt;);</div>
-<div class="line"> </div>
-<div class="line"><span class="comment">// ! Underlying data access:</span></div>
-<div class="line"><span class="keyword">decltype</span>(<span class="keyword">auto</span>) data(<span class="keyword">this</span> <span class="keyword">auto</span> &amp;&amp;self);</div>
 </div><!-- fragment --><p><span class="fragment"></span></p>
 <p><span class="fragment"></p><div class="fragment"><div class="line">}; <span class="comment">// typed_matrix</span></div>
 </div><!-- fragment --><p></span></p>
 <p><span class="fragment"></span></p>
-<p>&lt;aside class="notes"&gt; It seems the best we can do for type-safe compile-time bound-checked access is the standard <code>at</code> member, providing the i-th, j-th position as non-type template parameters. Next is the subscript operator, another sharp edge, here we see it with deducing this to deduplicate operators. The example shown here is that of the square bracket index operator. There is also the identical historical parentheses index operator not shown here. One difficulty with this operator is the lack of possibilities to provide compile-time bound checking. Another difficulty is that in C++ the return type is fixed at compile-time. We cannot vary the return type based on the element accessed at runtime. Therefore we limit this syntax to uniform matrices to preserve our type safety. This is a problem. It may be judicious to not support this accessor at all. Similarly for the parentheses-based index access operator not shown here. Lastly we show the third and last sharp edge, the traditional underlying data accessor member function in the typical standard. Again this will be useful for implementing operations. Compilers still had some difficulties with the deducing this syntax in this form here in addition to the decltype(auto) return types. Some of the compilers defects have been fixed in newer version and we may be able to reduce the duplication in the library.<br  />
- FRAGMENT<br  />
- And that's it for typed matrix class declaration, we will then see interesing implementations for some of these members and operations. &lt;/aside&gt;</p>
+<p>&lt;aside class="notes"&gt; It seems the best we can do for type-safe compile-time bound-checked access is the standard <code>at</code> member, providing the i-th, j-th position as non-type template parameters. Next is the subscript operator, another sharp edge, here we see it with deducing this to deduplicate operators. The example shown here is that of the square bracket index operator. There is also the identical historical parentheses index operator not shown here. One difficulty with this operator is the lack of possibilities to provide compile-time bound checking. Another difficulty is that in C++ the return type is fixed at compile-time. We cannot vary the return type based on the element accessed at runtime. Therefore we limit this syntax to uniform matrices to preserve our type safety. This is a problem. It may be judicious to not support this accessor at all. Similarly for the parentheses-based index access operator not shown here. FRAGMENT<br  />
+ And that's almost it for typed matrix class declaration, we will then see interesing implementations for some of these members and operations. &lt;/aside&gt;</p>
 <hr  />
 <h6>Some Algorithms</h6>
 <div class="fragment"><div class="line"><span class="keyword">auto</span> operator+      (<span class="keyword">const</span> same_as_typed_matrix <span class="keyword">auto</span> &amp;lhs,</div>
@@ -366,7 +362,7 @@ std::linalg   </td></tr>
 <p><small></small></p>
 <p>&lt;aside class="notes"&gt; A variety of implementation compositions were explored. At the high-level math applications the Kalman algortihms were the principal motivation. For low level math, both <a class="el" href="namespace_eigen.xhtml">Eigen</a> and LAPACK have shown to be usable. And the underlying performance primitives, operations, and solvers can be chosen at linking, loading time. The native <a class="el" href="namespace_eigen.xhtml">Eigen</a> kernels, the BLAS implementation, or Nvidia BLAS implementation, and C++26 std::linalg have shown to be usable. As far as element type goes, we've talked here about mp-units, and std::chrono. There is a quirky property that emerges from the compositions. It turns out, that fundamental are valid element types, after all, they are in the classical linear algebra. This property allows to create a drop-in replacement typed linear algegra type. Even more curious, the underlying matrix type of the typed matrix can be a nested typed matrix itself! This property will come in handy in future work.&lt;/aside&gt;</p>
 <hr  />
-<h6>Examples</h6>
+<h6>Support</h6>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> To, mp_units::Quantity From&gt;</div>
 <div class="line"><span class="keyword">struct </span>element_caster&lt;To, From&gt; {</div>
 <div class="line">  To operator()(From value) {</div>
@@ -392,6 +388,7 @@ std::linalg   </td></tr>
  FRAGMENT<br  />
  This third fragment shows a state strong column vector type with position and velocity element, and a transposed, row vector. &lt;/aside&gt;</p>
 <hr  />
+<h6>Example</h6>
 <div class="fragment"><div class="line">state x0{3. * m, 2.5 * m / s};</div>
 <div class="line">std::println(<span class="stringliteral">&quot;{}&quot;</span>, x0); <span class="comment">// [[3 m], [2.5 m/s]]</span></div>
 <div class="line">std::println(<span class="stringliteral">&quot;{}&quot;</span>, x0.at&lt;1&gt;()); <span class="comment">// 2.5 m/s</span></div>
@@ -481,17 +478,8 @@ std::linalg   </td></tr>
 <div class="line">             std::tuple_element_t&lt;0, rhs_column&gt;&gt;&gt;,</div>
 <div class="line">    <span class="stringliteral">&quot;Matrix-matrix product requires compatible types.&quot;</span>);});});});</div>
 </div><!-- fragment --><p></span></p>
-<p><span class="fragment">&lt;aside class="notes"&gt; A second requirement is that each of the element products are compatible, convertible to their sums. And we can see here a typical naive compile-time assertion over the types of the matrix-matrix product. One issue here is that the compiler error is unreadable when the user attempts an invalid product. Another issue is an apparent equivalent reimplementation of the underlying backend operation for the purpose of type verication, a good argument for the library backend to support strong types directly. &lt;/aside&gt;</span></p>
-<p><span class="fragment"></p><hr  />
-<p></span></p>
-<p><span class="fragment"></p><h6>PERFORMANCE</h6>
-<p></span></p>
-<p><span class="fragment"></span></p>
-<p><span class="fragment">&lt;aside class="notes"&gt; Todo:</p><ul>
-<li>eigen product</li>
-<li>mdpsan product &lt;/aside&gt;</li>
-</ul>
-<p></span></p>
+<p><span class="fragment">&lt;aside class="notes"&gt; A second requirement is that each of the element products are compatible, convertible to their sums. And we can see here a typical naive compile-time assertion over the types of the matrix-matrix product. One issue here is that the compiler error is unreadable when the user attempts an invalid product. Another issue is an apparent equivalent reimplementation of the underlying backend operation for the purpose of type verication, a good argument for the library backend to support strong types directly.<br  />
+ &lt;/aside&gt;</span></p>
 <p><span class="fragment"></p><hr  />
 <p></span></p>
 <p><span class="fragment"></p><h6>at</h6>
@@ -557,24 +545,38 @@ std::linalg   </td></tr>
 <p><span class="fragment"></p><h6>Alternatives</h6>
 <p></span></p>
 <p><span class="fragment"></span></p>
-<p><span class="fragment"></p><table class="markdownTable">
+<p><span class="fragment"><small></small></span></p>
+<p><span class="fragment"><small></p><table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Alternative   </th><th class="markdownTableHeadNone">Drawback    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">lvalue reference   </td><td class="markdownTableBodyNone">Undefined behavior. Loss of constexpr.    </td></tr>
+<td class="markdownTableBodyNone">lvalue reference   </td><td class="markdownTableBodyNone">Undefined behavior.<br  />
+Loss of constexpr.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">setter   </td><td class="markdownTableBodyNone">Loss of ergonomics. Loss of structured bindings.    </td></tr>
+<td class="markdownTableBodyNone">setter   </td><td class="markdownTableBodyNone">Loss of ergonomics.<br  />
+Loss of structured bindings.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">reference wrapper   </td><td class="markdownTableBodyNone">Loss of ergonomics. Loss of structured bindings. Requires type support.    </td></tr>
+<td class="markdownTableBodyNone">reference wrapper   </td><td class="markdownTableBodyNone">Loss of ergonomics.<br  />
+Loss of structured bindings.<br  />
+Requires type support.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">strong storage   </td><td class="markdownTableBodyNone">Performance loss.   </td></tr>
+<td class="markdownTableBodyNone">strong storage   </td><td class="markdownTableBodyNone">Performance loss?   </td></tr>
 </table>
-<p></span></p>
+<p></small></span></p>
+<p><span class="fragment"><small></small></span></p>
 <p><span class="fragment"></p><hr  />
 <p></span></p>
-<p><span class="fragment"></p><h6>Tuple Sizes</h6>
+<p><span class="fragment"><img src="performance.png" alt="" class="inline"/></span></p>
+<p><span class="fragment">&lt;aside class="notes"&gt; Let's dig into the runtime performance of matrix-matrix product for different types of matrices and typed matrices. The row-column size on the X axis. Time in nanoseconds on the Y axis. Different types of matrices with and without this library.<br  />
+ The matrix-matrix product performance for <a class="el" href="namespace_eigen.xhtml">Eigen</a> and std::mdspan are equivalent.<br  />
+ The matrix-matrix product performance for the typed matrix version for <a class="el" href="namespace_eigen.xhtml">Eigen</a> and std::mdspan are identical to their underlying linear algebra backend. A known result from previous work by other authors.<br  />
+ However the performance for the matrix-matrix product of both std::mdspan and typed matrices over std::mdspan are not meeting their baselines when the underlying storage is a strongly typed std::tuple.<br  />
+Differential profiling indicates the cost comes from getting the tuple value in the accessor policy of std::mdspan. It makes sense: the tuple is not an array. The tuple may have different element alignment, padding, order, and non-standard-layout. Using a strongly typed underlying storage may mean reduced runtime perfomance at this time. Meaning we keep using the classical <a class="el" href="namespace_eigen.xhtml">Eigen</a> and std::mdspan for our underlying algebraic needs.<br  />
+ Additionaly there are limits to the usage of std::tuple for type-lists either for the data storage or for the row and column type lists. Compilers, standard library implementations have limits in how many types can be found in type-lists. Similarly for recursive template instantiation. &lt;/aside&gt;</span></p>
+<p><span class="fragment"></p><hr  />
 <p></span></p>
-<p><span class="fragment"></span></p>
+<p><span class="fragment"><img src="tuple_trace.png" alt="" class="inline"/></span></p>
+<p><span class="fragment">&lt;aside class="notes"&gt; About recursive template instantiation. This figure shows a compile-time trace of a 32x32 matrix-matrix-product with naive recursive template instantiation for the template type list and operations. This trace is 16 seconds, to compare with a baseline of 3 seconds for its non-typed matrix equivalent. Beyond the long compile-time, this implementation suffer from extreme memory usage, deep recursive template instantion. We hit limits in memory consumption. We hit limits in depths of instantiation. There is a number of transformations and techniques we use to avoid this issue. For example, we don't instantiate types for evaluation in expressions, and we use iterative template implementation instead of recursive implementations. These techniques can be insufficient and as the type lists grow large we hit compilers, implementation, and platform limits. &lt;/aside&gt;</span></p>
 <p><span class="fragment"></p><hr  />
 <p></span></p>
 <p><span class="fragment"></p><h6>Index Safety</h6>
