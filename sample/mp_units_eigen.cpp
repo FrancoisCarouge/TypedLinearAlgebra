@@ -116,6 +116,15 @@ using literals::operator""_i;
   assert(x0_1 == 2.5 * m / s);
   assert(std::format("{}", x0_1) == "2.5 m/s");
 
+  auto xp{x0.at<position>()};
+  assert(std::format("{}", xp) == "3 m");
+
+  auto xv{x0.at<velocity>()};
+  assert(std::format("{}", xv) == "2.5 m/s");
+
+  auto xa{x0.at<acceleration>()};
+  assert(std::format("{}", xa) == "1 m/s²");
+
   // Multiplication with a scalar factor.
   state x1{x0 * 3.};
   assert(std::format("{}", x1) == "[[9 m], [7.5 m/s], [3 m/s²]]");

@@ -66,11 +66,13 @@ namespace {
   assert(5. * m == r[]);
   assert(5. * m == r.at());
   assert(5. * m == r.at<>());
+  assert(5. * m == r.at<length>());
 
   static_assert(not std::is_reference_v<decltype(r())>);
   static_assert(not std::is_reference_v<decltype(r[])>);
   static_assert(not std::is_reference_v<decltype(r.at())>);
   static_assert(not std::is_reference_v<decltype(r.at<>())>);
+  static_assert(not std::is_reference_v<decltype(r.at<length>())>);
 
   return 0;
 }()};
