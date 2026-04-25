@@ -45,9 +45,9 @@ namespace fcarouge::typed_linear_algebra_internal {
 //!
 //! @details Matrix division is a mathematical abuse of terminology. Informally
 //! defined as multiplication by the inverse. Similarly to division by zero in
-//! real numbers, there exists matrices that are not invertible. Remember the
+//! real numbers, there exist matrices that are not invertible. Remember the
 //! division operation is not commutative. Matrix inversion can be avoided by
-//! solving `X * rhs = lhs` for `rhs` through a decomposer. There exists several
+//! solving `X * rhs = lhs` for `rhs` through a decomposer. There exist several
 //! ways to decompose and solve the equation. Implementations trade off
 //! numerical stability, triangularity, symmetry, space, time, etc. Dividing an
 //! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix.
