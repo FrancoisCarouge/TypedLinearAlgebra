@@ -290,6 +290,8 @@ public:
   //!
   //! @details Applicable to singleton matrix: one element. Returns the unique
   //! element of the typed matrix.
+  //!
+  //! @return The unique element of the typed matrix.
   [[nodiscard]] constexpr explicit operator element<>(this auto &&self)
     requires singleton_typed_matrix<typed_matrix>;
 
@@ -304,6 +306,9 @@ public:
   //! compilers have internal compiler errors with a placeholder type specifier.
   //! @param self Explicit object parameter deducing this: not user specified.
   //! @param indexes Position(s) of the element to return.
+  //!
+  //! @return A reference to the strongly typed element at the specified
+  //! location for non-const access, or a prvalue otherwise.
   template <typename... Indexes>
   [[nodiscard]] constexpr decltype(auto) operator[](this auto &&self,
                                                     Indexes... indexes)
@@ -321,6 +326,9 @@ public:
   //! compilers have internal compiler errors with a placeholder type specifier.
   //! @param self Explicit object parameter deducing this: not user specified.
   //! @param indexes Position(s) of the element to return.
+  //!
+  //! @return A reference to the strongly typed element at the specified
+  //! location for non-const access, or a prvalue otherwise.
   template <typename... Indexes>
   [[nodiscard]] constexpr decltype(auto) operator()(this auto &&self,
                                                     Indexes... indexes)
@@ -335,6 +343,9 @@ public:
   //! @tparam Indexes Position(s) of the element to return. Both row and column
   //! indexes for any matrix, one index for one-dimension matrices, no index for
   //! singleton matrices.
+  //!
+  //! @return A reference to the strongly typed element at the specified
+  //! location for non-const access, or a prvalue otherwise.
   template <auto... Indexes>
   [[nodiscard]] constexpr decltype(auto) at(this auto &&self)
     requires(sizeof...(Indexes) >= rank);
@@ -346,6 +357,8 @@ public:
   //! @warning Useful for operations implementation where underlying data
   //! access is needed. Not recommended for convenience access due to
   //! absence of type validation.
+  //!
+  //! @return A reference to the underlying element storage.
   [[nodiscard]] constexpr decltype(auto) data(this auto &&self);
 
   //! @}
