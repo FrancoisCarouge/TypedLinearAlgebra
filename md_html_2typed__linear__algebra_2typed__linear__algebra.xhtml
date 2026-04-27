@@ -108,11 +108,11 @@ ianchortyped_linear_algebra-typed_linear_algebrailinebr</h2>
 <p>theme : "black" transition: "slide" highlightTheme: "monokai" slideNumber: true </p>
 <h2><a class="anchor" id="title-typed-linear-algebra"></a>
 title: "Typed Linear Algebra"</h2>
-<p>&lt;section data-background-image="welcome.png" data-background-size="contain"&gt; &lt;/section&gt;</p>
-<p>&lt;aside class="notes"&gt; Hello, my name is François Carouge. Thank you for welcoming me to present in this session of Cpp Bay Area.<br  />
+<p>&lt;section data-background-image="welcome.png" data-background-size="contain"&gt; &lt;aside class="notes"&gt; Typed Linear Algebra How to Not Crash on Mars Hello, my name is François Carouge. Thank you for welcoming me to present in this session of Cpp Bay Area.<br  />
  Today we are going to talk about yet another type of safety in programming languages. That would be quantity or unit safety with support of the C++ type system. We will try to implement unit safety in linear algebra applications. My objective is to share with you my practical learnings about type safe matrices. I will motivate the problem, explore the ideas, introduce a solution, and share takeaways.<br  />
-You can find this talk and the full library on GitHub at the location linked, or by taking a picture of this QR code.<br  />
- Please interrupt me with your questions, or note down the slide number if you prefer to bring it up during the Q&amp;A. Let us start today with a real-world, motivating problem. &lt;/aside&gt;</p>
+ As-is customary at CppNow, please interrupt me with your questions, or note down the slide number if you prefer to bring it up during the Q&amp;A. Let us start today with a real-world, motivating problem. &lt;/aside&gt; &lt;/section&gt;</p>
+<hr  />
+<p>&lt;section data-background-image="jnj.png" data-background-size="contain"&gt; &lt;aside class="notes"&gt; I would like to thank my employer Johnson &amp; Johnson MedTech for supporting my attendance at this conference. We provide an inclusive work environment to service our patients and communities. The opinions expressed are my own and do not reflect the views of my employer. We make remarkable robots and we are hiring. &lt;/aside&gt; &lt;/section&gt;</p>
 <hr  />
 <p><img src="mars_climate_orgiter_99.png" alt="" height="600px" class="inline"/> &lt;aside class="notes"&gt; <b>Do you know which launch this is?</b><br  />
  Yes, it is the December 1998 launch of the Mars Climate Orbiter probe. The mission lasted 286 days for 327 million dollars. <b>And do you know how the mission concluded?</b><br  />
@@ -398,7 +398,7 @@ std::linalg   </td></tr>
 </div><!-- fragment --><p><span class="fragment"></span></p>
 <p><span class="fragment"></p><div class="fragment"><div class="line"><span class="comment">//                       ^~</span></div>
 <div class="line"><span class="comment">// error: static assertion failed:</span></div>
-<div class="line"><span class="comment">// Matrix multiplication requires compatible types.</span></div>
+<div class="line"><span class="comment">// Matrix product requires compatible types.</span></div>
 </div><!-- fragment --><p></span></p>
 <p><span class="fragment"></span> <span class="fragment"></span></p>
 <p><span class="fragment"></p><div class="fragment"><div class="line">std::println(<span class="stringliteral">&quot;{}&quot;</span>, x0 * x0ᵀ);</div>
@@ -579,27 +579,45 @@ Differential profiling indicates the cost comes from getting the tuple value in 
 <p><span class="fragment">&lt;aside class="notes"&gt; About recursive template instantiation. This figure shows a compile-time trace of a 32x32 matrix-matrix-product with naive recursive template instantiation for the template type list and operations. This trace is 16 seconds, to compare with a baseline of 3 seconds for its non-typed matrix equivalent. Beyond the long compile-time, this implementation suffer from extreme memory usage, deep recursive template instantion. We hit limits in memory consumption. We hit limits in depths of instantiation. There is a number of transformations and techniques we use to avoid this issue. For example, we don't instantiate types for evaluation in expressions, and we use iterative template implementation instead of recursive implementations. These techniques can be insufficient and as the type lists grow large we hit compilers, implementation, and platform limits. &lt;/aside&gt;</span></p>
 <p><span class="fragment"></p><hr  />
 <p></span></p>
-<p><span class="fragment"></p><h6>Index Safety</h6>
+<p><span class="fragment"></p><h6>Future</h6>
 <p></span></p>
 <p><span class="fragment"></span></p>
-<p><span class="fragment"></p><hr  />
-<p></span></p>
-<p><span class="fragment"></p><h6>Next</h6>
-<p></span></p>
-<p><span class="fragment"></span></p>
-<p><span class="fragment"></span></p>
-<p><span class="fragment"> <b>Compose More Safeties</b><br  />
- Index<br  />
- Frame<br  />
- Taxonomy </span></p>
-<p><span class="fragment"></span></p>
-<p><span class="fragment"><span class="fragment"> Compliance, Ergonomics<br  />
+<p><span class="fragment"></p><div class="fragment"><div class="line">state x{3. * m,</div>
+<div class="line">        2. * m / s,</div>
+<div class="line">        1. * m / s2};</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Index Safety:</span></div>
+<div class="line">std::println(<span class="stringliteral">&quot;{}&quot;</span>, x.at&lt;velocity&gt;());</div>
+<div class="line"><span class="comment">// 2 m/s</span></div>
+</div><!-- fragment --><p></span></p>
+<p><span class="fragment"><small> <span class="fragment"></span></small></span></p>
+<p><span class="fragment"><small><span class="fragment"></p><ul>
+<li>More Safety: frames, coordinate systems, taxonomy.</li>
+<li>Decide: memory non/ownership</li>
+<li>Operations: P1673 / <a class="el" href="namespace_eigen.xhtml">Eigen</a></li>
+</ul>
+<p></span></small></span></p>
+<p><span class="fragment"><small><span class="fragment"></span> </small></span></p>
+<p><span class="fragment">&lt;aside class="notes"&gt; Compliance, Ergonomics<br  />
  Regression, Performance<br  />
  Ecosystem<br  />
- </span></span></p>
-<p><span class="fragment">&lt;aside class="notes"&gt; I will close today's session by looking toward the future. We've now seen the principles driving a strongly typed linear algebra with examples of implementation and usage. That's only the beginning. Unfortunately unit and dimension are incomplete for a more comprehensive safe physical linear algebra! Additional safety capabilities are critical to consider such as quantity kind, character semantics, index access, or reference frames. I want to explore these areas, perhaps with yet another composition.<br  />
+ I will close today's session by looking toward the future. We've now seen the principles driving a strongly typed linear algebra with examples of implementation and usage. That's only the beginning. Unfortunately unit and dimension are incomplete for a more comprehensive safe physical linear algebra! Additional safety capabilities are critical to consider such as quantity kind, character semantics, index access, or reference frames. I want to explore these areas, perhaps with yet another composition.<br  />
  FRAGMENT<br  />
  Additionally, we need greater compatibility, support with the standard library, <code>std::linalg</code>, third party linear algebra, and third party types. I believe typed linear algebra could be a drop-in retrofit in existing high order libraries while maintaining zero-cost for performance. &lt;/aside&gt;</span></p>
+<p><span class="fragment"></p><hr  />
+<p></span></p>
+<p><span class="fragment"></p><h6>Learnings</h6>
+<p></span></p>
+<p><span class="fragment"></span></p>
+<p><span class="fragment"></p><ul>
+<li>
+Strong type propagation <span class="fragment"></span></li>
+<li>
+<span class="fragment"> std::tuple scalability </span><span class="fragment"></span></li>
+<li>
+<span class="fragment"> Index safety </span></li>
+</ul>
+<p></span></p>
 <p><span class="fragment"></p><hr  />
 <p></span></p>
 <p><span class="fragment"></span></p>
@@ -609,7 +627,7 @@ Differential profiling indicates the cost comes from getting the tuple value in 
 <p><span class="fragment"><small>François Carouge<br  />
  github.com/FrancoisCarouge</small></span></p>
 <p><span class="fragment"><img src="repo_qr.png" alt="" height="250px" class="inline"/></span></p>
-<p><span class="fragment">&lt;aside class="notes"&gt; I believe this is the first extensive open source and permissive implementation of a typed linear algebra library. I hope this talk will help you build safer linear algebra applications. This QR code and link will take you to the library. At this time I would like to thank you and I would welcome any question. &lt;/aside&gt;</span></p>
+<p><span class="fragment">&lt;aside class="notes"&gt; I believe this is the first extensive open source and permissive implementation of a typed linear algebra library. I hope this talk will help you build safer linear algebra applications. You can find this talk and the full library on GitHub at the location linked, or by taking a picture of this QR code. At this time I would like to thank you and I would welcome any more question. &lt;/aside&gt;</span></p>
 <p><span class="fragment"></p><hr  />
 <p></span></p>
 <p><span class="fragment"></span></p>
