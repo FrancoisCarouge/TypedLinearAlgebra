@@ -144,7 +144,7 @@ Daniel Withopf and Chip Hogg informed us there already exists several closed-sou
 ###### Objective
 
 ```cpp
-// Update the estimate uncertainty of a Kalman filter:
+// Update the estimate uncertainty P of a Kalman filter:
 p = (i - k * h) * p * t(i - k * h) + k * r * t(k);
 
 std::println("{}", p);
@@ -154,11 +154,21 @@ std::println("{}", p);
 ```
 
 <aside class="notes">
-I author a Kalman filter C++ library. Briefly, the Kalman filter is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. This sample shows an implementation of the estimate uncertainty update of a Kalman filter. It is simple, yet non-trivial. A fair benchmark, objective for today. The estimate uncertainty P shown with its nine values comes from the estimation of the position, velocity, and acceleration of an object in one-dimension. There exists filters with dozens, hundreds, or more states. Filters with numerous states can get complicated. Development difficulties and safety risk arise in ensuring a parameter is used in the expected position and with the expected units. This was my motivation for the typed linear algebra library.
+I author a Kalman filter C++ library. Briefly, the Kalman filter is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. This sample shows an implementation of the estimate uncertainty update of a Kalman filter. It is simple, yet non-trivial. A fair benchmark, objective for today. The estimate uncertainty P shown with its nine values comes from the estimation of the position, velocity, and acceleration of an object in only one-dimension. There exists filters with dozens, hundreds, or more states. Filters with numerous states can get complicated. Development difficulties and safety risk arise in ensuring a parameter is used in the expected position and with the expected units. This was my motivation for the typed linear algebra library.
+The general objective for typed linear algebra is to guarantee at compile-time the correct usage, access, and algorithms over potentially large and complex linear algebra system while providing quality of life for the C++ implementors.
 </aside>
 
 ---
 
+<img src="uml.png">
+
+<aside class="notes">
+I propose the `typed_matrix` class to compose a third party linear algebra matrix type. This matrix type is injected through a template parameter `Matrix`. This Matrix parameter and its usage may need to transparently accommodate expression templates techniques which permits compile-time reduction of complex linear algebra expressions. I propose not to limit memory model to ownership or view but to support both. It is perhaps less common in C++. The strong types of the matrix elements are encoded in a collections of types. <b>What do you use for collections of types?</b><br />
+Packs? Template template parameters? `std::tuple` may suffice. <b>Why are there two collections of types? Isn't one collection of N-times-M types sufficient to encode all the individual types of the matrix?</b><br />
+It interestingly turns out that encoding N-times-M types is quite complicated and also unnecessary. Blair Hall explained a conjecture from George Hart on the properties of physical quantity linear algebra: that is for all useful physical matrices N-plus-M types suffices to represent all the valid types of the matrix. Hence we will use two collections: one for the rows, one for the columns; the element of any given type being a factor at the intersection. Additionally, the typed_matrix must also support the superset of operations provided by the third party linear algebra libraries and the standard library. Lastly, the library needs to be decoupled from the linear algebra library and element type libraries. The template parameters, concepts, customization point as template specialization will help us in decoupling the dependencies.
+</aside>
+
+<!--
 ```mermaid
 classDiagram
   class typed_matrix~Matrix, RowIndexes, ColumnIndexes~ {
@@ -168,13 +178,11 @@ classDiagram
   }
   note for typed_matrix "Matrix is a third party type"
   note for typed_matrix "Indexes are collections<br />of third party types"
-```
 
-<aside class="notes">
-I propose the `typed_matrix` class to compose a third party linear algebra matrix type. This matrix type is injected through a template parameter `Matrix`. This Matrix parameter and its usage may need to transparently accommodate expression templates techniques which permits compile-time reduction of complex linear algebra expressions. I propose not to limit memory model to ownership or view but to support both. It is perhaps less common in C++. The strong types of the matrix elements are encoded in a collections of types. <b>What do you use for collections of types?</b><br />
-Packs? Template template parameters? `std::tuple` may suffice. <b>Why are there two collections of types? Isn't one collection of N-times-M types sufficient to encode all the individual types of the matrix?</b><br />
-It interestingly turns out that encoding N-times-M types is quite complicated and also unnecessary. Blair Hall explained a conjecture from George Hart on the properties of physical quantity linear algebra: that is for all useful physical matrices N-plus-M types suffices to represent all the valid types of the matrix. Hence we will use two collections: one for the rows, one for the columns; the element of any given type being a factor at the intersection. Additionally, the typed_matrix must also support the superset of operations provided by the third party linear algebra libraries and the standard library. Lastly, the library needs to be decoupled from the linear algebra library and element type libraries. The template parameters, concepts, customization point as template specialization will help us in decoupling the dependencies.
-</aside>
+  note "Many linear algebra algorithms..."
+```
+-->
+
 
 ---
 
@@ -236,8 +244,11 @@ These members are static inline constexpr. We will omit all attribtutes (constex
 typed_matrix()
   requires std::default_initializable<Matrix>;
 
-// Compatible copy conversion:
-typed_matrix(const same_as_typed_matrix auto &other);
+// Vector from values:
+typed_matrix(const auto &first_value,
+             const auto &second_value,
+             const auto &...values)
+  requires one_dimension_typed_matrix<typed_matrix>;
 
 // Singleton matrix from convertible value.
 typed_matrix(
@@ -256,6 +267,9 @@ The singleton constructor helps the typed matrix to behavior more like built-in 
 ---
 
 ```cpp
+// Compatible copy conversion:
+typed_matrix(const same_as_typed_matrix auto &other);
+
 // Uniformly typed vector from array:
 typed_matrix(const element<> (&elements)[rows * columns])
   requires uniform_typed_matrix<typed_matrix>
@@ -269,6 +283,7 @@ typed_matrix(
 ```
 
 <aside class="notes">
+And we can also provide an easy construction for a column or row vector of heterogeneous quantities. Note the parameter pack with two preceding mandatory parameter to disambiguate from other constructors.
 The constructor from an array is valid for uniform vectors.
 We can at least provide a constructor accepting an initializer-list of initializer-list for a type giving a uniformly typed matrix.
 </aside>
@@ -276,54 +291,7 @@ We can at least provide a constructor accepting an initializer-list of initializ
 
 ---
 
-```cpp
-// Vector from values:
-typed_matrix(const auto &first_value,
-             const auto &second_value,
-             const auto &...values)
-  requires one_dimension_typed_matrix<typed_matrix>;
 
-// ! Underlying matrix conversion:
-explicit typed_matrix(const Matrix &other);
-```
-
-<aside class="notes">
-And we can also provide an easy construction for a column or row vector of heterogeneous quantities. Note the parameter pack with two preceding mandatory parameter to disambiguate from other constructors.
-The last constructor is a sharp edge. The tradeoffs are not always easy and so we may need to be able to construct a typed matrix from its underlying matrix type. This is helpful for implementing operations without friendship, or supporting expression templates. This is a problem.
-</aside>
-
----
-
-###### Some Concepts
-
-```cpp
-// A typed matrix concept:
-template <typename Type> concept same_as_typed_matrix =
-  std::same_as<Type, typed_matrix<typename Type::matrix,
-                                  typename Type::row_indexes,
-                                  typename Type::column_indexes>>;
-```
-
-</span>
-<span class="fragment">
-
-```cpp
-// A uniformly typed matrix concept:
-template <typename Type> concept uniform_typed_matrix = // ...
-  // is a typed matrix, and
-  // each element are of the same type.
-```
-
-</span>
-
-<aside class="notes">
-The constructors of the typed matrix used concepts to ensure they are meanigful for a given template instantiation of a typed matrix. We show here a couple interesting concepts among the the 10 or so concepts present and used in the library.
-In some cases, we want to enable behavior solely for typed matrices. This concept presented with an interesting challenge in its definition: the template parameters of the typed matrix could not be passed in the concept nor deduced. The neat idiom to permit usage of the concept while passing only the single type to check was to re-use the type's under evaluation for its member types. Note the Type parameter is found on both sides of the same type concept.<br />
-FRAGMENT<br />
-There will be constructors, members that are only valid, only enabled if the typed matrix is in the special case of a uniformely typed matrix. All element types are the same. The same? Is same type too restrictive? Wouldn't convertible types be a sufficient condition? But convertible to what? A common type? To one another? Exhaustively? Some questions remain open. Also note that the constexpr for or template for expression statement can often be re-written as a fold expression, we haven't found a practical nested fold expression equivalent to the nested for loops here. Note that in C++26 template for expansion statement will replace these constexpr for templates. 
-</aside>
-
----
 
 ###### Some Accessors
 
@@ -359,7 +327,7 @@ And that's almost it for typed matrix class declaration, we will then see intere
 
 ---
 
-###### Some Algorithms
+###### Some of Many Algorithms
 
 ```cpp
 auto operator+      (const same_as_typed_matrix auto &lhs,
@@ -596,6 +564,8 @@ The left-hand-side matrix needs as many columns as the number of rows of the rig
 
 ---
 
+###### NAIVE
+
 ```cpp
 for_constexpr<0, lhs::rows, 1>([&](auto i) {
  using lhs_row = product<std::tuple_element_t<i, lhs_row_indexes>,
@@ -604,38 +574,18 @@ for_constexpr<0, lhs::rows, 1>([&](auto i) {
   using rhs_column = product<rhs_row_indexes,
                     std::tuple_element_t<j, rhs_column_indexes>>;
   for_constexpr<0, lhs::columns, 1>([&](auto k) {
-   static_assert(
-    std::is_convertible_v<
-     product<std::tuple_element_t<k, lhs_row>,
-             std::tuple_element_t<k, rhs_column>>,
-     product<std::tuple_element_t<0, lhs_row>,
-             std::tuple_element_t<0, rhs_column>>>,
+
+   static_assert(std::is_convertible_v<
+      product<std::tuple_element_t<k, lhs_row>,
+              std::tuple_element_t<k, rhs_column>>,
+      product<std::tuple_element_t<0, lhs_row>,
+              std::tuple_element_t<0, rhs_column>>>,
     "Matrix-matrix product requires compatible types.");});});});
 ```
 
 <aside class="notes">
 A second requirement is that each of the element products are compatible, convertible to their sums.
 And we can see here a typical naive compile-time assertion over the types of the matrix-matrix product. One issue here is that the compiler error is unreadable when the user attempts an invalid product. Another issue is an apparent equivalent reimplementation of the underlying backend operation for the purpose of type verication, a good argument for the library backend to support strong types directly.<br />
-</aside>
-
----
-
-###### at
-
-```cpp
-template <auto... Indexes>
-decltype(auto) at(this auto &&self)
-  requires(sizeof...(Indexes) >= rank);
-{
-  // ...
-  return cast<qualified_element, qualified_underlying>(
-      self.storage[std::get<0>(std::tuple{Indexes...}),
-                    std::get<1>(std::tuple{Indexes...})]);
-}
-```
-
-<aside class="notes">
-Let's get back to implementation of the typed matrix methods. The simplified implementation of the `at` member function shown here introduces the customization point object `cast`. This element caster objet allows the end-user to teach the library how it can convert underlying type to and from quantity types. This single abstraction is the only place where the explicit conversions take place. For the mp-units quantity library the template specializations of the customization point use the explicit `numerical_value_in` quantity member function to obtain the underlying type value or inversely equip the underlying type value with the reference unit. Note the difficulties in preserving the value category of the type for rvalues and lvalues. The implementation can be thought of the equivalent of the standard library forward-like utility, with an injected cast, and index look up and verification.
 </aside>
 
 ---
@@ -656,6 +606,47 @@ x0(0_i, 0_i)
 
 <aside class="notes">
 
+</aside>
+
+---
+
+###### Index Safety
+
+```cpp
+state x{3. * m,
+        2. * m / s,
+        1. * m / s2};
+
+// Index Safety:
+std::println("{}", x.at<velocity>());
+// 2 m/s
+```
+
+<aside class="notes">
+Strongly typed element is not a suffcient condition for safer linear algebra.
+Indexes must also be safe. Not only in runtime and compile-time range, but also in type.
+The members of the state vector can be accessed by type, instead of index. But what happens when this state is not in one-dimension, but more dimensions? Which velocity is it? And in which frame?
+We will need more index safety according to the domains. 
+</aside>
+
+---
+
+###### at
+
+```cpp
+template <auto... Indexes>
+decltype(auto) at(this auto &&self)
+  requires(sizeof...(Indexes) >= rank);
+{
+  // ...
+  return cast<qualified_element, qualified_underlying>(
+      self.storage[std::get<0>(std::tuple{Indexes...}),
+                    std::get<1>(std::tuple{Indexes...})]);
+}
+```
+
+<aside class="notes">
+Let's get back to implementation of the typed matrix methods. The simplified implementation of the `at` member function shown here uses the customization point object `cast`. This element caster objet allows the end-user to teach the library how it can convert underlying type to and from quantity types. This single abstraction is the only place where the explicit conversions take place. For the mp-units quantity library the template specializations of the customization point use the explicit `numerical_value_in` quantity member function to obtain the underlying type value or inversely equip the underlying type value with the reference unit. Note the difficulties in preserving the value category of the type for rvalues and lvalues. The implementation can be thought of the equivalent of the standard library forward-like utility, with an injected cast, and index look up and verification.
 </aside>
 
 ---
@@ -699,16 +690,21 @@ struct element_caster<To &, From &> {
 </span>
 
 <aside class="notes">
-// This conversion is Undefined Behavior (UB): strict-aliasing violation,
-// type punning dereferencing. The `reinterpret_cast` is not a constant
-// expression. The function can never be evaluated at compile-time. The
-// function will never be `constexpr`.
-
+How would you implement the `at` member? To provide a strong safe type?<br />
+FRAGMENT<br />
+A double reference to a quantity reference?<br />
+FRAGMENT<br />
+There may be limitations and aliasing violations?<br />
+FRAGMENT<br />
+Yes, this conversion is Undefined Behavior: strict-aliasing violation,
+type punning dereferencing. Morevover `reinterpret_cast` is not a constant
+expression. The function can never be evaluated at compile-time. The
+function will never be `constexpr`. That's not good.
 </aside>
 
 ---
 
-###### Alternatives
+###### Write Alternatives
 
 <small>
 
@@ -721,83 +717,60 @@ struct element_caster<To &, From &> {
 
 </small>
 
+<aside class="notes">
+What can we do if we can't provide direct reference access to a safe type? And what do we lose in the trafeoffs?
+A setter syntax and a reference wrapper moves the syntax away from current practices. They prevent structured bindings out of the box.
+Can we use a strongly typed storage directly? We may suffer performance loss.
+</aside>
+
 ---
+
+###### Strongly Typed Storage
 
 <img src="performance.png">
 
 <aside class="notes">
-Let's dig into the runtime performance of matrix-matrix product for different types of matrices and typed matrices. The row-column size on the X axis. Time in nanoseconds on the Y axis. Different types of matrices with and without this library.<br />
-The matrix-matrix product performance for Eigen and std::mdspan are equivalent.<br />
-The matrix-matrix product performance for the typed matrix version for Eigen and std::mdspan are identical to their underlying linear algebra backend. A known result from previous work by other authors.<br />
-However the performance for the matrix-matrix product of both std::mdspan and typed matrices over std::mdspan are not meeting their baselines when the underlying storage is a strongly typed std::tuple.<br />Differential profiling indicates the cost comes from getting the tuple value in the accessor policy of std::mdspan. It makes sense: the tuple is not an array. The tuple may have different element alignment, padding, order, and non-standard-layout. Using a strongly typed underlying storage may mean reduced runtime perfomance at this time. Meaning we keep using the classical Eigen and std::mdspan for our underlying algebraic needs.<br />
-Additionaly there are limits to the usage of std::tuple for type-lists either for the data storage or for the row and column type lists. Compilers, standard library implementations have limits in how many types can be found in type-lists. Similarly for recursive template instantiation. 
+Let's look into the runtime performance of matrix-matrix product for different types of matrices, typed or non-typed, stored as tuples or arrays. The row-column size on the X axis. Time in nanoseconds on the Y axis. Lower time is better.
+The matrix-matrix product performance for Eigen and std::mdspan are identical on my machine.
+The matrix-matrix product performance for the typed matrix version for Eigen and std::mdspan are identical to their underlying linear algebra backend. Confirming a known result by previous work.<br />
+However the performance for the matrix-matrix product of both std::mdspan and typed matrices over std::mdspan are not meeting their baselines if the underlying storage is a strongly typed std::tuple. <b>Why do you think that is?</b> Differential profiling indicates the cost comes from getting the tuple value in the accessor policy of std::mdspan. It makes sense: the tuple is not an array. The tuple may have different element alignment, padding, order, and non-standard-layout. Using a strongly typed underlying storage may mean reduced runtime perfomance at this time. Meaning we keep using the classical Eigen and std::mdspan for our underlying algebraic needs.<br />
+Additionaly there are compile-time limits to the usage of std::tuple for type-lists either for the data storage or for the row and column type lists. Compilers, standard library implementations have limits in how many types can be found in type-lists. Similarly for recursive template instantiation. 
 </aside>
 
 ---
 
-<img src="tuple_trace.png">
-
-<aside class="notes">
-About recursive template instantiation. This figure shows a compile-time trace of a 32x32 matrix-matrix-product with naive recursive template instantiation for the template type list and operations. This trace is 16 seconds, to compare with a baseline of 3 seconds for its non-typed matrix equivalent. Beyond the long compile-time, this implementation suffer from extreme memory usage, deep recursive template instantion. We hit limits in memory consumption. We hit limits in depths of instantiation.
-There is a number of transformations and techniques we use to avoid this issue. For example, we don't instantiate types for evaluation in expressions, and we use iterative template implementation instead of recursive implementations. These techniques can be insufficient and as the type lists grow large we hit compilers, implementation, and platform limits.
-</aside>
-
----
-
-###### Future
-
-```cpp
-state x{3. * m,
-        2. * m / s,
-        1. * m / s2};
-
-// Index Safety:
-std::println("{}", x.at<velocity>());
-// 2 m/s
-```
+###### Future Work
 
 <small>
-<span class="fragment">
 
-* More Safety: frames, coordinate systems, taxonomy.
-* Decide: memory non/ownership
-* Operations: P1673 / Eigen
+* Positional access replaced by typed access.
+* Exhaustive std::linalg / Eigen algorithms.
+* Memory ownership: Yes? No? Both?
+* Optimize type-list / `std::tuple` compile-time scalability.
+* Optimize compile-time.
+* Nondimensionalization.
 
-</span>
 </small>
 
 <aside class="notes">
-Compliance, Ergonomics<br />
-Regression, Performance<br />
-Ecosystem<br />
-I will close today's session by looking toward the future. We've now seen the principles driving a strongly typed linear algebra with examples of implementation and usage. That's only the beginning. Unfortunately unit and dimension are incomplete for a more comprehensive safe physical linear algebra! Additional safety capabilities are critical to consider such as quantity kind, character semantics, index access, or reference frames. I want to explore these areas, perhaps with yet another composition.<br />
-FRAGMENT<br />
-Additionally, we need greater compatibility, support with the standard library, `std::linalg`, third party linear algebra, and third party types. I believe typed linear algebra could be a drop-in retrofit in existing high order libraries while maintaining zero-cost for performance.
+What is next for this work?
+Index safety comes next along with more kind of safeties and examples: index access and reference frames.
+More, or all, alogorithms supported for `std::linalg` and `Eigen` to support a drop-in retrofit.
+Perhaps strong argument for one or more memory ownership model.
+Type-list, `std::tuple` compile-time scalability improvments.
+And clarify the complementarity of nondimensionalization and typed linear algebra.
 </aside>
-
----
-
-###### Learnings
-
-<ul><li>
-Strong type propagation
-</li><span class="fragment"><li>
-std::tuple scalability
-</li></span><span class="fragment"><li>
-Index safety
-</li></span></ul>
 
 ---
 
 ## Typed Linear Algebra
 
-<small>François Carouge<br />
-github.com/FrancoisCarouge</small>
+<small>github.com/FrancoisCarouge</small>
 
 <img src="repo_qr.png" height="250px">
 
 <aside class="notes">
-I believe this is the first extensive open source and permissive implementation of a typed linear algebra library. I hope this talk will help you build safer linear algebra applications. You can find this talk and the full library on GitHub at the location linked, or by taking a picture of this QR code. At this time I would like to thank you and I would welcome any more question.
+Thank you for joining this talk about what I believe to be the first extensive open source and permissive implementation of a typed linear algebra library in C++. I hope this talk will help you build safer linear algebra applications. You can find this talk and the library by following this link. At this time I would welcome any more question.
 </aside>
 
 ---
@@ -897,4 +870,68 @@ Slide ideas:
 * Alternatives to storage: e.g. storing quantities.
 
 </aside>
+---
+
+```cpp
+// ! Underlying matrix conversion:
+explicit typed_matrix(const Matrix &other);
+```
+
+<aside class="notes">
+The last constructor is a sharp edge. The tradeoffs are not always easy and so we may need to be able to construct a typed matrix from its underlying matrix type. This is helpful for implementing operations without friendship, or supporting expression templates. This is a problem.
+</aside>
+
+---
+
+###### Some Concepts
+
+```cpp
+// A typed matrix concept:
+template <typename Type> concept same_as_typed_matrix =
+  std::same_as<Type, typed_matrix<typename Type::matrix,
+                                  typename Type::row_indexes,
+                                  typename Type::column_indexes>>;
+```
+
+</span>
+<span class="fragment">
+
+```cpp
+// A uniformly typed matrix concept:
+template <typename Type> concept uniform_typed_matrix = // ...
+  // is a typed matrix, and
+  // each element are of the same type.
+```
+
+</span>
+
+<aside class="notes">
+The constructors of the typed matrix used concepts to ensure they are meanigful for a given template instantiation of a typed matrix. We show here a couple interesting concepts among the the 10 or so concepts present and used in the library.
+In some cases, we want to enable behavior solely for typed matrices. This concept presented with an interesting challenge in its definition: the template parameters of the typed matrix could not be passed in the concept nor deduced. The neat idiom to permit usage of the concept while passing only the single type to check was to re-use the type's under evaluation for its member types. Note the Type parameter is found on both sides of the same type concept.<br />
+FRAGMENT<br />
+There will be constructors, members that are only valid, only enabled if the typed matrix is in the special case of a uniformely typed matrix. All element types are the same. The same? Is same type too restrictive? Wouldn't convertible types be a sufficient condition? But convertible to what? A common type? To one another? Exhaustively? Some questions remain open. Also note that the constexpr for or template for expression statement can often be re-written as a fold expression, we haven't found a practical nested fold expression equivalent to the nested for loops here. Note that in C++26 template for expansion statement will replace these constexpr for templates. 
+</aside>
+
+---
+
+<img src="tuple_trace.png">
+
+<aside class="notes">
+About recursive template instantiation. This figure shows a compile-time trace of a 32x32 matrix-matrix-product with naive recursive template instantiation for the template type list and operations. This trace is 16 seconds, to compare with a baseline of 3 seconds for its non-typed matrix equivalent. Beyond the long compile-time, this implementation suffer from extreme memory usage, deep recursive template instantion. We hit limits in memory consumption. We hit limits in depths of instantiation.
+There is a number of transformations and techniques we use to avoid this issue. For example, we don't instantiate types for evaluation in expressions, and we use iterative template implementation instead of recursive implementations. These techniques can be insufficient and as the type lists grow large we hit compilers, implementation, and platform limits.
+</aside>
+
+---
+
+
+###### Learnings
+
+<ul><li>
+Strong type propagation
+</li><span class="fragment"><li>
+std::tuple scalability
+</li></span><span class="fragment"><li>
+Index safety
+</li></span></ul>
+
 ---
