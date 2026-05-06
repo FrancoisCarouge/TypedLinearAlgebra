@@ -8,11 +8,8 @@ title: "Typed Linear Algebra"
 
 <section data-background-image="welcome.png" data-background-size="contain">
 <aside class="notes">
-Typed Linear Algebra
-How to Not Crash on Mars
-Hello, my name is François Carouge. Thank you for welcoming me to present in this session of Cpp Bay Area.<br />
-Today we are going to talk about yet another type of safety in programming languages. That would be quantity or unit safety with support of the C++ type system. We will try to implement unit safety in linear algebra applications. My objective is to share with you my practical learnings about type safe matrices. I will motivate the problem, explore the ideas, introduce a solution, and share takeaways.<br />
-As-is customary at CppNow, please interrupt me with your questions, or note down the slide number if you prefer to bring it up during the Q&A. Let us start today with a real-world, motivating problem.
+Welcome to Typed Linear Algebra. Thank you for choosing this session. How to Not Crash on Mars is the social media friendly subtitle. Hello, my name is François Carouge. Thank you for having me at C++Now.<br />
+Today we are going to talk about more types of safety. That would be quantity or unit safety with support of the C++ type system. We will actually try to compose these safeties in linear algebra applications as often found in physical computation. My objective is to share with you my practical learnings and failures about type safe matrices.
 </aside>
 </section>
 
@@ -20,7 +17,7 @@ As-is customary at CppNow, please interrupt me with your questions, or note down
 
 <section data-background-image="jnj.png" data-background-size="contain">
 <aside class="notes">
-I would like to thank my employer Johnson & Johnson MedTech for supporting my attendance at this conference. We provide an inclusive work environment to service our patients and communities. The opinions expressed are my own and do not reflect the views of my employer. We make remarkable robots and we are hiring. 
+Before me begin I would like to thank my employer Johnson & Johnson MedTech for supporting my attendance at this conference. We provide an inclusive work environment to service our patients and communities. The opinions expressed are my own and do not reflect the views of my employer. We make remarkable robots and we are hiring.
 </aside>
 </section>
 
@@ -30,8 +27,8 @@ I would like to thank my employer Johnson & Johnson MedTech for supporting my at
 <aside class="notes">
 <b>Do you know which launch this is?</b><br />
 Yes, it is the December 1998 launch of the Mars Climate Orbiter probe. The mission lasted 286 days for 327 million dollars. <b>And do you know how the mission concluded?</b><br />
-Yes, the program litteraly crashed, a mission failure, the Mars Climate Orbiter probe was lost to Mars. The cause of the loss was an incorrect entry trajectory, 169 kilometers too close to Mars surface. The cause of the incorrect trajectory was one software producing impulse vector results in pound-force seconds, while the results fed to another software taking input in newton seconds. The unit difference meant an error factor of 4.45. The producing software did not meet the interface specifications. The specification, and then implementation, defect escaped to production due to additional causes including but not limited to, the lack of testing, verification, and validation, all contributed by economical pressure.<br />
-I will let you decide on the tradeoffs for yourself and your projects if you care to catch this type of errors at compile-time. If you care, the problem for this talk is the: how to build a strongly typed linear algebra library: its data structures, vectors, matrices; and its algorithms.
+Yes, the program litteraly crashed: the Mars Climate Orbiter probe was lost to Mars. The cause of the loss was an incorrect entry trajectory, 169 kilometers too close to Mars surface. The cause of the incorrect trajectory was a software producing impulse vector results in pound-force seconds, while the results were fed to another software taking input in newton seconds. The unit difference meant an error factor of 4.45. The producing software did not meet the interface specifications. The defect escaped to production due to additional causes including but not limited to, the lack of testing, verification, validation, all contributed by economical pressure.<br />
+I will let you decide for your own projects if you care to catch this type of errors at compile-time. If you care, the problem for this talk is: how to build a strongly typed linear algebra library: its data structures, vectors, matrices; and its algorithms to catch misuses.
 </aside>
 
 ---
@@ -47,15 +44,15 @@ double building_height_meters{99.};
 ```cpp
 // Unit types:
 std::chrono::seconds run_duration{42.}
-quantity building_height{99. * m};
+mp_units::quantity building_height{99. * m};
 ```
 
 </span>
 
 <aside class="notes">
-You may have seen code that uses the built-in types to represent entities with additional meaning: the duration of a run in seconds or the height of building in meters. The semantic of the variable is not encoded in its type. It is sometimes implicitely attached to the variable in its name. Or it is sometimes described in a comment somewhere. Or sometimes relies on the implicit convention of systematic usage of the international system of units in a code base such that units are rarely identified explicitely. All of our tools struggle to protect users from invalid operations such as assiging the time value to the building height variable. Only built-in implicit type conversion are protected with compiler flags. And without external controls, resulting defects may end up crashing, on Mars.<br />
+You may have seen code that uses the built-in syntax types to represent entities with additional semantic: the duration of a run in seconds or the height of building in meters. The semantic of the variable is not encoded in its type. It is sometimes implicitely attached to the variable in its name. Or it is sometimes described as a comment somewhere. Or sometimes relies on the implicit convention of systematic usage of the a system of units in the code base such that units are rarely identified explicitely. All of our tools struggle to protect human users from invalid operations such as assiging the time value to the building height variable. Only built-in implicit type conversion may be protected with compiler flags. And without external controls, the resulting defects may end up crashing, on Mars.<br />
 FRAGMENT<br />
-More recently, I hope you might have seen code that encodes the units, dimensions in the type system itself. Here the invalid conversions, operations result in compiler errors, guiding the developers. Other benefits also include shorter variable names for readability. The type provides context. There exists a variety of dimension libraries in C++, an example is that of `std::chrono` or other standardization efforts such as Mateusz Pusz's mp-units library and its quantity type. We will use the mp-units quantity type in our examples today.
+You may have seen code that encodes the units, dimensions in the type system itself. Here the invalid conversions, operations result in compiler errors, guiding the developers. The type provides context. There exist a variety of unit libraries in C++, an example is that of `std::chrono` or other standardization efforts such as Mateusz Pusz's mp-units library and its quantity type. We will use the mp-units quantity type in our examples today.
 </aside>
 
 ---
@@ -90,11 +87,11 @@ vector v0{1. * m, 2. * m, 3. * m};
 </span>
 
 <aside class="notes">
-There exists a variety of linear algebra libraries in C++: the C++26 `std::linalg` combined with the C++23 `std::mdspan`, or higher order libraries such as Eigen. We will use the Eigen types in our examples today. A common data structure type found in linear algebra is that of a column vector, we will call that a vector. Traditional representations of a linear algebra vector can be made with `std::vector`, C-arrays, `std::span`, or an `Eigen::Vector`. Tradeoffs exist for sizes known at compile-time or at run-time, owned memory or views over a range, and linear algebra operations availability.<br />
+There exists a variety of linear algebra libraries in C++: the C++26 `std::linalg` combined with the C++23 `std::mdspan`, or higher order libraries such as Eigen, Kokkos. We will use these libraries in our examples today. A common data structure type found in linear algebra is that of a column vector, abbreviated a vector. Traditional representations of a linear algebra vector can be made with `std::vector`, C-arrays, `std::span`, or an `Eigen::Vector`. Tradeoffs exist for sizes known at compile-time or at run-time, owned memory or views over a range, and linear algebra operations availability.<br />
 FRAGMENT<br />
-This second block of code shows what could be a first attempt at typed linear algebra by using the quantity types in place of the built-in types. Unfortunately all linear algebra operations and libraries have been designed with assumptions of built-in types. These assumptions do not hold for types with additional semantic. The built-in types are only representations of data, almost no semantic.<br />
+This second block of code shows what could be a first attempt at typed linear algebra by using the quantity types in place of the built-in types. Unfortunately all linear algebra operations and libraries have been designed with built-in types. These types do not hold additional semantic.<br />
 FRAGMENT<br />
-For example, a double multiplied by a double gives you a double, but a length multiplied by a length gives you an area, even though both length and area are represented by an underlying double. Linear algebra operations soon fail to compile with the strongly typed vectors. Some approaches heavily modified the linear algebra libraries to support the strong types although it is a large effort.
+For example, a double multiplied by a double gives you a double, but a length multiplied by a length gives you an area, even though both length and area may be represented by an underlying double. Linear algebra operations soon fail to compile with the strongly typed vectors. Some industry approaches heavily modified the linear algebra libraries to support the strong types: it is a large effort.
 </aside>
 
 ---
@@ -117,10 +114,10 @@ matrix m0{{1. * m,     2. * m / s },
 </span>
 
 <aside class="notes">
-More difficulties arise when the linear algebra vectors have heterogenous types. You can store the heterogenous type in a `std::tuple`. What about the linear algebra operations? The existing linear algebra libraries are simply not equipped to allow such idiomatic code.<br />
+More difficulties arise when the linear algebra vectors have heterogenous types. The existing linear algebra libraries are simply not equipped to allow such idiomatic code.<br />
 FRAGMENT<br />
-And finally, C++ itself does not permit the constuction of multi-dimensional heterogenous initializer-lists without additional syntaxic sugar. Heterogenous initializer-lists had a tendency to trigger internal compiler errors. <b>What do you think? Can we still design strongly typed linear algebra using yet another level of indirection?</b><br />
-The idea is to use an abstraction, necessarily zero-cost, to provide to the user a composition of strong types and linear algebra. And down the rabbit hole of template metaprogramming we may go.
+And C++ itself does not permit the constuction of multi-dimensional heterogenous initializer-lists without additional syntaxic sugar. This was also touched on Monday in Ruslan's talk on metaprogramming to user convenience. <b>How would you design a strongly typed linear algebra library?</b><br />
+The idea is to use an abstraction, it must be zero-runtime-cost, to provide to the user a composition of strong types and linear algebra. And down the rabbit hole of template metaprogramming we may go.
 </aside>
 
 ---
@@ -134,9 +131,9 @@ The idea is to use an abstraction, necessarily zero-cost, to provide to the user
 <img src="2024_eigen.png" height="150px">
 
 <aside class="notes">
-Before I detail these references that helped me prepare this library: <b>Who is familiar with the 1878 Bertrand-Buckingham π theorem?</b> The theorem proves linear systems can be rewritten in terms of a set of dimensionless parameters. So technically we could always transform the linear systems to use dimensionless parameters. Unfortunately usage in implementation is hardly systematic. Anyway the theorem does not help in exchanging physical algebraic information through software interfaces. The Bertrand-Buckingham π theorem is insufficient.<br />
+This is not new. Before I detail the references that helped me prepare this library. I must appeal to my physicists, mathematicians, or control theory colleagues who rightfully argue units shouldn't be in linear algebra systems. <b>Who here is familiar with the 1878 Bertrand-Buckingham π theorem? Or its practical application in nondimensionalization of physical equations?</b> The theorem proves linear systems can be rewritten in terms of a set of dimensionless parameters. So technically we could always transform the linear systems to use dimensionless parameters. Unfortunately usage in C++ implementation is hardly systematic. Regardless the theorem does not help in exchanging physical algebraic information through software interfaces. Nondimensionalization is a complementary technic.<br />
 In 1995 George Hart informed us on the mathematical properties of dimensioned quantities. In 2002 Blair Hall identified conceptual elements of physical quantities applied to software frameworks. In 2020 Mateusz Pusz presented a C++ physical unit library. In 2021 Chip Hogg shared C++ lessons about units in matrices. In 2022 Daniel Withopf formalized a C++ physical unit matrix. In 2023 Mark Hoemmen presented C++26 std::linalg based on a subset of the BLAS standard. In 2024 Daniel Hanson showed us interoperability of Eigen and std::linalg.<br />
-Daniel Withopf and Chip Hogg informed us there already exists several closed-source, proprietary typed linear algebra implementations. And we can even find various open-source typed linear algebra attempts over the years. We are trying to make a general, open-source, and permissive typed linear algebra library solution.
+Daniel Withopf and Chip Hogg informed us there already exists several closed-source, proprietary typed linear algebra implementations. And we can even find various open-source attempts over the years. We are here trying to make a general, open-source, and permissive typed linear algebra library solution for C++.
 </aside>
 
 ---
@@ -154,8 +151,8 @@ std::println("{}", p);
 ```
 
 <aside class="notes">
-I author a Kalman filter C++ library. Briefly, the Kalman filter is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. This sample shows an implementation of the estimate uncertainty update of a Kalman filter. It is simple, yet non-trivial. A fair benchmark, objective for today. The estimate uncertainty P shown with its nine values comes from the estimation of the position, velocity, and acceleration of an object in only one-dimension. There exists filters with dozens, hundreds, or more states. Filters with numerous states can get complicated. Development difficulties and safety risk arise in ensuring a parameter is used in the expected position and with the expected units. This was my motivation for the typed linear algebra library.
-The general objective for typed linear algebra is to guarantee at compile-time the correct usage, access, and algorithms over potentially large and complex linear algebra system while providing quality of life for the C++ implementors.
+I author a Kalman filter C++ library. Briefly, the Kalman filter is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. This sample shows an implementation of the estimate uncertainty update of a Kalman filter. It is simple, yet non-trivial. A fair benchmark, objective for today. The estimate uncertainty P shown with its nine values comes from the estimation of the position, velocity, and acceleration of an object in only one-dimension. There exists filters with dozens, hundreds, or more states. Filters with numerous states can get complicated. Development difficulties and safety risk arise in ensuring a parameter is used in the expected position and with the expected units. This was my original motivation.
+The general objective for is to guarantee at compile-time the correct usage, access, and algorithms over potentially large and complex linear algebra systems while providing quality of life for the implementors.
 </aside>
 
 ---
@@ -163,9 +160,9 @@ The general objective for typed linear algebra is to guarantee at compile-time t
 <img src="uml.png">
 
 <aside class="notes">
-I propose the `typed_matrix` class to compose a third party linear algebra matrix type. This matrix type is injected through a template parameter `Matrix`. This Matrix parameter and its usage may need to transparently accommodate expression templates techniques which permits compile-time reduction of complex linear algebra expressions. I propose not to limit memory model to ownership or view but to support both. It is perhaps less common in C++. The strong types of the matrix elements are encoded in a collections of types. <b>What do you use for collections of types?</b><br />
-Packs? Template template parameters? `std::tuple` may suffice. <b>Why are there two collections of types? Isn't one collection of N-times-M types sufficient to encode all the individual types of the matrix?</b><br />
-It interestingly turns out that encoding N-times-M types is quite complicated and also unnecessary. Blair Hall explained a conjecture from George Hart on the properties of physical quantity linear algebra: that is for all useful physical matrices N-plus-M types suffices to represent all the valid types of the matrix. Hence we will use two collections: one for the rows, one for the columns; the element of any given type being a factor at the intersection. Additionally, the typed_matrix must also support the superset of operations provided by the third party linear algebra libraries and the standard library. Lastly, the library needs to be decoupled from the linear algebra library and element type libraries. The template parameters, concepts, customization point as template specialization will help us in decoupling the dependencies.
+I propose the `typed_matrix` class to compose a third party linear algebra matrix type. This matrix type is injected through a template parameter `Matrix`. This Matrix parameter and its usage may need to transparently accommodate expression templates techniques which permits compile-time reduction of complex linear algebra expressions. I propose not to limit memory model to ownership or view but to support both for now. It is perhaps less common in C++. The strong types of the matrix elements are encoded in collections of types. <b>What do you use for collections of types?</b><br />
+Packs? Template template parameters? Type-list? `std::tuple` may suffice for today. <b>Why are there two collections of types? Isn't one collection of N-times-M types sufficient to encode all the individual types of the N-by-M matrix?</b><br />
+It interestingly turns out that encoding N-times-M types is not only quite complicated but also unnecessary. Blair Hall explained a conjecture from George Hart on the properties of physical quantity linear algebra: that is for all useful physical matrices N-plus-M types suffice to represent all the valid types of the matrix element. Hence we will use two collections: one for the rows, one for the columns; the type of any given element being a factor of the types at the intersection of the row and column. Additionally, the typed_matrix must also support all the operations provided by the linear algebra libraries to be useful. Template parameters, concepts, customization point, template specialization, and other metaprogramming technics will help write generic independent code.
 </aside>
 
 <!--
@@ -213,7 +210,7 @@ using element =
 <aside class="notes">
 We declare the `typed_matrix` class with its three template parameters. These template parameters are also available as member types, not shown here in this class declaration since they are merely aliases.<br />
 FRAGMENT<br />
-An interesting member type is the template element type. The strong type of the i-th, j-th element, for example the velocity in meter per seconds from the quantity library. The resulting type is formed by the result type of product of the i-th type of the row indexes by the j-th type of the column indexes. Importantly, note that the product template used here is not equivalent to the `std::multiplies` functional structure of the standard library. It is instead the resulting type of a multiplication that respect the strong types: the product of two lengths is an area. This is an example of the standard library not considering strong type semantic results. This alternative product type here is implemented in terms of the resulting type from invoking the call operator of a specialized multiplication structure. These abstractions allow for template specializations to resolve the varied use cases of template product types such as the general N-by-M case or decayed use cases for vectors or singleton matrices. As an astute observer you may have noted the product of types may not directly support jacobian or information matrices seen in previous approaches. We leave this important detail aside today.
+An interesting member type is the template element type. The strong type of the i-th, j-th element, for example the velocity in meter per seconds from the quantity library. The resulting type is formed by the  product type of the i-th type of the row indexes by the j-th type of the column indexes. Importantly, note that the product template used here is not equivalent to the `std::multiplies` functional structure of the standard library. It is instead the resulting type of a multiplication that respect the strong types: the product of two lengths is an area. This is an example of the standard library not equipped with type semantic propagation. This alternative product type here is implemented in terms of the resulting type from invoking the call operator of a specialized multiplication structure. These abstractions allow for template specializations to resolve the varied use cases of template product types such as the general N-by-M case or decayed use cases for vectors or singleton matrices. As an astute observer you may have noted the product of types may not directly support jacobian or information matrices seen in previous approaches. We leave this important detail aside today.
 </aside>
 
 ---
@@ -260,8 +257,8 @@ typed_matrix(
 The destructor is not shown here. You can imagine a default constexpr destructor.
 Neither I will show the copy- and move- assignment operators equivalent to these constructors.
 Most matrice libraries made the choice of an unitialized default constructor for historical or performance reason. For a safer linear algebra library, it is appropriate to have a zero-initialized default constructor if the type-erased third party matrix type supports a default initialization. The implementation, not shown here, ensures zero-initialization.
-The compatible copy conversion provide support for safely convertible but not strictly identical typed matrix. One example is that of a matrix where the rows and indexes types are merely transposed. Another example is that of the element types represent the same physical quantity type but the C++ template are not quite identical. Similarly for compatible move conversion. 
-The singleton constructor helps the typed matrix to behavior more like built-in types where it can.
+And we can also provide an easy construction for a column or row vector of heterogeneous quantities. Note the parameter pack with two preceding mandatory parameter to disambiguate from other constructors.
+The one-element matrix, or singleton, constructor helps the typed matrix to behavior more like built-in types where it can.
 </aside>
 
 ---
@@ -283,14 +280,12 @@ typed_matrix(
 ```
 
 <aside class="notes">
-And we can also provide an easy construction for a column or row vector of heterogeneous quantities. Note the parameter pack with two preceding mandatory parameter to disambiguate from other constructors.
-The constructor from an array is valid for uniform vectors.
-We can at least provide a constructor accepting an initializer-list of initializer-list for a type giving a uniformly typed matrix.
+The compatible copy conversion provide support for safely convertible but not strictly identical typed matrix. One example is that of a matrix where the rows and indexes types are merely transposed. Another example is that of the element types represent the same physical quantity type but the C++ template types are not quite identical but equivalent. Similarly for compatible move conversion, not shown.
+The constructor from a C-array is valid for uniform vectors only.
+Similarly for init-list of init-list for a type giving a uniformly typed matrix.
 </aside>
 
-
 ---
-
 
 
 ###### Some Accessors
@@ -319,9 +314,9 @@ decltype(auto) operator[](this auto &&self, Indexes... indexes)
 
 <aside class="notes">
 It seems the best we can do for type-safe compile-time bound-checked access is the standard `at` member, providing the i-th, j-th position as non-type template parameters.
-Next is the subscript operator, another sharp edge, here we see it with deducing this to deduplicate operators. The example shown here is that of the square bracket index operator. There is also the identical historical parentheses index operator not shown here. One difficulty with this operator is the lack of possibilities to provide compile-time bound checking. Another difficulty is that in C++ the return type is fixed at compile-time. We cannot vary the return type based on the element accessed at runtime. Therefore we limit this syntax to uniform matrices to preserve our type safety. This is a problem. It may be judicious to not support this accessor at all. Similarly for the parentheses-based index access operator not shown here.
+Next is the subscript operator, another sharp edge, here we see it with deducing this to deduplicate operators. The example shown here is that of the square bracket index operator. There is also the identical historical parentheses index operator not shown here. One difficulty with this operator is the lack of possibilities to provide compile-time bound checking. Another difficulty is that in C++ the return type is fixed at compile-time. We cannot vary the return type based on the element accessed at runtime. Therefore we limit this syntax to uniform matrices to preserve our type safety unless a compile-time index was provided. This is a problem. It may be judicious to not support this accessor at all.
 FRAGMENT<br />
-And that's almost it for typed matrix class declaration, we will then see interesing implementations for some of these members and operations.
+And that's about it for typed matrix class declaration, we will then see interesing implementations for some of these members and operations.
 </aside>
 
 
@@ -347,13 +342,13 @@ void scale          (const auto &α,
 ```
 
 <aside class="notes">
-Adding algorithms, or operations against the typed matrix is merely done by adding functions. We've made the choice to avoid the friendship coupling to enable extensibility.
-The first two operators, the additions, are two overloads among four variations: adding two matrices, and adding a value to a 1-by-1 matrix. There are conditions on the types added, size of the matrix, convetibility of the types.
+Adding algorithms, or operations against the typed matrix is merely done by adding free functions. We've made the choice to avoid the friendship coupling to enable extensibility at this time.
+The the addition shown is one overload among four variations: adding two matrices, and adding a value to a 1-by-1 matrix, left and right handside. There are conditions on the types added, such as the size of the matrix and the convertibility of the types.
 The matrix-matrix-product operator shown here is the general case product among six other overloads.
-The matrix-matrix-divison operator, also has six overloads. It has the particularity to be configurable via yet another customization point object to select the end-user's prefered division implementation from a matrix decomposition solver. Matrix division divides the community. Pun intended. Should it exist? In which cases? Remember linear algebra is not commutative, a matrix may not have an inverse, and there may exists multiple different solutions to the same division.
-Should the transposed operation shown here be done in place?
-The scale operation, alpha x, done in place here, imposes a dimension-less restriction on the scalar, because the index types of the typed matrix are fixed.
-All in all the library wants to provide a drop-in support for both Eigen and `std::linalg` matrix algorithms were possible.
+The divison operator, not shown here configurable via yet another customization point object to select the end-user's prefered solver implementation for a matrix decomposition. Matrix division divides the community. Should it exist? Can it exist? In which cases? Remember linear algebra is not commutative, a matrix may not have an inverse, and there may exists multiple solutions.
+Should the transposed operation shown here be done in place? Or return memory?
+The scale operation, alpha x, done in place here, imposes a dimension-less restriction on the scalar, because the element types of the matrix are fixed.
+All in all the library wants to provide drop-in support for all matrix algorithms were possible.
 </aside>
 
 ---
@@ -373,7 +368,7 @@ All in all the library wants to provide a drop-in support for both Eigen and `st
 
 <aside class="notes">
 At CppCon 2023 Mark Hoemmen introduced us to `std::linalg` coming to the standard. His talk included an abstraction layer nomenclature that I paraphrased here. On top of the hardware we find the fundamental support, used by performance primitives where specialized performance hardware implementation are reasonable. Themselves used by the low-level linear algebra mathematics which can be applied to domain specific problems such as statistical inference, physical simulation, control theory. 
-Where would you place the typed linear algebra support in this table? Perhaps somewhere between application specific high-level mathematics and/or around low-level mathematics? Experimentation seems to support either.
+<b>Where would you place the typed linear algebra support in this table? Perhaps somewhere between application specific high-level mathematics and/or around low-level mathematics?</b> Experimentation seems to support either.
 </aside>
 
 ---
@@ -399,10 +394,12 @@ mp-units, std::chrono, fundamental types
 </small>
 
 <aside class="notes">
-A variety of implementation compositions were explored. At the high-level math applications the Kalman algortihms were the principal motivation.
+A variety of implementation compositions were explored. At the high-level math applications the Kalman algorithm was my principal motivation.
 For low level math, both Eigen and LAPACK have shown to be usable.
-And the underlying performance primitives, operations, and solvers can be chosen at linking, loading time. The native Eigen kernels, the BLAS implementation, or Nvidia BLAS implementation, and C++26 std::linalg have shown to be usable.
-As far as element type goes, we've talked here about mp-units, and std::chrono. There is a quirky property that emerges from the compositions. It turns out, that fundamental are valid element types, after all, they are in the classical linear algebra. This property allows to create a drop-in replacement typed linear algegra type. Even more curious, the underlying matrix type of the typed matrix can be a nested typed matrix itself! This property will come in handy in future work.</aside>
+And the underlying performance primitives, operations, and solvers can be chosen at linking or loading time. The native Eigen kernels, the BLAS implementation, or Nvidia BLAS implementation, and C++26 std::linalg have all shown to be usable.
+As far as element type goes, we've talked about mp-units, and std::chrono. 
+
+Interestingly we are talking about a linear algebra library that composes a linear algebra library. There is a quirky property that emerges from the compositions. Not only the typed matrix can use built-in types, making it a classical matrix for drop-in replacement; but also the composed matrix type can be a nested typed matrix itself! I suspect this property will be useful to layer on different types of safety.</aside>
 
 ---
 
@@ -440,7 +437,7 @@ using stateᵀ   = row_vector<position, velocity>;
 </span>
 <aside class="notes">
 So far we have seen some of the principles of the library. Before we take a look at the implementation, we can see a few usage examples. We start with a little bit of boilerplate.
-This first example fragment shows the customization of the element cast. It teachs the library how to cast an element from its underlying type to its strong type. I don't show here the other conversions, from element to underlying, or the reference conversion.<br />
+This first example fragment shows the customization of the element cast. It teachs the library how to cast an element from its underlying type to its strong type. I don't show here all conversion variations from element to underlying.<br />
 FRAGMENT<br />
 This second fragment shows the type of a strongly typed column vector using the Eigen vector as storage.<br />
 FRAGMENT<br />
@@ -478,9 +475,9 @@ std::println("{}", x0 * x0ᵀ);
 ```
 
 <aside class="notes">
-And now the actual usage. The state column vector x0 is a heterogenously typed vector of position and velocity. The library's std::formatter specialization makes the vector printable.
-The at member permits to access the element both to write a new value to the element, or to read the element value.
-What do you think is the result of the row-vector--column-vector product?<br />
+And now the actual usage. The state column vector x0 is a heterogenously typed vector of position and velocity. The library's std::formatter specialization makes the column vector printable.
+The at member permits to access the element value. The state transpose is a row-vector.
+<b>What do you think is the result of this row-vector--column-vector product? What is the value of the sum of the product elements? What is the result type?</b><br />
 FRAGMENT<br />
 A compilation error. In traditional libraries this incorrect operation compiles and returns a one element matrix. However with typed linear algebra, the programming error is caught at compilation time.<br />
 FRAGMENT<br />
@@ -518,7 +515,7 @@ std::println("{}", p);
 <aside class="notes">
 Interestingly, no memory ownership assumption constrain the typed matrix. Therefore the typed matrix can compose a `std::mdspan`. Here, the typed column vector is defined with `std::mdspan`, the chosen underlying data representation, and an equivalent column `std::extends`.<br />
 FRAGMENT<br />
-In this example, the data owning storage is a `std::vector`, the fundamental matrix is the `std::mdspan`, and the typed matrix becomes the performance primitive. The `std::linalg` operations and solvers are overloaded, composed into their equivalent strongly typed functions. The owning, or non-owning nature of the typed matrix is transparent. A compilation error occurs when the user attempts an incompatible operation. For example, when trying to use an operator, let's say a sum, of two matrices. The operation fails to compile because there cannot be memory allocation for the returned result.
+In this example, the data owning storage is a `std::vector`, the fundamental matrix is the `std::mdspan`, and the typed matrix becomes the performance primitive. The `std::linalg` operations and solvers are used through a facade, composed into their equivalent strongly typed functions. The owning, or non-owning nature of the typed matrix is transparent. A compilation error occurs if the user attempts an incompatible operation. For example, when trying to use an operator, let's say a sum of two matrices. The operation fails to compile because there cannot be memory allocation for the returned result when using std::mdspan type.
 </aside>
 
 ---
@@ -542,12 +539,12 @@ return make_typed_matrix<row_indexes, column_indexes>(
 ```
 
 <aside class="notes">
-The matrix-matrix product shows a few of the techniques needed to implement the operations. The operations are totally external, no operations are member functions, no friendship.
+The matrix-matrix product shows a few of the techniques needed to implement the operations.
 The operations leverage ADL, overloads, and concepts to transparently select the most appropriate implementation.
 Overloads for matrix-vector products, matrix-scalar products, singleton products are provided, not shown here.
-This is the generic matrix-matrix product. Operations typically follows this idiomatic implementation: first verify linear algebra and type safety requirements, contracts, assertions; second express the return row and column index types; third and last perform the operation through the backend and using a factory function to decay and forward the resulting types while retaining the expression templates of the backend. 
+This is the general matrix-matrix product. Operations typically follow this idiomatic implementation: first verify linear algebra and type safety requirements, contracts, assertions; second express the return row and column index types; third and last perform the operation through the backend while using a factory function to decay and forward the resulting types while retaining the possible expression templates of the backend. 
 For the matrix-matrix product, it appears that the resulting type is the matrix where the row index types are constituted by the product of the left-hand-side matrix row index types with the 0-th column type, and equivalently for the resulting column index types.
-What do think you are some of the requirements, assertions, or contracts needed to ensure the matrix-matrix product is a correct and safe operation?
+<b>What do think you are some of the requirements, assertions, or contracts needed to ensure the matrix-matrix product is a correct and safe operation?</b>
 </aside>
 
 ---
@@ -558,7 +555,7 @@ static_assert(lhs::columns == rhs::rows,
 ```
 
 <aside class="notes">
-A first requirement is that the shapes of the matrices are compatible.
+A first, simple requirement is that the shapes of the matrices are compatible.
 The left-hand-side matrix needs as many columns as the number of rows of the right-hand-side matrix.
 </aside>
 
@@ -585,7 +582,7 @@ for_constexpr<0, lhs::rows, 1>([&](auto i) {
 
 <aside class="notes">
 A second requirement is that each of the element products are compatible, convertible to their sums.
-And we can see here a typical naive compile-time assertion over the types of the matrix-matrix product. One issue here is that the compiler error is unreadable when the user attempts an invalid product. Another issue is an apparent equivalent reimplementation of the underlying backend operation for the purpose of type verication, a good argument for the library backend to support strong types directly.<br />
+And we can see here a typical naive compile-time assertion over the types of the matrix-matrix product. One issue here is that the compiler error is unreadable when the user attempts an invalid product. Another issue is an apparent equivalent reimplementation of the underlying backend operation for the purpose of type verication. A first lesson: perhaps library writers should compute resulting types from template input types. A length by a length is an area, not a length.<br />
 </aside>
 
 ---
@@ -605,7 +602,7 @@ x0(0_i, 0_i)
 ```
 
 <aside class="notes">
-
+Earlier I showed member access using subscript operator could be made safe when providing a compile-time index constant. One way to convert an integer known at compile-time into a constant is to wrap it into an integral constant. The three access syntaxes now offer the same compile-time guarantees.
 </aside>
 
 ---
@@ -617,16 +614,19 @@ state x{3. * m,
         2. * m / s,
         1. * m / s2};
 
+std::println("{}", x.at<2>()); // Is this velocity?
+
 // Index Safety:
 std::println("{}", x.at<velocity>());
 // 2 m/s
 ```
 
 <aside class="notes">
-Strongly typed element is not a suffcient condition for safer linear algebra.
-Indexes must also be safe. Not only in runtime and compile-time range, but also in type.
-The members of the state vector can be accessed by type, instead of index. But what happens when this state is not in one-dimension, but more dimensions? Which velocity is it? And in which frame?
-We will need more index safety according to the domains. 
+Strongly typed element is not a suffcient condition for safer linear algebra. Indexes must also be safe. Not only in runtime and compile-time range, but also in type.
+In some cases, such as printing here, accessing the wrong index position would be a silent error, when the user intended to print velocity.
+Instead we can get the velocity value by type. No error possible. Even better, the position of velocity can change in the state definition, without affecting this code.
+<b>But what happens when this state is not one-dimension, but more dimensions? Which velocity is it? And in which frame?</b>
+We will need more index safety according to the domains.
 </aside>
 
 ---
@@ -646,12 +646,12 @@ decltype(auto) at(this auto &&self)
 ```
 
 <aside class="notes">
-Let's get back to implementation of the typed matrix methods. The simplified implementation of the `at` member function shown here uses the customization point object `cast`. This element caster objet allows the end-user to teach the library how it can convert underlying type to and from quantity types. This single abstraction is the only place where the explicit conversions take place. For the mp-units quantity library the template specializations of the customization point use the explicit `numerical_value_in` quantity member function to obtain the underlying type value or inversely equip the underlying type value with the reference unit. Note the difficulties in preserving the value category of the type for rvalues and lvalues. The implementation can be thought of the equivalent of the standard library forward-like utility, with an injected cast, and index look up and verification.
+Let's get back to implementation of the typed matrix methods. The simplified implementation of the `at` member function shown here uses the customization point object `cast`. This element caster objet allows the end-user to teach the library how it can convert underlying type to and from element types. The implementation can be thought of the equivalent of the standard library forward-like utility, with an injected conversion, and index look up and verification. Obtaining the underlying element value is delegated to the composed matrix.
 </aside>
 
 ---
 
-###### At Conversion
+###### Dragons
 
 ```cpp
 state x0{3. * m, 2.5 * m / s};
@@ -690,11 +690,12 @@ struct element_caster<To &, From &> {
 </span>
 
 <aside class="notes">
-How would you implement the `at` member? To provide a strong safe type?<br />
+This snippet of code looks quite canonical.
+<b>How would you implement the conversion in the `at` member function?</b><br />
 FRAGMENT<br />
-A double reference to a quantity reference?<br />
+Here that would be a double reference converted to a quantity reference.<br />
 FRAGMENT<br />
-There may be limitations and aliasing violations?<br />
+<b>Would there be limitations and aliasing violations?</b><br />
 FRAGMENT<br />
 Yes, this conversion is Undefined Behavior: strict-aliasing violation,
 type punning dereferencing. Morevover `reinterpret_cast` is not a constant
@@ -718,8 +719,8 @@ function will never be `constexpr`. That's not good.
 </small>
 
 <aside class="notes">
-What can we do if we can't provide direct reference access to a safe type? And what do we lose in the trafeoffs?
-A setter syntax and a reference wrapper moves the syntax away from current practices. They prevent structured bindings out of the box.
+<b>What can we do if we can't provide direct reference access to a safe type? And what do we lose in the trafeoffs?</b>
+A setter syntax or a reference wrapper moves the syntax away from current practices. They prevent structured bindings out of the box. Perhaps lifetime extension could be useful?
 Can we use a strongly typed storage directly? We may suffer performance loss.
 </aside>
 
@@ -734,7 +735,8 @@ Let's look into the runtime performance of matrix-matrix product for different t
 The matrix-matrix product performance for Eigen and std::mdspan are identical on my machine.
 The matrix-matrix product performance for the typed matrix version for Eigen and std::mdspan are identical to their underlying linear algebra backend. Confirming a known result by previous work.<br />
 However the performance for the matrix-matrix product of both std::mdspan and typed matrices over std::mdspan are not meeting their baselines if the underlying storage is a strongly typed std::tuple. <b>Why do you think that is?</b> Differential profiling indicates the cost comes from getting the tuple value in the accessor policy of std::mdspan. It makes sense: the tuple is not an array. The tuple may have different element alignment, padding, order, and non-standard-layout. Using a strongly typed underlying storage may mean reduced runtime perfomance at this time. Meaning we keep using the classical Eigen and std::mdspan for our underlying algebraic needs.<br />
-Additionaly there are compile-time limits to the usage of std::tuple for type-lists either for the data storage or for the row and column type lists. Compilers, standard library implementations have limits in how many types can be found in type-lists. Similarly for recursive template instantiation. 
+Additionaly there are compile-time limits to the usage of std::tuple for type-lists either for the data storage or for the row and column type lists. Compilers, standard library implementations have limits in how many types can be found in type-lists. Similarly for recursive template instantiation.
+A setter may be the least worse solution for assigning elements.
 </aside>
 
 ---
@@ -745,20 +747,26 @@ Additionaly there are compile-time limits to the usage of std::tuple for type-li
 
 * Positional access replaced by typed access.
 * Exhaustive std::linalg / Eigen algorithms.
+* Sparse matrices, dynamic sizes.
+* Tensor? N-dimension generatlization?
 * Memory ownership: Yes? No? Both?
 * Optimize type-list / `std::tuple` compile-time scalability.
 * Optimize compile-time.
 * Nondimensionalization.
+* Usage feedback.
 
 </small>
 
 <aside class="notes">
 What is next for this work?
 Index safety comes next along with more kind of safeties and examples: index access and reference frames.
-More, or all, alogorithms supported for `std::linalg` and `Eigen` to support a drop-in retrofit.
-Perhaps strong argument for one or more memory ownership model.
-Type-list, `std::tuple` compile-time scalability improvments.
-And clarify the complementarity of nondimensionalization and typed linear algebra.
+More, or all, algorithms supported for `std::linalg` and `Eigen` to support an effective drop-in.
+Exploration of dynamically sized typed matrices, sparse matrices.
+A generalization to N-dimension, tensors come to mind.
+Perhaps deciding for one or more memory ownership model.
+Type-list, `std::tuple` compile-time scalability improvments and other optimizations.
+Of course we want to confirm and demonstrate the complementarity of nondimensionalization and typed linear algebra.
+Lastly user feedback beyond my limited needs to teach us if this library is actually useful adn practical at scale.
 </aside>
 
 ---
@@ -770,7 +778,7 @@ And clarify the complementarity of nondimensionalization and typed linear algebr
 <img src="repo_qr.png" height="250px">
 
 <aside class="notes">
-Thank you for joining this talk about what I believe to be the first extensive open source and permissive implementation of a typed linear algebra library in C++. I hope this talk will help you build safer linear algebra applications. You can find this talk and the library by following this link. At this time I would welcome any more question.
+Thank you for joining this talk about what I believe to be the first extensive open source and permissive implementation of a typed linear algebra library in C++. I hope this talk will help you build safer linear algebra applications. You can find this talk and the library by following this link. At this time I would welcome any question or comment.
 </aside>
 
 ---
