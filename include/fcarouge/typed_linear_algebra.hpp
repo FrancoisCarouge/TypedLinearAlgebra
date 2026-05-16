@@ -342,6 +342,11 @@ public:
   //! indexes for any matrix, one index for one-dimension matrices, no index for
   //! singleton matrices.
   //!
+  //! @warning Typed elements are not guaranteed to be referenceable. The
+  //! underlying storage may not be referenceable. The returned value may be a
+  //! prvalue. There is no good solutions in C++: constant values cannot be
+  //! returned; temporary lifetime extension of constant reference is risky.
+  //!
   //! @return A reference to the strongly typed element at the specified
   //! location for non-const access, or a prvalue otherwise.
   template <auto... Indexes>

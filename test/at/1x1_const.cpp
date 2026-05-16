@@ -40,6 +40,7 @@ namespace {
   const matrix<> m{42.};
 
   assert(m.at() == 42.);
+  assert(m.at<>() == 42.);
 
   return 0;
 }()};
