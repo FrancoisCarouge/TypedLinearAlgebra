@@ -40,6 +40,10 @@ namespace {
   const matrix<> m{42.};
 
   assert(m.at() == 42.);
+  assert(m.at<>() == 42.);
+
+  static_assert(std::same_as<decltype(m.at()), const double>);
+  static_assert(std::same_as<decltype(m.at<>()), const double>);
 
   return 0;
 }()};
