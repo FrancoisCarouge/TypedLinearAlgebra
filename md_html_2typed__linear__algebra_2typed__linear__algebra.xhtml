@@ -286,7 +286,7 @@ title: "Typed Linear Algebra"</h2>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> scale          (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;α,</div>
 <div class="line">                     same_as_typed_matrix <span class="keyword">auto</span> &amp;x);</div>
-</div><!-- fragment --><p>&lt;aside class="notes"&gt; Adding algorithms, or operations against the typed matrix is merely done by adding free functions. We've made the choice to avoid the friendship coupling to enable extensibility at this time. The the addition shown is one overload among four variations: adding two matrices, and adding a value to a 1-by-1 matrix, left and right handside. There are conditions on the types added, such as the size of the matrix and the convertibility of the types. The matrix-matrix-product operator shown here is the general case product among six other overloads. The divison operator, not shown here configurable via yet another customization point object to select the end-user's prefered solver implementation for a matrix decomposition. Matrix division divides the community. Should it exist? Can it exist? In which cases? Remember linear algebra is not commutative, a matrix may not have an inverse, and there may exists multiple solutions. Should the transposed operation shown here be done in place? Or return memory? The scale operation, alpha x, done in place here, imposes a dimension-less restriction on the scalar, because the element types of the matrix are fixed. All in all the library wants to provide drop-in support for all matrix algorithms were possible. &lt;/aside&gt;</p>
+</div><!-- fragment --><p>&lt;aside class="notes"&gt; Adding algorithms, or operations against the typed matrix is merely done by adding free functions. We've made the choice to avoid the friendship coupling to enable extensibility at this time. The addition operator shown is one overload among four variations: adding two matrices, and adding a value to a 1-by-1 matrix, left and right handside. There are conditions on the types added, such as the size of the matrix and the convertibility of the types. The matrix-matrix-product operator shown here is the general case product among six other overloads. The divison operator, not shown here configurable via yet another customization point object to select the end-user's prefered solver implementation for a matrix decomposition. Matrix division divides the community. Should it exist? Can it exist? In which cases? Remember linear algebra is not commutative, a matrix may not have an inverse, and there may exists multiple solutions. Should the transposed operation shown here be done in place? Or return memory? The scale operation, alpha x, done in place here, imposes a dimension-less restriction on the scalar, because the element types of the matrix are fixed. All in all the library wants to provide drop-in support for all matrix algorithms were possible. &lt;/aside&gt;</p>
 <hr  />
 <h6>Linear Algebra Layers</h6>
 <p><small></small></p>
@@ -571,6 +571,10 @@ Requires type support.    </td></tr>
  Additionaly there are compile-time limits to the usage of std::tuple for type-lists either for the data storage or for the row and column type lists. Compilers, standard library implementations have limits in how many types can be found in type-lists. Similarly for recursive template instantiation. A setter may be the least worse solution for assigning elements. &lt;/aside&gt;</span></p>
 <p><span class="fragment"></p><hr  />
 <p></span></p>
+<p><span class="fragment"><img src="tuple_trace.png" alt="" class="inline"/></span></p>
+<p><span class="fragment">&lt;aside class="notes"&gt; About recursive template instantiation. This figure shows a compile-time trace of a 32x32 matrix-matrix-product with a naive recursive template instantiation for the template type list and operations. This trace is 16 seconds long, to compare with a baseline of 3 seconds for its non-typed matrix equivalent. Beyond the long compile-time, this implementation sufferred from extreme compilation memory usage, deep recursive template instantion. We hit limits in memory consumption. We hit limits in depths of instantiation. We hit limits on my patience waiting for compilation. There is a number of transformations and techniques we use to avoid this issue. For example, we don't instantiate types for evaluation in expressions, and we use iterative template implementation instead of recursive implementations. These techniques can be insufficient and as the type lists grow large we hit compilers, implementation, and platform limits. It remains to be seen how much better this can get. &lt;/aside&gt;</span></p>
+<p><span class="fragment"></p><hr  />
+<p></span></p>
 <p><span class="fragment"></p><h6>Future Work</h6>
 <p></span></p>
 <p><span class="fragment"></span></p>
@@ -584,7 +588,7 @@ Requires type support.    </td></tr>
 <li>Optimize type-list / <code>std::tuple</code> compile-time scalability.</li>
 <li>Optimize compile-time.</li>
 <li>Nondimensionalization.</li>
-<li>Usage feedback.</li>
+<li>Usage feedback. Let's play!</li>
 </ul>
 <p></small></span></p>
 <p><span class="fragment"><small></small></span></p>
@@ -717,9 +721,6 @@ Taxonomy Safety </li>
 <p>&lt;aside class="notes"&gt; The constructors of the typed matrix used concepts to ensure they are meanigful for a given template instantiation of a typed matrix. We show here a couple interesting concepts among the the 10 or so concepts present and used in the library. In some cases, we want to enable behavior solely for typed matrices. This concept presented with an interesting challenge in its definition: the template parameters of the typed matrix could not be passed in the concept nor deduced. The neat idiom to permit usage of the concept while passing only the single type to check was to re-use the type's under evaluation for its member types. Note the Type parameter is found on both sides of the same type concept.<br  />
  FRAGMENT<br  />
  There will be constructors, members that are only valid, only enabled if the typed matrix is in the special case of a uniformely typed matrix. All element types are the same. The same? Is same type too restrictive? Wouldn't convertible types be a sufficient condition? But convertible to what? A common type? To one another? Exhaustively? Some questions remain open. Also note that the constexpr for or template for expression statement can often be re-written as a fold expression, we haven't found a practical nested fold expression equivalent to the nested for loops here. Note that in C++26 template for expansion statement will replace these constexpr for templates. &lt;/aside&gt;</p>
-<hr  />
-<p><img src="tuple_trace.png" alt="" class="inline"/></p>
-<p>&lt;aside class="notes"&gt; About recursive template instantiation. This figure shows a compile-time trace of a 32x32 matrix-matrix-product with naive recursive template instantiation for the template type list and operations. This trace is 16 seconds, to compare with a baseline of 3 seconds for its non-typed matrix equivalent. Beyond the long compile-time, this implementation suffer from extreme memory usage, deep recursive template instantion. We hit limits in memory consumption. We hit limits in depths of instantiation. There is a number of transformations and techniques we use to avoid this issue. For example, we don't instantiate types for evaluation in expressions, and we use iterative template implementation instead of recursive implementations. These techniques can be insufficient and as the type lists grow large we hit compilers, implementation, and platform limits. &lt;/aside&gt;</p>
 <hr  />
 <h6>Learnings</h6>
 <ul>
