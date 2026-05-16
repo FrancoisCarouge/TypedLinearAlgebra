@@ -221,7 +221,8 @@ public:
   //! @details Applicable to singleton matrix: one element.
   //!
   //! @param value Element of compatible type.
-  constexpr typed_matrix &operator=(const auto &value)
+  constexpr typed_matrix &
+  operator=(const std::convertible_to<element<>> auto &value)
     requires rank_typed_matrix<typed_matrix, 0>;
 
   //! @brief Convert construct one-dimension uniformly typed matrix from array.
@@ -310,7 +311,7 @@ public:
   template <typename... Indexes>
   [[nodiscard]] constexpr decltype(auto) operator[](this auto &&self,
                                                     Indexes... indexes)
-    requires(sizeof...(Indexes) >= rank) and
+    requires(sizeof...(Indexes) == rank) and
             ((index<Indexes> && ...) or uniform_typed_matrix<typed_matrix>);
 
   //! @brief Access the specified element.
@@ -330,7 +331,7 @@ public:
   template <typename... Indexes>
   [[nodiscard]] constexpr decltype(auto) operator()(this auto &&self,
                                                     Indexes... indexes)
-    requires(sizeof...(Indexes) >= rank) and
+    requires(sizeof...(Indexes) == rank) and
             ((index<Indexes> && ...) or uniform_typed_matrix<typed_matrix>);
 
   //! @brief Access the specified element with compile-time bound checking.
@@ -346,7 +347,7 @@ public:
   //! location for non-const access, or a prvalue otherwise.
   template <auto... Indexes>
   [[nodiscard]] constexpr decltype(auto) at(this auto &&self)
-    requires(sizeof...(Indexes) >= rank);
+    requires(sizeof...(Indexes) == rank);
 
   //! @brief Direct access to the underlying storage.
   //!
