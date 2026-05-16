@@ -436,7 +436,7 @@ void scale          (const auto &amp;α,
 </code></pre>
 <aside class="notes">
 Adding algorithms, or operations against the typed matrix is merely done by adding free functions. We've made the choice to avoid the friendship coupling to enable extensibility at this time.
-The the addition shown is one overload among four variations: adding two matrices, and adding a value to a 1-by-1 matrix, left and right handside. There are conditions on the types added, such as the size of the matrix and the convertibility of the types.
+The addition operator shown is one overload among four variations: adding two matrices, and adding a value to a 1-by-1 matrix, left and right handside. There are conditions on the types added, such as the size of the matrix and the convertibility of the types.
 The matrix-matrix-product operator shown here is the general case product among six other overloads.
 The divison operator, not shown here configurable via yet another customization point object to select the end-user's prefered solver implementation for a matrix decomposition. Matrix division divides the community. Should it exist? Can it exist? In which cases? Remember linear algebra is not commutative, a matrix may not have an inverse, and there may exists multiple solutions.
 Should the transposed operation shown here be done in place? Or return memory?
@@ -915,6 +915,21 @@ A setter may be the least worse solution for assigning elements.
     
         <section >
             
+            <img src="tuple_trace.png">
+<aside class="notes">
+About recursive template instantiation. This figure shows a compile-time trace of a 32x32 matrix-matrix-product with a naive recursive template instantiation for the template type list and operations. This trace is 16 seconds long, to compare with a baseline of 3 seconds for its non-typed matrix equivalent. Beyond the long compile-time, this implementation sufferred from extreme compilation memory usage, deep recursive template instantion. We hit limits in memory consumption. We hit limits in depths of instantiation. We hit limits on my patience waiting for compilation.
+There is a number of transformations and techniques we use to avoid this issue. For example, we don't instantiate types for evaluation in expressions, and we use iterative template implementation instead of recursive implementations. These techniques can be insufficient and as the type lists grow large we hit compilers, implementation, and platform limits.
+It remains to be seen how much better this can get.
+</aside>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
             <h6>Future Work</h6>
 <small>
 <ul>
@@ -926,7 +941,7 @@ A setter may be the least worse solution for assigning elements.
 <li>Optimize type-list / <code>std::tuple</code> compile-time scalability.</li>
 <li>Optimize compile-time.</li>
 <li>Nondimensionalization.</li>
-<li>Usage feedback.</li>
+<li>Usage feedback. Let’s play!</li>
 </ul>
 </small>
 <aside class="notes">
@@ -1120,20 +1135,6 @@ The constructors of the typed matrix used concepts to ensure they are meanigful 
 In some cases, we want to enable behavior solely for typed matrices. This concept presented with an interesting challenge in its definition: the template parameters of the typed matrix could not be passed in the concept nor deduced. The neat idiom to permit usage of the concept while passing only the single type to check was to re-use the type's under evaluation for its member types. Note the Type parameter is found on both sides of the same type concept.<br />
 FRAGMENT<br />
 There will be constructors, members that are only valid, only enabled if the typed matrix is in the special case of a uniformely typed matrix. All element types are the same. The same? Is same type too restrictive? Wouldn't convertible types be a sufficient condition? But convertible to what? A common type? To one another? Exhaustively? Some questions remain open. Also note that the constexpr for or template for expression statement can often be re-written as a fold expression, we haven't found a practical nested fold expression equivalent to the nested for loops here. Note that in C++26 template for expansion statement will replace these constexpr for templates. 
-</aside>
-
-            </section>
-    
-
-
-
-    
-        <section >
-            
-            <img src="tuple_trace.png">
-<aside class="notes">
-About recursive template instantiation. This figure shows a compile-time trace of a 32x32 matrix-matrix-product with naive recursive template instantiation for the template type list and operations. This trace is 16 seconds, to compare with a baseline of 3 seconds for its non-typed matrix equivalent. Beyond the long compile-time, this implementation suffer from extreme memory usage, deep recursive template instantion. We hit limits in memory consumption. We hit limits in depths of instantiation.
-There is a number of transformations and techniques we use to avoid this issue. For example, we don't instantiate types for evaluation in expressions, and we use iterative template implementation instead of recursive implementations. These techniques can be insufficient and as the type lists grow large we hit compilers, implementation, and platform limits.
 </aside>
 
             </section>
