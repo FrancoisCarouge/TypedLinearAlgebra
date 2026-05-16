@@ -115,34 +115,32 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
   return *this;
 }
 
-//! @todo Verify types and storage (?) compatibility.
+//! @todo How to handle all combinations of storage and value types?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const std::convertible_to<element<>> auto &value)
   requires rank_typed_matrix<typed_matrix, 0>
 {
-  if constexpr (requires { value[0, 0]; }) {
-    storage[0, 0] = underlying{value[0, 0]};
+  if constexpr (requires { storage[0, 0]; }) {
+    storage[0, 0] = cast<underlying, element<>>(value);
   } else {
-    using type = std::remove_cvref_t<decltype(value)>;
-    storage[0, 0] = cast<underlying, type>(value);
+    storage = cast<underlying, element<>>(value);
   }
 }
 
-//! @todo Verify types and storage (?) compatibility.
+//! @todo How to handle all combinations of storage and value types?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(const auto &value)
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
+    const std::convertible_to<element<>> auto &value)
   requires rank_typed_matrix<typed_matrix, 0>
 {
-  if constexpr (requires { value[0, 0]; }) {
-    storage[0, 0] = underlying{value[0, 0]};
-  } else if constexpr (requires { value[0]; }) {
-    storage[0, 0] = underlying{value[0]};
+  if constexpr (requires { storage[0, 0]; }) {
+    storage[0, 0] = cast<underlying, element<>>(value);
   } else {
-    using type = std::remove_cvref_t<decltype(value)>;
-    storage[0, 0] = cast<underlying, type>(value);
+    storage = cast<underlying, element<>>(value);
   }
+
   return *this;
 }
 
@@ -156,7 +154,13 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 {
   for (std::size_t i{0}; const auto &row : row_list) {
     for (std::size_t j{0}; const auto &value : row) {
-      storage[i, j] = cast<underlying, Type>(value);
+      if constexpr (rank_typed_matrix<typed_matrix, 2>) {
+        storage[i, j] = cast<underlying, Type>(value);
+      } else if constexpr (rank_typed_matrix<typed_matrix, 1>) {
+        storage[i + j] = cast<underlying, Type>(value);
+      } else {
+        storage = cast<underlying, Type>(value);
+      }
       ++j;
     }
     ++i;
@@ -199,18 +203,19 @@ template <typename... Indexes>
 [[nodiscard]] constexpr decltype(auto)
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
                                                             Indexes... indexes)
-  requires(sizeof...(Indexes) >= rank) and
+  requires(sizeof...(Indexes) == rank) and
           ((index<Indexes> && ...) or uniform_typed_matrix<typed_matrix>)
 {
   return self.operator()(indexes...);
 }
 
+//! @todo Unecessarily complicated, simplify?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <typename... Indexes>
 [[nodiscard]] constexpr decltype(auto)
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
                                                             Indexes... indexes)
-  requires(sizeof...(Indexes) >= rank) and
+  requires(sizeof...(Indexes) == rank) and
           ((index<Indexes> && ...) or uniform_typed_matrix<typed_matrix>)
 {
   if constexpr ((index<Indexes> && ...)) {
@@ -222,28 +227,31 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
     using qualified_element =
         std::conditional_t<std::is_const_v<self_t>, element<>, element<> &>;
 
-    std::size_t i{0};
-    std::size_t j{0};
-
     if constexpr (sizeof...(indexes) == 2) {
-      i = std::get<0>(std::tuple{indexes...});
-      j = std::get<1>(std::tuple{indexes...});
+      std::size_t i = std::get<0>(std::tuple{indexes...});
+      std::size_t j = std::get<1>(std::tuple{indexes...});
+      return cast<qualified_element, qualified_underlying>(self.storage(i, j));
     }
     if constexpr ((sizeof...(indexes) == 1) && (columns == 1)) {
-      i = std::get<0>(std::tuple{indexes...});
+      std::size_t i = std::get<0>(std::tuple{indexes...});
+      return cast<qualified_element, qualified_underlying>(self.storage(i));
     }
     if constexpr ((sizeof...(indexes) == 1) && (rows == 1)) {
-      j = std::get<0>(std::tuple{indexes...});
+      std::size_t j = std::get<0>(std::tuple{indexes...});
+      return cast<qualified_element, qualified_underlying>(self.storage(j));
     }
-    return cast<qualified_element, qualified_underlying>(self.storage(i, j));
+    if constexpr ((sizeof...(indexes) == 0)) {
+      return cast<qualified_element, qualified_underlying>();
+    }
   }
 }
 
+//! @todo Unecessarily complicated, simplify?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <auto... Indexes>
 [[nodiscard]] constexpr decltype(auto)
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
-  requires(sizeof...(Indexes) >= rank)
+  requires(sizeof...(Indexes) == rank)
 {
   using self_t = std::remove_reference_t<decltype(self)>;
   using qualified_underlying =
@@ -259,27 +267,49 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
         self.storage[std::get<0>(std::tuple{Indexes...}),
                      std::get<1>(std::tuple{Indexes...})]);
   } else if constexpr (sizeof...(Indexes) == 1) {
-    if constexpr (rows == 1) {
-      using element_t = element<0, std::get<0>(std::tuple{Indexes...})>;
-      using qualified_element =
-          std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
+    if constexpr (requires { self.storage[0, 0]; }) {
+      if constexpr (rows == 1) {
+        using element_t = element<0, std::get<0>(std::tuple{Indexes...})>;
+        using qualified_element =
+            std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
 
-      return cast<qualified_element, qualified_underlying>(
-          self.storage[0, std::get<0>(std::tuple{Indexes...})]);
+        return cast<qualified_element, qualified_underlying>(
+            self.storage[0, std::get<0>(std::tuple{Indexes...})]);
+      } else {
+        using element_t = element<std::get<0>(std::tuple{Indexes...}), 0>;
+        using qualified_element =
+            std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
+
+        return cast<qualified_element, qualified_underlying>(
+            self.storage[std::get<0>(std::tuple{Indexes...}), 0]);
+      }
     } else {
-      using element_t = element<std::get<0>(std::tuple{Indexes...}), 0>;
-      using qualified_element =
-          std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
+      if constexpr (rows == 1) {
+        using element_t = element<0, std::get<0>(std::tuple{Indexes...})>;
+        using qualified_element =
+            std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
 
-      return cast<qualified_element, qualified_underlying>(
-          self.storage[std::get<0>(std::tuple{Indexes...}), 0]);
+        return cast<qualified_element, qualified_underlying>(
+            self.storage[std::get<0>(std::tuple{Indexes...})]);
+      } else {
+        using element_t = element<std::get<0>(std::tuple{Indexes...}), 0>;
+        using qualified_element =
+            std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
+
+        return cast<qualified_element, qualified_underlying>(
+            self.storage[std::get<0>(std::tuple{Indexes...})]);
+      }
     }
   } else {
     using element_t = element<0, 0>;
     using qualified_element =
         std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
 
-    return cast<qualified_element, qualified_underlying>(self.storage[0, 0]);
+    if constexpr (requires { self.storage[0, 0]; }) {
+      return cast<qualified_element, qualified_underlying>(self.storage[0, 0]);
+    } else {
+      return cast<qualified_element, qualified_underlying>(self.storage());
+    }
   }
 }
 
