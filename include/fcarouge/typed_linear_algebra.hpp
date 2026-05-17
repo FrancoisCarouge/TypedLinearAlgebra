@@ -388,7 +388,7 @@ using typed_column_vector =
 //! @details Specialize this template to allow conversion of element's type and
 //! underlying type.
 template <typename To, typename From> struct element_caster {
-  [[nodiscard]] static constexpr To operator()(From value);
+  // [[nodiscard]] static constexpr To operator()(From value);
 };
 
 //! @}

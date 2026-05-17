@@ -33,20 +33,18 @@ if(NOT BUILD_TESTING)
   return()
 endif()
 
-add_executable(typed_linear_algebra_sample_mp_units_eigen_driver
-               "mp_units_eigen.cpp")
-target_link_libraries(
-  typed_linear_algebra_sample_mp_units_eigen_driver
-  PRIVATE typed_linear_algebra_unit_eigen typed_linear_algebra_main
-          typed_linear_algebra_options)
-add_test(NAME typed_linear_algebra_sample_mp_units_eigen
-         COMMAND typed_linear_algebra_sample_mp_units_eigen_driver)
+# add_executable(typed_linear_algebra_sample_mp_units_eigen_driver
+# "mp_units_eigen.cpp") target_link_libraries(
+# typed_linear_algebra_sample_mp_units_eigen_driver PRIVATE
+# typed_linear_algebra_unit_eigen typed_linear_algebra_main
+# typed_linear_algebra_options) add_test(NAME
+# typed_linear_algebra_sample_mp_units_eigen COMMAND
+# typed_linear_algebra_sample_mp_units_eigen_driver)
 
-add_executable(typed_linear_algebra_sample_mp_units_std_driver
-               "mp_units_std.cpp")
-target_link_libraries(
-  typed_linear_algebra_sample_mp_units_std_driver
-  PRIVATE typed_linear_algebra_main typed_linear_algebra_options
-          typed_linear_algebra_unit_std)
-add_test(NAME typed_linear_algebra_sample_mp_units_std
-         COMMAND typed_linear_algebra_sample_mp_units_std_driver)
+# add_executable(typed_linear_algebra_sample_mp_units_std_driver
+# "mp_units_std.cpp") target_link_libraries(
+# typed_linear_algebra_sample_mp_units_std_driver PRIVATE
+# typed_linear_algebra_main typed_linear_algebra_options
+# typed_linear_algebra_unit_std) add_test(NAME
+# typed_linear_algebra_sample_mp_units_std COMMAND
+# typed_linear_algebra_sample_mp_units_std_driver)

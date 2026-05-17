@@ -245,15 +245,31 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
   using qualified_underlying =
       std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
 
+  // const auto &acc = self.storage.accessor();
+  const auto &map = self.storage.mapping();
+  const auto &handle = self.storage.data_handle();
+  size_t idx = map(std::get<0>(std::tuple{Indexes...}),
+                   std::get<1>(std::tuple{Indexes...}));
+
+  // Example: by double
+  // [[maybe_unused]] double &d = acc.access(handle, idx);
+
+  // Example: by variant
+  // [[maybe_unused]] auto &q = acc.typed_access(handle, idx);
+
   if constexpr (sizeof...(Indexes) == 2) {
     using element_t = element<std::get<0>(std::tuple{Indexes...}),
                               std::get<1>(std::tuple{Indexes...})>;
     using qualified_element =
         std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
 
-    return cast<qualified_element, qualified_underlying>(
-        self.storage[std::get<0>(std::tuple{Indexes...}),
-                     std::get<1>(std::tuple{Indexes...})]);
+    // change probably not needed? Or significant implementation simplification.
+    return cast<qualified_element &, qualified_underlying &>(
+        handle[idx]
+        // acc.typed_access(handle, idx)
+        // self.storage[std::get<0>(std::tuple{Indexes...}),
+        //              std::get<1>(std::tuple{Indexes...})]
+    );
   } else if constexpr (sizeof...(Indexes) == 1) {
     if constexpr (rows == 1) {
       using element_t = element<0, std::get<0>(std::tuple{Indexes...})>;
