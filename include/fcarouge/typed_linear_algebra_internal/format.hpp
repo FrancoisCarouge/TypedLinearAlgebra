@@ -97,6 +97,31 @@ public:
   constexpr auto
   format(const matrix &value,
          FormatContext &format_context) const -> FormatContext::iterator
+    requires fcarouge::typed_linear_algebra_internal::column_typed_matrix<
+        matrix>
+  {
+    format_context.advance_to(std::format_to(format_context.out(), "["));
+
+    fcarouge::typed_linear_algebra_internal::for_constexpr<rows>(
+        [&value, &format_context](auto position) {
+          if (position > 0) {
+            format_context.advance_to(
+                std::format_to(format_context.out(), ", "));
+          }
+
+          format_context.advance_to(std::format_to(
+              format_context.out(), "[{}]", value.template at<position>()));
+        });
+
+    format_context.advance_to(std::format_to(format_context.out(), "]"));
+
+    return format_context.out();
+  }
+
+  template <typename FormatContext>
+  constexpr auto
+  format(const matrix &value,
+         FormatContext &format_context) const -> FormatContext::iterator
     requires fcarouge::typed_linear_algebra_internal::row_typed_matrix<matrix>
   {
     format_context.advance_to(std::format_to(format_context.out(), "["));
