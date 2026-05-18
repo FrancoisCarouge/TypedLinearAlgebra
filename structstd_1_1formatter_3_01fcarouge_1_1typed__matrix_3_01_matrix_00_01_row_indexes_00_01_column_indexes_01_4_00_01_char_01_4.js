@@ -2,6 +2,7 @@ var structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_i
 [
     [ "matrix", "structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#acc11d9b746008621a4da1faff0482026", null ],
     [ "format", "structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#af597106c6b5a6b07cfb31959d7e465df", null ],
+    [ "format", "structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#a37910cba8c6e5df92958c76e3509c34a", null ],
     [ "format", "structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#aaf78b9177ce64ee19cc6e856609f5556", null ],
     [ "format", "structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#ae63209b846333fa01818def212c0d23f", null ],
     [ "parse", "structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#a14e60e6fe32258bf42d42e16f9cb3812", null ],

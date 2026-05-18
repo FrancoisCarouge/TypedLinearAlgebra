@@ -119,7 +119,7 @@ $(function(){initNavTree('structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_87de27cf264c518db1aac8323d8a4dae.svg" width="192" height="328"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_87de27cf264c518db1aac8323d8a4dae.svg" width="192" height="348"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -127,6 +127,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af597106c6b5a6b07cfb31959d7e465df" id="r_af597106c6b5a6b07cfb31959d7e465df"><td class="memTemplParams" colspan="2">template&lt;typename FormatContext &gt; </td></tr>
 <tr class="memitem:af597106c6b5a6b07cfb31959d7e465df"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#af597106c6b5a6b07cfb31959d7e465df">format</a> (const <a class="el" href="#acc11d9b746008621a4da1faff0482026">matrix</a> &amp;value, FormatContext &amp;format_context) const -&gt; FormatContext::iterator</td></tr>
 <tr class="separator:af597106c6b5a6b07cfb31959d7e465df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37910cba8c6e5df92958c76e3509c34a" id="r_a37910cba8c6e5df92958c76e3509c34a"><td class="memTemplParams" colspan="2">template&lt;typename FormatContext &gt; <br />
+requires fcarouge::typed_linear_algebra_internal::column_typed_matrix&lt; <a class="el" href="#acc11d9b746008621a4da1faff0482026">matrix</a>&gt;</td></tr>
+<tr class="memitem:a37910cba8c6e5df92958c76e3509c34a"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a37910cba8c6e5df92958c76e3509c34a">format</a> (const <a class="el" href="#acc11d9b746008621a4da1faff0482026">matrix</a> &amp;value, FormatContext &amp;format_context) const -&gt; FormatContext::iterator</td></tr>
+<tr class="separator:a37910cba8c6e5df92958c76e3509c34a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf78b9177ce64ee19cc6e856609f5556" id="r_aaf78b9177ce64ee19cc6e856609f5556"><td class="memTemplParams" colspan="2">template&lt;typename FormatContext &gt; <br />
 requires fcarouge::typed_linear_algebra_internal::row_typed_matrix&lt;<a class="el" href="#acc11d9b746008621a4da1faff0482026">matrix</a>&gt;</td></tr>
 <tr class="memitem:aaf78b9177ce64ee19cc6e856609f5556"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aaf78b9177ce64ee19cc6e856609f5556">format</a> (const <a class="el" href="#acc11d9b746008621a4da1faff0482026">matrix</a> &amp;value, FormatContext &amp;format_context) const -&gt; FormatContext::iterator</td></tr>
@@ -187,7 +191,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes , typ
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="af597106c6b5a6b07cfb31959d7e465df" name="af597106c6b5a6b07cfb31959d7e465df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af597106c6b5a6b07cfb31959d7e465df">&#9670;&#160;</a></span>format() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af597106c6b5a6b07cfb31959d7e465df">&#9670;&#160;</a></span>format() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -261,8 +265,72 @@ template&lt;typename FormatContext &gt; </div>
 
 </div>
 </div>
+<a id="a37910cba8c6e5df92958c76e3509c34a" name="a37910cba8c6e5df92958c76e3509c34a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37910cba8c6e5df92958c76e3509c34a">&#9670;&#160;</a></span>format() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes , typename Char &gt; </div>
+<div class="memtemplate">
+template&lt;typename FormatContext &gt; <br />
+requires fcarouge::typed_linear_algebra_internal::column_typed_matrix&lt; <a class="el" href="#acc11d9b746008621a4da1faff0482026">matrix</a>&gt;</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto std::formatter&lt; <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;, Char &gt;::format </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#acc11d9b746008621a4da1faff0482026">matrix</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FormatContext &amp;</td>          <td class="paramname"><span class="paramname"><em>format_context</em></span>&#160;) const -&gt; FormatContext::iterator
+    </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="format_8hpp_source.xhtml#l00098">98</a> of file <a class="el" href="format_8hpp_source.xhtml">format.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  102</span>  {</div>
+<div class="line"><span class="lineno">  103</span>    format_context.advance_to(std::format_to(format_context.out(), <span class="stringliteral">&quot;[&quot;</span>));</div>
+<div class="line"><span class="lineno">  104</span> </div>
+<div class="line"><span class="lineno">  105</span>    <a class="code hl_function" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#abcda1ee8b10a813ac3a16d25343603c7">fcarouge::typed_linear_algebra_internal::for_constexpr&lt;rows&gt;</a>(</div>
+<div class="line"><span class="lineno">  106</span>        [&amp;value, &amp;format_context](<span class="keyword">auto</span> position) {</div>
+<div class="line"><span class="lineno">  107</span>          <span class="keywordflow">if</span> (position &gt; 0) {</div>
+<div class="line"><span class="lineno">  108</span>            format_context.advance_to(</div>
+<div class="line"><span class="lineno">  109</span>                std::format_to(format_context.out(), <span class="stringliteral">&quot;, &quot;</span>));</div>
+<div class="line"><span class="lineno">  110</span>          }</div>
+<div class="line"><span class="lineno">  111</span> </div>
+<div class="line"><span class="lineno">  112</span>          format_context.advance_to(std::format_to(</div>
+<div class="line"><span class="lineno">  113</span>              format_context.out(), <span class="stringliteral">&quot;[{}]&quot;</span>, value.template at&lt;position&gt;()));</div>
+<div class="line"><span class="lineno">  114</span>        });</div>
+<div class="line"><span class="lineno">  115</span> </div>
+<div class="line"><span class="lineno">  116</span>    format_context.advance_to(std::format_to(format_context.out(), <span class="stringliteral">&quot;]&quot;</span>));</div>
+<div class="line"><span class="lineno">  117</span> </div>
+<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">return</span> format_context.out();</div>
+<div class="line"><span class="lineno">  119</span>  }</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00172">fcarouge::typed_linear_algebra_internal::for_constexpr()</a>.</p>
+<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4_a37910cba8c6e5df92958c76e3509c34a_cgraph.svg" width="591" height="82"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="aaf78b9177ce64ee19cc6e856609f5556" name="aaf78b9177ce64ee19cc6e856609f5556"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf78b9177ce64ee19cc6e856609f5556">&#9670;&#160;</a></span>format() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf78b9177ce64ee19cc6e856609f5556">&#9670;&#160;</a></span>format() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -294,39 +362,39 @@ requires fcarouge::typed_linear_algebra_internal::row_typed_matrix&lt;<a class="
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="format_8hpp_source.xhtml#l00098">98</a> of file <a class="el" href="format_8hpp_source.xhtml">format.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  101</span>  {</div>
-<div class="line"><span class="lineno">  102</span>    format_context.advance_to(std::format_to(format_context.out(), <span class="stringliteral">&quot;[&quot;</span>));</div>
-<div class="line"><span class="lineno">  103</span> </div>
-<div class="line"><span class="lineno">  104</span>    <a class="code hl_function" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#abcda1ee8b10a813ac3a16d25343603c7">fcarouge::typed_linear_algebra_internal::for_constexpr&lt;columns&gt;</a>(</div>
-<div class="line"><span class="lineno">  105</span>        [&amp;value, &amp;format_context](<span class="keyword">auto</span> position) {</div>
-<div class="line"><span class="lineno">  106</span>          <span class="keywordflow">if</span> (position &gt; 0) {</div>
-<div class="line"><span class="lineno">  107</span>            format_context.advance_to(</div>
-<div class="line"><span class="lineno">  108</span>                std::format_to(format_context.out(), <span class="stringliteral">&quot;, &quot;</span>));</div>
-<div class="line"><span class="lineno">  109</span>          }</div>
-<div class="line"><span class="lineno">  110</span> </div>
-<div class="line"><span class="lineno">  111</span>          format_context.advance_to(std::format_to(</div>
-<div class="line"><span class="lineno">  112</span>              format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>, value.template at&lt;position&gt;()));</div>
-<div class="line"><span class="lineno">  113</span>        });</div>
-<div class="line"><span class="lineno">  114</span> </div>
-<div class="line"><span class="lineno">  115</span>    format_context.advance_to(std::format_to(format_context.out(), <span class="stringliteral">&quot;]&quot;</span>));</div>
-<div class="line"><span class="lineno">  116</span> </div>
-<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">return</span> format_context.out();</div>
-<div class="line"><span class="lineno">  118</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="format_8hpp_source.xhtml#l00123">123</a> of file <a class="el" href="format_8hpp_source.xhtml">format.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  126</span>  {</div>
+<div class="line"><span class="lineno">  127</span>    format_context.advance_to(std::format_to(format_context.out(), <span class="stringliteral">&quot;[&quot;</span>));</div>
+<div class="line"><span class="lineno">  128</span> </div>
+<div class="line"><span class="lineno">  129</span>    <a class="code hl_function" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#abcda1ee8b10a813ac3a16d25343603c7">fcarouge::typed_linear_algebra_internal::for_constexpr&lt;columns&gt;</a>(</div>
+<div class="line"><span class="lineno">  130</span>        [&amp;value, &amp;format_context](<span class="keyword">auto</span> position) {</div>
+<div class="line"><span class="lineno">  131</span>          <span class="keywordflow">if</span> (position &gt; 0) {</div>
+<div class="line"><span class="lineno">  132</span>            format_context.advance_to(</div>
+<div class="line"><span class="lineno">  133</span>                std::format_to(format_context.out(), <span class="stringliteral">&quot;, &quot;</span>));</div>
+<div class="line"><span class="lineno">  134</span>          }</div>
+<div class="line"><span class="lineno">  135</span> </div>
+<div class="line"><span class="lineno">  136</span>          format_context.advance_to(std::format_to(</div>
+<div class="line"><span class="lineno">  137</span>              format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>, value.template at&lt;position&gt;()));</div>
+<div class="line"><span class="lineno">  138</span>        });</div>
+<div class="line"><span class="lineno">  139</span> </div>
+<div class="line"><span class="lineno">  140</span>    format_context.advance_to(std::format_to(format_context.out(), <span class="stringliteral">&quot;]&quot;</span>));</div>
+<div class="line"><span class="lineno">  141</span> </div>
+<div class="line"><span class="lineno">  142</span>    <span class="keywordflow">return</span> format_context.out();</div>
+<div class="line"><span class="lineno">  143</span>  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00172">fcarouge::typed_linear_algebra_internal::for_constexpr()</a>.</p>
-<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4_aaf78b9177ce64ee19cc6e856609f5556_cgraph.svg" width="591" height="82"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
 </div>
 <a id="ae63209b846333fa01818def212c0d23f" name="ae63209b846333fa01818def212c0d23f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae63209b846333fa01818def212c0d23f">&#9670;&#160;</a></span>format() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae63209b846333fa01818def212c0d23f">&#9670;&#160;</a></span>format() <span class="overload">[4/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -358,13 +426,13 @@ requires fcarouge::typed_linear_algebra_internal::singleton_typed_matrix&lt; <a 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="format_8hpp_source.xhtml#l00122">122</a> of file <a class="el" href="format_8hpp_source.xhtml">format.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  126</span>  {</div>
-<div class="line"><span class="lineno">  127</span>    format_context.advance_to(</div>
-<div class="line"><span class="lineno">  128</span>        std::format_to(format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>, value.at()));</div>
-<div class="line"><span class="lineno">  129</span> </div>
-<div class="line"><span class="lineno">  130</span>    <span class="keywordflow">return</span> format_context.out();</div>
-<div class="line"><span class="lineno">  131</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="format_8hpp_source.xhtml#l00147">147</a> of file <a class="el" href="format_8hpp_source.xhtml">format.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  151</span>  {</div>
+<div class="line"><span class="lineno">  152</span>    format_context.advance_to(</div>
+<div class="line"><span class="lineno">  153</span>        std::format_to(format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>, value.at()));</div>
+<div class="line"><span class="lineno">  154</span> </div>
+<div class="line"><span class="lineno">  155</span>    <span class="keywordflow">return</span> format_context.out();</div>
+<div class="line"><span class="lineno">  156</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
