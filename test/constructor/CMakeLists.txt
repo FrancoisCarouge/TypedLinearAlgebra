@@ -29,11 +29,14 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+fail("1x893_fail" BACKENDS "eigexed")
+
 pass("1x1_array" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
 pass("1x1_unit_eigen" BACKENDS "unit_eigen")
 pass("1x1_unit_std" BACKENDS "unit_std")
 pass("1x1" BACKENDS "eigexed" "nested_typed_eigen")
 pass("1xn_array" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+pass("1x892" BACKENDS "eigexed")
 pass("1xn" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
 pass("copy" BACKENDS "eigexed" "nested_typed_eigen")
 pass("initializer_lists" BACKENDS "eigen" "eigexed" "nested_typed_eigen")

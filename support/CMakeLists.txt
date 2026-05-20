@@ -53,6 +53,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
               "-fno-builtin-std-forward_like"
               "-fno-check-new"
               "-fno-common"
+              "-fbracket-depth=898"
               "-fPIE"
               "-fstack-protector-strong"
               "-fstrict-aliasing"
