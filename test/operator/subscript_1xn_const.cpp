@@ -39,9 +39,6 @@ namespace {
 [[maybe_unused]] const auto test{[] {
   const row_vector<double, 3> m{1., 2., 3.};
 
-  assert((m[0, 0] == 1.));
-  assert((m[0, 1] == 2.));
-  assert((m[0, 2] == 3.));
   assert(m[0] == 1.);
   assert(m[1] == 2.);
   assert(m[2] == 3.);

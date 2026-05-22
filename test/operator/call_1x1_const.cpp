@@ -39,9 +39,10 @@ namespace {
 [[maybe_unused]] const auto test{[] {
   const matrix<> m{42.};
 
-  assert((m(0, 0) == 42.));
-  assert(m(0) == 42.);
+  assert(m.at() == 42.);
+  assert(m[] == 42.);
   assert(m() == 42.);
+  assert(m == 42.);
 
   return 0;
 }()};
