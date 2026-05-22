@@ -100,8 +100,9 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
     const element<> (&elements)[typed_matrix::rows * typed_matrix::columns])
-  requires uniform_typed_matrix<typed_matrix> and
-           rank_typed_matrix<typed_matrix, 1>
+  requires rank_typed_matrix<typed_matrix, 0> or
+           (rank_typed_matrix<typed_matrix, 1> and
+            uniform_typed_matrix<typed_matrix>)
 {
   if constexpr (requires { storage = elements; }) {
     storage = elements;

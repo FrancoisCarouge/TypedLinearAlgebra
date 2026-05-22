@@ -247,8 +247,9 @@ public:
   //!
   //! @param elements C-style array of elements of identical types.
   constexpr typed_matrix &operator=(const element<> (&elements)[rows * columns])
-    requires uniform_typed_matrix<typed_matrix> and
-             rank_typed_matrix<typed_matrix, 1>;
+    requires rank_typed_matrix<typed_matrix, 0> or
+             (rank_typed_matrix<typed_matrix, 1> and
+              uniform_typed_matrix<typed_matrix>);
 
   //! @brief Convert construct a uniformly typed matrix from list-initializers.
   //!
