@@ -156,32 +156,21 @@ $(function(){initNavTree('constructor_21x1__unit__std_8cpp_source.xhtml',''); in
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  r = 42. * m2;</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  assert((42. * m2 == r(0, 0)));</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  assert((42. * m2 == r[0, 0]));</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  assert((42. * m2 == r.at&lt;0, 0&gt;()));</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  assert((42. * m2 == r(0_i, 0_i)));</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  assert((42. * m2 == r[0_i, 0_i]));</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  assert((42. * m2 == r.at&lt;0_i, 0_i&gt;()));</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  assert((42. * m2 == r(0)));</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  assert((42. * m2 == r[0]));</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  assert((42. * m2 == r.at&lt;0&gt;()));</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  assert((42. * m2 == r(0_i)));</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  assert((42. * m2 == r[0_i]));</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  assert((42. * m2 == r.at&lt;0_i&gt;()));</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  assert((42. * m2 == r()));</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  assert((42. * m2 == r));</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  assert((42. * m2 == r.at()));</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <span class="keyword">static_assert</span>(</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>      not std::is_constructible_v&lt;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>          <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;double, std::tuple&lt;length&gt;</a>, std::tuple&lt;length&gt;&gt;,</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>          <span class="keyword">decltype</span>(1. * m3)&gt;,</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>      <span class="stringliteral">&quot;The copy conversion constructor cannot accept non-convertible types.&quot;</span>);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>}()};</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>} <span class="comment">// namespace</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>} <span class="comment">// namespace fcarouge::test</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  assert(42. * m2 == r.at());</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  assert(42. * m2 == r[]);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  assert(42. * m2 == r());</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  assert(42. * m2 == r);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keyword">static_assert</span>(</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>      not std::is_constructible_v&lt;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>          <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;double, std::tuple&lt;length&gt;</a>, std::tuple&lt;length&gt;&gt;,</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>          <span class="keyword">decltype</span>(1. * m3)&gt;,</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>      <span class="stringliteral">&quot;The copy conversion constructor cannot accept non-convertible types.&quot;</span>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}()};</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>} <span class="comment">// namespace fcarouge::test</span></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a01e78c3f356b744543b2f25797bcfa84"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix</a></div><div class="ttdeci">Eigen::Matrix&lt; Type, Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Eigen3 matrix.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00082">eigen.hpp:82</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_a3c3e455061e1c9775f216253f0fc5541"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a3c3e455061e1c9775f216253f0fc5541">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::representation</a></div><div class="ttdeci">double representation</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00053">mp_units_eigen.cpp:53</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_021x1__unit__eigen_8cpp_03_xhtml_a65afe0a13900f39cae2f512f307c2776"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__unit__eigen_8cpp_03.xhtml#a65afe0a13900f39cae2f512f307c2776">fcarouge::test::anonymous_namespace{1x1_unit_eigen.cpp}::test</a></div><div class="ttdeci">const auto test</div><div class="ttdef"><b>Definition</b> <a href="addition_21x1__unit__eigen_8cpp_source.xhtml#l00045">1x1_unit_eigen.cpp:45</a></div></div>
