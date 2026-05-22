@@ -41,8 +41,8 @@ namespace {
   const matrix<double, 1, 2> b{3., 4.};
   const matrix<double, 1, 2> r{a + b};
 
-  assert(r(0, 0) == 4.);
-  assert(r(0, 1) == 6.);
+  assert(r(0) == 4.);
+  assert(r(1) == 6.);
 
   return 0;
 }()};
