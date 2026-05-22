@@ -225,6 +225,17 @@ template <typename Type> struct element_t<Type> {
 template <typename Type, std::size_t... Indexes>
 using element = element_t<Type, Indexes...>::type;
 
+template <std::size_t Rows, std::size_t Columns>
+constexpr std::size_t rank{[] {
+  if constexpr (Rows > 1 && Columns > 1) {
+    return 2;
+  } else if constexpr (Rows == 1 && Columns == 1) {
+    return 0;
+  } else {
+    return 1;
+  }
+}()};
+
 template <typename Type>
 concept uniform_typed_matrix =
     same_as_typed_matrix<Type> and ([]() {
@@ -248,15 +259,10 @@ template <typename Type>
 concept row_typed_matrix =
     same_as_typed_matrix<Type> and (std::remove_cvref_t<Type>::rows == 1);
 
-template <typename Type>
-concept one_dimension_typed_matrix =
-    same_as_typed_matrix<Type> and
-    (column_typed_matrix<Type> or row_typed_matrix<Type>);
-
-template <typename Type>
-concept singleton_typed_matrix =
-    same_as_typed_matrix<Type> and column_typed_matrix<Type> and
-    row_typed_matrix<Type>;
+template <typename Type, auto Rank>
+concept rank_typed_matrix = same_as_typed_matrix<Type> and
+                            (rank<std::remove_cvref_t<Type>::rows,
+                                  std::remove_cvref_t<Type>::columns> == Rank);
 
 template <typename Lhs, typename Rhs>
 concept same_shape =
@@ -281,17 +287,6 @@ template <typename Type, std::size_t Size>
 using tuple_n_type = typename tupler<Type, Size>::type;
 
 using identity_index = std::tuple<std::identity>;
-
-template <std::size_t Rows, std::size_t Columns>
-constexpr std::size_t rank{[] {
-  if constexpr (Rows > 1 && Columns > 1) {
-    return 2;
-  } else if constexpr (Rows == 1 && Columns == 1) {
-    return 0;
-  } else {
-    return 1;
-  }
-}()};
 
 template <typename> struct is_integral_constant_t;
 

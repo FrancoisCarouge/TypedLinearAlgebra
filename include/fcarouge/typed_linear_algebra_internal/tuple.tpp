@@ -33,16 +33,37 @@ For more information, please refer to <https://unlicense.org> */
 #define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_TUPLE_TPP
 
 //! @brief Tuple size specialization in support of structured bindings.
-template <fcarouge::one_dimension_typed_matrix Type>
+//!
+//! @details Specialization for one-dimension matrices. The tuple size is the
+//! number of elements in the matrix.
+template <fcarouge::rank_typed_matrix<1> Type>
 struct std::tuple_size<Type>
     : std::integral_constant<std::size_t, Type::rows * Type::columns> {};
 
 //! @brief Tuple element specialization in support of structured bindings.
-template <std::size_t Index, fcarouge::one_dimension_typed_matrix Type>
+//!
+//! @details Specialization for one-dimension matrices. The tuple element is the
+//! matrix element at the given index.
+template <std::size_t Index, fcarouge::rank_typed_matrix<1> Type>
   requires(Index < std::tuple_size_v<Type>)
 struct std::tuple_element<Index, Type> {
-  using type = typename Type::template element<Index / Type::columns,
-                                               Index % Type::columns>;
+  using type = typename Type::template element<Index>;
+};
+
+//! @brief Tuple size specialization in support of structured bindings.
+//!
+//! @details Specialization for zero-dimension matrices. The tuple size is one.
+template <fcarouge::rank_typed_matrix<0> Type>
+struct std::tuple_size<Type> : std::integral_constant<std::size_t, 1> {};
+
+//! @brief Tuple element specialization in support of structured bindings.
+//!
+//! @details Specialization for zero-dimension matrices. The tuple element is
+//! the single matrix element.
+template <std::size_t Index, fcarouge::rank_typed_matrix<0> Type>
+  requires(Index == 0)
+struct std::tuple_element<Index, Type> {
+  using type = typename Type::template element<>;
 };
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_TUPLE_TPP

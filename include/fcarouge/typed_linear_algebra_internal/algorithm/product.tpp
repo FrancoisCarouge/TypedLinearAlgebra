@@ -105,7 +105,7 @@ namespace tla = typed_linear_algebra_internal;
 }
 
 [[nodiscard]] constexpr auto operator*(const other auto &lhs,
-                                       const singleton_typed_matrix auto &rhs) {
+                                       const rank_typed_matrix<0> auto &rhs) {
   //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(rhs)>;
   using element = typename matrix::template element<0, 0>;
@@ -113,7 +113,7 @@ namespace tla = typed_linear_algebra_internal;
   return lhs * element{rhs};
 }
 
-[[nodiscard]] constexpr auto operator*(const singleton_typed_matrix auto &lhs,
+[[nodiscard]] constexpr auto operator*(const rank_typed_matrix<0> auto &lhs,
                                        const other auto &rhs) {
   //! @todo Should there be constraints on the type?
   using matrix = std::remove_cvref_t<decltype(lhs)>;
@@ -122,8 +122,8 @@ namespace tla = typed_linear_algebra_internal;
   return element{lhs} * rhs;
 }
 
-[[nodiscard]] constexpr auto operator*(const singleton_typed_matrix auto &lhs,
-                                       const singleton_typed_matrix auto &rhs) {
+[[nodiscard]] constexpr auto operator*(const rank_typed_matrix<0> auto &lhs,
+                                       const rank_typed_matrix<0> auto &rhs) {
   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
   using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
   using lhs_element = typename lhs_matrix::template element<0, 0>;

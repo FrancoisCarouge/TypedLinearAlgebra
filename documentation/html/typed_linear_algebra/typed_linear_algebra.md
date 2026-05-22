@@ -245,12 +245,12 @@ typed_matrix()
 typed_matrix(const auto &first_value,
              const auto &second_value,
              const auto &...values)
-  requires one_dimension_typed_matrix<typed_matrix>;
+  requires rank_typed_matrix<typed_matrix, 1>;
 
 // Singleton matrix from convertible value.
 typed_matrix(
     const std::convertible_to<element<>> auto &value)
-  requires singleton_typed_matrix<typed_matrix>;
+  requires rank_typed_matrix<typed_matrix, 0>;
 ```
 
 <aside class="notes">
@@ -270,7 +270,7 @@ typed_matrix(const same_as_typed_matrix auto &other);
 // Uniformly typed vector from array:
 typed_matrix(const element<> (&elements)[rows * columns])
   requires uniform_typed_matrix<typed_matrix>
-       and one_dimension_typed_matrix<typed_matrix>;
+       and rank_typed_matrix<typed_matrix, 1>;
 
 // Uniformly typed matrix from init-list of init-lists:
 template <typename Type>
