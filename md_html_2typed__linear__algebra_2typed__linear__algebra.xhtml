@@ -256,12 +256,12 @@ title: "Typed Linear Algebra"</h2>
 <div class="fragment"><div class="line"><span class="comment">// Compile-time bound-checked typed element read/write:</span></div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">auto</span>... Indexes&gt;</div>
 <div class="line"><span class="keyword">decltype</span>(<span class="keyword">auto</span>) at(<span class="keyword">this</span> <span class="keyword">auto</span> &amp;&amp;self)</div>
-<div class="line">  <span class="keyword">requires</span>(<span class="keyword">sizeof</span>...(Indexes) &gt;= rank);</div>
+<div class="line">  <span class="keyword">requires</span>(<span class="keyword">sizeof</span>...(Indexes) == rank);</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// ! Subscript operator access:</span></div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Indexes&gt;</div>
 <div class="line"><span class="keyword">decltype</span>(<span class="keyword">auto</span>) <span class="keyword">operator</span>[](<span class="keyword">this</span> <span class="keyword">auto</span> &amp;&amp;self, Indexes... indexes)</div>
-<div class="line">  <span class="keyword">requires</span>(<span class="keyword">sizeof</span>...(Indexes) &gt;= rank)</div>
+<div class="line">  <span class="keyword">requires</span>(<span class="keyword">sizeof</span>...(Indexes) == rank)</div>
 <div class="line">       and((index&lt;Indexes&gt; &amp;&amp; ...)</div>
 <div class="line">        or uniform_typed_matrix&lt;typed_matrix&gt;);</div>
 </div><!-- fragment --><p><span class="fragment"></span></p>
@@ -492,7 +492,7 @@ std::linalg   </td></tr>
 <p><span class="fragment"></span></p>
 <p><span class="fragment"></p><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">auto</span>... Indexes&gt;</div>
 <div class="line"><span class="keyword">decltype</span>(<span class="keyword">auto</span>) at(<span class="keyword">this</span> <span class="keyword">auto</span> &amp;&amp;self)</div>
-<div class="line">  <span class="keyword">requires</span>(<span class="keyword">sizeof</span>...(Indexes) &gt;= rank);</div>
+<div class="line">  <span class="keyword">requires</span>(<span class="keyword">sizeof</span>...(Indexes) == rank);</div>
 <div class="line">{</div>
 <div class="line">  <span class="comment">// ...</span></div>
 <div class="line">  <span class="keywordflow">return</span> cast&lt;qualified_element, qualified_underlying&gt;(</div>

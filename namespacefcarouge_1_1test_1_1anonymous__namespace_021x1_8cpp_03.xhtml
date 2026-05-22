@@ -126,66 +126,34 @@ Variables</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
 <div class="line">  matrix&lt;&gt; m{42.};</div>
 <div class="line"> </div>
-<div class="line">  assert((m.at&lt;0, 0&gt;() == 42.));</div>
-<div class="line">  assert(m.at&lt;0&gt;() == 42.);</div>
 <div class="line">  assert(m.at() == 42.);</div>
 <div class="line"> </div>
-<div class="line">  m.at&lt;0, 0&gt;() = 43.;</div>
+<div class="line">  m.at() = 43.;</div>
 <div class="line"> </div>
-<div class="line">  assert((m.at&lt;0, 0&gt;() == 43.));</div>
-<div class="line">  assert(m.at&lt;0&gt;() == 43.);</div>
 <div class="line">  assert(m.at() == 43.);</div>
-<div class="line"> </div>
-<div class="line">  m.at&lt;0&gt;() = 44.;</div>
-<div class="line"> </div>
-<div class="line">  assert((m.at&lt;0, 0&gt;() == 44.));</div>
-<div class="line">  assert(m.at&lt;0&gt;() == 44.);</div>
-<div class="line">  assert(m.at() == 44.);</div>
-<div class="line"> </div>
-<div class="line">  m.at() = 45.;</div>
-<div class="line"> </div>
-<div class="line">  assert((m.at&lt;0, 0&gt;() == 45.));</div>
-<div class="line">  assert(m.at&lt;0&gt;() == 45.);</div>
-<div class="line">  assert(m.at() == 45.);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
 </div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000009">Test</a></b></dt><dd>Verifies the at member accessor. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000017">Test</a></b></dt><dd>Verifies the initializer lists constructor. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000018">Test</a></b></dt><dd>Verifies the initializer lists constructor. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000028">Test</a></b></dt><dd>Verifies the element type of the matrix.</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000007">Todo</a></b></dt><dd>Add const and rank variations and negative tests. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000030">Test</a></b></dt><dd>Verifies the initializer lists constructor. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000031">Test</a></b></dt><dd>Verifies the initializer lists constructor. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000034">Test</a></b></dt><dd>Verifies the singleton by singleton matrix multiplication operator. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000060">Test</a></b></dt><dd>Verifies the structured bindings. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000059">Test</a></b></dt><dd>Verifies the structured bindings. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="at_21x1_8cpp_source.xhtml#l00039">39</a> of file <a class="el" href="at_21x1_8cpp_source.xhtml">1x1.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   39</span>                                {[] {</div>
 <div class="line"><span class="lineno">   40</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;&gt;</a> m{42.};</div>
 <div class="line"><span class="lineno">   41</span> </div>
-<div class="line"><span class="lineno">   42</span>  assert((m.at&lt;0, 0&gt;() == 42.));</div>
-<div class="line"><span class="lineno">   43</span>  assert(m.at&lt;0&gt;() == 42.);</div>
-<div class="line"><span class="lineno">   44</span>  assert(m.at() == 42.);</div>
+<div class="line"><span class="lineno">   42</span>  assert(m.at() == 42.);</div>
+<div class="line"><span class="lineno">   43</span> </div>
+<div class="line"><span class="lineno">   44</span>  m.at() = 43.;</div>
 <div class="line"><span class="lineno">   45</span> </div>
-<div class="line"><span class="lineno">   46</span>  m.at&lt;0, 0&gt;() = 43.;</div>
+<div class="line"><span class="lineno">   46</span>  assert(m.at() == 43.);</div>
 <div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>  assert((m.at&lt;0, 0&gt;() == 43.));</div>
-<div class="line"><span class="lineno">   49</span>  assert(m.at&lt;0&gt;() == 43.);</div>
-<div class="line"><span class="lineno">   50</span>  assert(m.at() == 43.);</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>  m.at&lt;0&gt;() = 44.;</div>
-<div class="line"><span class="lineno">   53</span> </div>
-<div class="line"><span class="lineno">   54</span>  assert((m.at&lt;0, 0&gt;() == 44.));</div>
-<div class="line"><span class="lineno">   55</span>  assert(m.at&lt;0&gt;() == 44.);</div>
-<div class="line"><span class="lineno">   56</span>  assert(m.at() == 44.);</div>
-<div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>  m.at() = 45.;</div>
-<div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>  assert((m.at&lt;0, 0&gt;() == 45.));</div>
-<div class="line"><span class="lineno">   61</span>  assert(m.at&lt;0&gt;() == 45.);</div>
-<div class="line"><span class="lineno">   62</span>  assert(m.at() == 45.);</div>
-<div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   65</span>}()};</div>
+<div class="line"><span class="lineno">   48</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   49</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a01e78c3f356b744543b2f25797bcfa84"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix</a></div><div class="ttdeci">Eigen::Matrix&lt; Type, Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Eigen3 matrix.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00082">eigen.hpp:82</a></div></div>
 </div><!-- fragment -->
 </div>
