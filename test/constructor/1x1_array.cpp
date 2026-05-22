@@ -40,7 +40,7 @@ namespace {
   const double a[1]{42.};
   const matrix<double, 1, 1> m{a};
 
-  assert(m(0, 0) == 42.);
+  assert(m() == 42.);
 
   return 0;
 }()};

@@ -40,9 +40,9 @@ namespace {
   const double a[3]{42., 43., 44.};
   const matrix<double, 1, 3> m{a};
 
-  assert(m(0, 0) == 42.);
-  assert(m(0, 1) == 43.);
-  assert(m(0, 2) == 44.);
+  assert(m(0) == 42.);
+  assert(m(1) == 43.);
+  assert(m(2) == 44.);
 
   return 0;
 }()};
