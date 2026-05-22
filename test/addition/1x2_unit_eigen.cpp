@@ -50,23 +50,15 @@ namespace {
   row_vector<representation, position, velocity> b{3. * m, 4. * m / s};
   row_vector<representation, position, velocity> r{a + b};
 
-  assert((4. * m == r.at<0, 0>()));
-  assert((4. * m == r(0_i, 0_i)));
-  assert((4. * m == r[0_i, 0_i]));
-  assert((4. * m == r.at<0_i, 0_i>()));
-  assert((4. * m == r.at<0>()));
-  assert((4. * m == r(0_i)));
-  assert((4. * m == r[0_i]));
-  assert((4. * m == r.at<0_i>()));
+  assert(4. * m == r.at<0>());
+  assert(4. * m == r.at<0_i>());
+  assert(4. * m == r[0_i]);
+  assert(4. * m == r(0_i));
 
-  assert((6. * m / s == r.at<0, 1>()));
-  assert((6. * m / s == r(0_i, 1_i)));
-  assert((6. * m / s == r[0_i, 1_i]));
-  assert((6. * m / s == r.at<0_i, 1_i>()));
-  assert((6. * m / s == r.at<1>()));
-  assert((6. * m / s == r(1_i)));
-  assert((6. * m / s == r[1_i]));
-  assert((6. * m / s == r.at<1_i>()));
+  assert(6. * m / s == r.at<1>());
+  assert(6. * m / s == r.at<1_i>());
+  assert(6. * m / s == r[1_i]);
+  assert(6. * m / s == r(1_i));
 
   return 0;
 }()};

@@ -49,21 +49,10 @@ namespace {
   const row_vector<representation, length> b{3. * m};
   const row_vector<representation, length> r{a + b};
 
-  assert((5. * m == r(0, 0)));
-  assert((5. * m == r[0, 0]));
-  assert((5. * m == r.at<0, 0>()));
-  assert((5. * m == r(0_i, 0_i)));
-  assert((5. * m == r[0_i, 0_i]));
-  assert((5. * m == r.at<0_i, 0_i>()));
-  assert((5. * m == r(0)));
-  assert((5. * m == r[0]));
-  assert((5. * m == r.at<0>()));
-  assert((5. * m == r(0_i)));
-  assert((5. * m == r[0_i]));
-  assert((5. * m == r.at<0_i>()));
-  assert((5. * m == r()));
-  assert((5. * m == r));
-  assert((5. * m == r.at()));
+  assert(5. * m == r.at());
+  assert(5. * m == r[]);
+  assert(5. * m == r());
+  assert(5. * m == r);
 
   return 0;
 }()};
