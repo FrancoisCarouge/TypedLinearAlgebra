@@ -294,12 +294,12 @@ Similarly for init-list of init-list for a type giving a uniformly typed matrix.
 // Compile-time bound-checked typed element read/write:
 template <auto... Indexes>
 decltype(auto) at(this auto &&self)
-  requires(sizeof...(Indexes) >= rank);
+  requires(sizeof...(Indexes) == rank);
 
 // ! Subscript operator access:
 template <typename... Indexes>
 decltype(auto) operator[](this auto &&self, Indexes... indexes)
-  requires(sizeof...(Indexes) >= rank)
+  requires(sizeof...(Indexes) == rank)
        and((index<Indexes> && ...)
         or uniform_typed_matrix<typed_matrix>);
 ```
@@ -636,7 +636,7 @@ We will need more index safety according to the domains.
 ```cpp
 template <auto... Indexes>
 decltype(auto) at(this auto &&self)
-  requires(sizeof...(Indexes) >= rank);
+  requires(sizeof...(Indexes) == rank);
 {
   // ...
   return cast<qualified_element, qualified_underlying>(

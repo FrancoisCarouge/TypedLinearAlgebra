@@ -335,12 +335,12 @@ typed_matrix()
 typed_matrix(const auto &amp;first_value,
              const auto &amp;second_value,
              const auto &amp;...values)
-  requires one_dimension_typed_matrix&lt;typed_matrix&gt;;
+  requires rank_typed_matrix&lt;typed_matrix, 1&gt;;
 
 // Singleton matrix from convertible value.
 typed_matrix(
     const std::convertible_to&lt;element&lt;&gt;&gt; auto &amp;value)
-  requires singleton_typed_matrix&lt;typed_matrix&gt;;
+  requires rank_typed_matrix&lt;typed_matrix, 0&gt;;
 </code></pre>
 <aside class="notes">
 The destructor is not shown here. You can imagine a default constexpr destructor.
@@ -364,7 +364,7 @@ typed_matrix(const same_as_typed_matrix auto &amp;other);
 // Uniformly typed vector from array:
 typed_matrix(const element&lt;&gt; (&amp;elements)[rows * columns])
   requires uniform_typed_matrix&lt;typed_matrix&gt;
-       and one_dimension_typed_matrix&lt;typed_matrix&gt;;
+       and rank_typed_matrix&lt;typed_matrix, 1&gt;;
 
 // Uniformly typed matrix from init-list of init-lists:
 template &lt;typename Type&gt;
@@ -390,12 +390,12 @@ Similarly for init-list of init-list for a type giving a uniformly typed matrix.
 <pre><code class="language-cpp">// Compile-time bound-checked typed element read/write:
 template &lt;auto... Indexes&gt;
 decltype(auto) at(this auto &amp;&amp;self)
-  requires(sizeof...(Indexes) &gt;= rank);
+  requires(sizeof...(Indexes) == rank);
 
 // ! Subscript operator access:
 template &lt;typename... Indexes&gt;
 decltype(auto) operator[](this auto &amp;&amp;self, Indexes... indexes)
-  requires(sizeof...(Indexes) &gt;= rank)
+  requires(sizeof...(Indexes) == rank)
        and((index&lt;Indexes&gt; &amp;&amp; ...)
         or uniform_typed_matrix&lt;typed_matrix&gt;);
 </code></pre>
@@ -786,7 +786,7 @@ We will need more index safety according to the domains.
             <h6>at</h6>
 <pre><code class="language-cpp">template &lt;auto... Indexes&gt;
 decltype(auto) at(this auto &amp;&amp;self)
-  requires(sizeof...(Indexes) &gt;= rank);
+  requires(sizeof...(Indexes) == rank);
 {
   // ...
   return cast&lt;qualified_element, qualified_underlying&gt;(
