@@ -42,7 +42,7 @@ namespace fcarouge {
 
 [[nodiscard]] constexpr bool operator==(const rank_typed_matrix<0> auto &lhs,
                                         const auto &rhs) {
-  return lhs.template at<0, 0>() == rhs;
+  return lhs.at() == rhs;
 }
 
 } // namespace fcarouge
