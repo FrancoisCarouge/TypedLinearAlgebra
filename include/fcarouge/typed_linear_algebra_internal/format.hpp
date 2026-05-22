@@ -68,7 +68,7 @@ public:
 
     fcarouge::typed_linear_algebra_internal::for_constexpr<rows>(
         [&value, &format_context](auto i) {
-          if (i > 0) {
+          if constexpr (i > 0) {
             format_context.advance_to(
                 std::format_to(format_context.out(), ", "));
           }
@@ -77,7 +77,7 @@ public:
 
           fcarouge::typed_linear_algebra_internal::for_constexpr<columns>(
               [&value, &format_context, &i](auto j) {
-                if (j > 0) {
+                if constexpr (j > 0) {
                   format_context.advance_to(
                       std::format_to(format_context.out(), ", "));
                 }
@@ -107,7 +107,7 @@ public:
 
     fcarouge::typed_linear_algebra_internal::for_constexpr<rows>(
         [&value, &format_context](auto position) {
-          if (position > 0) {
+          if constexpr (position > 0) {
             format_context.advance_to(
                 std::format_to(format_context.out(), ", "));
           }
@@ -134,7 +134,7 @@ public:
 
     fcarouge::typed_linear_algebra_internal::for_constexpr<columns>(
         [&value, &format_context](auto position) {
-          if (position > 0) {
+          if constexpr (position > 0) {
             format_context.advance_to(
                 std::format_to(format_context.out(), ", "));
           }
