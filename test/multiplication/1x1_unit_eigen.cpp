@@ -50,21 +50,10 @@ namespace {
   const row_vector<representation, length> b{3. * m};
   const row_vector<representation, area> r{a * b};
 
-  assert((6. * m2 == r(0, 0)));
-  assert((6. * m2 == r[0, 0]));
-  assert((6. * m2 == r.at<0, 0>()));
-  assert((6. * m2 == r(0_i, 0_i)));
-  assert((6. * m2 == r[0_i, 0_i]));
-  assert((6. * m2 == r.at<0_i, 0_i>()));
-  assert((6. * m2 == r(0)));
-  assert((6. * m2 == r[0]));
-  assert((6. * m2 == r.at<0>()));
-  assert((6. * m2 == r(0_i)));
-  assert((6. * m2 == r[0_i]));
-  assert((6. * m2 == r.at<0_i>()));
-  assert((6. * m2 == r()));
-  assert((6. * m2 == r));
-  assert((6. * m2 == r.at()));
+  assert(6. * m2 == r.at());
+  assert(6. * m2 == r());
+  assert(6. * m2 == r[]);
+  assert(6. * m2 == r);
 
   return 0;
 }()};

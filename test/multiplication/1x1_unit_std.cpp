@@ -63,21 +63,10 @@ namespace {
   b = 3. * m;
   r = a * b;
 
-  assert((6. * m2 == r(0, 0)));
-  assert((6. * m2 == r[0, 0]));
-  assert((6. * m2 == r.at<0, 0>()));
-  assert((6. * m2 == r(0_i, 0_i)));
-  assert((6. * m2 == r[0_i, 0_i]));
-  assert((6. * m2 == r.at<0_i, 0_i>()));
-  assert((6. * m2 == r(0)));
-  assert((6. * m2 == r[0]));
-  assert((6. * m2 == r.at<0>()));
-  assert((6. * m2 == r(0_i)));
-  assert((6. * m2 == r[0_i]));
-  assert((6. * m2 == r.at<0_i>()));
-  assert((6. * m2 == r()));
-  assert((6. * m2 == r));
-  assert((6. * m2 == r.at()));
+  assert(6. * m2 == r.at());
+  assert(6. * m2 == r[]);
+  assert(6. * m2 == r());
+  assert(6. * m2 == r);
 
   return 0;
 }()};

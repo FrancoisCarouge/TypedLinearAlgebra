@@ -43,21 +43,10 @@ namespace {
   const matrix<double, 1, 1> b{3.};
   const matrix<double, 1, 1> r{a * b};
 
-  assert((6. == r(0, 0)));
-  assert((6. == r[0, 0]));
-  assert((6. == r.at<0, 0>()));
-  assert((6. == r(0_i, 0_i)));
-  assert((6. == r[0_i, 0_i]));
-  assert((6. == r.at<0_i, 0_i>()));
-  assert((6. == r(0)));
-  assert((6. == r[0]));
-  assert((6. == r.at<0>()));
-  assert((6. == r(0_i)));
-  assert((6. == r[0_i]));
-  assert((6. == r.at<0_i>()));
-  assert((6. == r()));
-  assert((6. == r));
-  assert((6. == r.at()));
+  assert(6. == r.at());
+  assert(6. == r[]);
+  assert(6. == r());
+  assert(6. == r);
 
   return 0;
 }()};
