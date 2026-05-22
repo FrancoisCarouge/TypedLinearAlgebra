@@ -201,81 +201,86 @@ $(function(){initNavTree('format_8hpp_source.xhtml',''); initResizable(true); })
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> FormatContext&gt;</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span></div>
 <div class="foldopen" id="foldopen00098" data-start="{" data-end="}">
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#a37910cba8c6e5df92958c76e3509c34a">   98</a></span>  <a class="code hl_function" href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#a37910cba8c6e5df92958c76e3509c34a">format</a>(<span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a> &amp;value,</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#a411a1348012019214d3199444e33b4bb">   98</a></span>  <a class="code hl_function" href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#a411a1348012019214d3199444e33b4bb">format</a>(<span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a> &amp;value,</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>         FormatContext &amp;format_context) <span class="keyword">const</span> -&gt; FormatContext::iterator</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keyword">requires</span> fcarouge::typed_linear_algebra_internal::column_typed_matrix&lt;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a>&gt;</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  {</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    format_context.advance_to(std::format_to(format_context.out(), <span class="stringliteral">&quot;[&quot;</span>));</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <a class="code hl_function" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#abcda1ee8b10a813ac3a16d25343603c7">fcarouge::typed_linear_algebra_internal::for_constexpr&lt;rows&gt;</a>(</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        [&amp;value, &amp;format_context](<span class="keyword">auto</span> position) {</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>          <span class="keywordflow">if</span> (position &gt; 0) {</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            format_context.advance_to(</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                std::format_to(format_context.out(), <span class="stringliteral">&quot;, &quot;</span>));</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>          }</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>          format_context.advance_to(std::format_to(</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>              format_context.out(), <span class="stringliteral">&quot;[{}]&quot;</span>, value.template at&lt;position&gt;()));</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        });</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    format_context.advance_to(std::format_to(format_context.out(), <span class="stringliteral">&quot;]&quot;</span>));</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                 <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a>&gt; and</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>             fcarouge::typed_linear_algebra_internal::rank_typed_matrix&lt;<a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a>,</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                                                                        1&gt;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    format_context.advance_to(std::format_to(format_context.out(), <span class="stringliteral">&quot;[&quot;</span>));</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <a class="code hl_function" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#abcda1ee8b10a813ac3a16d25343603c7">fcarouge::typed_linear_algebra_internal::for_constexpr&lt;rows&gt;</a>(</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        [&amp;value, &amp;format_context](<span class="keyword">auto</span> position) {</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>          <span class="keywordflow">if</span> (position &gt; 0) {</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            format_context.advance_to(</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                std::format_to(format_context.out(), <span class="stringliteral">&quot;, &quot;</span>));</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>          }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>          format_context.advance_to(std::format_to(</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>              format_context.out(), <span class="stringliteral">&quot;[{}]&quot;</span>, value.template at&lt;position&gt;()));</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        });</div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordflow">return</span> format_context.out();</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  }</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    format_context.advance_to(std::format_to(format_context.out(), <span class="stringliteral">&quot;]&quot;</span>));</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">return</span> format_context.out();</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  }</div>
 </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> FormatContext&gt;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span></div>
-<div class="foldopen" id="foldopen00123" data-start="{" data-end="}">
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#aaf78b9177ce64ee19cc6e856609f5556">  123</a></span>  <a class="code hl_function" href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#aaf78b9177ce64ee19cc6e856609f5556">format</a>(<span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a> &amp;value,</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>         FormatContext &amp;format_context) <span class="keyword">const</span> -&gt; FormatContext::iterator</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keyword">requires</span> fcarouge::typed_linear_algebra_internal::row_typed_matrix&lt;matrix&gt;</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  {</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    format_context.advance_to(std::format_to(format_context.out(), <span class="stringliteral">&quot;[&quot;</span>));</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <a class="code hl_function" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#abcda1ee8b10a813ac3a16d25343603c7">fcarouge::typed_linear_algebra_internal::for_constexpr&lt;columns&gt;</a>(</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        [&amp;value, &amp;format_context](<span class="keyword">auto</span> position) {</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>          <span class="keywordflow">if</span> (position &gt; 0) {</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            format_context.advance_to(</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>                std::format_to(format_context.out(), <span class="stringliteral">&quot;, &quot;</span>));</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>          }</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>          format_context.advance_to(std::format_to(</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>              format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>, value.template at&lt;position&gt;()));</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        });</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    format_context.advance_to(std::format_to(format_context.out(), <span class="stringliteral">&quot;]&quot;</span>));</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keywordflow">return</span> format_context.out();</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>  }</div>
-</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> FormatContext&gt;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span></div>
+<div class="foldopen" id="foldopen00125" data-start="{" data-end="}">
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#a7c4d24eaf965942c07b360de615b418c">  125</a></span>  <a class="code hl_function" href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#a7c4d24eaf965942c07b360de615b418c">format</a>(<span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a> &amp;value,</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>         FormatContext &amp;format_context) <span class="keyword">const</span> -&gt; FormatContext::iterator</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keyword">requires</span> fcarouge::typed_linear_algebra_internal::row_typed_matrix&lt;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                 <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a>&gt; and</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>             fcarouge::typed_linear_algebra_internal::rank_typed_matrix&lt;<a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a>,</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                                                                        1&gt;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  {</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    format_context.advance_to(std::format_to(format_context.out(), <span class="stringliteral">&quot;[&quot;</span>));</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <a class="code hl_function" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#abcda1ee8b10a813ac3a16d25343603c7">fcarouge::typed_linear_algebra_internal::for_constexpr&lt;columns&gt;</a>(</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        [&amp;value, &amp;format_context](<span class="keyword">auto</span> position) {</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>          <span class="keywordflow">if</span> (position &gt; 0) {</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>            format_context.advance_to(</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>                std::format_to(format_context.out(), <span class="stringliteral">&quot;, &quot;</span>));</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>          }</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>          format_context.advance_to(std::format_to(</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>              format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>, value.template at&lt;position&gt;()));</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        });</div>
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> FormatContext&gt;</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span></div>
-<div class="foldopen" id="foldopen00147" data-start="{" data-end="}">
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#ae63209b846333fa01818def212c0d23f">  147</a></span>  <a class="code hl_function" href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#ae63209b846333fa01818def212c0d23f">format</a>(<span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a> &amp;value,</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>         FormatContext &amp;format_context) <span class="keyword">const</span> -&gt; FormatContext::iterator</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keyword">requires</span> fcarouge::typed_linear_algebra_internal::singleton_typed_matrix&lt;</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a>&gt;</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>  {</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    format_context.advance_to(</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        std::format_to(format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>, value.at()));</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keywordflow">return</span> format_context.out();</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>  }</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    format_context.advance_to(std::format_to(format_context.out(), <span class="stringliteral">&quot;]&quot;</span>));</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordflow">return</span> format_context.out();</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>  }</div>
 </div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>};</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> FormatContext&gt;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span></div>
+<div class="foldopen" id="foldopen00152" data-start="{" data-end="}">
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#ae7bfb82a712568a2a1cf01f068c375d7">  152</a></span>  <a class="code hl_function" href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#ae7bfb82a712568a2a1cf01f068c375d7">format</a>(<span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a> &amp;value,</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>         FormatContext &amp;format_context) <span class="keyword">const</span> -&gt; FormatContext::iterator</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keyword">requires</span> fcarouge::typed_linear_algebra_internal::rank_typed_matrix&lt;<a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a>,</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>                                                                        0&gt;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>  {</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    format_context.advance_to(</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        std::format_to(format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>, value.at()));</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keywordflow">return</span> format_context.out();</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>  }</div>
 </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_FORMAT_HPP</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>};</div>
+</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_FORMAT_HPP</span></div>
 <div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a></div><div class="ttdoc">Strongly typed matrix.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__forward_8hpp_source.xhtml#l00043">typed_linear_algebra_forward.hpp:43</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra__internal_xhtml_abcda1ee8b10a813ac3a16d25343603c7"><div class="ttname"><a href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#abcda1ee8b10a813ac3a16d25343603c7">fcarouge::typed_linear_algebra_internal::for_constexpr</a></div><div class="ttdeci">constexpr void for_constexpr(Function &amp;&amp;function)</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00172">utility.hpp:172</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml"><div class="ttname"><a href="namespacefcarouge.xhtml">fcarouge</a></div><div class="ttdoc">Francois Carouge's projects namespace.</div><div class="ttdef"><b>Definition</b> <a href="eigen__product_8cpp_source.xhtml#l00041">eigen_product.cpp:41</a></div></div>
 <div class="ttc" id="astructstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4_xhtml_a14e60e6fe32258bf42d42e16f9cb3812"><div class="ttname"><a href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#a14e60e6fe32258bf42d42e16f9cb3812">std::formatter&lt; fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;, Char &gt;::parse</a></div><div class="ttdeci">static constexpr auto parse(std::basic_format_parse_context&lt; Char &gt; &amp;parse_context)</div><div class="ttdef"><b>Definition</b> <a href="#l00058">format.hpp:58</a></div></div>
-<div class="ttc" id="astructstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4_xhtml_a37910cba8c6e5df92958c76e3509c34a"><div class="ttname"><a href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#a37910cba8c6e5df92958c76e3509c34a">std::formatter&lt; fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;, Char &gt;::format</a></div><div class="ttdeci">constexpr auto format(const matrix &amp;value, FormatContext &amp;format_context) const -&gt; FormatContext::iterator</div><div class="ttdef"><b>Definition</b> <a href="#l00098">format.hpp:98</a></div></div>
-<div class="ttc" id="astructstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4_xhtml_aaf78b9177ce64ee19cc6e856609f5556"><div class="ttname"><a href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#aaf78b9177ce64ee19cc6e856609f5556">std::formatter&lt; fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;, Char &gt;::format</a></div><div class="ttdeci">constexpr auto format(const matrix &amp;value, FormatContext &amp;format_context) const -&gt; FormatContext::iterator</div><div class="ttdef"><b>Definition</b> <a href="#l00123">format.hpp:123</a></div></div>
-<div class="ttc" id="astructstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4_xhtml_ae63209b846333fa01818def212c0d23f"><div class="ttname"><a href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#ae63209b846333fa01818def212c0d23f">std::formatter&lt; fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;, Char &gt;::format</a></div><div class="ttdeci">constexpr auto format(const matrix &amp;value, FormatContext &amp;format_context) const -&gt; FormatContext::iterator</div><div class="ttdef"><b>Definition</b> <a href="#l00147">format.hpp:147</a></div></div>
+<div class="ttc" id="astructstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4_xhtml_a411a1348012019214d3199444e33b4bb"><div class="ttname"><a href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#a411a1348012019214d3199444e33b4bb">std::formatter&lt; fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;, Char &gt;::format</a></div><div class="ttdeci">constexpr auto format(const matrix &amp;value, FormatContext &amp;format_context) const -&gt; FormatContext::iterator</div><div class="ttdef"><b>Definition</b> <a href="#l00098">format.hpp:98</a></div></div>
+<div class="ttc" id="astructstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4_xhtml_a7c4d24eaf965942c07b360de615b418c"><div class="ttname"><a href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#a7c4d24eaf965942c07b360de615b418c">std::formatter&lt; fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;, Char &gt;::format</a></div><div class="ttdeci">constexpr auto format(const matrix &amp;value, FormatContext &amp;format_context) const -&gt; FormatContext::iterator</div><div class="ttdef"><b>Definition</b> <a href="#l00125">format.hpp:125</a></div></div>
+<div class="ttc" id="astructstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4_xhtml_ae7bfb82a712568a2a1cf01f068c375d7"><div class="ttname"><a href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#ae7bfb82a712568a2a1cf01f068c375d7">std::formatter&lt; fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;, Char &gt;::format</a></div><div class="ttdeci">constexpr auto format(const matrix &amp;value, FormatContext &amp;format_context) const -&gt; FormatContext::iterator</div><div class="ttdef"><b>Definition</b> <a href="#l00152">format.hpp:152</a></div></div>
 <div class="ttc" id="astructstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4_xhtml_af597106c6b5a6b07cfb31959d7e465df"><div class="ttname"><a href="structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#af597106c6b5a6b07cfb31959d7e465df">std::formatter&lt; fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;, Char &gt;::format</a></div><div class="ttdeci">constexpr auto format(const matrix &amp;value, FormatContext &amp;format_context) const -&gt; FormatContext::iterator</div><div class="ttdef"><b>Definition</b> <a href="#l00064">format.hpp:64</a></div></div>
 <div class="ttc" id="autility_8hpp_xhtml"><div class="ttname"><a href="utility_8hpp.xhtml">utility.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

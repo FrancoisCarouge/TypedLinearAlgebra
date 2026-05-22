@@ -237,13 +237,14 @@ A specialization of the standard formatter is provided for the typed matrix. Use
 
 | Concept | Definition |
 | --- | --- |
-| `same_as_typed_matrix` | Concept of a typed matrix type. |
-| `singleton_typed_matrix` | Concept of a singleton, one-element typed matrix type. |
-| `uniform_typed_matrix` | Concept of a typed matrix in which all element types are the same. |
-| `one_dimension_typed_matrix` | Concept of a typed matrix with only one dimension, row, or column. |
-| `row_typed_matrix` | Concept of a row typed matrix, vector. |
 | `column_typed_matrix` | Concept of a column typed matrix, vector. |
+| `rank_typed_matrix<0>` | Concept of a singleton, one-element typed matrix type. |
+| `rank_typed_matrix<1>` | Concept of a typed matrix with only one dimension, row, or column. |
+| `rank_typed_matrix<2>` | Concept of a regular two-dimension typed matrix. |
+| `row_typed_matrix` | Concept of a row typed matrix, vector. |
+| `same_as_typed_matrix` | Concept of a typed matrix type. |
 | `same_shape` | Concept of typed matrices of the same shape, that is they have the same number of rows and columns. |
+| `uniform_typed_matrix` | Concept of a typed matrix in which all element types are the same. |
 
 ### Structure Element Caster
 

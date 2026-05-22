@@ -8,10 +8,9 @@ var concepts =
       ] ],
       [ "same_as_typed_matrix", "conceptfcarouge_1_1same__as__typed__matrix.xhtml", null ],
       [ "uniform_typed_matrix", "conceptfcarouge_1_1uniform__typed__matrix.xhtml", null ],
-      [ "one_dimension_typed_matrix", "conceptfcarouge_1_1one__dimension__typed__matrix.xhtml", null ],
       [ "row_typed_matrix", "conceptfcarouge_1_1row__typed__matrix.xhtml", null ],
       [ "column_typed_matrix", "conceptfcarouge_1_1column__typed__matrix.xhtml", null ],
-      [ "singleton_typed_matrix", "conceptfcarouge_1_1singleton__typed__matrix.xhtml", null ],
+      [ "rank_typed_matrix", "conceptfcarouge_1_1rank__typed__matrix.xhtml", null ],
       [ "same_shape", "conceptfcarouge_1_1same__shape.xhtml", null ],
       [ "other", "conceptfcarouge_1_1other.xhtml", null ],
       [ "index", "conceptfcarouge_1_1index.xhtml", null ]
