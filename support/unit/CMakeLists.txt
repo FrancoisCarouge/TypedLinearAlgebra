@@ -43,8 +43,9 @@ FetchContent_Declare(
   SOURCE_SUBDIR "src" FIND_PACKAGE_ARGS NAMES mp-units)
 FetchContent_MakeAvailable(mp-units)
 
-target_compile_options(mp-units INTERFACE $<IF:$<CXX_COMPILER_ID:MSVC>, ,
-                                          -Wno-double-promotion -Wno-undef>)
+target_compile_options(
+  mp-units INTERFACE $<IF:$<CXX_COMPILER_ID:MSVC>, "/wd4875",
+                     "-Wno-double-promotion" "-Wno-undef">)
 
 add_library(typed_linear_algebra_unit INTERFACE)
 target_sources(
