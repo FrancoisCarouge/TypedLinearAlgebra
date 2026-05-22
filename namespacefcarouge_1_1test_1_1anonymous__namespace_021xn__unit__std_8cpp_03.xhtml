@@ -141,29 +141,23 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   54</span> </div>
 <div class="line"><span class="lineno">   55</span>  assert(n.at&lt;0&gt;() == 42. * s);</div>
 <div class="line"><span class="lineno">   56</span>  assert(n.at&lt;1&gt;() == 43. * s2);</div>
-<div class="line"><span class="lineno">   57</span>  assert((n.at&lt;0, 0&gt;() == 42. * s));</div>
-<div class="line"><span class="lineno">   58</span>  assert((n.at&lt;1, 0&gt;() == 43. * s2));</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>  <span class="keyword">auto</span> nᵀ{<a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(n)};</div>
 <div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>  <span class="keyword">auto</span> nᵀ{<a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(n)};</div>
-<div class="line"><span class="lineno">   61</span> </div>
-<div class="line"><span class="lineno">   62</span>  assert(nᵀ.at&lt;0&gt;() == 42. * s);</div>
-<div class="line"><span class="lineno">   63</span>  assert(nᵀ.at&lt;1&gt;() == 43. * s2);</div>
-<div class="line"><span class="lineno">   64</span>  assert((nᵀ.at&lt;0, 0&gt;() == 42. * s));</div>
-<div class="line"><span class="lineno">   65</span>  assert((nᵀ.at&lt;0, 1&gt;() == 43. * s2));</div>
-<div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>  <span class="keyword">static_assert</span>(std::same_as&lt;<span class="keyword">decltype</span>(nᵀ)::column_indexes,</div>
-<div class="line"><span class="lineno">   68</span>                             std::tuple&lt;<span class="keyword">decltype</span>(1. * s), <span class="keyword">decltype</span>(1. * s2)&gt;&gt;);</div>
-<div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>  n.at&lt;0&gt;() = 24. * s;</div>
-<div class="line"><span class="lineno">   71</span>  n.at&lt;1&gt;() = 25. * s2;</div>
-<div class="line"><span class="lineno">   72</span> </div>
-<div class="line"><span class="lineno">   73</span>  assert(nᵀ.at&lt;0&gt;() == 24. * s);</div>
-<div class="line"><span class="lineno">   74</span>  assert(nᵀ.at&lt;1&gt;() == 25. * s2);</div>
-<div class="line"><span class="lineno">   75</span>  assert((nᵀ.at&lt;0, 0&gt;() == 24. * s));</div>
-<div class="line"><span class="lineno">   76</span>  assert((nᵀ.at&lt;0, 1&gt;() == 25. * s2));</div>
-<div class="line"><span class="lineno">   77</span> </div>
-<div class="line"><span class="lineno">   78</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   79</span>}()};</div>
+<div class="line"><span class="lineno">   60</span>  assert(nᵀ.at&lt;0&gt;() == 42. * s);</div>
+<div class="line"><span class="lineno">   61</span>  assert(nᵀ.at&lt;1&gt;() == 43. * s2);</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>  <span class="keyword">static_assert</span>(std::same_as&lt;<span class="keyword">decltype</span>(nᵀ)::column_indexes,</div>
+<div class="line"><span class="lineno">   64</span>                             std::tuple&lt;<span class="keyword">decltype</span>(1. * s), <span class="keyword">decltype</span>(1. * s2)&gt;&gt;);</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>  n.at&lt;0&gt;() = 24. * s;</div>
+<div class="line"><span class="lineno">   67</span>  n.at&lt;1&gt;() = 25. * s2;</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>  assert(nᵀ.at&lt;0&gt;() == 24. * s);</div>
+<div class="line"><span class="lineno">   70</span>  assert(nᵀ.at&lt;1&gt;() == 25. * s2);</div>
+<div class="line"><span class="lineno">   71</span> </div>
+<div class="line"><span class="lineno">   72</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   73</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a39c15f9009b3d9cfed2a5d90b56a5ac3"><div class="ttname"><a href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">fcarouge::transposed</a></div><div class="ttdeci">constexpr auto transposed(const same_as_typed_matrix auto &amp;value)</div></div>
 </div><!-- fragment -->
 </div>

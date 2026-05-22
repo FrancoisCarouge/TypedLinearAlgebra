@@ -123,7 +123,33 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000004">Test</a></b></dt><dd>Verifies the singleton by singleton matrix addition operator. </dd></dl>
+<b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
+<div class="line">  <span class="keyword">using </span>length = quantity&lt;mp_units::isq::length[m]&gt;;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">double</span> storage_a{0.};</div>
+<div class="line">  <span class="keywordtype">double</span> storage_b{0.};</div>
+<div class="line">  <span class="keywordtype">double</span> storage_r{0.};</div>
+<div class="line"> </div>
+<div class="line">  std::mdspan span_a{&amp;storage_a, std::extents&lt;std::size_t, 1, 1&gt;{}};</div>
+<div class="line">  std::mdspan span_b{&amp;storage_b, std::extents&lt;std::size_t, 1, 1&gt;{}};</div>
+<div class="line">  std::mdspan span_r{&amp;storage_r, std::extents&lt;std::size_t, 1, 1&gt;{}};</div>
+<div class="line"> </div>
+<div class="line">  row_vector&lt;representation, length&gt; a{span_a};</div>
+<div class="line">  row_vector&lt;representation, length&gt; b{span_b};</div>
+<div class="line">  row_vector&lt;representation, length&gt; r{span_r};</div>
+<div class="line"> </div>
+<div class="line">  a = 2. * m;</div>
+<div class="line">  b = 3. * m;</div>
+<div class="line">  add(a, b, r);</div>
+<div class="line"> </div>
+<div class="line">  assert(5. * m == r.at());</div>
+<div class="line">  assert(5. * m == r[]);</div>
+<div class="line">  assert(5. * m == r());</div>
+<div class="line">  assert(5. * m == r);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}()}</div>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000003">Test</a></b></dt><dd>Verifies the singleton by singleton matrix addition operator. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000020">Test</a></b></dt><dd>Verifies the initializer lists constructor. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000036">Test</a></b></dt><dd>Verifies the singleton by singleton matrix multiplication operator. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000071">Test</a></b></dt><dd>Verifies the transposed algorithm. </dd></dl>
@@ -148,24 +174,13 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   61</span>  b = 3. * m;</div>
 <div class="line"><span class="lineno">   62</span>  add(a, b, r);</div>
 <div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>  assert((5. * m == r(0, 0)));</div>
-<div class="line"><span class="lineno">   65</span>  assert((5. * m == r[0, 0]));</div>
-<div class="line"><span class="lineno">   66</span>  assert((5. * m == r.at&lt;0, 0&gt;()));</div>
-<div class="line"><span class="lineno">   67</span>  assert((5. * m == r(0_i, 0_i)));</div>
-<div class="line"><span class="lineno">   68</span>  assert((5. * m == r[0_i, 0_i]));</div>
-<div class="line"><span class="lineno">   69</span>  assert((5. * m == r.at&lt;0_i, 0_i&gt;()));</div>
-<div class="line"><span class="lineno">   70</span>  assert((5. * m == r(0)));</div>
-<div class="line"><span class="lineno">   71</span>  assert((5. * m == r[0]));</div>
-<div class="line"><span class="lineno">   72</span>  assert((5. * m == r.at&lt;0&gt;()));</div>
-<div class="line"><span class="lineno">   73</span>  assert((5. * m == r(0_i)));</div>
-<div class="line"><span class="lineno">   74</span>  assert((5. * m == r[0_i]));</div>
-<div class="line"><span class="lineno">   75</span>  assert((5. * m == r.at&lt;0_i&gt;()));</div>
-<div class="line"><span class="lineno">   76</span>  assert((5. * m == r()));</div>
-<div class="line"><span class="lineno">   77</span>  assert((5. * m == r));</div>
-<div class="line"><span class="lineno">   78</span>  assert((5. * m == r.at()));</div>
-<div class="line"><span class="lineno">   79</span> </div>
-<div class="line"><span class="lineno">   80</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   81</span>}()};</div>
+<div class="line"><span class="lineno">   64</span>  assert(5. * m == r.at());</div>
+<div class="line"><span class="lineno">   65</span>  assert(5. * m == r[]);</div>
+<div class="line"><span class="lineno">   66</span>  assert(5. * m == r());</div>
+<div class="line"><span class="lineno">   67</span>  assert(5. * m == r);</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   70</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml_a9770b8c17efb82bfa80edbfb9a1de8a7"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">fcarouge::test::quantity</a></div><div class="ttdeci">mp_units::quantity&lt; QuantityReference, representation &gt; quantity</div><div class="ttdef"><b>Definition</b> <a href="addition_21x1__unit__eigen_8cpp_source.xhtml#l00041">1x1_unit_eigen.cpp:41</a></div></div>
 </div><!-- fragment -->
 </div>

@@ -173,30 +173,22 @@ $(function(){initNavTree('1x2__unit__std_8cpp_source.xhtml',''); initResizable(t
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  add(a, b, r);</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  assert((4. * m == r.at&lt;0, 0&gt;()));</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  assert((4. * m == r(0_i, 0_i)));</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  assert((4. * m == r[0_i, 0_i]));</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  assert((4. * m == r.at&lt;0_i, 0_i&gt;()));</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  assert((4. * m == r.at&lt;0&gt;()));</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  assert((4. * m == r(0_i)));</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  assert((4. * m == r[0_i]));</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  assert((4. * m == r.at&lt;0_i&gt;()));</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  assert((6. * m / s == r.at&lt;0, 1&gt;()));</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  assert((6. * m / s == r(0_i, 1_i)));</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  assert((6. * m / s == r[0_i, 1_i]));</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  assert((6. * m / s == r.at&lt;0_i, 1_i&gt;()));</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  assert((6. * m / s == r.at&lt;1&gt;()));</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  assert((6. * m / s == r(1_i)));</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  assert((6. * m / s == r[1_i]));</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  assert((6. * m / s == r.at&lt;1_i&gt;()));</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>}()};</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  assert(4. * m == r.at&lt;0&gt;());</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  assert(4. * m == r.at&lt;0_i&gt;());</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  assert(4. * m == r[0_i]);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  assert(4. * m == r(0_i));</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  assert(6. * m / s == r.at&lt;1&gt;());</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  assert(6. * m / s == r.at&lt;1_i&gt;());</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  assert(6. * m / s == r[1_i]);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  assert(6. * m / s == r(1_i));</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>}()};</div>
 </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>} <span class="comment">// namespace</span></div>
 </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>} <span class="comment">// namespace fcarouge::test</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>} <span class="comment">// namespace fcarouge::test</span></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_adec4afd23d0a51e3f79d35c0bdd5f39b"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b">fcarouge::eigen::row_vector</a></div><div class="ttdeci">Eigen::RowVector&lt; Type, Column &gt; row_vector</div><div class="ttdoc">Compile-time sized Eigen3 row vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00086">eigen.hpp:86</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_a3c3e455061e1c9775f216253f0fc5541"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a3c3e455061e1c9775f216253f0fc5541">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::representation</a></div><div class="ttdeci">double representation</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00053">mp_units_eigen.cpp:53</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a></div><div class="ttdoc">Unit, integration, regression, and usage tests.</div></div>

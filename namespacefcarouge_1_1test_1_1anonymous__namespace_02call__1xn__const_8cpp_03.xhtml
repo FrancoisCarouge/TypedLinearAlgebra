@@ -126,9 +126,21 @@ Variables</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
 <div class="line">  <span class="keyword">const</span> row_vector&lt;double, 3&gt; m{1., 2., 3.};</div>
 <div class="line"> </div>
-<div class="line">  assert((m(0, 0) == 1.));</div>
-<div class="line">  assert((m(0, 1) == 2.));</div>
-<div class="line">  assert((m(0, 2) == 3.));</div>
+<div class="line">  assert(m.at&lt;0_i&gt;() == 1.);</div>
+<div class="line">  assert(m.at&lt;1_i&gt;() == 2.);</div>
+<div class="line">  assert(m.at&lt;2_i&gt;() == 3.);</div>
+<div class="line">  assert(m.at&lt;0&gt;() == 1.);</div>
+<div class="line">  assert(m.at&lt;1&gt;() == 2.);</div>
+<div class="line">  assert(m.at&lt;2&gt;() == 3.);</div>
+<div class="line">  assert(m[0_i] == 1.);</div>
+<div class="line">  assert(m[1_i] == 2.);</div>
+<div class="line">  assert(m[2_i] == 3.);</div>
+<div class="line">  assert(m(0_i) == 1.);</div>
+<div class="line">  assert(m(1_i) == 2.);</div>
+<div class="line">  assert(m(2_i) == 3.);</div>
+<div class="line">  assert(m[0] == 1.);</div>
+<div class="line">  assert(m[1] == 2.);</div>
+<div class="line">  assert(m[2] == 3.);</div>
 <div class="line">  assert(m(0) == 1.);</div>
 <div class="line">  assert(m(1) == 2.);</div>
 <div class="line">  assert(m(2) == 3.);</div>
@@ -137,19 +149,31 @@ Variables</h2></td></tr>
 <div class="line">}()}</div>
 </div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000045">Test</a></b></dt><dd>Verifies the call operator accessor. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="call__1xn__const_8cpp_source.xhtml#l00039">39</a> of file <a class="el" href="call__1xn__const_8cpp_source.xhtml">call_1xn_const.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   39</span>                                {[] {</div>
-<div class="line"><span class="lineno">   40</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b">row_vector&lt;double, 3&gt;</a> m{1., 2., 3.};</div>
-<div class="line"><span class="lineno">   41</span> </div>
-<div class="line"><span class="lineno">   42</span>  assert((m(0, 0) == 1.));</div>
-<div class="line"><span class="lineno">   43</span>  assert((m(0, 1) == 2.));</div>
-<div class="line"><span class="lineno">   44</span>  assert((m(0, 2) == 3.));</div>
-<div class="line"><span class="lineno">   45</span>  assert(m(0) == 1.);</div>
-<div class="line"><span class="lineno">   46</span>  assert(m(1) == 2.);</div>
-<div class="line"><span class="lineno">   47</span>  assert(m(2) == 3.);</div>
-<div class="line"><span class="lineno">   48</span> </div>
-<div class="line"><span class="lineno">   49</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   50</span>}()};</div>
+<p class="definition">Definition at line <a class="el" href="call__1xn__const_8cpp_source.xhtml#l00041">41</a> of file <a class="el" href="call__1xn__const_8cpp_source.xhtml">call_1xn_const.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   41</span>                                {[] {</div>
+<div class="line"><span class="lineno">   42</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b">row_vector&lt;double, 3&gt;</a> m{1., 2., 3.};</div>
+<div class="line"><span class="lineno">   43</span> </div>
+<div class="line"><span class="lineno">   44</span>  assert(m.at&lt;0_i&gt;() == 1.);</div>
+<div class="line"><span class="lineno">   45</span>  assert(m.at&lt;1_i&gt;() == 2.);</div>
+<div class="line"><span class="lineno">   46</span>  assert(m.at&lt;2_i&gt;() == 3.);</div>
+<div class="line"><span class="lineno">   47</span>  assert(m.at&lt;0&gt;() == 1.);</div>
+<div class="line"><span class="lineno">   48</span>  assert(m.at&lt;1&gt;() == 2.);</div>
+<div class="line"><span class="lineno">   49</span>  assert(m.at&lt;2&gt;() == 3.);</div>
+<div class="line"><span class="lineno">   50</span>  assert(m[0_i] == 1.);</div>
+<div class="line"><span class="lineno">   51</span>  assert(m[1_i] == 2.);</div>
+<div class="line"><span class="lineno">   52</span>  assert(m[2_i] == 3.);</div>
+<div class="line"><span class="lineno">   53</span>  assert(m(0_i) == 1.);</div>
+<div class="line"><span class="lineno">   54</span>  assert(m(1_i) == 2.);</div>
+<div class="line"><span class="lineno">   55</span>  assert(m(2_i) == 3.);</div>
+<div class="line"><span class="lineno">   56</span>  assert(m[0] == 1.);</div>
+<div class="line"><span class="lineno">   57</span>  assert(m[1] == 2.);</div>
+<div class="line"><span class="lineno">   58</span>  assert(m[2] == 3.);</div>
+<div class="line"><span class="lineno">   59</span>  assert(m(0) == 1.);</div>
+<div class="line"><span class="lineno">   60</span>  assert(m(1) == 2.);</div>
+<div class="line"><span class="lineno">   61</span>  assert(m(2) == 3.);</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   64</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_adec4afd23d0a51e3f79d35c0bdd5f39b"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b">fcarouge::eigen::row_vector</a></div><div class="ttdeci">Eigen::RowVector&lt; Type, Column &gt; row_vector</div><div class="ttdoc">Compile-time sized Eigen3 row vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00086">eigen.hpp:86</a></div></div>
 </div><!-- fragment -->
 </div>
