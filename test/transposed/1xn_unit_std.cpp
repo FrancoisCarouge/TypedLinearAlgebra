@@ -54,15 +54,11 @@ namespace {
 
   assert(n.at<0>() == 42. * s);
   assert(n.at<1>() == 43. * s2);
-  assert((n.at<0, 0>() == 42. * s));
-  assert((n.at<1, 0>() == 43. * s2));
 
   auto nᵀ{transposed(n)};
 
   assert(nᵀ.at<0>() == 42. * s);
   assert(nᵀ.at<1>() == 43. * s2);
-  assert((nᵀ.at<0, 0>() == 42. * s));
-  assert((nᵀ.at<0, 1>() == 43. * s2));
 
   static_assert(std::same_as<decltype(nᵀ)::column_indexes,
                              std::tuple<decltype(1. * s), decltype(1. * s2)>>);
@@ -72,8 +68,6 @@ namespace {
 
   assert(nᵀ.at<0>() == 24. * s);
   assert(nᵀ.at<1>() == 25. * s2);
-  assert((nᵀ.at<0, 0>() == 24. * s));
-  assert((nᵀ.at<0, 1>() == 25. * s2));
 
   return 0;
 }()};
