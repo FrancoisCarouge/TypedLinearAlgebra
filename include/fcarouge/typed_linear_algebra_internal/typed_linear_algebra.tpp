@@ -82,8 +82,9 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const element<> (&elements)[typed_matrix::rows * typed_matrix::columns])
-  requires uniform_typed_matrix<typed_matrix> and
-           one_dimension_typed_matrix<typed_matrix>
+  requires rank_typed_matrix<typed_matrix, 0> or
+           (rank_typed_matrix<typed_matrix, 1> and
+            uniform_typed_matrix<typed_matrix>)
 {
   if constexpr (requires { storage = elements; }) {
     storage = elements;
@@ -100,7 +101,7 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
     const element<> (&elements)[typed_matrix::rows * typed_matrix::columns])
   requires uniform_typed_matrix<typed_matrix> and
-           one_dimension_typed_matrix<typed_matrix>
+           rank_typed_matrix<typed_matrix, 1>
 {
   if constexpr (requires { storage = elements; }) {
     storage = elements;
@@ -117,7 +118,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const std::convertible_to<element<>> auto &value)
-  requires singleton_typed_matrix<typed_matrix>
+  requires rank_typed_matrix<typed_matrix, 0>
 {
   if constexpr (requires { value[0, 0]; }) {
     storage[0, 0] = underlying{value[0, 0]};
@@ -131,10 +132,12 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(const auto &value)
-  requires singleton_typed_matrix<typed_matrix>
+  requires rank_typed_matrix<typed_matrix, 0>
 {
   if constexpr (requires { value[0, 0]; }) {
     storage[0, 0] = underlying{value[0, 0]};
+  } else if constexpr (requires { value[0]; }) {
+    storage[0, 0] = underlying{value[0]};
   } else {
     using type = std::remove_cvref_t<decltype(value)>;
     storage[0, 0] = cast<underlying, type>(value);
@@ -162,7 +165,7 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const auto &first_value, const auto &second_value, const auto &...values)
-  requires one_dimension_typed_matrix<typed_matrix>
+  requires rank_typed_matrix<typed_matrix, 1>
 {
   //! @todo Move the assert as a require clause when the compilers support it.
   static_assert(columns * rows == 2 + sizeof...(values),
@@ -185,7 +188,7 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] constexpr typed_matrix<
     Matrix, RowIndexes, ColumnIndexes>::operator element<>(this auto &&self)
-  requires singleton_typed_matrix<typed_matrix>
+  requires rank_typed_matrix<typed_matrix, 0>
 {
   return self.at();
 }
@@ -294,14 +297,14 @@ template <typename RowIndexes, typename ColumnIndexes>
       std::forward<type>(value)};
 }
 
-//! @todo How should structured bindings be done over a matrix with more than
-//! one dimension? The layout policy may be a solution to consider. For now,
-//! limit the support to one dimension matrices.
-template <int Index>
-decltype(auto) get(one_dimension_typed_matrix auto &&value) {
-  using type = std::remove_cvref_t<decltype(value)>;
+template <int Index> decltype(auto) get(rank_typed_matrix<1> auto &&value) {
+  return (value.template at<Index>());
+}
 
-  return (value.template at<Index / type::columns, Index % type::columns>());
+template <int Index> decltype(auto) get(rank_typed_matrix<0> auto &&value) {
+  static_assert(Index == 0, "The index must be zero for a rank 0 matrix.");
+
+  return (value.at());
 }
 } // namespace fcarouge
 

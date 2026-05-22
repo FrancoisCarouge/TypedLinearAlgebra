@@ -40,7 +40,7 @@ namespace fcarouge {
   return lhs.data() == rhs.data();
 }
 
-[[nodiscard]] constexpr bool operator==(const singleton_typed_matrix auto &lhs,
+[[nodiscard]] constexpr bool operator==(const rank_typed_matrix<0> auto &lhs,
                                         const auto &rhs) {
   return lhs.template at<0, 0>() == rhs;
 }

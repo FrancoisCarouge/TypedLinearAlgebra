@@ -76,14 +76,14 @@ namespace fcarouge {
 }
 
 [[nodiscard]] constexpr auto operator+(const other auto &lhs,
-                                       const singleton_typed_matrix auto &rhs) {
+                                       const rank_typed_matrix<0> auto &rhs) {
   using matrix = std::remove_cvref_t<decltype(rhs)>;
   using element = typename matrix::template element<0, 0>;
 
   return lhs + element{rhs};
 }
 
-[[nodiscard]] constexpr auto operator+(const singleton_typed_matrix auto &lhs,
+[[nodiscard]] constexpr auto operator+(const rank_typed_matrix<0> auto &lhs,
                                        const other auto &rhs) {
   using matrix = std::remove_cvref_t<decltype(lhs)>;
   using element = typename matrix::template element<0, 0>;
