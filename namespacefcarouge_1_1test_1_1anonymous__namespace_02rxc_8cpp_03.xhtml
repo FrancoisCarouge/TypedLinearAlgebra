@@ -128,7 +128,10 @@ Variables</h2></td></tr>
 <div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;double, 2, 1&gt;</a> b{3., 4.};</div>
 <div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;double, 1, 1&gt;</a> r{a * b};</div>
 <div class="line"> </div>
-<div class="line">  assert(r(0, 0) == 11.);</div>
+<div class="line">  assert(11. == r.at());</div>
+<div class="line">  assert(11. == r[]);</div>
+<div class="line">  assert(11. == r());</div>
+<div class="line">  assert(11. == r);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
@@ -141,10 +144,13 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   41</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;double, 2, 1&gt;</a> b{3., 4.};</div>
 <div class="line"><span class="lineno">   42</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;double, 1, 1&gt;</a> r{a * b};</div>
 <div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>  assert(r(0, 0) == 11.);</div>
-<div class="line"><span class="lineno">   45</span> </div>
-<div class="line"><span class="lineno">   46</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   47</span>}()};</div>
+<div class="line"><span class="lineno">   44</span>  assert(11. == r.at());</div>
+<div class="line"><span class="lineno">   45</span>  assert(11. == r[]);</div>
+<div class="line"><span class="lineno">   46</span>  assert(11. == r());</div>
+<div class="line"><span class="lineno">   47</span>  assert(11. == r);</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   50</span>}()};</div>
 </div><!-- fragment -->
 </div>
 </div>
