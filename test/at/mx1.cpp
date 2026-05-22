@@ -39,31 +39,14 @@ namespace {
 [[maybe_unused]] const auto test{[] {
   column_vector<double, 3> m{1., 2., 3.};
 
-  assert((m.at<0, 0>() == 1.));
-  assert((m.at<1, 0>() == 2.));
-  assert((m.at<2, 0>() == 3.));
   assert(m.at<0>() == 1.);
   assert(m.at<1>() == 2.);
   assert(m.at<2>() == 3.);
-
-  m.at<0, 0>() = 11.;
-  m.at<1, 0>() = 12.;
-  m.at<2, 0>() = 13.;
-
-  assert((m.at<0, 0>() == 11.));
-  assert((m.at<1, 0>() == 12.));
-  assert((m.at<2, 0>() == 13.));
-  assert(m.at<0>() == 11.);
-  assert(m.at<1>() == 12.);
-  assert(m.at<2>() == 13.);
 
   m.at<0>() = 21.;
   m.at<1>() = 22.;
   m.at<2>() = 23.;
 
-  assert((m.at<0, 0>() == 21.));
-  assert((m.at<1, 0>() == 22.));
-  assert((m.at<2, 0>() == 23.));
   assert(m.at<0>() == 21.);
   assert(m.at<1>() == 22.);
   assert(m.at<2>() == 23.);

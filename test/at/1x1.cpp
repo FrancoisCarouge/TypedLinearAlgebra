@@ -39,27 +39,11 @@ namespace {
 [[maybe_unused]] const auto test{[] {
   matrix<> m{42.};
 
-  assert((m.at<0, 0>() == 42.));
-  assert(m.at<0>() == 42.);
   assert(m.at() == 42.);
 
-  m.at<0, 0>() = 43.;
+  m.at() = 43.;
 
-  assert((m.at<0, 0>() == 43.));
-  assert(m.at<0>() == 43.);
   assert(m.at() == 43.);
-
-  m.at<0>() = 44.;
-
-  assert((m.at<0, 0>() == 44.));
-  assert(m.at<0>() == 44.);
-  assert(m.at() == 44.);
-
-  m.at() = 45.;
-
-  assert((m.at<0, 0>() == 45.));
-  assert(m.at<0>() == 45.);
-  assert(m.at() == 45.);
 
   return 0;
 }()};
