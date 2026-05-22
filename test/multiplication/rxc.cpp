@@ -41,7 +41,10 @@ namespace {
   const matrix<double, 2, 1> b{3., 4.};
   const matrix<double, 1, 1> r{a * b};
 
-  assert(r(0, 0) == 11.);
+  assert(11. == r.at());
+  assert(11. == r[]);
+  assert(11. == r());
+  assert(11. == r);
 
   return 0;
 }()};
