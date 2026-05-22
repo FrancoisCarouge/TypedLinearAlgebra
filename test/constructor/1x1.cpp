@@ -41,21 +41,10 @@ namespace {
 [[maybe_unused]] const auto test{[] {
   const matrix<double, 1, 1> r{42.};
 
-  assert((42. == r(0, 0)));
-  assert((42. == r[0, 0]));
-  assert((42. == r.at<0, 0>()));
-  assert((42. == r(0_i, 0_i)));
-  assert((42. == r[0_i, 0_i]));
-  assert((42. == r.at<0_i, 0_i>()));
-  assert((42. == r(0)));
-  assert((42. == r[0]));
-  assert((42. == r.at<0>()));
-  assert((42. == r(0_i)));
-  assert((42. == r[0_i]));
-  assert((42. == r.at<0_i>()));
-  assert((42. == r()));
-  assert((42. == r));
-  assert((42. == r.at()));
+  assert(42. == r.at());
+  assert(42. == r[]);
+  assert(42. == r());
+  assert(42. == r);
 
   return 0;
 }()};

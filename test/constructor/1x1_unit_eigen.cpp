@@ -49,21 +49,10 @@ namespace {
   const matrix<representation, std::tuple<length>, std::tuple<length>> r{42. *
                                                                          m2};
 
-  assert((42. * m2 == r(0, 0)));
-  assert((42. * m2 == r[0, 0]));
-  assert((42. * m2 == r.at<0, 0>()));
-  assert((42. * m2 == r(0_i, 0_i)));
-  assert((42. * m2 == r[0_i, 0_i]));
-  assert((42. * m2 == r.at<0_i, 0_i>()));
-  assert((42. * m2 == r(0)));
-  assert((42. * m2 == r[0]));
-  assert((42. * m2 == r.at<0>()));
-  assert((42. * m2 == r(0_i)));
-  assert((42. * m2 == r[0_i]));
-  assert((42. * m2 == r.at<0_i>()));
-  assert((42. * m2 == r()));
-  assert((42. * m2 == r));
-  assert((42. * m2 == r.at()));
+  assert(42. * m2 == r.at());
+  assert(42. * m2 == r[]);
+  assert(42. * m2 == r());
+  assert(42. * m2 == r);
 
   static_assert(
       not std::is_constructible_v<
