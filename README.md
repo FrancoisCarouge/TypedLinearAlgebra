@@ -186,7 +186,9 @@ A variety of conversions may be needed, notably value and reference conversions.
 
 ## Lessons Learned
 
-Type safety cannot be guaranteed at compilation time without index safety. The indexes can either be non-type template parameters or strong types overloadings. Converting a runtime index to a dependent template type is not possible in C++. A proxy reference could be used to allow traditional assignment syntax but the runtime check and extra indirection are not interesting tradeoffs. A template call operator can be used for getting a type safe value but impractical syntax for setting. Without index safety, the accepted tradeoff is a templated index `at<i, j>()` method.
+Type safety cannot be guaranteed at compilation time without **index safety**. The indexes can either be non-type template parameters or strong types overloadings. Converting a runtime index to a dependent template type is not possible in C++. A proxy reference could be used to allow traditional assignment syntax but the runtime check and extra indirection are not interesting tradeoffs. A template call operator can be used for getting a type safe value but impractical syntax for setting. Without index safety, the accepted tradeoff is a templated index `at<i, j>()` method.
+
+**Extraneous indexes** tradeoffs convenience for safety. For example, `m[0, 0, 0, 0, ...]` to access the first row/column element of a matrix, rank 2. While the allowance was practical for generic meta-programming in early development, community feedback informed of the user defects permitted by the mis-matching number of indeces, weak guarantees. For safety, the number of indexes must match the rank at compile-time.
 
 # Performance
 
