@@ -191,6 +191,8 @@ Type safety cannot be guaranteed at compilation time without **index safety**. T
 
 **Extraneous indexes** tradeoffs convenience for safety. For example, `m[0, 0, 0, 0, ...]` to access the first row/column element of a matrix, rank 2. While the allowance was practical for generic meta-programming in early development, community feedback informed of the user defects permitted by the mis-matching number of indeces, weak guarantees. For safety, the number of indexes must match the rank at compile-time.
 
+**Strongly typed memory storage** is not a selected design due to its performance tradeoff. A `std::tuple` or other type-list storages can be used as underlying memory storage. Such storage permits strongly typed lvalue reference assignment which improves the end-user ergonomics. Unfortunately `std::tuple` does not offer the same guarantees provided by contiguous memory storage and its alignment, padding, and ordering specification. The lack of guarantees prevents the direct, efficient, optimized memory accesses, resulting in a performance penalty. Undefined behavior is avoided. No known solution.
+
 # Performance
 
 ## Projects
