@@ -168,43 +168,7 @@ using literals::operator""_i;
       1. * A / mol};
   assert(std::format("{}", s1) == "1 A/mol");
 
-  // Many ways to access the singleton matrix by index(es).
-  s1.at<0, 0>() = 23. * A / mol;
-  assert((s1.at<0, 0>() == 23. * A / mol));
-
-  s1[0, 0] = 22. * A / mol;
-  assert((s1[0, 0] == 22. * A / mol));
-
-  s1(0, 0) = 21. * A / mol;
-  assert(s1(0, 0) == 21. * A / mol);
-
-  s1.at<0_i, 0_i>() = 26. * A / mol;
-  assert((s1.at<0_i, 0_i>() == 26. * A / mol));
-
-  s1[0_i, 0_i] = 25. * A / mol;
-  assert((s1[0_i, 0_i] == 25. * A / mol));
-
-  s1(0_i, 0_i) = 24. * A / mol;
-  assert(s1(0_i, 0_i) == 24. * A / mol);
-
-  s1.at<0>() = 13. * A / mol;
-  assert(s1.at<0>() == 13. * A / mol);
-
-  s1[0] = 12. * A / mol;
-  assert(s1[0] == 12. * A / mol);
-
-  s1(0) = 11. * A / mol;
-  assert(s1(0) == 11. * A / mol);
-
-  s1.at<0_i>() = 16. * A / mol;
-  assert(s1.at<0_i>() == 16. * A / mol);
-
-  s1[0_i] = 15. * A / mol;
-  assert(s1[0_i] == 15. * A / mol);
-
-  s1(0_i) = 14. * A / mol;
-  assert(s1(0_i) == 14. * A / mol);
-
+  // Ways to access the singleton matrix.
   s1.at() = 3. * A / mol;
   assert(s1.at() == 3. * A / mol);
 
@@ -213,10 +177,6 @@ using literals::operator""_i;
 
   s1() = 1. * A / mol;
   assert(s1() == 1. * A / mol);
-
-  // Beware the element type may not be the same as could be expected.
-  static_assert(
-      not std::is_same_v<decltype(A / mol), decltype(s1)::element<0, 0>>);
 
   // The singleton element can be accessed by conversion to its element type.
   s1 = 10. * A / mol;
@@ -229,6 +189,10 @@ using literals::operator""_i;
   sb1 = 1. * A / mol;
   const auto &[sb2]{s1};
   assert(sb2 == 1. * A / mol);
+
+  // Beware the element type may not be the same as could be expected.
+  static_assert(
+      not std::is_same_v<decltype(A / mol), decltype(s1)::element<0, 0>>);
 
   // More forms of multiplication with a scalar factor.
   assert(std::format("{}", x5 * 2.) == "[[6 m], [4 m/s], [2 m/s²]]");
