@@ -227,7 +227,7 @@ template&lt;typename FormatContext &gt; </div>
 <div class="line"><span class="lineno">   68</span> </div>
 <div class="line"><span class="lineno">   69</span>    <a class="code hl_function" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#abcda1ee8b10a813ac3a16d25343603c7">fcarouge::typed_linear_algebra_internal::for_constexpr&lt;rows&gt;</a>(</div>
 <div class="line"><span class="lineno">   70</span>        [&amp;value, &amp;format_context](<span class="keyword">auto</span> i) {</div>
-<div class="line"><span class="lineno">   71</span>          <span class="keywordflow">if</span> (i &gt; 0) {</div>
+<div class="line"><span class="lineno">   71</span>          <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (i &gt; 0) {</div>
 <div class="line"><span class="lineno">   72</span>            format_context.advance_to(</div>
 <div class="line"><span class="lineno">   73</span>                std::format_to(format_context.out(), <span class="stringliteral">&quot;, &quot;</span>));</div>
 <div class="line"><span class="lineno">   74</span>          }</div>
@@ -236,7 +236,7 @@ template&lt;typename FormatContext &gt; </div>
 <div class="line"><span class="lineno">   77</span> </div>
 <div class="line"><span class="lineno">   78</span>          <a class="code hl_function" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#abcda1ee8b10a813ac3a16d25343603c7">fcarouge::typed_linear_algebra_internal::for_constexpr&lt;columns&gt;</a>(</div>
 <div class="line"><span class="lineno">   79</span>              [&amp;value, &amp;format_context, &amp;i](<span class="keyword">auto</span> j) {</div>
-<div class="line"><span class="lineno">   80</span>                <span class="keywordflow">if</span> (j &gt; 0) {</div>
+<div class="line"><span class="lineno">   80</span>                <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (j &gt; 0) {</div>
 <div class="line"><span class="lineno">   81</span>                  format_context.advance_to(</div>
 <div class="line"><span class="lineno">   82</span>                      std::format_to(format_context.out(), <span class="stringliteral">&quot;, &quot;</span>));</div>
 <div class="line"><span class="lineno">   83</span>                }</div>
@@ -304,7 +304,7 @@ requires fcarouge::typed_linear_algebra_internal::column_typed_matrix&lt; <a cla
 <div class="line"><span class="lineno">  107</span> </div>
 <div class="line"><span class="lineno">  108</span>    <a class="code hl_function" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#abcda1ee8b10a813ac3a16d25343603c7">fcarouge::typed_linear_algebra_internal::for_constexpr&lt;rows&gt;</a>(</div>
 <div class="line"><span class="lineno">  109</span>        [&amp;value, &amp;format_context](<span class="keyword">auto</span> position) {</div>
-<div class="line"><span class="lineno">  110</span>          <span class="keywordflow">if</span> (position &gt; 0) {</div>
+<div class="line"><span class="lineno">  110</span>          <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a38ad05d2b70b37036355bb8841c931a9">position</a> &gt; 0) {</div>
 <div class="line"><span class="lineno">  111</span>            format_context.advance_to(</div>
 <div class="line"><span class="lineno">  112</span>                std::format_to(format_context.out(), <span class="stringliteral">&quot;, &quot;</span>));</div>
 <div class="line"><span class="lineno">  113</span>          }</div>
@@ -317,6 +317,7 @@ requires fcarouge::typed_linear_algebra_internal::column_typed_matrix&lt; <a cla
 <div class="line"><span class="lineno">  120</span> </div>
 <div class="line"><span class="lineno">  121</span>    <span class="keywordflow">return</span> format_context.out();</div>
 <div class="line"><span class="lineno">  122</span>  }</div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_a38ad05d2b70b37036355bb8841c931a9"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a38ad05d2b70b37036355bb8841c931a9">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::position</a></div><div class="ttdeci">quantity&lt; mp_units::isq::length[m]&gt; position</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00092">mp_units_eigen.cpp:92</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00172">fcarouge::typed_linear_algebra_internal::for_constexpr()</a>.</p>
 <div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -368,7 +369,7 @@ requires fcarouge::typed_linear_algebra_internal::row_typed_matrix&lt; <a class=
 <div class="line"><span class="lineno">  134</span> </div>
 <div class="line"><span class="lineno">  135</span>    <a class="code hl_function" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#abcda1ee8b10a813ac3a16d25343603c7">fcarouge::typed_linear_algebra_internal::for_constexpr&lt;columns&gt;</a>(</div>
 <div class="line"><span class="lineno">  136</span>        [&amp;value, &amp;format_context](<span class="keyword">auto</span> position) {</div>
-<div class="line"><span class="lineno">  137</span>          <span class="keywordflow">if</span> (position &gt; 0) {</div>
+<div class="line"><span class="lineno">  137</span>          <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a38ad05d2b70b37036355bb8841c931a9">position</a> &gt; 0) {</div>
 <div class="line"><span class="lineno">  138</span>            format_context.advance_to(</div>
 <div class="line"><span class="lineno">  139</span>                std::format_to(format_context.out(), <span class="stringliteral">&quot;, &quot;</span>));</div>
 <div class="line"><span class="lineno">  140</span>          }</div>
