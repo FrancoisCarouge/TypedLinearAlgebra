@@ -118,7 +118,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
 //! @todo How to handle all combinations of storage and value types?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const std::convertible_to<element<>> auto &value)
+    const element<> &value)
   requires rank_typed_matrix<typed_matrix, 0>
 {
   if constexpr (requires { storage[0, 0]; }) {
@@ -132,7 +132,7 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
-    const std::convertible_to<element<>> auto &value)
+    const element<> &value)
   requires rank_typed_matrix<typed_matrix, 0>
 {
   if constexpr (requires { storage[0, 0]; }) {
