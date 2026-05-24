@@ -248,8 +248,7 @@ typed_matrix(const auto &first_value,
   requires rank_typed_matrix<typed_matrix, 1>;
 
 // Singleton matrix from convertible value.
-typed_matrix(
-    const std::convertible_to<element<>> auto &value)
+typed_matrix(const element<> &value)
   requires rank_typed_matrix<typed_matrix, 0>;
 ```
 

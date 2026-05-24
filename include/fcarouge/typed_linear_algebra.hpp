@@ -212,8 +212,7 @@ public:
   //! @details Applicable to singleton matrix: one element.
   //!
   //! @param value Element of compatible type.
-  constexpr explicit typed_matrix(
-      const std::convertible_to<element<>> auto &value)
+  constexpr explicit typed_matrix(const element<> &value)
     requires rank_typed_matrix<typed_matrix, 0>;
 
   //! @brief Convert copy assign a singleton typed matrix from a single value.
@@ -221,8 +220,7 @@ public:
   //! @details Applicable to singleton matrix: one element.
   //!
   //! @param value Element of compatible type.
-  constexpr typed_matrix &
-  operator=(const std::convertible_to<element<>> auto &value)
+  constexpr typed_matrix &operator=(const element<> &value)
     requires rank_typed_matrix<typed_matrix, 0>;
 
   //! @brief Convert construct one-dimension uniformly typed matrix from array.
