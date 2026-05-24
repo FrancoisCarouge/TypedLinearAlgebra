@@ -232,8 +232,7 @@ title: "Typed Linear Algebra"</h2>
 <div class="line">  requires rank_typed_matrix&lt;typed_matrix, 1&gt;;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Singleton matrix from convertible value.</span></div>
-<div class="line">typed_matrix(</div>
-<div class="line">    const std::convertible_to&lt;element&lt;&gt;&gt; auto &amp;value)</div>
+<div class="line">typed_matrix(const element&lt;&gt; &amp;value)</div>
 <div class="line">  requires rank_typed_matrix&lt;typed_matrix, 0&gt;;</div>
 </div><!-- fragment --><p>&lt;aside class="notes"&gt; The destructor is not shown here. You can imagine a default constexpr destructor. Neither I will show the copy- and move- assignment operators equivalent to these constructors. Most matrice libraries made the choice of an unitialized default constructor for historical or performance reason. For a safer linear algebra library, it is appropriate to have a zero-initialized default constructor if the type-erased third party matrix type supports a default initialization. The implementation, not shown here, ensures zero-initialization. And we can also provide an easy construction for a column or row vector of heterogeneous quantities. Note the parameter pack with two preceding mandatory parameter to disambiguate from other constructors. The one-element matrix, or singleton, constructor helps the typed matrix to behavior more like built-in types where it can. &lt;/aside&gt;</p>
 <hr  />
