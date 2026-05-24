@@ -49,8 +49,8 @@ namespace {
   static_assert(std::same_as<decltype(n)::row_indexes,
                              std::tuple<decltype(1. * s), decltype(1. * s2)>>);
 
-  n.at<0>() = 42. * s;
-  n.at<1>() = 43. * s2;
+  n.at<0>(42. * s);
+  n.at<1>(43. * s2);
 
   assert(n.at<0>() == 42. * s);
   assert(n.at<1>() == 43. * s2);
@@ -63,8 +63,8 @@ namespace {
   static_assert(std::same_as<decltype(nᵀ)::column_indexes,
                              std::tuple<decltype(1. * s), decltype(1. * s2)>>);
 
-  n.at<0>() = 24. * s;
-  n.at<1>() = 25. * s2;
+  n.at<0>(24. * s);
+  n.at<1>(25. * s2);
 
   assert(nᵀ.at<0>() == 24. * s);
   assert(nᵀ.at<1>() == 25. * s2);

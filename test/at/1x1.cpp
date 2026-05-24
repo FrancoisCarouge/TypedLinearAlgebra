@@ -41,7 +41,7 @@ namespace {
 
   assert(m.at() == 42.);
 
-  m.at() = 43.;
+  m.at(43.);
 
   assert(m.at() == 43.);
 

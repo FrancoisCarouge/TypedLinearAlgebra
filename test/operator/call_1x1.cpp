@@ -44,7 +44,7 @@ namespace {
   assert(m() == 42.);
   assert(m == 42.);
 
-  m.at() = 45.;
+  m.at(45.);
 
   assert(m.at() == 45.);
   assert(m[] == 45.);
