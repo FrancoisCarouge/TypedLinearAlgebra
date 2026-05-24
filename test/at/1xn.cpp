@@ -43,9 +43,9 @@ namespace {
   assert(m.at<1>() == 2.);
   assert(m.at<2>() == 3.);
 
-  m.at<0>() = 21.;
-  m.at<1>() = 22.;
-  m.at<2>() = 23.;
+  m.at<0>(21.);
+  m.at<1>(22.);
+  m.at<2>(23.);
 
   assert(m.at<0>() == 21.);
   assert(m.at<1>() == 22.);

@@ -330,10 +330,7 @@ constexpr void typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(
   //! conversion and access pattern internally. This could simplify the
   //! implementation and improve readability. The overload set could support
   //! both the write and read operations.
-  if constexpr (requires {
-                  self.storage.template at<Indexes...>(
-                      cast<underlying, element<Indexes...>>(value));
-                }) {
+  if constexpr (same_as_typed_matrix<Matrix>) {
     self.storage.template at<Indexes...>(
         cast<underlying, element<Indexes...>>(value));
   } else if constexpr (requires {
