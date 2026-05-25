@@ -101,9 +101,9 @@ class typed_matrix
 | `(conversion copy constructor)` | Convert construct a uniformly typed matrix from list-initializers. |
 | `(conversion copy constructor)` | Convert construct a row or column typed vector from elements. |
 | `(conversion copy constructor)` | Convert construct a singleton typed matrix from a single value. |
-| `operator[i, j]` | Access the specified element. |
-| `operator(i, j)` | Access the specified element. |
-| `at<i, j>()` | Access the specified element. |
+| `operator[i, j]` | Read the specified element. |
+| `operator(i, j)` | Read the specified element. |
+| `at<i, j>()` | Read, write the specified element. |
 | `(conversion operator)` | Access the singleton typed matrix element. |
 | `(destructor)` | Destruct a default typed matrix. |
 
@@ -143,7 +143,7 @@ A user-defined literal `_i` operator in the `fcarouge::literals` namespace that 
 
 ```cpp
 using literals::operator""_i;
-m[1_i, 2_i] = 4.; // Same as: m.at<1, 2>() = 4.
+std::println("{}", m[1_i, 2_i]); // Same as: m.at<1, 2>()
 ```
 
 ## Concepts
@@ -188,6 +188,8 @@ A variety of conversions may be needed, notably value and reference conversions.
 ## Lessons Learned
 
 Type safety cannot be guaranteed at compilation time without **index safety**. The indexes can either be non-type template parameters or strong types overloadings. Converting a runtime index to a dependent template type is not possible in C++. A proxy reference could be used to allow traditional assignment syntax but the runtime check and extra indirection are not interesting tradeoffs. A template call operator can be used for getting a type safe value but impractical syntax for setting. Without index safety, the accepted tradeoff is a templated index `at<i, j>()` method.
+
+**Lvalue reference assignment** cannot be provided due to a contradiction. For example, in user code: `m[0_i, 0_i] = 2 * m;`. On one hand, if the storage is a tuple of strong types, then the access for linear operations suffers a performance penalty because `std::tuple` is not a contiguous array. Tuples are stored in implementation-dependent order, alignement, size, and padding. On the other hand, if the storage is a contiguous of built-in types, then materializing a lvalue reference of strong type from the build-in type is undefined behavior. Reinterpret-casting is never constexpr and undefined behavior when aliasing, punning types, even when appropriatly sized and aligned memory. Fortunately, there is a conjecture that lvalue reference assignment is never useful given linear algebra works over vector and matrix entities, and not their elements. A practical set of constructors should suffice. While lvalue reference assignment could be conditionally provided given compatible storage, the end-user experience would be confusing when assignment could not be provided. Assigning an element is supported via the `at` member function.
 
 **Extraneous indexes** tradeoffs convenience for safety. For example, `m[0, 0, 0, 0, ...]` to access the first row/column element of a matrix, rank 2. While the allowance was practical for generic meta-programming in early development, community feedback informed of the user defects permitted by the mis-matching number of indeces, weak guarantees. For safety, the number of indexes must match the rank at compile-time.
 
