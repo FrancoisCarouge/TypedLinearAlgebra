@@ -314,6 +314,51 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+template <auto... Indexes>
+constexpr void typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(
+    this auto &&self, const element<Indexes...> &value)
+  requires(sizeof...(Indexes) == rank)
+{
+  // Forward the write operation to the storage with the appropriate access
+  // pattern and type conversion. The access pattern is determined by the
+  // available support of linear algebra backend.
+
+  //! @todo Consider refactoring this implementation to use a prioritized
+  //! overload set of free functions instead of a cascade of if-constexpr. The
+  //! free functions would be selected by the compiler based on the available
+  //! support of the linear algebra backend, and would handle the type
+  //! conversion and access pattern internally. This could simplify the
+  //! implementation and improve readability. The overload set could support
+  //! both the write and read operations.
+  if constexpr (requires {
+                  self.storage.template at<Indexes...>(
+                      cast<underlying, element<Indexes...>>(value));
+                }) {
+    self.storage.template at<Indexes...>(
+        cast<underlying, element<Indexes...>>(value));
+  } else if constexpr (requires {
+                         self.storage(std::size_t{Indexes}...) =
+                             cast<underlying, element<Indexes...>>(value);
+                       }) {
+    self.storage(std::size_t{Indexes}...) =
+        cast<underlying, element<Indexes...>>(value);
+  } else if constexpr (requires {
+                         self.storage(Indexes...) =
+                             cast<underlying, element<Indexes...>>(value);
+                       }) {
+    self.storage(Indexes...) = cast<underlying, element<Indexes...>>(value);
+  } else if constexpr (requires {
+                         self.storage[0, std::size_t{Indexes}...] =
+                             cast<underlying, element<Indexes...>>(value);
+                       }) {
+    self.storage[0, std::size_t{Indexes}...] =
+        cast<underlying, element<Indexes...>>(value);
+  } else {
+    self.storage(0) = cast<underlying, element<Indexes...>>(value);
+  }
+}
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] constexpr decltype(auto)
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::data(this auto &&self) {
   return std::forward_like<decltype(self)>(self.storage);
