@@ -39,7 +39,7 @@ FetchContent_MakeAvailable(gsl-lite)
 FetchContent_Declare(
   mp-units
   GIT_REPOSITORY "https://github.com/mpusz/mp-units"
-  GIT_SHALLOW TRUE
+  GIT_TAG 779d78fce93f8b8f587684c7482ac40b3fdd3a7e
   SOURCE_SUBDIR "src" FIND_PACKAGE_ARGS NAMES mp-units)
 FetchContent_MakeAvailable(mp-units)
 
