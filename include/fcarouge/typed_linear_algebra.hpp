@@ -332,10 +332,11 @@ public:
     requires(sizeof...(Indexes) == rank) and
             ((index<Indexes> && ...) or uniform_typed_matrix<typed_matrix>);
 
-  //! @brief Access the specified element with compile-time bound checking.
+  //! @brief Read the specified element.
   //!
-  //! @details Returns a strongly typed element at the specified location. A
-  //! reference is returned for non-const calls.
+  //! @details Returns a strongly typed element at the specified compile-time
+  //! bound checked location element. A reference is returned for non-const
+  //! calls.
   //!
   //! @tparam Indexes Position(s) of the element to return. Both row and column
   //! indexes for any matrix, one index for one-dimension matrices, no index for
@@ -345,6 +346,18 @@ public:
   //! location for non-const access, or a prvalue otherwise.
   template <auto... Indexes>
   [[nodiscard]] constexpr decltype(auto) at(this auto &&self)
+    requires(sizeof...(Indexes) == rank);
+
+  //! @brief Write the specified element.
+  //!
+  //! @details Sets the strongly typed element at the specified compile-time
+  //! bound checked location element.
+  //!
+  //! @tparam Indexes Position(s) of the element to write. Both row and column
+  //! indexes for any matrix, one index for one-dimension matrices, no index for
+  //! singleton matrices.
+  template <auto... Indexes>
+  constexpr void at(this auto &&self, const element<Indexes...> &value)
     requires(sizeof...(Indexes) == rank);
 
   //! @brief Direct access to the underlying storage.
