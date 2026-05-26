@@ -207,8 +207,13 @@ requires (sizeof...(Indexes) == <a class="el" href="#a187f5727fc775dc07aff603ee5
 <tr class="memitem:a7069d3bf51e6490049566e61978d9fbe" id="r_a7069d3bf51e6490049566e61978d9fbe"><td class="memTemplParams" colspan="2">template&lt;auto... Indexes&gt; <br />
 requires (sizeof...(Indexes) == <a class="el" href="#a187f5727fc775dc07aff603ee5f66c30">rank</a>)</td></tr>
 <tr class="memitem:a7069d3bf51e6490049566e61978d9fbe"><td class="memTemplItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7069d3bf51e6490049566e61978d9fbe">at</a> (this auto &amp;&amp;self)</td></tr>
-<tr class="memdesc:a7069d3bf51e6490049566e61978d9fbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the specified element with compile-time bound checking.  <br /></td></tr>
+<tr class="memdesc:a7069d3bf51e6490049566e61978d9fbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the specified element.  <br /></td></tr>
 <tr class="separator:a7069d3bf51e6490049566e61978d9fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f021cdbb68e3e5bbe51c5962b312508" id="r_a4f021cdbb68e3e5bbe51c5962b312508"><td class="memTemplParams" colspan="2">template&lt;auto... Indexes&gt; <br />
+requires (sizeof...(Indexes) == <a class="el" href="#a187f5727fc775dc07aff603ee5f66c30">rank</a>)</td></tr>
+<tr class="memitem:a4f021cdbb68e3e5bbe51c5962b312508"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a4f021cdbb68e3e5bbe51c5962b312508">at</a> (this auto &amp;&amp;self, const <a class="el" href="#a240af7a39b0d2a71206ae7029667438f">element</a>&lt; Indexes... &gt; &amp;value)</td></tr>
+<tr class="memdesc:a4f021cdbb68e3e5bbe51c5962b312508"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the specified element.  <br /></td></tr>
+<tr class="separator:a4f021cdbb68e3e5bbe51c5962b312508"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a032880fe707e41d14c7a9dfa3f321fee" id="r_a032880fe707e41d14c7a9dfa3f321fee"><td class="memItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a032880fe707e41d14c7a9dfa3f321fee">data</a> (this auto &amp;&amp;self)</td></tr>
 <tr class="memdesc:a032880fe707e41d14c7a9dfa3f321fee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Direct access to the underlying storage.  <br /></td></tr>
 <tr class="separator:a032880fe707e41d14c7a9dfa3f321fee"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -248,7 +253,7 @@ class fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;</div><p>
 <dl class="section note"><dt>Note</dt><dd>Type safety cannot be guaranteed at compilation time without index safety. The indexes can either be non-type template parameters or strong types overloadings. Converting a runtime index to a dependent template type is not possible in C++. A proxy reference could be used to allow traditional assignment syntax but the runtime check and extra indirection are not interesting tradeoffs. A template call operator can be used for getting a type safe value but impractical syntax for setting. Without index safety, the accepted tradeoff is a templated index <code>at&lt;i, j&gt;()</code> method.</dd>
 <dd>
 Deduction guides are tricky because a given element type comes from a row and column index to be deduced.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000003">Todo</a></b></dt><dd><p class="startdd">Don't limit the dimension to two? Use parameter pack of index tuples for tensor types. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000004">Todo</a></b></dt><dd><p class="startdd">Don't limit the dimension to two? Use parameter pack of index tuples for tensor types. </p>
 <p class="interdd">Add complexity documentation where appropriate for the API? </p>
 <p class="enddd">Document the lack of bound checking on the classical API or remove altogether? </p>
 </dd></dl>
@@ -601,7 +606,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7069d3bf51e6490049566e61978d9fbe" name="a7069d3bf51e6490049566e61978d9fbe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7069d3bf51e6490049566e61978d9fbe">&#9670;&#160;</a></span>at()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7069d3bf51e6490049566e61978d9fbe">&#9670;&#160;</a></span>at() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -628,8 +633,8 @@ requires (sizeof...(Indexes) == <a class="el" href="#a187f5727fc775dc07aff603ee5
 </table>
 </div><div class="memdoc">
 
-<p>Access the specified element with compile-time bound checking. </p>
-<p>Returns a strongly typed element at the specified location. A reference is returned for non-const calls.</p>
+<p>Read the specified element. </p>
+<p>Returns a strongly typed element at the specified compile-time bound checked location element. A reference is returned for non-const calls.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Indexes</td><td>Position(s) of the element to return. Both row and column indexes for any matrix, one index for one-dimension matrices, no index for singleton matrices.</td></tr>
@@ -637,6 +642,49 @@ requires (sizeof...(Indexes) == <a class="el" href="#a187f5727fc775dc07aff603ee5
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the strongly typed element at the specified location for non-const access, or a prvalue otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a4f021cdbb68e3e5bbe51c5962b312508" name="a4f021cdbb68e3e5bbe51c5962b312508"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f021cdbb68e3e5bbe51c5962b312508">&#9670;&#160;</a></span>at() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+<div class="memtemplate">
+template&lt;auto... Indexes&gt; <br />
+requires (sizeof...(Indexes) == <a class="el" href="#a187f5727fc775dc07aff603ee5f66c30">rank</a>)</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::at </td>
+          <td>(</td>
+          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="#a240af7a39b0d2a71206ae7029667438f">element</a>&lt; Indexes... &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Write the specified element. </p>
+<p>Sets the strongly typed element at the specified compile-time bound checked location element.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Indexes</td><td>Position(s) of the element to write. Both row and column indexes for any matrix, one index for one-dimension matrices, no index for singleton matrices. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1202,7 +1250,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p>Underlying algebraic backend data storage. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00368">368</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00381">381</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>

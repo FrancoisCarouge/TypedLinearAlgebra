@@ -1,5 +1,7 @@
 var NAVTREEINDEX3 =
 {
+"structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#acc11d9b746008621a4da1faff0482026":[22,0,1,1,0],
+"structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#ae7bfb82a712568a2a1cf01f068c375d7":[22,0,1,1,4],
 "structstd_1_1formatter_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_00_01_char_01_4.xhtml#af597106c6b5a6b07cfb31959d7e465df":[22,0,1,1,1],
 "structstd_1_1tuple__element_3_01_index_00_01_type_01_4.xhtml":[22,0,1,2],
 "structstd_1_1tuple__element_3_01_index_00_01_type_01_4.xhtml#ad03dca9c733705a2353f943513262d65":[22,0,1,2,0],

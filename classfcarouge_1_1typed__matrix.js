@@ -13,6 +13,7 @@ var classfcarouge_1_1typed__matrix =
     [ "typed_matrix", "classfcarouge_1_1typed__matrix.xhtml#a145a71fcaa9c6b3d172b4b2df0ca69af", null ],
     [ "typed_matrix", "classfcarouge_1_1typed__matrix.xhtml#a4cb6909ad42c9f4560dbf7c51e5ed1e4", null ],
     [ "at", "classfcarouge_1_1typed__matrix.xhtml#a7069d3bf51e6490049566e61978d9fbe", null ],
+    [ "at", "classfcarouge_1_1typed__matrix.xhtml#a4f021cdbb68e3e5bbe51c5962b312508", null ],
     [ "data", "classfcarouge_1_1typed__matrix.xhtml#a032880fe707e41d14c7a9dfa3f321fee", null ],
     [ "explicit", "classfcarouge_1_1typed__matrix.xhtml#ae5767dab4b628c034e7a21a39f3fde35", null ],
     [ "explicit", "classfcarouge_1_1typed__matrix.xhtml#a16857257759870c394e7038923b581e3", null ],
