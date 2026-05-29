@@ -38,6 +38,7 @@ For more information, please refer to <https://unlicense.org> */
 //! @details Supporting quantities, values, and functions.
 
 #include <concepts>
+#include <memory>
 
 #include <mp-units/framework/quantity.h>
 #include <mp-units/framework/quantity_point.h>
@@ -106,13 +107,19 @@ struct element_caster<To &, From &> {
                   "The underlying storage and the quantity types must have the "
                   "same alignment to have any hope of functional conversion.");
 
-    To MAY_ALIAS *q{reinterpret_cast<To *>(&value)};
+    To *q{std::start_lifetime_as<To>(&value)};
 
-    // This conversion is Undefined Behavior (UB): strict-aliasing violation,
-    // type punning dereferencing. The `reinterpret_cast` is not a constant
-    // expression. The function can never be evaluated at compile-time. The
-    // function will never be `constexpr`.
-    return *q; // UB here.
+    // We think this is defined behavior.
+    // The end-user can end-up with ended-lifetime references if they hold onto
+    // this reference and then make an operation which would start the lifetime
+    // of the data.
+    return *q;
+
+    // The problem is that we need to re-start `std::start_lifetime_as` for the
+    // underlying data storage if we want to use it again as a matrix. And that
+    // data is not under the control of this library but the linear algebra
+    // backend. Morevover, it needs to be an ImplicitLifetimeType (and shall be
+    // a complete type). Which may not be the case.
   }
 };
 
@@ -154,13 +161,8 @@ struct element_caster<To &, From &> {
                   "The underlying storage and the quantity types must have the "
                   "same alignment to have any hope of functional conversion.");
 
-    To MAY_ALIAS *q{reinterpret_cast<To *>(&value)};
-
-    // This conversion is Undefined Behavior (UB): strict-aliasing violation,
-    // type punning dereferencing. The `reinterpret_cast` is not a constant
-    // expression. The function can never be evaluated at compile-time. The
-    // function will never be `constexpr`.
-    return *q; // UB here.
+    To *q{std::start_lifetime_as<To>(&value)};
+    return *q;
   }
 };
 
