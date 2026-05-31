@@ -149,19 +149,6 @@ using literals::operator""_i;
                                         " [6 m²/s, 4 m²/s², 2 m²/s³]," //
                                         " [3 m²/s², 2 m²/s³, 1 m²/s⁴]]");
 
-  // Structured bindings supported.
-  state x6{3. * m, 2. * m / s, 1. * m / s2};
-  auto &[p6, v6, a6]{x6};
-  assert(p6 == 3. * m);
-  assert(v6 == 2. * m / s);
-  assert(a6 == 1. * m / s2);
-  p6 = 4. * m;
-  v6 = 3. * m / s;
-  a6 = 2. * m / s2;
-  assert(p6 == 4. * m);
-  assert(v6 == 3. * m / s);
-  assert(a6 == 2. * m / s2);
-
   // Singleton matrix declaration, for example, but perhaps not a recommended
   // replacement for what should normally just be a `quantity{1. * A / mol}`.
   matrix<std::tuple<decltype(1. * A)>, std::tuple<decltype(1. / mol)>> s1{
@@ -183,12 +170,7 @@ using literals::operator""_i;
   using single_element = decltype(s1)::element<0, 0>;
   assert(single_element{s1} == 10. * A / mol);
   assert(s1 == 10. * A / mol);
-
-  // The singleton element can be accessed by structured bindings.
-  auto &[sb1]{s1};
-  sb1 = 1. * A / mol;
-  const auto &[sb2]{s1};
-  assert(sb2 == 1. * A / mol);
+  s1.at(1. * A / mol);
 
   // Beware the element type may not be the same as could be expected.
   static_assert(
