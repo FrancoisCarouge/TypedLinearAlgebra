@@ -111,7 +111,7 @@ using literals::operator""_i;
   assert(std::format("{}", x0) == "[[3 m], [2 m/s], [1 m/s²]]");
 
   // Element assignment and access.
-  x0.at<1>() = 2.5 * m / s;
+  x0.at<1>(2.5 * m / s);
   auto x0_1{x0.at<1>()};
   assert(x0_1 == 2.5 * m / s);
   assert(std::format("{}", x0_1) == "2.5 m/s");
@@ -169,17 +169,17 @@ using literals::operator""_i;
   assert(std::format("{}", s1) == "1 A/mol");
 
   // Ways to access the singleton matrix.
-  s1.at() = 3. * A / mol;
+  s1.at(3. * A / mol);
   assert(s1.at() == 3. * A / mol);
 
-  s1[] = 2. * A / mol;
+  s1.at(2. * A / mol);
   assert(s1[] == 2. * A / mol);
 
-  s1() = 1. * A / mol;
+  s1.at(1. * A / mol);
   assert(s1() == 1. * A / mol);
 
   // The singleton element can be accessed by conversion to its element type.
-  s1 = 10. * A / mol;
+  s1.at(10. * A / mol);
   using single_element = decltype(s1)::element<0, 0>;
   assert(single_element{s1} == 10. * A / mol);
   assert(s1 == 10. * A / mol);
@@ -252,14 +252,14 @@ using literals::operator""_i;
   assert(std::format("{}", v1) == "[[1 m/s], [2 m/s], [3 m/s]]");
 
   // Vector typed access.
-  v0.at<1>() = 4. * m / s;
+  v0.at<1>(4. * m / s);
   assert(v0.at<1>() == 4. * m / s);
 
   // Vector and uniform typed access.
-  v0[1] = 3. * m / s;
+  v0.at<1>(3. * m / s);
   assert(v0[1] == 3. * m / s);
 
-  v0(1) = 2. * m / s;
+  v0.at<1>(2. * m / s);
   assert(v0(1) == 2. * m / s);
 
   // Beware of non-evaluated template expression: these types are not the same.
@@ -284,10 +284,10 @@ using literals::operator""_i;
       matrix<std::tuple<position, position>, std::tuple<position, position>>;
   position_2d_uncertainty p0;
 
-  p0[0, 1] = 9. * m2;
+  p0.at<0, 1>(9. * m2);
   assert((p0[0, 1] == 9. * m2));
 
-  p0(0, 1) = 16. * m2;
+  p0.at<0, 1>(16. * m2);
   assert((p0(0, 1) == 16. * m2));
 
   //! @todo Modulo where both arguments should be of the same quantity kind and
@@ -322,9 +322,9 @@ using literals::operator""_i;
       matrix<std::tuple<position, velocity, acceleration>,
              std::tuple<position, velocity, acceleration>>;
   estimate_uncertainty p;
-  p.at<0, 0>() = 500. * m2;
-  p.at<1, 1>() = 500. * m2 / s2;
-  p.at<2, 2>() = 500. * m2 / s4;
+  p.at<0, 0>(500. * m2);
+  p.at<1, 1>(500. * m2 / s2);
+  p.at<2, 2>(500. * m2 / s4);
   std::println("P: {}", p);
   // P: [[500 m²,     0 m²/s,    0 m²/s²],
   //     [  0 m²/s, 500 m²/s²,   0 m²/s³],
@@ -332,15 +332,15 @@ using literals::operator""_i;
 
   using process_uncertainty = estimate_uncertainty;
   process_uncertainty q;
-  q.at<0, 0>() = 0.01 * m2;
-  q.at<0, 1>() = 0.02 * m2 / s;
-  q.at<0, 2>() = 0.02 * m2 / s2;
-  q.at<1, 0>() = 0.02 * m2 / s;
-  q.at<1, 1>() = 0.04 * m2 / s2;
-  q.at<1, 2>() = 0.04 * m2 / s3;
-  q.at<2, 0>() = 0.02 * m2 / s2;
-  q.at<2, 1>() = 0.04 * m2 / s3;
-  q.at<2, 2>() = 0.04 * m2 / s4;
+  q.at<0, 0>(0.01 * m2);
+  q.at<0, 1>(0.02 * m2 / s);
+  q.at<0, 2>(0.02 * m2 / s2);
+  q.at<1, 0>(0.02 * m2 / s);
+  q.at<1, 1>(0.04 * m2 / s2);
+  q.at<1, 2>(0.04 * m2 / s3);
+  q.at<2, 0>(0.02 * m2 / s2);
+  q.at<2, 1>(0.04 * m2 / s3);
+  q.at<2, 2>(0.04 * m2 / s4);
   std::println("Q: {}", q);
   // Q: [[0.01 m²,    0.02 m²/s,  0.02 m²/s²],
   //     [0.02 m²/s,  0.04 m²/s², 0.04 m²/s³],
@@ -353,7 +353,7 @@ using literals::operator""_i;
 
   using output_model = row_vector<quantity<one>, quantity<s>, quantity<s2>>;
   output_model h;
-  h.at<0>() = 1.;
+  h.at<0>(1.);
   std::println("H: {}", h);
   // H: [1, 0 s, 0 s²]
 
@@ -361,12 +361,12 @@ using literals::operator""_i;
       matrix<std::tuple<position, velocity, acceleration>,
              std::tuple<quantity<one / m>, quantity<s / m>, quantity<s2 / m>>>;
   state_transition f;
-  f.at<0, 0>() = 1.;
-  f.at<0, 1>() = 1. * s;
-  f.at<0, 2>() = 0.5 * s2;
-  f.at<1, 1>() = 1.;
-  f.at<1, 2>() = 1. * s;
-  f.at<2, 2>() = 1.;
+  f.at<0, 0>(1.);
+  f.at<0, 1>(1. * s);
+  f.at<0, 2>(0.5 * s2);
+  f.at<1, 1>(1.);
+  f.at<1, 2>(1. * s);
+  f.at<2, 2>(1.);
   std::println("F: {}", f);
   // F: [[1, 1 s, 0.5 s²],
   //     [0 1/s, 1, 1 s],
@@ -403,9 +403,9 @@ using literals::operator""_i;
   using kh =
       matrix<unevaluated_kh::row_indexes, unevaluated_kh::column_indexes>;
   kh i;
-  i.at<0, 0>() = 1.;
-  i.at<1, 1>() = 1.;
-  i.at<2, 2>() = 1.;
+  i.at<0, 0>(1.);
+  i.at<1, 1>(1.);
+  i.at<2, 2>(1.);
   p = (i - k * h) * p * transposed(i - k * h) + k * r * transposed(k);
   std::println("P: {}", p);
   // P: [[8.92 m²,      5.95 m²/s,    1.98 m²/s²],
