@@ -166,10 +166,10 @@ $(function(){initNavTree('1x2__unit__std_8cpp_source.xhtml',''); initResizable(t
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b">row_vector&lt;representation, position, velocity&gt;</a> b{span_b};</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b">row_vector&lt;representation, position, velocity&gt;</a> r{span_r};</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  a[0_i] = 1. * m;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  a[1_i] = 2. * m / s;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  b[0_i] = 3. * m;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  b[1_i] = 4. * m / s;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  a.at&lt;0_i&gt;(1. * m);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  a.at&lt;1_i&gt;(2. * m / s);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  b.at&lt;0_i&gt;(3. * m);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  b.at&lt;1_i&gt;(4. * m / s);</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  add(a, b, r);</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>

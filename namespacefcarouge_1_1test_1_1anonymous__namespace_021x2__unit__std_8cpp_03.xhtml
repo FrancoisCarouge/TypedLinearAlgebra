@@ -142,10 +142,10 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   60</span>  row_vector&lt;representation, position, velocity&gt; b{span_b};</div>
 <div class="line"><span class="lineno">   61</span>  row_vector&lt;representation, position, velocity&gt; r{span_r};</div>
 <div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>  a[0_i] = 1. * m;</div>
-<div class="line"><span class="lineno">   64</span>  a[1_i] = 2. * m / s;</div>
-<div class="line"><span class="lineno">   65</span>  b[0_i] = 3. * m;</div>
-<div class="line"><span class="lineno">   66</span>  b[1_i] = 4. * m / s;</div>
+<div class="line"><span class="lineno">   63</span>  a.at&lt;0_i&gt;(1. * m);</div>
+<div class="line"><span class="lineno">   64</span>  a.at&lt;1_i&gt;(2. * m / s);</div>
+<div class="line"><span class="lineno">   65</span>  b.at&lt;0_i&gt;(3. * m);</div>
+<div class="line"><span class="lineno">   66</span>  b.at&lt;1_i&gt;(4. * m / s);</div>
 <div class="line"><span class="lineno">   67</span> </div>
 <div class="line"><span class="lineno">   68</span>  add(a, b, r);</div>
 <div class="line"><span class="lineno">   69</span> </div>

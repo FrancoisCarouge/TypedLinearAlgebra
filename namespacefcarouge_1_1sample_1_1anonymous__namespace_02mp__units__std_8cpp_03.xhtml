@@ -421,16 +421,16 @@ template&lt;typename Extents &gt; </div>
 <div class="line"><span class="lineno">  126</span>  state x0{s0};</div>
 <div class="line"><span class="lineno">  127</span> </div>
 <div class="line"><span class="lineno">  128</span>  <span class="comment">// Elements asignment.</span></div>
-<div class="line"><span class="lineno">  129</span>  x0.at&lt;0&gt;() = 3. * m;</div>
-<div class="line"><span class="lineno">  130</span>  x0.at&lt;1&gt;() = 2. * m / s;</div>
-<div class="line"><span class="lineno">  131</span>  x0.at&lt;2&gt;() = 1. * m / s2;</div>
+<div class="line"><span class="lineno">  129</span>  x0.at&lt;0&gt;(3. * m);</div>
+<div class="line"><span class="lineno">  130</span>  x0.at&lt;1&gt;(2. * m / s);</div>
+<div class="line"><span class="lineno">  131</span>  x0.at&lt;2&gt;(1. * m / s2);</div>
 <div class="line"><span class="lineno">  132</span> </div>
 <div class="line"><span class="lineno">  133</span>  <span class="comment">// Printable.</span></div>
 <div class="line"><span class="lineno">  134</span>  std::println(<span class="stringliteral">&quot;x0 = {}&quot;</span>, x0);</div>
 <div class="line"><span class="lineno">  135</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x0) == <span class="stringliteral">&quot;[[3 m], [2 m/s], [1 m/s²]]&quot;</span>);</div>
 <div class="line"><span class="lineno">  136</span> </div>
 <div class="line"><span class="lineno">  137</span>  <span class="comment">// Element assignment and access.</span></div>
-<div class="line"><span class="lineno">  138</span>  x0.at&lt;1&gt;() = 2.5 * m / s;</div>
+<div class="line"><span class="lineno">  138</span>  x0.at&lt;1&gt;(2.5 * m / s);</div>
 <div class="line"><span class="lineno">  139</span>  <span class="keyword">auto</span> x0_1{x0.at&lt;1&gt;()};</div>
 <div class="line"><span class="lineno">  140</span>  assert(x0_1 == 2.5 * m / s);</div>
 <div class="line"><span class="lineno">  141</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x0_1) == <span class="stringliteral">&quot;2.5 m/s&quot;</span>);</div>
@@ -452,9 +452,9 @@ template&lt;typename Extents &gt; </div>
 <div class="line"><span class="lineno">  157</span>  std::vector v5(extents_size&lt;row_extents&lt;3&gt;&gt;, representation{});</div>
 <div class="line"><span class="lineno">  158</span>  std::mdspan s5{v5.data(), row_extents&lt;3&gt;{}};</div>
 <div class="line"><span class="lineno">  159</span>  state_transpose xt5{s5};</div>
-<div class="line"><span class="lineno">  160</span>  xt5.at&lt;0&gt;() = 3. * m;</div>
-<div class="line"><span class="lineno">  161</span>  xt5.at&lt;1&gt;() = 2. * m / s;</div>
-<div class="line"><span class="lineno">  162</span>  xt5.at&lt;2&gt;() = 1. * m / s2;</div>
+<div class="line"><span class="lineno">  160</span>  xt5.at&lt;0&gt;(3. * m);</div>
+<div class="line"><span class="lineno">  161</span>  xt5.at&lt;1&gt;(2. * m / s);</div>
+<div class="line"><span class="lineno">  162</span>  xt5.at&lt;2&gt;(1. * m / s2);</div>
 <div class="line"><span class="lineno">  163</span> </div>
 <div class="line"><span class="lineno">  164</span>  <span class="keyword">using </span>estimate_uncertainty =</div>
 <div class="line"><span class="lineno">  165</span>      matrix&lt;std::tuple&lt;position, velocity, acceleration&gt;,</div>
