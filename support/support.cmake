@@ -29,6 +29,16 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+  # Workaround: CMake does not record MSVC as supporting the C++26 language
+  # dialect yet, so requesting it through `CMAKE_CXX_STANDARD` hard-fails
+  # configuration, including inside fetched dependencies' own checks (for
+  # example mp-units' `check_cxx_feature_supported`). Leave the standard unset
+  # on MSVC and rely on `/std:c++latest`, set in `support/CMakeLists.txt`, to
+  # opt in to C++26 features directly.
+  unset(CMAKE_CXX_STANDARD)
+endif()
+
 # Add a given test.
 #
 # * NAME The name of the test file without extension.
