@@ -36,11 +36,11 @@ var NAVTREE =
         [ "Member Functions", "index.xhtml#member-functions", null ]
       ] ],
       [ "Operations", "index.xhtml#operations", null ],
-      [ "Aliases", "index.xhtml#aliases", null ],
-      [ "Format", "index.xhtml#format", null ],
+      [ "Aliases", "index.xhtml#aliases-1", null ],
+      [ "Format", "index.xhtml#format-1", null ],
       [ "Literals", "index.xhtml#literals", null ],
-      [ "Concepts", "index.xhtml#concepts", null ],
-      [ "Structure Element Caster", "index.xhtml#structure-element-caster", null ]
+      [ "Concepts", "index.xhtml#concepts-1", null ],
+      [ "Structure Element Caster", "index.xhtml#structure-element-caster-1", null ]
     ] ],
     [ "Considerations", "index.xhtml#considerations", [
       [ "Lessons Learned", "index.xhtml#lessons-learned", null ]
@@ -91,10 +91,10 @@ var NAVTREE =
           [ "Member Functions", "md_html_2paper_2mp__units__eigen.xhtml#member-functions-1", null ]
         ] ],
         [ "Operations", "md_html_2paper_2mp__units__eigen.xhtml#operations-1", null ],
-        [ "Aliases", "md_html_2paper_2mp__units__eigen.xhtml#aliases-1", null ],
-        [ "Format", "md_html_2paper_2mp__units__eigen.xhtml#format-1", null ],
-        [ "Concepts", "md_html_2paper_2mp__units__eigen.xhtml#concepts-1", null ],
-        [ "Structure Element Caster", "md_html_2paper_2mp__units__eigen.xhtml#structure-element-caster-1", null ]
+        [ "Aliases", "md_html_2paper_2mp__units__eigen.xhtml#aliases", null ],
+        [ "Format", "md_html_2paper_2mp__units__eigen.xhtml#format", null ],
+        [ "Concepts", "md_html_2paper_2mp__units__eigen.xhtml#concepts", null ],
+        [ "Structure Element Caster", "md_html_2paper_2mp__units__eigen.xhtml#structure-element-caster", null ]
       ] ],
       [ "6 Open Questions", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md6-open-questions", null ],
       [ "7 Beyond Unit Safety", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md7-beyond-unit-safety", null ],

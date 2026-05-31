@@ -342,17 +342,17 @@ Operations</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>transposed</code>   </td><td class="markdownTableBodyNone">Transpose the input matrix.   </td></tr>
 </table>
-<h2><a class="anchor" id="aliases-1"></a>
+<h2><a class="anchor" id="aliases"></a>
 Aliases</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Matrix, <span class="keyword">typename</span>... ColumnIndexes&gt;</div>
 <div class="line">typed_row_vector;</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Matrix, <span class="keyword">typename</span>... RowIndexes&gt;</div>
 <div class="line">typed_column_vector;</div>
-</div><!-- fragment --><h2><a class="anchor" id="format-1"></a>
+</div><!-- fragment --><h2><a class="anchor" id="format"></a>
 Format</h2>
 <p>A specialization of the standard formatter is provided for the typed matrix. Use <code>std::format</code> to store a formatted representation of the matrix. Standard format parameters to be supported.</p>
-<h2><a class="anchor" id="concepts-1"></a>
+<h2><a class="anchor" id="concepts"></a>
 Concepts</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -374,7 +374,7 @@ Concepts</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>uniform_typed_matrix</code>   </td><td class="markdownTableBodyNone">Concept of a typed matrix in which all element types are the same.   </td></tr>
 </table>
-<h2><a class="anchor" id="structure-element-caster-1"></a>
+<h2><a class="anchor" id="structure-element-caster"></a>
 Structure Element Caster</h2>
 <p>Typed matrix element conversions customization point. Specialize this template to allow conversion of element's type and underlying type.</p>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> To, <span class="keyword">typename</span> From&gt;</div>
