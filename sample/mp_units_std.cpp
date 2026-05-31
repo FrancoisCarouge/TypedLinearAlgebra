@@ -126,16 +126,16 @@ using state = column_vector<position, velocity, acceleration>;
   state x0{s0};
 
   // Elements asignment.
-  x0.at<0>() = 3. * m;
-  x0.at<1>() = 2. * m / s;
-  x0.at<2>() = 1. * m / s2;
+  x0.at<0>(3. * m);
+  x0.at<1>(2. * m / s);
+  x0.at<2>(1. * m / s2);
 
   // Printable.
   std::println("x0 = {}", x0);
   assert(std::format("{}", x0) == "[[3 m], [2 m/s], [1 m/s²]]");
 
   // Element assignment and access.
-  x0.at<1>() = 2.5 * m / s;
+  x0.at<1>(2.5 * m / s);
   auto x0_1{x0.at<1>()};
   assert(x0_1 == 2.5 * m / s);
   assert(std::format("{}", x0_1) == "2.5 m/s");
@@ -157,9 +157,9 @@ using state = column_vector<position, velocity, acceleration>;
   std::vector v5(extents_size<row_extents<3>>, representation{});
   std::mdspan s5{v5.data(), row_extents<3>{}};
   state_transpose xt5{s5};
-  xt5.at<0>() = 3. * m;
-  xt5.at<1>() = 2. * m / s;
-  xt5.at<2>() = 1. * m / s2;
+  xt5.at<0>(3. * m);
+  xt5.at<1>(2. * m / s);
+  xt5.at<2>(1. * m / s2);
 
   using estimate_uncertainty =
       matrix<std::tuple<position, velocity, acceleration>,

@@ -60,10 +60,10 @@ namespace {
   row_vector<representation, position, velocity> b{span_b};
   row_vector<representation, position, velocity> r{span_r};
 
-  a[0_i] = 1. * m;
-  a[1_i] = 2. * m / s;
-  b[0_i] = 3. * m;
-  b[1_i] = 4. * m / s;
+  a.at<0_i>(1. * m);
+  a.at<1_i>(2. * m / s);
+  b.at<0_i>(3. * m);
+  b.at<1_i>(4. * m / s);
 
   add(a, b, r);
 
