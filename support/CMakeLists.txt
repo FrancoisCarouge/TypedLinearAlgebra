@@ -109,7 +109,6 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   target_link_options(typed_linear_algebra_options INTERFACE "LINKER:-pie"
                       "LINKER:-z,relro,-z,now")
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-  target_compile_options(
-    typed_linear_algebra_options INTERFACE "/EHsc" "/std:c++latest" "/utf-8"
-                                           "/W4" "/WX")
+  target_compile_options(typed_linear_algebra_options
+                         INTERFACE "/EHsc" "/utf-8" "/W4" "/WX")
 endif()
