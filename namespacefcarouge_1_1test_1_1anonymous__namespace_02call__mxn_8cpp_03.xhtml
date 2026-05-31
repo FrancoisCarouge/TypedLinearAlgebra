@@ -133,12 +133,12 @@ Variables</h2></td></tr>
 <div class="line">  assert((m(1, 1) == 5.));</div>
 <div class="line">  assert((m(1, 2) == 6.));</div>
 <div class="line"> </div>
-<div class="line">  m(0, 0) = 11.;</div>
-<div class="line">  m(0, 1) = 12.;</div>
-<div class="line">  m(0, 2) = 13.;</div>
-<div class="line">  m(1, 0) = 14.;</div>
-<div class="line">  m(1, 1) = 15.;</div>
-<div class="line">  m(1, 2) = 16.;</div>
+<div class="line">  m.at&lt;0, 0&gt;(11.);</div>
+<div class="line">  m.at&lt;0, 1&gt;(12.);</div>
+<div class="line">  m.at&lt;0, 2&gt;(13.);</div>
+<div class="line">  m.at&lt;1, 0&gt;(14.);</div>
+<div class="line">  m.at&lt;1, 1&gt;(15.);</div>
+<div class="line">  m.at&lt;1, 2&gt;(16.);</div>
 <div class="line"> </div>
 <div class="line">  assert((m(0, 0) == 11.));</div>
 <div class="line">  assert((m(0, 1) == 12.));</div>
@@ -149,7 +149,7 @@ Variables</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000048">Test</a></b></dt><dd>Verifies the call operator accessor. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000049">Test</a></b></dt><dd>Verifies the call operator accessor. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="call__mxn_8cpp_source.xhtml#l00039">39</a> of file <a class="el" href="call__mxn_8cpp_source.xhtml">call_mxn.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   39</span>                                {[] {</div>
@@ -162,12 +162,12 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   46</span>  assert((m(1, 1) == 5.));</div>
 <div class="line"><span class="lineno">   47</span>  assert((m(1, 2) == 6.));</div>
 <div class="line"><span class="lineno">   48</span> </div>
-<div class="line"><span class="lineno">   49</span>  m(0, 0) = 11.;</div>
-<div class="line"><span class="lineno">   50</span>  m(0, 1) = 12.;</div>
-<div class="line"><span class="lineno">   51</span>  m(0, 2) = 13.;</div>
-<div class="line"><span class="lineno">   52</span>  m(1, 0) = 14.;</div>
-<div class="line"><span class="lineno">   53</span>  m(1, 1) = 15.;</div>
-<div class="line"><span class="lineno">   54</span>  m(1, 2) = 16.;</div>
+<div class="line"><span class="lineno">   49</span>  m.at&lt;0, 0&gt;(11.);</div>
+<div class="line"><span class="lineno">   50</span>  m.at&lt;0, 1&gt;(12.);</div>
+<div class="line"><span class="lineno">   51</span>  m.at&lt;0, 2&gt;(13.);</div>
+<div class="line"><span class="lineno">   52</span>  m.at&lt;1, 0&gt;(14.);</div>
+<div class="line"><span class="lineno">   53</span>  m.at&lt;1, 1&gt;(15.);</div>
+<div class="line"><span class="lineno">   54</span>  m.at&lt;1, 2&gt;(16.);</div>
 <div class="line"><span class="lineno">   55</span> </div>
 <div class="line"><span class="lineno">   56</span>  assert((m(0, 0) == 11.));</div>
 <div class="line"><span class="lineno">   57</span>  assert((m(0, 1) == 12.));</div>
