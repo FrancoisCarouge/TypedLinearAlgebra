@@ -94,25 +94,18 @@ struct element_caster<To, From> {
 
 template <mp_units::Quantity To, typename From>
 struct element_caster<To &, From &> {
-  [[nodiscard]] static auto operator()(From &value) -> To & {
+  // A quantity reference cannot be safely materialized out of a representation
+  // reference. It would be undefined behavior even if the size, padding,
+  // alignment, aliasing are controlled. Therefore the best we can do is to
+  // return a constant quantity value to inform the end-user lvalue reference
+  // assignment cannot be supported.
+  [[nodiscard]] static constexpr auto operator()(From value) -> const To {
     static_assert(std::same_as<typename To::rep, From>,
                   "The underlying storage type must be identical to the "
                   "quantity representation type to guarantee the conversion is "
                   "explicitely decided by the end-user.");
-    static_assert(sizeof(To) == sizeof(From),
-                  "The underlying storage and the quantity types must have the "
-                  "same size to have any hope of functional conversion.");
-    static_assert(alignof(To) == alignof(From),
-                  "The underlying storage and the quantity types must have the "
-                  "same alignment to have any hope of functional conversion.");
 
-    To MAY_ALIAS *q{reinterpret_cast<To *>(&value)};
-
-    // This conversion is Undefined Behavior (UB): strict-aliasing violation,
-    // type punning dereferencing. The `reinterpret_cast` is not a constant
-    // expression. The function can never be evaluated at compile-time. The
-    // function will never be `constexpr`.
-    return *q; // UB here.
+    return value * To::reference;
   }
 };
 
@@ -142,25 +135,18 @@ struct element_caster<To, From> {
 
 template <mp_units::QuantityPoint To, typename From>
 struct element_caster<To &, From &> {
-  [[nodiscard]] static auto operator()(From &value) -> To & {
-    static_assert(std::same_as<typename To::rep, From>,
+  // A quantity point reference cannot be safely materialized out of a
+  // representation reference. It would be undefined behavior even if the size,
+  // padding, alignment, aliasing are controlled. Therefore the best we can do
+  // is to return a constant quantity value to inform the end-user lvalue
+  // reference assignment cannot be supported.
+  [[nodiscard]] static constexpr auto operator()(From value) -> const To {
+    static_assert(std::same_as<To, typename From::rep>,
                   "The underlying storage type must be identical to the "
                   "quantity representation type to guarantee the conversion is "
                   "explicitely decided by the end-user.");
-    static_assert(sizeof(To) == sizeof(From),
-                  "The underlying storage and the quantity types must have the "
-                  "same size to have any hope of functional conversion.");
-    static_assert(alignof(To) == alignof(From),
-                  "The underlying storage and the quantity types must have the "
-                  "same alignment to have any hope of functional conversion.");
 
-    To MAY_ALIAS *q{reinterpret_cast<To *>(&value)};
-
-    // This conversion is Undefined Behavior (UB): strict-aliasing violation,
-    // type punning dereferencing. The `reinterpret_cast` is not a constant
-    // expression. The function can never be evaluated at compile-time. The
-    // function will never be `constexpr`.
-    return *q; // UB here.
+    return {value * To::unit, mp_units::default_point_origin(To::unit)};
   }
 };
 
