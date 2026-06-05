@@ -50,6 +50,8 @@ namespace {
                                     {0., 0., 0., 1., 0.},
                                     {0., 0., 0., 0., 1.}}));
 
+  [[maybe_unused]] const int * i{new int{42}};
+
   return 0;
 }()};
 } // namespace
