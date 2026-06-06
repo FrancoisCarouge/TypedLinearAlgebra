@@ -239,12 +239,14 @@ constexpr std::size_t rank{[] {
 template <typename Type>
 concept uniform_typed_matrix =
     same_as_typed_matrix<Type> and ([]() {
+      using matrix = std::remove_cvref_t<Type>;
+
       bool result{true};
 
-      for_constexpr<std::remove_cvref_t<Type>::rows>([&result](auto i) {
-        for_constexpr<std::remove_cvref_t<Type>::columns>([&result,
-                                                           &i](auto j) {
-          result &= std::is_same_v<element<Type, i, j>, element<Type, 0, 0>>;
+      for_constexpr<matrix::rows>([&result](auto i) {
+        for_constexpr<matrix::columns>([&result, &i](auto j) {
+          result &=
+              std::is_same_v<element<matrix, i, j>, element<matrix, 0, 0>>;
         });
       });
 
@@ -276,7 +278,6 @@ template <typename Type, std::size_t Size> struct tupler {
   template <std::size_t... Indexes>
   struct helper<std::index_sequence<Indexes...>> {
     template <std::size_t> using wrap = Type;
-
     using type = std::tuple<wrap<Indexes>...>;
   };
 
