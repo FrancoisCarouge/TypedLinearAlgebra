@@ -44,31 +44,22 @@ namespace {
 //! @test Verifies the singleton by singleton matrix addition operator.
 [[maybe_unused]] const auto test{[] {
   using length = quantity<mp_units::isq::length[m]>;
-  using area = quantity<mp_units::isq::area[m2]>;
 
   // Intended:
   // const row_vector<representation, length> a{3. * m};
+
+  using area = quantity<mp_units::isq::area[m2]>;
+
   const row_vector<representation, area> a{3. * m2};
 
   const row_vector<representation, length> b{2. * m};
 
   const row_vector<representation, length> r{a + b};
 
-  assert((5. * m == r(0, 0)));
-  assert((5. * m == r[0, 0]));
-  assert((5. * m == r.at<0, 0>()));
-  assert((5. * m == r(0_i, 0_i)));
-  assert((5. * m == r[0_i, 0_i]));
-  assert((5. * m == r.at<0_i, 0_i>()));
-  assert((5. * m == r(0)));
-  assert((5. * m == r[0]));
-  assert((5. * m == r.at<0>()));
-  assert((5. * m == r(0_i)));
-  assert((5. * m == r[0_i]));
-  assert((5. * m == r.at<0_i>()));
-  assert((5. * m == r()));
-  assert((5. * m == r));
-  assert((5. * m == r.at()));
+  assert(5. * m == r.at());
+  assert(5. * m == r[]);
+  assert(5. * m == r());
+  assert(5. * m == r);
 
   return 0;
 }()};

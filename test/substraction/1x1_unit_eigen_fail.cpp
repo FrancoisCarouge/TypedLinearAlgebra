@@ -54,21 +54,10 @@ namespace {
 
   const row_vector<representation, length> r{a - b};
 
-  assert((1. * m == r(0, 0)));
-  assert((1. * m == r[0, 0]));
-  assert((1. * m == r.at<0, 0>()));
-  assert((1. * m == r(0_i, 0_i)));
-  assert((1. * m == r[0_i, 0_i]));
-  assert((1. * m == r.at<0_i, 0_i>()));
-  assert((1. * m == r(0)));
-  assert((1. * m == r[0]));
-  assert((1. * m == r.at<0>()));
-  assert((1. * m == r(0_i)));
-  assert((1. * m == r[0_i]));
-  assert((1. * m == r.at<0_i>()));
-  assert((1. * m == r()));
-  assert((1. * m == r));
-  assert((1. * m == r.at()));
+  assert(1. * m == r.at());
+  assert(1. * m == r[]);
+  assert(1. * m == r());
+  assert(1. * m == r);
 
   return 0;
 }()};
