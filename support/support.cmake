@@ -45,7 +45,7 @@ function(pass NAME)
                    "${NAME}.cpp")
     target_link_libraries(
       typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_pass_driver
-      PRIVATE typed_linear_algebra_options typed_linear_algebra_main
+      PRIVATE tlinalg typed_linear_algebra_options typed_linear_algebra_main
               typed_linear_algebra_${BACKEND})
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(
@@ -73,7 +73,7 @@ function(fail NAME)
                    "${NAME}.cpp")
     target_link_libraries(
       typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_driver
-      PRIVATE typed_linear_algebra_options typed_linear_algebra_main
+      PRIVATE tlinalg typed_linear_algebra_options typed_linear_algebra_main
               typed_linear_algebra_${BACKEND})
     set_target_properties(
       typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_driver
@@ -106,8 +106,8 @@ function(bench NAME SIZE)
       "${NAME}_${SIZE}.cpp")
     target_link_libraries(
       typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench_driver
-      PRIVATE typed_linear_algebra_options typed_linear_algebra_${BACKEND}
-              nanobench::nanobench)
+      PRIVATE tlinalg typed_linear_algebra_options
+              typed_linear_algebra_${BACKEND} nanobench::nanobench)
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(
       NAME typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench
