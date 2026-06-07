@@ -61,10 +61,18 @@ namespace {
   b = 3. * m;
   add(a, b, r);
 
-  assert(5. * m == r.at());
-  assert(5. * m == r[]);
-  assert(5. * m == r());
   assert(5. * m == r);
+  assert(5. * m == r());
+  assert(5. * m == r[]);
+  assert(5. * m == r.at());
+  assert(5. * m == r.at<>());
+  assert(5. * m == r.at<length>());
+
+  static_assert(std::same_as<decltype(r()), const length>);
+  static_assert(std::same_as<decltype(r[]), const length>);
+  static_assert(std::same_as<decltype(r.at()), const length>);
+  static_assert(std::same_as<decltype(r.at<>()), const length>);
+  static_assert(std::same_as<decltype(r.at<length>()), const length>);
 
   return 0;
 }()};

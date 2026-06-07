@@ -1,4 +1,4 @@
-/* Typed Linear Algebra
+#[[ Typed Linear Algebra
 Version 0.2.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,33 +27,7 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> */
+For more information, please refer to <https://unlicense.org> ]]
 
-#include "fcarouge/linalg.hpp"
-
-#include <cassert>
-
-namespace fcarouge::test {
-namespace {
-//! @test Verifies the at member accessor.
-[[maybe_unused]] const auto test{[] {
-  matrix<> m{42.};
-
-  assert(m.at() == 42.);
-  assert(m.at<>() == 42.);
-  assert(m.at<double>() == 42.);
-
-  m.at(43.);
-
-  assert(m.at() == 43.);
-  assert(m.at<>() == 43.);
-  assert(m.at<double>() == 43.);
-
-  static_assert(std::same_as<decltype(m.at()), double &>);
-  static_assert(std::same_as<decltype(m.at<>()), double &>);
-  static_assert(std::same_as<decltype(m.at<double>()), double &>);
-
-  return 0;
-}()};
-} // namespace
-} // namespace fcarouge::test
+pass("distinct" BACKENDS "unit_eigen")
+pass("interconvertible" BACKENDS "main")
