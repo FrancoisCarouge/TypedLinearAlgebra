@@ -256,60 +256,27 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
   using self_t = std::remove_reference_t<decltype(self)>;
   using qualified_underlying =
       std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
+  using qualified_element =
+      std::conditional_t<std::is_const_v<self_t>, element<Indexes...>,
+                         element<Indexes...> &>;
 
-  if constexpr (sizeof...(Indexes) == 2) {
-    using element_t = element<std::get<0>(std::tuple{Indexes...}),
-                              std::get<1>(std::tuple{Indexes...})>;
-    using qualified_element =
-        std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
-
+  if constexpr (requires { self.storage(std::size_t{Indexes}...); }) {
     return cast<qualified_element, qualified_underlying>(
-        self.storage[std::get<0>(std::tuple{Indexes...}),
-                     std::get<1>(std::tuple{Indexes...})]);
-  } else if constexpr (sizeof...(Indexes) == 1) {
-    if constexpr (requires { self.storage[0, 0]; }) {
-      if constexpr (rows == 1) {
-        using element_t = element<0, std::get<0>(std::tuple{Indexes...})>;
-        using qualified_element =
-            std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
-
-        return cast<qualified_element, qualified_underlying>(
-            self.storage[0, std::get<0>(std::tuple{Indexes...})]);
-      } else {
-        using element_t = element<std::get<0>(std::tuple{Indexes...}), 0>;
-        using qualified_element =
-            std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
-
-        return cast<qualified_element, qualified_underlying>(
-            self.storage[std::get<0>(std::tuple{Indexes...}), 0]);
-      }
-    } else {
-      if constexpr (rows == 1) {
-        using element_t = element<0, std::get<0>(std::tuple{Indexes...})>;
-        using qualified_element =
-            std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
-
-        return cast<qualified_element, qualified_underlying>(
-            self.storage[std::get<0>(std::tuple{Indexes...})]);
-      } else {
-        using element_t = element<std::get<0>(std::tuple{Indexes...}), 0>;
-        using qualified_element =
-            std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
-
-        return cast<qualified_element, qualified_underlying>(
-            self.storage[std::get<0>(std::tuple{Indexes...})]);
-      }
-    }
+        self.storage(std::size_t{Indexes}...));
+  } else if constexpr (requires { self.storage(Indexes...); }) {
+    return cast<qualified_element, qualified_underlying>(
+        self.storage(Indexes...));
+  } else if constexpr (requires { self.storage[0, std::size_t{Indexes}...]; }) {
+    return cast<qualified_element, qualified_underlying>(
+        self.storage[0, std::size_t{Indexes}...]);
+  } else if constexpr (requires { self.storage[]; }) {
+    return cast<qualified_element, qualified_underlying>(self.storage[]);
+  } else if constexpr (requires { self.storage[0]; }) {
+    return cast<qualified_element, qualified_underlying>(self.storage[0]);
+  } else if constexpr (requires { self.storage[0, 0]; }) {
+    return cast<qualified_element, qualified_underlying>(self.storage[0, 0]);
   } else {
-    using element_t = element<0, 0>;
-    using qualified_element =
-        std::conditional_t<std::is_const_v<self_t>, element_t, element_t &>;
-
-    if constexpr (requires { self.storage[0, 0]; }) {
-      return cast<qualified_element, qualified_underlying>(self.storage[0, 0]);
-    } else {
-      return cast<qualified_element, qualified_underlying>(self.storage());
-    }
+    return cast<qualified_element, qualified_underlying>(self.storage(0));
   }
 }
 
