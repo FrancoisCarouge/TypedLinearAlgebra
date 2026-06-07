@@ -33,8 +33,6 @@ For more information, please refer to <https://unlicense.org> */
 #define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
 
 namespace fcarouge {
-
-//! @todo Deduplicate, generalize the built-in casts.
 template <typename To, typename From>
 [[nodiscard]] constexpr To element_caster<To, From>::operator()(From value) {
   return value;
