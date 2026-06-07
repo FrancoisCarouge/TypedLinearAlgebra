@@ -126,7 +126,7 @@ Static Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;mp_units::QuantityPoint To, typename From&gt;<br />
 struct fcarouge::element_caster&lt; To &amp;, From &amp; &gt;</div>
-<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00137">137</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00141">141</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ae396becfe457af8289d5ec8ec6c39885" name="ae396becfe457af8289d5ec8ec6c39885"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae396becfe457af8289d5ec8ec6c39885">&#9670;&#160;</a></span>operator()() <span class="overload">[1/2]</span></h2>
@@ -155,13 +155,16 @@ template&lt;mp_units::QuantityPoint To, typename From &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00102">102</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  102</span>                                                                         {</div>
-<div class="line"><span class="lineno">  103</span>    <span class="keyword">static_assert</span>(std::same_as&lt;typename To::rep, From&gt;,</div>
-<div class="line"><span class="lineno">  104</span>                  <span class="stringliteral">&quot;The underlying storage type must be identical to the &quot;</span></div>
-<div class="line"><span class="lineno">  105</span>                  <span class="stringliteral">&quot;quantity representation type to guarantee the conversion is &quot;</span></div>
-<div class="line"><span class="lineno">  106</span>                  <span class="stringliteral">&quot;explicitely decided by the end-user.&quot;</span>);</div>
-<div class="line"><span class="lineno">  107</span> </div>
-<div class="line"><span class="lineno">  108</span>    <span class="keywordflow">return</span> value * To::reference;</div>
-<div class="line"><span class="lineno">  109</span>  }</div>
+<div class="line"><span class="lineno">  103</span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a3c3e455061e1c9775f216253f0fc5541">representation</a> = <span class="keyword">typename</span> std::remove_cvref_t&lt;To&gt;::rep;</div>
+<div class="line"><span class="lineno">  104</span> </div>
+<div class="line"><span class="lineno">  105</span>    <span class="keyword">static_assert</span>(std::same_as&lt;representation, std::remove_cvref_t&lt;From&gt;&gt;,</div>
+<div class="line"><span class="lineno">  106</span>                  <span class="stringliteral">&quot;The underlying storage type must be identical to the &quot;</span></div>
+<div class="line"><span class="lineno">  107</span>                  <span class="stringliteral">&quot;quantity representation type to guarantee the conversion is &quot;</span></div>
+<div class="line"><span class="lineno">  108</span>                  <span class="stringliteral">&quot;explicitely decided by the end-user.&quot;</span>);</div>
+<div class="line"><span class="lineno">  109</span> </div>
+<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">return</span> value * To::reference;</div>
+<div class="line"><span class="lineno">  111</span>  }</div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_a3c3e455061e1c9775f216253f0fc5541"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a3c3e455061e1c9775f216253f0fc5541">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::representation</a></div><div class="ttdeci">double representation</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00053">mp_units_eigen.cpp:53</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -190,15 +193,15 @@ template&lt;mp_units::QuantityPoint To, typename From &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00143">143</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  143</span>                                                                         {</div>
-<div class="line"><span class="lineno">  144</span>    <span class="keyword">static_assert</span>(std::same_as&lt;To, typename From::rep&gt;,</div>
-<div class="line"><span class="lineno">  145</span>                  <span class="stringliteral">&quot;The underlying storage type must be identical to the &quot;</span></div>
-<div class="line"><span class="lineno">  146</span>                  <span class="stringliteral">&quot;quantity representation type to guarantee the conversion is &quot;</span></div>
-<div class="line"><span class="lineno">  147</span>                  <span class="stringliteral">&quot;explicitely decided by the end-user.&quot;</span>);</div>
-<div class="line"><span class="lineno">  148</span> </div>
-<div class="line"><span class="lineno">  149</span>    <span class="keywordflow">return</span> {value * To::unit, mp_units::default_point_origin(To::unit)};</div>
-<div class="line"><span class="lineno">  150</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00147">147</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  147</span>                                                                         {</div>
+<div class="line"><span class="lineno">  148</span>    <span class="keyword">static_assert</span>(std::same_as&lt;To, typename From::rep&gt;,</div>
+<div class="line"><span class="lineno">  149</span>                  <span class="stringliteral">&quot;The underlying storage type must be identical to the &quot;</span></div>
+<div class="line"><span class="lineno">  150</span>                  <span class="stringliteral">&quot;quantity representation type to guarantee the conversion is &quot;</span></div>
+<div class="line"><span class="lineno">  151</span>                  <span class="stringliteral">&quot;explicitely decided by the end-user.&quot;</span>);</div>
+<div class="line"><span class="lineno">  152</span> </div>
+<div class="line"><span class="lineno">  153</span>    <span class="keywordflow">return</span> {value * To::unit, mp_units::default_point_origin(To::unit)};</div>
+<div class="line"><span class="lineno">  154</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
