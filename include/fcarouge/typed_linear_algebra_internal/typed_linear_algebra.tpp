@@ -91,6 +91,7 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
   } else {
     tla::for_constexpr<typed_matrix::rows * typed_matrix::columns>(
         [this, &elements](auto position) {
+          // THIS MIGHT NOT WORK ALWAYS DEPENDING ON THE UNDERLYING STORAGE?
           storage[position] = cast<underlying, element<>>(elements[position]);
         });
   }
@@ -109,6 +110,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
   } else {
     tla::for_constexpr<typed_matrix::rows * typed_matrix::columns>(
         [this, &elements](auto position) {
+          // THIS MIGHT NOT WORK ALWAYS DEPENDING ON THE UNDERLYING STORAGE?
           storage[position] = cast<underlying, element<>>(elements[position]);
         });
   }
@@ -136,6 +138,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
   requires rank_typed_matrix<typed_matrix, 0>
 {
   if constexpr (requires { storage[0, 0]; }) {
+    // THIS MIGHT NOT WORK ALWAYS DEPENDING ON THE UNDERLYING STORAGE?
     storage[0, 0] = cast<underlying, element<>>(value);
   } else {
     storage = cast<underlying, element<>>(value);
@@ -155,6 +158,7 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
   for (std::size_t i{0}; const auto &row : row_list) {
     for (std::size_t j{0}; const auto &value : row) {
       if constexpr (rank_typed_matrix<typed_matrix, 2>) {
+        // THIS MIGHT NOT WORK ALWAYS DEPENDING ON THE UNDERLYING STORAGE?
         storage[i, j] = cast<underlying, Type>(value);
       } else if constexpr (rank_typed_matrix<typed_matrix, 1>) {
         storage[i + j] = cast<underlying, Type>(value);
@@ -221,6 +225,8 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
   if constexpr ((index<Indexes> && ...)) {
     return self.template at<indexes...>();
   } else {
+    // We probably can always dispatch to at by using the runtime index to
+    // compile-time index conversion.
     using self_t = std::remove_reference_t<decltype(self)>;
     using qualified_underlying =
         std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
@@ -254,11 +260,12 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
   requires(sizeof...(Indexes) == rank)
 {
   using self_t = std::remove_reference_t<decltype(self)>;
-  using qualified_underlying =
-      std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
   using qualified_element =
-      std::conditional_t<std::is_const_v<self_t>, element<Indexes...>,
+      std::conditional_t<std::is_const_v<self_t>, const element<Indexes...> &,
                          element<Indexes...> &>;
+  using qualified_underlying =
+      std::conditional_t<std::is_const_v<self_t>, const underlying &,
+                         underlying &>;
 
   if constexpr (requires { self.storage(std::size_t{Indexes}...); }) {
     return cast<qualified_element, qualified_underlying>(

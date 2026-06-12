@@ -345,6 +345,7 @@ public:
   //! @return A reference to the strongly typed element at the specified
   //! location for non-const access, or a prvalue otherwise.
   template <auto... Indexes>
+  // DO WE WANT MESSAGE FOR NODISCARD?
   [[nodiscard]] constexpr decltype(auto) at(this auto &&self)
     requires(sizeof...(Indexes) == rank);
 
@@ -376,6 +377,9 @@ public:
 private:
   //! @name Private Member Variables
   //! @{
+
+  // IF SINGLETON, STORAGE CAN BE STRONG DIRECTLY?
+  // IF UNIFORM, STORAGE CAN BE STRONG ARRAY?
 
   //! @brief Underlying algebraic backend data storage.
   Matrix storage;

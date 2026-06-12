@@ -49,6 +49,10 @@ namespace {
   static_assert(std::same_as<decltype(n)::row_indexes,
                              std::tuple<decltype(1. * s), decltype(1. * s2)>>);
 
+  // THIS SHOULDN"T COMPILE.
+  // n.at<0>() = 42. * s;
+  // n.at<1>() = 43. * s2;
+
   n.at<0>(42. * s);
   n.at<1>(43. * s2);
 
