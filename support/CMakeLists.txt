@@ -82,6 +82,7 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     INTERFACE "-D_FORTIFY_SOURCE=3"
               "-D_GLIBCXX_ASSERTIONS"
               "-fcf-protection=full"
+              "-fconcepts-diagnostics-depth=4"
               "-fno-check-new"
               "-fno-common"
               "-fPIE"
