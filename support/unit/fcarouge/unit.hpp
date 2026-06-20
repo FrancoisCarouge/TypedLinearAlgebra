@@ -71,7 +71,9 @@ using acceleration = mp_units::quantity<mp_units::isq::acceleration[m / s2]>;
 template <typename To, mp_units::Quantity From>
 struct element_caster<To, From> {
   [[nodiscard]] static constexpr auto operator()(From value) -> To {
-    static_assert(std::same_as<To, typename From::rep>,
+    using representation = typename std::remove_cvref_t<From>::rep;
+
+    static_assert(std::same_as<representation, std::remove_cvref_t<To>>,
                   "The underlying storage type must be identical to the "
                   "quantity representation type to guarantee the conversion is "
                   "explicitely decided by the end-user.");
@@ -83,7 +85,9 @@ struct element_caster<To, From> {
 template <mp_units::Quantity To, typename From>
 struct element_caster<To, From> {
   [[nodiscard]] static constexpr auto operator()(From value) -> To {
-    static_assert(std::same_as<typename To::rep, From>,
+    using representation = typename std::remove_cvref_t<To>::rep;
+
+    static_assert(std::same_as<representation, std::remove_cvref_t<From>>,
                   "The underlying storage type must be identical to the "
                   "quantity representation type to guarantee the conversion is "
                   "explicitely decided by the end-user.");
@@ -114,7 +118,9 @@ struct element_caster<To &, From &> {
 template <typename To, mp_units::QuantityPoint From>
 struct element_caster<To, From> {
   [[nodiscard]] static constexpr auto operator()(From value) -> To {
-    static_assert(std::same_as<To, typename From::rep>,
+    using representation = typename std::remove_cvref_t<From>::rep;
+
+    static_assert(std::same_as<representation, std::remove_cvref_t<To>>,
                   "The underlying storage type must be identical to the "
                   "quantity representation type to guarantee the conversion is "
                   "explicitely decided by the end-user.");
@@ -145,7 +151,9 @@ struct element_caster<To &, From &> {
   // is to return a constant quantity value to inform the end-user lvalue
   // reference assignment cannot be supported.
   [[nodiscard]] static constexpr auto operator()(From value) -> const To {
-    static_assert(std::same_as<To, typename From::rep>,
+    using representation = typename std::remove_cvref_t<To>::rep;
+
+    static_assert(std::same_as<representation, std::remove_cvref_t<From>>,
                   "The underlying storage type must be identical to the "
                   "quantity representation type to guarantee the conversion is "
                   "explicitely decided by the end-user.");
