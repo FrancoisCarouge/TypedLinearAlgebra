@@ -44,7 +44,7 @@ set(MP_UNITS_BUILD_INSTALL OFF)
 FetchContent_Declare(
   mp-units
   GIT_REPOSITORY "https://github.com/mpusz/mp-units"
-  GIT_SHALLOW TRUE
+  GIT_TAG "703235d1d4393cd0ac5c56554edd3ecd74709cfa"
   SOURCE_SUBDIR "src" FIND_PACKAGE_ARGS NAMES mp-units)
 FetchContent_MakeAvailable(mp-units)
 
