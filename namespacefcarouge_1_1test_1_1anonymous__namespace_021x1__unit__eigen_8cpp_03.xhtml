@@ -130,10 +130,16 @@ Variables</h2></td></tr>
 <div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b">row_vector&lt;representation, length&gt;</a> b{3. * m};</div>
 <div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b">row_vector&lt;representation, length&gt;</a> r{a + b};</div>
 <div class="line"> </div>
-<div class="line">  assert(5. * m == r.at());</div>
-<div class="line">  assert(5. * m == r[]);</div>
-<div class="line">  assert(5. * m == r());</div>
 <div class="line">  assert(5. * m == r);</div>
+<div class="line">  assert(5. * m == r());</div>
+<div class="line">  assert(5. * m == r[]);</div>
+<div class="line">  assert(5. * m == r.at());</div>
+<div class="line">  assert(5. * m == r.at&lt;&gt;());</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r())&gt;);</div>
+<div class="line">  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r[])&gt;);</div>
+<div class="line">  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at())&gt;);</div>
+<div class="line">  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at&lt;&gt;())&gt;);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
@@ -141,7 +147,7 @@ Variables</h2></td></tr>
 </div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000001">Test</a></b></dt><dd>Verifies the singleton by singleton matrix addition operator. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000019">Test</a></b></dt><dd>Verifies the initializer lists constructor. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000035">Test</a></b></dt><dd>Verifies the singleton by singleton matrix multiplication operator. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000067">Test</a></b></dt><dd>Verifies the singleton by singleton matrix substraction operator. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000066">Test</a></b></dt><dd>Verifies the singleton by singleton matrix substraction operator. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="addition_21x1__unit__eigen_8cpp_source.xhtml#l00045">45</a> of file <a class="el" href="addition_21x1__unit__eigen_8cpp_source.xhtml">1x1_unit_eigen.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   45</span>                                {[] {</div>
@@ -151,13 +157,19 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   49</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b">row_vector&lt;representation, length&gt;</a> b{3. * m};</div>
 <div class="line"><span class="lineno">   50</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b">row_vector&lt;representation, length&gt;</a> r{a + b};</div>
 <div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>  assert(5. * m == r.at());</div>
-<div class="line"><span class="lineno">   53</span>  assert(5. * m == r[]);</div>
-<div class="line"><span class="lineno">   54</span>  assert(5. * m == r());</div>
-<div class="line"><span class="lineno">   55</span>  assert(5. * m == r);</div>
-<div class="line"><span class="lineno">   56</span> </div>
-<div class="line"><span class="lineno">   57</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   58</span>}()};</div>
+<div class="line"><span class="lineno">   52</span>  assert(5. * m == r);</div>
+<div class="line"><span class="lineno">   53</span>  assert(5. * m == r());</div>
+<div class="line"><span class="lineno">   54</span>  assert(5. * m == r[]);</div>
+<div class="line"><span class="lineno">   55</span>  assert(5. * m == r.at());</div>
+<div class="line"><span class="lineno">   56</span>  assert(5. * m == r.at&lt;&gt;());</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r())&gt;);</div>
+<div class="line"><span class="lineno">   59</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r[])&gt;);</div>
+<div class="line"><span class="lineno">   60</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at())&gt;);</div>
+<div class="line"><span class="lineno">   61</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at&lt;&gt;())&gt;);</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   64</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml_a9770b8c17efb82bfa80edbfb9a1de8a7"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">fcarouge::test::quantity</a></div><div class="ttdeci">mp_units::quantity&lt; QuantityReference, representation &gt; quantity</div><div class="ttdef"><b>Definition</b> <a href="addition_21x1__unit__eigen_8cpp_source.xhtml#l00041">1x1_unit_eigen.cpp:41</a></div></div>
 </div><!-- fragment -->
 </div>

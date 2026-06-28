@@ -641,6 +641,7 @@ requires (sizeof...(Indexes) == <a class="el" href="#a187f5727fc775dc07aff603ee5
   </table>
   </dd>
 </dl>
+<dl class="section warning"><dt>Warning</dt><dd>Typed elements are not guaranteed to be referenceable. The underlying storage may not be referenceable. The returned value may be a prvalue. There is no good solutions in C++: constant values cannot be returned; temporary lifetime extension of constant reference is risky.</dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the strongly typed element at the specified location for non-const access, or a prvalue otherwise. </dd></dl>
 
 </div>
@@ -1250,7 +1251,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p>Underlying algebraic backend data storage. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00381">381</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00386">386</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
