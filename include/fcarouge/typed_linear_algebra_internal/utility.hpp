@@ -39,6 +39,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <functional>
 #include <tuple>
 #include <type_traits>
+#include <utility>
 
 namespace fcarouge::typed_linear_algebra_internal {
 //! @brief Linear algebra divides expression type specialization point.
@@ -337,6 +338,48 @@ struct is_integral_constant_t : std::bool_constant<false> {};
 
 template <typename Type>
 concept index = is_integral_constant_t<Type>::value;
+
+//! @brief A type presenting the standard tuple-like protocol with exactly
+//! `Size` gettable elements.
+//!
+//! @details Matches any type `std::tuple_size` reports as having `Size`
+//! elements, each retrievable through an unqualified, index-templated `get`
+//! call resolved by argument-dependent lookup, e.g. `mp_units::quantity`
+//! (vector-represented quantities specialize `std::tuple_size` and
+//! `std::tuple_element`, and expose `get<Index>`), `std::tuple`,
+//! `std::array`, or `std::pair`. This is the same protocol structured
+//! bindings rely on. Unlike duck-typing a single member name, this does not
+//! collide with unrelated types: `std::chrono::duration`, for example, does
+//! not specialize `std::tuple_size`.
+template <typename Type, std::size_t Size>
+concept tuple_like =
+    requires {
+      {
+        std::tuple_size<std::remove_cvref_t<Type>>::value
+      } -> std::convertible_to<std::size_t>;
+    } and
+    (std::tuple_size_v<std::remove_cvref_t<Type>> ==
+     Size) and[]<std::size_t... Indexes>(std::index_sequence<Indexes...>) {
+  return (requires(const Type &value) { get<Indexes>(value); } and ...);
+}
+(std::make_index_sequence<Size>());
+
+//! @brief A tuple-like value convertible to the given one-dimension typed
+//! matrix, but neither that typed matrix nor already convertible to its
+//! underlying matrix.
+//!
+//! @details Practical to disambiguate the typed vector's tuple-like
+//! convert-constructor from the copy/move and raw-matrix constructors: both
+//! `Value` being another typed matrix and `Value` being convertible to
+//! `TypedMatrix`'s underlying matrix are excluded, else those constructors
+//! would compete with this one. See `tuple_like`.
+template <typename Value, typename TypedMatrix>
+concept other_tuple_like_vector =
+    rank_typed_matrix<TypedMatrix, 1> and (not same_as_typed_matrix<Value>) and
+    (not std::convertible_to<
+        Value, typename std::remove_cvref_t<TypedMatrix>::matrix>) and
+    tuple_like<Value, std::remove_cvref_t<TypedMatrix>::rows *
+                          std::remove_cvref_t<TypedMatrix>::columns>;
 
 template <char... Digits> constexpr std::size_t parse_digits() {
   static_assert((('0' <= Digits && Digits <= '9') && ...),

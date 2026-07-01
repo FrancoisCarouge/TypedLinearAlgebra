@@ -94,6 +94,15 @@ concept same_shape = tla::same_shape<Lhs, Rhs>;
 template <typename Type>
 concept other = not tla::same_as_typed_matrix<Type>;
 
+//! @brief Concept of a tuple-like vector convertible to a one-dimension matrix.
+//!
+//! @details Practical for disambiguation of the typed vector's tuple-like
+//! convert-constructor from the copy/move and raw-matrix constructors. See
+//! `tuple_like`.
+template <typename Value, typename TypedMatrix>
+concept other_tuple_like_vector =
+    tla::other_tuple_like_vector<Value, TypedMatrix>;
+
 //! @brief Concept of compile-time index.
 template <typename Type>
 concept index = tla::index<Type>;
@@ -303,6 +312,19 @@ public:
   //! constructor, operator friendship, attorney-client, or key idioms.
   constexpr explicit typed_matrix(const Matrix &other);
 
+  //! @brief Convert construct a typed vector from a tuple-like value.
+  //!
+  //! @details Applicable to one-dimension matrix. Converts any value
+  //! matching the vector's size and presenting the standard tuple-like
+  //! protocol (`std::tuple_size` and an unqualified, argument-dependent
+  //! `get<Index>`), e.g. `std::tuple`, `std::array`, or `std::pair`. See
+  //! `other_tuple_like_vector`.
+  //!
+  //! @param value Tuple-like value presenting a `get<Index>` API over its
+  //! elements.
+  constexpr explicit(false)
+      typed_matrix(const other_tuple_like_vector<typed_matrix> auto &value);
+
   //! @brief Access the singleton typed matrix element.
   //!
   //! @details Applicable to singleton matrix: one element. Returns the unique
@@ -429,12 +451,23 @@ template <typename To, typename From> struct element_caster {
 //! @name Adaptors
 //! @{
 
-//! @brief Matrix element conversion customization point.
+//! @brief Matrix element and storage conversion CPO.
 //!
-//! @details Specialization of the element caster function objects allows the
-//! end-user to permit underlying type conversions.
+//! @details Customization point object (CPO) for the element caster function
+//! objects which allows the end-user to specialize conversion of their element
+//! types to/from the storage underlying types.
 template <typename To, typename From>
 static inline constexpr element_caster<To, From> cast{};
+
+//! @brief Element type computation CPO.
+//!
+//! @details Customization point object (CPO) for computing the element type of
+//! a matrix. The element type is computed from the row and column indexes of
+//! the matrix. The end-user can specialize this CPO to provide their own
+//! element type computation. This is a multiplication function object. Unlike
+//! `std::multiplies` the two operands and resulting types can be different: `W
+//! multiplies::operator(const U& lhs, const V& rhs)`.
+using typed_linear_algebra_internal::multiplies;
 
 //! @brief Factory function for partial template deduction.
 //!
@@ -481,6 +514,7 @@ template <char... Digits> constexpr auto operator""_i() noexcept {
 #include "typed_linear_algebra_internal/algorithm/substract.tpp"
 #include "typed_linear_algebra_internal/algorithm/transposed.tpp"
 #include "typed_linear_algebra_internal/cast.tpp"
+#include "typed_linear_algebra_internal/common_type.tpp"
 #include "typed_linear_algebra_internal/format.tpp"
 #include "typed_linear_algebra_internal/tuple.tpp"
 #include "typed_linear_algebra_internal/typed_linear_algebra.tpp"

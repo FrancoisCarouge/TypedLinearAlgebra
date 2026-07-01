@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,31 +27,27 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-if(NOT BUILD_TESTING)
-  return()
-endif()
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_COMMON_TYPE_HPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_COMMON_TYPE_HPP
 
-add_subdirectory("addition")
-add_subdirectory("assign")
-add_subdirectory("at")
-add_subdirectory("common_with")
-add_subdirectory("constructor")
-add_subdirectory("division")
-add_subdirectory("element")
-add_subdirectory("format")
-add_subdirectory("magnitude")
-add_subdirectory("matrix_product")
-add_subdirectory("minus")
-add_subdirectory("mp_units")
-add_subdirectory("multiplication")
-add_subdirectory("operator")
-add_subdirectory("scale")
-add_subdirectory("structured_bindings")
-add_subdirectory("substraction")
-add_subdirectory("transposed")
+//! @file
+//! @brief Common type support for the typed matrix.
 
-pass("copy" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("nested" BACKENDS "nested_typed_eigen")
-pass("underlying" BACKENDS "eigexed" "nested_typed_eigen")
+#include "fcarouge/typed_linear_algebra_forward.hpp"
+
+#include <concepts>
+#include <type_traits>
+
+template <typename Lhs, typename Rhs, typename RowIndexes,
+          typename ColumnIndexes>
+  requires std::common_with<Lhs, Rhs>
+struct std::common_type<
+    fcarouge::typed_matrix<Lhs, RowIndexes, ColumnIndexes>,
+    fcarouge::typed_matrix<Rhs, RowIndexes, ColumnIndexes>> {
+  using type = fcarouge::typed_matrix<std::common_type_t<Lhs, Rhs>, RowIndexes,
+                                      ColumnIndexes>;
+};
+
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_COMMON_TYPE_HPP

@@ -227,6 +227,14 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
+    const other_tuple_like_vector<typed_matrix> auto &value) {
+  tla::for_constexpr<rows * columns>([&](auto i) {
+    storage[i] = cast<underlying, element<i>>(get<i>(value));
+  });
+}
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] constexpr typed_matrix<
     Matrix, RowIndexes, ColumnIndexes>::operator element<>(this auto &&self)
   requires rank_typed_matrix<typed_matrix, 0>
