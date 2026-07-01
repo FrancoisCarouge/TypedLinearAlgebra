@@ -19,7 +19,7 @@ jobs:
       matrix:
         sanitizer:
         - name: 'Address'
-          cpp_flags: '-fsanitize=address -O0 -g -fno-sanitize-recover=all -fno-omit-frame-pointer'
+          cpp_flags: '-fsanitize=address -O0 -g -fno-sanitize-recover=all -fno-omit-frame-pointer -fno-lto'
           run_flags: 'ASAN_OPTIONS=verbosity=1:abort_on_error=1:strict_string_checks=1:detect_stack_use_after_return=1:check_initialization_order=1:strict_init_order=1'
         - name: 'Leak'
           cpp_flags: '-fsanitize=leak -O0 -g -fno-sanitize-recover=all -fno-omit-frame-pointer'

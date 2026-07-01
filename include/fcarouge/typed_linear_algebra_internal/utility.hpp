@@ -236,20 +236,25 @@ constexpr std::size_t rank{[] {
   }
 }()};
 
+//! @todo Evaluate compile-time performance. Instantiation,
+//! evaluation, and compilation of this function may be expensive.
+//! We may want to use a pure concept approach.
+template <typename Type> constexpr bool is_uniform_typed_matrix() {
+  using matrix = std::remove_cvref_t<Type>;
+  bool result{true};
+
+  for_constexpr<matrix::rows>([&result](auto i) {
+    for_constexpr<matrix::columns>([&result, &i](auto j) {
+      result &= std::is_same_v<element<matrix, i, j>, element<matrix, 0, 0>>;
+    });
+  });
+
+  return result;
+}
+
 template <typename Type>
 concept uniform_typed_matrix =
-    same_as_typed_matrix<Type> and ([]() {
-      bool result{true};
-
-      for_constexpr<std::remove_cvref_t<Type>::rows>([&result](auto i) {
-        for_constexpr<std::remove_cvref_t<Type>::columns>([&result,
-                                                           &i](auto j) {
-          result &= std::is_same_v<element<Type, i, j>, element<Type, 0, 0>>;
-        });
-      });
-
-      return result;
-    }());
+    same_as_typed_matrix<Type> and is_uniform_typed_matrix<Type>();
 
 template <typename Type>
 concept column_typed_matrix =
@@ -276,7 +281,6 @@ template <typename Type, std::size_t Size> struct tupler {
   template <std::size_t... Indexes>
   struct helper<std::index_sequence<Indexes...>> {
     template <std::size_t> using wrap = Type;
-
     using type = std::tuple<wrap<Indexes>...>;
   };
 
@@ -285,6 +289,60 @@ template <typename Type, std::size_t Size> struct tupler {
 
 template <typename Type, std::size_t Size>
 using tuple_n_type = typename tupler<Type, Size>::type;
+
+// Concatenate tuples
+template <typename... Tuples>
+using tuple_cat_t = decltype(std::tuple_cat(std::declval<Tuples>()...));
+
+// Apply Function<T, *> over Tuple2
+template <template <typename...> class Function, typename T, typename Tuple2>
+struct transform_with_one;
+
+template <template <typename...> class Function, typename T, typename... U>
+struct transform_with_one<Function, T, std::tuple<U...>> {
+  using type = std::tuple<Function<T, U>...>;
+};
+
+// Cartesian product
+template <template <typename...> class Function, typename Tuple1,
+          typename Tuple2>
+struct cartesian_product;
+
+template <template <typename...> class Function, typename... T, typename Tuple2>
+struct cartesian_product<Function, std::tuple<T...>, Tuple2> {
+  using type =
+      tuple_cat_t<typename transform_with_one<Function, T, Tuple2>::type...>;
+};
+
+// Alias
+template <template <typename...> class Function, typename Tuple1,
+          typename Tuple2>
+using cartesian_product_t =
+    typename cartesian_product<Function, Tuple1, Tuple2>::type;
+
+template <same_as_typed_matrix Matrix>
+using tuple_typed_matrix =
+    cartesian_product_t<product, typename Matrix::row_indexes,
+                        typename Matrix::column_indexes>;
+
+template <typename To, typename Tuple>
+constexpr std::size_t find_first_convertible_index() {
+  using T = std::remove_reference_t<Tuple>;
+  constexpr std::size_t N = std::tuple_size_v<T>;
+
+  constexpr auto impl = []<std::size_t... I>(std::index_sequence<I...>) {
+    std::size_t result = N; // sentinel = not found
+
+    ((result == N && std::convertible_to<std::tuple_element_t<I, T>, To>
+          ? result = I
+          : 0),
+     ...);
+
+    return result;
+  };
+
+  return impl(std::make_index_sequence<N>{});
+}
 
 using identity_index = std::tuple<std::identity>;
 
@@ -309,6 +367,42 @@ template <char... Digits> constexpr std::size_t parse_digits() {
 
   return number;
 }
+
+//! @brief Concept of two types that have to, or frow, implicit conversions.
+template <typename Lhs, typename Rhs>
+concept are_interconvertible =
+    std::is_convertible_v<Lhs, Rhs> or std::is_convertible_v<Rhs, Lhs>;
+
+//! @brief Concept of two types that have no implicit conversion relationships.
+template <typename Lhs, typename Rhs>
+concept are_not_interconvertible = not are_interconvertible<Lhs, Rhs>;
+
+//! @todo Evaluate compile-time performance. Instantiation,
+//! evaluation, and compilation of this function may be expensive.
+//! We may want to use a pure concept approach.
+template <typename Type> constexpr bool is_distinct_typed_matrix() {
+  using matrix = std::remove_cvref_t<Type>;
+  bool result{true};
+
+  for_constexpr<matrix::rows>([&result](auto i) {
+    for_constexpr<matrix::columns>([&result, &i](auto j) {
+      for_constexpr<matrix::rows>([&result, &i, &j](auto k) {
+        for_constexpr<matrix::columns>([&result, &i, &j, &k](auto l) {
+          if constexpr (i != k || j != l) {
+            result &= are_not_interconvertible<element<matrix, i, j>,
+                                               element<matrix, k, l>>;
+          }
+        });
+      });
+    });
+  });
+
+  return result;
+}
+
+template <typename Type>
+concept distinct_typed_matrix =
+    same_as_typed_matrix<Type> and is_distinct_typed_matrix<Type>();
 } // namespace fcarouge::typed_linear_algebra_internal
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_UTILITY_HPP
