@@ -81,6 +81,13 @@ struct element_caster<To, From> {
   }
 };
 
+template <typename To, mp_units::UnitMagnitude Magnitude>
+struct element_caster<To, Magnitude> {
+  [[nodiscard]] static constexpr auto operator()(Magnitude value) -> To {
+    return get_value<To>(value);
+  }
+};
+
 template <mp_units::Quantity To, typename From>
 struct element_caster<To, From> {
   [[nodiscard]] static constexpr auto operator()(From value) -> To {
@@ -167,6 +174,15 @@ struct element_caster<To, From> {
   operator()([[maybe_unused]] From value) -> To {
     return 1.;
   }
+};
+
+template <typename Type, mp_units::UnitMagnitude Magnitude>
+struct multiplies<Type, Magnitude> {
+  // A type that provides its own magnitude-aware operator*(T, UnitMagnitude)
+  // customization point. scale() will prefer this path when available, and the
+  // return type may differ from the input (e.g. a wrapper with scaled bounds).
+  [[nodiscard]] static constexpr auto operator()(const Type &lhs,
+                                                 const Magnitude &rhs) -> Type;
 };
 } // namespace fcarouge
 

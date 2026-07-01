@@ -70,6 +70,7 @@ using row_vector = row_vector<representation, Types...>;
   // Set up a heterogenous column vector type for the sample.
   using state = column_vector<position, velocity, acceleration>;
 
+  // A vector of quantities:
   state x0{3. * m, 2. * m / s, 1. * m / s2};
 
   // Printable.
@@ -192,7 +193,12 @@ using row_vector = row_vector<representation, Types...>;
   using velocity3d = column_vector<velocity, velocity, velocity>;
 
   vector3d v{1., 2., 3.};
-  velocity3d v0{v * m / s};
+
+  // Operation, multiplication on a vector as a quantity.
+  // quantity q = ...
+  // v0 = q ...
+  // TODO: Revert this workaround before merge change.
+  velocity3d v0{fcarouge::operator*(v, m / s)};
   assert(std::format("{}", v0) == "[[1 m/s], [2 m/s], [3 m/s]]");
 
   velocity a[]{1. * m / s, 2. * m / s, 3. * m / s};
@@ -211,7 +217,10 @@ using row_vector = row_vector<representation, Types...>;
   assert(v0(1) == 2. * m / s);
 
   // Beware of non-evaluated template expression: these types are not the same.
-  auto a0{vector3d{1., 2., 3.} * mp_units::isq::velocity[m / s]};
+  // Operation, multiplication on a vector as a quantity.
+  // TODO: Revert this workaround before merge change.
+  auto a0{fcarouge::operator*(vector3d{1., 2., 3.},
+                              mp_units::isq::velocity[m / s])};
   static_assert(not std::is_same_v<decltype(a0), velocity3d>);
 
   //! @todo Mp-units seems to have support for vector quantity? Of the form:
