@@ -1,4 +1,4 @@
-/* Typed Linear Algebra
+#[[ Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,45 +27,6 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> */
+For more information, please refer to <https://unlicense.org> ]]
 
-#include "fcarouge/linalg.hpp"
-
-#include <cassert>
-#include <tuple>
-
-namespace fcarouge::test {
-using literals::operator""_i;
-using representation = double;
-
-template <auto QuantityReference>
-using quantity = mp_units::quantity<QuantityReference, representation>;
-
-namespace {
-//! @test Verifies the initializer lists constructor.
-[[maybe_unused]] const auto test{[] {
-  using length = quantity<mp_units::isq::length[m]>;
-
-  double storage{0.};
-  std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
-  matrix<representation, std::tuple<length>, std::tuple<length>> r{span};
-
-  r = 42. * m2;
-
-  assert(42. * m2 == r.at());
-  assert(42. * m2 == r[]);
-  assert(42. * m2 == r());
-  assert(42. * m2 == r);
-
-  // RESTORE
-  //   static_assert(
-  //       not std::is_constructible_v<
-  //           matrix<double, std::tuple<length>, std::tuple<length>>,
-  //           decltype(1. * m3)>,
-  //       "The copy conversion constructor cannot accept non-convertible
-  //       types.");
-
-  return 0;
-}()};
-} // namespace
-} // namespace fcarouge::test
+pass("3x1_eigen" BACKENDS "eigen" "eigexed" "nested_typed_eigen")

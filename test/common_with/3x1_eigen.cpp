@@ -31,39 +31,24 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <cassert>
+#include <concepts>
 #include <tuple>
+#include <utility>
 
 namespace fcarouge::test {
-using literals::operator""_i;
-using representation = double;
-
-template <auto QuantityReference>
-using quantity = mp_units::quantity<QuantityReference, representation>;
-
 namespace {
-//! @test Verifies the initializer lists constructor.
+//! @test Verifies the typed matrix permits common conversions.
 [[maybe_unused]] const auto test{[] {
-  using length = quantity<mp_units::isq::length[m]>;
+  using vector3d =
+      typed_column_vector<column_vector<double, 3>, double, double, double>;
+  using expression =
+      decltype(std::declval<vector3d>() + std::declval<vector3d>());
 
-  double storage{0.};
-  std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
-  matrix<representation, std::tuple<length>, std::tuple<length>> r{span};
-
-  r = 42. * m2;
-
-  assert(42. * m2 == r.at());
-  assert(42. * m2 == r[]);
-  assert(42. * m2 == r());
-  assert(42. * m2 == r);
-
-  // RESTORE
-  //   static_assert(
-  //       not std::is_constructible_v<
-  //           matrix<double, std::tuple<length>, std::tuple<length>>,
-  //           decltype(1. * m3)>,
-  //       "The copy conversion constructor cannot accept non-convertible
-  //       types.");
+  static_assert(
+      std::convertible_to<vector3d, std::common_type_t<vector3d, expression>>);
+  static_assert(std::convertible_to<expression,
+                                    std::common_type_t<expression, vector3d>>);
+  static_assert(std::common_with<vector3d, expression>);
 
   return 0;
 }()};
