@@ -29,43 +29,43 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/linalg.hpp"
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MINUS_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MINUS_TPP
 
-#include <cassert>
-#include <tuple>
+namespace fcarouge {
+[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<0> auto &value) {
+  using matrix = std::remove_cvref_t<decltype(value)>;
+  using element = typename matrix::template element<0, 0>;
 
-namespace fcarouge::test {
-using literals::operator""_i;
-using representation = double;
+  return -element{value};
+}
 
-template <auto QuantityReference>
-using quantity = mp_units::quantity<QuantityReference, representation>;
+[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<1> auto &value) {
+  using matrix = std::remove_cvref_t<decltype(value)>;
 
-namespace {
-//! @test Verifies the initializer lists constructor.
-[[maybe_unused]] const auto test{[] {
-  using length = quantity<mp_units::isq::length[m]>;
+  matrix result{value};
 
-  double storage{0.};
-  std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
-  matrix<representation, std::tuple<length>, std::tuple<length>> r{span};
+  tla::for_constexpr<matrix::rows>([&](auto i) {
+    tla::for_constexpr<matrix::columns>([&](auto j) {
+      result.template at<i + j>(-result.template at<i + j>());
+    });
+  });
 
-  r = 42. * m2;
+  return result;
+}
 
-  assert(42. * m2 == r.at());
-  assert(42. * m2 == r[]);
-  assert(42. * m2 == r());
-  assert(42. * m2 == r);
+[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<2> auto &value) {
+  using matrix = std::remove_cvref_t<decltype(value)>;
 
-  // RESTORE
-  //   static_assert(
-  //       not std::is_constructible_v<
-  //           matrix<double, std::tuple<length>, std::tuple<length>>,
-  //           decltype(1. * m3)>,
-  //       "The copy conversion constructor cannot accept non-convertible
-  //       types.");
+  matrix result{value};
 
-  return 0;
-}()};
-} // namespace
-} // namespace fcarouge::test
+  tla::for_constexpr<matrix::rows>([&](auto i) {
+    tla::for_constexpr<matrix::columns>(
+        [&](auto j) { result.template at<i, j>(-result.template at<i, j>()); });
+  });
+
+  return result;
+}
+} // namespace fcarouge
+
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MINUS_TPP

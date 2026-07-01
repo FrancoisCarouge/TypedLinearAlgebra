@@ -29,43 +29,25 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/linalg.hpp"
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_COMMON_TYPE_HPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_COMMON_TYPE_HPP
 
-#include <cassert>
-#include <tuple>
+//! @file
+//! @brief Common type support for the typed matrix.
 
-namespace fcarouge::test {
-using literals::operator""_i;
-using representation = double;
+#include "fcarouge/typed_linear_algebra_forward.hpp"
 
-template <auto QuantityReference>
-using quantity = mp_units::quantity<QuantityReference, representation>;
+#include <concepts>
+#include <type_traits>
 
-namespace {
-//! @test Verifies the initializer lists constructor.
-[[maybe_unused]] const auto test{[] {
-  using length = quantity<mp_units::isq::length[m]>;
+template <typename Lhs, typename Rhs, typename RowIndexes,
+          typename ColumnIndexes>
+  requires std::common_with<Lhs, Rhs>
+struct std::common_type<
+    fcarouge::typed_matrix<Lhs, RowIndexes, ColumnIndexes>,
+    fcarouge::typed_matrix<Rhs, RowIndexes, ColumnIndexes>> {
+  using type = fcarouge::typed_matrix<std::common_type_t<Lhs, Rhs>, RowIndexes,
+                                      ColumnIndexes>;
+};
 
-  double storage{0.};
-  std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
-  matrix<representation, std::tuple<length>, std::tuple<length>> r{span};
-
-  r = 42. * m2;
-
-  assert(42. * m2 == r.at());
-  assert(42. * m2 == r[]);
-  assert(42. * m2 == r());
-  assert(42. * m2 == r);
-
-  // RESTORE
-  //   static_assert(
-  //       not std::is_constructible_v<
-  //           matrix<double, std::tuple<length>, std::tuple<length>>,
-  //           decltype(1. * m3)>,
-  //       "The copy conversion constructor cannot accept non-convertible
-  //       types.");
-
-  return 0;
-}()};
-} // namespace
-} // namespace fcarouge::test
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_COMMON_TYPE_HPP

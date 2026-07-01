@@ -213,6 +213,8 @@ Type safety cannot be guaranteed at compilation time without **index safety**. T
 
 **Strongly typed memory storage** is not a selected design due to its performance tradeoff. A `std::tuple` or other type-list storages can be used as underlying memory storage. Such storage permits strongly typed lvalue reference assignment which improves the end-user ergonomics. Unfortunately `std::tuple` does not offer the same guarantees provided by contiguous memory storage and its alignment, padding, and ordering specification. The lack of guarantees prevents the direct, efficient, optimized memory accesses, resulting in a performance penalty. Undefined behavior is avoided. No known solution.
 
+**Interoperability and compatibility** with other libraries works well with customization point objects (CPO) and presence/absence of overloads and specializations. The argument-dependent lookup (ADL) supports extensions of either integrated parties with limited collisions. The compatibility dimishes when static assertions are abused to replace, constrain application programming interfaces in place of concepts. Static assertions should be kept for internal validation, not for interface type availability.
+
 ## Performance
 
 ### Projects
