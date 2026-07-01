@@ -335,8 +335,7 @@ public:
   //! @brief Read the specified element.
   //!
   //! @details Returns a strongly typed element at the specified compile-time
-  //! bound checked location element. A reference is returned for non-const
-  //! calls.
+  //! bound checked location element.
   //!
   //! @tparam Indexes Position(s) of the element to return. Both row and column
   //! indexes for any matrix, one index for one-dimension matrices, no index for
@@ -347,8 +346,7 @@ public:
   //! prvalue. There is no good solutions in C++: constant values cannot be
   //! returned; temporary lifetime extension of constant reference is risky.
   //!
-  //! @return A reference to the strongly typed element at the specified
-  //! location for non-const access, or a prvalue otherwise.
+  //! @return The strongly typed element at the specified location.
   template <auto... Indexes>
   [[nodiscard]] constexpr decltype(auto) at(this auto &&self)
     requires(sizeof...(Indexes) == rank);
