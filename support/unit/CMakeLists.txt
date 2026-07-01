@@ -44,7 +44,7 @@ set(MP_UNITS_BUILD_INSTALL OFF)
 FetchContent_Declare(
   mp-units
   GIT_REPOSITORY "https://github.com/mpusz/mp-units"
-  GIT_TAG "703235d1d4393cd0ac5c56554edd3ecd74709cfa"
+  GIT_SHALLOW TRUE
   SOURCE_SUBDIR "src" FIND_PACKAGE_ARGS NAMES mp-units)
 FetchContent_MakeAvailable(mp-units)
 
@@ -56,5 +56,6 @@ add_library(typed_linear_algebra_unit INTERFACE)
 target_sources(
   typed_linear_algebra_unit INTERFACE FILE_SET "unit_headers" TYPE "HEADERS"
                                       FILES "fcarouge/unit.hpp")
-target_link_libraries(typed_linear_algebra_unit
-                      INTERFACE typed_linear_algebra_options mp-units::mp-units)
+target_link_libraries(
+  typed_linear_algebra_unit INTERFACE typed_linear_algebra_options
+                                      mp-units::mp-units mp-units::integrations)

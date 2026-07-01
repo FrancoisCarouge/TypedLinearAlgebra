@@ -168,6 +168,9 @@ std::println("{}", m[1_i, 2_i]); // Same as: m.at<1, 2>()
 | Concept | Definition |
 | --- | --- |
 | `column_typed_matrix` | Concept of a column typed matrix, vector. |
+| `index` | Concept of a compile-time index. |
+| `other` | Concept of any type other than the typed matrix type. |
+| `other_tuple_like_vector` | Concept of a tuple-like vector convertible to a one-dimension typed matrix. |
 | `rank_typed_matrix<0>` | Concept of a singleton, one-element typed matrix type. |
 | `rank_typed_matrix<1>` | Concept of a typed matrix with only one dimension, row, or column. |
 | `rank_typed_matrix<2>` | Concept of a regular two-dimension typed matrix. |

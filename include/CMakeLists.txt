@@ -50,6 +50,7 @@ target_sources(
     "fcarouge/typed_linear_algebra_internal/algorithm/substract.tpp"
     "fcarouge/typed_linear_algebra_internal/algorithm/transposed.tpp"
     "fcarouge/typed_linear_algebra_internal/cast.tpp"
+    "fcarouge/typed_linear_algebra_internal/common_type.tpp"
     "fcarouge/typed_linear_algebra_internal/format.tpp"
     "fcarouge/typed_linear_algebra_internal/tuple.tpp"
     "fcarouge/typed_linear_algebra_internal/typed_linear_algebra.tpp"
