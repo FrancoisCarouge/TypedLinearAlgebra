@@ -101,8 +101,10 @@ namespace tla = typed_linear_algebra_internal;
 }
 
 [[nodiscard]] constexpr auto operator/(const other auto &lhs,
-                                       const column_typed_matrix auto &rhs) {
-  //! @todo Should there be constraints on the type?
+                                       const rank_typed_matrix<1> auto &rhs) {
+  static_assert(column_typed_matrix<decltype(rhs)>,
+                "Division of an element is only valid for a column vector.");
+
   using type = std::remove_cvref_t<decltype(lhs)>;
   using matrix = std::remove_cvref_t<decltype(rhs)>;
   using underlying = typename matrix::underlying;

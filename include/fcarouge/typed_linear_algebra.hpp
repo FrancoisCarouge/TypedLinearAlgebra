@@ -450,7 +450,7 @@ template <typename To, typename From> struct element_caster {
 [[nodiscard]] constexpr auto operator/(const other auto &lhs,
                                        const rank_typed_matrix<0> auto &rhs);
 [[nodiscard]] constexpr auto operator/(const other auto &lhs,
-                                       const column_typed_matrix auto &rhs);
+                                       const rank_typed_matrix<1> auto &rhs);
 
 [[nodiscard]] constexpr auto transposed(const same_as_typed_matrix auto &value);
 

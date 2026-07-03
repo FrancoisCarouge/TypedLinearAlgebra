@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,25 +27,32 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-if(NOT BUILD_TESTING)
-  return()
-endif()
+#include "fcarouge/linalg.hpp"
 
-add_subdirectory("addition")
-add_subdirectory("assign")
-add_subdirectory("at")
-add_subdirectory("constructor")
-add_subdirectory("division")
-add_subdirectory("element")
-add_subdirectory("format")
-add_subdirectory("multiplication")
-add_subdirectory("operator")
-add_subdirectory("structured_bindings")
-add_subdirectory("substraction")
-add_subdirectory("transposed")
+#include <cassert>
+#include <format>
 
-pass("copy" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("nested" BACKENDS "nested_typed_eigen")
-pass("underlying" BACKENDS "eigexed" "nested_typed_eigen")
+namespace fcarouge::test {
+using representation = double;
+
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+
+namespace {
+//! @test Verifies the quantity by column vector division operator.
+[[maybe_unused]] const auto test{[] {
+  using length = quantity<mp_units::isq::length[m]>;
+  using area = quantity<mp_units::isq::area[m2]>;
+
+  const column_vector<representation, length> a{3. * m};
+  const column_vector<representation, length, area> b{2. * m, 6. * m2};
+  const row_vector<representation, double, length> r{a / b};
+
+  assert(std::format("{}", r) == "[0, 0.5 m]");
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
