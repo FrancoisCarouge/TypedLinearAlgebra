@@ -1,5 +1,5 @@
 #[[ Typed Linear Algebra
-Version 0.2.0
+Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
