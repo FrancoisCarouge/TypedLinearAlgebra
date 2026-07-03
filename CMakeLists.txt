@@ -1,5 +1,5 @@
 #[[ Typed Linear Algebra
-Version 0.2.0
+Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -36,7 +36,7 @@ project(
   DESCRIPTION "Typed Linear Algebra"
   HOMEPAGE_URL "https://github.com/FrancoisCarouge/TypedLinearAlgebra"
   LANGUAGES "CXX"
-  VERSION "0.2.0")
+  VERSION "0.3.0")
 
 if(PROJECT_IS_TOP_LEVEL)
   # Workaround: MSVC does not quite support C++26 yet.
