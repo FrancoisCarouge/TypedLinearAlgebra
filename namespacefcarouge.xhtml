@@ -249,8 +249,8 @@ Functions</h2></td></tr>
 <tr class="separator:ab0b660d7a013025989c027fd286d9e0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dc3ffebc86482dad70f1cb19a7812fd" id="r_a1dc3ffebc86482dad70f1cb19a7812fd"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1dc3ffebc86482dad70f1cb19a7812fd">operator/</a> (const other auto &amp;lhs, const rank_typed_matrix&lt; 0 &gt; auto &amp;rhs)</td></tr>
 <tr class="separator:a1dc3ffebc86482dad70f1cb19a7812fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a373ea32263847e357dc49d06b45bcf1c" id="r_a373ea32263847e357dc49d06b45bcf1c"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a373ea32263847e357dc49d06b45bcf1c">operator/</a> (const other auto &amp;lhs, const column_typed_matrix auto &amp;rhs)</td></tr>
-<tr class="separator:a373ea32263847e357dc49d06b45bcf1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03ddaec779f1cf52456f36645dfec4ba" id="r_a03ddaec779f1cf52456f36645dfec4ba"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03ddaec779f1cf52456f36645dfec4ba">operator/</a> (const other auto &amp;lhs, const rank_typed_matrix&lt; 1 &gt; auto &amp;rhs)</td></tr>
+<tr class="separator:a03ddaec779f1cf52456f36645dfec4ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39c15f9009b3d9cfed2a5d90b56a5ac3" id="r_a39c15f9009b3d9cfed2a5d90b56a5ac3"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a> (const same_as_typed_matrix auto &amp;value)</td></tr>
 <tr class="separator:a39c15f9009b3d9cfed2a5d90b56a5ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -926,37 +926,8 @@ template&lt;typename RowIndexes , typename ColumnIndexes &gt; </div>
 
 </div>
 </div>
-<a id="a373ea32263847e357dc49d06b45bcf1c" name="a373ea32263847e357dc49d06b45bcf1c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a373ea32263847e357dc49d06b45bcf1c">&#9670;&#160;</a></span>operator/() <span class="overload">[1/5]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto fcarouge::operator/ </td>
-          <td>(</td>
-          <td class="paramtype">const other auto &amp;</td>          <td class="paramname"><span class="paramname"><em>lhs</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const column_typed_matrix auto &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a1dc3ffebc86482dad70f1cb19a7812fd" name="a1dc3ffebc86482dad70f1cb19a7812fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1dc3ffebc86482dad70f1cb19a7812fd">&#9670;&#160;</a></span>operator/() <span class="overload">[2/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dc3ffebc86482dad70f1cb19a7812fd">&#9670;&#160;</a></span>operator/() <span class="overload">[1/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -973,6 +944,35 @@ template&lt;typename RowIndexes , typename ColumnIndexes &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const rank_typed_matrix&lt; 0 &gt; auto &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a03ddaec779f1cf52456f36645dfec4ba" name="a03ddaec779f1cf52456f36645dfec4ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03ddaec779f1cf52456f36645dfec4ba">&#9670;&#160;</a></span>operator/() <span class="overload">[2/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto fcarouge::operator/ </td>
+          <td>(</td>
+          <td class="paramtype">const other auto &amp;</td>          <td class="paramname"><span class="paramname"><em>lhs</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const rank_typed_matrix&lt; 1 &gt; auto &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
