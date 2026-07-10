@@ -136,15 +136,15 @@ Installation</h1>
 </div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/tree/master/INSTALL.md">For more, see installation instructions</a>.</p>
 <h1><a class="anchor" id="reference"></a>
 Reference</h1>
-<h2><a class="anchor" id="class-typed-matrix"></a>
+<h2><a class="anchor" id="class-typed-matrix-1"></a>
 Class Typed Matrix</h2>
 <p>Strongly typed matrix. Compose a linear algebra backend matrix into a typed matrix. Row and column indexes provide each element's index type.</p>
 <p>Also documented in the <a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/include/fcarouge/typed_linear_algebra.hpp">fcarouge/typed_linear_algebra.hpp</a> header.</p>
-<h3><a class="anchor" id="declaration"></a>
+<h3><a class="anchor" id="declaration-1"></a>
 Declaration</h3>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Matrix, <span class="keyword">typename</span> RowIndexes, <span class="keyword">typename</span> ColumnIndexes&gt;</div>
 <div class="line"><span class="keyword">class </span>typed_matrix</div>
-</div><!-- fragment --><h3><a class="anchor" id="template-parameters"></a>
+</div><!-- fragment --><h3><a class="anchor" id="template-parameters-1"></a>
 Template Parameters</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -156,7 +156,7 @@ Template Parameters</h3>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>ColumnIndexes</code>   </td><td class="markdownTableBodyNone">The tuple type of the row indexes.   </td></tr>
 </table>
-<h3><a class="anchor" id="member-types"></a>
+<h3><a class="anchor" id="member-types-1"></a>
 Member Types</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -172,7 +172,7 @@ Member Types</h3>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>element&lt;i, j&gt;</code>   </td><td class="markdownTableBodyNone">The type of the element at the given matrix indexes position.   </td></tr>
 </table>
-<h3><a class="anchor" id="member-variables"></a>
+<h3><a class="anchor" id="member-variables-1"></a>
 Member Variables</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -182,7 +182,7 @@ Member Variables</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>columns</code>   </td><td class="markdownTableBodyNone">The count of columns.   </td></tr>
 </table>
-<h3><a class="anchor" id="member-functions"></a>
+<h3><a class="anchor" id="member-functions-1"></a>
 Member Functions</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -226,7 +226,7 @@ Member Functions</h3>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>(destructor)</code>   </td><td class="markdownTableBodyNone">Destruct a default typed matrix.   </td></tr>
 </table>
-<h2><a class="anchor" id="operations"></a>
+<h2><a class="anchor" id="operations-1"></a>
 Operations</h2>
 <p>The following useful operations are supported. This library attempts to align its nomenclature aligned with that of the primitives provided by <code>std::linalg</code>. This library attempts some compatibility with other C++ standard library primitives, ranges, and iterators.</p>
 <table class="markdownTable">
@@ -251,14 +251,14 @@ Operations</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>transposed</code>   </td><td class="markdownTableBodyNone">Transpose the input matrix.   </td></tr>
 </table>
-<h2><a class="anchor" id="aliases"></a>
+<h2><a class="anchor" id="aliases-1"></a>
 Aliases</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Matrix, <span class="keyword">typename</span>... ColumnIndexes&gt;</div>
 <div class="line">typed_row_vector;</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Matrix, <span class="keyword">typename</span>... RowIndexes&gt;</div>
 <div class="line">typed_column_vector;</div>
-</div><!-- fragment --><h2><a class="anchor" id="format"></a>
+</div><!-- fragment --><h2><a class="anchor" id="format-1"></a>
 Format</h2>
 <p>A specialization of the standard formatter is provided for the typed matrix. Use <code>std::format</code> to store a formatted representation of the matrix. Standard format parameters to be supported.</p>
 <h2><a class="anchor" id="literals"></a>
@@ -266,7 +266,7 @@ Literals</h2>
 <p>A user-defined literal <code>_i</code> operator in the <code><a class="el" href="namespacefcarouge_1_1literals.xhtml">fcarouge::literals</a></code> namespace that converts a decimal integer literal into a compile-time index type permitting the use of traditional accessor operator with strong types.</p>
 <div class="fragment"><div class="line"><span class="keyword">using </span>literals::operator<span class="stringliteral">&quot;&quot;</span>_i;</div>
 <div class="line">std::println(<span class="stringliteral">&quot;{}&quot;</span>, m[1_i, 2_i]); <span class="comment">// Same as: m.at&lt;1, 2&gt;()</span></div>
-</div><!-- fragment --><h2><a class="anchor" id="concepts"></a>
+</div><!-- fragment --><h2><a class="anchor" id="concepts-1"></a>
 Concepts</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -288,7 +288,7 @@ Concepts</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>uniform_typed_matrix</code>   </td><td class="markdownTableBodyNone">Concept of a typed matrix in which all element types are the same.   </td></tr>
 </table>
-<h2><a class="anchor" id="structure-element-caster"></a>
+<h2><a class="anchor" id="structure-element-caster-1"></a>
 Structure Element Caster</h2>
 <p>Typed matrix element conversions customization point. Specialize this template to allow conversion to and from the element's type and underlying type.</p>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> To, <span class="keyword">typename</span> From&gt;</div>
