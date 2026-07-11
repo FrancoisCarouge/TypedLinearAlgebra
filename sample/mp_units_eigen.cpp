@@ -40,7 +40,6 @@ For more information, please refer to <https://unlicense.org> */
 //! typed units.
 
 #include "fcarouge/linalg.hpp"
-#include "fcarouge/typed_linear_algebra.hpp"
 
 #include <format>
 #include <print>
@@ -49,61 +48,28 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::sample {
 namespace {
-// Set up heterogenously unit typed linear algebra types.
 using representation = double;
 
 template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
-template <mp_units::Reference auto QuantityReference>
-using quantity_point =
-    mp_units::quantity_point<QuantityReference,
-                             mp_units::default_point_origin(QuantityReference),
-                             representation>;
-
 template <typename RowIndexes, typename ColumnIndexes>
-using matrix =
-    typed_matrix<Eigen::Matrix<representation, std::tuple_size_v<RowIndexes>,
-                               std::tuple_size_v<ColumnIndexes>>,
-                 RowIndexes, ColumnIndexes>;
+using matrix = matrix<representation, RowIndexes, ColumnIndexes>;
 
 template <typename... Types>
-using column_vector =
-    typed_column_vector<Eigen::Vector<representation, sizeof...(Types)>,
-                        Types...>;
+using column_vector = column_vector<representation, Types...>;
 
 template <typename... Types>
-using row_vector =
-    typed_row_vector<Eigen::RowVector<representation, sizeof...(Types)>,
-                     Types...>;
-
-// Expose a few mp-units types and unit symbols.
-using mp_units::si::unit_symbols::m;
-using mp_units::si::unit_symbols::m2;
-using mp_units::si::unit_symbols::s;
-using mp_units::si::unit_symbols::s2;
-using mp_units::si::unit_symbols::s3;
-constexpr auto s4{pow<4>(s)};
-using mp_units::one;
-using mp_units::si::unit_symbols::A;
-using mp_units::si::unit_symbols::mol;
-
-// Shorten some mp-units quantities.
-using position = quantity<mp_units::isq::length[m]>;
-using velocity = quantity<mp_units::isq::velocity[m / s]>;
-using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
-
-// Set up a heterogenous column vector type for the sample.
-using state = column_vector<position, velocity, acceleration>;
-
-using literals::operator""_i;
+using row_vector = row_vector<representation, Types...>;
 
 //! @brief Strongly typed linear algebra samples.
 //!
 //! @details A variety of activities of strongly typed linear algebra with Eigen
 //! and mp-units.
 [[maybe_unused]] const auto sample{[] {
-  // Column-vector declaration.
+  // Set up a heterogenous column vector type for the sample.
+  using state = column_vector<position, velocity, acceleration>;
+
   state x0{3. * m, 2. * m / s, 1. * m / s2};
 
   // Printable.
@@ -334,9 +300,9 @@ using literals::operator""_i;
   // R: 9 m²
 
   using output_model = row_vector<quantity<one>, quantity<s>, quantity<s2>>;
-  output_model h;
-  h.at<0>(1.);
-  std::println("H: {}", h);
+  output_model hh;
+  hh.at<0>(1.);
+  std::println("H: {}", hh);
   // H: [1, 0 s, 0 s²]
 
   using state_transition =
@@ -363,16 +329,16 @@ using literals::operator""_i;
   output z{-393.66 * m};
 
   using innovation_uncertainty = output_uncertainty;
-  innovation_uncertainty si{h * p * transposed(h) + r};
+  innovation_uncertainty si{hh * p * transposed(hh) + r};
 
   using unevaluated_gain =
       decltype(std::declval<state>() / std::declval<output>());
   using gain =
       matrix<unevaluated_gain::row_indexes, unevaluated_gain::column_indexes>;
-  gain k{p * transposed(h) / si};
+  gain k{p * transposed(hh) / si};
 
   using innovation = output;
-  innovation y{z - h * x};
+  innovation y{z - hh * x};
   x = x + k * y;
 
   std::println("X: {}", x);
@@ -388,7 +354,7 @@ using literals::operator""_i;
   i.at<0, 0>(1.);
   i.at<1, 1>(1.);
   i.at<2, 2>(1.);
-  p = (i - k * h) * p * transposed(i - k * h) + k * r * transposed(k);
+  p = (i - k * hh) * p * transposed(i - k * hh) + k * r * transposed(k);
   std::println("P: {}", p);
   // P: [[8.92 m²,      5.95 m²/s,    1.98 m²/s²],
   //     [5.95 m²/s,  503.98 m²/s², 334.67 m²/s³],

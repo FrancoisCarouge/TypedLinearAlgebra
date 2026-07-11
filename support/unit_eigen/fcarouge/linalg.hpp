@@ -40,6 +40,9 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/typed_linear_algebra.hpp"
 #include "fcarouge/unit.hpp"
 
+#include <cstddef>
+#include <tuple>
+
 namespace fcarouge {
 //! @brief Quantity matrix with mp-units and Eigen implementations.
 template <typename Representation, typename RowIndexes, typename ColumnIndexes>

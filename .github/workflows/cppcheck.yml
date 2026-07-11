@@ -27,7 +27,9 @@ jobs:
     - name: Install
       run: |
         ( cd /tmp
-          git clone --depth 1 'https://github.com/danmar/cppcheck.git'
+          git clone 'https://github.com/danmar/cppcheck.git'
+          ( cd cppcheck 
+            git checkout ee22150faf8a585c0ad3406534f5159045601041 )
           cmake -S 'cppcheck' -B 'cppcheck/build'
           cmake --build 'cppcheck/build' --parallel 4
           sudo cmake --install 'cppcheck/build' )
@@ -51,6 +53,8 @@ jobs:
           -I support/eigexed \
           -I support/kokkos \
           -I support/main \
-          -I support/mp_units \
           -I support/nested_typed_eigen \
+          -I support/unit \
+          -I support/unit_eigen \
+          -I support/unit_std \
           .
