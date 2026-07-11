@@ -40,7 +40,6 @@ For more information, please refer to <https://unlicense.org> */
 //! typed units.
 
 #include "fcarouge/linalg.hpp"
-#include "fcarouge/typed_linear_algebra.hpp"
 
 #include <cstddef>
 #include <format>
@@ -53,34 +52,19 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::sample {
 namespace {
-// Set up heterogenously unit typed linear algebra types.
 using representation = double;
 
 template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
-template <mp_units::Reference auto QuantityReference>
-using quantity_point =
-    mp_units::quantity_point<QuantityReference,
-                             mp_units::default_point_origin(QuantityReference),
-                             representation>;
-
 template <typename RowIndexes, typename ColumnIndexes>
-using matrix = typed_matrix<
-    std::mdspan<representation,
-                std::extents<std::size_t, std::tuple_size_v<RowIndexes>,
-                             std::tuple_size_v<ColumnIndexes>>>,
-    RowIndexes, ColumnIndexes>;
+using matrix = matrix<representation, RowIndexes, ColumnIndexes>;
 
 template <typename... Types>
-using column_vector = typed_column_vector<
-    std::mdspan<representation, std::extents<std::size_t, sizeof...(Types), 1>>,
-    Types...>;
+using column_vector = column_vector<representation, Types...>;
 
 template <typename... Types>
-using row_vector = typed_row_vector<
-    std::mdspan<representation, std::extents<std::size_t, 1, sizeof...(Types)>>,
-    Types...>;
+using row_vector = row_vector<representation, Types...>;
 
 template <std::size_t Rows>
 using column_extents = std::extents<std::size_t, Rows, 1>;
@@ -98,29 +82,14 @@ constexpr std::size_t extents_size{[] {
   return size;
 }()};
 
-// Expose a few mp-units types and unit symbols.
-using mp_units::one;
-using mp_units::si::unit_symbols::A;
-using mp_units::si::unit_symbols::m;
-using mp_units::si::unit_symbols::m2;
-using mp_units::si::unit_symbols::mol;
-using mp_units::si::unit_symbols::s;
-using mp_units::si::unit_symbols::s2;
-using mp_units::si::unit_symbols::s3;
-
-// Shorten some mp-units quantities.
-using position = quantity<mp_units::isq::length[m]>;
-using velocity = quantity<mp_units::isq::velocity[m / s]>;
-using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
-
-// Set up a heterogenous column vector type.
-using state = column_vector<position, velocity, acceleration>;
-
 //! @brief Strongly typed linear algebra samples.
 //!
 //! @details A variety of activities of strongly typed linear algebra with
 //! std::mdspan, std::linalg, and mp-units.
 [[maybe_unused]] const auto sample{[] {
+  // Set up a heterogenous column vector type for the sample.
+  using state = column_vector<position, velocity, acceleration>;
+
   std::vector v0(extents_size<column_extents<3>>, representation{});
   std::mdspan s0{v0.data(), column_extents<3>{}};
   state x0{s0};

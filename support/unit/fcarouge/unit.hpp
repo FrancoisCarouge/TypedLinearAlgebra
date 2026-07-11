@@ -46,20 +46,21 @@ For more information, please refer to <https://unlicense.org> */
 #include <mp-units/systems/si.h>
 
 namespace fcarouge {
-using mp_units::delta;
-using mp_units::point;
+using mp_units::one;
 using mp_units::si::unit_symbols::A;
 using mp_units::si::unit_symbols::deg_C;
+using mp_units::si::unit_symbols::h;
+using mp_units::si::unit_symbols::km;
 using mp_units::si::unit_symbols::m;
 using mp_units::si::unit_symbols::m2;
 using mp_units::si::unit_symbols::m3;
+using mp_units::si::unit_symbols::mol;
 using mp_units::si::unit_symbols::N;
 using mp_units::si::unit_symbols::s;
 using mp_units::si::unit_symbols::s2;
 using mp_units::si::unit_symbols::s3;
 
 inline constexpr auto s4{pow<4>(s)};
-inline constexpr auto deg_C2{pow<2>(deg_C)};
 
 using height = mp_units::quantity<mp_units::isq::height[m]>;
 using position = mp_units::quantity<mp_units::isq::length[m]>;
