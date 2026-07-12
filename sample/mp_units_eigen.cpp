@@ -300,9 +300,9 @@ using row_vector = row_vector<representation, Types...>;
   // R: 9 m²
 
   using output_model = row_vector<quantity<one>, quantity<s>, quantity<s2>>;
-  output_model hh;
-  hh.at<0>(1.);
-  std::println("H: {}", hh);
+  output_model h;
+  h.at<0>(1.);
+  std::println("H: {}", h);
   // H: [1, 0 s, 0 s²]
 
   using state_transition =
@@ -329,16 +329,16 @@ using row_vector = row_vector<representation, Types...>;
   output z{-393.66 * m};
 
   using innovation_uncertainty = output_uncertainty;
-  innovation_uncertainty si{hh * p * transposed(hh) + r};
+  innovation_uncertainty si{h * p * transposed(h) + r};
 
   using unevaluated_gain =
       decltype(std::declval<state>() / std::declval<output>());
   using gain =
       matrix<unevaluated_gain::row_indexes, unevaluated_gain::column_indexes>;
-  gain k{p * transposed(hh) / si};
+  gain k{p * transposed(h) / si};
 
   using innovation = output;
-  innovation y{z - hh * x};
+  innovation y{z - h * x};
   x = x + k * y;
 
   std::println("X: {}", x);
@@ -354,7 +354,7 @@ using row_vector = row_vector<representation, Types...>;
   i.at<0, 0>(1.);
   i.at<1, 1>(1.);
   i.at<2, 2>(1.);
-  p = (i - k * hh) * p * transposed(i - k * hh) + k * r * transposed(k);
+  p = (i - k * h) * p * transposed(i - k * h) + k * r * transposed(k);
   std::println("P: {}", p);
   // P: [[8.92 m²,      5.95 m²/s,    1.98 m²/s²],
   //     [5.95 m²/s,  503.98 m²/s², 334.67 m²/s³],
