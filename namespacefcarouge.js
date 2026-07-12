@@ -67,6 +67,5 @@ var namespacefcarouge =
     [ "operator==", "namespacefcarouge.xhtml#ac201eb6dbabe90e8e35d2efa46b7ad1f", null ],
     [ "transposed", "namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3", null ],
     [ "cast", "namespacefcarouge.xhtml#aa6f7f6a8d1b65520e70b3e1330e880d2", null ],
-    [ "deg_C2", "namespacefcarouge.xhtml#a5a8a206bd21b1225ecfea4798c26d775", null ],
     [ "s4", "namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436", null ]
 ];

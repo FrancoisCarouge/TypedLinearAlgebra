@@ -394,14 +394,13 @@ std::linalg   </td></tr>
 <p><span class="fragment"><span class="fragment"></span></span></p>
 <p><span class="fragment"><span class="fragment"></p><div class="fragment"><div class="line">std::vector v0(2, 0.);</div>
 <div class="line">std::mdspan s0{v0.data(), std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
-<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#abc06c9fcc2ebb041416919e7d482ac84">state</a> x0{s0};</div>
+<div class="line">state x0{s0};</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// ...</span></div>
 <div class="line"> </div>
 <div class="line">matrix_product(x0, x0ᵀ, p);</div>
 <div class="line">std::println(<span class="stringliteral">&quot;{}&quot;</span>, p);</div>
 <div class="line"><span class="comment">// [[9 m², 7.5 m²/s], [7.5 m²/s, 6.25 m²/s²]]</span></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_abc06c9fcc2ebb041416919e7d482ac84"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#abc06c9fcc2ebb041416919e7d482ac84">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::state</a></div><div class="ttdeci">column_vector&lt; position, velocity, acceleration &gt; state</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00097">mp_units_eigen.cpp:97</a></div></div>
 </div><!-- fragment --><p></span></span></p>
 <p><span class="fragment"><span class="fragment"></span> &lt;aside class="notes"&gt; Interestingly, no memory ownership assumption constrain the typed matrix. Therefore the typed matrix can compose a <code>std::mdspan</code>. Here, the typed column vector is defined with <code>std::mdspan</code>, the chosen underlying data representation, and an equivalent column <code>std::extends</code>.<br  />
  FRAGMENT<br  />
