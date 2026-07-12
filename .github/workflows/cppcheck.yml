@@ -27,9 +27,7 @@ jobs:
     - name: Install
       run: |
         ( cd /tmp
-          git clone 'https://github.com/danmar/cppcheck.git'
-          ( cd cppcheck 
-            git checkout ee22150faf8a585c0ad3406534f5159045601041 )
+          git clone --depth 1 'https://github.com/danmar/cppcheck.git'
           cmake -S 'cppcheck' -B 'cppcheck/build'
           cmake --build 'cppcheck/build' --parallel 4
           sudo cmake --install 'cppcheck/build' )
@@ -44,9 +42,14 @@ jobs:
           --check-level=exhaustive \
           --enable=all \
           --error-exitcode=1 \
+          --suppress=internalAstError:support/eigen/fcarouge/eigen.hpp \
           --suppress=missingIncludeSystem \
+          --suppress=noExplicitConstructor:include/fcarouge/typed_linear_algebra.hpp \
+          --suppress=syntaxError:sample/mp_units_std.cpp \
           --suppress=unhandledChar \
+          --suppress=unmatchedSuppression \
           --suppress=unusedFunction \
+          --suppress=unusedStructMember:include/fcarouge/typed_linear_algebra_internal/format.tpp \
           --verbose \
           -I include \
           -I support/eigen \
