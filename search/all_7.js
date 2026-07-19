@@ -13,7 +13,7 @@ var searchData=
   ['algebra_20a_10',['&lt;a href=&quot;https://francoiscarouge.github.io/TypedLinearAlgebra/typed_linear_algebra/index.html&quot; &gt;Typed Linear Algebra&lt;/a&gt;',['../md_html_2typed__linear__algebra_2_r_e_a_d_m_e.xhtml#typed-linear-algebrahttpsfrancoiscarougegithubiotypedlinearalgebratyped_linear_algebraindexhtml',1,'']]],
   ['algebra_20and_20dimensional_20analysis_11',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],
   ['algebra_20use_20case_3a_20eigen_20mp_20units_12',['Quantity-Safe Linear Algebra Use Case: Eigen + mp-units',['../md_html_2paper_2mp__units__eigen.xhtml',1,'']]],
-  ['aliases_13',['Aliases',['../md_html_2paper_2mp__units__eigen.xhtml#aliases-1',1,'Aliases'],['../index.xhtml#aliases',1,'Aliases']]],
+  ['aliases_13',['Aliases',['../index.xhtml#aliases',1,'Aliases'],['../md_html_2paper_2mp__units__eigen.xhtml#aliases-1',1,'Aliases']]],
   ['analysis_14',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],
   ['and_20dimensional_20analysis_15',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],
   ['aside_16',['&lt;/aside&gt;',['../md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#aside',1,'']]],
