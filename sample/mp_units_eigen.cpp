@@ -299,7 +299,7 @@ using row_vector = row_vector<representation, Types...>;
   std::println("R: {}", r);
   // R: 9 m²
 
-  using output_model = row_vector<quantity<one>, quantity<s>, quantity<s2>>;
+  using output_model = row_vector<representation, quantity<s>, quantity<s2>>;
   output_model hh;
   hh.at<0>(1.);
   std::println("H: {}", hh);
@@ -307,7 +307,8 @@ using row_vector = row_vector<representation, Types...>;
 
   using state_transition =
       matrix<std::tuple<position, velocity, acceleration>,
-             std::tuple<quantity<one / m>, quantity<s / m>, quantity<s2 / m>>>;
+             std::tuple<quantity<mp_units::one / m>, quantity<s / m>,
+                        quantity<s2 / m>>>;
   state_transition f;
   f.at<0, 0>(1.);
   f.at<0, 1>(1. * s);

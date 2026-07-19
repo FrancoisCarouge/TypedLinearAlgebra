@@ -46,9 +46,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <mp-units/systems/si.h>
 
 namespace fcarouge {
-using mp_units::one;
 using mp_units::si::unit_symbols::A;
-using mp_units::si::unit_symbols::deg_C;
 using mp_units::si::unit_symbols::h;
 using mp_units::si::unit_symbols::km;
 using mp_units::si::unit_symbols::m;
