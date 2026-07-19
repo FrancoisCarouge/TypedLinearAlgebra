@@ -38,7 +38,6 @@ For more information, please refer to <https://unlicense.org> */
 //! @details Typed matrix, vectors, and operations.
 
 #include "typed_linear_algebra_forward.hpp"
-#include "typed_linear_algebra_internal/format.hpp"
 #include "typed_linear_algebra_internal/utility.hpp"
 
 #include <concepts>
@@ -509,6 +508,7 @@ template <char... Digits> constexpr auto operator""_i() noexcept {
 #include "typed_linear_algebra_internal/algorithm/substract.tpp"
 #include "typed_linear_algebra_internal/algorithm/transposed.tpp"
 #include "typed_linear_algebra_internal/cast.tpp"
+#include "typed_linear_algebra_internal/format.tpp"
 #include "typed_linear_algebra_internal/tuple.tpp"
 #include "typed_linear_algebra_internal/typed_linear_algebra.tpp"
 
