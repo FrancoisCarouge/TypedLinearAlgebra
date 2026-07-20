@@ -444,7 +444,7 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">  299</span>  std::println(<span class="stringliteral">&quot;R: {}&quot;</span>, r);</div>
 <div class="line"><span class="lineno">  300</span>  <span class="comment">// R: 9 m²</span></div>
 <div class="line"><span class="lineno">  301</span> </div>
-<div class="line"><span class="lineno">  302</span>  <span class="keyword">using </span>output_model = row_vector&lt;quantity&lt;one&gt;, quantity&lt;s&gt;, quantity&lt;s2&gt;&gt;;</div>
+<div class="line"><span class="lineno">  302</span>  <span class="keyword">using </span>output_model = row_vector&lt;representation, quantity&lt;s&gt;, quantity&lt;s2&gt;&gt;;</div>
 <div class="line"><span class="lineno">  303</span>  output_model hh;</div>
 <div class="line"><span class="lineno">  304</span>  hh.at&lt;0&gt;(1.);</div>
 <div class="line"><span class="lineno">  305</span>  std::println(<span class="stringliteral">&quot;H: {}&quot;</span>, hh);</div>
@@ -452,68 +452,69 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">  307</span> </div>
 <div class="line"><span class="lineno">  308</span>  <span class="keyword">using </span>state_transition =</div>
 <div class="line"><span class="lineno">  309</span>      matrix&lt;std::tuple&lt;position, velocity, acceleration&gt;,</div>
-<div class="line"><span class="lineno">  310</span>             std::tuple&lt;<a class="code hl_typedef" href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">quantity</a>&lt;one / m&gt;, <a class="code hl_typedef" href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">quantity</a>&lt;s / m&gt;, <a class="code hl_typedef" href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">quantity</a>&lt;s2 / m&gt;&gt;&gt;;</div>
-<div class="line"><span class="lineno">  311</span>  state_transition f;</div>
-<div class="line"><span class="lineno">  312</span>  f.at&lt;0, 0&gt;(1.);</div>
-<div class="line"><span class="lineno">  313</span>  f.at&lt;0, 1&gt;(1. * s);</div>
-<div class="line"><span class="lineno">  314</span>  f.at&lt;0, 2&gt;(0.5 * s2);</div>
-<div class="line"><span class="lineno">  315</span>  f.at&lt;1, 1&gt;(1.);</div>
-<div class="line"><span class="lineno">  316</span>  f.at&lt;1, 2&gt;(1. * s);</div>
-<div class="line"><span class="lineno">  317</span>  f.at&lt;2, 2&gt;(1.);</div>
-<div class="line"><span class="lineno">  318</span>  std::println(<span class="stringliteral">&quot;F: {}&quot;</span>, f);</div>
-<div class="line"><span class="lineno">  319</span>  <span class="comment">// F: [[1, 1 s, 0.5 s²],</span></div>
-<div class="line"><span class="lineno">  320</span>  <span class="comment">//     [0 1/s, 1, 1 s],</span></div>
-<div class="line"><span class="lineno">  321</span>  <span class="comment">//     [0 1/s², 0 1/s, 1]]</span></div>
-<div class="line"><span class="lineno">  322</span> </div>
-<div class="line"><span class="lineno">  323</span>  <span class="comment">// Prediction stage of the filter estimated state.</span></div>
-<div class="line"><span class="lineno">  324</span>  x = f * x;</div>
-<div class="line"><span class="lineno">  325</span>  p = f * p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(f) + q;</div>
-<div class="line"><span class="lineno">  326</span> </div>
-<div class="line"><span class="lineno">  327</span>  <span class="comment">// Update stage of the filter from output measurements.</span></div>
-<div class="line"><span class="lineno">  328</span>  <span class="keyword">using </span>output = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a13e1c6087b005b8dceeaab42ccbde47d">position</a>;</div>
-<div class="line"><span class="lineno">  329</span>  output z{-393.66 * m};</div>
-<div class="line"><span class="lineno">  330</span> </div>
-<div class="line"><span class="lineno">  331</span>  <span class="keyword">using </span>innovation_uncertainty = output_uncertainty;</div>
-<div class="line"><span class="lineno">  332</span>  innovation_uncertainty si{hh * p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(hh) + r};</div>
-<div class="line"><span class="lineno">  333</span> </div>
-<div class="line"><span class="lineno">  334</span>  <span class="keyword">using </span>unevaluated_gain =</div>
-<div class="line"><span class="lineno">  335</span>      <span class="keyword">decltype</span>(std::declval&lt;state&gt;() / std::declval&lt;output&gt;());</div>
-<div class="line"><span class="lineno">  336</span>  <span class="keyword">using </span>gain =</div>
-<div class="line"><span class="lineno">  337</span>      matrix&lt;unevaluated_gain::row_indexes, unevaluated_gain::column_indexes&gt;;</div>
-<div class="line"><span class="lineno">  338</span>  gain k{p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(hh) / si};</div>
-<div class="line"><span class="lineno">  339</span> </div>
-<div class="line"><span class="lineno">  340</span>  <span class="keyword">using </span>innovation = output;</div>
-<div class="line"><span class="lineno">  341</span>  innovation y{z - hh * x};</div>
-<div class="line"><span class="lineno">  342</span>  x = x + k * y;</div>
-<div class="line"><span class="lineno">  343</span> </div>
-<div class="line"><span class="lineno">  344</span>  std::println(<span class="stringliteral">&quot;X: {}&quot;</span>, x);</div>
-<div class="line"><span class="lineno">  345</span>  <span class="comment">// X: [[-390.53 m],</span></div>
-<div class="line"><span class="lineno">  346</span>  <span class="comment">//     [-260.36 m/s],</span></div>
-<div class="line"><span class="lineno">  347</span>  <span class="comment">//     [ -86.79 m/s²]]</span></div>
-<div class="line"><span class="lineno">  348</span> </div>
-<div class="line"><span class="lineno">  349</span>  <span class="keyword">using </span>unevaluated_kh =</div>
-<div class="line"><span class="lineno">  350</span>      <span class="keyword">decltype</span>(std::declval&lt;gain&gt;() * std::declval&lt;output_model&gt;());</div>
-<div class="line"><span class="lineno">  351</span>  <span class="keyword">using </span>kh =</div>
-<div class="line"><span class="lineno">  352</span>      matrix&lt;unevaluated_kh::row_indexes, unevaluated_kh::column_indexes&gt;;</div>
-<div class="line"><span class="lineno">  353</span>  kh i;</div>
-<div class="line"><span class="lineno">  354</span>  i.at&lt;0, 0&gt;(1.);</div>
-<div class="line"><span class="lineno">  355</span>  i.at&lt;1, 1&gt;(1.);</div>
-<div class="line"><span class="lineno">  356</span>  i.at&lt;2, 2&gt;(1.);</div>
-<div class="line"><span class="lineno">  357</span>  p = (i - k * hh) * p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(i - k * hh) + k * r * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(k);</div>
-<div class="line"><span class="lineno">  358</span>  std::println(<span class="stringliteral">&quot;P: {}&quot;</span>, p);</div>
-<div class="line"><span class="lineno">  359</span>  <span class="comment">// P: [[8.92 m²,      5.95 m²/s,    1.98 m²/s²],</span></div>
-<div class="line"><span class="lineno">  360</span>  <span class="comment">//     [5.95 m²/s,  503.98 m²/s², 334.67 m²/s³],</span></div>
-<div class="line"><span class="lineno">  361</span>  <span class="comment">//     [1.98 m²/s², 334.67 m²/s³, 444.91 m²/s⁴]]</span></div>
-<div class="line"><span class="lineno">  362</span> </div>
-<div class="line"><span class="lineno">  363</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  364</span>}()};</div>
+<div class="line"><span class="lineno">  310</span>             std::tuple&lt;<a class="code hl_typedef" href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">quantity</a>&lt;mp_units::one / m&gt;, <a class="code hl_typedef" href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">quantity</a>&lt;s / m&gt;,</div>
+<div class="line"><span class="lineno">  311</span>                        <a class="code hl_typedef" href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">quantity</a>&lt;s2 / m&gt;&gt;&gt;;</div>
+<div class="line"><span class="lineno">  312</span>  state_transition f;</div>
+<div class="line"><span class="lineno">  313</span>  f.at&lt;0, 0&gt;(1.);</div>
+<div class="line"><span class="lineno">  314</span>  f.at&lt;0, 1&gt;(1. * s);</div>
+<div class="line"><span class="lineno">  315</span>  f.at&lt;0, 2&gt;(0.5 * s2);</div>
+<div class="line"><span class="lineno">  316</span>  f.at&lt;1, 1&gt;(1.);</div>
+<div class="line"><span class="lineno">  317</span>  f.at&lt;1, 2&gt;(1. * s);</div>
+<div class="line"><span class="lineno">  318</span>  f.at&lt;2, 2&gt;(1.);</div>
+<div class="line"><span class="lineno">  319</span>  std::println(<span class="stringliteral">&quot;F: {}&quot;</span>, f);</div>
+<div class="line"><span class="lineno">  320</span>  <span class="comment">// F: [[1, 1 s, 0.5 s²],</span></div>
+<div class="line"><span class="lineno">  321</span>  <span class="comment">//     [0 1/s, 1, 1 s],</span></div>
+<div class="line"><span class="lineno">  322</span>  <span class="comment">//     [0 1/s², 0 1/s, 1]]</span></div>
+<div class="line"><span class="lineno">  323</span> </div>
+<div class="line"><span class="lineno">  324</span>  <span class="comment">// Prediction stage of the filter estimated state.</span></div>
+<div class="line"><span class="lineno">  325</span>  x = f * x;</div>
+<div class="line"><span class="lineno">  326</span>  p = f * p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(f) + q;</div>
+<div class="line"><span class="lineno">  327</span> </div>
+<div class="line"><span class="lineno">  328</span>  <span class="comment">// Update stage of the filter from output measurements.</span></div>
+<div class="line"><span class="lineno">  329</span>  <span class="keyword">using </span>output = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a13e1c6087b005b8dceeaab42ccbde47d">position</a>;</div>
+<div class="line"><span class="lineno">  330</span>  output z{-393.66 * m};</div>
+<div class="line"><span class="lineno">  331</span> </div>
+<div class="line"><span class="lineno">  332</span>  <span class="keyword">using </span>innovation_uncertainty = output_uncertainty;</div>
+<div class="line"><span class="lineno">  333</span>  innovation_uncertainty si{hh * p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(hh) + r};</div>
+<div class="line"><span class="lineno">  334</span> </div>
+<div class="line"><span class="lineno">  335</span>  <span class="keyword">using </span>unevaluated_gain =</div>
+<div class="line"><span class="lineno">  336</span>      <span class="keyword">decltype</span>(std::declval&lt;state&gt;() / std::declval&lt;output&gt;());</div>
+<div class="line"><span class="lineno">  337</span>  <span class="keyword">using </span>gain =</div>
+<div class="line"><span class="lineno">  338</span>      matrix&lt;unevaluated_gain::row_indexes, unevaluated_gain::column_indexes&gt;;</div>
+<div class="line"><span class="lineno">  339</span>  gain k{p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(hh) / si};</div>
+<div class="line"><span class="lineno">  340</span> </div>
+<div class="line"><span class="lineno">  341</span>  <span class="keyword">using </span>innovation = output;</div>
+<div class="line"><span class="lineno">  342</span>  innovation y{z - hh * x};</div>
+<div class="line"><span class="lineno">  343</span>  x = x + k * y;</div>
+<div class="line"><span class="lineno">  344</span> </div>
+<div class="line"><span class="lineno">  345</span>  std::println(<span class="stringliteral">&quot;X: {}&quot;</span>, x);</div>
+<div class="line"><span class="lineno">  346</span>  <span class="comment">// X: [[-390.53 m],</span></div>
+<div class="line"><span class="lineno">  347</span>  <span class="comment">//     [-260.36 m/s],</span></div>
+<div class="line"><span class="lineno">  348</span>  <span class="comment">//     [ -86.79 m/s²]]</span></div>
+<div class="line"><span class="lineno">  349</span> </div>
+<div class="line"><span class="lineno">  350</span>  <span class="keyword">using </span>unevaluated_kh =</div>
+<div class="line"><span class="lineno">  351</span>      <span class="keyword">decltype</span>(std::declval&lt;gain&gt;() * std::declval&lt;output_model&gt;());</div>
+<div class="line"><span class="lineno">  352</span>  <span class="keyword">using </span>kh =</div>
+<div class="line"><span class="lineno">  353</span>      matrix&lt;unevaluated_kh::row_indexes, unevaluated_kh::column_indexes&gt;;</div>
+<div class="line"><span class="lineno">  354</span>  kh i;</div>
+<div class="line"><span class="lineno">  355</span>  i.at&lt;0, 0&gt;(1.);</div>
+<div class="line"><span class="lineno">  356</span>  i.at&lt;1, 1&gt;(1.);</div>
+<div class="line"><span class="lineno">  357</span>  i.at&lt;2, 2&gt;(1.);</div>
+<div class="line"><span class="lineno">  358</span>  p = (i - k * hh) * p * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(i - k * hh) + k * r * <a class="code hl_function" href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">transposed</a>(k);</div>
+<div class="line"><span class="lineno">  359</span>  std::println(<span class="stringliteral">&quot;P: {}&quot;</span>, p);</div>
+<div class="line"><span class="lineno">  360</span>  <span class="comment">// P: [[8.92 m²,      5.95 m²/s,    1.98 m²/s²],</span></div>
+<div class="line"><span class="lineno">  361</span>  <span class="comment">//     [5.95 m²/s,  503.98 m²/s², 334.67 m²/s³],</span></div>
+<div class="line"><span class="lineno">  362</span>  <span class="comment">//     [1.98 m²/s², 334.67 m²/s³, 444.91 m²/s⁴]]</span></div>
+<div class="line"><span class="lineno">  363</span> </div>
+<div class="line"><span class="lineno">  364</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  365</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_a6b3c31f5597d188be25878a1961231a4"><div class="ttname"><a href="#a6b3c31f5597d188be25878a1961231a4">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::matrix</a></div><div class="ttdeci">matrix&lt; representation, RowIndexes, ColumnIndexes &gt; matrix</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00057">mp_units_eigen.cpp:57</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_a8b2e65b7992ae2a7bbf9fe0554c970ea"><div class="ttname"><a href="#a8b2e65b7992ae2a7bbf9fe0554c970ea">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::quantity</a></div><div class="ttdeci">mp_units::quantity&lt; QuantityReference, representation &gt; quantity</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00054">mp_units_eigen.cpp:54</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_ac654fecf137a61586430c32ad5004dfd"><div class="ttname"><a href="#ac654fecf137a61586430c32ad5004dfd">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::column_vector</a></div><div class="ttdeci">column_vector&lt; representation, Types... &gt; column_vector</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00060">mp_units_eigen.cpp:60</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a0aadf374ff49533297b0971d8a66b436"><div class="ttname"><a href="namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436">fcarouge::s4</a></div><div class="ttdeci">constexpr auto s4</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00063">unit.hpp:63</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a13e1c6087b005b8dceeaab42ccbde47d"><div class="ttname"><a href="namespacefcarouge.xhtml#a13e1c6087b005b8dceeaab42ccbde47d">fcarouge::position</a></div><div class="ttdeci">mp_units::quantity&lt; mp_units::isq::length[m]&gt; position</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00066">unit.hpp:66</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a0aadf374ff49533297b0971d8a66b436"><div class="ttname"><a href="namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436">fcarouge::s4</a></div><div class="ttdeci">constexpr auto s4</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00061">unit.hpp:61</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a13e1c6087b005b8dceeaab42ccbde47d"><div class="ttname"><a href="namespacefcarouge.xhtml#a13e1c6087b005b8dceeaab42ccbde47d">fcarouge::position</a></div><div class="ttdeci">mp_units::quantity&lt; mp_units::isq::length[m]&gt; position</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00064">unit.hpp:64</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a39c15f9009b3d9cfed2a5d90b56a5ac3"><div class="ttname"><a href="namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3">fcarouge::transposed</a></div><div class="ttdeci">constexpr auto transposed(const same_as_typed_matrix auto &amp;value)</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_ac2dd0eba1b86197287e408d5d4c3e641"><div class="ttname"><a href="namespacefcarouge.xhtml#ac2dd0eba1b86197287e408d5d4c3e641">fcarouge::velocity</a></div><div class="ttdeci">mp_units::quantity&lt; mp_units::isq::velocity[m/s]&gt; velocity</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00067">unit.hpp:67</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_ac2dd0eba1b86197287e408d5d4c3e641"><div class="ttname"><a href="namespacefcarouge.xhtml#ac2dd0eba1b86197287e408d5d4c3e641">fcarouge::velocity</a></div><div class="ttdeci">mp_units::quantity&lt; mp_units::isq::velocity[m/s]&gt; velocity</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00065">unit.hpp:65</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

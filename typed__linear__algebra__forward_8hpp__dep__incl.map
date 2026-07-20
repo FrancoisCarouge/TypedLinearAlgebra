@@ -1,33 +1,29 @@
 <map id="/github/workspace/include/fcarouge/typed_linear_algebra_forward.hpp" name="/github/workspace/include/fcarouge/typed_linear_algebra_forward.hpp">
-<area shape="rect" id="Node000001" title="Authoritative forward declaration header." alt="" coords="526,5,698,61"/>
-<area shape="rect" id="Node000002" href="$typed__linear__algebra_8hpp.xhtml" title="Typed linear algebra implementation." alt="" coords="526,316,698,372"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="646,72,686,135,705,173,719,212,726,241,725,254,719,270,698,297,671,318,668,314,694,293,714,267,719,253,720,241,714,213,700,175,682,138,641,75"/>
-<area shape="rect" id="Node000011" href="$format_8hpp.xhtml" title="Formatting support for the typed matrix." alt="" coords="520,213,704,268"/>
-<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="615,76,615,212,610,212,610,76"/>
-<area shape="rect" id="Node000012" href="$utility_8hpp.xhtml" title=" " alt="" coords="354,109,532,165"/>
-<area shape="poly" id="edge15_Node000001_Node000012" title=" " alt="" coords="555,72,490,111,487,106,553,67"/>
-<area shape="rect" id="Node000003" href="$typed__mdspan__product_8cpp.xhtml" title=" " alt="" coords="5,420,201,461"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="512,367,202,424,201,418,511,361"/>
-<area shape="rect" id="Node000004" href="$typed__mdspan__tupled__product_8cpp.xhtml" title=" " alt="" coords="225,420,450,461"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="520,380,396,422,394,417,518,375"/>
-<area shape="rect" id="Node000005" href="$eigen_8hpp.xhtml" title="Linear algebra facade for Eigen3 third party implementation." alt="" coords="525,420,700,461"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="615,388,615,420,610,420,610,388"/>
-<area shape="rect" id="Node000007" href="$eigexed_2fcarouge_2linalg_8hpp.xhtml" title="Scalar type linear algebra with Eigen implementation." alt="" coords="236,516,418,557"/>
-<area shape="poly" id="edge9_Node000002_Node000007" title=" " alt="" coords="566,384,515,422,465,463,368,518,365,513,461,458,512,418,563,379"/>
-<area shape="rect" id="Node000008" href="$nested__typed__eigen_2fcarouge_2linalg_8hpp.xhtml" title="Scalar type nested linear algebra with Eigen implementation." alt="" coords="639,509,834,564"/>
-<area shape="poly" id="edge10_Node000002_Node000008" title=" " alt="" coords="676,379,696,397,713,419,724,441,732,464,738,508,733,508,726,465,719,443,709,421,692,401,672,383"/>
-<area shape="rect" id="Node000009" href="$unit__eigen_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with mp&#45;units with Eigen implementations." alt="" coords="858,516,1054,557"/>
-<area shape="poly" id="edge11_Node000002_Node000009" title=" " alt="" coords="672,378,814,458,919,513,916,518,811,463,670,383"/>
-<area shape="rect" id="Node000010" href="$unit__std_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with mp&#45;units with Eigen implementations." alt="" coords="825,420,1008,461"/>
-<area shape="poly" id="edge12_Node000002_Node000010" title=" " alt="" coords="714,374,853,417,852,422,713,379"/>
-<area shape="rect" id="Node000006" href="$eigen_2fcarouge_2linalg_8hpp.xhtml" title=" " alt="" coords="441,516,616,557"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="587,474,548,518,544,514,583,471"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="539,468,388,518,386,513,538,463"/>
-<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="652,468,702,506,699,510,649,472"/>
-<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="700,463,885,513,884,518,698,468"/>
-<area shape="poly" id="edge14_Node000011_Node000002" title=" " alt="" coords="615,284,615,316,610,316,610,284"/>
-<area shape="poly" id="edge17_Node000012_Node000002" title=" " alt="" coords="342,171,314,189,292,214,284,228,282,241,284,253,292,267,306,279,328,290,387,309,457,323,526,332,526,338,457,328,386,314,326,295,303,283,288,270,279,255,276,241,279,227,287,211,310,185,339,166"/>
-<area shape="poly" id="edge18_Node000012_Node000011" title=" " alt="" coords="503,171,568,210,565,214,500,175"/>
-<area shape="rect" id="Node000013" href="$mdspan__tuple__product_8cpp.xhtml" title=" " alt="" coords="301,220,497,261"/>
-<area shape="poly" id="edge16_Node000012_Node000013" title=" " alt="" coords="428,180,410,221,405,219,423,178"/>
+<area shape="rect" id="Node000001" title="Authoritative forward declaration header." alt="" coords="589,5,761,61"/>
+<area shape="rect" id="Node000002" href="$typed__linear__algebra_8hpp.xhtml" title="Typed linear algebra implementation." alt="" coords="526,213,698,268"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="656,76,642,110,627,164,618,213,613,212,622,163,636,108,651,74"/>
+<area shape="rect" id="Node000011" href="$utility_8hpp.xhtml" title=" " alt="" coords="650,109,828,165"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="703,73,724,107,720,110,698,76"/>
+<area shape="rect" id="Node000003" href="$typed__mdspan__product_8cpp.xhtml" title=" " alt="" coords="5,316,201,357"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="512,263,202,320,201,315,511,258"/>
+<area shape="rect" id="Node000004" href="$typed__mdspan__tupled__product_8cpp.xhtml" title=" " alt="" coords="225,316,450,357"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="520,276,396,318,394,313,518,271"/>
+<area shape="rect" id="Node000005" href="$eigen_8hpp.xhtml" title="Linear algebra facade for Eigen3 third party implementation." alt="" coords="525,316,700,357"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="615,284,615,316,610,316,610,284"/>
+<area shape="rect" id="Node000007" href="$eigexed_2fcarouge_2linalg_8hpp.xhtml" title="Scalar type linear algebra with Eigen implementation." alt="" coords="236,412,418,453"/>
+<area shape="poly" id="edge9_Node000002_Node000007" title=" " alt="" coords="566,280,515,318,463,359,368,414,365,410,460,355,512,314,563,276"/>
+<area shape="rect" id="Node000008" href="$nested__typed__eigen_2fcarouge_2linalg_8hpp.xhtml" title="Scalar type nested linear algebra with Eigen implementation." alt="" coords="639,405,834,461"/>
+<area shape="poly" id="edge10_Node000002_Node000008" title=" " alt="" coords="676,276,696,294,713,315,724,337,732,360,738,404,733,405,726,362,719,339,709,318,692,297,672,280"/>
+<area shape="rect" id="Node000009" href="$unit__eigen_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with mp&#45;units with Eigen implementations." alt="" coords="858,412,1054,453"/>
+<area shape="poly" id="edge11_Node000002_Node000009" title=" " alt="" coords="672,274,814,355,919,410,916,414,811,359,670,279"/>
+<area shape="rect" id="Node000010" href="$unit__std_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with mp&#45;units with Eigen implementations." alt="" coords="825,316,1008,357"/>
+<area shape="poly" id="edge12_Node000002_Node000010" title=" " alt="" coords="714,270,853,313,852,318,713,276"/>
+<area shape="rect" id="Node000006" href="$eigen_2fcarouge_2linalg_8hpp.xhtml" title=" " alt="" coords="441,412,616,453"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="587,371,548,414,544,410,583,367"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="539,365,388,414,386,409,538,360"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="652,364,702,402,699,406,649,369"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="700,359,885,409,884,414,698,364"/>
+<area shape="poly" id="edge15_Node000011_Node000002" title=" " alt="" coords="695,177,648,214,645,210,691,173"/>
+<area shape="rect" id="Node000012" href="$mdspan__tuple__product_8cpp.xhtml" title=" " alt="" coords="723,220,918,261"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="772,175,807,218,803,222,768,179"/>
 </map>

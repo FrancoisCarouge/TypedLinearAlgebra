@@ -1,15 +1,9 @@
 var searchData=
 [
-  ['scalar_2ecpp_0',['scalar.cpp',['../scalar_8cpp.xhtml',1,'']]],
-  ['scalar_5funit_5feigen_2ecpp_1',['scalar_unit_eigen.cpp',['../scalar__unit__eigen_8cpp.xhtml',1,'']]],
-  ['security_2emd_2',['SECURITY.md',['../_s_e_c_u_r_i_t_y_8md.xhtml',1,'']]],
-  ['subscript_5f1x1_2ecpp_3',['subscript_1x1.cpp',['../subscript__1x1_8cpp.xhtml',1,'']]],
-  ['subscript_5f1x1_5fconst_2ecpp_4',['subscript_1x1_const.cpp',['../subscript__1x1__const_8cpp.xhtml',1,'']]],
-  ['subscript_5f1xn_2ecpp_5',['subscript_1xn.cpp',['../subscript__1xn_8cpp.xhtml',1,'']]],
-  ['subscript_5f1xn_5fconst_2ecpp_6',['subscript_1xn_const.cpp',['../subscript__1xn__const_8cpp.xhtml',1,'']]],
-  ['subscript_5fmx1_2ecpp_7',['subscript_mx1.cpp',['../subscript__mx1_8cpp.xhtml',1,'']]],
-  ['subscript_5fmx1_5fconst_2ecpp_8',['subscript_mx1_const.cpp',['../subscript__mx1__const_8cpp.xhtml',1,'']]],
-  ['subscript_5fmxn_2ecpp_9',['subscript_mxn.cpp',['../subscript__mxn_8cpp.xhtml',1,'']]],
-  ['subscript_5fmxn_5fconst_2ecpp_10',['subscript_mxn_const.cpp',['../subscript__mxn__const_8cpp.xhtml',1,'']]],
-  ['sxc_2ecpp_11',['sxc.cpp',['../sxc_8cpp.xhtml',1,'']]]
+  ['typed_5feigen_5fproduct_2ecpp_0',['typed_eigen_product.cpp',['../typed__eigen__product_8cpp.xhtml',1,'']]],
+  ['typed_5flinear_5falgebra_2ehpp_1',['typed_linear_algebra.hpp',['../typed__linear__algebra_8hpp.xhtml',1,'']]],
+  ['typed_5flinear_5falgebra_2emd_2',['typed_linear_algebra.md',['../typed__linear__algebra_8md.xhtml',1,'']]],
+  ['typed_5flinear_5falgebra_5fforward_2ehpp_3',['typed_linear_algebra_forward.hpp',['../typed__linear__algebra__forward_8hpp.xhtml',1,'']]],
+  ['typed_5fmdspan_5fproduct_2ecpp_4',['typed_mdspan_product.cpp',['../typed__mdspan__product_8cpp.xhtml',1,'']]],
+  ['typed_5fmdspan_5ftupled_5fproduct_2ecpp_5',['typed_mdspan_tupled_product.cpp',['../typed__mdspan__tupled__product_8cpp.xhtml',1,'']]]
 ];
