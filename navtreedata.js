@@ -25,8 +25,7 @@
 var NAVTREE =
 [
   [ "Typed Linear Algebra", "index.xhtml", [
-    [ "Examples", "index.xhtml#examples", null ],
-    [ "Installation", "index.xhtml#installation-1", null ],
+    [ "Installation & Usage", "index.xhtml#installation--usage", null ],
     [ "Reference", "index.xhtml#reference", [
       [ "Class Typed Matrix", "index.xhtml#class-typed-matrix", [
         [ "Declaration", "index.xhtml#declaration", null ],
@@ -42,20 +41,22 @@ var NAVTREE =
       [ "Concepts", "index.xhtml#concepts", null ],
       [ "Structure Element Caster", "index.xhtml#structure-element-caster", null ]
     ] ],
-    [ "Considerations", "index.xhtml#considerations", [
-      [ "Lessons Learned", "index.xhtml#lessons-learned", null ]
+    [ "More", "index.xhtml#more", [
+      [ "Considerations", "index.xhtml#considerations", [
+        [ "Lessons Learned", "index.xhtml#lessons-learned", null ]
+      ] ],
+      [ "Performance", "index.xhtml#performance", [
+        [ "Projects", "index.xhtml#projects", null ]
+      ] ],
+      [ "Resources", "index.xhtml#resources", [
+        [ "Third Party Acknowledgement", "index.xhtml#third-party-acknowledgement", null ],
+        [ "Sponsors", "index.xhtml#sponsors", [
+          [ "Corporations & Institutions", "index.xhtml#corporations--institutions", null ],
+          [ "Individuals", "index.xhtml#individuals", null ]
+        ] ]
+      ] ],
+      [ "Continuous Integration & Deployment Actions", "index.xhtml#continuous-integration--deployment-actions", null ]
     ] ],
-    [ "Performance", "index.xhtml#performance", [
-      [ "Projects", "index.xhtml#projects", null ]
-    ] ],
-    [ "Resources", "index.xhtml#resources", [
-      [ "Third Party Acknowledgement", "index.xhtml#third-party-acknowledgement", null ],
-      [ "Sponsors", "index.xhtml#sponsors", [
-        [ "Corporations & Institutions", "index.xhtml#corporations--institutions", null ],
-        [ "Individuals", "index.xhtml#individuals", null ]
-      ] ]
-    ] ],
-    [ "Continuous Integration & Deployment Actions", "index.xhtml#continuous-integration--deployment-actions", null ],
     [ "License", "index.xhtml#license", null ],
     [ "Benchmarks", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml", [
       [ "Results", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#results", null ]
