@@ -32,38 +32,16 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
-#include <tuple>
 
 namespace fcarouge::test {
-using literals::operator""_i;
-using representation = double;
-
-template <auto QuantityReference>
-using quantity = mp_units::quantity<QuantityReference, representation>;
-
 namespace {
-//! @test Verifies the initializer lists constructor.
+//! @test Verifies the minus unary operator.
 [[maybe_unused]] const auto test{[] {
-  using length = quantity<mp_units::isq::length[m]>;
+  const matrix<double, 1, 2> a{3., 4.};
+  const matrix<double, 1, 2> b{-a};
 
-  double storage{0.};
-  std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
-  matrix<representation, std::tuple<length>, std::tuple<length>> r{span};
-
-  r = 42. * m2;
-
-  assert(42. * m2 == r.at());
-  assert(42. * m2 == r[]);
-  assert(42. * m2 == r());
-  assert(42. * m2 == r);
-
-  // RESTORE
-  //   static_assert(
-  //       not std::is_constructible_v<
-  //           matrix<double, std::tuple<length>, std::tuple<length>>,
-  //           decltype(1. * m3)>,
-  //       "The copy conversion constructor cannot accept non-convertible
-  //       types.");
+  assert(b(0) == -3.);
+  assert(b(1) == -4.);
 
   return 0;
 }()};

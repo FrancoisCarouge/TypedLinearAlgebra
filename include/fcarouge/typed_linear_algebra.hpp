@@ -282,6 +282,11 @@ public:
   //! constructor, operator friendship, attorney-client, or key idioms.
   constexpr explicit typed_matrix(const Matrix &other);
 
+  // constexpr explicit typed_matrix(const auto &other) {
+
+  //   static_cast<void>(other);
+  // }
+
   //! @brief Access the singleton typed matrix element.
   //!
   //! @details Applicable to singleton matrix: one element. Returns the unique
@@ -408,6 +413,8 @@ template <typename To, typename From> struct element_caster {
 //! @name Algorithms
 //! @{
 
+[[nodiscard]] constexpr auto magnitude(const uniform_typed_matrix auto &value);
+
 [[nodiscard]] constexpr bool operator==(const same_as_typed_matrix auto &lhs,
                                         const same_as_typed_matrix auto &rhs);
 [[nodiscard]] constexpr bool operator==(const rank_typed_matrix<0> auto &lhs,
@@ -427,8 +434,8 @@ template <typename To, typename From> struct element_caster {
 [[nodiscard]] constexpr auto operator-(const other auto &lhs,
                                        const rank_typed_matrix<0> auto &rhs);
 
-[[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
-                                       const same_as_typed_matrix auto &rhs);
+// [[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
+//                                        const same_as_typed_matrix auto &rhs);
 [[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
                                        const other auto &rhs);
 [[nodiscard]] constexpr auto operator*(const other auto &lhs,
@@ -458,12 +465,23 @@ template <typename To, typename From> struct element_caster {
 //! @name Adaptors
 //! @{
 
-//! @brief Matrix element conversion customization point.
+//! @brief Matrix element and storage conversion CPO.
 //!
-//! @details Specialization of the element caster function objects allows the
-//! end-user to permit underlying type conversions.
+//! @details Customization point object (CPO) for the element caster function
+//! objects which allows the end-user to specialize conversion of their element
+//! types to/from the storage underlying types.
 template <typename To, typename From>
 static inline constexpr element_caster<To, From> cast{};
+
+//! @brief Element type computation CPO.
+//!
+//! @details Customization point object (CPO) for computing the element type of
+//! a matrix. The element type is computed from the row and column indexes of
+//! the matrix. The end-user can specialize this CPO to provide their own
+//! element type computation. This is a multiplication function object. Unlike
+//! `std::multiplies` the two operands and resulting types can be different: `W
+//! multiplies::operator(const U& lhs, const V& rhs)`.
+using typed_linear_algebra_internal::multiplies;
 
 //! @brief Factory function for partial template deduction.
 //!
@@ -478,6 +496,7 @@ template <typename RowIndexes, typename ColumnIndexes>
 //! @brief Get function argument-dependent lookup overload.
 //!
 //! @details Also provides support for structured bindings.
+// THE INDEX TYPE SHOULD BE STD::SIZE_T PER STANDARD
 template <int Index> decltype(auto) get(rank_typed_matrix<1> auto &&value);
 
 //! @brief Get function argument-dependent lookup overload.
@@ -502,12 +521,15 @@ template <char... Digits> constexpr auto operator""_i() noexcept {
 #include "typed_linear_algebra_internal/algorithm/add.tpp"
 #include "typed_linear_algebra_internal/algorithm/divide.tpp"
 #include "typed_linear_algebra_internal/algorithm/equal_to.tpp"
+#include "typed_linear_algebra_internal/algorithm/magnitude.tpp"
 #include "typed_linear_algebra_internal/algorithm/matrix_product.tpp"
+#include "typed_linear_algebra_internal/algorithm/minus.tpp"
 #include "typed_linear_algebra_internal/algorithm/product.tpp"
 #include "typed_linear_algebra_internal/algorithm/scale.tpp"
 #include "typed_linear_algebra_internal/algorithm/substract.tpp"
 #include "typed_linear_algebra_internal/algorithm/transposed.tpp"
 #include "typed_linear_algebra_internal/cast.tpp"
+#include "typed_linear_algebra_internal/common_type.tpp"
 #include "typed_linear_algebra_internal/format.tpp"
 #include "typed_linear_algebra_internal/tuple.tpp"
 #include "typed_linear_algebra_internal/typed_linear_algebra.tpp"
