@@ -382,6 +382,16 @@ private:
   //! @brief Underlying algebraic backend data storage.
   Matrix storage;
 
+  // Mateusz Pusz idea:
+  // "Initially, I thought it was easier to store quantities and then use
+  // mdspan<double> on top of that for the underlying linear algebra. However,
+  // it seems you're trying to go the other way around, which causes the above
+  // issues. Isn't it possible to reverse the order here?"
+
+  // Note: It would solve the lvalue quantity reference access issue.
+
+  // Todo: Evaluate the feasibility of this idea, learn lessons.
+
   //! @}
 };
 
