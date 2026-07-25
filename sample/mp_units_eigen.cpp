@@ -195,10 +195,12 @@ using row_vector = row_vector<representation, Types...>;
   vector3d v{1., 2., 3.};
 
   // Operation, multiplication on a vector as a quantity.
-  // quantity q = ...
-  // v0 = q ...
-  // TODO: Revert this workaround before merge change.
+  // Vector as a quantity converted to a vector of quantities.
+
+  // mp-units operator*() takes precedence. Not sure why?
+  // Not sure how to implement type erased conversion.
   velocity3d v0{fcarouge::operator*(v, m / s)};
+  // velocity3d v0{v * m / s};
   assert(std::format("{}", v0) == "[[1 m/s], [2 m/s], [3 m/s]]");
 
   velocity a[]{1. * m / s, 2. * m / s, 3. * m / s};
@@ -216,11 +218,10 @@ using row_vector = row_vector<representation, Types...>;
   v0.at<1>(2. * m / s);
   assert(v0(1) == 2. * m / s);
 
-  // Beware of non-evaluated template expression: these types are not the same.
-  // Operation, multiplication on a vector as a quantity.
-  // TODO: Revert this workaround before merge change.
-  auto a0{fcarouge::operator*(vector3d{1., 2., 3.},
-                              mp_units::isq::velocity[m / s])};
+  // Beware of non-evaluated template expression and type library overloads:
+  // these types may not be the same. Operation, multiplication on a vector as a
+  // quantity.
+  auto a0{vector3d{1., 2., 3.} * mp_units::isq::velocity[m / s]};
   static_assert(not std::is_same_v<decltype(a0), velocity3d>);
 
   //! @todo Mp-units seems to have support for vector quantity? Of the form:

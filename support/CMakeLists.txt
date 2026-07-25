@@ -48,12 +48,12 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
   target_compile_options(
     typed_linear_algebra_options
     INTERFACE "-D_FORTIFY_SOURCE=3"
+              "-ftemplate-backtrace-limit=0"
               "-D_GLIBCXX_ASSERTIONS"
               "-fcf-protection=full"
               "-fno-builtin-std-forward_like"
               "-fno-check-new"
               "-fno-common"
-              -ftemplate-backtrace-limit=0
               "-fPIE"
               "-fstack-protector-strong"
               "-fstrict-aliasing"

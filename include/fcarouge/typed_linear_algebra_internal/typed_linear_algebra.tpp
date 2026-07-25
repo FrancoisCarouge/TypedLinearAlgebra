@@ -191,6 +191,16 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
+    const auto &q)
+  requires rank_typed_matrix<typed_matrix, 1> and
+           requires { typename std::remove_cvref_t<decltype(q)>::rep; }
+{
+  tla::for_constexpr<rows * columns>(
+      [&](auto i) { storage[i] = cast<underlying, element<i>>(get<i>(q)); });
+}
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] constexpr typed_matrix<
     Matrix, RowIndexes, ColumnIndexes>::operator element<>(this auto &&self)
   requires rank_typed_matrix<typed_matrix, 0>

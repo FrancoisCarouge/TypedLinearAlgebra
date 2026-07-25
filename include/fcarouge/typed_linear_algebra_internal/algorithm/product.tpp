@@ -37,7 +37,6 @@ namespace tla = typed_linear_algebra_internal;
 
 [[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
                                        const same_as_typed_matrix auto &rhs)
-
   requires((std::remove_cvref_t<decltype(lhs)>::columns ==
             std::remove_cvref_t<decltype(rhs)>::rows) &&
            (std::remove_cvref_t<decltype(lhs)>::columns > 1 ||
@@ -46,10 +45,6 @@ namespace tla = typed_linear_algebra_internal;
 {
   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
   using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
-
-  // static_assert(lhs_matrix::columns == rhs_matrix::rows,
-  //               "Matrix multiplication requires compatible sizes.");
-
   using lhs_row_indexes = typename lhs_matrix::row_indexes;
   using lhs_column_indexes = typename lhs_matrix::column_indexes;
   using rhs_row_indexes = typename rhs_matrix::row_indexes;

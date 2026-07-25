@@ -67,4 +67,36 @@ using row_vector =
                      Types...>;
 } // namespace fcarouge
 
+// Just like Eigen, the fcarouge::typed_matrix
+// arithmetic operators return lazy expression templates; store their evaluated
+// concrete type (`PlainObject`) in a quantity instead. Concrete
+// matrices/vectors map to themselves.
+//
+// The `typename T::PlainObject` requirement is checked first and short-circuits
+// the rest of the constraint: `representation_canonical_type` is instantiated
+// for every representation type (including `int`, `double`, ...), and
+// `Eigen::EigenBase<T>` is ill-formed for a non-Eigen `T`, so it must not be
+// instantiated unless `T` already looks like an Eigen type.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+  requires requires { typename Matrix::PlainObject; } &&
+           std::derived_from<Matrix, Eigen::EigenBase<Matrix>>
+struct mp_units::representation_canonical_type<
+    fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
+  using type =
+      fcarouge::typed_matrix<std::remove_cvref_t<typename Matrix::PlainObject>,
+                             RowIndexes, ColumnIndexes>;
+};
+
+// Just like Blaze, the fcarouge::typed_matrix
+// does not expose the `value_type`/`element_type` names the library detects
+// automatically, so map its `ElementType` explicitly.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+  requires requires { typename Matrix::PlainObject; } &&
+           std::derived_from<Matrix, Eigen::EigenBase<Matrix>>
+struct mp_units::representation_underlying_type<
+    fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
+  using type =
+      fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>::underlying;
+};
+
 #endif // FCAROUGE_LINALG_HPP

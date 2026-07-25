@@ -219,6 +219,8 @@ Type safety cannot be guaranteed at compilation time without **index safety**. T
 
 **Interoperability and compatibility** with other libraries works well with customization point objects (CPO) and presence/absence of overloads and specializations. The argument-dependent lookup (ADL) supports extensions of either integrated parties with limited collisions. The compatibility dimishes when static assertions are abused to replace, constrain application programming interfaces in place of concepts. Static assertions should be kept for internal validation, not for interface type availability.
 
+**A vector of *C++* typed values is not a *mathematically* typed vector** even though both may support linear algebra agorithms. The difference may appear subtle. Especially when the types in the vector are homogeneous. And particularly in some engineering domains where both tools cohabit, interconvert to solve their respective [uses cases](https://mpusz.github.io/mp-units/HEAD/blog/2026/06/23/units-meet-linear-algebra-two-approaches-two-problems/). Software is a reductive abstraction of the physical reality to make computation possible. This library supports aggregates of types and the subset of algorithms that are meaningful over these types. Usage friction may reveal inadequate tooling selection.
+
 ## Projects
 
 The library is used in projects:

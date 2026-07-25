@@ -40,6 +40,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <concepts>
 
 #include <mp-units/framework/quantity.h>
+#include <mp-units/framework/quantity_cast.h>
 #include <mp-units/framework/quantity_point.h>
 #include <mp-units/math.h>
 #include <mp-units/systems/isq/thermodynamics.h>
@@ -66,10 +67,11 @@ using velocity = mp_units::quantity<mp_units::isq::velocity[m / s]>;
 using acceleration = mp_units::quantity<mp_units::isq::acceleration[m / s2]>;
 
 // Teach the typed linear algebra library how to convert underlying scalar types
-// to and from mp-units' types.
+// to and from mp-units' types. Support castable quantity specifications.
 template <typename To, mp_units::Quantity From>
 struct element_caster<To, From> {
-  [[nodiscard]] static constexpr auto operator()(From value) -> To {
+  [[nodiscard]] static constexpr auto
+  operator()(mp_units::Quantity auto value) -> To {
     using representation = typename std::remove_cvref_t<From>::rep;
 
     static_assert(std::same_as<representation, std::remove_cvref_t<To>>,
@@ -77,7 +79,11 @@ struct element_caster<To, From> {
                   "quantity representation type to guarantee the conversion is "
                   "explicitely decided by the end-user.");
 
-    return value.numerical_value_in(value.unit);
+    constexpr auto reference{std::remove_cvref_t<From>::reference};
+    constexpr auto specification{get_quantity_spec(reference)};
+    auto specified{mp_units::quantity_cast<specification>(value)};
+
+    return specified.numerical_value_in(specified.unit);
   }
 };
 

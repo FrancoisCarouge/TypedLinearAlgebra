@@ -29,5 +29,5 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-pass("vector_as_quantity" BACKENDS "unit_eigen") # GENERALIZE: EIGEN and OTHERS
-# pass("representation" BACKENDS "unit_eigen") # MOVE THE REP TEST HERE
+pass("representation" BACKENDS "unit_eigen")
+pass("typed_vector_as_quantity" BACKENDS "unit_eigen")

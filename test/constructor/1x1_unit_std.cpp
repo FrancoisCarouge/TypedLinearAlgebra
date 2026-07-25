@@ -57,13 +57,11 @@ namespace {
   assert(42. * m2 == r());
   assert(42. * m2 == r);
 
-  // RESTORE
-  //   static_assert(
-  //       not std::is_constructible_v<
-  //           matrix<double, std::tuple<length>, std::tuple<length>>,
-  //           decltype(1. * m3)>,
-  //       "The copy conversion constructor cannot accept non-convertible
-  //       types.");
+  static_assert(
+      not std::is_constructible_v<
+          matrix<double, std::tuple<length>, std::tuple<length>>,
+          decltype(1. * m3)>,
+      "The copy conversion constructor cannot accept non-convertible types.");
 
   return 0;
 }()};

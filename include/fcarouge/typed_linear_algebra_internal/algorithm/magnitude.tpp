@@ -36,10 +36,10 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge {
 [[nodiscard]] constexpr auto magnitude(const uniform_typed_matrix auto &value) {
-  // There exists definitions of magnitude to support for other shapes/ranks.
   static_assert(
       rank_typed_matrix<decltype(value), 1>,
-      "The magnitude operation only supports vector types at this time.");
+      "The magnitude operation only supports vector types at this time."
+      "Improve me.");
 
   using matrix = std::remove_cvref_t<decltype(value)>;
   using element = typename matrix::template element<0>;
@@ -49,7 +49,7 @@ namespace fcarouge {
 
   // There exists a variety of implementation tradeoffs to explore. Delegate to
   // underlying linear algebra library? Implement atop strong types?
-  tla::for_constexpr<matrix::rows>([&](auto i) {
+  tla::for_constexpr<matrix::rows * matrix::columns>([&](auto i) {
     sums += cast<underlying, element>(value.template at<i>()) *
             cast<underlying, element>(value.template at<i>());
   });
