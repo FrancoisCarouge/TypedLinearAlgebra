@@ -49,6 +49,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     typed_linear_algebra_options
     INTERFACE "-D_FORTIFY_SOURCE=3"
               "-D_GLIBCXX_ASSERTIONS"
+              "-fbracket-depth=898"
               "-fcf-protection=full"
               "-fno-builtin-std-forward_like"
               "-fno-check-new"
