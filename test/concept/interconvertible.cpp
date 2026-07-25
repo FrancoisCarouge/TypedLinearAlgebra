@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.2.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -29,38 +29,16 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/linalg.hpp"
+#include "fcarouge/typed_linear_algebra.hpp"
 
 #include <cassert>
 
 namespace fcarouge::test {
-using literals::operator""_i;
-using representation = double;
-
-template <auto QuantityReference>
-using quantity = mp_units::quantity<QuantityReference, representation>;
-
 namespace {
-//! @test Verifies the singleton by singleton matrix addition operator.
+//! @test Verifies the interconvertible concept.
 [[maybe_unused]] const auto test{[] {
-  using length = quantity<mp_units::isq::length[m]>;
-
-  const row_vector<representation, length> a{2. * m};
-  const row_vector<representation, length> b{3. * m};
-  const row_vector<representation, length> r{a + b};
-
-  assert(5. * m == r);
-  assert(5. * m == r());
-  assert(5. * m == r[]);
-  assert(5. * m == r.at());
-  assert(5. * m == r.at<>());
-  assert(5. * m == r.at<length>());
-
-  static_assert(not std::is_reference_v<decltype(r())>);
-  static_assert(not std::is_reference_v<decltype(r[])>);
-  static_assert(not std::is_reference_v<decltype(r.at())>);
-  static_assert(not std::is_reference_v<decltype(r.at<>())>);
-  static_assert(not std::is_reference_v<decltype(r.at<length>())>);
+  static_assert(tla::are_interconvertible<double, double>);
+  static_assert(tla::are_not_interconvertible<double, double *>);
 
   return 0;
 }()};

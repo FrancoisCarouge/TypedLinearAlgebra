@@ -41,6 +41,7 @@ namespace {
 
   assert(m.at() == 42.);
   assert(m.at<>() == 42.);
+  assert(m.at<double>() == 42.);
 
   return 0;
 }()};
