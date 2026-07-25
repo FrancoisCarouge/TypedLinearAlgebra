@@ -29,43 +29,35 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/linalg.hpp"
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MAGNITUDE_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MAGNITUDE_TPP
 
-#include <cassert>
-#include <tuple>
+#include <cmath>
 
-namespace fcarouge::test {
-using literals::operator""_i;
-using representation = double;
+namespace fcarouge {
+[[nodiscard]] constexpr auto magnitude(const uniform_typed_matrix auto &value) {
+  // There exists definitions of magnitude to support for other shapes/ranks.
+  static_assert(
+      rank_typed_matrix<decltype(value), 1>,
+      "The magnitude operation only supports vector types at this time.");
 
-template <auto QuantityReference>
-using quantity = mp_units::quantity<QuantityReference, representation>;
+  using matrix = std::remove_cvref_t<decltype(value)>;
+  using element = typename matrix::template element<0>;
+  using underlying = typename matrix::underlying;
 
-namespace {
-//! @test Verifies the initializer lists constructor.
-[[maybe_unused]] const auto test{[] {
-  using length = quantity<mp_units::isq::length[m]>;
+  underlying sums{};
 
-  double storage{0.};
-  std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
-  matrix<representation, std::tuple<length>, std::tuple<length>> r{span};
+  // There exists a variety of implementation tradeoffs to explore. Delegate to
+  // underlying linear algebra library? Implement atop strong types?
+  tla::for_constexpr<matrix::rows>([&](auto i) {
+    sums += cast<underlying, element>(value.template at<i>()) *
+            cast<underlying, element>(value.template at<i>());
+  });
 
-  r = 42. * m2;
+  using std::sqrt;
 
-  assert(42. * m2 == r.at());
-  assert(42. * m2 == r[]);
-  assert(42. * m2 == r());
-  assert(42. * m2 == r);
+  return cast<element, underlying>(sqrt(sums));
+}
+} // namespace fcarouge
 
-  // RESTORE
-  //   static_assert(
-  //       not std::is_constructible_v<
-  //           matrix<double, std::tuple<length>, std::tuple<length>>,
-  //           decltype(1. * m3)>,
-  //       "The copy conversion constructor cannot accept non-convertible
-  //       types.");
-
-  return 0;
-}()};
-} // namespace
-} // namespace fcarouge::test
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MAGNITUDE_TPP

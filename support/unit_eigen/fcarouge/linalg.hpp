@@ -40,6 +40,9 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/typed_linear_algebra.hpp"
 #include "fcarouge/unit.hpp"
 
+#include <mp-units/framework/customization_points.h>
+#include <mp-units/integrations/eigen.h>
+
 #include <cstddef>
 #include <tuple>
 
