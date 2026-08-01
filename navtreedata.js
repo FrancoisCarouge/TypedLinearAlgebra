@@ -42,18 +42,13 @@ var NAVTREE =
       [ "Structure Element Caster", "index.xhtml#structure-element-caster", null ]
     ] ],
     [ "More", "index.xhtml#more", [
-      [ "Considerations", "index.xhtml#considerations", [
-        [ "Lessons Learned", "index.xhtml#lessons-learned", null ]
-      ] ],
-      [ "Performance", "index.xhtml#performance", [
-        [ "Projects", "index.xhtml#projects", null ]
-      ] ],
-      [ "Resources", "index.xhtml#resources", [
-        [ "Third Party Acknowledgement", "index.xhtml#third-party-acknowledgement", null ],
-        [ "Sponsors", "index.xhtml#sponsors", [
-          [ "Corporations & Institutions", "index.xhtml#corporations--institutions", null ],
-          [ "Individuals", "index.xhtml#individuals", null ]
-        ] ]
+      [ "As seen at CppNow 2026", "index.xhtml#as-seen-at-cppnow-2026", null ],
+      [ "Lessons Learned", "index.xhtml#lessons-learned", null ],
+      [ "Projects", "index.xhtml#projects", null ],
+      [ "Third Party Acknowledgement", "index.xhtml#third-party-acknowledgement", null ],
+      [ "Sponsors", "index.xhtml#sponsors", [
+        [ "Corporations & Institutions", "index.xhtml#corporations--institutions", null ],
+        [ "Individuals", "index.xhtml#individuals", null ]
       ] ],
       [ "Continuous Integration & Deployment Actions", "index.xhtml#continuous-integration--deployment-actions", null ]
     ] ],
@@ -163,8 +158,8 @@ var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
 "equality_8cpp.xhtml",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#a4fa9d9191a34fa69f071d94de9b5616a",
-"subscript__1xn_8cpp_source.xhtml"
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#a732541603d6fc0a976587e0ccd726a8d",
+"subscript__1xn__const_8cpp.xhtml#a59bc8d25ef0f2093591265b6139655bf"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

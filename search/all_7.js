@@ -16,8 +16,10 @@ var searchData=
   ['aliases_13',['Aliases',['../index.xhtml#aliases',1,'Aliases'],['../md_html_2paper_2mp__units__eigen.xhtml#aliases-1',1,'Aliases']]],
   ['analysis_14',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],
   ['and_20dimensional_20analysis_15',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],
-  ['aside_16',['&lt;/aside&gt;',['../md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#aside',1,'']]],
-  ['assign_2ecpp_17',['assign.cpp',['../assign_8cpp.xhtml',1,'']]],
-  ['at_18',['at',['../classfcarouge_1_1typed__matrix.xhtml#a7069d3bf51e6490049566e61978d9fbe',1,'fcarouge::typed_matrix::at(this auto &amp;&amp;self)'],['../classfcarouge_1_1typed__matrix.xhtml#a4f021cdbb68e3e5bbe51c5962b312508',1,'fcarouge::typed_matrix::at(this auto &amp;&amp;self, const element&lt; Indexes... &gt; &amp;value)']]],
-  ['attribution_19',['Attribution',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution',1,'']]]
+  ['as_20seen_20at_20cppnow_202026_16',['As seen at CppNow 2026',['../index.xhtml#as-seen-at-cppnow-2026',1,'']]],
+  ['aside_17',['&lt;/aside&gt;',['../md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#aside',1,'']]],
+  ['assign_2ecpp_18',['assign.cpp',['../assign_8cpp.xhtml',1,'']]],
+  ['at_19',['at',['../classfcarouge_1_1typed__matrix.xhtml#a7069d3bf51e6490049566e61978d9fbe',1,'fcarouge::typed_matrix::at(this auto &amp;&amp;self)'],['../classfcarouge_1_1typed__matrix.xhtml#a4f021cdbb68e3e5bbe51c5962b312508',1,'fcarouge::typed_matrix::at(this auto &amp;&amp;self, const element&lt; Indexes... &gt; &amp;value)']]],
+  ['at_20cppnow_202026_20',['As seen at CppNow 2026',['../index.xhtml#as-seen-at-cppnow-2026',1,'']]],
+  ['attribution_21',['Attribution',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution',1,'']]]
 ];
