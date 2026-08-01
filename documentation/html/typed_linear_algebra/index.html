@@ -808,7 +808,7 @@ Let's get back to implementation of the typed matrix methods. The simplified imp
             
             <h6>Dragons</h6>
 <pre><code class="language-cpp">state x0{3. * m, 2.5 * m / s};
-x0.at&lt;0&gt;() = 2 * m / s; // lvalue reference assignment?
+x0.at&lt;0&gt;() = 2 * m; // lvalue reference assignment?
 </code></pre>
 <span class="fragment">
 <pre><code class="language-cpp">template &lt;mp_units::Quantity To, typename From&gt;

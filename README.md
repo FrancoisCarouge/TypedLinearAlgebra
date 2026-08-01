@@ -201,9 +201,13 @@ A variety of conversions may be needed, notably value and reference conversions.
 
 # More
 
-## Considerations
+## As seen at CppNow 2026
 
-### Lessons Learned
+This library was [presented](https://schedule.cppnow.org/session/2026/typed-linear-algebra/) at CppNow 2026 as a first, free, and open-source implementation that integrates dimensional analysis in linear algebra computations through the type system while preserving the performance of established numerical backends. The talk motivated the safety proposition. And worked through the typed matrix definition and examples. We evaluated ergonomics and compatibility with std::linalg, std::mdspan, Eigen, mp-units. We noted lessons learned, tradeoffs, frictions. We looked to other additional safeties, open problems, and opportunities for better linear algebra in C++ applications. The discussions identified improvements for the library. The [slides](https://francoiscarouge.github.io/TypedLinearAlgebra/typed_linear_algebra/index.html) and the [video](https://www.youtube.com/watch?v=xZO7X8LH6Dg).
+
+[![Typed Linear Algebra - How to Not Crash on Mars - François Carouge - C++Now 2026](https://francoiscarouge.github.io/TypedLinearAlgebra/typed_linear_algebra/youtube.png)](https://www.youtube.com/watch?v=xZO7X8LH6Dg)
+
+## Lessons Learned
 
 Type safety cannot be guaranteed at compilation time without **index safety**. The indexes can either be non-type template parameters or strong types overloadings. Converting a runtime index to a dependent template type is not possible in C++. A proxy reference could be used to allow traditional assignment syntax but the runtime check and extra indirection are not interesting tradeoffs. A template call operator can be used for getting a type safe value but impractical syntax for setting. Without index safety, the accepted tradeoff is a templated index `at<i, j>()` method.
 
@@ -213,9 +217,7 @@ Type safety cannot be guaranteed at compilation time without **index safety**. T
 
 **Strongly typed memory storage** is not a selected design due to its performance tradeoff. A `std::tuple` or other type-list storages can be used as underlying memory storage. Such storage permits strongly typed lvalue reference assignment which improves the end-user ergonomics. Unfortunately `std::tuple` does not offer the same guarantees provided by contiguous memory storage and its alignment, padding, and ordering specification. The lack of guarantees prevents the direct, efficient, optimized memory accesses, resulting in a performance penalty. Undefined behavior is avoided. No known solution.
 
-## Performance
-
-### Projects
+## Projects
 
 The library is used in projects:
 
@@ -223,9 +225,7 @@ The library is used in projects:
 
 *Your project link here!*
 
-## Resources
-
-### Third Party Acknowledgement
+## Third Party Acknowledgement
 
 The library is designed, developed, and tested with the help of third-party tools and services acknowledged and thanked here:
 
@@ -249,17 +249,17 @@ The library is designed, developed, and tested with the help of third-party tool
 - [stdBLAS](https://github.com/kokkos/stdBLAS) for standard BLAS interface.
 - [Valgrind](https://valgrind.org) to check for correct memory management.
 
-### Sponsors
+## Sponsors
 
 Become a sponsor today! Support this project with coffee and infrastructure!
 
 [![Sponsor](https://img.shields.io/badge/Support-Sponsor-brightgreen)](http://paypal.me/francoiscarouge)
 
-#### Corporations & Institutions
+### Corporations & Institutions
 
 *Your group logo and link here!*
 
-#### Individuals
+### Individuals
 
 *Your name and link here!*
 

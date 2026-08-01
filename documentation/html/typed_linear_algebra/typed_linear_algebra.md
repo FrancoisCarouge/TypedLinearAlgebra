@@ -654,7 +654,7 @@ Let's get back to implementation of the typed matrix methods. The simplified imp
 
 ```cpp
 state x0{3. * m, 2.5 * m / s};
-x0.at<0>() = 2 * m / s; // lvalue reference assignment?
+x0.at<0>() = 2 * m; // lvalue reference assignment?
 ```
 
 <span class="fragment">
