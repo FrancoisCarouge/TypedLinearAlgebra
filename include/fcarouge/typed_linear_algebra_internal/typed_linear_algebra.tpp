@@ -82,9 +82,7 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const element<> (&elements)[typed_matrix::rows * typed_matrix::columns])
-  requires rank_typed_matrix<typed_matrix, 0> or
-           (rank_typed_matrix<typed_matrix, 1> and
-            uniform_typed_matrix<typed_matrix>)
+  requires rank_typed_matrix<typed_matrix, 0>
 {
   if constexpr (requires { storage = elements; }) {
     storage = elements;
@@ -100,16 +98,57 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
     const element<> (&elements)[typed_matrix::rows * typed_matrix::columns])
-  requires rank_typed_matrix<typed_matrix, 0> or
-           (rank_typed_matrix<typed_matrix, 1> and
-            uniform_typed_matrix<typed_matrix>)
+  requires rank_typed_matrix<typed_matrix, 0>
 {
+  using element_type = element<>;
+
   if constexpr (requires { storage = elements; }) {
     storage = elements;
   } else {
     tla::for_constexpr<typed_matrix::rows * typed_matrix::columns>(
         [this, &elements](auto position) {
-          storage[position] = cast<underlying, element<>>(elements[position]);
+          storage[position] =
+              cast<underlying, element_type>(elements[position]);
+        });
+  }
+  return *this;
+}
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
+    const element<0> (&elements)[typed_matrix::rows * typed_matrix::columns])
+  requires rank_typed_matrix<typed_matrix, 1> and
+           uniform_typed_matrix<typed_matrix>
+{
+  using element_type = element<0>;
+
+  if constexpr (requires { storage = elements; }) {
+    storage = elements;
+  } else {
+    tla::for_constexpr<typed_matrix::rows * typed_matrix::columns>(
+        [this, &elements](auto position) {
+          storage[position] =
+              cast<underlying, element_type>(elements[position]);
+        });
+  }
+}
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
+    const element<0> (&elements)[typed_matrix::rows * typed_matrix::columns])
+  requires rank_typed_matrix<typed_matrix, 1> and
+           uniform_typed_matrix<typed_matrix>
+{
+  using element_type = element<0>;
+
+  if constexpr (requires { storage = elements; }) {
+    storage = elements;
+  } else {
+    tla::for_constexpr<typed_matrix::rows * typed_matrix::columns>(
+        [this, &elements](auto position) {
+          storage[position] =
+              cast<underlying, element_type>(elements[position]);
         });
   }
   return *this;
@@ -181,10 +220,7 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
         auto value{std::get<position>(value_pack)};
         using type = std::remove_cvref_t<decltype(value)>;
         static_assert(
-            std::is_assignable_v<
-                element<(typed_matrix::rows == 1 ? 0UZ : position),
-                        (typed_matrix::columns == 1 ? 0UZ : position)> &,
-                type>,
+            std::is_assignable_v<element<std::size_t{position}> &, type>,
             "The parameter type is not compatible with the element type.");
         storage(std::size_t{position}) = cast<underlying, type>(value);
       });
@@ -224,23 +260,37 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
     using self_t = std::remove_reference_t<decltype(self)>;
     using qualified_underlying =
         std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
-    using qualified_element =
-        std::conditional_t<std::is_const_v<self_t>, element<>, element<> &>;
 
     if constexpr (sizeof...(indexes) == 2) {
+      using element_type = element<0, 0>;
+      using qualified_element =
+          std::conditional_t<std::is_const_v<self_t>, element_type,
+                             element_type &>;
       std::size_t i = std::get<0>(std::tuple{indexes...});
       std::size_t j = std::get<1>(std::tuple{indexes...});
       return cast<qualified_element, qualified_underlying>(self.storage(i, j));
     }
     if constexpr ((sizeof...(indexes) == 1) && (columns == 1)) {
+      using element_type = element<0>;
+      using qualified_element =
+          std::conditional_t<std::is_const_v<self_t>, element_type,
+                             element_type &>;
       std::size_t i = std::get<0>(std::tuple{indexes...});
       return cast<qualified_element, qualified_underlying>(self.storage(i));
     }
     if constexpr ((sizeof...(indexes) == 1) && (rows == 1)) {
+      using element_type = element<0>;
+      using qualified_element =
+          std::conditional_t<std::is_const_v<self_t>, element_type,
+                             element_type &>;
       std::size_t j = std::get<0>(std::tuple{indexes...});
       return cast<qualified_element, qualified_underlying>(self.storage(j));
     }
     if constexpr ((sizeof...(indexes) == 0)) {
+      using element_type = element<>;
+      using qualified_element =
+          std::conditional_t<std::is_const_v<self_t>, element_type,
+                             element_type &>;
       return cast<qualified_element, qualified_underlying>();
     }
   }

@@ -148,6 +148,10 @@ public:
   using underlying = tla::underlying_t<Matrix>;
 
   //! @brief The type of the element at the given matrix indexes position.
+  //!
+  //! @details The count of indexes must match the rank of the matrix: no
+  //! index for a singleton matrix, one index for a row or column vector, two
+  //! indexes for any other matrix.
   template <auto... Indexes>
   using element = tla::element<typed_matrix, Indexes...>;
 
@@ -222,32 +226,49 @@ public:
   constexpr typed_matrix &operator=(const element<> &value)
     requires rank_typed_matrix<typed_matrix, 0>;
 
+  //! @brief Convert construct a singleton typed matrix from a one-element
+  //! array.
+  //!
+  //! @details Applicable to singleton matrix: one element. Single-argument
+  //! constructors taking arrays of data need implicit constructors.
+  //!
+  //! @param elements C-style array of the single element.
+  constexpr explicit(false)
+      typed_matrix(const element<> (&elements)[rows * columns])
+    requires rank_typed_matrix<typed_matrix, 0>;
+
+  //! @brief Copy assign a singleton typed matrix from a one-element array.
+  //!
+  //! @details Applicable to singleton matrix: one element. Single-argument
+  //! constructors taking arrays of data need implicit constructors.
+  //!
+  //! @param elements C-style array of the single element.
+  constexpr typed_matrix &operator=(const element<> (&elements)[rows * columns])
+    requires rank_typed_matrix<typed_matrix, 0>;
+
   //! @brief Convert construct one-dimension uniformly typed matrix from array.
   //!
-  //! @details Applicable to one-dimension matrix: column- or row-vector.
-  //! Applicable to single-type matrix: uniform type of all elements.
-  //! Single-argument constructors taking arrays of data need implicit
-  //! constructors.
+  //! @details Applicable to one-dimension, uniformly typed matrix: column- or
+  //! row-vector with identical element types. Single-argument constructors
+  //! taking arrays of data need implicit constructors.
   //!
   //! @param elements C-style array of elements of identical types.
   constexpr explicit(false)
-      typed_matrix(const element<> (&elements)[rows * columns])
-    requires rank_typed_matrix<typed_matrix, 0> or
-             (rank_typed_matrix<typed_matrix, 1> and
-              uniform_typed_matrix<typed_matrix>);
+      typed_matrix(const element<0> (&elements)[rows * columns])
+    requires rank_typed_matrix<typed_matrix, 1> and
+             uniform_typed_matrix<typed_matrix>;
 
   //! @brief Copy assign one-dimension uniformly typed matrix from array.
   //!
-  //! @details Applicable to one-dimension matrix: column- or row-vector.
-  //! Applicable to single-type matrix: uniform type of all elements.
-  //! Single-argument constructors taking arrays of data need implicit
-  //! constructors.
+  //! @details Applicable to one-dimension, uniformly typed matrix: column- or
+  //! row-vector with identical element types. Single-argument constructors
+  //! taking arrays of data need implicit constructors.
   //!
   //! @param elements C-style array of elements of identical types.
-  constexpr typed_matrix &operator=(const element<> (&elements)[rows * columns])
-    requires rank_typed_matrix<typed_matrix, 0> or
-             (rank_typed_matrix<typed_matrix, 1> and
-              uniform_typed_matrix<typed_matrix>);
+  constexpr typed_matrix &
+  operator=(const element<0> (&elements)[rows * columns])
+    requires rank_typed_matrix<typed_matrix, 1> and
+             uniform_typed_matrix<typed_matrix>;
 
   //! @brief Convert construct a uniformly typed matrix from list-initializers.
   //!
@@ -413,15 +434,23 @@ template <typename To, typename From> struct element_caster {
 [[nodiscard]] constexpr bool operator==(const rank_typed_matrix<0> auto &lhs,
                                         const auto &rhs);
 
-[[nodiscard]] constexpr auto operator+(const same_as_typed_matrix auto &lhs,
-                                       const same_as_typed_matrix auto &rhs);
+[[nodiscard]] constexpr auto operator+(const rank_typed_matrix<2> auto &lhs,
+                                       const rank_typed_matrix<2> auto &rhs);
+[[nodiscard]] constexpr auto operator+(const rank_typed_matrix<1> auto &lhs,
+                                       const rank_typed_matrix<1> auto &rhs);
+[[nodiscard]] constexpr auto operator+(const rank_typed_matrix<0> auto &lhs,
+                                       const rank_typed_matrix<0> auto &rhs);
 [[nodiscard]] constexpr auto operator+(const rank_typed_matrix<0> auto &lhs,
                                        const other auto &rhs);
 [[nodiscard]] constexpr auto operator+(const other auto &lhs,
                                        const rank_typed_matrix<0> auto &rhs);
 
-[[nodiscard]] constexpr auto operator-(const same_as_typed_matrix auto &lhs,
-                                       const same_as_typed_matrix auto &rhs);
+[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<2> auto &lhs,
+                                       const rank_typed_matrix<2> auto &rhs);
+[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<1> auto &lhs,
+                                       const rank_typed_matrix<1> auto &rhs);
+[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<0> auto &lhs,
+                                       const rank_typed_matrix<0> auto &rhs);
 [[nodiscard]] constexpr auto operator-(const rank_typed_matrix<0> auto &lhs,
                                        const other auto &rhs);
 [[nodiscard]] constexpr auto operator-(const other auto &lhs,
@@ -452,6 +481,20 @@ template <typename To, typename From> struct element_caster {
                                        const rank_typed_matrix<1> auto &rhs);
 
 [[nodiscard]] constexpr auto transposed(const same_as_typed_matrix auto &value);
+
+#ifdef __cpp_lib_linalg
+
+constexpr void add(const rank_typed_matrix<2> auto &lhs,
+                   const rank_typed_matrix<2> auto &rhs,
+                   same_as_typed_matrix auto &result);
+constexpr void add(const rank_typed_matrix<1> auto &lhs,
+                   const rank_typed_matrix<1> auto &rhs,
+                   same_as_typed_matrix auto &result);
+constexpr void add(const rank_typed_matrix<0> auto &lhs,
+                   const rank_typed_matrix<0> auto &rhs,
+                   same_as_typed_matrix auto &result);
+
+#endif
 
 //! @}
 
