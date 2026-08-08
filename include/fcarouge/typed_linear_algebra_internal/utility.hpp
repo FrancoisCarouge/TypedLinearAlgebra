@@ -202,29 +202,6 @@ concept same_as_typed_matrix = std::same_as<
                  typename std::remove_cvref_t<Type>::row_indexes,
                  typename std::remove_cvref_t<Type>::column_indexes>>;
 
-template <typename Type, std::size_t... Indexes> struct element_t {};
-
-template <typename Type, std::size_t RowIndex, std::size_t ColumnIndex>
-struct element_t<Type, RowIndex, ColumnIndex> {
-  using type = std::remove_cvref_t<product<
-      std::tuple_element_t<RowIndex,
-                           typename std::remove_cvref_t<Type>::row_indexes>,
-      std::tuple_element_t<
-          ColumnIndex, typename std::remove_cvref_t<Type>::column_indexes>>>;
-};
-
-template <typename Type, std::size_t Index> struct element_t<Type, Index> {
-  using type =
-      element_t<Type, Index / Type::columns, Index % Type::columns>::type;
-};
-
-template <typename Type> struct element_t<Type> {
-  using type = element_t<Type, 0, 0>::type;
-};
-
-template <typename Type, std::size_t... Indexes>
-using element = element_t<Type, Indexes...>::type;
-
 template <std::size_t Rows, std::size_t Columns>
 constexpr std::size_t rank{[] {
   if constexpr (Rows > 1 && Columns > 1) {
@@ -236,6 +213,68 @@ constexpr std::size_t rank{[] {
   }
 }()};
 
+//! @brief The type of the element at the given row and column matrix
+//! indexes.
+//!
+//! @details Internal helper, oblivious to the matrix's rank. Reused by the
+//! rank-checked `element_t` specializations below and by algorithms that
+//! must visit every row and column position of a matrix regardless of its
+//! rank, for example homogeneity checks.
+template <typename Type, std::size_t RowIndex, std::size_t ColumnIndex>
+using element_at = std::remove_cvref_t<product<
+    std::tuple_element_t<RowIndex,
+                         typename std::remove_cvref_t<Type>::row_indexes>,
+    std::tuple_element_t<ColumnIndex,
+                         typename std::remove_cvref_t<Type>::column_indexes>>>;
+
+//! @brief Trait depending on `Type`, always false.
+//!
+//! @details Defers a `static_assert` failure to the point where the
+//! dependent type is actually instantiated, instead of failing as soon as
+//! the enclosing template is parsed.
+template <typename Type> constexpr bool always_false{false};
+
+//! @brief Linear algebra element type specialization point.
+//!
+//! @details The count of indexes must match the rank of the matrix: no
+//! index for a singleton matrix, one index for a row or column vector, two
+//! indexes for any other matrix. Naming `element_t<Type, Indexes...>::type`
+//! is always well-formed, lazily, regardless of the count of indexes
+//! matching the rank of the matrix: `type` is a nested class that stays
+//! uninstantiated, and so harmless, until actually completed. Only
+//! completing a mismatched `type` is a compilation error.
+template <typename Type, std::size_t... Indexes> struct element_t {
+  struct type {
+    static_assert(always_false<type>,
+                  "The count of indexes must match the rank of the matrix.");
+  };
+};
+
+template <typename Type, std::size_t RowIndex, std::size_t ColumnIndex>
+  requires(rank<std::remove_cvref_t<Type>::rows,
+                std::remove_cvref_t<Type>::columns> == 2)
+struct element_t<Type, RowIndex, ColumnIndex> {
+  using type = element_at<Type, RowIndex, ColumnIndex>;
+};
+
+template <typename Type, std::size_t Index>
+  requires(rank<std::remove_cvref_t<Type>::rows,
+                std::remove_cvref_t<Type>::columns> == 1)
+struct element_t<Type, Index> {
+  using type = element_at<Type, Index / std::remove_cvref_t<Type>::columns,
+                          Index % std::remove_cvref_t<Type>::columns>;
+};
+
+template <typename Type>
+  requires(rank<std::remove_cvref_t<Type>::rows,
+                std::remove_cvref_t<Type>::columns> == 0)
+struct element_t<Type> {
+  using type = element_at<Type, 0, 0>;
+};
+
+template <typename Type, std::size_t... Indexes>
+using element = element_t<Type, Indexes...>::type;
+
 template <typename Type>
 concept uniform_typed_matrix =
     same_as_typed_matrix<Type> and ([]() {
@@ -244,7 +283,8 @@ concept uniform_typed_matrix =
       for_constexpr<std::remove_cvref_t<Type>::rows>([&result](auto i) {
         for_constexpr<std::remove_cvref_t<Type>::columns>([&result,
                                                            &i](auto j) {
-          result &= std::is_same_v<element<Type, i, j>, element<Type, 0, 0>>;
+          result &=
+              std::is_same_v<element_at<Type, i, j>, element_at<Type, 0, 0>>;
         });
       });
 

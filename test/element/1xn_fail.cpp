@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,14 +27,25 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-fail("1x1_fail" BACKENDS "unit_eigen")
-fail("1xn_fail" BACKENDS "unit_eigen")
-fail("mx1_fail" BACKENDS "unit_eigen")
-fail("mxn_fail" BACKENDS "unit_eigen")
+#include "fcarouge/linalg.hpp"
 
-pass("1x1" BACKENDS "unit_eigen")
-pass("1xn" BACKENDS "unit_eigen")
-pass("mx1" BACKENDS "unit_eigen")
-pass("mxn" BACKENDS "unit_eigen")
+namespace fcarouge::test {
+namespace {
+//! @test Verifies a row vector, rank one, matrix element cannot be accessed
+//! with two indexes, as if it were a rank two matrix.
+[[maybe_unused]] const auto test{[] {
+  using matrix = matrix<double, std::tuple<decltype(1. * m)>,
+                        std::tuple<decltype(1. * N), decltype(1. / A)>>;
+
+  // Intended:
+  // using quantity = matrix::element<0>;
+
+  using quantity = matrix::element<0, 0>;
+  [[maybe_unused]] quantity value;
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
