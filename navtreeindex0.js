@@ -248,6 +248,6 @@ var NAVTREEINDEX0 =
 "eigexed_2fcarouge_2linalg_8hpp_source.xhtml":[19,0,6,1,0,0],
 "element_21x1_8cpp.xhtml":[19,0,7,5,0],
 "element_21x1_8cpp_source.xhtml":[19,0,7,5,0],
-"element_2mxn_8cpp.xhtml":[19,0,7,5,1],
-"element_2mxn_8cpp_source.xhtml":[19,0,7,5,1]
+"element_21xn_8cpp.xhtml":[19,0,7,5,1],
+"element_21xn_8cpp_source.xhtml":[19,0,7,5,1]
 };
