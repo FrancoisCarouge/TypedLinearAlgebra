@@ -30,4 +30,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 pass("1x1" BACKENDS "unit_eigen")
+pass("1xn" BACKENDS "unit_eigen")
+pass("mx1" BACKENDS "unit_eigen")
 pass("mxn" BACKENDS "unit_eigen")
