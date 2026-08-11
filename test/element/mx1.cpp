@@ -36,16 +36,17 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the element type of the singleton, rank zero, matrix.
+//! @test Verifies the element type of the column vector, rank one, matrix.
 //!
-//! @details The count of indexes must match the rank of the matrix: no
-//! index for a singleton matrix.
+//! @details The count of indexes must match the rank of the matrix: one
+//! index for a column vector.
 [[maybe_unused]] const auto test{[] {
-  using matrix = matrix<double, std::tuple<decltype(1. * m)>,
-                        std::tuple<decltype(1. * m)>>;
-  using quantity = decltype(1. * m2);
+  using matrix =
+      matrix<double, std::tuple<decltype(1. * m), decltype(1. * m / s)>,
+             std::tuple<decltype(1. * N)>>;
 
-  static_assert(std::same_as<matrix::element<>, quantity>);
+  static_assert(std::same_as<matrix::element<0>, decltype(1. * m * N)>);
+  static_assert(std::same_as<matrix::element<1>, decltype(1. * m * N / s)>);
 
   return 0;
 }()};

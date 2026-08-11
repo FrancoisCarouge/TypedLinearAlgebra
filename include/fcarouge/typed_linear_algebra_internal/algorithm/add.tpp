@@ -68,8 +68,8 @@ namespace fcarouge {
     return make_typed_matrix<row_indexes, column_indexes>(lhs.data() +
                                                           rhs.data());
   } else {
-    using lhs_element = typename lhs_matrix::template element<0, 0>;
-    using rhs_element = typename rhs_matrix::template element<0, 0>;
+    using lhs_element = typename lhs_matrix::template element<>;
+    using rhs_element = typename rhs_matrix::template element<>;
 
     return lhs_element{lhs} + rhs_element{rhs};
   }
@@ -78,7 +78,7 @@ namespace fcarouge {
 [[nodiscard]] constexpr auto operator+(const other auto &lhs,
                                        const rank_typed_matrix<0> auto &rhs) {
   using matrix = std::remove_cvref_t<decltype(rhs)>;
-  using element = typename matrix::template element<0, 0>;
+  using element = typename matrix::template element<>;
 
   return lhs + element{rhs};
 }
@@ -86,7 +86,7 @@ namespace fcarouge {
 [[nodiscard]] constexpr auto operator+(const rank_typed_matrix<0> auto &lhs,
                                        const other auto &rhs) {
   using matrix = std::remove_cvref_t<decltype(lhs)>;
-  using element = typename matrix::template element<0, 0>;
+  using element = typename matrix::template element<>;
 
   return element{lhs} + rhs;
 }

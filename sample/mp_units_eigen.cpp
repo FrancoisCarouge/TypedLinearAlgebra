@@ -133,14 +133,13 @@ using row_vector = row_vector<representation, Types...>;
 
   // The singleton element can be accessed by conversion to its element type.
   s1.at(10. * A / mol);
-  using single_element = decltype(s1)::element<0, 0>;
+  using single_element = decltype(s1)::element<>;
   assert(single_element{s1} == 10. * A / mol);
   assert(s1 == 10. * A / mol);
   s1.at(1. * A / mol);
 
   // Beware the element type may not be the same as could be expected.
-  static_assert(
-      not std::is_same_v<decltype(A / mol), decltype(s1)::element<0, 0>>);
+  static_assert(not std::is_same_v<decltype(A / mol), decltype(s1)::element<>>);
 
   // More forms of multiplication with a scalar factor.
   assert(std::format("{}", x5 * 2.) == "[[6 m], [4 m/s], [2 m/s²]]");
