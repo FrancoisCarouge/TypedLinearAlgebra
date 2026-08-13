@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,27 +27,25 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-if(NOT BUILD_TESTING)
-  return()
-endif()
+#include "fcarouge/linalg.hpp"
 
-add_subdirectory("addition")
-add_subdirectory("assign")
-add_subdirectory("at")
-add_subdirectory("constructor")
-add_subdirectory("division")
-add_subdirectory("element")
-add_subdirectory("format")
-add_subdirectory("magnitude")
-add_subdirectory("minus")
-add_subdirectory("multiplication")
-add_subdirectory("operator")
-add_subdirectory("structured_bindings")
-add_subdirectory("substraction")
-add_subdirectory("transposed")
+#include <cassert>
 
-pass("copy" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("nested" BACKENDS "nested_typed_eigen")
-pass("underlying" BACKENDS "eigexed" "nested_typed_eigen")
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the magnitude of a row vector, the Euclidean L2 norm.
+[[maybe_unused]] const auto test{[] {
+  const matrix<double, 1, 2> v2{3., 4.};
+
+  assert(magnitude(v2) == 5.);
+
+  const matrix<double, 1, 3> v3{2., 3., 6.};
+
+  assert(magnitude(v3) == 7.);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
