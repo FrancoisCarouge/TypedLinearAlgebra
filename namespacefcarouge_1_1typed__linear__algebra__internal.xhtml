@@ -132,6 +132,7 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>divides&lt; std::tuple&lt; Types1... &gt;, std::tuple&lt; Types2... &gt; &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>element_t</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linear algebra element type specialization point. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>element_t&lt; Type &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -173,6 +174,10 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a72e4ccaf08999b259f656412682b37dd" id="r_a72e4ccaf08999b259f656412682b37dd"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
 <tr class="memitem:a72e4ccaf08999b259f656412682b37dd"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a72e4ccaf08999b259f656412682b37dd">underlying_t</a> = std::invoke_result_t&lt;underlying&lt;Type&gt;&gt;</td></tr>
 <tr class="separator:a72e4ccaf08999b259f656412682b37dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65885388521eb0c9b910fc421e70b040" id="r_a65885388521eb0c9b910fc421e70b040"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::size_t RowIndex, std::size_t ColumnIndex&gt; </td></tr>
+<tr class="memitem:a65885388521eb0c9b910fc421e70b040"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a65885388521eb0c9b910fc421e70b040">element_at</a></td></tr>
+<tr class="memdesc:a65885388521eb0c9b910fc421e70b040"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the element at the given row and column matrix indexes.  <br /></td></tr>
+<tr class="separator:a65885388521eb0c9b910fc421e70b040"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89cc53c1b6d742d0f50660c6895896cc" id="r_a89cc53c1b6d742d0f50660c6895896cc"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::size_t... Indexes&gt; </td></tr>
 <tr class="memitem:a89cc53c1b6d742d0f50660c6895896cc"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a89cc53c1b6d742d0f50660c6895896cc">element</a> = element_t&lt;Type, Indexes...&gt;::type</td></tr>
 <tr class="separator:a89cc53c1b6d742d0f50660c6895896cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -199,6 +204,10 @@ Variables</h2></td></tr>
 <tr class="memitem:aded6eca464a23970fc0a04a24a164209" id="r_aded6eca464a23970fc0a04a24a164209"><td class="memTemplParams" colspan="2">template&lt;std::size_t Rows, std::size_t Columns&gt; </td></tr>
 <tr class="memitem:aded6eca464a23970fc0a04a24a164209"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aded6eca464a23970fc0a04a24a164209">rank</a></td></tr>
 <tr class="separator:aded6eca464a23970fc0a04a24a164209"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e0edee168ae01bae2ffa0ffdb374022" id="r_a6e0edee168ae01bae2ffa0ffdb374022"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:a6e0edee168ae01bae2ffa0ffdb374022"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a6e0edee168ae01bae2ffa0ffdb374022">always_false</a> {false}</td></tr>
+<tr class="memdesc:a6e0edee168ae01bae2ffa0ffdb374022"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trait depending on <code>Type</code>, always false.  <br /></td></tr>
+<tr class="separator:a6e0edee168ae01bae2ffa0ffdb374022"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a89cc53c1b6d742d0f50660c6895896cc" name="a89cc53c1b6d742d0f50660c6895896cc"></a>
@@ -215,7 +224,34 @@ template&lt;typename Type , std::size_t... Indexes&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00226">226</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00276">276</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a65885388521eb0c9b910fc421e70b040" name="a65885388521eb0c9b910fc421e70b040"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65885388521eb0c9b910fc421e70b040">&#9670;&#160;</a></span>element_at</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type , std::size_t RowIndex, std::size_t ColumnIndex&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a65885388521eb0c9b910fc421e70b040">fcarouge::typed_linear_algebra_internal::element_at</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> std::remove_cvref_t&lt;<a class="code hl_typedef" href="#a174364178a20af0590ffe5c549e13e66">product</a>&lt;</div>
+<div class="line">    std::tuple_element_t&lt;RowIndex,</div>
+<div class="line">                         <span class="keyword">typename</span> std::remove_cvref_t&lt;Type&gt;::row_indexes&gt;,</div>
+<div class="line">    std::tuple_element_t&lt;ColumnIndex,</div>
+<div class="line">                         <span class="keyword">typename</span> std::remove_cvref_t&lt;Type&gt;::column_indexes&gt;&gt;&gt;</div>
+<div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra__internal_xhtml_a174364178a20af0590ffe5c549e13e66"><div class="ttname"><a href="#a174364178a20af0590ffe5c549e13e66">fcarouge::typed_linear_algebra_internal::product</a></div><div class="ttdeci">std::invoke_result_t&lt; multiplies&lt; Lhs, Rhs &gt;, Lhs, Rhs &gt; product</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00121">utility.hpp:121</a></div></div>
+</div><!-- fragment -->
+<p>The type of the element at the given row and column matrix indexes. </p>
+<p>Internal helper, oblivious to the matrix's rank. Reused by the rank-checked <code>element_t</code> specializations below and by algorithms that must visit every row and column position of a matrix regardless of its rank, for example homogeneity checks. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00224">224</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -231,7 +267,7 @@ template&lt;typename Type , std::size_t... Indexes&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00289">289</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00329">329</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -287,7 +323,7 @@ template&lt;typename Type , std::size_t Size&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00287">287</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00327">327</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -424,20 +460,50 @@ template&lt;char... Digits&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00303">303</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  303</span>                                                             {</div>
-<div class="line"><span class="lineno">  304</span>  <span class="keyword">static_assert</span>(((<span class="charliteral">&#39;0&#39;</span> &lt;= Digits &amp;&amp; Digits &lt;= <span class="charliteral">&#39;9&#39;</span>) &amp;&amp; ...),</div>
-<div class="line"><span class="lineno">  305</span>                <span class="stringliteral">&quot;Characters must only be digits.&quot;</span>);</div>
-<div class="line"><span class="lineno">  306</span> </div>
-<div class="line"><span class="lineno">  307</span>  std::size_t number{0};</div>
-<div class="line"><span class="lineno">  308</span>  ((number = number * 10 + (Digits - <span class="charliteral">&#39;0&#39;</span>)), ...);</div>
-<div class="line"><span class="lineno">  309</span> </div>
-<div class="line"><span class="lineno">  310</span>  <span class="keywordflow">return</span> number;</div>
-<div class="line"><span class="lineno">  311</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00343">343</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  343</span>                                                             {</div>
+<div class="line"><span class="lineno">  344</span>  <span class="keyword">static_assert</span>(((<span class="charliteral">&#39;0&#39;</span> &lt;= Digits &amp;&amp; Digits &lt;= <span class="charliteral">&#39;9&#39;</span>) &amp;&amp; ...),</div>
+<div class="line"><span class="lineno">  345</span>                <span class="stringliteral">&quot;Characters must only be digits.&quot;</span>);</div>
+<div class="line"><span class="lineno">  346</span> </div>
+<div class="line"><span class="lineno">  347</span>  std::size_t number{0};</div>
+<div class="line"><span class="lineno">  348</span>  ((number = number * 10 + (Digits - <span class="charliteral">&#39;0&#39;</span>)), ...);</div>
+<div class="line"><span class="lineno">  349</span> </div>
+<div class="line"><span class="lineno">  350</span>  <span class="keywordflow">return</span> number;</div>
+<div class="line"><span class="lineno">  351</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a6e0edee168ae01bae2ffa0ffdb374022" name="a6e0edee168ae01bae2ffa0ffdb374022"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e0edee168ae01bae2ffa0ffdb374022">&#9670;&#160;</a></span>always_false</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fcarouge::typed_linear_algebra_internal::always_false {false}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Trait depending on <code>Type</code>, always false. </p>
+<p>Defers a <code>static_assert</code> failure to the point where the dependent type is actually instantiated, instead of failing as soon as the enclosing template is parsed. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00235">235</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  235</span>{<span class="keyword">false</span>};</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="aded6eca464a23970fc0a04a24a164209" name="aded6eca464a23970fc0a04a24a164209"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aded6eca464a23970fc0a04a24a164209">&#9670;&#160;</a></span>rank</h2>
 
@@ -469,16 +535,16 @@ template&lt;std::size_t Rows, std::size_t Columns&gt; </div>
 <div class="line">  }</div>
 <div class="line">}()}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00229">229</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  229</span>                        {[] {</div>
-<div class="line"><span class="lineno">  230</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows &gt; 1 &amp;&amp; Columns &gt; 1) {</div>
-<div class="line"><span class="lineno">  231</span>    <span class="keywordflow">return</span> 2;</div>
-<div class="line"><span class="lineno">  232</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows == 1 &amp;&amp; Columns == 1) {</div>
-<div class="line"><span class="lineno">  233</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  234</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  235</span>    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  236</span>  }</div>
-<div class="line"><span class="lineno">  237</span>}()};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00206">206</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  206</span>                        {[] {</div>
+<div class="line"><span class="lineno">  207</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows &gt; 1 &amp;&amp; Columns &gt; 1) {</div>
+<div class="line"><span class="lineno">  208</span>    <span class="keywordflow">return</span> 2;</div>
+<div class="line"><span class="lineno">  209</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows == 1 &amp;&amp; Columns == 1) {</div>
+<div class="line"><span class="lineno">  210</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  211</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  212</span>    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  213</span>  }</div>
+<div class="line"><span class="lineno">  214</span>}()};</div>
 </div><!-- fragment -->
 </div>
 </div>

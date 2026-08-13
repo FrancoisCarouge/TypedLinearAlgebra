@@ -8,6 +8,8 @@ var searchData=
   ['mp_5funits_5fstd_2ecpp_5',['mp_units_std.cpp',['../mp__units__std_8cpp.xhtml',1,'']]],
   ['mx1_2ecpp_6',['mx1.cpp',['../at_2mx1_8cpp.xhtml',1,'(Global Namespace)'],['../element_2mx1_8cpp.xhtml',1,'(Global Namespace)'],['../format_2mx1_8cpp.xhtml',1,'(Global Namespace)'],['../structured__bindings_2mx1_8cpp.xhtml',1,'(Global Namespace)']]],
   ['mx1_5fconst_2ecpp_7',['mx1_const.cpp',['../at_2mx1__const_8cpp.xhtml',1,'(Global Namespace)'],['../structured__bindings_2mx1__const_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['mxn_2ecpp_8',['mxn.cpp',['../at_2mxn_8cpp.xhtml',1,'(Global Namespace)'],['../element_2mxn_8cpp.xhtml',1,'(Global Namespace)'],['../format_2mxn_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['mxn_5fconst_2ecpp_9',['mxn_const.cpp',['../mxn__const_8cpp.xhtml',1,'']]]
+  ['mx1_5ffail_2ecpp_8',['mx1_fail.cpp',['../mx1__fail_8cpp.xhtml',1,'']]],
+  ['mxn_2ecpp_9',['mxn.cpp',['../at_2mxn_8cpp.xhtml',1,'(Global Namespace)'],['../element_2mxn_8cpp.xhtml',1,'(Global Namespace)'],['../format_2mxn_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['mxn_5fconst_2ecpp_10',['mxn_const.cpp',['../mxn__const_8cpp.xhtml',1,'']]],
+  ['mxn_5ffail_2ecpp_11',['mxn_fail.cpp',['../mxn__fail_8cpp.xhtml',1,'']]]
 ];
