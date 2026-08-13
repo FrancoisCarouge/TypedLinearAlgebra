@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,26 +27,29 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-if(NOT BUILD_TESTING)
-  return()
-endif()
+#include "fcarouge/linalg.hpp"
 
-add_subdirectory("addition")
-add_subdirectory("assign")
-add_subdirectory("at")
-add_subdirectory("constructor")
-add_subdirectory("division")
-add_subdirectory("element")
-add_subdirectory("format")
-add_subdirectory("minus")
-add_subdirectory("multiplication")
-add_subdirectory("operator")
-add_subdirectory("structured_bindings")
-add_subdirectory("substraction")
-add_subdirectory("transposed")
+#include <cassert>
 
-pass("copy" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("nested" BACKENDS "nested_typed_eigen")
-pass("underlying" BACKENDS "eigexed" "nested_typed_eigen")
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the minus unary operator on a column vector.
+[[maybe_unused]] const auto test{[] {
+  const column_vector<double, 3> a{1., -2., 3.};
+  const column_vector<double, 3> b{-a};
+
+  assert(b.at<0>() == -1.);
+  assert(b.at<1>() == 2.);
+  assert(b.at<2>() == -3.);
+
+  // The operand is not mutated.
+  assert(a.at<0>() == 1.);
+  assert(a.at<1>() == -2.);
+  assert(a.at<2>() == 3.);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

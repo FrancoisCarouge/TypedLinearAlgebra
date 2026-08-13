@@ -129,7 +129,7 @@ The following useful operations are supported. This library attempts to align it
 
 | Operation | Definition |
 | --- | --- |
-| `-` | Substraction where the terms are of identical shapes and substractable types. |
+| `-` | Substraction where the terms are of identical shapes and substractable types. Unary negation of a row, column, or regular matrix. |
 | `*` | Multiplication where the factors are of multipliable shapes and multipliable types. |
 | `/` | Solution, if there exists one, to the inverse multiplication, where the factor are of compatible shapes and types. |
 | `+` | Addition where the terms are of identical shapes and addable types. |

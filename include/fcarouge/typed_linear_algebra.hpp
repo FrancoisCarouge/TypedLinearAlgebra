@@ -456,6 +456,9 @@ template <typename To, typename From> struct element_caster {
 [[nodiscard]] constexpr auto operator-(const other auto &lhs,
                                        const rank_typed_matrix<0> auto &rhs);
 
+[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<2> auto &value);
+[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<1> auto &value);
+
 [[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
                                        const same_as_typed_matrix auto &rhs);
 [[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
@@ -546,6 +549,7 @@ template <char... Digits> constexpr auto operator""_i() noexcept {
 #include "typed_linear_algebra_internal/algorithm/divide.tpp"
 #include "typed_linear_algebra_internal/algorithm/equal_to.tpp"
 #include "typed_linear_algebra_internal/algorithm/matrix_product.tpp"
+#include "typed_linear_algebra_internal/algorithm/minus.tpp"
 #include "typed_linear_algebra_internal/algorithm/product.tpp"
 #include "typed_linear_algebra_internal/algorithm/scale.tpp"
 #include "typed_linear_algebra_internal/algorithm/substract.tpp"
