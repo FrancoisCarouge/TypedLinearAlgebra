@@ -283,7 +283,7 @@ Literals</h2>
 <p>A user-defined literal <code>_i</code> operator in the <code><a class="el" href="namespacefcarouge_1_1literals.xhtml">fcarouge::literals</a></code> namespace that converts a decimal integer literal into a compile-time index type permitting the use of traditional accessor operator with strong types.</p>
 <div class="fragment"><div class="line"><span class="keyword">using </span>literals::operator<span class="stringliteral">&quot;&quot;</span>_i;</div>
 <div class="line">std::println(<span class="stringliteral">&quot;{}&quot;</span>, m[1_i, 2_i]); <span class="comment">// Same as: m.at&lt;1, 2&gt;()</span></div>
-</div><!-- fragment --><h2><a class="anchor" id="concepts-1"></a>
+</div><!-- fragment --><h2><a class="anchor" id="concepts"></a>
 Concepts</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -305,7 +305,7 @@ Concepts</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>uniform_typed_matrix</code>   </td><td class="markdownTableBodyNone">Concept of a typed matrix in which all element types are the same.   </td></tr>
 </table>
-<h2><a class="anchor" id="structure-element-caster-1"></a>
+<h2><a class="anchor" id="structure-element-caster"></a>
 Structure Element Caster</h2>
 <p>Typed matrix element conversions customization point. Specialize this template to allow conversion to and from the element's type and underlying type.</p>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> To, <span class="keyword">typename</span> From&gt;</div>
