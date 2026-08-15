@@ -29,42 +29,50 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
+#include "fcarouge/linalg.hpp"
 
-#ifdef __cpp_lib_linalg
+#include <cassert>
+#include <cstddef>
+#include <mdspan>
+#include <tuple>
 
-#include <linalg>
+namespace fcarouge::test {
+using representation = double;
 
-#endif
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
 
-namespace fcarouge {
-[[nodiscard]] constexpr auto
-transposed(const same_as_typed_matrix auto &value) {
-  using matrix = std::remove_cvref_t<decltype(value)>;
-  using row_indexes = typename matrix::row_indexes;
-  using column_indexes = typename matrix::column_indexes;
-  using transposed_row_indexes = column_indexes;
-  using transposed_column_indexes = row_indexes;
+namespace {
+//! @test Verifies the column by row outer product matrix product algorithm.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = quantity<mp_units::isq::length[m]>;
 
-  //! @todo Add other common transpose interfaces.
-  //! @todo Add transpose customization point object.
-  //! @todo Support nested typed matrices.
-  if constexpr (requires { value.data().transpose(); }) {
-    return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
-        value.data().transpose());
-  }
+  double storage_a[]{0., 0.};
+  double storage_b[]{0., 0.};
+  double storage_r[4]{};
 
-#ifdef __cpp_lib_linalg
+  std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 2, 1>{}};
+  std::mdspan span_b{&storage_b[0], std::extents<std::size_t, 1, 2>{}};
+  std::mdspan span_r{&storage_r[0], std::extents<std::size_t, 2, 2>{}};
 
-  else {
-    using std::linalg::transposed;
-    return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
-        transposed(value.data()));
-  }
+  column_vector<representation, length, length> a{span_a};
+  row_vector<representation, length, length> b{span_b};
+  matrix<representation, std::tuple<length, length>, std::tuple<length, length>>
+      r{span_r};
 
-#endif
-}
-} // namespace fcarouge
+  a.at<0>(1. * m);
+  a.at<1>(2. * m);
+  b.at<0>(3. * m);
+  b.at<1>(4. * m);
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
+  matrix_product(a, b, r);
+
+  assert((r.at<0, 0>() == 3. * m2));
+  assert((r.at<0, 1>() == 4. * m2));
+  assert((r.at<1, 0>() == 6. * m2));
+  assert((r.at<1, 1>() == 8. * m2));
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
