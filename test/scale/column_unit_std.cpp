@@ -29,42 +29,40 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
+#include "fcarouge/linalg.hpp"
 
-#ifdef __cpp_lib_linalg
+#include <cassert>
+#include <cstddef>
+#include <mdspan>
 
-#include <linalg>
+namespace fcarouge::test {
+using representation = double;
 
-#endif
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
 
-namespace fcarouge {
-[[nodiscard]] constexpr auto
-transposed(const same_as_typed_matrix auto &value) {
-  using matrix = std::remove_cvref_t<decltype(value)>;
-  using row_indexes = typename matrix::row_indexes;
-  using column_indexes = typename matrix::column_indexes;
-  using transposed_row_indexes = column_indexes;
-  using transposed_column_indexes = row_indexes;
+namespace {
+//! @test Verifies the scale algorithm for a column vector shape with
+//! non-trivial, heterogeneous types.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = quantity<mp_units::isq::length[m]>;
+  using area = quantity<mp_units::isq::area[m2]>;
 
-  //! @todo Add other common transpose interfaces.
-  //! @todo Add transpose customization point object.
-  //! @todo Support nested typed matrices.
-  if constexpr (requires { value.data().transpose(); }) {
-    return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
-        value.data().transpose());
-  }
+  double storage[]{0., 0.};
 
-#ifdef __cpp_lib_linalg
+  std::mdspan span{&storage[0], std::extents<std::size_t, 2, 1>{}};
 
-  else {
-    using std::linalg::transposed;
-    return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
-        transposed(value.data()));
-  }
+  column_vector<representation, length, area> x{span};
 
-#endif
-}
-} // namespace fcarouge
+  x.at<0>(1. * m);
+  x.at<1>(2. * m2);
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
+  scale(3., x);
+
+  assert(3. * m == x.at<0>());
+  assert(6. * m2 == x.at<1>());
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

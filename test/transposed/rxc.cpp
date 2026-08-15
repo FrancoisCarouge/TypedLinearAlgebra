@@ -29,42 +29,26 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
+#include "fcarouge/linalg.hpp"
 
-#ifdef __cpp_lib_linalg
+#include <cassert>
 
-#include <linalg>
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the transposed algorithm for a rectangular, built-in typed
+//! matrix shape.
+[[maybe_unused]] const auto test{[] -> int {
+  const matrix<double, 2, 3> a{{1., 2., 3.}, {4., 5., 6.}};
+  const matrix<double, 3, 2> aᵀ{transposed(a)};
 
-#endif
+  assert((aᵀ.at<0, 0>() == 1.));
+  assert((aᵀ.at<1, 0>() == 2.));
+  assert((aᵀ.at<2, 0>() == 3.));
+  assert((aᵀ.at<0, 1>() == 4.));
+  assert((aᵀ.at<1, 1>() == 5.));
+  assert((aᵀ.at<2, 1>() == 6.));
 
-namespace fcarouge {
-[[nodiscard]] constexpr auto
-transposed(const same_as_typed_matrix auto &value) {
-  using matrix = std::remove_cvref_t<decltype(value)>;
-  using row_indexes = typename matrix::row_indexes;
-  using column_indexes = typename matrix::column_indexes;
-  using transposed_row_indexes = column_indexes;
-  using transposed_column_indexes = row_indexes;
-
-  //! @todo Add other common transpose interfaces.
-  //! @todo Add transpose customization point object.
-  //! @todo Support nested typed matrices.
-  if constexpr (requires { value.data().transpose(); }) {
-    return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
-        value.data().transpose());
-  }
-
-#ifdef __cpp_lib_linalg
-
-  else {
-    using std::linalg::transposed;
-    return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
-        transposed(value.data()));
-  }
-
-#endif
-}
-} // namespace fcarouge
-
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

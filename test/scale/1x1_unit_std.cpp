@@ -29,42 +29,37 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
+#include "fcarouge/linalg.hpp"
 
-#ifdef __cpp_lib_linalg
+#include <cassert>
+#include <cstddef>
 
-#include <linalg>
+namespace fcarouge::test {
+using representation = double;
 
-#endif
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
 
-namespace fcarouge {
-[[nodiscard]] constexpr auto
-transposed(const same_as_typed_matrix auto &value) {
-  using matrix = std::remove_cvref_t<decltype(value)>;
-  using row_indexes = typename matrix::row_indexes;
-  using column_indexes = typename matrix::column_indexes;
-  using transposed_row_indexes = column_indexes;
-  using transposed_column_indexes = row_indexes;
+namespace {
+//! @test Verifies the singleton scale algorithm.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = quantity<mp_units::isq::length[m]>;
 
-  //! @todo Add other common transpose interfaces.
-  //! @todo Add transpose customization point object.
-  //! @todo Support nested typed matrices.
-  if constexpr (requires { value.data().transpose(); }) {
-    return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
-        value.data().transpose());
-  }
+  double storage{0.};
 
-#ifdef __cpp_lib_linalg
+  std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
 
-  else {
-    using std::linalg::transposed;
-    return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
-        transposed(value.data()));
-  }
+  row_vector<representation, length> x{span};
 
-#endif
-}
-} // namespace fcarouge
+  x = 4. * m;
+  scale(2., x);
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
+  assert(8. * m == x.at());
+  assert(8. * m == x[]);
+  assert(8. * m == x());
+  assert(8. * m == x);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

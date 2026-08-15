@@ -499,6 +499,12 @@ constexpr void add(const rank_typed_matrix<0> auto &lhs,
                    const rank_typed_matrix<0> auto &rhs,
                    same_as_typed_matrix auto &result);
 
+constexpr void matrix_product(const same_as_typed_matrix auto &lhs,
+                              const same_as_typed_matrix auto &rhs,
+                              same_as_typed_matrix auto &result);
+
+constexpr void scale(const auto &α, same_as_typed_matrix auto &x);
+
 #endif
 
 //! @}

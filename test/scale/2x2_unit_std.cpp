@@ -29,42 +29,44 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
+#include "fcarouge/linalg.hpp"
 
-#ifdef __cpp_lib_linalg
+#include <cassert>
+#include <cstddef>
+#include <mdspan>
+#include <tuple>
 
-#include <linalg>
+namespace fcarouge::test {
+using representation = double;
 
-#endif
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
 
-namespace fcarouge {
-[[nodiscard]] constexpr auto
-transposed(const same_as_typed_matrix auto &value) {
-  using matrix = std::remove_cvref_t<decltype(value)>;
-  using row_indexes = typename matrix::row_indexes;
-  using column_indexes = typename matrix::column_indexes;
-  using transposed_row_indexes = column_indexes;
-  using transposed_column_indexes = row_indexes;
+namespace {
+//! @test Verifies the scale algorithm for a two-by-two matrix shape.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = quantity<mp_units::isq::length[m]>;
+  using indexes = std::tuple<length, length>;
 
-  //! @todo Add other common transpose interfaces.
-  //! @todo Add transpose customization point object.
-  //! @todo Support nested typed matrices.
-  if constexpr (requires { value.data().transpose(); }) {
-    return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
-        value.data().transpose());
-  }
+  double storage[4]{};
 
-#ifdef __cpp_lib_linalg
+  std::mdspan span{&storage[0], std::extents<std::size_t, 2, 2>{}};
 
-  else {
-    using std::linalg::transposed;
-    return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
-        transposed(value.data()));
-  }
+  matrix<representation, indexes, indexes> x{span};
 
-#endif
-}
-} // namespace fcarouge
+  x.at<0, 0>(1. * m2);
+  x.at<0, 1>(2. * m2);
+  x.at<1, 0>(3. * m2);
+  x.at<1, 1>(4. * m2);
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
+  scale(2., x);
+
+  assert((x.at<0, 0>() == 2. * m2));
+  assert((x.at<0, 1>() == 4. * m2));
+  assert((x.at<1, 0>() == 6. * m2));
+  assert((x.at<1, 1>() == 8. * m2));
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

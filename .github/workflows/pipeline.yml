@@ -18,7 +18,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - { os: 'ubuntu-26.04', cxx: 'clang++-19', cc: 'clang-19', generator: 'Ninja', cpack_generator: 'DEB' }
         - { os: 'ubuntu-26.04', cxx: 'clang++-20', cc: 'clang-20', generator: 'Ninja', cpack_generator: 'DEB' }
         - { os: 'ubuntu-26.04', cxx: 'clang++-21', cc: 'clang-21', generator: 'Ninja', cpack_generator: 'DEB' }
         - { os: 'ubuntu-26.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', cpack_generator: 'DEB' }
@@ -38,9 +37,6 @@ jobs:
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: 'Install: Latest CMake'
       uses: ssrobins/install-cmake@da13ba26f50a41d3b03cfe8ca7265903f04a8932 # v1.0.0
-    - name: 'Install: Clang 19'
-      if: ${{ matrix.cxx == 'clang++-19' }}
-      run: sudo apt update && sudo apt install -y clang-19 clang-tools-19
     - name: 'Install: libc++'
       if: ${{ startsWith(matrix.cxx, 'clang++') }}
       run: |

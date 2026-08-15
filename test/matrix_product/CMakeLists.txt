@@ -30,6 +30,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 pass("1x1_unit_std" BACKENDS "unit_std")
-pass("1xn_unit_std" BACKENDS "unit_std")
-pass("2x3_unit_eigen" BACKENDS "unit_eigen")
-pass("rxc" BACKENDS "eigexed")
+pass("2x2_unit_std" BACKENDS "unit_std")
+pass("cxr_unit_std" BACKENDS "unit_std")
+pass("rxc_unit_std" BACKENDS "unit_std")
