@@ -38,8 +38,7 @@ namespace fcarouge {
 [[nodiscard]] constexpr auto magnitude(const uniform_typed_matrix auto &value) {
   static_assert(
       rank_typed_matrix<decltype(value), 1>,
-      "The magnitude operation only supports vector types at this time. "
-      "Improve me.");
+      "The magnitude operation only supports vector types at this time.");
 
   using matrix = std::remove_cvref_t<decltype(value)>;
   using element = typename matrix::template element<0>;
