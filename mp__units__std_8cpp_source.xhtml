@@ -171,7 +171,7 @@ $(function(){initNavTree('mp__units__std_8cpp_source.xhtml',''); initResizable(t
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Extents&gt;</div>
 <div class="foldopen" id="foldopen00076" data-start="{" data-end="};">
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#abadda8a5417037ae0b6596f861948290">   76</a></span><span class="keyword">constexpr</span> std::size_t <a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#abadda8a5417037ae0b6596f861948290">extents_size</a>{[] {</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#abadda8a5417037ae0b6596f861948290">   76</a></span><span class="keyword">constexpr</span> std::size_t <a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#abadda8a5417037ae0b6596f861948290">extents_size</a>{[] -&gt; <span class="keyword">auto</span> {</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  std::size_t size{1};</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  Extents extents{};</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  <span class="keywordflow">for</span> (std::size_t i{0}; i &lt; Extents::rank(); ++i) {</div>
@@ -182,7 +182,7 @@ $(function(){initNavTree('mp__units__std_8cpp_source.xhtml',''); initResizable(t
 </div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
 <div class="foldopen" id="foldopen00089" data-start="{" data-end="};">
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#a616147988d0965e7c76da2e488a5e771">   89</a></span>[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> sample{[] {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#a616147988d0965e7c76da2e488a5e771">   89</a></span>[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> sample{[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  <span class="comment">// Set up a heterogenous column vector type for the sample.</span></div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  <span class="keyword">using </span>state = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#a3e5057dcafa85555c20bb1c1d598a675">column_vector&lt;position, velocity, acceleration&gt;</a>;</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>

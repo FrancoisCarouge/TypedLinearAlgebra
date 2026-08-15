@@ -268,7 +268,7 @@ template&lt;typename Extents &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
+<b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keyword">auto</span> {</div>
 <div class="line">  std::size_t size{1};</div>
 <div class="line">  Extents extents{};</div>
 <div class="line">  <span class="keywordflow">for</span> (std::size_t i{0}; i &lt; Extents::rank(); ++i) {</div>
@@ -278,7 +278,7 @@ template&lt;typename Extents &gt; </div>
 <div class="line">}()}</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="mp__units__std_8cpp_source.xhtml#l00076">76</a> of file <a class="el" href="mp__units__std_8cpp_source.xhtml">mp_units_std.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   76</span>                                {[] {</div>
+<div class="fragment"><div class="line"><span class="lineno">   76</span>                                {[] -&gt; <span class="keyword">auto</span> {</div>
 <div class="line"><span class="lineno">   77</span>  std::size_t size{1};</div>
 <div class="line"><span class="lineno">   78</span>  Extents extents{};</div>
 <div class="line"><span class="lineno">   79</span>  <span class="keywordflow">for</span> (std::size_t i{0}; i &lt; Extents::rank(); ++i) {</div>
@@ -305,7 +305,7 @@ template&lt;typename Extents &gt; </div>
 <p>A variety of activities of strongly typed linear algebra with std::mdspan, std::linalg, and mp-units. </p>
 
 <p class="definition">Definition at line <a class="el" href="mp__units__std_8cpp_source.xhtml#l00089">89</a> of file <a class="el" href="mp__units__std_8cpp_source.xhtml">mp_units_std.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   89</span>                                  {[] {</div>
+<div class="fragment"><div class="line"><span class="lineno">   89</span>                                  {[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line"><span class="lineno">   90</span>  <span class="comment">// Set up a heterogenous column vector type for the sample.</span></div>
 <div class="line"><span class="lineno">   91</span>  <span class="keyword">using </span>state = <a class="code hl_typedef" href="#a3e5057dcafa85555c20bb1c1d598a675">column_vector&lt;position, velocity, acceleration&gt;</a>;</div>
 <div class="line"><span class="lineno">   92</span> </div>
