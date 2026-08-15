@@ -124,39 +124,33 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
-<div class="line">  <span class="keyword">const</span> column_vector&lt;double, 3&gt; a{1., -2., 3.};</div>
-<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector&lt;double, 3&gt;</a> b{-a};</div>
+<div class="line">  <span class="keyword">const</span> matrix&lt;double, 2, 1&gt; v2{{-3.}, {4.}};</div>
 <div class="line"> </div>
-<div class="line">  assert(b.at&lt;0&gt;() == -1.);</div>
-<div class="line">  assert(b.at&lt;1&gt;() == 2.);</div>
-<div class="line">  assert(b.at&lt;2&gt;() == -3.);</div>
+<div class="line">  assert(<a class="code hl_function" href="namespacefcarouge.xhtml#a3b31459df9951d183e7e7f065a28bc32">magnitude</a>(v2) == 5.);</div>
 <div class="line"> </div>
-<div class="line">  </div>
-<div class="line">  assert(a.at&lt;0&gt;() == 1.);</div>
-<div class="line">  assert(a.at&lt;1&gt;() == -2.);</div>
-<div class="line">  assert(a.at&lt;2&gt;() == 3.);</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;double, 3, 1&gt;</a> zero{{0.}, {0.}, {0.}};</div>
+<div class="line"> </div>
+<div class="line">  assert(<a class="code hl_function" href="namespacefcarouge.xhtml#a3b31459df9951d183e7e7f065a28bc32">magnitude</a>(zero) == 0.);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a3aae575a4aa6b608a99d02f58b0fc86c"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00090">eigen.hpp:90</a></div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000043">Test</a></b></dt><dd>Verifies the minus unary operator on a column vector. </dd></dl>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a01e78c3f356b744543b2f25797bcfa84"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix</a></div><div class="ttdeci">Eigen::Matrix&lt; Type, Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Eigen3 matrix.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00082">eigen.hpp:82</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a3b31459df9951d183e7e7f065a28bc32"><div class="ttname"><a href="namespacefcarouge.xhtml#a3b31459df9951d183e7e7f065a28bc32">fcarouge::magnitude</a></div><div class="ttdeci">constexpr auto magnitude(const uniform_typed_matrix auto &amp;value)</div></div>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000044">Test</a></b></dt><dd>Verifies the magnitude of a column vector, the Euclidean L2 norm. Also verifies negative components square away to a positive magnitude, and that the zero vector has a zero magnitude. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000048">Test</a></b></dt><dd>Verifies the minus unary operator on a column vector. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="mx1__eigen_8cpp_source.xhtml#l00039">39</a> of file <a class="el" href="mx1__eigen_8cpp_source.xhtml">mx1_eigen.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   39</span>                                {[] {</div>
-<div class="line"><span class="lineno">   40</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector&lt;double, 3&gt;</a> a{1., -2., 3.};</div>
-<div class="line"><span class="lineno">   41</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector&lt;double, 3&gt;</a> b{-a};</div>
-<div class="line"><span class="lineno">   42</span> </div>
-<div class="line"><span class="lineno">   43</span>  assert(b.at&lt;0&gt;() == -1.);</div>
-<div class="line"><span class="lineno">   44</span>  assert(b.at&lt;1&gt;() == 2.);</div>
-<div class="line"><span class="lineno">   45</span>  assert(b.at&lt;2&gt;() == -3.);</div>
-<div class="line"><span class="lineno">   46</span> </div>
-<div class="line"><span class="lineno">   47</span>  <span class="comment">// The operand is not mutated.</span></div>
-<div class="line"><span class="lineno">   48</span>  assert(a.at&lt;0&gt;() == 1.);</div>
-<div class="line"><span class="lineno">   49</span>  assert(a.at&lt;1&gt;() == -2.);</div>
-<div class="line"><span class="lineno">   50</span>  assert(a.at&lt;2&gt;() == 3.);</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   53</span>}()};</div>
+<p class="definition">Definition at line <a class="el" href="magnitude_2mx1__eigen_8cpp_source.xhtml#l00041">41</a> of file <a class="el" href="magnitude_2mx1__eigen_8cpp_source.xhtml">mx1_eigen.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   41</span>                                {[] {</div>
+<div class="line"><span class="lineno">   42</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;double, 2, 1&gt;</a> v2{{-3.}, {4.}};</div>
+<div class="line"><span class="lineno">   43</span> </div>
+<div class="line"><span class="lineno">   44</span>  assert(magnitude(v2) == 5.);</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>  <span class="keyword">const</span> matrix&lt;double, 3, 1&gt; zero{{0.}, {0.}, {0.}};</div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>  assert(<a class="code hl_function" href="namespacefcarouge.xhtml#a3b31459df9951d183e7e7f065a28bc32">magnitude</a>(zero) == 0.);</div>
+<div class="line"><span class="lineno">   49</span> </div>
+<div class="line"><span class="lineno">   50</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   51</span>}()};</div>
 </div><!-- fragment -->
 </div>
 </div>

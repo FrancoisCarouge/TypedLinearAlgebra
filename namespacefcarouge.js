@@ -47,6 +47,7 @@ var namespacefcarouge =
     [ "velocity", "namespacefcarouge.xhtml#ac2dd0eba1b86197287e408d5d4c3e641", null ],
     [ "get", "namespacefcarouge.xhtml#a65be5bef859f07af49df2fffa115a533", null ],
     [ "get", "namespacefcarouge.xhtml#ae11184b4aaa71be8dbdb11c41c73c703", null ],
+    [ "magnitude", "namespacefcarouge.xhtml#a3b31459df9951d183e7e7f065a28bc32", null ],
     [ "make_typed_matrix", "namespacefcarouge.xhtml#a4073b31d56e98e110bf4a993ed190c80", null ],
     [ "operator*", "namespacefcarouge.xhtml#a100b431697408a4a9d851e4ffab901e1", null ],
     [ "operator*", "namespacefcarouge.xhtml#a6f98d198d18c9c551d21f2eb602cdfd2", null ],
