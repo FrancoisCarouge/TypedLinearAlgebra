@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -40,15 +41,16 @@ namespace {
 //!
 //! @details The count of indexes must match the rank of the matrix: one
 //! index for a column vector.
-[[maybe_unused]] const auto test{[] -> int {
-  using matrix =
-      matrix<double, std::tuple<decltype(1. * m), decltype(1. * m / s)>,
-             std::tuple<decltype(1. * N)>>;
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      using matrix =
+          matrix<double, std::tuple<decltype(1. * m), decltype(1. * m / s)>,
+                 std::tuple<decltype(1. * N)>>;
 
-  static_assert(std::same_as<matrix::element<0>, decltype(1. * m * N)>);
-  static_assert(std::same_as<matrix::element<1>, decltype(1. * m * N / s)>);
+      static_assert(std::same_as<matrix::element<0>, decltype(1. * m * N)>);
+      static_assert(std::same_as<matrix::element<1>, decltype(1. * m * N / s)>);
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

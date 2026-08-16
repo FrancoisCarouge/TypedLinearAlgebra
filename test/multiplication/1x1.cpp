@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -38,17 +39,18 @@ using literals::operator""_i;
 
 namespace {
 //! @test Verifies the singleton by singleton matrix multiplication operator.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 1, 1> a{2.};
-  const matrix<double, 1, 1> b{3.};
-  const matrix<double, 1, 1> r{a * b};
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      const matrix<double, 1, 1> a{2.};
+      const matrix<double, 1, 1> b{3.};
+      const matrix<double, 1, 1> r{a * b};
 
-  assert(6. == r.at());
-  assert(6. == r[]);
-  assert(6. == r());
-  assert(6. == r);
+      assert(6. == r.at());
+      assert(6. == r[]);
+      assert(6. == r());
+      assert(6. == r);
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

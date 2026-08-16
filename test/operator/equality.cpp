@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -36,27 +37,28 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the equality operator.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 5, 5> m{{0., 0., 0., 0., 0.},
-                               {0., 0., 0., 0., 0.},
-                               {0., 0., 0., 0., 0.},
-                               {0., 0., 0., 0., 0.},
-                               {0., 0., 0., 0., 0.}};
-  const matrix<double, 5, 5> i{{1., 0., 0., 0., 0.},
-                               {0., 1., 0., 0., 0.},
-                               {0., 0., 1., 0., 0.},
-                               {0., 0., 0., 1., 0.},
-                               {0., 0., 0., 0., 1.}};
-  const matrix<double, 5, 5> z{{0., 0., 0., 0., 0.},
-                               {0., 0., 0., 0., 0.},
-                               {0., 0., 0., 0., 0.},
-                               {0., 0., 0., 0., 0.},
-                               {0., 0., 0., 0., 0.}};
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      const matrix<double, 5, 5> m{{0., 0., 0., 0., 0.},
+                                   {0., 0., 0., 0., 0.},
+                                   {0., 0., 0., 0., 0.},
+                                   {0., 0., 0., 0., 0.},
+                                   {0., 0., 0., 0., 0.}};
+      const matrix<double, 5, 5> i{{1., 0., 0., 0., 0.},
+                                   {0., 1., 0., 0., 0.},
+                                   {0., 0., 1., 0., 0.},
+                                   {0., 0., 0., 1., 0.},
+                                   {0., 0., 0., 0., 1.}};
+      const matrix<double, 5, 5> z{{0., 0., 0., 0., 0.},
+                                   {0., 0., 0., 0., 0.},
+                                   {0., 0., 0., 0., 0.},
+                                   {0., 0., 0., 0., 0.},
+                                   {0., 0., 0., 0., 0.}};
 
-  assert(m == z);
-  assert(m != i);
+      assert(m == z);
+      assert(m != i);
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

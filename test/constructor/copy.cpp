@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -44,18 +45,19 @@ using matrix =
                  RowIndexes, ColumnIndexes>;
 
 //! @test Verifies the compatible conversion copy constructor.
-[[maybe_unused]] const auto test{[] -> int {
-  using matrix_df =
-      matrix<std::tuple<double, double>, std::tuple<float, float>>;
-  using matrix_fd =
-      matrix<std::tuple<float, float>, std::tuple<double, double>>;
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      using matrix_df =
+          matrix<std::tuple<double, double>, std::tuple<float, float>>;
+      using matrix_fd =
+          matrix<std::tuple<float, float>, std::tuple<double, double>>;
 
-  const matrix_df m{{1., 0.}, {0., 1.}};
-  const matrix_fd c{m};
+      const matrix_df m{{1., 0.}, {0., 1.}};
+      const matrix_fd c{m};
 
-  assert((c == matrix_df{{1., 0.}, {0., 1.}}));
+      assert((c == matrix_df{{1., 0.}, {0., 1.}}));
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

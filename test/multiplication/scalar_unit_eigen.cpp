@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -42,23 +43,24 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 
 namespace {
 //! @test Verifies the scalar multiplication operator.
-[[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
-  using area = quantity<mp_units::isq::area[m2]>;
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      using length = quantity<mp_units::isq::length[m]>;
+      using area = quantity<mp_units::isq::area[m2]>;
 
-  const matrix<representation, std::tuple<length, length>,
-               std::tuple<length, length>>
-      a{{1. * m2, 2. * m2}, {3. * m2, 4. * m2}};
-  const matrix<representation, std::tuple<length, length>,
-               std::tuple<area, area>>
-      r{a * 2. * m};
+      const matrix<representation, std::tuple<length, length>,
+                   std::tuple<length, length>>
+          a{{1. * m2, 2. * m2}, {3. * m2, 4. * m2}};
+      const matrix<representation, std::tuple<length, length>,
+                   std::tuple<area, area>>
+          r{a * 2. * m};
 
-  assert(r(0_i, 0_i) == 2. * m3);
-  assert(r(0_i, 1_i) == 4. * m3);
-  assert(r(1_i, 0_i) == 6. * m3);
-  assert(r(1_i, 1_i) == 8. * m3);
+      assert(r(0_i, 0_i) == 2. * m3);
+      assert(r(0_i, 1_i) == 4. * m3);
+      assert(r(1_i, 0_i) == 6. * m3);
+      assert(r(1_i, 1_i) == 8. * m3);
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

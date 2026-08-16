@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -44,25 +45,26 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 namespace {
 //! @test Verifies the scale algorithm for a column vector shape with
 //! non-trivial, heterogeneous types.
-[[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
-  using area = quantity<mp_units::isq::area[m2]>;
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      using length = quantity<mp_units::isq::length[m]>;
+      using area = quantity<mp_units::isq::area[m2]>;
 
-  double storage[]{0., 0.};
+      double storage[]{0., 0.};
 
-  std::mdspan span{&storage[0], std::extents<std::size_t, 2, 1>{}};
+      std::mdspan span{&storage[0], std::extents<std::size_t, 2, 1>{}};
 
-  column_vector<representation, length, area> x{span};
+      column_vector<representation, length, area> x{span};
 
-  x.at<0>(1. * m);
-  x.at<1>(2. * m2);
+      x.at<0>(1. * m);
+      x.at<1>(2. * m2);
 
-  scale(3., x);
+      scale(3., x);
 
-  assert(3. * m == x.at<0>());
-  assert(6. * m2 == x.at<1>());
+      assert(3. * m == x.at<0>());
+      assert(6. * m2 == x.at<1>());
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

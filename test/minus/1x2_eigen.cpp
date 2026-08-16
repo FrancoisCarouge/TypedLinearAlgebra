@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -36,18 +37,19 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the minus unary operator.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 1, 2> a{3., 4.};
-  const matrix<double, 1, 2> b{-a};
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      const matrix<double, 1, 2> a{3., 4.};
+      const matrix<double, 1, 2> b{-a};
 
-  assert(b(0) == -3.);
-  assert(b(1) == -4.);
+      assert(b(0) == -3.);
+      assert(b(1) == -4.);
 
-  // The operand is not mutated.
-  assert(a(0) == 3.);
-  assert(a(1) == 4.);
+      // The operand is not mutated.
+      assert(a(0) == 3.);
+      assert(a(1) == 4.);
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

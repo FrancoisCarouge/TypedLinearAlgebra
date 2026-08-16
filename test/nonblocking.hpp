@@ -29,32 +29,29 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "../nonblocking.hpp"
-#include "fcarouge/linalg.hpp"
+#ifndef FCAROUGE_TEST_NONBLOCKING_HPP
+#define FCAROUGE_TEST_NONBLOCKING_HPP
 
-#include <cassert>
+//! @file
+//! @brief Real-time safety test instrumentation.
+//!
+//! @details Defines `FCAROUGE_TEST_NONBLOCKING`, a function-type attribute
+//! marking a test body as real-time safe. Under Clang's RealtimeSanitizer
+//! (`-fsanitize=realtime`), the attribute expands to `[[clang::nonblocking]]`
+//! so the sanitizer flags any call to a function with non-deterministic
+//! execution time (allocation, locking, I/O, etc.) made from within the
+//! test. Outside of that build configuration, including on non-Clang
+//! compilers, the macro expands to nothing: the attribute is never present
+//! in ordinary builds and never affects compilers that do not understand it.
 
-namespace fcarouge::test {
-namespace {
-//! @test Verifies the structured bindings.
-[[maybe_unused]] const auto test{
-    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
-      matrix<int, 3, 1> m{{1}, {4}, {7}};
-      auto &[a, b, c]{m};
+#if defined(__has_feature)
+#if __has_feature(realtime_sanitizer)
+#define FCAROUGE_TEST_NONBLOCKING [[clang::nonblocking]]
+#endif
+#endif
 
-      assert(a == 1);
-      assert(b == 4);
-      assert(c == 7);
+#ifndef FCAROUGE_TEST_NONBLOCKING
+#define FCAROUGE_TEST_NONBLOCKING
+#endif
 
-      a = 2;
-      b = 5;
-      c = 8;
-
-      assert(a == 2);
-      assert(b == 5);
-      assert(c == 8);
-
-      return 0;
-    }()};
-} // namespace
-} // namespace fcarouge::test
+#endif // FCAROUGE_TEST_NONBLOCKING_HPP

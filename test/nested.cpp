@@ -30,6 +30,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
+#include "nonblocking.hpp"
 
 #include <cassert>
 #include <type_traits>
@@ -37,7 +38,8 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the nested type of the matrix.
-[[maybe_unused]] const auto test{[] -> int {
+[[maybe_unused]] const auto test{[]() noexcept FCAROUGE_TEST_NONBLOCKING
+                                 -> int {
   matrix<double, 3, 3> z;
 
   static_assert(

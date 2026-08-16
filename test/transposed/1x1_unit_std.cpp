@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -39,7 +40,8 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the transposed algorithm.
-[[maybe_unused]] const auto test{[] -> int {
+[[maybe_unused]] const auto test{[]() noexcept FCAROUGE_TEST_NONBLOCKING
+                                 -> int {
   double storage{9.};
   std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
   matrix<double, std::tuple<decltype(1. * s)>, std::tuple<decltype(1. * s2)>> n{
