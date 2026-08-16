@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -38,16 +39,17 @@ namespace {
 //! @test Verifies the magnitude of a column vector, the Euclidean L2 norm.
 //! Also verifies negative components square away to a positive magnitude,
 //! and that the zero vector has a zero magnitude.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 2, 1> v2{{-3.}, {4.}};
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      const matrix<double, 2, 1> v2{{-3.}, {4.}};
 
-  assert(magnitude(v2) == 5.);
+      assert(magnitude(v2) == 5.);
 
-  const matrix<double, 3, 1> zero{{0.}, {0.}, {0.}};
+      const matrix<double, 3, 1> zero{{0.}, {0.}, {0.}};
 
-  assert(magnitude(zero) == 0.);
+      assert(magnitude(zero) == 0.);
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

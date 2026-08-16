@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -42,25 +43,26 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 
 namespace {
 //! @test Verifies the substraction operator with non-trivial types.
-[[maybe_unused]] const auto test{[] -> int {
-  using position = quantity<mp_units::isq::length[m]>;
-  using velocity = quantity<mp_units::isq::velocity[m / s]>;
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      using position = quantity<mp_units::isq::length[m]>;
+      using velocity = quantity<mp_units::isq::velocity[m / s]>;
 
-  row_vector<representation, position, velocity> a{1. * m, 2. * m / s};
-  row_vector<representation, position, velocity> b{3. * m, 1. * m / s};
-  row_vector<representation, position, velocity> r{a - b};
+      row_vector<representation, position, velocity> a{1. * m, 2. * m / s};
+      row_vector<representation, position, velocity> b{3. * m, 1. * m / s};
+      row_vector<representation, position, velocity> r{a - b};
 
-  assert((-2. * m == r.at<0_i>()));
-  assert((-2. * m == r.at<0>()));
-  assert((-2. * m == r(0_i)));
-  assert((-2. * m == r[0_i]));
+      assert((-2. * m == r.at<0_i>()));
+      assert((-2. * m == r.at<0>()));
+      assert((-2. * m == r(0_i)));
+      assert((-2. * m == r[0_i]));
 
-  assert((1. * m / s == r.at<1_i>()));
-  assert((1. * m / s == r.at<1>()));
-  assert((1. * m / s == r(1_i)));
-  assert((1. * m / s == r[1_i]));
+      assert((1. * m / s == r.at<1_i>()));
+      assert((1. * m / s == r.at<1>()));
+      assert((1. * m / s == r(1_i)));
+      assert((1. * m / s == r[1_i]));
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

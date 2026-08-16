@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -37,18 +38,19 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the transposed algorithm for a rectangular, built-in typed
 //! matrix shape.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 2, 3> a{{1., 2., 3.}, {4., 5., 6.}};
-  const matrix<double, 3, 2> aᵀ{transposed(a)};
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      const matrix<double, 2, 3> a{{1., 2., 3.}, {4., 5., 6.}};
+      const matrix<double, 3, 2> aᵀ{transposed(a)};
 
-  assert((aᵀ.at<0, 0>() == 1.));
-  assert((aᵀ.at<1, 0>() == 2.));
-  assert((aᵀ.at<2, 0>() == 3.));
-  assert((aᵀ.at<0, 1>() == 4.));
-  assert((aᵀ.at<1, 1>() == 5.));
-  assert((aᵀ.at<2, 1>() == 6.));
+      assert((aᵀ.at<0, 0>() == 1.));
+      assert((aᵀ.at<1, 0>() == 2.));
+      assert((aᵀ.at<2, 0>() == 3.));
+      assert((aᵀ.at<0, 1>() == 4.));
+      assert((aᵀ.at<1, 1>() == 5.));
+      assert((aᵀ.at<2, 1>() == 6.));
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

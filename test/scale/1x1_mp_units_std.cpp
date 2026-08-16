@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -43,24 +44,25 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 
 namespace {
 //! @test Verifies the singleton scale algorithm.
-[[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      using length = quantity<mp_units::isq::length[m]>;
 
-  double storage{0.};
+      double storage{0.};
 
-  std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
+      std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
 
-  row_vector<representation, length> x{span};
+      row_vector<representation, length> x{span};
 
-  x = 4. * m;
-  scale(2., x);
+      x = 4. * m;
+      scale(2., x);
 
-  assert(8. * m == x.at());
-  assert(8. * m == x[]);
-  assert(8. * m == x());
-  assert(8. * m == x);
+      assert(8. * m == x.at());
+      assert(8. * m == x[]);
+      assert(8. * m == x());
+      assert(8. * m == x);
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

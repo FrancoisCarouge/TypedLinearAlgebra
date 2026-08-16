@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -36,22 +37,23 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the call operator accessor.
-[[maybe_unused]] const auto test{[] -> int {
-  column_vector<double, 3> m{1., 2., 3.};
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      column_vector<double, 3> m{1., 2., 3.};
 
-  assert(m(0) == 1.);
-  assert(m(1) == 2.);
-  assert(m(2) == 3.);
+      assert(m(0) == 1.);
+      assert(m(1) == 2.);
+      assert(m(2) == 3.);
 
-  m(0) = 21.;
-  m(1) = 22.;
-  m(2) = 23.;
+      m(0) = 21.;
+      m(1) = 22.;
+      m(2) = 23.;
 
-  assert(m(0) == 21.);
-  assert(m(1) == 22.);
-  assert(m(2) == 23.);
+      assert(m(0) == 21.);
+      assert(m(1) == 22.);
+      assert(m(2) == 23.);
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

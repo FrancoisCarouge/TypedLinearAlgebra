@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -44,32 +45,33 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 
 namespace {
 //! @test Verifies the scale algorithm with non-trivial types.
-[[maybe_unused]] const auto test{[] -> int {
-  using position = quantity<mp_units::isq::length[m]>;
-  using velocity = quantity<mp_units::isq::velocity[m / s]>;
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      using position = quantity<mp_units::isq::length[m]>;
+      using velocity = quantity<mp_units::isq::velocity[m / s]>;
 
-  double storage[]{0., 0.};
+      double storage[]{0., 0.};
 
-  std::mdspan span{&storage[0], std::extents<std::size_t, 1, 2>{}};
+      std::mdspan span{&storage[0], std::extents<std::size_t, 1, 2>{}};
 
-  row_vector<representation, position, velocity> x{span};
+      row_vector<representation, position, velocity> x{span};
 
-  x.at<0_i>(1. * m);
-  x.at<1_i>(2. * m / s);
+      x.at<0_i>(1. * m);
+      x.at<1_i>(2. * m / s);
 
-  scale(2., x);
+      scale(2., x);
 
-  assert(2. * m == x.at<0>());
-  assert(2. * m == x.at<0_i>());
-  assert(2. * m == x[0_i]);
-  assert(2. * m == x(0_i));
+      assert(2. * m == x.at<0>());
+      assert(2. * m == x.at<0_i>());
+      assert(2. * m == x[0_i]);
+      assert(2. * m == x(0_i));
 
-  assert(4. * m / s == x.at<1>());
-  assert(4. * m / s == x.at<1_i>());
-  assert(4. * m / s == x[1_i]);
-  assert(4. * m / s == x(1_i));
+      assert(4. * m / s == x.at<1>());
+      assert(4. * m / s == x.at<1_i>());
+      assert(4. * m / s == x[1_i]);
+      assert(4. * m / s == x(1_i));
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test
