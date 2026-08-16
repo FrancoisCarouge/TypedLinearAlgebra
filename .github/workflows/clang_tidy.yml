@@ -29,11 +29,11 @@ jobs:
     - name: 'Install: libc++'
       run: |
         sudo apt update
-        sudo apt install -y "libc++-20-dev" "libc++abi-20-dev"
+        sudo apt install -y "libc++-22-dev" "libc++abi-22-dev"
     - name: 'Configure'
       env:
-        CXX: 'clang++-20'
-        CC: 'clang-20'
+        CXX: 'clang++-22'
+        CC: 'clang-22'
       run: cmake -S . -B 'build' -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
     - name: Verify
       run: |

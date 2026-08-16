@@ -55,8 +55,8 @@ jobs:
         sudo ./llvm.sh 21 all
     - name: 'Configure'
       env:
-        CXX: 'clang++-21'
-        CC: 'clang-21'
+        CXX: 'clang++-22'
+        CC: 'clang-22'
       run: cmake -S . -B 'build'
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
