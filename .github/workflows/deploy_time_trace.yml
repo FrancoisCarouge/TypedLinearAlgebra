@@ -30,7 +30,7 @@ jobs:
         sudo apt install -y "libc++-21-dev" "libc++abi-21-dev"
     - name: 'Configure'
       env:
-        CXX: 'clang++-21'
+        CXX: 'clang++-22'
         CXXFLAGS: '-O0 -g -ftime-trace'
       run: cmake -S . -B 'build'
     - name: 'Build'
