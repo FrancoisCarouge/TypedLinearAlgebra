@@ -1,18 +1,6 @@
 var searchData=
 [
-  ['main_2ecpp_0',['main.cpp',['../main_8cpp.xhtml',1,'']]],
-  ['mdspan_5fproduct_2ecpp_1',['mdspan_product.cpp',['../mdspan__product_8cpp.xhtml',1,'']]],
-  ['mdspan_5ftuple_5fproduct_2ecpp_2',['mdspan_tuple_product.cpp',['../mdspan__tuple__product_8cpp.xhtml',1,'']]],
-  ['mp_5funits_5feigen_2ecpp_3',['mp_units_eigen.cpp',['../mp__units__eigen_8cpp.xhtml',1,'']]],
-  ['mp_5funits_5feigen_2emd_4',['mp_units_eigen.md',['../mp__units__eigen_8md.xhtml',1,'']]],
-  ['mp_5funits_5fstd_2ecpp_5',['mp_units_std.cpp',['../mp__units__std_8cpp.xhtml',1,'']]],
-  ['mx1_2ecpp_6',['mx1.cpp',['../at_2mx1_8cpp.xhtml',1,'(Global Namespace)'],['../element_2mx1_8cpp.xhtml',1,'(Global Namespace)'],['../format_2mx1_8cpp.xhtml',1,'(Global Namespace)'],['../structured__bindings_2mx1_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['mx1_5fconst_2ecpp_7',['mx1_const.cpp',['../at_2mx1__const_8cpp.xhtml',1,'(Global Namespace)'],['../structured__bindings_2mx1__const_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['mx1_5feigen_2ecpp_8',['mx1_eigen.cpp',['../magnitude_2mx1__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../minus_2mx1__eigen_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['mx1_5ffail_2ecpp_9',['mx1_fail.cpp',['../mx1__fail_8cpp.xhtml',1,'']]],
-  ['mx1_5funit_5feigen_2ecpp_10',['mx1_unit_eigen.cpp',['../mx1__unit__eigen_8cpp.xhtml',1,'']]],
-  ['mxn_2ecpp_11',['mxn.cpp',['../at_2mxn_8cpp.xhtml',1,'(Global Namespace)'],['../element_2mxn_8cpp.xhtml',1,'(Global Namespace)'],['../format_2mxn_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['mxn_5fconst_2ecpp_12',['mxn_const.cpp',['../mxn__const_8cpp.xhtml',1,'']]],
-  ['mxn_5feigen_2ecpp_13',['mxn_eigen.cpp',['../mxn__eigen_8cpp.xhtml',1,'']]],
-  ['mxn_5ffail_2ecpp_14',['mxn_fail.cpp',['../element_2mxn__fail_8cpp.xhtml',1,'(Global Namespace)'],['../magnitude_2mxn__fail_8cpp.xhtml',1,'(Global Namespace)']]]
+  ['license_2etxt_0',['LICENSE.txt',['../_l_i_c_e_n_s_e_8txt.xhtml',1,'']]],
+  ['linalg_2ehpp_1',['linalg.hpp',['../eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../eigexed_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../nested__typed__eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../unit__eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../unit__std_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)']]],
+  ['literal_5fmxn_2ecpp_2',['literal_mxn.cpp',['../literal__mxn_8cpp.xhtml',1,'']]]
 ];

@@ -27,7 +27,7 @@ var NAVTREE =
   [ "Typed Linear Algebra", "index.xhtml", [
     [ "Installation & Usage", "index.xhtml#installation--usage", null ],
     [ "Reference", "index.xhtml#reference", [
-      [ "Class Typed Matrix", "index.xhtml#class-typed-matrix-1", [
+      [ "Class Typed Matrix", "index.xhtml#class-typed-matrix", [
         [ "Declaration", "index.xhtml#declaration-1", null ],
         [ "Template Parameters", "index.xhtml#template-parameters-1", null ],
         [ "Member Types", "index.xhtml#member-types-1", null ],
@@ -79,7 +79,7 @@ var NAVTREE =
       [ "3 Typed Linear Algebra", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md3-typed-linear-algebra", null ],
       [ "4 Case Study", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md4-case-study", null ],
       [ "5 Library Reference", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md5-library-reference", [
-        [ "Class Typed Matrix", "md_html_2paper_2mp__units__eigen.xhtml#class-typed-matrix", [
+        [ "Class Typed Matrix", "md_html_2paper_2mp__units__eigen.xhtml#class-typed-matrix-1", [
           [ "Declaration", "md_html_2paper_2mp__units__eigen.xhtml#declaration", null ],
           [ "Template Parameters", "md_html_2paper_2mp__units__eigen.xhtml#template-parameters", null ],
           [ "Member Types", "md_html_2paper_2mp__units__eigen.xhtml#member-types", null ],
@@ -158,8 +158,8 @@ var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
 "eigen_8hpp_source.xhtml",
-"namespacefcarouge.xhtml#ab6a1b6f7873a10f4ec2fa8d6e14882dd",
-"structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor.xhtml#a1b01c0abdc27a6e0f98aa2898b120ef5"
+"namespacefcarouge.xhtml#a9343adf455a88982fd1efabe086673b7",
+"structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1lookup_3b299f5c7aa92788bf7430e8496a9663f.xhtml#afb095221a5a4f6aaa9559207551df7f1"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

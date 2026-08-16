@@ -88,6 +88,13 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{equality.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02equality_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02equality_8cpp_03.xhtml#aed14f7a75b88125c81303b1bb1a2c06f", null ]
     ] ],
+    [ "anonymous_namespace{formattable.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02formattable_8cpp_03.xhtml", [
+      [ "column", "namespacefcarouge_1_1test_1_1anonymous__namespace_02formattable_8cpp_03.xhtml#a72af7c58482dfb5a42e27d3bceb4e9a3", null ],
+      [ "rank0", "namespacefcarouge_1_1test_1_1anonymous__namespace_02formattable_8cpp_03.xhtml#a36cbcfe27796ab6578ed4700d28765d4", null ],
+      [ "rank2", "namespacefcarouge_1_1test_1_1anonymous__namespace_02formattable_8cpp_03.xhtml#a0bbef7e15a2ac4783de3499123146dbc", null ],
+      [ "row", "namespacefcarouge_1_1test_1_1anonymous__namespace_02formattable_8cpp_03.xhtml#a8c2c45bcaac6459ee60b93ff06f360f1", null ],
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02formattable_8cpp_03.xhtml#a953aec476a3badf9827b3a6a655f4fbf", null ]
+    ] ],
     [ "anonymous_namespace{initializer_lists.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02initializer__lists_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02initializer__lists_8cpp_03.xhtml#afeda3bcc35b67e6f14a5a2250988baa2", null ]
     ] ],
