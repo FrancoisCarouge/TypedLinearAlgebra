@@ -50,12 +50,18 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     INTERFACE "-D_FORTIFY_SOURCE=3"
               "-D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_FAST"
               "-fcf-protection=full"
+              "-fconstexpr-backtrace-limit=0"
+              "-fdiagnostics-absolute-paths"
+              "-fdiagnostics-show-template-tree"
+              "-fmacro-backtrace-limit=0"
               "-fno-builtin-std-forward_like"
               "-fno-check-new"
               "-fno-common"
+              "-fno-elide-type"
               "-fPIE"
               "-fstack-protector-strong"
               "-fstrict-aliasing"
+              "-ftemplate-backtrace-limit=0"
               "-ftrivial-auto-var-init=pattern"
               "-pedantic"
               "-stdlib=libc++"
@@ -84,12 +90,16 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     INTERFACE "-D_FORTIFY_SOURCE=3"
               "-D_GLIBCXX_ASSERTIONS"
               "-fcf-protection=full"
+              "-fconcepts-diagnostics-depth=4"
+              "-fdiagnostics-show-template-tree"
               "-fno-check-new"
               "-fno-common"
+              "-fno-elide-type"
               "-fPIE"
               "-fstack-clash-protection"
               "-fstack-protector-strong"
               "-fstrict-aliasing"
+              "-ftemplate-backtrace-limit=0"
               "-ftrivial-auto-var-init=pattern"
               "-pedantic"
               "-Wall"
@@ -113,6 +123,12 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
                       "LINKER:-z,relro,-z,now")
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
   target_compile_options(
-    typed_linear_algebra_options INTERFACE "/EHsc" "/std:c++latest" "/utf-8"
-                                           "/W4" "/WX")
+    typed_linear_algebra_options
+    INTERFACE "/diagnostics:caret"
+              "/EHsc"
+              "/FC"
+              "/std:c++latest"
+              "/utf-8"
+              "/W4"
+              "/WX")
 endif()
