@@ -229,26 +229,22 @@ using element_at = std::remove_cvref_t<product<
     std::tuple_element_t<ColumnIndex,
                          typename std::remove_cvref_t<Type>::column_indexes>>>;
 
-//! @brief Trait depending on `Type`, always false.
-//!
-//! @details Defers a `static_assert` failure to the point where the
-//! dependent type is actually instantiated, instead of failing as soon as
-//! the enclosing template is parsed.
-template <typename Type> constexpr bool always_false{false};
-
 //! @brief Linear algebra element type specialization point.
 //!
 //! @details The count of indexes must match the rank of the matrix: no
 //! index for a singleton matrix, one index for a row or column vector, two
 //! indexes for any other matrix. Naming `element_t<Type, Indexes...>::type`
-//! is always well-formed, lazily, regardless of the count of indexes
-//! matching the rank of the matrix: `type` is a nested class that stays
-//! uninstantiated, and so harmless, until actually completed. Only
-//! completing a mismatched `type` is a compilation error.
+//! is always well-formed regardless of the count of indexes matching the
+//! rank of the matrix: standard library facilities may need to complete
+//! this placeholder `type` while probing members excluded by their own
+//! `requires` clause, so completion must stay harmless. Only an actual
+//! construction attempt, the signature of a genuine mismatch, is
+//! diagnosed, by deleting every constructor.
 template <typename Type, std::size_t... Indexes> struct element_t {
   struct type {
-    static_assert(always_false<type>,
-                  "The count of indexes must match the rank of the matrix.");
+    type() = delete;
+    type(const type &) = delete;
+    type(type &&) = delete;
   };
 };
 
