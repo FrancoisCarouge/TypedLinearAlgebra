@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,8 +27,36 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("assign" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("mx1_is_assignable" BACKENDS "eigexed" "nested_typed_eigen")
-pass("1xn_is_assignable" BACKENDS "eigexed" "nested_typed_eigen")
+#include "fcarouge/linalg.hpp"
+
+#include <cassert>
+#include <tuple>
+#include <type_traits>
+
+namespace fcarouge::test {
+namespace {
+//! @test Verifies a column vector, rank one, matrix stays usable through
+//! standard library facilities, such as `std::tuple`, that probe its
+//! `operator=` overload set, including the excluded singleton one.
+//!
+//! @details Previously reproduced a hard compilation error deep in the
+//! element type specialization, with several Clang versions but not GCC.
+[[maybe_unused]] const auto test{[] -> int {
+  using vector = column_vector<double, 5>;
+
+  static_assert(std::is_assignable_v<vector &, const vector &>);
+  static_assert(
+      std::same_as<std::tuple_element_t<0, std::tuple<vector>>, vector>);
+
+  const vector m{1., 2., 3., 4., 5.};
+  vector c;
+  c = m;
+
+  assert(c == m);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
