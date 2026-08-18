@@ -10,9 +10,10 @@ var searchData=
   ['mx1_5fconst_2ecpp_7',['mx1_const.cpp',['../at_2mx1__const_8cpp.xhtml',1,'(Global Namespace)'],['../structured__bindings_2mx1__const_8cpp.xhtml',1,'(Global Namespace)']]],
   ['mx1_5feigen_2ecpp_8',['mx1_eigen.cpp',['../magnitude_2mx1__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../minus_2mx1__eigen_8cpp.xhtml',1,'(Global Namespace)']]],
   ['mx1_5ffail_2ecpp_9',['mx1_fail.cpp',['../mx1__fail_8cpp.xhtml',1,'']]],
-  ['mx1_5funit_5feigen_2ecpp_10',['mx1_unit_eigen.cpp',['../mx1__unit__eigen_8cpp.xhtml',1,'']]],
-  ['mxn_2ecpp_11',['mxn.cpp',['../at_2mxn_8cpp.xhtml',1,'(Global Namespace)'],['../element_2mxn_8cpp.xhtml',1,'(Global Namespace)'],['../format_2mxn_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['mxn_5fconst_2ecpp_12',['mxn_const.cpp',['../mxn__const_8cpp.xhtml',1,'']]],
-  ['mxn_5feigen_2ecpp_13',['mxn_eigen.cpp',['../mxn__eigen_8cpp.xhtml',1,'']]],
-  ['mxn_5ffail_2ecpp_14',['mxn_fail.cpp',['../element_2mxn__fail_8cpp.xhtml',1,'(Global Namespace)'],['../magnitude_2mxn__fail_8cpp.xhtml',1,'(Global Namespace)']]]
+  ['mx1_5fis_5fassignable_2ecpp_10',['mx1_is_assignable.cpp',['../mx1__is__assignable_8cpp.xhtml',1,'']]],
+  ['mx1_5funit_5feigen_2ecpp_11',['mx1_unit_eigen.cpp',['../mx1__unit__eigen_8cpp.xhtml',1,'']]],
+  ['mxn_2ecpp_12',['mxn.cpp',['../at_2mxn_8cpp.xhtml',1,'(Global Namespace)'],['../element_2mxn_8cpp.xhtml',1,'(Global Namespace)'],['../format_2mxn_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['mxn_5fconst_2ecpp_13',['mxn_const.cpp',['../mxn__const_8cpp.xhtml',1,'']]],
+  ['mxn_5feigen_2ecpp_14',['mxn_eigen.cpp',['../mxn__eigen_8cpp.xhtml',1,'']]],
+  ['mxn_5ffail_2ecpp_15',['mxn_fail.cpp',['../element_2mxn__fail_8cpp.xhtml',1,'(Global Namespace)'],['../magnitude_2mxn__fail_8cpp.xhtml',1,'(Global Namespace)']]]
 ];

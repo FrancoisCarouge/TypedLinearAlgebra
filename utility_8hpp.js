@@ -10,6 +10,5 @@ var utility_8hpp =
     [ "for_constexpr", "utility_8hpp.xhtml#abcda1ee8b10a813ac3a16d25343603c7", null ],
     [ "for_constexpr_detail", "utility_8hpp.xhtml#aab4670c6313954d8840239709b688878", null ],
     [ "parse_digits", "utility_8hpp.xhtml#abbba9c02ba0de394e79a3aa4866c0bd1", null ],
-    [ "always_false", "utility_8hpp.xhtml#a6e0edee168ae01bae2ffa0ffdb374022", null ],
     [ "rank", "utility_8hpp.xhtml#aded6eca464a23970fc0a04a24a164209", null ]
 ];

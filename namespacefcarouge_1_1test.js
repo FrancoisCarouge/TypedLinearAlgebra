@@ -48,6 +48,9 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{1xn_fail.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021xn__fail_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021xn__fail_8cpp_03.xhtml#a23c0f8e127fc4de3aa58c40b9fc3dc6c", null ]
     ] ],
+    [ "anonymous_namespace{1xn_is_assignable.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021xn__is__assignable_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021xn__is__assignable_8cpp_03.xhtml#a2937583b30cb8a0f4c9c8a9b90887baf", null ]
+    ] ],
     [ "anonymous_namespace{1xn_unit_std.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021xn__unit__std_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021xn__unit__std_8cpp_03.xhtml#a56ebfedf15cf197c6ba7e0dc39a29e1a", null ]
     ] ],
@@ -124,6 +127,9 @@ var namespacefcarouge_1_1test =
     ] ],
     [ "anonymous_namespace{mx1_fail.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02mx1__fail_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02mx1__fail_8cpp_03.xhtml#a5f38626ee6c9a8290bf5eaad921357c2", null ]
+    ] ],
+    [ "anonymous_namespace{mx1_is_assignable.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02mx1__is__assignable_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02mx1__is__assignable_8cpp_03.xhtml#afaada86fa49244dcc9a43289f6932bbd", null ]
     ] ],
     [ "anonymous_namespace{mx1_unit_eigen.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02mx1__unit__eigen_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02mx1__unit__eigen_8cpp_03.xhtml#a0c8732118d06b46653acca6f5f514d4a", null ]

@@ -16,5 +16,6 @@ var searchData=
   ['1xn_5fconst_2ecpp_13',['1xn_const.cpp',['../at_21xn__const_8cpp.xhtml',1,'(Global Namespace)'],['../structured__bindings_21xn__const_8cpp.xhtml',1,'(Global Namespace)']]],
   ['1xn_5feigen_2ecpp_14',['1xn_eigen.cpp',['../1xn__eigen_8cpp.xhtml',1,'']]],
   ['1xn_5ffail_2ecpp_15',['1xn_fail.cpp',['../1xn__fail_8cpp.xhtml',1,'']]],
-  ['1xn_5funit_5fstd_2ecpp_16',['1xn_unit_std.cpp',['../1xn__unit__std_8cpp.xhtml',1,'']]]
+  ['1xn_5fis_5fassignable_2ecpp_16',['1xn_is_assignable.cpp',['../1xn__is__assignable_8cpp.xhtml',1,'']]],
+  ['1xn_5funit_5fstd_2ecpp_17',['1xn_unit_std.cpp',['../1xn__unit__std_8cpp.xhtml',1,'']]]
 ];

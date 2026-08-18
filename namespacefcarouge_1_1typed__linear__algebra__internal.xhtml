@@ -204,10 +204,6 @@ Variables</h2></td></tr>
 <tr class="memitem:aded6eca464a23970fc0a04a24a164209" id="r_aded6eca464a23970fc0a04a24a164209"><td class="memTemplParams" colspan="2">template&lt;std::size_t Rows, std::size_t Columns&gt; </td></tr>
 <tr class="memitem:aded6eca464a23970fc0a04a24a164209"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aded6eca464a23970fc0a04a24a164209">rank</a></td></tr>
 <tr class="separator:aded6eca464a23970fc0a04a24a164209"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e0edee168ae01bae2ffa0ffdb374022" id="r_a6e0edee168ae01bae2ffa0ffdb374022"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
-<tr class="memitem:a6e0edee168ae01bae2ffa0ffdb374022"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a6e0edee168ae01bae2ffa0ffdb374022">always_false</a> {false}</td></tr>
-<tr class="memdesc:a6e0edee168ae01bae2ffa0ffdb374022"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trait depending on <code>Type</code>, always false.  <br /></td></tr>
-<tr class="separator:a6e0edee168ae01bae2ffa0ffdb374022"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a89cc53c1b6d742d0f50660c6895896cc" name="a89cc53c1b6d742d0f50660c6895896cc"></a>
@@ -224,7 +220,7 @@ template&lt;typename Type , std::size_t... Indexes&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00278">278</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00274">274</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -267,7 +263,7 @@ template&lt;typename Type , std::size_t RowIndex, std::size_t ColumnIndex&gt; </
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00331">331</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00327">327</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -323,7 +319,7 @@ template&lt;typename Type , std::size_t Size&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00329">329</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00325">325</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -460,50 +456,20 @@ template&lt;char... Digits&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00345">345</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  345</span>                                                             {</div>
-<div class="line"><span class="lineno">  346</span>  <span class="keyword">static_assert</span>(((<span class="charliteral">&#39;0&#39;</span> &lt;= Digits &amp;&amp; Digits &lt;= <span class="charliteral">&#39;9&#39;</span>) &amp;&amp; ...),</div>
-<div class="line"><span class="lineno">  347</span>                <span class="stringliteral">&quot;Characters must only be digits.&quot;</span>);</div>
-<div class="line"><span class="lineno">  348</span> </div>
-<div class="line"><span class="lineno">  349</span>  std::size_t number{0};</div>
-<div class="line"><span class="lineno">  350</span>  ((number = number * 10 + (Digits - <span class="charliteral">&#39;0&#39;</span>)), ...);</div>
-<div class="line"><span class="lineno">  351</span> </div>
-<div class="line"><span class="lineno">  352</span>  <span class="keywordflow">return</span> number;</div>
-<div class="line"><span class="lineno">  353</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00341">341</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  341</span>                                                             {</div>
+<div class="line"><span class="lineno">  342</span>  <span class="keyword">static_assert</span>(((<span class="charliteral">&#39;0&#39;</span> &lt;= Digits &amp;&amp; Digits &lt;= <span class="charliteral">&#39;9&#39;</span>) &amp;&amp; ...),</div>
+<div class="line"><span class="lineno">  343</span>                <span class="stringliteral">&quot;Characters must only be digits.&quot;</span>);</div>
+<div class="line"><span class="lineno">  344</span> </div>
+<div class="line"><span class="lineno">  345</span>  std::size_t number{0};</div>
+<div class="line"><span class="lineno">  346</span>  ((number = number * 10 + (Digits - <span class="charliteral">&#39;0&#39;</span>)), ...);</div>
+<div class="line"><span class="lineno">  347</span> </div>
+<div class="line"><span class="lineno">  348</span>  <span class="keywordflow">return</span> number;</div>
+<div class="line"><span class="lineno">  349</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a6e0edee168ae01bae2ffa0ffdb374022" name="a6e0edee168ae01bae2ffa0ffdb374022"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e0edee168ae01bae2ffa0ffdb374022">&#9670;&#160;</a></span>always_false</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Type &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool fcarouge::typed_linear_algebra_internal::always_false {false}</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Trait depending on <code>Type</code>, always false. </p>
-<p>Defers a <code>static_assert</code> failure to the point where the dependent type is actually instantiated, instead of failing as soon as the enclosing template is parsed. </p>
-
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00237">237</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  237</span>{<span class="keyword">false</span>};</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="aded6eca464a23970fc0a04a24a164209" name="aded6eca464a23970fc0a04a24a164209"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aded6eca464a23970fc0a04a24a164209">&#9670;&#160;</a></span>rank</h2>
 

@@ -13,14 +13,13 @@ var searchData=
   ['algebra_20a_10',['&lt;a href=&quot;https://francoiscarouge.github.io/TypedLinearAlgebra/typed_linear_algebra/index.html&quot; &gt;Typed Linear Algebra&lt;/a&gt;',['../md_html_2typed__linear__algebra_2_r_e_a_d_m_e.xhtml#typed-linear-algebrahttpsfrancoiscarougegithubiotypedlinearalgebratyped_linear_algebraindexhtml',1,'']]],
   ['algebra_20and_20dimensional_20analysis_11',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],
   ['algebra_20use_20case_3a_20eigen_20mp_20units_12',['Quantity-Safe Linear Algebra Use Case: Eigen + mp-units',['../md_html_2paper_2mp__units__eigen.xhtml',1,'']]],
-  ['aliases_13',['Aliases',['../md_html_2paper_2mp__units__eigen.xhtml#aliases',1,'Aliases'],['../index.xhtml#aliases-1',1,'Aliases']]],
-  ['always_5ffalse_14',['always_false',['../namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a6e0edee168ae01bae2ffa0ffdb374022',1,'fcarouge::typed_linear_algebra_internal']]],
-  ['analysis_15',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],
-  ['and_20dimensional_20analysis_16',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],
-  ['as_20seen_20at_20cppnow_202026_17',['As seen at CppNow 2026',['../index.xhtml#as-seen-at-cppnow-2026',1,'']]],
-  ['aside_18',['&lt;/aside&gt;',['../md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#aside',1,'']]],
-  ['assign_2ecpp_19',['assign.cpp',['../assign_8cpp.xhtml',1,'']]],
-  ['at_20',['at',['../classfcarouge_1_1typed__matrix.xhtml#a7069d3bf51e6490049566e61978d9fbe',1,'fcarouge::typed_matrix::at(this auto &amp;&amp;self)'],['../classfcarouge_1_1typed__matrix.xhtml#a4f021cdbb68e3e5bbe51c5962b312508',1,'fcarouge::typed_matrix::at(this auto &amp;&amp;self, const element&lt; Indexes... &gt; &amp;value)']]],
-  ['at_20cppnow_202026_21',['As seen at CppNow 2026',['../index.xhtml#as-seen-at-cppnow-2026',1,'']]],
-  ['attribution_22',['Attribution',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution',1,'']]]
+  ['aliases_13',['Aliases',['../md_html_2paper_2mp__units__eigen.xhtml#aliases-1',1,'Aliases'],['../index.xhtml#aliases',1,'Aliases']]],
+  ['analysis_14',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],
+  ['and_20dimensional_20analysis_15',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],
+  ['as_20seen_20at_20cppnow_202026_16',['As seen at CppNow 2026',['../index.xhtml#as-seen-at-cppnow-2026',1,'']]],
+  ['aside_17',['&lt;/aside&gt;',['../md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#aside',1,'']]],
+  ['assign_2ecpp_18',['assign.cpp',['../assign_8cpp.xhtml',1,'']]],
+  ['at_19',['at',['../classfcarouge_1_1typed__matrix.xhtml#a7069d3bf51e6490049566e61978d9fbe',1,'fcarouge::typed_matrix::at(this auto &amp;&amp;self)'],['../classfcarouge_1_1typed__matrix.xhtml#a4f021cdbb68e3e5bbe51c5962b312508',1,'fcarouge::typed_matrix::at(this auto &amp;&amp;self, const element&lt; Indexes... &gt; &amp;value)']]],
+  ['at_20cppnow_202026_20',['As seen at CppNow 2026',['../index.xhtml#as-seen-at-cppnow-2026',1,'']]],
+  ['attribution_21',['Attribution',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution',1,'']]]
 ];
