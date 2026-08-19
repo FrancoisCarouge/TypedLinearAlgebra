@@ -41,13 +41,13 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <cassert>
 #include <cstddef>
 #include <format>
 #include <linalg>
 #include <mdspan>
 #include <print>
 #include <tuple>
-#include <type_traits>
 #include <vector>
 
 namespace fcarouge::sample {

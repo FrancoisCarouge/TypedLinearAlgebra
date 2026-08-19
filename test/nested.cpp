@@ -32,7 +32,10 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
-#include <type_traits>
+#include <concepts>
+#include <tuple>
+
+#include <Eigen/Eigen>
 
 namespace fcarouge::test {
 namespace {

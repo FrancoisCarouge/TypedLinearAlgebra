@@ -33,6 +33,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <cassert>
 #include <tuple>
+#include <type_traits>
 
 namespace fcarouge::test {
 using literals::operator""_i;
