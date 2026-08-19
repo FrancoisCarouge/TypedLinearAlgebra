@@ -32,6 +32,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
+#include <concepts>
 #include <cstddef>
 #include <mdspan>
 #include <tuple>

@@ -23,7 +23,6 @@ Checks: '*,
         -linuxkernel-*,
         -llvmlibc-*,
         -misc-const-correctness,
-        -misc-include-cleaner,
         -misc-unused-using-decls,
         -modernize-avoid-c-arrays,
         -mpi-*,
@@ -35,4 +34,5 @@ Checks: '*,
         -readability-magic-numbers,
         -zircon-*'
 CheckOptions:
+  misc-include-cleaner.IgnoreHeaders: 'mp-units/.*;Eigen/.*;fcarouge/eigen\.hpp;fcarouge/unit\.hpp;fcarouge/linalg\.hpp;fcarouge/linalg;fcarouge/mdspan;fcarouge/typed_linear_algebra.*'
   modernize-use-std-numbers.DiffThreshold: '0.000001'

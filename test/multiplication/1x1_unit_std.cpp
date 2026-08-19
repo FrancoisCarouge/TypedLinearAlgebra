@@ -33,6 +33,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <cassert>
 #include <cstddef>
+#include <mdspan>
 
 namespace fcarouge::test {
 using literals::operator""_i;
