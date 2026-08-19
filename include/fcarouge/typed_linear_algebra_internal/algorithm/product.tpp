@@ -35,44 +35,77 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
 
-[[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
-                                       const same_as_typed_matrix auto &rhs) {
-  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
-  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
+//! @brief Concept of typed matrix shapes admitting a matrix product.
+//!
+//! @details Excludes singleton by singleton, an ordinary scalar product
+//! served by a dedicated, simpler overload.
+template <typename Lhs, typename Rhs>
+concept multipliable_shape =
+    same_as_typed_matrix<Lhs> and same_as_typed_matrix<Rhs> and
+    (std::remove_cvref_t<Lhs>::columns == std::remove_cvref_t<Rhs>::rows) and
+    (std::remove_cvref_t<Lhs>::columns > 1 or
+     std::remove_cvref_t<Lhs>::rows > 1 or
+     std::remove_cvref_t<Rhs>::columns > 1);
 
-  static_assert(lhs_matrix::columns == rhs_matrix::rows,
-                "Matrix multiplication requires compatible sizes.");
-
+//! @brief Whether every per-term product of the `Lhs * Rhs` matrix product
+//! converts to the type of its row-column's first term, as required to sum
+//! them.
+//!
+//! @pre `Lhs` and `Rhs` are `multipliable_shape`.
+template <typename Lhs, typename Rhs> constexpr bool are_terms_multipliable() {
+  using lhs_matrix = std::remove_cvref_t<Lhs>;
+  using rhs_matrix = std::remove_cvref_t<Rhs>;
   using lhs_row_indexes = typename lhs_matrix::row_indexes;
   using lhs_column_indexes = typename lhs_matrix::column_indexes;
   using rhs_row_indexes = typename rhs_matrix::row_indexes;
   using rhs_column_indexes = typename rhs_matrix::column_indexes;
-  using row_indexes = tla::product<lhs_row_indexes,
-                                   std::tuple_element_t<0, lhs_column_indexes>>;
-  using column_indexes = tla::product<rhs_column_indexes,
-                                      std::tuple_element_t<0, rhs_row_indexes>>;
 
-  // The type resulting of the product of each of the lhs's i-th row-element
-  // with the rhs's i-th column-element must be identical/compatible.
-  tla::for_constexpr<lhs_matrix::rows>([&](auto i) {
+  bool convertible{true};
+
+  tla::for_constexpr<lhs_matrix::rows>([&convertible](auto i) {
     using lhs_row = tla::product<std::tuple_element_t<i, lhs_row_indexes>,
                                  lhs_column_indexes>;
-    tla::for_constexpr<rhs_matrix::columns>([&](auto j) {
+    tla::for_constexpr<rhs_matrix::columns>([&convertible, i](auto j) {
       using rhs_column =
           tla::product<rhs_row_indexes,
                        std::tuple_element_t<j, rhs_column_indexes>>;
-      tla::for_constexpr<lhs_matrix::columns>([&](auto k) {
-        //! @todo The compiler failure is unreadable. Find ways to inform
-        //! which types are failing.
-        static_assert(std::is_convertible_v<
-                          tla::product<std::tuple_element_t<k, lhs_row>,
-                                       std::tuple_element_t<k, rhs_column>>,
-                          tla::product<std::tuple_element_t<0, lhs_row>,
-                                       std::tuple_element_t<0, rhs_column>>>,
-                      "Matrix multiplication requires compatible types.");
+      tla::for_constexpr<lhs_matrix::columns>([&convertible, i, j](auto k) {
+        static_cast<void>(i); // Compiler compatibility.
+        static_cast<void>(j); // Compiler compatibility.
+        convertible &= std::is_convertible_v<
+            tla::product<std::tuple_element_t<k, lhs_row>,
+                         std::tuple_element_t<k, rhs_column>>,
+            tla::product<std::tuple_element_t<0, lhs_row>,
+                         std::tuple_element_t<0, rhs_column>>>;
       });
     });
   });
+
+  return convertible;
+}
+
+//! @brief Concept of typed matrices whose per-term products can be summed
+//! into a matrix product result.
+template <typename Lhs, typename Rhs>
+concept multipliable_elements = are_terms_multipliable<Lhs, Rhs>();
+
+//! @brief Concept of typed matrices that can be multiplied together.
+template <typename Lhs, typename Rhs>
+concept multipliable =
+    multipliable_shape<Lhs, Rhs> and multipliable_elements<Lhs, Rhs>;
+
+[[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
+                                       const same_as_typed_matrix auto &rhs)
+  requires multipliable<decltype(lhs), decltype(rhs)>
+{
+  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
+  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
+  using lhs_column_indexes = typename lhs_matrix::column_indexes;
+  using rhs_row_indexes = typename rhs_matrix::row_indexes;
+  using row_indexes = tla::product<typename lhs_matrix::row_indexes,
+                                   std::tuple_element_t<0, lhs_column_indexes>>;
+  using column_indexes = tla::product<typename rhs_matrix::column_indexes,
+                                      std::tuple_element_t<0, rhs_row_indexes>>;
 
   return make_typed_matrix<row_indexes, column_indexes>(lhs.data() *
                                                         rhs.data());

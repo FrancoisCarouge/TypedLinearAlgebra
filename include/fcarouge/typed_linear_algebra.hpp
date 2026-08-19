@@ -426,89 +426,6 @@ template <typename To, typename From> struct element_caster {
 
 //! @}
 
-//! @name Algorithms
-//! @{
-
-[[nodiscard]] constexpr auto magnitude(const uniform_typed_matrix auto &value);
-
-[[nodiscard]] constexpr bool operator==(const same_as_typed_matrix auto &lhs,
-                                        const same_as_typed_matrix auto &rhs);
-[[nodiscard]] constexpr bool operator==(const rank_typed_matrix<0> auto &lhs,
-                                        const auto &rhs);
-
-[[nodiscard]] constexpr auto operator+(const rank_typed_matrix<2> auto &lhs,
-                                       const rank_typed_matrix<2> auto &rhs);
-[[nodiscard]] constexpr auto operator+(const rank_typed_matrix<1> auto &lhs,
-                                       const rank_typed_matrix<1> auto &rhs);
-[[nodiscard]] constexpr auto operator+(const rank_typed_matrix<0> auto &lhs,
-                                       const rank_typed_matrix<0> auto &rhs);
-[[nodiscard]] constexpr auto operator+(const rank_typed_matrix<0> auto &lhs,
-                                       const other auto &rhs);
-[[nodiscard]] constexpr auto operator+(const other auto &lhs,
-                                       const rank_typed_matrix<0> auto &rhs);
-
-[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<2> auto &lhs,
-                                       const rank_typed_matrix<2> auto &rhs);
-[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<1> auto &lhs,
-                                       const rank_typed_matrix<1> auto &rhs);
-[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<0> auto &lhs,
-                                       const rank_typed_matrix<0> auto &rhs);
-[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<0> auto &lhs,
-                                       const other auto &rhs);
-[[nodiscard]] constexpr auto operator-(const other auto &lhs,
-                                       const rank_typed_matrix<0> auto &rhs);
-
-[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<2> auto &value);
-[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<1> auto &value);
-
-[[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
-                                       const same_as_typed_matrix auto &rhs);
-[[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
-                                       const other auto &rhs);
-[[nodiscard]] constexpr auto operator*(const other auto &lhs,
-                                       const same_as_typed_matrix auto &rhs);
-[[nodiscard]] constexpr auto operator*(const rank_typed_matrix<0> auto &lhs,
-                                       const rank_typed_matrix<0> auto &rhs);
-[[nodiscard]] constexpr auto operator*(const rank_typed_matrix<0> auto &lhs,
-                                       const other auto &rhs);
-[[nodiscard]] constexpr auto operator*(const other auto &lhs,
-                                       const rank_typed_matrix<0> auto &rhs);
-
-[[nodiscard]] constexpr auto operator/(const same_as_typed_matrix auto &lhs,
-                                       const same_as_typed_matrix auto &rhs);
-[[nodiscard]] constexpr auto operator/(const same_as_typed_matrix auto &lhs,
-                                       const other auto &rhs);
-[[nodiscard]] constexpr auto operator/(const rank_typed_matrix<0> auto &lhs,
-                                       const rank_typed_matrix<0> auto &rhs);
-[[nodiscard]] constexpr auto operator/(const other auto &lhs,
-                                       const rank_typed_matrix<0> auto &rhs);
-[[nodiscard]] constexpr auto operator/(const other auto &lhs,
-                                       const rank_typed_matrix<1> auto &rhs);
-
-[[nodiscard]] constexpr auto transposed(const same_as_typed_matrix auto &value);
-
-#ifdef __cpp_lib_linalg
-
-constexpr void add(const rank_typed_matrix<2> auto &lhs,
-                   const rank_typed_matrix<2> auto &rhs,
-                   same_as_typed_matrix auto &result);
-constexpr void add(const rank_typed_matrix<1> auto &lhs,
-                   const rank_typed_matrix<1> auto &rhs,
-                   same_as_typed_matrix auto &result);
-constexpr void add(const rank_typed_matrix<0> auto &lhs,
-                   const rank_typed_matrix<0> auto &rhs,
-                   same_as_typed_matrix auto &result);
-
-constexpr void matrix_product(const same_as_typed_matrix auto &lhs,
-                              const same_as_typed_matrix auto &rhs,
-                              same_as_typed_matrix auto &result);
-
-constexpr void scale(const auto &α, same_as_typed_matrix auto &x);
-
-#endif
-
-//! @}
-
 //! @name Adaptors
 //! @{
 
@@ -567,5 +484,93 @@ template <char... Digits> constexpr auto operator""_i() noexcept {
 #include "typed_linear_algebra_internal/format.tpp"
 #include "typed_linear_algebra_internal/tuple.tpp"
 #include "typed_linear_algebra_internal/typed_linear_algebra.tpp"
+
+namespace fcarouge {
+
+//! @name Algorithms
+//! @{
+
+[[nodiscard]] constexpr auto magnitude(const uniform_typed_matrix auto &value);
+
+[[nodiscard]] constexpr bool operator==(const same_as_typed_matrix auto &lhs,
+                                        const same_as_typed_matrix auto &rhs);
+[[nodiscard]] constexpr bool operator==(const rank_typed_matrix<0> auto &lhs,
+                                        const auto &rhs);
+
+[[nodiscard]] constexpr auto operator+(const rank_typed_matrix<2> auto &lhs,
+                                       const rank_typed_matrix<2> auto &rhs);
+[[nodiscard]] constexpr auto operator+(const rank_typed_matrix<1> auto &lhs,
+                                       const rank_typed_matrix<1> auto &rhs);
+[[nodiscard]] constexpr auto operator+(const rank_typed_matrix<0> auto &lhs,
+                                       const rank_typed_matrix<0> auto &rhs);
+[[nodiscard]] constexpr auto operator+(const rank_typed_matrix<0> auto &lhs,
+                                       const other auto &rhs);
+[[nodiscard]] constexpr auto operator+(const other auto &lhs,
+                                       const rank_typed_matrix<0> auto &rhs);
+
+[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<2> auto &lhs,
+                                       const rank_typed_matrix<2> auto &rhs);
+[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<1> auto &lhs,
+                                       const rank_typed_matrix<1> auto &rhs);
+[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<0> auto &lhs,
+                                       const rank_typed_matrix<0> auto &rhs);
+[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<0> auto &lhs,
+                                       const other auto &rhs);
+[[nodiscard]] constexpr auto operator-(const other auto &lhs,
+                                       const rank_typed_matrix<0> auto &rhs);
+
+[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<2> auto &value);
+[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<1> auto &value);
+
+[[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
+                                       const same_as_typed_matrix auto &rhs)
+  requires multipliable<decltype(lhs), decltype(rhs)>;
+[[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
+                                       const other auto &rhs);
+[[nodiscard]] constexpr auto operator*(const other auto &lhs,
+                                       const same_as_typed_matrix auto &rhs);
+[[nodiscard]] constexpr auto operator*(const rank_typed_matrix<0> auto &lhs,
+                                       const rank_typed_matrix<0> auto &rhs);
+[[nodiscard]] constexpr auto operator*(const rank_typed_matrix<0> auto &lhs,
+                                       const other auto &rhs);
+[[nodiscard]] constexpr auto operator*(const other auto &lhs,
+                                       const rank_typed_matrix<0> auto &rhs);
+
+[[nodiscard]] constexpr auto operator/(const same_as_typed_matrix auto &lhs,
+                                       const same_as_typed_matrix auto &rhs);
+[[nodiscard]] constexpr auto operator/(const same_as_typed_matrix auto &lhs,
+                                       const other auto &rhs);
+[[nodiscard]] constexpr auto operator/(const rank_typed_matrix<0> auto &lhs,
+                                       const rank_typed_matrix<0> auto &rhs);
+[[nodiscard]] constexpr auto operator/(const other auto &lhs,
+                                       const rank_typed_matrix<0> auto &rhs);
+[[nodiscard]] constexpr auto operator/(const other auto &lhs,
+                                       const rank_typed_matrix<1> auto &rhs);
+
+[[nodiscard]] constexpr auto transposed(const same_as_typed_matrix auto &value);
+
+#ifdef __cpp_lib_linalg
+
+constexpr void add(const rank_typed_matrix<2> auto &lhs,
+                   const rank_typed_matrix<2> auto &rhs,
+                   same_as_typed_matrix auto &result);
+constexpr void add(const rank_typed_matrix<1> auto &lhs,
+                   const rank_typed_matrix<1> auto &rhs,
+                   same_as_typed_matrix auto &result);
+constexpr void add(const rank_typed_matrix<0> auto &lhs,
+                   const rank_typed_matrix<0> auto &rhs,
+                   same_as_typed_matrix auto &result);
+
+constexpr void matrix_product(const same_as_typed_matrix auto &lhs,
+                              const same_as_typed_matrix auto &rhs,
+                              same_as_typed_matrix auto &result);
+
+constexpr void scale(const auto &α, same_as_typed_matrix auto &x);
+
+#endif
+
+//! @}
+
+} // namespace fcarouge
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_HPP
