@@ -52,6 +52,7 @@ using mp_units::si::unit_symbols::km;
 using mp_units::si::unit_symbols::m;
 using mp_units::si::unit_symbols::m2;
 using mp_units::si::unit_symbols::m3;
+using mp_units::si::unit_symbols::m4;
 using mp_units::si::unit_symbols::mol;
 using mp_units::si::unit_symbols::N;
 using mp_units::si::unit_symbols::s;

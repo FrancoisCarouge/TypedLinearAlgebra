@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,13 +27,38 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("1x1_unit_eigen" BACKENDS "unit_eigen")
-pass("1x1_unit_std" BACKENDS "unit_std")
-pass("1x1" BACKENDS "eigexed" "nested_typed_eigen")
-pass("rxc" BACKENDS "eigexed" "nested_typed_eigen")
-pass("scalar_unit_eigen" BACKENDS "unit_eigen")
-pass("scalar" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("sxc" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("sxs_unit_eigen" BACKENDS "unit_eigen")
+#include "fcarouge/linalg.hpp"
+
+#include <cassert>
+
+namespace fcarouge::test {
+using representation = double;
+
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+
+namespace {
+//! @test Verifies the square by square matrix multiplication operator.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = quantity<mp_units::isq::length[m]>;
+  using area = quantity<mp_units::isq::area[m2]>;
+  using indexes = std::tuple<length, length>;
+  using result_indexes = std::tuple<area, area>;
+
+  const matrix<representation, indexes, indexes> a{{1. * m2, 2. * m2},
+                                                   {3. * m2, 4. * m2}};
+  const matrix<representation, indexes, indexes> b{{5. * m2, 6. * m2},
+                                                   {7. * m2, 8. * m2}};
+  const matrix<representation, result_indexes, result_indexes> r{a * b};
+
+  assert((r.at<0, 0>() == 19. * m4));
+  assert((r.at<0, 1>() == 22. * m4));
+  assert((r.at<1, 0>() == 43. * m4));
+  assert((r.at<1, 1>() == 50. * m4));
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
