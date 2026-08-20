@@ -138,25 +138,25 @@ Variables</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000011">Test</a></b></dt><dd>Verifies a column vector, rank one, matrix stays usable through standard library facilities, such as <code>std::tuple</code>, that probe its <code>operator=</code> overload set, including the excluded singleton one.</dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000010">Test</a></b></dt><dd>Verifies a column vector, rank one, matrix stays usable through standard library facilities, such as <code>std::tuple</code>, that probe its <code>operator=</code> overload set, including the excluded singleton one.</dd></dl>
 <p>Previously reproduced a hard compilation error deep in the element type specialization, with several Clang versions but not GCC. </p>
 
-<p class="definition">Definition at line <a class="el" href="mx1__is__assignable_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="mx1__is__assignable_8cpp_source.xhtml">mx1_is_assignable.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   47</span>  <span class="keyword">using </span>vector = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector&lt;double, 5&gt;</a>;</div>
-<div class="line"><span class="lineno">   48</span> </div>
-<div class="line"><span class="lineno">   49</span>  <span class="keyword">static_assert</span>(std::is_assignable_v&lt;vector &amp;, const vector &amp;&gt;);</div>
-<div class="line"><span class="lineno">   50</span>  <span class="keyword">static_assert</span>(</div>
-<div class="line"><span class="lineno">   51</span>      std::same_as&lt;std::tuple_element_t&lt;0, std::tuple&lt;vector&gt;&gt;, vector&gt;);</div>
-<div class="line"><span class="lineno">   52</span> </div>
-<div class="line"><span class="lineno">   53</span>  <span class="keyword">const</span> vector m{1., 2., 3., 4., 5.};</div>
-<div class="line"><span class="lineno">   54</span>  vector c;</div>
-<div class="line"><span class="lineno">   55</span>  c = m;</div>
-<div class="line"><span class="lineno">   56</span> </div>
-<div class="line"><span class="lineno">   57</span>  assert(c == m);</div>
-<div class="line"><span class="lineno">   58</span> </div>
-<div class="line"><span class="lineno">   59</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   60</span>}()};</div>
+<p class="definition">Definition at line <a class="el" href="mx1__is__assignable_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="mx1__is__assignable_8cpp_source.xhtml">mx1_is_assignable.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   47</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><span class="lineno">   48</span>  <span class="keyword">using </span>vector = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector&lt;double, 5&gt;</a>;</div>
+<div class="line"><span class="lineno">   49</span> </div>
+<div class="line"><span class="lineno">   50</span>  <span class="keyword">static_assert</span>(std::is_assignable_v&lt;vector &amp;, const vector &amp;&gt;);</div>
+<div class="line"><span class="lineno">   51</span>  <span class="keyword">static_assert</span>(</div>
+<div class="line"><span class="lineno">   52</span>      std::same_as&lt;std::tuple_element_t&lt;0, std::tuple&lt;vector&gt;&gt;, vector&gt;);</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>  <span class="keyword">const</span> vector m{1., 2., 3., 4., 5.};</div>
+<div class="line"><span class="lineno">   55</span>  vector c;</div>
+<div class="line"><span class="lineno">   56</span>  c = m;</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>  assert(c == m);</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   61</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a3aae575a4aa6b608a99d02f58b0fc86c"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00090">eigen.hpp:90</a></div></div>
 </div><!-- fragment -->
 </div>

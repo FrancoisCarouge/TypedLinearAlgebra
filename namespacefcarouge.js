@@ -53,7 +53,7 @@ var namespacefcarouge =
     [ "operator*", "namespacefcarouge.xhtml#a2b908a38283a6aaa27d38ab45ec41858", null ],
     [ "operator*", "namespacefcarouge.xhtml#a6da3918f25b928681a6a9c691487986f", null ],
     [ "operator*", "namespacefcarouge.xhtml#a9343adf455a88982fd1efabe086673b7", null ],
-    [ "operator*", "namespacefcarouge.xhtml#a37ad0c6ac7df201ab1ffbf86e277506b", null ],
+    [ "operator*", "namespacefcarouge.xhtml#a303b231efb2cf893d3da21cab8d5f8c6", null ],
     [ "operator+", "namespacefcarouge.xhtml#a64718d1d1ee302a9bb95d33fe03fb30c", null ],
     [ "operator+", "namespacefcarouge.xhtml#a38293a160a5055f6c2f29b21c346773f", null ],
     [ "operator+", "namespacefcarouge.xhtml#aa8e8adfcb1bb983c404fcd14282fcafa", null ],
