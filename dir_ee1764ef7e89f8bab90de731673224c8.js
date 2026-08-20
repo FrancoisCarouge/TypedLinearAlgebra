@@ -6,5 +6,6 @@ var dir_ee1764ef7e89f8bab90de731673224c8 =
     [ "rxc.cpp", "multiplication_2rxc_8cpp.xhtml", "multiplication_2rxc_8cpp" ],
     [ "scalar.cpp", "scalar_8cpp.xhtml", "scalar_8cpp" ],
     [ "scalar_unit_eigen.cpp", "scalar__unit__eigen_8cpp.xhtml", "scalar__unit__eigen_8cpp" ],
-    [ "sxc.cpp", "sxc_8cpp.xhtml", "sxc_8cpp" ]
+    [ "sxc.cpp", "sxc_8cpp.xhtml", "sxc_8cpp" ],
+    [ "sxs_unit_eigen.cpp", "sxs__unit__eigen_8cpp.xhtml", "sxs__unit__eigen_8cpp" ]
 ];

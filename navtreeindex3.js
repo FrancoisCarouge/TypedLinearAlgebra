@@ -1,5 +1,7 @@
 var NAVTREEINDEX3 =
 {
+"nx1__array_8cpp.xhtml":[19,0,7,3,9],
+"nx1__array_8cpp.xhtml#a2eda0e3187c532439054bd54cef25c3c":[19,0,7,3,9,0],
 "nx1__array_8cpp_source.xhtml":[19,0,7,3,9],
 "pages.xhtml":[],
 "plot_8cpp.xhtml":[19,0,0,3],
@@ -151,6 +153,9 @@ var NAVTREEINDEX3 =
 "sxc_8cpp.xhtml":[19,0,7,10,6],
 "sxc_8cpp.xhtml#ad63f4e701bd78e38fa640f9d936952df":[19,0,7,10,6,0],
 "sxc_8cpp_source.xhtml":[19,0,7,10,6],
+"sxs__unit__eigen_8cpp.xhtml":[19,0,7,10,7],
+"sxs__unit__eigen_8cpp.xhtml#acb2d88ab0ec8614473418815034cfe96":[19,0,7,10,7,0],
+"sxs__unit__eigen_8cpp_source.xhtml":[19,0,7,10,7],
 "test.xhtml":[15],
 "time_trace.xhtml":[8],
 "todo.xhtml":[14],

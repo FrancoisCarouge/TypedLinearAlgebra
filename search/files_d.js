@@ -11,5 +11,6 @@ var searchData=
   ['subscript_5fmx1_5fconst_2ecpp_8',['subscript_mx1_const.cpp',['../subscript__mx1__const_8cpp.xhtml',1,'']]],
   ['subscript_5fmxn_2ecpp_9',['subscript_mxn.cpp',['../subscript__mxn_8cpp.xhtml',1,'']]],
   ['subscript_5fmxn_5fconst_2ecpp_10',['subscript_mxn_const.cpp',['../subscript__mxn__const_8cpp.xhtml',1,'']]],
-  ['sxc_2ecpp_11',['sxc.cpp',['../sxc_8cpp.xhtml',1,'']]]
+  ['sxc_2ecpp_11',['sxc.cpp',['../sxc_8cpp.xhtml',1,'']]],
+  ['sxs_5funit_5feigen_2ecpp_12',['sxs_unit_eigen.cpp',['../sxs__unit__eigen_8cpp.xhtml',1,'']]]
 ];

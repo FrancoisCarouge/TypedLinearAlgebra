@@ -87,7 +87,7 @@ var NAVTREEINDEX2 =
 "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#ab83f17b19ceb5d7d83389cc44a1684f5":[16,0,1,4,1,4],
 "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#abadda8a5417037ae0b6596f861948290":[16,0,1,4,1,6],
 "namespacefcarouge_1_1test.xhtml":[16,0,1,5],
-"namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7":[16,0,1,5,64],
+"namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7":[16,0,1,5,65],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1_8cpp_03.xhtml":[16,0,1,5,0],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1_8cpp_03.xhtml#a307416cd408bb3cea5e5a4d316135bc3":[16,0,1,5,0,0],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__array_8cpp_03.xhtml":[16,0,1,5,1],
@@ -219,8 +219,10 @@ var NAVTREEINDEX2 =
 "namespacefcarouge_1_1test_1_1anonymous__namespace_02subscript__mxn__const_8cpp_03.xhtml#ae8e5b6fdab472aa8210b1afdbe127327":[16,0,1,5,61,0],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_02sxc_8cpp_03.xhtml":[16,0,1,5,62],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_02sxc_8cpp_03.xhtml#ad63f4e701bd78e38fa640f9d936952df":[16,0,1,5,62,0],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02underlying_8cpp_03.xhtml":[16,0,1,5,63],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02underlying_8cpp_03.xhtml#ae337e6d7e2e77329f3f4f5141ad525d0":[16,0,1,5,63,0],
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02sxs__unit__eigen_8cpp_03.xhtml":[16,0,1,5,63],
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02sxs__unit__eigen_8cpp_03.xhtml#acb2d88ab0ec8614473418815034cfe96":[16,0,1,5,63,0],
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02underlying_8cpp_03.xhtml":[16,0,1,5,64],
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02underlying_8cpp_03.xhtml#ae337e6d7e2e77329f3f4f5141ad525d0":[16,0,1,5,64,0],
 "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml":[16,0,1,6],
 "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a174364178a20af0590ffe5c549e13e66":[16,0,1,6,3],
 "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a2963e691119d8b2ac7bdeac82688b5b9":[16,0,1,6,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX2 =
 "nested__typed__eigen_2fcarouge_2linalg_8hpp_source.xhtml":[19,0,6,4,0,0],
 "nx1_8cpp.xhtml":[19,0,7,3,8],
 "nx1_8cpp.xhtml#af07046c82baccb4eea53f6e6f1a43e18":[19,0,7,3,8,0],
-"nx1_8cpp_source.xhtml":[19,0,7,3,8],
-"nx1__array_8cpp.xhtml":[19,0,7,3,9],
-"nx1__array_8cpp.xhtml#a2eda0e3187c532439054bd54cef25c3c":[19,0,7,3,9,0]
+"nx1_8cpp_source.xhtml":[19,0,7,3,8]
 };

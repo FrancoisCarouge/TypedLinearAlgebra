@@ -78,6 +78,7 @@ var searchData=
   ['fcarouge_3a_3atest_3a_3aanonymous_5fnamespace_7bsubscript_5fmxn_2ecpp_7d_75',['anonymous_namespace{subscript_mxn.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02subscript__mxn_8cpp_03.xhtml',1,'fcarouge::test']]],
   ['fcarouge_3a_3atest_3a_3aanonymous_5fnamespace_7bsubscript_5fmxn_5fconst_2ecpp_7d_76',['anonymous_namespace{subscript_mxn_const.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02subscript__mxn__const_8cpp_03.xhtml',1,'fcarouge::test']]],
   ['fcarouge_3a_3atest_3a_3aanonymous_5fnamespace_7bsxc_2ecpp_7d_77',['anonymous_namespace{sxc.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02sxc_8cpp_03.xhtml',1,'fcarouge::test']]],
-  ['fcarouge_3a_3atest_3a_3aanonymous_5fnamespace_7bunderlying_2ecpp_7d_78',['anonymous_namespace{underlying.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02underlying_8cpp_03.xhtml',1,'fcarouge::test']]],
-  ['fcarouge_3a_3atyped_5flinear_5falgebra_5finternal_79',['typed_linear_algebra_internal',['../namespacefcarouge_1_1typed__linear__algebra__internal.xhtml',1,'fcarouge']]]
+  ['fcarouge_3a_3atest_3a_3aanonymous_5fnamespace_7bsxs_5funit_5feigen_2ecpp_7d_78',['anonymous_namespace{sxs_unit_eigen.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02sxs__unit__eigen_8cpp_03.xhtml',1,'fcarouge::test']]],
+  ['fcarouge_3a_3atest_3a_3aanonymous_5fnamespace_7bunderlying_2ecpp_7d_79',['anonymous_namespace{underlying.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02underlying_8cpp_03.xhtml',1,'fcarouge::test']]],
+  ['fcarouge_3a_3atyped_5flinear_5falgebra_5finternal_80',['typed_linear_algebra_internal',['../namespacefcarouge_1_1typed__linear__algebra__internal.xhtml',1,'fcarouge']]]
 ];
