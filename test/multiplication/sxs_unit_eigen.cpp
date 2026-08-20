@@ -32,6 +32,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
+#include <tuple>
 
 namespace fcarouge::test {
 using representation = double;
