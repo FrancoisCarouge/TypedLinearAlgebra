@@ -13,10 +13,14 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  "Shard":
     runs-on: ubuntu-26.04
     permissions:
       contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [ 0, 1, 2, 3, 4, 5 ]
     steps:
     - name: Harden Runner
       uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
@@ -43,5 +47,6 @@ jobs:
             -path './sample/*.cpp' -o \
             -path './support/*.cpp' -o \
             -path './test/*.cpp' \) \
-            ! -name '*_fail.cpp'`
-        run-clang-tidy -j 4 -p 'build' $FILES
+            ! -name '*_fail.cpp' | sort`
+        SHARD_FILES=`echo "$FILES" | awk "NR % ${{ strategy.job-total }} == ${{ strategy.job-index }}"`
+        run-clang-tidy -j 4 -p 'build' $SHARD_FILES
