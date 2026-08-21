@@ -19,6 +19,7 @@ var searchData=
   ['row_5fvector_16',['row_vector',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a0fbf3290a12af3c49e95f1f20782a990',1,'fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::row_vector'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#a4fa9d9191a34fa69f071d94de9b5616a',1,'fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::row_vector'],['../namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b',1,'fcarouge::eigen::row_vector'],['../namespacefcarouge.xhtml#a60b6b92762905569a26339025d4b0821',1,'fcarouge::row_vector']]],
   ['rows_17',['rows',['../classfcarouge_1_1typed__matrix.xhtml#afd5534246d7ed85750e1cf58e2b85f5b',1,'fcarouge::typed_matrix']]],
   ['run_18',['Development Build &amp; Run',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run',1,'']]],
-  ['rxc_2ecpp_19',['rxc.cpp',['../multiplication_2rxc_8cpp.xhtml',1,'(Global Namespace)'],['../transposed_2rxc_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['rxc_5funit_5fstd_2ecpp_20',['rxc_unit_std.cpp',['../rxc__unit__std_8cpp.xhtml',1,'']]]
+  ['run_20time_20call_20traces_19',['Run-Time Call Traces',['../call_trace.xhtml',1,'']]],
+  ['rxc_2ecpp_20',['rxc.cpp',['../multiplication_2rxc_8cpp.xhtml',1,'(Global Namespace)'],['../transposed_2rxc_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['rxc_5funit_5fstd_2ecpp_21',['rxc_unit_std.cpp',['../rxc__unit__std_8cpp.xhtml',1,'']]]
 ];
