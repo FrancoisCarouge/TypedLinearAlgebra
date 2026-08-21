@@ -24,6 +24,10 @@ jobs:
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: 'Install: Latest CMake'
       uses: ssrobins/install-cmake@da13ba26f50a41d3b03cfe8ca7265903f04a8932 # v1.0.0
+    - name: 'Install: libc++'
+      run: |
+        sudo apt update
+        sudo apt install -y "libc++-21-dev" "libc++abi-21-dev"
     - name: 'Configure'
       env:
         CXX: 'clang++-21'
