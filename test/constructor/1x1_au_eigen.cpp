@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,13 +27,39 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-add_library(typed_linear_algebra_unit_eigen INTERFACE)
-target_sources(
-  typed_linear_algebra_unit_eigen
-  INTERFACE FILE_SET "typed_linear_algebra_headers" TYPE "HEADERS" FILES
-            "fcarouge/linalg.hpp")
-target_link_libraries(
-  typed_linear_algebra_unit_eigen INTERFACE typed_linear_algebra_eigen
-                                            typed_linear_algebra_unit tlinalg)
+#include "fcarouge/linalg.hpp"
+
+#include <au/units/meters.hh>
+
+#include <cassert>
+#include <tuple>
+#include <type_traits>
+
+namespace fcarouge::test {
+using representation = double;
+
+namespace {
+//! @test Verifies the initializer lists constructor.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = au::QuantityD<au::Meters>;
+
+  const matrix<representation, std::tuple<length>, std::tuple<length>> r{
+      au::squared(au::meters)(42.)};
+
+  assert(au::squared(au::meters)(42.) == r.at());
+  assert(au::squared(au::meters)(42.) == r[]);
+  assert(au::squared(au::meters)(42.) == r());
+  assert(au::squared(au::meters)(42.) == r);
+
+  static_assert(
+      not std::is_constructible_v<
+          matrix<double, std::tuple<length>, std::tuple<length>>,
+          decltype(au::cubed(au::meters)(1.))>,
+      "The copy conversion constructor cannot accept non-convertible types.");
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

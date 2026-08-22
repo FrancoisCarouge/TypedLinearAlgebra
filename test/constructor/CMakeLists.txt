@@ -30,8 +30,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 pass("1x1_array" BACKENDS "eigexed" "nested_typed_eigen")
-pass("1x1_unit_eigen" BACKENDS "unit_eigen")
-pass("1x1_unit_std" BACKENDS "unit_std")
+pass("1x1_au_eigen" BACKENDS "au_eigen")
+pass("1x1_au_std" BACKENDS "au_std")
+pass("1x1_mp_units_eigen" BACKENDS "mp_units_eigen")
+pass("1x1_mp_units_std" BACKENDS "mp_units_std")
 pass("1x1" BACKENDS "eigexed" "nested_typed_eigen")
 pass("1xn_array" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
 pass("1xn" BACKENDS "eigen" "eigexed" "nested_typed_eigen")

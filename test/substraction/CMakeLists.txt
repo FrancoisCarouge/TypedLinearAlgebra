@@ -29,9 +29,13 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-fail("1x1_unit_eigen_fail" BACKENDS "unit_eigen")
-fail("1x2_unit_eigen_fail" BACKENDS "unit_eigen")
+fail("1x1_au_eigen_fail" BACKENDS "au_eigen")
+fail("1x1_mp_units_eigen_fail" BACKENDS "mp_units_eigen")
+fail("1x2_au_eigen_fail" BACKENDS "au_eigen")
+fail("1x2_mp_units_eigen_fail" BACKENDS "mp_units_eigen")
 
-pass("1x1_unit_eigen" BACKENDS "unit_eigen")
-pass("1x2_unit_eigen" BACKENDS "unit_eigen")
+pass("1x1_au_eigen" BACKENDS "au_eigen")
+pass("1x1_mp_units_eigen" BACKENDS "mp_units_eigen")
+pass("1x2_au_eigen" BACKENDS "au_eigen")
+pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen")
 pass("1x2_eigen" BACKENDS "eigen" "eigexed" "nested_typed_eigen")

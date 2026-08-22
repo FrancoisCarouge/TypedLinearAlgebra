@@ -29,5 +29,5 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-pass("representation" BACKENDS "unit_eigen")
-pass("typed_vector_as_quantity" BACKENDS "unit_eigen")
+pass("representation" BACKENDS "mp_units_eigen")
+pass("typed_vector_as_quantity" BACKENDS "mp_units_eigen")
