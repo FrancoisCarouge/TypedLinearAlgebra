@@ -34,8 +34,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <cassert>
 
 namespace fcarouge::test {
-using literals::operator""_i;
-
 namespace {
 //! @test Verifies the singleton by singleton matrix multiplication operator.
 [[maybe_unused]] const auto test{[] -> int {

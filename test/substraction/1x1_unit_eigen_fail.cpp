@@ -34,7 +34,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <cassert>
 
 namespace fcarouge::test {
-using literals::operator""_i;
 using representation = double;
 
 template <auto QuantityReference>
