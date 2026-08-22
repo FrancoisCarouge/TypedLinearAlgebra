@@ -27,21 +27,22 @@ var NAVTREE =
   [ "Typed Linear Algebra", "index.xhtml", [
     [ "Installation & Usage", "index.xhtml#installation--usage", null ],
     [ "Reference", "index.xhtml#reference", [
-      [ "Class Typed Matrix", "index.xhtml#class-typed-matrix-1", [
-        [ "Declaration", "index.xhtml#declaration-1", null ],
-        [ "Template Parameters", "index.xhtml#template-parameters-1", null ],
-        [ "Member Types", "index.xhtml#member-types-1", null ],
-        [ "Member Variables", "index.xhtml#member-variables-1", null ],
-        [ "Member Functions", "index.xhtml#member-functions-1", null ]
+      [ "Class Typed Matrix", "index.xhtml#class-typed-matrix", [
+        [ "Declaration", "index.xhtml#declaration", null ],
+        [ "Template Parameters", "index.xhtml#template-parameters", null ],
+        [ "Member Types", "index.xhtml#member-types", null ],
+        [ "Member Variables", "index.xhtml#member-variables", null ],
+        [ "Member Functions", "index.xhtml#member-functions", null ]
       ] ],
-      [ "Operations", "index.xhtml#operations-1", null ],
-      [ "Aliases", "index.xhtml#aliases-1", null ],
-      [ "Format", "index.xhtml#format-1", null ],
+      [ "Operations", "index.xhtml#operations", null ],
+      [ "Aliases", "index.xhtml#aliases", null ],
+      [ "Format", "index.xhtml#format", null ],
       [ "Literals", "index.xhtml#literals", null ],
-      [ "Concepts", "index.xhtml#concepts-1", null ],
-      [ "Structure Element Caster", "index.xhtml#structure-element-caster-1", null ]
+      [ "Concepts", "index.xhtml#concepts", null ],
+      [ "Structure Element Caster", "index.xhtml#structure-element-caster", null ]
     ] ],
     [ "More", "index.xhtml#more", [
+      [ "Use Cases", "index.xhtml#use-cases", null ],
       [ "As seen at CppNow 2026", "index.xhtml#as-seen-at-cppnow-2026", null ],
       [ "Lessons Learned", "index.xhtml#lessons-learned", null ],
       [ "Projects", "index.xhtml#projects", null ],
@@ -80,18 +81,18 @@ var NAVTREE =
       [ "3 Typed Linear Algebra", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md3-typed-linear-algebra", null ],
       [ "4 Case Study", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md4-case-study", null ],
       [ "5 Library Reference", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md5-library-reference", [
-        [ "Class Typed Matrix", "md_html_2paper_2mp__units__eigen.xhtml#class-typed-matrix", [
-          [ "Declaration", "md_html_2paper_2mp__units__eigen.xhtml#declaration", null ],
-          [ "Template Parameters", "md_html_2paper_2mp__units__eigen.xhtml#template-parameters", null ],
-          [ "Member Types", "md_html_2paper_2mp__units__eigen.xhtml#member-types", null ],
-          [ "Member Variables", "md_html_2paper_2mp__units__eigen.xhtml#member-variables", null ],
-          [ "Member Functions", "md_html_2paper_2mp__units__eigen.xhtml#member-functions", null ]
+        [ "Class Typed Matrix", "md_html_2paper_2mp__units__eigen.xhtml#class-typed-matrix-1", [
+          [ "Declaration", "md_html_2paper_2mp__units__eigen.xhtml#declaration-1", null ],
+          [ "Template Parameters", "md_html_2paper_2mp__units__eigen.xhtml#template-parameters-1", null ],
+          [ "Member Types", "md_html_2paper_2mp__units__eigen.xhtml#member-types-1", null ],
+          [ "Member Variables", "md_html_2paper_2mp__units__eigen.xhtml#member-variables-1", null ],
+          [ "Member Functions", "md_html_2paper_2mp__units__eigen.xhtml#member-functions-1", null ]
         ] ],
-        [ "Operations", "md_html_2paper_2mp__units__eigen.xhtml#operations", null ],
-        [ "Aliases", "md_html_2paper_2mp__units__eigen.xhtml#aliases", null ],
-        [ "Format", "md_html_2paper_2mp__units__eigen.xhtml#format", null ],
-        [ "Concepts", "md_html_2paper_2mp__units__eigen.xhtml#concepts", null ],
-        [ "Structure Element Caster", "md_html_2paper_2mp__units__eigen.xhtml#structure-element-caster", null ]
+        [ "Operations", "md_html_2paper_2mp__units__eigen.xhtml#operations-1", null ],
+        [ "Aliases", "md_html_2paper_2mp__units__eigen.xhtml#aliases-1", null ],
+        [ "Format", "md_html_2paper_2mp__units__eigen.xhtml#format-1", null ],
+        [ "Concepts", "md_html_2paper_2mp__units__eigen.xhtml#concepts-1", null ],
+        [ "Structure Element Caster", "md_html_2paper_2mp__units__eigen.xhtml#structure-element-caster-1", null ]
       ] ],
       [ "6 Open Questions", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md6-open-questions", null ],
       [ "7 Beyond Unit Safety", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md7-beyond-unit-safety", null ],
@@ -159,9 +160,9 @@ var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
 "dir_77010ae1c659866f3d80deb588daf66a.xhtml",
-"minus_21x1__eigen_8cpp.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02mx1__fail_8cpp_03.xhtml",
-"subscript__mx1__const_8cpp.xhtml#abfd0d5218da08f93883d95197db6c8f6"
+"mdspan__tuple__product_8cpp_source.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02mx1__eigen_8cpp_03.xhtml#a20b80a56b6665888c005c697034759a5",
+"subscript__mx1__const_8cpp.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
