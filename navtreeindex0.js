@@ -202,6 +202,8 @@ var NAVTREEINDEX0 =
 "conceptfcarouge_1_1other.xhtml":[18,0,7],
 "conceptfcarouge_1_1other__tuple__like__vector.xhtml":[17,0,1,20],
 "conceptfcarouge_1_1other__tuple__like__vector.xhtml":[18,0,8],
+"conceptfcarouge_1_1quantity__element__typed__matrix.xhtml":[17,0,1,23],
+"conceptfcarouge_1_1quantity__element__typed__matrix.xhtml":[18,0,11],
 "conceptfcarouge_1_1rank__typed__matrix.xhtml":[17,0,1,17],
 "conceptfcarouge_1_1rank__typed__matrix.xhtml":[18,0,5],
 "conceptfcarouge_1_1row__typed__matrix.xhtml":[17,0,1,15],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "dir_5dcc120ce88763492754ea9f01fb177a.xhtml":[20,0,7,2],
 "dir_6071415610cde49b13e346d9225dcd79.xhtml":[20,0,7,7],
 "dir_6984f3d25fc75ffbd2807029da830d08.xhtml":[20,0,7,11],
-"dir_74a3c9427e9a4782c7a8462862ac57cd.xhtml":[20,0,7,8],
-"dir_77010ae1c659866f3d80deb588daf66a.xhtml":[20,0,6,3],
-"dir_7790fd102d887982debc6f656ac58c61.xhtml":[20,0,6,7,0]
+"dir_74a3c9427e9a4782c7a8462862ac57cd.xhtml":[20,0,7,8]
 };

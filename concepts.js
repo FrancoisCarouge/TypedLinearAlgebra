@@ -15,6 +15,7 @@ var concepts =
       [ "other", "conceptfcarouge_1_1other.xhtml", null ],
       [ "other_tuple_like_vector", "conceptfcarouge_1_1other__tuple__like__vector.xhtml", null ],
       [ "index", "conceptfcarouge_1_1index.xhtml", null ],
-      [ "undecomposed_tuple_like_quantity", "conceptfcarouge_1_1undecomposed__tuple__like__quantity.xhtml", null ]
+      [ "undecomposed_tuple_like_quantity", "conceptfcarouge_1_1undecomposed__tuple__like__quantity.xhtml", null ],
+      [ "quantity_element_typed_matrix", "conceptfcarouge_1_1quantity__element__typed__matrix.xhtml", null ]
     ] ]
 ];

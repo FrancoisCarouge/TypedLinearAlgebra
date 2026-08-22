@@ -6,5 +6,6 @@ var namespaces_dup =
       [ "operator/", "namespace_eigen.xhtml#a055f2c87b739a645dfb6edba76d1379e", null ],
       [ "operator/", "namespace_eigen.xhtml#a59124d2b29990b7c9b8bdb1f0102897a", null ]
     ] ],
-    [ "fcarouge", "namespacefcarouge.xhtml", "namespacefcarouge" ]
+    [ "fcarouge", "namespacefcarouge.xhtml", "namespacefcarouge" ],
+    [ "mp_units", "namespacemp__units.xhtml", "namespacemp__units" ]
 ];

@@ -37,6 +37,7 @@ var namespacefcarouge =
     [ "other_tuple_like_vector", "conceptfcarouge_1_1other__tuple__like__vector.xhtml", null ],
     [ "index", "conceptfcarouge_1_1index.xhtml", null ],
     [ "undecomposed_tuple_like_quantity", "conceptfcarouge_1_1undecomposed__tuple__like__quantity.xhtml", null ],
+    [ "quantity_element_typed_matrix", "conceptfcarouge_1_1quantity__element__typed__matrix.xhtml", null ],
     [ "acceleration", "namespacefcarouge.xhtml#a54efd5a19e1fb79c2c421f891d436020", null ],
     [ "column_vector", "namespacefcarouge.xhtml#ad06bb441aa2dcec149c52de0c297a967", null ],
     [ "height", "namespacefcarouge.xhtml#a9b124da26de87a5e94ff3b815915769f", null ],
