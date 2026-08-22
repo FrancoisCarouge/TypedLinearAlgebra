@@ -224,9 +224,9 @@ $(function(){initNavTree('unit_8hpp_source.xhtml',''); initResizable(true); });
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> Index, auto Reference, <span class="keyword">typename</span> Representation&gt;</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>  <span class="keyword">requires</span> undecomposed_tuple_like_quantity&lt;Reference, Representation&gt; and</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>           (Index &lt; std::tuple_size_v&lt;Representation&gt;)</div>
-<div class="foldopen" id="foldopen00120" data-start="{" data-end="}">
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#a97ab0828c0b3220b30706db5b5fe699e">  120</a></span>[[nodiscard]] <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacefcarouge.xhtml#ae11184b4aaa71be8dbdb11c41c73c703">get</a>(</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keyword">const</span> mp_units::quantity&lt;Reference, Representation&gt; &amp;value) {</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>[[nodiscard]] <span class="keyword">constexpr</span> <span class="keyword">auto</span></div>
+<div class="foldopen" id="foldopen00121" data-start="{" data-end="}">
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#a97ab0828c0b3220b30706db5b5fe699e">  121</a></span><a class="code hl_function" href="namespacefcarouge.xhtml#ae11184b4aaa71be8dbdb11c41c73c703">get</a>(<span class="keyword">const</span> mp_units::quantity&lt;Reference, Representation&gt; &amp;value) {</div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="namespacefcarouge.xhtml#ae11184b4aaa71be8dbdb11c41c73c703">get&lt;Index&gt;</a>(value.numerical_value_in(value.unit)) * value.unit;</div>
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>}</div>
 </div>
