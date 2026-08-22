@@ -11,6 +11,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "format", "dir_74a3c9427e9a4782c7a8462862ac57cd.xhtml", "dir_74a3c9427e9a4782c7a8462862ac57cd" ],
     [ "magnitude", "dir_a3e49a7e1a799e12d26b70031305b663.xhtml", "dir_a3e49a7e1a799e12d26b70031305b663" ],
     [ "matrix_product", "dir_0a5c94c6b1800719290ff7c8ab5d7918.xhtml", "dir_0a5c94c6b1800719290ff7c8ab5d7918" ],
+    [ "matrix_vector_product", "dir_6984f3d25fc75ffbd2807029da830d08.xhtml", "dir_6984f3d25fc75ffbd2807029da830d08" ],
     [ "minus", "dir_c2689131500af98a26694fed65bbca21.xhtml", "dir_c2689131500af98a26694fed65bbca21" ],
     [ "mp_units", "dir_f408fcf1297947454c84a3486bce03f6.xhtml", "dir_f408fcf1297947454c84a3486bce03f6" ],
     [ "multiplication", "dir_ee1764ef7e89f8bab90de731673224c8.xhtml", "dir_ee1764ef7e89f8bab90de731673224c8" ],

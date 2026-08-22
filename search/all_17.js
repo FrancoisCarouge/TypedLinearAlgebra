@@ -20,10 +20,11 @@ var searchData=
   ['row_17',['row',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02formattable_8cpp_03.xhtml#a8c2c45bcaac6459ee60b93ff06f360f1',1,'fcarouge::test::anonymous_namespace{formattable.cpp}']]],
   ['row_5fextents_18',['row_extents',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#ab83f17b19ceb5d7d83389cc44a1684f5',1,'fcarouge::sample::anonymous_namespace{mp_units_std.cpp}']]],
   ['row_5findexes_19',['row_indexes',['../classfcarouge_1_1typed__matrix.xhtml#a67a638bf31384a9120a5def3c74b641a',1,'fcarouge::typed_matrix']]],
-  ['row_5fvector_20',['row_vector',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a0fbf3290a12af3c49e95f1f20782a990',1,'fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::row_vector'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#a4fa9d9191a34fa69f071d94de9b5616a',1,'fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::row_vector'],['../namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b',1,'fcarouge::eigen::row_vector'],['../namespacefcarouge.xhtml#a60b6b92762905569a26339025d4b0821',1,'fcarouge::row_vector']]],
-  ['rows_21',['rows',['../classfcarouge_1_1typed__matrix.xhtml#afd5534246d7ed85750e1cf58e2b85f5b',1,'fcarouge::typed_matrix']]],
-  ['run_22',['Development Build &amp; Run',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run',1,'']]],
-  ['run_20time_20call_20traces_23',['Run-Time Call Traces',['../call_trace.xhtml',1,'']]],
-  ['rxc_2ecpp_24',['rxc.cpp',['../multiplication_2rxc_8cpp.xhtml',1,'(Global Namespace)'],['../transposed_2rxc_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['rxc_5funit_5fstd_2ecpp_25',['rxc_unit_std.cpp',['../rxc__unit__std_8cpp.xhtml',1,'']]]
+  ['row_5funit_5fstd_2ecpp_20',['row_unit_std.cpp',['../row__unit__std_8cpp.xhtml',1,'']]],
+  ['row_5fvector_21',['row_vector',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a0fbf3290a12af3c49e95f1f20782a990',1,'fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::row_vector'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#a4fa9d9191a34fa69f071d94de9b5616a',1,'fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::row_vector'],['../namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b',1,'fcarouge::eigen::row_vector'],['../namespacefcarouge.xhtml#a60b6b92762905569a26339025d4b0821',1,'fcarouge::row_vector']]],
+  ['rows_22',['rows',['../classfcarouge_1_1typed__matrix.xhtml#afd5534246d7ed85750e1cf58e2b85f5b',1,'fcarouge::typed_matrix']]],
+  ['run_23',['Development Build &amp; Run',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run',1,'']]],
+  ['run_20time_20call_20traces_24',['Run-Time Call Traces',['../call_trace.xhtml',1,'']]],
+  ['rxc_2ecpp_25',['rxc.cpp',['../multiplication_2rxc_8cpp.xhtml',1,'(Global Namespace)'],['../transposed_2rxc_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['rxc_5funit_5fstd_2ecpp_26',['rxc_unit_std.cpp',['../rxc__unit__std_8cpp.xhtml',1,'']]]
 ];
