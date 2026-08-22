@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,13 +27,35 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-add_library(typed_linear_algebra_unit_std INTERFACE)
-target_sources(
-  typed_linear_algebra_unit_std
-  INTERFACE FILE_SET "typed_linear_algebra_headers" TYPE "HEADERS" FILES
-            "fcarouge/linalg.hpp")
-target_link_libraries(
-  typed_linear_algebra_unit_std INTERFACE typed_linear_algebra_kokkos
-                                          typed_linear_algebra_unit tlinalg)
+#include "fcarouge/linalg.hpp"
+
+#include <au/units/meters.hh>
+
+#include <cassert>
+
+namespace fcarouge::test {
+using representation = double;
+
+namespace {
+//! @test Verifies the singleton by singleton matrix equal to operator
+//! rejects incompatible element types.
+[[maybe_unused]] const auto test{[] {
+  using length = au::QuantityD<au::Meters>;
+
+  // Intended:
+  // const row_vector<representation, length> a{au::meters(3.)};
+
+  using area = au::QuantityD<au::UnitPowerT<au::Meters, 2>>;
+
+  const row_vector<representation, area> a{au::squared(au::meters)(3.)};
+
+  const row_vector<representation, length> b{au::meters(2.)};
+
+  assert(a == b);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

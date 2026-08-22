@@ -45,6 +45,7 @@ jobs:
           --suppress=internalAstError:support/eigen/fcarouge/eigen.hpp \
           --suppress=missingIncludeSystem \
           --suppress=noExplicitConstructor:include/fcarouge/typed_linear_algebra.hpp \
+          --suppress=syntaxError:sample/au_std.cpp \
           --suppress=syntaxError:sample/mp_units_std.cpp \
           --suppress=unhandledChar \
           --suppress=unmatchedSuppression \
@@ -52,12 +53,15 @@ jobs:
           --suppress=unusedStructMember:include/fcarouge/typed_linear_algebra_internal/format.tpp \
           --verbose \
           -I include \
+          -I support/au \
+          -I support/au_eigen \
+          -I support/au_std \
           -I support/eigen \
           -I support/eigexed \
           -I support/kokkos \
           -I support/main \
+          -I support/mp_units \
+          -I support/mp_units_eigen \
+          -I support/mp_units_std \
           -I support/nested_typed_eigen \
-          -I support/unit \
-          -I support/unit_eigen \
-          -I support/unit_std \
           .

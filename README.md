@@ -53,10 +53,11 @@ For each strong type, or linear algebra backends, add a plug-in in your sources.
 
 | Integration | Example Plug-in |
 | --- | --- |
+| Au | [See example plug-in at `support/au/fcarouge/au.hpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | Built-in Types | No plug-in needed. |
 | Eigen | [See example plug-in at `support/eigen`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | Kokkos | [See example plug-in at `support/kokkos`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
-| mp-units | [See example plug-in at `support/unit/fcarouge/unit.hpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
+| mp-units | [See example plug-in at `support/mp_units/fcarouge/mp_units.hpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | std::linalg | No plug-in needed. |
 
 # Reference
@@ -255,6 +256,7 @@ The library is used in projects:
 The library is designed, developed, and tested with the help of third-party tools and services acknowledged and thanked here:
 
 - [actions-gh-pages](https://github.com/peaceiris/actions-gh-pages) to upload the documentation to GitHub pages.
+- [Au](https://github.com/aurora-opensource/au) the physical units library for C++, by Aurora Innovation.
 - [Clang](https://clang.llvm.org) for compilation and code sanitizers.
 - [clang-format](https://clang.llvm.org/docs/ClangFormat.html) for code formatting.
 - [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) for static analysis.

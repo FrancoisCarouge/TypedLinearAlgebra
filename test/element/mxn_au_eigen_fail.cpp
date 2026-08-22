@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,35 +27,33 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-FetchContent_Declare(
-  gsl-lite
-  GIT_REPOSITORY "https://github.com/gsl-lite/gsl-lite"
-  GIT_SHALLOW TRUE
-  FIND_PACKAGE_ARGS NAMES gsl-lite)
-FetchContent_MakeAvailable(gsl-lite)
+#include "fcarouge/linalg.hpp"
 
-set(MP_UNITS_LIB_FORMAT_SUPPORTED ON)
-set(MP_UNITS_API_FREESTANDING OFF)
-set(MP_UNITS_API_STD_FORMAT ON)
-set(MP_UNITS_BUILD_INSTALL OFF)
+#include <au/units/amperes.hh>
+#include <au/units/meters.hh>
+#include <au/units/newtons.hh>
+#include <au/units/seconds.hh>
 
-FetchContent_Declare(
-  mp-units
-  GIT_REPOSITORY "https://github.com/mpusz/mp-units"
-  GIT_SHALLOW TRUE
-  SOURCE_SUBDIR "src" FIND_PACKAGE_ARGS NAMES mp-units)
-FetchContent_MakeAvailable(mp-units)
+namespace fcarouge::test {
+namespace {
+//! @test Verifies a rank two matrix element cannot be accessed with a
+//! single, linearized, index, as if it were a rank one matrix.
+[[maybe_unused]] const auto test{[] {
+  using matrix = matrix<double,
+                        std::tuple<decltype(au::meters(1.)),
+                                   decltype(au::meters(1.) / au::seconds(1.))>,
+                        std::tuple<decltype(au::newtons(1.)),
+                                   decltype(au::inverse(au::amperes)(1.))>>;
 
-target_compile_options(
-  mp-units INTERFACE $<IF:$<CXX_COMPILER_ID:MSVC>, /wd4875,
-                     -Wno-double-promotion -Wno-undef>)
+  // Intended:
+  // using quantity = matrix::element<0, 0>;
 
-add_library(typed_linear_algebra_unit INTERFACE)
-target_sources(
-  typed_linear_algebra_unit INTERFACE FILE_SET "unit_headers" TYPE "HEADERS"
-                                      FILES "fcarouge/unit.hpp")
-target_link_libraries(
-  typed_linear_algebra_unit INTERFACE typed_linear_algebra_options
-                                      mp-units::mp-units mp-units::integrations)
+  using quantity = matrix::element<0>;
+  [[maybe_unused]] quantity value;
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
