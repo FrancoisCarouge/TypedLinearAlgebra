@@ -142,55 +142,54 @@ $(function(){initNavTree('addition_21x1__unit__std_8cpp_source.xhtml',''); initR
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &lt;type_traits&gt;</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a> {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">using </span>literals::operator<span class="stringliteral">&quot;&quot;</span>_i;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a3c3e455061e1c9775f216253f0fc5541">representation</a> = double;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">template</span> &lt;auto QuantityReference&gt;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">quantity</a> = mp_units::quantity&lt;QuantityReference, representation&gt;;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__unit__std_8cpp_03.xhtml">   46</a></span><span class="keyword">namespace </span>{</div>
-<div class="foldopen" id="foldopen00048" data-start="{" data-end="};">
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__unit__std_8cpp_03.xhtml#a660c1e2b6edff3c92bac2132f51983bd">   48</a></span>[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> test{[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="keyword">using </span>length = <a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">quantity&lt;mp_units::isq::length[m]&gt;</a>;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keywordtype">double</span> storage_a{0.};</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="keywordtype">double</span> storage_b{0.};</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <span class="keywordtype">double</span> storage_r{0.};</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  std::mdspan span_a{&amp;storage_a, std::extents&lt;std::size_t, 1, 1&gt;{}};</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  std::mdspan span_b{&amp;storage_b, std::extents&lt;std::size_t, 1, 1&gt;{}};</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  std::mdspan span_r{&amp;storage_r, std::extents&lt;std::size_t, 1, 1&gt;{}};</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b">row_vector&lt;representation, length&gt;</a> a{span_a};</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b">row_vector&lt;representation, length&gt;</a> b{span_b};</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b">row_vector&lt;representation, length&gt;</a> r{span_r};</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  a = 2. * m;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  b = 3. * m;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  add(a, b, r);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  assert(5. * m == r);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  assert(5. * m == r());</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  assert(5. * m == r[]);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  assert(5. * m == r.at());</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  assert(5. * m == r.at&lt;&gt;());</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r())&gt;);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r[])&gt;);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at())&gt;);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at&lt;&gt;())&gt;);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>}()};</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a3c3e455061e1c9775f216253f0fc5541">representation</a> = double;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">template</span> &lt;auto QuantityReference&gt;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">quantity</a> = mp_units::quantity&lt;QuantityReference, representation&gt;;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__unit__std_8cpp_03.xhtml">   45</a></span><span class="keyword">namespace </span>{</div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="};">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__unit__std_8cpp_03.xhtml#a660c1e2b6edff3c92bac2132f51983bd">   47</a></span>[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> test{[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keyword">using </span>length = <a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">quantity&lt;mp_units::isq::length[m]&gt;</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="keywordtype">double</span> storage_a{0.};</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keywordtype">double</span> storage_b{0.};</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="keywordtype">double</span> storage_r{0.};</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  std::mdspan span_a{&amp;storage_a, std::extents&lt;std::size_t, 1, 1&gt;{}};</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  std::mdspan span_b{&amp;storage_b, std::extents&lt;std::size_t, 1, 1&gt;{}};</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  std::mdspan span_r{&amp;storage_r, std::extents&lt;std::size_t, 1, 1&gt;{}};</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b">row_vector&lt;representation, length&gt;</a> a{span_a};</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b">row_vector&lt;representation, length&gt;</a> b{span_b};</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b">row_vector&lt;representation, length&gt;</a> r{span_r};</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  a = 2. * m;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  b = 3. * m;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  add(a, b, r);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  assert(5. * m == r);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  assert(5. * m == r());</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  assert(5. * m == r[]);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  assert(5. * m == r.at());</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  assert(5. * m == r.at&lt;&gt;());</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r())&gt;);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r[])&gt;);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at())&gt;);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at&lt;&gt;())&gt;);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>}()};</div>
 </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>} <span class="comment">// namespace</span></div>
 </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>} <span class="comment">// namespace fcarouge::test</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>} <span class="comment">// namespace fcarouge::test</span></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_adec4afd23d0a51e3f79d35c0bdd5f39b"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#adec4afd23d0a51e3f79d35c0bdd5f39b">fcarouge::eigen::row_vector</a></div><div class="ttdeci">Eigen::RowVector&lt; Type, Column &gt; row_vector</div><div class="ttdoc">Compile-time sized Eigen3 row vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00086">eigen.hpp:86</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_a3c3e455061e1c9775f216253f0fc5541"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a3c3e455061e1c9775f216253f0fc5541">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::representation</a></div><div class="ttdeci">double representation</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00053">mp_units_eigen.cpp:53</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a></div><div class="ttdoc">Unit, integration, regression, and usage tests.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1test_xhtml_a9770b8c17efb82bfa80edbfb9a1de8a7"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">fcarouge::test::quantity</a></div><div class="ttdeci">mp_units::quantity&lt; QuantityReference, representation &gt; quantity</div><div class="ttdef"><b>Definition</b> <a href="addition_21x1__unit__eigen_8cpp_source.xhtml#l00042">1x1_unit_eigen.cpp:42</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1test_xhtml_a9770b8c17efb82bfa80edbfb9a1de8a7"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">fcarouge::test::quantity</a></div><div class="ttdeci">mp_units::quantity&lt; QuantityReference, representation &gt; quantity</div><div class="ttdef"><b>Definition</b> <a href="addition_21x1__unit__eigen_8cpp_source.xhtml#l00041">1x1_unit_eigen.cpp:41</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
