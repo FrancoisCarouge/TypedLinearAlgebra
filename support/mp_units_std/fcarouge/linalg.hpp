@@ -38,8 +38,8 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg"
 #include "fcarouge/mdspan"
+#include "fcarouge/mp_units.hpp"
 #include "fcarouge/typed_linear_algebra.hpp"
-#include "fcarouge/unit.hpp"
 
 namespace fcarouge {
 //! @brief Quantity matrix with mp-units and Eigen implementations.

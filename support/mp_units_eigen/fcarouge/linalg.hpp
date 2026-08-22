@@ -38,7 +38,8 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/eigen.hpp"
 #include "fcarouge/typed_linear_algebra.hpp"
-#include "fcarouge/unit.hpp"
+
+#include "fcarouge/mp_units.hpp"
 
 #include <mp-units/framework/customization_points.h>
 #include <mp-units/integrations/eigen.h>

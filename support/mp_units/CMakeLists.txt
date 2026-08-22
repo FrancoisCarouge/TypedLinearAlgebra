@@ -29,11 +29,35 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-add_library(typed_linear_algebra_unit_eigen INTERFACE)
+FetchContent_Declare(
+  gsl-lite
+  GIT_REPOSITORY "https://github.com/gsl-lite/gsl-lite"
+  GIT_SHALLOW TRUE
+  FIND_PACKAGE_ARGS NAMES gsl-lite)
+FetchContent_MakeAvailable(gsl-lite)
+
+set(MP_UNITS_LIB_FORMAT_SUPPORTED ON)
+set(MP_UNITS_API_FREESTANDING OFF)
+set(MP_UNITS_API_STD_FORMAT ON)
+set(MP_UNITS_BUILD_INSTALL OFF)
+
+FetchContent_Declare(
+  mp-units
+  GIT_REPOSITORY "https://github.com/mpusz/mp-units"
+  GIT_SHALLOW TRUE
+  SOURCE_SUBDIR "src" FIND_PACKAGE_ARGS NAMES mp-units)
+FetchContent_MakeAvailable(mp-units)
+
+target_compile_options(
+  mp-units INTERFACE $<IF:$<CXX_COMPILER_ID:MSVC>, /wd4875,
+                     -Wno-double-promotion -Wno-undef>)
+
+add_library(typed_linear_algebra_mp_units INTERFACE)
 target_sources(
-  typed_linear_algebra_unit_eigen
-  INTERFACE FILE_SET "typed_linear_algebra_headers" TYPE "HEADERS" FILES
-            "fcarouge/linalg.hpp")
+  typed_linear_algebra_mp_units
+  INTERFACE FILE_SET "mp_units_headers" TYPE "HEADERS" FILES
+            "fcarouge/mp_units.hpp")
 target_link_libraries(
-  typed_linear_algebra_unit_eigen INTERFACE typed_linear_algebra_eigen
-                                            typed_linear_algebra_unit tlinalg)
+  typed_linear_algebra_mp_units
+  INTERFACE typed_linear_algebra_options mp-units::mp-units
+            mp-units::integrations tlinalg)

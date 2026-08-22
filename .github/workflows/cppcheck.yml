@@ -56,8 +56,8 @@ jobs:
           -I support/eigexed \
           -I support/kokkos \
           -I support/main \
+          -I support/mp_units \
+          -I support/mp_units_eigen \
+          -I support/mp_units_std \
           -I support/nested_typed_eigen \
-          -I support/unit \
-          -I support/unit_eigen \
-          -I support/unit_std \
           .

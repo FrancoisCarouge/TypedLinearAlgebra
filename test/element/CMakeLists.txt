@@ -29,12 +29,12 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-fail("1x1_fail" BACKENDS "unit_eigen")
-fail("1xn_fail" BACKENDS "unit_eigen")
-fail("mx1_fail" BACKENDS "unit_eigen")
-fail("mxn_fail" BACKENDS "unit_eigen")
+fail("1x1_fail" BACKENDS "mp_units_eigen")
+fail("1xn_fail" BACKENDS "mp_units_eigen")
+fail("mx1_fail" BACKENDS "mp_units_eigen")
+fail("mxn_fail" BACKENDS "mp_units_eigen")
 
-pass("1x1" BACKENDS "unit_eigen")
-pass("1xn" BACKENDS "unit_eigen")
-pass("mx1" BACKENDS "unit_eigen")
-pass("mxn" BACKENDS "unit_eigen")
+pass("1x1" BACKENDS "mp_units_eigen")
+pass("1xn" BACKENDS "mp_units_eigen")
+pass("mx1" BACKENDS "mp_units_eigen")
+pass("mxn" BACKENDS "mp_units_eigen")

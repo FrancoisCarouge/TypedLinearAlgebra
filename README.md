@@ -56,7 +56,7 @@ For each strong type, or linear algebra backends, add a plug-in in your sources.
 | Built-in Types | No plug-in needed. |
 | Eigen | [See example plug-in at `support/eigen`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | Kokkos | [See example plug-in at `support/kokkos`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
-| mp-units | [See example plug-in at `support/unit/fcarouge/unit.hpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
+| mp-units | [See example plug-in at `support/mp_units/fcarouge/mp_units.hpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | std::linalg | No plug-in needed. |
 
 # Reference
