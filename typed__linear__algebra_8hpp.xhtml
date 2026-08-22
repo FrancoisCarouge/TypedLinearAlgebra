@@ -130,6 +130,7 @@ $(function(){initNavTree('typed__linear__algebra_8hpp.xhtml',''); initResizable(
 <code>#include &quot;typed_linear_algebra_internal/algorithm/substract.tpp&quot;</code><br />
 <code>#include &quot;typed_linear_algebra_internal/algorithm/transposed.tpp&quot;</code><br />
 <code>#include &quot;typed_linear_algebra_internal/cast.tpp&quot;</code><br />
+<code>#include &quot;typed_linear_algebra_internal/common_type.tpp&quot;</code><br />
 <code>#include &quot;typed_linear_algebra_internal/format.tpp&quot;</code><br />
 <code>#include &quot;typed_linear_algebra_internal/tuple.tpp&quot;</code><br />
 <code>#include &quot;typed_linear_algebra_internal/typed_linear_algebra.tpp&quot;</code><br />
@@ -189,6 +190,9 @@ Concepts</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1other.xhtml">fcarouge::other</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept of any type other than the typed matrix type. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1other__tuple__like__vector.xhtml">fcarouge::other_tuple_like_vector</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept of a tuple-like vector convertible to a one-dimension matrix. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1index.xhtml">fcarouge::index</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept of compile-time index. <br /></td></tr>
@@ -271,7 +275,7 @@ Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader">Adaptors</h2></td></tr>
 <tr class="memitem:aa6f7f6a8d1b65520e70b3e1330e880d2" id="r_aa6f7f6a8d1b65520e70b3e1330e880d2"><td class="memTemplParams" colspan="2">template&lt;typename To , typename From &gt; </td></tr>
 <tr class="memitem:aa6f7f6a8d1b65520e70b3e1330e880d2"><td class="memTemplItemLeft" align="right" valign="top">static constexpr <a class="el" href="structfcarouge_1_1element__caster.xhtml">element_caster</a>&lt; To, From &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#aa6f7f6a8d1b65520e70b3e1330e880d2">fcarouge::cast</a> {}</td></tr>
-<tr class="memdesc:aa6f7f6a8d1b65520e70b3e1330e880d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix element conversion customization point.  <br /></td></tr>
+<tr class="memdesc:aa6f7f6a8d1b65520e70b3e1330e880d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix element and storage conversion CPO.  <br /></td></tr>
 <tr class="separator:aa6f7f6a8d1b65520e70b3e1330e880d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4073b31d56e98e110bf4a993ed190c80" id="r_a4073b31d56e98e110bf4a993ed190c80"><td class="memTemplParams" colspan="2">template&lt;typename RowIndexes , typename ColumnIndexes &gt; </td></tr>
 <tr class="memitem:a4073b31d56e98e110bf4a993ed190c80"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a4073b31d56e98e110bf4a993ed190c80">fcarouge::make_typed_matrix</a> (auto &amp;&amp;value)</td></tr>

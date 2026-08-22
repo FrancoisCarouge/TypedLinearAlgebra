@@ -103,7 +103,9 @@ $(function(){initNavTree('unit_8hpp.xhtml',''); initResizable(true); });
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#concepts">Concepts</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">unit.hpp File Reference</div></div>
 </div><!--header-->
@@ -112,8 +114,12 @@ $(function(){initNavTree('unit_8hpp.xhtml',''); initResizable(true); });
 <p>Quantities and units facade for mp-units third party implementation.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;concepts&gt;</code><br />
+<code>#include &lt;cstddef&gt;</code><br />
+<code>#include &lt;tuple&gt;</code><br />
 <code>#include &lt;mp-units/framework/quantity.h&gt;</code><br />
+<code>#include &lt;mp-units/framework/quantity_cast.h&gt;</code><br />
 <code>#include &lt;mp-units/framework/quantity_point.h&gt;</code><br />
+<code>#include &lt;mp-units/framework/vector_components.h&gt;</code><br />
 <code>#include &lt;mp-units/math.h&gt;</code><br />
 <code>#include &lt;mp-units/systems/isq/thermodynamics.h&gt;</code><br />
 <code>#include &lt;mp-units/systems/si.h&gt;</code><br />
@@ -136,15 +142,28 @@ $(function(){initNavTree('unit_8hpp.xhtml',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstd_1_1tuple__size_3_01mp__units_1_1quantity_3_01_reference_00_01_representation_01_4_01_4.xhtml">std::tuple_size&lt; mp_units::quantity&lt; Reference, Representation &gt; &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstd_1_1tuple__element_3_01_index_00_01mp__units_1_1quantity_3_01_reference_00_01_representation_01_4_01_4.xhtml">std::tuple_element&lt; Index, mp_units::quantity&lt; Reference, Representation &gt; &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml">fcarouge::element_caster&lt; To, From &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1element__caster_3_01_to_00_01_magnitude_01_4.xhtml">fcarouge::element_caster&lt; To, Magnitude &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4.xhtml">fcarouge::element_caster&lt; To &amp;, From &amp; &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1multiplies_3_01_type_00_01_magnitude_01_4.xhtml">fcarouge::multiplies&lt; Type, Magnitude &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></td></tr>
 <tr class="memdesc:namespacefcarouge"><td class="mdescLeft">&#160;</td><td class="mdescRight">Francois Carouge's projects namespace. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="concepts" name="concepts"></a>
+Concepts</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1undecomposed__tuple__like__quantity.xhtml">fcarouge::undecomposed_tuple_like_quantity</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -157,6 +176,13 @@ Typedefs</h2></td></tr>
 <tr class="separator:ac2dd0eba1b86197287e408d5d4c3e641"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54efd5a19e1fb79c2c421f891d436020" id="r_a54efd5a19e1fb79c2c421f891d436020"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a54efd5a19e1fb79c2c421f891d436020">fcarouge::acceleration</a> = mp_units::quantity&lt;mp_units::isq::acceleration[m / s2]&gt;</td></tr>
 <tr class="separator:a54efd5a19e1fb79c2c421f891d436020"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a97ab0828c0b3220b30706db5b5fe699e" id="r_a97ab0828c0b3220b30706db5b5fe699e"><td class="memTemplParams" colspan="2">template&lt;std::size_t Index, auto Reference, typename Representation &gt; <br />
+requires undecomposed_tuple_like_quantity&lt;Reference, Representation&gt; and (Index &lt; std::tuple_size_v&lt;Representation&gt;)</td></tr>
+<tr class="memitem:a97ab0828c0b3220b30706db5b5fe699e"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a97ab0828c0b3220b30706db5b5fe699e">fcarouge::get</a> (const mp_units::quantity&lt; Reference, Representation &gt; &amp;value)</td></tr>
+<tr class="separator:a97ab0828c0b3220b30706db5b5fe699e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>

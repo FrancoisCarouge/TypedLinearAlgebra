@@ -197,6 +197,9 @@ requires rank_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matrix
 <tr class="memitem:a4cb6909ad42c9f4560dbf7c51e5ed1e4" id="r_a4cb6909ad42c9f4560dbf7c51e5ed1e4"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4cb6909ad42c9f4560dbf7c51e5ed1e4">typed_matrix</a> (const Matrix &amp;other)</td></tr>
 <tr class="memdesc:a4cb6909ad42c9f4560dbf7c51e5ed1e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert construct a typed matrix from an underlying matrix.  <br /></td></tr>
 <tr class="separator:a4cb6909ad42c9f4560dbf7c51e5ed1e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f68f3c38086ff38eb29034aba5db859" id="r_a7f68f3c38086ff38eb29034aba5db859"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f68f3c38086ff38eb29034aba5db859">explicit</a> (false) <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>(const other_tuple_like_vector&lt; <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a> &gt; auto &amp;value)</td></tr>
+<tr class="memdesc:a7f68f3c38086ff38eb29034aba5db859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert construct a typed vector from a tuple-like value.  <br /></td></tr>
+<tr class="separator:a7f68f3c38086ff38eb29034aba5db859"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9172dd9b9b5202dfdd46e6404220131c" id="r_a9172dd9b9b5202dfdd46e6404220131c"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9172dd9b9b5202dfdd46e6404220131c">operator element&lt;&gt;</a> (this auto &amp;&amp;self)</td></tr>
 <tr class="memdesc:a9172dd9b9b5202dfdd46e6404220131c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the singleton typed matrix element.  <br /></td></tr>
 <tr class="separator:a9172dd9b9b5202dfdd46e6404220131c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -282,7 +285,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p>The tuple with the column components of the indexes. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00145">145</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00154">154</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
@@ -305,7 +308,7 @@ template&lt;auto... Indexes&gt; </div>
 <p>The type of the element at the given matrix indexes position. </p>
 <p>The count of indexes must match the rank of the matrix: no index for a singleton matrix, one index for a row or column vector, two indexes for any other matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00156">156</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00165">165</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
@@ -325,7 +328,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p>The type of the composed matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00139">139</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00148">148</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
@@ -345,7 +348,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p>The tuple with the row components of the indexes. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00142">142</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00151">151</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
@@ -365,7 +368,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p>The type of the element's underlying storage. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00148">148</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00157">157</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
@@ -729,7 +732,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div>
 </div>
 <a id="a64a6200fbf2e62ed17133a2a29135d17" name="a64a6200fbf2e62ed17133a2a29135d17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64a6200fbf2e62ed17133a2a29135d17">&#9670;&#160;</a></span>explicit() <span class="overload">[1/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a64a6200fbf2e62ed17133a2a29135d17">&#9670;&#160;</a></span>explicit() <span class="overload">[1/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -765,7 +768,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div>
 </div>
 <a id="a41766107e84252d4ffbb7154cdd477fe" name="a41766107e84252d4ffbb7154cdd477fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41766107e84252d4ffbb7154cdd477fe">&#9670;&#160;</a></span>explicit() <span class="overload">[2/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a41766107e84252d4ffbb7154cdd477fe">&#9670;&#160;</a></span>explicit() <span class="overload">[2/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -800,8 +803,44 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 </div>
 </div>
+<a id="a7f68f3c38086ff38eb29034aba5db859" name="a7f68f3c38086ff38eb29034aba5db859"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f68f3c38086ff38eb29034aba5db859">&#9670;&#160;</a></span>explicit() <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::explicit </td>
+          <td>(</td>
+          <td class="paramtype">false</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const &amp;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convert construct a typed vector from a tuple-like value. </p>
+<p>Applicable to one-dimension matrix. Converts any value matching the vector's size and presenting the standard tuple-like protocol (<code>std::tuple_size</code> and an unqualified, argument-dependent <code>get&lt;Index&gt;</code>), e.g. <code>std::tuple</code>, <code>std::array</code>, or <code>std::pair</code>. See <code><a class="el" href="conceptfcarouge_1_1other__tuple__like__vector.xhtml" title="Concept of a tuple-like vector convertible to a one-dimension matrix.">other_tuple_like_vector</a></code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Tuple-like value presenting a <code>get&lt;Index&gt;</code> API over its elements. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a16857257759870c394e7038923b581e3" name="a16857257759870c394e7038923b581e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a16857257759870c394e7038923b581e3">&#9670;&#160;</a></span>explicit() <span class="overload">[3/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a16857257759870c394e7038923b581e3">&#9670;&#160;</a></span>explicit() <span class="overload">[4/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -831,7 +870,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div>
 </div>
 <a id="ab640b378259edec3a845ea08c11030e2" name="ab640b378259edec3a845ea08c11030e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab640b378259edec3a845ea08c11030e2">&#9670;&#160;</a></span>explicit() <span class="overload">[4/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab640b378259edec3a845ea08c11030e2">&#9670;&#160;</a></span>explicit() <span class="overload">[5/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1242,8 +1281,8 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p>The count of rows. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00167">167</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  167</span>{std::tuple_size_v&lt;column_indexes&gt;};</div>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00176">176</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  176</span>{std::tuple_size_v&lt;column_indexes&gt;};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1271,9 +1310,9 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p>The number of dimensions in the matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00170">170</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  170</span>{<a class="code hl_variable" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aded6eca464a23970fc0a04a24a164209">tla::rank&lt;rows, columns&gt;</a>};</div>
-<div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra__internal_xhtml_aded6eca464a23970fc0a04a24a164209"><div class="ttname"><a href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aded6eca464a23970fc0a04a24a164209">fcarouge::typed_linear_algebra_internal::rank</a></div><div class="ttdeci">constexpr std::size_t rank</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00208">utility.hpp:208</a></div></div>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00179">179</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  179</span>{<a class="code hl_variable" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aded6eca464a23970fc0a04a24a164209">tla::rank&lt;rows, columns&gt;</a>};</div>
+<div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra__internal_xhtml_aded6eca464a23970fc0a04a24a164209"><div class="ttname"><a href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aded6eca464a23970fc0a04a24a164209">fcarouge::typed_linear_algebra_internal::rank</a></div><div class="ttdeci">constexpr std::size_t rank</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00209">utility.hpp:209</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1301,8 +1340,8 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p>The count of rows. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00164">164</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  164</span>{std::tuple_size_v&lt;row_indexes&gt;};</div>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00173">173</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  173</span>{std::tuple_size_v&lt;row_indexes&gt;};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1330,7 +1369,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p>Underlying algebraic backend data storage. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00404">404</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00426">426</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
