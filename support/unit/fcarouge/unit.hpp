@@ -117,8 +117,8 @@ namespace fcarouge {
 template <std::size_t Index, auto Reference, typename Representation>
   requires undecomposed_tuple_like_quantity<Reference, Representation> and
            (Index < std::tuple_size_v<Representation>)
-[[nodiscard]] constexpr auto get(
-    const mp_units::quantity<Reference, Representation> &value) {
+[[nodiscard]] constexpr auto
+get(const mp_units::quantity<Reference, Representation> &value) {
   return get<Index>(value.numerical_value_in(value.unit)) * value.unit;
 }
 

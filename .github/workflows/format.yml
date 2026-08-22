@@ -33,7 +33,7 @@ jobs:
           -o -iname '*.cpp' \
           -o -iname '*.tpp' \
           | xargs \
-          clang-format-20 --Werror --dry-run --verbose -style=file
+          clang-format-22 --Werror --dry-run --verbose -style=file
         find . \
           -iname 'CMakeLists.txt' \
           -o -iname '*.cmake.in' \

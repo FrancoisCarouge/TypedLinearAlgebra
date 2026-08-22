@@ -235,8 +235,8 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-[[nodiscard]] constexpr typed_matrix<
-    Matrix, RowIndexes, ColumnIndexes>::operator element<>(this auto &&self)
+[[nodiscard]] constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::
+operator element<>(this auto &&self)
   requires rank_typed_matrix<typed_matrix, 0>
 {
   return self.at();
