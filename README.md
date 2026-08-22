@@ -206,6 +206,22 @@ A variety of conversions may be needed, notably value and reference conversions.
 
 # More
 
+## Use Cases
+
+The library serves computations where a matrix or vector is not a bag of interchangeable numbers but a collection of quantities that carry meaning: a state estimate, a set of sensor readings, a set of correlated measures. Ordinary linear algebra erases that meaning at the type level, so a mismatched unit, an out-of-order axis, or a mixed-up reference frame compiles cleanly and fails silently, if at all, at runtime. By attaching an index type to each row and column, the library keeps that meaning through every operation, so dimensionally or semantically invalid computations fail to compile instead of producing a wrong number downstream.
+
+Domains and use cases include:
+
+- **Estimation and filtering**: state, measurement, and covariance vectors and matrices where each element is a distinct physical quantity and covariance terms compound units automatically.
+- **Guidance, navigation, and control**: vehicle or robot state combining position, velocity, and orientation across multiple coordinate frames that must not be interchanged.
+- **Aerospace and spacecraft systems**: interface data exchanged between subsystems where a unit or frame mismatch has historically caused mission-critical failures.
+- **Robotics**: transform and kinematic chains where axes, joints, and reference frames must remain distinguishable through composition.
+- **Structural and mechanical engineering**: stiffness, compliance, and gain matrices mixing forces, moments, and rates that must not be scaled or combined incorrectly.
+- **Process and chemical engineering**: reaction and rate matrices where dimensional homogeneity across concentration, rate, and energy terms is a correctness requirement.
+- **Quantitative finance and econometrics**: covariance and factor matrices over labeled instruments or risk factors where a misaligned row or column silently corrupts a risk figure.
+- **Computer graphics and simulation**: transforms and state buffers spanning multiple spaces or units that are easy to conflate without a type-level distinction.
+- **Machine learning and scientific computing**: tensors and feature matrices where axis meaning and shape compatibility are as important as the numeric values themselves.
+
 ## As seen at CppNow 2026
 
 This library was [presented](https://schedule.cppnow.org/session/2026/typed-linear-algebra/) at CppNow 2026 as a first, free, and open-source implementation that integrates dimensional analysis in linear algebra computations through the type system while preserving the performance of established numerical backends. The talk motivated the safety proposition. And worked through the typed matrix definition and examples. We evaluated ergonomics and compatibility with std::linalg, std::mdspan, Eigen, mp-units. We noted lessons learned, tradeoffs, frictions. We looked to other additional safeties, open problems, and opportunities for better linear algebra in C++ applications. The discussions identified improvements for the library. The [slides](https://francoiscarouge.github.io/TypedLinearAlgebra/typed_linear_algebra/index.html) and the [video](https://www.youtube.com/watch?v=xZO7X8LH6Dg).
