@@ -94,6 +94,20 @@ template <typename Lhs, typename Rhs>
 concept multipliable =
     multipliable_shape<Lhs, Rhs> and multipliable_elements<Lhs, Rhs>;
 
+//! @brief Concept of a type scalable by another.
+//!
+//! @details Named so the deduced-return-type overloads below can constrain
+//! themselves on it, rather than leaving the multiplication unconstrained: an
+//! unconstrained, deduced return type forces the compiler to instantiate the
+//! function body, and thus fail hard, merely to probe whether the
+//! multiplication is well-formed, for example when third party code, such as
+//! `mp-units`, uses a `requires` expression to check whether some unrelated
+//! type supports multiplication by a rank zero typed matrix's element type.
+template <typename Scaled, typename Scale>
+concept scalable_by = requires {
+  std::declval<const Scaled &>() * std::declval<const Scale &>();
+};
+
 [[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
                                        const same_as_typed_matrix auto &rhs)
   requires multipliable<decltype(lhs), decltype(rhs)>
@@ -138,17 +152,23 @@ concept multipliable =
 }
 
 [[nodiscard]] constexpr auto operator*(const other auto &lhs,
-                                       const rank_typed_matrix<0> auto &rhs) {
-  //! @todo Should there be constraints on the type?
+                                       const rank_typed_matrix<0> auto &rhs)
+  requires scalable_by<decltype(lhs), typename std::remove_cvref_t<
+                                          decltype(rhs)>::template element<>>
+{
   using matrix = std::remove_cvref_t<decltype(rhs)>;
   using element = typename matrix::template element<>;
 
   return lhs * element{rhs};
 }
 
+//! @see operator*(const other auto &, const rank_typed_matrix<0> auto &)
 [[nodiscard]] constexpr auto operator*(const rank_typed_matrix<0> auto &lhs,
-                                       const other auto &rhs) {
-  //! @todo Should there be constraints on the type?
+                                       const other auto &rhs)
+  requires scalable_by<
+      typename std::remove_cvref_t<decltype(lhs)>::template element<>,
+      decltype(rhs)>
+{
   using matrix = std::remove_cvref_t<decltype(lhs)>;
   using element = typename matrix::template element<>;
 

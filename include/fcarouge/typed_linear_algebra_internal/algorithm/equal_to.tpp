@@ -34,12 +34,96 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge {
 
-//! @todo Requires, assert that the element types are compatible.
-[[nodiscard]] constexpr bool operator==(const same_as_typed_matrix auto &lhs,
-                                        const same_as_typed_matrix auto &rhs) {
-  return lhs.data() == rhs.data();
+//! @brief Element-wise equality of two typed matrices of the same shape.
+//!
+//! @details Compares each strongly typed element in turn, rather than the
+//! backends' underlying storage: the storage holds bare representation
+//! values, oblivious to the row and column indexes, so comparing it directly
+//! would silently accept two matrices of incompatible element types (for
+//! example, a matrix of lengths and a matrix of areas) whenever their raw
+//! representations happen to match. Comparing elements routes back through
+//! the strongly typed access, restoring the type check, and also sidesteps
+//! backends, such as the `mdspan`-based one, whose underlying storage type
+//! does not itself support equality.
+//!
+//! @note Deliberately excludes singleton, rank zero, matrices: those are
+//! served by the dedicated overloads below.
+[[nodiscard]] constexpr bool operator==(const rank_typed_matrix<2> auto &lhs,
+                                        const rank_typed_matrix<2> auto &rhs) {
+  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
+  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
+
+  static_assert(same_shape<lhs_matrix, rhs_matrix>,
+                "Matrix equality requires matrices of the same shapes, sizes.");
+
+  bool result{true};
+
+  tla::for_constexpr<lhs_matrix::rows>([&](auto i) {
+    tla::for_constexpr<lhs_matrix::columns>([&](auto j) {
+      using lhs_element = typename lhs_matrix::template element<i, j>;
+      using rhs_element = typename rhs_matrix::template element<i, j>;
+
+      static_assert(
+          requires {
+            std::declval<lhs_element>() == std::declval<rhs_element>();
+          }, "Matrix equality requires comparable element types.");
+
+      result &= (lhs.template at<i, j>() == rhs.template at<i, j>());
+    });
+  });
+
+  return result;
 }
 
+//! @brief Element-wise equality of two typed matrices of the same shape.
+//!
+//! @see operator==(const rank_typed_matrix<2> auto &, const
+//! rank_typed_matrix<2> auto &)
+[[nodiscard]] constexpr bool operator==(const rank_typed_matrix<1> auto &lhs,
+                                        const rank_typed_matrix<1> auto &rhs) {
+  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
+  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
+
+  static_assert(same_shape<lhs_matrix, rhs_matrix>,
+                "Matrix equality requires matrices of the same shapes, sizes.");
+
+  bool result{true};
+
+  tla::for_constexpr<lhs_matrix::rows * lhs_matrix::columns>([&](auto i) {
+    using lhs_element = typename lhs_matrix::template element<i>;
+    using rhs_element = typename rhs_matrix::template element<i>;
+
+    static_assert(
+        requires {
+          std::declval<lhs_element>() == std::declval<rhs_element>();
+        }, "Matrix equality requires comparable element types.");
+
+    result &= (lhs.template at<i>() == rhs.template at<i>());
+  });
+
+  return result;
+}
+
+//! @brief Equality of two singleton typed matrices.
+[[nodiscard]] constexpr bool operator==(const rank_typed_matrix<0> auto &lhs,
+                                        const rank_typed_matrix<0> auto &rhs) {
+  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
+  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
+
+  using lhs_element = typename lhs_matrix::template element<>;
+  using rhs_element = typename rhs_matrix::template element<>;
+
+  static_assert(
+      requires { std::declval<lhs_element>() == std::declval<rhs_element>(); },
+      "Matrix equality requires comparable element types.");
+
+  return lhs.at() == rhs.at();
+}
+
+//! @brief Equality of a singleton typed matrix and another type.
+//!
+//! @details Symmetric equality, `lhs == rhs` and `rhs == lhs`, is
+//! synthesized by the compiler from this single overload.
 [[nodiscard]] constexpr bool operator==(const rank_typed_matrix<0> auto &lhs,
                                         const auto &rhs) {
   return lhs.at() == rhs;
