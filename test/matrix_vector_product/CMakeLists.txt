@@ -29,9 +29,14 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+fail("matrix_rhs_au_std_fail" BACKENDS "au_std")
 fail("matrix_rhs_mp_units_std_fail" BACKENDS "mp_units_std")
+fail("vector_lhs_au_std_fail" BACKENDS "au_std")
 fail("vector_lhs_mp_units_std_fail" BACKENDS "mp_units_std")
 
+pass("2x2_au_std" BACKENDS "au_std")
 pass("2x2_mp_units_std" BACKENDS "mp_units_std")
+pass("3x2_au_std" BACKENDS "au_std")
 pass("3x2_mp_units_std" BACKENDS "mp_units_std")
+pass("row_au_std" BACKENDS "au_std")
 pass("row_mp_units_std" BACKENDS "mp_units_std")
