@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,32 +27,36 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-if(NOT BUILD_TESTING)
-  return()
-endif()
+#include "fcarouge/linalg.hpp"
 
-add_subdirectory("addition")
-add_subdirectory("assign")
-add_subdirectory("at")
-add_subdirectory("common_with")
-add_subdirectory("constructor")
-add_subdirectory("division")
-add_subdirectory("element")
-add_subdirectory("equal_to")
-add_subdirectory("format")
-add_subdirectory("magnitude")
-add_subdirectory("matrix_product")
-add_subdirectory("minus")
-add_subdirectory("mp_units")
-add_subdirectory("multiplication")
-add_subdirectory("operator")
-add_subdirectory("scale")
-add_subdirectory("structured_bindings")
-add_subdirectory("substraction")
-add_subdirectory("transposed")
+#include <cassert>
 
-pass("copy" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("nested" BACKENDS "nested_typed_eigen")
-pass("underlying" BACKENDS "eigexed" "nested_typed_eigen")
+namespace fcarouge::test {
+using representation = double;
+
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+
+namespace {
+//! @test Verifies the row vector equal to operator rejects incompatible
+//! element types.
+//!
+//! @details Without a per-element type check, this comparison would compile
+//! by falling back to the underlying storage's raw representation values,
+//! silently ignoring that a length is not an area, and defeating the
+//! library's physical unit type safety.
+[[maybe_unused]] const auto test{[] {
+  using length = quantity<mp_units::isq::length[m]>;
+  using area = quantity<mp_units::isq::area[m2]>;
+
+  const row_vector<representation, length, length> a{1. * m, 2. * m};
+  const row_vector<representation, area, area> b{1. * m2, 2. * m2};
+
+  assert(a == b);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

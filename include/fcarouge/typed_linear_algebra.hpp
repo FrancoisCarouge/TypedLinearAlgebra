@@ -526,8 +526,12 @@ namespace fcarouge {
 
 [[nodiscard]] constexpr auto magnitude(const uniform_typed_matrix auto &value);
 
-[[nodiscard]] constexpr bool operator==(const same_as_typed_matrix auto &lhs,
-                                        const same_as_typed_matrix auto &rhs);
+[[nodiscard]] constexpr bool operator==(const rank_typed_matrix<2> auto &lhs,
+                                        const rank_typed_matrix<2> auto &rhs);
+[[nodiscard]] constexpr bool operator==(const rank_typed_matrix<1> auto &lhs,
+                                        const rank_typed_matrix<1> auto &rhs);
+[[nodiscard]] constexpr bool operator==(const rank_typed_matrix<0> auto &lhs,
+                                        const rank_typed_matrix<0> auto &rhs);
 [[nodiscard]] constexpr bool operator==(const rank_typed_matrix<0> auto &lhs,
                                         const auto &rhs);
 

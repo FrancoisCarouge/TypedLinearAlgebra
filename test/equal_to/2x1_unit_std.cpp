@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,32 +27,33 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-if(NOT BUILD_TESTING)
-  return()
-endif()
+#include "fcarouge/linalg.hpp"
 
-add_subdirectory("addition")
-add_subdirectory("assign")
-add_subdirectory("at")
-add_subdirectory("common_with")
-add_subdirectory("constructor")
-add_subdirectory("division")
-add_subdirectory("element")
-add_subdirectory("equal_to")
-add_subdirectory("format")
-add_subdirectory("magnitude")
-add_subdirectory("matrix_product")
-add_subdirectory("minus")
-add_subdirectory("mp_units")
-add_subdirectory("multiplication")
-add_subdirectory("operator")
-add_subdirectory("scale")
-add_subdirectory("structured_bindings")
-add_subdirectory("substraction")
-add_subdirectory("transposed")
+#include <cassert>
+#include <cstddef>
+#include <mdspan>
 
-pass("copy" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("nested" BACKENDS "nested_typed_eigen")
-pass("underlying" BACKENDS "eigexed" "nested_typed_eigen")
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the equal to algorithm for a column vector of
+//! heterogeneous types with the mdspan backend.
+[[maybe_unused]] const auto test{[] -> int {
+  double storage_a[]{9., 10.};
+  double storage_b[]{9., 10.};
+  double storage_c[]{8., 10.};
+  std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 2, 1>{}};
+  std::mdspan span_b{&storage_b[0], std::extents<std::size_t, 2, 1>{}};
+  std::mdspan span_c{&storage_c[0], std::extents<std::size_t, 2, 1>{}};
+  column_vector<double, decltype(1. * s), decltype(1. * s2)> a{span_a};
+  column_vector<double, decltype(1. * s), decltype(1. * s2)> b{span_b};
+  column_vector<double, decltype(1. * s), decltype(1. * s2)> c{span_c};
+
+  assert(a == b);
+  assert(a != c);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
