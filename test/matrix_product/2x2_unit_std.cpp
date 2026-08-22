@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -45,40 +46,41 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 namespace {
 //! @test Verifies the matrix product algorithm for a two-by-two matrix
 //! shape.
-[[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
-  using indexes = std::tuple<length, length>;
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      using length = quantity<mp_units::isq::length[m]>;
+      using indexes = std::tuple<length, length>;
 
-  double storage_a[4]{};
-  double storage_b[4]{};
-  double storage_r[4]{};
+      double storage_a[4]{};
+      double storage_b[4]{};
+      double storage_r[4]{};
 
-  std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 2, 2>{}};
-  std::mdspan span_b{&storage_b[0], std::extents<std::size_t, 2, 2>{}};
-  std::mdspan span_r{&storage_r[0], std::extents<std::size_t, 2, 2>{}};
+      std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 2, 2>{}};
+      std::mdspan span_b{&storage_b[0], std::extents<std::size_t, 2, 2>{}};
+      std::mdspan span_r{&storage_r[0], std::extents<std::size_t, 2, 2>{}};
 
-  matrix<representation, indexes, indexes> a{span_a};
-  matrix<representation, indexes, indexes> b{span_b};
-  matrix<representation, indexes, indexes> r{span_r};
+      matrix<representation, indexes, indexes> a{span_a};
+      matrix<representation, indexes, indexes> b{span_b};
+      matrix<representation, indexes, indexes> r{span_r};
 
-  a.at<0, 0>(1. * m2);
-  a.at<0, 1>(2. * m2);
-  a.at<1, 0>(3. * m2);
-  a.at<1, 1>(4. * m2);
+      a.at<0, 0>(1. * m2);
+      a.at<0, 1>(2. * m2);
+      a.at<1, 0>(3. * m2);
+      a.at<1, 1>(4. * m2);
 
-  b.at<0, 0>(5. * m2);
-  b.at<0, 1>(6. * m2);
-  b.at<1, 0>(7. * m2);
-  b.at<1, 1>(8. * m2);
+      b.at<0, 0>(5. * m2);
+      b.at<0, 1>(6. * m2);
+      b.at<1, 0>(7. * m2);
+      b.at<1, 1>(8. * m2);
 
-  matrix_product(a, b, r);
+      matrix_product(a, b, r);
 
-  assert((r.at<0, 0>() == 19. * m2));
-  assert((r.at<0, 1>() == 22. * m2));
-  assert((r.at<1, 0>() == 43. * m2));
-  assert((r.at<1, 1>() == 50. * m2));
+      assert((r.at<0, 0>() == 19. * m2));
+      assert((r.at<0, 1>() == 22. * m2));
+      assert((r.at<1, 0>() == 43. * m2));
+      assert((r.at<1, 1>() == 50. * m2));
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

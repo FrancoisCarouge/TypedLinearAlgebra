@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -38,7 +39,8 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the element type of the matrix.
-[[maybe_unused]] const auto test{[] -> int {
+[[maybe_unused]] const auto test{[]() noexcept FCAROUGE_TEST_NONBLOCKING
+                                 -> int {
   using matrix =
       matrix<double, std::tuple<decltype(1. * m), decltype(1. * m / s)>,
              std::tuple<decltype(1. * N), decltype(1. / A)>>;

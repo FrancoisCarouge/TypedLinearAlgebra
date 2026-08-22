@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -44,37 +45,38 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 
 namespace {
 //! @test Verifies the singleton by singleton matrix addition operator.
-[[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      using length = quantity<mp_units::isq::length[m]>;
 
-  double storage_a{0.};
-  double storage_b{0.};
-  double storage_r{0.};
+      double storage_a{0.};
+      double storage_b{0.};
+      double storage_r{0.};
 
-  std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
+      std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
+      std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
+      std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
 
-  row_vector<representation, length> a{span_a};
-  row_vector<representation, length> b{span_b};
-  row_vector<representation, length> r{span_r};
+      row_vector<representation, length> a{span_a};
+      row_vector<representation, length> b{span_b};
+      row_vector<representation, length> r{span_r};
 
-  a = 2. * m;
-  b = 3. * m;
-  add(a, b, r);
+      a = 2. * m;
+      b = 3. * m;
+      add(a, b, r);
 
-  assert(5. * m == r);
-  assert(5. * m == r());
-  assert(5. * m == r[]);
-  assert(5. * m == r.at());
-  assert(5. * m == r.at<>());
+      assert(5. * m == r);
+      assert(5. * m == r());
+      assert(5. * m == r[]);
+      assert(5. * m == r.at());
+      assert(5. * m == r.at<>());
 
-  static_assert(not std::is_reference_v<decltype(r())>);
-  static_assert(not std::is_reference_v<decltype(r[])>);
-  static_assert(not std::is_reference_v<decltype(r.at())>);
-  static_assert(not std::is_reference_v<decltype(r.at<>())>);
+      static_assert(not std::is_reference_v<decltype(r())>);
+      static_assert(not std::is_reference_v<decltype(r[])>);
+      static_assert(not std::is_reference_v<decltype(r.at())>);
+      static_assert(not std::is_reference_v<decltype(r.at<>())>);
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -44,29 +45,30 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 
 namespace {
 //! @test Verifies the scale algorithm for a two-by-two matrix shape.
-[[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
-  using indexes = std::tuple<length, length>;
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      using length = quantity<mp_units::isq::length[m]>;
+      using indexes = std::tuple<length, length>;
 
-  double storage[4]{};
+      double storage[4]{};
 
-  std::mdspan span{&storage[0], std::extents<std::size_t, 2, 2>{}};
+      std::mdspan span{&storage[0], std::extents<std::size_t, 2, 2>{}};
 
-  matrix<representation, indexes, indexes> x{span};
+      matrix<representation, indexes, indexes> x{span};
 
-  x.at<0, 0>(1. * m2);
-  x.at<0, 1>(2. * m2);
-  x.at<1, 0>(3. * m2);
-  x.at<1, 1>(4. * m2);
+      x.at<0, 0>(1. * m2);
+      x.at<0, 1>(2. * m2);
+      x.at<1, 0>(3. * m2);
+      x.at<1, 1>(4. * m2);
 
-  scale(2., x);
+      scale(2., x);
 
-  assert((x.at<0, 0>() == 2. * m2));
-  assert((x.at<0, 1>() == 4. * m2));
-  assert((x.at<1, 0>() == 6. * m2));
-  assert((x.at<1, 1>() == 8. * m2));
+      assert((x.at<0, 0>() == 2. * m2));
+      assert((x.at<0, 1>() == 4. * m2));
+      assert((x.at<1, 0>() == 6. * m2));
+      assert((x.at<1, 1>() == 8. * m2));
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -36,23 +37,24 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the structured bindings.
-[[maybe_unused]] const auto test{[] -> int {
-  matrix<int, 1, 3> m{1, 4, 7};
-  auto &[a, b, c]{m};
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      matrix<int, 1, 3> m{1, 4, 7};
+      auto &[a, b, c]{m};
 
-  assert(a == 1);
-  assert(b == 4);
-  assert(c == 7);
+      assert(a == 1);
+      assert(b == 4);
+      assert(c == 7);
 
-  a = 2;
-  b = 5;
-  c = 8;
+      a = 2;
+      b = 5;
+      c = 8;
 
-  assert(a == 2);
-  assert(b == 5);
-  assert(c == 8);
+      assert(a == 2);
+      assert(b == 5);
+      assert(c == 8);
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

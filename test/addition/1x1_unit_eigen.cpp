@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -42,25 +43,26 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 
 namespace {
 //! @test Verifies the singleton by singleton matrix addition operator.
-[[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      using length = quantity<mp_units::isq::length[m]>;
 
-  const row_vector<representation, length> a{2. * m};
-  const row_vector<representation, length> b{3. * m};
-  const row_vector<representation, length> r{a + b};
+      const row_vector<representation, length> a{2. * m};
+      const row_vector<representation, length> b{3. * m};
+      const row_vector<representation, length> r{a + b};
 
-  assert(5. * m == r);
-  assert(5. * m == r());
-  assert(5. * m == r[]);
-  assert(5. * m == r.at());
-  assert(5. * m == r.at<>());
+      assert(5. * m == r);
+      assert(5. * m == r());
+      assert(5. * m == r[]);
+      assert(5. * m == r.at());
+      assert(5. * m == r.at<>());
 
-  static_assert(not std::is_reference_v<decltype(r())>);
-  static_assert(not std::is_reference_v<decltype(r[])>);
-  static_assert(not std::is_reference_v<decltype(r.at())>);
-  static_assert(not std::is_reference_v<decltype(r.at<>())>);
+      static_assert(not std::is_reference_v<decltype(r())>);
+      static_assert(not std::is_reference_v<decltype(r[])>);
+      static_assert(not std::is_reference_v<decltype(r.at())>);
+      static_assert(not std::is_reference_v<decltype(r.at<>())>);
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

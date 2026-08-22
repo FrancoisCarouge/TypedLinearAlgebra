@@ -30,6 +30,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
+#include "nonblocking.hpp"
 
 #include <cassert>
 #include <type_traits>
@@ -37,13 +38,14 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the underlying type of the matrix.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 3, 3> z;
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      const matrix<double, 3, 3> z;
 
-  using underlying = typename decltype(z)::underlying;
-  static_assert(std::is_same_v<double, underlying>);
+      using underlying = typename decltype(z)::underlying;
+      static_assert(std::is_same_v<double, underlying>);
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

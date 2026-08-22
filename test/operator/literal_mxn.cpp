@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -38,45 +39,46 @@ using literals::operator""_i;
 
 namespace {
 //! @test Verifies the integral literal operator accessor.
-[[maybe_unused]] const auto test{[] -> int {
-  matrix<double, 2, 2> m{{1., 2.}, {3., 4.}};
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      matrix<double, 2, 2> m{{1., 2.}, {3., 4.}};
 
-  assert((m(0_i, 0_i) == 1.));
-  assert((m(0_i, 1_i) == 2.));
-  assert((m(1_i, 0_i) == 3.));
-  assert((m(1_i, 1_i) == 4.));
+      assert((m(0_i, 0_i) == 1.));
+      assert((m(0_i, 1_i) == 2.));
+      assert((m(1_i, 0_i) == 3.));
+      assert((m(1_i, 1_i) == 4.));
 
-  m.at<0_i, 0_i>(11.);
-  m.at<0_i, 1_i>(12.);
-  m.at<1_i, 0_i>(13.);
-  m.at<1_i, 1_i>(14.);
+      m.at<0_i, 0_i>(11.);
+      m.at<0_i, 1_i>(12.);
+      m.at<1_i, 0_i>(13.);
+      m.at<1_i, 1_i>(14.);
 
-  assert((m(0_i, 0_i) == 11.));
-  assert((m(0_i, 1_i) == 12.));
-  assert((m(1_i, 0_i) == 13.));
-  assert((m(1_i, 1_i) == 14.));
+      assert((m(0_i, 0_i) == 11.));
+      assert((m(0_i, 1_i) == 12.));
+      assert((m(1_i, 0_i) == 13.));
+      assert((m(1_i, 1_i) == 14.));
 
-  m.at<0_i, 0_i>(1.);
-  m.at<0_i, 1_i>(2.);
-  m.at<1_i, 0_i>(3.);
-  m.at<1_i, 1_i>(4.);
+      m.at<0_i, 0_i>(1.);
+      m.at<0_i, 1_i>(2.);
+      m.at<1_i, 0_i>(3.);
+      m.at<1_i, 1_i>(4.);
 
-  assert((m[0_i, 0_i] == 1.));
-  assert((m[0_i, 1_i] == 2.));
-  assert((m[1_i, 0_i] == 3.));
-  assert((m[1_i, 1_i] == 4.));
+      assert((m[0_i, 0_i] == 1.));
+      assert((m[0_i, 1_i] == 2.));
+      assert((m[1_i, 0_i] == 3.));
+      assert((m[1_i, 1_i] == 4.));
 
-  m.at<0_i, 0_i>(11.);
-  m.at<0_i, 1_i>(12.);
-  m.at<1_i, 0_i>(13.);
-  m.at<1_i, 1_i>(14.);
+      m.at<0_i, 0_i>(11.);
+      m.at<0_i, 1_i>(12.);
+      m.at<1_i, 0_i>(13.);
+      m.at<1_i, 1_i>(14.);
 
-  assert((m.at<0_i, 0_i>() == 11.));
-  assert((m.at<0_i, 1_i>() == 12.));
-  assert((m.at<1_i, 0_i>() == 13.));
-  assert((m.at<1_i, 1_i>() == 14.));
+      assert((m.at<0_i, 0_i>() == 11.));
+      assert((m.at<0_i, 1_i>() == 12.));
+      assert((m.at<1_i, 0_i>() == 13.));
+      assert((m.at<1_i, 1_i>() == 14.));
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test
