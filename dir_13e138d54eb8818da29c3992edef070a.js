@@ -7,6 +7,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "constructor", "dir_38eb1dc5b1c36523e6cf628b0c17f528.xhtml", "dir_38eb1dc5b1c36523e6cf628b0c17f528" ],
     [ "division", "dir_86f6ebe56cc983d5021582182b7bf87c.xhtml", "dir_86f6ebe56cc983d5021582182b7bf87c" ],
     [ "element", "dir_974b212e1e2ae05a6e4111a20679b9dc.xhtml", "dir_974b212e1e2ae05a6e4111a20679b9dc" ],
+    [ "equal_to", "dir_6071415610cde49b13e346d9225dcd79.xhtml", "dir_6071415610cde49b13e346d9225dcd79" ],
     [ "format", "dir_74a3c9427e9a4782c7a8462862ac57cd.xhtml", "dir_74a3c9427e9a4782c7a8462862ac57cd" ],
     [ "magnitude", "dir_a3e49a7e1a799e12d26b70031305b663.xhtml", "dir_a3e49a7e1a799e12d26b70031305b663" ],
     [ "matrix_product", "dir_0a5c94c6b1800719290ff7c8ab5d7918.xhtml", "dir_0a5c94c6b1800719290ff7c8ab5d7918" ],

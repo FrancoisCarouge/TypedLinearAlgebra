@@ -77,7 +77,9 @@ var namespacefcarouge =
     [ "operator/", "namespacefcarouge.xhtml#aff2f70ca99030562d79527d2c291d50e", null ],
     [ "operator/", "namespacefcarouge.xhtml#a4a42c4c8d581da180467e6b5596343ff", null ],
     [ "operator==", "namespacefcarouge.xhtml#a014782e1671a592edb9e209dfe486c99", null ],
-    [ "operator==", "namespacefcarouge.xhtml#ac201eb6dbabe90e8e35d2efa46b7ad1f", null ],
+    [ "operator==", "namespacefcarouge.xhtml#a24a4c282f9b06f8ef7235dbd3a745a04", null ],
+    [ "operator==", "namespacefcarouge.xhtml#aa80452432e2b34cf592bc6cb87b63eda", null ],
+    [ "operator==", "namespacefcarouge.xhtml#af208acf491eb26d9bb9398313c3603e9", null ],
     [ "transposed", "namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3", null ],
     [ "cast", "namespacefcarouge.xhtml#aa6f7f6a8d1b65520e70b3e1330e880d2", null ],
     [ "s4", "namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436", null ]
