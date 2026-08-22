@@ -40,25 +40,20 @@ template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
 namespace {
-//! @test Verifies the singleton by singleton matrix addition operator.
-[[maybe_unused]] const auto test{[] {
+//! @test Verifies the singleton matrix minus unary operator.
+[[maybe_unused]] const auto test{[] -> int {
   using length = quantity<mp_units::isq::length[m]>;
 
-  // Intended:
-  // const row_vector<representation, length> a{3. * m};
+  const row_vector<representation, length> a{3. * m};
+  const row_vector<representation, length> r{-a};
 
-  using area = quantity<mp_units::isq::area[m2]>;
+  assert(-3. * m == r.at());
+  assert(-3. * m == r[]);
+  assert(-3. * m == r());
+  assert(-3. * m == r);
 
-  const row_vector<representation, area> a{3. * m2};
-
-  const row_vector<representation, length> b{2. * m};
-
-  const row_vector<representation, length> r{a + b};
-
-  assert(5. * m == r.at());
-  assert(5. * m == r[]);
-  assert(5. * m == r());
-  assert(5. * m == r);
+  // The operand is not mutated.
+  assert(3. * m == a);
 
   return 0;
 }()};

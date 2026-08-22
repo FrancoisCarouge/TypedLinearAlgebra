@@ -38,7 +38,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <type_traits>
 
 namespace fcarouge::test {
-using literals::operator""_i;
 using representation = double;
 
 template <auto QuantityReference>

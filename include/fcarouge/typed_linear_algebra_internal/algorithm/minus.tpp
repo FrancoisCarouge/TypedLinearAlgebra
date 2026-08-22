@@ -71,7 +71,16 @@ namespace fcarouge {
   return make_typed_matrix<row_indexes, column_indexes>(-value.data());
 }
 
-//! @todo Support singleton, rank-0 matrix negation.
+[[nodiscard]] constexpr auto operator-(const rank_typed_matrix<0> auto &value) {
+  using matrix = std::remove_cvref_t<decltype(value)>;
+  using element = typename matrix::template element<>;
+
+  static_assert(
+      requires { -std::declval<element>(); },
+      "Matrix negation requires negatable element types.");
+
+  return -element{value};
+}
 } // namespace fcarouge
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MINUS_TPP
