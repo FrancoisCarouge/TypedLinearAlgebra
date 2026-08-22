@@ -29,13 +29,15 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_UNIT_HPP
-#define FCAROUGE_UNIT_HPP
+#ifndef FCAROUGE_MP_UNITS_HPP
+#define FCAROUGE_MP_UNITS_HPP
 
 //! @file
 //! @brief Quantities and units facade for mp-units third party implementation.
 //!
 //! @details Supporting quantities, values, and functions.
+
+#include "fcarouge/typed_linear_algebra.hpp"
 
 #include <concepts>
 #include <cstddef>
@@ -304,4 +306,4 @@ inline constexpr bool disable_representation<
         fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>;
 } // namespace mp_units
 
-#endif // FCAROUGE_UNIT_HPP
+#endif // FCAROUGE_MP_UNITS_HPP

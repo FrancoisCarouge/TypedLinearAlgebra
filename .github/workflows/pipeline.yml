@@ -18,12 +18,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - { os: 'ubuntu-26.04', cxx: 'clang++-20', cc: 'clang-20', generator: 'Ninja', cpack_generator: 'DEB' }
-        - { os: 'ubuntu-26.04', cxx: 'clang++-21', cc: 'clang-21', generator: 'Ninja', cpack_generator: 'DEB' }
-        - { os: 'ubuntu-26.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', cpack_generator: 'DEB' }
-        - { os: 'ubuntu-26.04', cxx: 'g++-15', cc: 'gcc-15', generator: 'Unix Makefiles', cpack_generator: 'DEB' }
-        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 18 2026', cpack_generator: 'WIX', config: 'Debug' }
-        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 18 2026', cpack_generator: 'WIX', config: 'Release' }
+        - { os: 'ubuntu-26.04', cxx: 'clang++-20', cc: 'clang-20', generator: 'Ninja', cpack_generator: 'DEB', build_dir: 'build' }
+        - { os: 'ubuntu-26.04', cxx: 'clang++-21', cc: 'clang-21', generator: 'Ninja', cpack_generator: 'DEB', build_dir: 'build' }
+        - { os: 'ubuntu-26.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', cpack_generator: 'DEB', build_dir: 'build' }
+        - { os: 'ubuntu-26.04', cxx: 'g++-15', cc: 'gcc-15', generator: 'Unix Makefiles', cpack_generator: 'DEB', build_dir: 'build' }
+        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 18 2026', cpack_generator: 'WIX', config: 'Debug', build_dir: 'D:\b' }
+        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 18 2026', cpack_generator: 'WIX', config: 'Release', build_dir: 'D:\b' }
     name: '${{ matrix.os }} / ${{ matrix.cxx }} / ${{ matrix.generator }} / ${{ matrix.config }}'
     runs-on: '${{ matrix.os }}'
     permissions:
@@ -48,13 +48,13 @@ jobs:
       env:
         CXX: '${{ matrix.cxx }}'
         CC: '${{ matrix.cc }}'
-      run: cmake -S . -B 'build' -G '${{ matrix.generator }}'
+      run: cmake -S . -B '${{ matrix.build_dir }}' -G '${{ matrix.generator }}'
     - name: 'Build'
-      run: cmake --build 'build' --config '${{ matrix.config }}' --verbose --parallel 4
+      run: cmake --build '${{ matrix.build_dir }}' --config '${{ matrix.config }}' --verbose --parallel 4
     - name: 'Test'
-      run: ctest --test-dir 'build' --build-config '${{ matrix.config }}' --timeout 40 --verbose --parallel 4
+      run: ctest --test-dir '${{ matrix.build_dir }}' --build-config '${{ matrix.config }}' --timeout 40 --verbose --parallel 4
     - name: 'Install'
-      run: cmake --install 'build' --config '${{ matrix.config }}' --prefix 'install' --verbose
+      run: cmake --install '${{ matrix.build_dir }}' --config '${{ matrix.config }}' --prefix 'install' --verbose
     - name: 'Package'
-      working-directory: ./build
+      working-directory: '${{ matrix.build_dir }}'
       run: cpack -G '${{ matrix.cpack_generator }}' --verbose
