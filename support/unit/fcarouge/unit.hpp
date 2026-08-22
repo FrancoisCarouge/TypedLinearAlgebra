@@ -41,6 +41,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <cstddef>
 #include <tuple>
 
+#include <mp-units/framework/customization_points.h>
 #include <mp-units/framework/quantity.h>
 #include <mp-units/framework/quantity_cast.h>
 #include <mp-units/framework/quantity_point.h>
@@ -246,6 +247,61 @@ struct multiplies<Type, Magnitude> {
   [[nodiscard]] static constexpr auto operator()(const Type &lhs,
                                                  const Magnitude &rhs) -> Type;
 };
+
+// True when at least one of the matrix's logical elements (`row index x
+// column index`, per element) is itself an mp-units quantity, as opposed to a
+// plain arithmetic representation (e.g. `double`). A homogeneous,
+// plain-representation typed vector or matrix (e.g. `column_vector<double,
+// double, double, double>`) is a legitimate mp-units Representation: this
+// is what backs `representation.cpp` and the first scenario of
+// `typed_vector_as_quantity.cpp`. A typed matrix whose elements are
+// themselves quantities (e.g. a per-axis heterogeneous velocity vector, or
+// any rank-0 "singleton" wrapping a single quantity) is a *result* of
+// decomposing a quantity, not a candidate storage for one; see
+// `disable_representation` below for why it must say so.
+template <typename Type>
+concept quantity_element_typed_matrix =
+    tla::same_as_typed_matrix<Type> and ([] {
+      bool result{false};
+
+      tla::for_constexpr<std::remove_cvref_t<Type>::rows>([&result](auto i) {
+        tla::for_constexpr<std::remove_cvref_t<Type>::columns>(
+            [&result, &i](auto j) {
+              result |= mp_units::Quantity<tla::element_at<Type, i, j>>;
+            });
+      });
+
+      return result;
+    }());
 } // namespace fcarouge
+
+namespace mp_units {
+// A typed_matrix is a composite facade over a backend matrix, never itself a
+// quantity's scalar/vector/tensor storage (its own elements, individually,
+// fill that role): opt it out of representation status exactly when its
+// elements are themselves quantities. Left unguarded, mp-units' generic
+// representation detection (RepresentationOf, consulted by quantity's own
+// operator==, operator+, and friends when overload resolution considers a
+// typed_matrix-of-quantities operand) would classify that matrix's character
+// by evaluating its operators; those operators are in turn defined in terms
+// of the matrix's own quantity elements, which recurses back into the same
+// RepresentationOf query already in flight for the matrix itself. That
+// self-reference is what surfaces as "satisfaction of constraint
+// 'RealScalar<T>' depends on itself". Declining representation status
+// upfront, the same guard mp-units applies to its own `quantity` (see
+// `disable_representation`'s default and `RepresentationBaseline`), stops
+// the character check, and therefore the cycle, before it starts.
+//
+// A typed_matrix of plain, non-quantity elements (e.g. a homogeneous
+// `column_vector<double, double, double, double>`) is left enabled: it is
+// exactly the kind of representation `RepresentationOf` is meant to detect,
+// and its element-wise operators only ever involve plain arithmetic, so no
+// cycle is possible.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+inline constexpr bool disable_representation<
+    fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>> =
+    fcarouge::quantity_element_typed_matrix<
+        fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>;
+} // namespace mp_units
 
 #endif // FCAROUGE_UNIT_HPP
