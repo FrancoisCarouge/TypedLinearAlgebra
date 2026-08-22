@@ -137,6 +137,7 @@ The following useful operations are supported. This library attempts to align it
 | `add` | Element-wise add two matrices. |
 | `magnitude` | Euclidean L2 norm of a row or column vector. |
 | `matrix_product` | General matrix-matrix product. |
+| `matrix_vector_product` | Matrix-vector product. |
 | `scale` | Multiply matrix elements by a scalar. |
 | `transposed` | Transpose the input matrix. |
 

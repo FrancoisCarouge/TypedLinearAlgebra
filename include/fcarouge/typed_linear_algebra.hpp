@@ -508,6 +508,7 @@ template <char... Digits> constexpr auto operator""_i() noexcept {
 #include "typed_linear_algebra_internal/algorithm/equal_to.tpp"
 #include "typed_linear_algebra_internal/algorithm/magnitude.tpp"
 #include "typed_linear_algebra_internal/algorithm/matrix_product.tpp"
+#include "typed_linear_algebra_internal/algorithm/matrix_vector_product.tpp"
 #include "typed_linear_algebra_internal/algorithm/minus.tpp"
 #include "typed_linear_algebra_internal/algorithm/product.tpp"
 #include "typed_linear_algebra_internal/algorithm/scale.tpp"
@@ -602,6 +603,10 @@ constexpr void add(const rank_typed_matrix<0> auto &lhs,
 constexpr void matrix_product(const same_as_typed_matrix auto &lhs,
                               const same_as_typed_matrix auto &rhs,
                               same_as_typed_matrix auto &result);
+
+constexpr void matrix_vector_product(const rank_typed_matrix<2> auto &lhs,
+                                     const rank_typed_matrix<1> auto &rhs,
+                                     rank_typed_matrix<1> auto &result);
 
 constexpr void scale(const auto &α, same_as_typed_matrix auto &x);
 
