@@ -29,7 +29,11 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+pass("1x1_au_std" BACKENDS "au_std")
 pass("1x1_mp_units_std" BACKENDS "mp_units_std")
+pass("1x2_au_std" BACKENDS "au_std")
 pass("1x2_mp_units_std" BACKENDS "mp_units_std")
+pass("2x2_au_std" BACKENDS "au_std")
 pass("2x2_mp_units_std" BACKENDS "mp_units_std")
+pass("column_au_std" BACKENDS "au_std")
 pass("column_mp_units_std" BACKENDS "mp_units_std")

@@ -31,7 +31,9 @@ For more information, please refer to <https://unlicense.org> ]]
 
 fail("mxn_fail" BACKENDS "eigexed")
 
-pass("1xn_eigen" BACKENDS "eigexed" "nested_typed_eigen")
-pass("mx1_eigen" BACKENDS "eigexed" "nested_typed_eigen")
+pass("1x2_au_eigen" BACKENDS "au_eigen")
 pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen")
+pass("1xn_eigen" BACKENDS "eigexed" "nested_typed_eigen")
+pass("mx1_au_eigen" BACKENDS "au_eigen")
+pass("mx1_eigen" BACKENDS "eigexed" "nested_typed_eigen")
 pass("mx1_mp_units_eigen" BACKENDS "mp_units_eigen")

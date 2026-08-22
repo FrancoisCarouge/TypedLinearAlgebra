@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+pass("1x1_au_eigen" BACKENDS "au_eigen")
 pass("1x1_eigen" BACKENDS "eigexed" "nested_typed_eigen")
 pass("1x1_mp_units_eigen" BACKENDS "mp_units_eigen")
 pass("1x2_eigen" BACKENDS "eigexed" "nested_typed_eigen")

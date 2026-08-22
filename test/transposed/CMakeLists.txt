@@ -29,7 +29,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+pass("1x1_au_std" BACKENDS "au_std")
 pass("1x1_mp_units_std" BACKENDS "mp_units_std")
+pass("1xn_au_std" BACKENDS "au_std")
 pass("1xn_mp_units_std" BACKENDS "mp_units_std")
+pass("2x3_au_eigen" BACKENDS "au_eigen")
 pass("2x3_mp_units_eigen" BACKENDS "mp_units_eigen")
 pass("rxc" BACKENDS "eigexed")
