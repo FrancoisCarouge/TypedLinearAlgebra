@@ -250,6 +250,18 @@ The library is used in projects:
 
 *Your project link here!*
 
+## Resources
+
+The design draws on the following prior work on physical quantities, units, and linear algebra in software, presented in the [CppNow 2026 talk](#as-seen-at-cppnow-2026):
+
+1. G. W. Hart, *Multidimensional Analysis: Algebras and Systems for Science and Engineering*. New York, NY, USA: Springer-Verlag, 1995.
+2. B. D. Hall, "Software support for physical quantities," in *Proc. 9th Electronics New Zealand Conf. (ENZCON)*, Dunedin, New Zealand, 2002.
+3. M. Pusz, "Implementing Physical Units Library for C++" presented at C++Now, Aspen, CO, USA, May 2019. [Online]. Available: <https://www.youtube.com/watch?v=wKchCktZPHU>
+4. C. Hogg, "Units Libraries and Autonomous Vehicles: Lessons from the Trenches," presented at CppCon, Aurora, CO, USA, Oct. 2021. [Online]. Available: <https://www.youtube.com/watch?v=5dhFtSu3wCo>
+5. D. Withopf, "Taking Static Type-Safety to the Next Level: Physical Units for Matrices," presented at C++Now, Aspen, CO, USA, May 2022. [Online]. Available: <https://www.youtube.com/watch?v=SLSTS-EvOx4>
+6. M. Hoemmen, "std::linalg: Linear Algebra Coming to Standard C++" (WG21 P1673), presented at CppCon, Aurora, CO, USA, Oct. 2023. [Online]. Available: <https://www.youtube.com/watch?v=-UXHMlAMXNk>
+7. D. Hanson, "Guide to Linear Algebra With the Eigen C++ Library," presented at CppCon, Aurora, CO, USA, Sep. 2024. [Online]. Available: <https://www.youtube.com/watch?v=99G-APJkMc0>
+
 ## Third Party Acknowledgement
 
 The library is designed, developed, and tested with the help of third-party tools and services acknowledged and thanked here:
