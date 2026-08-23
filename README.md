@@ -252,8 +252,6 @@ The library is used in projects:
 
 ## Resources
 
-The design draws on the following prior work on physical quantities, units, and linear algebra in software, presented in the [CppNow 2026 talk](#as-seen-at-cppnow-2026):
-
 1. G. W. Hart, *Multidimensional Analysis: Algebras and Systems for Science and Engineering*. New York, NY, USA: Springer-Verlag, 1995.
 2. B. D. Hall, "Software support for physical quantities," in *Proc. 9th Electronics New Zealand Conf. (ENZCON)*, Dunedin, New Zealand, 2002.
 3. M. Pusz, "Implementing Physical Units Library for C++" presented at C++Now, Aspen, CO, USA, May 2019. [Online]. Available: <https://www.youtube.com/watch?v=wKchCktZPHU>
