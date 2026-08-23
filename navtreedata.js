@@ -46,6 +46,7 @@ var NAVTREE =
       [ "As seen at CppNow 2026", "index.xhtml#as-seen-at-cppnow-2026", null ],
       [ "Lessons Learned", "index.xhtml#lessons-learned", null ],
       [ "Projects", "index.xhtml#projects", null ],
+      [ "Resources", "index.xhtml#resources", null ],
       [ "Third Party Acknowledgement", "index.xhtml#third-party-acknowledgement", null ],
       [ "Sponsors", "index.xhtml#sponsors", [
         [ "Corporations & Institutions", "index.xhtml#corporations--institutions", null ],
@@ -160,9 +161,9 @@ var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
 "dir_77010ae1c659866f3d80deb588daf66a.xhtml",
-"mdspan__tuple__product_8cpp_source.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02formattable_8cpp_03.xhtml#a953aec476a3badf9827b3a6a655f4fbf",
-"subscript__1x1__const_8cpp.xhtml"
+"mdspan__tuple__product_8cpp.xhtml#ae66f6b31b5ad750f1fe042a706a4e3d4",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02formattable_8cpp_03.xhtml#a8c2c45bcaac6459ee60b93ff06f360f1",
+"subscript__1x1_8cpp_source.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
