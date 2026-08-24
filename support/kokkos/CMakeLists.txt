@@ -33,7 +33,7 @@ FetchContent_Declare(
   mdspan
   GIT_REPOSITORY "https://github.com/kokkos/mdspan.git"
   GIT_TAG "stable"
-  FIND_PACKAGE_ARGS NAMES mdspan)
+  SYSTEM FIND_PACKAGE_ARGS NAMES mdspan)
 FetchContent_MakeAvailable(mdspan)
 
 add_library(std::mdspan ALIAS mdspan)
@@ -42,7 +42,7 @@ FetchContent_Declare(
   linalg
   GIT_REPOSITORY "https://github.com/kokkos/stdBLAS.git"
   GIT_TAG "main"
-  FIND_PACKAGE_ARGS NAMES linalg)
+  SYSTEM FIND_PACKAGE_ARGS NAMES linalg)
 FetchContent_MakeAvailable(linalg)
 
 add_library(typed_linear_algebra_kokkos INTERFACE)
