@@ -33,7 +33,7 @@ FetchContent_Declare(
   eigen
   GIT_REPOSITORY "https://gitlab.com/libeigen/eigen.git"
   GIT_SHALLOW TRUE
-  FIND_PACKAGE_ARGS NAMES Eigen3)
+  SYSTEM FIND_PACKAGE_ARGS NAMES Eigen3)
 FetchContent_MakeAvailable(eigen)
 
 add_library(typed_linear_algebra_eigen INTERFACE)

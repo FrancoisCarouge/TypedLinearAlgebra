@@ -33,7 +33,7 @@ FetchContent_Declare(
   gsl-lite
   GIT_REPOSITORY "https://github.com/gsl-lite/gsl-lite"
   GIT_SHALLOW TRUE
-  FIND_PACKAGE_ARGS NAMES gsl-lite)
+  SYSTEM FIND_PACKAGE_ARGS NAMES gsl-lite)
 FetchContent_MakeAvailable(gsl-lite)
 
 set(MP_UNITS_LIB_FORMAT_SUPPORTED ON)
@@ -45,7 +45,7 @@ FetchContent_Declare(
   mp-units
   GIT_REPOSITORY "https://github.com/mpusz/mp-units"
   GIT_SHALLOW TRUE
-  SOURCE_SUBDIR "src" FIND_PACKAGE_ARGS NAMES mp-units)
+  SYSTEM SOURCE_SUBDIR "src" FIND_PACKAGE_ARGS NAMES mp-units)
 FetchContent_MakeAvailable(mp-units)
 
 target_compile_options(

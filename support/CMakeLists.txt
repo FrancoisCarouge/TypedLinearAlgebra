@@ -115,7 +115,7 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
               "-Wnon-virtual-dtor"
               "-Wpointer-arith"
               "-Wshadow"
-              "-Wstrict-aliasing=2"
+              "-Wstrict-aliasing=1"
               "-Wundef"
               "-Wunused-local-typedefs"
               "-Wwrite-strings")
