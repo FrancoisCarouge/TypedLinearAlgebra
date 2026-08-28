@@ -4,7 +4,7 @@ var searchData=
   ['a_20href_20https_3a_20francoiscarouge_20github_20io_20typedlinearalgebra_20typed_5flinear_5falgebra_20index_20html_20typed_20linear_20algebra_20a_1',['&lt;a href=&quot;https://francoiscarouge.github.io/TypedLinearAlgebra/typed_linear_algebra/index.html&quot; &gt;Typed Linear Algebra&lt;/a&gt;',['../md_html_2typed__linear__algebra_2_r_e_a_d_m_e.xhtml#typed-linear-algebrahttpsfrancoiscarougegithubiotypedlinearalgebratyped_linear_algebraindexhtml',1,'']]],
   ['a_20vulnerability_2',['Reporting a Vulnerability',['../md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#reporting-a-vulnerability',1,'']]],
   ['abstract_3',['Abstract',['../md_html_2paper_2mp__units__eigen.xhtml#abstract',1,'']]],
-  ['acceleration_4',['acceleration',['../namespacefcarouge.xhtml#a54efd5a19e1fb79c2c421f891d436020',1,'fcarouge']]],
+  ['acceleration_4',['acceleration',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a9fc73abdcf49a366c81e69075a419da5',1,'fcarouge::sample::anonymous_namespace{au_eigen.cpp}::acceleration'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__std_8cpp_03.xhtml#acd0b8eefd11608f1ea52f4d7c6feab9a',1,'fcarouge::sample::anonymous_namespace{au_std.cpp}::acceleration'],['../namespacefcarouge.xhtml#a54efd5a19e1fb79c2c421f891d436020',1,'fcarouge::acceleration']]],
   ['access_5',['access',['../structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1accessor.xhtml#a4f3368a0391543803bb2fb193f4b4551',1,'fcarouge::benchmark::anonymous_namespace{mdspan_tuple_product.cpp}::accessor::access()'],['../structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor.xhtml#ad442dc8b7ab4b4ca3301482a12569549',1,'fcarouge::benchmark::anonymous_namespace{typed_mdspan_tupled_product.cpp}::accessor::access()']]],
   ['accessor_6',['accessor',['../structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1accessor.xhtml',1,'fcarouge::benchmark::anonymous_namespace{mdspan_tuple_product.cpp}::accessor&lt; Tuple, Type &gt;'],['../structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor.xhtml',1,'fcarouge::benchmark::anonymous_namespace{typed_mdspan_tupled_product.cpp}::accessor&lt; Tuple, Type &gt;']]],
   ['acknowledgement_7',['Third Party Acknowledgement',['../index.xhtml#third-party-acknowledgement',1,'']]],
@@ -21,5 +21,8 @@ var searchData=
   ['assign_2ecpp_18',['assign.cpp',['../assign_8cpp.xhtml',1,'']]],
   ['at_19',['at',['../classfcarouge_1_1typed__matrix.xhtml#a7069d3bf51e6490049566e61978d9fbe',1,'fcarouge::typed_matrix::at(this auto &amp;&amp;self)'],['../classfcarouge_1_1typed__matrix.xhtml#a4f021cdbb68e3e5bbe51c5962b312508',1,'fcarouge::typed_matrix::at(this auto &amp;&amp;self, const element&lt; Indexes... &gt; &amp;value)']]],
   ['at_20cppnow_202026_20',['As seen at CppNow 2026',['../index.xhtml#as-seen-at-cppnow-2026',1,'']]],
-  ['attribution_21',['Attribution',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution',1,'']]]
+  ['attribution_21',['Attribution',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution',1,'']]],
+  ['au_2ehpp_22',['au.hpp',['../au_8hpp.xhtml',1,'']]],
+  ['au_5feigen_2ecpp_23',['au_eigen.cpp',['../au__eigen_8cpp.xhtml',1,'']]],
+  ['au_5fstd_2ecpp_24',['au_std.cpp',['../au__std_8cpp.xhtml',1,'']]]
 ];

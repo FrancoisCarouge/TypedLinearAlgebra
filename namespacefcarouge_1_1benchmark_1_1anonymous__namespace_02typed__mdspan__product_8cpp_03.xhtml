@@ -143,7 +143,7 @@ template&lt;auto Size&gt; </div>
 <div class="line"><span class="lineno">   55</span>  <span class="keyword">using </span>mdspan =</div>
 <div class="line"><span class="lineno">   56</span>      std::mdspan&lt;double, std::extents&lt;std::size_t, Size, Size&gt;,</div>
 <div class="line"><span class="lineno">   57</span>                  Kokkos::layout_right, Kokkos::default_accessor&lt;double&gt;&gt;;</div>
-<div class="line"><span class="lineno">   58</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix</a> =</div>
+<div class="line"><span class="lineno">   58</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a> =</div>
 <div class="line"><span class="lineno">   59</span>      <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&lt;mdspan,</div>
 <div class="line"><span class="lineno">   60</span>                   <a class="code hl_typedef" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a4dd57b09634fe03c0fd59b866657ad86">typed_linear_algebra_internal::tuple_n_type&lt;double, Size&gt;</a>,</div>
 <div class="line"><span class="lineno">   61</span>                   <a class="code hl_typedef" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a4dd57b09634fe03c0fd59b866657ad86">typed_linear_algebra_internal::tuple_n_type&lt;double, Size&gt;</a>&gt;;</div>
@@ -157,9 +157,9 @@ template&lt;auto Size&gt; </div>
 <div class="line"><span class="lineno">   69</span>                       std::extents&lt;std::size_t, Size, Size&gt;{}};</div>
 <div class="line"><span class="lineno">   70</span>  std::mdspan mdspan_r{storage_r.data(),</div>
 <div class="line"><span class="lineno">   71</span>                       std::extents&lt;std::size_t, Size, Size&gt;{}};</div>
-<div class="line"><span class="lineno">   72</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a6b3c31f5597d188be25878a1961231a4">matrix</a> a{mdspan_a};</div>
-<div class="line"><span class="lineno">   73</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a6b3c31f5597d188be25878a1961231a4">matrix</a> b{mdspan_b};</div>
-<div class="line"><span class="lineno">   74</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a6b3c31f5597d188be25878a1961231a4">matrix</a> r{mdspan_r};</div>
+<div class="line"><span class="lineno">   72</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a162dc300c30a70e1d50499e1b63f403c">matrix</a> a{mdspan_a};</div>
+<div class="line"><span class="lineno">   73</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a162dc300c30a70e1d50499e1b63f403c">matrix</a> b{mdspan_b};</div>
+<div class="line"><span class="lineno">   74</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a162dc300c30a70e1d50499e1b63f403c">matrix</a> r{mdspan_r};</div>
 <div class="line"><span class="lineno">   75</span>  std::random_device device;</div>
 <div class="line"><span class="lineno">   76</span>  std::mt19937 generator{device()};</div>
 <div class="line"><span class="lineno">   77</span>  std::uniform_real_distribution&lt;&gt; distribution{0., 1.};</div>
@@ -182,8 +182,7 @@ template&lt;auto Size&gt; </div>
 <div class="line"><span class="lineno">   94</span>      .render(csv&lt;Size&gt;.c_str(), results);</div>
 <div class="line"><span class="lineno">   95</span>}</div>
 <div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a></div><div class="ttdoc">Strongly typed matrix.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__forward_8hpp_source.xhtml#l00043">typed_linear_algebra_forward.hpp:43</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a01e78c3f356b744543b2f25797bcfa84"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix</a></div><div class="ttdeci">Eigen::Matrix&lt; Type, Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Eigen3 matrix.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00082">eigen.hpp:82</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_xhtml_a6b3c31f5597d188be25878a1961231a4"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a6b3c31f5597d188be25878a1961231a4">fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::matrix</a></div><div class="ttdeci">matrix&lt; representation, RowIndexes, ColumnIndexes &gt; matrix</div><div class="ttdef"><b>Definition</b> <a href="mp__units__eigen_8cpp_source.xhtml#l00059">mp_units_eigen.cpp:59</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03_xhtml_a162dc300c30a70e1d50499e1b63f403c"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a162dc300c30a70e1d50499e1b63f403c">fcarouge::sample::anonymous_namespace{au_eigen.cpp}::matrix</a></div><div class="ttdeci">matrix&lt; representation, RowIndexes, ColumnIndexes &gt; matrix</div><div class="ttdef"><b>Definition</b> <a href="au__eigen_8cpp_source.xhtml#l00062">au_eigen.cpp:62</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra__internal_xhtml_a4dd57b09634fe03c0fd59b866657ad86"><div class="ttname"><a href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a4dd57b09634fe03c0fd59b866657ad86">fcarouge::typed_linear_algebra_internal::tuple_n_type</a></div><div class="ttdeci">typename tupler&lt; Type, Size &gt;::type tuple_n_type</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00326">utility.hpp:326</a></div></div>
 </div><!-- fragment -->
 </div>
