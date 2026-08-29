@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -41,20 +42,21 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 
 namespace {
 //! @test Verifies the singleton by singleton matrix multiplication operator.
-[[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
-  using area = quantity<mp_units::isq::area[m2]>;
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      using length = quantity<mp_units::isq::length[m]>;
+      using area = quantity<mp_units::isq::area[m2]>;
 
-  const row_vector<representation, length> a{2. * m};
-  const row_vector<representation, length> b{3. * m};
-  const row_vector<representation, area> r{a * b};
+      const row_vector<representation, length> a{2. * m};
+      const row_vector<representation, length> b{3. * m};
+      const row_vector<representation, area> r{a * b};
 
-  assert(6. * m2 == r.at());
-  assert(6. * m2 == r());
-  assert(6. * m2 == r[]);
-  assert(6. * m2 == r);
+      assert(6. * m2 == r.at());
+      assert(6. * m2 == r());
+      assert(6. * m2 == r[]);
+      assert(6. * m2 == r);
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

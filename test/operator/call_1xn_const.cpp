@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -38,29 +39,30 @@ using literals::operator""_i;
 
 namespace {
 //! @test Verifies the call operator accessor.
-[[maybe_unused]] const auto test{[] -> int {
-  const row_vector<double, 3> m{1., 2., 3.};
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      const row_vector<double, 3> m{1., 2., 3.};
 
-  assert(m.at<0_i>() == 1.);
-  assert(m.at<1_i>() == 2.);
-  assert(m.at<2_i>() == 3.);
-  assert(m.at<0>() == 1.);
-  assert(m.at<1>() == 2.);
-  assert(m.at<2>() == 3.);
-  assert(m[0_i] == 1.);
-  assert(m[1_i] == 2.);
-  assert(m[2_i] == 3.);
-  assert(m(0_i) == 1.);
-  assert(m(1_i) == 2.);
-  assert(m(2_i) == 3.);
-  assert(m[0] == 1.);
-  assert(m[1] == 2.);
-  assert(m[2] == 3.);
-  assert(m(0) == 1.);
-  assert(m(1) == 2.);
-  assert(m(2) == 3.);
+      assert(m.at<0_i>() == 1.);
+      assert(m.at<1_i>() == 2.);
+      assert(m.at<2_i>() == 3.);
+      assert(m.at<0>() == 1.);
+      assert(m.at<1>() == 2.);
+      assert(m.at<2>() == 3.);
+      assert(m[0_i] == 1.);
+      assert(m[1_i] == 2.);
+      assert(m[2_i] == 3.);
+      assert(m(0_i) == 1.);
+      assert(m(1_i) == 2.);
+      assert(m(2_i) == 3.);
+      assert(m[0] == 1.);
+      assert(m[1] == 2.);
+      assert(m[2] == 3.);
+      assert(m(0) == 1.);
+      assert(m(1) == 2.);
+      assert(m(2) == 3.);
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

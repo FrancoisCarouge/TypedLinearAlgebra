@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -36,15 +37,16 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the square by column matrix multiplication operator.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 2, 2> a{{1., 2.}, {3., 4.}};
-  const matrix<double, 2, 1> b{3., 4.};
-  const matrix<double, 2, 1> r{a * b};
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      const matrix<double, 2, 2> a{{1., 2.}, {3., 4.}};
+      const matrix<double, 2, 1> b{3., 4.};
+      const matrix<double, 2, 1> r{a * b};
 
-  assert(r(0) == 11.);
-  assert(r(1) == 25.);
+      assert(r(0) == 11.);
+      assert(r(1) == 25.);
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

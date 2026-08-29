@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -36,21 +37,22 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the assignment operator.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 5, 5> m{{1., 0., 0., 0., 0.},
-                               {0., 1., 0., 0., 0.},
-                               {0., 0., 1., 0., 0.},
-                               {0., 0., 0., 1., 0.},
-                               {0., 0., 0., 0., 1.}};
-  const matrix<double, 5, 5> c = m;
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      const matrix<double, 5, 5> m{{1., 0., 0., 0., 0.},
+                                   {0., 1., 0., 0., 0.},
+                                   {0., 0., 1., 0., 0.},
+                                   {0., 0., 0., 1., 0.},
+                                   {0., 0., 0., 0., 1.}};
+      const matrix<double, 5, 5> c = m;
 
-  assert((c == matrix<double, 5, 5>{{1., 0., 0., 0., 0.},
-                                    {0., 1., 0., 0., 0.},
-                                    {0., 0., 1., 0., 0.},
-                                    {0., 0., 0., 1., 0.},
-                                    {0., 0., 0., 0., 1.}}));
+      assert((c == matrix<double, 5, 5>{{1., 0., 0., 0., 0.},
+                                        {0., 1., 0., 0., 0.},
+                                        {0., 0., 1., 0., 0.},
+                                        {0., 0., 0., 1., 0.},
+                                        {0., 0., 0., 0., 1.}}));
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test

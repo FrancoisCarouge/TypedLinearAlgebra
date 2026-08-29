@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "../nonblocking.hpp"
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
@@ -37,22 +38,23 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the minus unary operator on a regular, two-dimension
 //! matrix.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 2, 3> a{{1., -2., 3.}, {-4., 5., -6.}};
-  const matrix<double, 2, 3> b{-a};
+[[maybe_unused]] const auto test{
+    []() noexcept FCAROUGE_TEST_NONBLOCKING -> int {
+      const matrix<double, 2, 3> a{{1., -2., 3.}, {-4., 5., -6.}};
+      const matrix<double, 2, 3> b{-a};
 
-  assert((b.at<0, 0>() == -1.));
-  assert((b.at<0, 1>() == 2.));
-  assert((b.at<0, 2>() == -3.));
-  assert((b.at<1, 0>() == 4.));
-  assert((b.at<1, 1>() == -5.));
-  assert((b.at<1, 2>() == 6.));
+      assert((b.at<0, 0>() == -1.));
+      assert((b.at<0, 1>() == 2.));
+      assert((b.at<0, 2>() == -3.));
+      assert((b.at<1, 0>() == 4.));
+      assert((b.at<1, 1>() == -5.));
+      assert((b.at<1, 2>() == 6.));
 
-  // The operand is not mutated.
-  assert((a.at<0, 0>() == 1.));
-  assert((a.at<1, 2>() == -6.));
+      // The operand is not mutated.
+      assert((a.at<0, 0>() == 1.));
+      assert((a.at<1, 2>() == -6.));
 
-  return 0;
-}()};
+      return 0;
+    }()};
 } // namespace
 } // namespace fcarouge::test
