@@ -50,6 +50,11 @@ namespace {
 // operator) so it competes with the library's magnitude free function.
 using mp_units::magnitude;
 
+using mp_units::si::unit_symbols::h;
+using mp_units::si::unit_symbols::km;
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::s;
+
 //! @test Verifies typed linear algebra's mp-units compatibility plugin.
 //!
 //! @details Explore areas of interests.

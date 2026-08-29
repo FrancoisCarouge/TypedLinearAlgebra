@@ -55,6 +55,19 @@ using representation = double;
 template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
+using mp_units::si::unit_symbols::A;
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::m2;
+using mp_units::si::unit_symbols::mol;
+using mp_units::si::unit_symbols::s;
+using mp_units::si::unit_symbols::s2;
+using mp_units::si::unit_symbols::s3;
+constexpr auto s4{pow<4>(s)};
+
+using position = quantity<mp_units::isq::length[m]>;
+using velocity = quantity<mp_units::isq::velocity[m / s]>;
+using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
+
 template <typename RowIndexes, typename ColumnIndexes>
 using matrix = matrix<representation, RowIndexes, ColumnIndexes>;
 

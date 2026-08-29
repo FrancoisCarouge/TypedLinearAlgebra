@@ -53,26 +53,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <mp-units/systems/si.h>
 
 namespace fcarouge {
-using mp_units::si::unit_symbols::A;
-using mp_units::si::unit_symbols::h;
-using mp_units::si::unit_symbols::km;
-using mp_units::si::unit_symbols::m;
-using mp_units::si::unit_symbols::m2;
-using mp_units::si::unit_symbols::m3;
-using mp_units::si::unit_symbols::m4;
-using mp_units::si::unit_symbols::mol;
-using mp_units::si::unit_symbols::N;
-using mp_units::si::unit_symbols::s;
-using mp_units::si::unit_symbols::s2;
-using mp_units::si::unit_symbols::s3;
-
-inline constexpr auto s4{pow<4>(s)};
-
-using height = mp_units::quantity<mp_units::isq::height[m]>;
-using position = mp_units::quantity<mp_units::isq::length[m]>;
-using velocity = mp_units::quantity<mp_units::isq::velocity[m / s]>;
-using acceleration = mp_units::quantity<mp_units::isq::acceleration[m / s2]>;
-
 // A vector quantity whose specification has no named-axis decomposition (no
 // `vector_components` specialization) but whose own representation is itself
 // tuple-like (e.g. a fcarouge typed vector). `not requires { ...::size; }`

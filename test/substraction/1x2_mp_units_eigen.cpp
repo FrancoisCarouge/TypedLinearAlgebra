@@ -40,6 +40,9 @@ using representation = double;
 template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::s;
+
 namespace {
 //! @test Verifies the substraction operator with non-trivial types.
 [[maybe_unused]] const auto test{[] -> int {

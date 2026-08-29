@@ -39,6 +39,8 @@ using representation = double;
 template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
+using mp_units::si::unit_symbols::m;
+
 namespace {
 //! @test Verifies the quantity by singleton matrix division operator.
 [[maybe_unused]] const auto test{[] -> int {

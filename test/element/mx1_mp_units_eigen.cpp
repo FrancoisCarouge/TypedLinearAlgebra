@@ -37,6 +37,10 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::N;
+using mp_units::si::unit_symbols::s;
+
 //! @test Verifies the element type of the column vector, rank one, matrix.
 //!
 //! @details The count of indexes must match the rank of the matrix: one

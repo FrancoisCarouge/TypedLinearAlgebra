@@ -31,20 +31,25 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <cassert>
+#include <concepts>
+#include <tuple>
+
 namespace fcarouge::test {
 namespace {
-//! @test Verifies a column vector, rank one, matrix element cannot be
-//! accessed with no index, as if it were a rank zero matrix.
-[[maybe_unused]] const auto test{[] {
-  using matrix =
-      matrix<double, std::tuple<decltype(1. * m), decltype(1. * m / s)>,
-             std::tuple<decltype(1. * N)>>;
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::m2;
 
-  // Intended:
-  // using quantity = matrix::element<0>;
+//! @test Verifies the element type of the singleton, rank zero, matrix.
+//!
+//! @details The count of indexes must match the rank of the matrix: no
+//! index for a singleton matrix.
+[[maybe_unused]] const auto test{[] -> int {
+  using matrix = matrix<double, std::tuple<decltype(1. * m)>,
+                        std::tuple<decltype(1. * m)>>;
+  using quantity = decltype(1. * m2);
 
-  using quantity = matrix::element<>;
-  [[maybe_unused]] quantity value;
+  static_assert(std::same_as<matrix::element<>, quantity>);
 
   return 0;
 }()};

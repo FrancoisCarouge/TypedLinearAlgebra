@@ -37,6 +37,11 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
+using mp_units::si::unit_symbols::A;
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::N;
+using mp_units::si::unit_symbols::s;
+
 //! @test Verifies the element type of the matrix.
 [[maybe_unused]] const auto test{[] -> int {
   using matrix =

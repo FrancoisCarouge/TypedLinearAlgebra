@@ -37,6 +37,9 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
+using mp_units::si::unit_symbols::s;
+using mp_units::si::unit_symbols::s2;
+
 //! @test Verifies the equal to algorithm for a row vector with the mdspan
 //! backend.
 //!
