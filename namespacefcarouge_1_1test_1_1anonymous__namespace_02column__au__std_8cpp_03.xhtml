@@ -124,6 +124,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line">  <span class="keyword">using </span>au::symbols::m;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">constexpr</span> <span class="keyword">auto</span> m2{au::squared(m)};</div>
+<div class="line"> </div>
 <div class="line">  <span class="keyword">using </span>length = au::QuantityD&lt;au::Meters&gt;;</div>
 <div class="line">  <span class="keyword">using </span>area = au::QuantityD&lt;au::UnitPowerT&lt;au::Meters, 2&gt;&gt;;</div>
 <div class="line"> </div>
@@ -131,43 +135,45 @@ Variables</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  std::mdspan span{&amp;storage[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">column_vector&lt;representation, length, area&gt;</a> x{span};</div>
+<div class="line">  column_vector&lt;representation, length, area&gt; x{span};</div>
 <div class="line"> </div>
-<div class="line">  x.<a class="code hl_function" href="classfcarouge_1_1typed__matrix.xhtml#a7069d3bf51e6490049566e61978d9fbe">at</a>&lt;0&gt;(au::meters(1.));</div>
-<div class="line">  x.at&lt;1&gt;(au::squared(au::meters)(2.));</div>
+<div class="line">  x.at&lt;0&gt;(1. * m);</div>
+<div class="line">  x.at&lt;1&gt;(2. * m2);</div>
 <div class="line"> </div>
 <div class="line">  scale(3., x);</div>
 <div class="line"> </div>
-<div class="line">  assert(au::meters(3.) == x.at&lt;0&gt;());</div>
-<div class="line">  assert(au::squared(au::meters)(6.) == x.at&lt;1&gt;());</div>
+<div class="line">  assert(3. * m == x.at&lt;0&gt;());</div>
+<div class="line">  assert(6. * m2 == x.at&lt;1&gt;());</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-<div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a></div><div class="ttdoc">Strongly typed matrix.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__forward_8hpp_source.xhtml#l00043">typed_linear_algebra_forward.hpp:43</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml_a7069d3bf51e6490049566e61978d9fbe"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml#a7069d3bf51e6490049566e61978d9fbe">fcarouge::typed_matrix::at</a></div><div class="ttdeci">constexpr decltype(auto) at(this auto &amp;&amp;self)</div><div class="ttdoc">Read the specified element.</div></div>
 </div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000156">Test</a></b></dt><dd>Verifies the scale algorithm for a column vector shape with non-trivial, heterogeneous types. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="column__au__std_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="column__au__std_8cpp_source.xhtml">column_au_std.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   46</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   47</span>  <span class="keyword">using </span>length = au::QuantityD&lt;au::Meters&gt;;</div>
-<div class="line"><span class="lineno">   48</span>  <span class="keyword">using </span>area = au::QuantityD&lt;au::UnitPowerT&lt;au::Meters, 2&gt;&gt;;</div>
-<div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>  <span class="keywordtype">double</span> storage[]{0., 0.};</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>  std::mdspan span{&amp;storage[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
+<div class="line"><span class="lineno">   47</span>  <span class="keyword">using </span>au::symbols::m;</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> m2{au::squared(m)};</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>  <span class="keyword">using </span>length = au::QuantityD&lt;au::Meters&gt;;</div>
+<div class="line"><span class="lineno">   52</span>  <span class="keyword">using </span>area = au::QuantityD&lt;au::UnitPowerT&lt;au::Meters, 2&gt;&gt;;</div>
 <div class="line"><span class="lineno">   53</span> </div>
-<div class="line"><span class="lineno">   54</span>  column_vector&lt;representation, length, area&gt; x{span};</div>
+<div class="line"><span class="lineno">   54</span>  <span class="keywordtype">double</span> storage[]{0., 0.};</div>
 <div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>  x.at&lt;0&gt;(au::meters(1.));</div>
-<div class="line"><span class="lineno">   57</span>  x.at&lt;1&gt;(au::squared(au::meters)(2.));</div>
-<div class="line"><span class="lineno">   58</span> </div>
-<div class="line"><span class="lineno">   59</span>  scale(3., x);</div>
-<div class="line"><span class="lineno">   60</span> </div>
-<div class="line"><span class="lineno">   61</span>  assert(au::meters(3.) == x.at&lt;0&gt;());</div>
-<div class="line"><span class="lineno">   62</span>  assert(au::squared(au::meters)(6.) == x.at&lt;1&gt;());</div>
-<div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   65</span>}()};</div>
+<div class="line"><span class="lineno">   56</span>  std::mdspan span{&amp;storage[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>  column_vector&lt;representation, length, area&gt; x{span};</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>  x.at&lt;0&gt;(1. * m);</div>
+<div class="line"><span class="lineno">   61</span>  x.at&lt;1&gt;(2. * m2);</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>  scale(3., x);</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>  assert(3. * m == x.at&lt;0&gt;());</div>
+<div class="line"><span class="lineno">   66</span>  assert(6. * m2 == x.at&lt;1&gt;());</div>
+<div class="line"><span class="lineno">   67</span> </div>
+<div class="line"><span class="lineno">   68</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   69</span>}()};</div>
 </div><!-- fragment -->
 </div>
 </div>

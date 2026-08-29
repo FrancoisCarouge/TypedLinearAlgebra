@@ -124,21 +124,19 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line">  <span class="keyword">using </span>au::symbols::s;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">constexpr</span> <span class="keyword">auto</span> s2{au::squared(s)};</div>
+<div class="line"> </div>
 <div class="line">  <span class="keywordtype">double</span> storage_a[]{9., 10.};</div>
 <div class="line">  <span class="keywordtype">double</span> storage_b[]{9., 10.};</div>
 <div class="line">  <span class="keywordtype">double</span> storage_c[]{9., 11.};</div>
 <div class="line">  std::mdspan span_a{&amp;storage_a[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
 <div class="line">  std::mdspan span_b{&amp;storage_b[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
 <div class="line">  std::mdspan span_c{&amp;storage_c[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a2298cbec613bde66becb45068c778a27">row_vector</a>&lt;double, <span class="keyword">decltype</span>(au::seconds(1.)),</div>
-<div class="line">             <span class="keyword">decltype</span>(au::squared(au::seconds)(1.))&gt;</div>
-<div class="line">      a{span_a};</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a2298cbec613bde66becb45068c778a27">row_vector</a>&lt;double, <span class="keyword">decltype</span>(au::seconds(1.)),</div>
-<div class="line">             <span class="keyword">decltype</span>(au::squared(au::seconds)(1.))&gt;</div>
-<div class="line">      b{span_b};</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a2298cbec613bde66becb45068c778a27">row_vector</a>&lt;double, <span class="keyword">decltype</span>(au::seconds(1.)),</div>
-<div class="line">             <span class="keyword">decltype</span>(au::squared(au::seconds)(1.))&gt;</div>
-<div class="line">      c{span_c};</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a2298cbec613bde66becb45068c778a27">row_vector</a>&lt;double, <span class="keyword">decltype</span>(1. * s), <span class="keyword">decltype</span>(1. * s2)&gt; a{span_a};</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a2298cbec613bde66becb45068c778a27">row_vector</a>&lt;double, <span class="keyword">decltype</span>(1. * s), <span class="keyword">decltype</span>(1. * s2)&gt; b{span_b};</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a2298cbec613bde66becb45068c778a27">row_vector</a>&lt;double, <span class="keyword">decltype</span>(1. * s), <span class="keyword">decltype</span>(1. * s2)&gt; c{span_c};</div>
 <div class="line"> </div>
 <div class="line">  assert(a == b);</div>
 <div class="line">  assert(a != c);</div>
@@ -146,33 +144,31 @@ Variables</h2></td></tr>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03_xhtml_a2298cbec613bde66becb45068c778a27"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a2298cbec613bde66becb45068c778a27">fcarouge::sample::anonymous_namespace{au_eigen.cpp}::row_vector</a></div><div class="ttdeci">row_vector&lt; representation, Types... &gt; row_vector</div><div class="ttdef"><b>Definition</b> <a href="au__eigen_8cpp_source.xhtml#l00068">au_eigen.cpp:68</a></div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000066">Test</a></b></dt><dd>Verifies the equal to algorithm for a row vector with the mdspan backend.</dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000068">Test</a></b></dt><dd>Verifies the equal to algorithm for a row vector with the mdspan backend.</dd></dl>
 <p>The mdspan-backed storage does not itself support equality: the algorithm must compare the strongly typed elements, not the underlying storage.</p>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000152">Test</a></b></dt><dd>Verifies the scale algorithm with non-trivial types. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="equal__to_21x2__au__std_8cpp_source.xhtml#l00048">48</a> of file <a class="el" href="equal__to_21x2__au__std_8cpp_source.xhtml">1x2_au_std.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   48</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   49</span>  <span class="keywordtype">double</span> storage_a[]{9., 10.};</div>
-<div class="line"><span class="lineno">   50</span>  <span class="keywordtype">double</span> storage_b[]{9., 10.};</div>
-<div class="line"><span class="lineno">   51</span>  <span class="keywordtype">double</span> storage_c[]{9., 11.};</div>
-<div class="line"><span class="lineno">   52</span>  std::mdspan span_a{&amp;storage_a[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
-<div class="line"><span class="lineno">   53</span>  std::mdspan span_b{&amp;storage_b[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
-<div class="line"><span class="lineno">   54</span>  std::mdspan span_c{&amp;storage_c[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
-<div class="line"><span class="lineno">   55</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a2298cbec613bde66becb45068c778a27">row_vector</a>&lt;double, <span class="keyword">decltype</span>(au::seconds(1.)),</div>
-<div class="line"><span class="lineno">   56</span>             <span class="keyword">decltype</span>(au::squared(au::seconds)(1.))&gt;</div>
-<div class="line"><span class="lineno">   57</span>      a{span_a};</div>
-<div class="line"><span class="lineno">   58</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a2298cbec613bde66becb45068c778a27">row_vector</a>&lt;double, <span class="keyword">decltype</span>(au::seconds(1.)),</div>
-<div class="line"><span class="lineno">   59</span>             <span class="keyword">decltype</span>(au::squared(au::seconds)(1.))&gt;</div>
-<div class="line"><span class="lineno">   60</span>      b{span_b};</div>
-<div class="line"><span class="lineno">   61</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a2298cbec613bde66becb45068c778a27">row_vector</a>&lt;double, <span class="keyword">decltype</span>(au::seconds(1.)),</div>
-<div class="line"><span class="lineno">   62</span>             <span class="keyword">decltype</span>(au::squared(au::seconds)(1.))&gt;</div>
-<div class="line"><span class="lineno">   63</span>      c{span_c};</div>
-<div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>  assert(a == b);</div>
-<div class="line"><span class="lineno">   66</span>  assert(a != c);</div>
-<div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   69</span>}()};</div>
+<div class="line"><span class="lineno">   49</span>  <span class="keyword">using </span>au::symbols::s;</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> s2{au::squared(s)};</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span>  <span class="keywordtype">double</span> storage_a[]{9., 10.};</div>
+<div class="line"><span class="lineno">   54</span>  <span class="keywordtype">double</span> storage_b[]{9., 10.};</div>
+<div class="line"><span class="lineno">   55</span>  <span class="keywordtype">double</span> storage_c[]{9., 11.};</div>
+<div class="line"><span class="lineno">   56</span>  std::mdspan span_a{&amp;storage_a[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   57</span>  std::mdspan span_b{&amp;storage_b[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   58</span>  std::mdspan span_c{&amp;storage_c[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   59</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a2298cbec613bde66becb45068c778a27">row_vector</a>&lt;double, <span class="keyword">decltype</span>(1. * s), <span class="keyword">decltype</span>(1. * s2)&gt; a{span_a};</div>
+<div class="line"><span class="lineno">   60</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a2298cbec613bde66becb45068c778a27">row_vector</a>&lt;double, <span class="keyword">decltype</span>(1. * s), <span class="keyword">decltype</span>(1. * s2)&gt; b{span_b};</div>
+<div class="line"><span class="lineno">   61</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a2298cbec613bde66becb45068c778a27">row_vector</a>&lt;double, <span class="keyword">decltype</span>(1. * s), <span class="keyword">decltype</span>(1. * s2)&gt; c{span_c};</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>  assert(a == b);</div>
+<div class="line"><span class="lineno">   64</span>  assert(a != c);</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   67</span>}()};</div>
 </div><!-- fragment -->
 </div>
 </div>

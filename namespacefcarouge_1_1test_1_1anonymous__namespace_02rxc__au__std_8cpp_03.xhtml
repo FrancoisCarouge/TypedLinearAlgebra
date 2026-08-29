@@ -123,69 +123,43 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line">  <span class="keyword">using </span>length = au::QuantityD&lt;au::Meters&gt;;</div>
-<div class="line">  <span class="keyword">using </span>area = au::QuantityD&lt;au::UnitPowerT&lt;au::Meters, 2&gt;&gt;;</div>
-<div class="line"> </div>
-<div class="line">  <span class="keywordtype">double</span> storage_a[]{0., 0.};</div>
-<div class="line">  <span class="keywordtype">double</span> storage_b[]{0., 0.};</div>
-<div class="line">  <span class="keywordtype">double</span> storage_r{0.};</div>
-<div class="line"> </div>
-<div class="line">  std::mdspan span_a{&amp;storage_a[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
-<div class="line">  std::mdspan span_b{&amp;storage_b[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
-<div class="line">  std::mdspan span_r{&amp;storage_r, std::extents&lt;std::size_t, 1, 1&gt;{}};</div>
-<div class="line"> </div>
-<div class="line">  row_vector&lt;representation, length, length&gt; a{span_a};</div>
-<div class="line">  column_vector&lt;representation, length, length&gt; b{span_b};</div>
-<div class="line">  row_vector&lt;representation, area&gt; r{span_r};</div>
-<div class="line"> </div>
-<div class="line">  a.at&lt;0_i&gt;(au::meters(1.));</div>
-<div class="line">  a.at&lt;1_i&gt;(au::meters(2.));</div>
-<div class="line">  b.at&lt;0_i&gt;(au::meters(3.));</div>
-<div class="line">  b.at&lt;1_i&gt;(au::meters(4.));</div>
-<div class="line"> </div>
-<div class="line">  matrix_product(a, b, r);</div>
-<div class="line"> </div>
-<div class="line">  assert(au::squared(au::meters)(11.) == r.at());</div>
-<div class="line">  assert(au::squared(au::meters)(11.) == r[]);</div>
-<div class="line">  assert(au::squared(au::meters)(11.) == r());</div>
-<div class="line">  assert(au::squared(au::meters)(11.) == r);</div>
-<div class="line"> </div>
-<div class="line">  <span class="keywordflow">return</span> 0;</div>
-<div class="line">}()}</div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000100">Test</a></b></dt><dd>Verifies the row by column matrix product algorithm. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000100">Test</a></b></dt><dd>Verifies the row by column matrix product algorithm. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="rxc__au__std_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="rxc__au__std_8cpp_source.xhtml">rxc_au_std.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   46</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   47</span>  <span class="keyword">using </span>length = au::QuantityD&lt;au::Meters&gt;;</div>
-<div class="line"><span class="lineno">   48</span>  <span class="keyword">using </span>area = au::QuantityD&lt;au::UnitPowerT&lt;au::Meters, 2&gt;&gt;;</div>
-<div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>  <span class="keywordtype">double</span> storage_a[]{0., 0.};</div>
-<div class="line"><span class="lineno">   51</span>  <span class="keywordtype">double</span> storage_b[]{0., 0.};</div>
-<div class="line"><span class="lineno">   52</span>  <span class="keywordtype">double</span> storage_r{0.};</div>
+<div class="line"><span class="lineno">   47</span>  <span class="keyword">using </span>au::symbols::m;</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> m2{au::squared(m)};</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>  <span class="keyword">using </span>length = au::QuantityD&lt;au::Meters&gt;;</div>
+<div class="line"><span class="lineno">   52</span>  <span class="keyword">using </span>area = au::QuantityD&lt;au::UnitPowerT&lt;au::Meters, 2&gt;&gt;;</div>
 <div class="line"><span class="lineno">   53</span> </div>
-<div class="line"><span class="lineno">   54</span>  std::mdspan span_a{&amp;storage_a[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
-<div class="line"><span class="lineno">   55</span>  std::mdspan span_b{&amp;storage_b[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
-<div class="line"><span class="lineno">   56</span>  std::mdspan span_r{&amp;storage_r, std::extents&lt;std::size_t, 1, 1&gt;{}};</div>
+<div class="line"><span class="lineno">   54</span>  <span class="keywordtype">double</span> storage_a[]{0., 0.};</div>
+<div class="line"><span class="lineno">   55</span>  <span class="keywordtype">double</span> storage_b[]{0., 0.};</div>
+<div class="line"><span class="lineno">   56</span>  <span class="keywordtype">double</span> storage_r{0.};</div>
 <div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>  row_vector&lt;representation, length, length&gt; a{span_a};</div>
-<div class="line"><span class="lineno">   59</span>  column_vector&lt;representation, length, length&gt; b{span_b};</div>
-<div class="line"><span class="lineno">   60</span>  row_vector&lt;representation, area&gt; r{span_r};</div>
+<div class="line"><span class="lineno">   58</span>  std::mdspan span_a{&amp;storage_a[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   59</span>  std::mdspan span_b{&amp;storage_b[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
+<div class="line"><span class="lineno">   60</span>  std::mdspan span_r{&amp;storage_r, std::extents&lt;std::size_t, 1, 1&gt;{}};</div>
 <div class="line"><span class="lineno">   61</span> </div>
-<div class="line"><span class="lineno">   62</span>  a.at&lt;0_i&gt;(au::meters(1.));</div>
-<div class="line"><span class="lineno">   63</span>  a.at&lt;1_i&gt;(au::meters(2.));</div>
-<div class="line"><span class="lineno">   64</span>  b.at&lt;0_i&gt;(au::meters(3.));</div>
-<div class="line"><span class="lineno">   65</span>  b.at&lt;1_i&gt;(au::meters(4.));</div>
-<div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>  matrix_product(a, b, r);</div>
-<div class="line"><span class="lineno">   68</span> </div>
-<div class="line"><span class="lineno">   69</span>  assert(au::squared(au::meters)(11.) == r.at());</div>
-<div class="line"><span class="lineno">   70</span>  assert(au::squared(au::meters)(11.) == r[]);</div>
-<div class="line"><span class="lineno">   71</span>  assert(au::squared(au::meters)(11.) == r());</div>
-<div class="line"><span class="lineno">   72</span>  assert(au::squared(au::meters)(11.) == r);</div>
-<div class="line"><span class="lineno">   73</span> </div>
-<div class="line"><span class="lineno">   74</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   75</span>}()};</div>
+<div class="line"><span class="lineno">   62</span>  row_vector&lt;representation, length, length&gt; a{span_a};</div>
+<div class="line"><span class="lineno">   63</span>  column_vector&lt;representation, length, length&gt; b{span_b};</div>
+<div class="line"><span class="lineno">   64</span>  row_vector&lt;representation, area&gt; r{span_r};</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>  a.at&lt;0_i&gt;(1. * m);</div>
+<div class="line"><span class="lineno">   67</span>  a.at&lt;1_i&gt;(2. * m);</div>
+<div class="line"><span class="lineno">   68</span>  b.at&lt;0_i&gt;(3. * m);</div>
+<div class="line"><span class="lineno">   69</span>  b.at&lt;1_i&gt;(4. * m);</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>  matrix_product(a, b, r);</div>
+<div class="line"><span class="lineno">   72</span> </div>
+<div class="line"><span class="lineno">   73</span>  assert(11. * m2 == r.at());</div>
+<div class="line"><span class="lineno">   74</span>  assert(11. * m2 == r[]);</div>
+<div class="line"><span class="lineno">   75</span>  assert(11. * m2 == r());</div>
+<div class="line"><span class="lineno">   76</span>  assert(11. * m2 == r);</div>
+<div class="line"><span class="lineno">   77</span> </div>
+<div class="line"><span class="lineno">   78</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   79</span>}()};</div>
 </div><!-- fragment -->
 </div>
 </div>

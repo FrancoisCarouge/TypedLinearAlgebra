@@ -124,56 +124,58 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line">  <span class="keyword">using </span>au::symbols::m;</div>
+<div class="line">  <span class="keyword">using </span>au::symbols::s;</div>
+<div class="line"> </div>
 <div class="line">  <span class="keyword">using </span>position = au::QuantityD&lt;au::Meters&gt;;</div>
 <div class="line">  <span class="keyword">using </span>velocity = au::QuantityD&lt;au::UnitQuotientT&lt;au::Meters, au::Seconds&gt;&gt;;</div>
 <div class="line"> </div>
-<div class="line">  row_vector&lt;representation, position, velocity&gt; a{</div>
-<div class="line">      au::meters(1.), au::meters(2.) / au::seconds(1.)};</div>
-<div class="line">  <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">row_vector&lt;representation, position, velocity&gt;</a> b{</div>
-<div class="line">      au::meters(3.), au::meters(4.) / au::seconds(1.)};</div>
+<div class="line">  row_vector&lt;representation, position, velocity&gt; a{1. * m, 2. * m / s};</div>
+<div class="line">  <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">row_vector&lt;representation, position, velocity&gt;</a> b{3. * m, 4. * m / s};</div>
 <div class="line">  <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">row_vector&lt;representation, position, velocity&gt;</a> r{a + b};</div>
 <div class="line"> </div>
-<div class="line">  assert(au::meters(4.) == r.at&lt;0&gt;());</div>
-<div class="line">  assert(au::meters(4.) == r.at&lt;0_i&gt;());</div>
-<div class="line">  assert(au::meters(4.) == r[0_i]);</div>
-<div class="line">  assert(au::meters(4.) == r(0_i));</div>
+<div class="line">  assert(4. * m == r.at&lt;0&gt;());</div>
+<div class="line">  assert(4. * m == r.at&lt;0_i&gt;());</div>
+<div class="line">  assert(4. * m == r[0_i]);</div>
+<div class="line">  assert(4. * m == r(0_i));</div>
 <div class="line"> </div>
-<div class="line">  assert(au::meters(6.) / au::seconds(1.) == r.at&lt;1&gt;());</div>
-<div class="line">  assert(au::meters(6.) / au::seconds(1.) == r.at&lt;1_i&gt;());</div>
-<div class="line">  assert(au::meters(6.) / au::seconds(1.) == r[1_i]);</div>
-<div class="line">  assert(au::meters(6.) / au::seconds(1.) == r(1_i));</div>
+<div class="line">  assert(6. * m / s == r.at&lt;1&gt;());</div>
+<div class="line">  assert(6. * m / s == r.at&lt;1_i&gt;());</div>
+<div class="line">  assert(6. * m / s == r[1_i]);</div>
+<div class="line">  assert(6. * m / s == r(1_i));</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
 <div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a></div><div class="ttdoc">Strongly typed matrix.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__forward_8hpp_source.xhtml#l00043">typed_linear_algebra_forward.hpp:43</a></div></div>
 </div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000006">Test</a></b></dt><dd>Verifies the addition operator with non-trivial types. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000065">Test</a></b></dt><dd>Verifies the equal to algorithm for a row vector of heterogeneous, non-trivial types. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000087">Test</a></b></dt><dd>Verifies the magnitude, the Euclidean L2 norm, of a row vector of quantities. The result carries the same unit as the vector's uniform element type. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000168">Test</a></b></dt><dd>Verifies the substraction operator with non-trivial types. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000088">Test</a></b></dt><dd>Verifies the magnitude, the Euclidean L2 norm, of a row vector of quantities. The result carries the same unit as the vector's uniform element type. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000169">Test</a></b></dt><dd>Verifies the substraction operator with non-trivial types. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="addition_21x2__au__eigen_8cpp_source.xhtml#l00045">45</a> of file <a class="el" href="addition_21x2__au__eigen_8cpp_source.xhtml">1x2_au_eigen.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   45</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   46</span>  <span class="keyword">using </span>position = au::QuantityD&lt;au::Meters&gt;;</div>
-<div class="line"><span class="lineno">   47</span>  <span class="keyword">using </span>velocity = au::QuantityD&lt;au::UnitQuotientT&lt;au::Meters, au::Seconds&gt;&gt;;</div>
+<div class="line"><span class="lineno">   46</span>  <span class="keyword">using </span>au::symbols::m;</div>
+<div class="line"><span class="lineno">   47</span>  <span class="keyword">using </span>au::symbols::s;</div>
 <div class="line"><span class="lineno">   48</span> </div>
-<div class="line"><span class="lineno">   49</span>  <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">row_vector&lt;representation, position, velocity&gt;</a> a{</div>
-<div class="line"><span class="lineno">   50</span>      au::meters(1.), au::meters(2.) / au::seconds(1.)};</div>
-<div class="line"><span class="lineno">   51</span>  <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">row_vector&lt;representation, position, velocity&gt;</a> b{</div>
-<div class="line"><span class="lineno">   52</span>      au::meters(3.), au::meters(4.) / au::seconds(1.)};</div>
-<div class="line"><span class="lineno">   53</span>  <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">row_vector&lt;representation, position, velocity&gt;</a> r{a + b};</div>
-<div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>  assert(au::meters(4.) == r.at&lt;0&gt;());</div>
-<div class="line"><span class="lineno">   56</span>  assert(au::meters(4.) == r.at&lt;0_i&gt;());</div>
-<div class="line"><span class="lineno">   57</span>  assert(au::meters(4.) == r[0_i]);</div>
-<div class="line"><span class="lineno">   58</span>  assert(au::meters(4.) == r(0_i));</div>
-<div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>  assert(au::meters(6.) / au::seconds(1.) == r.at&lt;1&gt;());</div>
-<div class="line"><span class="lineno">   61</span>  assert(au::meters(6.) / au::seconds(1.) == r.at&lt;1_i&gt;());</div>
-<div class="line"><span class="lineno">   62</span>  assert(au::meters(6.) / au::seconds(1.) == r[1_i]);</div>
-<div class="line"><span class="lineno">   63</span>  assert(au::meters(6.) / au::seconds(1.) == r(1_i));</div>
-<div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   66</span>}()};</div>
+<div class="line"><span class="lineno">   49</span>  <span class="keyword">using </span>position = au::QuantityD&lt;au::Meters&gt;;</div>
+<div class="line"><span class="lineno">   50</span>  <span class="keyword">using </span>velocity = au::QuantityD&lt;au::UnitQuotientT&lt;au::Meters, au::Seconds&gt;&gt;;</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>  <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">row_vector&lt;representation, position, velocity&gt;</a> a{1. * m, 2. * m / s};</div>
+<div class="line"><span class="lineno">   53</span>  <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">row_vector&lt;representation, position, velocity&gt;</a> b{3. * m, 4. * m / s};</div>
+<div class="line"><span class="lineno">   54</span>  <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">row_vector&lt;representation, position, velocity&gt;</a> r{a + b};</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>  assert(4. * m == r.at&lt;0&gt;());</div>
+<div class="line"><span class="lineno">   57</span>  assert(4. * m == r.at&lt;0_i&gt;());</div>
+<div class="line"><span class="lineno">   58</span>  assert(4. * m == r[0_i]);</div>
+<div class="line"><span class="lineno">   59</span>  assert(4. * m == r(0_i));</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>  assert(6. * m / s == r.at&lt;1&gt;());</div>
+<div class="line"><span class="lineno">   62</span>  assert(6. * m / s == r.at&lt;1_i&gt;());</div>
+<div class="line"><span class="lineno">   63</span>  assert(6. * m / s == r[1_i]);</div>
+<div class="line"><span class="lineno">   64</span>  assert(6. * m / s == r(1_i));</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   67</span>}()};</div>
 </div><!-- fragment -->
 </div>
 </div>

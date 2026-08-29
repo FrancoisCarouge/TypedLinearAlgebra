@@ -148,30 +148,33 @@ $(function(){initNavTree('sxs__au__eigen_8cpp_source.xhtml',''); initResizable(t
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02sxs__au__eigen_8cpp_03.xhtml">   42</a></span><span class="keyword">namespace </span>{</div>
 <div class="foldopen" id="foldopen00044" data-start="{" data-end="};">
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02sxs__au__eigen_8cpp_03.xhtml#acb3b480113700403eed3c0ea9366bf71">   44</a></span>[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> test{[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="keyword">using </span>length = au::QuantityD&lt;au::Meters&gt;;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keyword">using </span>area = au::QuantityD&lt;au::UnitPowerT&lt;au::Meters, 2&gt;&gt;;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="keyword">using </span>indexes = std::tuple&lt;length, length&gt;;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keyword">using </span>result_indexes = std::tuple&lt;area, area&gt;;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="keyword">using </span>au::symbols::m;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> m2{au::squared(m)};</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> m4{pow&lt;4&gt;(m)};</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;representation, indexes, indexes&gt;</a> a{</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>      {au::squared(au::meters)(1.), au::squared(au::meters)(2.)},</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>      {au::squared(au::meters)(3.), au::squared(au::meters)(4.)}};</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;representation, indexes, indexes&gt;</a> b{</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>      {au::squared(au::meters)(5.), au::squared(au::meters)(6.)},</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>      {au::squared(au::meters)(7.), au::squared(au::meters)(8.)}};</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  <span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;representation, result_indexes, result_indexes&gt;</a> r{a * b};</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  assert((r.at&lt;0, 0&gt;() == au::pow&lt;4&gt;(au::meters)(19.)));</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  assert((r.at&lt;0, 1&gt;() == au::pow&lt;4&gt;(au::meters)(22.)));</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  assert((r.at&lt;1, 0&gt;() == au::pow&lt;4&gt;(au::meters)(43.)));</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  assert((r.at&lt;1, 1&gt;() == au::pow&lt;4&gt;(au::meters)(50.)));</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}()};</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="keyword">using </span>length = au::QuantityD&lt;au::Meters&gt;;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keyword">using </span>area = au::QuantityD&lt;au::UnitPowerT&lt;au::Meters, 2&gt;&gt;;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="keyword">using </span>indexes = std::tuple&lt;length, length&gt;;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <span class="keyword">using </span>result_indexes = std::tuple&lt;area, area&gt;;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;representation, indexes, indexes&gt;</a> a{{1. * m2, 2. * m2},</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                                                   {3. * m2, 4. * m2}};</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;representation, indexes, indexes&gt;</a> b{{5. * m2, 6. * m2},</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                                                   {7. * m2, 8. * m2}};</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;representation, result_indexes, result_indexes&gt;</a> r{a * b};</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  assert((r.at&lt;0, 0&gt;() == 19. * m4));</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  assert((r.at&lt;0, 1&gt;() == 22. * m4));</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  assert((r.at&lt;1, 0&gt;() == 43. * m4));</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  assert((r.at&lt;1, 1&gt;() == 50. * m4));</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}()};</div>
 </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>} <span class="comment">// namespace</span></div>
 </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>} <span class="comment">// namespace fcarouge::test</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>} <span class="comment">// namespace fcarouge::test</span></div>
 <div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a></div><div class="ttdoc">Strongly typed matrix.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__forward_8hpp_source.xhtml#l00043">typed_linear_algebra_forward.hpp:43</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03_xhtml_a5d4f41ca132d253835af80fe3e24fe87"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a5d4f41ca132d253835af80fe3e24fe87">fcarouge::sample::anonymous_namespace{au_eigen.cpp}::representation</a></div><div class="ttdeci">double representation</div><div class="ttdef"><b>Definition</b> <a href="au__eigen_8cpp_source.xhtml#l00055">au_eigen.cpp:55</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a></div><div class="ttdoc">Unit, integration, regression, and usage tests.</div></div>

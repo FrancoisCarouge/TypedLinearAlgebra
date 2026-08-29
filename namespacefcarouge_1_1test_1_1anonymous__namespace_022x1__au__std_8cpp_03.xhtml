@@ -124,21 +124,19 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line">  <span class="keyword">using </span>au::symbols::s;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">constexpr</span> <span class="keyword">auto</span> s2{au::squared(s)};</div>
+<div class="line"> </div>
 <div class="line">  <span class="keywordtype">double</span> storage_a[]{9., 10.};</div>
 <div class="line">  <span class="keywordtype">double</span> storage_b[]{9., 10.};</div>
 <div class="line">  <span class="keywordtype">double</span> storage_c[]{8., 10.};</div>
 <div class="line">  std::mdspan span_a{&amp;storage_a[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
 <div class="line">  std::mdspan span_b{&amp;storage_b[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
 <div class="line">  std::mdspan span_c{&amp;storage_c[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a0588d5a79337e8a6821a57445f044753">column_vector</a>&lt;double, <span class="keyword">decltype</span>(au::seconds(1.)),</div>
-<div class="line">                <span class="keyword">decltype</span>(au::squared(au::seconds)(1.))&gt;</div>
-<div class="line">      a{span_a};</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a0588d5a79337e8a6821a57445f044753">column_vector</a>&lt;double, <span class="keyword">decltype</span>(au::seconds(1.)),</div>
-<div class="line">                <span class="keyword">decltype</span>(au::squared(au::seconds)(1.))&gt;</div>
-<div class="line">      b{span_b};</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a0588d5a79337e8a6821a57445f044753">column_vector</a>&lt;double, <span class="keyword">decltype</span>(au::seconds(1.)),</div>
-<div class="line">                <span class="keyword">decltype</span>(au::squared(au::seconds)(1.))&gt;</div>
-<div class="line">      c{span_c};</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a0588d5a79337e8a6821a57445f044753">column_vector</a>&lt;double, <span class="keyword">decltype</span>(1. * s), <span class="keyword">decltype</span>(1. * s2)&gt; a{span_a};</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a0588d5a79337e8a6821a57445f044753">column_vector</a>&lt;double, <span class="keyword">decltype</span>(1. * s), <span class="keyword">decltype</span>(1. * s2)&gt; b{span_b};</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a0588d5a79337e8a6821a57445f044753">column_vector</a>&lt;double, <span class="keyword">decltype</span>(1. * s), <span class="keyword">decltype</span>(1. * s2)&gt; c{span_c};</div>
 <div class="line"> </div>
 <div class="line">  assert(a == b);</div>
 <div class="line">  assert(a != c);</div>
@@ -150,27 +148,25 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="2x1__au__std_8cpp_source.xhtml#l00044">44</a> of file <a class="el" href="2x1__au__std_8cpp_source.xhtml">2x1_au_std.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   44</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   45</span>  <span class="keywordtype">double</span> storage_a[]{9., 10.};</div>
-<div class="line"><span class="lineno">   46</span>  <span class="keywordtype">double</span> storage_b[]{9., 10.};</div>
-<div class="line"><span class="lineno">   47</span>  <span class="keywordtype">double</span> storage_c[]{8., 10.};</div>
-<div class="line"><span class="lineno">   48</span>  std::mdspan span_a{&amp;storage_a[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
-<div class="line"><span class="lineno">   49</span>  std::mdspan span_b{&amp;storage_b[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
-<div class="line"><span class="lineno">   50</span>  std::mdspan span_c{&amp;storage_c[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
-<div class="line"><span class="lineno">   51</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a0588d5a79337e8a6821a57445f044753">column_vector</a>&lt;double, <span class="keyword">decltype</span>(au::seconds(1.)),</div>
-<div class="line"><span class="lineno">   52</span>                <span class="keyword">decltype</span>(au::squared(au::seconds)(1.))&gt;</div>
-<div class="line"><span class="lineno">   53</span>      a{span_a};</div>
-<div class="line"><span class="lineno">   54</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a0588d5a79337e8a6821a57445f044753">column_vector</a>&lt;double, <span class="keyword">decltype</span>(au::seconds(1.)),</div>
-<div class="line"><span class="lineno">   55</span>                <span class="keyword">decltype</span>(au::squared(au::seconds)(1.))&gt;</div>
-<div class="line"><span class="lineno">   56</span>      b{span_b};</div>
-<div class="line"><span class="lineno">   57</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a0588d5a79337e8a6821a57445f044753">column_vector</a>&lt;double, <span class="keyword">decltype</span>(au::seconds(1.)),</div>
-<div class="line"><span class="lineno">   58</span>                <span class="keyword">decltype</span>(au::squared(au::seconds)(1.))&gt;</div>
-<div class="line"><span class="lineno">   59</span>      c{span_c};</div>
-<div class="line"><span class="lineno">   60</span> </div>
-<div class="line"><span class="lineno">   61</span>  assert(a == b);</div>
-<div class="line"><span class="lineno">   62</span>  assert(a != c);</div>
-<div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   65</span>}()};</div>
+<div class="line"><span class="lineno">   45</span>  <span class="keyword">using </span>au::symbols::s;</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> s2{au::squared(s)};</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>  <span class="keywordtype">double</span> storage_a[]{9., 10.};</div>
+<div class="line"><span class="lineno">   50</span>  <span class="keywordtype">double</span> storage_b[]{9., 10.};</div>
+<div class="line"><span class="lineno">   51</span>  <span class="keywordtype">double</span> storage_c[]{8., 10.};</div>
+<div class="line"><span class="lineno">   52</span>  std::mdspan span_a{&amp;storage_a[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
+<div class="line"><span class="lineno">   53</span>  std::mdspan span_b{&amp;storage_b[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
+<div class="line"><span class="lineno">   54</span>  std::mdspan span_c{&amp;storage_c[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
+<div class="line"><span class="lineno">   55</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a0588d5a79337e8a6821a57445f044753">column_vector</a>&lt;double, <span class="keyword">decltype</span>(1. * s), <span class="keyword">decltype</span>(1. * s2)&gt; a{span_a};</div>
+<div class="line"><span class="lineno">   56</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a0588d5a79337e8a6821a57445f044753">column_vector</a>&lt;double, <span class="keyword">decltype</span>(1. * s), <span class="keyword">decltype</span>(1. * s2)&gt; b{span_b};</div>
+<div class="line"><span class="lineno">   57</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a0588d5a79337e8a6821a57445f044753">column_vector</a>&lt;double, <span class="keyword">decltype</span>(1. * s), <span class="keyword">decltype</span>(1. * s2)&gt; c{span_c};</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>  assert(a == b);</div>
+<div class="line"><span class="lineno">   60</span>  assert(a != c);</div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   63</span>}()};</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -124,23 +124,26 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line">  <span class="keyword">using </span>au::symbols::m;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">constexpr</span> <span class="keyword">auto</span> m2{au::squared(m)};</div>
+<div class="line">  <span class="keyword">constexpr</span> <span class="keyword">auto</span> m4{pow&lt;4&gt;(m)};</div>
+<div class="line"> </div>
 <div class="line">  <span class="keyword">using </span>length = au::QuantityD&lt;au::Meters&gt;;</div>
 <div class="line">  <span class="keyword">using </span>area = au::QuantityD&lt;au::UnitPowerT&lt;au::Meters, 2&gt;&gt;;</div>
 <div class="line">  <span class="keyword">using </span>indexes = std::tuple&lt;length, length&gt;;</div>
 <div class="line">  <span class="keyword">using </span>result_indexes = std::tuple&lt;area, area&gt;;</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">const</span> matrix&lt;representation, indexes, indexes&gt; a{</div>
-<div class="line">      {au::squared(au::meters)(1.), au::squared(au::meters)(2.)},</div>
-<div class="line">      {au::squared(au::meters)(3.), au::squared(au::meters)(4.)}};</div>
-<div class="line">  <span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;representation, indexes, indexes&gt;</a> b{</div>
-<div class="line">      {au::squared(au::meters)(5.), au::squared(au::meters)(6.)},</div>
-<div class="line">      {au::squared(au::meters)(7.), au::squared(au::meters)(8.)}};</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;representation, indexes, indexes&gt;</a> a{{1. * m2, 2. * m2},</div>
+<div class="line">                                                   {3. * m2, 4. * m2}};</div>
+<div class="line">  <span class="keyword">const</span> matrix&lt;representation, indexes, indexes&gt; b{{5. * m2, 6. * m2},</div>
+<div class="line">                                                   {7. * m2, 8. * m2}};</div>
 <div class="line">  <span class="keyword">const</span> matrix&lt;representation, result_indexes, result_indexes&gt; r{a * b};</div>
 <div class="line"> </div>
-<div class="line">  assert((r.at&lt;0, 0&gt;() == au::pow&lt;4&gt;(au::meters)(19.)));</div>
-<div class="line">  assert((r.at&lt;0, 1&gt;() == au::pow&lt;4&gt;(au::meters)(22.)));</div>
-<div class="line">  assert((r.at&lt;1, 0&gt;() == au::pow&lt;4&gt;(au::meters)(43.)));</div>
-<div class="line">  assert((r.at&lt;1, 1&gt;() == au::pow&lt;4&gt;(au::meters)(50.)));</div>
+<div class="line">  assert((r.at&lt;0, 0&gt;() == 19. * m4));</div>
+<div class="line">  assert((r.at&lt;0, 1&gt;() == 22. * m4));</div>
+<div class="line">  assert((r.at&lt;1, 0&gt;() == 43. * m4));</div>
+<div class="line">  assert((r.at&lt;1, 1&gt;() == 50. * m4));</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
@@ -149,26 +152,29 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="sxs__au__eigen_8cpp_source.xhtml#l00044">44</a> of file <a class="el" href="sxs__au__eigen_8cpp_source.xhtml">sxs_au_eigen.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   44</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   45</span>  <span class="keyword">using </span>length = au::QuantityD&lt;au::Meters&gt;;</div>
-<div class="line"><span class="lineno">   46</span>  <span class="keyword">using </span>area = au::QuantityD&lt;au::UnitPowerT&lt;au::Meters, 2&gt;&gt;;</div>
-<div class="line"><span class="lineno">   47</span>  <span class="keyword">using </span>indexes = std::tuple&lt;length, length&gt;;</div>
-<div class="line"><span class="lineno">   48</span>  <span class="keyword">using </span>result_indexes = std::tuple&lt;area, area&gt;;</div>
+<div class="line"><span class="lineno">   45</span>  <span class="keyword">using </span>au::symbols::m;</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> m2{au::squared(m)};</div>
+<div class="line"><span class="lineno">   48</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> m4{pow&lt;4&gt;(m)};</div>
 <div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>  <span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;representation, indexes, indexes&gt;</a> a{</div>
-<div class="line"><span class="lineno">   51</span>      {au::squared(au::meters)(1.), au::squared(au::meters)(2.)},</div>
-<div class="line"><span class="lineno">   52</span>      {au::squared(au::meters)(3.), au::squared(au::meters)(4.)}};</div>
-<div class="line"><span class="lineno">   53</span>  <span class="keyword">const</span> matrix&lt;representation, indexes, indexes&gt; b{</div>
-<div class="line"><span class="lineno">   54</span>      {au::squared(au::meters)(5.), au::squared(au::meters)(6.)},</div>
-<div class="line"><span class="lineno">   55</span>      {au::squared(au::meters)(7.), au::squared(au::meters)(8.)}};</div>
-<div class="line"><span class="lineno">   56</span>  <span class="keyword">const</span> matrix&lt;representation, result_indexes, result_indexes&gt; r{a * b};</div>
-<div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>  assert((r.at&lt;0, 0&gt;() == au::pow&lt;4&gt;(au::meters)(19.)));</div>
-<div class="line"><span class="lineno">   59</span>  assert((r.at&lt;0, 1&gt;() == au::pow&lt;4&gt;(au::meters)(22.)));</div>
-<div class="line"><span class="lineno">   60</span>  assert((r.at&lt;1, 0&gt;() == au::pow&lt;4&gt;(au::meters)(43.)));</div>
-<div class="line"><span class="lineno">   61</span>  assert((r.at&lt;1, 1&gt;() == au::pow&lt;4&gt;(au::meters)(50.)));</div>
-<div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   64</span>}()};</div>
+<div class="line"><span class="lineno">   50</span>  <span class="keyword">using </span>length = au::QuantityD&lt;au::Meters&gt;;</div>
+<div class="line"><span class="lineno">   51</span>  <span class="keyword">using </span>area = au::QuantityD&lt;au::UnitPowerT&lt;au::Meters, 2&gt;&gt;;</div>
+<div class="line"><span class="lineno">   52</span>  <span class="keyword">using </span>indexes = std::tuple&lt;length, length&gt;;</div>
+<div class="line"><span class="lineno">   53</span>  <span class="keyword">using </span>result_indexes = std::tuple&lt;area, area&gt;;</div>
+<div class="line"><span class="lineno">   54</span> </div>
+<div class="line"><span class="lineno">   55</span>  <span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;representation, indexes, indexes&gt;</a> a{{1. * m2, 2. * m2},</div>
+<div class="line"><span class="lineno">   56</span>                                                   {3. * m2, 4. * m2}};</div>
+<div class="line"><span class="lineno">   57</span>  <span class="keyword">const</span> matrix&lt;representation, indexes, indexes&gt; b{{5. * m2, 6. * m2},</div>
+<div class="line"><span class="lineno">   58</span>                                                   {7. * m2, 8. * m2}};</div>
+<div class="line"><span class="lineno">   59</span>  <span class="keyword">const</span> matrix&lt;representation, result_indexes, result_indexes&gt; r{a * b};</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>  assert((r.at&lt;0, 0&gt;() == 19. * m4));</div>
+<div class="line"><span class="lineno">   62</span>  assert((r.at&lt;0, 1&gt;() == 22. * m4));</div>
+<div class="line"><span class="lineno">   63</span>  assert((r.at&lt;1, 0&gt;() == 43. * m4));</div>
+<div class="line"><span class="lineno">   64</span>  assert((r.at&lt;1, 1&gt;() == 50. * m4));</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   67</span>}()};</div>
 </div><!-- fragment -->
 </div>
 </div>

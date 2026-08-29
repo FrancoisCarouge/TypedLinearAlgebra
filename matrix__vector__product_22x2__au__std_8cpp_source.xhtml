@@ -148,38 +148,42 @@ $(function(){initNavTree('matrix__vector__product_22x2__au__std_8cpp_source.xhtm
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">namespace </span>{</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__au__eigen_8cpp_03.xhtml#a91252bbadc3f2bdea84bcba5ca7e8e5e">test</a>{[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keyword">using </span>length = au::QuantityD&lt;au::Meters&gt;;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="keyword">using </span>indexes = std::tuple&lt;length, length&gt;;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keywordtype">double</span> storage_a[4]{};</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="keywordtype">double</span> storage_x[2]{};</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <span class="keywordtype">double</span> storage_y[2]{};</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keyword">using </span>au::symbols::m;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> m2{au::squared(m)};</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="keyword">using </span>length = au::QuantityD&lt;au::Meters&gt;;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <span class="keyword">using </span>indexes = std::tuple&lt;length, length&gt;;</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  std::mdspan span_a{&amp;storage_a[0], std::extents&lt;std::size_t, 2, 2&gt;{}};</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  std::mdspan span_x{&amp;storage_x[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  std::mdspan span_y{&amp;storage_y[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <span class="keywordtype">double</span> storage_a[4]{};</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  <span class="keywordtype">double</span> storage_x[2]{};</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="keywordtype">double</span> storage_y[2]{};</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#ac63e538ff6202840b939330aabf1bc20">matrix&lt;representation, indexes, indexes&gt;</a> a{span_a};</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#ae3d4d8e5e4cbedae39d580bcd6b6bcb4">column_vector&lt;representation, length, length&gt;</a> x{span_x};</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#ae3d4d8e5e4cbedae39d580bcd6b6bcb4">column_vector&lt;representation, length, length&gt;</a> y{span_y};</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  std::mdspan span_a{&amp;storage_a[0], std::extents&lt;std::size_t, 2, 2&gt;{}};</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  std::mdspan span_x{&amp;storage_x[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  std::mdspan span_y{&amp;storage_y[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  a.at&lt;0, 0&gt;(au::squared(au::meters)(1.));</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  a.at&lt;0, 1&gt;(au::squared(au::meters)(2.));</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  a.at&lt;1, 0&gt;(au::squared(au::meters)(3.));</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  a.at&lt;1, 1&gt;(au::squared(au::meters)(4.));</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  x.at&lt;0&gt;(au::meters(5.));</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  x.at&lt;1&gt;(au::meters(6.));</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  matrix_vector_product(a, x, y);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  assert((y.at&lt;0&gt;() == au::meters(17.)));</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  assert((y.at&lt;1&gt;() == au::meters(39.)));</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>}()};</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>} <span class="comment">// namespace</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>} <span class="comment">// namespace fcarouge::test</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#ac63e538ff6202840b939330aabf1bc20">matrix&lt;representation, indexes, indexes&gt;</a> a{span_a};</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#ae3d4d8e5e4cbedae39d580bcd6b6bcb4">column_vector&lt;representation, length, length&gt;</a> x{span_x};</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#ae3d4d8e5e4cbedae39d580bcd6b6bcb4">column_vector&lt;representation, length, length&gt;</a> y{span_y};</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  a.at&lt;0, 0&gt;(1. * m2);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  a.at&lt;0, 1&gt;(2. * m2);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  a.at&lt;1, 0&gt;(3. * m2);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  a.at&lt;1, 1&gt;(4. * m2);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  x.at&lt;0&gt;(5. * m);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  x.at&lt;1&gt;(6. * m);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  matrix_vector_product(a, x, y);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  assert((y.at&lt;0&gt;() == 17. * m));</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  assert((y.at&lt;1&gt;() == 39. * m));</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>}()};</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>} <span class="comment">// namespace fcarouge::test</span></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03_xhtml_a5d4f41ca132d253835af80fe3e24fe87"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a5d4f41ca132d253835af80fe3e24fe87">fcarouge::sample::anonymous_namespace{au_eigen.cpp}::representation</a></div><div class="ttdeci">double representation</div><div class="ttdef"><b>Definition</b> <a href="au__eigen_8cpp_source.xhtml#l00055">au_eigen.cpp:55</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_021x1__au__eigen_8cpp_03_xhtml_a91252bbadc3f2bdea84bcba5ca7e8e5e"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__au__eigen_8cpp_03.xhtml#a91252bbadc3f2bdea84bcba5ca7e8e5e">fcarouge::test::anonymous_namespace{1x1_au_eigen.cpp}::test</a></div><div class="ttdeci">const auto test</div><div class="ttdef"><b>Definition</b> <a href="addition_21x1__au__eigen_8cpp_source.xhtml#l00044">1x1_au_eigen.cpp:44</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a></div><div class="ttdoc">Unit, integration, regression, and usage tests.</div></div>

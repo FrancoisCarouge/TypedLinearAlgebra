@@ -146,20 +146,24 @@ $(function(){initNavTree('equal__to_21x1__au__std_8cpp_source.xhtml',''); initRe
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a> {</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">namespace </span>{</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__au__eigen_8cpp_03.xhtml#a91252bbadc3f2bdea84bcba5ca7e8e5e">test</a>{[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keywordtype">double</span> storage{9.};</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  std::mdspan span{&amp;storage, std::extents&lt;std::size_t, 1, 1&gt;{}};</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#ac63e538ff6202840b939330aabf1bc20">matrix</a>&lt;double, std::tuple&lt;<span class="keyword">decltype</span>(au::seconds(1.))&gt;,</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>         std::tuple&lt;<span class="keyword">decltype</span>(au::squared(au::seconds)(1.))&gt;&gt;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>      n{span};</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  assert(n == au::cubed(au::seconds)(9.));</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  assert(au::cubed(au::seconds)(9.) == n);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  assert(n != au::cubed(au::seconds)(10.));</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keyword">using </span>au::symbols::s;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> s2{au::squared(s)};</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> s3{au::cubed(s)};</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keywordtype">double</span> storage{9.};</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  std::mdspan span{&amp;storage, std::extents&lt;std::size_t, 1, 1&gt;{}};</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#ac63e538ff6202840b939330aabf1bc20">matrix</a>&lt;double, std::tuple&lt;<span class="keyword">decltype</span>(1. * s)&gt;, std::tuple&lt;<span class="keyword">decltype</span>(1. * s2)&gt;&gt; n{</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>      span};</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>}()};</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>} <span class="comment">// namespace</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>} <span class="comment">// namespace fcarouge::test</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  assert(n == 9. * s3);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  assert(9. * s3 == n);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  assert(n != 10. * s3);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>}()};</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>} <span class="comment">// namespace fcarouge::test</span></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_021x1__au__eigen_8cpp_03_xhtml_a91252bbadc3f2bdea84bcba5ca7e8e5e"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__au__eigen_8cpp_03.xhtml#a91252bbadc3f2bdea84bcba5ca7e8e5e">fcarouge::test::anonymous_namespace{1x1_au_eigen.cpp}::test</a></div><div class="ttdeci">const auto test</div><div class="ttdef"><b>Definition</b> <a href="addition_21x1__au__eigen_8cpp_source.xhtml#l00044">1x1_au_eigen.cpp:44</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a></div><div class="ttdoc">Unit, integration, regression, and usage tests.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_ac63e538ff6202840b939330aabf1bc20"><div class="ttname"><a href="namespacefcarouge.xhtml#ac63e538ff6202840b939330aabf1bc20">fcarouge::matrix</a></div><div class="ttdeci">typed_matrix&lt; Eigen::Matrix&lt; Representation, std::tuple_size_v&lt; RowIndexes &gt;, std::tuple_size_v&lt; ColumnIndexes &gt; &gt;, RowIndexes, ColumnIndexes &gt; matrix</div><div class="ttdoc">Quantity matrix with Au and Eigen implementations.</div><div class="ttdef"><b>Definition</b> <a href="au__eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00049">linalg.hpp:49</a></div></div>
