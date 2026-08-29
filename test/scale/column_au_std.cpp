@@ -44,6 +44,10 @@ namespace {
 //! @test Verifies the scale algorithm for a column vector shape with
 //! non-trivial, heterogeneous types.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
+  constexpr auto m2{au::squared(m)};
+
   using length = au::QuantityD<au::Meters>;
   using area = au::QuantityD<au::UnitPowerT<au::Meters, 2>>;
 
@@ -53,13 +57,13 @@ namespace {
 
   column_vector<representation, length, area> x{span};
 
-  x.at<0>(au::meters(1.));
-  x.at<1>(au::squared(au::meters)(2.));
+  x.at<0>(1. * m);
+  x.at<1>(2. * m2);
 
   scale(3., x);
 
-  assert(au::meters(3.) == x.at<0>());
-  assert(au::squared(au::meters)(6.) == x.at<1>());
+  assert(3. * m == x.at<0>());
+  assert(6. * m2 == x.at<1>());
 
   return 0;
 }()};

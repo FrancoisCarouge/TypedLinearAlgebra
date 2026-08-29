@@ -43,34 +43,36 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the transposed algorithm.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::s;
+
+  constexpr auto s2{au::squared(s)};
+  constexpr auto s3{au::cubed(s)};
+
   double storage{9.};
   std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
-  matrix<double, std::tuple<decltype(au::seconds(1.))>,
-         std::tuple<decltype(au::squared(au::seconds)(1.))>>
-      n{span};
+  matrix<double, std::tuple<decltype(1. * s)>, std::tuple<decltype(1. * s2)>> n{
+      span};
 
-  assert(n == au::cubed(au::seconds)(9.));
-  static_assert(std::same_as<decltype(n)::row_indexes,
-                             std::tuple<decltype(au::seconds(1.))>>);
+  assert(n == 9. * s3);
   static_assert(
-      std::same_as<decltype(n)::column_indexes,
-                   std::tuple<decltype(au::squared(au::seconds)(1.))>>);
+      std::same_as<decltype(n)::row_indexes, std::tuple<decltype(1. * s)>>);
+  static_assert(
+      std::same_as<decltype(n)::column_indexes, std::tuple<decltype(1. * s2)>>);
 
-  n = au::cubed(au::seconds)(42.);
+  n = 42. * s3;
 
-  assert(n == au::cubed(au::seconds)(42.));
+  assert(n == 42. * s3);
 
   auto nᵀ{transposed(n)};
 
-  assert(nᵀ == au::cubed(au::seconds)(42.));
+  assert(nᵀ == 42. * s3);
   static_assert(
-      std::same_as<decltype(nᵀ)::row_indexes,
-                   std::tuple<decltype(au::squared(au::seconds)(1.))>>);
-  static_assert(std::same_as<decltype(nᵀ)::column_indexes,
-                             std::tuple<decltype(au::seconds(1.))>>);
+      std::same_as<decltype(nᵀ)::row_indexes, std::tuple<decltype(1. * s2)>>);
+  static_assert(
+      std::same_as<decltype(nᵀ)::column_indexes, std::tuple<decltype(1. * s)>>);
 
-  n = au::cubed(au::seconds)(24.);
-  assert(nᵀ == au::cubed(au::seconds)(24.));
+  n = 24. * s3;
+  assert(nᵀ == 24. * s3);
 
   return 0;
 }()};

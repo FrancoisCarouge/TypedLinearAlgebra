@@ -42,16 +42,20 @@ namespace {
 //! @test Verifies the singleton by singleton matrix equal to operator
 //! rejects incompatible element types.
 [[maybe_unused]] const auto test{[] {
+  using au::symbols::m;
+
+  constexpr auto m2{au::squared(m)};
+
   using length = au::QuantityD<au::Meters>;
 
   // Intended:
-  // const row_vector<representation, length> a{au::meters(3.)};
+  // const row_vector<representation, length> a{3. * m};
 
   using area = au::QuantityD<au::UnitPowerT<au::Meters, 2>>;
 
-  const row_vector<representation, area> a{au::squared(au::meters)(3.)};
+  const row_vector<representation, area> a{3. * m2};
 
-  const row_vector<representation, length> b{au::meters(2.)};
+  const row_vector<representation, length> b{2. * m};
 
   assert(a == b);
 

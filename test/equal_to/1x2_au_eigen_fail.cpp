@@ -47,13 +47,15 @@ namespace {
 //! silently ignoring that a length is not an area, and defeating the
 //! library's physical unit type safety.
 [[maybe_unused]] const auto test{[] {
+  using au::symbols::m;
+
+  constexpr auto m2{au::squared(m)};
+
   using length = au::QuantityD<au::Meters>;
   using area = au::QuantityD<au::UnitPowerT<au::Meters, 2>>;
 
-  const row_vector<representation, length, length> a{au::meters(1.),
-                                                     au::meters(2.)};
-  const row_vector<representation, area, area> b{au::squared(au::meters)(1.),
-                                                 au::squared(au::meters)(2.)};
+  const row_vector<representation, length, length> a{1. * m, 2. * m};
+  const row_vector<representation, area, area> b{1. * m2, 2. * m2};
 
   assert(a == b);
 

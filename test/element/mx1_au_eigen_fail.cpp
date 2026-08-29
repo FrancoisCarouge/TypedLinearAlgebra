@@ -41,10 +41,13 @@ namespace {
 //! @test Verifies a column vector, rank one, matrix element cannot be
 //! accessed with no index, as if it were a rank zero matrix.
 [[maybe_unused]] const auto test{[] {
-  using matrix = matrix<double,
-                        std::tuple<decltype(au::meters(1.)),
-                                   decltype(au::meters(1.) / au::seconds(1.))>,
-                        std::tuple<decltype(au::newtons(1.))>>;
+  using au::symbols::m;
+  using au::symbols::s;
+  using au::symbols::N;
+
+  using matrix =
+      matrix<double, std::tuple<decltype(1. * m), decltype(1. * m / s)>,
+             std::tuple<decltype(1. * N)>>;
 
   // Intended:
   // using quantity = matrix::element<0>;

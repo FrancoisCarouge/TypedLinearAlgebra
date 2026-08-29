@@ -46,6 +46,10 @@ namespace {
 //! one-by-n storage for the input and output vectors, not only the
 //! conventional n-by-one column orientation.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
+  constexpr auto m2{au::squared(m)};
+
   using length = au::QuantityD<au::Meters>;
   using indexes = std::tuple<length, length>;
 
@@ -61,18 +65,18 @@ namespace {
   row_vector<representation, length, length> x{span_x};
   row_vector<representation, length, length> y{span_y};
 
-  a.at<0, 0>(au::squared(au::meters)(1.));
-  a.at<0, 1>(au::squared(au::meters)(2.));
-  a.at<1, 0>(au::squared(au::meters)(3.));
-  a.at<1, 1>(au::squared(au::meters)(4.));
+  a.at<0, 0>(1. * m2);
+  a.at<0, 1>(2. * m2);
+  a.at<1, 0>(3. * m2);
+  a.at<1, 1>(4. * m2);
 
-  x.at<0>(au::meters(5.));
-  x.at<1>(au::meters(6.));
+  x.at<0>(5. * m);
+  x.at<1>(6. * m);
 
   matrix_vector_product(a, x, y);
 
-  assert((y.at<0>() == au::meters(17.)));
-  assert((y.at<1>() == au::meters(39.)));
+  assert((y.at<0>() == 17. * m));
+  assert((y.at<1>() == 39. * m));
 
   return 0;
 }()};

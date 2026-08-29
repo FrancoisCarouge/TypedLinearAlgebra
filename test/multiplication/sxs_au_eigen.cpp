@@ -42,23 +42,26 @@ using representation = double;
 namespace {
 //! @test Verifies the square by square matrix multiplication operator.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
+  constexpr auto m2{au::squared(m)};
+  constexpr auto m4{pow<4>(m)};
+
   using length = au::QuantityD<au::Meters>;
   using area = au::QuantityD<au::UnitPowerT<au::Meters, 2>>;
   using indexes = std::tuple<length, length>;
   using result_indexes = std::tuple<area, area>;
 
-  const matrix<representation, indexes, indexes> a{
-      {au::squared(au::meters)(1.), au::squared(au::meters)(2.)},
-      {au::squared(au::meters)(3.), au::squared(au::meters)(4.)}};
-  const matrix<representation, indexes, indexes> b{
-      {au::squared(au::meters)(5.), au::squared(au::meters)(6.)},
-      {au::squared(au::meters)(7.), au::squared(au::meters)(8.)}};
+  const matrix<representation, indexes, indexes> a{{1. * m2, 2. * m2},
+                                                   {3. * m2, 4. * m2}};
+  const matrix<representation, indexes, indexes> b{{5. * m2, 6. * m2},
+                                                   {7. * m2, 8. * m2}};
   const matrix<representation, result_indexes, result_indexes> r{a * b};
 
-  assert((r.at<0, 0>() == au::pow<4>(au::meters)(19.)));
-  assert((r.at<0, 1>() == au::pow<4>(au::meters)(22.)));
-  assert((r.at<1, 0>() == au::pow<4>(au::meters)(43.)));
-  assert((r.at<1, 1>() == au::pow<4>(au::meters)(50.)));
+  assert((r.at<0, 0>() == 19. * m4));
+  assert((r.at<0, 1>() == 22. * m4));
+  assert((r.at<1, 0>() == 43. * m4));
+  assert((r.at<1, 1>() == 50. * m4));
 
   return 0;
 }()};

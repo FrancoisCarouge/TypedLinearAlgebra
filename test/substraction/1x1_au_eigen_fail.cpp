@@ -41,21 +41,25 @@ using representation = double;
 namespace {
 //! @test Verifies the singleton by singleton matrix substraction operator.
 [[maybe_unused]] const auto test{[] {
+  using au::symbols::m;
+
+  constexpr auto m2{au::squared(m)};
+
   using length = au::QuantityD<au::Meters>;
   using area = au::QuantityD<au::UnitPowerT<au::Meters, 2>>;
 
   // Intended:
-  // const row_vector<representation, length> a{au::meters(3.)};
-  const row_vector<representation, area> a{au::squared(au::meters)(3.)};
+  // const row_vector<representation, length> a{3. * m};
+  const row_vector<representation, area> a{3. * m2};
 
-  const row_vector<representation, length> b{au::meters(2.)};
+  const row_vector<representation, length> b{2. * m};
 
   const row_vector<representation, length> r{a - b};
 
-  assert(au::meters(1.) == r.at());
-  assert(au::meters(1.) == r[]);
-  assert(au::meters(1.) == r());
-  assert(au::meters(1.) == r);
+  assert(1. * m == r.at());
+  assert(1. * m == r[]);
+  assert(1. * m == r());
+  assert(1. * m == r);
 
   return 0;
 }()};

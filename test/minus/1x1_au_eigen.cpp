@@ -41,18 +41,20 @@ using representation = double;
 namespace {
 //! @test Verifies the singleton matrix minus unary operator.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
   using length = au::QuantityD<au::Meters>;
 
-  const row_vector<representation, length> a{au::meters(3.)};
+  const row_vector<representation, length> a{3. * m};
   const row_vector<representation, length> r{-a};
 
-  assert(au::meters(-3.) == r.at());
-  assert(au::meters(-3.) == r[]);
-  assert(au::meters(-3.) == r());
-  assert(au::meters(-3.) == r);
+  assert(-3. * m == r.at());
+  assert(-3. * m == r[]);
+  assert(-3. * m == r());
+  assert(-3. * m == r);
 
   // The operand is not mutated.
-  assert(au::meters(3.) == a);
+  assert(3. * m == a);
 
   return 0;
 }()};

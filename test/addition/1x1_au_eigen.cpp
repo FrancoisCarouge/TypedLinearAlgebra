@@ -42,17 +42,19 @@ using representation = double;
 namespace {
 //! @test Verifies the singleton by singleton matrix addition operator.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
   using length = au::QuantityD<au::Meters>;
 
-  const row_vector<representation, length> a{au::meters(2.)};
-  const row_vector<representation, length> b{au::meters(3.)};
+  const row_vector<representation, length> a{2. * m};
+  const row_vector<representation, length> b{3. * m};
   const row_vector<representation, length> r{a + b};
 
-  assert(au::meters(5.) == r);
-  assert(au::meters(5.) == r());
-  assert(au::meters(5.) == r[]);
-  assert(au::meters(5.) == r.at());
-  assert(au::meters(5.) == r.at<>());
+  assert(5. * m == r);
+  assert(5. * m == r());
+  assert(5. * m == r[]);
+  assert(5. * m == r.at());
+  assert(5. * m == r.at<>());
 
   static_assert(not std::is_reference_v<decltype(r())>);
   static_assert(not std::is_reference_v<decltype(r[])>);

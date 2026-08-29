@@ -44,30 +44,34 @@ namespace {
 //! @test Verifies the transposed algorithm for a rectangular matrix shape
 //! with non-trivial types.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
+  constexpr auto m2{au::squared(m)};
+
   using length = au::QuantityD<au::Meters>;
   using row_indexes = std::tuple<length, length>;
   using column_indexes = std::tuple<length, length, length>;
 
   matrix<representation, row_indexes, column_indexes> a;
 
-  a.at<0, 0>(au::squared(au::meters)(1.));
-  a.at<0, 1>(au::squared(au::meters)(2.));
-  a.at<0, 2>(au::squared(au::meters)(3.));
-  a.at<1, 0>(au::squared(au::meters)(4.));
-  a.at<1, 1>(au::squared(au::meters)(5.));
-  a.at<1, 2>(au::squared(au::meters)(6.));
+  a.at<0, 0>(1. * m2);
+  a.at<0, 1>(2. * m2);
+  a.at<0, 2>(3. * m2);
+  a.at<1, 0>(4. * m2);
+  a.at<1, 1>(5. * m2);
+  a.at<1, 2>(6. * m2);
 
   matrix<representation, column_indexes, row_indexes> aᵀ{transposed(a)};
 
   static_assert(std::same_as<decltype(aᵀ)::row_indexes, column_indexes>);
   static_assert(std::same_as<decltype(aᵀ)::column_indexes, row_indexes>);
 
-  assert((aᵀ.at<0, 0>() == au::squared(au::meters)(1.)));
-  assert((aᵀ.at<1, 0>() == au::squared(au::meters)(2.)));
-  assert((aᵀ.at<2, 0>() == au::squared(au::meters)(3.)));
-  assert((aᵀ.at<0, 1>() == au::squared(au::meters)(4.)));
-  assert((aᵀ.at<1, 1>() == au::squared(au::meters)(5.)));
-  assert((aᵀ.at<2, 1>() == au::squared(au::meters)(6.)));
+  assert((aᵀ.at<0, 0>() == 1. * m2));
+  assert((aᵀ.at<1, 0>() == 2. * m2));
+  assert((aᵀ.at<2, 0>() == 3. * m2));
+  assert((aᵀ.at<0, 1>() == 4. * m2));
+  assert((aᵀ.at<1, 1>() == 5. * m2));
+  assert((aᵀ.at<2, 1>() == 6. * m2));
 
   return 0;
 }()};

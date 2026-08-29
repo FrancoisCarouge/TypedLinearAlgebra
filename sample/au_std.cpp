@@ -92,6 +92,11 @@ constexpr std::size_t extents_size{[] -> auto {
 //! @details A variety of activities of strongly typed linear algebra with
 //! std::mdspan, std::linalg, and Au.
 [[maybe_unused]] const auto sample{[] -> int {
+  using au::symbols::m;
+  using au::symbols::s;
+
+  constexpr auto s2{au::squared(s)};
+
   // Set up a heterogenous column vector type for the sample.
   using state = column_vector<position, velocity, acceleration>;
 
@@ -100,18 +105,18 @@ constexpr std::size_t extents_size{[] -> auto {
   state x0{s0};
 
   // Elements asignment.
-  x0.at<0>(au::meters(3.));
-  x0.at<1>(au::meters(2.) / au::seconds(1.));
-  x0.at<2>(au::meters(1.) / au::squared(au::seconds)(1.));
+  x0.at<0>(3. * m);
+  x0.at<1>(2. * m / s);
+  x0.at<2>(1. * m / s2);
 
   // Printable.
   std::println("x0 = {}", x0);
   assert(std::format("{}", x0) == "[[3 m], [2 m / s], [1 m / s^2]]");
 
   // Element assignment and access.
-  x0.at<1>(au::meters(2.5) / au::seconds(1.));
+  x0.at<1>(2.5 * m / s);
   auto x0_1{x0.at<1>()};
-  assert(x0_1 == au::meters(2.5) / au::seconds(1.));
+  assert(x0_1 == 2.5 * m / s);
   assert(std::format("{}", x0_1) == "2.5 m / s");
 
   // Multiplication with a scalar factor.
@@ -130,9 +135,9 @@ constexpr std::size_t extents_size{[] -> auto {
   std::vector v5(extents_size<row_extents<3>>, representation{});
   std::mdspan s5{v5.data(), row_extents<3>{}};
   state_transpose xt5{s5};
-  xt5.at<0>(au::meters(3.));
-  xt5.at<1>(au::meters(2.) / au::seconds(1.));
-  xt5.at<2>(au::meters(1.) / au::squared(au::seconds)(1.));
+  xt5.at<0>(3. * m);
+  xt5.at<1>(2. * m / s);
+  xt5.at<2>(1. * m / s2);
 
   using estimate_uncertainty =
       matrix<std::tuple<position, velocity, acceleration>,

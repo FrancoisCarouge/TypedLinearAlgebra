@@ -44,6 +44,10 @@ using representation = double;
 namespace {
 //! @test Verifies the scale algorithm for a two-by-two matrix shape.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
+  constexpr auto m2{au::squared(m)};
+
   using length = au::QuantityD<au::Meters>;
   using indexes = std::tuple<length, length>;
 
@@ -53,17 +57,17 @@ namespace {
 
   matrix<representation, indexes, indexes> x{span};
 
-  x.at<0, 0>(au::squared(au::meters)(1.));
-  x.at<0, 1>(au::squared(au::meters)(2.));
-  x.at<1, 0>(au::squared(au::meters)(3.));
-  x.at<1, 1>(au::squared(au::meters)(4.));
+  x.at<0, 0>(1. * m2);
+  x.at<0, 1>(2. * m2);
+  x.at<1, 0>(3. * m2);
+  x.at<1, 1>(4. * m2);
 
   scale(2., x);
 
-  assert((x.at<0, 0>() == au::squared(au::meters)(2.)));
-  assert((x.at<0, 1>() == au::squared(au::meters)(4.)));
-  assert((x.at<1, 0>() == au::squared(au::meters)(6.)));
-  assert((x.at<1, 1>() == au::squared(au::meters)(8.)));
+  assert((x.at<0, 0>() == 2. * m2));
+  assert((x.at<0, 1>() == 4. * m2));
+  assert((x.at<1, 0>() == 6. * m2));
+  assert((x.at<1, 1>() == 8. * m2));
 
   return 0;
 }()};

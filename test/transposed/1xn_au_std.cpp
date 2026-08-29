@@ -43,40 +43,38 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the transposed algorithm.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::s;
+
+  constexpr auto s2{au::squared(s)};
+
   double storage[]{9., 10.};
   std::mdspan span{&storage[0], std::extents<std::size_t, 2, 1>{}};
-  column_vector<double, decltype(au::seconds(1.)),
-                decltype(au::squared(au::seconds)(1.))>
-      n{span};
+  column_vector<double, decltype(1. * s), decltype(1. * s2)> n{span};
 
-  assert(n.at<0>() == au::seconds(9.));
-  assert(n.at<1>() == au::squared(au::seconds)(10.));
-  static_assert(
-      std::same_as<decltype(n)::row_indexes,
-                   std::tuple<decltype(au::seconds(1.)),
-                              decltype(au::squared(au::seconds)(1.))>>);
+  assert(n.at<0>() == 9. * s);
+  assert(n.at<1>() == 10. * s2);
+  static_assert(std::same_as<decltype(n)::row_indexes,
+                             std::tuple<decltype(1. * s), decltype(1. * s2)>>);
 
-  n.at<0>(au::seconds(42.));
-  n.at<1>(au::squared(au::seconds)(43.));
+  n.at<0>(42. * s);
+  n.at<1>(43. * s2);
 
-  assert(n.at<0>() == au::seconds(42.));
-  assert(n.at<1>() == au::squared(au::seconds)(43.));
+  assert(n.at<0>() == 42. * s);
+  assert(n.at<1>() == 43. * s2);
 
   auto nᵀ{transposed(n)};
 
-  assert(nᵀ.at<0>() == au::seconds(42.));
-  assert(nᵀ.at<1>() == au::squared(au::seconds)(43.));
+  assert(nᵀ.at<0>() == 42. * s);
+  assert(nᵀ.at<1>() == 43. * s2);
 
-  static_assert(
-      std::same_as<decltype(nᵀ)::column_indexes,
-                   std::tuple<decltype(au::seconds(1.)),
-                              decltype(au::squared(au::seconds)(1.))>>);
+  static_assert(std::same_as<decltype(nᵀ)::column_indexes,
+                             std::tuple<decltype(1. * s), decltype(1. * s2)>>);
 
-  n.at<0>(au::seconds(24.));
-  n.at<1>(au::squared(au::seconds)(25.));
+  n.at<0>(24. * s);
+  n.at<1>(25. * s2);
 
-  assert(nᵀ.at<0>() == au::seconds(24.));
-  assert(nᵀ.at<1>() == au::squared(au::seconds)(25.));
+  assert(nᵀ.at<0>() == 24. * s);
+  assert(nᵀ.at<1>() == 25. * s2);
 
   return 0;
 }()};

@@ -43,15 +43,19 @@ namespace {
 //! @test Verifies the equal to algorithm for a singleton matrix with the
 //! mdspan backend.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::s;
+
+  constexpr auto s2{au::squared(s)};
+  constexpr auto s3{au::cubed(s)};
+
   double storage{9.};
   std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
-  matrix<double, std::tuple<decltype(au::seconds(1.))>,
-         std::tuple<decltype(au::squared(au::seconds)(1.))>>
-      n{span};
+  matrix<double, std::tuple<decltype(1. * s)>, std::tuple<decltype(1. * s2)>> n{
+      span};
 
-  assert(n == au::cubed(au::seconds)(9.));
-  assert(au::cubed(au::seconds)(9.) == n);
-  assert(n != au::cubed(au::seconds)(10.));
+  assert(n == 9. * s3);
+  assert(9. * s3 == n);
+  assert(n != 10. * s3);
 
   return 0;
 }()};

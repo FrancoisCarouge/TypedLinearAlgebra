@@ -41,8 +41,10 @@ namespace {
 //! @test Verifies a singleton, rank zero, matrix element cannot be accessed
 //! with two indexes, as if it were a rank two matrix.
 [[maybe_unused]] const auto test{[] {
-  using matrix = matrix<double, std::tuple<decltype(au::meters(1.))>,
-                        std::tuple<decltype(au::meters(1.))>>;
+  using au::symbols::m;
+
+  using matrix = matrix<double, std::tuple<decltype(1. * m)>,
+                        std::tuple<decltype(1. * m)>>;
 
   // Intended:
   // using quantity = matrix::element<>;

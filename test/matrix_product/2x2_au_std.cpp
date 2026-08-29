@@ -45,6 +45,10 @@ namespace {
 //! @test Verifies the matrix product algorithm for a two-by-two matrix
 //! shape.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
+  constexpr auto m2{au::squared(m)};
+
   using length = au::QuantityD<au::Meters>;
   using indexes = std::tuple<length, length>;
 
@@ -60,22 +64,22 @@ namespace {
   matrix<representation, indexes, indexes> b{span_b};
   matrix<representation, indexes, indexes> r{span_r};
 
-  a.at<0, 0>(au::squared(au::meters)(1.));
-  a.at<0, 1>(au::squared(au::meters)(2.));
-  a.at<1, 0>(au::squared(au::meters)(3.));
-  a.at<1, 1>(au::squared(au::meters)(4.));
+  a.at<0, 0>(1. * m2);
+  a.at<0, 1>(2. * m2);
+  a.at<1, 0>(3. * m2);
+  a.at<1, 1>(4. * m2);
 
-  b.at<0, 0>(au::squared(au::meters)(5.));
-  b.at<0, 1>(au::squared(au::meters)(6.));
-  b.at<1, 0>(au::squared(au::meters)(7.));
-  b.at<1, 1>(au::squared(au::meters)(8.));
+  b.at<0, 0>(5. * m2);
+  b.at<0, 1>(6. * m2);
+  b.at<1, 0>(7. * m2);
+  b.at<1, 1>(8. * m2);
 
   matrix_product(a, b, r);
 
-  assert((r.at<0, 0>() == au::squared(au::meters)(19.)));
-  assert((r.at<0, 1>() == au::squared(au::meters)(22.)));
-  assert((r.at<1, 0>() == au::squared(au::meters)(43.)));
-  assert((r.at<1, 1>() == au::squared(au::meters)(50.)));
+  assert((r.at<0, 0>() == 19. * m2));
+  assert((r.at<0, 1>() == 22. * m2));
+  assert((r.at<1, 0>() == 43. * m2));
+  assert((r.at<1, 1>() == 50. * m2));
 
   return 0;
 }()};

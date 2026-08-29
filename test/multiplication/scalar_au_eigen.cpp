@@ -43,28 +43,32 @@ using representation = double;
 namespace {
 //! @test Verifies the scalar multiplication operator.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
+  constexpr auto m2{au::squared(m)};
+  constexpr auto m3{au::cubed(m)};
+
   using length = au::QuantityD<au::Meters>;
   using area = au::QuantityD<au::UnitPowerT<au::Meters, 2>>;
 
   const matrix<representation, std::tuple<length, length>,
                std::tuple<length, length>>
-      a{{au::squared(au::meters)(1.), au::squared(au::meters)(2.)},
-        {au::squared(au::meters)(3.), au::squared(au::meters)(4.)}};
-  // Explicitly qualified: unqualified `a * au::meters(2.)` argument-dependent
+      a{{1. * m2, 2. * m2}, {3. * m2, 4. * m2}};
+  // Explicitly qualified: unqualified `a * (2. * m)` argument-dependent
   // lookup also finds Au's own hidden friend `operator*(const Quantity &, T)`
-  // (associated with `au::meters(2.)`'s type), which is a better match than
+  // (associated with `2. * m`'s type), which is a better match than
   // `fcarouge::operator*(same_as_typed_matrix auto &, other auto &)` and
   // wrongly treats the whole matrix as the quantity's representation. The
   // qualified call sidesteps the lookup and resolves to the intended
   // operator.
   const matrix<representation, std::tuple<length, length>,
                std::tuple<area, area>>
-      r{fcarouge::operator*(a, au::meters(2.))};
+      r{fcarouge::operator*(a, 2. * m)};
 
-  assert(r(0_i, 0_i) == au::cubed(au::meters)(2.));
-  assert(r(0_i, 1_i) == au::cubed(au::meters)(4.));
-  assert(r(1_i, 0_i) == au::cubed(au::meters)(6.));
-  assert(r(1_i, 1_i) == au::cubed(au::meters)(8.));
+  assert(r(0_i, 0_i) == 2. * m3);
+  assert(r(0_i, 1_i) == 4. * m3);
+  assert(r(1_i, 0_i) == 6. * m3);
+  assert(r(1_i, 1_i) == 8. * m3);
 
   return 0;
 }()};

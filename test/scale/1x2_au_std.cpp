@@ -45,6 +45,9 @@ using representation = double;
 namespace {
 //! @test Verifies the scale algorithm with non-trivial types.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+  using au::symbols::s;
+
   using position = au::QuantityD<au::Meters>;
   using velocity = au::QuantityD<au::UnitQuotientT<au::Meters, au::Seconds>>;
 
@@ -54,20 +57,20 @@ namespace {
 
   row_vector<representation, position, velocity> x{span};
 
-  x.at<0_i>(au::meters(1.));
-  x.at<1_i>(au::meters(2.) / au::seconds(1.));
+  x.at<0_i>(1. * m);
+  x.at<1_i>(2. * m / s);
 
   scale(2., x);
 
-  assert(au::meters(2.) == x.at<0>());
-  assert(au::meters(2.) == x.at<0_i>());
-  assert(au::meters(2.) == x[0_i]);
-  assert(au::meters(2.) == x(0_i));
+  assert(2. * m == x.at<0>());
+  assert(2. * m == x.at<0_i>());
+  assert(2. * m == x[0_i]);
+  assert(2. * m == x(0_i));
 
-  assert(au::meters(4.) / au::seconds(1.) == x.at<1>());
-  assert(au::meters(4.) / au::seconds(1.) == x.at<1_i>());
-  assert(au::meters(4.) / au::seconds(1.) == x[1_i]);
-  assert(au::meters(4.) / au::seconds(1.) == x(1_i));
+  assert(4. * m / s == x.at<1>());
+  assert(4. * m / s == x.at<1_i>());
+  assert(4. * m / s == x[1_i]);
+  assert(4. * m / s == x(1_i));
 
   return 0;
 }()};
