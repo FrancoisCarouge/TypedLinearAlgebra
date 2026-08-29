@@ -114,6 +114,13 @@ struct divides<std::tuple<Types1...>, std::tuple<Types2...>> {
       -> std::tuple<quotient<Types1, Types2>...>;
 };
 
+// I used my own CPO for multiplies because I needed to specialize it for
+// `std::` types, e.g. `std::tuple`.
+// I think I could have used the `std::multiplies` <void> specialization,
+// if I don't let `std::` type-list through. 
+// I'd need to retype the type list. 
+// Retyping would also permit to workaround the compile-time performance issues
+// of `std::tuple`. This seems promising. To be evaluateed...
 template <typename Lhs, typename Rhs> struct multiplies {
   [[nodiscard]] static constexpr auto operator()(const Lhs &lhs, const Rhs &rhs)
       -> decltype(lhs * rhs);
