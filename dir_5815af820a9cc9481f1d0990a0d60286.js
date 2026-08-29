@@ -10,5 +10,8 @@ var dir_5815af820a9cc9481f1d0990a0d60286 =
     [ "mp_units", "dir_ad3aec80637e09f6ac03fe9cf2951131.xhtml", "dir_ad3aec80637e09f6ac03fe9cf2951131" ],
     [ "mp_units_eigen", "dir_5f427bd58bacc1e4a56a3bb4f240e125.xhtml", "dir_5f427bd58bacc1e4a56a3bb4f240e125" ],
     [ "mp_units_std", "dir_6ed777c81f3d0aa89b0976efa369f5de.xhtml", "dir_6ed777c81f3d0aa89b0976efa369f5de" ],
-    [ "nested_typed_eigen", "dir_ebfce32cc1e861c03f168700fe78b91e.xhtml", "dir_ebfce32cc1e861c03f168700fe78b91e" ]
+    [ "nested_typed_eigen", "dir_ebfce32cc1e861c03f168700fe78b91e.xhtml", "dir_ebfce32cc1e861c03f168700fe78b91e" ],
+    [ "nholthaus", "dir_d2017f4c2d5b29ef83553a7ee570100e.xhtml", "dir_d2017f4c2d5b29ef83553a7ee570100e" ],
+    [ "nholthaus_eigen", "dir_66329a18dda0dd70995697000dbdddee.xhtml", "dir_66329a18dda0dd70995697000dbdddee" ],
+    [ "nholthaus_std", "dir_444d9ec7fae1a260ad493685045e2e8a.xhtml", "dir_444d9ec7fae1a260ad493685045e2e8a" ]
 ];

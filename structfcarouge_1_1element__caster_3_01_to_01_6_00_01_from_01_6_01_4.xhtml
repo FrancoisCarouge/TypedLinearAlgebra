@@ -113,7 +113,7 @@ $(function(){initNavTree('structfcarouge_1_1element__caster_3_01_to_01_6_00_01_f
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4__coll__graph.svg" width="167" height="134"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4__coll__graph.svg" width="167" height="154"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
@@ -124,19 +124,21 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:ae396becfe457af8289d5ec8ec6c39885"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae396becfe457af8289d5ec8ec6c39885" id="r_ae396becfe457af8289d5ec8ec6c39885"><td class="memItemLeft" align="right" valign="top">static constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae396becfe457af8289d5ec8ec6c39885">operator()</a> (From value) -&gt; const To</td></tr>
 <tr class="separator:ae396becfe457af8289d5ec8ec6c39885"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae396becfe457af8289d5ec8ec6c39885" id="r_ae396becfe457af8289d5ec8ec6c39885"><td class="memItemLeft" align="right" valign="top">static constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae396becfe457af8289d5ec8ec6c39885">operator()</a> (From value) -&gt; const To</td></tr>
+<tr class="separator:ae396becfe457af8289d5ec8ec6c39885"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;mp_units::QuantityPoint To, typename From&gt;<br />
+<div class="textblock"><div class="compoundTemplParams">template&lt;nholthaus_quantity To, typename From&gt;<br />
 struct fcarouge::element_caster&lt; To &amp;, From &amp; &gt;</div>
-<p class="definition">Definition at line <a class="el" href="mp__units_8hpp_source.xhtml#l00198">198</a> of file <a class="el" href="mp__units_8hpp_source.xhtml">mp_units.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nholthaus_8hpp_source.xhtml#l00090">90</a> of file <a class="el" href="nholthaus_8hpp_source.xhtml">nholthaus.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ae396becfe457af8289d5ec8ec6c39885" name="ae396becfe457af8289d5ec8ec6c39885"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae396becfe457af8289d5ec8ec6c39885">&#9670;&#160;</a></span>operator()() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae396becfe457af8289d5ec8ec6c39885">&#9670;&#160;</a></span>operator()() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;mp_units::QuantityPoint To, typename From &gt; </div>
+template&lt;nholthaus_quantity To, typename From &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -160,7 +162,7 @@ template&lt;mp_units::QuantityPoint To, typename From &gt; </div>
 <div class="line"><span class="lineno">   88</span>    <span class="keyword">static_assert</span>(std::same_as&lt;typename To::Rep, std::remove_cvref_t&lt;From&gt;&gt;,</div>
 <div class="line"><span class="lineno">   89</span>                  <span class="stringliteral">&quot;The underlying storage type must be identical to the &quot;</span></div>
 <div class="line"><span class="lineno">   90</span>                  <span class="stringliteral">&quot;quantity representation type to guarantee the conversion &quot;</span></div>
-<div class="line"><span class="lineno">   91</span>                  <span class="stringliteral">&quot;is explicitely decided by the end-user.&quot;</span>);</div>
+<div class="line"><span class="lineno">   91</span>                  <span class="stringliteral">&quot;is explicitly decided by the end-user.&quot;</span>);</div>
 <div class="line"><span class="lineno">   92</span> </div>
 <div class="line"><span class="lineno">   93</span>    <span class="keywordflow">return</span> au::make_quantity&lt;typename To::Unit&gt;(value);</div>
 <div class="line"><span class="lineno">   94</span>  }</div>
@@ -168,12 +170,12 @@ template&lt;mp_units::QuantityPoint To, typename From &gt; </div>
 </div>
 </div>
 <a id="ae396becfe457af8289d5ec8ec6c39885" name="ae396becfe457af8289d5ec8ec6c39885"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae396becfe457af8289d5ec8ec6c39885">&#9670;&#160;</a></span>operator()() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae396becfe457af8289d5ec8ec6c39885">&#9670;&#160;</a></span>operator()() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;mp_units::QuantityPoint To, typename From &gt; </div>
+template&lt;nholthaus_quantity To, typename From &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -199,7 +201,7 @@ template&lt;mp_units::QuantityPoint To, typename From &gt; </div>
 <div class="line"><span class="lineno">  160</span>    <span class="keyword">static_assert</span>(std::same_as&lt;representation, std::remove_cvref_t&lt;From&gt;&gt;,</div>
 <div class="line"><span class="lineno">  161</span>                  <span class="stringliteral">&quot;The underlying storage type must be identical to the &quot;</span></div>
 <div class="line"><span class="lineno">  162</span>                  <span class="stringliteral">&quot;quantity representation type to guarantee the conversion is &quot;</span></div>
-<div class="line"><span class="lineno">  163</span>                  <span class="stringliteral">&quot;explicitely decided by the end-user.&quot;</span>);</div>
+<div class="line"><span class="lineno">  163</span>                  <span class="stringliteral">&quot;explicitly decided by the end-user.&quot;</span>);</div>
 <div class="line"><span class="lineno">  164</span> </div>
 <div class="line"><span class="lineno">  165</span>    <span class="keywordflow">return</span> value * To::reference;</div>
 <div class="line"><span class="lineno">  166</span>  }</div>
@@ -208,12 +210,12 @@ template&lt;mp_units::QuantityPoint To, typename From &gt; </div>
 </div>
 </div>
 <a id="ae396becfe457af8289d5ec8ec6c39885" name="ae396becfe457af8289d5ec8ec6c39885"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae396becfe457af8289d5ec8ec6c39885">&#9670;&#160;</a></span>operator()() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae396becfe457af8289d5ec8ec6c39885">&#9670;&#160;</a></span>operator()() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;mp_units::QuantityPoint To, typename From &gt; </div>
+template&lt;nholthaus_quantity To, typename From &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -239,16 +241,55 @@ template&lt;mp_units::QuantityPoint To, typename From &gt; </div>
 <div class="line"><span class="lineno">  207</span>    <span class="keyword">static_assert</span>(std::same_as&lt;representation, std::remove_cvref_t&lt;From&gt;&gt;,</div>
 <div class="line"><span class="lineno">  208</span>                  <span class="stringliteral">&quot;The underlying storage type must be identical to the &quot;</span></div>
 <div class="line"><span class="lineno">  209</span>                  <span class="stringliteral">&quot;quantity representation type to guarantee the conversion is &quot;</span></div>
-<div class="line"><span class="lineno">  210</span>                  <span class="stringliteral">&quot;explicitely decided by the end-user.&quot;</span>);</div>
+<div class="line"><span class="lineno">  210</span>                  <span class="stringliteral">&quot;explicitly decided by the end-user.&quot;</span>);</div>
 <div class="line"><span class="lineno">  211</span> </div>
 <div class="line"><span class="lineno">  212</span>    <span class="keywordflow">return</span> {value * To::unit, mp_units::default_point_origin(To::unit)};</div>
 <div class="line"><span class="lineno">  213</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="ae396becfe457af8289d5ec8ec6c39885" name="ae396becfe457af8289d5ec8ec6c39885"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae396becfe457af8289d5ec8ec6c39885">&#9670;&#160;</a></span>operator()() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;nholthaus_quantity To, typename From &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static constexpr auto <a class="el" href="structfcarouge_1_1element__caster.xhtml">fcarouge::element_caster</a>&lt; To &amp;, From &amp; &gt;::operator() </td>
+          <td>(</td>
+          <td class="paramtype">From</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td> -&gt; const To </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="nholthaus_8hpp_source.xhtml#l00096">96</a> of file <a class="el" href="nholthaus_8hpp_source.xhtml">nholthaus.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   96</span>                                                                         {</div>
+<div class="line"><span class="lineno">   97</span>    <span class="keyword">static_assert</span>(</div>
+<div class="line"><span class="lineno">   98</span>        std::same_as&lt;nholthaus_representation&lt;To&gt;, std::remove_cvref_t&lt;From&gt;&gt;,</div>
+<div class="line"><span class="lineno">   99</span>        <span class="stringliteral">&quot;The underlying storage type must be identical to the &quot;</span></div>
+<div class="line"><span class="lineno">  100</span>        <span class="stringliteral">&quot;quantity representation type to guarantee the conversion &quot;</span></div>
+<div class="line"><span class="lineno">  101</span>        <span class="stringliteral">&quot;is explicitly decided by the end-user.&quot;</span>);</div>
+<div class="line"><span class="lineno">  102</span> </div>
+<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">return</span> To(value);</div>
+<div class="line"><span class="lineno">  104</span>  }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
 <li>/github/workspace/support/au/fcarouge/<a class="el" href="au_8hpp_source.xhtml">au.hpp</a></li>
 <li>/github/workspace/support/mp_units/fcarouge/<a class="el" href="mp__units_8hpp_source.xhtml">mp_units.hpp</a></li>
+<li>/github/workspace/support/nholthaus/fcarouge/<a class="el" href="nholthaus_8hpp_source.xhtml">nholthaus.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

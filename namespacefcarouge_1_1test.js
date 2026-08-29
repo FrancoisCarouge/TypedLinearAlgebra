@@ -30,6 +30,15 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{1x1_mp_units_std.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__mp__units__std_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__mp__units__std_8cpp_03.xhtml#a811f7c8c65ab20b36a5c2735829e243f", null ]
     ] ],
+    [ "anonymous_namespace{1x1_nholthaus_eigen.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__nholthaus__eigen_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__nholthaus__eigen_8cpp_03.xhtml#a047b763a67023be56923bb8479aad537", null ]
+    ] ],
+    [ "anonymous_namespace{1x1_nholthaus_eigen_fail.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__nholthaus__eigen__fail_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__nholthaus__eigen__fail_8cpp_03.xhtml#a0766f9192c0119c92f91a0fb18dedfdd", null ]
+    ] ],
+    [ "anonymous_namespace{1x1_nholthaus_std.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__nholthaus__std_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__nholthaus__std_8cpp_03.xhtml#a731f4b20cad8620716a6aa2fde60882a", null ]
+    ] ],
     [ "anonymous_namespace{1x2_2x1_eigexed_fail.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__2x1__eigexed__fail_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__2x1__eigexed__fail_8cpp_03.xhtml#a15dea39fda90c60767b7f29fa6f9fa03", null ]
     ] ],
@@ -53,6 +62,12 @@ var namespacefcarouge_1_1test =
     ] ],
     [ "anonymous_namespace{1x2_mp_units_std.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__mp__units__std_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__mp__units__std_8cpp_03.xhtml#ab7426fdcaee324894413dea90c8556d7", null ]
+    ] ],
+    [ "anonymous_namespace{1x2_nholthaus_eigen.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__nholthaus__eigen_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__nholthaus__eigen_8cpp_03.xhtml#afb1eaa9ccdc7b6b877b055eef0bed9dd", null ]
+    ] ],
+    [ "anonymous_namespace{1x2_nholthaus_std.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__nholthaus__std_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__nholthaus__std_8cpp_03.xhtml#a57de9d8ab8abed39fb81fdd7b6d70f25", null ]
     ] ],
     [ "anonymous_namespace{1xn.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021xn_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021xn_8cpp_03.xhtml#a66cfe170a2c4e7483e9e56451de7af25", null ]
