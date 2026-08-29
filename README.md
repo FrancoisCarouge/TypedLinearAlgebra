@@ -142,6 +142,35 @@ The following useful operations are supported. This library attempts to align it
 | `scale` | Multiply matrix elements by a scalar. |
 | `transposed` | Transpose the input matrix. |
 
+### Upcoming Operations
+
+The following operations are to be implemented.
+
+| Usage Rank | Operation | Eigen | std::linalg |
+| --- | --- | --- | --- |
+| 1 | Matrix–matrix product (GEMM) | ✅ operator*, .lazyProduct() | ✅ matrix_product |
+| 2 | Matrix–vector product (GEMV) | ✅ operator* | ✅ matrix_vector_product |
+| 3 | Elementwise add/subtract | ✅ operator+/- | ✅ add |
+| 4 | Scalar multiply / scale | ✅ operator* | ✅ scale |
+| 5 | Dot / inner product | ✅ .dot() | ✅ dot, vector_sum_of_squares |
+| 6 | Transpose | ✅ .transpose() | ✅ transposed (view, no-op) |
+| 7 | Norm (L2/Frobenius, L1, L∞) | ✅ .norm(), .lpNorm<p>() | ✅ vector_norm2, vector_norm1, vector_norm_inf, matrix_frob_norm |
+| 8 | Solve linear system (Ax=b) | ✅ .solve() via decompositions | ❌ (only via triangular_solve on already-factored forms) |
+| 9 | LU decomposition | ✅ PartialPivLU, FullPivLU | ❌ |
+| 10 | Triangular solve | ✅ .triangularView().solve() | ✅ triangular_matrix_matrix_solve |
+| 11 | Determinant | ✅ .determinant() | ❌ |
+| 12 | Matrix inverse | ✅ .inverse() | ❌ |
+| 13 | Eigenvalues / eigenvectors | ✅ EigenSolver, SelfAdjointEigenSolver | ❌ |
+| 14 | QR decomposition | ✅ HouseholderQR, ColPivHouseholderQR | ❌ |
+| 15 | Cholesky decomposition | ✅ LLT, LDLT | ❌ |
+| 16 | Rank-1 / rank-2 update (GER/SYR) | ✅ via expression templates | ✅ matrix_rank_1_update, matrix_rank_2_update |
+| 17 | SVD | ✅ JacobiSVD, BDCSVD | ❌ |
+| 18 | Trace | ✅ .trace() | ❌ |
+| 19 | Symmetric/Hermitian matrix-vector or matrix-matrix product (SYMV/SYMM) | ✅ .selfadjointView() | ✅ symmetric_matrix_vector_product, etc. |
+| 20 | Rank / condition number | ✅ via decompositions (.rank()) | ❌ |
+| 21 | Cross product (3-vectors) | ✅ .cross() | ❌ |
+| 22 | Least-squares solve | ✅ .bdcSvd().solve(), .colPivHouseholderQr().solve() | ❌ |
+
 ## Aliases
 
 ```cpp
