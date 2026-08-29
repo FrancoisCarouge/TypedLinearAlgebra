@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,14 +27,51 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("1x1_au_std" BACKENDS "au_std")
-pass("1x1_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_au_std" BACKENDS "au_std")
-pass("1x2_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_nholthaus_std" BACKENDS "nholthaus_std")
-pass("2x2_au_std" BACKENDS "au_std")
-pass("2x2_mp_units_std" BACKENDS "mp_units_std")
-pass("column_au_std" BACKENDS "au_std")
-pass("column_mp_units_std" BACKENDS "mp_units_std")
+#include "fcarouge/linalg.hpp"
+
+#include <units/length.h>
+#include <units/velocity.h>
+
+#include <cassert>
+#include <cstddef>
+#include <mdspan>
+
+namespace fcarouge::test {
+using literals::operator""_i;
+using units::m;
+using units::mps;
+using representation = double;
+
+namespace {
+//! @test Verifies the scale algorithm with nholthaus/units element types.
+[[maybe_unused]] const auto test{[] -> int {
+  using position = units::length::meters<representation>;
+  using velocity = units::velocity::meters_per_second<representation>;
+
+  representation storage[]{0., 0.};
+
+  std::mdspan span{&storage[0], std::extents<std::size_t, 1, 2>{}};
+
+  row_vector<representation, position, velocity> x{span};
+
+  x.at<0_i>(1. * m);
+  x.at<1_i>(2. * mps);
+
+  scale(2., x);
+
+  assert(2. * m == x.at<0>());
+  assert(2. * m == x.at<0_i>());
+  assert(2. * m == x[0_i]);
+  assert(2. * m == x(0_i));
+
+  assert(4. * mps == x.at<1>());
+  assert(4. * mps == x.at<1_i>());
+  assert(4. * mps == x[1_i]);
+  assert(4. * mps == x(1_i));
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

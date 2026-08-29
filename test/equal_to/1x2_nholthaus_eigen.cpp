@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,14 +27,37 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("1x1_au_std" BACKENDS "au_std")
-pass("1x1_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_au_std" BACKENDS "au_std")
-pass("1x2_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_nholthaus_std" BACKENDS "nholthaus_std")
-pass("2x2_au_std" BACKENDS "au_std")
-pass("2x2_mp_units_std" BACKENDS "mp_units_std")
-pass("column_au_std" BACKENDS "au_std")
-pass("column_mp_units_std" BACKENDS "mp_units_std")
+#include "fcarouge/linalg.hpp"
+
+#include <units/length.h>
+#include <units/velocity.h>
+
+#include <cassert>
+
+namespace fcarouge::test {
+using units::m;
+using units::mps;
+using representation = double;
+
+namespace {
+//! @test Verifies the equal to algorithm for a row vector of heterogeneous,
+//! non-trivial types.
+[[maybe_unused]] const auto test{[] -> int {
+  using position = units::length::meters<representation>;
+  using velocity = units::velocity::meters_per_second<representation>;
+
+  const row_vector<representation, position, velocity> a{1. * m, 2. * mps};
+  const row_vector<representation, position, velocity> b{1. * m, 2. * mps};
+  const row_vector<representation, position, velocity> c{1. * m, 3. * mps};
+  const row_vector<representation, position, velocity> d{9. * m, 2. * mps};
+
+  assert(a == b);
+  assert(a != c);
+  assert(a != d);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

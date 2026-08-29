@@ -44,6 +44,9 @@ add_subdirectory("mp_units")
 add_subdirectory("mp_units_eigen")
 add_subdirectory("mp_units_std")
 add_subdirectory("nested_typed_eigen")
+add_subdirectory("nholthaus")
+add_subdirectory("nholthaus_eigen")
+add_subdirectory("nholthaus_std")
 
 add_library(typed_linear_algebra_options INTERFACE)
 

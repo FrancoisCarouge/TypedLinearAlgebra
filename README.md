@@ -58,6 +58,7 @@ For each strong type, or linear algebra backends, add a plug-in in your sources.
 | Eigen | [See example plug-in at `support/eigen`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | Kokkos | [See example plug-in at `support/kokkos`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | mp-units | [See example plug-in at `support/mp_units/fcarouge/mp_units.hpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
+| nholthaus/units | [See example plug-in at `support/nholthaus/fcarouge/nholthaus.hpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | std::linalg | No plug-in needed. |
 
 # Reference
@@ -283,6 +284,7 @@ The library is designed, developed, and tested with the help of third-party tool
 - [mdspan](https://github.com/kokkos/mdspan) for multidimensional array views.
 - [mp-units](https://github.com/mpusz/mp-units) the quantities and units library for C++.
 - [MSVC](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist) for compilation and code sanitizers.
+- [nholthaus/units](https://github.com/nholthaus/units) the compile-time dimensional analysis and unit conversion library for C++.
 - [stdBLAS](https://github.com/kokkos/stdBLAS) for standard BLAS interface.
 - [Valgrind](https://valgrind.org) to check for correct memory management.
 

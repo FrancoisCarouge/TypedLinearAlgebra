@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,14 +27,36 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("1x1_au_std" BACKENDS "au_std")
-pass("1x1_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_au_std" BACKENDS "au_std")
-pass("1x2_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_nholthaus_std" BACKENDS "nholthaus_std")
-pass("2x2_au_std" BACKENDS "au_std")
-pass("2x2_mp_units_std" BACKENDS "mp_units_std")
-pass("column_au_std" BACKENDS "au_std")
-pass("column_mp_units_std" BACKENDS "mp_units_std")
+#include "fcarouge/linalg.hpp"
+
+#include <units/length.h>
+
+#include <cassert>
+
+namespace fcarouge::test {
+using units::m;
+using representation = double;
+
+namespace {
+//! @test Verifies the equal to algorithm for a singleton matrix of
+//! non-trivial types.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = units::length::meters<representation>;
+
+  const row_vector<representation, length> a{2. * m};
+  const row_vector<representation, length> b{2. * m};
+  const row_vector<representation, length> c{3. * m};
+
+  assert(a == b);
+  assert(a != c);
+  assert(2. * m == a);
+  assert(a == 2. * m);
+  assert(3. * m != a);
+  assert(a != 3. * m);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

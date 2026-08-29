@@ -29,12 +29,24 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-pass("1x1_au_std" BACKENDS "au_std")
-pass("1x1_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_au_std" BACKENDS "au_std")
-pass("1x2_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_nholthaus_std" BACKENDS "nholthaus_std")
-pass("2x2_au_std" BACKENDS "au_std")
-pass("2x2_mp_units_std" BACKENDS "mp_units_std")
-pass("column_au_std" BACKENDS "au_std")
-pass("column_mp_units_std" BACKENDS "mp_units_std")
+set(UNITS_BUILD_TESTS OFF)
+set(UNITS_BUILD_DOCS OFF)
+set(UNITS_BUILD_EXAMPLES OFF)
+set(UNITS_INSTALL OFF)
+
+FetchContent_Declare(
+  units
+  GIT_REPOSITORY "https://github.com/nholthaus/units"
+  GIT_TAG "main"
+  GIT_SHALLOW TRUE
+  SYSTEM FIND_PACKAGE_ARGS NAMES units)
+FetchContent_MakeAvailable(units)
+
+add_library(typed_linear_algebra_nholthaus INTERFACE)
+target_sources(
+  typed_linear_algebra_nholthaus
+  INTERFACE FILE_SET "nholthaus_headers" TYPE "HEADERS" FILES
+            "fcarouge/nholthaus.hpp")
+target_link_libraries(
+  typed_linear_algebra_nholthaus INTERFACE typed_linear_algebra_options
+                                           units::units tlinalg)

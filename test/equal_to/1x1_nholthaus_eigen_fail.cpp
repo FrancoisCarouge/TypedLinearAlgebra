@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,14 +27,38 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("1x1_au_std" BACKENDS "au_std")
-pass("1x1_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_au_std" BACKENDS "au_std")
-pass("1x2_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_nholthaus_std" BACKENDS "nholthaus_std")
-pass("2x2_au_std" BACKENDS "au_std")
-pass("2x2_mp_units_std" BACKENDS "mp_units_std")
-pass("column_au_std" BACKENDS "au_std")
-pass("column_mp_units_std" BACKENDS "mp_units_std")
+#include "fcarouge/linalg.hpp"
+
+#include <units/area.h>
+#include <units/length.h>
+
+#include <cassert>
+
+namespace fcarouge::test {
+using units::m;
+using units::m2;
+using representation = double;
+
+namespace {
+//! @test Verifies the singleton by singleton matrix equal to operator
+//! rejects incompatible element types.
+[[maybe_unused]] const auto test{[] {
+  using length = units::length::meters<representation>;
+
+  // Intended:
+  // const row_vector<representation, length> a{3. * m};
+
+  using area = units::area::square_meters<representation>;
+
+  const row_vector<representation, area> a{3. * m2};
+
+  const row_vector<representation, length> b{2. * m};
+
+  assert(a == b);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
