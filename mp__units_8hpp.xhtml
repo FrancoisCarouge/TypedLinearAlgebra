@@ -104,9 +104,7 @@ $(function(){initNavTree('mp__units_8hpp.xhtml',''); initResizable(true); });
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#concepts">Concepts</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">mp_units.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -172,28 +170,12 @@ Concepts</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1quantity__element__typed__matrix.xhtml">fcarouge::quantity_element_typed_matrix</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:a9b124da26de87a5e94ff3b815915769f" id="r_a9b124da26de87a5e94ff3b815915769f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a9b124da26de87a5e94ff3b815915769f">fcarouge::height</a> = mp_units::quantity&lt;mp_units::isq::height[m]&gt;</td></tr>
-<tr class="separator:a9b124da26de87a5e94ff3b815915769f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13e1c6087b005b8dceeaab42ccbde47d" id="r_a13e1c6087b005b8dceeaab42ccbde47d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a13e1c6087b005b8dceeaab42ccbde47d">fcarouge::position</a> = mp_units::quantity&lt;mp_units::isq::length[m]&gt;</td></tr>
-<tr class="separator:a13e1c6087b005b8dceeaab42ccbde47d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2dd0eba1b86197287e408d5d4c3e641" id="r_ac2dd0eba1b86197287e408d5d4c3e641"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ac2dd0eba1b86197287e408d5d4c3e641">fcarouge::velocity</a> = mp_units::quantity&lt;mp_units::isq::velocity[m / s]&gt;</td></tr>
-<tr class="separator:ac2dd0eba1b86197287e408d5d4c3e641"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54efd5a19e1fb79c2c421f891d436020" id="r_a54efd5a19e1fb79c2c421f891d436020"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a54efd5a19e1fb79c2c421f891d436020">fcarouge::acceleration</a> = mp_units::quantity&lt;mp_units::isq::acceleration[m / s2]&gt;</td></tr>
-<tr class="separator:a54efd5a19e1fb79c2c421f891d436020"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a97ab0828c0b3220b30706db5b5fe699e" id="r_a97ab0828c0b3220b30706db5b5fe699e"><td class="memTemplParams" colspan="2">template&lt;std::size_t Index, auto Reference, typename Representation &gt; <br />
 requires undecomposed_tuple_like_quantity&lt;Reference, Representation&gt; and (Index &lt; std::tuple_size_v&lt;Representation&gt;)</td></tr>
 <tr class="memitem:a97ab0828c0b3220b30706db5b5fe699e"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a97ab0828c0b3220b30706db5b5fe699e">fcarouge::get</a> (const mp_units::quantity&lt; Reference, Representation &gt; &amp;value)</td></tr>
 <tr class="separator:a97ab0828c0b3220b30706db5b5fe699e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a0aadf374ff49533297b0971d8a66b436" id="r_a0aadf374ff49533297b0971d8a66b436"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436">fcarouge::s4</a> {pow&lt;4&gt;(s)}</td></tr>
-<tr class="separator:a0aadf374ff49533297b0971d8a66b436"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Quantities and units facade for mp-units third party implementation. </p>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['s4_0',['s4',['../namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436',1,'fcarouge']]],
+  ['s4_0',['s4',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a7999c059bab4175033fa4fda78bd9137',1,'fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}']]],
   ['safe_20linear_20algebra_20use_20case_3a_20eigen_20mp_20units_1',['Quantity-Safe Linear Algebra Use Case: Eigen + mp-units',['../md_html_2paper_2mp__units__eigen.xhtml',1,'']]],
   ['safety_2',['7 Beyond Unit Safety',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md7-beyond-unit-safety',1,'']]],
   ['safety_20linear_20algebra_20and_20dimensional_20analysis_3',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],

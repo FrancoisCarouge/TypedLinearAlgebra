@@ -128,45 +128,43 @@ Variables</h2></td></tr>
 <p>The mdspan-backed storage does not itself support equality: the algorithm must compare the strongly typed elements, not the underlying storage.</p>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000153">Test</a></b></dt><dd>Verifies the scale algorithm with non-trivial types. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="addition_21x2__mp__units__std_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="addition_21x2__mp__units__std_8cpp_source.xhtml">1x2_mp_units_std.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   47</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   48</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge.xhtml#a13e1c6087b005b8dceeaab42ccbde47d">position</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">quantity&lt;mp_units::isq::length[m]&gt;</a>;</div>
-<div class="line"><span class="lineno">   49</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge.xhtml#ac2dd0eba1b86197287e408d5d4c3e641">velocity</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">quantity</a>&lt;mp_units::isq::velocity[m / s]&gt;;</div>
-<div class="line"><span class="lineno">   50</span> </div>
-<div class="line"><span class="lineno">   51</span>  <span class="keywordtype">double</span> storage_a[]{0., 0.};</div>
-<div class="line"><span class="lineno">   52</span>  <span class="keywordtype">double</span> storage_b[]{0., 0.};</div>
-<div class="line"><span class="lineno">   53</span>  <span class="keywordtype">double</span> storage_r[]{0., 0.};</div>
-<div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>  std::mdspan span_a{&amp;storage_a[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
-<div class="line"><span class="lineno">   56</span>  std::mdspan span_b{&amp;storage_b[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
-<div class="line"><span class="lineno">   57</span>  std::mdspan span_r{&amp;storage_r[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
-<div class="line"><span class="lineno">   58</span> </div>
-<div class="line"><span class="lineno">   59</span>  row_vector&lt;representation, position, velocity&gt; a{span_a};</div>
-<div class="line"><span class="lineno">   60</span>  row_vector&lt;representation, position, velocity&gt; b{span_b};</div>
-<div class="line"><span class="lineno">   61</span>  row_vector&lt;representation, position, velocity&gt; r{span_r};</div>
-<div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>  a.at&lt;0_i&gt;(1. * m);</div>
-<div class="line"><span class="lineno">   64</span>  a.at&lt;1_i&gt;(2. * m / s);</div>
-<div class="line"><span class="lineno">   65</span>  b.at&lt;0_i&gt;(3. * m);</div>
-<div class="line"><span class="lineno">   66</span>  b.at&lt;1_i&gt;(4. * m / s);</div>
-<div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>  add(a, b, r);</div>
-<div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>  assert(4. * m == r.at&lt;0&gt;());</div>
-<div class="line"><span class="lineno">   71</span>  assert(4. * m == r.at&lt;0_i&gt;());</div>
-<div class="line"><span class="lineno">   72</span>  assert(4. * m == r[0_i]);</div>
-<div class="line"><span class="lineno">   73</span>  assert(4. * m == r(0_i));</div>
-<div class="line"><span class="lineno">   74</span> </div>
-<div class="line"><span class="lineno">   75</span>  assert(6. * m / s == r.at&lt;1&gt;());</div>
-<div class="line"><span class="lineno">   76</span>  assert(6. * m / s == r.at&lt;1_i&gt;());</div>
-<div class="line"><span class="lineno">   77</span>  assert(6. * m / s == r[1_i]);</div>
-<div class="line"><span class="lineno">   78</span>  assert(6. * m / s == r(1_i));</div>
-<div class="line"><span class="lineno">   79</span> </div>
-<div class="line"><span class="lineno">   80</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   81</span>}()};</div>
+<p class="definition">Definition at line <a class="el" href="addition_21x2__mp__units__std_8cpp_source.xhtml#l00050">50</a> of file <a class="el" href="addition_21x2__mp__units__std_8cpp_source.xhtml">1x2_mp_units_std.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   50</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><span class="lineno">   51</span>  <span class="keyword">using </span>position = <a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">quantity&lt;mp_units::isq::length[m]&gt;</a>;</div>
+<div class="line"><span class="lineno">   52</span>  <span class="keyword">using </span>velocity = <a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">quantity</a>&lt;mp_units::isq::velocity[m / s]&gt;;</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>  <span class="keywordtype">double</span> storage_a[]{0., 0.};</div>
+<div class="line"><span class="lineno">   55</span>  <span class="keywordtype">double</span> storage_b[]{0., 0.};</div>
+<div class="line"><span class="lineno">   56</span>  <span class="keywordtype">double</span> storage_r[]{0., 0.};</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>  std::mdspan span_a{&amp;storage_a[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   59</span>  std::mdspan span_b{&amp;storage_b[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   60</span>  std::mdspan span_r{&amp;storage_r[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>  row_vector&lt;representation, position, velocity&gt; a{span_a};</div>
+<div class="line"><span class="lineno">   63</span>  row_vector&lt;representation, position, velocity&gt; b{span_b};</div>
+<div class="line"><span class="lineno">   64</span>  row_vector&lt;representation, position, velocity&gt; r{span_r};</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>  a.at&lt;0_i&gt;(1. * m);</div>
+<div class="line"><span class="lineno">   67</span>  a.at&lt;1_i&gt;(2. * m / s);</div>
+<div class="line"><span class="lineno">   68</span>  b.at&lt;0_i&gt;(3. * m);</div>
+<div class="line"><span class="lineno">   69</span>  b.at&lt;1_i&gt;(4. * m / s);</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>  add(a, b, r);</div>
+<div class="line"><span class="lineno">   72</span> </div>
+<div class="line"><span class="lineno">   73</span>  assert(4. * m == r.at&lt;0&gt;());</div>
+<div class="line"><span class="lineno">   74</span>  assert(4. * m == r.at&lt;0_i&gt;());</div>
+<div class="line"><span class="lineno">   75</span>  assert(4. * m == r[0_i]);</div>
+<div class="line"><span class="lineno">   76</span>  assert(4. * m == r(0_i));</div>
+<div class="line"><span class="lineno">   77</span> </div>
+<div class="line"><span class="lineno">   78</span>  assert(6. * m / s == r.at&lt;1&gt;());</div>
+<div class="line"><span class="lineno">   79</span>  assert(6. * m / s == r.at&lt;1_i&gt;());</div>
+<div class="line"><span class="lineno">   80</span>  assert(6. * m / s == r[1_i]);</div>
+<div class="line"><span class="lineno">   81</span>  assert(6. * m / s == r(1_i));</div>
+<div class="line"><span class="lineno">   82</span> </div>
+<div class="line"><span class="lineno">   83</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   84</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml_a9770b8c17efb82bfa80edbfb9a1de8a7"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">fcarouge::test::quantity</a></div><div class="ttdeci">mp_units::quantity&lt; QuantityReference, representation &gt; quantity</div><div class="ttdef"><b>Definition</b> <a href="addition_21x1__mp__units__eigen_8cpp_source.xhtml#l00041">1x1_mp_units_eigen.cpp:41</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a13e1c6087b005b8dceeaab42ccbde47d"><div class="ttname"><a href="namespacefcarouge.xhtml#a13e1c6087b005b8dceeaab42ccbde47d">fcarouge::position</a></div><div class="ttdeci">mp_units::quantity&lt; mp_units::isq::length[m]&gt; position</div><div class="ttdef"><b>Definition</b> <a href="mp__units_8hpp_source.xhtml#l00072">mp_units.hpp:72</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_ac2dd0eba1b86197287e408d5d4c3e641"><div class="ttname"><a href="namespacefcarouge.xhtml#ac2dd0eba1b86197287e408d5d4c3e641">fcarouge::velocity</a></div><div class="ttdeci">mp_units::quantity&lt; mp_units::isq::velocity[m/s]&gt; velocity</div><div class="ttdef"><b>Definition</b> <a href="mp__units_8hpp_source.xhtml#l00073">mp_units.hpp:73</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

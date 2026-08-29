@@ -1,5 +1,14 @@
 var NAVTREEINDEX5 =
 {
+"structured__bindings_2mx1__const_8cpp_source.xhtml":[20,0,7,17,5],
+"subscript__1x1_8cpp.xhtml":[20,0,7,15,10],
+"subscript__1x1_8cpp.xhtml#a6e4f1284a948492f8dc505b2fa2ee946":[20,0,7,15,10,0],
+"subscript__1x1_8cpp_source.xhtml":[20,0,7,15,10],
+"subscript__1x1__const_8cpp.xhtml":[20,0,7,15,11],
+"subscript__1x1__const_8cpp.xhtml#a950b4bfc0ca506f4540bf7f05eca17da":[20,0,7,15,11,0],
+"subscript__1x1__const_8cpp_source.xhtml":[20,0,7,15,11],
+"subscript__1xn_8cpp.xhtml":[20,0,7,15,12],
+"subscript__1xn_8cpp.xhtml#a8a460c82bfc770992d7a591665232ba2":[20,0,7,15,12,0],
 "subscript__1xn_8cpp_source.xhtml":[20,0,7,15,12],
 "subscript__1xn__const_8cpp.xhtml":[20,0,7,15,13],
 "subscript__1xn__const_8cpp.xhtml#a59bc8d25ef0f2093591265b6139655bf":[20,0,7,15,13,0],

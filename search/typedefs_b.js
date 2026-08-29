@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['tuple_5fn_5ftype_0',['tuple_n_type',['../namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a4dd57b09634fe03c0fd59b866657ad86',1,'fcarouge::typed_linear_algebra_internal']]],
-  ['type_1',['type',['../structstd_1_1tuple__element_3_01_index_00_01_type_01_4.xhtml#ad03dca9c733705a2353f943513262d65',1,'std::tuple_element&lt; Index, Type &gt;::type'],['../structstd_1_1tuple__element_3_01_index_00_01mp__units_1_1quantity_3_01_reference_00_01_representation_01_4_01_4.xhtml#a0e7d7e1a37e5282837ff8e70e2e5feac',1,'std::tuple_element&lt; Index, mp_units::quantity&lt; Reference, Representation &gt; &gt;::type'],['../structmp__units_1_1representation__canonical__type_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_88cb568bfd22172f87f75426ff9b1681.xhtml#ac33c5d626d633d3d05863b564288bb37',1,'mp_units::representation_canonical_type&lt; fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &gt;::type'],['../structmp__units_1_1representation__underlying__type_3_01fcarouge_1_1typed__matrix_3_01_matrix_007bb3dc97a35e2d584c04497c33efbeb2.xhtml#a778bb574b7c5694295bbe2f387fc0a3e',1,'mp_units::representation_underlying_type&lt; fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &gt;::type']]],
-  ['typed_5fcolumn_5fvector_2',['typed_column_vector',['../namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58',1,'fcarouge']]],
-  ['typed_5frow_5fvector_3',['typed_row_vector',['../namespacefcarouge.xhtml#a7558e7ccc03031fb7de678cf4977e1bf',1,'fcarouge']]]
+  ['underlying_0',['underlying',['../classfcarouge_1_1typed__matrix.xhtml#a9904db59b08b0dfa24fe08ef574039b3',1,'fcarouge::typed_matrix']]],
+  ['underlying_5ft_1',['underlying_t',['../namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a72e4ccaf08999b259f656412682b37dd',1,'fcarouge::typed_linear_algebra_internal']]]
 ];

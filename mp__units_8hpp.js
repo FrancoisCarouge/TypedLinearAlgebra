@@ -8,10 +8,5 @@ var mp__units_8hpp =
     [ "fcarouge::multiplies< Type, Magnitude >", "structfcarouge_1_1multiplies_3_01_type_00_01_magnitude_01_4.xhtml", "structfcarouge_1_1multiplies_3_01_type_00_01_magnitude_01_4" ],
     [ "fcarouge::undecomposed_tuple_like_quantity", "conceptfcarouge_1_1undecomposed__tuple__like__quantity.xhtml", null ],
     [ "fcarouge::quantity_element_typed_matrix", "conceptfcarouge_1_1quantity__element__typed__matrix.xhtml", null ],
-    [ "acceleration", "mp__units_8hpp.xhtml#a54efd5a19e1fb79c2c421f891d436020", null ],
-    [ "height", "mp__units_8hpp.xhtml#a9b124da26de87a5e94ff3b815915769f", null ],
-    [ "position", "mp__units_8hpp.xhtml#a13e1c6087b005b8dceeaab42ccbde47d", null ],
-    [ "velocity", "mp__units_8hpp.xhtml#ac2dd0eba1b86197287e408d5d4c3e641", null ],
-    [ "get", "mp__units_8hpp.xhtml#a97ab0828c0b3220b30706db5b5fe699e", null ],
-    [ "s4", "mp__units_8hpp.xhtml#a0aadf374ff49533297b0971d8a66b436", null ]
+    [ "get", "mp__units_8hpp.xhtml#a97ab0828c0b3220b30706db5b5fe699e", null ]
 ];

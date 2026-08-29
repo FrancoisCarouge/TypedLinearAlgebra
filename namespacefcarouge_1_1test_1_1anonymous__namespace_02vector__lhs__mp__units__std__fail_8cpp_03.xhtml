@@ -150,32 +150,32 @@ Variables</h2></td></tr>
 <div class="line">}()}</div>
 </div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000111">Test</a></b></dt><dd>Verifies a rank one vector is rejected in the matrix position of the matrix-vector product algorithm: there is no overload accepting a non-matrix <code>lhs</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vector__lhs__mp__units__std__fail_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="vector__lhs__mp__units__std__fail_8cpp_source.xhtml">vector_lhs_mp_units_std_fail.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   47</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   48</span>  <span class="keyword">using </span>length = <a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">quantity&lt;mp_units::isq::length[m]&gt;</a>;</div>
-<div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>  <span class="keywordtype">double</span> storage_a[2]{};</div>
-<div class="line"><span class="lineno">   51</span>  <span class="keywordtype">double</span> storage_x[2]{};</div>
-<div class="line"><span class="lineno">   52</span>  <span class="keywordtype">double</span> storage_y[2]{};</div>
-<div class="line"><span class="lineno">   53</span> </div>
-<div class="line"><span class="lineno">   54</span>  std::mdspan span_a{&amp;storage_a[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
-<div class="line"><span class="lineno">   55</span>  std::mdspan span_x{&amp;storage_x[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
-<div class="line"><span class="lineno">   56</span>  std::mdspan span_y{&amp;storage_y[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
-<div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>  <span class="comment">// Intended:</span></div>
-<div class="line"><span class="lineno">   59</span>  <span class="comment">// matrix&lt;representation, std::tuple&lt;length, length&gt;,</span></div>
-<div class="line"><span class="lineno">   60</span>  <span class="comment">//        std::tuple&lt;length, length&gt;&gt;</span></div>
-<div class="line"><span class="lineno">   61</span>  <span class="comment">//     a{...};</span></div>
-<div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>  column_vector&lt;representation, length, length&gt; a{span_a};</div>
+<p class="definition">Definition at line <a class="el" href="vector__lhs__mp__units__std__fail_8cpp_source.xhtml#l00049">49</a> of file <a class="el" href="vector__lhs__mp__units__std__fail_8cpp_source.xhtml">vector_lhs_mp_units_std_fail.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><span class="lineno">   50</span>  <span class="keyword">using </span>length = <a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">quantity&lt;mp_units::isq::length[m]&gt;</a>;</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>  <span class="keywordtype">double</span> storage_a[2]{};</div>
+<div class="line"><span class="lineno">   53</span>  <span class="keywordtype">double</span> storage_x[2]{};</div>
+<div class="line"><span class="lineno">   54</span>  <span class="keywordtype">double</span> storage_y[2]{};</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>  std::mdspan span_a{&amp;storage_a[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
+<div class="line"><span class="lineno">   57</span>  std::mdspan span_x{&amp;storage_x[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
+<div class="line"><span class="lineno">   58</span>  std::mdspan span_y{&amp;storage_y[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>  <span class="comment">// Intended:</span></div>
+<div class="line"><span class="lineno">   61</span>  <span class="comment">// matrix&lt;representation, std::tuple&lt;length, length&gt;,</span></div>
+<div class="line"><span class="lineno">   62</span>  <span class="comment">//        std::tuple&lt;length, length&gt;&gt;</span></div>
+<div class="line"><span class="lineno">   63</span>  <span class="comment">//     a{...};</span></div>
 <div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>  column_vector&lt;representation, length, length&gt; x{span_x};</div>
-<div class="line"><span class="lineno">   66</span>  column_vector&lt;representation, length, length&gt; y{span_y};</div>
-<div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>  matrix_vector_product(a, x, y);</div>
+<div class="line"><span class="lineno">   65</span>  column_vector&lt;representation, length, length&gt; a{span_a};</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>  column_vector&lt;representation, length, length&gt; x{span_x};</div>
+<div class="line"><span class="lineno">   68</span>  column_vector&lt;representation, length, length&gt; y{span_y};</div>
 <div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   71</span>}()};</div>
+<div class="line"><span class="lineno">   70</span>  matrix_vector_product(a, x, y);</div>
+<div class="line"><span class="lineno">   71</span> </div>
+<div class="line"><span class="lineno">   72</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   73</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml_a9770b8c17efb82bfa80edbfb9a1de8a7"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">fcarouge::test::quantity</a></div><div class="ttdeci">mp_units::quantity&lt; QuantityReference, representation &gt; quantity</div><div class="ttdef"><b>Definition</b> <a href="addition_21x1__mp__units__eigen_8cpp_source.xhtml#l00041">1x1_mp_units_eigen.cpp:41</a></div></div>
 </div><!-- fragment -->
 </div>
