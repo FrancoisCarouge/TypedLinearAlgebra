@@ -66,3 +66,21 @@ target_link_libraries(
           typed_linear_algebra_mp_units_std)
 add_test(NAME typed_linear_algebra_sample_mp_units_std
          COMMAND typed_linear_algebra_sample_mp_units_std_driver)
+
+add_executable(typed_linear_algebra_sample_nholthaus_eigen_driver
+               "nholthaus_eigen.cpp")
+target_link_libraries(
+  typed_linear_algebra_sample_nholthaus_eigen_driver
+  PRIVATE typed_linear_algebra_nholthaus_eigen typed_linear_algebra_main
+          typed_linear_algebra_options)
+add_test(NAME typed_linear_algebra_sample_nholthaus_eigen
+         COMMAND typed_linear_algebra_sample_nholthaus_eigen_driver)
+
+add_executable(typed_linear_algebra_sample_nholthaus_std_driver
+               "nholthaus_std.cpp")
+target_link_libraries(
+  typed_linear_algebra_sample_nholthaus_std_driver
+  PRIVATE typed_linear_algebra_main typed_linear_algebra_options
+          typed_linear_algebra_nholthaus_std)
+add_test(NAME typed_linear_algebra_sample_nholthaus_std
+         COMMAND typed_linear_algebra_sample_nholthaus_std_driver)

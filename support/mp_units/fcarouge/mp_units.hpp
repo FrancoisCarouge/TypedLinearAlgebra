@@ -136,7 +136,7 @@ struct element_caster<To, From> {
     static_assert(std::same_as<representation, std::remove_cvref_t<To>>,
                   "The underlying storage type must be identical to the "
                   "quantity representation type to guarantee the conversion is "
-                  "explicitely decided by the end-user.");
+                  "explicitly decided by the end-user.");
 
     constexpr auto reference{std::remove_cvref_t<From>::reference};
     constexpr auto specification{get_quantity_spec(reference)};
@@ -161,7 +161,7 @@ struct element_caster<To, From> {
     static_assert(std::same_as<representation, std::remove_cvref_t<From>>,
                   "The underlying storage type must be identical to the "
                   "quantity representation type to guarantee the conversion is "
-                  "explicitely decided by the end-user.");
+                  "explicitly decided by the end-user.");
 
     return value * To::reference;
   }
@@ -180,7 +180,7 @@ struct element_caster<To &, From &> {
     static_assert(std::same_as<representation, std::remove_cvref_t<From>>,
                   "The underlying storage type must be identical to the "
                   "quantity representation type to guarantee the conversion is "
-                  "explicitely decided by the end-user.");
+                  "explicitly decided by the end-user.");
 
     return value * To::reference;
   }
@@ -194,7 +194,7 @@ struct element_caster<To, From> {
     static_assert(std::same_as<representation, std::remove_cvref_t<To>>,
                   "The underlying storage type must be identical to the "
                   "quantity representation type to guarantee the conversion is "
-                  "explicitely decided by the end-user.");
+                  "explicitly decided by the end-user.");
 
     return value.quantity_from_zero().numerical_value_in(value.unit);
   }
@@ -208,7 +208,7 @@ struct element_caster<To, From> {
     static_assert(std::same_as<representation, std::remove_cvref_t<From>>,
                   "The underlying storage type must be identical to the "
                   "quantity representation type to guarantee the conversion is "
-                  "explicitely decided by the end-user.");
+                  "explicitly decided by the end-user.");
 
     return {value * To::unit, mp_units::default_point_origin(To::unit)};
   }
@@ -227,7 +227,7 @@ struct element_caster<To &, From &> {
     static_assert(std::same_as<representation, std::remove_cvref_t<From>>,
                   "The underlying storage type must be identical to the "
                   "quantity representation type to guarantee the conversion is "
-                  "explicitely decided by the end-user.");
+                  "explicitly decided by the end-user.");
 
     return {value * To::unit, mp_units::default_point_origin(To::unit)};
   }

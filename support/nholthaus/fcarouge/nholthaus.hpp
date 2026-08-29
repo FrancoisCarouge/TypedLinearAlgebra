@@ -29,70 +29,80 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_AU_HPP
-#define FCAROUGE_AU_HPP
+#ifndef FCAROUGE_NHOLTHAUS_HPP
+#define FCAROUGE_NHOLTHAUS_HPP
 
 //! @file
-//! @brief Quantities and units facade for the Au third party implementation.
+//! @brief Quantities and units facade for the nholthaus/units implementation.
 //!
 //! @details Supporting the conversion of typed matrix elements to and from
-//! Au's quantity type.
+//! nholthaus/units' `units::unit` container type.
 
-#include <au/au.hh>
+#include "fcarouge/typed_linear_algebra_forward.hpp"
+
+#include <units/core.h>
 
 #include <concepts>
 #include <type_traits>
 
 namespace fcarouge {
-// True for an Au quantity, regardless of its unit or representation.
+// True for a nholthaus/units quantity, regardless of its conversion factor,
+// representation, or numerical scale. `is_unit_v` already excludes plain
+// arithmetic types.
 template <typename T>
-concept au_quantity =
-    requires {
-      typename std::remove_cvref_t<T>::Unit;
-      typename std::remove_cvref_t<T>::Rep;
-    } and std::same_as<std::remove_cvref_t<T>,
-                       au::Quantity<typename std::remove_cvref_t<T>::Unit,
-                                    typename std::remove_cvref_t<T>::Rep>>;
+concept nholthaus_quantity = units::traits::is_unit_v<std::remove_cvref_t<T>>;
+
+// The arithmetic storage type backing a nholthaus/units quantity (e.g.
+// `double` for `units::length::meters<double>`).
+template <nholthaus_quantity Quantity>
+using nholthaus_representation = typename units::traits::unit_traits<
+    std::remove_cvref_t<Quantity>>::underlying_type;
 
 // Teach the typed linear algebra library how to convert underlying scalar
-// types to and from Au's quantity type.
-template <typename To, au_quantity From> struct element_caster<To, From> {
+// types to and from nholthaus/units' quantity type.
+template <typename To, nholthaus_quantity From>
+struct element_caster<To, From> {
   [[nodiscard]] static constexpr auto operator()(From value) -> To {
-    static_assert(std::same_as<typename From::Rep, std::remove_cvref_t<To>>,
-                  "The underlying storage type must be identical to the "
-                  "quantity representation type to guarantee the conversion "
-                  "is explicitly decided by the end-user.");
+    static_assert(
+        std::same_as<nholthaus_representation<From>, std::remove_cvref_t<To>>,
+        "The underlying storage type must be identical to the "
+        "quantity representation type to guarantee the conversion "
+        "is explicitly decided by the end-user.");
 
-    return value.in(typename From::Unit{});
+    return value.value();
   }
 };
 
-template <au_quantity To, typename From> struct element_caster<To, From> {
+template <nholthaus_quantity To, typename From>
+struct element_caster<To, From> {
   [[nodiscard]] static constexpr auto operator()(From value) -> To {
-    static_assert(std::same_as<typename To::Rep, std::remove_cvref_t<From>>,
-                  "The underlying storage type must be identical to the "
-                  "quantity representation type to guarantee the conversion "
-                  "is explicitly decided by the end-user.");
+    static_assert(
+        std::same_as<nholthaus_representation<To>, std::remove_cvref_t<From>>,
+        "The underlying storage type must be identical to the "
+        "quantity representation type to guarantee the conversion "
+        "is explicitly decided by the end-user.");
 
-    return au::make_quantity<typename To::Unit>(value);
+    return To(value);
   }
 };
 
-template <au_quantity To, typename From> struct element_caster<To &, From &> {
+template <nholthaus_quantity To, typename From>
+struct element_caster<To &, From &> {
   // A quantity reference cannot be safely materialized out of a
   // representation reference. It would be undefined behavior even if the
   // size, padding, alignment, aliasing are controlled. Therefore the best we
   // can do is to return a constant quantity value to inform the end-user
   // lvalue reference assignment cannot be supported.
   [[nodiscard]] static constexpr auto operator()(From value) -> const To {
-    static_assert(std::same_as<typename To::Rep, std::remove_cvref_t<From>>,
-                  "The underlying storage type must be identical to the "
-                  "quantity representation type to guarantee the conversion "
-                  "is explicitly decided by the end-user.");
+    static_assert(
+        std::same_as<nholthaus_representation<To>, std::remove_cvref_t<From>>,
+        "The underlying storage type must be identical to the "
+        "quantity representation type to guarantee the conversion "
+        "is explicitly decided by the end-user.");
 
-    return au::make_quantity<typename To::Unit>(value);
+    return To(value);
   }
 };
 } // namespace fcarouge
 
-#endif // FCAROUGE_AU_HPP
+#endif // FCAROUGE_NHOLTHAUS_HPP
