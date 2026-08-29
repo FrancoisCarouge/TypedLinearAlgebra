@@ -29,13 +29,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-pass("1x1_au_std" BACKENDS "au_std")
-pass("1x1_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_au_std" BACKENDS "au_std")
-pass("1x2_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_nholthaus_std" BACKENDS "nholthaus_std")
-pass("2x2_au_std" BACKENDS "au_std")
-pass("2x2_mp_units_std" BACKENDS "mp_units_std")
-pass("column_au_std" BACKENDS "au_std")
-pass("column_chrono_std" BACKENDS "chrono_std")
-pass("column_mp_units_std" BACKENDS "mp_units_std")
+add_library(typed_linear_algebra_chrono_eigen INTERFACE)
+target_sources(
+  typed_linear_algebra_chrono_eigen
+  INTERFACE FILE_SET "typed_linear_algebra_headers" TYPE "HEADERS" FILES
+            "fcarouge/linalg.hpp")
+target_link_libraries(typed_linear_algebra_chrono_eigen
+                      INTERFACE typed_linear_algebra_eigen tlinalg)

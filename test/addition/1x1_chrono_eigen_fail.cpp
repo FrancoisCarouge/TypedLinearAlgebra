@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,15 +27,36 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("1x1_au_std" BACKENDS "au_std")
-pass("1x1_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_au_std" BACKENDS "au_std")
-pass("1x2_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_nholthaus_std" BACKENDS "nholthaus_std")
-pass("2x2_au_std" BACKENDS "au_std")
-pass("2x2_mp_units_std" BACKENDS "mp_units_std")
-pass("column_au_std" BACKENDS "au_std")
-pass("column_chrono_std" BACKENDS "chrono_std")
-pass("column_mp_units_std" BACKENDS "mp_units_std")
+#include "fcarouge/linalg.hpp"
+
+#include <cassert>
+#include <chrono>
+
+namespace fcarouge::test {
+using representation = double;
+
+namespace {
+//! @test Verifies two time points cannot be added: only a duration may be
+//! added to a time point.
+[[maybe_unused]] const auto test{[] {
+  using instant =
+      std::chrono::time_point<std::chrono::system_clock,
+                              std::chrono::duration<representation>>;
+
+  // Intended: a duration singleton.
+  // const row_vector<representation, std::chrono::duration<representation>>
+  // a{};
+
+  const row_vector<representation, instant> a{instant{}};
+  const row_vector<representation, instant> b{instant{}};
+
+  const row_vector<representation, instant> r{a + b};
+
+  assert(instant{} == r.at());
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

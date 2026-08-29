@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,15 +27,31 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("1x1_au_std" BACKENDS "au_std")
-pass("1x1_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_au_std" BACKENDS "au_std")
-pass("1x2_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_nholthaus_std" BACKENDS "nholthaus_std")
-pass("2x2_au_std" BACKENDS "au_std")
-pass("2x2_mp_units_std" BACKENDS "mp_units_std")
-pass("column_au_std" BACKENDS "au_std")
-pass("column_chrono_std" BACKENDS "chrono_std")
-pass("column_mp_units_std" BACKENDS "mp_units_std")
+#include "fcarouge/linalg.hpp"
+
+#include <cassert>
+#include <chrono>
+#include <cstddef>
+#include <mdspan>
+
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the equal to operator for a singleton std::chrono duration
+//! matrix with the mdspan backend.
+[[maybe_unused]] const auto test{[] -> int {
+  using seconds = std::chrono::duration<double>;
+
+  double storage{9.};
+  std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
+  column_vector<double, seconds> n{span};
+
+  assert(n == seconds{9.});
+  assert(seconds{9.} == n);
+  assert(n != seconds{10.});
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
