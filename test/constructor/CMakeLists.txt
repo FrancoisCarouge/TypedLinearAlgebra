@@ -30,6 +30,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 pass("1x1_array" BACKENDS "eigexed" "nested_typed_eigen")
+pass("1x1_chrono_eigen" BACKENDS "chrono_eigen")
 pass("1x1_mp_units_eigen" BACKENDS "mp_units_eigen")
 pass("1x1_mp_units_std" BACKENDS "mp_units_std")
 pass("1x1" BACKENDS "eigexed" "nested_typed_eigen")

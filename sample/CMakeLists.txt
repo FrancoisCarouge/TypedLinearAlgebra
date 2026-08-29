@@ -49,6 +49,23 @@ target_link_libraries(
 add_test(NAME typed_linear_algebra_sample_au_std
          COMMAND typed_linear_algebra_sample_au_std_driver)
 
+add_executable(typed_linear_algebra_sample_chrono_eigen_driver
+               "chrono_eigen.cpp")
+target_link_libraries(
+  typed_linear_algebra_sample_chrono_eigen_driver
+  PRIVATE typed_linear_algebra_chrono_eigen typed_linear_algebra_main
+          typed_linear_algebra_options)
+add_test(NAME typed_linear_algebra_sample_chrono_eigen
+         COMMAND typed_linear_algebra_sample_chrono_eigen_driver)
+
+add_executable(typed_linear_algebra_sample_chrono_std_driver "chrono_std.cpp")
+target_link_libraries(
+  typed_linear_algebra_sample_chrono_std_driver
+  PRIVATE typed_linear_algebra_main typed_linear_algebra_options
+          typed_linear_algebra_chrono_std)
+add_test(NAME typed_linear_algebra_sample_chrono_std
+         COMMAND typed_linear_algebra_sample_chrono_std_driver)
+
 add_executable(typed_linear_algebra_sample_mp_units_eigen_driver
                "mp_units_eigen.cpp")
 target_link_libraries(

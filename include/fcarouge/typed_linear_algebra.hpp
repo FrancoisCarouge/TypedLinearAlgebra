@@ -515,6 +515,7 @@ template <char... Digits> constexpr auto operator""_i() noexcept {
 #include "typed_linear_algebra_internal/algorithm/substract.tpp"
 #include "typed_linear_algebra_internal/algorithm/transposed.tpp"
 #include "typed_linear_algebra_internal/cast.tpp"
+#include "typed_linear_algebra_internal/chrono.tpp"
 #include "typed_linear_algebra_internal/common_type.tpp"
 #include "typed_linear_algebra_internal/format.tpp"
 #include "typed_linear_algebra_internal/tuple.tpp"

@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,15 +27,35 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("1x1_au_std" BACKENDS "au_std")
-pass("1x1_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_au_std" BACKENDS "au_std")
-pass("1x2_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_nholthaus_std" BACKENDS "nholthaus_std")
-pass("2x2_au_std" BACKENDS "au_std")
-pass("2x2_mp_units_std" BACKENDS "mp_units_std")
-pass("column_au_std" BACKENDS "au_std")
-pass("column_chrono_std" BACKENDS "chrono_std")
-pass("column_mp_units_std" BACKENDS "mp_units_std")
+#include "fcarouge/linalg.hpp"
+
+#include <cassert>
+#include <chrono>
+#include <ratio>
+
+namespace fcarouge::test {
+using representation = double;
+
+namespace {
+//! @test Verifies the equal to operator for a row vector of std::chrono
+//! durations.
+[[maybe_unused]] const auto test{[] -> int {
+  using seconds = std::chrono::duration<representation>;
+  using minutes = std::chrono::duration<representation, std::ratio<60>>;
+
+  const row_vector<representation, seconds, minutes> a{seconds{1.},
+                                                       minutes{2.}};
+  const row_vector<representation, seconds, minutes> b{seconds{1.},
+                                                       minutes{2.}};
+  const row_vector<representation, seconds, minutes> c{seconds{1.},
+                                                       minutes{9.}};
+
+  assert(a == b);
+  assert(a != c);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

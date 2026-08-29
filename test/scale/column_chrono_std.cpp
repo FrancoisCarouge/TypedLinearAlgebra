@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,15 +27,41 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("1x1_au_std" BACKENDS "au_std")
-pass("1x1_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_au_std" BACKENDS "au_std")
-pass("1x2_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_nholthaus_std" BACKENDS "nholthaus_std")
-pass("2x2_au_std" BACKENDS "au_std")
-pass("2x2_mp_units_std" BACKENDS "mp_units_std")
-pass("column_au_std" BACKENDS "au_std")
-pass("column_chrono_std" BACKENDS "chrono_std")
-pass("column_mp_units_std" BACKENDS "mp_units_std")
+#include "fcarouge/linalg.hpp"
+
+#include <cassert>
+#include <chrono>
+#include <cstddef>
+#include <mdspan>
+#include <ratio>
+
+namespace fcarouge::test {
+using representation = double;
+
+namespace {
+//! @test Verifies the scale algorithm for a column vector of std::chrono
+//! durations of distinct periods.
+[[maybe_unused]] const auto test{[] -> int {
+  using seconds = std::chrono::duration<representation>;
+  using minutes = std::chrono::duration<representation, std::ratio<60>>;
+
+  double storage[]{0., 0.};
+
+  std::mdspan span{&storage[0], std::extents<std::size_t, 2, 1>{}};
+
+  column_vector<representation, seconds, minutes> x{span};
+
+  x.at<0>(seconds{1.});
+  x.at<1>(minutes{2.});
+
+  scale(3., x);
+
+  assert(seconds{3.} == x.at<0>());
+  assert(minutes{6.} == x.at<1>());
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

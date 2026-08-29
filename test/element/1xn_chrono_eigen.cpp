@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,15 +27,30 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("1x1_au_std" BACKENDS "au_std")
-pass("1x1_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_au_std" BACKENDS "au_std")
-pass("1x2_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_nholthaus_std" BACKENDS "nholthaus_std")
-pass("2x2_au_std" BACKENDS "au_std")
-pass("2x2_mp_units_std" BACKENDS "mp_units_std")
-pass("column_au_std" BACKENDS "au_std")
-pass("column_chrono_std" BACKENDS "chrono_std")
-pass("column_mp_units_std" BACKENDS "mp_units_std")
+#include "fcarouge/linalg.hpp"
+
+#include <chrono>
+#include <concepts>
+#include <ratio>
+
+namespace fcarouge::test {
+using representation = double;
+
+namespace {
+//! @test Verifies each element of a row vector keeps its own std::chrono
+//! period.
+[[maybe_unused]] const auto test{[] -> int {
+  using seconds = std::chrono::duration<representation>;
+  using minutes = std::chrono::duration<representation, std::ratio<60>>;
+
+  using vector = row_vector<representation, seconds, minutes>;
+
+  static_assert(std::same_as<vector::element<0>, seconds>);
+  static_assert(std::same_as<vector::element<1>, minutes>);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
