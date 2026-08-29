@@ -41,10 +41,12 @@ using representation = double;
 namespace {
 //! @test Verifies the quantity by singleton matrix division operator.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
   using length = au::QuantityD<au::Meters>;
 
-  const length a{au::meters(3.)};
-  const row_vector<representation, length> b{au::meters(2.)};
+  const length a{3. * m};
+  const row_vector<representation, length> b{2. * m};
   [[maybe_unused]] const double r{a / b};
 
   assert(1.5 == r);

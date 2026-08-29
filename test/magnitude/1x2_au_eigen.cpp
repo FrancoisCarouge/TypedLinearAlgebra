@@ -46,10 +46,13 @@ namespace {
 //! quantities. The result carries the same unit as the vector's uniform
 //! element type.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+  using au::symbols::s;
+
   using velocity = au::QuantityD<au::UnitQuotientT<au::Meters, au::Seconds>>;
 
-  const row_vector<representation, velocity, velocity> v2{
-      au::meters(3.) / au::seconds(1.), au::meters(4.) / au::seconds(1.)};
+  const row_vector<representation, velocity, velocity> v2{3. * m / s,
+                                                          4. * m / s};
 
   assert(std::format("{}", magnitude(v2)) == "5 m / s");
 

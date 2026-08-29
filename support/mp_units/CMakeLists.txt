@@ -45,7 +45,7 @@ FetchContent_Declare(
   mp-units
   GIT_REPOSITORY "https://github.com/mpusz/mp-units"
   GIT_SHALLOW TRUE
-  SYSTEM SOURCE_SUBDIR "src" FIND_PACKAGE_ARGS NAMES mp-units)
+  SOURCE_SUBDIR "src" SYSTEM FIND_PACKAGE_ARGS NAMES mp-units)
 FetchContent_MakeAvailable(mp-units)
 
 target_compile_options(

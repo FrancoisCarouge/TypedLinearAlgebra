@@ -46,6 +46,10 @@ namespace {
 //! three-by-two matrix and a two element column vector, producing a three
 //! element column vector.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
+  constexpr auto m2{au::squared(m)};
+
   using length = au::QuantityD<au::Meters>;
   using row_indexes = std::tuple<length, length, length>;
   using column_indexes = std::tuple<length, length>;
@@ -62,21 +66,21 @@ namespace {
   column_vector<representation, length, length> x{span_x};
   column_vector<representation, length, length, length> y{span_y};
 
-  a.at<0, 0>(au::squared(au::meters)(1.));
-  a.at<0, 1>(au::squared(au::meters)(2.));
-  a.at<1, 0>(au::squared(au::meters)(3.));
-  a.at<1, 1>(au::squared(au::meters)(4.));
-  a.at<2, 0>(au::squared(au::meters)(5.));
-  a.at<2, 1>(au::squared(au::meters)(6.));
+  a.at<0, 0>(1. * m2);
+  a.at<0, 1>(2. * m2);
+  a.at<1, 0>(3. * m2);
+  a.at<1, 1>(4. * m2);
+  a.at<2, 0>(5. * m2);
+  a.at<2, 1>(6. * m2);
 
-  x.at<0>(au::meters(1.));
-  x.at<1>(au::meters(1.));
+  x.at<0>(1. * m);
+  x.at<1>(1. * m);
 
   matrix_vector_product(a, x, y);
 
-  assert((y.at<0>() == au::meters(3.)));
-  assert((y.at<1>() == au::meters(7.)));
-  assert((y.at<2>() == au::meters(11.)));
+  assert((y.at<0>() == 3. * m));
+  assert((y.at<1>() == 7. * m));
+  assert((y.at<2>() == 11. * m));
 
   return 0;
 }()};

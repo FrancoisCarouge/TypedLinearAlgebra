@@ -44,6 +44,10 @@ using representation = double;
 namespace {
 //! @test Verifies the row by column matrix product algorithm.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
+  constexpr auto m2{au::squared(m)};
+
   using length = au::QuantityD<au::Meters>;
   using area = au::QuantityD<au::UnitPowerT<au::Meters, 2>>;
 
@@ -59,17 +63,17 @@ namespace {
   column_vector<representation, length, length> b{span_b};
   row_vector<representation, area> r{span_r};
 
-  a.at<0_i>(au::meters(1.));
-  a.at<1_i>(au::meters(2.));
-  b.at<0_i>(au::meters(3.));
-  b.at<1_i>(au::meters(4.));
+  a.at<0_i>(1. * m);
+  a.at<1_i>(2. * m);
+  b.at<0_i>(3. * m);
+  b.at<1_i>(4. * m);
 
   matrix_product(a, b, r);
 
-  assert(au::squared(au::meters)(11.) == r.at());
-  assert(au::squared(au::meters)(11.) == r[]);
-  assert(au::squared(au::meters)(11.) == r());
-  assert(au::squared(au::meters)(11.) == r);
+  assert(11. * m2 == r.at());
+  assert(11. * m2 == r[]);
+  assert(11. * m2 == r());
+  assert(11. * m2 == r);
 
   return 0;
 }()};

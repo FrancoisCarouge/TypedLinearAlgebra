@@ -43,12 +43,15 @@ using representation = double;
 namespace {
 //! @test Verifies the quantity by column vector division operator.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
+  constexpr auto m2{au::squared(m)};
+
   using length = au::QuantityD<au::Meters>;
   using area = au::QuantityD<au::UnitPowerT<au::Meters, 2>>;
 
-  const column_vector<representation, length> a{au::meters(3.)};
-  const column_vector<representation, length, area> b{
-      au::meters(2.), au::squared(au::meters)(6.)};
+  const column_vector<representation, length> a{3. * m};
+  const column_vector<representation, length, area> b{2. * m, 6. * m2};
   const row_vector<representation, double, length> r{a / b};
 
   assert(std::format("{}", r) == "[0, 0.5 m]");

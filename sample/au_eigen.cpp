@@ -72,21 +72,26 @@ using row_vector = row_vector<representation, Types...>;
 //! @details A variety of activities of strongly typed linear algebra with
 //! Eigen and Au.
 [[maybe_unused]] const auto sample{[] -> int {
+  using au::symbols::m;
+  using au::symbols::s;
+
+  constexpr auto m2{au::squared(m)};
+  constexpr auto s2{au::squared(s)};
+
   // Set up a heterogenous column vector type for the sample.
   using state = column_vector<position, velocity, acceleration>;
 
   // A vector of quantities:
-  state x0{au::meters(3.), au::meters(2.) / au::seconds(1.),
-           au::meters(1.) / au::squared(au::seconds)(1.)};
+  state x0{3. * m, 2. * m / s, 1. * m / s2};
 
   // Printable.
   std::println("x0 = {}", x0);
   assert(std::format("{}", x0) == "[[3 m], [2 m / s], [1 m / s^2]]");
 
   // Element assignment and access.
-  x0.at<1>(au::meters(2.5) / au::seconds(1.));
+  x0.at<1>(2.5 * m / s);
   auto x0_1{x0.at<1>()};
-  assert(x0_1 == au::meters(2.5) / au::seconds(1.));
+  assert(x0_1 == 2.5 * m / s);
   assert(std::format("{}", x0_1) == "2.5 m / s");
 
   // Multiplication with a scalar factor.
@@ -110,23 +115,23 @@ using row_vector = row_vector<representation, Types...>;
       matrix<std::tuple<position, position>, std::tuple<position, position>>;
   position_2d_uncertainty p0;
 
-  p0.at<0, 1>(au::squared(au::meters)(9.));
-  assert((p0[0, 1] == au::squared(au::meters)(9.)));
+  p0.at<0, 1>(9. * m2);
+  assert((p0[0, 1] == 9. * m2));
 
-  p0.at<0, 1>(au::squared(au::meters)(16.));
-  assert((p0(0, 1) == au::squared(au::meters)(16.)));
+  p0.at<0, 1>(16. * m2);
+  assert((p0(0, 1) == 16. * m2));
 
   // Matrix multiplication: column vector by row vector outer product,
   // producing an area typed matrix.
-  const column_vector<position, position> c{au::meters(1.), au::meters(2.)};
-  const row_vector<position, position> r{au::meters(3.), au::meters(4.)};
+  const column_vector<position, position> c{1. * m, 2. * m};
+  const row_vector<position, position> r{3. * m, 4. * m};
   const matrix<std::tuple<position, position>, std::tuple<position, position>>
       cr{c * r};
 
-  assert((cr.at<0, 0>() == au::squared(au::meters)(3.)));
-  assert((cr.at<0, 1>() == au::squared(au::meters)(4.)));
-  assert((cr.at<1, 0>() == au::squared(au::meters)(6.)));
-  assert((cr.at<1, 1>() == au::squared(au::meters)(8.)));
+  assert((cr.at<0, 0>() == 3. * m2));
+  assert((cr.at<0, 1>() == 4. * m2));
+  assert((cr.at<1, 0>() == 6. * m2));
+  assert((cr.at<1, 1>() == 8. * m2));
 
   return 0;
 }()};

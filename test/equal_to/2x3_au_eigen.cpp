@@ -43,6 +43,10 @@ namespace {
 //! @test Verifies the equal to algorithm for a rectangular matrix shape with
 //! non-trivial types.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
+  constexpr auto m2{au::squared(m)};
+
   using length = au::QuantityD<au::Meters>;
   using row_indexes = std::tuple<length, length>;
   using column_indexes = std::tuple<length, length, length>;
@@ -51,26 +55,26 @@ namespace {
   matrix<representation, row_indexes, column_indexes> b;
   matrix<representation, row_indexes, column_indexes> c;
 
-  a.at<0, 0>(au::squared(au::meters)(1.));
-  a.at<0, 1>(au::squared(au::meters)(2.));
-  a.at<0, 2>(au::squared(au::meters)(3.));
-  a.at<1, 0>(au::squared(au::meters)(4.));
-  a.at<1, 1>(au::squared(au::meters)(5.));
-  a.at<1, 2>(au::squared(au::meters)(6.));
+  a.at<0, 0>(1. * m2);
+  a.at<0, 1>(2. * m2);
+  a.at<0, 2>(3. * m2);
+  a.at<1, 0>(4. * m2);
+  a.at<1, 1>(5. * m2);
+  a.at<1, 2>(6. * m2);
 
-  b.at<0, 0>(au::squared(au::meters)(1.));
-  b.at<0, 1>(au::squared(au::meters)(2.));
-  b.at<0, 2>(au::squared(au::meters)(3.));
-  b.at<1, 0>(au::squared(au::meters)(4.));
-  b.at<1, 1>(au::squared(au::meters)(5.));
-  b.at<1, 2>(au::squared(au::meters)(6.));
+  b.at<0, 0>(1. * m2);
+  b.at<0, 1>(2. * m2);
+  b.at<0, 2>(3. * m2);
+  b.at<1, 0>(4. * m2);
+  b.at<1, 1>(5. * m2);
+  b.at<1, 2>(6. * m2);
 
-  c.at<0, 0>(au::squared(au::meters)(1.));
-  c.at<0, 1>(au::squared(au::meters)(2.));
-  c.at<0, 2>(au::squared(au::meters)(3.));
-  c.at<1, 0>(au::squared(au::meters)(4.));
-  c.at<1, 1>(au::squared(au::meters)(5.));
-  c.at<1, 2>(au::squared(au::meters)(42.));
+  c.at<0, 0>(1. * m2);
+  c.at<0, 1>(2. * m2);
+  c.at<0, 2>(3. * m2);
+  c.at<1, 0>(4. * m2);
+  c.at<1, 1>(5. * m2);
+  c.at<1, 2>(42. * m2);
 
   assert(a == b);
   assert(a != c);

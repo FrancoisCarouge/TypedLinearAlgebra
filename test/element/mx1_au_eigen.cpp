@@ -47,16 +47,16 @@ namespace {
 //! @details The count of indexes must match the rank of the matrix: one
 //! index for a column vector.
 [[maybe_unused]] const auto test{[] -> int {
-  using matrix = matrix<double,
-                        std::tuple<decltype(au::meters(1.)),
-                                   decltype(au::meters(1.) / au::seconds(1.))>,
-                        std::tuple<decltype(au::newtons(1.))>>;
+  using au::symbols::m;
+  using au::symbols::s;
+  using au::symbols::N;
 
-  static_assert(std::same_as<matrix::element<0>,
-                             decltype(au::meters(1.) * au::newtons(1.))>);
-  static_assert(std::same_as<matrix::element<1>,
-                             decltype(au::meters(1.) * au::newtons(1.) /
-                                      au::seconds(1.))>);
+  using matrix =
+      matrix<double, std::tuple<decltype(1. * m), decltype(1. * m / s)>,
+             std::tuple<decltype(1. * N)>>;
+
+  static_assert(std::same_as<matrix::element<0>, decltype(1. * m * N)>);
+  static_assert(std::same_as<matrix::element<1>, decltype(1. * m * N / s)>);
 
   return 0;
 }()};

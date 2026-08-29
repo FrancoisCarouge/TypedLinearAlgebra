@@ -44,10 +44,12 @@ namespace {
 //! @test Verifies the magnitude, the Euclidean L2 norm, of a column vector
 //! of quantities.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::N;
+
   using force = au::QuantityD<au::Newtons>;
 
-  const column_vector<representation, force, force, force> v3{
-      au::newtons(2.), au::newtons(3.), au::newtons(6.)};
+  const column_vector<representation, force, force, force> v3{2. * N, 3. * N,
+                                                              6. * N};
 
   assert(std::format("{}", magnitude(v3)) == "7 N");
 

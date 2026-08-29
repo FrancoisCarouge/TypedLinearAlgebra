@@ -44,6 +44,10 @@ using representation = double;
 namespace {
 //! @test Verifies the column by row outer product matrix product algorithm.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
+  constexpr auto m2{au::squared(m)};
+
   using length = au::QuantityD<au::Meters>;
 
   double storage_a[]{0., 0.};
@@ -59,17 +63,17 @@ namespace {
   matrix<representation, std::tuple<length, length>, std::tuple<length, length>>
       r{span_r};
 
-  a.at<0>(au::meters(1.));
-  a.at<1>(au::meters(2.));
-  b.at<0>(au::meters(3.));
-  b.at<1>(au::meters(4.));
+  a.at<0>(1. * m);
+  a.at<1>(2. * m);
+  b.at<0>(3. * m);
+  b.at<1>(4. * m);
 
   matrix_product(a, b, r);
 
-  assert((r.at<0, 0>() == au::squared(au::meters)(3.)));
-  assert((r.at<0, 1>() == au::squared(au::meters)(4.)));
-  assert((r.at<1, 0>() == au::squared(au::meters)(6.)));
-  assert((r.at<1, 1>() == au::squared(au::meters)(8.)));
+  assert((r.at<0, 0>() == 3. * m2));
+  assert((r.at<0, 1>() == 4. * m2));
+  assert((r.at<1, 0>() == 6. * m2));
+  assert((r.at<1, 1>() == 8. * m2));
 
   return 0;
 }()};

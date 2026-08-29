@@ -37,7 +37,7 @@ FetchContent_Declare(
   nanobench
   GIT_REPOSITORY "https://github.com/martinus/nanobench.git"
   GIT_SHALLOW TRUE
-  FIND_PACKAGE_ARGS NAMES nanobench)
+  SYSTEM FIND_PACKAGE_ARGS NAMES nanobench)
 FetchContent_MakeAvailable(nanobench)
 
 target_link_libraries(nanobench PRIVATE typed_linear_algebra_options)
@@ -47,7 +47,7 @@ if(BUILD_BENCHMARKING)
     matplotplusplus
     GIT_REPOSITORY "https://github.com/alandefreitas/matplotplusplus.git"
     GIT_SHALLOW TRUE
-    FIND_PACKAGE_ARGS NAMES matplot)
+    SYSTEM FIND_PACKAGE_ARGS NAMES matplot)
   FetchContent_MakeAvailable(matplotplusplus)
 
   set(DEPENDENCIES "")

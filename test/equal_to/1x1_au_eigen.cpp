@@ -42,18 +42,20 @@ namespace {
 //! @test Verifies the equal to algorithm for a singleton matrix of
 //! non-trivial types.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
   using length = au::QuantityD<au::Meters>;
 
-  const row_vector<representation, length> a{au::meters(2.)};
-  const row_vector<representation, length> b{au::meters(2.)};
-  const row_vector<representation, length> c{au::meters(3.)};
+  const row_vector<representation, length> a{2. * m};
+  const row_vector<representation, length> b{2. * m};
+  const row_vector<representation, length> c{3. * m};
 
   assert(a == b);
   assert(a != c);
-  assert(au::meters(2.) == a);
-  assert(a == au::meters(2.));
-  assert(au::meters(3.) != a);
-  assert(a != au::meters(3.));
+  assert(2. * m == a);
+  assert(a == 2. * m);
+  assert(3. * m != a);
+  assert(a != 3. * m);
 
   return 0;
 }()};

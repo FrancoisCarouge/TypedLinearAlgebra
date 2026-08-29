@@ -41,11 +41,14 @@ namespace {
 //! @test Verifies a rank two matrix element cannot be accessed with a
 //! single, linearized, index, as if it were a rank one matrix.
 [[maybe_unused]] const auto test{[] {
-  using matrix = matrix<double,
-                        std::tuple<decltype(au::meters(1.)),
-                                   decltype(au::meters(1.) / au::seconds(1.))>,
-                        std::tuple<decltype(au::newtons(1.)),
-                                   decltype(au::inverse(au::amperes)(1.))>>;
+  using au::symbols::m;
+  using au::symbols::s;
+  using au::symbols::N;
+  using au::symbols::A;
+
+  using matrix =
+      matrix<double, std::tuple<decltype(1. * m), decltype(1. * m / s)>,
+             std::tuple<decltype(1. * N), decltype(1. / A)>>;
 
   // Intended:
   // using quantity = matrix::element<0, 0>;

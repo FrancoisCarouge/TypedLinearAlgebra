@@ -45,23 +45,28 @@ using representation = double;
 namespace {
 //! @test Verifies the initializer lists constructor.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
+  constexpr auto m2{au::squared(m)};
+  constexpr auto m3{au::cubed(m)};
+
   using length = au::QuantityD<au::Meters>;
 
   double storage{0.};
   std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
   matrix<representation, std::tuple<length>, std::tuple<length>> r{span};
 
-  r = au::squared(au::meters)(42.);
+  r = 42. * m2;
 
-  assert(au::squared(au::meters)(42.) == r.at());
-  assert(au::squared(au::meters)(42.) == r[]);
-  assert(au::squared(au::meters)(42.) == r());
-  assert(au::squared(au::meters)(42.) == r);
+  assert(42. * m2 == r.at());
+  assert(42. * m2 == r[]);
+  assert(42. * m2 == r());
+  assert(42. * m2 == r);
 
   static_assert(
       not std::is_constructible_v<
           matrix<double, std::tuple<length>, std::tuple<length>>,
-          decltype(au::cubed(au::meters)(1.))>,
+          decltype(1. * m3)>,
       "The copy conversion constructor cannot accept non-convertible types.");
 
   return 0;

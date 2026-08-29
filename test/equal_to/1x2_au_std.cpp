@@ -46,21 +46,19 @@ namespace {
 //! the algorithm must compare the strongly typed elements, not the
 //! underlying storage.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::s;
+
+  constexpr auto s2{au::squared(s)};
+
   double storage_a[]{9., 10.};
   double storage_b[]{9., 10.};
   double storage_c[]{9., 11.};
   std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 1, 2>{}};
   std::mdspan span_b{&storage_b[0], std::extents<std::size_t, 1, 2>{}};
   std::mdspan span_c{&storage_c[0], std::extents<std::size_t, 1, 2>{}};
-  row_vector<double, decltype(au::seconds(1.)),
-             decltype(au::squared(au::seconds)(1.))>
-      a{span_a};
-  row_vector<double, decltype(au::seconds(1.)),
-             decltype(au::squared(au::seconds)(1.))>
-      b{span_b};
-  row_vector<double, decltype(au::seconds(1.)),
-             decltype(au::squared(au::seconds)(1.))>
-      c{span_c};
+  row_vector<double, decltype(1. * s), decltype(1. * s2)> a{span_a};
+  row_vector<double, decltype(1. * s), decltype(1. * s2)> b{span_b};
+  row_vector<double, decltype(1. * s), decltype(1. * s2)> c{span_c};
 
   assert(a == b);
   assert(a != c);

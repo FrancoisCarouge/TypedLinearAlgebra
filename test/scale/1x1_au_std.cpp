@@ -43,6 +43,8 @@ using representation = double;
 namespace {
 //! @test Verifies the singleton scale algorithm.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
   using length = au::QuantityD<au::Meters>;
 
   double storage{0.};
@@ -51,13 +53,13 @@ namespace {
 
   row_vector<representation, length> x{span};
 
-  x = au::meters(4.);
+  x = 4. * m;
   scale(2., x);
 
-  assert(au::meters(8.) == x.at());
-  assert(au::meters(8.) == x[]);
-  assert(au::meters(8.) == x());
-  assert(au::meters(8.) == x);
+  assert(8. * m == x.at());
+  assert(8. * m == x[]);
+  assert(8. * m == x());
+  assert(8. * m == x);
 
   return 0;
 }()};

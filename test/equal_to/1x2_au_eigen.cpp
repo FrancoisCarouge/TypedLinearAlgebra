@@ -43,17 +43,16 @@ namespace {
 //! @test Verifies the equal to algorithm for a row vector of heterogeneous,
 //! non-trivial types.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+  using au::symbols::s;
+
   using position = au::QuantityD<au::Meters>;
   using velocity = au::QuantityD<au::UnitQuotientT<au::Meters, au::Seconds>>;
 
-  const row_vector<representation, position, velocity> a{
-      au::meters(1.), au::meters(2.) / au::seconds(1.)};
-  const row_vector<representation, position, velocity> b{
-      au::meters(1.), au::meters(2.) / au::seconds(1.)};
-  const row_vector<representation, position, velocity> c{
-      au::meters(1.), au::meters(3.) / au::seconds(1.)};
-  const row_vector<representation, position, velocity> d{
-      au::meters(9.), au::meters(2.) / au::seconds(1.)};
+  const row_vector<representation, position, velocity> a{1. * m, 2. * m / s};
+  const row_vector<representation, position, velocity> b{1. * m, 2. * m / s};
+  const row_vector<representation, position, velocity> c{1. * m, 3. * m / s};
+  const row_vector<representation, position, velocity> d{9. * m, 2. * m / s};
 
   assert(a == b);
   assert(a != c);

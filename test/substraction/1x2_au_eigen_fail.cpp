@@ -43,30 +43,29 @@ using representation = double;
 namespace {
 //! @test Verifies the substraction operator with non-trivial types.
 [[maybe_unused]] const auto test{[] {
+  using au::symbols::m;
+  using au::symbols::s;
+
   using position = au::QuantityD<au::Meters>;
   using velocity = au::QuantityD<au::UnitQuotientT<au::Meters, au::Seconds>>;
 
-  row_vector<representation, position, velocity> a{
-      au::meters(1.), au::meters(2.) / au::seconds(1.)};
+  row_vector<representation, position, velocity> a{1. * m, 2. * m / s};
 
   // Intended:
-  // row_vector<representation, position, velocity> b{au::meters(3.),
-  //                                                   au::meters(1.) /
-  //                                                       au::seconds(1.)};
-  row_vector<representation, velocity, position> b{
-      au::meters(3.) / au::seconds(1.), au::meters(1.)};
+  // row_vector<representation, position, velocity> b{3. * m, 1. * m / s};
+  row_vector<representation, velocity, position> b{3. * m / s, 1. * m};
 
   row_vector<representation, position, velocity> r{a - b};
 
-  assert(au::meters(-2.) == r.at<0_i>());
-  assert(au::meters(-2.) == r.at<0>());
-  assert(au::meters(-2.) == r[0_i]);
-  assert(au::meters(-2.) == r(0_i));
+  assert(-2. * m == r.at<0_i>());
+  assert(-2. * m == r.at<0>());
+  assert(-2. * m == r[0_i]);
+  assert(-2. * m == r(0_i));
 
-  assert(au::meters(1.) / au::seconds(1.) == r.at<1_i>());
-  assert(au::meters(1.) / au::seconds(1.) == r.at<1>());
-  assert(au::meters(1.) / au::seconds(1.) == r[1_i]);
-  assert(au::meters(1.) / au::seconds(1.) == r(1_i));
+  assert(1. * m / s == r.at<1_i>());
+  assert(1. * m / s == r.at<1>());
+  assert(1. * m / s == r[1_i]);
+  assert(1. * m / s == r(1_i));
 
   return 0;
 }()};

@@ -41,17 +41,21 @@ using representation = double;
 namespace {
 //! @test Verifies the singleton by singleton matrix multiplication operator.
 [[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
+  constexpr auto m2{au::squared(m)};
+
   using length = au::QuantityD<au::Meters>;
   using area = au::QuantityD<au::UnitPowerT<au::Meters, 2>>;
 
-  const row_vector<representation, length> a{au::meters(2.)};
-  const row_vector<representation, length> b{au::meters(3.)};
+  const row_vector<representation, length> a{2. * m};
+  const row_vector<representation, length> b{3. * m};
   const row_vector<representation, area> r{a * b};
 
-  assert(au::squared(au::meters)(6.) == r.at());
-  assert(au::squared(au::meters)(6.) == r());
-  assert(au::squared(au::meters)(6.) == r[]);
-  assert(au::squared(au::meters)(6.) == r);
+  assert(6. * m2 == r.at());
+  assert(6. * m2 == r());
+  assert(6. * m2 == r[]);
+  assert(6. * m2 == r);
 
   return 0;
 }()};
