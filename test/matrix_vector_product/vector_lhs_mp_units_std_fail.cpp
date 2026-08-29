@@ -40,6 +40,8 @@ using representation = double;
 template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
+using mp_units::si::unit_symbols::m;
+
 namespace {
 //! @test Verifies a rank one vector is rejected in the matrix position of
 //! the matrix-vector product algorithm: there is no overload accepting a

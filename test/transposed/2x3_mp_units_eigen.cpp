@@ -41,6 +41,9 @@ using representation = double;
 template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::m2;
+
 namespace {
 //! @test Verifies the transposed algorithm for a rectangular matrix shape
 //! with non-trivial types.

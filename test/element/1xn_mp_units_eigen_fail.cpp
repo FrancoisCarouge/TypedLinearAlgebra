@@ -31,22 +31,23 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <cassert>
-#include <concepts>
-#include <tuple>
-
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the element type of the row vector, rank one, matrix.
-//!
-//! @details The count of indexes must match the rank of the matrix: one
-//! index for a row vector.
-[[maybe_unused]] const auto test{[] -> int {
+using mp_units::si::unit_symbols::A;
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::N;
+
+//! @test Verifies a row vector, rank one, matrix element cannot be accessed
+//! with two indexes, as if it were a rank two matrix.
+[[maybe_unused]] const auto test{[] {
   using matrix = matrix<double, std::tuple<decltype(1. * m)>,
                         std::tuple<decltype(1. * N), decltype(1. / A)>>;
 
-  static_assert(std::same_as<matrix::element<0>, decltype(1. * m * N)>);
-  static_assert(std::same_as<matrix::element<1>, decltype(1. * m / A)>);
+  // Intended:
+  // using quantity = matrix::element<0>;
+
+  using quantity = matrix::element<0, 0>;
+  [[maybe_unused]] quantity value;
 
   return 0;
 }()};

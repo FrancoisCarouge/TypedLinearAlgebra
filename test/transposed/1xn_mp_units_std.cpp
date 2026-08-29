@@ -39,6 +39,9 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
+using mp_units::si::unit_symbols::s;
+using mp_units::si::unit_symbols::s2;
+
 //! @test Verifies the transposed algorithm.
 [[maybe_unused]] const auto test{[] -> int {
   double storage[]{9., 10.};

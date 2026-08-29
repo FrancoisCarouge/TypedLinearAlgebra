@@ -41,6 +41,9 @@ namespace {
 // operator) so it competes with the library's magnitude free function.
 using mp_units::magnitude;
 
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::s;
+
 // Compile-time guarantee tests from:
 // mp-unit's test/runtime/linear_algebra_test.cpp
 using vector3d =

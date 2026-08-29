@@ -42,6 +42,8 @@ using representation = double;
 template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
+using mp_units::si::unit_symbols::m;
+
 namespace {
 //! @test Verifies the singleton by singleton matrix addition operator.
 [[maybe_unused]] const auto test{[] -> int {

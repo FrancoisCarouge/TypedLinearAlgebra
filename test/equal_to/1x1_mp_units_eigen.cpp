@@ -39,6 +39,8 @@ using representation = double;
 template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
+using mp_units::si::unit_symbols::m;
+
 namespace {
 //! @test Verifies the equal to algorithm for a singleton matrix of
 //! non-trivial types.

@@ -33,14 +33,16 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies a row vector, rank one, matrix element cannot be accessed
+using mp_units::si::unit_symbols::m;
+
+//! @test Verifies a singleton, rank zero, matrix element cannot be accessed
 //! with two indexes, as if it were a rank two matrix.
 [[maybe_unused]] const auto test{[] {
   using matrix = matrix<double, std::tuple<decltype(1. * m)>,
-                        std::tuple<decltype(1. * N), decltype(1. / A)>>;
+                        std::tuple<decltype(1. * m)>>;
 
   // Intended:
-  // using quantity = matrix::element<0>;
+  // using quantity = matrix::element<>;
 
   using quantity = matrix::element<0, 0>;
   [[maybe_unused]] quantity value;

@@ -33,6 +33,11 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
+using mp_units::si::unit_symbols::A;
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::N;
+using mp_units::si::unit_symbols::s;
+
 //! @test Verifies a rank two matrix element cannot be accessed with a
 //! single, linearized, index, as if it were a rank one matrix.
 [[maybe_unused]] const auto test{[] {

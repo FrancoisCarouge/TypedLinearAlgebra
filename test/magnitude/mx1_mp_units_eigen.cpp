@@ -40,6 +40,8 @@ using representation = double;
 template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
+using mp_units::si::unit_symbols::N;
+
 namespace {
 //! @test Verifies the magnitude, the Euclidean L2 norm, of a column vector
 //! of quantities.
