@@ -274,21 +274,23 @@ struct element_t<Type> {
 template <typename Type, std::size_t... Indexes>
 using element = element_t<Type, Indexes...>::type;
 
+template <typename Type> constexpr bool is_uniform_typed_matrix() {
+  using matrix = std::remove_cvref_t<Type>;
+  bool result{true};
+
+  for_constexpr<matrix::rows>([&result](auto i) {
+    for_constexpr<matrix::columns>([&result, &i](auto j) {
+      result &=
+          std::is_same_v<element_at<matrix, i, j>, element_at<matrix, 0, 0>>;
+    });
+  });
+
+  return result;
+}
+
 template <typename Type>
 concept uniform_typed_matrix =
-    same_as_typed_matrix<Type> and ([]() {
-      bool result{true};
-
-      for_constexpr<std::remove_cvref_t<Type>::rows>([&result](auto i) {
-        for_constexpr<std::remove_cvref_t<Type>::columns>([&result,
-                                                           &i](auto j) {
-          result &=
-              std::is_same_v<element_at<Type, i, j>, element_at<Type, 0, 0>>;
-        });
-      });
-
-      return result;
-    }());
+    same_as_typed_matrix<Type> and is_uniform_typed_matrix<Type>();
 
 template <typename Type>
 concept column_typed_matrix =
