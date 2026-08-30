@@ -38,6 +38,7 @@ add_subdirectory("assign")
 add_subdirectory("at")
 add_subdirectory("common_with")
 add_subdirectory("constructor")
+add_subdirectory("copy")
 add_subdirectory("division")
 add_subdirectory("element")
 add_subdirectory("equal_to")
@@ -48,12 +49,16 @@ add_subdirectory("matrix_vector_product")
 add_subdirectory("minus")
 add_subdirectory("mp_units")
 add_subdirectory("multiplication")
+add_subdirectory("nested")
 add_subdirectory("operator")
 add_subdirectory("scale")
 add_subdirectory("structured_bindings")
 add_subdirectory("substraction")
 add_subdirectory("transposed")
+add_subdirectory("underlying")
 
-pass("copy" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("nested" BACKENDS "nested_typed_eigen")
-pass("underlying" BACKENDS "eigexed" "nested_typed_eigen")
+# Refresh documentation/test_matrix.md after every `ctest` run.
+file(
+  WRITE "${CMAKE_BINARY_DIR}/CTestCustom.cmake"
+  "set(CTEST_CUSTOM_POST_TEST \"\\\"${CMAKE_COMMAND}\\\" -P \\\"${CMAKE_SOURCE_DIR}/documentation/test_matrix.cmake\\\"\")\n"
+)

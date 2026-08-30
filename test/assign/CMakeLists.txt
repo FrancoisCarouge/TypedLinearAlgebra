@@ -30,5 +30,5 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 pass("assign" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("mx1_is_assignable" BACKENDS "eigexed" "nested_typed_eigen")
-pass("1xn_is_assignable" BACKENDS "eigexed" "nested_typed_eigen")
+pass("5x1_is_assignable" BACKENDS "eigexed" "nested_typed_eigen")
+pass("1x5_is_assignable" BACKENDS "eigexed" "nested_typed_eigen")
