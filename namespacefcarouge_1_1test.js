@@ -250,6 +250,14 @@ var namespacefcarouge_1_1test =
       [ "matrix", "namespacefcarouge_1_1test_1_1anonymous__namespace_02copy_8cpp_03.xhtml#aba68c168d0ca36cdcd3a070539b5b332", null ],
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02copy_8cpp_03.xhtml#af49a60a643f58b41f88b53f6b5452d0e", null ]
     ] ],
+    [ "anonymous_namespace{distinct.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03.xhtml", [
+      [ "acceleration", "namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03.xhtml#a4245b29691faf31a43667a6599235449", null ],
+      [ "kilo_position", "namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03.xhtml#a7e6ee004b2fee1573cf9e48506be7454", null ],
+      [ "position", "namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03.xhtml#afa9ba3c01901e0a68518d94ef74a0644", null ],
+      [ "quantity", "namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03.xhtml#adc110757bf651fa0b8122561d98c80da", null ],
+      [ "velocity", "namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03.xhtml#a66b237f7d48dd773b0e6b3f9112ab7a8", null ],
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03.xhtml#aefaf7639b358aa2545ac1ed3b5347013", null ]
+    ] ],
     [ "anonymous_namespace{equality.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02equality_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02equality_8cpp_03.xhtml#aed14f7a75b88125c81303b1bb1a2c06f", null ]
     ] ],
@@ -263,6 +271,7 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{initializer_lists.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02initializer__lists_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02initializer__lists_8cpp_03.xhtml#afeda3bcc35b67e6f14a5a2250988baa2", null ]
     ] ],
+    [ "anonymous_namespace{interconvertible.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02interconvertible_8cpp_03.xhtml", null ],
     [ "anonymous_namespace{literal_2x2.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02literal__2x2_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02literal__2x2_8cpp_03.xhtml#a604888d298b70048d1b0a68a76b9251a", null ]
     ] ],

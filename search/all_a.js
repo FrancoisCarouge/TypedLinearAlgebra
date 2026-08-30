@@ -7,5 +7,6 @@ var searchData=
   ['deployment_20actions_4',['Continuous Integration &amp; Deployment Actions',['../index.xhtml#continuous-integration--deployment-actions',1,'']]],
   ['development_20build_20run_5',['Development Build &amp; Run',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run',1,'']]],
   ['dimensional_20analysis_6',['2 Type safety, Linear Algebra, and Dimensional Analysis',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis',1,'']]],
-  ['documentation_2edox_7',['documentation.dox',['../documentation_8dox.xhtml',1,'']]]
+  ['distinct_2ecpp_7',['distinct.cpp',['../distinct_8cpp.xhtml',1,'']]],
+  ['documentation_2edox_8',['documentation.dox',['../documentation_8dox.xhtml',1,'']]]
 ];

@@ -157,6 +157,9 @@ Concepts</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept of a typed matrix in which all element types are the same. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept of a typed matrix with no implicitly convertible elements. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1row__typed__matrix.xhtml">row_typed_matrix</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept of a row, one-dimension typed matrix, vector. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -324,7 +327,7 @@ template&lt;typename Representation , typename... Types&gt; </div>
 <b>Initial value:</b><div class="fragment"><div class="line"> </div>
 <div class="line">    <a class="code hl_typedef" href="#a96fea71ab24114a61950988fdac23f58">typed_column_vector</a>&lt;eigen::column_vector&lt;Representation, <span class="keyword">sizeof</span>...(Types)&gt;,</div>
 <div class="line">                        Types...&gt;</div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a96fea71ab24114a61950988fdac23f58"><div class="ttname"><a href="#a96fea71ab24114a61950988fdac23f58">fcarouge::typed_column_vector</a></div><div class="ttdeci">typed_matrix&lt; Matrix, std::tuple&lt; RowIndexes... &gt;, tla::identity_index &gt; typed_column_vector</div><div class="ttdoc">Strongly typed column vector.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00438">typed_linear_algebra.hpp:438</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a96fea71ab24114a61950988fdac23f58"><div class="ttname"><a href="#a96fea71ab24114a61950988fdac23f58">fcarouge::typed_column_vector</a></div><div class="ttdeci">typed_matrix&lt; Matrix, std::tuple&lt; RowIndexes... &gt;, tla::identity_index &gt; typed_column_vector</div><div class="ttdoc">Strongly typed column vector.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00454">typed_linear_algebra.hpp:454</a></div></div>
 </div><!-- fragment -->
 <p>Quantity column vector with Au and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations. </p>
 <p>Quantity column vector with nholthaus/units and std::linalg implementations.</p>
@@ -450,7 +453,7 @@ template&lt;typename Representation , typename... Types&gt; </div>
 <b>Initial value:</b><div class="fragment"><div class="line"> </div>
 <div class="line">    <a class="code hl_typedef" href="#a7558e7ccc03031fb7de678cf4977e1bf">typed_row_vector</a>&lt;eigen::row_vector&lt;Representation, <span class="keyword">sizeof</span>...(Types)&gt;,</div>
 <div class="line">                     Types...&gt;</div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a7558e7ccc03031fb7de678cf4977e1bf"><div class="ttname"><a href="#a7558e7ccc03031fb7de678cf4977e1bf">fcarouge::typed_row_vector</a></div><div class="ttdeci">typed_matrix&lt; Matrix, tla::identity_index, std::tuple&lt; ColumnIndexes... &gt; &gt; typed_row_vector</div><div class="ttdoc">Strongly typed row vector.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00433">typed_linear_algebra.hpp:433</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a7558e7ccc03031fb7de678cf4977e1bf"><div class="ttname"><a href="#a7558e7ccc03031fb7de678cf4977e1bf">fcarouge::typed_row_vector</a></div><div class="ttdeci">typed_matrix&lt; Matrix, tla::identity_index, std::tuple&lt; ColumnIndexes... &gt; &gt; typed_row_vector</div><div class="ttdoc">Strongly typed row vector.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00449">typed_linear_algebra.hpp:449</a></div></div>
 </div><!-- fragment -->
 <p>Quantity row vector with Au and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations. </p>
 <p>Quantity row vector with nholthaus/units and std::linalg implementations.</p>
@@ -483,7 +486,7 @@ template&lt;typename Matrix , typename... RowIndexes&gt; </div>
 </div><!-- fragment -->
 <p>Strongly typed column vector. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00438">438</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00454">454</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
@@ -505,7 +508,7 @@ template&lt;typename Matrix , typename... ColumnIndexes&gt; </div>
 </div><!-- fragment -->
 <p>Strongly typed row vector. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00433">433</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00449">449</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
@@ -1487,8 +1490,8 @@ template&lt;typename To , typename From &gt; </div>
 <p>Matrix element and storage conversion CPO. </p>
 <p>Customization point object (CPO) for the element caster function objects which allows the end-user to specialize conversion of their element types to/from the storage underlying types. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00460">460</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  460</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00476">476</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  476</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>

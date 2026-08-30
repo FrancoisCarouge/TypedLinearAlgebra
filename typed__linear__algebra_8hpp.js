@@ -4,6 +4,7 @@ var typed__linear__algebra_8hpp =
     [ "fcarouge::element_caster< To, From >", "structfcarouge_1_1element__caster.xhtml", "structfcarouge_1_1element__caster" ],
     [ "fcarouge::same_as_typed_matrix", "conceptfcarouge_1_1same__as__typed__matrix.xhtml", null ],
     [ "fcarouge::uniform_typed_matrix", "conceptfcarouge_1_1uniform__typed__matrix.xhtml", null ],
+    [ "fcarouge::distinct_typed_matrix", "conceptfcarouge_1_1distinct__typed__matrix.xhtml", null ],
     [ "fcarouge::row_typed_matrix", "conceptfcarouge_1_1row__typed__matrix.xhtml", null ],
     [ "fcarouge::column_typed_matrix", "conceptfcarouge_1_1column__typed__matrix.xhtml", null ],
     [ "fcarouge::rank_typed_matrix", "conceptfcarouge_1_1rank__typed__matrix.xhtml", null ],

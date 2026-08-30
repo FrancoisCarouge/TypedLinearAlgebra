@@ -9,6 +9,7 @@ var utility_8hpp =
     [ "underlying_t", "utility_8hpp.xhtml#a72e4ccaf08999b259f656412682b37dd", null ],
     [ "for_constexpr", "utility_8hpp.xhtml#abcda1ee8b10a813ac3a16d25343603c7", null ],
     [ "for_constexpr_detail", "utility_8hpp.xhtml#aab4670c6313954d8840239709b688878", null ],
+    [ "is_distinct_typed_matrix", "utility_8hpp.xhtml#a7fc60fa6498a4604ca8403df906c4d64", null ],
     [ "is_uniform_typed_matrix", "utility_8hpp.xhtml#aad13864d0883c126712b5ae65c15cb39", null ],
     [ "parse_digits", "utility_8hpp.xhtml#abbba9c02ba0de394e79a3aa4866c0bd1", null ],
     [ "rank", "utility_8hpp.xhtml#aded6eca464a23970fc0a04a24a164209", null ]
