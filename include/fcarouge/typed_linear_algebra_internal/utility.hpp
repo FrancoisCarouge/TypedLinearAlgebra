@@ -317,7 +317,6 @@ template <typename Type, std::size_t Size> struct tupler {
   template <std::size_t... Indexes>
   struct helper<std::index_sequence<Indexes...>> {
     template <std::size_t> using wrap = Type;
-
     using type = std::tuple<wrap<Indexes>...>;
   };
 
