@@ -31,7 +31,7 @@ For more information, please refer to <https://unlicense.org> ]]
 
 pass("1x1_const" BACKENDS "eigen" "eigexed")
 pass("1x1" BACKENDS "eigen" "eigexed")
-pass("1xn_const" BACKENDS "eigen" "eigexed")
-pass("1xn" BACKENDS "eigen" "eigexed")
-pass("mx1_const" BACKENDS "eigen" "eigexed")
-pass("mx1" BACKENDS "eigen" "eigexed")
+pass("1x3_const" BACKENDS "eigen" "eigexed")
+pass("1x3" BACKENDS "eigen" "eigexed")
+pass("3x1_const" BACKENDS "eigen" "eigexed")
+pass("3x1" BACKENDS "eigen" "eigexed")
