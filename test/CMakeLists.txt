@@ -56,9 +56,3 @@ add_subdirectory("structured_bindings")
 add_subdirectory("substraction")
 add_subdirectory("transposed")
 add_subdirectory("underlying")
-
-# Refresh documentation/test_matrix.md after every `ctest` run.
-file(
-  WRITE "${CMAKE_BINARY_DIR}/CTestCustom.cmake"
-  "set(CTEST_CUSTOM_POST_TEST \"\\\"${CMAKE_COMMAND}\\\" -P \\\"${CMAKE_SOURCE_DIR}/documentation/test_matrix.cmake\\\"\")\n"
-)
