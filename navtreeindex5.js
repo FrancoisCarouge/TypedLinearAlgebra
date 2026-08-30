@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"rxc__au__std_8cpp.xhtml":[20,0,7,10,6],
 "rxc__au__std_8cpp.xhtml#a53948b7837f659c0ad7c7d2b090b5edf":[20,0,7,10,6,0],
 "rxc__au__std_8cpp_source.xhtml":[20,0,7,10,6],
 "rxc__mp__units__std_8cpp.xhtml":[20,0,7,10,7],
@@ -248,6 +249,5 @@ var NAVTREEINDEX5 =
 "typed__linear__algebra_8hpp.xhtml#a851f07d816a2f625ad6deeebdf91576e":[20,0,3,0,1,34],
 "typed__linear__algebra_8hpp.xhtml#a9343adf455a88982fd1efabe086673b7":[20,0,3,0,1,22],
 "typed__linear__algebra_8hpp.xhtml#a96bdab646ac7be1505482cf553b9650b":[20,0,3,0,1,17],
-"typed__linear__algebra_8hpp.xhtml#a96fea71ab24114a61950988fdac23f58":[20,0,3,0,1,11],
-"typed__linear__algebra_8hpp.xhtml#aa6f7f6a8d1b65520e70b3e1330e880d2":[20,0,3,0,1,46]
+"typed__linear__algebra_8hpp.xhtml#a96fea71ab24114a61950988fdac23f58":[20,0,3,0,1,11]
 };

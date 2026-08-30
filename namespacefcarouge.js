@@ -18,6 +18,7 @@ var namespacefcarouge =
       [ "underlying_t", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a72e4ccaf08999b259f656412682b37dd", null ],
       [ "for_constexpr", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#abcda1ee8b10a813ac3a16d25343603c7", null ],
       [ "for_constexpr_detail", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aab4670c6313954d8840239709b688878", null ],
+      [ "is_uniform_typed_matrix", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aad13864d0883c126712b5ae65c15cb39", null ],
       [ "parse_digits", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#abbba9c02ba0de394e79a3aa4866c0bd1", null ],
       [ "rank", "namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#aded6eca464a23970fc0a04a24a164209", null ]
     ] ],
