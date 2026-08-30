@@ -325,7 +325,7 @@ public:
   constexpr explicit(false)
       typed_matrix(const other_tuple_like_vector<typed_matrix> auto &value);
 
-  //! @brief Access the singleton typed matrix element.
+  //! @brief Read the singleton, one-element typed matrix element.
   //!
   //! @details Applicable to singleton matrix: one element. Returns the unique
   //! element of the typed matrix.
@@ -334,7 +334,7 @@ public:
   [[nodiscard]] constexpr explicit operator element<>(this auto &&self)
     requires rank_typed_matrix<typed_matrix, 0>;
 
-  //! @brief Access the specified element.
+  //! @brief Read the specified element.
   //!
   //! @details Returns a strongly typed element at the specified location. A
   //! reference is returned for non-const calls. Bound checking is performed for
@@ -354,7 +354,7 @@ public:
     requires(sizeof...(Indexes) == rank) and
             ((index<Indexes> && ...) or uniform_typed_matrix<typed_matrix>);
 
-  //! @brief Access the specified element.
+  //! @brief Read the specified element.
   //!
   //! @details Returns a strongly typed element at the specified location. A
   //! reference is returned for non-const calls. Bound checking is performed for
