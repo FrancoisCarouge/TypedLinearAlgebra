@@ -69,6 +69,22 @@ concept same_as_typed_matrix = tla::same_as_typed_matrix<Type>;
 template <typename Type>
 concept uniform_typed_matrix = tla::uniform_typed_matrix<Type>;
 
+//! @brief Concept of a typed matrix with no implicitly convertible elements.
+//!
+//! @details No element type of the matrix is implicitly convertible to another
+//! element type of the matrix at a different position. Each element is
+//! explicitly, distinctly strongly typed, so the traditional untyped access
+//! operators cannot silently mix positions.
+//!
+//! @note This is not the negation of `uniform_typed_matrix`. A non-uniform
+//! matrix may still have some element types convertible to one another; a
+//! distinct matrix forbids any such conversion. Distinctness is therefore a
+//! stronger requirement than non-uniformity, and the two concepts are
+//! independent: a singleton matrix is both, a matrix of two convertible but
+//! different types is neither.
+template <typename Type>
+concept distinct_typed_matrix = tla::distinct_typed_matrix<Type>;
+
 //! @brief Concept of a row, one-dimension typed matrix, vector.
 template <typename Type>
 concept row_typed_matrix = tla::row_typed_matrix<Type>;
