@@ -1,29 +1,6 @@
 var searchData=
 [
-  ['main_2ecpp_0',['main.cpp',['../main_8cpp.xhtml',1,'']]],
-  ['matrix_5frhs_5fau_5fstd_5ffail_2ecpp_1',['matrix_rhs_au_std_fail.cpp',['../matrix__rhs__au__std__fail_8cpp.xhtml',1,'']]],
-  ['matrix_5frhs_5fmp_5funits_5fstd_5ffail_2ecpp_2',['matrix_rhs_mp_units_std_fail.cpp',['../matrix__rhs__mp__units__std__fail_8cpp.xhtml',1,'']]],
-  ['mdspan_5fproduct_2ecpp_3',['mdspan_product.cpp',['../mdspan__product_8cpp.xhtml',1,'']]],
-  ['mdspan_5ftuple_5fproduct_2ecpp_4',['mdspan_tuple_product.cpp',['../mdspan__tuple__product_8cpp.xhtml',1,'']]],
-  ['mp_5funits_2ehpp_5',['mp_units.hpp',['../mp__units_8hpp.xhtml',1,'']]],
-  ['mp_5funits_5feigen_2ecpp_6',['mp_units_eigen.cpp',['../mp__units__eigen_8cpp.xhtml',1,'']]],
-  ['mp_5funits_5feigen_2emd_7',['mp_units_eigen.md',['../mp__units__eigen_8md.xhtml',1,'']]],
-  ['mp_5funits_5fstd_2ecpp_8',['mp_units_std.cpp',['../mp__units__std_8cpp.xhtml',1,'']]],
-  ['mx1_2ecpp_9',['mx1.cpp',['../at_2mx1_8cpp.xhtml',1,'(Global Namespace)'],['../format_2mx1_8cpp.xhtml',1,'(Global Namespace)'],['../structured__bindings_2mx1_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['mx1_5fau_5feigen_2ecpp_10',['mx1_au_eigen.cpp',['../element_2mx1__au__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../magnitude_2mx1__au__eigen_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['mx1_5fau_5feigen_5ffail_2ecpp_11',['mx1_au_eigen_fail.cpp',['../mx1__au__eigen__fail_8cpp.xhtml',1,'']]],
-  ['mx1_5fchrono_5feigen_2ecpp_12',['mx1_chrono_eigen.cpp',['../mx1__chrono__eigen_8cpp.xhtml',1,'']]],
-  ['mx1_5fconst_2ecpp_13',['mx1_const.cpp',['../at_2mx1__const_8cpp.xhtml',1,'(Global Namespace)'],['../structured__bindings_2mx1__const_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['mx1_5feigen_2ecpp_14',['mx1_eigen.cpp',['../magnitude_2mx1__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../minus_2mx1__eigen_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['mx1_5fis_5fassignable_2ecpp_15',['mx1_is_assignable.cpp',['../mx1__is__assignable_8cpp.xhtml',1,'']]],
-  ['mx1_5fmp_5funits_5feigen_2ecpp_16',['mx1_mp_units_eigen.cpp',['../element_2mx1__mp__units__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../magnitude_2mx1__mp__units__eigen_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['mx1_5fmp_5funits_5feigen_5ffail_2ecpp_17',['mx1_mp_units_eigen_fail.cpp',['../mx1__mp__units__eigen__fail_8cpp.xhtml',1,'']]],
-  ['mxn_2ecpp_18',['mxn.cpp',['../at_2mxn_8cpp.xhtml',1,'(Global Namespace)'],['../format_2mxn_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['mxn_5fau_5feigen_2ecpp_19',['mxn_au_eigen.cpp',['../mxn__au__eigen_8cpp.xhtml',1,'']]],
-  ['mxn_5fau_5feigen_5ffail_2ecpp_20',['mxn_au_eigen_fail.cpp',['../mxn__au__eigen__fail_8cpp.xhtml',1,'']]],
-  ['mxn_5fconst_2ecpp_21',['mxn_const.cpp',['../mxn__const_8cpp.xhtml',1,'']]],
-  ['mxn_5feigen_2ecpp_22',['mxn_eigen.cpp',['../mxn__eigen_8cpp.xhtml',1,'']]],
-  ['mxn_5ffail_2ecpp_23',['mxn_fail.cpp',['../mxn__fail_8cpp.xhtml',1,'']]],
-  ['mxn_5fmp_5funits_5feigen_2ecpp_24',['mxn_mp_units_eigen.cpp',['../mxn__mp__units__eigen_8cpp.xhtml',1,'']]],
-  ['mxn_5fmp_5funits_5feigen_5ffail_2ecpp_25',['mxn_mp_units_eigen_fail.cpp',['../mxn__mp__units__eigen__fail_8cpp.xhtml',1,'']]]
+  ['license_2etxt_0',['LICENSE.txt',['../_l_i_c_e_n_s_e_8txt.xhtml',1,'']]],
+  ['linalg_2ehpp_1',['linalg.hpp',['../au__eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../au__std_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../chrono__eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../chrono__std_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../eigexed_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../mp__units__eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../mp__units__std_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../nested__typed__eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../nholthaus__eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../nholthaus__std_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)']]],
+  ['literal_5f2x2_2ecpp_2',['literal_2x2.cpp',['../literal__2x2_8cpp.xhtml',1,'']]]
 ];

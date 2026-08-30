@@ -5,6 +5,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "at", "dir_5dcc120ce88763492754ea9f01fb177a.xhtml", "dir_5dcc120ce88763492754ea9f01fb177a" ],
     [ "common_with", "dir_df5deb2192b04082d8407ec09bc6e3ec.xhtml", "dir_df5deb2192b04082d8407ec09bc6e3ec" ],
     [ "constructor", "dir_38eb1dc5b1c36523e6cf628b0c17f528.xhtml", "dir_38eb1dc5b1c36523e6cf628b0c17f528" ],
+    [ "copy", "dir_b66f3f6eb7a21060cc06c8fbad46effd.xhtml", "dir_b66f3f6eb7a21060cc06c8fbad46effd" ],
     [ "division", "dir_86f6ebe56cc983d5021582182b7bf87c.xhtml", "dir_86f6ebe56cc983d5021582182b7bf87c" ],
     [ "element", "dir_974b212e1e2ae05a6e4111a20679b9dc.xhtml", "dir_974b212e1e2ae05a6e4111a20679b9dc" ],
     [ "equal_to", "dir_6071415610cde49b13e346d9225dcd79.xhtml", "dir_6071415610cde49b13e346d9225dcd79" ],
@@ -15,12 +16,11 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "minus", "dir_c2689131500af98a26694fed65bbca21.xhtml", "dir_c2689131500af98a26694fed65bbca21" ],
     [ "mp_units", "dir_f408fcf1297947454c84a3486bce03f6.xhtml", "dir_f408fcf1297947454c84a3486bce03f6" ],
     [ "multiplication", "dir_ee1764ef7e89f8bab90de731673224c8.xhtml", "dir_ee1764ef7e89f8bab90de731673224c8" ],
+    [ "nested", "dir_76b960905236d2ae15f7ae4b075f2e42.xhtml", "dir_76b960905236d2ae15f7ae4b075f2e42" ],
     [ "operator", "dir_ad90eb67f5c466639c693c5233f213d0.xhtml", "dir_ad90eb67f5c466639c693c5233f213d0" ],
     [ "scale", "dir_c79a22093641195bc122213b64dc8191.xhtml", "dir_c79a22093641195bc122213b64dc8191" ],
     [ "structured_bindings", "dir_bb833da45de611d79770d70c20939231.xhtml", "dir_bb833da45de611d79770d70c20939231" ],
     [ "substraction", "dir_f423392bc0209ba027827651fa50293e.xhtml", "dir_f423392bc0209ba027827651fa50293e" ],
     [ "transposed", "dir_1a6ddf7e0d22624ef70b722ca0f63316.xhtml", "dir_1a6ddf7e0d22624ef70b722ca0f63316" ],
-    [ "copy.cpp", "copy_8cpp.xhtml", null ],
-    [ "nested.cpp", "nested_8cpp.xhtml", "nested_8cpp" ],
-    [ "underlying.cpp", "underlying_8cpp.xhtml", "underlying_8cpp" ]
+    [ "underlying", "dir_5808b4da18f227130090ece718c34e46.xhtml", "dir_5808b4da18f227130090ece718c34e46" ]
 ];

@@ -1,10 +1,15 @@
 var searchData=
 [
-  ['typed_5feigen_5fproduct_2ecpp_0',['typed_eigen_product.cpp',['../typed__eigen__product_8cpp.xhtml',1,'']]],
-  ['typed_5flinear_5falgebra_2ehpp_1',['typed_linear_algebra.hpp',['../typed__linear__algebra_8hpp.xhtml',1,'']]],
-  ['typed_5flinear_5falgebra_2emd_2',['typed_linear_algebra.md',['../typed__linear__algebra_8md.xhtml',1,'']]],
-  ['typed_5flinear_5falgebra_5fforward_2ehpp_3',['typed_linear_algebra_forward.hpp',['../typed__linear__algebra__forward_8hpp.xhtml',1,'']]],
-  ['typed_5fmdspan_5fproduct_2ecpp_4',['typed_mdspan_product.cpp',['../typed__mdspan__product_8cpp.xhtml',1,'']]],
-  ['typed_5fmdspan_5ftupled_5fproduct_2ecpp_5',['typed_mdspan_tupled_product.cpp',['../typed__mdspan__tupled__product_8cpp.xhtml',1,'']]],
-  ['typed_5fvector_5fas_5fquantity_2ecpp_6',['typed_vector_as_quantity.cpp',['../typed__vector__as__quantity_8cpp.xhtml',1,'']]]
+  ['scalar_2ecpp_0',['scalar.cpp',['../scalar_8cpp.xhtml',1,'']]],
+  ['scalar_5fau_5feigen_2ecpp_1',['scalar_au_eigen.cpp',['../scalar__au__eigen_8cpp.xhtml',1,'']]],
+  ['scalar_5fmp_5funits_5feigen_2ecpp_2',['scalar_mp_units_eigen.cpp',['../scalar__mp__units__eigen_8cpp.xhtml',1,'']]],
+  ['security_2emd_3',['SECURITY.md',['../_s_e_c_u_r_i_t_y_8md.xhtml',1,'']]],
+  ['subscript_5f1x1_2ecpp_4',['subscript_1x1.cpp',['../subscript__1x1_8cpp.xhtml',1,'']]],
+  ['subscript_5f1x1_5fconst_2ecpp_5',['subscript_1x1_const.cpp',['../subscript__1x1__const_8cpp.xhtml',1,'']]],
+  ['subscript_5f1x3_2ecpp_6',['subscript_1x3.cpp',['../subscript__1x3_8cpp.xhtml',1,'']]],
+  ['subscript_5f1x3_5fconst_2ecpp_7',['subscript_1x3_const.cpp',['../subscript__1x3__const_8cpp.xhtml',1,'']]],
+  ['subscript_5f3x1_2ecpp_8',['subscript_3x1.cpp',['../subscript__3x1_8cpp.xhtml',1,'']]],
+  ['subscript_5f3x1_5fconst_2ecpp_9',['subscript_3x1_const.cpp',['../subscript__3x1__const_8cpp.xhtml',1,'']]],
+  ['subscript_5f3x3_2ecpp_10',['subscript_3x3.cpp',['../subscript__3x3_8cpp.xhtml',1,'']]],
+  ['subscript_5f3x3_5fconst_2ecpp_11',['subscript_3x3_const.cpp',['../subscript__3x3__const_8cpp.xhtml',1,'']]]
 ];
