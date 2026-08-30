@@ -5,10 +5,10 @@
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
       http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/eigen__product_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mdspan__product_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mdspan__product_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/eigen__product_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mdspan__tuple__product_8cpp_source.xhtml</loc>
@@ -41,6 +41,12 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/au__std_8cpp_source.xhtml</loc>
   </url>
   <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/chrono__eigen_8cpp_source.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/chrono__std_8cpp_source.xhtml</loc>
+  </url>
+  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mp__units__eigen_8cpp_source.xhtml</loc>
   </url>
   <url>
@@ -53,13 +59,19 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/nholthaus__std_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/au__eigen_2fcarouge_2linalg_8hpp_source.xhtml</loc>
-  </url>
-  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/au_8hpp_source.xhtml</loc>
   </url>
   <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/au__eigen_2fcarouge_2linalg_8hpp_source.xhtml</loc>
+  </url>
+  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/au__std_2fcarouge_2linalg_8hpp_source.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/chrono__eigen_2fcarouge_2linalg_8hpp_source.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/chrono__std_2fcarouge_2linalg_8hpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/eigen_2fcarouge_2linalg_8hpp_source.xhtml</loc>
@@ -95,6 +107,9 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/nholthaus_8hpp_source.xhtml</loc>
   </url>
   <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1x1__chrono__eigen__fail_8cpp_source.xhtml</loc>
+  </url>
+  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1xn__is__assignable_8cpp_source.xhtml</loc>
   </url>
   <url>
@@ -104,13 +119,13 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mx1__is__assignable_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mxn__const_8cpp_source.xhtml</loc>
-  </url>
-  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/3x1__eigen_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/at_21x1_8cpp_source.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mxn__const_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/constructor_21x1_8cpp_source.xhtml</loc>
@@ -119,10 +134,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/format_21x1_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structured__bindings_21x1_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/multiplication_21x1_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/multiplication_21x1_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structured__bindings_21x1_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1x1__array_8cpp_source.xhtml</loc>
@@ -140,19 +155,22 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/multiplication_21x1__au__std_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/scale_21x1__au__std_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/transposed_21x1__au__std_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/transposed_21x1__au__std_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1x1__chrono__eigen_8cpp_source.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/scale_21x1__au__std_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/addition_21x1__mp__units__std_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_21x1__mp__units__std_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/constructor_21x1__mp__units__std_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/constructor_21x1__mp__units__std_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_21x1__mp__units__std_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/matrix__product_21x1__mp__units__std_8cpp_source.xhtml</loc>
@@ -188,10 +206,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/copy_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/nx1_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/initializer__lists_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/initializer__lists_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/nx1_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/nx1__array_8cpp_source.xhtml</loc>
@@ -212,10 +230,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_21x1__au__eigen_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/multiplication_21x1__au__eigen_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/minus_21x1__au__eigen_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/minus_21x1__au__eigen_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/multiplication_21x1__au__eigen_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/substraction_21x1__au__eigen_8cpp_source.xhtml</loc>
@@ -245,16 +263,19 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/substraction_21x1__mp__units__eigen_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/2x1__au__eigen_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/2x1__mp__units__eigen_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/2x1__mp__units__eigen_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/2x1__au__eigen_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1xn__au__eigen_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1xn__au__eigen__fail_8cpp_source.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1xn__chrono__eigen_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1xn__mp__units__eigen_8cpp_source.xhtml</loc>
@@ -275,10 +296,13 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mxn__au__eigen__fail_8cpp_source.xhtml</loc>
   </url>
   <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mxn__mp__units__eigen_8cpp_source.xhtml</loc>
+  </url>
+  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mxn__mp__units__eigen__fail_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mxn__mp__units__eigen_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1x1__chrono__std_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1x1__nholthaus__eigen_8cpp_source.xhtml</loc>
@@ -287,13 +311,13 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1x1__nholthaus__eigen__fail_8cpp_source.xhtml</loc>
   </url>
   <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1x1__nholthaus__std_8cpp_source.xhtml</loc>
+  </url>
+  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1x2__2x1__eigexed__fail_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1x2__nholthaus__eigen_8cpp_source.xhtml</loc>
-  </url>
-  <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1x1__nholthaus__std_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/2x1__au__std_8cpp_source.xhtml</loc>
@@ -332,6 +356,9 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/magnitude_2mx1__au__eigen_8cpp_source.xhtml</loc>
   </url>
   <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mx1__chrono__eigen_8cpp_source.xhtml</loc>
+  </url>
+  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/element_2mx1__mp__units__eigen_8cpp_source.xhtml</loc>
   </url>
   <url>
@@ -344,10 +371,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/cxr__au__std_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/rxc__au__std_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/cxr__mp__units__std_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/cxr__mp__units__std_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/rxc__au__std_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/rxc__mp__units__std_8cpp_source.xhtml</loc>
@@ -422,10 +449,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mxn__eigen_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/representation_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/typed__vector__as__quantity_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/typed__vector__as__quantity_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/representation_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/scalar_8cpp_source.xhtml</loc>
@@ -449,10 +476,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/nested_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/call__1x1__const_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/call__1x1_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/call__1x1_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/call__1x1__const_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/call__1xn_8cpp_source.xhtml</loc>
@@ -524,6 +551,9 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/column__au__std_8cpp_source.xhtml</loc>
   </url>
   <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/column__chrono__std_8cpp_source.xhtml</loc>
+  </url>
+  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/column__mp__units__std_8cpp_source.xhtml</loc>
   </url>
   <url>
@@ -548,10 +578,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structured__bindings_2mx1_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/at_2mx1__const_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structured__bindings_2mx1__const_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structured__bindings_2mx1__const_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/at_2mx1__const_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/addition_21x1__au__eigen__fail_8cpp_source.xhtml</loc>
@@ -560,10 +590,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/element_21x1__au__eigen__fail_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/substraction_21x1__au__eigen__fail_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_21x1__au__eigen__fail_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_21x1__au__eigen__fail_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/substraction_21x1__au__eigen__fail_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/addition_21x1__mp__units__eigen__fail_8cpp_source.xhtml</loc>
@@ -572,10 +602,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/element_21x1__mp__units__eigen__fail_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/substraction_21x1__mp__units__eigen__fail_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_21x1__mp__units__eigen__fail_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_21x1__mp__units__eigen__fail_8cpp_source.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/substraction_21x1__mp__units__eigen__fail_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/addition_21x2__au__eigen_8cpp_source.xhtml</loc>
@@ -597,6 +627,15 @@
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/substraction_21x2__au__eigen__fail_8cpp_source.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/addition_21x2__chrono__eigen_8cpp_source.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_21x2__chrono__eigen_8cpp_source.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/substraction_21x2__chrono__eigen_8cpp_source.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/addition_21x2__mp__units__eigen_8cpp_source.xhtml</loc>
@@ -647,7 +686,7 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/underlying_8cpp_source.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mdspan__tuple__product_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/eigen__product_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mdspan__product_8cpp.xhtml</loc>
@@ -656,7 +695,7 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/plot_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/eigen__product_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mdspan__tuple__product_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/typed__eigen__product_8cpp.xhtml</loc>
@@ -695,13 +734,19 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/support_2au__std_2_c_make_lists_8txt.xhtml</loc>
   </url>
   <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/support_2chrono__eigen_2_c_make_lists_8txt.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/support_2chrono__std_2_c_make_lists_8txt.xhtml</loc>
+  </url>
+  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/support_2_c_make_lists_8txt.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/support_2eigexed_2_c_make_lists_8txt.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/support_2eigen_2_c_make_lists_8txt.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/support_2eigen_2_c_make_lists_8txt.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/support_2eigexed_2_c_make_lists_8txt.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/support_2kokkos_2_c_make_lists_8txt.xhtml</loc>
@@ -827,16 +872,22 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/benchmark_2_r_e_a_d_m_e_8md.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/_r_e_a_d_m_e_8md.xhtml</loc>
-  </url>
-  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/documentation_2html_2typed__linear__algebra_2_r_e_a_d_m_e_8md.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/au__eigen_8cpp.xhtml</loc>
   </url>
   <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/_r_e_a_d_m_e_8md.xhtml</loc>
+  </url>
+  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/au__std_8cpp.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/chrono__eigen_8cpp.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/chrono__std_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mp__units__eigen_8cpp.xhtml</loc>
@@ -861,6 +912,12 @@
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/au__std_2fcarouge_2linalg_8hpp.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/chrono__eigen_2fcarouge_2linalg_8hpp.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/chrono__std_2fcarouge_2linalg_8hpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/eigen_2fcarouge_2linalg_8hpp.xhtml</loc>
@@ -896,6 +953,9 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/nholthaus_8hpp.xhtml</loc>
   </url>
   <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1x1__chrono__eigen__fail_8cpp.xhtml</loc>
+  </url>
+  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1xn__is__assignable_8cpp.xhtml</loc>
   </url>
   <url>
@@ -929,22 +989,25 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1x1__array_8cpp.xhtml</loc>
   </url>
   <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/constructor_21x1__au__std_8cpp.xhtml</loc>
+  </url>
+  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_21x1__au__std_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/matrix__product_21x1__au__std_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/constructor_21x1__au__std_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/multiplication_21x1__au__std_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/multiplication_21x1__au__std_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/scale_21x1__au__std_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/transposed_21x1__au__std_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/scale_21x1__au__std_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1x1__chrono__eigen_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/addition_21x1__mp__units__std_8cpp.xhtml</loc>
@@ -956,10 +1019,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_21x1__mp__units__std_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/multiplication_21x1__mp__units__std_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/matrix__product_21x1__mp__units__std_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/matrix__product_21x1__mp__units__std_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/multiplication_21x1__mp__units__std_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/scale_21x1__mp__units__std_8cpp.xhtml</loc>
@@ -974,10 +1037,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/constructor_21xn_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structured__bindings_21xn_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/format_21xn_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/format_21xn_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structured__bindings_21xn_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1xn__array_8cpp.xhtml</loc>
@@ -1058,6 +1121,9 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1xn__au__eigen__fail_8cpp.xhtml</loc>
   </url>
   <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1xn__chrono__eigen_8cpp.xhtml</loc>
+  </url>
+  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1xn__mp__units__eigen_8cpp.xhtml</loc>
   </url>
   <url>
@@ -1079,10 +1145,13 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mxn__mp__units__eigen_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1x1__nholthaus__eigen_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mxn__mp__units__eigen__fail_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mxn__mp__units__eigen__fail_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1x1__chrono__std_8cpp.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1x1__nholthaus__eigen_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1x1__nholthaus__eigen__fail_8cpp.xhtml</loc>
@@ -1118,10 +1187,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/formattable_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/at_2mxn_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/format_2mxn_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/format_2mxn_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/at_2mxn_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1xn__eigen_8cpp.xhtml</loc>
@@ -1131,6 +1200,9 @@
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/magnitude_2mx1__au__eigen_8cpp.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/mx1__chrono__eigen_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/element_2mx1__mp__units__eigen_8cpp.xhtml</loc>
@@ -1241,10 +1313,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/sxc_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/sxs__au__eigen_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/sxs__mp__units__eigen_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/sxs__mp__units__eigen_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/sxs__au__eigen_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/nested_8cpp.xhtml</loc>
@@ -1301,10 +1373,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/subscript__mxn_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_21x2__au__std_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/subscript__mxn__const_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/subscript__mxn__const_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_21x2__au__std_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/scale_21x2__au__std_8cpp.xhtml</loc>
@@ -1323,6 +1395,9 @@
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/column__au__std_8cpp.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/column__chrono__std_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/column__mp__units__std_8cpp.xhtml</loc>
@@ -1352,10 +1427,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/at_2mx1__const_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structured__bindings_2mx1__const_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/addition_21x1__au__eigen__fail_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/addition_21x1__au__eigen__fail_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structured__bindings_2mx1__const_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/element_21x1__au__eigen__fail_8cpp.xhtml</loc>
@@ -1373,10 +1448,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/element_21x1__mp__units__eigen__fail_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/substraction_21x1__mp__units__eigen__fail_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_21x1__mp__units__eigen__fail_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_21x1__mp__units__eigen__fail_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/substraction_21x1__mp__units__eigen__fail_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/addition_21x2__au__eigen_8cpp.xhtml</loc>
@@ -1400,13 +1475,25 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/substraction_21x2__au__eigen__fail_8cpp.xhtml</loc>
   </url>
   <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/addition_21x2__chrono__eigen_8cpp.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_21x2__chrono__eigen_8cpp.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/substraction_21x2__chrono__eigen_8cpp.xhtml</loc>
+  </url>
+  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/addition_21x2__mp__units__eigen_8cpp.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_21x2__mp__units__eigen_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/magnitude_21x2__mp__units__eigen_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_21x2__mp__units__eigen_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/addition_21x2__mp__units__eigen__fail_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/substraction_21x2__mp__units__eigen_8cpp.xhtml</loc>
@@ -1415,13 +1502,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_21x2__mp__units__eigen__fail_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/addition_21x2__mp__units__eigen__fail_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1xn__au__std_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/substraction_21x2__mp__units__eigen__fail_8cpp.xhtml</loc>
-  </url>
-  <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1xn__au__std_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/1xn__mp__units__std_8cpp.xhtml</loc>
@@ -1430,10 +1514,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_22x3__au__eigen_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/transposed_22x3__au__eigen_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_22x3__mp__units__eigen_8cpp.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/equal__to_22x3__mp__units__eigen_8cpp.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/transposed_22x3__au__eigen_8cpp.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/transposed_22x3__mp__units__eigen_8cpp.xhtml</loc>
@@ -1496,10 +1580,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structfcarouge_1_1element__caster.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structfcarouge_1_1element__caster_3_01_to_00_01_magnitude_01_4.xhtml</loc>
@@ -1580,10 +1664,10 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1lookup.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1accessor.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1accessor.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1lookup.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1lookup_3b299f5c7aa92788bf7430e8496a9663f.xhtml</loc>
@@ -1604,13 +1688,13 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1lookup.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_15386429b33ff9e937e5c930e789c80a9.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1lookup.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1ae97feee4d9d2b5e16ed402494c6a4a3.xhtml</loc>
@@ -1646,6 +1730,12 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__std_8cpp_03.xhtml</loc>
   </url>
   <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__eigen_8cpp_03.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__std_8cpp_03.xhtml</loc>
+  </url>
+  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml</loc>
   </url>
   <url>
@@ -1674,6 +1764,15 @@
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__au__std_8cpp_03.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__chrono__eigen_8cpp_03.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__chrono__eigen__fail_8cpp_03.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__chrono__std_8cpp_03.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__const_8cpp_03.xhtml</loc>
@@ -1712,6 +1811,9 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__au__std_8cpp_03.xhtml</loc>
   </url>
   <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__chrono__eigen_8cpp_03.xhtml</loc>
+  </url>
+  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__eigen_8cpp_03.xhtml</loc>
   </url>
   <url>
@@ -1743,6 +1845,9 @@
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1test_1_1anonymous__namespace_021xn__au__std_8cpp_03.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1test_1_1anonymous__namespace_021xn__chrono__eigen_8cpp_03.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1test_1_1anonymous__namespace_021xn__const_8cpp_03.xhtml</loc>
@@ -1835,6 +1940,9 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1test_1_1anonymous__namespace_02column__au__std_8cpp_03.xhtml</loc>
   </url>
   <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1test_1_1anonymous__namespace_02column__chrono__std_8cpp_03.xhtml</loc>
+  </url>
+  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1test_1_1anonymous__namespace_02column__mp__units__std_8cpp_03.xhtml</loc>
   </url>
   <url>
@@ -1872,6 +1980,9 @@
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1test_1_1anonymous__namespace_02mx1__au__eigen__fail_8cpp_03.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1test_1_1anonymous__namespace_02mx1__chrono__eigen_8cpp_03.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacefcarouge_1_1test_1_1anonymous__namespace_02mx1__const_8cpp_03.xhtml</loc>
@@ -2003,13 +2114,13 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacemp__units.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structmp__units_1_1vector__components_3_01flight__velocity_01_4.xhtml</loc>
-  </url>
-  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structmp__units_1_1representation__canonical__type_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_88cb568bfd22172f87f75426ff9b1681.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structmp__units_1_1representation__underlying__type_3_01fcarouge_1_1typed__matrix_3_01_matrix_007bb3dc97a35e2d584c04497c33efbeb2.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structmp__units_1_1vector__components_3_01flight__velocity_01_4.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structmp__units_1_1representation__canonical__type_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_ed0b0ac74225dd063319ff916b55bb50.xhtml</loc>
@@ -2021,13 +2132,13 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml</loc>
   </url>
   <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structstd_1_1tuple__element_3_01_index_00_01mp__units_1_1quantity_3_01_reference_00_01_representation_01_4_01_4.xhtml</loc>
+  </url>
+  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structstd_1_1tuple__element_3_01_index_00_01_type_01_4.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structstd_1_1tuple__size_3_01mp__units_1_1quantity_3_01_reference_00_01_representation_01_4_01_4.xhtml</loc>
-  </url>
-  <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structstd_1_1tuple__element_3_01_index_00_01mp__units_1_1quantity_3_01_reference_00_01_representation_01_4_01_4.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/structstd_1_1tuple__size_3_01_type_01_4.xhtml</loc>
@@ -2066,6 +2177,12 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_44cec6e3ea30e076b9313c4641539d9f.xhtml</loc>
   </url>
   <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_7a3cf7ae7f125d2f20ef1f0e28de6407.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_4b298fe5fe1b5554f10820f4702d0deb.xhtml</loc>
+  </url>
+  <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_a5bdbfbbaa7895161d62825676df7980.xhtml</loc>
   </url>
   <url>
@@ -2100,6 +2217,12 @@
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_ff98015093e6fd48c08c0eb999642463.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_ddb789cf9d0828621626a65a88ffc779.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_335e051784b034ffe4bbf42b29986f38.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_7e92a10fa1b0fca219294b16abd4710c.xhtml</loc>
@@ -2219,109 +2342,121 @@
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_88e71472b01c1a5dbc11332210b0be79.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000017_000003.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000019_000003.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000017_000011.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000019_000013.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000017_000030.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000019_000034.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000018_000003.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000020_000003.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000018_000030.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000020_000034.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000006_000030.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000006_000034.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000019_000030.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000021_000013.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000020_000011.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000021_000034.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000020_000030.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000022_000034.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000015_000057.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000023_000034.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000021_000030.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000024_000013.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000022_000037.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000024_000034.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000022_000011.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000017_000061.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000022_000030.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000025_000034.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000023_000037.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000026_000041.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000023_000030.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000026_000013.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000024_000011.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000026_000034.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000024_000030.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000027_000041.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000025_000030.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000027_000034.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000026_000011.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000028_000013.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000026_000043.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000028_000034.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000026_000030.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000029_000034.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000027_000043.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000030_000013.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000027_000030.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000030_000047.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000017_000019.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000030_000034.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000017_000016.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000031_000047.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000018_000016.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000031_000034.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000020_000019.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000019_000023.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000022_000019.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000019_000018.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000022_000021.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000020_000018.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000023_000021.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000021_000023.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000024_000019.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000024_000023.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000026_000023.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000026_000025.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000026_000019.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000027_000025.xhtml</loc>
   </url>
   <url>
-    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000027_000025.xhtml</loc>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000028_000023.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000030_000029.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000030_000023.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/dir_000031_000029.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/index.xhtml</loc>
@@ -2352,6 +2487,9 @@
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacemembers_g.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacemembers_h.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacemembers_i.xhtml</loc>
@@ -2421,6 +2559,12 @@
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacemembers_vars.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacemembers_type.xhtml</loc>
+  </url>
+  <url>
+    <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacemembers_type.xhtml</loc>
   </url>
   <url>
     <loc>https://francoiscarouge.github.io/TypedLinearAlgebra/namespacemembers_type.xhtml</loc>

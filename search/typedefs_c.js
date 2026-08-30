@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['underlying_0',['underlying',['../classfcarouge_1_1typed__matrix.xhtml#a9904db59b08b0dfa24fe08ef574039b3',1,'fcarouge::typed_matrix']]],
-  ['underlying_5ft_1',['underlying_t',['../namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a72e4ccaf08999b259f656412682b37dd',1,'fcarouge::typed_linear_algebra_internal']]]
+  ['seconds_0',['seconds',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__eigen_8cpp_03.xhtml#a7f1ed93dc3a73d1ccd8ac5e76a5e7a12',1,'fcarouge::sample::anonymous_namespace{chrono_eigen.cpp}::seconds'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__std_8cpp_03.xhtml#ad824298683aa67443f40510b554931dc',1,'fcarouge::sample::anonymous_namespace{chrono_std.cpp}::seconds']]]
 ];
