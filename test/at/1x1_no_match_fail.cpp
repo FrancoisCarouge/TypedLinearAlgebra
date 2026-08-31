@@ -31,17 +31,14 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <cassert>
-
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the at member accessor.
+//! @test The type-indexed accessor rejects, at compile time, a request whose
+//! type no element is convertible to.
 [[maybe_unused]] const auto test{[] -> int {
-  const matrix<> m{42.};
+  matrix<> m{42.};
 
-  assert(m.at() == 42.);
-  assert(m.at<>() == 42.);
-  assert(m.at<double>() == 42.);
+  (void)m.at<double *>();
 
   return 0;
 }()};

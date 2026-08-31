@@ -55,33 +55,44 @@ concept multipliable_shape =
 template <typename Lhs, typename Rhs> constexpr bool are_terms_multipliable() {
   using lhs_matrix = std::remove_cvref_t<Lhs>;
   using rhs_matrix = std::remove_cvref_t<Rhs>;
-  using lhs_row_indexes = typename lhs_matrix::row_indexes;
-  using lhs_column_indexes = typename lhs_matrix::column_indexes;
-  using rhs_row_indexes = typename rhs_matrix::row_indexes;
-  using rhs_column_indexes = typename rhs_matrix::column_indexes;
 
-  bool convertible{true};
+  //! @todo Generalize the fast path to distinct index types rather than the
+  //! whole matrices, the cubic traversal below is expensive to instantiate and
+  //! evaluate for large matrices.
+  if constexpr (uniform_typed_matrix<lhs_matrix> and
+                uniform_typed_matrix<rhs_matrix>) {
+    // Every element type is identical, so every per-term product is the same
+    // type as its accumulator and trivially convertible.
+    return true;
+  } else {
+    using lhs_row_indexes = typename lhs_matrix::row_indexes;
+    using lhs_column_indexes = typename lhs_matrix::column_indexes;
+    using rhs_row_indexes = typename rhs_matrix::row_indexes;
+    using rhs_column_indexes = typename rhs_matrix::column_indexes;
 
-  tla::for_constexpr<lhs_matrix::rows>([&convertible](auto i) {
-    using lhs_row = tla::product<std::tuple_element_t<i, lhs_row_indexes>,
-                                 lhs_column_indexes>;
-    tla::for_constexpr<rhs_matrix::columns>([&convertible, i](auto j) {
-      using rhs_column =
-          tla::product<rhs_row_indexes,
-                       std::tuple_element_t<j, rhs_column_indexes>>;
-      tla::for_constexpr<lhs_matrix::columns>([&convertible, i, j](auto k) {
-        static_cast<void>(i); // Compiler compatibility.
-        static_cast<void>(j); // Compiler compatibility.
-        convertible &= std::is_convertible_v<
-            tla::product<std::tuple_element_t<k, lhs_row>,
-                         std::tuple_element_t<k, rhs_column>>,
-            tla::product<std::tuple_element_t<0, lhs_row>,
-                         std::tuple_element_t<0, rhs_column>>>;
+    bool convertible{true};
+
+    tla::for_constexpr<lhs_matrix::rows>([&convertible](auto i) {
+      using lhs_row = tla::product<std::tuple_element_t<i, lhs_row_indexes>,
+                                   lhs_column_indexes>;
+      tla::for_constexpr<rhs_matrix::columns>([&convertible, i](auto j) {
+        using rhs_column =
+            tla::product<rhs_row_indexes,
+                         std::tuple_element_t<j, rhs_column_indexes>>;
+        tla::for_constexpr<lhs_matrix::columns>([&convertible, i, j](auto k) {
+          static_cast<void>(i); // Compiler compatibility.
+          static_cast<void>(j); // Compiler compatibility.
+          convertible &= std::is_convertible_v<
+              tla::product<std::tuple_element_t<k, lhs_row>,
+                           std::tuple_element_t<k, rhs_column>>,
+              tla::product<std::tuple_element_t<0, lhs_row>,
+                           std::tuple_element_t<0, rhs_column>>>;
+        });
       });
     });
-  });
 
-  return convertible;
+    return convertible;
+  }
 }
 
 //! @brief Concept of typed matrices whose per-term products can be summed

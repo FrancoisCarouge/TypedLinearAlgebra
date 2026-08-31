@@ -31,17 +31,27 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <cassert>
-
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the at member accessor.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<> m{42.};
+using representation = double;
 
-  assert(m.at() == 42.);
-  assert(m.at<>() == 42.);
-  assert(m.at<double>() == 42.);
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::s;
+using mp_units::si::unit_symbols::s2;
+
+using position = quantity<mp_units::isq::length[m]>;
+using velocity = quantity<mp_units::isq::velocity[m / s]>;
+using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
+
+//! @test No element type is convertible to the requested type on a vector.
+[[maybe_unused]] const auto test{[] -> int {
+  column_vector<representation, position, velocity, acceleration> x{
+      3. * m, 2. * m / s, 1. * m / s2};
+
+  (void)x.at<double *>();
 
   return 0;
 }()};

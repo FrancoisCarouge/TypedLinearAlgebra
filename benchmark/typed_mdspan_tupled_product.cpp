@@ -128,8 +128,8 @@ template <auto Size> void bench() {
 
   for (std::size_t i{0}; i < Size; ++i) {
     for (std::size_t j{0}; j < Size; ++j) {
-      a(i, j) = distribution(generator);
-      b(i, j) = distribution(generator);
+      a.data()[i, j] = distribution(generator);
+      b.data()[i, j] = distribution(generator);
     }
   }
 

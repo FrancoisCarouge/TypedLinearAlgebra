@@ -339,6 +339,37 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+template <typename Type>
+[[nodiscard]] constexpr decltype(auto)
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
+  requires distinct_typed_matrix<typed_matrix>
+{
+  using tuple = tla::tuple_typed_matrix<typed_matrix>;
+
+  constexpr std::size_t matches{tla::count_convertible_indexes<Type, tuple>()};
+
+  static_assert(matches != 0,
+                "No element type of the typed matrix is implicitly convertible "
+                "to the requested type.");
+  static_assert(matches <= 1,
+                "The requested type is an implicit conversion target of more "
+                "than one element type: the by-type lookup is ambiguous.");
+
+  if constexpr (matches == 1) {
+    constexpr std::size_t index{
+        tla::find_first_convertible_index<Type, tuple>()};
+
+    if constexpr (rank_typed_matrix<typed_matrix, 2>) {
+      return self.template at<index / columns, index % columns>();
+    } else if constexpr (rank_typed_matrix<typed_matrix, 1>) {
+      return self.template at<index>();
+    } else {
+      return self.template at<>();
+    }
+  }
+}
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <auto... Indexes>
 constexpr void typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(
     this auto &&self, const element<Indexes...> &value)

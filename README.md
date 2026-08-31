@@ -123,6 +123,7 @@ class typed_matrix
 | `operator[i, j]` | Read the specified element. |
 | `operator(i, j)` | Read the specified element. |
 | `at<i, j>()` | Read, write the specified element. |
+| `at<Type>()` | Read the element whose type is implicitly convertible to `Type`, for distinct typed matrices. |
 | `(conversion operator)` | Access the singleton typed matrix element. |
 | `(destructor)` | Destruct a default typed matrix. |
 
@@ -172,7 +173,7 @@ std::println("{}", m[1_i, 2_i]); // Same as: m.at<1, 2>()
 | Concept | Definition |
 | --- | --- |
 | `column_typed_matrix` | Concept of a column typed matrix, vector. |
-| `distinct_typed_matrix` | Concept of a typed matrix in which no element type is implicitly convertible to another element type. |
+| `distinct_typed_matrix` | Concept of a typed matrix in which no two element positions share an implicit conversion target, so an element can be located by type. |
 | `index` | Concept of a compile-time index. |
 | `other` | Concept of any type other than the typed matrix type. |
 | `other_tuple_like_vector` | Concept of a tuple-like vector convertible to a one-dimension typed matrix. |
