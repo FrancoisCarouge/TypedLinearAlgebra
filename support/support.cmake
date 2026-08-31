@@ -39,6 +39,8 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
   unset(CMAKE_CXX_STANDARD)
 endif()
 
+check_ipo_supported(RESULT IPO_SUPPORTED OUTPUT _)
+
 # Add a given test.
 #
 # * NAME The name of the test file without extension.
@@ -118,6 +120,11 @@ function(bench NAME SIZE)
       typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench_driver
       PRIVATE tlinalg typed_linear_algebra_options
               typed_linear_algebra_${BACKEND} nanobench::nanobench)
+    if(IPO_SUPPORTED)
+      set_target_properties(
+        typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench_driver
+        PROPERTIES INTERPROCEDURAL_OPTIMIZATION TRUE)
+    endif()
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(
       NAME typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench
