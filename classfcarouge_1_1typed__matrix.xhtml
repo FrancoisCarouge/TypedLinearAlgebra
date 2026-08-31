@@ -201,17 +201,17 @@ requires rank_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matrix
 <tr class="memdesc:a7f68f3c38086ff38eb29034aba5db859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert construct a typed vector from a tuple-like value.  <br /></td></tr>
 <tr class="separator:a7f68f3c38086ff38eb29034aba5db859"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9172dd9b9b5202dfdd46e6404220131c" id="r_a9172dd9b9b5202dfdd46e6404220131c"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9172dd9b9b5202dfdd46e6404220131c">operator element&lt;&gt;</a> (this auto &amp;&amp;self)</td></tr>
-<tr class="memdesc:a9172dd9b9b5202dfdd46e6404220131c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the singleton typed matrix element.  <br /></td></tr>
+<tr class="memdesc:a9172dd9b9b5202dfdd46e6404220131c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the singleton, one-element typed matrix element.  <br /></td></tr>
 <tr class="separator:a9172dd9b9b5202dfdd46e6404220131c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21bd953559626a85b232a80e406d2304" id="r_a21bd953559626a85b232a80e406d2304"><td class="memTemplParams" colspan="2">template&lt;typename... Indexes&gt; <br />
 requires (sizeof...(Indexes) == <a class="el" href="#a187f5727fc775dc07aff603ee5f66c30">rank</a>) and ((index&lt;Indexes&gt; &amp;&amp; ...) or uniform_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&gt;)</td></tr>
 <tr class="memitem:a21bd953559626a85b232a80e406d2304"><td class="memTemplItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a21bd953559626a85b232a80e406d2304">operator[]</a> (this auto &amp;&amp;self, Indexes... indexes)</td></tr>
-<tr class="memdesc:a21bd953559626a85b232a80e406d2304"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the specified element.  <br /></td></tr>
+<tr class="memdesc:a21bd953559626a85b232a80e406d2304"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the specified element.  <br /></td></tr>
 <tr class="separator:a21bd953559626a85b232a80e406d2304"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada3739cc378bae6e5081f7850369fcaf" id="r_ada3739cc378bae6e5081f7850369fcaf"><td class="memTemplParams" colspan="2">template&lt;typename... Indexes&gt; <br />
 requires (sizeof...(Indexes) == <a class="el" href="#a187f5727fc775dc07aff603ee5f66c30">rank</a>) and ((index&lt;Indexes&gt; &amp;&amp; ...) or uniform_typed_matrix&lt;<a class="el" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix</a>&gt;)</td></tr>
 <tr class="memitem:ada3739cc378bae6e5081f7850369fcaf"><td class="memTemplItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ada3739cc378bae6e5081f7850369fcaf">operator()</a> (this auto &amp;&amp;self, Indexes... indexes)</td></tr>
-<tr class="memdesc:ada3739cc378bae6e5081f7850369fcaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the specified element.  <br /></td></tr>
+<tr class="memdesc:ada3739cc378bae6e5081f7850369fcaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the specified element.  <br /></td></tr>
 <tr class="separator:ada3739cc378bae6e5081f7850369fcaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7069d3bf51e6490049566e61978d9fbe" id="r_a7069d3bf51e6490049566e61978d9fbe"><td class="memTemplParams" colspan="2">template&lt;auto... Indexes&gt; <br />
 requires (sizeof...(Indexes) == <a class="el" href="#a187f5727fc775dc07aff603ee5f66c30">rank</a>)</td></tr>
@@ -924,7 +924,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </table>
 </div><div class="memdoc">
 
-<p>Access the singleton typed matrix element. </p>
+<p>Read the singleton, one-element typed matrix element. </p>
 <p>Applicable to singleton matrix: one element. Returns the unique element of the typed matrix.</p>
 <dl class="section return"><dt>Returns</dt><dd>The unique element of the typed matrix. </dd></dl>
 
@@ -962,7 +962,7 @@ requires (sizeof...(Indexes) == <a class="el" href="#a187f5727fc775dc07aff603ee5
 </table>
 </div><div class="memdoc">
 
-<p>Access the specified element. </p>
+<p>Read the specified element. </p>
 <p>Returns a strongly typed element at the specified location. A reference is returned for non-const calls. Bound checking is performed for compile-time indexes. This access operator cannot exist for heterogeneous matrices with runtime indexes.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -1237,7 +1237,7 @@ requires (sizeof...(Indexes) == <a class="el" href="#a187f5727fc775dc07aff603ee5
 </table>
 </div><div class="memdoc">
 
-<p>Access the specified element. </p>
+<p>Read the specified element. </p>
 <p>Returns a strongly typed element at the specified location. A reference is returned for non-const calls. Bound checking is performed for compile-time indexes. This access operator cannot exist for heterogeneous matrices with runtime indexes.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
