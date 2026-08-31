@@ -63,7 +63,10 @@ namespace {
   // operator.
   const matrix<representation, std::tuple<length, length>,
                std::tuple<area, area>>
-      r{fcarouge::operator*(a, 2. * m)};
+      r {
+        fcarouge::
+        operator*(a, 2. * m)
+      };
 
   assert(r(0_i, 0_i) == 2. * m3);
   assert(r(0_i, 1_i) == 4. * m3);

@@ -32,51 +32,52 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
-#include <cstddef>
-#include <mdspan>
-#include <type_traits>
+#include <functional>
+#include <tuple>
+
+#include <Eigen/Eigen>
 
 namespace fcarouge::test {
+namespace {
 using representation = double;
 
 template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
+using mp_units::si::unit_symbols::kg;
 using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::s;
 
-namespace {
-//! @test Verifies the singleton by singleton matrix addition operator.
+using length = quantity<mp_units::isq::length[m]>;
+using mass = quantity<mp_units::isq::mass[kg]>;
+using time = quantity<mp_units::isq::time[s]>;
+
+//! @test Verifies the at member accessor looking up the element by type on a
+//! distinct, non-square two-dimension matrix. A rectangular shape catches a
+//! row/column transposition in the linear-index arithmetic that a square shape
+//! cannot.
 [[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
+  using rows = std::tuple<length, mass>;
+  using columns = std::tuple<std::identity, time, decltype(1. * s * s)>;
+  using matrix =
+      typed_matrix<Eigen::Matrix<representation, 2, 3>, rows, columns>;
 
-  double storage_a{0.};
-  double storage_b{0.};
-  double storage_r{0.};
+  Eigen::Matrix<representation, 2, 3> storage;
+  storage << 1., 2., 3., 4., 5., 6.;
+  const matrix x{storage};
 
-  std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
+  // Row-major element types:
+  //   (0,0) length     (0,1) length*time     (0,2) length*time^2
+  //   (1,0) mass       (1,1) mass*time       (1,2) mass*time^2
+  assert((x.at<length>() == x.at<0, 0>()));
+  assert((x.at<decltype(1. * m * s)>() == x.at<0, 1>()));
+  assert((x.at<decltype(1. * m * s * s)>() == x.at<0, 2>()));
+  assert((x.at<mass>() == x.at<1, 0>()));
+  assert((x.at<decltype(1. * kg * s)>() == x.at<1, 1>()));
+  assert((x.at<decltype(1. * kg * s * s)>() == x.at<1, 2>()));
 
-  row_vector<representation, length> a{span_a};
-  row_vector<representation, length> b{span_b};
-  row_vector<representation, length> r{span_r};
-
-  a = 2. * m;
-  b = 3. * m;
-  add(a, b, r);
-
-  assert(5. * m == r);
-  assert(5. * m == r());
-  assert(5. * m == r[]);
-  assert(5. * m == r.at());
-  assert(5. * m == r.at<>());
-  assert(5. * m == r.at<length>());
-
-  static_assert(not std::is_reference_v<decltype(r())>);
-  static_assert(not std::is_reference_v<decltype(r[])>);
-  static_assert(not std::is_reference_v<decltype(r.at())>);
-  static_assert(not std::is_reference_v<decltype(r.at<>())>);
-  static_assert(not std::is_reference_v<decltype(r.at<length>())>);
+  assert((x.at<length>() == 1. * m));
+  assert((x.at<decltype(1. * kg * s * s)>() == 6. * kg * s * s));
 
   return 0;
 }()};

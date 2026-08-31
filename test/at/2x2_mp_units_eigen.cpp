@@ -32,16 +32,47 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
+#include <functional>
+#include <tuple>
+
+#include <Eigen/Eigen>
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the at member accessor.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<> m{42.};
+using representation = double;
 
-  assert(m.at() == 42.);
-  assert(m.at<>() == 42.);
-  assert(m.at<double>() == 42.);
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+
+using mp_units::si::unit_symbols::kg;
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::s;
+
+using length = quantity<mp_units::isq::length[m]>;
+using mass = quantity<mp_units::isq::mass[kg]>;
+using time = quantity<mp_units::isq::time[s]>;
+
+//! @test Verifies the at member accessor looking up the element by type on a
+//! distinct two-dimension matrix.
+[[maybe_unused]] const auto test{[] -> int {
+  using rows = std::tuple<length, mass>;
+  using columns = std::tuple<std::identity, time>;
+  using matrix =
+      typed_matrix<Eigen::Matrix<representation, 2, 2>, rows, columns>;
+
+  Eigen::Matrix<representation, 2, 2> storage;
+  storage << 1., 2., 3., 4.;
+  const matrix x{storage};
+
+  // Element types: length, length*time, mass, mass*time.
+  assert((x.at<length>() == 1. * m));
+  assert((x.at<decltype(1. * m * s)>() == 2. * m * s));
+  assert((x.at<mass>() == 3. * kg));
+  assert((x.at<decltype(1. * kg * s)>() == 4. * kg * s));
+
+  // The looked-up position matches the explicit indexes.
+  assert((x.at<length>() == x.at<0, 0>()));
+  assert((x.at<mass>() == x.at<1, 0>()));
 
   return 0;
 }()};
