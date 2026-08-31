@@ -123,6 +123,7 @@ class typed_matrix
 | `operator[i, j]` | Read the specified element. |
 | `operator(i, j)` | Read the specified element. |
 | `at<i, j>()` | Read, write the specified element. |
+| `at<Type>()` | Read the element whose type is implicitly convertible to `Type`, for distinct typed matrices. |
 | `(conversion operator)` | Access the singleton typed matrix element. |
 | `(destructor)` | Destruct a default typed matrix. |
 
