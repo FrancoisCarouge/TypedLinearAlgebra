@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,37 +27,35 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-if(NOT BUILD_TESTING)
-  return()
-endif()
+#include "fcarouge/linalg.hpp"
 
-add_subdirectory("addition")
-add_subdirectory("assign")
-add_subdirectory("at")
-add_subdirectory("common_with")
-add_subdirectory("constructor")
-add_subdirectory("copy")
-add_subdirectory("distinct")
-add_subdirectory("division")
-add_subdirectory("element")
-add_subdirectory("equal_to")
-add_subdirectory("format")
-add_subdirectory("interconvertible")
-add_subdirectory("magnitude")
-add_subdirectory("matrix_product")
-add_subdirectory("matrix_vector_product")
-add_subdirectory("minus")
-add_subdirectory("mp_units")
-add_subdirectory("multiplication")
-add_subdirectory("nested")
-add_subdirectory("operator")
-add_subdirectory("row_typed_matrix")
-add_subdirectory("same_as_typed_matrix")
-add_subdirectory("scale")
-add_subdirectory("structured_bindings")
-add_subdirectory("substraction")
-add_subdirectory("transposed")
-add_subdirectory("underlying")
-add_subdirectory("uniform_typed_matrix")
+#include <mp-units/systems/isq.h>
+#include <mp-units/systems/si.h>
+
+#include <functional>
+#include <tuple>
+
+namespace fcarouge::test {
+namespace {
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::s;
+
+template <auto Reference>
+using quantity = mp_units::quantity<Reference, double>;
+using position = quantity<mp_units::isq::length[m]>;
+using velocity = quantity<mp_units::isq::velocity[m / s]>;
+
+//! @test Verifies the magnitude operation rejects a non-uniform vector.
+[[maybe_unused]] const auto test{[] {
+  const matrix<double, std::tuple<position, velocity>,
+               std::tuple<std::identity>>
+      v{};
+
+  [[maybe_unused]] const auto value{magnitude(v)};
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
