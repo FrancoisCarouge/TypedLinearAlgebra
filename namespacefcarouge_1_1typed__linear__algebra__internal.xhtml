@@ -189,9 +189,9 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aab4670c6313954d8840239709b688878" id="r_aab4670c6313954d8840239709b688878"><td class="memTemplParams" colspan="2">template&lt;std::size_t... Is, typename F &gt; </td></tr>
-<tr class="memitem:aab4670c6313954d8840239709b688878"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aab4670c6313954d8840239709b688878">for_constexpr_detail</a> (std::index_sequence&lt; Is... &gt;, F &amp;&amp;f)</td></tr>
-<tr class="separator:aab4670c6313954d8840239709b688878"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a227e8da4f062bec51517199b9bfc8fc9" id="r_a227e8da4f062bec51517199b9bfc8fc9"><td class="memTemplParams" colspan="2">template&lt;std::size_t... Is, typename F &gt; </td></tr>
+<tr class="memitem:a227e8da4f062bec51517199b9bfc8fc9"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a227e8da4f062bec51517199b9bfc8fc9">for_constexpr_detail</a> (std::index_sequence&lt; Is... &gt; indexes, F &amp;&amp;f)</td></tr>
+<tr class="separator:a227e8da4f062bec51517199b9bfc8fc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcda1ee8b10a813ac3a16d25343603c7" id="r_abcda1ee8b10a813ac3a16d25343603c7"><td class="memTemplParams" colspan="2">template&lt;std::size_t Size, typename Function &gt; </td></tr>
 <tr class="memitem:abcda1ee8b10a813ac3a16d25343603c7"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#abcda1ee8b10a813ac3a16d25343603c7">for_constexpr</a> (Function &amp;&amp;function)</td></tr>
 <tr class="separator:abcda1ee8b10a813ac3a16d25343603c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -227,7 +227,7 @@ template&lt;typename Type , std::size_t... Indexes&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00275">275</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00280">280</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -254,7 +254,7 @@ template&lt;typename Type , std::size_t RowIndex, std::size_t ColumnIndex&gt; </
 <p>The type of the element at the given row and column matrix indexes. </p>
 <p>Internal helper, oblivious to the matrix's rank. Reused by the rank-checked <code>element_t</code> specializations below and by algorithms that must visit every row and column position of a matrix regardless of its rank, for example homogeneity checks. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00227">227</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00229">229</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -270,7 +270,7 @@ template&lt;typename Type , std::size_t RowIndex, std::size_t ColumnIndex&gt; </
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00329">329</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00334">334</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -326,7 +326,7 @@ template&lt;typename Type , std::size_t Size&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00327">327</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00332">332</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -344,7 +344,7 @@ template&lt;typename Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00199">199</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00201">201</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -375,16 +375,16 @@ template&lt;std::size_t Size, typename Function &gt; </div>
 </div><div class="memdoc">
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000002">Todo</a></b></dt><dd>Remove for C++26 P1789 Library Support for Expansion Statements. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00175">175</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  175</span>                                                  {</div>
-<div class="line"><span class="lineno">  176</span>  <a class="code hl_function" href="#aab4670c6313954d8840239709b688878">for_constexpr_detail</a>(std::make_index_sequence&lt;Size&gt;{},</div>
-<div class="line"><span class="lineno">  177</span>                       std::forward&lt;Function&gt;(function));</div>
-<div class="line"><span class="lineno">  178</span>}</div>
-<div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra__internal_xhtml_aab4670c6313954d8840239709b688878"><div class="ttname"><a href="#aab4670c6313954d8840239709b688878">fcarouge::typed_linear_algebra_internal::for_constexpr_detail</a></div><div class="ttdeci">constexpr void for_constexpr_detail(std::index_sequence&lt; Is... &gt;, F &amp;&amp;f)</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00169">utility.hpp:169</a></div></div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00177">177</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  177</span>                                                  {</div>
+<div class="line"><span class="lineno">  178</span>  <a class="code hl_function" href="#a227e8da4f062bec51517199b9bfc8fc9">for_constexpr_detail</a>(std::make_index_sequence&lt;Size&gt;{},</div>
+<div class="line"><span class="lineno">  179</span>                       std::forward&lt;Function&gt;(function));</div>
+<div class="line"><span class="lineno">  180</span>}</div>
+<div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra__internal_xhtml_a227e8da4f062bec51517199b9bfc8fc9"><div class="ttname"><a href="#a227e8da4f062bec51517199b9bfc8fc9">fcarouge::typed_linear_algebra_internal::for_constexpr_detail</a></div><div class="ttdeci">constexpr void for_constexpr_detail(std::index_sequence&lt; Is... &gt; indexes, F &amp;&amp;f)</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00170">utility.hpp:170</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00169">for_constexpr_detail()</a>.</p>
+<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00170">for_constexpr_detail()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00433">is_distinct_typed_matrix()</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00277">is_uniform_typed_matrix()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00438">is_distinct_typed_matrix()</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00282">is_uniform_typed_matrix()</a>.</p>
 <div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -402,8 +402,8 @@ template&lt;std::size_t Size, typename Function &gt; </div>
 
 </div>
 </div>
-<a id="aab4670c6313954d8840239709b688878" name="aab4670c6313954d8840239709b688878"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab4670c6313954d8840239709b688878">&#9670;&#160;</a></span>for_constexpr_detail()</h2>
+<a id="a227e8da4f062bec51517199b9bfc8fc9" name="a227e8da4f062bec51517199b9bfc8fc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a227e8da4f062bec51517199b9bfc8fc9">&#9670;&#160;</a></span>for_constexpr_detail()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -416,7 +416,7 @@ template&lt;std::size_t... Is, typename F &gt; </div>
         <tr>
           <td class="memname">void fcarouge::typed_linear_algebra_internal::for_constexpr_detail </td>
           <td>(</td>
-          <td class="paramtype">std::index_sequence&lt; Is... &gt;</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+          <td class="paramtype">std::index_sequence&lt; Is... &gt;</td>          <td class="paramname"><span class="paramname"><em>indexes</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -431,18 +431,18 @@ template&lt;std::size_t... Is, typename F &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00169">169</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  169</span>                                                                     {</div>
-<div class="line"><span class="lineno">  170</span>  (f(std::integral_constant&lt;std::size_t, Is&gt;{}), ...);</div>
-<div class="line"><span class="lineno">  171</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00170">170</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  171</span>                            {</div>
+<div class="line"><span class="lineno">  172</span>  (std::forward&lt;F&gt;(f)(std::integral_constant&lt;std::size_t, Is&gt;{}), ...);</div>
+<div class="line"><span class="lineno">  173</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00175">for_constexpr()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00177">for_constexpr()</a>.</p>
 <div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra__internal_aab4670c6313954d8840239709b688878_icgraph.svg" width="551" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra__internal_a227e8da4f062bec51517199b9bfc8fc9_icgraph.svg" width="551" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -482,29 +482,29 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000005">Todo</a></b></dt><dd>Evaluate compile-time performance. Instantiation, evaluation, and compilation of this function may be expensive. We may want to use a pure concept approach. The ordered-pair traversal also tests each unordered pair twice. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00433">433</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  433</span>                                                                   {</div>
-<div class="line"><span class="lineno">  434</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a> = std::remove_cvref_t&lt;Type&gt;;</div>
-<div class="line"><span class="lineno">  435</span>  <span class="keywordtype">bool</span> result{<span class="keyword">true</span>};</div>
-<div class="line"><span class="lineno">  436</span> </div>
-<div class="line"><span class="lineno">  437</span>  for_constexpr&lt;matrix::rows&gt;([&amp;result](<span class="keyword">auto</span> i) {</div>
-<div class="line"><span class="lineno">  438</span>    for_constexpr&lt;matrix::columns&gt;([&amp;result, &amp;i](<span class="keyword">auto</span> j) {</div>
-<div class="line"><span class="lineno">  439</span>      for_constexpr&lt;matrix::rows&gt;([&amp;result, &amp;i, &amp;j](<span class="keyword">auto</span> k) {</div>
-<div class="line"><span class="lineno">  440</span>        for_constexpr&lt;matrix::columns&gt;([&amp;result, &amp;i, &amp;j, &amp;k](<span class="keyword">auto</span> l) {</div>
-<div class="line"><span class="lineno">  441</span>          <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (i != k || j != l) {</div>
-<div class="line"><span class="lineno">  442</span>            result &amp;= are_not_interconvertible&lt;element_at&lt;matrix, i, j&gt;,</div>
-<div class="line"><span class="lineno">  443</span>                                               element_at&lt;matrix, k, l&gt;&gt;;</div>
-<div class="line"><span class="lineno">  444</span>          }</div>
-<div class="line"><span class="lineno">  445</span>        });</div>
-<div class="line"><span class="lineno">  446</span>      });</div>
-<div class="line"><span class="lineno">  447</span>    });</div>
-<div class="line"><span class="lineno">  448</span>  });</div>
-<div class="line"><span class="lineno">  449</span> </div>
-<div class="line"><span class="lineno">  450</span>  <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">  451</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00438">438</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  438</span>                                                                   {</div>
+<div class="line"><span class="lineno">  439</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a> = std::remove_cvref_t&lt;Type&gt;;</div>
+<div class="line"><span class="lineno">  440</span>  <span class="keywordtype">bool</span> result{<span class="keyword">true</span>};</div>
+<div class="line"><span class="lineno">  441</span> </div>
+<div class="line"><span class="lineno">  442</span>  for_constexpr&lt;matrix::rows&gt;([&amp;result](<span class="keyword">auto</span> i) {</div>
+<div class="line"><span class="lineno">  443</span>    for_constexpr&lt;matrix::columns&gt;([&amp;result, &amp;i](<span class="keyword">auto</span> j) {</div>
+<div class="line"><span class="lineno">  444</span>      for_constexpr&lt;matrix::rows&gt;([&amp;result, &amp;i, &amp;j](<span class="keyword">auto</span> k) {</div>
+<div class="line"><span class="lineno">  445</span>        for_constexpr&lt;matrix::columns&gt;([&amp;result, &amp;i, &amp;j, &amp;k](<span class="keyword">auto</span> l) {</div>
+<div class="line"><span class="lineno">  446</span>          <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (i != k || j != l) {</div>
+<div class="line"><span class="lineno">  447</span>            result &amp;= are_not_interconvertible&lt;element_at&lt;matrix, i, j&gt;,</div>
+<div class="line"><span class="lineno">  448</span>                                               element_at&lt;matrix, k, l&gt;&gt;;</div>
+<div class="line"><span class="lineno">  449</span>          }</div>
+<div class="line"><span class="lineno">  450</span>        });</div>
+<div class="line"><span class="lineno">  451</span>      });</div>
+<div class="line"><span class="lineno">  452</span>    });</div>
+<div class="line"><span class="lineno">  453</span>  });</div>
+<div class="line"><span class="lineno">  454</span> </div>
+<div class="line"><span class="lineno">  455</span>  <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  456</span>}</div>
 <div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a></div><div class="ttdoc">Strongly typed matrix.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__forward_8hpp_source.xhtml#l00043">typed_linear_algebra_forward.hpp:43</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00175">for_constexpr()</a>.</p>
+<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00177">for_constexpr()</a>.</p>
 <div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -540,22 +540,22 @@ template&lt;typename Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00277">277</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  277</span>                                                                  {</div>
-<div class="line"><span class="lineno">  278</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a> = std::remove_cvref_t&lt;Type&gt;;</div>
-<div class="line"><span class="lineno">  279</span>  <span class="keywordtype">bool</span> result{<span class="keyword">true</span>};</div>
-<div class="line"><span class="lineno">  280</span> </div>
-<div class="line"><span class="lineno">  281</span>  for_constexpr&lt;matrix::rows&gt;([&amp;result](<span class="keyword">auto</span> i) {</div>
-<div class="line"><span class="lineno">  282</span>    for_constexpr&lt;matrix::columns&gt;([&amp;result, &amp;i](<span class="keyword">auto</span> j) {</div>
-<div class="line"><span class="lineno">  283</span>      result &amp;=</div>
-<div class="line"><span class="lineno">  284</span>          std::is_same_v&lt;element_at&lt;matrix, i, j&gt;, element_at&lt;matrix, 0, 0&gt;&gt;;</div>
-<div class="line"><span class="lineno">  285</span>    });</div>
-<div class="line"><span class="lineno">  286</span>  });</div>
-<div class="line"><span class="lineno">  287</span> </div>
-<div class="line"><span class="lineno">  288</span>  <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">  289</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00282">282</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  282</span>                                                                  {</div>
+<div class="line"><span class="lineno">  283</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a> = std::remove_cvref_t&lt;Type&gt;;</div>
+<div class="line"><span class="lineno">  284</span>  <span class="keywordtype">bool</span> result{<span class="keyword">true</span>};</div>
+<div class="line"><span class="lineno">  285</span> </div>
+<div class="line"><span class="lineno">  286</span>  for_constexpr&lt;matrix::rows&gt;([&amp;result](<span class="keyword">auto</span> i) {</div>
+<div class="line"><span class="lineno">  287</span>    for_constexpr&lt;matrix::columns&gt;([&amp;result, &amp;i](<span class="keyword">auto</span> j) {</div>
+<div class="line"><span class="lineno">  288</span>      result &amp;=</div>
+<div class="line"><span class="lineno">  289</span>          std::is_same_v&lt;element_at&lt;matrix, i, j&gt;, element_at&lt;matrix, 0, 0&gt;&gt;;</div>
+<div class="line"><span class="lineno">  290</span>    });</div>
+<div class="line"><span class="lineno">  291</span>  });</div>
+<div class="line"><span class="lineno">  292</span> </div>
+<div class="line"><span class="lineno">  293</span>  <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  294</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00175">for_constexpr()</a>.</p>
+<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00177">for_constexpr()</a>.</p>
 <div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -591,16 +591,16 @@ template&lt;char... Digits&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00385">385</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  385</span>                                                             {</div>
-<div class="line"><span class="lineno">  386</span>  <span class="keyword">static_assert</span>(((<span class="charliteral">&#39;0&#39;</span> &lt;= Digits &amp;&amp; Digits &lt;= <span class="charliteral">&#39;9&#39;</span>) &amp;&amp; ...),</div>
-<div class="line"><span class="lineno">  387</span>                <span class="stringliteral">&quot;Characters must only be digits.&quot;</span>);</div>
-<div class="line"><span class="lineno">  388</span> </div>
-<div class="line"><span class="lineno">  389</span>  std::size_t number{0};</div>
-<div class="line"><span class="lineno">  390</span>  ((number = number * 10 + (Digits - <span class="charliteral">&#39;0&#39;</span>)), ...);</div>
-<div class="line"><span class="lineno">  391</span> </div>
-<div class="line"><span class="lineno">  392</span>  <span class="keywordflow">return</span> number;</div>
-<div class="line"><span class="lineno">  393</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00390">390</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  390</span>                                                             {</div>
+<div class="line"><span class="lineno">  391</span>  <span class="keyword">static_assert</span>(((<span class="charliteral">&#39;0&#39;</span> &lt;= Digits &amp;&amp; Digits &lt;= <span class="charliteral">&#39;9&#39;</span>) &amp;&amp; ...),</div>
+<div class="line"><span class="lineno">  392</span>                <span class="stringliteral">&quot;Characters must only be digits.&quot;</span>);</div>
+<div class="line"><span class="lineno">  393</span> </div>
+<div class="line"><span class="lineno">  394</span>  std::size_t number{0};</div>
+<div class="line"><span class="lineno">  395</span>  ((number = number * 10 + (Digits - <span class="charliteral">&#39;0&#39;</span>)), ...);</div>
+<div class="line"><span class="lineno">  396</span> </div>
+<div class="line"><span class="lineno">  397</span>  <span class="keywordflow">return</span> number;</div>
+<div class="line"><span class="lineno">  398</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -636,16 +636,16 @@ template&lt;std::size_t Rows, std::size_t Columns&gt; </div>
 <div class="line">  }</div>
 <div class="line">}()}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00209">209</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  209</span>                        {[] {</div>
-<div class="line"><span class="lineno">  210</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows &gt; 1 &amp;&amp; Columns &gt; 1) {</div>
-<div class="line"><span class="lineno">  211</span>    <span class="keywordflow">return</span> 2;</div>
-<div class="line"><span class="lineno">  212</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows == 1 &amp;&amp; Columns == 1) {</div>
-<div class="line"><span class="lineno">  213</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  214</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  215</span>    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  216</span>  }</div>
-<div class="line"><span class="lineno">  217</span>}()};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00211">211</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  211</span>                        {[] {</div>
+<div class="line"><span class="lineno">  212</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows &gt; 1 &amp;&amp; Columns &gt; 1) {</div>
+<div class="line"><span class="lineno">  213</span>    <span class="keywordflow">return</span> 2;</div>
+<div class="line"><span class="lineno">  214</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows == 1 &amp;&amp; Columns == 1) {</div>
+<div class="line"><span class="lineno">  215</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  216</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  217</span>    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  218</span>  }</div>
+<div class="line"><span class="lineno">  219</span>}()};</div>
 </div><!-- fragment -->
 </div>
 </div>
