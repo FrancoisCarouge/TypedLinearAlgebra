@@ -121,6 +121,10 @@ Typedefs</h2></td></tr>
 <tr class="separator:a611c6f5ac6617cd0afb6ef7546049416"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a494ff694b9b5f43839c422f09f5cb9c1" id="r_a494ff694b9b5f43839c422f09f5cb9c1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a494ff694b9b5f43839c422f09f5cb9c1">square</a></td></tr>
 <tr class="separator:a494ff694b9b5f43839c422f09f5cb9c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbeb94e3614be9fdc8c01d09158b7ed9" id="r_afbeb94e3614be9fdc8c01d09158b7ed9"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbeb94e3614be9fdc8c01d09158b7ed9">singleton</a></td></tr>
+<tr class="separator:afbeb94e3614be9fdc8c01d09158b7ed9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab93e81360f12f4ed41335a749131b229" id="r_ab93e81360f12f4ed41335a749131b229"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab93e81360f12f4ed41335a749131b229">plane</a></td></tr>
+<tr class="separator:ab93e81360f12f4ed41335a749131b229"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a74374521e284318dac9357590eedc977" name="a74374521e284318dac9357590eedc977"></a>
@@ -136,9 +140,27 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line"> </div>
 <div class="line">    matrix&lt;double, std::tuple&lt;position, velocity&gt;, std::tuple&lt;std::identity&gt;&gt;</div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000030">Test</a></b></dt><dd>Verifies the <a class="el" href="conceptfcarouge_1_1column__typed__matrix.xhtml" title="Concept of a column, one-dimension typed matrix, vector.">column_typed_matrix</a> concept over mp-units quantity indexes, <a class="el" href="namespace_eigen.xhtml">Eigen</a> backend. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000028">Test</a></b></dt><dd>Verifies the <a class="el" href="conceptfcarouge_1_1column__typed__matrix.xhtml" title="Concept of a column, one-dimension typed matrix, vector.">column_typed_matrix</a> concept over mp-units quantity indexes, <a class="el" href="namespace_eigen.xhtml">Eigen</a> backend. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="test_2column__typed__matrix_2mp__units__eigen_8cpp_source.xhtml#l00053">53</a> of file <a class="el" href="test_2column__typed__matrix_2mp__units__eigen_8cpp_source.xhtml">mp_units_eigen.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab93e81360f12f4ed41335a749131b229" name="ab93e81360f12f4ed41335a749131b229"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab93e81360f12f4ed41335a749131b229">&#9670;&#160;</a></span>plane</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using fcarouge::test::anonymous_namespace{mp_units_eigen.cpp}::plane</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> matrix&lt;double, std::tuple&lt;position, velocity&gt;,</div>
+<div class="line">                     std::tuple&lt;position, velocity&gt;&gt;</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="test_2rank__typed__matrix_2mp__units__eigen_8cpp_source.xhtml#l00059">59</a> of file <a class="el" href="test_2rank__typed__matrix_2mp__units__eigen_8cpp_source.xhtml">mp_units_eigen.cpp</a>.</p>
 
 </div>
 </div>
@@ -189,9 +211,28 @@ template&lt;auto Reference&gt; </div>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line"> </div>
 <div class="line">    matrix&lt;double, std::tuple&lt;std::identity&gt;, std::tuple&lt;position, velocity&gt;&gt;</div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000173">Test</a></b></dt><dd>Verifies the <a class="el" href="conceptfcarouge_1_1row__typed__matrix.xhtml" title="Concept of a row, one-dimension typed matrix, vector.">row_typed_matrix</a> concept over mp-units quantity indexes, <a class="el" href="namespace_eigen.xhtml">Eigen</a> backend. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000179">Test</a></b></dt><dd>Verifies the <a class="el" href="conceptfcarouge_1_1row__typed__matrix.xhtml" title="Concept of a row, one-dimension typed matrix, vector.">row_typed_matrix</a> concept over mp-units quantity indexes, <a class="el" href="namespace_eigen.xhtml">Eigen</a> backend. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="test_2column__typed__matrix_2mp__units__eigen_8cpp_source.xhtml#l00058">58</a> of file <a class="el" href="test_2column__typed__matrix_2mp__units__eigen_8cpp_source.xhtml">mp_units_eigen.cpp</a>.</p>
+
+</div>
+</div>
+<a id="afbeb94e3614be9fdc8c01d09158b7ed9" name="afbeb94e3614be9fdc8c01d09158b7ed9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbeb94e3614be9fdc8c01d09158b7ed9">&#9670;&#160;</a></span>singleton</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using fcarouge::test::anonymous_namespace{mp_units_eigen.cpp}::singleton</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line">    matrix&lt;double, std::tuple&lt;position&gt;, std::tuple&lt;std::identity&gt;&gt;</div>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000173">Test</a></b></dt><dd>Verifies the <a class="el" href="conceptfcarouge_1_1rank__typed__matrix.xhtml" title="Concept of a typed matrix of a given rank.">rank_typed_matrix</a> concept over mp-units quantity indexes, <a class="el" href="namespace_eigen.xhtml">Eigen</a> backend. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test_2rank__typed__matrix_2mp__units__eigen_8cpp_source.xhtml#l00053">53</a> of file <a class="el" href="test_2rank__typed__matrix_2mp__units__eigen_8cpp_source.xhtml">mp_units_eigen.cpp</a>.</p>
 
 </div>
 </div>

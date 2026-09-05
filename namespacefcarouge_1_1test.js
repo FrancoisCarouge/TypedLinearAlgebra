@@ -312,9 +312,11 @@ var namespacefcarouge_1_1test =
     ] ],
     [ "anonymous_namespace{mp_units_eigen.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml", [
       [ "column", "namespacefcarouge_1_1test_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a74374521e284318dac9357590eedc977", null ],
+      [ "plane", "namespacefcarouge_1_1test_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#ab93e81360f12f4ed41335a749131b229", null ],
       [ "position", "namespacefcarouge_1_1test_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#aae205a73e8cd71e86a8ca2ad1681d7a5", null ],
       [ "quantity", "namespacefcarouge_1_1test_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a70818fe22a849c7576c377fc51524b79", null ],
       [ "row", "namespacefcarouge_1_1test_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a611c6f5ac6617cd0afb6ef7546049416", null ],
+      [ "singleton", "namespacefcarouge_1_1test_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#afbeb94e3614be9fdc8c01d09158b7ed9", null ],
       [ "square", "namespacefcarouge_1_1test_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a494ff694b9b5f43839c422f09f5cb9c1", null ],
       [ "velocity", "namespacefcarouge_1_1test_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a895c64682f76b41f1dab7cfa45675f0d", null ]
     ] ],
@@ -326,6 +328,16 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{nested_typed_eigen.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02nested__typed__eigen_8cpp_03.xhtml", null ],
     [ "anonymous_namespace{rank_mismatch_eigexed_fail.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02rank__mismatch__eigexed__fail_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02rank__mismatch__eigexed__fail_8cpp_03.xhtml#aa5901bb9639dbf4d18638304795aacb3", null ]
+    ] ],
+    [ "anonymous_namespace{rank_mismatch_fail.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02rank__mismatch__fail_8cpp_03.xhtml", [
+      [ "corner", "namespacefcarouge_1_1test_1_1anonymous__namespace_02rank__mismatch__fail_8cpp_03.xhtml#ae8f995d238aa83e091e26097e1be679d", null ],
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02rank__mismatch__fail_8cpp_03.xhtml#a8e9405c1bc1b06f63b01d03b42a006d7", null ]
+    ] ],
+    [ "anonymous_namespace{rank_typed_matrix.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02rank__typed__matrix_8cpp_03.xhtml", [
+      [ "column", "namespacefcarouge_1_1test_1_1anonymous__namespace_02rank__typed__matrix_8cpp_03.xhtml#ac142b845ff0c5c88f925463543a5d0ad", null ],
+      [ "plane", "namespacefcarouge_1_1test_1_1anonymous__namespace_02rank__typed__matrix_8cpp_03.xhtml#ac359819d3f1e998b77d74c04cc1d1def", null ],
+      [ "row", "namespacefcarouge_1_1test_1_1anonymous__namespace_02rank__typed__matrix_8cpp_03.xhtml#af33ccecbfb012ce9e96c1602c5979464", null ],
+      [ "singleton", "namespacefcarouge_1_1test_1_1anonymous__namespace_02rank__typed__matrix_8cpp_03.xhtml#a89f0daa9e2f69489861144b4ff411585", null ]
     ] ],
     [ "anonymous_namespace{representation.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02representation_8cpp_03.xhtml", [
       [ "vector3d", "namespacefcarouge_1_1test_1_1anonymous__namespace_02representation_8cpp_03.xhtml#a0a0f2bfd05edbf706f65ec4f25c9d222", null ]
