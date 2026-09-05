@@ -182,7 +182,8 @@ EXCLUDE                =
 EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       = */presentation/*
 EXCLUDE_SYMBOLS        = *::typed_linear_algebra_internal::*
-EXAMPLE_PATH           = ../test
+EXAMPLE_PATH           = ../test \
+                         ../documentation
 EXAMPLE_PATTERNS       = *
 EXAMPLE_RECURSIVE      = NO
 IMAGE_PATH             = ../
