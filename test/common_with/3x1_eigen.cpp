@@ -38,19 +38,15 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the typed matrix permits common conversions.
-[[maybe_unused]] const auto test{[] -> int {
-  using vector3d =
-      typed_column_vector<column_vector<double, 3>, double, double, double>;
-  using expression =
-      decltype(std::declval<vector3d>() + std::declval<vector3d>());
+using vector3d =
+    typed_column_vector<column_vector<double, 3>, double, double, double>;
+using expression =
+    decltype(std::declval<vector3d>() + std::declval<vector3d>());
 
-  static_assert(
-      std::convertible_to<vector3d, std::common_type_t<vector3d, expression>>);
-  static_assert(std::convertible_to<expression,
-                                    std::common_type_t<expression, vector3d>>);
-  static_assert(std::common_with<vector3d, expression>);
-
-  return 0;
-}()};
+static_assert(
+    std::convertible_to<vector3d, std::common_type_t<vector3d, expression>>);
+static_assert(
+    std::convertible_to<expression, std::common_type_t<expression, vector3d>>);
+static_assert(std::common_with<vector3d, expression>);
 } // namespace
 } // namespace fcarouge::test

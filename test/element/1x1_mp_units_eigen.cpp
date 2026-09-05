@@ -31,7 +31,6 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <cassert>
 #include <concepts>
 #include <tuple>
 
@@ -44,14 +43,10 @@ using mp_units::si::unit_symbols::m2;
 //!
 //! @details The count of indexes must match the rank of the matrix: no
 //! index for a singleton matrix.
-[[maybe_unused]] const auto test{[] -> int {
-  using matrix = matrix<double, std::tuple<decltype(1. * m)>,
-                        std::tuple<decltype(1. * m)>>;
-  using quantity = decltype(1. * m2);
+using matrix =
+    matrix<double, std::tuple<decltype(1. * m)>, std::tuple<decltype(1. * m)>>;
+using quantity = decltype(1. * m2);
 
-  static_assert(std::same_as<matrix::element<>, quantity>);
-
-  return 0;
-}()};
+static_assert(std::same_as<matrix::element<>, quantity>);
 } // namespace
 } // namespace fcarouge::test

@@ -31,7 +31,6 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <cassert>
 #include <concepts>
 #include <tuple>
 
@@ -45,15 +44,11 @@ using mp_units::si::unit_symbols::s;
 //!
 //! @details The count of indexes must match the rank of the matrix: one
 //! index for a column vector.
-[[maybe_unused]] const auto test{[] -> int {
-  using matrix =
-      matrix<double, std::tuple<decltype(1. * m), decltype(1. * m / s)>,
-             std::tuple<decltype(1. * N)>>;
+using matrix =
+    matrix<double, std::tuple<decltype(1. * m), decltype(1. * m / s)>,
+           std::tuple<decltype(1. * N)>>;
 
-  static_assert(std::same_as<matrix::element<0>, decltype(1. * m * N)>);
-  static_assert(std::same_as<matrix::element<1>, decltype(1. * m * N / s)>);
-
-  return 0;
-}()};
+static_assert(std::same_as<matrix::element<0>, decltype(1. * m * N)>);
+static_assert(std::same_as<matrix::element<1>, decltype(1. * m * N / s)>);
 } // namespace
 } // namespace fcarouge::test

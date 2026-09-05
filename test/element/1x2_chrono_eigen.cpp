@@ -41,16 +41,12 @@ using representation = double;
 namespace {
 //! @test Verifies each element of a row vector keeps its own std::chrono
 //! period.
-[[maybe_unused]] const auto test{[] -> int {
-  using seconds = std::chrono::duration<representation>;
-  using minutes = std::chrono::duration<representation, std::ratio<60>>;
+using seconds = std::chrono::duration<representation>;
+using minutes = std::chrono::duration<representation, std::ratio<60>>;
 
-  using vector = row_vector<representation, seconds, minutes>;
+using vector = row_vector<representation, seconds, minutes>;
 
-  static_assert(std::same_as<vector::element<0>, seconds>);
-  static_assert(std::same_as<vector::element<1>, minutes>);
-
-  return 0;
-}()};
+static_assert(std::same_as<vector::element<0>, seconds>);
+static_assert(std::same_as<vector::element<1>, minutes>);
 } // namespace
 } // namespace fcarouge::test

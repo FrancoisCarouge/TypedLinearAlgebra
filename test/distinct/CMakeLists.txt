@@ -29,4 +29,4 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-pass("distinct" BACKENDS "mp_units_eigen")
+build("distinct" BACKENDS "mp_units_eigen")

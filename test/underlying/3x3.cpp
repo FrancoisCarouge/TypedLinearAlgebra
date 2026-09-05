@@ -31,19 +31,14 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <cassert>
 #include <type_traits>
 
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the underlying type of the matrix.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 3, 3> z;
+[[maybe_unused]] const matrix<double, 3, 3> z;
 
-  using underlying = typename decltype(z)::underlying;
-  static_assert(std::is_same_v<double, underlying>);
-
-  return 0;
-}()};
+using underlying = typename decltype(z)::underlying;
+static_assert(std::is_same_v<double, underlying>);
 } // namespace
 } // namespace fcarouge::test

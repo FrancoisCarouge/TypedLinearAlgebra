@@ -31,52 +31,47 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <cassert>
 #include <concepts>
 #include <tuple>
+#include <utility>
 
 #include <Eigen/Eigen>
 
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the nested type of the matrix.
-[[maybe_unused]] const auto test{[] -> int {
-  matrix<double, 3, 3> z;
+using z = matrix<double, 3, 3>;
 
-  static_assert(
-      std::same_as<
-          decltype(z),
-          fcarouge::typed_matrix<
+static_assert(
+    std::same_as<
+        z, fcarouge::typed_matrix<
+               fcarouge::typed_matrix<
+                   fcarouge::typed_matrix<Eigen::Matrix<double, 3, 3, 0, 3, 3>,
+                                          std::tuple<double, double, double>,
+                                          std::tuple<double, double, double>>,
+                   std::tuple<double, double, double>,
+                   std::tuple<double, double, double>>,
+               std::tuple<double, double, double>,
+               std::tuple<double, double, double>>>);
+
+static_assert(std::same_as<
+              decltype(std::declval<z &>().data()),
               fcarouge::typed_matrix<
                   fcarouge::typed_matrix<Eigen::Matrix<double, 3, 3, 0, 3, 3>,
                                          std::tuple<double, double, double>,
                                          std::tuple<double, double, double>>,
                   std::tuple<double, double, double>,
-                  std::tuple<double, double, double>>,
-              std::tuple<double, double, double>,
-              std::tuple<double, double, double>>>);
+                  std::tuple<double, double, double>> &>);
 
-  static_assert(std::same_as<
-                decltype(z.data()),
-                fcarouge::typed_matrix<
-                    fcarouge::typed_matrix<Eigen::Matrix<double, 3, 3, 0, 3, 3>,
-                                           std::tuple<double, double, double>,
-                                           std::tuple<double, double, double>>,
-                    std::tuple<double, double, double>,
-                    std::tuple<double, double, double>> &>);
+static_assert(std::same_as<
+              z::matrix,
+              fcarouge::typed_matrix<
+                  fcarouge::typed_matrix<Eigen::Matrix<double, 3, 3, 0, 3, 3>,
+                                         std::tuple<double, double, double>,
+                                         std::tuple<double, double, double>>,
+                  std::tuple<double, double, double>,
+                  std::tuple<double, double, double>>>);
 
-  static_assert(std::same_as<
-                decltype(z)::matrix,
-                fcarouge::typed_matrix<
-                    fcarouge::typed_matrix<Eigen::Matrix<double, 3, 3, 0, 3, 3>,
-                                           std::tuple<double, double, double>,
-                                           std::tuple<double, double, double>>,
-                    std::tuple<double, double, double>,
-                    std::tuple<double, double, double>>>);
-
-  static_assert(std::same_as<decltype(z)::underlying, double>);
-
-  return 0;
-}()};
+static_assert(std::same_as<z::underlying, double>);
 } // namespace
 } // namespace fcarouge::test

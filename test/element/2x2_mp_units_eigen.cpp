@@ -31,7 +31,6 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <cassert>
 #include <concepts>
 #include <tuple>
 
@@ -43,17 +42,13 @@ using mp_units::si::unit_symbols::N;
 using mp_units::si::unit_symbols::s;
 
 //! @test Verifies the element type of the matrix.
-[[maybe_unused]] const auto test{[] -> int {
-  using matrix =
-      matrix<double, std::tuple<decltype(1. * m), decltype(1. * m / s)>,
-             std::tuple<decltype(1. * N), decltype(1. / A)>>;
+using matrix =
+    matrix<double, std::tuple<decltype(1. * m), decltype(1. * m / s)>,
+           std::tuple<decltype(1. * N), decltype(1. / A)>>;
 
-  static_assert(std::same_as<matrix::element<0, 0>, decltype(1. * m * N)>);
-  static_assert(std::same_as<matrix::element<1, 0>, decltype(1. * m * N / s)>);
-  static_assert(std::same_as<matrix::element<0, 1>, decltype(1. * m / A)>);
-  static_assert(std::same_as<matrix::element<1, 1>, decltype(1. * m / s / A)>);
-
-  return 0;
-}()};
+static_assert(std::same_as<matrix::element<0, 0>, decltype(1. * m * N)>);
+static_assert(std::same_as<matrix::element<1, 0>, decltype(1. * m * N / s)>);
+static_assert(std::same_as<matrix::element<0, 1>, decltype(1. * m / A)>);
+static_assert(std::same_as<matrix::element<1, 1>, decltype(1. * m / s / A)>);
 } // namespace
 } // namespace fcarouge::test
