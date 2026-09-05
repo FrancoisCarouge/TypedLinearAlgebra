@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['installation_0',['Installation',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml',1,'']]]
+  ['of_20conduct_0',['Contributor Covenant Code of Conduct',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml',1,'']]]
 ];

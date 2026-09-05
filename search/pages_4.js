@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['eigen_20mp_20units_0',['Quantity-Safe Linear Algebra Use Case: Eigen + mp-units',['../md_html_2paper_2mp__units__eigen.xhtml',1,'']]]
+  ['linear_20algebra_0',['Typed Linear Algebra',['../index.xhtml',1,'']]],
+  ['list_1',['List',['../test.xhtml',1,'Test List'],['../todo.xhtml',1,'Todo List']]]
 ];

@@ -51,7 +51,7 @@ var namespacefcarouge =
     [ "row_vector", "namespacefcarouge.xhtml#a30fd019eecebace40572712dbf29451f", null ],
     [ "typed_column_vector", "namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58", null ],
     [ "typed_row_vector", "namespacefcarouge.xhtml#a7558e7ccc03031fb7de678cf4977e1bf", null ],
-    [ "get", "namespacefcarouge.xhtml#a97ab0828c0b3220b30706db5b5fe699e", null ],
+    [ "get", "namespacefcarouge.xhtml#aa12b09434a95cbb83a45985e0a63642a", null ],
     [ "get", "namespacefcarouge.xhtml#a85bf4d94c90e04287495f05e468ca66f", null ],
     [ "get", "namespacefcarouge.xhtml#a0756c9c3868ee00a5fbc858c522a048b", null ],
     [ "magnitude", "namespacefcarouge.xhtml#a3b31459df9951d183e7e7f065a28bc32", null ],

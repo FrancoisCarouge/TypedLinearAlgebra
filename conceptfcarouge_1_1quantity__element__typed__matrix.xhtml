@@ -108,7 +108,7 @@ $(function(){initNavTree('conceptfcarouge_1_1quantity__element__typed__matrix.xh
 <h2 class="groupheader">Concept definition</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type&gt;</div>
 <div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptfcarouge_1_1quantity__element__typed__matrix.xhtml">fcarouge::quantity_element_typed_matrix</a> = </div>
-<div class="line">    tla::same_as_typed_matrix&lt;Type&gt; and ([] {</div>
+<div class="line">    tla::same_as_typed_matrix&lt;Type&gt; &amp;&amp; ([] {</div>
 <div class="line">      <span class="keywordtype">bool</span> result{<span class="keyword">false</span>};</div>
 <div class="line"> </div>
 <div class="line">      tla::for_constexpr&lt;std::remove_cvref_t&lt;Type&gt;::rows&gt;([&amp;result](<span class="keyword">auto</span> i) {</div>

@@ -108,9 +108,9 @@ $(function(){initNavTree('conceptfcarouge_1_1undecomposed__tuple__like__quantity
 <h2 class="groupheader">Concept definition</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span>&lt;auto Reference, <span class="keyword">typename</span> Representation&gt;</div>
 <div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptfcarouge_1_1undecomposed__tuple__like__quantity.xhtml">fcarouge::undecomposed_tuple_like_quantity</a> = </div>
-<div class="line">    (not <span class="keyword">requires</span> {</div>
+<div class="line">    (! <span class="keyword">requires</span> {</div>
 <div class="line">      mp_units::vector_components&lt;get_quantity_spec(Reference)&gt;::size;</div>
-<div class="line">    }) and <span class="keyword">requires</span>(<span class="keyword">const</span> Representation &amp;representation) {</div>
+<div class="line">    }) &amp;&amp; <span class="keyword">requires</span>(<span class="keyword">const</span> Representation &amp;representation) {</div>
 <div class="line">      {</div>
 <div class="line">        std::tuple_size&lt;Representation&gt;::value</div>
 <div class="line">      } -&gt; std::convertible_to&lt;std::size_t&gt;;</div>

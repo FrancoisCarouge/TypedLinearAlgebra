@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['transposed_0',['transposed',['../namespacefcarouge.xhtml#a39c15f9009b3d9cfed2a5d90b56a5ac3',1,'fcarouge']]],
-  ['typed_5fmatrix_1',['typed_matrix',['../classfcarouge_1_1typed__matrix.xhtml#a6ff67c3079ecd22045c71eec9f030a85',1,'fcarouge::typed_matrix::typed_matrix()'],['../classfcarouge_1_1typed__matrix.xhtml#a61debbe8e973b969b79ed4efad933054',1,'fcarouge::typed_matrix::typed_matrix(const typed_matrix &amp;other)=default'],['../classfcarouge_1_1typed__matrix.xhtml#a01a3060309b0adf3a17736a0c2e0331e',1,'fcarouge::typed_matrix::typed_matrix(typed_matrix &amp;&amp;other)=default'],['../classfcarouge_1_1typed__matrix.xhtml#a9a15f4fadae2872d17581ae3b4f732ab',1,'fcarouge::typed_matrix::typed_matrix(const element&lt;&gt; &amp;value)'],['../classfcarouge_1_1typed__matrix.xhtml#a145a71fcaa9c6b3d172b4b2df0ca69af',1,'fcarouge::typed_matrix::typed_matrix(const auto &amp;first_value, const auto &amp;second_value, const auto &amp;...values)'],['../classfcarouge_1_1typed__matrix.xhtml#ae69f8cb59e41c7b9c18b73c1c503dc12',1,'fcarouge::typed_matrix::typed_matrix(Matrix other)']]]
+  ['_7etyped_5fmatrix_0',['~typed_matrix',['../classfcarouge_1_1typed__matrix.xhtml#a11b18c32111d6f1651c01469c7a0322f',1,'fcarouge::typed_matrix']]]
 ];

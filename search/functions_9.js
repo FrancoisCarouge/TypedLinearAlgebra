@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['parse_0',['parse',['../structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml#a2714c8e0d69d59ff242fda31e5048732',1,'std::formatter&lt; fcarouge::eigen::matrix&lt; Type, Row, Column &gt;, Char &gt;']]],
-  ['parse_5fdigits_1',['parse_digits',['../namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a7417ddf0631af3fe7b4560be8e93a65f',1,'fcarouge::typed_linear_algebra_internal']]]
+  ['quantity_5fspec_0',['QUANTITY_SPEC',['../typed__vector__as__quantity_8cpp.xhtml#a943650a7f7dcc119df482361b68a2d43',1,'QUANTITY_SPEC(flight_velocity, mp_units::isq::velocity):&#160;typed_vector_as_quantity.cpp'],['../typed__vector__as__quantity_8cpp.xhtml#a51e76d23e7d29c20e4216fa0b90544f5',1,'QUANTITY_SPEC(forward_velocity, mp_units::isq::velocity, mp_units::is_kind):&#160;typed_vector_as_quantity.cpp'],['../typed__vector__as__quantity_8cpp.xhtml#a9de60326d723bdbd9528d145e41c0a07',1,'QUANTITY_SPEC(lateral_velocity, mp_units::isq::velocity, mp_units::is_kind):&#160;typed_vector_as_quantity.cpp'],['../typed__vector__as__quantity_8cpp.xhtml#a157afd303fee7282a8f99997e7f17324',1,'QUANTITY_SPEC(vertical_velocity, mp_units::isq::velocity, mp_units::is_kind):&#160;typed_vector_as_quantity.cpp']]]
 ];

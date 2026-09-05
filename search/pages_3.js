@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['deck_0',['Slide Deck',['../md_html_2typed__linear__algebra_2_r_e_a_d_m_e.xhtml',1,'']]]
+  ['installation_0',['Installation',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml',1,'']]]
 ];

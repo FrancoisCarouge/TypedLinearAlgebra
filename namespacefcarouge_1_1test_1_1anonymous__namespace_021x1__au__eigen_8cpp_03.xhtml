@@ -208,10 +208,10 @@ Variables</h2></td></tr>
 <div class="line">  assert(5. * m == r.at());</div>
 <div class="line">  assert(5. * m == r.at&lt;&gt;());</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r())&gt;);</div>
-<div class="line">  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r[])&gt;);</div>
-<div class="line">  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at())&gt;);</div>
-<div class="line">  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at&lt;&gt;())&gt;);</div>
+<div class="line">  <span class="keyword">static_assert</span>(! std::is_reference_v&lt;<span class="keyword">decltype</span>(r())&gt;);</div>
+<div class="line">  <span class="keyword">static_assert</span>(! std::is_reference_v&lt;<span class="keyword">decltype</span>(r[])&gt;);</div>
+<div class="line">  <span class="keyword">static_assert</span>(! std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at())&gt;);</div>
+<div class="line">  <span class="keyword">static_assert</span>(! std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at&lt;&gt;())&gt;);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
@@ -220,7 +220,7 @@ Variables</h2></td></tr>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000028">Test</a></b></dt><dd>Verifies the initializer lists constructor. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000040">Test</a></b></dt><dd>Verifies the quantity by singleton matrix division operator. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000062">Test</a></b></dt><dd>Verifies the equal to algorithm for a singleton matrix of non-trivial types. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000124">Test</a></b></dt><dd>Verifies the singleton matrix minus unary operator. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000123">Test</a></b></dt><dd>Verifies the singleton matrix minus unary operator. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000131">Test</a></b></dt><dd>Verifies the singleton by singleton matrix multiplication operator. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000180">Test</a></b></dt><dd>Verifies the singleton by singleton matrix substraction operator. </dd></dl>
 

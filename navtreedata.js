@@ -27,19 +27,19 @@ var NAVTREE =
   [ "Typed Linear Algebra", "index.xhtml", [
     [ "Installation & Usage", "index.xhtml#installation--usage", null ],
     [ "Reference", "index.xhtml#reference", [
-      [ "Class Typed Matrix", "index.xhtml#class-typed-matrix-1", [
-        [ "Declaration", "index.xhtml#declaration-1", null ],
-        [ "Template Parameters", "index.xhtml#template-parameters-1", null ],
-        [ "Member Types", "index.xhtml#member-types-1", null ],
-        [ "Member Variables", "index.xhtml#member-variables-1", null ],
-        [ "Member Functions", "index.xhtml#member-functions-1", null ]
+      [ "Class Typed Matrix", "index.xhtml#class-typed-matrix", [
+        [ "Declaration", "index.xhtml#declaration", null ],
+        [ "Template Parameters", "index.xhtml#template-parameters", null ],
+        [ "Member Types", "index.xhtml#member-types", null ],
+        [ "Member Variables", "index.xhtml#member-variables", null ],
+        [ "Member Functions", "index.xhtml#member-functions", null ]
       ] ],
-      [ "Operations", "index.xhtml#operations-1", null ],
-      [ "Aliases", "index.xhtml#aliases-1", null ],
-      [ "Format", "index.xhtml#format-1", null ],
+      [ "Operations", "index.xhtml#operations", null ],
+      [ "Aliases", "index.xhtml#aliases", null ],
+      [ "Format", "index.xhtml#format", null ],
       [ "Literals", "index.xhtml#literals", null ],
-      [ "Concepts", "index.xhtml#concepts-1", null ],
-      [ "Structure Element Caster", "index.xhtml#structure-element-caster-1", null ]
+      [ "Concepts", "index.xhtml#concepts", null ],
+      [ "Structure Element Caster", "index.xhtml#structure-element-caster", null ]
     ] ],
     [ "More", "index.xhtml#more", [
       [ "Use Cases", "index.xhtml#use-cases", null ],
@@ -75,41 +75,6 @@ var NAVTREE =
     [ "Unit Test Code Coverage", "unit_test_coverage.xhtml", null ],
     [ "Compile-Time Traces", "time_trace.xhtml", null ],
     [ "Run-Time Call Traces", "call_trace.xhtml", null ],
-    [ "Quantity-Safe Linear Algebra Use Case: Eigen + mp-units", "md_html_2paper_2mp__units__eigen.xhtml", [
-      [ "Abstract", "md_html_2paper_2mp__units__eigen.xhtml#abstract", null ],
-      [ "Introduction", "md_html_2paper_2mp__units__eigen.xhtml#introduction", null ],
-      [ "2 Type safety, Linear Algebra, and Dimensional Analysis", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md2-type-safety-linear-algebra-and-dimensional-analysis", null ],
-      [ "3 Typed Linear Algebra", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md3-typed-linear-algebra", null ],
-      [ "4 Case Study", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md4-case-study", null ],
-      [ "5 Library Reference", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md5-library-reference", [
-        [ "Class Typed Matrix", "md_html_2paper_2mp__units__eigen.xhtml#class-typed-matrix", [
-          [ "Declaration", "md_html_2paper_2mp__units__eigen.xhtml#declaration", null ],
-          [ "Template Parameters", "md_html_2paper_2mp__units__eigen.xhtml#template-parameters", null ],
-          [ "Member Types", "md_html_2paper_2mp__units__eigen.xhtml#member-types", null ],
-          [ "Member Variables", "md_html_2paper_2mp__units__eigen.xhtml#member-variables", null ],
-          [ "Member Functions", "md_html_2paper_2mp__units__eigen.xhtml#member-functions", null ]
-        ] ],
-        [ "Operations", "md_html_2paper_2mp__units__eigen.xhtml#operations", null ],
-        [ "Aliases", "md_html_2paper_2mp__units__eigen.xhtml#aliases", null ],
-        [ "Format", "md_html_2paper_2mp__units__eigen.xhtml#format", null ],
-        [ "Concepts", "md_html_2paper_2mp__units__eigen.xhtml#concepts", null ],
-        [ "Structure Element Caster", "md_html_2paper_2mp__units__eigen.xhtml#structure-element-caster", null ]
-      ] ],
-      [ "6 Open Questions", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md6-open-questions", null ],
-      [ "7 Beyond Unit Safety", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md7-beyond-unit-safety", null ],
-      [ "7 Conclusion", "md_html_2paper_2mp__units__eigen.xhtml#autotoc_md7-conclusion", null ]
-    ] ],
-    [ "Slide Deck", "md_html_2typed__linear__algebra_2_r_e_a_d_m_e.xhtml", [
-      [ "Typed Linear Algebra", "md_html_2typed__linear__algebra_2_r_e_a_d_m_e.xhtml#typed-linear-algebrahttpsfrancoiscarougegithubiotypedlinearalgebratyped_linear_algebraindexhtml", null ]
-    ] ],
-    [ "typed_linear_algebra", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml", [
-      [ "Parking", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#parking", [
-        [ "ianchortyped_linear_algebra-typed_linear_algebrailinebr", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#ianchortyped_linear_algebra-typed_linear_algebrailinebr", null ],
-        [ "title: \"Typed Linear Algebra\"", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#title-typed-linear-algebra", null ],
-        [ "Typed Linear Algebra", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#typed-linear-algebra-1", null ],
-        [ "</aside>", "md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#aside", null ]
-      ] ]
-    ] ],
     [ "Installation", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml", [
       [ "Development Build & Run", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run", [
         [ "Tests", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#tests", null ],
@@ -161,11 +126,11 @@ var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
 "classfcarouge_1_1typed__matrix.xhtml#a01a3060309b0adf3a17736a0c2e0331e",
-"element_21x1__au__eigen_8cpp.xhtml#aaf8e9ac04b3f804d6c024d24e2892b59",
-"md_html_2typed__linear__algebra_2typed__linear__algebra.xhtml#parking",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__mp__units__eigen__fail_8cpp_03.xhtml#af05bf5ae37062921e8378d149eeb6566",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02vector__lhs__mp__units__std__fail_8cpp_03.xhtml",
-"structured__bindings_21x1__const_8cpp.xhtml"
+"element_21x1__au__eigen_8cpp.xhtml#ad1975e20421b004863af6202b73e4e99",
+"mp__units__eigen_2fcarouge_2linalg_8hpp.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__eigen_8cpp_03.xhtml#aad6fb4d9d8300dafa20d7e0fe2ae0b8e",
+"namespacemembers_p.xhtml",
+"subscript__3x3_8cpp_source.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

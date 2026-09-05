@@ -209,7 +209,7 @@ $(function(){initNavTree('mp__units_8hpp_source.xhtml',''); initResizable(true);
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>           (Index &lt; std::tuple_size_v&lt;Representation&gt;)</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>[[nodiscard]] <span class="keyword">constexpr</span> <span class="keyword">auto</span></div>
 <div class="foldopen" id="foldopen00104" data-start="{" data-end="}">
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#a97ab0828c0b3220b30706db5b5fe699e">  104</a></span><a class="code hl_function" href="namespacefcarouge.xhtml#a0756c9c3868ee00a5fbc858c522a048b">get</a>(<span class="keyword">const</span> mp_units::quantity&lt;Reference, Representation&gt; &amp;value) {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#aa12b09434a95cbb83a45985e0a63642a">  104</a></span><a class="code hl_function" href="namespacefcarouge.xhtml#a0756c9c3868ee00a5fbc858c522a048b">get</a>(<span class="keyword">const</span> mp_units::quantity&lt;Reference, Representation&gt; &amp;value) {</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="namespacefcarouge.xhtml#a0756c9c3868ee00a5fbc858c522a048b">get&lt;Index&gt;</a>(value.numerical_value_in(value.unit)) * value.unit;</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>}</div>
 </div>

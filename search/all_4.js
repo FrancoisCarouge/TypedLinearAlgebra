@@ -1,6 +1,19 @@
 var searchData=
 [
-  ['5_20library_20reference_0',['5 Library Reference',['../md_html_2paper_2mp__units__eigen.xhtml#autotoc_md5-library-reference',1,'']]],
-  ['5x1_5fis_5fassignable_2ecpp_1',['5x1_is_assignable.cpp',['../5x1__is__assignable_8cpp.xhtml',1,'']]],
-  ['5x5_2ecpp_2',['5x5.cpp',['../5x5_8cpp.xhtml',1,'']]]
+  ['a_20vulnerability_0',['Reporting a Vulnerability',['../md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#reporting-a-vulnerability',1,'']]],
+  ['acceleration_1',['acceleration',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a9fc73abdcf49a366c81e69075a419da5',1,'fcarouge::sample::anonymous_namespace{au_eigen.cpp}::acceleration'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__std_8cpp_03.xhtml#acd0b8eefd11608f1ea52f4d7c6feab9a',1,'fcarouge::sample::anonymous_namespace{au_std.cpp}::acceleration'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#ada484be0783b5d9d405634f67bb9d0f9',1,'fcarouge::sample::anonymous_namespace{mp_units_eigen.cpp}::acceleration'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#afbc261b1054d2dca1459c359f5a8058a',1,'fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::acceleration'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02nholthaus__eigen_8cpp_03.xhtml#af749905f297ce68510aa6abb4445d6d6',1,'fcarouge::sample::anonymous_namespace{nholthaus_eigen.cpp}::acceleration'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02nholthaus__std_8cpp_03.xhtml#a66c7a87a4e363a500897e8965ae0ca2e',1,'fcarouge::sample::anonymous_namespace{nholthaus_std.cpp}::acceleration'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03.xhtml#a4245b29691faf31a43667a6599235449',1,'fcarouge::test::anonymous_namespace{distinct.cpp}::acceleration']]],
+  ['access_2',['access',['../structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1accessor.xhtml#a4f3368a0391543803bb2fb193f4b4551',1,'fcarouge::benchmark::anonymous_namespace{mdspan_tuple_product.cpp}::accessor::access()'],['../structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor.xhtml#ad442dc8b7ab4b4ca3301482a12569549',1,'fcarouge::benchmark::anonymous_namespace{typed_mdspan_tupled_product.cpp}::accessor::access()']]],
+  ['accessor_3',['accessor',['../structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1accessor.xhtml',1,'fcarouge::benchmark::anonymous_namespace{mdspan_tuple_product.cpp}::accessor&lt; Tuple, Type &gt;'],['../structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor.xhtml',1,'fcarouge::benchmark::anonymous_namespace{typed_mdspan_tupled_product.cpp}::accessor&lt; Tuple, Type &gt;']]],
+  ['acknowledgement_4',['Third Party Acknowledgement',['../index.xhtml#third-party-acknowledgement',1,'']]],
+  ['actions_5',['Continuous Integration &amp; Deployment Actions',['../index.xhtml#continuous-integration--deployment-actions',1,'']]],
+  ['algebra_6',['Typed Linear Algebra',['../index.xhtml',1,'']]],
+  ['aliases_7',['Aliases',['../index.xhtml#aliases',1,'']]],
+  ['as_20seen_20at_20cppnow_202026_8',['As seen at CppNow 2026',['../index.xhtml#as-seen-at-cppnow-2026',1,'']]],
+  ['assign_2ecpp_9',['assign.cpp',['../assign_8cpp.xhtml',1,'']]],
+  ['at_10',['at',['../classfcarouge_1_1typed__matrix.xhtml#a9f0415b7e8fccdbce89d2f3e476ab4f5',1,'fcarouge::typed_matrix::at(this auto &amp;&amp;self) -&gt; decltype(auto) requires(sizeof...(Indexes)==rank)'],['../classfcarouge_1_1typed__matrix.xhtml#a4f021cdbb68e3e5bbe51c5962b312508',1,'fcarouge::typed_matrix::at(this auto &amp;&amp;self, const element&lt; Indexes... &gt; &amp;value)']]],
+  ['at_20cppnow_202026_11',['As seen at CppNow 2026',['../index.xhtml#as-seen-at-cppnow-2026',1,'']]],
+  ['attribution_12',['Attribution',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution',1,'']]],
+  ['au_2ehpp_13',['au.hpp',['../au_8hpp.xhtml',1,'']]],
+  ['au_5feigen_2ecpp_14',['au_eigen.cpp',['../au__eigen_8cpp.xhtml',1,'']]],
+  ['au_5fstd_2ecpp_15',['au_std.cpp',['../au__std_8cpp.xhtml',1,'']]]
 ];
