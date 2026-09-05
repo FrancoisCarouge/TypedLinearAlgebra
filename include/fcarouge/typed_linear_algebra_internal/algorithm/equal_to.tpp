@@ -48,8 +48,9 @@ namespace fcarouge {
 //!
 //! @note Deliberately excludes singleton, rank zero, matrices: those are
 //! served by the dedicated overloads below.
-[[nodiscard]] constexpr bool operator==(const rank_typed_matrix<2> auto &lhs,
-                                        const rank_typed_matrix<2> auto &rhs) {
+[[nodiscard]] constexpr auto operator==(const rank_typed_matrix<2> auto &lhs,
+                                        const rank_typed_matrix<2> auto &rhs)
+    -> bool {
   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
   using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
 
@@ -79,8 +80,9 @@ namespace fcarouge {
 //!
 //! @see operator==(const rank_typed_matrix<2> auto &, const
 //! rank_typed_matrix<2> auto &)
-[[nodiscard]] constexpr bool operator==(const rank_typed_matrix<1> auto &lhs,
-                                        const rank_typed_matrix<1> auto &rhs) {
+[[nodiscard]] constexpr auto operator==(const rank_typed_matrix<1> auto &lhs,
+                                        const rank_typed_matrix<1> auto &rhs)
+    -> bool {
   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
   using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
 
@@ -105,8 +107,9 @@ namespace fcarouge {
 }
 
 //! @brief Equality of two singleton typed matrices.
-[[nodiscard]] constexpr bool operator==(const rank_typed_matrix<0> auto &lhs,
-                                        const rank_typed_matrix<0> auto &rhs) {
+[[nodiscard]] constexpr auto operator==(const rank_typed_matrix<0> auto &lhs,
+                                        const rank_typed_matrix<0> auto &rhs)
+    -> bool {
   using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
   using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
 
@@ -124,8 +127,8 @@ namespace fcarouge {
 //!
 //! @details Symmetric equality, `lhs == rhs` and `rhs == lhs`, is
 //! synthesized by the compiler from this single overload.
-[[nodiscard]] constexpr bool operator==(const rank_typed_matrix<0> auto &lhs,
-                                        const auto &rhs) {
+[[nodiscard]] constexpr auto operator==(const rank_typed_matrix<0> auto &lhs,
+                                        const auto &rhs) -> bool {
   return lhs.at() == rhs;
 }
 
