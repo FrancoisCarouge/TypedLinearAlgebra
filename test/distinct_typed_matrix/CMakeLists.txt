@@ -29,4 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-build("distinct" BACKENDS "mp_units_eigen")
+build("distinct_typed_matrix" BACKENDS "eigexed")
+build("mp_units_eigen" BACKENDS "mp_units_eigen")
+build("au_eigen" BACKENDS "au_eigen")
+build("chrono_eigen" BACKENDS "chrono_eigen")
