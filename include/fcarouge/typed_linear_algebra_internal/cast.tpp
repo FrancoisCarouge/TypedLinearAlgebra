@@ -34,7 +34,8 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge {
 template <typename To, typename From>
-[[nodiscard]] constexpr To element_caster<To, From>::operator()(From value) {
+[[nodiscard]] constexpr auto element_caster<To, From>::operator()(From value)
+    -> To {
   return value;
 }
 } // namespace fcarouge

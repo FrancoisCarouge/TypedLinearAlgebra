@@ -52,9 +52,9 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 
 //! @todo Verify types and storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
-    const same_as_typed_matrix auto &other) {
+constexpr auto typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
+    const same_as_typed_matrix auto &other)
+    -> typed_matrix<Matrix, RowIndexes, ColumnIndexes> & {
   storage = other.data();
   return *this;
 }
@@ -67,9 +67,9 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 
 //! @todo Verify types and storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
-    same_as_typed_matrix auto &&other) {
+constexpr auto typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
+    same_as_typed_matrix auto &&other)
+    -> typed_matrix<Matrix, RowIndexes, ColumnIndexes> & {
   storage = std::forward<decltype(other)>(other).data();
   return *this;
 }
@@ -95,9 +95,9 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
+constexpr auto typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
     const element<> (&elements)[typed_matrix::rows * typed_matrix::columns])
+    -> typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
   requires rank_typed_matrix<typed_matrix, 0>
 {
   using element_type = element<>;
@@ -134,9 +134,9 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
+constexpr auto typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
     const element<0> (&elements)[typed_matrix::rows * typed_matrix::columns])
+    -> typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
   requires rank_typed_matrix<typed_matrix, 1> and
            uniform_typed_matrix<typed_matrix>
 {
@@ -169,9 +169,8 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 
 //! @todo How to handle all combinations of storage and value types?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
-    const element<> &value)
+constexpr auto typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
+    const element<> &value) -> typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
   requires rank_typed_matrix<typed_matrix, 0>
 {
   if constexpr (requires { storage[0, 0]; }) {
@@ -244,9 +243,10 @@ operator element<>(this auto &&self)
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <typename... Indexes>
-[[nodiscard]] constexpr decltype(auto)
+[[nodiscard]] constexpr auto
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
                                                             Indexes... indexes)
+    -> decltype(auto)
   requires(sizeof...(Indexes) == rank) and
           ((index<Indexes> && ...) or uniform_typed_matrix<typed_matrix>)
 {
@@ -256,9 +256,10 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
 //! @todo Unecessarily complicated, simplify?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <typename... Indexes>
-[[nodiscard]] constexpr decltype(auto)
+[[nodiscard]] constexpr auto
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
                                                             Indexes... indexes)
+    -> decltype(auto)
   requires(sizeof...(Indexes) == rank) and
           ((index<Indexes> && ...) or uniform_typed_matrix<typed_matrix>)
 {
@@ -307,8 +308,9 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
 //! @todo Unecessarily complicated, simplify?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <auto... Indexes>
-[[nodiscard]] constexpr decltype(auto)
+[[nodiscard]] constexpr auto
 typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
+    -> decltype(auto)
   requires(sizeof...(Indexes) == rank)
 {
   using self_t = std::remove_reference_t<decltype(self)>;
@@ -381,8 +383,9 @@ constexpr void typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-[[nodiscard]] constexpr decltype(auto)
-typed_matrix<Matrix, RowIndexes, ColumnIndexes>::data(this auto &&self) {
+[[nodiscard]] constexpr auto
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::data(this auto &&self)
+    -> decltype(auto) {
   return std::forward_like<decltype(self)>(self.storage);
 }
 
@@ -395,11 +398,13 @@ template <typename RowIndexes, typename ColumnIndexes>
       std::forward<type>(value)};
 }
 
-template <int Index> decltype(auto) get(rank_typed_matrix<1> auto &&value) {
+template <int Index>
+auto get(rank_typed_matrix<1> auto &&value) -> decltype(auto) {
   return (value.template at<Index>());
 }
 
-template <int Index> decltype(auto) get(rank_typed_matrix<0> auto &&value) {
+template <int Index>
+auto get(rank_typed_matrix<0> auto &&value) -> decltype(auto) {
   static_assert(Index == 0, "The index must be zero for a rank 0 matrix.");
 
   return (value.at());

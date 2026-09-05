@@ -134,7 +134,7 @@ constexpr auto operator/(const typename Denominator::Scalar &lhs,
 //! @todo How should structured bindings be done over a matrix with more than
 //! one dimension? The layout policy may be a solution to consider.
 template <std::size_t Index, typename Derived>
-auto &get(DenseCoeffsBase<Derived, WriteAccessors> &base) {
+auto get(DenseCoeffsBase<Derived, WriteAccessors> &base) -> auto & {
   return base.coeffRef(Index / Derived::ColsAtCompileTime,
                        Index % Derived::ColsAtCompileTime);
 }

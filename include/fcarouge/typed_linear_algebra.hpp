@@ -210,13 +210,14 @@ public:
   constexpr typed_matrix(const typed_matrix &other) = default;
 
   //! @brief Copy assign a typed matrix.
-  constexpr typed_matrix &operator=(const typed_matrix &other) = default;
+  constexpr auto operator=(const typed_matrix &other)
+      -> typed_matrix & = default;
 
   //! @brief Move construct a typed matrix.
   constexpr typed_matrix(typed_matrix &&other) = default;
 
   //! @brief Move construct a typed matrix.
-  constexpr typed_matrix &operator=(typed_matrix &&other) = default;
+  constexpr auto operator=(typed_matrix &&other) -> typed_matrix & = default;
 
   //! @brief Copy construct generalization of a compatible typed matrix.
   //!
@@ -225,7 +226,8 @@ public:
       typed_matrix(const same_as_typed_matrix auto &other);
 
   //! @brief Copy assign generalization of a compatible typed matrix.
-  constexpr typed_matrix &operator=(const same_as_typed_matrix auto &other);
+  constexpr auto operator=(const same_as_typed_matrix auto &other)
+      -> typed_matrix &;
 
   //! @brief Move construct generalization of a compatible typed matrix.
   //!
@@ -233,7 +235,7 @@ public:
   constexpr explicit(false) typed_matrix(same_as_typed_matrix auto &&other);
 
   //! @brief Move assign generalization of a compatible typed matrix.
-  constexpr typed_matrix &operator=(same_as_typed_matrix auto &&other);
+  constexpr auto operator=(same_as_typed_matrix auto &&other) -> typed_matrix &;
 
   //! @brief Convert construct a singleton typed matrix from a single value.
   //!
@@ -248,7 +250,7 @@ public:
   //! @details Applicable to singleton matrix: one element.
   //!
   //! @param value Element of compatible type.
-  constexpr typed_matrix &operator=(const element<> &value)
+  constexpr auto operator=(const element<> &value) -> typed_matrix &
     requires rank_typed_matrix<typed_matrix, 0>;
 
   //! @brief Convert construct a singleton typed matrix from a one-element
@@ -268,7 +270,8 @@ public:
   //! constructors taking arrays of data need implicit constructors.
   //!
   //! @param elements C-style array of the single element.
-  constexpr typed_matrix &operator=(const element<> (&elements)[rows * columns])
+  constexpr auto operator=(const element<> (&elements)[rows * columns])
+      -> typed_matrix &
     requires rank_typed_matrix<typed_matrix, 0>;
 
   //! @brief Convert construct one-dimension uniformly typed matrix from array.
@@ -290,8 +293,8 @@ public:
   //! taking arrays of data need implicit constructors.
   //!
   //! @param elements C-style array of elements of identical types.
-  constexpr typed_matrix &
-  operator=(const element<0> (&elements)[rows * columns])
+  constexpr auto operator=(const element<0> (&elements)[rows * columns])
+      -> typed_matrix &
     requires rank_typed_matrix<typed_matrix, 1> and
              uniform_typed_matrix<typed_matrix>;
 
@@ -365,8 +368,8 @@ public:
   //! @return A reference to the strongly typed element at the specified
   //! location for non-const access, or a prvalue otherwise.
   template <typename... Indexes>
-  [[nodiscard]] constexpr decltype(auto) operator[](this auto &&self,
-                                                    Indexes... indexes)
+  [[nodiscard]] constexpr auto operator[](this auto &&self, Indexes... indexes)
+      -> decltype(auto)
     requires(sizeof...(Indexes) == rank) and
             ((index<Indexes> && ...) or uniform_typed_matrix<typed_matrix>);
 
@@ -385,8 +388,8 @@ public:
   //! @return A reference to the strongly typed element at the specified
   //! location for non-const access, or a prvalue otherwise.
   template <typename... Indexes>
-  [[nodiscard]] constexpr decltype(auto) operator()(this auto &&self,
-                                                    Indexes... indexes)
+  [[nodiscard]] constexpr auto operator()(this auto &&self, Indexes... indexes)
+      -> decltype(auto)
     requires(sizeof...(Indexes) == rank) and
             ((index<Indexes> && ...) or uniform_typed_matrix<typed_matrix>);
 
@@ -406,7 +409,7 @@ public:
   //!
   //! @return The strongly typed element at the specified location.
   template <auto... Indexes>
-  [[nodiscard]] constexpr decltype(auto) at(this auto &&self)
+  [[nodiscard]] constexpr auto at(this auto &&self) -> decltype(auto)
     requires(sizeof...(Indexes) == rank);
 
   //! @brief Write the specified element.
@@ -430,7 +433,7 @@ public:
   //! absence of type validation.
   //!
   //! @return A reference to the underlying element storage.
-  [[nodiscard]] constexpr decltype(auto) data(this auto &&self);
+  [[nodiscard]] constexpr auto data(this auto &&self) -> decltype(auto);
 
   //! @}
 
@@ -459,7 +462,7 @@ using typed_column_vector =
 //! @details Specialize this template to allow conversion of element's type and
 //! underlying type.
 template <typename To, typename From> struct element_caster {
-  [[nodiscard]] static constexpr To operator()(From value);
+  [[nodiscard]] static constexpr auto operator()(From value) -> To;
 };
 
 //! @}
@@ -498,12 +501,14 @@ template <typename RowIndexes, typename ColumnIndexes>
 //! @brief Get function argument-dependent lookup overload.
 //!
 //! @details Also provides support for structured bindings.
-template <int Index> decltype(auto) get(rank_typed_matrix<1> auto &&value);
+template <int Index>
+auto get(rank_typed_matrix<1> auto &&value) -> decltype(auto);
 
 //! @brief Get function argument-dependent lookup overload.
 //!
 //! @details Also provides support for structured bindings.
-template <int Index> decltype(auto) get(rank_typed_matrix<0> auto &&value);
+template <int Index>
+auto get(rank_typed_matrix<0> auto &&value) -> decltype(auto);
 
 namespace literals {
 //! @brief Integer literal operator to compile-time index.
@@ -544,14 +549,17 @@ namespace fcarouge {
 
 [[nodiscard]] constexpr auto magnitude(const uniform_typed_matrix auto &value);
 
-[[nodiscard]] constexpr bool operator==(const rank_typed_matrix<2> auto &lhs,
-                                        const rank_typed_matrix<2> auto &rhs);
-[[nodiscard]] constexpr bool operator==(const rank_typed_matrix<1> auto &lhs,
-                                        const rank_typed_matrix<1> auto &rhs);
-[[nodiscard]] constexpr bool operator==(const rank_typed_matrix<0> auto &lhs,
-                                        const rank_typed_matrix<0> auto &rhs);
-[[nodiscard]] constexpr bool operator==(const rank_typed_matrix<0> auto &lhs,
-                                        const auto &rhs);
+[[nodiscard]] constexpr auto operator==(const rank_typed_matrix<2> auto &lhs,
+                                        const rank_typed_matrix<2> auto &rhs)
+    -> bool;
+[[nodiscard]] constexpr auto operator==(const rank_typed_matrix<1> auto &lhs,
+                                        const rank_typed_matrix<1> auto &rhs)
+    -> bool;
+[[nodiscard]] constexpr auto operator==(const rank_typed_matrix<0> auto &lhs,
+                                        const rank_typed_matrix<0> auto &rhs)
+    -> bool;
+[[nodiscard]] constexpr auto operator==(const rank_typed_matrix<0> auto &lhs,
+                                        const auto &rhs) -> bool;
 
 [[nodiscard]] constexpr auto operator+(const rank_typed_matrix<2> auto &lhs,
                                        const rank_typed_matrix<2> auto &rhs);

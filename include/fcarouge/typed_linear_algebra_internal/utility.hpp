@@ -279,7 +279,7 @@ struct element_t<Type> {
 template <typename Type, std::size_t... Indexes>
 using element = element_t<Type, Indexes...>::type;
 
-template <typename Type> constexpr bool is_uniform_typed_matrix() {
+template <typename Type> constexpr auto is_uniform_typed_matrix() -> bool {
   using matrix = std::remove_cvref_t<Type>;
   bool result{true};
 
@@ -387,7 +387,7 @@ concept other_tuple_like_vector =
     tuple_like<Value, std::remove_cvref_t<TypedMatrix>::rows *
                           std::remove_cvref_t<TypedMatrix>::columns>;
 
-template <char... Digits> constexpr std::size_t parse_digits() {
+template <char... Digits> constexpr auto parse_digits() -> std::size_t {
   static_assert((('0' <= Digits && Digits <= '9') && ...),
                 "Characters must only be digits.");
 
@@ -435,7 +435,7 @@ concept are_not_interconvertible = not are_interconvertible<Lhs, Rhs>;
 //! compilation of this function may be expensive. We may want to use a pure
 //! concept approach. The ordered-pair traversal also tests each unordered
 //! pair twice.
-template <typename Type> constexpr bool is_distinct_typed_matrix() {
+template <typename Type> constexpr auto is_distinct_typed_matrix() -> bool {
   using matrix = std::remove_cvref_t<Type>;
   bool result{true};
 

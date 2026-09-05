@@ -52,7 +52,8 @@ concept multipliable_shape =
 //! them.
 //!
 //! @pre `Lhs` and `Rhs` are `multipliable_shape`.
-template <typename Lhs, typename Rhs> constexpr bool are_terms_multipliable() {
+template <typename Lhs, typename Rhs>
+constexpr auto are_terms_multipliable() -> bool {
   using lhs_matrix = std::remove_cvref_t<Lhs>;
   using rhs_matrix = std::remove_cvref_t<Rhs>;
   using lhs_row_indexes = typename lhs_matrix::row_indexes;
