@@ -14,6 +14,6 @@ var searchData=
   ['at_20cppnow_202026_11',['As seen at CppNow 2026',['../index.xhtml#as-seen-at-cppnow-2026',1,'']]],
   ['attribution_12',['Attribution',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution',1,'']]],
   ['au_2ehpp_13',['au.hpp',['../au_8hpp.xhtml',1,'']]],
-  ['au_5feigen_2ecpp_14',['au_eigen.cpp',['../au__eigen_8cpp.xhtml',1,'']]],
+  ['au_5feigen_2ecpp_14',['au_eigen.cpp',['../sample_2au__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../test_2uniform__typed__matrix_2au__eigen_8cpp.xhtml',1,'(Global Namespace)']]],
   ['au_5fstd_2ecpp_15',['au_std.cpp',['../sample_2au__std_8cpp.xhtml',1,'(Global Namespace)'],['../test_2row__typed__matrix_2au__std_8cpp.xhtml',1,'(Global Namespace)']]]
 ];

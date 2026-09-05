@@ -26,5 +26,6 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "structured_bindings", "dir_bb833da45de611d79770d70c20939231.xhtml", "dir_bb833da45de611d79770d70c20939231" ],
     [ "substraction", "dir_f423392bc0209ba027827651fa50293e.xhtml", "dir_f423392bc0209ba027827651fa50293e" ],
     [ "transposed", "dir_1a6ddf7e0d22624ef70b722ca0f63316.xhtml", "dir_1a6ddf7e0d22624ef70b722ca0f63316" ],
-    [ "underlying", "dir_5808b4da18f227130090ece718c34e46.xhtml", "dir_5808b4da18f227130090ece718c34e46" ]
+    [ "underlying", "dir_5808b4da18f227130090ece718c34e46.xhtml", "dir_5808b4da18f227130090ece718c34e46" ],
+    [ "uniform_typed_matrix", "dir_1bc3a1532d89e79438cdb32fd118cac5.xhtml", "dir_1bc3a1532d89e79438cdb32fd118cac5" ]
 ];

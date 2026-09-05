@@ -1,9 +1,5 @@
 var NAVTREEINDEX3 =
 {
-"mp__units__std_8cpp.xhtml#abd406f490d56f485399dbc56ea600d92":[17,0,4,5,4],
-"mp__units__std_8cpp.xhtml#afbc261b1054d2dca1459c359f5a8058a":[17,0,4,5,0],
-"mp__units__std_8cpp_source.xhtml":[17,0,4,5],
-"multiplication_21x1_8cpp.xhtml":[17,0,6,17,0],
 "multiplication_21x1_8cpp_source.xhtml":[17,0,6,17,0],
 "multiplication_21x1__au__eigen_8cpp.xhtml":[17,0,6,17,1],
 "multiplication_21x1__au__eigen_8cpp_source.xhtml":[17,0,6,17,1],
@@ -166,7 +162,7 @@ var NAVTREEINDEX3 =
 "namespacefcarouge_1_1sample_1_1anonymous__namespace_02nholthaus__std_8cpp_03.xhtml#aeacebf73152209daa53cf7f258ba1208":[14,0,1,4,7,3],
 "namespacefcarouge_1_1sample_1_1anonymous__namespace_02nholthaus__std_8cpp_03.xhtml#afafc5e58d9cb58a310bfccbd821220ab":[14,0,1,4,7,2],
 "namespacefcarouge_1_1test.xhtml":[14,0,1,5],
-"namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7":[14,0,1,5,117],
+"namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7":[14,0,1,5,119],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1_8cpp_03.xhtml":[14,0,1,5,0],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1_8cpp_03.xhtml#a307416cd408bb3cea5e5a4d316135bc3":[14,0,1,5,0,0],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__array_8cpp_03.xhtml":[14,0,1,5,1],
@@ -249,5 +245,9 @@ var NAVTREEINDEX3 =
 "namespacefcarouge_1_1test_1_1anonymous__namespace_022x1__1x2__au__std_8cpp_03.xhtml#a5597b1e340bc475eaf7c3960e7b22704":[14,0,1,5,34,0],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_022x1__1x2__mp__units__std_8cpp_03.xhtml":[14,0,1,5,35],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_022x1__1x2__mp__units__std_8cpp_03.xhtml#ab57dac46e41ffc66c1c6ec2da3c5e71d":[14,0,1,5,35,0],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_022x1__au__eigen_8cpp_03.xhtml":[14,0,1,5,36]
+"namespacefcarouge_1_1test_1_1anonymous__namespace_022x1__au__eigen_8cpp_03.xhtml":[14,0,1,5,36],
+"namespacefcarouge_1_1test_1_1anonymous__namespace_022x1__au__eigen_8cpp_03.xhtml#a56a564179f4ddcea5c3d7b57a469c441":[14,0,1,5,36,1],
+"namespacefcarouge_1_1test_1_1anonymous__namespace_022x1__au__eigen_8cpp_03.xhtml#a6b04f5bd4f6851b5d2a8a819b4ab7de2":[14,0,1,5,36,0],
+"namespacefcarouge_1_1test_1_1anonymous__namespace_022x1__au__eigen__fail_8cpp_03.xhtml":[14,0,1,5,37],
+"namespacefcarouge_1_1test_1_1anonymous__namespace_022x1__au__eigen__fail_8cpp_03.xhtml#a2a013e3e3e6a0ae6625001922bb5daaf":[14,0,1,5,37,0]
 };

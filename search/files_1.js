@@ -7,7 +7,7 @@ var searchData=
   ['2x1_5fau_5fstd_2ecpp_4',['2x1_au_std.cpp',['../equal__to_22x1__au__std_8cpp.xhtml',1,'(Global Namespace)'],['../transposed_22x1__au__std_8cpp.xhtml',1,'(Global Namespace)']]],
   ['2x1_5feigen_2ecpp_5',['2x1_eigen.cpp',['../2x1__eigen_8cpp.xhtml',1,'']]],
   ['2x1_5fmp_5funits_5feigen_2ecpp_6',['2x1_mp_units_eigen.cpp',['../division_22x1__mp__units__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../element_22x1__mp__units__eigen_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['2x1_5fmp_5funits_5feigen_5ffail_2ecpp_7',['2x1_mp_units_eigen_fail.cpp',['../2x1__mp__units__eigen__fail_8cpp.xhtml',1,'']]],
+  ['2x1_5fmp_5funits_5feigen_5ffail_2ecpp_7',['2x1_mp_units_eigen_fail.cpp',['../element_22x1__mp__units__eigen__fail_8cpp.xhtml',1,'(Global Namespace)'],['../magnitude_22x1__mp__units__eigen__fail_8cpp.xhtml',1,'(Global Namespace)']]],
   ['2x1_5fmp_5funits_5fstd_2ecpp_8',['2x1_mp_units_std.cpp',['../equal__to_22x1__mp__units__std_8cpp.xhtml',1,'(Global Namespace)'],['../transposed_22x1__mp__units__std_8cpp.xhtml',1,'(Global Namespace)']]],
   ['2x2_5f2x1_2ecpp_9',['2x2_2x1.cpp',['../2x2__2x1_8cpp.xhtml',1,'']]],
   ['2x2_5fau_5feigen_2ecpp_10',['2x2_au_eigen.cpp',['../element_22x2__au__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../multiplication_22x2__au__eigen_8cpp.xhtml',1,'(Global Namespace)']]],
