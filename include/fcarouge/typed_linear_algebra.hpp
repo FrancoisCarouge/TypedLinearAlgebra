@@ -186,13 +186,13 @@ public:
   //! @{
 
   //! @brief The count of rows.
-  static inline constexpr auto rows{std::tuple_size_v<row_indexes>};
+  static constexpr auto rows{std::tuple_size_v<row_indexes>};
 
   //! @brief The count of rows.
-  static inline constexpr auto columns{std::tuple_size_v<column_indexes>};
+  static constexpr auto columns{std::tuple_size_v<column_indexes>};
 
   //! @brief The number of dimensions in the matrix.
-  static inline constexpr auto rank{tla::rank<rows, columns>};
+  static constexpr auto rank{tla::rank<rows, columns>};
 
   //! @}
 
@@ -326,7 +326,7 @@ public:
   //!
   //! @note Alternative design could evaluate feasability of private
   //! constructor, operator friendship, attorney-client, or key idioms.
-  constexpr explicit typed_matrix(const Matrix &other);
+  constexpr explicit typed_matrix(Matrix other);
 
   //! @brief Convert construct a typed vector from a tuple-like value.
   //!

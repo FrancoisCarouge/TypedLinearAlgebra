@@ -49,8 +49,8 @@ struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
 private:
   using matrix = fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>;
 
-  static inline constexpr std::size_t rows{matrix::rows};
-  static inline constexpr std::size_t columns{matrix::columns};
+  static constexpr std::size_t rows{matrix::rows};
+  static constexpr std::size_t columns{matrix::columns};
 
 public:
   //! @todo Add a pretty, multi-line, aligned format option?

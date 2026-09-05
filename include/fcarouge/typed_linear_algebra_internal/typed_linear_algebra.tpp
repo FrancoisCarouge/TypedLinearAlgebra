@@ -76,8 +76,8 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const Matrix &other)
-    : storage{other} {}
+    Matrix other)
+    : storage{std::move(other)} {}
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(

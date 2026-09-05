@@ -39,6 +39,6 @@ For more information, please refer to <https://unlicense.org> */
 namespace std {
 namespace linalg =
     MDSPAN_IMPL_STANDARD_NAMESPACE::MDSPAN_IMPL_PROPOSED_NAMESPACE::linalg;
-}
+} // namespace std
 
 #endif // FCAROUGE_LINALG

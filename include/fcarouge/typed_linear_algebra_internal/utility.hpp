@@ -166,8 +166,10 @@ struct multiplies<std::tuple<Types1...>, std::tuple<Types2...>> {
 };
 
 template <std::size_t... Is, typename F>
-constexpr void for_constexpr_detail(std::index_sequence<Is...>, F &&f) {
-  (f(std::integral_constant<std::size_t, Is>{}), ...);
+constexpr void
+for_constexpr_detail([[maybe_unused]] std::index_sequence<Is...> indexes,
+                     F &&f) {
+  (std::forward<F>(f)(std::integral_constant<std::size_t, Is>{}), ...);
 }
 
 //! @todo Remove for C++26 P1789 Library Support for Expansion Statements.
@@ -246,6 +248,9 @@ template <typename Type, std::size_t... Indexes> struct element_t {
     type() = delete;
     type(const type &) = delete;
     type(type &&) = delete;
+    ~type() = delete;
+    type &operator=(const type &) = delete;
+    type &operator=(type &&) = delete;
   };
 };
 
