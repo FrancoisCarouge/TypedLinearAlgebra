@@ -274,6 +274,76 @@ struct element_t<Type> {
 template <typename Type, std::size_t... Indexes>
 using element = element_t<Type, Indexes...>::type;
 
+//! @brief The row-major tuple of every element type of the typed matrix.
+//!
+//! @details One entry per position, `rows * columns` in total, following the
+//! same rank-oblivious row/column mapping as `element_at` (and therefore as
+//! `element` and `at`). Built from `element_at` so the type reported for a
+//! position is exactly the one `at<Row, Column>()` yields there.
+//!
+//! @tparam Type The typed matrix type to enumerate.
+template <same_as_typed_matrix Type> struct tuple_typed_matrix_t {
+  using matrix = std::remove_cvref_t<Type>;
+
+  template <typename = std::make_index_sequence<matrix::rows * matrix::columns>>
+  struct helper;
+
+  template <std::size_t... Indexes>
+  struct helper<std::index_sequence<Indexes...>> {
+    using type = std::tuple<element_at<matrix, Indexes / matrix::columns,
+                                       Indexes % matrix::columns>...>;
+  };
+
+  using type = typename helper<>::type;
+};
+
+template <same_as_typed_matrix Type>
+using tuple_typed_matrix = typename tuple_typed_matrix_t<Type>::type;
+
+//! @brief The linear position of the first `Tuple` element implicitly
+//! convertible to `To`, or `std::tuple_size_v<Tuple>` when none is.
+//!
+//! @details The direction is element-to-request: a position matches when its
+//! type implicitly converts to `To`, mirroring `element_at` and the
+//! `have_common_conversion_target` relation. Row-major, like
+//! `tuple_typed_matrix`. Use `count_convertible_indexes` to detect an ambiguous
+//! request before trusting this position.
+template <typename To, typename Tuple>
+constexpr std::size_t find_first_convertible_index() {
+  constexpr std::size_t size{std::tuple_size_v<Tuple>};
+
+  constexpr auto search{
+      []<std::size_t... Indexes>(std::index_sequence<Indexes...>) {
+        std::size_t result{size};
+
+        (void)((std::is_convertible_v<std::tuple_element_t<Indexes, Tuple>, To>
+                    ? (result = Indexes, true)
+                    : false) ||
+               ...);
+
+        return result;
+      }};
+
+  return search(std::make_index_sequence<size>{});
+}
+
+//! @brief The count of `Tuple` elements implicitly convertible to `To`.
+//!
+//! @details More than one means a by-type lookup of `To` would be ambiguous.
+//! Same element-to-request direction as `find_first_convertible_index`.
+template <typename To, typename Tuple>
+constexpr std::size_t count_convertible_indexes() {
+  constexpr auto counter{
+      []<std::size_t... Indexes>(std::index_sequence<Indexes...>) {
+        return (std::size_t{0} + ... +
+                (std::is_convertible_v<std::tuple_element_t<Indexes, Tuple>, To>
+                     ? std::size_t{1}
+                     : std::size_t{0}));
+      }};
+
+  return counter(std::make_index_sequence<std::tuple_size_v<Tuple>>{});
+}
+
 template <typename Type> constexpr bool is_uniform_typed_matrix() {
   using matrix = std::remove_cvref_t<Type>;
   bool result{true};
@@ -416,13 +486,44 @@ concept are_interconvertible =
 template <typename Lhs, typename Rhs>
 concept are_not_interconvertible = not are_interconvertible<Lhs, Rhs>;
 
-//! @brief Whether every pair of distinct element positions of the typed matrix
-//! holds types with no implicit conversion between them.
+//! @brief Concept of two types the conditional operator can bring to a single
+//! type, and which are therefore both implicitly convertible to it.
+//!
+//! @tparam Lhs The first type of the pair.
+//! @tparam Rhs The second type of the pair.
+template <typename Lhs, typename Rhs>
+concept have_common_type = requires {
+  typename std::common_type_t<Lhs, Rhs>;
+} or requires { typename std::common_reference_t<Lhs, Rhs>; };
+
+//! @brief Whether a single type exists that both `Lhs` and `Rhs` are implicitly
+//! convertible to.
+//!
+//! @details Decidable over-approximation of "shares an implicit conversion
+//! target": satisfied when either type implicitly converts to the other, or
+//! when the two `have_common_type`. A target reachable only through a
+//! user-defined conversion function, a shared base class, or a shared `void *`
+//! is not detected here; `typed_matrix::at<Type>()` performs the exact,
+//! per-request uniqueness check that also covers those.
+//!
+//! @tparam Lhs The first type of the pair.
+//! @tparam Rhs The second type of the pair.
+template <typename Lhs, typename Rhs>
+concept have_common_conversion_target =
+    are_interconvertible<Lhs, Rhs> or have_common_type<Lhs, Rhs>;
+
+//! @brief Whether no two distinct element positions of the typed matrix share
+//! an implicit conversion target.
 //!
 //! @details Visits every ordered pair of row/column positions, skipping a
-//! position paired with itself, and requires `are_not_interconvertible` for
-//! each. Rank-oblivious: uses `element_at` so it applies to singleton, vector,
-//! and two-dimension typed matrices alike.
+//! position paired with itself, and requires that the two element types do not
+//! `have_common_conversion_target`. Rank-oblivious: uses `element_at` so it
+//! applies to singleton, vector, and two-dimension typed matrices alike.
+//!
+//! Because `have_common_conversion_target` is a decidable over-approximation,
+//! this is a necessary but not fully sufficient condition for an unambiguous
+//! by-type lookup: `typed_matrix::at<Type>()` still verifies, for the concrete
+//! request, that exactly one element type converts to it.
 //!
 //! @tparam Type The typed matrix type to inspect.
 //!
@@ -439,8 +540,9 @@ template <typename Type> constexpr bool is_distinct_typed_matrix() {
       for_constexpr<matrix::rows>([&result, &i, &j](auto k) {
         for_constexpr<matrix::columns>([&result, &i, &j, &k](auto l) {
           if constexpr (i != k || j != l) {
-            result &= are_not_interconvertible<element_at<matrix, i, j>,
-                                               element_at<matrix, k, l>>;
+            result &=
+                not have_common_conversion_target<element_at<matrix, i, j>,
+                                                  element_at<matrix, k, l>>;
           }
         });
       });
@@ -450,13 +552,14 @@ template <typename Type> constexpr bool is_distinct_typed_matrix() {
   return result;
 }
 
-//! @brief Concept of a typed matrix whose element types have no pairwise
-//! implicit conversion.
+//! @brief Concept of a typed matrix whose element positions share no implicit
+//! conversion target.
 //!
-//! @details Satisfied when `Type` is a typed matrix and no element type is
-//! implicitly convertible to another element type at a different position.
-//! See the public `fcarouge::distinct_typed_matrix` for the rationale and the
-//! relationship with `uniform_typed_matrix`.
+//! @details Satisfied when `Type` is a typed matrix and no type is an implicit
+//! conversion target of the element types at two different positions, so an
+//! element can be picked out by type. See the public
+//! `fcarouge::distinct_typed_matrix` for the rationale and the relationship
+//! with `uniform_typed_matrix`.
 template <typename Type>
 concept distinct_typed_matrix =
     same_as_typed_matrix<Type> and is_distinct_typed_matrix<Type>();
