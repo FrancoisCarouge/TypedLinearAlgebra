@@ -20,6 +20,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "multiplication", "dir_ee1764ef7e89f8bab90de731673224c8.xhtml", "dir_ee1764ef7e89f8bab90de731673224c8" ],
     [ "nested", "dir_76b960905236d2ae15f7ae4b075f2e42.xhtml", "dir_76b960905236d2ae15f7ae4b075f2e42" ],
     [ "operator", "dir_ad90eb67f5c466639c693c5233f213d0.xhtml", "dir_ad90eb67f5c466639c693c5233f213d0" ],
+    [ "same_as_typed_matrix", "dir_85672508e764db47551cde85626f251e.xhtml", "dir_85672508e764db47551cde85626f251e" ],
     [ "scale", "dir_c79a22093641195bc122213b64dc8191.xhtml", "dir_c79a22093641195bc122213b64dc8191" ],
     [ "structured_bindings", "dir_bb833da45de611d79770d70c20939231.xhtml", "dir_bb833da45de611d79770d70c20939231" ],
     [ "substraction", "dir_f423392bc0209ba027827651fa50293e.xhtml", "dir_f423392bc0209ba027827651fa50293e" ],
