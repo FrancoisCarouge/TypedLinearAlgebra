@@ -1,5 +1,6 @@
 FormatStyle: 'file'
 WarningsAsErrors: '*'
+HeaderFilterRegex: '.*/fcarouge/.*'
 Checks: '*,
         -abseil-*,
         -altera-*,
