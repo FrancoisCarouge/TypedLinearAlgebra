@@ -160,92 +160,121 @@ $(function(){initNavTree('distinct_8cpp_source.xhtml',''); initResizable(true); 
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03.xhtml#a66b237f7d48dd773b0e6b3f9112ab7a8">   54</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03.xhtml#a66b237f7d48dd773b0e6b3f9112ab7a8">velocity</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03.xhtml#adc110757bf651fa0b8122561d98c80da">quantity</a>&lt;mp_units::isq::velocity[m / s]&gt;;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03.xhtml#a4245b29691faf31a43667a6599235449">   55</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03.xhtml#a4245b29691faf31a43667a6599235449">acceleration</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03.xhtml#adc110757bf651fa0b8122561d98c80da">quantity</a>&lt;mp_units::isq::acceleration[m / s2]&gt;;</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="foldopen" id="foldopen00058" data-start="{" data-end="};">
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03.xhtml#aefaf7639b358aa2545ac1ed3b5347013">   58</a></span>[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> test{[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">using </span>sq = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;position&gt;</a>, std::tuple&lt;std::identity&gt;&gt;;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;sq&gt;</a>);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;sq&gt;</a>); <span class="comment">// that&#39;s funny</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  }</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  {</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">using </span>cv = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;position, velocity&gt;</a>,</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                      std::tuple&lt;std::identity&gt;&gt;;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;cv&gt;</a>);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;cv&gt;</a>);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  }</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  {</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keyword">using </span>cv = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;velocity, velocity&gt;</a>,</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                      std::tuple&lt;std::identity&gt;&gt;;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;cv&gt;</a>);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;cv&gt;</a>);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  }</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  {</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keyword">using </span>rv = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;std::identity&gt;</a>,</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                      std::tuple&lt;position, velocity&gt;&gt;;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;rv&gt;</a>);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;rv&gt;</a>);</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  }</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  {</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keyword">using </span>rv = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;std::identity&gt;</a>,</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                      std::tuple&lt;position, position&gt;&gt;;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;rv&gt;</a>);</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;rv&gt;</a>);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  }</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  {</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keyword">using </span>mx = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;double, position&gt;</a>,</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                      std::tuple&lt;velocity, acceleration&gt;&gt;;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;mx&gt;</a>);</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;mx&gt;</a>);</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>  }</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  {</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keyword">using </span>mx = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;position, velocity&gt;</a>,</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                      std::tuple&lt;velocity, acceleration&gt;&gt;;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;mx&gt;</a>);</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;mx&gt;</a>);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  }</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  {</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keyword">using </span>mx = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;position, position&gt;</a>,</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                      std::tuple&lt;position, position&gt;&gt;;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;mx&gt;</a>);</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;mx&gt;</a>);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  }</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  {</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="comment">// Convertible but not identical element types: neither distinct nor</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="comment">// uniform. This is the case that separates distinctness from mere</span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="comment">// non-uniformity.</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keyword">using </span>cv = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;position, kilo_position&gt;</a>,</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                      std::tuple&lt;std::identity&gt;&gt;;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;cv&gt;</a>);</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;cv&gt;</a>);</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>  }</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>  {</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="comment">// Row vector wider than two: every pair of the three element types must</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="comment">// be checked.</span></div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keyword">using </span>rv = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;std::identity&gt;</a>,</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>                      std::tuple&lt;position, velocity, acceleration&gt;&gt;;</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;rv&gt;</a>);</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;rv&gt;</a>);</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>  }</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  {</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="comment">// Row vector wider than two with one convertible pair among three.</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keyword">using </span>rv = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;std::identity&gt;</a>,</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                      std::tuple&lt;position, velocity, kilo_position&gt;&gt;;</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;rv&gt;</a>);</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;rv&gt;</a>);</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  }</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  {</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="comment">// Non-square two-dimension matrix, all six element types distinct.</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keyword">using </span>mx = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;double, position&gt;</a>,</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                      std::tuple&lt;velocity, acceleration, position&gt;&gt;;</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;mx&gt;</a>);</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;mx&gt;</a>);</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>  }</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>}()};</div>
+<div class="foldopen" id="foldopen00058" data-start="{" data-end="}">
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1singleton.xhtml">   58</a></span><span class="keyword">namespace </span>singleton {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1singleton.xhtml#aabc5561c6e57d7241b1a5f6c802df9c0">   60</a></span><span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">sq</a> = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;position&gt;</a>, std::tuple&lt;std::identity&gt;&gt;;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;sq&gt;</a>);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;sq&gt;</a>); <span class="comment">// that&#39;s funny</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>} <span class="comment">// namespace singleton</span></div>
 </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="foldopen" id="foldopen00065" data-start="{" data-end="}">
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1column__vector__distinct.xhtml">   65</a></span><span class="keyword">namespace </span>column_vector_distinct {</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1column__vector__distinct.xhtml#ae5dc8c47ce9f6b15c18d071e84b4591f">   66</a></span><span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">cv</a> =</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;position, velocity&gt;</a>, std::tuple&lt;std::identity&gt;&gt;;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;cv&gt;</a>);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;cv&gt;</a>);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>} <span class="comment">// namespace column_vector_distinct</span></div>
 </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>} <span class="comment">// namespace fcarouge::test</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="foldopen" id="foldopen00072" data-start="{" data-end="}">
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1column__vector__uniform.xhtml">   72</a></span><span class="keyword">namespace </span>column_vector_uniform {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1column__vector__uniform.xhtml#a2eb8d3fff2212ebe3b8b9241c3884e4d">   73</a></span><span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">cv</a> =</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;velocity, velocity&gt;</a>, std::tuple&lt;std::identity&gt;&gt;;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;cv&gt;</a>);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;cv&gt;</a>);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>} <span class="comment">// namespace column_vector_uniform</span></div>
+</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1row__vector__distinct.xhtml">   79</a></span><span class="keyword">namespace </span>row_vector_distinct {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1row__vector__distinct.xhtml#a6337307b0cfe994599c3cbdc87685238">   80</a></span><span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">rv</a> =</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;std::identity&gt;</a>, std::tuple&lt;position, velocity&gt;&gt;;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;rv&gt;</a>);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;rv&gt;</a>);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>} <span class="comment">// namespace row_vector_distinct</span></div>
+</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="foldopen" id="foldopen00086" data-start="{" data-end="}">
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1row__vector__uniform.xhtml">   86</a></span><span class="keyword">namespace </span>row_vector_uniform {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1row__vector__uniform.xhtml#a8a704db3d608f13a3c32b7640090f8d7">   87</a></span><span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">rv</a> =</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;std::identity&gt;</a>, std::tuple&lt;position, position&gt;&gt;;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;rv&gt;</a>);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;rv&gt;</a>);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>} <span class="comment">// namespace row_vector_uniform</span></div>
+</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1matrix__distinct.xhtml">   93</a></span><span class="keyword">namespace </span>matrix_distinct {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1matrix__distinct.xhtml#a3e084dcff276e503aeffc5236cbe8f79">   94</a></span><span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">mx</a> = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;double, position&gt;</a>,</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                  std::tuple&lt;velocity, acceleration&gt;&gt;;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;mx&gt;</a>);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;mx&gt;</a>);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>} <span class="comment">// namespace matrix_distinct</span></div>
+</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="foldopen" id="foldopen00100" data-start="{" data-end="}">
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1matrix__neither.xhtml">  100</a></span><span class="keyword">namespace </span>matrix_neither {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1matrix__neither.xhtml#a0bfce6a8d5c55d5914f262c721ee6120">  101</a></span><span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">mx</a> = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;position, velocity&gt;</a>,</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                  std::tuple&lt;velocity, acceleration&gt;&gt;;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;mx&gt;</a>);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;mx&gt;</a>);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>} <span class="comment">// namespace matrix_neither</span></div>
+</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="foldopen" id="foldopen00107" data-start="{" data-end="}">
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1matrix__uniform.xhtml">  107</a></span><span class="keyword">namespace </span>matrix_uniform {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1matrix__uniform.xhtml#acb85d564f013d2478781a44bebc2d08e">  108</a></span><span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">mx</a> = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;position, position&gt;</a>,</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                  std::tuple&lt;position, position&gt;&gt;;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;mx&gt;</a>);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;mx&gt;</a>);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>} <span class="comment">// namespace matrix_uniform</span></div>
+</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment">// Convertible but not identical element types: neither distinct nor uniform.</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment">// This is the case that separates distinctness from mere non-uniformity.</span></div>
+<div class="foldopen" id="foldopen00116" data-start="{" data-end="}">
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1convertible__not__identical.xhtml">  116</a></span><span class="keyword">namespace </span>convertible_not_identical {</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1convertible__not__identical.xhtml#af641c61dff0ca2ea83a8e4dedb7c761d">  117</a></span><span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">cv</a> = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;position, kilo_position&gt;</a>,</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                  std::tuple&lt;std::identity&gt;&gt;;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;cv&gt;</a>);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;cv&gt;</a>);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>} <span class="comment">// namespace convertible_not_identical</span></div>
+</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment">// Row vector wider than two: every pair of the three element types must be</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="comment">// checked.</span></div>
+<div class="foldopen" id="foldopen00125" data-start="{" data-end="}">
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1row__vector__wide__distinct.xhtml">  125</a></span><span class="keyword">namespace </span>row_vector_wide_distinct {</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1row__vector__wide__distinct.xhtml#aece7befc6eb9ec6fa5792c9c81166583">  126</a></span><span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">rv</a> = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;std::identity&gt;</a>,</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                  std::tuple&lt;position, velocity, acceleration&gt;&gt;;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;rv&gt;</a>);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;rv&gt;</a>);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>} <span class="comment">// namespace row_vector_wide_distinct</span></div>
+</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment">// Row vector wider than two with one convertible pair among three.</span></div>
+<div class="foldopen" id="foldopen00133" data-start="{" data-end="}">
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1row__vector__wide__convertible.xhtml">  133</a></span><span class="keyword">namespace </span>row_vector_wide_convertible {</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1row__vector__wide__convertible.xhtml#a6a65100324edb92cbf2aea3f761859bf">  134</a></span><span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">rv</a> = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;std::identity&gt;</a>,</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>                  std::tuple&lt;position, velocity, kilo_position&gt;&gt;;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;rv&gt;</a>);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;rv&gt;</a>);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>} <span class="comment">// namespace row_vector_wide_convertible</span></div>
+</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="comment">// Non-square two-dimension matrix, all six element types distinct.</span></div>
+<div class="foldopen" id="foldopen00141" data-start="{" data-end="}">
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1matrix__nonsquare__distinct.xhtml">  141</a></span><span class="keyword">namespace </span>matrix_nonsquare_distinct {</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1matrix__nonsquare__distinct.xhtml#a63b2a82988104cd20f886b88acc49be4">  142</a></span><span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">mx</a> = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix&lt;double, std::tuple&lt;double, position&gt;</a>,</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>                  std::tuple&lt;velocity, acceleration, position&gt;&gt;;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="keyword">static_assert</span>(<a class="code hl_concept" href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">distinct_typed_matrix&lt;mx&gt;</a>);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="keyword">static_assert</span>(not <a class="code hl_concept" href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">uniform_typed_matrix&lt;mx&gt;</a>);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>} <span class="comment">// namespace matrix_nonsquare_distinct</span></div>
+</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>} <span class="comment">// namespace</span></div>
+</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>} <span class="comment">// namespace fcarouge::test</span></div>
 <div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a></div><div class="ttdoc">Strongly typed matrix.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__forward_8hpp_source.xhtml#l00043">typed_linear_algebra_forward.hpp:43</a></div></div>
 <div class="ttc" id="aconceptfcarouge_1_1distinct__typed__matrix_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1distinct__typed__matrix.xhtml">fcarouge::distinct_typed_matrix</a></div><div class="ttdoc">Concept of a typed matrix with no implicitly convertible elements.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00086">typed_linear_algebra.hpp:86</a></div></div>
 <div class="ttc" id="aconceptfcarouge_1_1uniform__typed__matrix_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1uniform__typed__matrix.xhtml">fcarouge::uniform_typed_matrix</a></div><div class="ttdoc">Concept of a typed matrix in which all element types are the same.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00070">typed_linear_algebra.hpp:70</a></div></div>

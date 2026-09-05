@@ -13,6 +13,12 @@ var annotated_dup =
           [ "lookup< Tuple, std::index_sequence< Indices... > >", "structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_15386429b33ff9e937e5c930e789c80a9.xhtml", "structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_15386429b33ff9e937e5c930e789c80a9" ]
         ] ]
       ] ],
+      [ "test", "namespacefcarouge_1_1test.xhtml", [
+        [ "anonymous_namespace{same_as_typed_matrix.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03.xhtml", [
+          [ "derived", "structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1derived.xhtml", null ],
+          [ "fake", "structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1fake.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1fake" ]
+        ] ]
+      ] ],
       [ "element_caster", "structfcarouge_1_1element__caster.xhtml", "structfcarouge_1_1element__caster" ],
       [ "element_caster< To &, From & >", "structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4.xhtml", "structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4" ],
       [ "element_caster< To, From >", "structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml", "structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4" ],

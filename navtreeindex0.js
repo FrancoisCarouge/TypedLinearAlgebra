@@ -247,7 +247,7 @@ var NAVTREEINDEX0 =
 "chrono__std_8cpp_source.xhtml":[20,0,5,3],
 "classes.xhtml":[19,1],
 "classfcarouge_1_1typed__matrix.xhtml":[17,0,1,12],
-"classfcarouge_1_1typed__matrix.xhtml":[19,0,0,6],
+"classfcarouge_1_1typed__matrix.xhtml":[19,0,0,7],
 "classfcarouge_1_1typed__matrix.xhtml#a000f121ceff4e3ab93b1bc333fa15647":[17,0,1,12,2],
-"classfcarouge_1_1typed__matrix.xhtml#a000f121ceff4e3ab93b1bc333fa15647":[19,0,0,6,2]
+"classfcarouge_1_1typed__matrix.xhtml#a000f121ceff4e3ab93b1bc333fa15647":[19,0,0,7,2]
 };

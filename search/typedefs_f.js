@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['underlying_0',['underlying',['../classfcarouge_1_1typed__matrix.xhtml#a9904db59b08b0dfa24fe08ef574039b3',1,'fcarouge::typed_matrix']]],
-  ['underlying_5ft_1',['underlying_t',['../namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a72e4ccaf08999b259f656412682b37dd',1,'fcarouge::typed_linear_algebra_internal']]]
+  ['seconds_0',['seconds',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__eigen_8cpp_03.xhtml#a7f1ed93dc3a73d1ccd8ac5e76a5e7a12',1,'fcarouge::sample::anonymous_namespace{chrono_eigen.cpp}::seconds'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__std_8cpp_03.xhtml#ad824298683aa67443f40510b554931dc',1,'fcarouge::sample::anonymous_namespace{chrono_std.cpp}::seconds'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__chrono__eigen_8cpp_03.xhtml#a163006cc157800a0a0071101c19e0ffd',1,'fcarouge::test::anonymous_namespace{1x2_chrono_eigen.cpp}::seconds']]],
+  ['singleton_1',['singleton',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03.xhtml#a69719dfc8058b330ab4cfc7a51422b4b',1,'fcarouge::test::anonymous_namespace{same_as_typed_matrix.cpp}']]],
+  ['sq_2',['sq',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02distinct_8cpp_03_1_1singleton.xhtml#aabc5561c6e57d7241b1a5f6c802df9c0',1,'fcarouge::test::anonymous_namespace{distinct.cpp}::singleton']]]
 ];

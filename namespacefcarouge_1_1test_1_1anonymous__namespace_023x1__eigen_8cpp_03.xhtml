@@ -101,16 +101,62 @@ $(function(){initNavTree('namespacefcarouge_1_1test_1_1anonymous__namespace_023x
 
 <div class="header">
   <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">fcarouge::test::anonymous_namespace{3x1_eigen.cpp} Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a3fb8fb82d63b4f19b49c7d1fc4e383fc" id="r_a3fb8fb82d63b4f19b49c7d1fc4e383fc"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3fb8fb82d63b4f19b49c7d1fc4e383fc">vector3d</a></td></tr>
+<tr class="separator:a3fb8fb82d63b4f19b49c7d1fc4e383fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dfce1d30963be7903c8690f9ec4d8ef" id="r_a0dfce1d30963be7903c8690f9ec4d8ef"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0dfce1d30963be7903c8690f9ec4d8ef">expression</a></td></tr>
+<tr class="separator:a0dfce1d30963be7903c8690f9ec4d8ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a38b683d90c6664f795700c79c31df9be" id="r_a38b683d90c6664f795700c79c31df9be"><td class="memItemLeft" align="right" valign="top">const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38b683d90c6664f795700c79c31df9be">test</a></td></tr>
 <tr class="separator:a38b683d90c6664f795700c79c31df9be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a0dfce1d30963be7903c8690f9ec4d8ef" name="a0dfce1d30963be7903c8690f9ec4d8ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dfce1d30963be7903c8690f9ec4d8ef">&#9670;&#160;</a></span>expression</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using fcarouge::test::anonymous_namespace{3x1_eigen.cpp}::expression</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line">    <span class="keyword">decltype</span>(std::declval&lt;vector3d&gt;() + std::declval&lt;vector3d&gt;())</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="common__with_23x1__eigen_8cpp_source.xhtml#l00043">43</a> of file <a class="el" href="common__with_23x1__eigen_8cpp_source.xhtml">3x1_eigen.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3fb8fb82d63b4f19b49c7d1fc4e383fc" name="a3fb8fb82d63b4f19b49c7d1fc4e383fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fb8fb82d63b4f19b49c7d1fc4e383fc">&#9670;&#160;</a></span>vector3d</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using fcarouge::test::anonymous_namespace{3x1_eigen.cpp}::vector3d</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line">    typed_column_vector&lt;column_vector&lt;double, 3&gt;, double, double, <span class="keywordtype">double</span>&gt;</div>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000025">Test</a></b></dt><dd>Verifies the typed matrix permits common conversions. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="common__with_23x1__eigen_8cpp_source.xhtml#l00041">41</a> of file <a class="el" href="common__with_23x1__eigen_8cpp_source.xhtml">3x1_eigen.cpp</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="a38b683d90c6664f795700c79c31df9be" name="a38b683d90c6664f795700c79c31df9be"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a38b683d90c6664f795700c79c31df9be">&#9670;&#160;</a></span>test</h2>
@@ -124,38 +170,39 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line">  <span class="keyword">using </span>vector3d =</div>
-<div class="line">      typed_column_vector&lt;column_vector&lt;double, 3&gt;, double, double, <span class="keywordtype">double</span>&gt;;</div>
-<div class="line">  <span class="keyword">using </span>expression =</div>
-<div class="line">      <span class="keyword">decltype</span>(std::declval&lt;vector3d&gt;() + std::declval&lt;vector3d&gt;());</div>
+<div class="line">  <span class="keyword">const</span> column_vector&lt;double, 3&gt; a{1., -2., 3.};</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">column_vector&lt;double, 3&gt;</a> b{-a};</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">static_assert</span>(</div>
-<div class="line">      std::convertible_to&lt;vector3d, std::common_type_t&lt;vector3d, expression&gt;&gt;);</div>
-<div class="line">  <span class="keyword">static_assert</span>(std::convertible_to&lt;expression,</div>
-<div class="line">                                    std::common_type_t&lt;expression, vector3d&gt;&gt;);</div>
-<div class="line">  <span class="keyword">static_assert</span>(std::common_with&lt;vector3d, expression&gt;);</div>
+<div class="line">  assert(b.at&lt;0&gt;() == -1.);</div>
+<div class="line">  assert(b.at&lt;1&gt;() == 2.);</div>
+<div class="line">  assert(b.at&lt;2&gt;() == -3.);</div>
+<div class="line"> </div>
+<div class="line">  </div>
+<div class="line">  assert(a.at&lt;0&gt;() == 1.);</div>
+<div class="line">  assert(a.at&lt;1&gt;() == -2.);</div>
+<div class="line">  assert(a.at&lt;2&gt;() == 3.);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000025">Test</a></b></dt><dd>Verifies the typed matrix permits common conversions. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000129">Test</a></b></dt><dd>Verifies the minus unary operator on a column vector. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="common__with_23x1__eigen_8cpp_source.xhtml#l00041">41</a> of file <a class="el" href="common__with_23x1__eigen_8cpp_source.xhtml">3x1_eigen.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   41</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   42</span>  <span class="keyword">using </span>vector3d =</div>
-<div class="line"><span class="lineno">   43</span>      <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">typed_column_vector&lt;column_vector&lt;double, 3&gt;</a>, double, double, <span class="keywordtype">double</span>&gt;;</div>
-<div class="line"><span class="lineno">   44</span>  <span class="keyword">using </span>expression =</div>
-<div class="line"><span class="lineno">   45</span>      <span class="keyword">decltype</span>(std::declval&lt;vector3d&gt;() + std::declval&lt;vector3d&gt;());</div>
-<div class="line"><span class="lineno">   46</span> </div>
-<div class="line"><span class="lineno">   47</span>  <span class="keyword">static_assert</span>(</div>
-<div class="line"><span class="lineno">   48</span>      std::convertible_to&lt;vector3d, std::common_type_t&lt;vector3d, expression&gt;&gt;);</div>
-<div class="line"><span class="lineno">   49</span>  <span class="keyword">static_assert</span>(std::convertible_to&lt;expression,</div>
-<div class="line"><span class="lineno">   50</span>                                    std::common_type_t&lt;expression, vector3d&gt;&gt;);</div>
-<div class="line"><span class="lineno">   51</span>  <span class="keyword">static_assert</span>(std::common_with&lt;vector3d, expression&gt;);</div>
-<div class="line"><span class="lineno">   52</span> </div>
-<div class="line"><span class="lineno">   53</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   54</span>}()};</div>
 <div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a></div><div class="ttdoc">Strongly typed matrix.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__forward_8hpp_source.xhtml#l00043">typed_linear_algebra_forward.hpp:43</a></div></div>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000129">Test</a></b></dt><dd>Verifies the minus unary operator on a column vector. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="minus_23x1__eigen_8cpp_source.xhtml#l00039">39</a> of file <a class="el" href="minus_23x1__eigen_8cpp_source.xhtml">3x1_eigen.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   39</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><span class="lineno">   40</span>  <span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">column_vector&lt;double, 3&gt;</a> a{1., -2., 3.};</div>
+<div class="line"><span class="lineno">   41</span>  <span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">column_vector&lt;double, 3&gt;</a> b{-a};</div>
+<div class="line"><span class="lineno">   42</span> </div>
+<div class="line"><span class="lineno">   43</span>  assert(b.at&lt;0&gt;() == -1.);</div>
+<div class="line"><span class="lineno">   44</span>  assert(b.at&lt;1&gt;() == 2.);</div>
+<div class="line"><span class="lineno">   45</span>  assert(b.at&lt;2&gt;() == -3.);</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>  <span class="comment">// The operand is not mutated.</span></div>
+<div class="line"><span class="lineno">   48</span>  assert(a.at&lt;0&gt;() == 1.);</div>
+<div class="line"><span class="lineno">   49</span>  assert(a.at&lt;1&gt;() == -2.);</div>
+<div class="line"><span class="lineno">   50</span>  assert(a.at&lt;2&gt;() == 3.);</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   53</span>}()};</div>
 </div><!-- fragment -->
 </div>
 </div>
