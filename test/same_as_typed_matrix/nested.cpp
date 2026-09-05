@@ -38,27 +38,23 @@ namespace {
 //! @test Verifies the same_as_typed_matrix concept holds at every level of a
 //! typed matrix nested inside another typed matrix's `Matrix` parameter, not
 //! only at the outermost level.
-[[maybe_unused]] const auto test{[] -> int {
-  using outer = matrix<double, 2, 2>;      // typed_matrix<matrix1<...>, ...>
-  using middle = matrix1<double, 2, 2>;    // typed_matrix<matrix0<...>, ...>
-  using innermost = matrix0<double, 2, 2>; // typed_matrix<Eigen::Matrix, ...>
+using outer = matrix<double, 2, 2>;      // typed_matrix<matrix1<...>, ...>
+using middle = matrix1<double, 2, 2>;    // typed_matrix<matrix0<...>, ...>
+using innermost = matrix0<double, 2, 2>; // typed_matrix<Eigen::Matrix, ...>
 
-  static_assert(same_as_typed_matrix<outer>);
-  static_assert(same_as_typed_matrix<middle>);
-  static_assert(same_as_typed_matrix<innermost>);
+static_assert(same_as_typed_matrix<outer>);
+static_assert(same_as_typed_matrix<middle>);
+static_assert(same_as_typed_matrix<innermost>);
 
-  // Each level's `matrix` member type names the next level in, confirming
-  // the nesting is real rather than the aliases collapsing to one type.
-  static_assert(std::same_as<outer::matrix, middle>);
-  static_assert(std::same_as<middle::matrix, innermost>);
-  static_assert(same_as_typed_matrix<typename outer::matrix>);
-  static_assert(same_as_typed_matrix<typename middle::matrix>);
+// Each level's `matrix` member type names the next level in, confirming the
+// nesting is real rather than the aliases collapsing to one type.
+static_assert(std::same_as<outer::matrix, middle>);
+static_assert(std::same_as<middle::matrix, innermost>);
+static_assert(same_as_typed_matrix<typename outer::matrix>);
+static_assert(same_as_typed_matrix<typename middle::matrix>);
 
-  // The innermost `Matrix` parameter is the plain Eigen storage, not a typed
-  // matrix: nesting bottoms out.
-  static_assert(not same_as_typed_matrix<typename innermost::matrix>);
-
-  return 0;
-}()};
+// The innermost `Matrix` parameter is the plain Eigen storage, not a typed
+// matrix: nesting bottoms out.
+static_assert(not same_as_typed_matrix<typename innermost::matrix>);
 } // namespace
 } // namespace fcarouge::test

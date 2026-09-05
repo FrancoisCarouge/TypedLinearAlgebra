@@ -69,6 +69,34 @@ function(pass NAME)
   endforeach()
 endfunction(pass)
 
+# Add a compile-time-only test.
+#
+# * NAME The name of the test file without extension.
+# * BACKENDS Optional list of backends to use against the test.
+function(build NAME)
+  set(multiValueArgs BACKENDS)
+  cmake_parse_arguments(PARSE_ARGV 0 TEST "" "${oneValueArgs}"
+                        "${multiValueArgs}")
+
+  get_filename_component(CALLER "${CMAKE_CURRENT_SOURCE_DIR}" NAME)
+
+  foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
+    add_library(typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_build_driver
+                OBJECT "${NAME}.cpp")
+    target_link_libraries(
+      typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_build_driver
+      PRIVATE tlinalg typed_linear_algebra_options
+              typed_linear_algebra_${BACKEND})
+    set_target_properties(
+      typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_build_driver
+      PROPERTIES EXCLUDE_FROM_ALL TRUE)
+    add_test(
+      NAME typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_pass
+      COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target
+              typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_build_driver)
+  endforeach()
+endfunction(build)
+
 # Add a given compile-fail test.
 #
 # * NAME The name of the test file without extension.

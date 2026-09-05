@@ -55,87 +55,94 @@ using velocity = quantity<mp_units::isq::velocity[m / s]>;
 using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
 
 //! @test Verifies the distinct typed matrix concept.
-[[maybe_unused]] const auto test{[] -> int {
-  {
-    //! @todo Permit non-tuple declaration.
-    using sq = matrix<double, std::tuple<position>, std::tuple<std::identity>>;
-    static_assert(distinct_typed_matrix<sq>);
-    static_assert(uniform_typed_matrix<sq>); // that's funny
-  }
-  {
-    using cv = matrix<double, std::tuple<position, velocity>,
-                      std::tuple<std::identity>>;
-    static_assert(distinct_typed_matrix<cv>);
-    static_assert(not uniform_typed_matrix<cv>);
-  }
-  {
-    using cv = matrix<double, std::tuple<velocity, velocity>,
-                      std::tuple<std::identity>>;
-    static_assert(not distinct_typed_matrix<cv>);
-    static_assert(uniform_typed_matrix<cv>);
-  }
-  {
-    using rv = matrix<double, std::tuple<std::identity>,
-                      std::tuple<position, velocity>>;
-    static_assert(distinct_typed_matrix<rv>);
-    static_assert(not uniform_typed_matrix<rv>);
-  }
-  {
-    using rv = matrix<double, std::tuple<std::identity>,
-                      std::tuple<position, position>>;
-    static_assert(not distinct_typed_matrix<rv>);
-    static_assert(uniform_typed_matrix<rv>);
-  }
-  {
-    using mx = matrix<double, std::tuple<double, position>,
-                      std::tuple<velocity, acceleration>>;
-    static_assert(distinct_typed_matrix<mx>);
-    static_assert(not uniform_typed_matrix<mx>);
-  }
-  {
-    using mx = matrix<double, std::tuple<position, velocity>,
-                      std::tuple<velocity, acceleration>>;
-    static_assert(not distinct_typed_matrix<mx>);
-    static_assert(not uniform_typed_matrix<mx>);
-  }
-  {
-    using mx = matrix<double, std::tuple<position, position>,
-                      std::tuple<position, position>>;
-    static_assert(not distinct_typed_matrix<mx>);
-    static_assert(uniform_typed_matrix<mx>);
-  }
-  {
-    // Convertible but not identical element types: neither distinct nor
-    // uniform. This is the case that separates distinctness from mere
-    // non-uniformity.
-    using cv = matrix<double, std::tuple<position, kilo_position>,
-                      std::tuple<std::identity>>;
-    static_assert(not distinct_typed_matrix<cv>);
-    static_assert(not uniform_typed_matrix<cv>);
-  }
-  {
-    // Row vector wider than two: every pair of the three element types must
-    // be checked.
-    using rv = matrix<double, std::tuple<std::identity>,
-                      std::tuple<position, velocity, acceleration>>;
-    static_assert(distinct_typed_matrix<rv>);
-    static_assert(not uniform_typed_matrix<rv>);
-  }
-  {
-    // Row vector wider than two with one convertible pair among three.
-    using rv = matrix<double, std::tuple<std::identity>,
-                      std::tuple<position, velocity, kilo_position>>;
-    static_assert(not distinct_typed_matrix<rv>);
-    static_assert(not uniform_typed_matrix<rv>);
-  }
-  {
-    // Non-square two-dimension matrix, all six element types distinct.
-    using mx = matrix<double, std::tuple<double, position>,
-                      std::tuple<velocity, acceleration, position>>;
-    static_assert(distinct_typed_matrix<mx>);
-    static_assert(not uniform_typed_matrix<mx>);
-  }
-  return 0;
-}()};
+namespace singleton {
+//! @todo Permit non-tuple declaration.
+using sq = matrix<double, std::tuple<position>, std::tuple<std::identity>>;
+static_assert(distinct_typed_matrix<sq>);
+static_assert(uniform_typed_matrix<sq>); // that's funny
+} // namespace singleton
+
+namespace column_vector_distinct {
+using cv =
+    matrix<double, std::tuple<position, velocity>, std::tuple<std::identity>>;
+static_assert(distinct_typed_matrix<cv>);
+static_assert(not uniform_typed_matrix<cv>);
+} // namespace column_vector_distinct
+
+namespace column_vector_uniform {
+using cv =
+    matrix<double, std::tuple<velocity, velocity>, std::tuple<std::identity>>;
+static_assert(not distinct_typed_matrix<cv>);
+static_assert(uniform_typed_matrix<cv>);
+} // namespace column_vector_uniform
+
+namespace row_vector_distinct {
+using rv =
+    matrix<double, std::tuple<std::identity>, std::tuple<position, velocity>>;
+static_assert(distinct_typed_matrix<rv>);
+static_assert(not uniform_typed_matrix<rv>);
+} // namespace row_vector_distinct
+
+namespace row_vector_uniform {
+using rv =
+    matrix<double, std::tuple<std::identity>, std::tuple<position, position>>;
+static_assert(not distinct_typed_matrix<rv>);
+static_assert(uniform_typed_matrix<rv>);
+} // namespace row_vector_uniform
+
+namespace matrix_distinct {
+using mx = matrix<double, std::tuple<double, position>,
+                  std::tuple<velocity, acceleration>>;
+static_assert(distinct_typed_matrix<mx>);
+static_assert(not uniform_typed_matrix<mx>);
+} // namespace matrix_distinct
+
+namespace matrix_neither {
+using mx = matrix<double, std::tuple<position, velocity>,
+                  std::tuple<velocity, acceleration>>;
+static_assert(not distinct_typed_matrix<mx>);
+static_assert(not uniform_typed_matrix<mx>);
+} // namespace matrix_neither
+
+namespace matrix_uniform {
+using mx = matrix<double, std::tuple<position, position>,
+                  std::tuple<position, position>>;
+static_assert(not distinct_typed_matrix<mx>);
+static_assert(uniform_typed_matrix<mx>);
+} // namespace matrix_uniform
+
+// Convertible but not identical element types: neither distinct nor uniform.
+// This is the case that separates distinctness from mere non-uniformity.
+namespace convertible_not_identical {
+using cv = matrix<double, std::tuple<position, kilo_position>,
+                  std::tuple<std::identity>>;
+static_assert(not distinct_typed_matrix<cv>);
+static_assert(not uniform_typed_matrix<cv>);
+} // namespace convertible_not_identical
+
+// Row vector wider than two: every pair of the three element types must be
+// checked.
+namespace row_vector_wide_distinct {
+using rv = matrix<double, std::tuple<std::identity>,
+                  std::tuple<position, velocity, acceleration>>;
+static_assert(distinct_typed_matrix<rv>);
+static_assert(not uniform_typed_matrix<rv>);
+} // namespace row_vector_wide_distinct
+
+// Row vector wider than two with one convertible pair among three.
+namespace row_vector_wide_convertible {
+using rv = matrix<double, std::tuple<std::identity>,
+                  std::tuple<position, velocity, kilo_position>>;
+static_assert(not distinct_typed_matrix<rv>);
+static_assert(not uniform_typed_matrix<rv>);
+} // namespace row_vector_wide_convertible
+
+// Non-square two-dimension matrix, all six element types distinct.
+namespace matrix_nonsquare_distinct {
+using mx = matrix<double, std::tuple<double, position>,
+                  std::tuple<velocity, acceleration, position>>;
+static_assert(distinct_typed_matrix<mx>);
+static_assert(not uniform_typed_matrix<mx>);
+} // namespace matrix_nonsquare_distinct
 } // namespace
 } // namespace fcarouge::test

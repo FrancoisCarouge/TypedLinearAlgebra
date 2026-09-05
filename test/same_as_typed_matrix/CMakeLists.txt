@@ -29,5 +29,5 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-pass("same_as_typed_matrix" BACKENDS "eigexed")
-pass("nested" BACKENDS "nested_typed_eigen")
+build("same_as_typed_matrix" BACKENDS "eigexed")
+build("nested" BACKENDS "nested_typed_eigen")

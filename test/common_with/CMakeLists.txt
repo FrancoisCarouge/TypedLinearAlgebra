@@ -29,4 +29,4 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-pass("3x1_eigen" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+build("3x1_eigen" BACKENDS "eigen" "eigexed" "nested_typed_eigen")

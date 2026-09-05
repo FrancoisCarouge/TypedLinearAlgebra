@@ -36,7 +36,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <au/units/newtons.hh>
 #include <au/units/seconds.hh>
 
-#include <cassert>
 #include <concepts>
 #include <tuple>
 
@@ -46,18 +45,14 @@ namespace {
 //!
 //! @details The count of indexes must match the rank of the matrix: no
 //! index for a singleton matrix.
-[[maybe_unused]] const auto test{[] -> int {
-  using au::symbols::m;
+using au::symbols::m;
 
-  constexpr auto m2{au::squared(m)};
+constexpr auto m2{au::squared(m)};
 
-  using matrix = matrix<double, std::tuple<decltype(1. * m)>,
-                        std::tuple<decltype(1. * m)>>;
-  using quantity = decltype(1. * m2);
+using matrix =
+    matrix<double, std::tuple<decltype(1. * m)>, std::tuple<decltype(1. * m)>>;
+using quantity = decltype(1. * m2);
 
-  static_assert(std::same_as<matrix::element<>, quantity>);
-
-  return 0;
-}()};
+static_assert(std::same_as<matrix::element<>, quantity>);
 } // namespace
 } // namespace fcarouge::test
