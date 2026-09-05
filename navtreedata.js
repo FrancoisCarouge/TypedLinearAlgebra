@@ -55,6 +55,16 @@ var NAVTREE =
       [ "Continuous Integration & Deployment Actions", "index.xhtml#continuous-integration--deployment-actions", null ]
     ] ],
     [ "License", "index.xhtml#license", null ],
+    [ "AGENTS.md", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml", [
+      [ "Build & test", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#build--test", null ],
+      [ "Architecture", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#architecture", [
+        [ "Core header", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#core-header", null ],
+        [ "Backend plug-in pattern", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#backend-plug-in-pattern", null ],
+        [ "Test/benchmark generation (support/support.cmake)", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#testbenchmark-generation-supportsupportcmake", null ],
+        [ "Other directories", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#other-directories", null ]
+      ] ],
+      [ "Conventions", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#conventions", null ]
+    ] ],
     [ "Benchmarks", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml", [
       [ "Results", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#results", null ]
     ] ],
@@ -127,10 +137,10 @@ var NAVTREEINDEX =
 "1x1__array_8cpp.xhtml",
 "classfcarouge_1_1typed__matrix.xhtml#a67a638bf31384a9120a5def3c74b641a",
 "element_21x2__mp__units__eigen_8cpp.xhtml#a37464e3cc696e135d3ff265d1883aa7b",
-"mp__units__std_8cpp.xhtml#abadda8a5417037ae0b6596f861948290",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_022x1__au__eigen_8cpp_03.xhtml",
-"namespacemembers_k.xhtml",
-"structmp__units_1_1representation__canonical__type_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_88cb568bfd22172f87f75426ff9b1681.xhtml"
+"mp__units__std_8cpp.xhtml#a2e439af319622c8b449ced74cab8f061",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_021x3__const_8cpp_03.xhtml",
+"namespacemembers_b.xhtml",
+"structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1fake.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
