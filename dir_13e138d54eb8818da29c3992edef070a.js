@@ -3,6 +3,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "addition", "dir_7f3a6c91f339432c06d7f9ff2ee1de32.xhtml", "dir_7f3a6c91f339432c06d7f9ff2ee1de32" ],
     [ "assign", "dir_0e0710f50cc64881006e62ab338f5134.xhtml", "dir_0e0710f50cc64881006e62ab338f5134" ],
     [ "at", "dir_5dcc120ce88763492754ea9f01fb177a.xhtml", "dir_5dcc120ce88763492754ea9f01fb177a" ],
+    [ "column_typed_matrix", "dir_8fd7668f9c62e73ca70932a35c2c994e.xhtml", "dir_8fd7668f9c62e73ca70932a35c2c994e" ],
     [ "common_with", "dir_df5deb2192b04082d8407ec09bc6e3ec.xhtml", "dir_df5deb2192b04082d8407ec09bc6e3ec" ],
     [ "constructor", "dir_38eb1dc5b1c36523e6cf628b0c17f528.xhtml", "dir_38eb1dc5b1c36523e6cf628b0c17f528" ],
     [ "copy", "dir_b66f3f6eb7a21060cc06c8fbad46effd.xhtml", "dir_b66f3f6eb7a21060cc06c8fbad46effd" ],
