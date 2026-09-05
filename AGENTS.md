@@ -32,11 +32,31 @@ ctest --test-dir build --parallel --verbose
   typed_linear_algebra_eigen_addition_1x2_eigen_pass --output-on-failure`.
 - Formatting (enforced by `.github/workflows/format.yml`): `clang-format-22
   --Werror -i -style=file` on `.hpp`/`.tpp`/`.cpp`, and `cmake-format -i` on
-  `CMakeLists.txt`/`*.cmake`.
+  `CMakeLists.txt`/`*.cmake`. There is **no `.clang-format` file** in the repo,
+  so `-style=file` falls back to clang-format's built-in LLVM style (80
+  columns, 2-space indent, template declarations always broken). Hand-written
+  layout will not match it — always finish an edit by running
+  `clang-format-22 -i -style=file` (that exact version; v18/20/21 disagree on
+  wrapping) and `cmake-format -i` on every file you touched. The CI check is
+  `find . -not -path './.git/*' \( -iname '*.hpp' -o -iname '*.cpp' -o -iname
+  '*.tpp' \) | xargs clang-format-22 --Werror --dry-run -style=file`.
 - `.clang-tidy` runs `Checks: '*'` with `WarningsAsErrors: '*'` (minus a short
   denylist) — a very strict baseline; don't casually suppress warnings.
-  `.github/workflows/clang_tidy.yml` runs it with `clang++-20` against
-  `compile_commands.json`.
+  `.github/workflows/clang_tidy.yml` configures the build with `clang++-20`
+  (`-DCMAKE_EXPORT_COMPILE_COMMANDS=ON`), then `run-clang-tidy -p build` over
+  every `benchmark|sample|support|test/*.cpp` except `*_fail.cpp`, sharded 6
+  ways, using the runner's default `clang-tidy` (v21 as of writing, unpinned)
+  and `compile_commands.json`. The codebase has **zero `NOLINT` comments** —
+  keep it that way; rework the code instead. Gotchas that bite test files:
+  - `misc-include-cleaner`: every `std::` symbol needs its own direct `#include`
+    even if transitively available (`std::milli` → `<ratio>`, `std::identity` →
+    `<functional>`, …). `.clang-tidy`'s `IgnoreHeaders` whitelists only the
+    Eigen/mp-units/au/`fcarouge/*` facade headers, never the standard library.
+  - `google-explicit-constructor` / `hicpp-explicit-conversions` reject any
+    non-`explicit` converting constructor or conversion operator — you can't
+    write an implicit-conversion fixture; test a shared base class instead.
+  - Run it before finishing: `clang-tidy-21 <file> -- -std=c++26 -Iinclude
+    -Isupport/<backend> -Isupport/eigen <dep -isystem flags>`.
 - Pre-commit hooks (`.pre-commit-config.yaml`): gitleaks, shellcheck, cpplint,
   end-of-file-fixer, trailing-whitespace.
 - Install: `sudo cmake --install build`.
@@ -203,7 +223,7 @@ the `_pass` suffix; `..._<name>` for `fail`, `..._<name>_<size>_bench`), where
 `<dir>` is the calling directory's name. `test/` is organized one directory per
 operation/feature/concept — `addition/`, `assign/`, `at/`, `common_with/`,
 `constructor/`, `copy/`, `distinct/`, `division/`, `element/`, `equal_to/`,
-`format/`, `interconvertible/`, `magnitude/`, `matrix_product/`,
+`format/`, `magnitude/`, `matrix_product/`,
 `matrix_vector_product/`, `minus/`, `mp_units/`, `multiplication/`, `nested/`,
 `operator/`, `row_typed_matrix/`, `same_as_typed_matrix/`, `scale/`,
 `structured_bindings/`, `substraction/`, `transposed/`, `underlying/` — each with
@@ -218,6 +238,30 @@ single `[[maybe_unused]] const auto test{[] { ...; assert(...); return 0; }()};`
 block inside `namespace fcarouge::test { namespace { ... } }` — no test
 framework, just `<cassert>` run at static-init time via `main` from
 `support/main`.
+
+Concept checks that inspect element types (`uniform_typed_matrix`,
+`distinct_typed_matrix`, `element/`) have traps — `distinct_typed_matrix`
+especially, because it is the only check that runs `std::is_convertible` /
+`std::common_type` between *different* element types:
+
+- In a two-index `matrix<Rep, RowIndexes, ColumnIndexes>` an element's type is
+  `RowType * ColType` (`typed_linear_algebra_internal::product`). That product
+  must be well-formed for *every* row/col index pair, so keep `std::identity`
+  (via `std::tuple<std::identity>`) on one axis — `product<duration, duration>`,
+  `product<year, month>`, etc. are ill-formed and hard-error.
+- Au: checking `is_convertible` between two same-dimension quantities of
+  different *representation* (`QuantityD` vs `QuantityI`, i.e. a float→int rep
+  conversion) instantiates Au's `overflow_boundary.hh`, whose
+  `ValueOfMaxFloatNotExceedingMaxInt::max_mantissa` has a local `ONE` that
+  shadows `au::ONE` — MSVC C4459, fatal under `/WX`. Compare quantities of the
+  same representation (different unit, e.g. `Meters` vs `Kilo<Meters>`, is
+  fine); if a rep-conversion test is unavoidable, add `/wd4459` to
+  `support/au/CMakeLists.txt` next to the existing `/wd4244`.
+- Prefer distinctness assertions that rest on standard-mandated behaviour over
+  QoI: `duration` pairs always share a `std::common_type`; a `duration` vs a
+  `time_point` reliably does not (`time_point(duration)` is mandated
+  `explicit`). Two `std::chrono` calendar types (`year`/`month`/`day`) having
+  no `common_type` is *not* clearly mandated — don't lean on it.
 
 ### Other directories
 

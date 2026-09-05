@@ -397,37 +397,17 @@ template <char... Digits> constexpr auto parse_digits() -> std::size_t {
   return number;
 }
 
-//! @brief Concept of two types with an implicit conversion in at least one
-//! direction.
-//!
-//! @details Satisfied when `Lhs` is implicitly convertible to `Rhs` or `Rhs`
-//! is implicitly convertible to `Lhs`. The relation is symmetric and, because
-//! every type is convertible to itself, reflexive. "Inter" here means "either
-//! way", not "both ways".
-//!
-//! @tparam Lhs The first type of the pair.
-//! @tparam Rhs The second type of the pair.
-template <typename Lhs, typename Rhs>
-concept are_interconvertible =
-    std::is_convertible_v<Lhs, Rhs> or std::is_convertible_v<Rhs, Lhs>;
-
-//! @brief Concept of two types with no implicit conversion in either direction.
-//!
-//! @details The negation of `are_interconvertible`. Never satisfied for two
-//! identical types.
-//!
-//! @tparam Lhs The first type of the pair.
-//! @tparam Rhs The second type of the pair.
-template <typename Lhs, typename Rhs>
-concept are_not_interconvertible = not are_interconvertible<Lhs, Rhs>;
-
-//! @brief Whether every pair of distinct element positions of the typed matrix
-//! holds types with no implicit conversion between them.
+//! @brief Whether no two distinct element positions of the typed matrix share
+//! an implicit conversion target.
 //!
 //! @details Visits every ordered pair of row/column positions, skipping a
-//! position paired with itself, and requires `are_not_interconvertible` for
-//! each. Rank-oblivious: uses `element_at` so it applies to singleton, vector,
-//! and two-dimension typed matrices alike.
+//! position paired with itself, and requires that the two element types do not
+//! `have_common_conversion_target`. Rank-oblivious: uses `element_at` so it
+//! applies to singleton, vector, and two-dimension typed matrices alike.
+//!
+//! Because `have_common_conversion_target` is a decidable over-approximation,
+//! this is a necessary but not fully sufficient condition for an unambiguous
+//! by-type lookup.
 //!
 //! @tparam Type The typed matrix type to inspect.
 //!
@@ -444,8 +424,12 @@ template <typename Type> constexpr auto is_distinct_typed_matrix() -> bool {
       for_constexpr<matrix::rows>([&result, &i, &j](auto k) {
         for_constexpr<matrix::columns>([&result, &i, &j, &k](auto l) {
           if constexpr (i != k || j != l) {
-            result &= are_not_interconvertible<element_at<matrix, i, j>,
-                                               element_at<matrix, k, l>>;
+            using lhs = element_at<matrix, i, j>;
+            using rhs = element_at<matrix, k, l>;
+
+            result &= not(std::is_convertible_v<lhs, rhs> or
+                          std::is_convertible_v<rhs, lhs> or
+                          requires { typename std::common_type_t<lhs, rhs>; });
           }
         });
       });
@@ -455,13 +439,14 @@ template <typename Type> constexpr auto is_distinct_typed_matrix() -> bool {
   return result;
 }
 
-//! @brief Concept of a typed matrix whose element types have no pairwise
-//! implicit conversion.
+//! @brief Concept of a typed matrix whose element positions share no implicit
+//! conversion target.
 //!
-//! @details Satisfied when `Type` is a typed matrix and no element type is
-//! implicitly convertible to another element type at a different position.
-//! See the public `fcarouge::distinct_typed_matrix` for the rationale and the
-//! relationship with `uniform_typed_matrix`.
+//! @details Satisfied when `Type` is a typed matrix and no type is an implicit
+//! conversion target of the element types at two different positions, so an
+//! element can be picked out by type. See the public
+//! `fcarouge::distinct_typed_matrix` for the rationale and the relationship
+//! with `uniform_typed_matrix`.
 template <typename Type>
 concept distinct_typed_matrix =
     same_as_typed_matrix<Type> and is_distinct_typed_matrix<Type>();
