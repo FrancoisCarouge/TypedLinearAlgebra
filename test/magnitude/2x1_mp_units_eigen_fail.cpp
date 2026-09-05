@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,15 +27,35 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-fail("2x2_fail" BACKENDS "eigexed")
-fail("2x1_mp_units_eigen_fail" BACKENDS "mp_units_eigen")
+#include "fcarouge/linalg.hpp"
 
-pass("1x2_au_eigen" BACKENDS "au_eigen")
-pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("1x2_eigen" BACKENDS "eigexed" "nested_typed_eigen")
-pass("3x1_au_eigen" BACKENDS "au_eigen")
-pass("3x1_chrono_eigen" BACKENDS "chrono_eigen")
-pass("2x1_eigen" BACKENDS "eigexed" "nested_typed_eigen")
-pass("3x1_mp_units_eigen" BACKENDS "mp_units_eigen")
+#include <mp-units/systems/isq.h>
+#include <mp-units/systems/si.h>
+
+#include <functional>
+#include <tuple>
+
+namespace fcarouge::test {
+namespace {
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::s;
+
+template <auto Reference>
+using quantity = mp_units::quantity<Reference, double>;
+using position = quantity<mp_units::isq::length[m]>;
+using velocity = quantity<mp_units::isq::velocity[m / s]>;
+
+//! @test Verifies the magnitude operation rejects a non-uniform vector.
+[[maybe_unused]] const auto test{[] {
+  const matrix<double, std::tuple<position, velocity>,
+               std::tuple<std::identity>>
+      v{};
+
+  [[maybe_unused]] const auto value{magnitude(v)};
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

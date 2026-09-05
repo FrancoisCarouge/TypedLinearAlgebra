@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,15 +27,32 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-fail("2x2_fail" BACKENDS "eigexed")
-fail("2x1_mp_units_eigen_fail" BACKENDS "mp_units_eigen")
+#include "fcarouge/linalg.hpp"
 
-pass("1x2_au_eigen" BACKENDS "au_eigen")
-pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("1x2_eigen" BACKENDS "eigexed" "nested_typed_eigen")
-pass("3x1_au_eigen" BACKENDS "au_eigen")
-pass("3x1_chrono_eigen" BACKENDS "chrono_eigen")
-pass("2x1_eigen" BACKENDS "eigexed" "nested_typed_eigen")
-pass("3x1_mp_units_eigen" BACKENDS "mp_units_eigen")
+#include <string>
+#include <tuple>
+
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the uniform typed matrix concept, scalar element types.
+static_assert(uniform_typed_matrix<matrix<double, 1, 1>>);
+static_assert(uniform_typed_matrix<matrix<double, 1, 3>>);
+static_assert(uniform_typed_matrix<matrix<double, 3, 1>>);
+static_assert(uniform_typed_matrix<matrix<float, 4, 2>>);
+
+using m = matrix<double, 2, 2>;
+static_assert(uniform_typed_matrix<const m>);
+static_assert(uniform_typed_matrix<m &>);
+static_assert(uniform_typed_matrix<const m &&>);
+
+static_assert(not uniform_typed_matrix<void>);
+static_assert(not uniform_typed_matrix<int>);
+static_assert(not uniform_typed_matrix<double>);
+static_assert(not uniform_typed_matrix<std::string>);
+static_assert(not uniform_typed_matrix<std::tuple<double>>);
+static_assert(not uniform_typed_matrix<eigen::matrix<double, 2, 2>>);
+static_assert(not uniform_typed_matrix<matrix<double, 2, 2> *>);
+} // namespace
+} // namespace fcarouge::test

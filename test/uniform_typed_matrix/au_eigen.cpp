@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,15 +27,31 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-fail("2x2_fail" BACKENDS "eigexed")
-fail("2x1_mp_units_eigen_fail" BACKENDS "mp_units_eigen")
+#include "fcarouge/linalg.hpp"
 
-pass("1x2_au_eigen" BACKENDS "au_eigen")
-pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("1x2_eigen" BACKENDS "eigexed" "nested_typed_eigen")
-pass("3x1_au_eigen" BACKENDS "au_eigen")
-pass("3x1_chrono_eigen" BACKENDS "chrono_eigen")
-pass("2x1_eigen" BACKENDS "eigexed" "nested_typed_eigen")
-pass("3x1_mp_units_eigen" BACKENDS "mp_units_eigen")
+#include <au/units/meters.hh>
+#include <au/units/seconds.hh>
+
+#include <functional>
+#include <tuple>
+
+namespace fcarouge::test {
+namespace {
+using representation = double;
+using position = au::QuantityD<au::Meters>;
+using velocity = au::QuantityD<au::UnitQuotientT<au::Meters, au::Seconds>>;
+
+//! @test Verifies the uniform typed matrix concept, Au quantity types.
+static_assert(uniform_typed_matrix<matrix<representation, std::tuple<position>,
+                                          std::tuple<std::identity>>>);
+static_assert(
+    uniform_typed_matrix<matrix<representation, std::tuple<position, position>,
+                                std::tuple<position, position>>>);
+
+static_assert(not uniform_typed_matrix<
+              matrix<representation, std::tuple<position, velocity>,
+                     std::tuple<std::identity>>>);
+} // namespace
+} // namespace fcarouge::test
