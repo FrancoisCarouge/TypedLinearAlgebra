@@ -354,7 +354,7 @@ template&lt;typename Extents &gt; </div>
 <div class="line"><span class="lineno">  105</span>  state x0{s0};</div>
 <div class="line"><span class="lineno">  106</span> </div>
 <div class="line"><span class="lineno">  107</span>  <span class="comment">// Elements asignment.</span></div>
-<div class="line"><span class="lineno">  108</span>  x0.<a class="code hl_function" href="classfcarouge_1_1typed__matrix.xhtml#a7069d3bf51e6490049566e61978d9fbe">at</a>&lt;0&gt;(3. * m);</div>
+<div class="line"><span class="lineno">  108</span>  x0.<a class="code hl_function" href="classfcarouge_1_1typed__matrix.xhtml#a9f0415b7e8fccdbce89d2f3e476ab4f5">at</a>&lt;0&gt;(3. * m);</div>
 <div class="line"><span class="lineno">  109</span>  x0.at&lt;1&gt;(2. * m / s);</div>
 <div class="line"><span class="lineno">  110</span>  x0.at&lt;2&gt;(1. * m / s2);</div>
 <div class="line"><span class="lineno">  111</span> </div>
@@ -406,7 +406,7 @@ template&lt;typename Extents &gt; </div>
 <div class="line"><span class="lineno">  157</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">  158</span>}()};</div>
 <div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a></div><div class="ttdoc">Strongly typed matrix.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__forward_8hpp_source.xhtml#l00043">typed_linear_algebra_forward.hpp:43</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml_a7069d3bf51e6490049566e61978d9fbe"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml#a7069d3bf51e6490049566e61978d9fbe">fcarouge::typed_matrix::at</a></div><div class="ttdeci">constexpr decltype(auto) at(this auto &amp;&amp;self)</div><div class="ttdoc">Read the specified element.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml_a9f0415b7e8fccdbce89d2f3e476ab4f5"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml#a9f0415b7e8fccdbce89d2f3e476ab4f5">fcarouge::typed_matrix::at</a></div><div class="ttdeci">constexpr auto at(this auto &amp;&amp;self) -&gt; decltype(auto) requires(sizeof...(Indexes)==rank)</div><div class="ttdoc">Read the specified element.</div></div>
 </div><!-- fragment -->
 </div>
 </div>

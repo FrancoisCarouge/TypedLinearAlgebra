@@ -195,16 +195,16 @@ Functions</h2></td></tr>
 <tr class="memitem:abcda1ee8b10a813ac3a16d25343603c7" id="r_abcda1ee8b10a813ac3a16d25343603c7"><td class="memTemplParams" colspan="2">template&lt;std::size_t Size, typename Function &gt; </td></tr>
 <tr class="memitem:abcda1ee8b10a813ac3a16d25343603c7"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#abcda1ee8b10a813ac3a16d25343603c7">for_constexpr</a> (Function &amp;&amp;function)</td></tr>
 <tr class="separator:abcda1ee8b10a813ac3a16d25343603c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad13864d0883c126712b5ae65c15cb39" id="r_aad13864d0883c126712b5ae65c15cb39"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
-<tr class="memitem:aad13864d0883c126712b5ae65c15cb39"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aad13864d0883c126712b5ae65c15cb39">is_uniform_typed_matrix</a> ()</td></tr>
-<tr class="separator:aad13864d0883c126712b5ae65c15cb39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbba9c02ba0de394e79a3aa4866c0bd1" id="r_abbba9c02ba0de394e79a3aa4866c0bd1"><td class="memTemplParams" colspan="2">template&lt;char... Digits&gt; </td></tr>
-<tr class="memitem:abbba9c02ba0de394e79a3aa4866c0bd1"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#abbba9c02ba0de394e79a3aa4866c0bd1">parse_digits</a> ()</td></tr>
-<tr class="separator:abbba9c02ba0de394e79a3aa4866c0bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7fc60fa6498a4604ca8403df906c4d64" id="r_a7fc60fa6498a4604ca8403df906c4d64"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
-<tr class="memitem:a7fc60fa6498a4604ca8403df906c4d64"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7fc60fa6498a4604ca8403df906c4d64">is_distinct_typed_matrix</a> ()</td></tr>
-<tr class="memdesc:a7fc60fa6498a4604ca8403df906c4d64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether every pair of distinct element positions of the typed matrix holds types with no implicit conversion between them.  <br /></td></tr>
-<tr class="separator:a7fc60fa6498a4604ca8403df906c4d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26dd10d78e9d3a09e52f7ddeaf0013d3" id="r_a26dd10d78e9d3a09e52f7ddeaf0013d3"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:a26dd10d78e9d3a09e52f7ddeaf0013d3"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a26dd10d78e9d3a09e52f7ddeaf0013d3">is_uniform_typed_matrix</a> () -&gt; bool</td></tr>
+<tr class="separator:a26dd10d78e9d3a09e52f7ddeaf0013d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7417ddf0631af3fe7b4560be8e93a65f" id="r_a7417ddf0631af3fe7b4560be8e93a65f"><td class="memTemplParams" colspan="2">template&lt;char... Digits&gt; </td></tr>
+<tr class="memitem:a7417ddf0631af3fe7b4560be8e93a65f"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7417ddf0631af3fe7b4560be8e93a65f">parse_digits</a> () -&gt; std::size_t</td></tr>
+<tr class="separator:a7417ddf0631af3fe7b4560be8e93a65f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2be7ab9a3396bd0187b873527bf5bce2" id="r_a2be7ab9a3396bd0187b873527bf5bce2"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:a2be7ab9a3396bd0187b873527bf5bce2"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a2be7ab9a3396bd0187b873527bf5bce2">is_distinct_typed_matrix</a> () -&gt; bool</td></tr>
+<tr class="memdesc:a2be7ab9a3396bd0187b873527bf5bce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether every pair of distinct element positions of the typed matrix holds types with no implicit conversion between them.  <br /></td></tr>
+<tr class="separator:a2be7ab9a3396bd0187b873527bf5bce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -373,7 +373,7 @@ template&lt;std::size_t Size, typename Function &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000002">Todo</a></b></dt><dd>Remove for C++26 P1789 Library Support for Expansion Statements. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000003">Todo</a></b></dt><dd>Remove for C++26 P1789 Library Support for Expansion Statements. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00177">177</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  177</span>                                                  {</div>
@@ -447,8 +447,8 @@ template&lt;std::size_t... Is, typename F &gt; </div>
 
 </div>
 </div>
-<a id="a7fc60fa6498a4604ca8403df906c4d64" name="a7fc60fa6498a4604ca8403df906c4d64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7fc60fa6498a4604ca8403df906c4d64">&#9670;&#160;</a></span>is_distinct_typed_matrix()</h2>
+<a id="a2be7ab9a3396bd0187b873527bf5bce2" name="a2be7ab9a3396bd0187b873527bf5bce2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2be7ab9a3396bd0187b873527bf5bce2">&#9670;&#160;</a></span>is_distinct_typed_matrix()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -459,10 +459,10 @@ template&lt;typename Type &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool fcarouge::typed_linear_algebra_internal::is_distinct_typed_matrix </td>
+          <td class="memname">auto fcarouge::typed_linear_algebra_internal::is_distinct_typed_matrix </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> -&gt; bool </td>
         </tr>
       </table>
   </td>
@@ -483,7 +483,7 @@ template&lt;typename Type &gt; </div>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000005">Todo</a></b></dt><dd>Evaluate compile-time performance. Instantiation, evaluation, and compilation of this function may be expensive. We may want to use a pure concept approach. The ordered-pair traversal also tests each unordered pair twice. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00438">438</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  438</span>                                                                   {</div>
+<div class="fragment"><div class="line"><span class="lineno">  438</span>                                                                           {</div>
 <div class="line"><span class="lineno">  439</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a> = std::remove_cvref_t&lt;Type&gt;;</div>
 <div class="line"><span class="lineno">  440</span>  <span class="keywordtype">bool</span> result{<span class="keyword">true</span>};</div>
 <div class="line"><span class="lineno">  441</span> </div>
@@ -510,13 +510,13 @@ template&lt;typename Type &gt; </div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra__internal_a7fc60fa6498a4604ca8403df906c4d64_cgraph.svg" width="550" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra__internal_a2be7ab9a3396bd0187b873527bf5bce2_cgraph.svg" width="550" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
 </div>
-<a id="aad13864d0883c126712b5ae65c15cb39" name="aad13864d0883c126712b5ae65c15cb39"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad13864d0883c126712b5ae65c15cb39">&#9670;&#160;</a></span>is_uniform_typed_matrix()</h2>
+<a id="a26dd10d78e9d3a09e52f7ddeaf0013d3" name="a26dd10d78e9d3a09e52f7ddeaf0013d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26dd10d78e9d3a09e52f7ddeaf0013d3">&#9670;&#160;</a></span>is_uniform_typed_matrix()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -527,10 +527,10 @@ template&lt;typename Type &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool fcarouge::typed_linear_algebra_internal::is_uniform_typed_matrix </td>
+          <td class="memname">auto fcarouge::typed_linear_algebra_internal::is_uniform_typed_matrix </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> -&gt; bool </td>
         </tr>
       </table>
   </td>
@@ -541,7 +541,7 @@ template&lt;typename Type &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00282">282</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  282</span>                                                                  {</div>
+<div class="fragment"><div class="line"><span class="lineno">  282</span>                                                                          {</div>
 <div class="line"><span class="lineno">  283</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a> = std::remove_cvref_t&lt;Type&gt;;</div>
 <div class="line"><span class="lineno">  284</span>  <span class="keywordtype">bool</span> result{<span class="keyword">true</span>};</div>
 <div class="line"><span class="lineno">  285</span> </div>
@@ -561,13 +561,13 @@ template&lt;typename Type &gt; </div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra__internal_aad13864d0883c126712b5ae65c15cb39_cgraph.svg" width="551" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra__internal_a26dd10d78e9d3a09e52f7ddeaf0013d3_cgraph.svg" width="551" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
 </div>
-<a id="abbba9c02ba0de394e79a3aa4866c0bd1" name="abbba9c02ba0de394e79a3aa4866c0bd1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abbba9c02ba0de394e79a3aa4866c0bd1">&#9670;&#160;</a></span>parse_digits()</h2>
+<a id="a7417ddf0631af3fe7b4560be8e93a65f" name="a7417ddf0631af3fe7b4560be8e93a65f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7417ddf0631af3fe7b4560be8e93a65f">&#9670;&#160;</a></span>parse_digits()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -578,10 +578,10 @@ template&lt;char... Digits&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t fcarouge::typed_linear_algebra_internal::parse_digits </td>
+          <td class="memname">auto fcarouge::typed_linear_algebra_internal::parse_digits </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> -&gt; std::size_t </td>
         </tr>
       </table>
   </td>
@@ -592,7 +592,7 @@ template&lt;char... Digits&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00390">390</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  390</span>                                                             {</div>
+<div class="fragment"><div class="line"><span class="lineno">  390</span>                                                                     {</div>
 <div class="line"><span class="lineno">  391</span>  <span class="keyword">static_assert</span>(((<span class="charliteral">&#39;0&#39;</span> &lt;= Digits &amp;&amp; Digits &lt;= <span class="charliteral">&#39;9&#39;</span>) &amp;&amp; ...),</div>
 <div class="line"><span class="lineno">  392</span>                <span class="stringliteral">&quot;Characters must only be digits.&quot;</span>);</div>
 <div class="line"><span class="lineno">  393</span> </div>
