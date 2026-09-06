@@ -305,7 +305,6 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
   }
 }
 
-//! @todo Unecessarily complicated, simplify?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <auto... Indexes>
 [[nodiscard]] constexpr auto
@@ -320,24 +319,8 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
       std::conditional_t<std::is_const_v<self_t>, element<Indexes...>,
                          element<Indexes...> &>;
 
-  if constexpr (requires { self.storage(std::size_t{Indexes}...); }) {
-    return cast<qualified_element, qualified_underlying>(
-        self.storage(std::size_t{Indexes}...));
-  } else if constexpr (requires { self.storage(Indexes...); }) {
-    return cast<qualified_element, qualified_underlying>(
-        self.storage(Indexes...));
-  } else if constexpr (requires { self.storage[0, std::size_t{Indexes}...]; }) {
-    return cast<qualified_element, qualified_underlying>(
-        self.storage[0, std::size_t{Indexes}...]);
-  } else if constexpr (requires { self.storage[]; }) {
-    return cast<qualified_element, qualified_underlying>(self.storage[]);
-  } else if constexpr (requires { self.storage[0]; }) {
-    return cast<qualified_element, qualified_underlying>(self.storage[0]);
-  } else if constexpr (requires { self.storage[0, 0]; }) {
-    return cast<qualified_element, qualified_underlying>(self.storage[0, 0]);
-  } else {
-    return cast<qualified_element, qualified_underlying>(self.storage(0));
-  }
+  return cast<qualified_element, qualified_underlying>(
+      tla::storage_element<Indexes...>(self.storage));
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
@@ -346,40 +329,12 @@ constexpr void typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(
     this auto &&self, const element<Indexes...> &value)
   requires(sizeof...(Indexes) == rank)
 {
-  // Forward the write operation to the storage with the appropriate access
-  // pattern and type conversion. The access pattern is determined by the
-  // available support of linear algebra backend.
-
-  //! @todo Consider refactoring this implementation to use a prioritized
-  //! overload set of free functions instead of a cascade of if-constexpr. The
-  //! free functions would be selected by the compiler based on the available
-  //! support of the linear algebra backend, and would handle the type
-  //! conversion and access pattern internally. This could simplify the
-  //! implementation and improve readability. The overload set could support
-  //! both the write and read operations.
-  if constexpr (same_as_typed_matrix<Matrix>) {
-    self.storage.template at<Indexes...>(
-        cast<underlying, element<Indexes...>>(value));
-  } else if constexpr (requires {
-                         self.storage(std::size_t{Indexes}...) =
-                             cast<underlying, element<Indexes...>>(value);
-                       }) {
-    self.storage(std::size_t{Indexes}...) =
-        cast<underlying, element<Indexes...>>(value);
-  } else if constexpr (requires {
-                         self.storage(Indexes...) =
-                             cast<underlying, element<Indexes...>>(value);
-                       }) {
-    self.storage(Indexes...) = cast<underlying, element<Indexes...>>(value);
-  } else if constexpr (requires {
-                         self.storage[0, std::size_t{Indexes}...] =
-                             cast<underlying, element<Indexes...>>(value);
-                       }) {
-    self.storage[0, std::size_t{Indexes}...] =
-        cast<underlying, element<Indexes...>>(value);
-  } else {
-    self.storage(0) = cast<underlying, element<Indexes...>>(value);
-  }
+  // Forward the write operation to the storage through the shared element
+  // access support, which selects the access pattern from the linear algebra
+  // backend's available API. The value is converted to the storage underlying
+  // type here, where both the element and underlying types are known.
+  tla::store_element<Indexes...>(self.storage,
+                                 cast<underlying, element<Indexes...>>(value));
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
