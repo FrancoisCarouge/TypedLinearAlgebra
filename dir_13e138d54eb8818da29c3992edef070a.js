@@ -24,6 +24,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "rank_typed_matrix", "dir_34f9bef5dae5bb76e30ae784d785526f.xhtml", "dir_34f9bef5dae5bb76e30ae784d785526f" ],
     [ "row_typed_matrix", "dir_69a73f1dfedf94bf9abe1646a8d78253.xhtml", "dir_69a73f1dfedf94bf9abe1646a8d78253" ],
     [ "same_as_typed_matrix", "dir_85672508e764db47551cde85626f251e.xhtml", "dir_85672508e764db47551cde85626f251e" ],
+    [ "same_shape", "dir_d14f5c435c62ead2135e63bab969fae5.xhtml", "dir_d14f5c435c62ead2135e63bab969fae5" ],
     [ "scale", "dir_c79a22093641195bc122213b64dc8191.xhtml", "dir_c79a22093641195bc122213b64dc8191" ],
     [ "structured_bindings", "dir_bb833da45de611d79770d70c20939231.xhtml", "dir_bb833da45de611d79770d70c20939231" ],
     [ "substraction", "dir_f423392bc0209ba027827651fa50293e.xhtml", "dir_f423392bc0209ba027827651fa50293e" ],

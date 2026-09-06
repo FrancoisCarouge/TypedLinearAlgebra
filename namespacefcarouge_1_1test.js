@@ -354,6 +354,12 @@ var namespacefcarouge_1_1test =
     ] ],
     [ "anonymous_namespace{row_typed_matrix.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02row__typed__matrix_8cpp_03.xhtml", null ],
     [ "anonymous_namespace{same_as_typed_matrix.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03.xhtml", "namespacefcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03" ],
+    [ "anonymous_namespace{same_shape.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02same__shape_8cpp_03.xhtml", [
+      [ "column", "namespacefcarouge_1_1test_1_1anonymous__namespace_02same__shape_8cpp_03.xhtml#afc1cf78a20dc4442f6a0fa36bd163bd8", null ],
+      [ "plane", "namespacefcarouge_1_1test_1_1anonymous__namespace_02same__shape_8cpp_03.xhtml#ac519124d307568d1207a09929a927db5", null ],
+      [ "row", "namespacefcarouge_1_1test_1_1anonymous__namespace_02same__shape_8cpp_03.xhtml#a67f160034357a773364cd4f9aaa6aec4", null ],
+      [ "singleton", "namespacefcarouge_1_1test_1_1anonymous__namespace_02same__shape_8cpp_03.xhtml#a0db93bd98a6ccb24962bec38cb24b842", null ]
+    ] ],
     [ "anonymous_namespace{scalar.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02scalar_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02scalar_8cpp_03.xhtml#a19fd32d289c4028484e648f18a3cd395", null ]
     ] ],
@@ -387,6 +393,7 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{subscript_3x3_const.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02subscript__3x3__const_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02subscript__3x3__const_8cpp_03.xhtml#afba74b54c39df2c0865cb73588c16ae6", null ]
     ] ],
+    [ "anonymous_namespace{transpose_shape_fail.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02transpose__shape__fail_8cpp_03.xhtml", null ],
     [ "anonymous_namespace{typed_vector_as_quantity.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__vector__as__quantity_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__vector__as__quantity_8cpp_03.xhtml#a0f621f4c56c49ecc3bbad51e8dcf2b21", null ]
     ] ],
