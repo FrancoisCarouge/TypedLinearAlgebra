@@ -7,6 +7,6 @@ var searchData=
   ['derived_4',['derived',['../structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1derived.xhtml',1,'fcarouge::test::anonymous_namespace{same_as_typed_matrix.cpp}']]],
   ['development_20build_20run_5',['Development Build &amp; Run',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run',1,'']]],
   ['directories_6',['Other directories',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#other-directories',1,'']]],
-  ['distinct_2ecpp_7',['distinct.cpp',['../distinct_8cpp.xhtml',1,'']]],
+  ['distinct_5ftyped_5fmatrix_2ecpp_7',['distinct_typed_matrix.cpp',['../distinct__typed__matrix_8cpp.xhtml',1,'']]],
   ['documentation_2edox_8',['documentation.dox',['../documentation_8dox.xhtml',1,'']]]
 ];

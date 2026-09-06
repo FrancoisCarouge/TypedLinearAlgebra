@@ -1,62 +1,62 @@
 <map id="/github/workspace/include/fcarouge/typed_linear_algebra_forward.hpp" name="/github/workspace/include/fcarouge/typed_linear_algebra_forward.hpp">
-<area shape="rect" id="Node000001" title="Authoritative forward declaration header." alt="" coords="1416,5,1589,61"/>
-<area shape="rect" id="Node000002" href="$typed__linear__algebra_8hpp.xhtml" title="Typed linear algebra implementation." alt="" coords="1230,213,1402,268"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1449,72,1405,111,1363,164,1333,214,1328,211,1359,161,1401,107,1446,68"/>
-<area shape="rect" id="Node000023" href="$utility_8hpp.xhtml" title=" " alt="" coords="1414,109,1591,165"/>
-<area shape="poly" id="edge30_Node000001_Node000023" title=" " alt="" coords="1505,77,1505,108,1500,108,1500,77"/>
-<area shape="rect" id="Node000025" href="$nholthaus_8hpp.xhtml" title="Quantities and units facade for the nholthaus/units implementation." alt="" coords="2366,220,2586,261"/>
-<area shape="poly" id="edge33_Node000001_Node000025" title=" " alt="" coords="1605,53,2383,217,2382,222,1604,59"/>
-<area shape="rect" id="Node000003" href="$typed__mdspan__product_8cpp.xhtml" title=" " alt="" coords="1869,324,2064,364"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1418,266,1542,284,1639,291,1736,297,1858,314,1892,321,1891,326,1857,319,1735,302,1639,296,1541,289,1417,271"/>
-<area shape="rect" id="Node000004" href="$typed__mdspan__tupled__product_8cpp.xhtml" title=" " alt="" coords="2089,324,2314,364"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="1418,266,1518,280,1603,288,1748,292,1893,296,1977,302,2076,314,2116,321,2116,326,2076,319,1977,307,1893,301,1748,298,1602,293,1517,285,1417,271"/>
-<area shape="rect" id="Node000005" href="$au__eigen_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with Au with Eigen implementations." alt="" coords="5,428,195,468"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="1214,246,1071,252,890,264,689,285,490,319,393,343,298,373,147,430,145,425,296,368,391,338,489,314,689,280,889,259,1071,246,1214,241"/>
-<area shape="rect" id="Node000006" href="$au__std_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with Au with std::linalg implementations." alt="" coords="501,324,678,364"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="1215,253,977,278,836,296,696,319,664,326,663,321,696,314,836,291,977,272,1214,248"/>
-<area shape="rect" id="Node000007" href="$chrono__eigen_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with std::chrono with Eigen implementations." alt="" coords="218,420,392,476"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="1215,249,1092,258,954,271,828,292,778,304,741,319,726,331,717,345,707,360,691,374,651,393,615,404,583,410,552,411,486,412,448,415,405,423,394,425,392,420,403,417,447,410,486,407,551,406,582,404,614,399,649,388,688,370,703,357,712,343,722,328,739,314,777,299,827,286,953,266,1091,252,1214,244"/>
-<area shape="rect" id="Node000008" href="$chrono__std_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with std::chrono with std::linalg implementations." alt="" coords="753,324,954,364"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="1215,266,974,319,942,326,941,321,973,314,1214,261"/>
-<area shape="rect" id="Node000009" href="$eigen_8hpp.xhtml" title="Linear algebra facade for Eigen3 third party implementation." alt="" coords="1029,324,1203,364"/>
-<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="1250,278,1156,326,1153,321,1248,273"/>
-<area shape="rect" id="Node000011" href="$eigexed_2fcarouge_2linalg_8hpp.xhtml" title="Scalar type linear algebra with Eigen implementation." alt="" coords="416,428,597,468"/>
-<area shape="poly" id="edge20_Node000002_Node000011" title=" " alt="" coords="1215,255,1116,277,1066,295,1019,319,1003,332,994,346,984,361,967,374,917,396,872,409,832,414,793,415,711,413,664,415,610,423,579,429,578,424,609,417,664,409,711,407,793,409,831,409,871,403,915,391,964,370,980,357,989,343,999,328,1016,314,1064,290,1115,272,1214,250"/>
-<area shape="rect" id="Node000012" href="$mp__units__eigen_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with mp&#45;units with Eigen implementations." alt="" coords="1840,420,2014,476"/>
-<area shape="poly" id="edge24_Node000002_Node000012" title=" " alt="" coords="1308,284,1307,330,1313,351,1325,370,1341,383,1363,394,1419,408,1488,415,1563,416,1713,413,1778,413,1828,417,1840,420,1839,425,1828,423,1777,418,1713,418,1563,422,1487,420,1418,414,1361,399,1339,388,1321,374,1308,354,1301,330,1303,284"/>
-<area shape="rect" id="Node000013" href="$nested__typed__eigen_2fcarouge_2linalg_8hpp.xhtml" title="Scalar type nested linear algebra with Eigen implementation." alt="" coords="1622,420,1816,476"/>
-<area shape="poly" id="edge26_Node000002_Node000013" title=" " alt="" coords="1287,282,1274,305,1266,328,1265,350,1274,370,1299,388,1336,399,1382,406,1432,409,1533,412,1611,417,1622,419,1621,425,1610,423,1533,417,1432,415,1381,411,1335,404,1297,392,1270,374,1259,351,1260,327,1269,302,1282,280"/>
-<area shape="rect" id="Node000014" href="$nholthaus__eigen_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with nholthaus/units with Eigen implementations." alt="" coords="2038,420,2212,476"/>
-<area shape="poly" id="edge27_Node000002_Node000014" title=" " alt="" coords="1323,283,1338,330,1351,352,1368,370,1393,384,1424,396,1499,410,1589,416,1686,417,1878,412,1960,412,2026,417,2038,420,2037,425,2025,423,1960,417,1878,417,1686,422,1589,422,1499,416,1422,401,1391,389,1365,374,1346,355,1333,332,1318,285"/>
-<area shape="rect" id="Node000019" href="$mp__units_8hpp.xhtml" title="Quantities and units facade for mp&#45;units third party implementation." alt="" coords="1379,324,1592,364"/>
-<area shape="poly" id="edge21_Node000002_Node000019" title=" " alt="" coords="1376,274,1454,321,1451,326,1373,279"/>
-<area shape="rect" id="Node000020" href="$mp__units__std_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with mp&#45;units with Eigen implementations." alt="" coords="2252,420,2426,476"/>
-<area shape="poly" id="edge25_Node000002_Node000020" title=" " alt="" coords="1418,265,1497,268,1613,269,1902,269,2048,272,2176,279,2274,293,2308,302,2328,314,2344,338,2351,366,2351,395,2348,420,2343,419,2346,395,2346,367,2339,340,2325,318,2305,307,2273,298,2176,285,2048,278,1902,275,1613,274,1497,274,1417,271"/>
-<area shape="rect" id="Node000021" href="$nholthaus__std_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with nholthaus/units with std::linalg implementations." alt="" coords="2389,316,2563,372"/>
-<area shape="poly" id="edge28_Node000002_Node000021" title=" " alt="" coords="1418,266,1562,284,1685,292,1794,293,1896,291,1997,288,2105,289,2228,296,2371,314,2389,317,2388,322,2370,319,2227,302,2105,294,1997,293,1896,296,1794,298,1685,297,1562,289,1417,271"/>
-<area shape="rect" id="Node000022" href="$interconvertible_8cpp.xhtml" title=" " alt="" coords="1616,324,1845,364"/>
-<area shape="poly" id="edge29_Node000002_Node000022" title=" " alt="" coords="1418,266,1645,321,1644,326,1417,272"/>
-<area shape="poly" id="edge9_Node000009_Node000005" title=" " alt="" coords="1013,368,966,375,850,386,752,392,585,394,419,399,322,407,207,423,172,430,171,424,206,417,321,402,419,394,585,389,752,386,850,381,965,369,1013,363"/>
-<area shape="poly" id="edge10_Node000009_Node000007" title=" " alt="" coords="1013,367,966,375,808,390,684,395,561,401,404,423,393,425,392,420,404,417,561,396,684,389,807,384,965,369,1013,362"/>
-<area shape="rect" id="Node000010" href="$eigen_2fcarouge_2linalg_8hpp.xhtml" title=" " alt="" coords="621,428,795,468"/>
-<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="1025,371,1011,375,807,423,781,429,779,424,806,417,1010,369,1024,366"/>
-<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="1029,371,1011,375,899,391,810,398,722,406,610,423,578,429,577,424,609,417,721,400,810,393,898,386,1010,369,1028,366"/>
-<area shape="poly" id="edge13_Node000009_Node000012" title=" " alt="" coords="1219,362,1272,369,1428,384,1551,389,1673,396,1828,417,1840,420,1839,425,1828,423,1672,401,1551,394,1428,389,1272,375,1218,367"/>
-<area shape="poly" id="edge14_Node000009_Node000013" title=" " alt="" coords="1204,366,1222,369,1331,386,1416,394,1502,401,1611,417,1622,419,1621,425,1610,423,1501,406,1416,399,1330,391,1221,375,1203,371"/>
-<area shape="poly" id="edge15_Node000009_Node000014" title=" " alt="" coords="1219,357,1323,369,1521,383,1675,386,1829,393,1920,402,2026,417,2038,420,2037,425,2025,423,1919,407,1829,398,1675,391,1520,388,1322,375,1218,362"/>
-<area shape="rect" id="Node000015" href="$column__typed__matrix_8cpp.xhtml" title=" " alt="" coords="819,420,1013,476"/>
-<area shape="poly" id="edge16_Node000009_Node000015" title=" " alt="" coords="1065,374,971,422,968,417,1063,369"/>
-<area shape="rect" id="Node000016" href="$rank__typed__matrix_8cpp.xhtml" title=" " alt="" coords="1036,420,1196,476"/>
-<area shape="poly" id="edge17_Node000009_Node000016" title=" " alt="" coords="1119,380,1119,419,1113,419,1113,380"/>
-<area shape="rect" id="Node000017" href="$row__typed__matrix_8cpp.xhtml" title=" " alt="" coords="1219,420,1373,476"/>
-<area shape="poly" id="edge18_Node000009_Node000017" title=" " alt="" coords="1165,370,1249,417,1246,422,1163,375"/>
-<area shape="rect" id="Node000018" href="$same__shape_8cpp.xhtml" title=" " alt="" coords="1397,428,1598,468"/>
-<area shape="poly" id="edge19_Node000009_Node000018" title=" " alt="" coords="1205,366,1424,424,1423,430,1204,372"/>
-<area shape="poly" id="edge22_Node000019_Node000012" title=" " alt="" coords="1588,366,1605,369,1829,417,1840,420,1838,425,1827,423,1603,375,1587,371"/>
-<area shape="poly" id="edge23_Node000019_Node000020" title=" " alt="" coords="1581,365,1604,369,1698,381,1778,388,1914,393,2050,398,2130,405,2224,417,2252,422,2251,428,2224,423,2130,410,2050,403,1914,398,1778,394,1698,387,1604,375,1581,371"/>
-<area shape="poly" id="edge32_Node000023_Node000002" title=" " alt="" coords="1441,175,1367,214,1365,210,1438,170"/>
-<area shape="rect" id="Node000024" href="$mdspan__tuple__product_8cpp.xhtml" title=" " alt="" coords="1426,220,1622,261"/>
-<area shape="poly" id="edge31_Node000023_Node000024" title=" " alt="" coords="1514,180,1523,219,1517,221,1509,181"/>
-<area shape="poly" id="edge34_Node000025_Node000014" title=" " alt="" coords="2532,267,2557,288,2577,315,2588,345,2586,359,2577,374,2550,392,2513,404,2467,411,2417,415,2317,417,2240,423,2213,428,2212,423,2240,417,2316,412,2416,409,2466,406,2511,399,2548,387,2573,370,2581,358,2582,346,2572,318,2553,292,2528,271"/>
-<area shape="poly" id="edge35_Node000025_Node000021" title=" " alt="" coords="2479,276,2479,316,2473,316,2473,276"/>
+<area shape="rect" id="Node000001" title="Authoritative forward declaration header." alt="" coords="1669,5,1841,61"/>
+<area shape="rect" id="Node000002" href="$typed__linear__algebra_8hpp.xhtml" title="Typed linear algebra implementation." alt="" coords="1482,213,1655,268"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1702,72,1657,111,1616,164,1585,214,1580,211,1611,161,1653,107,1698,68"/>
+<area shape="rect" id="Node000023" href="$utility_8hpp.xhtml" title=" " alt="" coords="1666,109,1844,165"/>
+<area shape="poly" id="edge30_Node000001_Node000023" title=" " alt="" coords="1758,77,1758,108,1752,108,1752,77"/>
+<area shape="rect" id="Node000025" href="$nholthaus_8hpp.xhtml" title="Quantities and units facade for the nholthaus/units implementation." alt="" coords="2447,220,2666,261"/>
+<area shape="poly" id="edge33_Node000001_Node000025" title=" " alt="" coords="1857,58,2480,217,2479,222,1856,63"/>
+<area shape="rect" id="Node000003" href="$typed__mdspan__product_8cpp.xhtml" title=" " alt="" coords="1699,324,1894,364"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1645,273,1753,321,1751,326,1642,278"/>
+<area shape="rect" id="Node000004" href="$typed__mdspan__tupled__product_8cpp.xhtml" title=" " alt="" coords="1918,324,2144,364"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="1670,266,1790,291,1906,314,1939,321,1938,326,1905,319,1789,296,1669,271"/>
+<area shape="rect" id="Node000005" href="$au__eigen_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with Au with Eigen implementations." alt="" coords="1824,428,2014,468"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="1469,269,1435,289,1408,318,1400,332,1397,345,1400,357,1408,370,1421,381,1438,390,1483,403,1538,410,1598,413,1720,413,1772,413,1813,417,1846,424,1845,430,1812,423,1772,419,1720,418,1598,418,1537,415,1482,409,1436,395,1418,386,1404,374,1395,359,1392,345,1395,330,1404,315,1431,285,1466,265"/>
+<area shape="rect" id="Node000006" href="$au__std_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with Au with std::linalg implementations." alt="" coords="2219,324,2395,364"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="1670,266,1820,285,1937,290,2054,296,2201,314,2235,321,2234,326,2200,319,2053,301,1937,296,1819,290,1670,271"/>
+<area shape="rect" id="Node000007" href="$chrono__eigen_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with std::chrono with Eigen implementations." alt="" coords="5,420,180,476"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="1467,252,1237,272,920,306,557,356,372,387,192,423,181,425,179,420,191,417,371,382,556,350,919,300,1236,266,1466,246"/>
+<area shape="rect" id="Node000008" href="$chrono__std_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with std::chrono with std::linalg implementations." alt="" coords="836,324,1037,364"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="1467,257,1276,283,1057,319,1022,326,1021,321,1056,314,1276,278,1466,252"/>
+<area shape="rect" id="Node000009" href="$eigen_8hpp.xhtml" title="Linear algebra facade for Eigen3 third party implementation." alt="" coords="1163,324,1337,364"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="1470,276,1313,326,1311,321,1468,271"/>
+<area shape="rect" id="Node000011" href="$eigexed_2fcarouge_2linalg_8hpp.xhtml" title="Scalar type linear algebra with Eigen implementation." alt="" coords="203,428,384,468"/>
+<area shape="poly" id="edge21_Node000002_Node000011" title=" " alt="" coords="1467,252,1367,262,1259,276,1162,295,1124,306,1095,319,1081,331,1074,346,1066,361,1050,374,1022,386,990,395,913,407,823,413,728,415,541,415,461,417,397,423,364,429,363,424,396,417,460,411,541,409,728,410,823,408,912,402,989,390,1021,381,1047,370,1062,358,1069,343,1077,328,1092,314,1122,301,1161,290,1258,271,1367,256,1467,247"/>
+<area shape="rect" id="Node000012" href="$mp__units__eigen_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with mp&#45;units with Eigen implementations." alt="" coords="2037,420,2212,476"/>
+<area shape="poly" id="edge25_Node000002_Node000012" title=" " alt="" coords="1489,279,1468,296,1452,318,1442,346,1444,358,1452,370,1464,378,1485,385,1550,395,1731,407,1915,412,2026,417,2037,420,2036,425,2026,423,1915,417,1730,412,1549,401,1484,390,1462,383,1448,374,1439,360,1436,345,1447,315,1464,293,1486,275"/>
+<area shape="rect" id="Node000013" href="$nested__typed__eigen_2fcarouge_2linalg_8hpp.xhtml" title="Scalar type nested linear algebra with Eigen implementation." alt="" coords="409,420,603,476"/>
+<area shape="poly" id="edge27_Node000002_Node000013" title=" " alt="" coords="1467,246,1395,252,1314,265,1231,287,1152,319,1135,332,1125,346,1114,361,1095,374,1027,401,967,415,912,420,860,419,751,413,687,414,614,423,604,425,603,419,613,417,687,409,751,407,860,414,912,415,966,410,1025,396,1093,370,1110,357,1121,343,1131,328,1150,314,1229,282,1313,260,1394,247,1467,241"/>
+<area shape="rect" id="Node000014" href="$nholthaus__eigen_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with nholthaus/units with Eigen implementations." alt="" coords="2435,420,2609,476"/>
+<area shape="poly" id="edge28_Node000002_Node000014" title=" " alt="" coords="1670,266,1745,274,1810,275,1922,267,1976,266,2031,271,2090,286,2158,314,2175,327,2184,342,2193,357,2209,370,2264,394,2311,403,2360,407,2422,417,2435,420,2433,426,2421,423,2360,412,2310,408,2262,399,2206,374,2189,360,2180,345,2171,331,2155,319,2089,291,2030,276,1975,271,1923,272,1810,280,1745,279,1670,271"/>
+<area shape="rect" id="Node000020" href="$mp__units_8hpp.xhtml" title="Quantities and units facade for mp&#45;units third party implementation." alt="" coords="1462,324,1675,364"/>
+<area shape="poly" id="edge22_Node000002_Node000020" title=" " alt="" coords="1571,284,1571,324,1566,324,1566,284"/>
+<area shape="rect" id="Node000021" href="$mp__units__std_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with mp&#45;units with Eigen implementations." alt="" coords="2236,420,2410,476"/>
+<area shape="poly" id="edge26_Node000002_Node000021" title=" " alt="" coords="1670,265,1833,270,2067,272,2185,276,2288,284,2366,296,2393,304,2409,314,2418,329,2420,343,2410,373,2392,400,2369,421,2365,418,2388,397,2405,371,2415,342,2413,330,2405,318,2390,309,2365,301,2287,289,2184,282,2067,278,1833,275,1670,271"/>
+<area shape="rect" id="Node000022" href="$nholthaus__std_2fcarouge_2linalg_8hpp.xhtml" title="Indexed&#45;based linear algebra with nholthaus/units with std::linalg implementations." alt="" coords="2469,316,2644,372"/>
+<area shape="poly" id="edge29_Node000002_Node000022" title=" " alt="" coords="1670,266,1789,281,1890,289,2062,290,2234,292,2334,299,2452,314,2469,317,2468,322,2451,319,2334,304,2234,297,2062,296,1889,294,1788,287,1670,271"/>
+<area shape="poly" id="edge9_Node000009_Node000005" title=" " alt="" coords="1337,366,1356,369,1483,387,1584,393,1685,400,1813,417,1847,424,1845,430,1812,423,1684,405,1584,399,1483,392,1355,375,1336,371"/>
+<area shape="poly" id="edge10_Node000009_Node000007" title=" " alt="" coords="1147,363,1049,375,918,384,807,389,619,389,431,395,321,405,192,423,180,425,180,419,191,417,320,399,430,389,619,384,807,383,918,379,1048,369,1147,358"/>
+<area shape="rect" id="Node000010" href="$eigen_2fcarouge_2linalg_8hpp.xhtml" title=" " alt="" coords="852,428,1026,468"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="1176,372,1000,429,998,424,1174,367"/>
+<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="1148,367,1094,375,988,385,898,391,745,394,592,399,502,408,397,423,363,430,362,424,396,417,502,403,591,394,744,388,898,385,988,380,1094,369,1147,362"/>
+<area shape="poly" id="edge13_Node000009_Node000012" title=" " alt="" coords="1353,362,1406,369,1580,385,1717,389,1853,395,1933,403,2026,417,2037,419,2037,425,2025,423,1932,409,1852,400,1716,394,1580,390,1406,375,1352,367"/>
+<area shape="poly" id="edge14_Node000009_Node000013" title=" " alt="" coords="1164,371,1145,375,996,393,879,399,763,404,614,423,604,424,603,419,613,417,762,399,879,394,996,388,1144,369,1163,366"/>
+<area shape="poly" id="edge15_Node000009_Node000014" title=" " alt="" coords="1353,358,1450,369,1598,380,1723,384,1937,383,2040,383,2150,387,2275,398,2422,417,2435,420,2434,425,2421,423,2275,403,2150,393,2040,389,1937,388,1723,389,1598,385,1450,375,1352,363"/>
+<area shape="rect" id="Node000015" href="$column__typed__matrix_8cpp.xhtml" title=" " alt="" coords="1050,420,1244,476"/>
+<area shape="poly" id="edge16_Node000009_Node000015" title=" " alt="" coords="1221,377,1177,421,1173,418,1217,374"/>
+<area shape="rect" id="Node000016" href="$distinct__typed__matrix_8cpp.xhtml" title=" " alt="" coords="1268,420,1440,476"/>
+<area shape="poly" id="edge17_Node000009_Node000016" title=" " alt="" coords="1283,374,1328,418,1324,421,1279,377"/>
+<area shape="rect" id="Node000017" href="$rank__typed__matrix_8cpp.xhtml" title=" " alt="" coords="1464,420,1623,476"/>
+<area shape="poly" id="edge18_Node000009_Node000017" title=" " alt="" coords="1322,367,1466,417,1464,422,1320,373"/>
+<area shape="rect" id="Node000018" href="$row__typed__matrix_8cpp.xhtml" title=" " alt="" coords="1646,420,1800,476"/>
+<area shape="poly" id="edge19_Node000009_Node000018" title=" " alt="" coords="1340,366,1356,369,1434,384,1496,392,1557,401,1636,417,1647,420,1645,425,1635,423,1556,407,1495,398,1433,389,1355,375,1338,371"/>
+<area shape="rect" id="Node000019" href="$same__shape_8cpp.xhtml" title=" " alt="" coords="626,428,828,468"/>
+<area shape="poly" id="edge20_Node000009_Node000019" title=" " alt="" coords="1161,371,1145,375,1060,390,993,399,926,408,841,423,808,430,807,424,840,417,925,403,992,394,1059,385,1144,369,1160,366"/>
+<area shape="poly" id="edge23_Node000020_Node000012" title=" " alt="" coords="1668,366,1688,369,1783,384,1857,392,1931,401,2026,417,2038,420,2036,425,2025,423,1931,406,1856,397,1782,389,1687,375,1667,371"/>
+<area shape="poly" id="edge24_Node000020_Node000021" title=" " alt="" coords="1665,365,1688,369,1838,387,1956,392,2074,398,2224,417,2236,420,2235,425,2223,423,2073,403,1955,397,1837,392,1687,375,1664,371"/>
+<area shape="poly" id="edge32_Node000023_Node000002" title=" " alt="" coords="1693,175,1620,214,1617,210,1691,170"/>
+<area shape="rect" id="Node000024" href="$mdspan__tuple__product_8cpp.xhtml" title=" " alt="" coords="1679,220,1874,261"/>
+<area shape="poly" id="edge31_Node000023_Node000024" title=" " alt="" coords="1767,180,1775,219,1770,221,1761,181"/>
+<area shape="poly" id="edge34_Node000025_Node000014" title=" " alt="" coords="2612,267,2638,288,2658,315,2667,344,2665,358,2657,373,2633,401,2603,422,2600,417,2630,397,2653,371,2659,357,2661,345,2653,318,2634,292,2609,271"/>
+<area shape="poly" id="edge35_Node000025_Node000022" title=" " alt="" coords="2559,276,2559,316,2554,316,2554,276"/>
 </map>

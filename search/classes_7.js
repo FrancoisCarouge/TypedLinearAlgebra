@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['tuple_5felement_3c_20index_2c_20mp_5funits_3a_3aquantity_3c_20reference_2c_20representation_20_3e_20_3e_0',['tuple_element&lt; Index, mp_units::quantity&lt; Reference, Representation &gt; &gt;',['../structstd_1_1tuple__element_3_01_index_00_01mp__units_1_1quantity_3_01_reference_00_01_representation_01_4_01_4.xhtml',1,'std']]],
-  ['tuple_5felement_3c_20index_2c_20type_20_3e_1',['tuple_element&lt; Index, Type &gt;',['../structstd_1_1tuple__element_3_01_index_00_01_type_01_4.xhtml',1,'std']]],
-  ['tuple_5fsize_3c_20mp_5funits_3a_3aquantity_3c_20reference_2c_20representation_20_3e_20_3e_2',['tuple_size&lt; mp_units::quantity&lt; Reference, Representation &gt; &gt;',['../structstd_1_1tuple__size_3_01mp__units_1_1quantity_3_01_reference_00_01_representation_01_4_01_4.xhtml',1,'std']]],
-  ['tuple_5fsize_3c_20type_20_3e_3',['tuple_size&lt; Type &gt;',['../structstd_1_1tuple__size_3_01_type_01_4.xhtml',1,'std']]],
-  ['typed_5fmatrix_4',['typed_matrix',['../classfcarouge_1_1typed__matrix.xhtml',1,'fcarouge']]]
+  ['representation_5fcanonical_5ftype_3c_20fcarouge_3a_3atyped_5fmatrix_3c_20matrix_2c_20rowindexes_2c_20columnindexes_20_3e_20_3e_0',['representation_canonical_type&lt; fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &gt;',['../structmp__units_1_1representation__canonical__type_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_88cb568bfd22172f87f75426ff9b1681.xhtml',1,'mp_units']]],
+  ['representation_5funderlying_5ftype_3c_20fcarouge_3a_3atyped_5fmatrix_3c_20matrix_2c_20rowindexes_2c_20columnindexes_20_3e_20_3e_1',['representation_underlying_type&lt; fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &gt;',['../structmp__units_1_1representation__underlying__type_3_01fcarouge_1_1typed__matrix_3_01_matrix_007bb3dc97a35e2d584c04497c33efbeb2.xhtml',1,'mp_units']]]
 ];
