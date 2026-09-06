@@ -179,33 +179,103 @@ constexpr void for_constexpr(Function &&function) {
                        std::forward<Function>(function));
 }
 
-template <typename Type> struct underlying {
-  [[nodiscard]] static constexpr auto operator()()
-    requires requires { typename Type::underlying; }
-  {
-    return typename Type::underlying{};
-  }
-  [[nodiscard]] static constexpr auto operator()()
-    requires requires { typename Type::Scalar; }
-  {
-    return typename Type::Scalar{};
-  }
-  [[nodiscard]] static constexpr auto operator()()
-    requires requires { typename Type::element_type; }
-  {
-    return std::remove_cvref_t<typename Type::element_type>{};
-  }
-};
-
-template <typename Type>
-using underlying_t = std::invoke_result_t<underlying<Type>>;
-
 template <typename Type>
 concept same_as_typed_matrix = std::same_as<
     std::remove_cvref_t<Type>,
     typed_matrix<typename std::remove_cvref_t<Type>::matrix,
                  typename std::remove_cvref_t<Type>::row_indexes,
                  typename std::remove_cvref_t<Type>::column_indexes>>;
+
+//! @brief Read-access the backend storage element at the given compile-time
+//! position(s).
+//!
+//! @details Central element read-access support, shared by `typed_matrix::at()`
+//! and the `underlying_t` storage-type trait. It abstracts over the element
+//! access syntax offered by each supported linear algebra backend, trying, from
+//! most to least specific: a call operator `storage(i...)` (Eigen, and
+//! `std::mdspan` built with the parenthesis-operator extension), the flat
+//! `storage[0, i...]` row-major fallback for a one-dimension `std::mdspan`,
+//! then the single-element accesses of a rank-zero, singleton storage.
+//!
+//! @note The `Storage` is passed through unforwarded, as an lvalue: constness
+//! flows from the caller, the value category does not. This matches
+//! `typed_matrix::at()`, which returns a reference for non-const access and a
+//! prvalue otherwise.
+template <auto... Indexes, typename Storage>
+[[nodiscard]] constexpr auto storage_element(Storage &&storage)
+    -> decltype(auto) {
+  if constexpr (requires { storage(std::size_t{Indexes}...); }) {
+    return storage(std::size_t{Indexes}...);
+  } else if constexpr (requires { storage(Indexes...); }) {
+    return storage(Indexes...);
+  } else if constexpr (requires { storage[0, std::size_t{Indexes}...]; }) {
+    return storage[0, std::size_t{Indexes}...];
+  } else if constexpr (requires { storage[]; }) {
+    return storage[];
+  } else if constexpr (requires { storage[0]; }) {
+    return storage[0];
+  } else if constexpr (requires { storage[0, 0]; }) {
+    return storage[0, 0];
+  } else {
+    return storage(0);
+  }
+}
+
+//! @brief Write-access the backend storage element at the given compile-time
+//! position(s).
+//!
+//! @details Central element write-access support, shared by
+//! `typed_matrix::at(value)`. The `value` is already converted to the storage
+//! underlying type by the caller. Mirrors `storage_element`'s backend syntax
+//! probing, plus a composed `typed_matrix` backend forwarding to its own typed
+//! `at()`.
+template <auto... Indexes, typename Storage, typename Value>
+constexpr void store_element(Storage &&storage, Value &&value) {
+  if constexpr (same_as_typed_matrix<std::remove_cvref_t<Storage>>) {
+    storage.template at<Indexes...>(std::forward<Value>(value));
+  } else if constexpr (requires {
+                         storage(std::size_t{Indexes}...) =
+                             std::forward<Value>(value);
+                       }) {
+    storage(std::size_t{Indexes}...) = std::forward<Value>(value);
+  } else if constexpr (requires {
+                         storage(Indexes...) = std::forward<Value>(value);
+                       }) {
+    storage(Indexes...) = std::forward<Value>(value);
+  } else if constexpr (requires {
+                         storage[0, std::size_t{Indexes}...] =
+                             std::forward<Value>(value);
+                       }) {
+    storage[0, std::size_t{Indexes}...] = std::forward<Value>(value);
+  } else {
+    storage(0) = std::forward<Value>(value);
+  }
+}
+
+//! @brief The scalar representation type stored by a linear algebra backend.
+//!
+//! @details The type obtained by reading a backend's first element, decayed,
+//! recursing through this library's own alias for a composed `typed_matrix`
+//! backend. No backend-specific member type name (Eigen's `Scalar`,
+//! `std::mdspan`'s `element_type`, ...) is spelled: the probe rides on the same
+//! element access `typed_matrix` already relies on for every backend it
+//! composes. See `storage_element`.
+template <typename Type> struct underlying {
+  [[nodiscard]] static constexpr auto operator()() {
+    using matrix = std::remove_cvref_t<Type>;
+
+    if constexpr (same_as_typed_matrix<matrix>) {
+      return std::type_identity<typename matrix::underlying>{};
+    } else {
+      return std::type_identity<std::remove_cvref_t<
+          decltype(storage_element<std::size_t{0}, std::size_t{0}>(
+              std::declval<const matrix &>()))>>{};
+    }
+  }
+};
+
+template <typename Type>
+using underlying_t = typename std::invoke_result_t<underlying<Type>>::type;
 
 template <std::size_t Rows, std::size_t Columns>
 constexpr std::size_t rank{[] {
