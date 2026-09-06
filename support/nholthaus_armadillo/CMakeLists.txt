@@ -1,4 +1,4 @@
-/* Typed Linear Algebra
+#[[ Typed Linear Algebra
 Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,34 +27,14 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> */
+For more information, please refer to <https://unlicense.org> ]]
 
-#include "fcarouge/linalg.hpp"
-
-#include <cassert>
-
-namespace fcarouge::test {
-namespace {
-//! @test Verifies the copy constructor.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 5, 5> m{{1., 0., 0., 0., 0.},
-                               {0., 1., 0., 0., 0.},
-                               {0., 0., 1., 0., 0.},
-                               {0., 0., 0., 1., 0.},
-                               {0., 0., 0., 0., 1.}};
-  matrix<double, 5, 5> c{m};
-
-  assert((c == matrix<double, 5, 5>{{1., 0., 0., 0., 0.},
-                                    {0., 1., 0., 0., 0.},
-                                    {0., 0., 1., 0., 0.},
-                                    {0., 0., 0., 1., 0.},
-                                    {0., 0., 0., 0., 1.}}));
-
-  // The copy owns its storage independently of the source.
-  c(0, 0) = 2.;
-  assert((m(0, 0) == 1.));
-
-  return 0;
-}()};
-} // namespace
-} // namespace fcarouge::test
+add_library(typed_linear_algebra_nholthaus_armadillo INTERFACE)
+target_sources(
+  typed_linear_algebra_nholthaus_armadillo
+  INTERFACE FILE_SET "typed_linear_algebra_headers" TYPE "HEADERS" FILES
+            "fcarouge/linalg.hpp")
+target_link_libraries(
+  typed_linear_algebra_nholthaus_armadillo
+  INTERFACE typed_linear_algebra_armadillo typed_linear_algebra_nholthaus
+            tlinalg)

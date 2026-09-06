@@ -29,14 +29,21 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-fail("1x1_au_eigen_fail" BACKENDS "au_eigen")
-fail("1x1_mp_units_eigen_fail" BACKENDS "mp_units_eigen")
-fail("1x2_au_eigen_fail" BACKENDS "au_eigen")
-fail("1x2_mp_units_eigen_fail" BACKENDS "mp_units_eigen")
+fail("1x1_au_eigen_fail" BACKENDS "au_eigen" "au_armadillo")
+fail("1x1_mp_units_eigen_fail" BACKENDS "mp_units_eigen" "mp_units_armadillo")
+fail("1x2_au_eigen_fail" BACKENDS "au_eigen" "au_armadillo")
+fail("1x2_mp_units_eigen_fail" BACKENDS "mp_units_eigen" "mp_units_armadillo")
 
-pass("1x1_au_eigen" BACKENDS "au_eigen")
-pass("1x1_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("1x2_au_eigen" BACKENDS "au_eigen")
-pass("1x2_chrono_eigen" BACKENDS "chrono_eigen")
-pass("1x2_eigen" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen")
+pass("1x1_au_eigen" BACKENDS "au_eigen" "au_armadillo")
+pass("1x1_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
+pass("1x2_au_eigen" BACKENDS "au_eigen" "au_armadillo")
+pass("1x2_chrono_eigen" BACKENDS "chrono_eigen" "chrono_armadillo")
+pass(
+  "1x2_eigen"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "nested_typed_eigen"
+  "armadilloxed"
+  "armadillo")
+pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")

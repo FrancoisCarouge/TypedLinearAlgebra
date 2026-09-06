@@ -29,32 +29,39 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/linalg.hpp"
+#ifndef FCAROUGE_LINALG_HPP
+#define FCAROUGE_LINALG_HPP
 
-#include <cassert>
+//! @file
+//! @brief Scalar type typed linear algebra with the Armadillo implementation.
 
-namespace fcarouge::test {
-namespace {
-//! @test Verifies the copy constructor.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 5, 5> m{{1., 0., 0., 0., 0.},
-                               {0., 1., 0., 0., 0.},
-                               {0., 0., 1., 0., 0.},
-                               {0., 0., 0., 1., 0.},
-                               {0., 0., 0., 0., 1.}};
-  matrix<double, 5, 5> c{m};
+#include "fcarouge/armadillo.hpp"
+#include "fcarouge/typed_linear_algebra.hpp"
 
-  assert((c == matrix<double, 5, 5>{{1., 0., 0., 0., 0.},
-                                    {0., 1., 0., 0., 0.},
-                                    {0., 0., 1., 0., 0.},
-                                    {0., 0., 0., 1., 0.},
-                                    {0., 0., 0., 0., 1.}}));
+#include <cstddef>
 
-  // The copy owns its storage independently of the source.
-  c(0, 0) = 2.;
-  assert((m(0, 0) == 1.));
+namespace fcarouge {
 
-  return 0;
-}()};
-} // namespace
-} // namespace fcarouge::test
+//! @name Types
+//! @{
+
+//! @brief Scalar type matrix with Armadillo implementations.
+template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
+using matrix =
+    typed_matrix<armadillo::matrix<Type, Row, Column>,
+                 typed_linear_algebra_internal::tuple_n_type<Type, Row>,
+                 typed_linear_algebra_internal::tuple_n_type<Type, Column>>;
+
+//! @brief Scalar type column vector with Armadillo implementations.
+template <typename Type = double, std::size_t Row = 1>
+using column_vector = matrix<Type, Row, 1>;
+
+//! @brief Scalar type row vector with Armadillo implementations.
+template <typename Type = double, std::size_t Column = 1>
+using row_vector = matrix<Type, 1, Column>;
+
+//! @}
+
+} // namespace fcarouge
+
+#endif // FCAROUGE_LINALG_HPP

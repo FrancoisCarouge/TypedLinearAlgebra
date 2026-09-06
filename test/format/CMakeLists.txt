@@ -29,11 +29,12 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-pass("1x1" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("1x3" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("3x1" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("3x3" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("formattable" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+pass("1x1" BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("1x3" BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("3x1" BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("3x3" BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("formattable" BACKENDS "eigen" "eigexed" "nested_typed_eigen"
+     "armadilloxed")
 pass("au_eigen" BACKENDS "au_eigen")
 pass("au_std" BACKENDS "au_std")
 pass("chrono_eigen" BACKENDS "chrono_eigen")
