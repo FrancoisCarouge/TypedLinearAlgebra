@@ -37,7 +37,6 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(gsl-lite)
 
 set(MP_UNITS_LIB_FORMAT_SUPPORTED ON)
-set(MP_UNITS_API_FREESTANDING OFF)
 set(MP_UNITS_API_STD_FORMAT ON)
 set(MP_UNITS_BUILD_INSTALL OFF)
 
