@@ -190,17 +190,20 @@ concept same_as_typed_matrix = std::same_as<
 //! position(s).
 //!
 //! @details Central element read-access support, shared by `typed_matrix::at()`
-//! and the `underlying_t` storage-type trait. It abstracts over the element
-//! access syntax offered by each supported linear algebra backend, trying, from
-//! most to least specific: a call operator `storage(i...)` (Eigen, and
-//! `std::mdspan` built with the parenthesis-operator extension), the flat
-//! `storage[0, i...]` row-major fallback for a one-dimension `std::mdspan`,
-//! then the single-element accesses of a rank-zero, singleton storage.
+//! and the `underlying_t` storage-type trait. Tries each backend's element
+//! access syntax from most to least specific: a call operator (Eigen,
+//! `std::mdspan`), a named `.at(i...)` accessor, a real-index `storage[i...]`
+//! subscript (Armadillo's `eOp`/`eGlue` only expose these two, never a call
+//! operator), the flat `storage[0, i...]` fallback for a one-dimension
+//! `std::mdspan`, the singleton accesses of a rank-zero storage, and finally
+//! materializing an unevaluated expression template.
 //!
-//! @note The `Storage` is passed through unforwarded, as an lvalue: constness
-//! flows from the caller, the value category does not. This matches
-//! `typed_matrix::at()`, which returns a reference for non-const access and a
-//! prvalue otherwise.
+//! @note `storage[i...]` must stay between `.at(i...)` and the singleton
+//! branches: with an empty `Indexes...` it would otherwise collapse to the
+//! zero-argument `storage[]` singleton case. `Storage` is passed unforwarded,
+//! as an lvalue, so constness (but not value category) flows from the
+//! caller, matching `at()`'s reference-for-non-const, prvalue-otherwise
+//! return.
 template <auto... Indexes, typename Storage>
 [[nodiscard]] constexpr auto storage_element(Storage &&storage)
     -> decltype(auto) {
@@ -208,6 +211,11 @@ template <auto... Indexes, typename Storage>
     return storage(std::size_t{Indexes}...);
   } else if constexpr (requires { storage(Indexes...); }) {
     return storage(Indexes...);
+  } else if constexpr (requires { storage.at(std::size_t{Indexes}...); }) {
+    return storage.at(std::size_t{Indexes}...);
+  } else if constexpr (sizeof...(Indexes) > 0 and
+                       requires { storage[std::size_t{Indexes}...]; }) {
+    return storage[std::size_t{Indexes}...];
   } else if constexpr (requires { storage[0, std::size_t{Indexes}...]; }) {
     return storage[0, std::size_t{Indexes}...];
   } else if constexpr (requires { storage[]; }) {
@@ -216,6 +224,13 @@ template <auto... Indexes, typename Storage>
     return storage[0];
   } else if constexpr (requires { storage[0, 0]; }) {
     return storage[0, 0];
+  } else if constexpr (requires { storage.eval(); }) {
+    // Some backends expose no element access on expression templates at all,
+    // only lazy evaluation, so this is deferred until a scalar is actually
+    // needed. `auto(...)` forces an evaluated copy, a local, before it goes
+    // out of scope, rather than risking a dangling reference.
+    auto evaluated{storage.eval()};
+    return auto(storage_element<Indexes...>(evaluated));
   } else {
     return storage(0);
   }

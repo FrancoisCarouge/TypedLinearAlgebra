@@ -29,23 +29,12 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-fail("2x2_fail" BACKENDS "eigexed" "armadilloxed")
-fail("2x1_mp_units_eigen_fail" BACKENDS "mp_units_eigen" "mp_units_armadillo")
-fail("2x1_au_std_fail" BACKENDS "au_std")
-fail("2x1_nholthaus_eigen_fail" BACKENDS "nholthaus_eigen")
-
-pass("1x2_au_eigen" BACKENDS "au_eigen" "au_armadillo")
-pass("1x2_au_std" BACKENDS "au_std")
-pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
-pass("1x2_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_eigen" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("1x2_nholthaus_eigen" BACKENDS "nholthaus_eigen")
-pass("2x1_au_std" BACKENDS "au_std")
-pass("2x1_nholthaus_eigen" BACKENDS "nholthaus_eigen")
-pass("3x1_au_eigen" BACKENDS "au_eigen" "au_armadillo")
-pass("3x1_chrono_eigen" BACKENDS "chrono_eigen" "chrono_armadillo")
-pass("3x1_chrono_std" BACKENDS "chrono_std")
-pass("3x1_nholthaus_std" BACKENDS "nholthaus_std")
-pass("2x1_eigen" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("3x1_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
-pass("3x1_mp_units_std" BACKENDS "mp_units_std")
+add_library(typed_linear_algebra_nholthaus_armadillo INTERFACE)
+target_sources(
+  typed_linear_algebra_nholthaus_armadillo
+  INTERFACE FILE_SET "typed_linear_algebra_headers" TYPE "HEADERS" FILES
+            "fcarouge/linalg.hpp")
+target_link_libraries(
+  typed_linear_algebra_nholthaus_armadillo
+  INTERFACE typed_linear_algebra_armadillo typed_linear_algebra_nholthaus
+            tlinalg)

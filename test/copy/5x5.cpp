@@ -42,13 +42,17 @@ namespace {
                                {0., 0., 1., 0., 0.},
                                {0., 0., 0., 1., 0.},
                                {0., 0., 0., 0., 1.}};
-  const matrix<double, 5, 5> c{m};
+  matrix<double, 5, 5> c{m};
 
   assert((c == matrix<double, 5, 5>{{1., 0., 0., 0., 0.},
                                     {0., 1., 0., 0., 0.},
                                     {0., 0., 1., 0., 0.},
                                     {0., 0., 0., 1., 0.},
                                     {0., 0., 0., 0., 1.}}));
+
+  // The copy owns its storage independently of the source.
+  c(0, 0) = 2.;
+  assert((m(0, 0) == 1.));
 
   return 0;
 }()};

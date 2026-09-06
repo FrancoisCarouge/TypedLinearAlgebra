@@ -29,21 +29,32 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-pass("call_1x1_const" BACKENDS "eigexed" "nested_typed_eigen")
-pass("call_1x1" BACKENDS "eigexed" "nested_typed_eigen")
-pass("call_1x3_const" BACKENDS "eigexed" "nested_typed_eigen")
-pass("call_1x3" BACKENDS "eigexed" "nested_typed_eigen")
-pass("call_3x1_const" BACKENDS "eigexed" "nested_typed_eigen")
-pass("call_3x1" BACKENDS "eigexed" "nested_typed_eigen")
-pass("call_3x3_const" BACKENDS "eigexed" "nested_typed_eigen")
-pass("call_3x3" BACKENDS "eigexed" "nested_typed_eigen")
-pass("equality" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("literal_2x2" BACKENDS "eigexed" "nested_typed_eigen")
-pass("subscript_1x1_const" BACKENDS "eigexed" "nested_typed_eigen")
-pass("subscript_1x1" BACKENDS "eigexed" "nested_typed_eigen")
-pass("subscript_1x3_const" BACKENDS "eigexed" "nested_typed_eigen")
-pass("subscript_1x3" BACKENDS "eigexed" "nested_typed_eigen")
-pass("subscript_3x1_const" BACKENDS "eigexed" "nested_typed_eigen")
-pass("subscript_3x1" BACKENDS "eigexed" "nested_typed_eigen")
-pass("subscript_3x3_const" BACKENDS "eigexed" "nested_typed_eigen")
-pass("subscript_3x3" BACKENDS "eigexed" "nested_typed_eigen")
+pass("call_1x1_const" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("call_1x1" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("call_1x3_const" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("call_1x3" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("call_3x1_const" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("call_3x1" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("call_3x3_const" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("call_3x3" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
+pass(
+  "equality"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "nested_typed_eigen"
+  "armadilloxed"
+  "armadillo")
+pass("literal_2x2" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("subscript_1x1_const" BACKENDS "eigexed" "nested_typed_eigen"
+     "armadilloxed")
+pass("subscript_1x1" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("subscript_1x3_const" BACKENDS "eigexed" "nested_typed_eigen"
+     "armadilloxed")
+pass("subscript_1x3" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("subscript_3x1_const" BACKENDS "eigexed" "nested_typed_eigen"
+     "armadilloxed")
+pass("subscript_3x1" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("subscript_3x3_const" BACKENDS "eigexed" "nested_typed_eigen"
+     "armadilloxed")
+pass("subscript_3x3" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
