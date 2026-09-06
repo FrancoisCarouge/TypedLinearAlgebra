@@ -29,32 +29,16 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/linalg.hpp"
+#ifndef FCAROUGE_LINALG_HPP
+#define FCAROUGE_LINALG_HPP
 
-#include <cassert>
+//! @file
+//! @brief Scalar type linear algebra with the Armadillo implementation.
 
-namespace fcarouge::test {
-namespace {
-//! @test Verifies the copy constructor.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 5, 5> m{{1., 0., 0., 0., 0.},
-                               {0., 1., 0., 0., 0.},
-                               {0., 0., 1., 0., 0.},
-                               {0., 0., 0., 1., 0.},
-                               {0., 0., 0., 0., 1.}};
-  matrix<double, 5, 5> c{m};
+#include "armadillo.hpp"
 
-  assert((c == matrix<double, 5, 5>{{1., 0., 0., 0., 0.},
-                                    {0., 1., 0., 0., 0.},
-                                    {0., 0., 1., 0., 0.},
-                                    {0., 0., 0., 1., 0.},
-                                    {0., 0., 0., 0., 1.}}));
+namespace fcarouge {
+using namespace armadillo;
+} // namespace fcarouge
 
-  // The copy owns its storage independently of the source.
-  c(0, 0) = 2.;
-  assert((m(0, 0) == 1.));
-
-  return 0;
-}()};
-} // namespace
-} // namespace fcarouge::test
+#endif // FCAROUGE_LINALG_HPP

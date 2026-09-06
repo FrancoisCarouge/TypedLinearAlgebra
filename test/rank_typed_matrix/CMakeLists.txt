@@ -31,8 +31,8 @@ For more information, please refer to <https://unlicense.org> ]]
 
 build("rank_typed_matrix" BACKENDS "eigexed")
 build("nested_typed_eigen" BACKENDS "nested_typed_eigen")
-build("chrono_eigen" BACKENDS "chrono_eigen")
-build("mp_units_eigen" BACKENDS "mp_units_eigen")
+build("chrono_eigen" BACKENDS "chrono_eigen" "chrono_armadillo")
+build("mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
 build("au_std" BACKENDS "au_std")
 
-fail("rank_mismatch_fail" BACKENDS "eigexed")
+fail("rank_mismatch_fail" BACKENDS "eigexed" "armadilloxed")

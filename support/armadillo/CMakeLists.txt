@@ -1,4 +1,4 @@
-/* Typed Linear Algebra
+#[[ Typed Linear Algebra
 Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,34 +27,36 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> */
+For more information, please refer to <https://unlicense.org> ]]
 
-#include "fcarouge/linalg.hpp"
+FetchContent_Declare(
+  armadillo
+  GIT_REPOSITORY "https://gitlab.com/conradsnicta/armadillo-code.git"
+  GIT_TAG "15.6.0"
+  GIT_SHALLOW TRUE
+  SOURCE_SUBDIR "include" SYSTEM FIND_PACKAGE_ARGS NAMES Armadillo)
+FetchContent_MakeAvailable(armadillo)
 
-#include <cassert>
+add_library(typed_linear_algebra_armadillo INTERFACE)
+target_sources(
+  typed_linear_algebra_armadillo
+  INTERFACE FILE_SET
+            "typed_linear_algebra_headers"
+            TYPE
+            "HEADERS"
+            FILES
+            "fcarouge/armadillo.hpp"
+            "fcarouge/linalg.hpp")
+target_link_libraries(typed_linear_algebra_armadillo INTERFACE tlinalg)
+target_compile_definitions(
+  typed_linear_algebra_armadillo
+  INTERFACE "ARMA_DONT_USE_WRAPPER"
+            "ARMA_DONT_USE_LAPACK"
+            "ARMA_DONT_USE_BLAS"
+            "ARMA_DONT_USE_ARPACK"
+            "ARMA_DONT_USE_SUPERLU"
+            "ARMA_DONT_USE_HDF5"
+            "ARMA_DONT_USE_FFTW3")
 
-namespace fcarouge::test {
-namespace {
-//! @test Verifies the copy constructor.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 5, 5> m{{1., 0., 0., 0., 0.},
-                               {0., 1., 0., 0., 0.},
-                               {0., 0., 1., 0., 0.},
-                               {0., 0., 0., 1., 0.},
-                               {0., 0., 0., 0., 1.}};
-  matrix<double, 5, 5> c{m};
-
-  assert((c == matrix<double, 5, 5>{{1., 0., 0., 0., 0.},
-                                    {0., 1., 0., 0., 0.},
-                                    {0., 0., 1., 0., 0.},
-                                    {0., 0., 0., 1., 0.},
-                                    {0., 0., 0., 0., 1.}}));
-
-  // The copy owns its storage independently of the source.
-  c(0, 0) = 2.;
-  assert((m(0, 0) == 1.));
-
-  return 0;
-}()};
-} // namespace
-} // namespace fcarouge::test
+target_include_directories(typed_linear_algebra_armadillo SYSTEM
+                           INTERFACE "${armadillo_SOURCE_DIR}/include")

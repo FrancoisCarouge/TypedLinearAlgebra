@@ -313,11 +313,18 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
   requires(sizeof...(Indexes) == rank)
 {
   using self_t = std::remove_reference_t<decltype(self)>;
+  using storage_access =
+      decltype(tla::storage_element<Indexes...>(self.storage));
+
+  // An unevaluated expression template has nothing to reference, so read it
+  // by value even through a non-const `self`.
+  static constexpr bool by_value{std::is_const_v<self_t> ||
+                                 not std::is_reference_v<storage_access>};
+
   using qualified_underlying =
-      std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
+      std::conditional_t<by_value, underlying, underlying &>;
   using qualified_element =
-      std::conditional_t<std::is_const_v<self_t>, element<Indexes...>,
-                         element<Indexes...> &>;
+      std::conditional_t<by_value, element<Indexes...>, element<Indexes...> &>;
 
   return cast<qualified_element, qualified_underlying>(
       tla::storage_element<Indexes...>(self.storage));

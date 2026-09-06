@@ -93,6 +93,24 @@ you link against — not by any `#ifdef` in the core library. Backends live unde
 `support/` (wired in by `support/CMakeLists.txt`, gated on `BUILD_TESTING`):
 
 - `eigen`, `eigexed`, `nested_typed_eigen` — Eigen-backed variants.
+- `armadillo`, `armadilloxed` — Armadillo-backed, mirroring `eigen`/`eigexed`.
+  `armadillo.hpp` fetches Armadillo (`gitlab.com/conradsnicta/armadillo-code`,
+  `SOURCE_SUBDIR` set to a `CMakeLists.txt`-less dir so its own build never
+  runs) for headers only and compiles it with `ARMA_DONT_USE_{LAPACK,BLAS,
+  WRAPPER,ARPACK,SUPERLU,HDF5,FFTW3}` — no runtime library is linked. Because
+  `solve()`/`inv()` need LAPACK, **matrix division (`operator/`) is unsupported
+  with any Armadillo backend**; `test/division/` has no Armadillo entries and
+  the `mp_units_armadillo` sample notes the gap (compare the `au_std`
+  `add()`/`substract()` omission). Facade specifics: `is_armadillo` keys off
+  Armadillo's `arma::is_arma_type` trait (a `fixed<R,C>`'s CRTP base is
+  `Mat<eT>`, not itself); a constrained `std::formatter` partial specialization
+  plus a `std::format_kind = disabled` opt-out (Armadillo matrices are
+  ranges); ADL `operator==`/`!=` returning `bool` in `namespace arma` (raw
+  Armadillo `==` yields an element-wise expression). The bare `armadillo`
+  backend is dropped from a few test lines where raw-Armadillo semantics differ
+  (`{{1},{4},{7}}` column-literal ctor ambiguity); `armadilloxed` covers those.
+- `au_armadillo`, `mp_units_armadillo`, `nholthaus_armadillo`, `chrono_armadillo`
+  — the unit-library combos over Armadillo, mirroring the `*_eigen` combos.
 - `kokkos` — Kokkos/mdspan-backed.
 - `mp_units`, `mp_units_eigen`, `mp_units_std` — mp-units (quantities/units)
   integration; also defines `fcarouge/mp_units.hpp`.
@@ -150,6 +168,9 @@ Two deliberately mirrored API families:
   `operator==`, plus `magnitude`, `transposed`. `[[nodiscard]] constexpr auto`,
   return by value, result built with `make_typed_matrix<row_indexes,
   column_indexes>(<backend expression on .data()>)`. Works on every backend.
+  `make_typed_matrix` composes an element-accessible backend expression (Eigen)
+  as-is, but materializes one that is not (Armadillo `Glue`/`Op`) through its
+  `.eval()` member first, so the resulting typed matrix stays usable.
 - **`std::linalg` free-function style** — mirrors the `std::linalg` names and
   out-parameter signatures: `add`, `matrix_product`, `matrix_vector_product`,
   `scale`. `constexpr void f(inputs..., result&)`, caller pre-allocates
@@ -159,7 +180,8 @@ Two deliberately mirrored API families:
   `matrix_vector_product` also reshapes the vector's rank-two n-by-1 storage into
   the rank-one span `std::linalg` wants via a local `as_vector_span` mdspan
   helper. `transposed` straddles both families: `if constexpr (requires {
-  value.data().transpose(); })` (Eigen member) else `std::linalg::transposed`.
+  value.data().transpose(); })` (Eigen member), else `requires { value.data().t();
+  }` (Armadillo member), else `std::linalg::transposed`.
 
 Rank dispatch: overloads constrained on `rank_typed_matrix<0|1|2> auto` (0 =
 singleton, 1 = row/column vector, 2 = matrix; `rank` computed in `utility.hpp`).
