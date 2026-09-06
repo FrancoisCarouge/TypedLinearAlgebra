@@ -190,13 +190,15 @@ var NAVTREEINDEX2 =
 "matrix__vector__product_22x2__mp__units__std_8cpp.xhtml":[18,0,6,15,1],
 "matrix__vector__product_22x2__mp__units__std_8cpp_source.xhtml":[18,0,6,15,1],
 "md__2github_2workspace_2_a_g_e_n_t_s.xhtml":[4],
+"md__2github_2workspace_2_a_g_e_n_t_s.xhtml#algorithms-includefcarougetyped_linear_algebra_internalalgorithm":[4,1,2],
 "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#architecture":[4,1],
 "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#backend-plug-in-pattern":[4,1,1],
 "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#build--test":[4,0],
-"md__2github_2workspace_2_a_g_e_n_t_s.xhtml#conventions":[4,2],
+"md__2github_2workspace_2_a_g_e_n_t_s.xhtml#conventions":[4,3],
 "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#core-header":[4,1,0],
-"md__2github_2workspace_2_a_g_e_n_t_s.xhtml#other-directories":[4,1,3],
-"md__2github_2workspace_2_a_g_e_n_t_s.xhtml#testbenchmark-generation-supportsupportcmake":[4,1,2],
+"md__2github_2workspace_2_a_g_e_n_t_s.xhtml#other-directories":[4,1,4],
+"md__2github_2workspace_2_a_g_e_n_t_s.xhtml#recipe-adding-an-algorithm":[4,2],
+"md__2github_2workspace_2_a_g_e_n_t_s.xhtml#testbenchmark-generation-supportsupportcmake":[4,1,3],
 "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml":[6],
 "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution":[6,5],
 "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#enforcement":[6,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX2 =
 "mp__units_8hpp.xhtml":[18,0,5,9,0,0],
 "mp__units_8hpp.xhtml#aa12b09434a95cbb83a45985e0a63642a":[18,0,5,9,0,0,8],
 "mp__units_8hpp_source.xhtml":[18,0,5,9,0,0],
-"mp__units__eigen_2fcarouge_2linalg_8hpp.xhtml":[18,0,5,10,0,0],
-"mp__units__eigen_2fcarouge_2linalg_8hpp_source.xhtml":[18,0,5,10,0,0],
-"mp__units__std_2fcarouge_2linalg_8hpp.xhtml":[18,0,5,11,0,0]
+"mp__units__eigen_2fcarouge_2linalg_8hpp.xhtml":[18,0,5,10,0,0]
 };

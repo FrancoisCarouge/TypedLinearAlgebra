@@ -60,9 +60,11 @@ var NAVTREE =
       [ "Architecture", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#architecture", [
         [ "Core header", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#core-header", null ],
         [ "Backend plug-in pattern", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#backend-plug-in-pattern", null ],
+        [ "Algorithms (include/fcarouge/typed_linear_algebra_internal/algorithm/)", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#algorithms-includefcarougetyped_linear_algebra_internalalgorithm", null ],
         [ "Test/benchmark generation (support/support.cmake)", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#testbenchmark-generation-supportsupportcmake", null ],
         [ "Other directories", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#other-directories", null ]
       ] ],
+      [ "Recipe: adding an algorithm", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#recipe-adding-an-algorithm", null ],
       [ "Conventions", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#conventions", null ]
     ] ],
     [ "Benchmarks", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml", [
@@ -137,11 +139,11 @@ var NAVTREEINDEX =
 "1x1__array_8cpp.xhtml",
 "classfcarouge_1_1typed__matrix.xhtml#a67a638bf31384a9120a5def3c74b641a",
 "element_21x2__chrono__eigen_8cpp_source.xhtml",
-"mp__units__std_2fcarouge_2linalg_8hpp_source.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x3__array_8cpp_03.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02vector__lhs__mp__units__std__fail_8cpp_03.xhtml",
-"structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml#af2bf68dd91660d9f8b30426744f44554",
-"utility_8hpp.xhtml"
+"mp__units__eigen_2fcarouge_2linalg_8hpp_source.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_021x3_8cpp_03.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02vector__lhs__au__std__fail_8cpp_03.xhtml",
+"structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml",
+"uniform__typed__matrix_8cpp_source.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
