@@ -258,6 +258,7 @@ concept quantity_element_typed_matrix =
 } // namespace fcarouge
 
 namespace mp_units {
+//! @cond
 // A typed_matrix is a composite facade over a backend matrix, never itself a
 // quantity's scalar/vector/tensor storage (its own elements, individually,
 // fill that role): opt it out of representation status exactly when its
@@ -284,6 +285,7 @@ inline constexpr bool disable_representation<
     fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>> =
     fcarouge::quantity_element_typed_matrix<
         fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>;
+//! @endcond
 } // namespace mp_units
 
 #endif // FCAROUGE_MP_UNITS_HPP

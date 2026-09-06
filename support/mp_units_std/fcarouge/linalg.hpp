@@ -42,21 +42,26 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/typed_linear_algebra.hpp"
 
 namespace fcarouge {
-//! @brief Quantity matrix with mp-units and Eigen implementations.
+//! @cond
+// The `fcarouge::matrix` convenience alias is documented once, from the
+// canonical backend header; the per-backend re-declarations share its template
+// signature and would otherwise collide in the generated documentation.
+//! @brief Quantity matrix with mp-units and std::linalg implementations.
 template <typename Representation, typename RowIndexes, typename ColumnIndexes>
 using matrix = typed_matrix<
     std::mdspan<Representation,
                 std::extents<std::size_t, std::tuple_size_v<RowIndexes>,
                              std::tuple_size_v<ColumnIndexes>>>,
     RowIndexes, ColumnIndexes>;
+//! @endcond
 
-//! @brief Quantity column vector with mp-units and Eigen implementations.
+//! @brief Quantity column vector with mp-units and std::linalg implementations.
 template <typename Representation, typename... Types>
 using column_vector = typed_column_vector<
     std::mdspan<Representation, std::extents<std::size_t, sizeof...(Types), 1>>,
     Types...>;
 
-//! @brief Quantity row vector with mp-units and Eigen implementations.
+//! @brief Quantity row vector with mp-units and std::linalg implementations.
 template <typename Representation, typename... Types>
 using row_vector = typed_row_vector<
     std::mdspan<Representation, std::extents<std::size_t, 1, sizeof...(Types)>>,

@@ -33,7 +33,7 @@ For more information, please refer to <https://unlicense.org> */
 //! @brief Unit safe linear algebra with nholthaus/units and std::linalg.
 //!
 //! @details Demonstrate a variety of linear algebra operations with the
-//! nholthaus/units library and std::mdspan/std::linalg. This library composes
+//! nholthaus/units library and std::mdspan / std::%linalg. This library composes
 //! std::mdspan as the matrix' linear algebra backend with indexes typed as
 //! `units::unit` containers. This sample explicitly uses double precision
 //! floating point numbers as the underlying representation.

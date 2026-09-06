@@ -64,12 +64,6 @@ struct lookup<Tuple, std::index_sequence<Indices...>> {
       &std::get<Indices>...};
 };
 
-template <typename Tuple, std::size_t... Indices>
-constexpr
-    typename lookup<Tuple, std::index_sequence<Indices...>>::pointer lookup<
-        Tuple,
-        std::index_sequence<Indices...>>::table[std::tuple_size<Tuple>::value];
-
 template <typename Tuple>
 constexpr typename std::tuple_element<
     0, typename std::remove_reference<Tuple>::type>::type &

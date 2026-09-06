@@ -33,7 +33,7 @@ For more information, please refer to <https://unlicense.org> */
 //! @brief Unit safe linear algebra with Au and std::linalg.
 //!
 //! @details Demonstrate a variety of linear algebra operations with Au and
-//! std::mdspan/std::linalg. This library composes std::mdspan as the matrix'
+//! std::mdspan / std::%linalg. This library composes std::mdspan as the matrix
 //! linear algebra backend with indexes typed as Au types. This sample
 //! explicitly uses double precision floating point numbers. This sample uses
 //! std::linalg as the linear algebra backend. This sample uses Au types for

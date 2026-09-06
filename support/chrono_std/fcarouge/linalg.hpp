@@ -41,6 +41,10 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/typed_linear_algebra.hpp"
 
 namespace fcarouge {
+//! @cond
+// The `fcarouge::matrix` convenience alias is documented once, from the
+// canonical backend header; the per-backend re-declarations share its template
+// signature and would otherwise collide in the generated documentation.
 //! @brief Time quantity matrix with std::chrono and std::linalg
 //! implementations.
 template <typename Representation, typename RowIndexes, typename ColumnIndexes>
@@ -49,6 +53,7 @@ using matrix = typed_matrix<
                 std::extents<std::size_t, std::tuple_size_v<RowIndexes>,
                              std::tuple_size_v<ColumnIndexes>>>,
     RowIndexes, ColumnIndexes>;
+//! @endcond
 
 //! @brief Time quantity column vector with std::chrono and std::linalg
 //! implementations.

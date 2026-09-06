@@ -43,6 +43,10 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/au.hpp"
 
 namespace fcarouge {
+//! @cond
+// The `fcarouge::matrix` convenience alias is documented once, from the
+// canonical backend header; the per-backend re-declarations share its template
+// signature and would otherwise collide in the generated documentation.
 //! @brief Quantity matrix with Au and std::linalg implementations.
 template <typename Representation, typename RowIndexes, typename ColumnIndexes>
 using matrix = typed_matrix<
@@ -50,6 +54,7 @@ using matrix = typed_matrix<
                 std::extents<std::size_t, std::tuple_size_v<RowIndexes>,
                              std::tuple_size_v<ColumnIndexes>>>,
     RowIndexes, ColumnIndexes>;
+//! @endcond
 
 //! @brief Quantity column vector with Au and std::linalg implementations.
 template <typename Representation, typename... Types>

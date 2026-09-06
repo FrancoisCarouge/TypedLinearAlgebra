@@ -166,7 +166,7 @@ framework, just `<cassert>` run at static-init time via `main` from
 - Every source/CMake file carries the Unlicense SPDX header block — copy it
   verbatim (version/URL match the root `CMakeLists.txt`) into any new file.
 - The public CMake target consumers link against is
-  `fcarouge-typed-linear-algebra::tlinalg`; the package name is
+  `fcarouge-typed-linear-algebra::%tlinalg`; the package name is
   `fcarouge-typed-linear-algebra`.
 - The author writes precise, terminology-careful `@note`/`@todo`/`@warning`
   doxygen comments explaining design rationale directly in headers — match that
