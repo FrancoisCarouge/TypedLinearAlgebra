@@ -313,7 +313,7 @@ concept rank_typed_matrix = same_as_typed_matrix<Type> and
 template <typename Lhs, typename Rhs>
 concept same_shape =
     same_as_typed_matrix<Lhs> and same_as_typed_matrix<Rhs> and
-    (std::remove_cvref_t<Lhs>::rows == std::remove_cvref_t<Rhs>::rows) &&
+    (std::remove_cvref_t<Lhs>::rows == std::remove_cvref_t<Rhs>::rows) and
     (std::remove_cvref_t<Lhs>::columns == std::remove_cvref_t<Rhs>::columns);
 
 template <typename Type, std::size_t Size> struct tupler {
