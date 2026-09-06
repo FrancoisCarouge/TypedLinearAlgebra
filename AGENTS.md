@@ -103,6 +103,82 @@ Adding a new backend means adding a `support/<name>/` directory with its own
 `add_subdirectory("<name>")` line in `support/CMakeLists.txt` (see
 `support/support.cmake` and existing backends for the pattern).
 
+### Algorithms (`include/fcarouge/typed_linear_algebra_internal/algorithm/`)
+
+One `.tpp` per algorithm (`add`, `divide`, `equal_to`, `magnitude`,
+`matrix_product`, `matrix_vector_product`, `minus`, `product`, `scale`,
+`substract`, `transposed`), each `#include`d near the bottom of
+`typed_linear_algebra.hpp` (alphabetically, ~lines 527-537) and **re-declared for
+documentation** in the `//! @name Algorithms` block just below those includes
+(redeclaring an already-defined function — that block is the curated public API
+listing doxygen renders). All live in `namespace fcarouge`, guarded by
+`FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_<NAME>_TPP`. `namespace tla =
+typed_linear_algebra_internal` is available (aliased in the core header; some
+`.tpp`s re-alias it).
+
+Core principle: an algorithm never re-implements representation arithmetic. It
+(1) computes the *result's* `row_indexes`/`column_indexes` tuples, (2) statically
+checks element-type compatibility, (3) delegates the numerics to the backend via
+`.data()` (the underlying backend matrix). Only `magnitude` is implemented atop
+the strong types (`cast` round-trips + `using std::sqrt`) — flagged in-file as a
+tradeoff to revisit.
+
+Two deliberately mirrored API families:
+
+- **Expression / operator style** — mirrors Eigen and math notation: `operator+`,
+  `operator-` (binary and unary negation), `operator*`, `operator/`,
+  `operator==`, plus `magnitude`, `transposed`. `[[nodiscard]] constexpr auto`,
+  return by value, result built with `make_typed_matrix<row_indexes,
+  column_indexes>(<backend expression on .data()>)`. Works on every backend.
+- **`std::linalg` free-function style** — mirrors the `std::linalg` names and
+  out-parameter signatures: `add`, `matrix_product`, `matrix_vector_product`,
+  `scale`. `constexpr void f(inputs..., result&)`, caller pre-allocates
+  `result`, body is `using std::linalg::f; f(lhs.data(), ..., result.data());`.
+  Whole file wrapped in `#ifdef __cpp_lib_linalg` / `#include <linalg>` (`@todo`
+  remove for native C++26), so only the `*_std` backends exercise them.
+  `matrix_vector_product` also reshapes the vector's rank-two n-by-1 storage into
+  the rank-one span `std::linalg` wants via a local `as_vector_span` mdspan
+  helper. `transposed` straddles both families: `if constexpr (requires {
+  value.data().transpose(); })` (Eigen member) else `std::linalg::transposed`.
+
+Rank dispatch: overloads constrained on `rank_typed_matrix<0|1|2> auto` (0 =
+singleton, 1 = row/column vector, 2 = matrix; `rank` computed in `utility.hpp`).
+Singletons usually get a dedicated simpler overload plus scalar-interop overloads
+against the `other` concept (any non-typed-matrix operand), which route through
+`element_caster` / `cast<underlying, T>`. Constraint vocabulary lives in
+`utility.hpp`: `same_as_typed_matrix`, `same_shape`, `uniform_typed_matrix`,
+`row_typed_matrix`, `column_typed_matrix`, plus `multipliable*` / `scalable_by`
+in `product.tpp`.
+
+Type-level index math: `tla::product` / `tla::quotient` (the `multiplies` /
+`divides` metafunction objects in `utility.hpp`, specialized over `std::tuple`
+and `std::identity`; `std::identity` is the dimensionless "1" index). Element
+checks run as `tla::for_constexpr<N>` loops of `static_assert(requires {
+std::declval<lhs_element>() OP std::declval<rhs_element>(); }, "<Operation>
+requires compatible element types.")`; `add()` additionally probes assignability
+into the result element. `matrix_product`, `matrix_vector_product`, and the
+`operator/` overloads still carry `@todo`s for element verification — don't
+assume it is there.
+
+Checks route through the *typed* element access, never the raw storage: storage
+holds bare representation oblivious to the indexes, so verifying it directly
+would silently accept e.g. a length matrix vs. an area matrix whose reps happen
+to match (see `equal_to.tpp` `@details`); it also sidesteps backends (mdspan)
+whose storage type has no `operator==`.
+
+`scalable_by` (in `product.tpp`) exists so the deduced-return scalar overloads
+stay SFINAE-friendly: an unconstrained deduced return forces the compiler to
+instantiate — and hard-error in — the body when third-party code (mp-units)
+merely `requires`-probes multiplication by an element type. Constrain any new
+deduced-return scalar overload the same way.
+
+Known Au friction (see also the `au` backend note above): Au's `Quantity`
+hidden-friend `operator*` can win ADL over this library's, needing an explicit
+`fcarouge::operator*(...)`; and Au's lvalue-only `Quantity::operator=` fails the
+`add()`/`substract()` result-assignability probe, so those free functions have no
+`au_std` tests — use `operator+` / `operator-` instead. The codebase spells it
+"substract" / "substraction" throughout (sic) — match it.
+
 ### Test/benchmark generation (`support/support.cmake`)
 
 Tests and benchmarks are not hand-declared per backend; four CMake functions
@@ -157,6 +233,76 @@ framework, just `<cassert>` run at static-init time via `main` from
 - The root `CMakeLists.txt` only `add_subdirectory`s `benchmark`, `pkgconfig`,
   `sample`, `support`, `test` when `PROJECT_IS_TOP_LEVEL` — so consumers using
   `FetchContent`/`find_package` only pull in `cmake/` + `include/`.
+
+## Recipe: adding an algorithm
+
+1. **Header.** Create
+   `include/fcarouge/typed_linear_algebra_internal/algorithm/<name>.tpp`: verbatim
+   Unlicense SPDX block, include guard
+   `FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_<NAME>_TPP`, `namespace
+   fcarouge`. Choose the API family — operator/expression (works on every
+   backend) or `std::linalg` free function (wrap the whole file in `#ifdef
+   __cpp_lib_linalg` + `#include <linalg>`, use the `void f(inputs..., result&)`
+   out-parameter signature). When `std::linalg` has the operation, mirror its
+   name and semantics and add `//! @see std::linalg::<name>`; otherwise mirror
+   Eigen/common nomenclature (README already tracks the mapping).
+2. **Overloads per rank.** Provide `rank_typed_matrix<2>`, `<1>`, `<0>` overloads
+   as the operation admits; add `other`-operand overloads for scalar interop
+   (route values through `cast<underlying, T>`). Constrain any deduced-return
+   scalar overload on `scalable_by` or an equivalent `requires` so it stays
+   SFINAE-friendly.
+3. **Result type.** Compute `row_indexes` / `column_indexes` with `tla::product`
+   / `tla::quotient` over the operand index tuples, then `return
+   make_typed_matrix<row_indexes, column_indexes>(<expression on .data()>)` — or
+   write into `result.data()` for the free-function family.
+4. **Element checks.** `tla::for_constexpr` over rows/columns (or `rows *
+   columns` for rank 1) with `static_assert(requires { std::declval<lhs_element>()
+   OP std::declval<rhs_element>(); }, "<Operation> requires compatible element
+   types.")`; also assert result-element assignability for out-parameter
+   algorithms. Add `same_shape` / size `static_assert`s as the math requires.
+5. **Wire into `typed_linear_algebra.hpp`.** Add the
+   `#include "typed_linear_algebra_internal/algorithm/<name>.tpp"` line
+   (alphabetical, with the rest, ~line 527) **and** a matching forward
+   re-declaration with full `@brief`/`@details`/`@see`/`@todo` doxygen in the
+   `//! @name Algorithms` block below the includes.
+6. **README.** Add a row to the "Operations" table.
+7. **Tests.** New `test/<name>/` directory (or reuse an existing operation dir)
+   with its own `CMakeLists.txt` (SPDX comment block, then `fail(...)` lines then
+   `pass(...)` lines), and an alphabetical `add_subdirectory("<name>")` in
+   `test/CMakeLists.txt`. `test/CMakeLists.txt` only aggregates — never a bespoke
+   `add_test`.
+   - **File naming:** `<shape>[_<backend>][_fail].cpp` — `1x1` singleton,
+     `1x2`/`2x1` vectors, `2x2`/`2x3`/`3x2` matrices, `RxC_R'xC'` for products,
+     plus semantic names (`row`, `column`, `scalar`, `matrix_rhs`, `vector_lhs`,
+     `rank_mismatch`). Generated test name:
+     `typed_linear_algebra_<backend>_<name>_<file>_pass`.
+   - **Backends & types to cover:** expression-style → `eigen`, `eigexed`,
+     `nested_typed_eigen` with plain `double`, plus `au_eigen`,
+     `mp_units_eigen`, `chrono_eigen`, `nholthaus_eigen` for typed elements;
+     `std::linalg`-style → `au_std`, `mp_units_std`, `chrono_std`,
+     `nholthaus_std` only (they need `<linalg>`/`<mdspan>` storage). Cover at
+     least one plain and two unit backends, and one mixed-type vector (e.g.
+     `position, velocity`) to prove per-element typing. `chrono` also exercises
+     semantic rejection (time_point + time_point must not compile).
+   - **`pass` body:** the standard static-init form —
+     `[[maybe_unused]] const auto test{[] -> int { ...; assert(...); return 0;
+     }()};` inside `namespace fcarouge::test { namespace { ... } }`, `#include
+     "fcarouge/linalg.hpp"` + `<cassert>` + backend unit headers, with a `//!
+     @test` one-liner on top. Assert the numeric result **and** the result type
+     (`static_assert(std::same_as<decltype(r)::row_indexes, ...>)`), across the
+     accessor forms (`.at<i>()`, `.at<i_i>()`, `[i_i]`, `(i_i)`) where relevant.
+   - **`fail` test per rejected shape/rank/type mismatch:** keep the correct line
+     as an `// Intended:` comment directly above the broken one; `fail(...)` sets
+     `WILL_FAIL`.
+   - Use `build(...)` instead of `pass(...)` for `static_assert`-only tests.
+8. **Sample** (optional): add a `sample/<name>.cpp` if the algorithm is
+   user-facing and illustrative, wired via `sample/CMakeLists.txt` the same
+   `pass`-style way.
+9. **Verify.** `cmake --build build --parallel && ctest --test-dir build
+   --parallel`; single test: `ctest --test-dir build -R
+   typed_linear_algebra_<backend>_<name>_<file>_pass --output-on-failure`. Keep
+   `clang-format-22 --Werror` / `clang-tidy '*'` clean and doxygen
+   warning-free.
 
 ## Conventions
 
