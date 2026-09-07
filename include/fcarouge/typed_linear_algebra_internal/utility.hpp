@@ -349,6 +349,76 @@ struct element_t<Type> {
 template <typename Type, std::size_t... Indexes>
 using element = element_t<Type, Indexes...>::type;
 
+//! @brief The row-major tuple of every element type of the typed matrix.
+//!
+//! @details One entry per position, `rows * columns` in total, following the
+//! same rank-oblivious row/column mapping as `element_at` (and therefore as
+//! `element` and `at`). Built from `element_at` so the type reported for a
+//! position is exactly the one `at<Row, Column>()` yields there.
+//!
+//! @tparam Type The typed matrix type to enumerate.
+template <same_as_typed_matrix Type> struct tuple_typed_matrix_t {
+  using matrix = std::remove_cvref_t<Type>;
+
+  template <typename = std::make_index_sequence<matrix::rows * matrix::columns>>
+  struct helper;
+
+  template <std::size_t... Indexes>
+  struct helper<std::index_sequence<Indexes...>> {
+    using type = std::tuple<element_at<matrix, Indexes / matrix::columns,
+                                       Indexes % matrix::columns>...>;
+  };
+
+  using type = typename helper<>::type;
+};
+
+template <same_as_typed_matrix Type>
+using tuple_typed_matrix = typename tuple_typed_matrix_t<Type>::type;
+
+//! @brief The linear position of the first `Tuple` element implicitly
+//! convertible to `To`, or `std::tuple_size_v<Tuple>` when none is.
+//!
+//! @details The direction is element-to-request: a position matches when its
+//! type implicitly converts to `To`, mirroring `element_at` and the
+//! `have_common_conversion_target` relation. Row-major, like
+//! `tuple_typed_matrix`. Use `count_convertible_indexes` to detect an ambiguous
+//! request before trusting this position.
+template <typename To, typename Tuple>
+constexpr auto find_first_convertible_index() -> std::size_t {
+  constexpr std::size_t size{std::tuple_size_v<Tuple>};
+
+  constexpr auto search{
+      []<std::size_t... Indexes>(std::index_sequence<Indexes...>) {
+        std::size_t result{size};
+
+        (void)((std::is_convertible_v<std::tuple_element_t<Indexes, Tuple>, To>
+                    ? (result = Indexes, true)
+                    : false) ||
+               ...);
+
+        return result;
+      }};
+
+  return search(std::make_index_sequence<size>{});
+}
+
+//! @brief The count of `Tuple` elements implicitly convertible to `To`.
+//!
+//! @details More than one means a by-type lookup of `To` would be ambiguous.
+//! Same element-to-request direction as `find_first_convertible_index`.
+template <typename To, typename Tuple>
+constexpr auto count_convertible_indexes() -> std::size_t {
+  constexpr auto counter{
+      []<std::size_t... Indexes>(std::index_sequence<Indexes...>) {
+        return (std::size_t{0} + ... +
+                (std::is_convertible_v<std::tuple_element_t<Indexes, Tuple>, To>
+                     ? std::size_t{1}
+                     : std::size_t{0}));
+      }};
+
+  return counter(std::make_index_sequence<std::tuple_size_v<Tuple>>{});
+}
+
 template <typename Type> constexpr auto is_uniform_typed_matrix() -> bool {
   using matrix = std::remove_cvref_t<Type>;
   bool result{true};
