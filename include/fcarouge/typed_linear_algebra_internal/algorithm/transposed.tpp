@@ -32,38 +32,47 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
 #define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
 
-#ifdef __cpp_lib_linalg
+#if __has_include(<linalg>)
 
 #include <linalg>
 
 #endif
 
+#include <tuple>
+#include <type_traits>
+#include <utility>
+
 namespace fcarouge {
+namespace internal {
+[[nodiscard]] constexpr decltype(auto) transposed(const auto &storage) {
+#if __has_include(<linalg>)
+  using std::linalg::transposed;
+#endif
+
+  if constexpr (requires { storage.transpose(); }) {
+    return storage.transpose();
+  } else if constexpr (requires { storage.t(); }) {
+    return storage.t();
+  } else if constexpr (requires { transposed(storage); }) {
+    return transposed(storage);
+  } else {
+    static_assert(
+        sizeof(storage) == 0,
+        "Transposed is not supported for this linear algebra backend.");
+  }
+}
+} // namespace internal
+
 [[nodiscard]] constexpr auto
 transposed(const same_as_typed_matrix auto &value) {
   using matrix = std::remove_cvref_t<decltype(value)>;
-  using row_indexes = typename matrix::row_indexes;
-  using column_indexes = typename matrix::column_indexes;
-  using transposed_row_indexes = column_indexes;
-  using transposed_column_indexes = row_indexes;
+  using transposed_row_indexes = typename matrix::column_indexes;
+  using transposed_column_indexes = typename matrix::row_indexes;
 
-  //! @todo Add other common transpose interfaces.
-  //! @todo Add transpose customization point object.
-  //! @todo Support nested typed matrices.
-  if constexpr (requires { value.data().transpose(); }) {
-    return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
-        value.data().transpose());
-  }
+  auto data{internal::transposed(value.data())};
 
-#ifdef __cpp_lib_linalg
-
-  else {
-    using std::linalg::transposed;
-    return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
-        transposed(value.data()));
-  }
-
-#endif
+  return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
+      std::move(data));
 }
 } // namespace fcarouge
 
