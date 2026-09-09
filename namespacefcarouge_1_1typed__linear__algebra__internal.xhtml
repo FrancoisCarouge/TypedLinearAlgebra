@@ -158,6 +158,9 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>multiplies&lt; std::tuple&lt; Types1... &gt;, std::tuple&lt; Types2... &gt; &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>tuple_typed_matrix_t</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The row-major tuple of every element type of the typed matrix. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>tupler</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>underlying</b></td></tr>
@@ -182,6 +185,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a89cc53c1b6d742d0f50660c6895896cc" id="r_a89cc53c1b6d742d0f50660c6895896cc"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::size_t... Indexes&gt; </td></tr>
 <tr class="memitem:a89cc53c1b6d742d0f50660c6895896cc"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a89cc53c1b6d742d0f50660c6895896cc">element</a> = element_t&lt;Type, Indexes...&gt;::type</td></tr>
 <tr class="separator:a89cc53c1b6d742d0f50660c6895896cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f8902750a3d1b4115e4dd6d8912dded" id="r_a6f8902750a3d1b4115e4dd6d8912dded"><td class="memTemplParams" colspan="2">template&lt;same_as_typed_matrix Type&gt; </td></tr>
+<tr class="memitem:a6f8902750a3d1b4115e4dd6d8912dded"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a6f8902750a3d1b4115e4dd6d8912dded">tuple_typed_matrix</a> = typename tuple_typed_matrix_t&lt;Type&gt;::type</td></tr>
+<tr class="separator:a6f8902750a3d1b4115e4dd6d8912dded"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4dd57b09634fe03c0fd59b866657ad86" id="r_a4dd57b09634fe03c0fd59b866657ad86"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::size_t Size&gt; </td></tr>
 <tr class="memitem:a4dd57b09634fe03c0fd59b866657ad86"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a4dd57b09634fe03c0fd59b866657ad86">tuple_n_type</a> = typename tupler&lt;Type, Size&gt;::type</td></tr>
 <tr class="separator:a4dd57b09634fe03c0fd59b866657ad86"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,6 +210,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a753485f0f4ae9a81e312be5bf46e8b28"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a753485f0f4ae9a81e312be5bf46e8b28">store_element</a> (Storage &amp;&amp;storage, Value &amp;&amp;value)</td></tr>
 <tr class="memdesc:a753485f0f4ae9a81e312be5bf46e8b28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write-access the backend storage element at the given compile-time position(s).  <br /></td></tr>
 <tr class="separator:a753485f0f4ae9a81e312be5bf46e8b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75fdd62dd8b15dd91220697d32b3cce5" id="r_a75fdd62dd8b15dd91220697d32b3cce5"><td class="memTemplParams" colspan="2">template&lt;typename To , typename Tuple &gt; </td></tr>
+<tr class="memitem:a75fdd62dd8b15dd91220697d32b3cce5"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a75fdd62dd8b15dd91220697d32b3cce5">find_first_convertible_index</a> () -&gt; std::size_t</td></tr>
+<tr class="memdesc:a75fdd62dd8b15dd91220697d32b3cce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The linear position of the first <code>Tuple</code> element implicitly convertible to <code>To</code>, or <code>std::tuple_size_v&lt;Tuple&gt;</code> when none is.  <br /></td></tr>
+<tr class="separator:a75fdd62dd8b15dd91220697d32b3cce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afae834fe0c7d914876a051b69f3f93f7" id="r_afae834fe0c7d914876a051b69f3f93f7"><td class="memTemplParams" colspan="2">template&lt;typename To , typename Tuple &gt; </td></tr>
+<tr class="memitem:afae834fe0c7d914876a051b69f3f93f7"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#afae834fe0c7d914876a051b69f3f93f7">count_convertible_indexes</a> () -&gt; std::size_t</td></tr>
+<tr class="memdesc:afae834fe0c7d914876a051b69f3f93f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The count of <code>Tuple</code> elements implicitly convertible to <code>To</code>.  <br /></td></tr>
+<tr class="separator:afae834fe0c7d914876a051b69f3f93f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26dd10d78e9d3a09e52f7ddeaf0013d3" id="r_a26dd10d78e9d3a09e52f7ddeaf0013d3"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
 <tr class="memitem:a26dd10d78e9d3a09e52f7ddeaf0013d3"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a26dd10d78e9d3a09e52f7ddeaf0013d3">is_uniform_typed_matrix</a> () -&gt; bool</td></tr>
 <tr class="separator:a26dd10d78e9d3a09e52f7ddeaf0013d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -279,7 +293,7 @@ template&lt;typename Type , std::size_t RowIndex, std::size_t ColumnIndex&gt; </
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00404">404</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00474">474</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -335,7 +349,25 @@ template&lt;typename Type , std::size_t Size&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00402">402</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00472">472</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a6f8902750a3d1b4115e4dd6d8912dded" name="a6f8902750a3d1b4115e4dd6d8912dded"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f8902750a3d1b4115e4dd6d8912dded">&#9670;&#160;</a></span>tuple_typed_matrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;same_as_typed_matrix Type&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a6f8902750a3d1b4115e4dd6d8912dded">fcarouge::typed_linear_algebra_internal::tuple_typed_matrix</a> = typename tuple_typed_matrix_t&lt;Type&gt;::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00376">376</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -358,6 +390,98 @@ template&lt;typename Type &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="afae834fe0c7d914876a051b69f3f93f7" name="afae834fe0c7d914876a051b69f3f93f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afae834fe0c7d914876a051b69f3f93f7">&#9670;&#160;</a></span>count_convertible_indexes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename To , typename Tuple &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto fcarouge::typed_linear_algebra_internal::count_convertible_indexes </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> -&gt; std::size_t </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The count of <code>Tuple</code> elements implicitly convertible to <code>To</code>. </p>
+<p>More than one means a by-type lookup of <code>To</code> would be ambiguous. Same element-to-request direction as <code>find_first_convertible_index</code>. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00410">410</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  410</span>                                                        {</div>
+<div class="line"><span class="lineno">  411</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> counter{</div>
+<div class="line"><span class="lineno">  412</span>      []&lt;std::size_t... Indexes&gt;(std::index_sequence&lt;Indexes...&gt;) {</div>
+<div class="line"><span class="lineno">  413</span>        <span class="keywordflow">return</span> (std::size_t{0} + ... +</div>
+<div class="line"><span class="lineno">  414</span>                (std::is_convertible_v&lt;std::tuple_element_t&lt;Indexes, Tuple&gt;, To&gt;</div>
+<div class="line"><span class="lineno">  415</span>                     ? std::size_t{1}</div>
+<div class="line"><span class="lineno">  416</span>                     : std::size_t{0}));</div>
+<div class="line"><span class="lineno">  417</span>      }};</div>
+<div class="line"><span class="lineno">  418</span> </div>
+<div class="line"><span class="lineno">  419</span>  <span class="keywordflow">return</span> counter(std::make_index_sequence&lt;std::tuple_size_v&lt;Tuple&gt;&gt;{});</div>
+<div class="line"><span class="lineno">  420</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a75fdd62dd8b15dd91220697d32b3cce5" name="a75fdd62dd8b15dd91220697d32b3cce5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75fdd62dd8b15dd91220697d32b3cce5">&#9670;&#160;</a></span>find_first_convertible_index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename To , typename Tuple &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto fcarouge::typed_linear_algebra_internal::find_first_convertible_index </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> -&gt; std::size_t </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The linear position of the first <code>Tuple</code> element implicitly convertible to <code>To</code>, or <code>std::tuple_size_v&lt;Tuple&gt;</code> when none is. </p>
+<p>The direction is element-to-request: a position matches when its type implicitly converts to <code>To</code>, mirroring <code>element_at</code> and the <code>have_common_conversion_target</code> relation. Row-major, like <code>tuple_typed_matrix</code>. Use <code>count_convertible_indexes</code> to detect an ambiguous request before trusting this position. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00387">387</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  387</span>                                                           {</div>
+<div class="line"><span class="lineno">  388</span>  <span class="keyword">constexpr</span> std::size_t size{std::tuple_size_v&lt;Tuple&gt;};</div>
+<div class="line"><span class="lineno">  389</span> </div>
+<div class="line"><span class="lineno">  390</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> search{</div>
+<div class="line"><span class="lineno">  391</span>      []&lt;std::size_t... Indexes&gt;(std::index_sequence&lt;Indexes...&gt;) {</div>
+<div class="line"><span class="lineno">  392</span>        std::size_t result{size};</div>
+<div class="line"><span class="lineno">  393</span> </div>
+<div class="line"><span class="lineno">  394</span>        (void)((std::is_convertible_v&lt;std::tuple_element_t&lt;Indexes, Tuple&gt;, To&gt;</div>
+<div class="line"><span class="lineno">  395</span>                    ? (result = Indexes, <span class="keyword">true</span>)</div>
+<div class="line"><span class="lineno">  396</span>                    : <span class="keyword">false</span>) ||</div>
+<div class="line"><span class="lineno">  397</span>               ...);</div>
+<div class="line"><span class="lineno">  398</span> </div>
+<div class="line"><span class="lineno">  399</span>        <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  400</span>      }};</div>
+<div class="line"><span class="lineno">  401</span> </div>
+<div class="line"><span class="lineno">  402</span>  <span class="keywordflow">return</span> search(std::make_index_sequence&lt;size&gt;{});</div>
+<div class="line"><span class="lineno">  403</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="abcda1ee8b10a813ac3a16d25343603c7" name="abcda1ee8b10a813ac3a16d25343603c7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abcda1ee8b10a813ac3a16d25343603c7">&#9670;&#160;</a></span>for_constexpr()</h2>
 
@@ -382,7 +506,7 @@ template&lt;std::size_t Size, typename Function &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000004">Todo</a></b></dt><dd>Remove for C++26 P1789 Library Support for Expansion Statements. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000003">Todo</a></b></dt><dd>Remove for C++26 P1789 Library Support for Expansion Statements. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00177">177</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  177</span>                                                  {</div>
@@ -393,7 +517,7 @@ template&lt;std::size_t Size, typename Function &gt; </div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00170">for_constexpr_detail()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00488">is_distinct_typed_matrix()</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00352">is_uniform_typed_matrix()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00558">is_distinct_typed_matrix()</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00422">is_uniform_typed_matrix()</a>.</p>
 <div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -492,30 +616,30 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000005">Todo</a></b></dt><dd>Evaluate compile-time performance. Instantiation, evaluation, and compilation of this function may be expensive. We may want to use a pure concept approach. The ordered-pair traversal also tests each unordered pair twice. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00488">488</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  488</span>                                                                           {</div>
-<div class="line"><span class="lineno">  489</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a> = std::remove_cvref_t&lt;Type&gt;;</div>
-<div class="line"><span class="lineno">  490</span>  <span class="keywordtype">bool</span> result{<span class="keyword">true</span>};</div>
-<div class="line"><span class="lineno">  491</span> </div>
-<div class="line"><span class="lineno">  492</span>  for_constexpr&lt;matrix::rows&gt;([&amp;result](<span class="keyword">auto</span> i) {</div>
-<div class="line"><span class="lineno">  493</span>    for_constexpr&lt;matrix::columns&gt;([&amp;result, &amp;i](<span class="keyword">auto</span> j) {</div>
-<div class="line"><span class="lineno">  494</span>      for_constexpr&lt;matrix::rows&gt;([&amp;result, &amp;i, &amp;j](<span class="keyword">auto</span> k) {</div>
-<div class="line"><span class="lineno">  495</span>        for_constexpr&lt;matrix::columns&gt;([&amp;result, &amp;i, &amp;j, &amp;k](<span class="keyword">auto</span> l) {</div>
-<div class="line"><span class="lineno">  496</span>          <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (i != k || j != l) {</div>
-<div class="line"><span class="lineno">  497</span>            <span class="keyword">using </span>lhs = element_at&lt;matrix, i, j&gt;;</div>
-<div class="line"><span class="lineno">  498</span>            <span class="keyword">using </span>rhs = element_at&lt;matrix, k, l&gt;;</div>
-<div class="line"><span class="lineno">  499</span> </div>
-<div class="line"><span class="lineno">  500</span>            result &amp;= not(std::is_convertible_v&lt;lhs, rhs&gt; or</div>
-<div class="line"><span class="lineno">  501</span>                          std::is_convertible_v&lt;rhs, lhs&gt; or</div>
-<div class="line"><span class="lineno">  502</span>                          <span class="keyword">requires</span> { <span class="keyword">typename</span> std::common_type_t&lt;lhs, rhs&gt;; });</div>
-<div class="line"><span class="lineno">  503</span>          }</div>
-<div class="line"><span class="lineno">  504</span>        });</div>
-<div class="line"><span class="lineno">  505</span>      });</div>
-<div class="line"><span class="lineno">  506</span>    });</div>
-<div class="line"><span class="lineno">  507</span>  });</div>
-<div class="line"><span class="lineno">  508</span> </div>
-<div class="line"><span class="lineno">  509</span>  <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">  510</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00558">558</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  558</span>                                                                           {</div>
+<div class="line"><span class="lineno">  559</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a> = std::remove_cvref_t&lt;Type&gt;;</div>
+<div class="line"><span class="lineno">  560</span>  <span class="keywordtype">bool</span> result{<span class="keyword">true</span>};</div>
+<div class="line"><span class="lineno">  561</span> </div>
+<div class="line"><span class="lineno">  562</span>  for_constexpr&lt;matrix::rows&gt;([&amp;result](<span class="keyword">auto</span> i) {</div>
+<div class="line"><span class="lineno">  563</span>    for_constexpr&lt;matrix::columns&gt;([&amp;result, &amp;i](<span class="keyword">auto</span> j) {</div>
+<div class="line"><span class="lineno">  564</span>      for_constexpr&lt;matrix::rows&gt;([&amp;result, &amp;i, &amp;j](<span class="keyword">auto</span> k) {</div>
+<div class="line"><span class="lineno">  565</span>        for_constexpr&lt;matrix::columns&gt;([&amp;result, &amp;i, &amp;j, &amp;k](<span class="keyword">auto</span> l) {</div>
+<div class="line"><span class="lineno">  566</span>          <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (i != k || j != l) {</div>
+<div class="line"><span class="lineno">  567</span>            <span class="keyword">using </span>lhs = element_at&lt;matrix, i, j&gt;;</div>
+<div class="line"><span class="lineno">  568</span>            <span class="keyword">using </span>rhs = element_at&lt;matrix, k, l&gt;;</div>
+<div class="line"><span class="lineno">  569</span> </div>
+<div class="line"><span class="lineno">  570</span>            result &amp;= not(std::is_convertible_v&lt;lhs, rhs&gt; or</div>
+<div class="line"><span class="lineno">  571</span>                          std::is_convertible_v&lt;rhs, lhs&gt; or</div>
+<div class="line"><span class="lineno">  572</span>                          <span class="keyword">requires</span> { <span class="keyword">typename</span> std::common_type_t&lt;lhs, rhs&gt;; });</div>
+<div class="line"><span class="lineno">  573</span>          }</div>
+<div class="line"><span class="lineno">  574</span>        });</div>
+<div class="line"><span class="lineno">  575</span>      });</div>
+<div class="line"><span class="lineno">  576</span>    });</div>
+<div class="line"><span class="lineno">  577</span>  });</div>
+<div class="line"><span class="lineno">  578</span> </div>
+<div class="line"><span class="lineno">  579</span>  <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  580</span>}</div>
 <div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a></div><div class="ttdoc">Strongly typed matrix.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__forward_8hpp_source.xhtml#l00043">typed_linear_algebra_forward.hpp:43</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00177">for_constexpr()</a>.</p>
@@ -554,20 +678,20 @@ template&lt;typename Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00352">352</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  352</span>                                                                          {</div>
-<div class="line"><span class="lineno">  353</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a> = std::remove_cvref_t&lt;Type&gt;;</div>
-<div class="line"><span class="lineno">  354</span>  <span class="keywordtype">bool</span> result{<span class="keyword">true</span>};</div>
-<div class="line"><span class="lineno">  355</span> </div>
-<div class="line"><span class="lineno">  356</span>  for_constexpr&lt;matrix::rows&gt;([&amp;result](<span class="keyword">auto</span> i) {</div>
-<div class="line"><span class="lineno">  357</span>    for_constexpr&lt;matrix::columns&gt;([&amp;result, &amp;i](<span class="keyword">auto</span> j) {</div>
-<div class="line"><span class="lineno">  358</span>      result &amp;=</div>
-<div class="line"><span class="lineno">  359</span>          std::is_same_v&lt;element_at&lt;matrix, i, j&gt;, element_at&lt;matrix, 0, 0&gt;&gt;;</div>
-<div class="line"><span class="lineno">  360</span>    });</div>
-<div class="line"><span class="lineno">  361</span>  });</div>
-<div class="line"><span class="lineno">  362</span> </div>
-<div class="line"><span class="lineno">  363</span>  <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">  364</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00422">422</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  422</span>                                                                          {</div>
+<div class="line"><span class="lineno">  423</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">matrix</a> = std::remove_cvref_t&lt;Type&gt;;</div>
+<div class="line"><span class="lineno">  424</span>  <span class="keywordtype">bool</span> result{<span class="keyword">true</span>};</div>
+<div class="line"><span class="lineno">  425</span> </div>
+<div class="line"><span class="lineno">  426</span>  for_constexpr&lt;matrix::rows&gt;([&amp;result](<span class="keyword">auto</span> i) {</div>
+<div class="line"><span class="lineno">  427</span>    for_constexpr&lt;matrix::columns&gt;([&amp;result, &amp;i](<span class="keyword">auto</span> j) {</div>
+<div class="line"><span class="lineno">  428</span>      result &amp;=</div>
+<div class="line"><span class="lineno">  429</span>          std::is_same_v&lt;element_at&lt;matrix, i, j&gt;, element_at&lt;matrix, 0, 0&gt;&gt;;</div>
+<div class="line"><span class="lineno">  430</span>    });</div>
+<div class="line"><span class="lineno">  431</span>  });</div>
+<div class="line"><span class="lineno">  432</span> </div>
+<div class="line"><span class="lineno">  433</span>  <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  434</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00177">for_constexpr()</a>.</p>
 <div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -605,16 +729,16 @@ template&lt;char... Digits&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00460">460</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  460</span>                                                                     {</div>
-<div class="line"><span class="lineno">  461</span>  <span class="keyword">static_assert</span>(((<span class="charliteral">&#39;0&#39;</span> &lt;= Digits &amp;&amp; Digits &lt;= <span class="charliteral">&#39;9&#39;</span>) &amp;&amp; ...),</div>
-<div class="line"><span class="lineno">  462</span>                <span class="stringliteral">&quot;Characters must only be digits.&quot;</span>);</div>
-<div class="line"><span class="lineno">  463</span> </div>
-<div class="line"><span class="lineno">  464</span>  std::size_t number{0};</div>
-<div class="line"><span class="lineno">  465</span>  ((number = number * 10 + (Digits - <span class="charliteral">&#39;0&#39;</span>)), ...);</div>
-<div class="line"><span class="lineno">  466</span> </div>
-<div class="line"><span class="lineno">  467</span>  <span class="keywordflow">return</span> number;</div>
-<div class="line"><span class="lineno">  468</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00530">530</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  530</span>                                                                     {</div>
+<div class="line"><span class="lineno">  531</span>  <span class="keyword">static_assert</span>(((<span class="charliteral">&#39;0&#39;</span> &lt;= Digits &amp;&amp; Digits &lt;= <span class="charliteral">&#39;9&#39;</span>) &amp;&amp; ...),</div>
+<div class="line"><span class="lineno">  532</span>                <span class="stringliteral">&quot;Characters must only be digits.&quot;</span>);</div>
+<div class="line"><span class="lineno">  533</span> </div>
+<div class="line"><span class="lineno">  534</span>  std::size_t number{0};</div>
+<div class="line"><span class="lineno">  535</span>  ((number = number * 10 + (Digits - <span class="charliteral">&#39;0&#39;</span>)), ...);</div>
+<div class="line"><span class="lineno">  536</span> </div>
+<div class="line"><span class="lineno">  537</span>  <span class="keywordflow">return</span> number;</div>
+<div class="line"><span class="lineno">  538</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
