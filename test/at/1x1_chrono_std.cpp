@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,18 +27,36 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("1x1" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("1x3" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("3x1" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("3x3" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("formattable" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("au_eigen" BACKENDS "au_eigen")
-pass("au_std" BACKENDS "au_std")
-pass("chrono_eigen" BACKENDS "chrono_eigen")
-pass("chrono_std" BACKENDS "chrono_std")
-pass("mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("mp_units_std" BACKENDS "mp_units_std")
-pass("nholthaus_eigen" BACKENDS "nholthaus_eigen")
-pass("nholthaus_std" BACKENDS "nholthaus_std")
+#include "fcarouge/linalg.hpp"
+
+#include <cassert>
+#include <chrono>
+#include <cstddef>
+#include <mdspan>
+
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the rank-0 element read and write accessors for a singleton
+//! matrix with the mdspan backend, whose storage is a rank-2 `1x1` extent.
+[[maybe_unused]] const auto test{[] -> int {
+  using seconds = std::chrono::duration<double>;
+
+  double storage{};
+  std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
+  row_vector<double, seconds> m{span};
+
+  m.at(seconds{9.});
+
+  assert(m.at() == seconds{9.});
+  assert(m.at<>() == seconds{9.});
+
+  m.at(seconds{10.});
+
+  assert(m.at() == seconds{10.});
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

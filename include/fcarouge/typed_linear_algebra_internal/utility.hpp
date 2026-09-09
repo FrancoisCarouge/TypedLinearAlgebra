@@ -228,7 +228,10 @@ template <auto... Indexes, typename Storage>
 //! `typed_matrix::at(value)`. The `value` is already converted to the storage
 //! underlying type by the caller. Mirrors `storage_element`'s backend syntax
 //! probing, plus a composed `typed_matrix` backend forwarding to its own typed
-//! `at()`.
+//! `at()`: a call operator `storage(i...)`, the flat `storage[0, i...]`
+//! row-major fallback, then the single-element `storage[]` / `storage[0]` /
+//! `storage[0, 0]` accesses of a rank-zero, singleton storage (a `1x1`
+//! `std::mdspan` among them).
 template <auto... Indexes, typename Storage, typename Value>
 constexpr void store_element(Storage &&storage, Value &&value) {
   if constexpr (same_as_typed_matrix<std::remove_cvref_t<Storage>>) {
@@ -247,6 +250,14 @@ constexpr void store_element(Storage &&storage, Value &&value) {
                              std::forward<Value>(value);
                        }) {
     storage[0, std::size_t{Indexes}...] = std::forward<Value>(value);
+  } else if constexpr (requires { storage[] = std::forward<Value>(value); }) {
+    storage[] = std::forward<Value>(value);
+  } else if constexpr (requires { storage[0] = std::forward<Value>(value); }) {
+    storage[0] = std::forward<Value>(value);
+  } else if constexpr (requires {
+                         storage[0, 0] = std::forward<Value>(value);
+                       }) {
+    storage[0, 0] = std::forward<Value>(value);
   } else {
     storage(0) = std::forward<Value>(value);
   }
