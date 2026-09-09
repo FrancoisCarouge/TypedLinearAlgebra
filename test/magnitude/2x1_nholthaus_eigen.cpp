@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,25 +27,35 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-fail("2x2_fail" BACKENDS "eigexed")
-fail("2x1_mp_units_eigen_fail" BACKENDS "mp_units_eigen")
-fail("2x1_au_std_fail" BACKENDS "au_std")
-fail("2x1_nholthaus_eigen_fail" BACKENDS "nholthaus_eigen")
+#include "fcarouge/linalg.hpp"
 
-pass("1x2_au_eigen" BACKENDS "au_eigen")
-pass("1x2_au_std" BACKENDS "au_std")
-pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("1x2_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_eigen" BACKENDS "eigexed" "nested_typed_eigen")
-pass("1x2_nholthaus_eigen" BACKENDS "nholthaus_eigen")
-pass("2x1_au_std" BACKENDS "au_std")
-pass("2x1_nholthaus_eigen" BACKENDS "nholthaus_eigen")
-pass("3x1_au_eigen" BACKENDS "au_eigen")
-pass("3x1_chrono_eigen" BACKENDS "chrono_eigen")
-pass("3x1_chrono_std" BACKENDS "chrono_std")
-pass("3x1_nholthaus_std" BACKENDS "nholthaus_std")
-pass("2x1_eigen" BACKENDS "eigexed" "nested_typed_eigen")
-pass("3x1_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("3x1_mp_units_std" BACKENDS "mp_units_std")
+#include <units/length.h>
+
+#include <cassert>
+
+namespace fcarouge::test {
+using units::m;
+using representation = double;
+
+namespace {
+//! @test Verifies the magnitude of a column vector, the Euclidean L2 norm.
+//! Also verifies a negative component squares away to a positive magnitude,
+//! and that the zero vector has a zero magnitude.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = units::length::meters<representation>;
+
+  const column_vector<representation, length, length> v2{-3. * m, 4. * m};
+
+  assert(magnitude(v2) == 5. * m);
+
+  const column_vector<representation, length, length, length> zero{
+      0. * m, 0. * m, 0. * m};
+
+  assert(magnitude(zero) == 0. * m);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
