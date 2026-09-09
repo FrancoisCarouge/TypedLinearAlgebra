@@ -162,18 +162,20 @@ $(function(){initNavTree('addition_21x1__mp__units__eigen_8cpp_source.xhtml','')
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  assert(5. * m == r[]);</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  assert(5. * m == r.at());</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  assert(5. * m == r.at&lt;&gt;());</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r())&gt;);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r[])&gt;);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at())&gt;);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at&lt;&gt;())&gt;);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>}()};</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  assert(5. * m == r.at&lt;length&gt;());</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r())&gt;);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r[])&gt;);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at())&gt;);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at&lt;&gt;())&gt;);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at&lt;length&gt;())&gt;);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}()};</div>
 </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>} <span class="comment">// namespace</span></div>
 </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>} <span class="comment">// namespace fcarouge::test</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>} <span class="comment">// namespace fcarouge::test</span></div>
 <div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a></div><div class="ttdoc">Strongly typed matrix.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__forward_8hpp_source.xhtml#l00043">typed_linear_algebra_forward.hpp:43</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03_xhtml_a5d4f41ca132d253835af80fe3e24fe87"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a5d4f41ca132d253835af80fe3e24fe87">fcarouge::sample::anonymous_namespace{au_eigen.cpp}::representation</a></div><div class="ttdeci">double representation</div><div class="ttdef"><b>Definition</b> <a href="sample_2au__eigen_8cpp_source.xhtml#l00055">au_eigen.cpp:55</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_021x1__mp__units__eigen_8cpp_03_xhtml_a16e3bd6ba1f46e17c599b71a1956c0b3"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__mp__units__eigen_8cpp_03.xhtml#a16e3bd6ba1f46e17c599b71a1956c0b3">fcarouge::test::anonymous_namespace{1x1_mp_units_eigen.cpp}::quantity</a></div><div class="ttdeci">decltype(1. *m2) quantity</div><div class="ttdef"><b>Definition</b> <a href="element_21x1__mp__units__eigen_8cpp_source.xhtml#l00048">1x1_mp_units_eigen.cpp:48</a></div></div>

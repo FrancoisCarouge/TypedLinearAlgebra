@@ -133,7 +133,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line"> </div>
 <div class="line">    matrix&lt;double, std::tuple&lt;<span class="keyword">decltype</span>(1. * m)&gt;, std::tuple&lt;<span class="keyword">decltype</span>(1. * m)&gt;&gt;</div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000057">Test</a></b></dt><dd>Verifies the element type of the singleton, rank zero, matrix.</dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000058">Test</a></b></dt><dd>Verifies the element type of the singleton, rank zero, matrix.</dd></dl>
 <p>The count of indexes must match the rank of the matrix: no index for a singleton matrix. </p>
 
 <p class="definition">Definition at line <a class="el" href="element_21x1__mp__units__eigen_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="element_21x1__mp__units__eigen_8cpp_source.xhtml">1x1_mp_units_eigen.cpp</a>.</p>
@@ -180,11 +180,13 @@ Variables</h2></td></tr>
 <div class="line">  assert(5. * m == r[]);</div>
 <div class="line">  assert(5. * m == r.at());</div>
 <div class="line">  assert(5. * m == r.at&lt;&gt;());</div>
+<div class="line">  assert(5. * m == r.at&lt;length&gt;());</div>
 <div class="line"> </div>
 <div class="line">  <span class="keyword">static_assert</span>(! std::is_reference_v&lt;<span class="keyword">decltype</span>(r())&gt;);</div>
 <div class="line">  <span class="keyword">static_assert</span>(! std::is_reference_v&lt;<span class="keyword">decltype</span>(r[])&gt;);</div>
 <div class="line">  <span class="keyword">static_assert</span>(! std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at())&gt;);</div>
 <div class="line">  <span class="keyword">static_assert</span>(! std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at&lt;&gt;())&gt;);</div>
+<div class="line">  <span class="keyword">static_assert</span>(! std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at&lt;length&gt;())&gt;);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
@@ -193,7 +195,7 @@ Variables</h2></td></tr>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000038">Test</a></b></dt><dd>Verifies the initializer lists constructor. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000051">Test</a></b></dt><dd>Verifies the quantity by singleton matrix division operator. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000077">Test</a></b></dt><dd>Verifies the equal to algorithm for a singleton matrix of non-trivial types. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000138">Test</a></b></dt><dd>Verifies the singleton matrix minus unary operator. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000137">Test</a></b></dt><dd>Verifies the singleton matrix minus unary operator. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000144">Test</a></b></dt><dd>Verifies the singleton by singleton matrix multiplication operator. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000210">Test</a></b></dt><dd>Verifies the singleton by singleton matrix substraction operator. </dd></dl>
 
@@ -210,14 +212,16 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   56</span>  assert(5. * m == r[]);</div>
 <div class="line"><span class="lineno">   57</span>  assert(5. * m == r.at());</div>
 <div class="line"><span class="lineno">   58</span>  assert(5. * m == r.at&lt;&gt;());</div>
-<div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r())&gt;);</div>
-<div class="line"><span class="lineno">   61</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r[])&gt;);</div>
-<div class="line"><span class="lineno">   62</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at())&gt;);</div>
-<div class="line"><span class="lineno">   63</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at&lt;&gt;())&gt;);</div>
-<div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   66</span>}()};</div>
+<div class="line"><span class="lineno">   59</span>  assert(5. * m == r.at&lt;length&gt;());</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r())&gt;);</div>
+<div class="line"><span class="lineno">   62</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r[])&gt;);</div>
+<div class="line"><span class="lineno">   63</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at())&gt;);</div>
+<div class="line"><span class="lineno">   64</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at&lt;&gt;())&gt;);</div>
+<div class="line"><span class="lineno">   65</span>  <span class="keyword">static_assert</span>(not std::is_reference_v&lt;<span class="keyword">decltype</span>(r.at&lt;length&gt;())&gt;);</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   68</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_021x1__mp__units__eigen_8cpp_03_xhtml_a16e3bd6ba1f46e17c599b71a1956c0b3"><div class="ttname"><a href="#a16e3bd6ba1f46e17c599b71a1956c0b3">fcarouge::test::anonymous_namespace{1x1_mp_units_eigen.cpp}::quantity</a></div><div class="ttdeci">decltype(1. *m2) quantity</div><div class="ttdef"><b>Definition</b> <a href="element_21x1__mp__units__eigen_8cpp_source.xhtml#l00048">1x1_mp_units_eigen.cpp:48</a></div></div>
 </div><!-- fragment -->
 </div>
