@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,20 +27,34 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("1x1_const" BACKENDS "eigexed" "nested_typed_eigen")
-pass("1x1" BACKENDS "eigexed" "nested_typed_eigen")
-pass("1x3_const" BACKENDS "eigexed" "nested_typed_eigen")
-pass("1x3" BACKENDS "eigexed" "nested_typed_eigen")
-pass("3x1_const" BACKENDS "eigexed" "nested_typed_eigen")
-pass("3x1" BACKENDS "eigexed" "nested_typed_eigen")
-pass("3x3_const" BACKENDS "eigexed" "nested_typed_eigen")
-pass("3x3" BACKENDS "eigexed" "nested_typed_eigen")
-pass("1x3_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("3x1_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("2x2_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("2x3_mp_units_eigen" BACKENDS "mp_units_eigen")
-fail("1x1_no_match_fail" BACKENDS "eigexed")
-fail("3x1_no_match_fail" BACKENDS "mp_units_eigen")
-fail("2x2_not_distinct_fail" BACKENDS "eigexed")
+#include "fcarouge/linalg.hpp"
+
+namespace fcarouge::test {
+namespace {
+using representation = double;
+
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::s;
+using mp_units::si::unit_symbols::s2;
+
+using position = quantity<mp_units::isq::length[m]>;
+using velocity = quantity<mp_units::isq::velocity[m / s]>;
+using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
+
+//! @test The by-type `at` accessor rejects, at compile time, a request no
+//! element type of a distinct vector is convertible to.
+[[maybe_unused]] const auto test{[] -> int {
+  column_vector<representation, position, velocity, acceleration> x{
+      3. * m, 2. * m / s, 1. * m / s2};
+
+  [[maybe_unused]] const auto value{x.at<double *>()};
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
