@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,25 +27,39 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-fail("2x2_fail" BACKENDS "eigexed")
-fail("2x1_mp_units_eigen_fail" BACKENDS "mp_units_eigen")
-fail("2x1_au_std_fail" BACKENDS "au_std")
-fail("2x1_nholthaus_eigen_fail" BACKENDS "nholthaus_eigen")
+#include "fcarouge/linalg.hpp"
 
-pass("1x2_au_eigen" BACKENDS "au_eigen")
-pass("1x2_au_std" BACKENDS "au_std")
-pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("1x2_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_eigen" BACKENDS "eigexed" "nested_typed_eigen")
-pass("1x2_nholthaus_eigen" BACKENDS "nholthaus_eigen")
-pass("2x1_au_std" BACKENDS "au_std")
-pass("2x1_nholthaus_eigen" BACKENDS "nholthaus_eigen")
-pass("3x1_au_eigen" BACKENDS "au_eigen")
-pass("3x1_chrono_eigen" BACKENDS "chrono_eigen")
-pass("3x1_chrono_std" BACKENDS "chrono_std")
-pass("3x1_nholthaus_std" BACKENDS "nholthaus_std")
-pass("2x1_eigen" BACKENDS "eigexed" "nested_typed_eigen")
-pass("3x1_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("3x1_mp_units_std" BACKENDS "mp_units_std")
+#include <units/length.h>
+
+#include <cassert>
+#include <cstddef>
+#include <mdspan>
+
+namespace fcarouge::test {
+using units::m;
+using representation = double;
+
+namespace {
+//! @test Verifies the magnitude, the Euclidean L2 norm, of a column vector of
+//! quantities with the mdspan-backed, non-owning storage backend.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = units::length::meters<representation>;
+
+  double storage[]{0., 0., 0.};
+
+  std::mdspan span{&storage[0], std::extents<std::size_t, 3, 1>{}};
+
+  column_vector<representation, length, length, length> v3{span};
+
+  v3.at<0>(2. * m);
+  v3.at<1>(3. * m);
+  v3.at<2>(6. * m);
+
+  assert(magnitude(v3) == 7. * m);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

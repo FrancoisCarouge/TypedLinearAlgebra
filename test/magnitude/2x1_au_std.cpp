@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,25 +27,53 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-fail("2x2_fail" BACKENDS "eigexed")
-fail("2x1_mp_units_eigen_fail" BACKENDS "mp_units_eigen")
-fail("2x1_au_std_fail" BACKENDS "au_std")
-fail("2x1_nholthaus_eigen_fail" BACKENDS "nholthaus_eigen")
+#include "fcarouge/linalg.hpp"
 
-pass("1x2_au_eigen" BACKENDS "au_eigen")
-pass("1x2_au_std" BACKENDS "au_std")
-pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("1x2_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_eigen" BACKENDS "eigexed" "nested_typed_eigen")
-pass("1x2_nholthaus_eigen" BACKENDS "nholthaus_eigen")
-pass("2x1_au_std" BACKENDS "au_std")
-pass("2x1_nholthaus_eigen" BACKENDS "nholthaus_eigen")
-pass("3x1_au_eigen" BACKENDS "au_eigen")
-pass("3x1_chrono_eigen" BACKENDS "chrono_eigen")
-pass("3x1_chrono_std" BACKENDS "chrono_std")
-pass("3x1_nholthaus_std" BACKENDS "nholthaus_std")
-pass("2x1_eigen" BACKENDS "eigexed" "nested_typed_eigen")
-pass("3x1_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("3x1_mp_units_std" BACKENDS "mp_units_std")
+#include <au/units/meters.hh>
+
+#include <cassert>
+#include <cstddef>
+#include <mdspan>
+
+namespace fcarouge::test {
+using representation = double;
+
+namespace {
+//! @test Verifies the magnitude of a column vector, the Euclidean L2 norm,
+//! with the mdspan-backed, non-owning storage backend. Also verifies a
+//! negative component squares away to a positive magnitude, and that the
+//! zero vector has a zero magnitude.
+[[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+
+  using length = au::QuantityD<au::Meters>;
+
+  double storage[]{0., 0.};
+
+  std::mdspan span{&storage[0], std::extents<std::size_t, 2, 1>{}};
+
+  column_vector<representation, length, length> v2{span};
+
+  v2.at<0>(-3. * m);
+  v2.at<1>(4. * m);
+
+  assert(magnitude(v2) == 5. * m);
+
+  double zero_storage[]{0., 0., 0.};
+
+  std::mdspan zero_span{&zero_storage[0], std::extents<std::size_t, 3, 1>{}};
+
+  column_vector<representation, length, length, length> zero{zero_span};
+
+  zero.at<0>(0. * m);
+  zero.at<1>(0. * m);
+  zero.at<2>(0. * m);
+
+  assert(magnitude(zero) == 0. * m);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
