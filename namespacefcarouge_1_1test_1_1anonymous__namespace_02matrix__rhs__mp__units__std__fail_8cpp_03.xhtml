@@ -148,11 +148,11 @@ Variables</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000130">Test</a></b></dt><dd>Verifies a rank two matrix is rejected in the vector position of the matrix-vector product algorithm: there is no overload accepting a non-vector <code>rhs</code>. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000147">Test</a></b></dt><dd>Verifies a rank two matrix is rejected in the vector position of the matrix-vector product algorithm: there is no overload accepting a non-vector <code>rhs</code>. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="matrix__rhs__mp__units__std__fail_8cpp_source.xhtml#l00050">50</a> of file <a class="el" href="matrix__rhs__mp__units__std__fail_8cpp_source.xhtml">matrix_rhs_mp_units_std_fail.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   50</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   51</span>  <span class="keyword">using </span>length = <a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">quantity&lt;mp_units::isq::length[m]&gt;</a>;</div>
+<div class="line"><span class="lineno">   51</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">length</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">quantity&lt;mp_units::isq::length[m]&gt;</a>;</div>
 <div class="line"><span class="lineno">   52</span>  <span class="keyword">using </span>indexes = std::tuple&lt;length, length&gt;;</div>
 <div class="line"><span class="lineno">   53</span> </div>
 <div class="line"><span class="lineno">   54</span>  <span class="keywordtype">double</span> storage_a[4]{};</div>
@@ -176,6 +176,7 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   72</span> </div>
 <div class="line"><span class="lineno">   73</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">   74</span>}()};</div>
+<div class="ttc" id="anamespacefcarouge_1_1test_xhtml_a7194bc200104fad679ef56587aaec86f"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">fcarouge::test::length</a></div><div class="ttdeci">au::QuantityD&lt; au::Meters &gt; length</div><div class="ttdef"><b>Definition</b> <a href="test_2format_2au__eigen_8cpp_source.xhtml#l00044">au_eigen.cpp:44</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml_a9770b8c17efb82bfa80edbfb9a1de8a7"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">fcarouge::test::quantity</a></div><div class="ttdeci">mp_units::quantity&lt; QuantityReference, representation &gt; quantity</div><div class="ttdef"><b>Definition</b> <a href="add_21x1__mp__units__std_8cpp_source.xhtml#l00043">1x1_mp_units_std.cpp:43</a></div></div>
 </div><!-- fragment -->
 </div>

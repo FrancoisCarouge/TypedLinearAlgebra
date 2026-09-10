@@ -128,18 +128,19 @@ Variables</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <span class="keyword">const</span> row_vector&lt;representation, seconds&gt; r{seconds{42.}};</div>
 <div class="line"> </div>
-<div class="line">  assert(seconds{42.} == r.at());</div>
+<div class="line">  assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#af24586dd705e9c93d9869bce929d5213">seconds</a>{42.} == r.at());</div>
 <div class="line">  assert(seconds{42.} == r);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000035">Test</a></b></dt><dd>Verifies the single value constructor for a std::chrono duration singleton. </dd></dl>
+<div class="ttc" id="anamespacefcarouge_1_1test_xhtml_af24586dd705e9c93d9869bce929d5213"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#af24586dd705e9c93d9869bce929d5213">fcarouge::test::seconds</a></div><div class="ttdeci">std::chrono::duration&lt; representation &gt; seconds</div><div class="ttdef"><b>Definition</b> <a href="test_2format_2chrono__eigen_8cpp_source.xhtml#l00041">chrono_eigen.cpp:41</a></div></div>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000036">Test</a></b></dt><dd>Verifies the single value constructor for a std::chrono duration singleton. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="1x1__chrono__eigen_8cpp_source.xhtml#l00043">43</a> of file <a class="el" href="1x1__chrono__eigen_8cpp_source.xhtml">1x1_chrono_eigen.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   43</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   44</span>  <span class="keyword">using </span>seconds = std::chrono::duration&lt;representation&gt;;</div>
+<div class="line"><span class="lineno">   44</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#af24586dd705e9c93d9869bce929d5213">seconds</a> = std::chrono::duration&lt;representation&gt;;</div>
 <div class="line"><span class="lineno">   45</span> </div>
-<div class="line"><span class="lineno">   46</span>  <span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">row_vector&lt;representation, seconds&gt;</a> r{seconds{42.}};</div>
+<div class="line"><span class="lineno">   46</span>  <span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">row_vector&lt;representation, seconds&gt;</a> r{<a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#af24586dd705e9c93d9869bce929d5213">seconds</a>{42.}};</div>
 <div class="line"><span class="lineno">   47</span> </div>
 <div class="line"><span class="lineno">   48</span>  assert(seconds{42.} == r.at());</div>
 <div class="line"><span class="lineno">   49</span>  assert(seconds{42.} == r);</div>

@@ -132,7 +132,7 @@ Variables</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line"> </div>
 <div class="line">    matrix&lt;double, std::tuple&lt;<span class="keyword">decltype</span>(1. * m), <span class="keyword">decltype</span>(1. * m / s)&gt;,</div>
 <div class="line">           std::tuple&lt;<span class="keyword">decltype</span>(1. * N), <span class="keyword">decltype</span>(1. / A)&gt;&gt;</div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000070">Test</a></b></dt><dd>Verifies the element type of the matrix. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000069">Test</a></b></dt><dd>Verifies the element type of the matrix. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="element_22x2__mp__units__eigen_8cpp_source.xhtml#l00045">45</a> of file <a class="el" href="element_22x2__mp__units__eigen_8cpp_source.xhtml">2x2_mp_units_eigen.cpp</a>.</p>
 
@@ -170,11 +170,11 @@ Variables</h2></td></tr>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
 <div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a></div><div class="ttdoc">Strongly typed matrix.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__forward_8hpp_source.xhtml#l00043">typed_linear_algebra_forward.hpp:43</a></div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000150">Test</a></b></dt><dd>Verifies the square by square matrix multiplication operator. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000167">Test</a></b></dt><dd>Verifies the square by square matrix multiplication operator. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="multiplication_22x2__mp__units__eigen_8cpp_source.xhtml#l00049">49</a> of file <a class="el" href="multiplication_22x2__mp__units__eigen_8cpp_source.xhtml">2x2_mp_units_eigen.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   49</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   50</span>  <span class="keyword">using </span>length = <a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">quantity&lt;mp_units::isq::length[m]&gt;</a>;</div>
+<div class="line"><span class="lineno">   50</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">length</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">quantity&lt;mp_units::isq::length[m]&gt;</a>;</div>
 <div class="line"><span class="lineno">   51</span>  <span class="keyword">using </span>area = <a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">quantity&lt;mp_units::isq::area[m2]&gt;</a>;</div>
 <div class="line"><span class="lineno">   52</span>  <span class="keyword">using </span>indexes = std::tuple&lt;length, length&gt;;</div>
 <div class="line"><span class="lineno">   53</span>  <span class="keyword">using </span>result_indexes = std::tuple&lt;area, area&gt;;</div>
@@ -193,6 +193,7 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   66</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">   67</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_022x2__mp__units__eigen_8cpp_03_xhtml_ac20327e54886b9cdf8684cbaa9afef48"><div class="ttname"><a href="#ac20327e54886b9cdf8684cbaa9afef48">fcarouge::test::anonymous_namespace{2x2_mp_units_eigen.cpp}::matrix</a></div><div class="ttdeci">matrix&lt; double, std::tuple&lt; decltype(1. *m), decltype(1. *m/s)&gt;, std::tuple&lt; decltype(1. *N), decltype(1./A)&gt; &gt; matrix</div><div class="ttdef"><b>Definition</b> <a href="element_22x2__mp__units__eigen_8cpp_source.xhtml#l00045">2x2_mp_units_eigen.cpp:45</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1test_xhtml_a7194bc200104fad679ef56587aaec86f"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">fcarouge::test::length</a></div><div class="ttdeci">au::QuantityD&lt; au::Meters &gt; length</div><div class="ttdef"><b>Definition</b> <a href="test_2format_2au__eigen_8cpp_source.xhtml#l00044">au_eigen.cpp:44</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml_a9770b8c17efb82bfa80edbfb9a1de8a7"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">fcarouge::test::quantity</a></div><div class="ttdeci">mp_units::quantity&lt; QuantityReference, representation &gt; quantity</div><div class="ttdef"><b>Definition</b> <a href="add_21x1__mp__units__std_8cpp_source.xhtml#l00043">1x1_mp_units_std.cpp:43</a></div></div>
 </div><!-- fragment -->
 </div>
