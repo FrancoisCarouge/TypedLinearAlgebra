@@ -32,51 +32,40 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
-#include <cstddef>
-#include <mdspan>
-#include <type_traits>
+#include <chrono>
+#include <concepts>
+#include <format>
 
 namespace fcarouge::test {
 using representation = double;
-
-template <auto QuantityReference>
-using quantity = mp_units::quantity<QuantityReference, representation>;
-
-using mp_units::si::unit_symbols::m;
+using seconds = std::chrono::duration<representation>;
 
 namespace {
-//! @test Verifies the singleton by singleton matrix `add` function.
+using singleton = row_vector<representation, seconds>;
+using row = row_vector<representation, seconds, seconds, seconds>;
+using column = column_vector<representation, seconds, seconds, seconds>;
+
+//! @test Verifies the formatter properties for the std::chrono and Eigen
+//! composition.
+static_assert(std::semiregular<std::formatter<singleton, char>>);
+static_assert(std::semiregular<std::formatter<row, char>>);
+static_assert(std::semiregular<std::formatter<column, char>>);
+static_assert(std::formattable<singleton, char>);
+static_assert(std::formattable<row, char>);
+static_assert(std::formattable<column, char>);
+
+//! @test Verifies the format algorithm for std::chrono duration typed matrices
+//! with the Eigen backend: the rank-0 singleton, the row vector, and the column
+//! vector overloads.
 [[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
+  const singleton s{seconds{9.}};
+  assert(std::format("{}", s) == "9s");
 
-  double storage_a{0.};
-  double storage_b{0.};
-  double storage_r{0.};
+  const row r{seconds{1.}, seconds{2.}, seconds{3.}};
+  assert(std::format("{}", r) == "[1s, 2s, 3s]");
 
-  std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
-
-  row_vector<representation, length> a{span_a};
-  row_vector<representation, length> b{span_b};
-  row_vector<representation, length> r{span_r};
-
-  a = 2. * m;
-  b = 3. * m;
-  add(a, b, r);
-
-  assert(5. * m == r);
-  assert(5. * m == r());
-  assert(5. * m == r[]);
-  assert(5. * m == r.at());
-  assert(5. * m == r.at<>());
-  assert(5. * m == r.at<length>());
-
-  static_assert(not std::is_reference_v<decltype(r())>);
-  static_assert(not std::is_reference_v<decltype(r[])>);
-  static_assert(not std::is_reference_v<decltype(r.at())>);
-  static_assert(not std::is_reference_v<decltype(r.at<>())>);
-  static_assert(not std::is_reference_v<decltype(r.at<length>())>);
+  const column c{seconds{1.}, seconds{2.}, seconds{3.}};
+  assert(std::format("{}", c) == "[[1s], [2s], [3s]]");
 
   return 0;
 }()};

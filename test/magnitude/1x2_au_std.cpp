@@ -31,52 +31,37 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <au/std_format.hh>
+#include <au/units/meters.hh>
+#include <au/units/seconds.hh>
+
 #include <cassert>
 #include <cstddef>
+#include <format>
 #include <mdspan>
-#include <type_traits>
 
 namespace fcarouge::test {
 using representation = double;
 
-template <auto QuantityReference>
-using quantity = mp_units::quantity<QuantityReference, representation>;
-
-using mp_units::si::unit_symbols::m;
-
 namespace {
-//! @test Verifies the singleton by singleton matrix `add` function.
+//! @test Verifies the magnitude, the Euclidean L2 norm, of a row vector of
+//! quantities with the mdspan-backed, non-owning storage backend.
 [[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
+  using au::symbols::m;
+  using au::symbols::s;
 
-  double storage_a{0.};
-  double storage_b{0.};
-  double storage_r{0.};
+  using velocity = au::QuantityD<au::UnitQuotientT<au::Meters, au::Seconds>>;
 
-  std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
+  double storage[]{0., 0.};
 
-  row_vector<representation, length> a{span_a};
-  row_vector<representation, length> b{span_b};
-  row_vector<representation, length> r{span_r};
+  std::mdspan span{&storage[0], std::extents<std::size_t, 1, 2>{}};
 
-  a = 2. * m;
-  b = 3. * m;
-  add(a, b, r);
+  row_vector<representation, velocity, velocity> v2{span};
 
-  assert(5. * m == r);
-  assert(5. * m == r());
-  assert(5. * m == r[]);
-  assert(5. * m == r.at());
-  assert(5. * m == r.at<>());
-  assert(5. * m == r.at<length>());
+  v2.at<0>(3. * m / s);
+  v2.at<1>(4. * m / s);
 
-  static_assert(not std::is_reference_v<decltype(r())>);
-  static_assert(not std::is_reference_v<decltype(r[])>);
-  static_assert(not std::is_reference_v<decltype(r.at())>);
-  static_assert(not std::is_reference_v<decltype(r.at<>())>);
-  static_assert(not std::is_reference_v<decltype(r.at<length>())>);
+  assert(std::format("{}", magnitude(v2)) == "5 m / s");
 
   return 0;
 }()};

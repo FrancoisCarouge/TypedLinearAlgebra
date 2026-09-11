@@ -32,51 +32,46 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
-#include <cstddef>
-#include <mdspan>
-#include <type_traits>
+#include <concepts>
+#include <utility>
 
 namespace fcarouge::test {
+namespace {
 using representation = double;
 
 template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
 using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::s;
+using mp_units::si::unit_symbols::s2;
 
-namespace {
-//! @test Verifies the singleton by singleton matrix `add` function.
+using position = quantity<mp_units::isq::length[m]>;
+using velocity = quantity<mp_units::isq::velocity[m / s]>;
+using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
+
+//! @test The by-type `at` accessor resolves each element of a distinct row
+//! vector to the same position, value, and type its integral index does, and
+//! sees writes made through that position.
 [[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
+  row_vector<representation, position, velocity, acceleration> x{
+      3. * m, 2. * m / s, 1. * m / s2};
 
-  double storage_a{0.};
-  double storage_b{0.};
-  double storage_r{0.};
+  assert(x.at<position>() == 3. * m);
+  assert(x.at<velocity>() == 2. * m / s);
+  assert(x.at<acceleration>() == 1. * m / s2);
 
-  std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
+  assert(x.at<position>() == x.at<0>());
+  assert(x.at<velocity>() == x.at<1>());
+  assert(x.at<acceleration>() == x.at<2>());
 
-  row_vector<representation, length> a{span_a};
-  row_vector<representation, length> b{span_b};
-  row_vector<representation, length> r{span_r};
+  static_assert(std::same_as<decltype(x.at<velocity>()), decltype(x.at<1>())>);
+  static_assert(std::same_as<decltype(std::as_const(x).at<velocity>()),
+                             decltype(std::as_const(x).at<1>())>);
 
-  a = 2. * m;
-  b = 3. * m;
-  add(a, b, r);
+  x.at<1>(9. * m / s);
 
-  assert(5. * m == r);
-  assert(5. * m == r());
-  assert(5. * m == r[]);
-  assert(5. * m == r.at());
-  assert(5. * m == r.at<>());
-  assert(5. * m == r.at<length>());
-
-  static_assert(not std::is_reference_v<decltype(r())>);
-  static_assert(not std::is_reference_v<decltype(r[])>);
-  static_assert(not std::is_reference_v<decltype(r.at())>);
-  static_assert(not std::is_reference_v<decltype(r.at<>())>);
-  static_assert(not std::is_reference_v<decltype(r.at<length>())>);
+  assert(x.at<velocity>() == 9. * m / s);
 
   return 0;
 }()};

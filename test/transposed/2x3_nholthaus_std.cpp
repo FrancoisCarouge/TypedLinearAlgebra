@@ -31,52 +31,54 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <units/area.h>
+#include <units/length.h>
+
 #include <cassert>
+#include <concepts>
 #include <cstddef>
 #include <mdspan>
-#include <type_traits>
+#include <tuple>
 
 namespace fcarouge::test {
 using representation = double;
 
-template <auto QuantityReference>
-using quantity = mp_units::quantity<QuantityReference, representation>;
-
-using mp_units::si::unit_symbols::m;
-
 namespace {
-//! @test Verifies the singleton by singleton matrix `add` function.
+//! @test Verifies the transposed algorithm for a rectangular matrix shape
+//! with nholthaus/units element types, std::linalg backend, and that the
+//! transpose aliases the source storage.
 [[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
+  using units::m2;
 
-  double storage_a{0.};
-  double storage_b{0.};
-  double storage_r{0.};
+  using length = units::length::meters<representation>;
+  using row_indexes = std::tuple<length, length>;
+  using column_indexes = std::tuple<length, length, length>;
 
-  std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
+  representation storage[6]{};
+  std::mdspan span{&storage[0], std::extents<std::size_t, 2, 3>{}};
+  matrix<representation, row_indexes, column_indexes> a{span};
 
-  row_vector<representation, length> a{span_a};
-  row_vector<representation, length> b{span_b};
-  row_vector<representation, length> r{span_r};
+  a.at<0, 0>(1. * m2);
+  a.at<0, 1>(2. * m2);
+  a.at<0, 2>(3. * m2);
+  a.at<1, 0>(4. * m2);
+  a.at<1, 1>(5. * m2);
+  a.at<1, 2>(6. * m2);
 
-  a = 2. * m;
-  b = 3. * m;
-  add(a, b, r);
+  auto aᵀ{transposed(a)};
 
-  assert(5. * m == r);
-  assert(5. * m == r());
-  assert(5. * m == r[]);
-  assert(5. * m == r.at());
-  assert(5. * m == r.at<>());
-  assert(5. * m == r.at<length>());
+  static_assert(std::same_as<decltype(aᵀ)::row_indexes, column_indexes>);
+  static_assert(std::same_as<decltype(aᵀ)::column_indexes, row_indexes>);
 
-  static_assert(not std::is_reference_v<decltype(r())>);
-  static_assert(not std::is_reference_v<decltype(r[])>);
-  static_assert(not std::is_reference_v<decltype(r.at())>);
-  static_assert(not std::is_reference_v<decltype(r.at<>())>);
-  static_assert(not std::is_reference_v<decltype(r.at<length>())>);
+  assert((aᵀ.at<0, 0>() == 1. * m2));
+  assert((aᵀ.at<1, 0>() == 2. * m2));
+  assert((aᵀ.at<2, 0>() == 3. * m2));
+  assert((aᵀ.at<0, 1>() == 4. * m2));
+  assert((aᵀ.at<1, 1>() == 5. * m2));
+  assert((aᵀ.at<2, 1>() == 6. * m2));
+
+  a.at<1, 2>(60. * m2);
+  assert((aᵀ.at<2, 1>() == 60. * m2));
 
   return 0;
 }()};

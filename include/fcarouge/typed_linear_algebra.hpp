@@ -72,15 +72,18 @@ concept uniform_typed_matrix = tla::uniform_typed_matrix<Type>;
 //! @brief Concept of a typed matrix whose element positions share no implicit
 //! conversion target.
 //!
-//! @details No two positions share an implicit conversion target, so each
-//! element is identifiable by type and the untyped access operators cannot
-//! silently mix positions.
+//! @details No type is an implicit conversion target of the element types at
+//! two different positions of the matrix, so each element is identifiable by
+//! type: the traditional untyped access operators cannot silently mix
+//! positions, and `at<Type>()` resolves a position unambiguously.
 //!
 //! @note The check is a decidable over-approximation: it sees a target reached
 //! by conversion between the element types or through their common type, not
-//! one reached only via a user-defined conversion or a shared base. It is not
-//! the negation of `uniform_typed_matrix`; the two are independent. A
-//! singleton is both, two convertible but different types are neither.
+//! one reached only via a user-defined conversion or a shared base.
+//! `at<Type>()` performs the exact, per-request uniqueness check for those
+//! residual cases. It is not the negation of `uniform_typed_matrix`; the two
+//! are independent. A singleton is both, two convertible but different types
+//! are neither.
 template <typename Type>
 concept distinct_typed_matrix = tla::distinct_typed_matrix<Type>;
 
@@ -410,6 +413,29 @@ public:
   template <auto... Indexes>
   [[nodiscard]] constexpr auto at(this auto &&self) -> decltype(auto)
     requires(sizeof...(Indexes) == rank);
+
+  //! @brief Read the element located by its type.
+  //!
+  //! @details Returns the strongly typed element whose own type is implicitly
+  //! convertible to `Type`, resolved at compile time. The direction is
+  //! element-to-request, so `Type` may name the element type exactly or any
+  //! type it converts to. Only available for distinct typed matrices. A
+  //! compile-time error is raised when no element type converts to `Type`, and
+  //! another when more than one does, which a distinct matrix still permits for
+  //! a `Type` reached through a user-defined conversion or a shared base.
+  //!
+  //! @tparam Type The requested type the element is looked up by.
+  //!
+  //! @warning Typed elements are not guaranteed to be referenceable. The
+  //! underlying storage may not be referenceable. The returned value may be a
+  //! prvalue. There is no good solutions in C++: constant values cannot be
+  //! returned; temporary lifetime extension of constant reference is risky.
+  //!
+  //! @return The strongly typed element the request resolves to, in its own
+  //! element type rather than necessarily `Type`.
+  template <typename Type>
+  [[nodiscard]] constexpr decltype(auto) at(this auto &&self)
+    requires distinct_typed_matrix<typed_matrix>;
 
   //! @brief Write the specified element.
   //!

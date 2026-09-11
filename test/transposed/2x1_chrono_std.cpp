@@ -32,51 +32,48 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
+#include <chrono>
+#include <concepts>
 #include <cstddef>
 #include <mdspan>
-#include <type_traits>
+#include <ratio>
+#include <tuple>
 
 namespace fcarouge::test {
 using representation = double;
 
-template <auto QuantityReference>
-using quantity = mp_units::quantity<QuantityReference, representation>;
-
-using mp_units::si::unit_symbols::m;
-
 namespace {
-//! @test Verifies the singleton by singleton matrix `add` function.
+//! @test Verifies the transposed algorithm turns a column vector of
+//! std::chrono durations of distinct periods into the matching row vector,
+//! std::linalg backend, and that the transpose aliases the source storage.
 [[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
+  using seconds = std::chrono::duration<representation>;
+  using minutes = std::chrono::duration<representation, std::ratio<60>>;
 
-  double storage_a{0.};
-  double storage_b{0.};
-  double storage_r{0.};
+  representation storage[]{9., 10.};
+  std::mdspan span{&storage[0], std::extents<std::size_t, 2, 1>{}};
+  column_vector<representation, seconds, minutes> n{span};
 
-  std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
+  assert(n.at<0>() == seconds{9.});
+  assert(n.at<1>() == minutes{10.});
+  static_assert(
+      std::same_as<decltype(n)::row_indexes, std::tuple<seconds, minutes>>);
 
-  row_vector<representation, length> a{span_a};
-  row_vector<representation, length> b{span_b};
-  row_vector<representation, length> r{span_r};
+  n.at<0>(seconds{42.});
+  n.at<1>(minutes{43.});
 
-  a = 2. * m;
-  b = 3. * m;
-  add(a, b, r);
+  auto nᵀ{transposed(n)};
 
-  assert(5. * m == r);
-  assert(5. * m == r());
-  assert(5. * m == r[]);
-  assert(5. * m == r.at());
-  assert(5. * m == r.at<>());
-  assert(5. * m == r.at<length>());
+  assert(nᵀ.at<0>() == seconds{42.});
+  assert(nᵀ.at<1>() == minutes{43.});
+  static_assert(
+      std::same_as<decltype(nᵀ)::column_indexes, std::tuple<seconds, minutes>>);
 
-  static_assert(not std::is_reference_v<decltype(r())>);
-  static_assert(not std::is_reference_v<decltype(r[])>);
-  static_assert(not std::is_reference_v<decltype(r.at())>);
-  static_assert(not std::is_reference_v<decltype(r.at<>())>);
-  static_assert(not std::is_reference_v<decltype(r.at<length>())>);
+  n.at<0>(seconds{24.});
+  n.at<1>(minutes{25.});
+
+  assert(nᵀ.at<0>() == seconds{24.});
+  assert(nᵀ.at<1>() == minutes{25.});
 
   return 0;
 }()};

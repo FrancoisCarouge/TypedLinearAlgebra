@@ -31,52 +31,24 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <cassert>
-#include <cstddef>
-#include <mdspan>
-#include <type_traits>
+#include <units/length.h>
+#include <units/velocity.h>
+
+#include <functional>
+#include <tuple>
 
 namespace fcarouge::test {
-using representation = double;
-
-template <auto QuantityReference>
-using quantity = mp_units::quantity<QuantityReference, representation>;
-
-using mp_units::si::unit_symbols::m;
-
 namespace {
-//! @test Verifies the singleton by singleton matrix `add` function.
-[[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
+using position = units::length::meters<double>;
+using velocity = units::velocity::meters_per_second<double>;
 
-  double storage_a{0.};
-  double storage_b{0.};
-  double storage_r{0.};
+//! @test Verifies the magnitude operation rejects a non-uniform vector.
+[[maybe_unused]] const auto test{[] {
+  const matrix<double, std::tuple<position, velocity>,
+               std::tuple<std::identity>>
+      v{};
 
-  std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
-
-  row_vector<representation, length> a{span_a};
-  row_vector<representation, length> b{span_b};
-  row_vector<representation, length> r{span_r};
-
-  a = 2. * m;
-  b = 3. * m;
-  add(a, b, r);
-
-  assert(5. * m == r);
-  assert(5. * m == r());
-  assert(5. * m == r[]);
-  assert(5. * m == r.at());
-  assert(5. * m == r.at<>());
-  assert(5. * m == r.at<length>());
-
-  static_assert(not std::is_reference_v<decltype(r())>);
-  static_assert(not std::is_reference_v<decltype(r[])>);
-  static_assert(not std::is_reference_v<decltype(r.at())>);
-  static_assert(not std::is_reference_v<decltype(r.at<>())>);
-  static_assert(not std::is_reference_v<decltype(r.at<length>())>);
+  [[maybe_unused]] const auto value{magnitude(v)};
 
   return 0;
 }()};

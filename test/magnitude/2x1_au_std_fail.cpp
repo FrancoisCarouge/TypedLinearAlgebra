@@ -31,52 +31,33 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <cassert>
+#include <au/units/meters.hh>
+#include <au/units/seconds.hh>
+
 #include <cstddef>
+#include <functional>
 #include <mdspan>
-#include <type_traits>
+#include <tuple>
 
 namespace fcarouge::test {
 using representation = double;
 
-template <auto QuantityReference>
-using quantity = mp_units::quantity<QuantityReference, representation>;
-
-using mp_units::si::unit_symbols::m;
-
 namespace {
-//! @test Verifies the singleton by singleton matrix `add` function.
-[[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
+//! @test Verifies the magnitude operation rejects a non-uniform vector with
+//! the mdspan-backed, non-owning storage backend.
+[[maybe_unused]] const auto test{[] {
+  using position = au::QuantityD<au::Meters>;
+  using velocity = au::QuantityD<au::UnitQuotientT<au::Meters, au::Seconds>>;
 
-  double storage_a{0.};
-  double storage_b{0.};
-  double storage_r{0.};
+  double storage[]{0., 0.};
 
-  std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
+  std::mdspan span{&storage[0], std::extents<std::size_t, 2, 1>{}};
 
-  row_vector<representation, length> a{span_a};
-  row_vector<representation, length> b{span_b};
-  row_vector<representation, length> r{span_r};
+  const matrix<representation, std::tuple<position, velocity>,
+               std::tuple<std::identity>>
+      v{span};
 
-  a = 2. * m;
-  b = 3. * m;
-  add(a, b, r);
-
-  assert(5. * m == r);
-  assert(5. * m == r());
-  assert(5. * m == r[]);
-  assert(5. * m == r.at());
-  assert(5. * m == r.at<>());
-  assert(5. * m == r.at<length>());
-
-  static_assert(not std::is_reference_v<decltype(r())>);
-  static_assert(not std::is_reference_v<decltype(r[])>);
-  static_assert(not std::is_reference_v<decltype(r.at())>);
-  static_assert(not std::is_reference_v<decltype(r.at<>())>);
-  static_assert(not std::is_reference_v<decltype(r.at<length>())>);
+  [[maybe_unused]] const auto value{magnitude(v)};
 
   return 0;
 }()};

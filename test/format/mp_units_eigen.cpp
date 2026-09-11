@@ -32,9 +32,9 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
-#include <cstddef>
-#include <mdspan>
-#include <type_traits>
+#include <concepts>
+#include <format>
+#include <tuple>
 
 namespace fcarouge::test {
 using representation = double;
@@ -43,40 +43,47 @@ template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
 using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::m2;
+
+using length = quantity<mp_units::isq::length[m]>;
 
 namespace {
-//! @test Verifies the singleton by singleton matrix `add` function.
+using singleton = row_vector<representation, length>;
+using row = row_vector<representation, length, length, length>;
+using column = column_vector<representation, length, length, length>;
+using rectangle = matrix<representation, std::tuple<length, length>,
+                         std::tuple<length, length>>;
+
+//! @test Verifies the formatter properties for the mp-units and Eigen
+//! composition.
+static_assert(std::semiregular<std::formatter<singleton, char>>);
+static_assert(std::semiregular<std::formatter<row, char>>);
+static_assert(std::semiregular<std::formatter<column, char>>);
+static_assert(std::semiregular<std::formatter<rectangle, char>>);
+static_assert(std::formattable<singleton, char>);
+static_assert(std::formattable<row, char>);
+static_assert(std::formattable<column, char>);
+static_assert(std::formattable<rectangle, char>);
+
+//! @test Verifies the format algorithm for mp-units quantity typed matrices
+//! with the Eigen backend: the rank-0 singleton, the row vector, the column
+//! vector, and the general rectangular overloads.
 [[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
+  const singleton s{9. * m};
+  assert(std::format("{}", s) == "9 m");
 
-  double storage_a{0.};
-  double storage_b{0.};
-  double storage_r{0.};
+  const row r{1. * m, 2. * m, 3. * m};
+  assert(std::format("{}", r) == "[1 m, 2 m, 3 m]");
 
-  std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
+  const column c{1. * m, 2. * m, 3. * m};
+  assert(std::format("{}", c) == "[[1 m], [2 m], [3 m]]");
 
-  row_vector<representation, length> a{span_a};
-  row_vector<representation, length> b{span_b};
-  row_vector<representation, length> r{span_r};
-
-  a = 2. * m;
-  b = 3. * m;
-  add(a, b, r);
-
-  assert(5. * m == r);
-  assert(5. * m == r());
-  assert(5. * m == r[]);
-  assert(5. * m == r.at());
-  assert(5. * m == r.at<>());
-  assert(5. * m == r.at<length>());
-
-  static_assert(not std::is_reference_v<decltype(r())>);
-  static_assert(not std::is_reference_v<decltype(r[])>);
-  static_assert(not std::is_reference_v<decltype(r.at())>);
-  static_assert(not std::is_reference_v<decltype(r.at<>())>);
-  static_assert(not std::is_reference_v<decltype(r.at<length>())>);
+  rectangle e;
+  e.at<0, 0>(1. * m2);
+  e.at<0, 1>(2. * m2);
+  e.at<1, 0>(3. * m2);
+  e.at<1, 1>(4. * m2);
+  assert(std::format("{}", e) == "[[1 m², 2 m²], [3 m², 4 m²]]");
 
   return 0;
 }()};

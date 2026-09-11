@@ -34,7 +34,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
-#include <type_traits>
 
 namespace fcarouge::test {
 using representation = double;
@@ -45,38 +44,22 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 using mp_units::si::unit_symbols::m;
 
 namespace {
-//! @test Verifies the singleton by singleton matrix `add` function.
+//! @test Verifies the magnitude of a row vector, the Euclidean L2 norm, with
+//! the mdspan-backed, non-owning storage backend. Also verifies a negative
+//! component squares away to a positive magnitude.
 [[maybe_unused]] const auto test{[] -> int {
   using length = quantity<mp_units::isq::length[m]>;
 
-  double storage_a{0.};
-  double storage_b{0.};
-  double storage_r{0.};
+  double storage[]{0., 0.};
 
-  std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
+  std::mdspan span{&storage[0], std::extents<std::size_t, 1, 2>{}};
 
-  row_vector<representation, length> a{span_a};
-  row_vector<representation, length> b{span_b};
-  row_vector<representation, length> r{span_r};
+  row_vector<representation, length, length> v2{span};
 
-  a = 2. * m;
-  b = 3. * m;
-  add(a, b, r);
+  v2.at<0>(-3. * m);
+  v2.at<1>(4. * m);
 
-  assert(5. * m == r);
-  assert(5. * m == r());
-  assert(5. * m == r[]);
-  assert(5. * m == r.at());
-  assert(5. * m == r.at<>());
-  assert(5. * m == r.at<length>());
-
-  static_assert(not std::is_reference_v<decltype(r())>);
-  static_assert(not std::is_reference_v<decltype(r[])>);
-  static_assert(not std::is_reference_v<decltype(r.at())>);
-  static_assert(not std::is_reference_v<decltype(r.at<>())>);
-  static_assert(not std::is_reference_v<decltype(r.at<length>())>);
+  assert(magnitude(v2) == 5. * m);
 
   return 0;
 }()};

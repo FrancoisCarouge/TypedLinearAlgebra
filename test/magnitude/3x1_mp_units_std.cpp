@@ -34,7 +34,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
-#include <type_traits>
 
 namespace fcarouge::test {
 using representation = double;
@@ -42,41 +41,25 @@ using representation = double;
 template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
-using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::N;
 
 namespace {
-//! @test Verifies the singleton by singleton matrix `add` function.
+//! @test Verifies the magnitude, the Euclidean L2 norm, of a column vector of
+//! quantities with the mdspan-backed, non-owning storage backend.
 [[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
+  using force = quantity<mp_units::isq::force[N]>;
 
-  double storage_a{0.};
-  double storage_b{0.};
-  double storage_r{0.};
+  double storage[]{0., 0., 0.};
 
-  std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
+  std::mdspan span{&storage[0], std::extents<std::size_t, 3, 1>{}};
 
-  row_vector<representation, length> a{span_a};
-  row_vector<representation, length> b{span_b};
-  row_vector<representation, length> r{span_r};
+  column_vector<representation, force, force, force> v3{span};
 
-  a = 2. * m;
-  b = 3. * m;
-  add(a, b, r);
+  v3.at<0>(2. * N);
+  v3.at<1>(3. * N);
+  v3.at<2>(6. * N);
 
-  assert(5. * m == r);
-  assert(5. * m == r());
-  assert(5. * m == r[]);
-  assert(5. * m == r.at());
-  assert(5. * m == r.at<>());
-  assert(5. * m == r.at<length>());
-
-  static_assert(not std::is_reference_v<decltype(r())>);
-  static_assert(not std::is_reference_v<decltype(r[])>);
-  static_assert(not std::is_reference_v<decltype(r.at())>);
-  static_assert(not std::is_reference_v<decltype(r.at<>())>);
-  static_assert(not std::is_reference_v<decltype(r.at<length>())>);
+  assert(magnitude(v3) == 7. * N);
 
   return 0;
 }()};
