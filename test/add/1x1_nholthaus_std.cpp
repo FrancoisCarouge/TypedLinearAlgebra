@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,13 +27,45 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("1x1_au_std" BACKENDS "au_std")
-pass("1x1_chrono_std" BACKENDS "chrono_std")
-pass("1x1_mp_units_std" BACKENDS "mp_units_std")
-pass("1x1_nholthaus_std" BACKENDS "nholthaus_std")
-pass("1x2_au_std" BACKENDS "au_std")
-pass("1x2_chrono_std" BACKENDS "chrono_std")
-pass("1x2_mp_units_std" BACKENDS "mp_units_std")
-pass("1x2_nholthaus_std" BACKENDS "nholthaus_std")
+#include "fcarouge/linalg.hpp"
+
+#include <units/length.h>
+
+#include <cassert>
+#include <cstddef>
+#include <mdspan>
+
+namespace fcarouge::test {
+using units::m;
+using representation = double;
+
+namespace {
+//! @test Verifies the singleton by singleton matrix `add` function with
+//! nholthaus/units element types.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = units::length::meters<representation>;
+
+  representation storage_a{0.};
+  representation storage_b{0.};
+  representation storage_r{0.};
+
+  std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
+  std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
+  std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
+
+  row_vector<representation, length> a{span_a};
+  row_vector<representation, length> b{span_b};
+  row_vector<representation, length> r{span_r};
+
+  a.at(2. * m);
+  b.at(3. * m);
+  add(a, b, r);
+
+  assert(r.at() == 5. * m);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
