@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,13 +27,38 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("1x1_au_eigen" BACKENDS "au_eigen")
-pass("1x1_eigen" BACKENDS "eigexed" "nested_typed_eigen")
-pass("1x1_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("1x2_chrono_eigen" BACKENDS "chrono_eigen")
-pass("1x2_eigen" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("1x2_nholthaus_eigen" BACKENDS "nholthaus_eigen")
-pass("3x1_eigen" BACKENDS "eigexed" "nested_typed_eigen")
-pass("2x3_eigen" BACKENDS "eigexed" "nested_typed_eigen")
+#include "fcarouge/linalg.hpp"
+
+#include <units/length.h>
+#include <units/velocity.h>
+
+#include <cassert>
+
+namespace fcarouge::test {
+using units::m;
+using units::mps;
+using representation = double;
+
+namespace {
+//! @test Verifies the minus unary operator for a row vector of heterogeneous
+//! nholthaus/units element types.
+[[maybe_unused]] const auto test{[] -> int {
+  using position = units::length::meters<representation>;
+  using velocity = units::velocity::meters_per_second<representation>;
+
+  const row_vector<representation, position, velocity> a{1. * m, 2. * mps};
+  const row_vector<representation, position, velocity> r{-a};
+
+  assert(-1. * m == r.at<0>());
+  assert(-2. * mps == r.at<1>());
+
+  // The operand is not mutated.
+  assert(1. * m == a.at<0>());
+  assert(2. * mps == a.at<1>());
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
