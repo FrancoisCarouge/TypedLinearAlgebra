@@ -31,6 +31,10 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <units/area.h>
+#include <units/length.h>
+#include <units/volume.h>
+
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
@@ -39,33 +43,30 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 using representation = double;
 
-template <auto QuantityReference>
-using quantity = mp_units::quantity<QuantityReference, representation>;
-
-using mp_units::si::unit_symbols::m;
-using mp_units::si::unit_symbols::m2;
-using mp_units::si::unit_symbols::m3;
-
 namespace {
-//! @test Verifies the matrix-vector product algorithm accepts row-oriented,
-//! one-by-n storage for the input and output vectors, not only the
-//! conventional n-by-one column orientation.
+//! @test Verifies the matrix-vector product algorithm for a two-by-two
+//! matrix and a two element column vector with nholthaus/units element
+//! types.
 [[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
-  using volume = quantity<mp_units::isq::volume[m3]>;
+  using units::m;
+  using units::m2;
+  using units::m3;
+
+  using length = units::length::meters<representation>;
+  using volume = units::volume::cubic_meters<representation>;
   using indexes = std::tuple<length, length>;
 
-  double storage_a[4]{};
-  double storage_x[2]{};
-  double storage_y[2]{};
+  representation storage_a[4]{};
+  representation storage_x[2]{};
+  representation storage_y[2]{};
 
   std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 2, 2>{}};
-  std::mdspan span_x{&storage_x[0], std::extents<std::size_t, 1, 2>{}};
-  std::mdspan span_y{&storage_y[0], std::extents<std::size_t, 1, 2>{}};
+  std::mdspan span_x{&storage_x[0], std::extents<std::size_t, 2, 1>{}};
+  std::mdspan span_y{&storage_y[0], std::extents<std::size_t, 2, 1>{}};
 
   matrix<representation, indexes, indexes> a{span_a};
-  row_vector<representation, length, length> x{span_x};
-  row_vector<representation, volume, volume> y{span_y};
+  column_vector<representation, length, length> x{span_x};
+  column_vector<representation, volume, volume> y{span_y};
 
   a.at<0, 0>(1. * m2);
   a.at<0, 1>(2. * m2);
