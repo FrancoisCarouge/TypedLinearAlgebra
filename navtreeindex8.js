@@ -1,5 +1,10 @@
 var NAVTREEINDEX8 =
 {
+"typed__vector__as__quantity_8cpp_source.xhtml":[18,0,6,17,1],
+"underlying_23x3_8cpp.xhtml":[18,0,6,29,0],
+"underlying_23x3_8cpp.xhtml#a99bff07aa65390566aef46990bf6a2c3":[18,0,6,29,0,0],
+"underlying_23x3_8cpp_source.xhtml":[18,0,6,29,0],
+"uniform__typed__matrix_8cpp.xhtml":[18,0,6,30,2],
 "uniform__typed__matrix_8cpp.xhtml#a12fe8c59c681cdb089ab5577a7d216e5":[18,0,6,30,2,0],
 "uniform__typed__matrix_8cpp_source.xhtml":[18,0,6,30,2],
 "unit_test_coverage.xhtml":[8],
