@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,21 +27,32 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-fail("1x1_au_eigen_fail" BACKENDS "au_eigen")
-fail("1x1_chrono_eigen_fail" BACKENDS "chrono_eigen")
-fail("1x1_mp_units_eigen_fail" BACKENDS "mp_units_eigen")
-fail("1x1_nholthaus_eigen_fail" BACKENDS "nholthaus_eigen")
-fail("1x2_au_eigen_fail" BACKENDS "au_eigen")
-fail("1x2_mp_units_eigen_fail" BACKENDS "mp_units_eigen")
-fail("1x2_nholthaus_eigen_fail" BACKENDS "nholthaus_eigen")
+#include "fcarouge/linalg.hpp"
 
-pass("1x1_au_eigen" BACKENDS "au_eigen")
-pass("1x1_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("1x1_nholthaus_eigen" BACKENDS "nholthaus_eigen")
-pass("1x2_au_eigen" BACKENDS "au_eigen")
-pass("1x2_chrono_eigen" BACKENDS "chrono_eigen")
-pass("1x2_eigen" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("1x2_nholthaus_eigen" BACKENDS "nholthaus_eigen")
+#include <units/length.h>
+
+#include <cassert>
+
+namespace fcarouge::test {
+using units::m;
+using representation = double;
+
+namespace {
+//! @test Verifies the singleton by singleton matrix addition operator.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = units::length::meters<representation>;
+
+  const row_vector<representation, length> a{2. * m};
+  const row_vector<representation, length> b{3. * m};
+  const row_vector<representation, length> r{a + b};
+
+  assert(5. * m == r.at());
+  assert(5. * m == r[]);
+  assert(5. * m == r());
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
