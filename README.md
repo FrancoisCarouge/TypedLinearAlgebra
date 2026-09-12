@@ -18,6 +18,8 @@ std::println("{}", x * transposed(x));
 
 # Installation & Usage
 
+Requires CMake ≥ 4.3 and a C++26 compiler; see [INSTALL.md](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/INSTALL.md) for details.
+
 Example of installation commands in Shell:
 
 ```shell

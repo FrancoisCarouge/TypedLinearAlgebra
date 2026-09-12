@@ -1,5 +1,7 @@
 # Installation
 
+Requires CMake ≥ 4.3 and a C++26 compiler (Clang with libc++, GCC 14+, or MSVC `/std:c++latest`).
+
 Download and install the [latest release package](https://github.com/FrancoisCarouge/TypedLinearAlgebra/releases). Alternatively, you may install and use the library in your projects by cloning the repository, configuring, and installing the project:
 
 ```shell
