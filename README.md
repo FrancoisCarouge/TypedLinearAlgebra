@@ -233,6 +233,19 @@ This library was [presented](https://schedule.cppnow.org/session/2026/typed-line
 
 [![Typed Linear Algebra - How to Not Crash on Mars - François Carouge - C++Now 2026](https://francoiscarouge.github.io/TypedLinearAlgebra/typed_linear_algebra/youtube.png)](https://www.youtube.com/watch?v=xZO7X8LH6Dg)
 
+## Roadmap & Vision
+
+The library's core `typed_matrix` API, the element-casting customization point, and the backend plug-in shape are stable in practice but not yet frozen; version 1.0 will mark a settled public API and ABI-relevant surface, complete operator coverage matching `std::linalg`'s algorithm set, and every backend exercised by the same test matrix, with the longer-term ambition of tracking `std::linalg` as it grows in the standard library implementations so that dimensional and semantic type safety becomes a thin, zero-overhead layer over the standard's own primitives, rather than a competing linear algebra library, and the `std::mdspan`-based backend needs less bridging as `std::linalg` gains adoption, not more.
+
+Toward version 1.0:
+
+- Match `std::linalg`'s operator and algorithm coverage.
+- Track `std::linalg`/`std::mdspan` maturity; shrink plug-ins.
+- Broaden the test matrix: one safety guarantee, one test.
+- Stabilize the public API and element-casting customization points.
+- Evaluate compatibility with more strong types and backends.
+- Evaluate integration with established use cases.
+
 ## Lessons Learned
 
 Type safety cannot be guaranteed at compilation time without **index safety**. The indexes can either be non-type template parameters or strong types overloadings. Converting a runtime index to a dependent template type is not possible in C++. A proxy reference could be used to allow traditional assignment syntax but the runtime check and extra indirection are not interesting tradeoffs. A template call operator can be used for getting a type safe value but impractical syntax for setting. Without index safety, the accepted tradeoff is a templated index `at<i, j>()` method.
