@@ -44,6 +44,7 @@ var NAVTREE =
     [ "More", "index.xhtml#more", [
       [ "Use Cases", "index.xhtml#use-cases", null ],
       [ "As seen at CppNow 2026", "index.xhtml#as-seen-at-cppnow-2026", null ],
+      [ "Roadmap & Vision", "index.xhtml#roadmap--vision", null ],
       [ "Lessons Learned", "index.xhtml#lessons-learned", null ],
       [ "Projects", "index.xhtml#projects", null ],
       [ "Resources", "index.xhtml#resources", null ],
@@ -139,12 +140,12 @@ var NAVTREEINDEX =
 "1x1__array_8cpp.xhtml",
 "at_23x3_8cpp.xhtml",
 "dir_df5deb2192b04082d8407ec09bc6e3ec.xhtml",
-"matrix__product_21x1__mp__units__std_8cpp.xhtml",
-"namespacefcarouge_1_1test.xhtml#af24586dd705e9c93d9869bce929d5213",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02call__3x3_8cpp_03.xhtml#acbd349324a44aae935b44660bee11abd",
-"row__mp__units__std_8cpp_source.xhtml",
-"structstd_1_1tuple__element_3_01_index_00_01mp__units_1_1quantity_3_01_reference_00_01_representation_01_4_01_4.xhtml#a0e7d7e1a37e5282837ff8e70e2e5feac",
-"typed__vector__as__quantity_8cpp_source.xhtml"
+"matrix__product_21x1__au__std_8cpp_source.xhtml",
+"namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02call__3x3_8cpp_03.xhtml",
+"row__mp__units__std_8cpp.xhtml#a858d029755a6b54383d754a8dd195c88",
+"structstd_1_1tuple__element_3_01_index_00_01mp__units_1_1quantity_3_01_reference_00_01_representation_01_4_01_4.xhtml",
+"typed__vector__as__quantity_8cpp.xhtml#a9de60326d723bdbd9528d145e41c0a07"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

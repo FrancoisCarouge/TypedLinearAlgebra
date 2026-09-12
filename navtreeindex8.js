@@ -1,5 +1,6 @@
 var NAVTREEINDEX8 =
 {
+"typed__vector__as__quantity_8cpp.xhtml#a9de60326d723bdbd9528d145e41c0a07":[18,0,6,17,1,3],
 "typed__vector__as__quantity_8cpp_source.xhtml":[18,0,6,17,1],
 "underlying_23x3_8cpp.xhtml":[18,0,6,29,0],
 "underlying_23x3_8cpp.xhtml#a99bff07aa65390566aef46990bf6a2c3":[18,0,6,29,0,0],

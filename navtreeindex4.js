@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7":[15,0,1,5,146],
 "namespacefcarouge_1_1test.xhtml#af24586dd705e9c93d9869bce929d5213":[15,0,1,5,147],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1_8cpp_03.xhtml":[15,0,1,5,0],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1_8cpp_03.xhtml#a307416cd408bb3cea5e5a4d316135bc3":[15,0,1,5,0,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "namespacefcarouge_1_1test_1_1anonymous__namespace_02call__3x1_8cpp_03.xhtml":[15,0,1,5,94],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_02call__3x1_8cpp_03.xhtml#a0182412ce9b7ff64736da9306e3e6b8e":[15,0,1,5,94,0],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_02call__3x1__const_8cpp_03.xhtml":[15,0,1,5,95],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02call__3x1__const_8cpp_03.xhtml#acd344afacc22b53b6a955ae83b95ce7b":[15,0,1,5,95,0],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02call__3x3_8cpp_03.xhtml":[15,0,1,5,96]
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02call__3x1__const_8cpp_03.xhtml#acd344afacc22b53b6a955ae83b95ce7b":[15,0,1,5,95,0]
 };
