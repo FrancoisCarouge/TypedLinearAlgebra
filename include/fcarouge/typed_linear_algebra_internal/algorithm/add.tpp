@@ -154,7 +154,7 @@ constexpr void add(const rank_typed_matrix<2> auto &lhs,
 
       static_assert(
           requires {
-            std::declval<result_element>() =
+            std::declval<result_element &>() =
                 std::declval<lhs_element>() + std::declval<rhs_element>();
           }, "Matrix addition requires compatible element types.");
     });
@@ -184,7 +184,7 @@ constexpr void add(const rank_typed_matrix<1> auto &lhs,
 
     static_assert(
         requires {
-          std::declval<result_element>() =
+          std::declval<result_element &>() =
               std::declval<lhs_element>() + std::declval<rhs_element>();
         }, "Matrix addition requires compatible element types.");
   });
@@ -209,7 +209,7 @@ constexpr void add(const rank_typed_matrix<0> auto &lhs,
 
   static_assert(
       requires {
-        std::declval<result_element>() =
+        std::declval<result_element &>() =
             std::declval<lhs_element>() + std::declval<rhs_element>();
       }, "Matrix addition requires compatible element types.");
 
