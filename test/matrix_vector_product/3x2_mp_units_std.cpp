@@ -44,6 +44,7 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 
 using mp_units::si::unit_symbols::m;
 using mp_units::si::unit_symbols::m2;
+using mp_units::si::unit_symbols::m3;
 
 namespace {
 //! @test Verifies the matrix-vector product algorithm for a non-square,
@@ -51,6 +52,7 @@ namespace {
 //! element column vector.
 [[maybe_unused]] const auto test{[] -> int {
   using length = quantity<mp_units::isq::length[m]>;
+  using volume = quantity<mp_units::isq::volume[m3]>;
   using row_indexes = std::tuple<length, length, length>;
   using column_indexes = std::tuple<length, length>;
 
@@ -64,7 +66,7 @@ namespace {
 
   matrix<representation, row_indexes, column_indexes> a{span_a};
   column_vector<representation, length, length> x{span_x};
-  column_vector<representation, length, length, length> y{span_y};
+  column_vector<representation, volume, volume, volume> y{span_y};
 
   a.at<0, 0>(1. * m2);
   a.at<0, 1>(2. * m2);
@@ -78,9 +80,9 @@ namespace {
 
   matrix_vector_product(a, x, y);
 
-  assert((y.at<0>() == 3. * m));
-  assert((y.at<1>() == 7. * m));
-  assert((y.at<2>() == 11. * m));
+  assert((y.at<0>() == 3. * m3));
+  assert((y.at<1>() == 7. * m3));
+  assert((y.at<2>() == 11. * m3));
 
   return 0;
 }()};

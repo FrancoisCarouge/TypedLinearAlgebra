@@ -32,6 +32,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
+#include <chrono>
 #include <cstddef>
 #include <mdspan>
 #include <tuple>
@@ -39,46 +40,41 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 using representation = double;
 
-template <auto QuantityReference>
-using quantity = mp_units::quantity<QuantityReference, representation>;
-
-using mp_units::si::unit_symbols::m;
-using mp_units::si::unit_symbols::m2;
-using mp_units::si::unit_symbols::m3;
-
 namespace {
 //! @test Verifies the matrix-vector product algorithm accepts row-oriented,
 //! one-by-n storage for the input and output vectors, not only the
-//! conventional n-by-one column orientation.
+//! conventional n-by-one column orientation, with std::chrono element
+//! types.
 [[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
-  using volume = quantity<mp_units::isq::volume[m3]>;
-  using indexes = std::tuple<length, length>;
+  using seconds = std::chrono::duration<representation>;
 
-  double storage_a[4]{};
-  double storage_x[2]{};
-  double storage_y[2]{};
+  using row_indexes = std::tuple<seconds, seconds>;
+  using column_indexes = std::tuple<representation, representation>;
+
+  representation storage_a[4]{};
+  representation storage_x[2]{};
+  representation storage_y[2]{};
 
   std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 2, 2>{}};
   std::mdspan span_x{&storage_x[0], std::extents<std::size_t, 1, 2>{}};
   std::mdspan span_y{&storage_y[0], std::extents<std::size_t, 1, 2>{}};
 
-  matrix<representation, indexes, indexes> a{span_a};
-  row_vector<representation, length, length> x{span_x};
-  row_vector<representation, volume, volume> y{span_y};
+  matrix<representation, row_indexes, column_indexes> a{span_a};
+  row_vector<representation, representation, representation> x{span_x};
+  row_vector<representation, seconds, seconds> y{span_y};
 
-  a.at<0, 0>(1. * m2);
-  a.at<0, 1>(2. * m2);
-  a.at<1, 0>(3. * m2);
-  a.at<1, 1>(4. * m2);
+  a.at<0, 0>(seconds{1.});
+  a.at<0, 1>(seconds{2.});
+  a.at<1, 0>(seconds{3.});
+  a.at<1, 1>(seconds{4.});
 
-  x.at<0>(5. * m);
-  x.at<1>(6. * m);
+  x.at<0>(5.);
+  x.at<1>(6.);
 
   matrix_vector_product(a, x, y);
 
-  assert((y.at<0>() == 17. * m3));
-  assert((y.at<1>() == 39. * m3));
+  assert((y.at<0>() == seconds{17.}));
+  assert((y.at<1>() == seconds{39.}));
 
   return 0;
 }()};

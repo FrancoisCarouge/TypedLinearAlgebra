@@ -48,8 +48,10 @@ namespace {
   using au::symbols::m;
 
   constexpr auto m2{au::squared(m)};
+  constexpr auto m3{au::cubed(m)};
 
   using length = au::QuantityD<au::Meters>;
+  using volume = au::QuantityD<au::UnitPowerT<au::Meters, 3>>;
   using indexes = std::tuple<length, length>;
 
   double storage_a[4]{};
@@ -62,7 +64,7 @@ namespace {
 
   matrix<representation, indexes, indexes> a{span_a};
   column_vector<representation, length, length> x{span_x};
-  column_vector<representation, length, length> y{span_y};
+  column_vector<representation, volume, volume> y{span_y};
 
   a.at<0, 0>(1. * m2);
   a.at<0, 1>(2. * m2);
@@ -74,8 +76,8 @@ namespace {
 
   matrix_vector_product(a, x, y);
 
-  assert((y.at<0>() == 17. * m));
-  assert((y.at<1>() == 39. * m));
+  assert((y.at<0>() == 17. * m3));
+  assert((y.at<1>() == 39. * m3));
 
   return 0;
 }()};
