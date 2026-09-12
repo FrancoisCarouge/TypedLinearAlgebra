@@ -1,5 +1,16 @@
 var NAVTREEINDEX1 =
 {
+"au__eigen_2fcarouge_2linalg_8hpp_source.xhtml":[18,0,5,1,0,0],
+"au__std_2fcarouge_2linalg_8hpp.xhtml":[18,0,5,2,0,0],
+"au__std_2fcarouge_2linalg_8hpp_source.xhtml":[18,0,5,2,0,0],
+"call__1x1_8cpp.xhtml":[18,0,6,20,0],
+"call__1x1_8cpp.xhtml#ab5a1732856fbe001990111abe20575b7":[18,0,6,20,0,0],
+"call__1x1_8cpp_source.xhtml":[18,0,6,20,0],
+"call__1x1__const_8cpp.xhtml":[18,0,6,20,1],
+"call__1x1__const_8cpp.xhtml#a164724b171519a3cfab9e9b264d13cc5":[18,0,6,20,1,0],
+"call__1x1__const_8cpp_source.xhtml":[18,0,6,20,1],
+"call__1x3_8cpp.xhtml":[18,0,6,20,2],
+"call__1x3_8cpp.xhtml#aa29122f01829ce64d7265306d89f52b0":[18,0,6,20,2,0],
 "call__1x3_8cpp_source.xhtml":[18,0,6,20,2],
 "call__1x3__const_8cpp.xhtml":[18,0,6,20,3],
 "call__1x3__const_8cpp.xhtml#ad636dc51639bc2a178454413b68f04ea":[18,0,6,20,3,0],
@@ -157,7 +168,6 @@ var NAVTREEINDEX1 =
 "constructor_21x1__au__eigen_8cpp.xhtml":[18,0,6,6,2],
 "constructor_21x1__au__eigen_8cpp_source.xhtml":[18,0,6,6,2],
 "constructor_21x1__au__std_8cpp.xhtml":[18,0,6,6,3],
-"constructor_21x1__au__std_8cpp.xhtml#a2fafc66d8176cae396de1ad6b8e1c7eb":[18,0,6,6,3,0],
 "constructor_21x1__au__std_8cpp_source.xhtml":[18,0,6,6,3],
 "constructor_21x1__mp__units__eigen_8cpp.xhtml":[18,0,6,6,5],
 "constructor_21x1__mp__units__eigen_8cpp_source.xhtml":[18,0,6,6,5],
@@ -239,15 +249,5 @@ var NAVTREEINDEX1 =
 "dir_ee1764ef7e89f8bab90de731673224c8.xhtml":[18,0,6,18],
 "dir_f408fcf1297947454c84a3486bce03f6.xhtml":[18,0,6,17],
 "dir_f423392bc0209ba027827651fa50293e.xhtml":[18,0,6,27],
-"dir_f8792443906585b6c5977f372edea2ac.xhtml":[18,0,5,12,0],
-"dir_ff98015093e6fd48c08c0eb999642463.xhtml":[18,0,5,2,0],
-"distinct__typed__matrix_8cpp.xhtml":[18,0,6,8,2],
-"distinct__typed__matrix_8cpp.xhtml#a6efa89a7d955a9ff933939d8de575931":[18,0,6,8,2,0],
-"distinct__typed__matrix_8cpp_source.xhtml":[18,0,6,8,2],
-"division_21x1__au__eigen_8cpp.xhtml":[18,0,6,9,0],
-"division_21x1__au__eigen_8cpp_source.xhtml":[18,0,6,9,0],
-"division_21x1__mp__units__eigen_8cpp.xhtml":[18,0,6,9,1],
-"division_21x1__mp__units__eigen_8cpp_source.xhtml":[18,0,6,9,1],
-"division_22x1__au__eigen_8cpp.xhtml":[18,0,6,9,2],
-"division_22x1__au__eigen_8cpp.xhtml#a56a564179f4ddcea5c3d7b57a469c441":[18,0,6,9,2,0]
+"dir_f8792443906585b6c5977f372edea2ac.xhtml":[18,0,5,12,0]
 };

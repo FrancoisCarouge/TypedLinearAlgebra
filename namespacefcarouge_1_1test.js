@@ -84,6 +84,9 @@ var namespacefcarouge_1_1test =
       [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__chrono__eigen_8cpp_03.xhtml#a244e284ab27387d9c6534963a7f0619e", null ],
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__chrono__eigen_8cpp_03.xhtml#a3e6323248ee7e328a318383ac50679c2", null ]
     ] ],
+    [ "anonymous_namespace{1x2_chrono_std.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__chrono__std_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__chrono__std_8cpp_03.xhtml#a91c02688984a097d0ea65516bf898381", null ]
+    ] ],
     [ "anonymous_namespace{1x2_eigen.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__eigen_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__eigen_8cpp_03.xhtml#aad6fb4d9d8300dafa20d7e0fe2ae0b8e", null ]
     ] ],

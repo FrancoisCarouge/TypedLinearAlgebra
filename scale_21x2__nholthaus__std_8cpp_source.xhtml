@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Typed Linear Algebra: /github/workspace/test/equal_to/1x1_nholthaus_std.cpp Source File</title>
+<title>Typed Linear Algebra: /github/workspace/test/scale/1x2_nholthaus_std.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,7 +74,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('1x1__nholthaus__std_8cpp_source.xhtml',''); initResizable(true); });
+$(function(){initNavTree('scale_21x2__nholthaus__std_8cpp_source.xhtml',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -100,10 +100,10 @@ $(function(){initNavTree('1x1__nholthaus__std_8cpp_source.xhtml',''); initResiza
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">1x1_nholthaus_std.cpp</div></div>
+  <div class="headertitle"><div class="title">1x2_nholthaus_std.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="1x1__nholthaus__std_8cpp.xhtml">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/* Typed Linear Algebra</span></div>
+<a href="scale_21x2__nholthaus__std_8cpp.xhtml">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/* Typed Linear Algebra</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">Version 0.3.0</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">https://github.com/FrancoisCarouge/TypedLinearAlgebra</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"></span> </div>
@@ -137,45 +137,60 @@ $(function(){initNavTree('1x1__nholthaus__std_8cpp_source.xhtml',''); initResiza
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;fcarouge/linalg.hpp&quot;</span></div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &lt;units/length.h&gt;</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &lt;cstddef&gt;</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#include &lt;mdspan&gt;</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a> {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">using </span>units::m;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a5d4f41ca132d253835af80fe3e24fe87">representation</a> = double;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="foldopen" id="foldopen00044" data-start="{" data-end="}">
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__nholthaus__std_8cpp_03.xhtml">   44</a></span><span class="keyword">namespace </span>{</div>
-<div class="foldopen" id="foldopen00047" data-start="{" data-end="};">
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__nholthaus__std_8cpp_03.xhtml#a731f4b20cad8620716a6aa2fde60882a">   47</a></span>[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> test{[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">length</a> = units::length::meters&lt;representation&gt;;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  representation storage{2.};</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  std::mdspan span{&amp;storage, std::extents&lt;std::size_t, 1, 1&gt;{}};</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">row_vector&lt;representation, length&gt;</a> a{span};</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  assert(a == 2. * m);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  assert(2. * m == a);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  assert(a != 3. * m);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}()};</div>
-</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>} <span class="comment">// namespace</span></div>
-</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>} <span class="comment">// namespace fcarouge::test</span></div>
-<div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a></div><div class="ttdoc">Strongly typed matrix.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__forward_8hpp_source.xhtml#l00043">typed_linear_algebra_forward.hpp:43</a></div></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &lt;units/velocity.h&gt;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#include &lt;cstddef&gt;</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &lt;mdspan&gt;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a> {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">using </span>literals::operator<span class="stringliteral">&quot;&quot;</span>_i;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">using </span>units::m;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">using </span>units::mps;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a5d4f41ca132d253835af80fe3e24fe87">representation</a> = double;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">namespace </span>{</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__au__std_8cpp_03.xhtml#a2fafc66d8176cae396de1ad6b8e1c7eb">test</a>{[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a21aa6560df20cbba27b26052c8097645">position</a> = units::length::meters&lt;representation&gt;;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#abd9234c79492b60204762a73f8bf32ea">velocity</a> = units::velocity::meters_per_second&lt;representation&gt;;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a5d4f41ca132d253835af80fe3e24fe87">representation</a> storage[]{0., 0.};</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  std::mdspan span{&amp;storage[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a30fd019eecebace40572712dbf29451f">row_vector&lt;representation, position, velocity&gt;</a> x{span};</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  x.at&lt;0_i&gt;(1. * m);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  x.at&lt;1_i&gt;(2. * mps);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  scale(2., x);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  assert(2. * m == x.at&lt;0&gt;());</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  assert(2. * m == x.at&lt;0_i&gt;());</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  assert(2. * m == x[0_i]);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  assert(2. * m == x(0_i));</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  assert(4. * mps == x.at&lt;1&gt;());</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  assert(4. * mps == x.at&lt;1_i&gt;());</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  assert(4. * mps == x[1_i]);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  assert(4. * mps == x(1_i));</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}()};</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>} <span class="comment">// namespace fcarouge::test</span></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03_xhtml_a21aa6560df20cbba27b26052c8097645"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a21aa6560df20cbba27b26052c8097645">fcarouge::sample::anonymous_namespace{au_eigen.cpp}::position</a></div><div class="ttdeci">au::QuantityD&lt; au::Meters &gt; position</div><div class="ttdef"><b>Definition</b> <a href="sample_2au__eigen_8cpp_source.xhtml#l00056">au_eigen.cpp:56</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03_xhtml_a5d4f41ca132d253835af80fe3e24fe87"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a5d4f41ca132d253835af80fe3e24fe87">fcarouge::sample::anonymous_namespace{au_eigen.cpp}::representation</a></div><div class="ttdeci">double representation</div><div class="ttdef"><b>Definition</b> <a href="sample_2au__eigen_8cpp_source.xhtml#l00055">au_eigen.cpp:55</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03_xhtml_abd9234c79492b60204762a73f8bf32ea"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#abd9234c79492b60204762a73f8bf32ea">fcarouge::sample::anonymous_namespace{au_eigen.cpp}::velocity</a></div><div class="ttdeci">au::QuantityD&lt; au::UnitQuotientT&lt; au::Meters, au::Seconds &gt; &gt; velocity</div><div class="ttdef"><b>Definition</b> <a href="sample_2au__eigen_8cpp_source.xhtml#l00057">au_eigen.cpp:57</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_021x1__au__std_8cpp_03_xhtml_a2fafc66d8176cae396de1ad6b8e1c7eb"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__au__std_8cpp_03.xhtml#a2fafc66d8176cae396de1ad6b8e1c7eb">fcarouge::test::anonymous_namespace{1x1_au_std.cpp}::test</a></div><div class="ttdeci">const auto test</div><div class="ttdef"><b>Definition</b> <a href="add_21x1__au__std_8cpp_source.xhtml#l00046">1x1_au_std.cpp:46</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a></div><div class="ttdoc">Unit, integration, regression, and usage tests.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1test_xhtml_a7194bc200104fad679ef56587aaec86f"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">fcarouge::test::length</a></div><div class="ttdeci">au::QuantityD&lt; au::Meters &gt; length</div><div class="ttdef"><b>Definition</b> <a href="test_2format_2au__eigen_8cpp_source.xhtml#l00044">au_eigen.cpp:44</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a30fd019eecebace40572712dbf29451f"><div class="ttname"><a href="namespacefcarouge.xhtml#a30fd019eecebace40572712dbf29451f">fcarouge::row_vector</a></div><div class="ttdeci">typed_row_vector&lt; eigen::row_vector&lt; Representation, sizeof...(Types)&gt;, Types... &gt; row_vector</div><div class="ttdoc">Quantity row vector with Au and Eigen implementations.</div><div class="ttdef"><b>Definition</b> <a href="au__eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00062">linalg.hpp:62</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.xhtml">test</a></li><li class="navelem"><a class="el" href="dir_6071415610cde49b13e346d9225dcd79.xhtml">equal_to</a></li><li class="navelem"><a class="el" href="1x1__nholthaus__std_8cpp.xhtml">1x1_nholthaus_std.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.xhtml">test</a></li><li class="navelem"><a class="el" href="dir_c79a22093641195bc122213b64dc8191.xhtml">scale</a></li><li class="navelem"><a class="el" href="scale_21x2__nholthaus__std_8cpp.xhtml">1x2_nholthaus_std.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
