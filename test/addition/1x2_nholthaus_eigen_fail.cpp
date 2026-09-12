@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.3.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,21 +27,46 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-fail("1x1_au_eigen_fail" BACKENDS "au_eigen")
-fail("1x1_chrono_eigen_fail" BACKENDS "chrono_eigen")
-fail("1x1_mp_units_eigen_fail" BACKENDS "mp_units_eigen")
-fail("1x1_nholthaus_eigen_fail" BACKENDS "nholthaus_eigen")
-fail("1x2_au_eigen_fail" BACKENDS "au_eigen")
-fail("1x2_mp_units_eigen_fail" BACKENDS "mp_units_eigen")
-fail("1x2_nholthaus_eigen_fail" BACKENDS "nholthaus_eigen")
+#include "fcarouge/linalg.hpp"
 
-pass("1x1_au_eigen" BACKENDS "au_eigen")
-pass("1x1_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("1x1_nholthaus_eigen" BACKENDS "nholthaus_eigen")
-pass("1x2_au_eigen" BACKENDS "au_eigen")
-pass("1x2_chrono_eigen" BACKENDS "chrono_eigen")
-pass("1x2_eigen" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("1x2_nholthaus_eigen" BACKENDS "nholthaus_eigen")
+#include <units/length.h>
+#include <units/velocity.h>
+
+#include <cassert>
+
+namespace fcarouge::test {
+using literals::operator""_i;
+using units::m;
+using units::mps;
+using representation = double;
+
+namespace {
+//! @test Verifies the addition operator with non-trivial types.
+[[maybe_unused]] const auto test{[] {
+  using position = units::length::meters<representation>;
+  using velocity = units::velocity::meters_per_second<representation>;
+
+  row_vector<representation, position, velocity> a{1. * m, 2. * mps};
+
+  // Intended:
+  // row_vector<representation, position, velocity> b{3. * m, 4. * mps};
+  row_vector<representation, velocity, position> b{3. * mps, 4. * m};
+
+  row_vector<representation, position, velocity> r{a + b};
+
+  assert(4. * m == r.at<0_i>());
+  assert(4. * m == r.at<0>());
+  assert(4. * m == r[0_i]);
+  assert(4. * m == r(0_i));
+
+  assert(6. * mps == r.at<1_i>());
+  assert(6. * mps == r.at<1>());
+  assert(6. * mps == r[1_i]);
+  assert(6. * mps == r(1_i));
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
