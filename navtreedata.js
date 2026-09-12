@@ -137,14 +137,14 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
-"au__eigen_2fcarouge_2linalg_8hpp_source.xhtml",
-"dir_ff98015093e6fd48c08c0eb999642463.xhtml",
-"matrix__rhs__mp__units__std__fail_8cpp.xhtml#a83c54c9a5c014687d7d4c60028096b27",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__au__std_8cpp_03.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02chrono__std_8cpp_03.xhtml#a88c0b9d881d10c0d95b0dc8d4aee9fe4",
-"same__shape_8cpp.xhtml",
-"subscript__1x1_8cpp.xhtml#a6e4f1284a948492f8dc505b2fa2ee946",
-"utility_8hpp.xhtml#a65885388521eb0c9b910fc421e70b040"
+"au_8hpp.xhtml",
+"dir_e63a96e5306ed2401e4f4403334a8083.xhtml",
+"matrix__product_22x2__au__std_8cpp.xhtml#a30c85420e33962d93f25401282142b3d",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__array_8cpp_03.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02chrono__eigen_8cpp_03.xhtml#a4c390ea4cc71cb5a0ea5ab7d430ab629",
+"same__as__typed__matrix_8cpp.xhtml",
+"structured__bindings_21x1__const_8cpp.xhtml",
+"uniform__typed__matrix_8cpp.xhtml#a12fe8c59c681cdb089ab5577a7d216e5"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

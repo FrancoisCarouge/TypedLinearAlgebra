@@ -103,6 +103,9 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{1x2_nholthaus_eigen.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__nholthaus__eigen_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__nholthaus__eigen_8cpp_03.xhtml#afb1eaa9ccdc7b6b877b055eef0bed9dd", null ]
     ] ],
+    [ "anonymous_namespace{1x2_nholthaus_eigen_fail.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__nholthaus__eigen__fail_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__nholthaus__eigen__fail_8cpp_03.xhtml#ad04ccbdcc8514fbab2fab87332d74cbc", null ]
+    ] ],
     [ "anonymous_namespace{1x2_nholthaus_std.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__nholthaus__std_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__nholthaus__std_8cpp_03.xhtml#a57de9d8ab8abed39fb81fdd7b6d70f25", null ]
     ] ],
