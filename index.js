@@ -31,8 +31,7 @@ var index =
       [ "Sponsors", "index.xhtml#sponsors", [
         [ "Corporations & Institutions", "index.xhtml#corporations--institutions", null ],
         [ "Individuals", "index.xhtml#individuals", null ]
-      ] ],
-      [ "Continuous Integration & Deployment Actions", "index.xhtml#continuous-integration--deployment-actions", null ]
+      ] ]
     ] ],
     [ "License", "index.xhtml#license", null ]
 ];

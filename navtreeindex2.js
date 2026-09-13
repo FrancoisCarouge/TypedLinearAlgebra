@@ -204,7 +204,6 @@ var NAVTREEINDEX2 =
 "index.xhtml#class-typed-matrix":[0,1,4],
 "index.xhtml#cmake":[0,1,0],
 "index.xhtml#concepts":[0,1,9],
-"index.xhtml#continuous-integration--deployment-actions":[0,2,8],
 "index.xhtml#corporations--institutions":[0,2,7,0],
 "index.xhtml#declaration":[0,1,4,0],
 "index.xhtml#format":[0,1,7],
@@ -249,5 +248,6 @@ var NAVTREEINDEX2 =
 "magnitude_21x2__nholthaus__eigen_8cpp.xhtml":[15,0,6,13,5],
 "magnitude_21x2__nholthaus__eigen_8cpp_source.xhtml":[15,0,6,13,5],
 "magnitude_22x1__au__std_8cpp.xhtml":[15,0,6,13,6],
-"magnitude_22x1__au__std_8cpp_source.xhtml":[15,0,6,13,6]
+"magnitude_22x1__au__std_8cpp_source.xhtml":[15,0,6,13,6],
+"magnitude_22x1__mp__units__eigen__fail_8cpp.xhtml":[15,0,6,13,9]
 };
