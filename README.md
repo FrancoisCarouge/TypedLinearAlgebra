@@ -1,4 +1,4 @@
-# Typed Linear Algebra
+# François Carouge / Typed Linear Algebra
 
 A C++ strongly-typed facade to a matrix linear algebra backend. Brings type safety to matrix operations. Enforces dimensional consistency and unit compatibility. Prevents common errors in scientific and engineering computations.
 
@@ -18,38 +18,35 @@ std::println("{}", x * transposed(x));
 
 # Installation & Usage
 
-Example of installation commands in Shell:
+See [INSTALL.md](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/INSTALL.md) for installation instructions.
 
-```shell
-git clone --depth 1 "https://github.com/FrancoisCarouge/TypedLinearAlgebra"
-cmake -S "TypedLinearAlgebra" -B "build"
-cmake --build "build" --parallel
-sudo cmake --install "build"
-```
+# Reference
 
-Another variation for your CMake infrastructure via fetch content:
+## CMake
 
-```cmake
-include(FetchContent)
+Link against the CMake target `fcarouge-typed-linear-algebra::tlinalg`.
 
-FetchContent_Declare(
-  fcarouge-typed-linear-algebra
-  GIT_REPOSITORY "https://github.com/FrancoisCarouge/TypedLinearAlgebra"
-  FIND_PACKAGE_ARGS NAMES fcarouge-typed-linear-algebra)
-FetchContent_MakeAvailable(fcarouge-typed-linear-algebra)
+## Include
 
-target_link_libraries(your_target PRIVATE fcarouge-typed-linear-algebra::tlinalg)
-```
-
-[For more, see installation instructions](https://github.com/FrancoisCarouge/TypedLinearAlgebra/tree/master/INSTALL.md).
-
-Include the library header in your sources.
+Include the library header in your sources:
 
 ```cpp
 #include "fcarouge/typed_linear_algebra.hpp"
 ```
 
-For each strong type, or linear algebra backends, add a plug-in in your sources.
+For forward declarations only, include instead:
+
+```cpp
+#include "fcarouge/typed_linear_algebra_forward.hpp"
+```
+
+## Namespace
+
+The public API lives in the `fcarouge` namespace. Import it with a using-declaration or namespace alias as your project's style prefers.
+
+## Plug-ins
+
+Add a plug-in for each strong type or linear algebra backend you use:
 
 | Integration | Example Plug-in |
 | --- | --- |
@@ -61,8 +58,6 @@ For each strong type, or linear algebra backends, add a plug-in in your sources.
 | nholthaus/units | [See example plug-in at `support/nholthaus/fcarouge/nholthaus.hpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | std::chrono | No plug-in needed. |
 | std::linalg | No plug-in needed. |
-
-# Reference
 
 ## Class Typed Matrix
 
@@ -232,6 +227,19 @@ Domains and use cases include:
 This library was [presented](https://schedule.cppnow.org/session/2026/typed-linear-algebra/) at CppNow 2026 as a first, free, and open-source implementation that integrates dimensional analysis in linear algebra computations through the type system while preserving the performance of established numerical backends. The talk motivated the safety proposition. And worked through the typed matrix definition and examples. We evaluated ergonomics and compatibility with std::linalg, std::mdspan, Eigen, mp-units. We noted lessons learned, tradeoffs, frictions. We looked to other additional safeties, open problems, and opportunities for better linear algebra in C++ applications. The discussions identified improvements for the library. The [slides](https://francoiscarouge.github.io/TypedLinearAlgebra/typed_linear_algebra/index.html) and the [video](https://www.youtube.com/watch?v=xZO7X8LH6Dg).
 
 [![Typed Linear Algebra - How to Not Crash on Mars - François Carouge - C++Now 2026](https://francoiscarouge.github.io/TypedLinearAlgebra/typed_linear_algebra/youtube.png)](https://www.youtube.com/watch?v=xZO7X8LH6Dg)
+
+## Roadmap & Vision
+
+The library's core `typed_matrix` API, the element-casting customization point, and the backend plug-in shape are stable in practice but not yet frozen; version 1.0 will mark a settled public API and ABI-relevant surface, complete operator coverage matching `std::linalg`'s algorithm set, and every backend exercised by the same test matrix, with the longer-term ambition of tracking `std::linalg` as it grows in the standard library implementations so that dimensional and semantic type safety becomes a thin, zero-overhead layer over the standard's own primitives, rather than a competing linear algebra library, and the `std::mdspan`-based backend needs less bridging as `std::linalg` gains adoption, not more.
+
+Toward version 1.0:
+
+- Match `std::linalg`'s operator and algorithm coverage.
+- Track `std::linalg`/`std::mdspan` maturity; shrink plug-ins.
+- Broaden the test matrix: one safety guarantee, one test.
+- Stabilize the public API and element-casting customization points.
+- Evaluate compatibility with more strong types and backends.
+- Evaluate integration with established use cases.
 
 ## Lessons Learned
 

@@ -1,5 +1,7 @@
 # Installation
 
+Requires CMake ≥ 4.3 and a C++26 compiler (Clang with libc++, GCC 14+, or MSVC `/std:c++latest`).
+
 Download and install the [latest release package](https://github.com/FrancoisCarouge/TypedLinearAlgebra/releases). Alternatively, you may install and use the library in your projects by cloning the repository, configuring, and installing the project:
 
 ```shell
@@ -13,6 +15,20 @@ The standard shared CMake configuration file provides the library target to use 
 
 ```cmake
 find_package(fcarouge-typed-linear-algebra)
+target_link_libraries(your_target PRIVATE fcarouge-typed-linear-algebra::tlinalg)
+```
+
+Alternatively, fetch the library directly from your project's CMake configuration:
+
+```cmake
+include(FetchContent)
+
+FetchContent_Declare(
+  fcarouge-typed-linear-algebra
+  GIT_REPOSITORY "https://github.com/FrancoisCarouge/TypedLinearAlgebra"
+  FIND_PACKAGE_ARGS NAMES fcarouge-typed-linear-algebra)
+FetchContent_MakeAvailable(fcarouge-typed-linear-algebra)
+
 target_link_libraries(your_target PRIVATE fcarouge-typed-linear-algebra::tlinalg)
 ```
 

@@ -60,11 +60,44 @@ template <typename Type> constexpr auto as_vector_span(Type &value) {
 //! @brief Computes the product of a matrix and a vector.
 //!
 //! @see std::linalg::matrix_vector_product
-//!
-//! @todo Requires, assert that the element types are compatible.
 constexpr void matrix_vector_product(const rank_typed_matrix<2> auto &lhs,
                                      const rank_typed_matrix<1> auto &rhs,
                                      rank_typed_matrix<1> auto &result) {
+  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
+  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
+  using result_matrix = std::remove_cvref_t<decltype(result)>;
+
+  static_assert(lhs_matrix::columns == rhs_matrix::rows * rhs_matrix::columns,
+                "Matrix-vector product requires the vector size to match the "
+                "matrix column count.");
+  static_assert(
+      lhs_matrix::rows == result_matrix::rows * result_matrix::columns,
+      "Matrix-vector product requires the result size to match the matrix "
+      "row count.");
+
+  // Every row-column term summed into a result row's element must convert
+  // to that row's first term, as required to sum them, and that first term
+  // must be assignable to the result's corresponding element. Mirrors the
+  // row and column type convention of `operator*` and `matrix_product`.
+  tla::for_constexpr<lhs_matrix::rows>([&](auto i) {
+    using first_term = tla::product<typename lhs_matrix::template element<i, 0>,
+                                    typename rhs_matrix::template element<0>>;
+
+    tla::for_constexpr<lhs_matrix::columns>([&](auto k) {
+      using term = tla::product<typename lhs_matrix::template element<i, k>,
+                                typename rhs_matrix::template element<k>>;
+
+      static_assert(std::is_convertible_v<term, first_term>,
+                    "Matrix-vector product requires compatible element types.");
+    });
+
+    static_assert(
+        requires {
+          std::declval<typename result_matrix::template element<i> &>() =
+              std::declval<first_term>();
+        }, "Matrix-vector product requires compatible element types.");
+  });
+
   using std::linalg::matrix_vector_product;
   matrix_vector_product(lhs.data(), as_vector_span(rhs),
                         as_vector_span(result));
