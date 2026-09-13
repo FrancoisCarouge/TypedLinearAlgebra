@@ -4,6 +4,9 @@ Guidance for coding agents working in this repository (the TypedLinearAlgebra
 library, `git@github.com:FrancoisCarouge/TypedLinearAlgebra.git`). This file is
 the repository root; all paths below are relative to it.
 
+Human contributors: see [CONTRIBUTING.md](CONTRIBUTING.md). AI coding agents:
+this file.
+
 ## Build & test
 
 The repository root is the CMake source directory. The canonical loop — the same
