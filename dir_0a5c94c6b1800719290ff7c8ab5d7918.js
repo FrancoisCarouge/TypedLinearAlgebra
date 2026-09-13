@@ -8,5 +8,5 @@ var dir_0a5c94c6b1800719290ff7c8ab5d7918 =
     [ "2x1_1x2_mp_units_std.cpp", "2x1__1x2__mp__units__std_8cpp.xhtml", "2x1__1x2__mp__units__std_8cpp" ],
     [ "2x2_au_std.cpp", "matrix__product_22x2__au__std_8cpp.xhtml", "matrix__product_22x2__au__std_8cpp" ],
     [ "2x2_mp_units_std.cpp", "matrix__product_22x2__mp__units__std_8cpp.xhtml", "matrix__product_22x2__mp__units__std_8cpp" ],
-    [ "2x2_nholthaus_std.cpp", "2x2__nholthaus__std_8cpp.xhtml", "2x2__nholthaus__std_8cpp" ]
+    [ "2x2_nholthaus_std.cpp", "matrix__product_22x2__nholthaus__std_8cpp.xhtml", "matrix__product_22x2__nholthaus__std_8cpp" ]
 ];
