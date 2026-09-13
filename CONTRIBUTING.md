@@ -10,11 +10,11 @@ This project and everyone participating in it is governed by the [Code of Conduc
 
 ## Reporting Bugs
 
-Please fill out [the bug template](https://github.com/FrancoisCarouge/TypedLinearAlgebra/issues/new/choose), the information it asks for helps us resolve issues faster.
+Please fill out [the bug template](https://github.com/FrancoisCarouge/TypedLinearAlgebra/issues/new/choose), the information it asks for helps us resolve issues faster. Found the fix along with the bug? Feel free to skip the report and open a pull request instead.
 
 ## Requesting Features
 
-Please fill out [the feature template](https://github.com/FrancoisCarouge/TypedLinearAlgebra/issues/new/choose), the information it asks for helps us provide features faster.
+Please fill out [the feature template](https://github.com/FrancoisCarouge/TypedLinearAlgebra/issues/new/choose), the information it asks for helps us provide features faster. Willing to implement it yourself? Pull requests for new features are welcome too.
 
 ## Security Policy
 
