@@ -28,7 +28,7 @@ Link against the CMake target `fcarouge-typed-linear-algebra::tlinalg`.
 
 ## Include
 
-Include the library header in your sources.
+Include the library header in your sources:
 
 ```cpp
 #include "fcarouge/typed_linear_algebra.hpp"
