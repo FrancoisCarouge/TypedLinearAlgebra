@@ -515,6 +515,8 @@ using typed_linear_algebra_internal::multiplies;
 
 //! @brief Factory function for partial template deduction.
 //!
+//! @details Composed as-is, expression templates included.
+//!
 //! @warning Useful for operations implementation where underlying data
 //! constrution is needed. Not recommended for convenience construction due to
 //! absence of type validation.

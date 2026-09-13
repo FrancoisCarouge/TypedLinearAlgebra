@@ -29,32 +29,39 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/linalg.hpp"
+#ifndef FCAROUGE_LINALG_HPP
+#define FCAROUGE_LINALG_HPP
 
-#include <cassert>
+//! @file
+//! @brief Indexed-based linear algebra with Au with Armadillo
+//! implementations.
 
-namespace fcarouge::test {
-namespace {
-//! @test Verifies the assignment operator.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 5, 5> m{{1., 0., 0., 0., 0.},
-                               {0., 1., 0., 0., 0.},
-                               {0., 0., 1., 0., 0.},
-                               {0., 0., 0., 1., 0.},
-                               {0., 0., 0., 0., 1.}};
-  matrix<double, 5, 5> c = m;
+#include "fcarouge/armadillo.hpp"
+#include "fcarouge/typed_linear_algebra.hpp"
 
-  assert((c == matrix<double, 5, 5>{{1., 0., 0., 0., 0.},
-                                    {0., 1., 0., 0., 0.},
-                                    {0., 0., 1., 0., 0.},
-                                    {0., 0., 0., 1., 0.},
-                                    {0., 0., 0., 0., 1.}}));
+#include "fcarouge/au.hpp"
 
-  // The copy owns its storage independently of the source.
-  c(0, 0) = 2.;
-  assert((m(0, 0) == 1.));
+#include <cstddef>
+#include <tuple>
 
-  return 0;
-}()};
-} // namespace
-} // namespace fcarouge::test
+namespace fcarouge {
+//! @brief Quantity matrix with Au and Armadillo implementations.
+template <typename Representation, typename RowIndexes, typename ColumnIndexes>
+using matrix = typed_matrix<
+    armadillo::matrix<Representation, std::tuple_size_v<RowIndexes>,
+                      std::tuple_size_v<ColumnIndexes>>,
+    RowIndexes, ColumnIndexes>;
+
+//! @brief Quantity column vector with Au and Armadillo implementations.
+template <typename Representation, typename... Types>
+using column_vector = typed_column_vector<
+    armadillo::column_vector<Representation, sizeof...(Types)>, Types...>;
+
+//! @brief Quantity row vector with Au and Armadillo implementations.
+template <typename Representation, typename... Types>
+using row_vector =
+    typed_row_vector<armadillo::row_vector<Representation, sizeof...(Types)>,
+                     Types...>;
+} // namespace fcarouge
+
+#endif // FCAROUGE_LINALG_HPP

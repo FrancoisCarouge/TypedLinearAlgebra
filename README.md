@@ -50,6 +50,7 @@ Add a plug-in for each strong type or linear algebra backend you use:
 
 | Integration | Example Plug-in |
 | --- | --- |
+| Armadillo | [See example plug-in at `support/armadillo`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | Au | [See example plug-in at `support/au/fcarouge/au.hpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | Built-in Types | No plug-in needed. |
 | Eigen | [See example plug-in at `support/eigen`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
@@ -280,6 +281,7 @@ The library is used in projects:
 The library is designed, developed, and tested with the help of third-party tools and services acknowledged and thanked here:
 
 - [actions-gh-pages](https://github.com/peaceiris/actions-gh-pages) to upload the documentation to GitHub pages.
+- [Armadillo](https://arma.sourceforge.net/) for linear algebra.
 - [Au](https://github.com/aurora-opensource/au) the physical units library for C++, by Aurora Innovation.
 - [Clang](https://clang.llvm.org) for compilation and code sanitizers.
 - [clang-format](https://clang.llvm.org/docs/ClangFormat.html) for code formatting.
