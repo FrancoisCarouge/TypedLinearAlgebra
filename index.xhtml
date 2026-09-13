@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Typed Linear Algebra: Typed Linear Algebra</title>
+<title>Typed Linear Algebra: François Carouge / Typed Linear Algebra</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -100,7 +100,7 @@ $(function(){initNavTree('index.xhtml',''); initResizable(true); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Typed Linear Algebra </div></div>
+  <div class="headertitle"><div class="title">François Carouge / Typed Linear Algebra </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__2github_2workspace_2_r_e_a_d_m_e"></a></p>
@@ -117,27 +117,26 @@ $(function(){initNavTree('index.xhtml',''); initResizable(true); });
 </div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample">More usage examples in the <code>sample</code> directory.</a>.</p>
 <h1><a class="anchor" id="installation--usage"></a>
 Installation &amp; Usage</h1>
-<p>Requires CMake ≥ 4.3 and a C++26 compiler; see <a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/INSTALL.md">INSTALL.md</a> for details.</p>
-<p>Example of installation commands in Shell:</p>
-<div class="fragment"><div class="line">git clone --depth 1 &quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra&quot;</div>
-<div class="line">cmake -S &quot;TypedLinearAlgebra&quot; -B &quot;build&quot;</div>
-<div class="line">cmake --build &quot;build&quot; --parallel</div>
-<div class="line">sudo cmake --install &quot;build&quot;</div>
-</div><!-- fragment --><p>Another variation for your CMake infrastructure via fetch content:</p>
-<div class="fragment"><div class="line">include(FetchContent)</div>
-<div class="line"> </div>
-<div class="line">FetchContent_Declare(</div>
-<div class="line">  fcarouge-typed-linear-algebra</div>
-<div class="line">  GIT_REPOSITORY &quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra&quot;</div>
-<div class="line">  FIND_PACKAGE_ARGS NAMES fcarouge-typed-linear-algebra)</div>
-<div class="line">FetchContent_MakeAvailable(fcarouge-typed-linear-algebra)</div>
-<div class="line"> </div>
-<div class="line">target_link_libraries(your_target PRIVATE fcarouge-typed-linear-algebra::tlinalg)</div>
-</div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/tree/master/INSTALL.md">For more, see installation instructions</a>.</p>
-<p>Include the library header in your sources.</p>
+<p>See <a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/INSTALL.md">INSTALL.md</a> for installation instructions.</p>
+<h1><a class="anchor" id="reference"></a>
+Reference</h1>
+<h2><a class="anchor" id="cmake"></a>
+CMake</h2>
+<p>Link against the CMake target <code>fcarouge-typed-linear-algebra::tlinalg</code>.</p>
+<h2><a class="anchor" id="include"></a>
+Include</h2>
+<p>Include the library header in your sources:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="typed__linear__algebra_8hpp.xhtml">fcarouge/typed_linear_algebra.hpp</a>&quot;</span></div>
 <div class="ttc" id="atyped__linear__algebra_8hpp_xhtml"><div class="ttname"><a href="typed__linear__algebra_8hpp.xhtml">typed_linear_algebra.hpp</a></div><div class="ttdoc">Typed linear algebra implementation.</div></div>
-</div><!-- fragment --><p>For each strong type, or linear algebra backends, add a plug-in in your sources.</p>
+</div><!-- fragment --><p>For forward declarations only, include instead:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="typed__linear__algebra__forward_8hpp.xhtml">fcarouge/typed_linear_algebra_forward.hpp</a>&quot;</span></div>
+<div class="ttc" id="atyped__linear__algebra__forward_8hpp_xhtml"><div class="ttname"><a href="typed__linear__algebra__forward_8hpp.xhtml">typed_linear_algebra_forward.hpp</a></div><div class="ttdoc">Authoritative forward declaration header.</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="namespace"></a>
+Namespace</h2>
+<p>The public API lives in the <code>fcarouge</code> namespace. Import it with a using-declaration or namespace alias as your project's style prefers.</p>
+<h2><a class="anchor" id="plug-ins"></a>
+Plug-ins</h2>
+<p>Add a plug-in for each strong type or linear algebra backend you use:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Integration   </th><th class="markdownTableHeadNone">Example Plug-in    </th></tr>
@@ -158,8 +157,6 @@ Installation &amp; Usage</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">std::linalg   </td><td class="markdownTableBodyNone">No plug-in needed.   </td></tr>
 </table>
-<h1><a class="anchor" id="reference"></a>
-Reference</h1>
 <h2><a class="anchor" id="class-typed-matrix"></a>
 Class Typed Matrix</h2>
 <p>Strongly typed matrix. Compose a linear algebra backend matrix into a typed matrix. Row and column indexes provide each element's index type.</p>

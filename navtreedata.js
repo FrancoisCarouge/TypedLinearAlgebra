@@ -25,37 +25,7 @@
 var NAVTREE =
 [
   [ "Typed Linear Algebra", "index.xhtml", [
-    [ "Installation & Usage", "index.xhtml#installation--usage", null ],
-    [ "Reference", "index.xhtml#reference", [
-      [ "Class Typed Matrix", "index.xhtml#class-typed-matrix", [
-        [ "Declaration", "index.xhtml#declaration", null ],
-        [ "Template Parameters", "index.xhtml#template-parameters", null ],
-        [ "Member Types", "index.xhtml#member-types", null ],
-        [ "Member Variables", "index.xhtml#member-variables", null ],
-        [ "Member Functions", "index.xhtml#member-functions", null ]
-      ] ],
-      [ "Operations", "index.xhtml#operations", null ],
-      [ "Aliases", "index.xhtml#aliases", null ],
-      [ "Format", "index.xhtml#format", null ],
-      [ "Literals", "index.xhtml#literals", null ],
-      [ "Concepts", "index.xhtml#concepts", null ],
-      [ "Structure Element Caster", "index.xhtml#structure-element-caster", null ]
-    ] ],
-    [ "More", "index.xhtml#more", [
-      [ "Use Cases", "index.xhtml#use-cases", null ],
-      [ "As seen at CppNow 2026", "index.xhtml#as-seen-at-cppnow-2026", null ],
-      [ "Roadmap & Vision", "index.xhtml#roadmap--vision", null ],
-      [ "Lessons Learned", "index.xhtml#lessons-learned", null ],
-      [ "Projects", "index.xhtml#projects", null ],
-      [ "Resources", "index.xhtml#resources", null ],
-      [ "Third Party Acknowledgement", "index.xhtml#third-party-acknowledgement", null ],
-      [ "Sponsors", "index.xhtml#sponsors", [
-        [ "Corporations & Institutions", "index.xhtml#corporations--institutions", null ],
-        [ "Individuals", "index.xhtml#individuals", null ]
-      ] ],
-      [ "Continuous Integration & Deployment Actions", "index.xhtml#continuous-integration--deployment-actions", null ]
-    ] ],
-    [ "License", "index.xhtml#license", null ],
+    [ "François Carouge / Typed Linear Algebra", "index.xhtml", "index" ],
     [ "AGENTS.md", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml", [
       [ "Build & test", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#build--test", null ],
       [ "Architecture", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#architecture", [
@@ -140,12 +110,12 @@ var NAVTREEINDEX =
 "1x1__array_8cpp.xhtml",
 "at_23x3_8cpp.xhtml",
 "dir_df5deb2192b04082d8407ec09bc6e3ec.xhtml",
-"matrix__product_21x1__au__std_8cpp_source.xhtml",
-"namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02call__3x3_8cpp_03.xhtml",
-"row__mp__units__std_8cpp.xhtml#a858d029755a6b54383d754a8dd195c88",
-"structstd_1_1tuple__element_3_01_index_00_01mp__units_1_1quantity_3_01_reference_00_01_representation_01_4_01_4.xhtml",
-"typed__vector__as__quantity_8cpp.xhtml#a9de60326d723bdbd9528d145e41c0a07"
+"magnitude_23x1__mp__units__eigen_8cpp_source.xhtml",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02nholthaus__std_8cpp_03.xhtml#ad365307779f6ea3ce1beaa0f9487dd3b",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02call__1x3__const_8cpp_03.xhtml#ad636dc51639bc2a178454413b68f04ea",
+"row__fail_8cpp.xhtml",
+"structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml#a2714c8e0d69d59ff242fda31e5048732",
+"typed__vector__as__quantity_8cpp.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

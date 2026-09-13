@@ -8,7 +8,7 @@ var searchData=
   ['license_5',['License',['../index.xhtml#license',1,'']]],
   ['license_2etxt_6',['LICENSE.txt',['../_l_i_c_e_n_s_e_8txt.xhtml',1,'']]],
   ['linalg_2ehpp_7',['linalg.hpp',['../au__eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../au__std_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../chrono__eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../chrono__std_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../eigexed_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../mp__units__eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../mp__units__std_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../nested__typed__eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../nholthaus__eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../nholthaus__std_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)']]],
-  ['linear_20algebra_8',['Typed Linear Algebra',['../index.xhtml',1,'']]],
+  ['linear_20algebra_8',['François Carouge / Typed Linear Algebra',['../index.xhtml',1,'']]],
   ['linux_9',['Linux',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#linux',1,'']]],
   ['list_10',['List',['../test.xhtml',1,'Test List'],['../todo.xhtml',1,'Todo List']]],
   ['literal_5f2x2_2ecpp_11',['literal_2x2.cpp',['../literal__2x2_8cpp.xhtml',1,'']]],

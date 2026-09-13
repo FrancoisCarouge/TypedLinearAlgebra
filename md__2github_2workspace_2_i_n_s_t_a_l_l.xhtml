@@ -113,6 +113,16 @@ $(function(){initNavTree('md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml',''); ini
 </div><!-- fragment --><p>The standard shared CMake configuration file provides the library target to use in your own target:</p>
 <div class="fragment"><div class="line">find_package(fcarouge-typed-linear-algebra)</div>
 <div class="line">target_link_libraries(your_target PRIVATE fcarouge-typed-linear-algebra::tlinalg)</div>
+</div><!-- fragment --><p>Alternatively, fetch the library directly from your project's CMake configuration:</p>
+<div class="fragment"><div class="line">include(FetchContent)</div>
+<div class="line"> </div>
+<div class="line">FetchContent_Declare(</div>
+<div class="line">  fcarouge-typed-linear-algebra</div>
+<div class="line">  GIT_REPOSITORY &quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra&quot;</div>
+<div class="line">  FIND_PACKAGE_ARGS NAMES fcarouge-typed-linear-algebra)</div>
+<div class="line">FetchContent_MakeAvailable(fcarouge-typed-linear-algebra)</div>
+<div class="line"> </div>
+<div class="line">target_link_libraries(your_target PRIVATE fcarouge-typed-linear-algebra::tlinalg)</div>
 </div><!-- fragment --><h1><a class="anchor" id="development-build--run"></a>
 Development Build &amp; Run</h1>
 <h2><a class="anchor" id="tests"></a>

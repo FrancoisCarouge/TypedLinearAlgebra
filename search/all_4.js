@@ -9,7 +9,7 @@ var searchData=
   ['adding_20an_20algorithm_6',['adding an algorithm',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#recipe-adding-an-algorithm',1,'Recipe: adding an algorithm'],['../test.xhtml#_test000001',1,'Recipe: adding an algorithm']]],
   ['agents_20md_7',['AGENTS.md',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml',1,'']]],
   ['agents_2emd_8',['AGENTS.md',['../_a_g_e_n_t_s_8md.xhtml',1,'']]],
-  ['algebra_9',['Typed Linear Algebra',['../index.xhtml',1,'']]],
+  ['algebra_9',['François Carouge / Typed Linear Algebra',['../index.xhtml',1,'']]],
   ['algorithm_10',['algorithm',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#recipe-adding-an-algorithm',1,'Recipe: adding an algorithm'],['../test.xhtml#_test000001',1,'Recipe: adding an algorithm']]],
   ['algorithm_20tt_11',['Algorithms (&lt;tt&gt;include/fcarouge/typed_linear_algebra_internal/algorithm/&lt;/tt&gt;)',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#algorithms-includefcarougetyped_linear_algebra_internalalgorithm',1,'']]],
   ['algorithms_20tt_20include_20fcarouge_20typed_5flinear_5falgebra_5finternal_20algorithm_20tt_12',['Algorithms (&lt;tt&gt;include/fcarouge/typed_linear_algebra_internal/algorithm/&lt;/tt&gt;)',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#algorithms-includefcarougetyped_linear_algebra_internalalgorithm',1,'']]],

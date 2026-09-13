@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['linear_20algebra_0',['Typed Linear Algebra',['../index.xhtml',1,'']]],
-  ['list_1',['List',['../test.xhtml',1,'Test List'],['../todo.xhtml',1,'Todo List']]]
+  ['installation_0',['Installation',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml',1,'']]]
 ];
