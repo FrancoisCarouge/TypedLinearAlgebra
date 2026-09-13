@@ -18,6 +18,20 @@ find_package(fcarouge-typed-linear-algebra)
 target_link_libraries(your_target PRIVATE fcarouge-typed-linear-algebra::tlinalg)
 ```
 
+Alternatively, fetch the library directly from your project's CMake configuration:
+
+```cmake
+include(FetchContent)
+
+FetchContent_Declare(
+  fcarouge-typed-linear-algebra
+  GIT_REPOSITORY "https://github.com/FrancoisCarouge/TypedLinearAlgebra"
+  FIND_PACKAGE_ARGS NAMES fcarouge-typed-linear-algebra)
+FetchContent_MakeAvailable(fcarouge-typed-linear-algebra)
+
+target_link_libraries(your_target PRIVATE fcarouge-typed-linear-algebra::tlinalg)
+```
+
 # Development Build & Run
 
 ## Tests

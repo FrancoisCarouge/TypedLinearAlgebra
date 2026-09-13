@@ -1,4 +1,4 @@
-# Typed Linear Algebra
+# François Carouge / Typed Linear Algebra
 
 A C++ strongly-typed facade to a matrix linear algebra backend. Brings type safety to matrix operations. Enforces dimensional consistency and unit compatibility. Prevents common errors in scientific and engineering computations.
 
@@ -18,32 +18,15 @@ std::println("{}", x * transposed(x));
 
 # Installation & Usage
 
-Requires CMake ≥ 4.3 and a C++26 compiler; see [INSTALL.md](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/INSTALL.md) for details.
+See [INSTALL.md](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/INSTALL.md) for installation instructions.
 
-Example of installation commands in Shell:
+# Reference
 
-```shell
-git clone --depth 1 "https://github.com/FrancoisCarouge/TypedLinearAlgebra"
-cmake -S "TypedLinearAlgebra" -B "build"
-cmake --build "build" --parallel
-sudo cmake --install "build"
-```
+## CMake
 
-Another variation for your CMake infrastructure via fetch content:
+Link against the CMake target `fcarouge-typed-linear-algebra::tlinalg`.
 
-```cmake
-include(FetchContent)
-
-FetchContent_Declare(
-  fcarouge-typed-linear-algebra
-  GIT_REPOSITORY "https://github.com/FrancoisCarouge/TypedLinearAlgebra"
-  FIND_PACKAGE_ARGS NAMES fcarouge-typed-linear-algebra)
-FetchContent_MakeAvailable(fcarouge-typed-linear-algebra)
-
-target_link_libraries(your_target PRIVATE fcarouge-typed-linear-algebra::tlinalg)
-```
-
-[For more, see installation instructions](https://github.com/FrancoisCarouge/TypedLinearAlgebra/tree/master/INSTALL.md).
+## Include
 
 Include the library header in your sources.
 
@@ -51,7 +34,19 @@ Include the library header in your sources.
 #include "fcarouge/typed_linear_algebra.hpp"
 ```
 
-For each strong type, or linear algebra backends, add a plug-in in your sources.
+For forward declarations only, include instead:
+
+```cpp
+#include "fcarouge/typed_linear_algebra_forward.hpp"
+```
+
+## Namespace
+
+The public API lives in the `fcarouge` namespace. Import it with a using-declaration or namespace alias as your project's style prefers.
+
+## Plug-ins
+
+Add a plug-in for each strong type or linear algebra backend you use:
 
 | Integration | Example Plug-in |
 | --- | --- |
@@ -63,8 +58,6 @@ For each strong type, or linear algebra backends, add a plug-in in your sources.
 | nholthaus/units | [See example plug-in at `support/nholthaus/fcarouge/nholthaus.hpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | std::chrono | No plug-in needed. |
 | std::linalg | No plug-in needed. |
-
-# Reference
 
 ## Class Typed Matrix
 
