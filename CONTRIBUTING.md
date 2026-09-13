@@ -19,3 +19,7 @@ Please fill out [the feature template](https://github.com/FrancoisCarouge/TypedL
 ## Security Policy
 
 Please review [the security policy](https://github.com/FrancoisCarouge/TypedLinearAlgebra/security/policy), the process helps us better serve the community.
+
+## Questions & Ideas
+
+Have a question or an idea? Start a [Discussion](https://github.com/FrancoisCarouge/TypedLinearAlgebra/discussions) instead.

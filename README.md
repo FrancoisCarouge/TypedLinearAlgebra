@@ -1,6 +1,6 @@
-# François Carouge / Typed Linear Algebra
+## François Carouge / Typed Linear Algebra
 
-A C++ strongly-typed facade to a matrix linear algebra backend. Brings type safety to matrix operations. Enforces dimensional consistency and unit compatibility. Prevents common errors in scientific and engineering computations.
+Physical unit mismatches in matrix and vector computations have sunk missions and cost millions, because ordinary linear algebra treats a mismatched unit, an out-of-order axis, or a mixed-up reference frame as just another number and lets it compile, run, and fail silently. This library is a C++ strongly-typed facade to a matrix linear algebra backend — Eigen, std::linalg/mdspan, Au, mp-units, nholthaus/units, or Kokkos — that brings type safety to matrix operations. It enforces dimensional consistency and unit compatibility, turning those mismatches into compile errors and preventing common errors in scientific and engineering computations.
 
 ```cpp
 state x{3. * m,
@@ -16,17 +16,33 @@ std::println("{}", x * transposed(x));
 
 [More usage examples in the `sample` directory.](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample).
 
-# Installation & Usage
+[![Pipeline](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/pipeline.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/pipeline.yml)
+[![Sanitizer](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/sanitizer.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/sanitizer.yml)
+[![Format](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/format.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/format.yml)
+[![ClangTidy](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/clang_tidy.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/clang_tidy.yml)
+[![CppCheck](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/cppcheck.yml)
+[![Doxygen](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/doxygen.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/doxygen.yml)
+[![Valgrind](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/valgrind_memory.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/valgrind_memory.yml)
+[![Public Domain](https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen)](https://raw.githubusercontent.com/francoiscarouge/TypedLinearAlgebra/master/LICENSE.txt)
+[![License Scan](https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FTypedLinearAlgebra.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FTypedLinearAlgebra?ref=badge_shield)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8933/badge)](https://www.bestpractices.dev/projects/8933)
+[![Deploy Unit Test Code Coverage](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/deploy_coverage.yml/badge.svg)](https://francoiscarouge.github.io/TypedLinearAlgebra/unit_test_coverage.xhtml)
+[![Deploy Doxygen](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/deploy_doxygen.yml/badge.svg)](https://francoiscarouge.github.io/TypedLinearAlgebra/index.xhtml)
+[![Sponsor](https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen)](http://paypal.me/francoiscarouge)
+[![Discussions](https://img.shields.io/github/discussions/FrancoisCarouge/TypedLinearAlgebra)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/discussions)
+
+
+## Installation & Usage
 
 See [INSTALL.md](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/INSTALL.md) for installation instructions.
 
-# Reference
+## Reference
 
-## CMake
+### CMake
 
 Link against the CMake target `fcarouge-typed-linear-algebra::tlinalg`.
 
-## Include
+### Include
 
 Include the library header in your sources:
 
@@ -40,11 +56,11 @@ For forward declarations only, include instead:
 #include "fcarouge/typed_linear_algebra_forward.hpp"
 ```
 
-## Namespace
+### Namespace
 
 The public API lives in the `fcarouge` namespace. Import it with a using-declaration or namespace alias as your project's style prefers.
 
-## Plug-ins
+### Plug-ins
 
 Add a plug-in for each strong type or linear algebra backend you use:
 
@@ -59,20 +75,20 @@ Add a plug-in for each strong type or linear algebra backend you use:
 | std::chrono | No plug-in needed. |
 | std::linalg | No plug-in needed. |
 
-## Class Typed Matrix
+### Class Typed Matrix
 
 Strongly typed matrix. Compose a linear algebra backend matrix into a typed matrix. Row and column indexes provide each element's index type.
 
 Also documented in the [fcarouge/typed_linear_algebra.hpp](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/include/fcarouge/typed_linear_algebra.hpp) header.
 
-### Declaration
+#### Declaration
 
 ```cpp
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 class typed_matrix
 ```
 
-### Template Parameters
+#### Template Parameters
 
 | Template Parameter | Definition |
 | --- | --- |
@@ -80,7 +96,7 @@ class typed_matrix
 | `RowIndexes` | The tuple type of the row indexes. |
 | `ColumnIndexes` | The tuple type of the row indexes. |
 
-### Member Types
+#### Member Types
 
 | Member Type | Definition |
 | --- | --- |
@@ -90,14 +106,14 @@ class typed_matrix
 | `column_indexes` | The tuple with the column components of the indexes. |
 | `element<i, j>` | The type of the element at the given matrix indexes position. |
 
-### Member Variables
+#### Member Variables
 
 | Member Variable | Definition |
 | --- | --- |
 | `rows` | The count of rows. |
 | `columns` | The count of columns. |
 
-### Member Functions
+#### Member Functions
 
 | Member Function | Definition |
 | --- | --- |
@@ -122,7 +138,7 @@ class typed_matrix
 | `(conversion operator)` | Access the singleton typed matrix element. |
 | `(destructor)` | Destruct a default typed matrix. |
 
-## Operations
+### Operations
 
 The following useful operations are supported. This library attempts to align its nomenclature aligned with that of the primitives provided by `std::linalg`. This library attempts some compatibility with other C++ standard library primitives, ranges, and iterators.
 
@@ -140,7 +156,7 @@ The following useful operations are supported. This library attempts to align it
 | `scale` | Multiply matrix elements by a scalar. |
 | `transposed` | Transpose the input matrix. |
 
-## Aliases
+### Aliases
 
 ```cpp
 template <typename Matrix, typename... ColumnIndexes>
@@ -150,11 +166,11 @@ template <typename Matrix, typename... RowIndexes>
 typed_column_vector;
 ```
 
-## Format
+### Format
 
 A specialization of the standard formatter is provided for the typed matrix. Use `std::format` to store a formatted representation of the matrix. Standard format parameters to be supported.
 
-## Literals
+### Literals
 
 A user-defined literal `_i` operator in the `fcarouge::literals` namespace that converts a decimal integer literal into a compile-time index type permitting the use of traditional accessor operator with strong types.
 
@@ -163,7 +179,7 @@ using literals::operator""_i;
 std::println("{}", m[1_i, 2_i]); // Same as: m.at<1, 2>()
 ```
 
-## Concepts
+### Concepts
 
 | Concept | Definition |
 | --- | --- |
@@ -180,7 +196,7 @@ std::println("{}", m[1_i, 2_i]); // Same as: m.at<1, 2>()
 | `same_shape` | Concept of typed matrices of the same shape, that is they have the same number of rows and columns. |
 | `uniform_typed_matrix` | Concept of a typed matrix in which all element types are the same. |
 
-## Structure Element Caster
+### Structure Element Caster
 
 Typed matrix element conversions customization point. Specialize this template to allow conversion to and from the element's type and underlying type.
 
@@ -204,9 +220,9 @@ struct element_caster<To, From> {
 
 A variety of conversions may be needed, notably value and reference conversions. Performance considerations may influence the value conversion implementation and whether the converted value is provided by a value parameter or by a constant reference parameter.
 
-# More
+## More
 
-## Use Cases
+### Use Cases
 
 The library serves computations where a matrix or vector is not a bag of interchangeable numbers but a collection of quantities that carry meaning: a state estimate, a set of sensor readings, a set of correlated measures. Ordinary linear algebra erases that meaning at the type level, so a mismatched unit, an out-of-order axis, or a mixed-up reference frame compiles cleanly and fails silently, if at all, at runtime. By attaching an index type to each row and column, the library keeps that meaning through every operation, so dimensionally or semantically invalid computations fail to compile instead of producing a wrong number downstream.
 
@@ -222,13 +238,13 @@ Domains and use cases include:
 - **Computer graphics and simulation**: transforms and state buffers spanning multiple spaces or units that are easy to conflate without a type-level distinction.
 - **Machine learning and scientific computing**: tensors and feature matrices where axis meaning and shape compatibility are as important as the numeric values themselves.
 
-## As seen at CppNow 2026
+### As seen at CppNow 2026
 
 This library was [presented](https://schedule.cppnow.org/session/2026/typed-linear-algebra/) at CppNow 2026 as a first, free, and open-source implementation that integrates dimensional analysis in linear algebra computations through the type system while preserving the performance of established numerical backends. The talk motivated the safety proposition. And worked through the typed matrix definition and examples. We evaluated ergonomics and compatibility with std::linalg, std::mdspan, Eigen, mp-units. We noted lessons learned, tradeoffs, frictions. We looked to other additional safeties, open problems, and opportunities for better linear algebra in C++ applications. The discussions identified improvements for the library. The [slides](https://francoiscarouge.github.io/TypedLinearAlgebra/typed_linear_algebra/index.html) and the [video](https://www.youtube.com/watch?v=xZO7X8LH6Dg).
 
 [![Typed Linear Algebra - How to Not Crash on Mars - François Carouge - C++Now 2026](https://francoiscarouge.github.io/TypedLinearAlgebra/typed_linear_algebra/youtube.png)](https://www.youtube.com/watch?v=xZO7X8LH6Dg)
 
-## Roadmap & Vision
+### Roadmap & Vision
 
 The library's core `typed_matrix` API, the element-casting customization point, and the backend plug-in shape are stable in practice but not yet frozen; version 1.0 will mark a settled public API and ABI-relevant surface, complete operator coverage matching `std::linalg`'s algorithm set, and every backend exercised by the same test matrix, with the longer-term ambition of tracking `std::linalg` as it grows in the standard library implementations so that dimensional and semantic type safety becomes a thin, zero-overhead layer over the standard's own primitives, rather than a competing linear algebra library, and the `std::mdspan`-based backend needs less bridging as `std::linalg` gains adoption, not more.
 
@@ -241,7 +257,7 @@ Toward version 1.0:
 - Evaluate compatibility with more strong types and backends.
 - Evaluate integration with established use cases.
 
-## Lessons Learned
+### Lessons Learned
 
 Type safety cannot be guaranteed at compilation time without **index safety**. The indexes can either be non-type template parameters or strong types overloadings. Converting a runtime index to a dependent template type is not possible in C++. A proxy reference could be used to allow traditional assignment syntax but the runtime check and extra indirection are not interesting tradeoffs. A template call operator can be used for getting a type safe value but impractical syntax for setting. Without index safety, the accepted tradeoff is a templated index `at<i, j>()` method.
 
@@ -257,7 +273,7 @@ Type safety cannot be guaranteed at compilation time without **index safety**. T
 
 **The matrix cell unit convention** admits two valid choices when combining a row type and a column type into the type of cell `(i, j)`: the product, `row[i] * column[j]`, or the quotient, `row[i] / column[j]`. Mathematically, this encodes whether the matrix is interpreted as a bilinear form or as a linear map. A bilinear form combines two vectors into a scalar, `sum(i, j, v[i] * w[j] * G(i, j))`; both indices play the same, covector role, so the product convention is natural. A linear map transforms a vector into a vector, `y[i] = sum(j, A[i][j] * x[j])`; the column index cancels against the input unit, so the quotient convention is natural instead. In tensor index notation, the quotient corresponds to mixed variance, `M^i_j`, and the product to same variance, `G_ij`. In C++, `RowIndexes` and `ColumnIndexes` are tuples of types, and `element<i, j>` is computed through a `product<>` or a symmetric `quotient<>` type metafunction. Neither convention is more correct, only suited to a different use. The library keeps the product convention, favoring bilinear forms and quadratic, energy-like expressions over vectors. Consumers relying on linear map semantics, such as state-transition matrices, must declare column types as the reciprocal of the corresponding input type, not the input type itself.
 
-## Projects
+### Projects
 
 The library is used in projects:
 
@@ -265,7 +281,7 @@ The library is used in projects:
 
 *Your project link here!*
 
-## Resources
+### Resources
 
 1. G. W. Hart, *Multidimensional Analysis: Algebras and Systems for Science and Engineering*. New York, NY, USA: Springer-Verlag, 1995.
 2. B. D. Hall, "Software support for physical quantities," in *Proc. 9th Electronics New Zealand Conf. (ENZCON)*, Dunedin, New Zealand, 2002.
@@ -275,7 +291,7 @@ The library is used in projects:
 6. M. Hoemmen, "std::linalg: Linear Algebra Coming to Standard C++" (WG21 P1673), presented at CppCon, Aurora, CO, USA, Oct. 2023. [Online]. Available: <https://www.youtube.com/watch?v=-UXHMlAMXNk>
 7. D. Hanson, "Guide to Linear Algebra With the Eigen C++ Library," presented at CppCon, Aurora, CO, USA, Sep. 2024. [Online]. Available: <https://www.youtube.com/watch?v=99G-APJkMc0>
 
-## Third Party Acknowledgement
+### Third Party Acknowledgement
 
 The library is designed, developed, and tested with the help of third-party tools and services acknowledged and thanked here:
 
@@ -301,58 +317,24 @@ The library is designed, developed, and tested with the help of third-party tool
 - [stdBLAS](https://github.com/kokkos/stdBLAS) for standard BLAS interface.
 - [Valgrind](https://valgrind.org) to check for correct memory management.
 
-## Sponsors
+### Sponsors
 
 Become a sponsor today! Support this project with coffee and infrastructure!
 
 [![Sponsor](https://img.shields.io/badge/Support-Sponsor-brightgreen)](http://paypal.me/francoiscarouge)
 
-### Corporations & Institutions
+#### Corporations & Institutions
 
 *Your group logo and link here!*
 
-### Individuals
+#### Individuals
 
 *Your name and link here!*
 
 Thanks everyone!
 
-## Continuous Integration & Deployment Actions
 
-[![Code Repository](https://img.shields.io/badge/Repository-GitHub%20%F0%9F%94%97-brightgreen)](https://github.com/FrancoisCarouge/TypedLinearAlgebra)
-<br>
-<br>
-[![Pipeline](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/pipeline.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/pipeline.yml)
-<br>
-<br>
-[![Sanitizer](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/sanitizer.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/sanitizer.yml)
-<br>
-[![Format](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/format.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/format.yml)
-<br>
-[![ClangTidy](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/clang_tidy.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/clang_tidy.yml)
-<br>
-[![CppCheck](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/cppcheck.yml)
-<br>
-[![Doxygen](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/doxygen.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/doxygen.yml)
-<br>
-[![Valgrind](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/memory_valgrind.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/memory_valgrind.yml)
-<br>
-<br>
-[![Public Domain](https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen)](https://raw.githubusercontent.com/francoiscarouge/TypedLinearAlgebra/master/LICENSE.txt)
-<br>
-[![License Scan](https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FTypedLinearAlgebra.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FTypedLinearAlgebra?ref=badge_shield)
-<br>
-[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8933/badge)](https://www.bestpractices.dev/projects/8933)
-<br>
-<br>
-[![Deploy Unit Test Code Coverage](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/deploy_coverage.yml/badge.svg)](https://francoiscarouge.github.io/TypedLinearAlgebra/unit_test_coverage.xhtml)
-<br>
-[![Deploy Doxygen](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/deploy_doxygen.yml/badge.svg)](https://francoiscarouge.github.io/TypedLinearAlgebra/index.xhtml)
-<br>
-<br>
-[![Sponsor](https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen)](http://paypal.me/francoiscarouge)
-
-# License
+## License
 
 <img align="right" src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png">
 
