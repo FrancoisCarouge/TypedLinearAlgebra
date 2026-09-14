@@ -29,6 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+add_subdirectory("amalgamate")
+
 if(NOT BUILD_TESTING)
   return()
 endif()
@@ -144,5 +146,6 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
               "/std:c++latest"
               "/utf-8"
               "/W4"
+              "/wd4702"
               "/WX")
 endif()
