@@ -107,7 +107,7 @@ $(function(){initNavTree('structmp__units_1_1representation__underlying__type_3_
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="mp__units__eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="mp__units__armadillo_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for mp_units::representation_underlying_type&lt; fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &gt;:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -118,17 +118,17 @@ $(function(){initNavTree('structmp__units_1_1representation__underlying__type_3_
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a778bb574b7c5694295bbe2f387fc0a3e" id="r_a778bb574b7c5694295bbe2f387fc0a3e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a778bb574b7c5694295bbe2f387fc0a3e">type</a></td></tr>
-<tr class="separator:a778bb574b7c5694295bbe2f387fc0a3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a827f604df8204e7db32d37867c4fcd45" id="r_a827f604df8204e7db32d37867c4fcd45"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a827f604df8204e7db32d37867c4fcd45">type</a></td></tr>
+<tr class="separator:a827f604df8204e7db32d37867c4fcd45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Matrix, typename RowIndexes, typename ColumnIndexes&gt;<br />
-requires requires { typename Matrix::PlainObject; } &amp;&amp; std::derived_from&lt;Matrix, Eigen::EigenBase&lt;Matrix&gt;&gt;<br />
+requires requires { typename Matrix::elem_type; } &amp;&amp; std::derived_from&lt;Matrix, arma::Base&lt;typename Matrix::elem_type, Matrix&gt;&gt;<br />
 struct mp_units::representation_underlying_type&lt; fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &gt;</div>
-<p class="definition">Definition at line <a class="el" href="mp__units__eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00097">97</a> of file <a class="el" href="mp__units__eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mp__units__armadillo_2fcarouge_2linalg_8hpp_source.xhtml#l00091">91</a> of file <a class="el" href="mp__units__armadillo_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="a778bb574b7c5694295bbe2f387fc0a3e" name="a778bb574b7c5694295bbe2f387fc0a3e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a778bb574b7c5694295bbe2f387fc0a3e">&#9670;&#160;</a></span>type</h2>
+<a id="a827f604df8204e7db32d37867c4fcd45" name="a827f604df8204e7db32d37867c4fcd45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a827f604df8204e7db32d37867c4fcd45">&#9670;&#160;</a></span>type</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -136,7 +136,7 @@ struct mp_units::representation_underlying_type&lt; fcarouge::typed_matrix&lt; M
 template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using mp_units::representation_underlying_type&lt; <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt; &gt;::type</td>
+          <td class="memname">typedef <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::underlying mp_units::representation_underlying_type&lt; <a class="el" href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt; &gt;::type</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -144,11 +144,12 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 <div class="line">      <a class="code hl_typedef" href="classfcarouge_1_1typed__matrix.xhtml#a9904db59b08b0dfa24fe08ef574039b3">fcarouge::typed_matrix&lt;Matrix, RowIndexes, ColumnIndexes&gt;::underlying</a></div>
 <div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml_a9904db59b08b0dfa24fe08ef574039b3"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml#a9904db59b08b0dfa24fe08ef574039b3">fcarouge::typed_matrix::underlying</a></div><div class="ttdeci">tla::underlying_t&lt; Matrix &gt; underlying</div><div class="ttdoc">The type of the element's underlying storage.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00175">typed_linear_algebra.hpp:175</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="mp__units__eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00099">99</a> of file <a class="el" href="mp__units__eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mp__units__armadillo_2fcarouge_2linalg_8hpp_source.xhtml#l00093">93</a> of file <a class="el" href="mp__units__armadillo_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/>The documentation for this struct was generated from the following files:<ul>
+<li>/github/workspace/support/mp_units_armadillo/fcarouge/<a class="el" href="mp__units__armadillo_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a></li>
 <li>/github/workspace/support/mp_units_eigen/fcarouge/<a class="el" href="mp__units__eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a></li>
 </ul>
 </div><!-- contents -->

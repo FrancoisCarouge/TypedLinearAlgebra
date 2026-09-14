@@ -80,7 +80,7 @@ var NAVTREE =
         [ "All", "namespacemembers.xhtml", "namespacemembers_dup" ],
         [ "Functions", "namespacemembers_func.xhtml", null ],
         [ "Variables", "namespacemembers_vars.xhtml", null ],
-        [ "Typedefs", "namespacemembers_type.xhtml", null ]
+        [ "Typedefs", "namespacemembers_type.xhtml", "namespacemembers_type" ]
       ] ]
     ] ],
     [ "Concepts", "concepts.xhtml", "concepts" ],
@@ -109,14 +109,14 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
-"at_23x1__mp__units__eigen_8cpp.xhtml#a2e832733eecb4e19e205d236b1dfaab8",
-"dir_d2017f4c2d5b29ef83553a7ee570100e.xhtml",
-"magnitude_22x1__mp__units__eigen__fail_8cpp.xhtml#a01ab5bce3590ab6e15a72d5ba03d7078",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02nholthaus__eigen_8cpp_03.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#ab7fba26e65fe5f5f11e2d23f4120ef32",
-"rank__mismatch__eigexed__fail_8cpp.xhtml",
-"structfcarouge_1_1test_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_1_1shared__base_1_1base.xhtml",
-"typed__linear__algebra_8hpp.xhtml#a96bdab646ac7be1505482cf553b9650b"
+"at_22x2__mp__units__eigen_8cpp.xhtml#aee21cdae1d1618fb16c42ea975f45de2",
+"dir_44cec6e3ea30e076b9313c4641539d9f.xhtml",
+"index.xhtml#aliases",
+"namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__eigen__product_8cpp_03.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_022x2__au__eigen_8cpp_03.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02same__shape_8cpp_03.xhtml",
+"sample_2mp__units__std_8cpp_source.xhtml",
+"test_2distinct__typed__matrix_2au__eigen_8cpp.xhtml#a28ff14bb054a532dccdcfb336d0f2d66"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -40,9 +40,11 @@ var annotated_dup =
     ] ],
     [ "std", null, [
       [ "formatter< fcarouge::eigen::matrix< Type, Row, Column >, Char >", "structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml", "structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4" ],
+      [ "formatter< Type, Char >", "structstd_1_1formatter_3_01_type_00_01_char_01_4.xhtml", "structstd_1_1formatter_3_01_type_00_01_char_01_4" ],
       [ "tuple_element< Index, mp_units::quantity< Reference, Representation > >", "structstd_1_1tuple__element_3_01_index_00_01mp__units_1_1quantity_3_01_reference_00_01_representation_01_4_01_4.xhtml", "structstd_1_1tuple__element_3_01_index_00_01mp__units_1_1quantity_3_01_reference_00_01_representation_01_4_01_4" ],
       [ "tuple_element< Index, Type >", "structstd_1_1tuple__element_3_01_index_00_01_type_01_4.xhtml", "structstd_1_1tuple__element_3_01_index_00_01_type_01_4" ],
       [ "tuple_size< mp_units::quantity< Reference, Representation > >", "structstd_1_1tuple__size_3_01mp__units_1_1quantity_3_01_reference_00_01_representation_01_4_01_4.xhtml", null ],
       [ "tuple_size< Type >", "structstd_1_1tuple__size_3_01_type_01_4.xhtml", null ]
-    ] ]
+    ] ],
+    [ "base", "classbase.xhtml", null ]
 ];

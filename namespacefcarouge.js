@@ -1,5 +1,6 @@
 var namespacefcarouge =
 [
+    [ "armadillo", "namespacefcarouge_1_1armadillo.xhtml", "namespacefcarouge_1_1armadillo" ],
     [ "benchmark", "namespacefcarouge_1_1benchmark.xhtml", "namespacefcarouge_1_1benchmark" ],
     [ "eigen", "namespacefcarouge_1_1eigen.xhtml", "namespacefcarouge_1_1eigen" ],
     [ "internal", "namespacefcarouge_1_1internal.xhtml", null ],
@@ -48,12 +49,12 @@ var namespacefcarouge =
     [ "undecomposed_tuple_like_quantity", "conceptfcarouge_1_1undecomposed__tuple__like__quantity.xhtml", null ],
     [ "quantity_element_typed_matrix", "conceptfcarouge_1_1quantity__element__typed__matrix.xhtml", null ],
     [ "nholthaus_quantity", "conceptfcarouge_1_1nholthaus__quantity.xhtml", null ],
-    [ "column_vector", "namespacefcarouge.xhtml#ae3d4d8e5e4cbedae39d580bcd6b6bcb4", null ],
-    [ "matrix", "namespacefcarouge.xhtml#ac63e538ff6202840b939330aabf1bc20", null ],
+    [ "column_vector", "namespacefcarouge.xhtml#ad06bb441aa2dcec149c52de0c297a967", null ],
+    [ "matrix", "namespacefcarouge.xhtml#a9fbcc1495ad0137071a2aa152d05c1ca", null ],
     [ "matrix0", "namespacefcarouge.xhtml#a3b972ee10c035046a3dfc868c04c1f34", null ],
     [ "matrix1", "namespacefcarouge.xhtml#a91b71a78a046ec556c54d9448f680a93", null ],
     [ "nholthaus_representation", "namespacefcarouge.xhtml#aff22d39b9e9e92c3d0f6b336df03b4b0", null ],
-    [ "row_vector", "namespacefcarouge.xhtml#a30fd019eecebace40572712dbf29451f", null ],
+    [ "row_vector", "namespacefcarouge.xhtml#a60b6b92762905569a26339025d4b0821", null ],
     [ "typed_column_vector", "namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58", null ],
     [ "typed_row_vector", "namespacefcarouge.xhtml#a7558e7ccc03031fb7de678cf4977e1bf", null ],
     [ "get", "namespacefcarouge.xhtml#aa12b09434a95cbb83a45985e0a63642a", null ],

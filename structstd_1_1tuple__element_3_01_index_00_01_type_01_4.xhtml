@@ -107,10 +107,10 @@ $(function(){initNavTree('structstd_1_1tuple__element_3_01_index_00_01_type_01_4
 </div><!--header-->
 <div class="contents">
 
-<p>Tuple element specialization of <a class="el" href="namespace_eigen.xhtml">Eigen</a> types for structured bindings.  
+<p>Tuple element specialization of Armadillo types for structured bindings.  
  <a href="#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="armadillo_8hpp_source.xhtml">armadillo.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for std::tuple_element&lt; Index, Type &gt;:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -121,18 +121,39 @@ $(function(){initNavTree('structstd_1_1tuple__element_3_01_index_00_01_type_01_4
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
+<tr class="memitem:a5659f335d1bbfadb1d8c64ff266ce28a" id="r_a5659f335d1bbfadb1d8c64ff266ce28a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5659f335d1bbfadb1d8c64ff266ce28a">type</a> = typename Type::elem_type</td></tr>
+<tr class="separator:a5659f335d1bbfadb1d8c64ff266ce28a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad03dca9c733705a2353f943513262d65" id="r_ad03dca9c733705a2353f943513262d65"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad03dca9c733705a2353f943513262d65">type</a> = typename Type::Scalar</td></tr>
 <tr class="separator:ad03dca9c733705a2353f943513262d65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;std::size_t Index, typename Type&gt;<br />
-requires <a class="el" href="conceptfcarouge_1_1eigen_1_1derived__from__eigen__base.xhtml">fcarouge::eigen::derived_from_eigen_base</a>&lt;Type&gt; &amp;&amp; <a class="el" href="conceptfcarouge_1_1eigen_1_1statically__sized.xhtml">fcarouge::eigen::statically_sized</a>&lt;Type&gt; &amp;&amp; (Index &lt; std::tuple_size_v&lt;Type&gt;)<br />
-struct std::tuple_element&lt; Index, Type &gt;</div><p>Tuple element specialization of <a class="el" href="namespace_eigen.xhtml">Eigen</a> types for structured bindings. </p>
+requires <a class="el" href="conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml">fcarouge::armadillo::is_armadillo</a>&lt;Type&gt; &amp;&amp; <a class="el" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized</a>&lt;Type&gt; &amp;&amp; (Index &lt; std::tuple_size_v&lt;Type&gt;)<br />
+struct std::tuple_element&lt; Index, Type &gt;</div><p>Tuple element specialization of Armadillo types for structured bindings. </p>
+<p>Tuple element specialization of <a class="el" href="namespace_eigen.xhtml">Eigen</a> types for structured bindings. </p>
 
-<p class="definition">Definition at line <a class="el" href="eigen_8hpp_source.xhtml#l00228">228</a> of file <a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="armadillo_8hpp_source.xhtml#l00276">276</a> of file <a class="el" href="armadillo_8hpp_source.xhtml">armadillo.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a5659f335d1bbfadb1d8c64ff266ce28a" name="a5659f335d1bbfadb1d8c64ff266ce28a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5659f335d1bbfadb1d8c64ff266ce28a">&#9670;&#160;</a></span>type <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t Index, typename Type &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using std::tuple_element&lt; Index, Type &gt;::type = typename Type::elem_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="armadillo_8hpp_source.xhtml#l00277">277</a> of file <a class="el" href="armadillo_8hpp_source.xhtml">armadillo.hpp</a>.</p>
+
+</div>
+</div>
 <a id="ad03dca9c733705a2353f943513262d65" name="ad03dca9c733705a2353f943513262d65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad03dca9c733705a2353f943513262d65">&#9670;&#160;</a></span>type</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad03dca9c733705a2353f943513262d65">&#9670;&#160;</a></span>type <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -149,7 +170,8 @@ template&lt;std::size_t Index, typename Type &gt; </div>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/>The documentation for this struct was generated from the following files:<ul>
+<li>/github/workspace/support/armadillo/fcarouge/<a class="el" href="armadillo_8hpp_source.xhtml">armadillo.hpp</a></li>
 <li>/github/workspace/support/eigen/fcarouge/<a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a></li>
 </ul>
 </div><!-- contents -->

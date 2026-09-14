@@ -233,9 +233,9 @@ template&lt;typename... Types&gt; </div>
 <div class="line">  durations x0{s0};</div>
 <div class="line"> </div>
 <div class="line">  </div>
-<div class="line">  x0.at&lt;0&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__eigen_8cpp_03.xhtml#a7f1ed93dc3a73d1ccd8ac5e76a5e7a12">seconds</a>{30.});</div>
-<div class="line">  x0.at&lt;1&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__eigen_8cpp_03.xhtml#a909231ec528159257db32ecc51011186">minutes</a>{2.});</div>
-<div class="line">  x0.at&lt;2&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__eigen_8cpp_03.xhtml#a6c06dc45af3d74388df7a26cc6e51e59">hours</a>{1.});</div>
+<div class="line">  x0.at&lt;0&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#ae70c68b2dc64c8d5fdd6ba74c59c09d2">seconds</a>{30.});</div>
+<div class="line">  x0.at&lt;1&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#a3ff3c957ba84630faf14acbafe71f60c">minutes</a>{2.});</div>
+<div class="line">  x0.at&lt;2&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#a1e7d1a1d328167a98f267dffa9d649d7">hours</a>{1.});</div>
 <div class="line"> </div>
 <div class="line">  std::println(<span class="stringliteral">&quot;x0 = {}&quot;</span>, x0);</div>
 <div class="line">  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x0) == <span class="stringliteral">&quot;[[30s], [2min], [1h]]&quot;</span>);</div>
@@ -247,7 +247,7 @@ template&lt;typename... Types&gt; </div>
 <div class="line">  assert(x0.at&lt;2&gt;() == hours{3.});</div>
 <div class="line"> </div>
 <div class="line">  </div>
-<div class="line">  std::vector v1(std::size_t{3}, <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a5d4f41ca132d253835af80fe3e24fe87">representation</a>{});</div>
+<div class="line">  std::vector v1(std::size_t{3}, <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#a2e57a5321dd80ed393c882764c8350a2">representation</a>{});</div>
 <div class="line">  std::mdspan s1{v1.data(), column_extents&lt;3&gt;{}};</div>
 <div class="line">  durations x1{s1};</div>
 <div class="line">  add(x0, x0, x1);</div>
@@ -255,10 +255,10 @@ template&lt;typename... Types&gt; </div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03_xhtml_a5d4f41ca132d253835af80fe3e24fe87"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a5d4f41ca132d253835af80fe3e24fe87">fcarouge::sample::anonymous_namespace{au_eigen.cpp}::representation</a></div><div class="ttdeci">double representation</div><div class="ttdef"><b>Definition</b> <a href="sample_2au__eigen_8cpp_source.xhtml#l00055">au_eigen.cpp:55</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__eigen_8cpp_03_xhtml_a6c06dc45af3d74388df7a26cc6e51e59"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__eigen_8cpp_03.xhtml#a6c06dc45af3d74388df7a26cc6e51e59">fcarouge::sample::anonymous_namespace{chrono_eigen.cpp}::hours</a></div><div class="ttdeci">std::chrono::duration&lt; representation, std::ratio&lt; 3600 &gt; &gt; hours</div><div class="ttdef"><b>Definition</b> <a href="sample_2chrono__eigen_8cpp_source.xhtml#l00054">chrono_eigen.cpp:54</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__eigen_8cpp_03_xhtml_a7f1ed93dc3a73d1ccd8ac5e76a5e7a12"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__eigen_8cpp_03.xhtml#a7f1ed93dc3a73d1ccd8ac5e76a5e7a12">fcarouge::sample::anonymous_namespace{chrono_eigen.cpp}::seconds</a></div><div class="ttdeci">std::chrono::duration&lt; representation &gt; seconds</div><div class="ttdef"><b>Definition</b> <a href="sample_2chrono__eigen_8cpp_source.xhtml#l00052">chrono_eigen.cpp:52</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__eigen_8cpp_03_xhtml_a909231ec528159257db32ecc51011186"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__eigen_8cpp_03.xhtml#a909231ec528159257db32ecc51011186">fcarouge::sample::anonymous_namespace{chrono_eigen.cpp}::minutes</a></div><div class="ttdeci">std::chrono::duration&lt; representation, std::ratio&lt; 60 &gt; &gt; minutes</div><div class="ttdef"><b>Definition</b> <a href="sample_2chrono__eigen_8cpp_source.xhtml#l00053">chrono_eigen.cpp:53</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03_xhtml_a2e57a5321dd80ed393c882764c8350a2"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#a2e57a5321dd80ed393c882764c8350a2">fcarouge::sample::anonymous_namespace{au_armadillo.cpp}::representation</a></div><div class="ttdeci">double representation</div><div class="ttdef"><b>Definition</b> <a href="au__armadillo_8cpp_source.xhtml#l00055">au_armadillo.cpp:55</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03_xhtml_a1e7d1a1d328167a98f267dffa9d649d7"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#a1e7d1a1d328167a98f267dffa9d649d7">fcarouge::sample::anonymous_namespace{chrono_armadillo.cpp}::hours</a></div><div class="ttdeci">std::chrono::duration&lt; representation, std::ratio&lt; 3600 &gt; &gt; hours</div><div class="ttdef"><b>Definition</b> <a href="chrono__armadillo_8cpp_source.xhtml#l00054">chrono_armadillo.cpp:54</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03_xhtml_a3ff3c957ba84630faf14acbafe71f60c"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#a3ff3c957ba84630faf14acbafe71f60c">fcarouge::sample::anonymous_namespace{chrono_armadillo.cpp}::minutes</a></div><div class="ttdeci">std::chrono::duration&lt; representation, std::ratio&lt; 60 &gt; &gt; minutes</div><div class="ttdef"><b>Definition</b> <a href="chrono__armadillo_8cpp_source.xhtml#l00053">chrono_armadillo.cpp:53</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03_xhtml_ae70c68b2dc64c8d5fdd6ba74c59c09d2"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#ae70c68b2dc64c8d5fdd6ba74c59c09d2">fcarouge::sample::anonymous_namespace{chrono_armadillo.cpp}::seconds</a></div><div class="ttdeci">std::chrono::duration&lt; representation &gt; seconds</div><div class="ttdef"><b>Definition</b> <a href="chrono__armadillo_8cpp_source.xhtml#l00052">chrono_armadillo.cpp:52</a></div></div>
 </div><!-- fragment -->
 <p>Time typed linear algebra samples with std::mdspan and std::linalg. </p>
 
@@ -271,9 +271,9 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">   73</span>  durations x0{s0};</div>
 <div class="line"><span class="lineno">   74</span> </div>
 <div class="line"><span class="lineno">   75</span>  <span class="comment">// Element assignment keeps each period.</span></div>
-<div class="line"><span class="lineno">   76</span>  x0.at&lt;0&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__eigen_8cpp_03.xhtml#a7f1ed93dc3a73d1ccd8ac5e76a5e7a12">seconds</a>{30.});</div>
-<div class="line"><span class="lineno">   77</span>  x0.at&lt;1&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__eigen_8cpp_03.xhtml#a909231ec528159257db32ecc51011186">minutes</a>{2.});</div>
-<div class="line"><span class="lineno">   78</span>  x0.at&lt;2&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__eigen_8cpp_03.xhtml#a6c06dc45af3d74388df7a26cc6e51e59">hours</a>{1.});</div>
+<div class="line"><span class="lineno">   76</span>  x0.at&lt;0&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#ae70c68b2dc64c8d5fdd6ba74c59c09d2">seconds</a>{30.});</div>
+<div class="line"><span class="lineno">   77</span>  x0.at&lt;1&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#a3ff3c957ba84630faf14acbafe71f60c">minutes</a>{2.});</div>
+<div class="line"><span class="lineno">   78</span>  x0.at&lt;2&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#a1e7d1a1d328167a98f267dffa9d649d7">hours</a>{1.});</div>
 <div class="line"><span class="lineno">   79</span> </div>
 <div class="line"><span class="lineno">   80</span>  std::println(<span class="stringliteral">&quot;x0 = {}&quot;</span>, x0);</div>
 <div class="line"><span class="lineno">   81</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x0) == <span class="stringliteral">&quot;[[30s], [2min], [1h]]&quot;</span>);</div>
@@ -285,7 +285,7 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">   87</span>  assert(x0.at&lt;2&gt;() == hours{3.});</div>
 <div class="line"><span class="lineno">   88</span> </div>
 <div class="line"><span class="lineno">   89</span>  <span class="comment">// Out-of-place addition of two vectors of the same types.</span></div>
-<div class="line"><span class="lineno">   90</span>  std::vector v1(std::size_t{3}, <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a5d4f41ca132d253835af80fe3e24fe87">representation</a>{});</div>
+<div class="line"><span class="lineno">   90</span>  std::vector v1(std::size_t{3}, <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#a2e57a5321dd80ed393c882764c8350a2">representation</a>{});</div>
 <div class="line"><span class="lineno">   91</span>  std::mdspan s1{v1.data(), column_extents&lt;3&gt;{}};</div>
 <div class="line"><span class="lineno">   92</span>  durations x1{s1};</div>
 <div class="line"><span class="lineno">   93</span>  add(x0, x0, x1);</div>

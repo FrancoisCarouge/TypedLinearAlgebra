@@ -1,6 +1,10 @@
 var concepts =
 [
     [ "fcarouge", "namespacefcarouge.xhtml", [
+      [ "armadillo", "namespacefcarouge_1_1armadillo.xhtml", [
+        [ "is_armadillo", "conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml", null ],
+        [ "statically_sized", "conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml", null ]
+      ] ],
       [ "eigen", "namespacefcarouge_1_1eigen.xhtml", [
         [ "is_eigen", "conceptfcarouge_1_1eigen_1_1is__eigen.xhtml", null ],
         [ "derived_from_eigen_base", "conceptfcarouge_1_1eigen_1_1derived__from__eigen__base.xhtml", null ],

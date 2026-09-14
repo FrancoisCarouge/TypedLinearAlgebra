@@ -123,7 +123,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000200">Test</a></b></dt><dd>Verifies typed linear algebra's mp-units compatibility plugin.</dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000198">Test</a></b></dt><dd>Verifies typed linear algebra's mp-units compatibility plugin.</dd></dl>
 <p>Explore areas of interests. </p>
 
 <p class="definition">Definition at line <a class="el" href="typed__vector__as__quantity_8cpp_source.xhtml#l00061">61</a> of file <a class="el" href="typed__vector__as__quantity_8cpp_source.xhtml">typed_vector_as_quantity.cpp</a>.</p>
@@ -132,7 +132,7 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   63</span>  <span class="comment">// for a quantity:</span></div>
 <div class="line"><span class="lineno">   64</span>  {</div>
 <div class="line"><span class="lineno">   65</span>    <span class="comment">// A 3-component double-typed column vector, backed by an Eigen vector.</span></div>
-<div class="line"><span class="lineno">   66</span>    <span class="keyword">using </span>vector3d = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">column_vector&lt;double, double, double, double&gt;</a>;</div>
+<div class="line"><span class="lineno">   66</span>    <span class="keyword">using </span>vector3d = <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">column_vector&lt;double, double, double, double&gt;</a>;</div>
 <div class="line"><span class="lineno">   67</span> </div>
 <div class="line"><span class="lineno">   68</span>    <span class="comment">// The homogeneous, double-typed vector satisfies mp-units&#39;s representation</span></div>
 <div class="line"><span class="lineno">   69</span>    <span class="comment">// requirements to back up a vector quantity.</span></div>
@@ -153,7 +153,7 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   84</span>           <span class="stringliteral">&quot;[[8.333333333333334], [11.11111111111111], [0]] m/s&quot;</span>);</div>
 <div class="line"><span class="lineno">   85</span>    assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, displacement) == <span class="stringliteral">&quot;[[60], [80], [0]] km&quot;</span>);</div>
 <div class="line"><span class="lineno">   86</span>    assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, speed) == <span class="stringliteral">&quot;50 km/h&quot;</span>);</div>
-<div class="line"><span class="lineno">   87</span>    assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#abd9234c79492b60204762a73f8bf32ea">velocity</a>.numerical_value_in(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#abd9234c79492b60204762a73f8bf32ea">velocity</a>.unit)) ==</div>
+<div class="line"><span class="lineno">   87</span>    assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#aa238ede5c286b6673cd991a11cb56be1">velocity</a>.numerical_value_in(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#aa238ede5c286b6673cd991a11cb56be1">velocity</a>.unit)) ==</div>
 <div class="line"><span class="lineno">   88</span>           <span class="stringliteral">&quot;[[30], [40], [0]]&quot;</span>);</div>
 <div class="line"><span class="lineno">   89</span>  }</div>
 <div class="line"><span class="lineno">   90</span> </div>
@@ -165,18 +165,18 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   96</span> </div>
 <div class="line"><span class="lineno">   97</span>    <span class="comment">// A velocity vector quantity with strongly typed axes backed by a</span></div>
 <div class="line"><span class="lineno">   98</span>    <span class="comment">// 3-component double-typed column vector, backed by an Eigen vector.</span></div>
-<div class="line"><span class="lineno">   99</span>    mp_units::quantity <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#abd9234c79492b60204762a73f8bf32ea">velocity</a>{flight_velocity(vector3d{30, 40, 0} * km / h)};</div>
+<div class="line"><span class="lineno">   99</span>    mp_units::quantity <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#aa238ede5c286b6673cd991a11cb56be1">velocity</a>{flight_velocity(vector3d{30, 40, 0} * km / h)};</div>
 <div class="line"><span class="lineno">  100</span> </div>
 <div class="line"><span class="lineno">  101</span>    <span class="comment">// A heterogeneous 3-component quantity-typed column vector, backed by an</span></div>
 <div class="line"><span class="lineno">  102</span>    <span class="comment">// Eigen vector.</span></div>
 <div class="line"><span class="lineno">  103</span>    <span class="keyword">using </span>velocities =</div>
-<div class="line"><span class="lineno">  104</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a0588d5a79337e8a6821a57445f044753">column_vector</a>&lt;double, mp_units::quantity&lt;forward_velocity[km / h]&gt;,</div>
+<div class="line"><span class="lineno">  104</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#a720da609d4006c1b1945d347ac5494c5">column_vector</a>&lt;double, mp_units::quantity&lt;forward_velocity[km / h]&gt;,</div>
 <div class="line"><span class="lineno">  105</span>                      mp_units::quantity&lt;lateral_velocity[km / h]&gt;,</div>
 <div class="line"><span class="lineno">  106</span>                      mp_units::quantity&lt;vertical_velocity[km / h]&gt;&gt;;</div>
 <div class="line"><span class="lineno">  107</span> </div>
 <div class="line"><span class="lineno">  108</span>    <span class="comment">// Convert the vector quantity to a heterogeneous typed column vector of</span></div>
 <div class="line"><span class="lineno">  109</span>    <span class="comment">// quantities, out of the box.</span></div>
-<div class="line"><span class="lineno">  110</span>    velocities state{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#abd9234c79492b60204762a73f8bf32ea">velocity</a>};</div>
+<div class="line"><span class="lineno">  110</span>    velocities state{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#aa238ede5c286b6673cd991a11cb56be1">velocity</a>};</div>
 <div class="line"><span class="lineno">  111</span> </div>
 <div class="line"><span class="lineno">  112</span>    <span class="comment">// Note the difference in presentation of the vector state compared to the</span></div>
 <div class="line"><span class="lineno">  113</span>    <span class="comment">// quantity vector:</span></div>
@@ -201,7 +201,7 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">  132</span> </div>
 <div class="line"><span class="lineno">  133</span>    <span class="comment">// A velocity vector quantity with strongly typed axes backed by a</span></div>
 <div class="line"><span class="lineno">  134</span>    <span class="comment">// 3-component double-typed column vector, backed by an Eigen vector.</span></div>
-<div class="line"><span class="lineno">  135</span>    mp_units::quantity <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#abd9234c79492b60204762a73f8bf32ea">velocity</a>{flight_velocity(vector3d{30, 40, 0} * km / h)};</div>
+<div class="line"><span class="lineno">  135</span>    mp_units::quantity <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#aa238ede5c286b6673cd991a11cb56be1">velocity</a>{flight_velocity(vector3d{30, 40, 0} * km / h)};</div>
 <div class="line"><span class="lineno">  136</span> </div>
 <div class="line"><span class="lineno">  137</span>    assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, get&lt;0&gt;(velocity)) == <span class="stringliteral">&quot;30 km/h&quot;</span>);</div>
 <div class="line"><span class="lineno">  138</span>    assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, get&lt;forward_velocity&gt;(velocity)) == <span class="stringliteral">&quot;30 km/h&quot;</span>);</div>
@@ -210,14 +210,14 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">  141</span>    <span class="comment">// vector, backed by Eigen, with three components, each of type ISQ velocity</span></div>
 <div class="line"><span class="lineno">  142</span>    <span class="comment">// quantity, if the conversion supports the quantity specific cast.</span></div>
 <div class="line"><span class="lineno">  143</span>    <span class="keyword">using </span>velocities =</div>
-<div class="line"><span class="lineno">  144</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a0588d5a79337e8a6821a57445f044753">column_vector</a>&lt;double,</div>
+<div class="line"><span class="lineno">  144</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#a720da609d4006c1b1945d347ac5494c5">column_vector</a>&lt;double,</div>
 <div class="line"><span class="lineno">  145</span>                      mp_units::quantity&lt;mp_units::isq::velocity[km / h]&gt;,</div>
 <div class="line"><span class="lineno">  146</span>                      mp_units::quantity&lt;mp_units::isq::velocity[km / h]&gt;,</div>
 <div class="line"><span class="lineno">  147</span>                      mp_units::quantity&lt;mp_units::isq::velocity[km / h]&gt;&gt;;</div>
 <div class="line"><span class="lineno">  148</span> </div>
 <div class="line"><span class="lineno">  149</span>    <span class="comment">// Convert the vector quantity to a homogeneous typed column vector of</span></div>
 <div class="line"><span class="lineno">  150</span>    <span class="comment">// quantities, through the plug-in tuple support.</span></div>
-<div class="line"><span class="lineno">  151</span>    velocities state{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#abd9234c79492b60204762a73f8bf32ea">velocity</a>};</div>
+<div class="line"><span class="lineno">  151</span>    velocities state{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#aa238ede5c286b6673cd991a11cb56be1">velocity</a>};</div>
 <div class="line"><span class="lineno">  152</span> </div>
 <div class="line"><span class="lineno">  153</span>    <span class="comment">// Dragons: magnitude possible in C++; that&#39;s not a mathematical vector.</span></div>
 <div class="line"><span class="lineno">  154</span>    assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, magnitude(state)) == <span class="stringliteral">&quot;50 km/h&quot;</span>);</div>
@@ -231,7 +231,7 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">  162</span> </div>
 <div class="line"><span class="lineno">  163</span>    <span class="comment">// The homogeneous, double-typed vector satisfies mp-units&#39;s representation</span></div>
 <div class="line"><span class="lineno">  164</span>    <span class="comment">// requirements to back up a vector quantity.</span></div>
-<div class="line"><span class="lineno">  165</span>    mp_units::quantity <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#abd9234c79492b60204762a73f8bf32ea">velocity</a>{</div>
+<div class="line"><span class="lineno">  165</span>    mp_units::quantity <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#aa238ede5c286b6673cd991a11cb56be1">velocity</a>{</div>
 <div class="line"><span class="lineno">  166</span>        mp_units::isq::velocity(vector3d{30, 40, 0} * km / h)};</div>
 <div class="line"><span class="lineno">  167</span> </div>
 <div class="line"><span class="lineno">  168</span>    assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, velocity) == <span class="stringliteral">&quot;[[30], [40], [0]] km/h&quot;</span>);</div>
@@ -240,12 +240,12 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">  171</span>    <span class="comment">// assert(std::format(&quot;{}&quot;, get&lt;0&gt;(velocity)) == &quot;30 km/h&quot;);</span></div>
 <div class="line"><span class="lineno">  172</span> </div>
 <div class="line"><span class="lineno">  173</span>    <span class="keyword">using </span>velocities =</div>
-<div class="line"><span class="lineno">  174</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a0588d5a79337e8a6821a57445f044753">column_vector</a>&lt;double,</div>
+<div class="line"><span class="lineno">  174</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#a720da609d4006c1b1945d347ac5494c5">column_vector</a>&lt;double,</div>
 <div class="line"><span class="lineno">  175</span>                      mp_units::quantity&lt;mp_units::isq::velocity[km / h]&gt;,</div>
 <div class="line"><span class="lineno">  176</span>                      mp_units::quantity&lt;mp_units::isq::velocity[km / h]&gt;,</div>
 <div class="line"><span class="lineno">  177</span>                      mp_units::quantity&lt;mp_units::isq::velocity[km / h]&gt;&gt;;</div>
 <div class="line"><span class="lineno">  178</span> </div>
-<div class="line"><span class="lineno">  179</span>    velocities state{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#abd9234c79492b60204762a73f8bf32ea">velocity</a>};</div>
+<div class="line"><span class="lineno">  179</span>    velocities state{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#aa238ede5c286b6673cd991a11cb56be1">velocity</a>};</div>
 <div class="line"><span class="lineno">  180</span> </div>
 <div class="line"><span class="lineno">  181</span>    assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, state) == <span class="stringliteral">&quot;[[30 km/h], [40 km/h], [0 km/h]]&quot;</span>);</div>
 <div class="line"><span class="lineno">  182</span>  }</div>
@@ -256,16 +256,16 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">  187</span> </div>
 <div class="line"><span class="lineno">  188</span>    <span class="comment">// The homogeneous, double-typed vector satisfies mp-units&#39;s representation</span></div>
 <div class="line"><span class="lineno">  189</span>    <span class="comment">// requirements to back up a vector quantity.</span></div>
-<div class="line"><span class="lineno">  190</span>    mp_units::quantity <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#abd9234c79492b60204762a73f8bf32ea">velocity</a>{flight_velocity(vector3d{30, 40, 0} * km / h)};</div>
+<div class="line"><span class="lineno">  190</span>    mp_units::quantity <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#aa238ede5c286b6673cd991a11cb56be1">velocity</a>{flight_velocity(vector3d{30, 40, 0} * km / h)};</div>
 <div class="line"><span class="lineno">  191</span> </div>
-<div class="line"><span class="lineno">  192</span>    [[maybe_unused]] <span class="keyword">auto</span> [x, y, <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_023x3_8cpp_03.xhtml#af6300c1a6103ae1a510810116d0052cb">z</a>] = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#abd9234c79492b60204762a73f8bf32ea">velocity</a>;</div>
+<div class="line"><span class="lineno">  192</span>    [[maybe_unused]] <span class="keyword">auto</span> [x, y, <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_023x3_8cpp_03.xhtml#af6300c1a6103ae1a510810116d0052cb">z</a>] = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#aa238ede5c286b6673cd991a11cb56be1">velocity</a>;</div>
 <div class="line"><span class="lineno">  193</span>  }</div>
 <div class="line"><span class="lineno">  194</span> </div>
 <div class="line"><span class="lineno">  195</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">  196</span>}()};</div>
-<div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a></div><div class="ttdoc">Strongly typed matrix.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__forward_8hpp_source.xhtml#l00043">typed_linear_algebra_forward.hpp:43</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03_xhtml_a0588d5a79337e8a6821a57445f044753"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a0588d5a79337e8a6821a57445f044753">fcarouge::sample::anonymous_namespace{au_eigen.cpp}::column_vector</a></div><div class="ttdeci">column_vector&lt; representation, Types... &gt; column_vector</div><div class="ttdef"><b>Definition</b> <a href="sample_2au__eigen_8cpp_source.xhtml#l00065">au_eigen.cpp:65</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03_xhtml_abd9234c79492b60204762a73f8bf32ea"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#abd9234c79492b60204762a73f8bf32ea">fcarouge::sample::anonymous_namespace{au_eigen.cpp}::velocity</a></div><div class="ttdeci">au::QuantityD&lt; au::UnitQuotientT&lt; au::Meters, au::Seconds &gt; &gt; velocity</div><div class="ttdef"><b>Definition</b> <a href="sample_2au__eigen_8cpp_source.xhtml#l00057">au_eigen.cpp:57</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_ab95c9e8d65ece459f17360e871fb7490"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">fcarouge::armadillo::column_vector</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; Row, 1 &gt; column_vector</div><div class="ttdoc">Compile-time sized Armadillo column vector.</div><div class="ttdef"><b>Definition</b> <a href="armadillo_8hpp_source.xhtml#l00098">armadillo.hpp:98</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03_xhtml_a720da609d4006c1b1945d347ac5494c5"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#a720da609d4006c1b1945d347ac5494c5">fcarouge::sample::anonymous_namespace{au_armadillo.cpp}::column_vector</a></div><div class="ttdeci">column_vector&lt; representation, Types... &gt; column_vector</div><div class="ttdef"><b>Definition</b> <a href="au__armadillo_8cpp_source.xhtml#l00065">au_armadillo.cpp:65</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03_xhtml_aa238ede5c286b6673cd991a11cb56be1"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#aa238ede5c286b6673cd991a11cb56be1">fcarouge::sample::anonymous_namespace{au_armadillo.cpp}::velocity</a></div><div class="ttdeci">au::QuantityD&lt; au::UnitQuotientT&lt; au::Meters, au::Seconds &gt; &gt; velocity</div><div class="ttdef"><b>Definition</b> <a href="au__armadillo_8cpp_source.xhtml#l00057">au_armadillo.cpp:57</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_023x1__eigen_8cpp_03_xhtml_a3fb8fb82d63b4f19b49c7d1fc4e383fc"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_023x1__eigen_8cpp_03.xhtml#a3fb8fb82d63b4f19b49c7d1fc4e383fc">fcarouge::test::anonymous_namespace{3x1_eigen.cpp}::vector3d</a></div><div class="ttdeci">typed_column_vector&lt; column_vector&lt; double, 3 &gt;, double, double, double &gt; vector3d</div><div class="ttdef"><b>Definition</b> <a href="common__with_23x1__eigen_8cpp_source.xhtml#l00041">3x1_eigen.cpp:41</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_023x3_8cpp_03_xhtml_af6300c1a6103ae1a510810116d0052cb"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_023x3_8cpp_03.xhtml#af6300c1a6103ae1a510810116d0052cb">fcarouge::test::anonymous_namespace{3x3.cpp}::z</a></div><div class="ttdeci">matrix&lt; double, 3, 3 &gt; z</div><div class="ttdef"><b>Definition</b> <a href="nested_23x3_8cpp_source.xhtml#l00043">3x3.cpp:43</a></div></div>
 </div><!-- fragment -->
