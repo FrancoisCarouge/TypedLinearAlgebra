@@ -60,6 +60,48 @@ if(PROJECT_IS_TOP_LEVEL)
   add_subdirectory("pkgconfig")
   add_subdirectory("sample")
   add_subdirectory("support")
+
+  # Single-header amalgamations for tools that cannot resolve this project's
+  # multi-file layout, such as Compiler Explorer's `#include`-by-URL feature.
+  #
+  # * NAME The generated header's file name, without extension.
+  # * ENTRY The header to start amalgamating from.
+  # * INCLUDE_DIRS Fallback roots to resolve quoted includes against, in
+  #   order, after the including file's own directory.
+  function(add_amalgamation NAME ENTRY)
+    set(multiValueArgs INCLUDE_DIRS)
+    cmake_parse_arguments(PARSE_ARGV 2 AMALGAMATION "" "" "${multiValueArgs}")
+
+    set(OUTPUT_HEADER "${CMAKE_BINARY_DIR}/amalgamate/fcarouge/${NAME}.h")
+    add_custom_command(
+      OUTPUT "${OUTPUT_HEADER}"
+      COMMAND
+        "${CMAKE_COMMAND}" -D "INPUT=${ENTRY}" -D
+        "INCLUDE_DIRS=${AMALGAMATION_INCLUDE_DIRS}" -D
+        "OUTPUT=${OUTPUT_HEADER}" -P "${CMAKE_SOURCE_DIR}/support/amalgamate.cmake"
+      DEPENDS "${ENTRY}"
+      COMMENT "Generating amalgamated ${NAME}.h header"
+      VERBATIM)
+    add_custom_target("amalgamate_${NAME}" DEPENDS "${OUTPUT_HEADER}")
+  endfunction(add_amalgamation)
+
+  add_amalgamation(
+    typed_linear_algebra
+    "${CMAKE_SOURCE_DIR}/include/fcarouge/typed_linear_algebra.hpp"
+    INCLUDE_DIRS "${CMAKE_SOURCE_DIR}/include")
+
+  add_amalgamation(
+    typed_linear_algebra_mp_units_eigen
+    "${CMAKE_SOURCE_DIR}/support/mp_units_eigen/fcarouge/linalg.hpp"
+    INCLUDE_DIRS
+      "${CMAKE_SOURCE_DIR}/include" "${CMAKE_SOURCE_DIR}/support/eigen"
+      "${CMAKE_SOURCE_DIR}/support/mp_units"
+      "${CMAKE_SOURCE_DIR}/support/mp_units_eigen")
+
+  add_custom_target(
+    amalgamate DEPENDS amalgamate_typed_linear_algebra
+                       amalgamate_typed_linear_algebra_mp_units_eigen)
+
   add_subdirectory("test")
 endif()
 

@@ -35,6 +35,7 @@ endif()
 
 add_subdirectory("add")
 add_subdirectory("addition")
+add_subdirectory("amalgamate")
 add_subdirectory("assign")
 add_subdirectory("at")
 add_subdirectory("column_typed_matrix")
