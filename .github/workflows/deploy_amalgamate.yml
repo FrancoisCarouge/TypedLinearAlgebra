@@ -1,0 +1,36 @@
+name: 'Deploy / Amalgamate'
+
+on:
+  workflow_run:
+    workflows: ['Deploy Doxygen']
+    types:
+      - completed
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-26.04
+    permissions:
+      contents: write
+    steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+      with:
+        egress-policy: audit
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - name: 'Install: Latest CMake'
+      uses: ssrobins/install-cmake@da13ba26f50a41d3b03cfe8ca7265903f04a8932 # v1.0.0
+    - name: 'Configure'
+      run: cmake -S . -B 'build' -D BUILD_TESTING=OFF
+    - name: 'Build'
+      run: cmake --build 'build' --target amalgamate --verbose
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build/amalgamate
+        destination_dir: ./amalgamate
