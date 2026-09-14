@@ -29,14 +29,49 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-pass("1x1_array" BACKENDS "eigexed" "nested_typed_eigen")
-pass("1x1_chrono_eigen" BACKENDS "chrono_eigen")
-pass("1x1_mp_units_eigen" BACKENDS "mp_units_eigen")
+pass("1x1_array" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("1x1_chrono_eigen" BACKENDS "chrono_eigen" "chrono_armadillo")
+pass("1x1_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
 pass("1x1_mp_units_std" BACKENDS "mp_units_std")
-pass("1x1" BACKENDS "eigexed" "nested_typed_eigen")
-pass("1x3_array" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("1x3" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+pass("1x1" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
+pass(
+  "1x3_array"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "nested_typed_eigen"
+  "armadilloxed"
+  "armadillo")
+pass(
+  "1x3"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "nested_typed_eigen"
+  "armadilloxed"
+  "armadillo")
 pass("copy" BACKENDS "eigexed" "nested_typed_eigen")
-pass("initializer_lists" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("3x1_array" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
-pass("3x1" BACKENDS "eigen" "eigexed" "nested_typed_eigen")
+pass(
+  "initializer_lists"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "nested_typed_eigen"
+  "armadilloxed"
+  "armadillo")
+pass(
+  "3x1_array"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "nested_typed_eigen"
+  "armadilloxed"
+  "armadillo")
+pass(
+  "3x1"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "nested_typed_eigen"
+  "armadilloxed"
+  "armadillo")
