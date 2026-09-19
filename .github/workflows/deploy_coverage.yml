@@ -2,7 +2,7 @@ name: 'Deploy / Coverage'
 
 on:
   workflow_run:
-    workflows: ['Deploy Doxygen']
+    workflows: ['Deploy / Doxygen']
     types:
       - completed
 
