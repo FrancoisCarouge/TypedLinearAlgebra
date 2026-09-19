@@ -2,6 +2,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
 [
     [ "add", "dir_e63a96e5306ed2401e4f4403334a8083.xhtml", "dir_e63a96e5306ed2401e4f4403334a8083" ],
     [ "addition", "dir_7f3a6c91f339432c06d7f9ff2ee1de32.xhtml", "dir_7f3a6c91f339432c06d7f9ff2ee1de32" ],
+    [ "amalgamate", "dir_17fe3c0cc77a147809ce78812d28f980.xhtml", "dir_17fe3c0cc77a147809ce78812d28f980" ],
     [ "assign", "dir_0e0710f50cc64881006e62ab338f5134.xhtml", "dir_0e0710f50cc64881006e62ab338f5134" ],
     [ "at", "dir_5dcc120ce88763492754ea9f01fb177a.xhtml", "dir_5dcc120ce88763492754ea9f01fb177a" ],
     [ "column_typed_matrix", "dir_8fd7668f9c62e73ca70932a35c2c994e.xhtml", "dir_8fd7668f9c62e73ca70932a35c2c994e" ],

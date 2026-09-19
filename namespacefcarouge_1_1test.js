@@ -522,6 +522,18 @@ var namespacefcarouge_1_1test =
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02subscript__3x3__const_8cpp_03.xhtml#afba74b54c39df2c0865cb73588c16ae6", null ]
     ] ],
     [ "anonymous_namespace{transpose_shape_fail.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02transpose__shape__fail_8cpp_03.xhtml", null ],
+    [ "anonymous_namespace{typed_linear_algebra.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__linear__algebra_8cpp_03.xhtml", [
+      [ "matrix", "namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__linear__algebra_8cpp_03.xhtml#a4df23f702fe16ae57877fee52262f4ff", null ],
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__linear__algebra_8cpp_03.xhtml#ac95c0a8b11bf9bdba7dc36475bce0dc0", null ]
+    ] ],
+    [ "anonymous_namespace{typed_linear_algebra_mp_units_eigen.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__linear__algebra__mp__units__eigen_8cpp_03.xhtml", [
+      [ "acceleration", "namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__linear__algebra__mp__units__eigen_8cpp_03.xhtml#acaffcba0280780afc327b5dd2e91c5c5", null ],
+      [ "column_vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__linear__algebra__mp__units__eigen_8cpp_03.xhtml#a4697fefacf97a0aca9d7d080becf92cf", null ],
+      [ "position", "namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__linear__algebra__mp__units__eigen_8cpp_03.xhtml#a27456dfee37678e3dc1b73e4039fe7bf", null ],
+      [ "quantity", "namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__linear__algebra__mp__units__eigen_8cpp_03.xhtml#a5eea1f69f4ba1f9d9089a627ae0c95b4", null ],
+      [ "velocity", "namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__linear__algebra__mp__units__eigen_8cpp_03.xhtml#a2fda2d52f8003f663dcad81805b824ac", null ],
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__linear__algebra__mp__units__eigen_8cpp_03.xhtml#a8e98df56e27ed50a0f770e698106a462", null ]
+    ] ],
     [ "anonymous_namespace{typed_vector_as_quantity.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__vector__as__quantity_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__vector__as__quantity_8cpp_03.xhtml#a0f621f4c56c49ecc3bbad51e8dcf2b21", null ]
     ] ],

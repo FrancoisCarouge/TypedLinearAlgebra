@@ -1,5 +1,6 @@
 var dir_5815af820a9cc9481f1d0990a0d60286 =
 [
+    [ "amalgamate", "dir_687a5dc1a55b1eee6e7200452ecf2706.xhtml", null ],
     [ "armadillo", "dir_7efcc8dc0e8e73ed94b7be8d2215fd1f.xhtml", "dir_7efcc8dc0e8e73ed94b7be8d2215fd1f" ],
     [ "armadilloxed", "dir_cc84f3c0e8fcb85f2378f21d25519e8b.xhtml", "dir_cc84f3c0e8fcb85f2378f21d25519e8b" ],
     [ "au", "dir_17b3718e5bf94d24e4a35ea3aef6214c.xhtml", "dir_17b3718e5bf94d24e4a35ea3aef6214c" ],
