@@ -1,6 +1,6 @@
 ## François Carouge / Typed Linear Algebra
 
-Physical unit mismatches in matrix and vector computations have sunk missions and cost millions, because ordinary linear algebra treats a mismatched unit, an out-of-order axis, or a mixed-up reference frame as just another number and lets it compile, run, and fail silently. This library is a C++ strongly-typed facade to a matrix linear algebra backend — Eigen, std::linalg/mdspan, Au, mp-units, nholthaus/units, or Kokkos — that brings type safety to matrix operations. It enforces dimensional consistency and unit compatibility, turning those mismatches into compile errors and preventing common errors in scientific and engineering computations.
+Physical unit mismatches in matrix and vector computations have crashed projects and cost billions, because ordinary linear algebra treats a mismatched unit, an out-of-order axis, or a mixed-up reference frame as just another number and lets it compile, run, and fail silently. This library is a C++ strongly-typed facade to a matrix linear algebra backend [Eigen, std::linalg/mdspan, Kokkos, Armadillo] adapting strong types [Au, mp-units, nholthaus/units, std::chrono] that brings type safety to matrix operations. It turns mismatches into compile errors and preventing common errors in scientific and engineering computations.
 
 ```cpp
 state x{3. * m,
@@ -14,7 +14,7 @@ std::println("{}", x * transposed(x));
 //  [3 m²/s², 2 m²/s³, 1 m²/s⁴]]
 ```
 
-[More usage examples in the `sample` directory.](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample).
+[![Try it live on Compiler Explorer](https://img.shields.io/badge/Try_live_on-Compiler_Explorer-black?style=for-the-badge&logo=compilerexplorer&labelColor=black&color=67C52A)](https://godbolt.org/z/cW3TGqf6r)
 
 [![Pipeline](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/pipeline.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/pipeline.yml)
 [![Sanitizer](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/sanitizer.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/sanitizer.yml)
@@ -62,19 +62,36 @@ The public API lives in the `fcarouge` namespace. Import it with a using-declara
 
 ### Plug-ins
 
-Add a plug-in for each strong type or linear algebra backend you use:
+Add a plug-in for each strong type and/or linear algebra backend you use:
 
 | Integration | Example Plug-in |
 | --- | --- |
-| Armadillo | [See example plug-in at `support/armadillo`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
-| Au | [See example plug-in at `support/au/fcarouge/au.hpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
+| Armadillo | [Example plug-in: `support/armadillo`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
+| Au | [Example plug-in: `support/au`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | Built-in Types | No plug-in needed. |
-| Eigen | [See example plug-in at `support/eigen`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
-| Kokkos | [See example plug-in at `support/kokkos`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
-| mp-units | [See example plug-in at `support/mp_units/fcarouge/mp_units.hpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
-| nholthaus/units | [See example plug-in at `support/nholthaus/fcarouge/nholthaus.hpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
+| Eigen | [Example plug-in: `support/eigen`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
+| Kokkos | [Example plug-in: `support/kokkos`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
+| mp-units | [Example plug-in: `support/mp_units`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
+| nholthaus/units | [Example plug-in: `support/nholthaus`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | std::chrono | No plug-in needed. |
 | std::linalg | No plug-in needed. |
+
+### Samples
+
+| Interoperability | Sample |
+| --- | --- |
+| Au + Armadillo | [Usage example: `sample/au_armadillo.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/au_armadillo.cpp). |
+| Au + Eigen | [Usage example: `sample/au_eigen.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/au_eigen.cpp). |
+| Au + std::linalg | [Usage example: `sample/au_std.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/au_std.cpp). |
+| mp-units + Armadillo | [Usage example: `sample/mp_units_armadillo.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_armadillo.cpp). |
+| mp-units + Eigen | [Usage example: `sample/mp_units_eigen.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_eigen.cpp). |
+| mp-units + std::linalg | [Usage example: `sample/mp_units_std.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std.cpp). |
+| nholthaus/units + Armadillo | [Usage example: `sample/nholthaus_armadillo.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_armadillo.cpp). |
+| nholthaus/units + Eigen | [Usage example: `sample/nholthaus_eigen.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_eigen.cpp). |
+| nholthaus/units + std::linalg | [Usage example: `sample/nholthaus_std.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_std.cpp). |
+| std::chrono + Armadillo | [Usage example: `sample/chrono_armadillo.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_armadillo.cpp). |
+| std::chrono + Eigen | [Usage example: `sample/chrono_eigen.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_eigen.cpp). |
+| std::chrono + std::linalg | [Usage example: `sample/chrono_std.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_std.cpp). |
 
 ### Class Typed Matrix
 

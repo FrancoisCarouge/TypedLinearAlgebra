@@ -2,7 +2,7 @@ name: 'Deploy Time Trace'
 
 on:
   workflow_run:
-    workflows: ['Deploy Doxygen']
+    workflows: ['Deploy / Doxygen']
     types:
       - completed
 

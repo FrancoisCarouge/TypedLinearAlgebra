@@ -2,7 +2,7 @@ name: 'Deploy / Amalgamate'
 
 on:
   workflow_run:
-    workflows: ['Deploy Doxygen']
+    workflows: ['Deploy / Doxygen']
     types:
       - completed
 
