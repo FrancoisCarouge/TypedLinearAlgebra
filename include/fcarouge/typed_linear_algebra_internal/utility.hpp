@@ -37,6 +37,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <concepts>
 #include <cstddef>
 #include <functional>
+#include <mdspan>
 #include <tuple>
 #include <type_traits>
 #include <utility>
@@ -177,6 +178,23 @@ template <std::size_t Size, typename Function>
 constexpr void for_constexpr(Function &&function) {
   for_constexpr_detail(std::make_index_sequence<Size>{},
                        std::forward<Function>(function));
+}
+
+//! @brief Reinterprets a row or column typed vector's contiguous, rank two,
+//! n-by-one or one-by-n storage as the rank one span required by
+//! `std::linalg`'s vector concepts.
+//!
+//! @details A typed row or column vector, `rank_typed_matrix<1>`, is stored
+//! as a rank two, n-by-one or one-by-n, underlying matrix, unlike the rank
+//! one `in-vector`, `out-vector` shapes expected by `std::linalg`. Shared by
+//! `dot` and `matrix_vector_product`.
+template <typename Type> constexpr auto as_vector_span(Type &value) {
+  using matrix = std::remove_cvref_t<Type>;
+  using underlying = typename matrix::underlying;
+
+  return std::mdspan<underlying,
+                     std::extents<std::size_t, matrix::rows * matrix::columns>>(
+      value.data().data_handle());
 }
 
 template <typename Type>

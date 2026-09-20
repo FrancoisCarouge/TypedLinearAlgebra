@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,42 +27,44 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-if(NOT BUILD_TESTING)
-  return()
-endif()
+#include "fcarouge/linalg.hpp"
 
-add_subdirectory("add")
-add_subdirectory("addition")
-add_subdirectory("amalgamate")
-add_subdirectory("assign")
-add_subdirectory("at")
-add_subdirectory("column_typed_matrix")
-add_subdirectory("common_with")
-add_subdirectory("constructor")
-add_subdirectory("copy")
-add_subdirectory("distinct_typed_matrix")
-add_subdirectory("division")
-add_subdirectory("dot")
-add_subdirectory("element")
-add_subdirectory("equal_to")
-add_subdirectory("format")
-add_subdirectory("magnitude")
-add_subdirectory("matrix_product")
-add_subdirectory("matrix_vector_product")
-add_subdirectory("minus")
-add_subdirectory("mp_units")
-add_subdirectory("multiplication")
-add_subdirectory("nested")
-add_subdirectory("operator")
-add_subdirectory("rank_typed_matrix")
-add_subdirectory("row_typed_matrix")
-add_subdirectory("same_as_typed_matrix")
-add_subdirectory("same_shape")
-add_subdirectory("scale")
-add_subdirectory("structured_bindings")
-add_subdirectory("substraction")
-add_subdirectory("transposed")
-add_subdirectory("underlying")
-add_subdirectory("uniform_typed_matrix")
+#include <cassert>
+#include <chrono>
+#include <cstddef>
+#include <mdspan>
+
+namespace fcarouge::test {
+using representation = double;
+
+namespace {
+//! @test Verifies the dot product of a row vector of std::chrono durations
+//! and a row vector of the dimensionless representation type, with the
+//! mdspan-backed, non-owning storage backend. Durations have no
+//! duration-by-duration product, so each term instead pairs a duration with a
+//! plain scalar, mirroring `matrix_vector_product`'s convention.
+[[maybe_unused]] const auto test{[] -> int {
+  using seconds = std::chrono::duration<representation>;
+
+  double storage_a[]{0., 0.};
+  double storage_b[]{0., 0.};
+
+  std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 1, 2>{}};
+  std::mdspan span_b{&storage_b[0], std::extents<std::size_t, 1, 2>{}};
+
+  row_vector<representation, seconds, seconds> a{span_a};
+  row_vector<representation, representation, representation> b{span_b};
+
+  a.at<0>(seconds{2.});
+  a.at<1>(seconds{3.});
+  b.at<0>(4.);
+  b.at<1>(5.);
+
+  assert(dot(a, b) == seconds{23.});
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

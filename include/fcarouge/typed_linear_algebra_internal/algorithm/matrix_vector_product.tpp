@@ -35,27 +35,9 @@ For more information, please refer to <https://unlicense.org> */
 //! @todo Remove the feature check when supporting native C++26.
 #ifdef __cpp_lib_linalg
 
-#include <cstddef>
 #include <linalg>
-#include <mdspan>
 
 namespace fcarouge {
-
-//! @brief Reinterprets a row or column typed vector's contiguous, rank two,
-//! n-by-one or one-by-n storage as the rank one span required by
-//! `std::linalg`'s vector concepts.
-//!
-//! @details A typed row or column vector, `rank_typed_matrix<1>`, is stored
-//! as a rank two, n-by-one or one-by-n, underlying matrix, unlike the rank
-//! one `in-vector`, `out-vector` shapes expected by `std::linalg`.
-template <typename Type> constexpr auto as_vector_span(Type &value) {
-  using matrix = std::remove_cvref_t<Type>;
-  using underlying = typename matrix::underlying;
-
-  return std::mdspan<underlying,
-                     std::extents<std::size_t, matrix::rows * matrix::columns>>(
-      value.data().data_handle());
-}
 
 //! @brief Computes the product of a matrix and a vector.
 //!
@@ -99,8 +81,8 @@ constexpr void matrix_vector_product(const rank_typed_matrix<2> auto &lhs,
   });
 
   using std::linalg::matrix_vector_product;
-  matrix_vector_product(lhs.data(), as_vector_span(rhs),
-                        as_vector_span(result));
+  matrix_vector_product(lhs.data(), tla::as_vector_span(rhs),
+                        tla::as_vector_span(result));
 }
 } // namespace fcarouge
 

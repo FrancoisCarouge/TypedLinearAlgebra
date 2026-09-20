@@ -73,7 +73,7 @@ ctest --test-dir build --parallel --verbose
 RowIndexes, ColumnIndexes>` class template, operators, and the
 `element_caster`/`cast` customization point, then pulls in implementation from
 `include/fcarouge/typed_linear_algebra_internal/` via `.tpp` includes at the
-bottom of the header (`algorithm/{add,divide,equal_to,magnitude,matrix_product,
+bottom of the header (`algorithm/{add,divide,dot,equal_to,magnitude,matrix_product,
 matrix_vector_product,minus,product,scale,substract,transposed}.tpp`, `cast.tpp`,
 `chrono.tpp`, `common_type.tpp`, `format.tpp`, `tuple.tpp`,
 `typed_linear_algebra.tpp`, plus the non-`.tpp` `utility.hpp`). `typed_matrix`
@@ -146,7 +146,7 @@ Adding a new backend means adding a `support/<name>/` directory with its own
 
 ### Algorithms (`include/fcarouge/typed_linear_algebra_internal/algorithm/`)
 
-One `.tpp` per algorithm (`add`, `divide`, `equal_to`, `magnitude`,
+One `.tpp` per algorithm (`add`, `divide`, `dot`, `equal_to`, `magnitude`,
 `matrix_product`, `matrix_vector_product`, `minus`, `product`, `scale`,
 `substract`, `transposed`), each `#include`d near the bottom of
 `typed_linear_algebra.hpp` (alphabetically, ~lines 527-537) and **re-declared for
@@ -160,31 +160,63 @@ typed_linear_algebra_internal` is available (aliased in the core header; some
 Core principle: an algorithm never re-implements representation arithmetic. It
 (1) computes the *result's* `row_indexes`/`column_indexes` tuples, (2) statically
 checks element-type compatibility, (3) delegates the numerics to the backend via
-`.data()` (the underlying backend matrix). Only `magnitude` is implemented atop
-the strong types (`cast` round-trips + `using std::sqrt`) — flagged in-file as a
-tradeoff to revisit.
+`.data()` (the underlying backend matrix). `magnitude` is the exception,
+implemented atop the strong types (`cast` round-trips) instead — flagged
+in-file as a tradeoff to revisit. `dot` delegates generically, via an
+`internal::dot` helper (`dot.tpp`) that tries, in order, a `.dot()` member
+(Eigen), a fully-qualified `fcarouge::dot` recursion for `nested_typed_eigen`'s
+composed `typed_matrix` storage, an ADL-found free function (Armadillo's
+`arma::dot`), then `std::linalg::dot` (via a guarded `using std::linalg::dot;`,
+so every branch after can call it unqualified) over the vectors reshaped via
+`tla::as_vector_span` (`*_std` backends) — mirroring `internal::transposed`'s
+`if constexpr` dispatch chain and its `static_assert(sizeof(...) == 0, ...)`
+catch-all for a backend supporting none of the above.
+
+Sharing the public function's name here (`internal::dot`, unlike, say,
+`internal::transposed`) took two deliberate precautions, both load-bearing —
+dropping either reintroduces the bug where `armadilloxed`/`*_armadillo` `dot`
+builds pass but silently hit the `static_assert` catch-all at runtime instead
+of computing anything:
+- **Constrained to `rank_typed_matrix<1>`** (matching the public `dot`'s own
+  constraint), so it is never itself a viable candidate for the `.dot()`/ADL/
+  `std::linalg::dot` branches' *unqualified* calls, all of which operate on
+  raw, non-typed-matrix backend storage: an unconstrained `internal::dot`
+  would tie with an ADL-found `arma::dot` for Armadillo's raw storage,
+  ambiguously, which — inside a `requires{}` — SFINAEs to false rather than
+  erroring, silently routing to the catch-all instead.
+- **The `nested_typed_eigen` recursion is spelled fully qualified**
+  (`fcarouge::dot(lhs.data(), rhs.data())`, needing a forward declaration of
+  the public `dot` above `internal::dot` in the same file, since `fcarouge::`
+  is a fixed, non-dependent scope resolved eagerly), not through this
+  function's own unqualified name: the inner `typed_matrix` is still
+  `fcarouge`-namespaced, so an unqualified call would again tie `internal::dot`
+  against the public `dot` found via ADL — the same ambiguity, one level in.
 
 Two deliberately mirrored API families:
 
 - **Expression / operator style** — mirrors Eigen and math notation: `operator+`,
   `operator-` (binary and unary negation), `operator*`, `operator/`,
-  `operator==`, plus `magnitude`, `transposed`. `[[nodiscard]] constexpr auto`,
-  return by value, result built with `make_typed_matrix<row_indexes,
+  `operator==`, plus `magnitude`, `dot`, `transposed`. `[[nodiscard]] constexpr
+  auto`, return by value, result built with `make_typed_matrix<row_indexes,
   column_indexes>(<backend expression on .data()>)`. Works on every backend.
   `make_typed_matrix` composes an element-accessible backend expression (Eigen)
   as-is, but materializes one that is not (Armadillo `Glue`/`Op`) through its
-  `.eval()` member first, so the resulting typed matrix stays usable.
+  `.eval()` member first, so the resulting typed matrix stays usable. `dot`
+  returns a bare element, not a typed matrix, mirroring `std::linalg::dot`'s own
+  return-by-value signature (unlike `add`/`matrix_product`/`matrix_vector_product`
+  /`scale`, which mirror `std::linalg`'s out-parameter signatures instead).
 - **`std::linalg` free-function style** — mirrors the `std::linalg` names and
   out-parameter signatures: `add`, `matrix_product`, `matrix_vector_product`,
   `scale`. `constexpr void f(inputs..., result&)`, caller pre-allocates
   `result`, body is `using std::linalg::f; f(lhs.data(), ..., result.data());`.
   Whole file wrapped in `#ifdef __cpp_lib_linalg` / `#include <linalg>` (`@todo`
   remove for native C++26), so only the `*_std` backends exercise them.
-  `matrix_vector_product` also reshapes the vector's rank-two n-by-1 storage into
-  the rank-one span `std::linalg` wants via a local `as_vector_span` mdspan
-  helper. `transposed` straddles both families: `if constexpr (requires {
-  value.data().transpose(); })` (Eigen member), else `requires { value.data().t();
-  }` (Armadillo member), else `std::linalg::transposed`.
+  `matrix_vector_product` reshapes the vector's rank-two n-by-1 storage into the
+  rank-one span `std::linalg` wants via `tla::as_vector_span` (`utility.hpp`;
+  shared with `dot`, since `dot.tpp` is included before `matrix_vector_product.tpp`
+  and cannot depend on it). `transposed` straddles both families: `if constexpr
+  (requires { value.data().transpose(); })` (Eigen member), else `requires {
+  value.data().t(); }` (Armadillo member), else `std::linalg::transposed`.
 
 Rank dispatch: overloads constrained on `rank_typed_matrix<0|1|2> auto` (0 =
 singleton, 1 = row/column vector, 2 = matrix; `rank` computed in `utility.hpp`).

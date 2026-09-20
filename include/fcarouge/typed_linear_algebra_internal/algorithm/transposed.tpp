@@ -63,6 +63,11 @@ namespace internal {
 }
 } // namespace internal
 
+//! @brief Transpose the input matrix.
+//!
+//! @param value The typed matrix to transpose.
+//!
+//! @return A typed matrix with the row and column indexes swapped.
 [[nodiscard]] constexpr auto
 transposed(const same_as_typed_matrix auto &value) {
   using matrix = std::remove_cvref_t<decltype(value)>;

@@ -553,6 +553,7 @@ template <char... Digits> constexpr auto operator""_i() noexcept {
 
 #include "typed_linear_algebra_internal/algorithm/add.tpp"
 #include "typed_linear_algebra_internal/algorithm/divide.tpp"
+#include "typed_linear_algebra_internal/algorithm/dot.tpp"
 #include "typed_linear_algebra_internal/algorithm/equal_to.tpp"
 #include "typed_linear_algebra_internal/algorithm/magnitude.tpp"
 #include "typed_linear_algebra_internal/algorithm/matrix_product.tpp"
@@ -573,6 +574,9 @@ namespace fcarouge {
 
 //! @name Algorithms
 //! @{
+
+[[nodiscard]] constexpr auto dot(const rank_typed_matrix<1> auto &lhs,
+                                 const rank_typed_matrix<1> auto &rhs);
 
 [[nodiscard]] constexpr auto magnitude(const uniform_typed_matrix auto &value);
 
