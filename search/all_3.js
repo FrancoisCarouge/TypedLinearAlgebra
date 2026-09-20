@@ -1,5 +1,24 @@
 var searchData=
 [
-  ['5x1_5fis_5fassignable_2ecpp_0',['5x1_is_assignable.cpp',['../5x1__is__assignable_8cpp.xhtml',1,'']]],
-  ['5x5_2ecpp_1',['5x5.cpp',['../5x5_8cpp.xhtml',1,'']]]
+  ['3_200_200_203_200_20a_202026_2009_2012_0',['&lt;a href=&quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra/compare/0.2.0...0.3.0&quot; &gt;0.3.0&lt;/a&gt; - 2026-09-12',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2026-09-12',1,'']]],
+  ['3_200_20a_202026_2009_2012_1',['&lt;a href=&quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra/compare/0.2.0...0.3.0&quot; &gt;0.3.0&lt;/a&gt; - 2026-09-12',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2026-09-12',1,'']]],
+  ['3_200_20head_20unreleased_20a_2',['&lt;a href=&quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra/compare/0.3.0...HEAD&quot; &gt;Unreleased&lt;/a&gt;',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#unreleased',1,'']]],
+  ['30_3',['&lt;a href=&quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra/compare/0.1.0...0.2.0&quot; &gt;0.2.0&lt;/a&gt; - 2026-06-30',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md020---2026-06-30',1,'']]],
+  ['3x1_2ecpp_4',['3x1.cpp',['../at_23x1_8cpp.xhtml',1,'(Global Namespace)'],['../constructor_23x1_8cpp.xhtml',1,'(Global Namespace)'],['../format_23x1_8cpp.xhtml',1,'(Global Namespace)'],['../structured__bindings_23x1_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['3x1_5farray_2ecpp_5',['3x1_array.cpp',['../3x1__array_8cpp.xhtml',1,'']]],
+  ['3x1_5fau_5feigen_2ecpp_6',['3x1_au_eigen.cpp',['../3x1__au__eigen_8cpp.xhtml',1,'']]],
+  ['3x1_5fchrono_5feigen_2ecpp_7',['3x1_chrono_eigen.cpp',['../3x1__chrono__eigen_8cpp.xhtml',1,'']]],
+  ['3x1_5fchrono_5fstd_2ecpp_8',['3x1_chrono_std.cpp',['../3x1__chrono__std_8cpp.xhtml',1,'']]],
+  ['3x1_5fconst_2ecpp_9',['3x1_const.cpp',['../at_23x1__const_8cpp.xhtml',1,'(Global Namespace)'],['../structured__bindings_23x1__const_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['3x1_5feigen_2ecpp_10',['3x1_eigen.cpp',['../common__with_23x1__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../minus_23x1__eigen_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['3x1_5fmp_5funits_5feigen_2ecpp_11',['3x1_mp_units_eigen.cpp',['../at_23x1__mp__units__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../magnitude_23x1__mp__units__eigen_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['3x1_5fmp_5funits_5fstd_2ecpp_12',['3x1_mp_units_std.cpp',['../3x1__mp__units__std_8cpp.xhtml',1,'']]],
+  ['3x1_5fnholthaus_5fstd_2ecpp_13',['3x1_nholthaus_std.cpp',['../3x1__nholthaus__std_8cpp.xhtml',1,'']]],
+  ['3x1_5fno_5fmatch_5ffail_2ecpp_14',['3x1_no_match_fail.cpp',['../3x1__no__match__fail_8cpp.xhtml',1,'']]],
+  ['3x2_5fau_5fstd_2ecpp_15',['3x2_au_std.cpp',['../3x2__au__std_8cpp.xhtml',1,'']]],
+  ['3x2_5fchrono_5fstd_2ecpp_16',['3x2_chrono_std.cpp',['../3x2__chrono__std_8cpp.xhtml',1,'']]],
+  ['3x2_5fmp_5funits_5fstd_2ecpp_17',['3x2_mp_units_std.cpp',['../3x2__mp__units__std_8cpp.xhtml',1,'']]],
+  ['3x2_5fnholthaus_5fstd_2ecpp_18',['3x2_nholthaus_std.cpp',['../3x2__nholthaus__std_8cpp.xhtml',1,'']]],
+  ['3x3_2ecpp_19',['3x3.cpp',['../at_23x3_8cpp.xhtml',1,'(Global Namespace)'],['../format_23x3_8cpp.xhtml',1,'(Global Namespace)'],['../nested_23x3_8cpp.xhtml',1,'(Global Namespace)'],['../underlying_23x3_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['3x3_5fconst_2ecpp_20',['3x3_const.cpp',['../3x3__const_8cpp.xhtml',1,'']]]
 ];

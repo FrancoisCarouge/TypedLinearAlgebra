@@ -41,6 +41,27 @@ var NAVTREE =
     [ "Benchmarks", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml", [
       [ "Results", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#results", null ]
     ] ],
+    [ "Changelog", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml", [
+      [ "Unreleased", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#unreleased", null ],
+      [ "0.3.0 - 2026-09-12", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2026-09-12", [
+        [ "Added", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added", null ],
+        [ "Changed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#changed", null ],
+        [ "Compiler & Build", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build", null ],
+        [ "Fixed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#fixed", null ],
+        [ "Dependencies", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#dependencies", null ]
+      ] ],
+      [ "0.2.0 - 2026-06-30", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md020---2026-06-30", [
+        [ "Added", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added-1", null ],
+        [ "Changed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#changed-1", null ],
+        [ "Breaking Changes & Build Requirements", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#breaking-changes--build-requirements", null ],
+        [ "Fixed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#fixed-1", null ],
+        [ "Dependencies", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#dependencies-1", null ]
+      ] ],
+      [ "0.1.0 - 2026-03-16", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md010---2026-03-16", [
+        [ "Added", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added-2", null ],
+        [ "Compiler & Build", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-1", null ]
+      ] ]
+    ] ],
     [ "Contributor Covenant Code of Conduct", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml", [
       [ "Our Pledge", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-pledge", null ],
       [ "Our Standards", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-standards", null ],
@@ -112,12 +133,12 @@ var NAVTREEINDEX =
 "armadilloxed_2fcarouge_2linalg_8hpp.xhtml#a60b6b92762905569a26339025d4b0821",
 "conceptfcarouge_1_1row__typed__matrix.xhtml",
 "format_23x3_8cpp.xhtml",
-"namespacefcarouge.xhtml#a303b231efb2cf893d3da21cab8d5f8c6",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__eigen_8cpp_03.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a88a9d526a4a55f94e848d3785eb2f430",
-"row__nholthaus__std_8cpp.xhtml#aae895a96b14ecaac0b70a9a3ede740fe",
-"structmp__units_1_1representation__canonical__type_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_88cb568bfd22172f87f75426ff9b1681.xhtml#ac33c5d626d633d3d05863b564288bb37",
-"typed__linear__algebra_8hpp.xhtml#a2b908a38283a6aaa27d38ab45ec41858"
+"namespace_eigen.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__au__eigen_8cpp_03.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02formattable_8cpp_03.xhtml#a72af7c58482dfb5a42e27d3bceb4e9a3",
+"representation_8cpp.xhtml",
+"structfcarouge_1_1test_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_1_1shared__base_1_1first.xhtml",
+"transposed_22x3__mp__units__eigen_8cpp.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
