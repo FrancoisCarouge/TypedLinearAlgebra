@@ -6,6 +6,7 @@ var index =
       [ "Include", "index.xhtml#include", null ],
       [ "Namespace", "index.xhtml#namespace", null ],
       [ "Plug-ins", "index.xhtml#plug-ins", null ],
+      [ "Samples", "index.xhtml#samples", null ],
       [ "Class Typed Matrix", "index.xhtml#class-typed-matrix", [
         [ "Declaration", "index.xhtml#declaration", null ],
         [ "Template Parameters", "index.xhtml#template-parameters", null ],

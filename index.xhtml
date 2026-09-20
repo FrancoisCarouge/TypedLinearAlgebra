@@ -104,7 +104,7 @@ $(function(){initNavTree('index.xhtml',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__2github_2workspace_2_r_e_a_d_m_e"></a></p>
-<p>Physical unit mismatches in matrix and vector computations have sunk missions and cost millions, because ordinary linear algebra treats a mismatched unit, an out-of-order axis, or a mixed-up reference frame as just another number and lets it compile, run, and fail silently. This library is a C++ strongly-typed facade to a matrix linear algebra backend — <a class="el" href="namespace_eigen.xhtml">Eigen</a>, std::linalg/mdspan, Au, mp-units, nholthaus/units, or Kokkos — that brings type safety to matrix operations. It enforces dimensional consistency and unit compatibility, turning those mismatches into compile errors and preventing common errors in scientific and engineering computations.</p>
+<p>Physical unit mismatches in matrix and vector computations have crashed projects and cost billions, because ordinary linear algebra treats a mismatched unit, an out-of-order axis, or a mixed-up reference frame as just another number and lets it compile, run, and fail silently. This library is a C++ strongly-typed facade to a matrix linear algebra backend [<a class="el" href="namespace_eigen.xhtml">Eigen</a>, std::linalg/mdspan, Kokkos, Armadillo] adapting strong types [Au, mp-units, nholthaus/units, std::chrono] that brings type safety to matrix operations. It turns mismatches into compile errors and preventing common errors in scientific and engineering computations.</p>
 <div class="fragment"><div class="line">state x{3. * m,</div>
 <div class="line">        2. * m / s,</div>
 <div class="line">        1. * m / s2};</div>
@@ -114,7 +114,7 @@ $(function(){initNavTree('index.xhtml',''); initResizable(true); });
 <div class="line"><span class="comment">// [[9 m²,    6 m²/s,  3 m²/s²],</span></div>
 <div class="line"><span class="comment">//  [6 m²/s,  4 m²/s², 2 m²/s³],</span></div>
 <div class="line"><span class="comment">//  [3 m²/s², 2 m²/s³, 1 m²/s⁴]]</span></div>
-</div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample">More usage examples in the <code>sample</code> directory.</a>.</p>
+</div><!-- fragment --><p><a href="https://godbolt.org/z/cW3TGqf6r"><img src="https://img.shields.io/badge/Try_live_on-Compiler_Explorer-black?style=for-the-badge&amp;logo=compilerexplorer&amp;labelColor=black&amp;color=67C52A" alt="Try it live on Compiler Explorer" class="inline"/></a></p>
 <p><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/pipeline.yml"><img src="https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/pipeline.yml/badge.svg" alt="Pipeline" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/sanitizer.yml"><img src="https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/sanitizer.yml/badge.svg" alt="Sanitizer" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/format.yml"><img src="https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/format.yml/badge.svg" alt="Format" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/clang_tidy.yml"><img src="https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/clang_tidy.yml/badge.svg" alt="ClangTidy" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/cppcheck.yml"><img src="https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/cppcheck.yml/badge.svg" alt="CppCheck" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/doxygen.yml"><img src="https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/doxygen.yml/badge.svg" alt="Doxygen" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/valgrind_memory.yml"><img src="https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/valgrind_memory.yml/badge.svg" alt="Valgrind" style="pointer-events: none;" class="inline"/></a> <a href="https://raw.githubusercontent.com/francoiscarouge/TypedLinearAlgebra/master/LICENSE.txt"><img src="https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen" alt="Public Domain" class="inline"/></a> <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FTypedLinearAlgebra?ref=badge_shield"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FTypedLinearAlgebra.svg?type=shield" alt="License Scan" style="pointer-events: none;" class="inline"/></a> <a href="https://www.bestpractices.dev/projects/8933"><img src="https://www.bestpractices.dev/projects/8933/badge" alt="OpenSSF Best Practices" class="inline"/></a> <a href="https://francoiscarouge.github.io/TypedLinearAlgebra/unit_test_coverage.xhtml"><img src="https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/deploy_coverage.yml/badge.svg" alt="Deploy Unit Test Code Coverage" style="pointer-events: none;" class="inline"/></a> <a href="https://francoiscarouge.github.io/TypedLinearAlgebra/index.xhtml"><img src="https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/deploy_doxygen.yml/badge.svg" alt="Deploy Doxygen" style="pointer-events: none;" class="inline"/></a> <a href="http://paypal.me/francoiscarouge"><img src="https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen" alt="Sponsor" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/discussions"><img src="https://img.shields.io/github/discussions/FrancoisCarouge/TypedLinearAlgebra" alt="Discussions" class="inline"/></a></p>
 <h1><a class="anchor" id="installation--usage"></a>
 Installation &amp; Usage</h1>
@@ -137,28 +137,58 @@ Namespace</h2>
 <p>The public API lives in the <code>fcarouge</code> namespace. Import it with a using-declaration or namespace alias as your project's style prefers.</p>
 <h2><a class="anchor" id="plug-ins"></a>
 Plug-ins</h2>
-<p>Add a plug-in for each strong type or linear algebra backend you use:</p>
+<p>Add a plug-in for each strong type and/or linear algebra backend you use:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Integration   </th><th class="markdownTableHeadNone">Example Plug-in    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Armadillo   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support">See example plug-in at <code>support/armadillo</code></a>.    </td></tr>
+<td class="markdownTableBodyNone">Armadillo   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support">Example plug-in: <code>support/armadillo</code></a>.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Au   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support">See example plug-in at <code>support/au/fcarouge/au.hpp</code></a>.    </td></tr>
+<td class="markdownTableBodyNone">Au   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support">Example plug-in: <code>support/au</code></a>.    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">Built-in Types   </td><td class="markdownTableBodyNone">No plug-in needed.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a>   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support">See example plug-in at <code>support/eigen</code></a>.    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="namespace_eigen.xhtml">Eigen</a>   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support">Example plug-in: <code>support/eigen</code></a>.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Kokkos   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support">See example plug-in at <code>support/kokkos</code></a>.    </td></tr>
+<td class="markdownTableBodyNone">Kokkos   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support">Example plug-in: <code>support/kokkos</code></a>.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">mp-units   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support">See example plug-in at <code>support/mp_units/fcarouge/mp_units.hpp</code></a>.    </td></tr>
+<td class="markdownTableBodyNone">mp-units   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support">Example plug-in: <code>support/mp_units</code></a>.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">nholthaus/units   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support">See example plug-in at <code>support/nholthaus/fcarouge/nholthaus.hpp</code></a>.    </td></tr>
+<td class="markdownTableBodyNone">nholthaus/units   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support">Example plug-in: <code>support/nholthaus</code></a>.    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">std::chrono   </td><td class="markdownTableBodyNone">No plug-in needed.    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">std::linalg   </td><td class="markdownTableBodyNone">No plug-in needed.   </td></tr>
+</table>
+<h2><a class="anchor" id="samples"></a>
+Samples</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Interoperability   </th><th class="markdownTableHeadNone">Sample    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Au + Armadillo   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/au_armadillo.cpp">Usage example: <code>sample/au_armadillo.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Au + <a class="el" href="namespace_eigen.xhtml">Eigen</a>   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/au_eigen.cpp">Usage example: <code>sample/au_eigen.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Au + std::linalg   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/au_std.cpp">Usage example: <code>sample/au_std.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">mp-units + Armadillo   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_armadillo.cpp">Usage example: <code>sample/mp_units_armadillo.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">mp-units + <a class="el" href="namespace_eigen.xhtml">Eigen</a>   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_eigen.cpp">Usage example: <code>sample/mp_units_eigen.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">mp-units + std::linalg   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std.cpp">Usage example: <code>sample/mp_units_std.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">nholthaus/units + Armadillo   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_armadillo.cpp">Usage example: <code>sample/nholthaus_armadillo.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">nholthaus/units + <a class="el" href="namespace_eigen.xhtml">Eigen</a>   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_eigen.cpp">Usage example: <code>sample/nholthaus_eigen.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">nholthaus/units + std::linalg   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_std.cpp">Usage example: <code>sample/nholthaus_std.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">std::chrono + Armadillo   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_armadillo.cpp">Usage example: <code>sample/chrono_armadillo.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">std::chrono + <a class="el" href="namespace_eigen.xhtml">Eigen</a>   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_eigen.cpp">Usage example: <code>sample/chrono_eigen.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">std::chrono + std::linalg   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_std.cpp">Usage example: <code>sample/chrono_std.cpp</code></a>.   </td></tr>
 </table>
 <h2><a class="anchor" id="class-typed-matrix"></a>
 Class Typed Matrix</h2>
