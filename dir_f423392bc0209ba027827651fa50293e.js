@@ -2,12 +2,25 @@ var dir_f423392bc0209ba027827651fa50293e =
 [
     [ "1x1_au_eigen.cpp", "substraction_21x1__au__eigen_8cpp.xhtml", null ],
     [ "1x1_au_eigen_fail.cpp", "substraction_21x1__au__eigen__fail_8cpp.xhtml", null ],
+    [ "1x1_au_std.cpp", "substraction_21x1__au__std_8cpp.xhtml", null ],
+    [ "1x1_au_std_fail.cpp", "substraction_21x1__au__std__fail_8cpp.xhtml", null ],
+    [ "1x1_chrono_eigen_fail.cpp", "substraction_21x1__chrono__eigen__fail_8cpp.xhtml", null ],
+    [ "1x1_chrono_std.cpp", "substraction_21x1__chrono__std_8cpp.xhtml", null ],
+    [ "1x1_chrono_std_fail.cpp", "substraction_21x1__chrono__std__fail_8cpp.xhtml", null ],
     [ "1x1_mp_units_eigen.cpp", "substraction_21x1__mp__units__eigen_8cpp.xhtml", null ],
     [ "1x1_mp_units_eigen_fail.cpp", "substraction_21x1__mp__units__eigen__fail_8cpp.xhtml", null ],
+    [ "1x1_mp_units_std.cpp", "substraction_21x1__mp__units__std_8cpp.xhtml", null ],
+    [ "1x1_mp_units_std_fail.cpp", "substraction_21x1__mp__units__std__fail_8cpp.xhtml", null ],
+    [ "1x1_nholthaus_eigen.cpp", "substraction_21x1__nholthaus__eigen_8cpp.xhtml", null ],
+    [ "1x1_nholthaus_eigen_fail.cpp", "substraction_21x1__nholthaus__eigen__fail_8cpp.xhtml", null ],
+    [ "1x1_nholthaus_std.cpp", "substraction_21x1__nholthaus__std_8cpp.xhtml", null ],
+    [ "1x1_nholthaus_std_fail.cpp", "substraction_21x1__nholthaus__std__fail_8cpp.xhtml", null ],
     [ "1x2_au_eigen.cpp", "substraction_21x2__au__eigen_8cpp.xhtml", null ],
     [ "1x2_au_eigen_fail.cpp", "substraction_21x2__au__eigen__fail_8cpp.xhtml", null ],
     [ "1x2_chrono_eigen.cpp", "substraction_21x2__chrono__eigen_8cpp.xhtml", null ],
     [ "1x2_eigen.cpp", "substraction_21x2__eigen_8cpp.xhtml", null ],
     [ "1x2_mp_units_eigen.cpp", "substraction_21x2__mp__units__eigen_8cpp.xhtml", null ],
-    [ "1x2_mp_units_eigen_fail.cpp", "substraction_21x2__mp__units__eigen__fail_8cpp.xhtml", null ]
+    [ "1x2_mp_units_eigen_fail.cpp", "substraction_21x2__mp__units__eigen__fail_8cpp.xhtml", null ],
+    [ "1x2_nholthaus_eigen.cpp", "substraction_21x2__nholthaus__eigen_8cpp.xhtml", null ],
+    [ "1x2_nholthaus_eigen_fail.cpp", "substraction_21x2__nholthaus__eigen__fail_8cpp.xhtml", null ]
 ];
