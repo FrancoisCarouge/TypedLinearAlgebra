@@ -165,6 +165,63 @@ struct multiplies<std::tuple<Types1...>, std::tuple<Types2...>> {
       -> std::tuple<product<Types1, Types2>...>;
 };
 
+//! @brief Linear algebra adds expression type specialization point.
+//!
+//! @details Element-wise addition of two same-shape typed matrices' row or
+//! column index tuples, position by position, deducing whatever type each
+//! position's addition naturally produces rather than assuming it matches
+//! either operand's index type. Needed because some element types, notably
+//! `std::chrono::time_point`, do not return their own type from every
+//! addition (`duration + time_point` yields a `time_point`).
+template <typename Lhs, typename Rhs> struct adds {
+  [[nodiscard]] static constexpr auto operator()(const Lhs &lhs, const Rhs &rhs)
+      -> decltype(lhs + rhs);
+};
+
+template <typename Lhs, typename Rhs>
+using sum = std::invoke_result_t<adds<Lhs, Rhs>, Lhs, Rhs>;
+
+template <> struct adds<std::identity, std::identity> {
+  [[nodiscard]] static constexpr auto operator()(const std::identity &lhs,
+                                                 const std::identity &rhs)
+      -> std::identity;
+};
+
+template <typename... Types1, typename... Types2>
+struct adds<std::tuple<Types1...>, std::tuple<Types2...>> {
+  [[nodiscard]] static constexpr auto
+  operator()(const std::tuple<Types1...> &lhs, const std::tuple<Types2...> &rhs)
+      -> std::tuple<sum<Types1, Types2>...>;
+};
+
+//! @brief Linear algebra substracts expression type specialization point.
+//!
+//! @details Mirrors `adds`/`sum`: element-wise subtraction of two same-shape
+//! typed matrices' row or column index tuples, deducing each position's
+//! result type rather than assuming it matches either operand's index type.
+//! `std::chrono::time_point` is again the motivating case: `time_point -
+//! time_point` yields a `duration`, not a `time_point`.
+template <typename Lhs, typename Rhs> struct substracts {
+  [[nodiscard]] static constexpr auto operator()(const Lhs &lhs, const Rhs &rhs)
+      -> decltype(lhs - rhs);
+};
+
+template <typename Lhs, typename Rhs>
+using difference = std::invoke_result_t<substracts<Lhs, Rhs>, Lhs, Rhs>;
+
+template <> struct substracts<std::identity, std::identity> {
+  [[nodiscard]] static constexpr auto operator()(const std::identity &lhs,
+                                                 const std::identity &rhs)
+      -> std::identity;
+};
+
+template <typename... Types1, typename... Types2>
+struct substracts<std::tuple<Types1...>, std::tuple<Types2...>> {
+  [[nodiscard]] static constexpr auto
+  operator()(const std::tuple<Types1...> &lhs, const std::tuple<Types2...> &rhs)
+      -> std::tuple<difference<Types1, Types2>...>;
+};
+
 template <std::size_t... Is, typename F>
 constexpr void
 for_constexpr_detail([[maybe_unused]] std::index_sequence<Is...> indexes,

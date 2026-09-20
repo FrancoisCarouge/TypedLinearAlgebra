@@ -87,8 +87,10 @@ namespace fcarouge {
         "Matrix addition requires compatible element types.");
   });
 
-  using row_indexes = typename lhs_matrix::row_indexes;
-  using column_indexes = typename lhs_matrix::column_indexes;
+  using row_indexes = tla::sum<typename lhs_matrix::row_indexes,
+                               typename rhs_matrix::row_indexes>;
+  using column_indexes = tla::sum<typename lhs_matrix::column_indexes,
+                                  typename rhs_matrix::column_indexes>;
 
   return make_typed_matrix<row_indexes, column_indexes>(lhs.data() +
                                                         rhs.data());

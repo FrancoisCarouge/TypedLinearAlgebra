@@ -197,8 +197,28 @@ in `product.tpp`.
 
 Type-level index math: `tla::product` / `tla::quotient` (the `multiplies` /
 `divides` metafunction objects in `utility.hpp`, specialized over `std::tuple`
-and `std::identity`; `std::identity` is the dimensionless "1" index). Element
-checks run as `tla::for_constexpr<N>` loops of `static_assert(requires {
+and `std::identity`; `std::identity` is the dimensionless "1" index). `tla::sum`
+/ `tla::difference` (`adds` / `substracts`) mirror them for `operator+` /
+`operator-`'s rank-1 (row/column vector) overloads only: they zip the lhs and
+rhs `column_indexes` (or `row_indexes`, whichever axis isn't the vector's
+trivial `std::identity` one) position by position, deducing whatever type each
+position's `+`/`-` actually produces instead of assuming the lhs's index type,
+because some element types don't return their own type from every operation
+(`std::chrono`: `time_point - time_point` is a `duration`, `duration +
+time_point` is a `time_point`). The rank-2 `operator+`/`operator-` overloads
+deliberately keep reusing the lhs's `row_indexes`/`column_indexes` verbatim
+instead of doing the same zip: a two-index matrix's row and column tuples are
+only *one* possible factoring of its per-position element types (`Row[i] *
+Column[j]`), so two same-shaped, addable/subtractable matrices' row/column
+tuples can legitimately differ from each other while every per-position
+element type still matches — `sample/mp_units_eigen.cpp`'s Kalman covariance
+update `p = f * p * transposed(f) + q` is exactly this (`f * p *
+transposed(f)` and `q` factor the same per-position quantities through
+different row/column tuples). Zipping row-vs-row and column-vs-column
+independently at rank 2 would try to compute nonsensical index differences
+between unrelated factorizations; only rank 1 is safe, because a vector's
+non-trivial axis maps 1:1 to its element types, leaving no factoring freedom.
+Element checks run as `tla::for_constexpr<N>` loops of `static_assert(requires {
 std::declval<lhs_element>() OP std::declval<rhs_element>(); }, "<Operation>
 requires compatible element types.")`; `add()` additionally probes assignability
 into the result element. `matrix_product`, `matrix_vector_product`, and the
