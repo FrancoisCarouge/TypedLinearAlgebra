@@ -336,6 +336,15 @@ The library is designed, developed, and tested with the help of third-party tool
 - [stdBLAS](https://github.com/kokkos/stdBLAS) for standard BLAS interface.
 - [Valgrind](https://valgrind.org) to check for correct memory management.
 
+### Contributors
+
+Thank you to everyone who has contributed code, tests, or documentation!
+
+- [François Carouge](https://github.com/FrancoisCarouge) — creator and maintainer.
+- [Shin Umeda](https://github.com/DolphinGui) — compile-time subscripting.
+
+See [CONTRIBUTORS.md](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/CONTRIBUTORS.md) for the full, credited list.
+
 ### Sponsors
 
 Become a sponsor today! Support this project with coffee and infrastructure!
