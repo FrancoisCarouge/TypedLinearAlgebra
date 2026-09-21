@@ -27,6 +27,7 @@ var NAVTREE =
   [ "Typed Linear Algebra", "index.xhtml", [
     [ "François Carouge / Typed Linear Algebra", "index.xhtml", "index" ],
     [ "AGENTS.md", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml", [
+      [ "AI agent conduct", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#ai-agent-conduct", null ],
       [ "Build & test", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#build--test", null ],
       [ "Architecture", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#architecture", [
         [ "Core header", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#core-header", null ],
@@ -36,6 +37,7 @@ var NAVTREE =
         [ "Other directories", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#other-directories", null ]
       ] ],
       [ "Recipe: adding an algorithm", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#recipe-adding-an-algorithm", null ],
+      [ "Completion checklist", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#completion-checklist", null ],
       [ "Conventions", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#conventions", null ]
     ] ],
     [ "Benchmarks", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml", [
@@ -133,12 +135,12 @@ var NAVTREEINDEX =
 "armadilloxed_2fcarouge_2linalg_8hpp.xhtml#a60b6b92762905569a26339025d4b0821",
 "conceptfcarouge_1_1row__typed__matrix.xhtml",
 "format_23x3_8cpp.xhtml",
-"namespace_eigen.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__au__eigen_8cpp_03.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02formattable_8cpp_03.xhtml#a72af7c58482dfb5a42e27d3bceb4e9a3",
-"representation_8cpp.xhtml",
-"structfcarouge_1_1test_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_1_1shared__base_1_1first.xhtml",
-"transposed_22x3__mp__units__eigen_8cpp.xhtml"
+"multiplication_22x2__mp__units__eigen_8cpp.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03.xhtml#a505e9abcd2a4b0061df93c0a99e296f7",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02formattable_8cpp_03.xhtml#a0bbef7e15a2ac4783de3499123146dbc",
+"rank__typed__matrix_8cpp.xhtml#af33ccecbfb012ce9e96c1602c5979464",
+"structfcarouge_1_1test_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_1_1shared__base_1_1base.xhtml",
+"transposed_22x3__au__eigen_8cpp.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

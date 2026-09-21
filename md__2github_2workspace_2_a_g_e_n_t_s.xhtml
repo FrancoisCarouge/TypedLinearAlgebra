@@ -106,6 +106,15 @@ $(function(){initNavTree('md__2github_2workspace_2_a_g_e_n_t_s.xhtml',''); initR
 <div class="textblock"><p><a class="anchor" id="agentsmd"></a></p>
 <p>Guidance for coding agents working in this repository (the TypedLinearAlgebra library, <code>git@github.com:FrancoisCarouge/TypedLinearAlgebra.git</code>). This file is the repository root; all paths below are relative to it.</p>
 <p>Human contributors: see <a class="el" href="md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml">CONTRIBUTING.md</a>. AI coding agents: this file.</p>
+<h1><a class="anchor" id="ai-agent-conduct"></a>
+AI agent conduct</h1>
+<ul>
+<li><b>You are the author.</b> Understand and be able to defend every line, however much a model wrote. A change nobody can explain is not ready.</li>
+<li><b>This is a bleeding-edge C++26, concepts-and-templates codebase</b> (the <code>.clang-tidy</code> &lsquo;Checks: &rsquo;*'<code>zero-</code>NOLINT<code>baseline described under Build &amp; test assumes it). Models are weakest exactly here — watch for confident-but-wrong template metaprogramming, and build and test the change yourself rather than trusting CI or the reviewer to catch it.</code></li>
+<li><code>**Propose before you build** for anything touching concept constraints, the typed-element model, or the shape of the public API (</code>typed_matrix<code>, </code>at&lt;i,j&gt;()<code>, an algorithm's signature or overload set): lay out the options and their consequences and get agreement first, rather than implementing one interpretation and letting the reviewer correct it. The "Key design
+  tradeoff" callout below —</code>at&lt;i,j&gt;()<code>as compile-time-only, no lvalue element assignment — is exactly this kind of decision already made and written up in README's "Lessons Learned"; don't re-litigate it without reading that first.</code></li>
+<li><code>**Keep diffs minimal.** No unrequested reformatting, renaming, or opportunistic refactors riding along with an unrelated change. Run</code>git status &ndash;short<code>before touching anything, and stage named paths rather than </code>git add -A<code>/</code>git add .`.</li>
+</ul>
 <h1><a class="anchor" id="build--test"></a>
 Build &amp; test</h1>
 <p>The repository root is the CMake source directory. The canonical loop — the same one CI runs (<code>.github/workflows/pipeline.yml</code>) — is:</p>
@@ -204,13 +213,28 @@ Recipe: adding an algorithm</h1>
 </ul>
 </li>
 </ol>
+<h1><a class="anchor" id="completion-checklist"></a>
+Completion checklist</h1>
+<p>Before declaring any change complete (not just a new algorithm — see the Recipe's own step 9 for that specific case):</p>
+<ul>
+<li>The diff contains only intentional changes; pre-existing or untracked work is untouched.</li>
+<li>Touched <code>.hpp</code>/<code>.tpp</code>/<code>.cpp</code> pass <code>clang-format-22 --Werror -i -style=file</code>; touched <code>CMakeLists.txt</code>/<code>*.cmake</code> pass <code>cmake-format -i</code>.</li>
+<li><code>clang-tidy-21 &lt;file&gt; -- -std=c++26 -Iinclude -Isupport/&lt;backend&gt; -Isupport/eigen &lt;dep -isystem flags&gt;</code> is clean, with no new <code>NOLINT</code>.</li>
+<li>New behavior has a test; a bug fix has a regression test that fails without the fix when practical.</li>
+<li><code>README.md</code>'s Operations table and the relevant <code>@brief</code>/<code>@details</code>/<code>@see</code>/ <code>@todo</code> doxygen are updated alongside the code they describe.</li>
+<li><code>cmake --build build --parallel &amp;&amp; ctest --test-dir build --parallel</code> passes, with the specific new/changed test names re-run via <code>-R</code> first.</li>
+</ul>
 <h1><a class="anchor" id="conventions"></a>
 Conventions</h1>
 <ul>
 <li>Header-only library: keep the public API under <code>include/fcarouge/</code>; implementation details belong in <code>typed_linear_algebra_internal/</code> and are not part of the public surface.</li>
 <li>Every source/CMake file carries the Unlicense SPDX header block — copy it verbatim (version/URL match the root <code>CMakeLists.txt</code>) into any new file.</li>
 <li>The public CMake target consumers link against is <code>fcarouge-typed-linear-algebra::tlinalg</code>; the package name is <code>fcarouge-typed-linear-algebra</code>.</li>
-<li>The author writes precise, terminology-careful <code>@note</code>/<code>@todo</code>/<code>@warning</code> doxygen comments explaining design rationale directly in headers — match that register when editing docs/comments rather than simplifying. </li>
+<li>The author writes precise, terminology-careful <code>@note</code>/<code>@todo</code>/<code>@warning</code> doxygen comments explaining design rationale directly in headers — match that register when editing docs/comments rather than simplifying.</li>
+<li>Commit messages follow <code>[tag] short imperative description</code> — a lowercase bracketed tag naming the area touched (<code>[test]</code>, <code>[cicd]</code>, <code>[documentation]</code>, <code>[support]</code>, <code>[algorithm]</code>, <code>[benchmark]</code>, ...; <code>git log --oneline</code> has the established vocabulary). Match it rather than inventing <code>Category: ...</code> or <code>type(scope):</code> styles.</li>
+<li>PR/issue bodies and other GitHub-rendered Markdown use hard line breaks — a newline in the middle of a paragraph renders as <code>&lt;br&gt;</code>, so wrapped prose arrives as a ragged column. Write one paragraph per line there.</li>
+<li>Gate a new constraint on the exact precondition the code depends on, never on an adjacent capability or a property specific types merely happen to share. <code>scalable_by</code> (<code>product.tpp</code>) is the pattern to copy: an unconstrained deduced-return scalar overload would hard-error — instead of failing SFINAE — the moment third-party code (mp-units) merely <code>requires</code>-probes it.</li>
+<li>No one-letter lowercase locals or parameters in test/sample code. <code>au::symbols</code>, <code>mp_units::si::unit_symbols</code>, and nholthaus/units all export single-letter names (<code>m</code>, <code>s</code>, <code>A</code>, <code>N</code>, ...) that test files pull in with <code>using ...::m;</code>; a same-named local shadows it and MSVC reports it (C4456–C4459), fatal under <code>/WX</code> — the same failure mode already called out above for Au's <code>ONE</code> in <code>overflow_boundary.hh</code>. Use descriptive names, or <code>lhs</code>/<code>rhs</code> for a binary operator's two sides. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
