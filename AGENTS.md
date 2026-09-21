@@ -7,6 +7,29 @@ the repository root; all paths below are relative to it.
 Human contributors: see [CONTRIBUTING.md](CONTRIBUTING.md). AI coding agents:
 this file.
 
+## AI agent conduct
+
+- **You are the author.** Understand and be able to defend every line, however
+  much a model wrote. A change nobody can explain is not ready.
+- **This is a bleeding-edge C++26, concepts-and-templates codebase** (the
+  `.clang-tidy` `Checks: '*'` zero-`NOLINT` baseline described under Build &
+  test assumes it). Models are weakest exactly here — watch for
+  confident-but-wrong template metaprogramming, and build and test the change
+  yourself rather than trusting CI or the reviewer to catch it.
+- **Propose before you build** for anything touching concept constraints, the
+  typed-element model, or the shape of the public API (`typed_matrix`,
+  `at<i,j>()`, an algorithm's signature or overload set): lay out the options
+  and their consequences and get agreement first, rather than implementing one
+  interpretation and letting the reviewer correct it. The "Key design
+  tradeoff" callout below — `at<i,j>()` as compile-time-only, no lvalue
+  element assignment — is exactly this kind of decision already made and
+  written up in README's "Lessons Learned"; don't re-litigate it without
+  reading that first.
+- **Keep diffs minimal.** No unrequested reformatting, renaming, or
+  opportunistic refactors riding along with an unrelated change. Run `git
+  status --short` before touching anything, and stage named paths rather than
+  `git add -A`/`git add .`.
+
 ## Build & test
 
 The repository root is the CMake source directory. The canonical loop — the same
@@ -373,6 +396,24 @@ especially, because it is the only check that runs `std::is_convertible` /
    `clang-format-22 --Werror` / `clang-tidy '*'` clean and doxygen
    warning-free.
 
+## Completion checklist
+
+Before declaring any change complete (not just a new algorithm — see the
+Recipe's own step 9 for that specific case):
+
+- The diff contains only intentional changes; pre-existing or untracked work
+  is untouched.
+- Touched `.hpp`/`.tpp`/`.cpp` pass `clang-format-22 --Werror -i -style=file`;
+  touched `CMakeLists.txt`/`*.cmake` pass `cmake-format -i`.
+- `clang-tidy-21 <file> -- -std=c++26 -Iinclude -Isupport/<backend>
+  -Isupport/eigen <dep -isystem flags>` is clean, with no new `NOLINT`.
+- New behavior has a test; a bug fix has a regression test that fails without
+  the fix when practical.
+- `README.md`'s Operations table and the relevant `@brief`/`@details`/`@see`/
+  `@todo` doxygen are updated alongside the code they describe.
+- `cmake --build build --parallel && ctest --test-dir build --parallel`
+  passes, with the specific new/changed test names re-run via `-R` first.
+
 ## Conventions
 
 - Header-only library: keep the public API under `include/fcarouge/`;
@@ -386,3 +427,23 @@ especially, because it is the only check that runs `std::is_convertible` /
 - The author writes precise, terminology-careful `@note`/`@todo`/`@warning`
   doxygen comments explaining design rationale directly in headers — match that
   register when editing docs/comments rather than simplifying.
+- Commit messages follow `[tag] short imperative description` — a lowercase
+  bracketed tag naming the area touched (`[test]`, `[cicd]`, `[documentation]`,
+  `[support]`, `[algorithm]`, `[benchmark]`, ...; `git log --oneline` has the
+  established vocabulary). Match it rather than inventing `Category: ...` or
+  `type(scope):` styles.
+- PR/issue bodies and other GitHub-rendered Markdown use hard line breaks — a
+  newline in the middle of a paragraph renders as `<br>`, so wrapped prose
+  arrives as a ragged column. Write one paragraph per line there.
+- Gate a new constraint on the exact precondition the code depends on, never on
+  an adjacent capability or a property specific types merely happen to share.
+  `scalable_by` (`product.tpp`) is the pattern to copy: an unconstrained
+  deduced-return scalar overload would hard-error — instead of failing SFINAE —
+  the moment third-party code (mp-units) merely `requires`-probes it.
+- No one-letter lowercase locals or parameters in test/sample code. `au::symbols`,
+  `mp_units::si::unit_symbols`, and nholthaus/units all export single-letter
+  names (`m`, `s`, `A`, `N`, ...) that test files pull in with `using
+  ...::m;`; a same-named local shadows it and MSVC reports it (C4456–C4459),
+  fatal under `/WX` — the same failure mode already called out above for Au's
+  `ONE` in `overflow_boundary.hh`. Use descriptive names, or `lhs`/`rhs` for a
+  binary operator's two sides.
