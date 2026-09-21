@@ -42,6 +42,7 @@ jobs:
           --enable=all \
           --error-exitcode=1 \
           --suppress=internalAstError:support/eigen/fcarouge/eigen.hpp \
+          --suppress=knownConditionTrueFalse:include/fcarouge/typed_linear_algebra_internal/typed_linear_algebra.tpp \
           --suppress=missingIncludeSystem \
           --suppress=noExplicitConstructor:include/fcarouge/typed_linear_algebra.hpp \
           --suppress=syntaxError:sample/au_std.cpp \
