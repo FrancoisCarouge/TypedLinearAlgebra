@@ -29,6 +29,7 @@ var index =
       [ "Projects", "index.xhtml#projects", null ],
       [ "Resources", "index.xhtml#resources", null ],
       [ "Third Party Acknowledgement", "index.xhtml#third-party-acknowledgement", null ],
+      [ "Contributors", "index.xhtml#contributors-1", null ],
       [ "Sponsors", "index.xhtml#sponsors", [
         [ "Corporations & Institutions", "index.xhtml#corporations--institutions", null ],
         [ "Individuals", "index.xhtml#individuals", null ]

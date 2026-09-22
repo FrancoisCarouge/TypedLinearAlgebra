@@ -20,5 +20,6 @@ var searchData=
   ['column_5fmp_5funits_5fstd_2ecpp_17',['column_mp_units_std.cpp',['../column__mp__units__std_8cpp.xhtml',1,'']]],
   ['column_5ftyped_5fmatrix_2ecpp_18',['column_typed_matrix.cpp',['../column__typed__matrix_8cpp.xhtml',1,'']]],
   ['contributing_2emd_19',['CONTRIBUTING.md',['../_c_o_n_t_r_i_b_u_t_i_n_g_8md.xhtml',1,'']]],
-  ['copy_2ecpp_20',['copy.cpp',['../copy_8cpp.xhtml',1,'']]]
+  ['contributors_2emd_20',['CONTRIBUTORS.md',['../_c_o_n_t_r_i_b_u_t_o_r_s_8md.xhtml',1,'']]],
+  ['copy_2ecpp_21',['copy.cpp',['../copy_8cpp.xhtml',1,'']]]
 ];

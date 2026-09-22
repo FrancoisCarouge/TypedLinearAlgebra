@@ -77,8 +77,10 @@ var NAVTREE =
       [ "Reporting Bugs", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#reporting-bugs", null ],
       [ "Requesting Features", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#requesting-features", null ],
       [ "Security Policy", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#security-policy", null ],
-      [ "Questions & Ideas", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#questions--ideas", null ]
+      [ "Questions & Ideas", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#questions--ideas", null ],
+      [ "Pull Request Merge Checklist", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pull-request-merge-checklist", null ]
     ] ],
+    [ "Contributors", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_o_r_s.xhtml", null ],
     [ "Unit Test Code Coverage", "unit_test_coverage.xhtml", null ],
     [ "Compile-Time Traces", "time_trace.xhtml", null ],
     [ "Run-Time Call Traces", "call_trace.xhtml", null ],
@@ -135,12 +137,12 @@ var NAVTREEINDEX =
 "armadilloxed_2fcarouge_2linalg_8hpp.xhtml#a60b6b92762905569a26339025d4b0821",
 "conceptfcarouge_1_1row__typed__matrix.xhtml",
 "format_23x3_8cpp.xhtml",
-"multiplication_22x2__mp__units__eigen_8cpp.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03.xhtml#a505e9abcd2a4b0061df93c0a99e296f7",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02formattable_8cpp_03.xhtml#a0bbef7e15a2ac4783de3499123146dbc",
-"rank__typed__matrix_8cpp.xhtml#af33ccecbfb012ce9e96c1602c5979464",
-"structfcarouge_1_1test_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_1_1shared__base_1_1base.xhtml",
-"transposed_22x3__au__eigen_8cpp.xhtml"
+"multiplication_22x2__au__eigen_8cpp.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__2x1__mp__units__std_8cpp_03.xhtml#aac40144b3fd64d66e2d2972e0b42735b",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02equality_8cpp_03.xhtml",
+"rank__typed__matrix_8cpp.xhtml#a89f0daa9e2f69489861144b4ff411585",
+"structfcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03_1_1first.xhtml",
+"transposed_22x1__au__std_8cpp_source.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
