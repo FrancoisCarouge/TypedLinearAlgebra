@@ -29,8 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_PRODUCT_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_PRODUCT_TPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_PRODUCT_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_PRODUCT_TPP
 
 namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
@@ -187,4 +187,4 @@ concept scalable_by = requires {
 }
 } // namespace fcarouge
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_PRODUCT_TPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_PRODUCT_TPP

@@ -37,8 +37,8 @@ For more information, please refer to <https://unlicense.org> */
 //!
 //! @details Typed matrix, vectors, and operations.
 
+#include "typed_linear_algebra/utility.hpp"
 #include "typed_linear_algebra_forward.hpp"
-#include "typed_linear_algebra_internal/utility.hpp"
 
 #include <concepts>
 #include <cstddef>
@@ -555,23 +555,23 @@ template <char... Digits> constexpr auto operator""_i() noexcept {
 
 } // namespace fcarouge
 
-#include "typed_linear_algebra_internal/algorithm/add.tpp"
-#include "typed_linear_algebra_internal/algorithm/divide.tpp"
-#include "typed_linear_algebra_internal/algorithm/equal_to.tpp"
-#include "typed_linear_algebra_internal/algorithm/magnitude.tpp"
-#include "typed_linear_algebra_internal/algorithm/matrix_product.tpp"
-#include "typed_linear_algebra_internal/algorithm/matrix_vector_product.tpp"
-#include "typed_linear_algebra_internal/algorithm/minus.tpp"
-#include "typed_linear_algebra_internal/algorithm/product.tpp"
-#include "typed_linear_algebra_internal/algorithm/scale.tpp"
-#include "typed_linear_algebra_internal/algorithm/substract.tpp"
-#include "typed_linear_algebra_internal/algorithm/transposed.tpp"
-#include "typed_linear_algebra_internal/cast.tpp"
-#include "typed_linear_algebra_internal/chrono.tpp"
-#include "typed_linear_algebra_internal/common_type.tpp"
-#include "typed_linear_algebra_internal/format.tpp"
-#include "typed_linear_algebra_internal/tuple.tpp"
-#include "typed_linear_algebra_internal/typed_linear_algebra.tpp"
+#include "typed_linear_algebra/algorithm/add.tpp"
+#include "typed_linear_algebra/algorithm/divide.tpp"
+#include "typed_linear_algebra/algorithm/equal_to.tpp"
+#include "typed_linear_algebra/algorithm/magnitude.tpp"
+#include "typed_linear_algebra/algorithm/matrix_product.tpp"
+#include "typed_linear_algebra/algorithm/matrix_vector_product.tpp"
+#include "typed_linear_algebra/algorithm/minus.tpp"
+#include "typed_linear_algebra/algorithm/product.tpp"
+#include "typed_linear_algebra/algorithm/scale.tpp"
+#include "typed_linear_algebra/algorithm/substract.tpp"
+#include "typed_linear_algebra/algorithm/transposed.tpp"
+#include "typed_linear_algebra/cast.tpp"
+#include "typed_linear_algebra/chrono.tpp"
+#include "typed_linear_algebra/common_type.tpp"
+#include "typed_linear_algebra/format.tpp"
+#include "typed_linear_algebra/tuple.tpp"
+#include "typed_linear_algebra/typed_linear_algebra.tpp"
 
 namespace fcarouge {
 

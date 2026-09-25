@@ -29,28 +29,34 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MATRIX_PRODUCT_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MATRIX_PRODUCT_TPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MAGNITUDE_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MAGNITUDE_TPP
 
-//! @todo Remove the feature check when supporting native C++26.
-#ifdef __cpp_lib_linalg
-
-#include <linalg>
+#include <cmath>
 
 namespace fcarouge {
+[[nodiscard]] constexpr auto magnitude(const uniform_typed_matrix auto &value) {
+  static_assert(
+      rank_typed_matrix<decltype(value), 1>,
+      "The magnitude operation only supports vector types at this time.");
 
-//! @brief
-//!
-//! @see std::linalg::matrix_product
-//!
-//! @todo Requires, assert that the element types are compatible.
-constexpr void matrix_product(const same_as_typed_matrix auto &lhs,
-                              const same_as_typed_matrix auto &rhs,
-                              same_as_typed_matrix auto &result) {
-  using std::linalg::matrix_product;
-  matrix_product(lhs.data(), rhs.data(), result.data());
+  using matrix = std::remove_cvref_t<decltype(value)>;
+  using element = typename matrix::template element<0>;
+  using underlying = typename matrix::underlying;
+
+  underlying sums{};
+
+  // There exists a variety of implementation tradeoffs to explore. Delegate to
+  // underlying linear algebra library? Implement atop strong types?
+  tla::for_constexpr<matrix::rows * matrix::columns>([&](auto i) {
+    const underlying term{cast<underlying, element>(value.template at<i>())};
+    sums += term * term;
+  });
+
+  using std::sqrt;
+
+  return cast<element, underlying>(sqrt(sums));
 }
 } // namespace fcarouge
 
-#endif
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MATRIX_PRODUCT_TPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MAGNITUDE_TPP

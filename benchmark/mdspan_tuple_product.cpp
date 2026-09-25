@@ -29,7 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/typed_linear_algebra_internal/utility.hpp"
+#include "fcarouge/typed_linear_algebra/utility.hpp"
 
 #include <nanobench.h>
 

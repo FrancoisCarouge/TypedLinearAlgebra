@@ -29,15 +29,51 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_TRANSPOSED_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_TRANSPOSED_TPP
+
+#if __has_include(<linalg>)
+
+#include <linalg>
+
+#endif
+
+#include <tuple>
+#include <type_traits>
+#include <utility>
 
 namespace fcarouge {
-template <typename To, typename From>
-[[nodiscard]] constexpr auto element_caster<To, From>::operator()(From value)
-    -> To {
-  return value;
+namespace internal {
+[[nodiscard]] constexpr decltype(auto) transposed(const auto &storage) {
+#if __has_include(<linalg>)
+  using std::linalg::transposed;
+#endif
+
+  if constexpr (requires { storage.transpose(); }) {
+    return storage.transpose();
+  } else if constexpr (requires { storage.t(); }) {
+    return storage.t();
+  } else if constexpr (requires { transposed(storage); }) {
+    return transposed(storage);
+  } else {
+    static_assert(
+        sizeof(storage) == 0,
+        "Transposed is not supported for this linear algebra backend.");
+  }
+}
+} // namespace internal
+
+[[nodiscard]] constexpr auto
+transposed(const same_as_typed_matrix auto &value) {
+  using matrix = std::remove_cvref_t<decltype(value)>;
+  using transposed_row_indexes = typename matrix::column_indexes;
+  using transposed_column_indexes = typename matrix::row_indexes;
+
+  auto data{internal::transposed(value.data())};
+
+  return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
+      std::move(data));
 }
 } // namespace fcarouge
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_TRANSPOSED_TPP

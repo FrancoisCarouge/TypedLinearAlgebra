@@ -29,8 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_UTILITY_HPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_UTILITY_HPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_UTILITY_HPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_UTILITY_HPP
 
 #include "fcarouge/typed_linear_algebra_forward.hpp"
 
@@ -618,4 +618,4 @@ concept distinct_typed_matrix =
     same_as_typed_matrix<Type> and is_distinct_typed_matrix<Type>();
 } // namespace fcarouge::typed_linear_algebra_internal
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_UTILITY_HPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_UTILITY_HPP
