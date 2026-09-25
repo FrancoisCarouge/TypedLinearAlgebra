@@ -33,23 +33,35 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <cassert>
 #include <chrono>
+#include <cstddef>
+#include <mdspan>
 
 namespace fcarouge::test {
 using representation = double;
 
 namespace {
-//! @test Verifies the dot product of a row vector of std::chrono durations
-//! and a row vector of the dimensionless representation type: durations have
-//! no duration-by-duration product, so each term instead pairs a duration
-//! with a plain scalar.
+//! @test Verifies the singleton by singleton matrix substraction operator
+//! with the mdspan backend and std::chrono duration element types.
 [[maybe_unused]] const auto test{[] -> int {
   using seconds = std::chrono::duration<representation>;
 
-  const row_vector<representation, seconds, seconds> a{seconds{2.},
-                                                       seconds{3.}};
-  const row_vector<representation, representation, representation> b{4., 5.};
+  representation storage_a{0.};
+  representation storage_b{0.};
+  representation storage_r{0.};
 
-  assert(dot(a, b) == seconds{23.});
+  std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
+  std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
+  std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
+
+  row_vector<representation, seconds> a{span_a};
+  row_vector<representation, seconds> b{span_b};
+  row_vector<representation, seconds> r{span_r};
+
+  a = seconds{3.};
+  b = seconds{2.};
+  r = a - b;
+
+  assert(seconds{1.} == r.at());
 
   return 0;
 }()};

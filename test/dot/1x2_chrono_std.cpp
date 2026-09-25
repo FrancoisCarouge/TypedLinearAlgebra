@@ -44,7 +44,7 @@ namespace {
 //! and a row vector of the dimensionless representation type, with the
 //! mdspan-backed, non-owning storage backend. Durations have no
 //! duration-by-duration product, so each term instead pairs a duration with a
-//! plain scalar, mirroring `matrix_vector_product`'s convention.
+//! plain scalar.
 [[maybe_unused]] const auto test{[] -> int {
   using seconds = std::chrono::duration<representation>;
 

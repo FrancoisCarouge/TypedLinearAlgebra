@@ -31,25 +31,38 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <units/length.h>
+#include <units/velocity.h>
+
 #include <cassert>
-#include <chrono>
+#include <concepts>
 
 namespace fcarouge::test {
+using units::m;
+using units::mps;
 using representation = double;
 
 namespace {
-//! @test Verifies the dot product of a row vector of std::chrono durations
-//! and a row vector of the dimensionless representation type: durations have
-//! no duration-by-duration product, so each term instead pairs a duration
-//! with a plain scalar.
+//! @test The by-type `at` accessor resolves each element of a distinct row
+//! vector to the same position, value, and type its integral index does,
+//! nholthaus/units quantities, Eigen-family backend.
 [[maybe_unused]] const auto test{[] -> int {
-  using seconds = std::chrono::duration<representation>;
+  using position = units::length::meters<representation>;
+  using velocity = units::velocity::meters_per_second<representation>;
 
-  const row_vector<representation, seconds, seconds> a{seconds{2.},
-                                                       seconds{3.}};
-  const row_vector<representation, representation, representation> b{4., 5.};
+  row_vector<representation, position, velocity> x{2. * m, 3. * mps};
 
-  assert(dot(a, b) == seconds{23.});
+  assert(x.at<position>() == 2. * m);
+  assert(x.at<velocity>() == 3. * mps);
+
+  assert(x.at<position>() == x.at<0>());
+  assert(x.at<velocity>() == x.at<1>());
+
+  static_assert(std::same_as<decltype(x.at<velocity>()), decltype(x.at<1>())>);
+
+  x.at<1>(9. * mps);
+
+  assert(x.at<velocity>() == 9. * mps);
 
   return 0;
 }()};

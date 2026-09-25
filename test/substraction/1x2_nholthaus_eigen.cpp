@@ -31,25 +31,36 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <units/length.h>
+#include <units/velocity.h>
+
 #include <cassert>
-#include <chrono>
 
 namespace fcarouge::test {
+using literals::operator""_i;
+using units::m;
+using units::mps;
 using representation = double;
 
 namespace {
-//! @test Verifies the dot product of a row vector of std::chrono durations
-//! and a row vector of the dimensionless representation type: durations have
-//! no duration-by-duration product, so each term instead pairs a duration
-//! with a plain scalar.
+//! @test Verifies the substraction operator with non-trivial types.
 [[maybe_unused]] const auto test{[] -> int {
-  using seconds = std::chrono::duration<representation>;
+  using position = units::length::meters<representation>;
+  using velocity = units::velocity::meters_per_second<representation>;
 
-  const row_vector<representation, seconds, seconds> a{seconds{2.},
-                                                       seconds{3.}};
-  const row_vector<representation, representation, representation> b{4., 5.};
+  row_vector<representation, position, velocity> a{1. * m, 2. * mps};
+  row_vector<representation, position, velocity> b{3. * m, 1. * mps};
+  row_vector<representation, position, velocity> r{a - b};
 
-  assert(dot(a, b) == seconds{23.});
+  assert(-2. * m == r.at<0>());
+  assert(-2. * m == r.at<0_i>());
+  assert(-2. * m == r[0_i]);
+  assert(-2. * m == r(0_i));
+
+  assert(1. * mps == r.at<1>());
+  assert(1. * mps == r.at<1_i>());
+  assert(1. * mps == r[1_i]);
+  assert(1. * mps == r(1_i));
 
   return 0;
 }()};

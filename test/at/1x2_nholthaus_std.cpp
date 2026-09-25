@@ -31,25 +31,45 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <units/length.h>
+#include <units/velocity.h>
+
 #include <cassert>
-#include <chrono>
+#include <cstddef>
+#include <mdspan>
 
 namespace fcarouge::test {
+using literals::operator""_i;
+using units::m;
+using units::mps;
 using representation = double;
 
 namespace {
-//! @test Verifies the dot product of a row vector of std::chrono durations
-//! and a row vector of the dimensionless representation type: durations have
-//! no duration-by-duration product, so each term instead pairs a duration
-//! with a plain scalar.
+//! @test The by-type `at` accessor over a distinct row vector, nholthaus/units
+//! quantities, std::linalg backend.
 [[maybe_unused]] const auto test{[] -> int {
-  using seconds = std::chrono::duration<representation>;
+  using position = units::length::meters<representation>;
+  using velocity = units::velocity::meters_per_second<representation>;
 
-  const row_vector<representation, seconds, seconds> a{seconds{2.},
-                                                       seconds{3.}};
-  const row_vector<representation, representation, representation> b{4., 5.};
+  representation storage[]{0., 0.};
+  std::mdspan span{&storage[0], std::extents<std::size_t, 1, 2>{}};
 
-  assert(dot(a, b) == seconds{23.});
+  row_vector<representation, position, velocity> x{span};
+
+  x.at<0_i>(2. * m);
+  x.at<1_i>(3. * mps);
+
+  assert(2. * m == x.at<position>());
+  assert(2. * m == x.at<0>());
+  assert(2. * m == x.at<0_i>());
+
+  assert(3. * mps == x.at<velocity>());
+  assert(3. * mps == x.at<1>());
+  assert(3. * mps == x.at<1_i>());
+
+  x.at<1_i>(9. * mps);
+
+  assert(9. * mps == x.at<velocity>());
 
   return 0;
 }()};

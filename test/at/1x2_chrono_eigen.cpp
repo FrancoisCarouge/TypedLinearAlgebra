@@ -33,23 +33,33 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <cassert>
 #include <chrono>
+#include <concepts>
 
 namespace fcarouge::test {
-using representation = double;
-
 namespace {
-//! @test Verifies the dot product of a row vector of std::chrono durations
-//! and a row vector of the dimensionless representation type: durations have
-//! no duration-by-duration product, so each term instead pairs a duration
-//! with a plain scalar.
+using representation = double;
+using seconds = std::chrono::duration<representation>;
+using instant = std::chrono::time_point<std::chrono::steady_clock, seconds>;
+
+//! @test The by-type `at` accessor resolves each element of a distinct row
+//! vector to the same position, value, and type its integral index does. A
+//! duration and a time point neither convert to one another nor share a
+//! common type, so the pair stays distinct.
 [[maybe_unused]] const auto test{[] -> int {
-  using seconds = std::chrono::duration<representation>;
+  row_vector<representation, seconds, instant> x{seconds{2.},
+                                                 instant{seconds{3.}}};
 
-  const row_vector<representation, seconds, seconds> a{seconds{2.},
-                                                       seconds{3.}};
-  const row_vector<representation, representation, representation> b{4., 5.};
+  assert(x.at<seconds>() == seconds{2.});
+  assert(x.at<instant>() == instant{seconds{3.}});
 
-  assert(dot(a, b) == seconds{23.});
+  assert(x.at<seconds>() == x.at<0>());
+  assert(x.at<instant>() == x.at<1>());
+
+  static_assert(std::same_as<decltype(x.at<instant>()), decltype(x.at<1>())>);
+
+  x.at<0>(seconds{5.});
+
+  assert(x.at<seconds>() == seconds{5.});
 
   return 0;
 }()};

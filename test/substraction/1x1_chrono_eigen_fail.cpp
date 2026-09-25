@@ -38,18 +38,23 @@ namespace fcarouge::test {
 using representation = double;
 
 namespace {
-//! @test Verifies the dot product of a row vector of std::chrono durations
-//! and a row vector of the dimensionless representation type: durations have
-//! no duration-by-duration product, so each term instead pairs a duration
-//! with a plain scalar.
-[[maybe_unused]] const auto test{[] -> int {
-  using seconds = std::chrono::duration<representation>;
+//! @test Verifies subtracting two time points yields a duration, not another
+//! time point.
+[[maybe_unused]] const auto test{[] {
+  using instant =
+      std::chrono::time_point<std::chrono::system_clock,
+                              std::chrono::duration<representation>>;
 
-  const row_vector<representation, seconds, seconds> a{seconds{2.},
-                                                       seconds{3.}};
-  const row_vector<representation, representation, representation> b{4., 5.};
+  const row_vector<representation, instant> a{instant{}};
+  const row_vector<representation, instant> b{instant{}};
 
-  assert(dot(a, b) == seconds{23.});
+  // Intended: a duration singleton.
+  // const row_vector<representation, std::chrono::duration<representation>>
+  // r{a - b};
+
+  const row_vector<representation, instant> r{a - b};
+
+  assert(instant{} == r.at());
 
   return 0;
 }()};

@@ -31,25 +31,33 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <units/area.h>
+#include <units/length.h>
+
 #include <cassert>
-#include <chrono>
 
 namespace fcarouge::test {
+using units::m;
+using units::m2;
 using representation = double;
 
 namespace {
-//! @test Verifies the dot product of a row vector of std::chrono durations
-//! and a row vector of the dimensionless representation type: durations have
-//! no duration-by-duration product, so each term instead pairs a duration
-//! with a plain scalar.
-[[maybe_unused]] const auto test{[] -> int {
-  using seconds = std::chrono::duration<representation>;
+//! @test Verifies the singleton by singleton matrix substraction operator.
+[[maybe_unused]] const auto test{[] {
+  using length = units::length::meters<representation>;
 
-  const row_vector<representation, seconds, seconds> a{seconds{2.},
-                                                       seconds{3.}};
-  const row_vector<representation, representation, representation> b{4., 5.};
+  // Intended:
+  // const row_vector<representation, length> a{3. * m};
 
-  assert(dot(a, b) == seconds{23.});
+  using area = units::area::square_meters<representation>;
+
+  const row_vector<representation, area> a{3. * m2};
+  const row_vector<representation, length> b{2. * m};
+  const row_vector<representation, length> r{a - b};
+
+  assert(1. * m == r.at());
+  assert(1. * m == r[]);
+  assert(1. * m == r());
 
   return 0;
 }()};
