@@ -29,8 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_COMMON_TYPE_HPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_COMMON_TYPE_HPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_COMMON_TYPE_HPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_COMMON_TYPE_HPP
 
 //! @file
 //! @brief Common type support for the typed matrix.
@@ -50,4 +50,4 @@ struct std::common_type<
                                       ColumnIndexes>;
 };
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_COMMON_TYPE_HPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_COMMON_TYPE_HPP

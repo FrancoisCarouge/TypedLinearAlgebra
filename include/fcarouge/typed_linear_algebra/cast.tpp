@@ -29,26 +29,15 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_SCALE_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_SCALE_TPP
-
-//! @todo Remove the feature check when supporting native C++26.
-#ifdef __cpp_lib_linalg
-
-#include <linalg>
-
-//! @todo Reflect over the std::linalg algorithms to provide the typed bindings?
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_CAST_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_CAST_TPP
 
 namespace fcarouge {
-
-//! @brief Multiply the elements of an object in place by a scalar.
-//!
-//! @see std::linalg::scale
-constexpr void scale(const auto &α, same_as_typed_matrix auto &x) {
-  using std::linalg::scale;
-  scale(α, x.data());
+template <typename To, typename From>
+[[nodiscard]] constexpr auto element_caster<To, From>::operator()(From value)
+    -> To {
+  return value;
 }
 } // namespace fcarouge
 
-#endif
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_SCALE_TPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_CAST_TPP

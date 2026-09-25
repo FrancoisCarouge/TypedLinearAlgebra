@@ -29,8 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_TUPLE_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_TUPLE_TPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_TUPLE_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_TUPLE_TPP
 
 //! @brief Tuple size specialization in support of structured bindings.
 //!
@@ -66,4 +66,4 @@ struct std::tuple_element<Index, Type> {
   using type = typename Type::template element<>;
 };
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_TUPLE_TPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_TUPLE_TPP

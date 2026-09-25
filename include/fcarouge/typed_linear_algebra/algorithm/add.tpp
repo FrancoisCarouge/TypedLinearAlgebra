@@ -29,8 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_ADD_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_ADD_TPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_ADD_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_ADD_TPP
 
 #ifdef __cpp_lib_linalg
 
@@ -221,4 +221,4 @@ constexpr void add(const rank_typed_matrix<0> auto &lhs,
 
 } // namespace fcarouge
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_ADD_TPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_ADD_TPP
