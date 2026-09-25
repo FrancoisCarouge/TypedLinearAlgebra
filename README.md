@@ -25,7 +25,7 @@ std::println("{}", x * transposed(x));
 [![Valgrind](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/valgrind_memory.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/valgrind_memory.yml)
 [![Public Domain](https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen)](https://raw.githubusercontent.com/francoiscarouge/TypedLinearAlgebra/master/LICENSE.txt)
 [![License Scan](https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FTypedLinearAlgebra.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FTypedLinearAlgebra?ref=badge_shield)
-[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8933/badge)](https://www.bestpractices.dev/projects/8933)
+[![OpenSSF Baseline](https://www.bestpractices.dev/projects/14936/baseline)](https://www.bestpractices.dev/projects/14936)
 [![Deploy Unit Test Code Coverage](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/deploy_coverage.yml/badge.svg)](https://francoiscarouge.github.io/TypedLinearAlgebra/unit_test_coverage.xhtml)
 [![Deploy Doxygen](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/deploy_doxygen.yml/badge.svg)](https://francoiscarouge.github.io/TypedLinearAlgebra/index.xhtml)
 [![Sponsor](https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen)](http://paypal.me/francoiscarouge)
