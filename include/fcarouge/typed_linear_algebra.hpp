@@ -151,6 +151,10 @@ concept index = tla::index<Type>;
 //! @note Deduction guides are tricky because a given element type comes from
 //! a row and column index to be deduced.
 //!
+//! @note Constructors, operators, and algorithms forward to the composed
+//! `Matrix` where possible. The value semantics and memory guarantees are those
+//! of the backend's.
+//!
 //! @todo Don't limit the dimension to two? Use parameter pack of index tuples
 //! for tensor types.
 //! @todo Add complexity documentation where appropriate for the API?
