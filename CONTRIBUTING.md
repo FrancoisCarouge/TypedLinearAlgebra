@@ -25,3 +25,10 @@ Please review [the security policy](https://github.com/FrancoisCarouge/TypedLine
 ## Questions & Ideas
 
 Have a question or an idea? Start a [Discussion](https://github.com/FrancoisCarouge/TypedLinearAlgebra/discussions) instead.
+
+## Pull Request Merge Checklist
+
+Before merging a pull request, the maintainer:
+
+- Adds any first-time contributor to [CONTRIBUTORS.md](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/CONTRIBUTORS.md), linking their GitHub profile and noting what they contributed.
+- Credits the contributor by `@handle` in the [CHANGELOG.md](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/CHANGELOG.md) entry for the specific change, in addition to the standing entry in `CONTRIBUTORS.md`.
