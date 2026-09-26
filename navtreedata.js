@@ -32,7 +32,7 @@ var NAVTREE =
       [ "Architecture", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#architecture", [
         [ "Core header", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#core-header", null ],
         [ "Backend plug-in pattern", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#backend-plug-in-pattern", null ],
-        [ "Algorithms (include/fcarouge/typed_linear_algebra_internal/algorithm/)", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#algorithms-includefcarougetyped_linear_algebra_internalalgorithm", null ],
+        [ "Algorithms (include/fcarouge/typed_linear_algebra/algorithm/)", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#algorithms-includefcarougetyped_linear_algebraalgorithm", null ],
         [ "Test/benchmark generation (support/support.cmake)", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#testbenchmark-generation-supportsupportcmake", null ],
         [ "Other directories", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#other-directories", null ]
       ] ],

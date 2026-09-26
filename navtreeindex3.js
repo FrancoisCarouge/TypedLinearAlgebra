@@ -144,7 +144,7 @@ var NAVTREEINDEX3 =
 "matrix__vector__product_22x2__nholthaus__std_8cpp_source.xhtml":[17,0,6,16,3],
 "md__2github_2workspace_2_a_g_e_n_t_s.xhtml":[1],
 "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#ai-agent-conduct":[1,0],
-"md__2github_2workspace_2_a_g_e_n_t_s.xhtml#algorithms-includefcarougetyped_linear_algebra_internalalgorithm":[1,2,2],
+"md__2github_2workspace_2_a_g_e_n_t_s.xhtml#algorithms-includefcarougetyped_linear_algebraalgorithm":[1,2,2],
 "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#architecture":[1,2],
 "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#backend-plug-in-pattern":[1,2,1],
 "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#build--test":[1,1],

@@ -2,7 +2,7 @@ var searchData=
 [
   ['fake_0',['fake',['../structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1fake.xhtml',1,'fcarouge::test::anonymous_namespace{same_as_typed_matrix.cpp}']]],
   ['fcarouge_1',['fcarouge',['../namespacefcarouge.xhtml',1,'']]],
-  ['fcarouge_20typed_5flinear_5falgebra_5finternal_20algorithm_20tt_2',['Algorithms (&lt;tt&gt;include/fcarouge/typed_linear_algebra_internal/algorithm/&lt;/tt&gt;)',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#algorithms-includefcarougetyped_linear_algebra_internalalgorithm',1,'']]],
+  ['fcarouge_20typed_5flinear_5falgebra_20algorithm_20tt_2',['Algorithms (&lt;tt&gt;include/fcarouge/typed_linear_algebra/algorithm/&lt;/tt&gt;)',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#algorithms-includefcarougetyped_linear_algebraalgorithm',1,'']]],
   ['fcarouge_3a_3aarmadillo_3',['armadillo',['../namespacefcarouge_1_1armadillo.xhtml',1,'fcarouge']]],
   ['fcarouge_3a_3aarmadillo_3a_3ais_5farmadillo_4',['is_armadillo',['../conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml',1,'fcarouge::armadillo']]],
   ['fcarouge_3a_3aarmadillo_3a_3astatically_5fsized_5',['statically_sized',['../conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml',1,'fcarouge::armadillo']]],
