@@ -328,9 +328,6 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{5x5.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_025x5_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_025x5_8cpp_03.xhtml#a9b5a3b08c30832af0f0a23d0e7b5b8c1", null ]
     ] ],
-    [ "anonymous_namespace{assign.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02assign_8cpp_03.xhtml", [
-      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02assign_8cpp_03.xhtml#aefada804dc666ab962c33f89527ed6cb", null ]
-    ] ],
     [ "anonymous_namespace{au_eigen.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml", [
       [ "column", "namespacefcarouge_1_1test_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a7971191d4a0c46546ff3359e3ce361ef", null ],
       [ "id", "namespacefcarouge_1_1test_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#ad4f249a88788fca554f7a839480ce9b9", null ],

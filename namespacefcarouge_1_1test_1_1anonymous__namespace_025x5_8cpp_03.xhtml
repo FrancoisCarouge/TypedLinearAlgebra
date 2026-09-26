@@ -129,7 +129,7 @@ Variables</h2></td></tr>
 <div class="line">                               {0., 0., 1., 0., 0.},</div>
 <div class="line">                               {0., 0., 0., 1., 0.},</div>
 <div class="line">                               {0., 0., 0., 0., 1.}};</div>
-<div class="line">  matrix&lt;double, 5, 5&gt; c{m};</div>
+<div class="line">  matrix&lt;double, 5, 5&gt; c = m;</div>
 <div class="line"> </div>
 <div class="line">  assert((c == matrix&lt;double, 5, 5&gt;{{1., 0., 0., 0., 0.},</div>
 <div class="line">                                    {0., 1., 0., 0., 0.},</div>
@@ -143,16 +143,17 @@ Variables</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000080">Test</a></b></dt><dd>Verifies the copy constructor. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000040">Test</a></b></dt><dd>Verifies the assignment operator. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000086">Test</a></b></dt><dd>Verifies the copy constructor. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="5x5_8cpp_source.xhtml#l00039">39</a> of file <a class="el" href="5x5_8cpp_source.xhtml">5x5.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="assign_25x5_8cpp_source.xhtml#l00039">39</a> of file <a class="el" href="assign_25x5_8cpp_source.xhtml">5x5.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   39</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line"><span class="lineno">   40</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;double, 5, 5&gt;</a> m{{1., 0., 0., 0., 0.},</div>
 <div class="line"><span class="lineno">   41</span>                               {0., 1., 0., 0., 0.},</div>
 <div class="line"><span class="lineno">   42</span>                               {0., 0., 1., 0., 0.},</div>
 <div class="line"><span class="lineno">   43</span>                               {0., 0., 0., 1., 0.},</div>
 <div class="line"><span class="lineno">   44</span>                               {0., 0., 0., 0., 1.}};</div>
-<div class="line"><span class="lineno">   45</span>  matrix&lt;double, 5, 5&gt; c{m};</div>
+<div class="line"><span class="lineno">   45</span>  matrix&lt;double, 5, 5&gt; c = m;</div>
 <div class="line"><span class="lineno">   46</span> </div>
 <div class="line"><span class="lineno">   47</span>  assert((c == matrix&lt;double, 5, 5&gt;{{1., 0., 0., 0., 0.},</div>
 <div class="line"><span class="lineno">   48</span>                                    {0., 1., 0., 0., 0.},</div>

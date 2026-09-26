@@ -11,6 +11,6 @@ var dir_38eb1dc5b1c36523e6cf628b0c17f528 =
     [ "1x3_array.cpp", "1x3__array_8cpp.xhtml", "1x3__array_8cpp" ],
     [ "3x1.cpp", "constructor_23x1_8cpp.xhtml", null ],
     [ "3x1_array.cpp", "3x1__array_8cpp.xhtml", "3x1__array_8cpp" ],
-    [ "copy.cpp", "copy_8cpp.xhtml", "copy_8cpp" ],
+    [ "copy.cpp", "constructor_2copy_8cpp.xhtml", null ],
     [ "initializer_lists.cpp", "initializer__lists_8cpp.xhtml", "initializer__lists_8cpp" ]
 ];

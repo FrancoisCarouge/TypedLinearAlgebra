@@ -29,12 +29,11 @@ var searchData=
   ['arma_26',['arma',['../namespacearma.xhtml',1,'']]],
   ['armadillo_2ehpp_27',['armadillo.hpp',['../armadillo_8hpp.xhtml',1,'']]],
   ['as_20seen_20at_20cppnow_202026_28',['As seen at CppNow 2026',['../index.xhtml#as-seen-at-cppnow-2026',1,'']]],
-  ['assign_2ecpp_29',['assign.cpp',['../assign_8cpp.xhtml',1,'']]],
-  ['at_30',['at',['../classfcarouge_1_1typed__matrix.xhtml#a9f0415b7e8fccdbce89d2f3e476ab4f5',1,'fcarouge::typed_matrix::at(this auto &amp;&amp;self) -&gt; decltype(auto) requires(sizeof...(Indexes)==rank)'],['../classfcarouge_1_1typed__matrix.xhtml#adb5d1b76d020b0053239aace373d3af5',1,'fcarouge::typed_matrix::at(this auto &amp;&amp;self)'],['../classfcarouge_1_1typed__matrix.xhtml#a4f021cdbb68e3e5bbe51c5962b312508',1,'fcarouge::typed_matrix::at(this auto &amp;&amp;self, const element&lt; Indexes... &gt; &amp;value)']]],
-  ['at_20cppnow_202026_31',['As seen at CppNow 2026',['../index.xhtml#as-seen-at-cppnow-2026',1,'']]],
-  ['attribution_32',['Attribution',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution',1,'']]],
-  ['au_2ehpp_33',['au.hpp',['../au_8hpp.xhtml',1,'']]],
-  ['au_5farmadillo_2ecpp_34',['au_armadillo.cpp',['../au__armadillo_8cpp.xhtml',1,'']]],
-  ['au_5feigen_2ecpp_35',['au_eigen.cpp',['../sample_2au__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../test_2distinct__typed__matrix_2au__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../test_2format_2au__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../test_2uniform__typed__matrix_2au__eigen_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['au_5fstd_2ecpp_36',['au_std.cpp',['../sample_2au__std_8cpp.xhtml',1,'(Global Namespace)'],['../test_2column__typed__matrix_2au__std_8cpp.xhtml',1,'(Global Namespace)'],['../test_2format_2au__std_8cpp.xhtml',1,'(Global Namespace)'],['../test_2rank__typed__matrix_2au__std_8cpp.xhtml',1,'(Global Namespace)'],['../test_2row__typed__matrix_2au__std_8cpp.xhtml',1,'(Global Namespace)'],['../test_2same__shape_2au__std_8cpp.xhtml',1,'(Global Namespace)']]]
+  ['at_29',['at',['../classfcarouge_1_1typed__matrix.xhtml#a9f0415b7e8fccdbce89d2f3e476ab4f5',1,'fcarouge::typed_matrix::at(this auto &amp;&amp;self) -&gt; decltype(auto) requires(sizeof...(Indexes)==rank)'],['../classfcarouge_1_1typed__matrix.xhtml#adb5d1b76d020b0053239aace373d3af5',1,'fcarouge::typed_matrix::at(this auto &amp;&amp;self)'],['../classfcarouge_1_1typed__matrix.xhtml#a4f021cdbb68e3e5bbe51c5962b312508',1,'fcarouge::typed_matrix::at(this auto &amp;&amp;self, const element&lt; Indexes... &gt; &amp;value)']]],
+  ['at_20cppnow_202026_30',['As seen at CppNow 2026',['../index.xhtml#as-seen-at-cppnow-2026',1,'']]],
+  ['attribution_31',['Attribution',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution',1,'']]],
+  ['au_2ehpp_32',['au.hpp',['../au_8hpp.xhtml',1,'']]],
+  ['au_5farmadillo_2ecpp_33',['au_armadillo.cpp',['../au__armadillo_8cpp.xhtml',1,'']]],
+  ['au_5feigen_2ecpp_34',['au_eigen.cpp',['../sample_2au__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../test_2distinct__typed__matrix_2au__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../test_2format_2au__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../test_2uniform__typed__matrix_2au__eigen_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['au_5fstd_2ecpp_35',['au_std.cpp',['../sample_2au__std_8cpp.xhtml',1,'(Global Namespace)'],['../test_2column__typed__matrix_2au__std_8cpp.xhtml',1,'(Global Namespace)'],['../test_2format_2au__std_8cpp.xhtml',1,'(Global Namespace)'],['../test_2rank__typed__matrix_2au__std_8cpp.xhtml',1,'(Global Namespace)'],['../test_2row__typed__matrix_2au__std_8cpp.xhtml',1,'(Global Namespace)'],['../test_2same__shape_2au__std_8cpp.xhtml',1,'(Global Namespace)']]]
 ];

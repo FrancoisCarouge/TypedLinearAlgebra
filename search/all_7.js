@@ -62,7 +62,7 @@ var searchData=
   ['contributors_59',['Contributors',['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_o_r_s.xhtml',1,'Contributors'],['../index.xhtml#contributors-1',1,'Contributors']]],
   ['contributors_2emd_60',['CONTRIBUTORS.md',['../_c_o_n_t_r_i_b_u_t_o_r_s_8md.xhtml',1,'']]],
   ['conventions_61',['Conventions',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#conventions',1,'']]],
-  ['copy_2ecpp_62',['copy.cpp',['../copy_8cpp.xhtml',1,'']]],
+  ['copy_2ecpp_62',['copy.cpp',['../assign_2copy_8cpp.xhtml',1,'(Global Namespace)'],['../constructor_2copy_8cpp.xhtml',1,'(Global Namespace)']]],
   ['core_20header_63',['Core header',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#core-header',1,'']]],
   ['corner_64',['corner',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02rank__mismatch__fail_8cpp_03.xhtml#ae8f995d238aa83e091e26097e1be679d',1,'fcarouge::test::anonymous_namespace{rank_mismatch_fail.cpp}']]],
   ['corporations_20institutions_65',['Corporations &amp; Institutions',['../index.xhtml#corporations--institutions',1,'']]],
