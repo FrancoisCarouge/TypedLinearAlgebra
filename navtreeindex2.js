@@ -1,13 +1,13 @@
 var NAVTREEINDEX2 =
 {
-"conceptfcarouge_1_1nholthaus__quantity.xhtml":[15,0,15],
 "conceptfcarouge_1_1nholthaus__quantity.xhtml":[14,0,2,27],
+"conceptfcarouge_1_1nholthaus__quantity.xhtml":[15,0,15],
 "conceptfcarouge_1_1other.xhtml":[14,0,2,21],
 "conceptfcarouge_1_1other.xhtml":[15,0,9],
 "conceptfcarouge_1_1other__tuple__like__vector.xhtml":[14,0,2,22],
 "conceptfcarouge_1_1other__tuple__like__vector.xhtml":[15,0,10],
-"conceptfcarouge_1_1quantity__element__typed__matrix.xhtml":[15,0,14],
 "conceptfcarouge_1_1quantity__element__typed__matrix.xhtml":[14,0,2,26],
+"conceptfcarouge_1_1quantity__element__typed__matrix.xhtml":[15,0,14],
 "conceptfcarouge_1_1rank__typed__matrix.xhtml":[14,0,2,19],
 "conceptfcarouge_1_1rank__typed__matrix.xhtml":[15,0,7],
 "conceptfcarouge_1_1row__typed__matrix.xhtml":[14,0,2,17],
