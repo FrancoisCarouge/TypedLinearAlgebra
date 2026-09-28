@@ -35,8 +35,8 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief Formatting support for the typed matrix.
 
+#include "fcarouge/typed_linear_algebra/internal/utility.hpp"
 #include "fcarouge/typed_linear_algebra_forward.hpp"
-#include "utility.hpp"
 
 #include <cstddef>
 #include <format>

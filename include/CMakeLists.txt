@@ -54,7 +54,7 @@ target_sources(
             "fcarouge/typed_linear_algebra/format.tpp"
             "fcarouge/typed_linear_algebra/tuple.tpp"
             "fcarouge/typed_linear_algebra/typed_linear_algebra.tpp"
-            "fcarouge/typed_linear_algebra/utility.hpp"
+            "fcarouge/typed_linear_algebra/internal/utility.hpp"
             "fcarouge/typed_linear_algebra.hpp")
 install(
   TARGETS tlinalg
