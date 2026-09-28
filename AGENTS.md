@@ -29,7 +29,7 @@ ctest --test-dir build --parallel --verbose
   - `misc-include-cleaner`: every `std::` symbol needs its own direct `#include` even if transitively available (`std::milli` → `<ratio>`, `std::identity` → `<functional>`, …). `.clang-tidy`'s `IgnoreHeaders` whitelists only the Eigen/mp-units/au/`fcarouge/*` facade headers, never the standard library.
   - `google-explicit-constructor` / `hicpp-explicit-conversions` reject any non-`explicit` converting constructor or conversion operator — you can't write an implicit-conversion fixture; test a shared base class instead.
   - Run it before finishing: `clang-tidy-21 <file> -- -std=c++26 -Iinclude -Isupport/<backend> -Isupport/eigen <dep -isystem flags>`.
-- Pre-commit hooks (`.pre-commit-config.yaml`): gitleaks, shellcheck, cpplint, end-of-file-fixer, trailing-whitespace.
+- Pre-commit hooks (`.pre-commit-config.yaml`): gitleaks, shellcheck, end-of-file-fixer, trailing-whitespace.
 - Install: `sudo cmake --install build`.
 
 ## Architecture
