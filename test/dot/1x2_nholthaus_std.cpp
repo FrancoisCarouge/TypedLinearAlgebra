@@ -29,15 +29,43 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
+#include "fcarouge/linalg.hpp"
 
-namespace fcarouge {
-template <typename To, typename From>
-[[nodiscard]] constexpr auto element_caster<To, From>::operator()(From value)
-    -> To {
-  return value;
-}
-} // namespace fcarouge
+#include <units/area.h>
+#include <units/length.h>
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CAST_TPP
+#include <cassert>
+#include <cstddef>
+#include <mdspan>
+
+namespace fcarouge::test {
+using units::m;
+using units::m2;
+using representation = double;
+
+namespace {
+//! @test Verifies the dot product of two row vectors of quantities, with the
+//! mdspan-backed, non-owning storage backend.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = units::length::meters<representation>;
+
+  double storage_a[]{0., 0.};
+  double storage_b[]{0., 0.};
+
+  std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 1, 2>{}};
+  std::mdspan span_b{&storage_b[0], std::extents<std::size_t, 1, 2>{}};
+
+  row_vector<representation, length, length> a{span_a};
+  row_vector<representation, length, length> b{span_b};
+
+  a.at<0>(2. * m);
+  a.at<1>(3. * m);
+  b.at<0>(4. * m);
+  b.at<1>(5. * m);
+
+  assert(dot(a, b) == 23. * m2);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

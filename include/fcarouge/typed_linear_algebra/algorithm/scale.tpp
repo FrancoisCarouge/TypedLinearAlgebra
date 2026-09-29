@@ -29,34 +29,26 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MAGNITUDE_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MAGNITUDE_TPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_SCALE_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_SCALE_TPP
 
-#include <cmath>
+//! @todo Remove the feature check when supporting native C++26.
+#ifdef __cpp_lib_linalg
+
+#include <linalg>
+
+//! @todo Reflect over the std::linalg algorithms to provide the typed bindings?
 
 namespace fcarouge {
-[[nodiscard]] constexpr auto magnitude(const uniform_typed_matrix auto &value) {
-  static_assert(
-      rank_typed_matrix<decltype(value), 1>,
-      "The magnitude operation only supports vector types at this time.");
 
-  using matrix = std::remove_cvref_t<decltype(value)>;
-  using element = typename matrix::template element<0>;
-  using underlying = typename matrix::underlying;
-
-  underlying sums{};
-
-  // There exists a variety of implementation tradeoffs to explore. Delegate to
-  // underlying linear algebra library? Implement atop strong types?
-  tla::for_constexpr<matrix::rows * matrix::columns>([&](auto i) {
-    const underlying term{cast<underlying, element>(value.template at<i>())};
-    sums += term * term;
-  });
-
-  using std::sqrt;
-
-  return cast<element, underlying>(sqrt(sums));
+//! @brief Multiply the elements of an object in place by a scalar.
+//!
+//! @see std::linalg::scale
+constexpr void scale(const auto &α, same_as_typed_matrix auto &x) {
+  using std::linalg::scale;
+  scale(α, x.data());
 }
 } // namespace fcarouge
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MAGNITUDE_TPP
+#endif
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_SCALE_TPP

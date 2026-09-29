@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,14 +27,30 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("5x5" BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("5x1_is_assignable" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("1x5_is_assignable" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("1x1_chrono_std" BACKENDS "chrono_std")
-pass("1x2_au_eigen" BACKENDS "au_eigen" "au_armadillo")
-pass("1x2_chrono_eigen" BACKENDS "chrono_eigen" "chrono_armadillo")
-pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
-pass("1x2_nholthaus_eigen" BACKENDS "nholthaus_eigen" "nholthaus_armadillo")
-pass("copy" BACKENDS "eigexed" "nested_typed_eigen")
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MATRIX_PRODUCT_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MATRIX_PRODUCT_TPP
+
+//! @todo Remove the feature check when supporting native C++26.
+#ifdef __cpp_lib_linalg
+
+#include <linalg>
+
+namespace fcarouge {
+
+//! @brief
+//!
+//! @see std::linalg::matrix_product
+//!
+//! @todo Requires, assert that the element types are compatible.
+constexpr void matrix_product(const same_as_typed_matrix auto &lhs,
+                              const same_as_typed_matrix auto &rhs,
+                              same_as_typed_matrix auto &result) {
+  using std::linalg::matrix_product;
+  matrix_product(lhs.data(), rhs.data(), result.data());
+}
+} // namespace fcarouge
+
+#endif
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MATRIX_PRODUCT_TPP

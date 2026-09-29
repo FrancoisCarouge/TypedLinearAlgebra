@@ -29,8 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_DIVIDE_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_DIVIDE_TPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_DIVIDE_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_DIVIDE_TPP
 
 namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
@@ -133,4 +133,4 @@ namespace tla = typed_linear_algebra_internal;
 }
 } // namespace fcarouge
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_DIVIDE_TPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_DIVIDE_TPP

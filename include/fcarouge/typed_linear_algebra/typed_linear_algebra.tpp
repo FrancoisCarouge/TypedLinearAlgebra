@@ -29,8 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_TYPED_LINEAR_ALGEBRA_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_TYPED_LINEAR_ALGEBRA_TPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_TYPED_LINEAR_ALGEBRA_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_TYPED_LINEAR_ALGEBRA_TPP
 
 namespace fcarouge {
 namespace tla = typed_linear_algebra_internal;
@@ -404,4 +404,4 @@ auto get(rank_typed_matrix<0> auto &&value) -> decltype(auto) {
 }
 } // namespace fcarouge
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_TYPED_LINEAR_ALGEBRA_TPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_TYPED_LINEAR_ALGEBRA_TPP

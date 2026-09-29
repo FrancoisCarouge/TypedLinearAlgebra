@@ -29,12 +29,18 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-pass("5x5" BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("5x1_is_assignable" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("1x5_is_assignable" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("1x1_chrono_std" BACKENDS "chrono_std")
+fail("2x2_fail" BACKENDS "eigexed" "armadilloxed")
+fail("size_mismatch_fail" BACKENDS "eigexed")
+fail("2x1_au_std_fail" BACKENDS "au_std")
+
+pass("1x2_eigen" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("row_column_eigen" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
 pass("1x2_au_eigen" BACKENDS "au_eigen" "au_armadillo")
-pass("1x2_chrono_eigen" BACKENDS "chrono_eigen" "chrono_armadillo")
+pass("1x2_au_std" BACKENDS "au_std")
 pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
+pass("1x2_mp_units_std" BACKENDS "mp_units_std")
 pass("1x2_nholthaus_eigen" BACKENDS "nholthaus_eigen" "nholthaus_armadillo")
-pass("copy" BACKENDS "eigexed" "nested_typed_eigen")
+pass("1x2_nholthaus_std" BACKENDS "nholthaus_std")
+pass("1x2_chrono_eigen" BACKENDS "chrono_eigen" "chrono_armadillo")
+pass("1x2_chrono_std" BACKENDS "chrono_std")
+pass("position_velocity_au_eigen" BACKENDS "au_eigen")

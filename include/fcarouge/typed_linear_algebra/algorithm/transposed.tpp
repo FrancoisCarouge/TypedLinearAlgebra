@@ -1,0 +1,84 @@
+/* Typed Linear Algebra
+Version 0.4.0
+https://github.com/FrancoisCarouge/TypedLinearAlgebra
+
+SPDX-License-Identifier: Unlicense
+
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to <https://unlicense.org> */
+
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_TRANSPOSED_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_TRANSPOSED_TPP
+
+#if __has_include(<linalg>)
+
+#include <linalg>
+
+#endif
+
+#include <tuple>
+#include <type_traits>
+#include <utility>
+
+namespace fcarouge {
+namespace internal {
+[[nodiscard]] constexpr decltype(auto) transposed(const auto &storage) {
+#if __has_include(<linalg>)
+  using std::linalg::transposed;
+#endif
+
+  if constexpr (requires { storage.transpose(); }) {
+    return storage.transpose();
+  } else if constexpr (requires { storage.t(); }) {
+    return storage.t();
+  } else if constexpr (requires { transposed(storage); }) {
+    return transposed(storage);
+  } else {
+    static_assert(
+        sizeof(storage) == 0,
+        "Transposed is not supported for this linear algebra backend.");
+  }
+}
+} // namespace internal
+
+//! @brief Transpose the input matrix.
+//!
+//! @param value The typed matrix to transpose.
+//!
+//! @return A typed matrix with the row and column indexes swapped.
+[[nodiscard]] constexpr auto
+transposed(const same_as_typed_matrix auto &value) {
+  using matrix = std::remove_cvref_t<decltype(value)>;
+  using transposed_row_indexes = typename matrix::column_indexes;
+  using transposed_column_indexes = typename matrix::row_indexes;
+
+  auto data{internal::transposed(value.data())};
+
+  return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
+      std::move(data));
+}
+} // namespace fcarouge
+
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_TRANSPOSED_TPP

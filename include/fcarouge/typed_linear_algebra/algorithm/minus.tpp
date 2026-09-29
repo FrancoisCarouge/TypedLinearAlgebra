@@ -29,8 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MINUS_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MINUS_TPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MINUS_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MINUS_TPP
 
 namespace fcarouge {
 [[nodiscard]] constexpr auto operator-(const rank_typed_matrix<2> auto &value) {
@@ -83,4 +83,4 @@ namespace fcarouge {
 }
 } // namespace fcarouge
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MINUS_TPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MINUS_TPP

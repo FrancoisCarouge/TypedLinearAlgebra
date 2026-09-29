@@ -29,25 +29,30 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_COMMON_TYPE_HPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_COMMON_TYPE_HPP
+#include "fcarouge/linalg.hpp"
 
-//! @file
-//! @brief Common type support for the typed matrix.
+#include <units/area.h>
+#include <units/length.h>
 
-#include "fcarouge/typed_linear_algebra_forward.hpp"
+#include <cassert>
 
-#include <concepts>
-#include <type_traits>
+namespace fcarouge::test {
+using units::m;
+using units::m2;
+using representation = double;
 
-template <typename Lhs, typename Rhs, typename RowIndexes,
-          typename ColumnIndexes>
-  requires std::common_with<Lhs, Rhs>
-struct std::common_type<
-    fcarouge::typed_matrix<Lhs, RowIndexes, ColumnIndexes>,
-    fcarouge::typed_matrix<Rhs, RowIndexes, ColumnIndexes>> {
-  using type = fcarouge::typed_matrix<std::common_type_t<Lhs, Rhs>, RowIndexes,
-                                      ColumnIndexes>;
-};
+namespace {
+//! @test Verifies the dot product of two row vectors of quantities. The
+//! result carries the squared unit of the vectors' uniform element type.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = units::length::meters<representation>;
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_COMMON_TYPE_HPP
+  const row_vector<representation, length, length> a{2. * m, 3. * m};
+  const row_vector<representation, length, length> b{4. * m, 5. * m};
+
+  assert(dot(a, b) == 23. * m2);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

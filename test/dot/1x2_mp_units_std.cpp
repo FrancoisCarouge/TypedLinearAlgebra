@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,14 +27,46 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("5x5" BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("5x1_is_assignable" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("1x5_is_assignable" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("1x1_chrono_std" BACKENDS "chrono_std")
-pass("1x2_au_eigen" BACKENDS "au_eigen" "au_armadillo")
-pass("1x2_chrono_eigen" BACKENDS "chrono_eigen" "chrono_armadillo")
-pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
-pass("1x2_nholthaus_eigen" BACKENDS "nholthaus_eigen" "nholthaus_armadillo")
-pass("copy" BACKENDS "eigexed" "nested_typed_eigen")
+#include "fcarouge/linalg.hpp"
+
+#include <cassert>
+#include <cstddef>
+#include <mdspan>
+
+namespace fcarouge::test {
+using representation = double;
+
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::m2;
+
+namespace {
+//! @test Verifies the dot product of two row vectors of quantities, with the
+//! mdspan-backed, non-owning storage backend.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = quantity<mp_units::isq::length[m]>;
+
+  double storage_a[]{0., 0.};
+  double storage_b[]{0., 0.};
+
+  std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 1, 2>{}};
+  std::mdspan span_b{&storage_b[0], std::extents<std::size_t, 1, 2>{}};
+
+  row_vector<representation, length, length> a{span_a};
+  row_vector<representation, length, length> b{span_b};
+
+  a.at<0>(2. * m);
+  a.at<1>(3. * m);
+  b.at<0>(4. * m);
+  b.at<1>(5. * m);
+
+  assert(dot(a, b) == 23. * m2);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

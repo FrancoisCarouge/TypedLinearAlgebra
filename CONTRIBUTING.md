@@ -26,6 +26,23 @@ Please review [the security policy](https://github.com/FrancoisCarouge/TypedLine
 
 Have a question or an idea? Start a [Discussion](https://github.com/FrancoisCarouge/TypedLinearAlgebra/discussions) instead.
 
+## Pre-commit Hooks
+
+This repository uses [pre-commit](https://pre-commit.com) to catch formatting and linting issues before they reach a commit. The same hooks run in CI on every pull request, via the `Pre-commit` workflow, but installing them locally catches issues before you push. Secret scanning is enforced separately: the `gitleaks` pre-commit hook only checks staged changes at commit time, so the `Gitleaks` workflow additionally runs [gitleaks/gitleaks-action](https://github.com/gitleaks/gitleaks-action) to scan the full push or pull request diff in CI.
+
+```shell
+pip install pre-commit
+pre-commit install
+```
+
+Once installed, the hooks run automatically on `git commit`. To run them against the whole repository at any time:
+
+```shell
+pre-commit run --all-files
+```
+
+See [.pre-commit-config.yaml](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/.pre-commit-config.yaml) for the exact hook set and versions ([gitleaks](https://github.com/gitleaks/gitleaks) for secrets, [shellcheck](https://github.com/jumanjihouse/pre-commit-hooks) for linting, plus whitespace and end-of-file fixers).
+
 ## Pull Request Merge Checklist
 
 Before merging a pull request, the maintainer:

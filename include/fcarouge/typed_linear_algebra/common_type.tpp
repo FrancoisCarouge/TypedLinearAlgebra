@@ -29,51 +29,25 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_COMMON_TYPE_HPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_COMMON_TYPE_HPP
 
-#if __has_include(<linalg>)
+//! @file
+//! @brief Common type support for the typed matrix.
 
-#include <linalg>
+#include "fcarouge/typed_linear_algebra_forward.hpp"
 
-#endif
-
-#include <tuple>
+#include <concepts>
 #include <type_traits>
-#include <utility>
 
-namespace fcarouge {
-namespace internal {
-[[nodiscard]] constexpr decltype(auto) transposed(const auto &storage) {
-#if __has_include(<linalg>)
-  using std::linalg::transposed;
-#endif
+template <typename Lhs, typename Rhs, typename RowIndexes,
+          typename ColumnIndexes>
+  requires std::common_with<Lhs, Rhs>
+struct std::common_type<
+    fcarouge::typed_matrix<Lhs, RowIndexes, ColumnIndexes>,
+    fcarouge::typed_matrix<Rhs, RowIndexes, ColumnIndexes>> {
+  using type = fcarouge::typed_matrix<std::common_type_t<Lhs, Rhs>, RowIndexes,
+                                      ColumnIndexes>;
+};
 
-  if constexpr (requires { storage.transpose(); }) {
-    return storage.transpose();
-  } else if constexpr (requires { storage.t(); }) {
-    return storage.t();
-  } else if constexpr (requires { transposed(storage); }) {
-    return transposed(storage);
-  } else {
-    static_assert(
-        sizeof(storage) == 0,
-        "Transposed is not supported for this linear algebra backend.");
-  }
-}
-} // namespace internal
-
-[[nodiscard]] constexpr auto
-transposed(const same_as_typed_matrix auto &value) {
-  using matrix = std::remove_cvref_t<decltype(value)>;
-  using transposed_row_indexes = typename matrix::column_indexes;
-  using transposed_column_indexes = typename matrix::row_indexes;
-
-  auto data{internal::transposed(value.data())};
-
-  return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
-      std::move(data));
-}
-} // namespace fcarouge
-
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_TRANSPOSED_TPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_COMMON_TYPE_HPP

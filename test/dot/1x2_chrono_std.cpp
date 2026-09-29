@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,14 +27,44 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("5x5" BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("5x1_is_assignable" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("1x5_is_assignable" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("1x1_chrono_std" BACKENDS "chrono_std")
-pass("1x2_au_eigen" BACKENDS "au_eigen" "au_armadillo")
-pass("1x2_chrono_eigen" BACKENDS "chrono_eigen" "chrono_armadillo")
-pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
-pass("1x2_nholthaus_eigen" BACKENDS "nholthaus_eigen" "nholthaus_armadillo")
-pass("copy" BACKENDS "eigexed" "nested_typed_eigen")
+#include "fcarouge/linalg.hpp"
+
+#include <cassert>
+#include <chrono>
+#include <cstddef>
+#include <mdspan>
+
+namespace fcarouge::test {
+using representation = double;
+
+namespace {
+//! @test Verifies the dot product of a row vector of std::chrono durations
+//! and a row vector of the dimensionless representation type, with the
+//! mdspan-backed, non-owning storage backend. Durations have no
+//! duration-by-duration product, so each term instead pairs a duration with a
+//! plain scalar.
+[[maybe_unused]] const auto test{[] -> int {
+  using seconds = std::chrono::duration<representation>;
+
+  double storage_a[]{0., 0.};
+  double storage_b[]{0., 0.};
+
+  std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 1, 2>{}};
+  std::mdspan span_b{&storage_b[0], std::extents<std::size_t, 1, 2>{}};
+
+  row_vector<representation, seconds, seconds> a{span_a};
+  row_vector<representation, representation, representation> b{span_b};
+
+  a.at<0>(seconds{2.});
+  a.at<1>(seconds{3.});
+  b.at<0>(4.);
+  b.at<1>(5.);
+
+  assert(dot(a, b) == seconds{23.});
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

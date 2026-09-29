@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,14 +27,36 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("5x5" BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("5x1_is_assignable" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("1x5_is_assignable" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("1x1_chrono_std" BACKENDS "chrono_std")
-pass("1x2_au_eigen" BACKENDS "au_eigen" "au_armadillo")
-pass("1x2_chrono_eigen" BACKENDS "chrono_eigen" "chrono_armadillo")
-pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
-pass("1x2_nholthaus_eigen" BACKENDS "nholthaus_eigen" "nholthaus_armadillo")
-pass("copy" BACKENDS "eigexed" "nested_typed_eigen")
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MAGNITUDE_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MAGNITUDE_TPP
+
+#include <cmath>
+
+namespace fcarouge {
+[[nodiscard]] constexpr auto magnitude(const uniform_typed_matrix auto &value) {
+  static_assert(
+      rank_typed_matrix<decltype(value), 1>,
+      "The magnitude operation only supports vector types at this time.");
+
+  using matrix = std::remove_cvref_t<decltype(value)>;
+  using element = typename matrix::template element<0>;
+  using underlying = typename matrix::underlying;
+
+  underlying sums{};
+
+  // There exists a variety of implementation tradeoffs to explore. Delegate to
+  // underlying linear algebra library? Implement atop strong types?
+  tla::for_constexpr<matrix::rows * matrix::columns>([&](auto i) {
+    const underlying term{cast<underlying, element>(value.template at<i>())};
+    sums += term * term;
+  });
+
+  using std::sqrt;
+
+  return cast<element, underlying>(sqrt(sums));
+}
+} // namespace fcarouge
+
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MAGNITUDE_TPP

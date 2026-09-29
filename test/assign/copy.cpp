@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,14 +27,40 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("5x5" BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("5x1_is_assignable" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("1x5_is_assignable" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("1x1_chrono_std" BACKENDS "chrono_std")
-pass("1x2_au_eigen" BACKENDS "au_eigen" "au_armadillo")
-pass("1x2_chrono_eigen" BACKENDS "chrono_eigen" "chrono_armadillo")
-pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
-pass("1x2_nholthaus_eigen" BACKENDS "nholthaus_eigen" "nholthaus_armadillo")
-pass("copy" BACKENDS "eigexed" "nested_typed_eigen")
+#include "fcarouge/linalg.hpp"
+
+#include <cassert>
+#include <tuple>
+
+#include <Eigen/Eigen>
+
+namespace fcarouge::test {
+namespace {
+
+using representation = double;
+template <typename RowIndexes, typename ColumnIndexes>
+using matrix =
+    typed_matrix<Eigen::Matrix<representation, std::tuple_size_v<RowIndexes>,
+                               std::tuple_size_v<ColumnIndexes>>,
+                 RowIndexes, ColumnIndexes>;
+
+//! @test Verifies the compatible conversion copy assignment operator.
+[[maybe_unused]] const auto test{[] -> int {
+  using matrix_df =
+      matrix<std::tuple<double, double>, std::tuple<float, float>>;
+  using matrix_fd =
+      matrix<std::tuple<float, float>, std::tuple<double, double>>;
+
+  const matrix_df source{{1., 0.}, {0., 1.}};
+  matrix_fd copy{{9., 9.}, {9., 9.}};
+
+  copy = source;
+
+  assert((copy == matrix_df{{1., 0.}, {0., 1.}}));
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

@@ -29,14 +29,14 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_FORMAT_HPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_FORMAT_HPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_FORMAT_HPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_FORMAT_HPP
 
 //! @file
 //! @brief Formatting support for the typed matrix.
 
+#include "fcarouge/typed_linear_algebra/internal/utility.hpp"
 #include "fcarouge/typed_linear_algebra_forward.hpp"
-#include "utility.hpp"
 
 #include <cstddef>
 #include <format>
@@ -162,4 +162,4 @@ public:
   }
 };
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_FORMAT_HPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_FORMAT_HPP

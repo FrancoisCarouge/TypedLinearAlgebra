@@ -29,28 +29,33 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MATRIX_PRODUCT_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MATRIX_PRODUCT_TPP
+#include "fcarouge/linalg.hpp"
 
-//! @todo Remove the feature check when supporting native C++26.
-#ifdef __cpp_lib_linalg
+#include <cassert>
+#include <chrono>
+#include <cstddef>
+#include <mdspan>
 
-#include <linalg>
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the assignment operator for a singleton std::chrono
+//! duration matrix with the mdspan backend.
+[[maybe_unused]] const auto test{[] -> int {
+  using seconds = std::chrono::duration<double>;
 
-namespace fcarouge {
+  double source_storage{9.};
+  double copy_storage{0.};
+  std::mdspan source_span{&source_storage, std::extents<std::size_t, 1, 1>{}};
+  std::mdspan copy_span{&copy_storage, std::extents<std::size_t, 1, 1>{}};
+  column_vector<double, seconds> source{source_span};
+  column_vector<double, seconds> copy{copy_span};
 
-//! @brief
-//!
-//! @see std::linalg::matrix_product
-//!
-//! @todo Requires, assert that the element types are compatible.
-constexpr void matrix_product(const same_as_typed_matrix auto &lhs,
-                              const same_as_typed_matrix auto &rhs,
-                              same_as_typed_matrix auto &result) {
-  using std::linalg::matrix_product;
-  matrix_product(lhs.data(), rhs.data(), result.data());
-}
-} // namespace fcarouge
+  copy = source;
 
-#endif
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MATRIX_PRODUCT_TPP
+  assert(copy == source);
+  assert(copy == seconds{9.});
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

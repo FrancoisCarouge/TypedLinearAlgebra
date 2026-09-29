@@ -29,8 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MATRIX_VECTOR_PRODUCT_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MATRIX_VECTOR_PRODUCT_TPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MATRIX_VECTOR_PRODUCT_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MATRIX_VECTOR_PRODUCT_TPP
 
 //! @todo Remove the feature check when supporting native C++26.
 #ifdef __cpp_lib_linalg
@@ -105,4 +105,4 @@ constexpr void matrix_vector_product(const rank_typed_matrix<2> auto &lhs,
 } // namespace fcarouge
 
 #endif
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_ALGORITHM_MATRIX_VECTOR_PRODUCT_TPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MATRIX_VECTOR_PRODUCT_TPP

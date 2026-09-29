@@ -29,8 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CHRONO_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CHRONO_TPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_CHRONO_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_CHRONO_TPP
 
 //! @file
 //! @brief Time quantities facade for the standard `<chrono>` library.
@@ -147,4 +147,4 @@ struct element_caster<To &, From &> {
 };
 } // namespace fcarouge
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_CHRONO_TPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_CHRONO_TPP
