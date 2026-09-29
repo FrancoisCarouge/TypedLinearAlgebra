@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,42 +27,37 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-if(NOT BUILD_TESTING)
-  return()
-endif()
+#include "fcarouge/linalg.hpp"
 
-add_subdirectory("add")
-add_subdirectory("addition")
-add_subdirectory("amalgamate")
-add_subdirectory("assign")
-add_subdirectory("at")
-add_subdirectory("column_typed_matrix")
-add_subdirectory("common_with")
-add_subdirectory("constructor")
-add_subdirectory("copy")
-add_subdirectory("distinct_typed_matrix")
-add_subdirectory("division")
-add_subdirectory("dot")
-add_subdirectory("element")
-add_subdirectory("equal_to")
-add_subdirectory("format")
-add_subdirectory("magnitude")
-add_subdirectory("matrix_product")
-add_subdirectory("matrix_vector_product")
-add_subdirectory("minus")
-add_subdirectory("mp_units")
-add_subdirectory("multiplication")
-add_subdirectory("nested")
-add_subdirectory("operator")
-add_subdirectory("rank_typed_matrix")
-add_subdirectory("row_typed_matrix")
-add_subdirectory("same_as_typed_matrix")
-add_subdirectory("same_shape")
-add_subdirectory("scale")
-add_subdirectory("structured_bindings")
-add_subdirectory("substraction")
-add_subdirectory("transposed")
-add_subdirectory("underlying")
-add_subdirectory("uniform_typed_matrix")
+#include <au/units/meters.hh>
+#include <au/units/seconds.hh>
+
+#include <cassert>
+
+namespace fcarouge::test {
+using representation = double;
+
+namespace {
+//! @test Verifies the dot product of a row vector of positions and a row
+//! vector of velocities, per-element types distinct from one operand to the
+//! other, proving per-element typing: each term's product is a position by
+//! velocity quantity, not a squared position or a squared velocity.
+[[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+  using au::symbols::s;
+
+  using position = au::QuantityD<au::Meters>;
+  using velocity = au::QuantityD<au::UnitQuotientT<au::Meters, au::Seconds>>;
+
+  const row_vector<representation, position, position> a{2. * m, 3. * m};
+  const row_vector<representation, velocity, velocity> b{4. * m / s,
+                                                         5. * m / s};
+
+  assert(dot(a, b) == 23. * m * m / s);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
