@@ -122,6 +122,14 @@ Security Policy</h1>
 <h1><a class="anchor" id="questions--ideas"></a>
 Questions &amp; Ideas</h1>
 <p>Have a question or an idea? Start a <a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/discussions">Discussion</a> instead.</p>
+<h1><a class="anchor" id="pre-commit-hooks"></a>
+Pre-commit Hooks</h1>
+<p>This repository uses <a href="https://pre-commit.com">pre-commit</a> to catch formatting and linting issues before they reach a commit. The same hooks run in CI on every pull request, via the <code>Pre-commit</code> workflow, but installing them locally catches issues before you push. Secret scanning is enforced separately: the <code>gitleaks</code> pre-commit hook only checks staged changes at commit time, so the <code>Gitleaks</code> workflow additionally runs <a href="https://github.com/gitleaks/gitleaks-action">gitleaks/gitleaks-action</a> to scan the full push or pull request diff in CI.</p>
+<div class="fragment"><div class="line">pip install pre-commit</div>
+<div class="line">pre-commit install</div>
+</div><!-- fragment --><p>Once installed, the hooks run automatically on <code>git commit</code>. To run them against the whole repository at any time:</p>
+<div class="fragment"><div class="line">pre-commit run --all-files</div>
+</div><!-- fragment --><p>See <a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/.pre-commit-config.yaml">.pre-commit-config.yaml</a> for the exact hook set and versions (<a href="https://github.com/gitleaks/gitleaks">gitleaks</a> for secrets, <a href="https://github.com/jumanjihouse/pre-commit-hooks">shellcheck</a> for linting, plus whitespace and end-of-file fixers).</p>
 <h1><a class="anchor" id="pull-request-merge-checklist"></a>
 Pull Request Merge Checklist</h1>
 <p>Before merging a pull request, the maintainer:</p>

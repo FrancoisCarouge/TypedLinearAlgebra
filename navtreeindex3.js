@@ -181,7 +181,8 @@ var NAVTREEINDEX3 =
 "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#scope":[4,3],
 "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml":[5],
 "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#code-of-conduct":[5,0],
-"md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pull-request-merge-checklist":[5,5],
+"md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pre-commit-hooks":[5,5],
+"md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pull-request-merge-checklist":[5,6],
 "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#questions--ideas":[5,4],
 "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#reporting-bugs":[5,1],
 "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#requesting-features":[5,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "mp__units__std_2fcarouge_2linalg_8hpp_source.xhtml":[17,0,5,17,0,0],
 "multiplication_21x1_8cpp.xhtml":[17,0,6,19,0],
 "multiplication_21x1_8cpp_source.xhtml":[17,0,6,19,0],
-"multiplication_21x1__au__eigen_8cpp.xhtml":[17,0,6,19,1],
-"multiplication_21x1__au__eigen_8cpp_source.xhtml":[17,0,6,19,1]
+"multiplication_21x1__au__eigen_8cpp.xhtml":[17,0,6,19,1]
 };

@@ -78,6 +78,7 @@ var NAVTREE =
       [ "Requesting Features", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#requesting-features", null ],
       [ "Security Policy", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#security-policy", null ],
       [ "Questions & Ideas", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#questions--ideas", null ],
+      [ "Pre-commit Hooks", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pre-commit-hooks", null ],
       [ "Pull Request Merge Checklist", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pull-request-merge-checklist", null ]
     ] ],
     [ "Contributors", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_o_r_s.xhtml", null ],
@@ -137,12 +138,12 @@ var NAVTREEINDEX =
 "armadilloxed_2fcarouge_2linalg_8hpp_source.xhtml",
 "conceptfcarouge_1_1nholthaus__quantity.xhtml",
 "equal__to_22x3__mp__units__eigen_8cpp.xhtml",
-"multiplication_21x1__au__std_8cpp.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__nholthaus__std_8cpp_03.xhtml#a731f4b20cad8620716a6aa2fde60882a",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02column__fail_8cpp_03.xhtml#a3b14611e277db9cfbb36b7258bd85708",
-"rank__mismatch__eigexed__fail_8cpp.xhtml",
+"multiplication_21x1__au__eigen_8cpp_source.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__nholthaus__std_8cpp_03.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02column__fail_8cpp_03.xhtml",
+"plot_8cpp_source.xhtml",
 "structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4.xhtml#ae396becfe457af8289d5ec8ec6c39885",
-"test_2uniform__typed__matrix_2mp__units__eigen_8cpp_source.xhtml"
+"test_2uniform__typed__matrix_2mp__units__eigen_8cpp.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
