@@ -168,6 +168,7 @@ The following useful operations are supported. This library attempts to align it
 | `+` | Addition where the terms are of identical shapes and addable types. |
 | `==` | Direct, strict equality comparison, with traditional floating-point comparison pitfalls. |
 | `add` | Element-wise add two matrices. |
+| `dot` | Sum of the products of the corresponding elements of two vectors. |
 | `magnitude` | Euclidean L2 norm of a row or column vector. |
 | `matrix_product` | General matrix-matrix product. |
 | `matrix_vector_product` | Matrix-vector product. |

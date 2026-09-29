@@ -40,6 +40,7 @@ target_sources(
             "fcarouge/typed_linear_algebra_forward.hpp"
             "fcarouge/typed_linear_algebra/algorithm/add.tpp"
             "fcarouge/typed_linear_algebra/algorithm/divide.tpp"
+            "fcarouge/typed_linear_algebra/algorithm/dot.tpp"
             "fcarouge/typed_linear_algebra/algorithm/equal_to.tpp"
             "fcarouge/typed_linear_algebra/algorithm/magnitude.tpp"
             "fcarouge/typed_linear_algebra/algorithm/matrix_product.tpp"
