@@ -73,7 +73,7 @@ template <typename To, chrono_duration From> struct element_caster<To, From> {
     static_assert(std::same_as<typename From::rep, std::remove_cvref_t<To>>,
                   "The underlying storage type must be identical to the "
                   "duration representation type to guarantee the conversion is "
-                  "explicitely decided by the end-user.");
+                  "explicitly decided by the end-user.");
 
     return value.count();
   }
@@ -84,7 +84,7 @@ template <chrono_duration To, typename From> struct element_caster<To, From> {
     static_assert(std::same_as<typename To::rep, std::remove_cvref_t<From>>,
                   "The underlying storage type must be identical to the "
                   "duration representation type to guarantee the conversion is "
-                  "explicitely decided by the end-user.");
+                  "explicitly decided by the end-user.");
 
     return To{value};
   }
@@ -99,7 +99,7 @@ struct element_caster<To &, From &> {
     static_assert(std::same_as<typename To::rep, std::remove_cvref_t<From>>,
                   "The underlying storage type must be identical to the "
                   "duration representation type to guarantee the conversion is "
-                  "explicitely decided by the end-user.");
+                  "explicitly decided by the end-user.");
 
     return To{value};
   }
@@ -112,7 +112,7 @@ template <typename To, chrono_time_point From> struct element_caster<To, From> {
     static_assert(
         std::same_as<typename From::rep, std::remove_cvref_t<To>>,
         "The underlying storage type must be identical to the time point "
-        "representation type to guarantee the conversion is explicitely "
+        "representation type to guarantee the conversion is explicitly "
         "decided by the end-user.");
 
     return value.time_since_epoch().count();
@@ -124,7 +124,7 @@ template <chrono_time_point To, typename From> struct element_caster<To, From> {
     static_assert(
         std::same_as<typename To::rep, std::remove_cvref_t<From>>,
         "The underlying storage type must be identical to the time point "
-        "representation type to guarantee the conversion is explicitely "
+        "representation type to guarantee the conversion is explicitly "
         "decided by the end-user.");
 
     return To{typename To::duration{value}};
@@ -139,7 +139,7 @@ struct element_caster<To &, From &> {
     static_assert(
         std::same_as<typename To::rep, std::remove_cvref_t<From>>,
         "The underlying storage type must be identical to the time point "
-        "representation type to guarantee the conversion is explicitely "
+        "representation type to guarantee the conversion is explicitly "
         "decided by the end-user.");
 
     return To{typename To::duration{value}};

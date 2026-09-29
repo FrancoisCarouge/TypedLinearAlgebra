@@ -31,26 +31,40 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <units/length.h>
+#include <units/velocity.h>
+
 #include <cassert>
-#include <chrono>
-#include <ratio>
 
 namespace fcarouge::test {
+using literals::operator""_i;
+using units::m;
+using units::mps;
 using representation = double;
 
 namespace {
-//! @test Verifies the substraction operator with std::chrono duration types
-//! of distinct periods.
-[[maybe_unused]] const auto test{[] -> int {
-  using seconds = std::chrono::duration<representation>;
-  using minutes = std::chrono::duration<representation, std::ratio<60>>;
+//! @test Verifies the subtraction operator with non-trivial types.
+[[maybe_unused]] const auto test{[] {
+  using position = units::length::meters<representation>;
+  using velocity = units::velocity::meters_per_second<representation>;
 
-  row_vector<representation, seconds, minutes> a{seconds{1.}, minutes{4.}};
-  row_vector<representation, seconds, minutes> b{seconds{3.}, minutes{1.}};
-  row_vector<representation, seconds, minutes> r{a - b};
+  row_vector<representation, position, velocity> a{1. * m, 2. * mps};
 
-  assert(seconds{-2.} == r.at<0>());
-  assert(minutes{3.} == r.at<1>());
+  // Intended:
+  // row_vector<representation, position, velocity> b{3. * m, 1. * mps};
+  row_vector<representation, velocity, position> b{3. * mps, 1. * m};
+
+  row_vector<representation, position, velocity> r{a - b};
+
+  assert(-2. * m == r.at<0_i>());
+  assert(-2. * m == r.at<0>());
+  assert(-2. * m == r[0_i]);
+  assert(-2. * m == r(0_i));
+
+  assert(1. * mps == r.at<1_i>());
+  assert(1. * mps == r.at<1>());
+  assert(1. * mps == r[1_i]);
+  assert(1. * mps == r(1_i));
 
   return 0;
 }()};

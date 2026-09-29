@@ -32,49 +32,36 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
-#include <cstddef>
-#include <mdspan>
 
 namespace fcarouge::test {
+using literals::operator""_i;
 using representation = double;
 
 template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
 using mp_units::si::unit_symbols::m;
-using mp_units::si::unit_symbols::m2;
+using mp_units::si::unit_symbols::s;
 
 namespace {
-//! @test Verifies the singleton by singleton matrix substraction operator
-//! with the mdspan backend.
-[[maybe_unused]] const auto test{[] {
-  using length = quantity<mp_units::isq::length[m]>;
+//! @test Verifies the subtraction operator with non-trivial types.
+[[maybe_unused]] const auto test{[] -> int {
+  using position = quantity<mp_units::isq::length[m]>;
+  using velocity = quantity<mp_units::isq::velocity[m / s]>;
 
-  // Intended:
-  // row_vector<representation, length> a{span_a};
+  row_vector<representation, position, velocity> a{1. * m, 2. * m / s};
+  row_vector<representation, position, velocity> b{3. * m, 1. * m / s};
+  row_vector<representation, position, velocity> r{a - b};
 
-  using area = quantity<mp_units::isq::area[m2]>;
+  assert((-2. * m == r.at<0_i>()));
+  assert((-2. * m == r.at<0>()));
+  assert((-2. * m == r(0_i)));
+  assert((-2. * m == r[0_i]));
 
-  double storage_a{0.};
-  double storage_b{0.};
-  double storage_r{0.};
-
-  std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
-
-  row_vector<representation, area> a{span_a};
-  row_vector<representation, length> b{span_b};
-  row_vector<representation, length> r{span_r};
-
-  a = 3. * m2;
-  b = 2. * m;
-  r = a - b;
-
-  assert(1. * m == r.at());
-  assert(1. * m == r[]);
-  assert(1. * m == r());
-  assert(1. * m == r);
+  assert((1. * m / s == r.at<1_i>()));
+  assert((1. * m / s == r.at<1>()));
+  assert((1. * m / s == r(1_i)));
+  assert((1. * m / s == r[1_i]));
 
   return 0;
 }()};

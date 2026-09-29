@@ -82,7 +82,7 @@ using row_vector = row_vector<representation, Types...>;
 //! @details A variety of activities of strongly typed linear algebra with
 //! Armadillo and mp-units.
 [[maybe_unused]] const auto sample{[] -> int {
-  // Set up a heterogenous column vector type for the sample.
+  // Set up a heterogeneous column vector type for the sample.
   using state = column_vector<position, velocity, acceleration>;
 
   // A vector of quantities:
@@ -106,7 +106,7 @@ using row_vector = row_vector<representation, Types...>;
   state x2{x1 / 2.};
   assert(std::format("{}", x2) == "[[4.5 m], [3.75 m/s], [1.5 m/s²]]");
 
-  // Substraction of two vectors of the same types.
+  // Subtraction of two vectors of the same types.
   state x3{x2 - x0};
   assert(std::format("{}", x3) == "[[1.5 m], [1.25 m/s], [0.5 m/s²]]");
 
