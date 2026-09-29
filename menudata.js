@@ -32,6 +32,7 @@ var menudata={children:[
 {text:"a",url:"namespacemembers.xhtml#index_a"},
 {text:"b",url:"namespacemembers_b.xhtml#index_b"},
 {text:"c",url:"namespacemembers_c.xhtml#index_c"},
+{text:"d",url:"namespacemembers_d.xhtml#index_d"},
 {text:"e",url:"namespacemembers_e.xhtml#index_e"},
 {text:"f",url:"namespacemembers_f.xhtml#index_f"},
 {text:"g",url:"namespacemembers_g.xhtml#index_g"},
@@ -53,6 +54,7 @@ var menudata={children:[
 {text:"Functions",url:"namespacemembers_func.xhtml",children:[
 {text:"b",url:"namespacemembers_func.xhtml#index_b"},
 {text:"c",url:"namespacemembers_func.xhtml#index_c"},
+{text:"d",url:"namespacemembers_func.xhtml#index_d"},
 {text:"f",url:"namespacemembers_func.xhtml#index_f"},
 {text:"g",url:"namespacemembers_func.xhtml#index_g"},
 {text:"i",url:"namespacemembers_func.xhtml#index_i"},

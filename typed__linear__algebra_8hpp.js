@@ -14,6 +14,7 @@ var typed__linear__algebra_8hpp =
     [ "fcarouge::index", "conceptfcarouge_1_1index.xhtml", null ],
     [ "typed_column_vector", "typed__linear__algebra_8hpp.xhtml#a96fea71ab24114a61950988fdac23f58", null ],
     [ "typed_row_vector", "typed__linear__algebra_8hpp.xhtml#a7558e7ccc03031fb7de678cf4977e1bf", null ],
+    [ "dot", "typed__linear__algebra_8hpp.xhtml#abd59a3fd717517a0bf8904bb70974aab", null ],
     [ "get", "typed__linear__algebra_8hpp.xhtml#a85bf4d94c90e04287495f05e468ca66f", null ],
     [ "get", "typed__linear__algebra_8hpp.xhtml#a0756c9c3868ee00a5fbc858c522a048b", null ],
     [ "magnitude", "typed__linear__algebra_8hpp.xhtml#a3b31459df9951d183e7e7f065a28bc32", null ],

@@ -57,6 +57,7 @@ var namespacefcarouge =
     [ "row_vector", "namespacefcarouge.xhtml#a60b6b92762905569a26339025d4b0821", null ],
     [ "typed_column_vector", "namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58", null ],
     [ "typed_row_vector", "namespacefcarouge.xhtml#a7558e7ccc03031fb7de678cf4977e1bf", null ],
+    [ "dot", "namespacefcarouge.xhtml#abd59a3fd717517a0bf8904bb70974aab", null ],
     [ "get", "namespacefcarouge.xhtml#aa12b09434a95cbb83a45985e0a63642a", null ],
     [ "get", "namespacefcarouge.xhtml#a85bf4d94c90e04287495f05e468ca66f", null ],
     [ "get", "namespacefcarouge.xhtml#a0756c9c3868ee00a5fbc858c522a048b", null ],

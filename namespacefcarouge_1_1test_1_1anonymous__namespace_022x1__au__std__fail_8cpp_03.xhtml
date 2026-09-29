@@ -127,35 +127,38 @@ Variables</h2></td></tr>
 <div class="line">  <span class="keyword">using </span>position = au::QuantityD&lt;au::Meters&gt;;</div>
 <div class="line">  <span class="keyword">using </span>velocity = au::QuantityD&lt;au::UnitQuotientT&lt;au::Meters, au::Seconds&gt;&gt;;</div>
 <div class="line"> </div>
-<div class="line">  <span class="keywordtype">double</span> storage[]{0., 0.};</div>
+<div class="line">  <span class="keywordtype">double</span> storage_a[]{0., 0.};</div>
+<div class="line">  <span class="keywordtype">double</span> storage_b[]{0., 0.};</div>
 <div class="line"> </div>
-<div class="line">  std::mdspan span{&amp;storage[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
+<div class="line">  std::mdspan span_a{&amp;storage_a[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
+<div class="line">  std::mdspan span_b{&amp;storage_b[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;representation, std::tuple&lt;position, velocity&gt;</a>,</div>
-<div class="line">               std::tuple&lt;std::identity&gt;&gt;</div>
-<div class="line">      v{span};</div>
+<div class="line">  row_vector&lt;representation, position, velocity&gt; a{span_a};</div>
+<div class="line">  row_vector&lt;representation, position, velocity&gt; b{span_b};</div>
 <div class="line"> </div>
-<div class="line">  [[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> value{magnitude(v)};</div>
+<div class="line">  [[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> value{<a class="code hl_function" href="namespacefcarouge.xhtml#abd59a3fd717517a0bf8904bb70974aab">dot</a>(a, b)};</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-<div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_a0fa52776262afae30db82d7c0a9339ac"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">fcarouge::armadillo::matrix</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Armadillo matrix.</div><div class="ttdef"><b>Definition</b> <a href="armadillo_8hpp_source.xhtml#l00090">armadillo.hpp:90</a></div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000174">Test</a></b></dt><dd>Verifies the magnitude operation rejects a non-uniform vector with the mdspan-backed, non-owning storage backend. </dd></dl>
+<div class="ttc" id="anamespacefcarouge_xhtml_abd59a3fd717517a0bf8904bb70974aab"><div class="ttname"><a href="namespacefcarouge.xhtml#abd59a3fd717517a0bf8904bb70974aab">fcarouge::dot</a></div><div class="ttdeci">constexpr auto dot(const rank_typed_matrix&lt; 1 &gt; auto &amp;lhs, const rank_typed_matrix&lt; 1 &gt; auto &amp;rhs)</div></div>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000105">Test</a></b></dt><dd>Verifies the dot operation rejects vectors whose heterogeneous per-element types do not convert to a common product: a squared position does not convert to a squared velocity. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000186">Test</a></b></dt><dd>Verifies the magnitude operation rejects a non-uniform vector with the mdspan-backed, non-owning storage backend. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="2x1__au__std__fail_8cpp_source.xhtml#l00048">48</a> of file <a class="el" href="2x1__au__std__fail_8cpp_source.xhtml">2x1_au_std_fail.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   48</span>                                {[] {</div>
-<div class="line"><span class="lineno">   49</span>  <span class="keyword">using </span>position = au::QuantityD&lt;au::Meters&gt;;</div>
-<div class="line"><span class="lineno">   50</span>  <span class="keyword">using </span>velocity = au::QuantityD&lt;au::UnitQuotientT&lt;au::Meters, au::Seconds&gt;&gt;;</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>  <span class="keywordtype">double</span> storage[]{0., 0.};</div>
+<p class="definition">Definition at line <a class="el" href="dot_22x1__au__std__fail_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="dot_22x1__au__std__fail_8cpp_source.xhtml">2x1_au_std_fail.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   47</span>                                {[] {</div>
+<div class="line"><span class="lineno">   48</span>  <span class="keyword">using </span>position = au::QuantityD&lt;au::Meters&gt;;</div>
+<div class="line"><span class="lineno">   49</span>  <span class="keyword">using </span>velocity = au::QuantityD&lt;au::UnitQuotientT&lt;au::Meters, au::Seconds&gt;&gt;;</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>  <span class="keywordtype">double</span> storage_a[]{0., 0.};</div>
+<div class="line"><span class="lineno">   52</span>  <span class="keywordtype">double</span> storage_b[]{0., 0.};</div>
 <div class="line"><span class="lineno">   53</span> </div>
-<div class="line"><span class="lineno">   54</span>  std::mdspan span{&amp;storage[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
-<div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>  <span class="keyword">const</span> matrix&lt;representation, std::tuple&lt;position, velocity&gt;,</div>
-<div class="line"><span class="lineno">   57</span>               std::tuple&lt;std::identity&gt;&gt;</div>
-<div class="line"><span class="lineno">   58</span>      v{span};</div>
+<div class="line"><span class="lineno">   54</span>  std::mdspan span_a{&amp;storage_a[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   55</span>  std::mdspan span_b{&amp;storage_b[0], std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>  row_vector&lt;representation, position, velocity&gt; a{span_a};</div>
+<div class="line"><span class="lineno">   58</span>  row_vector&lt;representation, position, velocity&gt; b{span_b};</div>
 <div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>  [[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> value{magnitude(v)};</div>
+<div class="line"><span class="lineno">   60</span>  [[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> value{<a class="code hl_function" href="namespacefcarouge.xhtml#abd59a3fd717517a0bf8904bb70974aab">dot</a>(a, b)};</div>
 <div class="line"><span class="lineno">   61</span> </div>
 <div class="line"><span class="lineno">   62</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">   63</span>}()};</div>

@@ -11,6 +11,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "copy", "dir_b66f3f6eb7a21060cc06c8fbad46effd.xhtml", "dir_b66f3f6eb7a21060cc06c8fbad46effd" ],
     [ "distinct_typed_matrix", "dir_ba6075e788cb55bdc5ef722c50eccc6e.xhtml", "dir_ba6075e788cb55bdc5ef722c50eccc6e" ],
     [ "division", "dir_86f6ebe56cc983d5021582182b7bf87c.xhtml", "dir_86f6ebe56cc983d5021582182b7bf87c" ],
+    [ "dot", "dir_754050894e9c52d6e85ebe2d666052cc.xhtml", "dir_754050894e9c52d6e85ebe2d666052cc" ],
     [ "element", "dir_974b212e1e2ae05a6e4111a20679b9dc.xhtml", "dir_974b212e1e2ae05a6e4111a20679b9dc" ],
     [ "equal_to", "dir_6071415610cde49b13e346d9225dcd79.xhtml", "dir_6071415610cde49b13e346d9225dcd79" ],
     [ "format", "dir_74a3c9427e9a4782c7a8462862ac57cd.xhtml", "dir_74a3c9427e9a4782c7a8462862ac57cd" ],
