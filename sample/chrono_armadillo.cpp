@@ -80,7 +80,7 @@ using column_vector = column_vector<representation, Types...>;
   const durations x2{x1 / 2.};
   assert(x2.at<0>() == seconds{45.});
 
-  // Substraction then addition of vectors of the same types.
+  // Subtraction then addition of vectors of the same types.
   const durations x3{x2 - x0};
   assert(x3.at<2>() == hours{0.5});
   const durations x4{x3 + x3};

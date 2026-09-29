@@ -31,28 +31,29 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <units/length.h>
-#include <units/velocity.h>
+#include <au/units/meters.hh>
+#include <au/units/seconds.hh>
 
 #include <cassert>
 
 namespace fcarouge::test {
 using literals::operator""_i;
-using units::m;
-using units::mps;
 using representation = double;
 
 namespace {
-//! @test Verifies the substraction operator with non-trivial types.
+//! @test Verifies the subtraction operator with non-trivial types.
 [[maybe_unused]] const auto test{[] {
-  using position = units::length::meters<representation>;
-  using velocity = units::velocity::meters_per_second<representation>;
+  using au::symbols::m;
+  using au::symbols::s;
 
-  row_vector<representation, position, velocity> a{1. * m, 2. * mps};
+  using position = au::QuantityD<au::Meters>;
+  using velocity = au::QuantityD<au::UnitQuotientT<au::Meters, au::Seconds>>;
+
+  row_vector<representation, position, velocity> a{1. * m, 2. * m / s};
 
   // Intended:
-  // row_vector<representation, position, velocity> b{3. * m, 1. * mps};
-  row_vector<representation, velocity, position> b{3. * mps, 1. * m};
+  // row_vector<representation, position, velocity> b{3. * m, 1. * m / s};
+  row_vector<representation, velocity, position> b{3. * m / s, 1. * m};
 
   row_vector<representation, position, velocity> r{a - b};
 
@@ -61,10 +62,10 @@ namespace {
   assert(-2. * m == r[0_i]);
   assert(-2. * m == r(0_i));
 
-  assert(1. * mps == r.at<1_i>());
-  assert(1. * mps == r.at<1>());
-  assert(1. * mps == r[1_i]);
-  assert(1. * mps == r(1_i));
+  assert(1. * m / s == r.at<1_i>());
+  assert(1. * m / s == r.at<1>());
+  assert(1. * m / s == r[1_i]);
+  assert(1. * m / s == r(1_i));
 
   return 0;
 }()};

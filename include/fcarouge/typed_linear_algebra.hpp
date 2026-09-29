@@ -330,10 +330,10 @@ public:
   //! @brief Convert construct a typed matrix from an underlying matrix.
   //!
   //! @warning Useful for operations implementation where underlying data
-  //! constrution is needed. Not recommended for convenience construction due to
-  //! absence of type validation.
+  //! construction is needed. Not recommended for convenience construction due
+  //! to absence of type validation.
   //!
-  //! @note Alternative design could evaluate feasability of private
+  //! @note Alternative design could evaluate feasibility of private
   //! constructor, operator friendship, attorney-client, or key idioms.
   constexpr explicit typed_matrix(Matrix other);
 
@@ -522,10 +522,10 @@ using typed_linear_algebra_internal::multiplies;
 //! @details Composed as-is, expression templates included.
 //!
 //! @warning Useful for operations implementation where underlying data
-//! constrution is needed. Not recommended for convenience construction due to
+//! construction is needed. Not recommended for convenience construction due to
 //! absence of type validation.
 //!
-//! @note Alternative design could evaluate feasability of hiding this support.
+//! @note Alternative design could evaluate feasibility of hiding this support.
 template <typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] constexpr auto make_typed_matrix(auto &&value);
 
@@ -565,7 +565,7 @@ template <char... Digits> constexpr auto operator""_i() noexcept {
 #include "typed_linear_algebra/algorithm/minus.tpp"
 #include "typed_linear_algebra/algorithm/product.tpp"
 #include "typed_linear_algebra/algorithm/scale.tpp"
-#include "typed_linear_algebra/algorithm/substract.tpp"
+#include "typed_linear_algebra/algorithm/subtract.tpp"
 #include "typed_linear_algebra/algorithm/transposed.tpp"
 #include "typed_linear_algebra/cast.tpp"
 #include "typed_linear_algebra/chrono.tpp"

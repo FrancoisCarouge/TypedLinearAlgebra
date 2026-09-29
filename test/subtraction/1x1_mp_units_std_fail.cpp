@@ -31,30 +31,45 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <au/units/meters.hh>
-
 #include <cassert>
+#include <cstddef>
+#include <mdspan>
 
 namespace fcarouge::test {
 using representation = double;
 
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::m2;
+
 namespace {
-//! @test Verifies the singleton by singleton matrix substraction operator.
+//! @test Verifies the singleton by singleton matrix subtraction operator
+//! with the mdspan backend.
 [[maybe_unused]] const auto test{[] {
-  using au::symbols::m;
-
-  constexpr auto m2{au::squared(m)};
-
-  using length = au::QuantityD<au::Meters>;
-  using area = au::QuantityD<au::UnitPowerT<au::Meters, 2>>;
+  using length = quantity<mp_units::isq::length[m]>;
 
   // Intended:
-  // const row_vector<representation, length> a{3. * m};
-  const row_vector<representation, area> a{3. * m2};
+  // row_vector<representation, length> a{span_a};
 
-  const row_vector<representation, length> b{2. * m};
+  using area = quantity<mp_units::isq::area[m2]>;
 
-  const row_vector<representation, length> r{a - b};
+  double storage_a{0.};
+  double storage_b{0.};
+  double storage_r{0.};
+
+  std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
+  std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
+  std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
+
+  row_vector<representation, area> a{span_a};
+  row_vector<representation, length> b{span_b};
+  row_vector<representation, length> r{span_r};
+
+  a = 3. * m2;
+  b = 2. * m;
+  r = a - b;
 
   assert(1. * m == r.at());
   assert(1. * m == r[]);

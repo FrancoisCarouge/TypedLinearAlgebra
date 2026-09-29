@@ -213,7 +213,7 @@ The following useful operations are supported. This library attempts to align it
 | Operation | Definition |
 | --- | --- |
 | `+` | Addition where the terms are of identical shapes and addable types. |
-| `-` | Substraction where the terms are of identical shapes and substractable types. |
+| `-` | Subtraction where the terms are of identical shapes and subtractable types. |
 | `*` | Multiplication where the factors are of multipliable shapes and multipliable types. |
 | `/` | Solution, if there exists one, to the inverse multiplication, where the factor are of compatible shapes and types. |
 | `==` | Direct, strict equality comparison, with traditional floating-point comparison pitfalls. |

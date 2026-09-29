@@ -48,7 +48,7 @@ target_sources(
     "fcarouge/typed_linear_algebra/algorithm/minus.tpp"
     "fcarouge/typed_linear_algebra/algorithm/product.tpp"
     "fcarouge/typed_linear_algebra/algorithm/scale.tpp"
-    "fcarouge/typed_linear_algebra/algorithm/substract.tpp"
+    "fcarouge/typed_linear_algebra/algorithm/subtract.tpp"
     "fcarouge/typed_linear_algebra/algorithm/transposed.tpp"
     "fcarouge/typed_linear_algebra/cast.tpp"
     "fcarouge/typed_linear_algebra/chrono.tpp"

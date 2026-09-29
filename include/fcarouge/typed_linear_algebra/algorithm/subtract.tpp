@@ -29,8 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_SUBSTRACT_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_SUBSTRACT_TPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_SUBTRACT_TPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_SUBTRACT_TPP
 
 namespace fcarouge {
 
@@ -44,7 +44,7 @@ namespace fcarouge {
       same_shape<lhs_matrix, rhs_matrix>,
       "Matrix subtraction requires matrices of the same shapes, sizes.");
 
-  // Each typed element of the lhs matrix must be substractable to the
+  // Each typed element of the lhs matrix must be subtractable to the
   // corresponding typed element of the rhs matrix.
   tla::for_constexpr<lhs_matrix::rows>([&](auto i) {
     tla::for_constexpr<lhs_matrix::columns>([&](auto j) {
@@ -74,7 +74,7 @@ namespace fcarouge {
       same_shape<lhs_matrix, rhs_matrix>,
       "Matrix subtraction requires matrices of the same shapes, sizes.");
 
-  // Each typed element of the lhs matrix must be substractable to the
+  // Each typed element of the lhs matrix must be subtractable to the
   // corresponding typed element of the rhs matrix.
   tla::for_constexpr<lhs_matrix::rows * lhs_matrix::columns>([&](auto i) {
     using lhs_element = typename lhs_matrix::template element<i>;
@@ -130,4 +130,4 @@ namespace fcarouge {
 }
 } // namespace fcarouge
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_SUBSTRACT_TPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_SUBTRACT_TPP

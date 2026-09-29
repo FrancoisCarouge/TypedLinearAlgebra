@@ -28,10 +28,11 @@ jobs:
       run: pipx install cmakefmt
     - name: 'Test'
       run: |
-        find . \
+        find . \( \
           -iname '*.hpp' \
           -o -iname '*.cpp' \
-          -o -iname '*.tpp' \
-          | xargs \
+          -o -iname '*.tpp' \) \
+          -print0 \
+          | xargs -0 \
           clang-format-22 --Werror --dry-run --verbose -style=file
         cmakefmt --check --report-format github .

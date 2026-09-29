@@ -31,35 +31,26 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <units/length.h>
+
 #include <cassert>
 
 namespace fcarouge::test {
+using units::m;
 using representation = double;
 
-template <auto QuantityReference>
-using quantity = mp_units::quantity<QuantityReference, representation>;
-
-using mp_units::si::unit_symbols::m;
-using mp_units::si::unit_symbols::m2;
-
 namespace {
-//! @test Verifies the singleton by singleton matrix substraction operator.
-[[maybe_unused]] const auto test{[] {
-  using length = quantity<mp_units::isq::length[m]>;
-  using area = quantity<mp_units::isq::area[m2]>;
+//! @test Verifies the singleton by singleton matrix subtraction operator.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = units::length::meters<representation>;
 
-  // Intended:
-  // const row_vector<representation, length> a{3. * m};
-  const row_vector<representation, area> a{3. * m2};
-
-  const row_vector<representation, length> b{2. * m};
-
+  const row_vector<representation, length> a{2. * m};
+  const row_vector<representation, length> b{3. * m};
   const row_vector<representation, length> r{a - b};
 
-  assert(1. * m == r.at());
-  assert(1. * m == r[]);
-  assert(1. * m == r());
-  assert(1. * m == r);
+  assert(-1. * m == r.at());
+  assert(-1. * m == r[]);
+  assert(-1. * m == r());
 
   return 0;
 }()};
