@@ -87,7 +87,9 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
   } else {
     tla::for_constexpr<typed_matrix::rows * typed_matrix::columns>(
         [this, &elements](auto position) {
-          storage[position] = cast<underlying, element<>>(elements[position]);
+          tla::write_element<columns>(
+              storage, cast<underlying, element<>>(elements[position]),
+              position);
         });
   }
 }
@@ -105,8 +107,9 @@ constexpr auto typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
   } else {
     tla::for_constexpr<typed_matrix::rows * typed_matrix::columns>(
         [this, &elements](auto position) {
-          storage[position] =
-              cast<underlying, element_type>(elements[position]);
+          tla::write_element<columns>(
+              storage, cast<underlying, element_type>(elements[position]),
+              position);
         });
   }
   return *this;
@@ -125,8 +128,9 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
   } else {
     tla::for_constexpr<typed_matrix::rows * typed_matrix::columns>(
         [this, &elements](auto position) {
-          storage[position] =
-              cast<underlying, element_type>(elements[position]);
+          tla::write_element<columns>(
+              storage, cast<underlying, element_type>(elements[position]),
+              position);
         });
   }
 }
@@ -145,8 +149,9 @@ constexpr auto typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
   } else {
     tla::for_constexpr<typed_matrix::rows * typed_matrix::columns>(
         [this, &elements](auto position) {
-          storage[position] =
-              cast<underlying, element_type>(elements[position]);
+          tla::write_element<columns>(
+              storage, cast<underlying, element_type>(elements[position]),
+              position);
         });
   }
   return *this;
@@ -158,11 +163,7 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const element<> &value)
   requires rank_typed_matrix<typed_matrix, 0>
 {
-  if constexpr (requires { storage[0, 0]; }) {
-    storage[0, 0] = cast<underlying, element<>>(value);
-  } else {
-    storage = cast<underlying, element<>>(value);
-  }
+  tla::write_element<columns>(storage, cast<underlying, element<>>(value));
 }
 
 //! @todo How to handle all combinations of storage and value types?
@@ -171,11 +172,7 @@ constexpr auto typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
     const element<> &value) -> typed_matrix<Matrix, RowIndexes, ColumnIndexes> &
   requires rank_typed_matrix<typed_matrix, 0>
 {
-  if constexpr (requires { storage[0, 0]; }) {
-    storage[0, 0] = cast<underlying, element<>>(value);
-  } else {
-    storage = cast<underlying, element<>>(value);
-  }
+  tla::write_element<columns>(storage, cast<underlying, element<>>(value));
 
   return *this;
 }
@@ -190,13 +187,7 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 {
   for (std::size_t i{0}; const auto &row : row_list) {
     for (std::size_t j{0}; const auto &value : row) {
-      if constexpr (rank_typed_matrix<typed_matrix, 2>) {
-        storage[i, j] = cast<underlying, Type>(value);
-      } else if constexpr (rank_typed_matrix<typed_matrix, 1>) {
-        storage[i + j] = cast<underlying, Type>(value);
-      } else {
-        storage = cast<underlying, Type>(value);
-      }
+      tla::write_element<columns>(storage, cast<underlying, Type>(value), i, j);
       ++j;
     }
     ++i;
@@ -219,7 +210,8 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
         static_assert(
             std::is_assignable_v<element<std::size_t{position}> &, type>,
             "The parameter type is not compatible with the element type.");
-        storage(std::size_t{position}) = cast<underlying, type>(value);
+        tla::write_element<columns>(storage, cast<underlying, type>(value),
+                                    position);
       });
 }
 
@@ -227,7 +219,8 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const other_tuple_like_vector<typed_matrix> auto &value) {
   tla::for_constexpr<rows * columns>([&](auto i) {
-    storage[i] = cast<underlying, element<i>>(get<i>(value));
+    tla::write_element<columns>(storage,
+                                cast<underlying, element<i>>(get<i>(value)), i);
   });
 }
 
@@ -251,7 +244,6 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
   return self.operator()(indexes...);
 }
 
-//! @todo Unnecessarily complicated, simplify?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <typename... Indexes>
 [[nodiscard]] constexpr auto
@@ -264,42 +256,24 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
   if constexpr ((index<Indexes> && ...)) {
     return self.template at<indexes...>();
   } else {
+    // A uniform typed matrix: every element is of the first element's type.
     using self_t = std::remove_reference_t<decltype(self)>;
-    using qualified_underlying =
-        std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
+    using storage_access =
+        decltype(tla::read_element<columns>(self.storage, indexes...));
 
-    if constexpr (sizeof...(indexes) == 2) {
-      using element_type = element<0, 0>;
-      using qualified_element =
-          std::conditional_t<std::is_const_v<self_t>, element_type,
-                             element_type &>;
-      std::size_t i = std::get<0>(std::tuple{indexes...});
-      std::size_t j = std::get<1>(std::tuple{indexes...});
-      return cast<qualified_element, qualified_underlying>(self.storage(i, j));
-    }
-    if constexpr ((sizeof...(indexes) == 1) && (columns == 1)) {
-      using element_type = element<0>;
-      using qualified_element =
-          std::conditional_t<std::is_const_v<self_t>, element_type,
-                             element_type &>;
-      std::size_t i = std::get<0>(std::tuple{indexes...});
-      return cast<qualified_element, qualified_underlying>(self.storage(i));
-    }
-    if constexpr ((sizeof...(indexes) == 1) && (rows == 1)) {
-      using element_type = element<0>;
-      using qualified_element =
-          std::conditional_t<std::is_const_v<self_t>, element_type,
-                             element_type &>;
-      std::size_t j = std::get<0>(std::tuple{indexes...});
-      return cast<qualified_element, qualified_underlying>(self.storage(j));
-    }
-    if constexpr ((sizeof...(indexes) == 0)) {
-      using element_type = element<>;
-      using qualified_element =
-          std::conditional_t<std::is_const_v<self_t>, element_type,
-                             element_type &>;
-      return cast<qualified_element, qualified_underlying>();
-    }
+    // An unevaluated expression template has nothing to reference, so read it
+    // by value even through a non-const `self`.
+    static constexpr bool by_value{std::is_const_v<self_t> ||
+                                   not std::is_reference_v<storage_access>};
+
+    using qualified_underlying =
+        std::conditional_t<by_value, underlying, underlying &>;
+    using qualified_element =
+        std::conditional_t<by_value, tla::element_at<typed_matrix, 0, 0>,
+                           tla::element_at<typed_matrix, 0, 0> &>;
+
+    return cast<qualified_element, qualified_underlying>(
+        tla::read_element<columns>(self.storage, indexes...));
   }
 }
 
@@ -312,7 +286,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
 {
   using self_t = std::remove_reference_t<decltype(self)>;
   using storage_access =
-      decltype(tla::storage_element<Indexes...>(self.storage));
+      decltype(tla::read_element<columns>(self.storage, Indexes...));
 
   // An unevaluated expression template has nothing to reference, so read it
   // by value even through a non-const `self`.
@@ -325,7 +299,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
       std::conditional_t<by_value, element<Indexes...>, element<Indexes...> &>;
 
   return cast<qualified_element, qualified_underlying>(
-      tla::storage_element<Indexes...>(self.storage));
+      tla::read_element<columns>(self.storage, Indexes...));
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
@@ -369,8 +343,8 @@ constexpr void typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(
   // access support, which selects the access pattern from the linear algebra
   // backend's available API. The value is converted to the storage underlying
   // type here, where both the element and underlying types are known.
-  tla::store_element<Indexes...>(self.storage,
-                                 cast<underlying, element<Indexes...>>(value));
+  tla::write_element<columns>(
+      self.storage, cast<underlying, element<Indexes...>>(value), Indexes...);
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>

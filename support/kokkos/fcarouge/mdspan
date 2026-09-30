@@ -36,6 +36,7 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace std {
 using Kokkos::extents;
+using Kokkos::layout_left;
 using Kokkos::mdspan;
 } // namespace std
 
