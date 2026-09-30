@@ -44,10 +44,10 @@ For more information, please refer to <https://unlicense.org> */
 #include <units/length.h>
 #include <units/velocity.h>
 
+#include <array>
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
-#include <vector>
 
 namespace fcarouge::sample {
 namespace {
@@ -72,7 +72,7 @@ using column_vector = column_vector<representation, Types...>;
   // Set up a heterogenous column vector type for the sample.
   using state = column_vector<position, velocity, acceleration>;
 
-  std::vector<representation> storage(3, representation{});
+  std::array<representation, 3> storage{};
   std::mdspan span{storage.data(), std::extents<std::size_t, 3, 1>{}};
   state x0{span};
 

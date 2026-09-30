@@ -33,6 +33,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <au/units/seconds.hh>
 
+#include <array>
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
@@ -46,12 +47,12 @@ namespace {
 
   constexpr auto s2{au::squared(s)};
 
-  double storage_a[]{9., 10.};
-  double storage_b[]{9., 10.};
-  double storage_c[]{8., 10.};
-  std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 2, 1>{}};
-  std::mdspan span_b{&storage_b[0], std::extents<std::size_t, 2, 1>{}};
-  std::mdspan span_c{&storage_c[0], std::extents<std::size_t, 2, 1>{}};
+  std::array<double, 2> storage_a{9., 10.};
+  std::array<double, 2> storage_b{9., 10.};
+  std::array<double, 2> storage_c{8., 10.};
+  std::mdspan span_a{storage_a.data(), std::extents<std::size_t, 2, 1>{}};
+  std::mdspan span_b{storage_b.data(), std::extents<std::size_t, 2, 1>{}};
+  std::mdspan span_c{storage_c.data(), std::extents<std::size_t, 2, 1>{}};
   column_vector<double, decltype(1. * s), decltype(1. * s2)> a{span_a};
   column_vector<double, decltype(1. * s), decltype(1. * s2)> b{span_b};
   column_vector<double, decltype(1. * s), decltype(1. * s2)> c{span_c};

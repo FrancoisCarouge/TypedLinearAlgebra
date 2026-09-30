@@ -33,6 +33,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <au/units/meters.hh>
 
+#include <array>
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
@@ -52,8 +53,8 @@ namespace {
 
   using length = au::QuantityD<au::Meters>;
 
-  double storage{0.};
-  std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
+  std::array<double, 1> storage{0.};
+  std::mdspan span{storage.data(), std::extents<std::size_t, 1, 1>{}};
   matrix<representation, std::tuple<length>, std::tuple<length>> r{span};
 
   r = 42. * m2;

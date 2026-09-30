@@ -31,6 +31,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <array>
 #include <cassert>
 #include <concepts>
 #include <cstddef>
@@ -45,8 +46,8 @@ using mp_units::si::unit_symbols::s3;
 
 //! @test Verifies the transposed algorithm.
 [[maybe_unused]] const auto test{[] -> int {
-  double storage{9.};
-  std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
+  std::array<double, 1> storage{9.};
+  std::mdspan span{storage.data(), std::extents<std::size_t, 1, 1>{}};
   matrix<double, std::tuple<decltype(1. * s)>, std::tuple<decltype(1. * s2)>> n{
       span};
 

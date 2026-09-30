@@ -34,6 +34,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <units/area.h>
 #include <units/length.h>
 
+#include <array>
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
@@ -51,13 +52,13 @@ namespace {
   using length = units::length::meters<representation>;
   using indexes = std::tuple<length, length>;
 
-  representation storage_a[4]{};
-  representation storage_b[4]{};
-  representation storage_r[4]{};
+  std::array<representation, 4> storage_a{};
+  std::array<representation, 4> storage_b{};
+  std::array<representation, 4> storage_r{};
 
-  std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 2, 2>{}};
-  std::mdspan span_b{&storage_b[0], std::extents<std::size_t, 2, 2>{}};
-  std::mdspan span_r{&storage_r[0], std::extents<std::size_t, 2, 2>{}};
+  std::mdspan span_a{storage_a.data(), std::extents<std::size_t, 2, 2>{}};
+  std::mdspan span_b{storage_b.data(), std::extents<std::size_t, 2, 2>{}};
+  std::mdspan span_r{storage_r.data(), std::extents<std::size_t, 2, 2>{}};
 
   matrix<representation, indexes, indexes> a{span_a};
   matrix<representation, indexes, indexes> b{span_b};

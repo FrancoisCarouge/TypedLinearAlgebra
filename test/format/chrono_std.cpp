@@ -31,6 +31,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <array>
 #include <cassert>
 #include <chrono>
 #include <concepts>
@@ -60,23 +61,23 @@ static_assert(std::formattable<column, char>);
 //! with the mdspan backend: the rank-0 singleton, the row vector, and the
 //! column vector overloads.
 [[maybe_unused]] const auto test{[] -> int {
-  representation singleton_storage{};
-  std::mdspan singleton_span{&singleton_storage,
+  std::array<representation, 1> singleton_storage{};
+  std::mdspan singleton_span{singleton_storage.data(),
                              std::extents<std::size_t, 1, 1>{}};
   singleton s{singleton_span};
   s.at(seconds{9.});
   assert(std::format("{}", s) == "9s");
 
-  representation row_storage[]{{}, {}, {}};
-  std::mdspan row_span{&row_storage[0], std::extents<std::size_t, 1, 3>{}};
+  std::array<representation, 3> row_storage{};
+  std::mdspan row_span{row_storage.data(), std::extents<std::size_t, 1, 3>{}};
   row r{row_span};
   r.at<0>(seconds{1.});
   r.at<1>(seconds{2.});
   r.at<2>(seconds{3.});
   assert(std::format("{}", r) == "[1s, 2s, 3s]");
 
-  representation column_storage[]{{}, {}, {}};
-  std::mdspan column_span{&column_storage[0],
+  std::array<representation, 3> column_storage{};
+  std::mdspan column_span{column_storage.data(),
                           std::extents<std::size_t, 3, 1>{}};
   column c{column_span};
   c.at<0>(seconds{1.});

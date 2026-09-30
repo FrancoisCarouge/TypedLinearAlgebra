@@ -31,6 +31,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <array>
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
@@ -47,12 +48,12 @@ using mp_units::si::unit_symbols::s2;
 //! the algorithm must compare the strongly typed elements, not the
 //! underlying storage.
 [[maybe_unused]] const auto test{[] -> int {
-  double storage_a[]{9., 10.};
-  double storage_b[]{9., 10.};
-  double storage_c[]{9., 11.};
-  std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 1, 2>{}};
-  std::mdspan span_b{&storage_b[0], std::extents<std::size_t, 1, 2>{}};
-  std::mdspan span_c{&storage_c[0], std::extents<std::size_t, 1, 2>{}};
+  std::array<double, 2> storage_a{9., 10.};
+  std::array<double, 2> storage_b{9., 10.};
+  std::array<double, 2> storage_c{9., 11.};
+  std::mdspan span_a{storage_a.data(), std::extents<std::size_t, 1, 2>{}};
+  std::mdspan span_b{storage_b.data(), std::extents<std::size_t, 1, 2>{}};
+  std::mdspan span_c{storage_c.data(), std::extents<std::size_t, 1, 2>{}};
   row_vector<double, decltype(1. * s), decltype(1. * s2)> a{span_a};
   row_vector<double, decltype(1. * s), decltype(1. * s2)> b{span_b};
   row_vector<double, decltype(1. * s), decltype(1. * s2)> c{span_c};

@@ -33,6 +33,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <au/units/seconds.hh>
 
+#include <array>
 #include <cassert>
 #include <concepts>
 #include <cstddef>
@@ -47,8 +48,8 @@ namespace {
 
   constexpr auto s2{au::squared(s)};
 
-  double storage[]{9., 10.};
-  std::mdspan span{&storage[0], std::extents<std::size_t, 2, 1>{}};
+  std::array<double, 2> storage{9., 10.};
+  std::mdspan span{storage.data(), std::extents<std::size_t, 2, 1>{}};
   column_vector<double, decltype(1. * s), decltype(1. * s2)> n{span};
 
   assert(n.at<0>() == 9. * s);

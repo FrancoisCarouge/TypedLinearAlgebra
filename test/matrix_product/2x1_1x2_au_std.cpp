@@ -33,6 +33,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <au/units/meters.hh>
 
+#include <array>
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
@@ -50,13 +51,13 @@ namespace {
 
   using length = au::QuantityD<au::Meters>;
 
-  double storage_a[]{0., 0.};
-  double storage_b[]{0., 0.};
-  double storage_r[4]{};
+  std::array<double, 2> storage_a{0., 0.};
+  std::array<double, 2> storage_b{0., 0.};
+  std::array<double, 4> storage_r{};
 
-  std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 2, 1>{}};
-  std::mdspan span_b{&storage_b[0], std::extents<std::size_t, 1, 2>{}};
-  std::mdspan span_r{&storage_r[0], std::extents<std::size_t, 2, 2>{}};
+  std::mdspan span_a{storage_a.data(), std::extents<std::size_t, 2, 1>{}};
+  std::mdspan span_b{storage_b.data(), std::extents<std::size_t, 1, 2>{}};
+  std::mdspan span_r{storage_r.data(), std::extents<std::size_t, 2, 2>{}};
 
   column_vector<representation, length, length> a{span_a};
   row_vector<representation, length, length> b{span_b};

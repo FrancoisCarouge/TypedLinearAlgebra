@@ -33,6 +33,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <au/units/meters.hh>
 
+#include <array>
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
@@ -56,13 +57,13 @@ namespace {
   using row_indexes = std::tuple<length, length, length>;
   using column_indexes = std::tuple<length, length>;
 
-  double storage_a[6]{};
-  double storage_x[2]{};
-  double storage_y[3]{};
+  std::array<double, 6> storage_a{};
+  std::array<double, 2> storage_x{};
+  std::array<double, 3> storage_y{};
 
-  std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 3, 2>{}};
-  std::mdspan span_x{&storage_x[0], std::extents<std::size_t, 2, 1>{}};
-  std::mdspan span_y{&storage_y[0], std::extents<std::size_t, 3, 1>{}};
+  std::mdspan span_a{storage_a.data(), std::extents<std::size_t, 3, 2>{}};
+  std::mdspan span_x{storage_x.data(), std::extents<std::size_t, 2, 1>{}};
+  std::mdspan span_y{storage_y.data(), std::extents<std::size_t, 3, 1>{}};
 
   matrix<representation, row_indexes, column_indexes> a{span_a};
   column_vector<representation, length, length> x{span_x};

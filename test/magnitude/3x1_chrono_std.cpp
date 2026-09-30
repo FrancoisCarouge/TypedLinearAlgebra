@@ -31,6 +31,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <array>
 #include <cassert>
 #include <chrono>
 #include <cstddef>
@@ -45,9 +46,9 @@ namespace {
 [[maybe_unused]] const auto test{[] -> int {
   using seconds = std::chrono::duration<representation>;
 
-  double storage[]{0., 0., 0.};
+  std::array<double, 3> storage{0., 0., 0.};
 
-  std::mdspan span{&storage[0], std::extents<std::size_t, 3, 1>{}};
+  std::mdspan span{storage.data(), std::extents<std::size_t, 3, 1>{}};
 
   column_vector<representation, seconds, seconds, seconds> v3{span};
 

@@ -31,6 +31,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <array>
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
@@ -55,13 +56,13 @@ namespace {
   using volume = quantity<mp_units::isq::volume[m3]>;
   using indexes = std::tuple<length, length>;
 
-  double storage_a[4]{};
-  double storage_x[2]{};
-  double storage_y[2]{};
+  std::array<double, 4> storage_a{};
+  std::array<double, 2> storage_x{};
+  std::array<double, 2> storage_y{};
 
-  std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 2, 2>{}};
-  std::mdspan span_x{&storage_x[0], std::extents<std::size_t, 1, 2>{}};
-  std::mdspan span_y{&storage_y[0], std::extents<std::size_t, 1, 2>{}};
+  std::mdspan span_a{storage_a.data(), std::extents<std::size_t, 2, 2>{}};
+  std::mdspan span_x{storage_x.data(), std::extents<std::size_t, 1, 2>{}};
+  std::mdspan span_y{storage_y.data(), std::extents<std::size_t, 1, 2>{}};
 
   matrix<representation, indexes, indexes> a{span_a};
   row_vector<representation, length, length> x{span_x};

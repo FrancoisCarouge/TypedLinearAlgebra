@@ -34,6 +34,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <au/units/meters.hh>
 #include <au/units/seconds.hh>
 
+#include <array>
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
@@ -53,8 +54,8 @@ namespace {
   using position = au::QuantityD<au::Meters>;
   using velocity = au::QuantityD<au::UnitQuotientT<au::Meters, au::Seconds>>;
 
-  double storage[]{0., 0.};
-  std::mdspan span{&storage[0], std::extents<std::size_t, 1, 2>{}};
+  std::array<double, 2> storage{0., 0.};
+  std::mdspan span{storage.data(), std::extents<std::size_t, 1, 2>{}};
 
   row_vector<representation, position, velocity> x{span};
 

@@ -35,6 +35,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <units/length.h>
 #include <units/volume.h>
 
+#include <array>
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
@@ -56,13 +57,13 @@ namespace {
   using volume = units::volume::cubic_meters<representation>;
   using indexes = std::tuple<length, length>;
 
-  representation storage_a[4]{};
-  representation storage_x[2]{};
-  representation storage_y[2]{};
+  std::array<representation, 4> storage_a{};
+  std::array<representation, 2> storage_x{};
+  std::array<representation, 2> storage_y{};
 
-  std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 2, 2>{}};
-  std::mdspan span_x{&storage_x[0], std::extents<std::size_t, 2, 1>{}};
-  std::mdspan span_y{&storage_y[0], std::extents<std::size_t, 2, 1>{}};
+  std::mdspan span_a{storage_a.data(), std::extents<std::size_t, 2, 2>{}};
+  std::mdspan span_x{storage_x.data(), std::extents<std::size_t, 2, 1>{}};
+  std::mdspan span_y{storage_y.data(), std::extents<std::size_t, 2, 1>{}};
 
   matrix<representation, indexes, indexes> a{span_a};
   column_vector<representation, length, length> x{span_x};

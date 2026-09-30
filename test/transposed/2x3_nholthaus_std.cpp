@@ -34,6 +34,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <units/area.h>
 #include <units/length.h>
 
+#include <array>
 #include <cassert>
 #include <concepts>
 #include <cstddef>
@@ -54,8 +55,8 @@ namespace {
   using row_indexes = std::tuple<length, length>;
   using column_indexes = std::tuple<length, length, length>;
 
-  representation storage[6]{};
-  std::mdspan span{&storage[0], std::extents<std::size_t, 2, 3>{}};
+  std::array<representation, 6> storage{};
+  std::mdspan span{storage.data(), std::extents<std::size_t, 2, 3>{}};
   matrix<representation, row_indexes, column_indexes> a{span};
 
   a.at<0, 0>(1. * m2);

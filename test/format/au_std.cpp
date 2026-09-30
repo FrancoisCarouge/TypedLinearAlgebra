@@ -34,6 +34,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <au/std_format.hh>
 #include <au/units/meters.hh>
 
+#include <array>
 #include <cassert>
 #include <concepts>
 #include <cstddef>
@@ -69,23 +70,23 @@ static_assert(std::formattable<rectangle, char>);
   using au::symbols::m;
   constexpr auto m2{au::squared(m)};
 
-  representation singleton_storage{};
-  std::mdspan singleton_span{&singleton_storage,
+  std::array<representation, 1> singleton_storage{};
+  std::mdspan singleton_span{singleton_storage.data(),
                              std::extents<std::size_t, 1, 1>{}};
   singleton s{singleton_span};
   s.at(9. * m);
   assert(std::format("{}", s) == "9 m");
 
-  representation row_storage[]{{}, {}, {}};
-  std::mdspan row_span{&row_storage[0], std::extents<std::size_t, 1, 3>{}};
+  std::array<representation, 3> row_storage{};
+  std::mdspan row_span{row_storage.data(), std::extents<std::size_t, 1, 3>{}};
   row r{row_span};
   r.at<0>(1. * m);
   r.at<1>(2. * m);
   r.at<2>(3. * m);
   assert(std::format("{}", r) == "[1 m, 2 m, 3 m]");
 
-  representation column_storage[]{{}, {}, {}};
-  std::mdspan column_span{&column_storage[0],
+  std::array<representation, 3> column_storage{};
+  std::mdspan column_span{column_storage.data(),
                           std::extents<std::size_t, 3, 1>{}};
   column c{column_span};
   c.at<0>(1. * m);
@@ -93,8 +94,8 @@ static_assert(std::formattable<rectangle, char>);
   c.at<2>(3. * m);
   assert(std::format("{}", c) == "[[1 m], [2 m], [3 m]]");
 
-  representation rectangle_storage[]{{}, {}, {}, {}};
-  std::mdspan rectangle_span{&rectangle_storage[0],
+  std::array<representation, 4> rectangle_storage{};
+  std::mdspan rectangle_span{rectangle_storage.data(),
                              std::extents<std::size_t, 2, 2>{}};
   rectangle e{rectangle_span};
   e.at<0, 0>(1. * m2);

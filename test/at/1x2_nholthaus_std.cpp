@@ -34,6 +34,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <units/length.h>
 #include <units/velocity.h>
 
+#include <array>
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
@@ -51,8 +52,8 @@ namespace {
   using position = units::length::meters<representation>;
   using velocity = units::velocity::meters_per_second<representation>;
 
-  representation storage[]{0., 0.};
-  std::mdspan span{&storage[0], std::extents<std::size_t, 1, 2>{}};
+  std::array<representation, 2> storage{0., 0.};
+  std::mdspan span{storage.data(), std::extents<std::size_t, 1, 2>{}};
 
   row_vector<representation, position, velocity> x{span};
 

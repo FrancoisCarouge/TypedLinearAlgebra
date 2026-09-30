@@ -45,6 +45,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <au/units/meters.hh>
 #include <au/units/seconds.hh>
 
+#include <array>
 #include <cassert>
 #include <cstddef>
 #include <format>
@@ -52,7 +53,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <mdspan>
 #include <print>
 #include <tuple>
-#include <vector>
 
 namespace fcarouge::sample {
 namespace {
@@ -100,7 +100,7 @@ constexpr std::size_t extents_size{[] -> auto {
   // Set up a heterogenous column vector type for the sample.
   using state = column_vector<position, velocity, acceleration>;
 
-  std::vector v0(extents_size<column_extents<3>>, representation{});
+  std::array<representation, extents_size<column_extents<3>>> v0{};
   std::mdspan s0{v0.data(), column_extents<3>{}};
   state x0{s0};
 
@@ -132,7 +132,7 @@ constexpr std::size_t extents_size{[] -> auto {
 
   using state_transpose = row_vector<position, velocity, acceleration>;
 
-  std::vector v5(extents_size<row_extents<3>>, representation{});
+  std::array<representation, extents_size<row_extents<3>>> v5{};
   std::mdspan s5{v5.data(), row_extents<3>{}};
   state_transpose xt5{s5};
   xt5.at<0>(3. * m);
@@ -142,8 +142,8 @@ constexpr std::size_t extents_size{[] -> auto {
   using estimate_uncertainty =
       matrix<std::tuple<position, velocity, acceleration>,
              std::tuple<position, velocity, acceleration>>;
-  std::vector v6(extents_size<std::extents<std::size_t, 3, 3>>,
-                 representation{});
+  std::array<representation, extents_size<std::extents<std::size_t, 3, 3>>>
+      v6{};
   std::mdspan s6{v6.data(), std::extents<std::size_t, 3, 3>{}};
   estimate_uncertainty p6{s6};
 

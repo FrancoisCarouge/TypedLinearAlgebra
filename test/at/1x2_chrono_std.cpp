@@ -31,6 +31,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <array>
 #include <cassert>
 #include <chrono>
 #include <cstddef>
@@ -48,8 +49,8 @@ using instant = std::chrono::time_point<std::chrono::steady_clock, seconds>;
 //! std::mdspan storage. A duration and a time point neither convert to one
 //! another nor share a common type, so the pair stays distinct.
 [[maybe_unused]] const auto test{[] -> int {
-  representation storage[]{0., 0.};
-  std::mdspan span{&storage[0], std::extents<std::size_t, 1, 2>{}};
+  std::array<representation, 2> storage{0., 0.};
+  std::mdspan span{storage.data(), std::extents<std::size_t, 1, 2>{}};
 
   row_vector<representation, seconds, instant> x{span};
 

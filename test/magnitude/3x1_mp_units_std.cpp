@@ -31,6 +31,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <array>
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
@@ -49,9 +50,9 @@ namespace {
 [[maybe_unused]] const auto test{[] -> int {
   using force = quantity<mp_units::isq::force[N]>;
 
-  double storage[]{0., 0., 0.};
+  std::array<double, 3> storage{0., 0., 0.};
 
-  std::mdspan span{&storage[0], std::extents<std::size_t, 3, 1>{}};
+  std::mdspan span{storage.data(), std::extents<std::size_t, 3, 1>{}};
 
   column_vector<representation, force, force, force> v3{span};
 

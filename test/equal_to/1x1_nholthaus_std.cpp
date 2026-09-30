@@ -33,6 +33,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <units/length.h>
 
+#include <array>
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
@@ -47,8 +48,8 @@ namespace {
 [[maybe_unused]] const auto test{[] -> int {
   using length = units::length::meters<representation>;
 
-  representation storage{2.};
-  std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
+  std::array<representation, 1> storage{2.};
+  std::mdspan span{storage.data(), std::extents<std::size_t, 1, 1>{}};
   row_vector<representation, length> a{span};
 
   assert(a == 2. * m);

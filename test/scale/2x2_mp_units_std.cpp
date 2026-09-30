@@ -31,6 +31,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <array>
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
@@ -51,9 +52,9 @@ namespace {
   using length = quantity<mp_units::isq::length[m]>;
   using indexes = std::tuple<length, length>;
 
-  double storage[4]{};
+  std::array<double, 4> storage{};
 
-  std::mdspan span{&storage[0], std::extents<std::size_t, 2, 2>{}};
+  std::mdspan span{storage.data(), std::extents<std::size_t, 2, 2>{}};
 
   matrix<representation, indexes, indexes> x{span};
 

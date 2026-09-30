@@ -41,6 +41,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <array>
 #include <cassert>
 #include <chrono>
 #include <cstddef>
@@ -49,7 +50,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <mdspan>
 #include <print>
 #include <ratio>
-#include <vector>
 
 namespace fcarouge::sample {
 namespace {
@@ -68,7 +68,7 @@ using column_extents = std::extents<std::size_t, Rows, 1>;
 [[maybe_unused]] const auto sample{[] -> int {
   using durations = column_vector<seconds, minutes, hours>;
 
-  std::vector v0(std::size_t{3}, representation{});
+  std::array<representation, 3> v0{};
   std::mdspan s0{v0.data(), column_extents<3>{}};
   durations x0{s0};
 
@@ -87,7 +87,7 @@ using column_extents = std::extents<std::size_t, Rows, 1>;
   assert(x0.at<2>() == hours{3.});
 
   // Out-of-place addition of two vectors of the same types.
-  std::vector v1(std::size_t{3}, representation{});
+  std::array<representation, 3> v1{};
   std::mdspan s1{v1.data(), column_extents<3>{}};
   durations x1{s1};
   add(x0, x0, x1);

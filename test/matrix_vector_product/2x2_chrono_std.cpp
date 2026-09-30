@@ -31,6 +31,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <array>
 #include <cassert>
 #include <chrono>
 #include <cstddef>
@@ -52,13 +53,13 @@ namespace {
   using row_indexes = std::tuple<seconds, seconds>;
   using column_indexes = std::tuple<representation, representation>;
 
-  representation storage_a[4]{};
-  representation storage_x[2]{};
-  representation storage_y[2]{};
+  std::array<representation, 4> storage_a{};
+  std::array<representation, 2> storage_x{};
+  std::array<representation, 2> storage_y{};
 
-  std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 2, 2>{}};
-  std::mdspan span_x{&storage_x[0], std::extents<std::size_t, 2, 1>{}};
-  std::mdspan span_y{&storage_y[0], std::extents<std::size_t, 2, 1>{}};
+  std::mdspan span_a{storage_a.data(), std::extents<std::size_t, 2, 2>{}};
+  std::mdspan span_x{storage_x.data(), std::extents<std::size_t, 2, 1>{}};
+  std::mdspan span_y{storage_y.data(), std::extents<std::size_t, 2, 1>{}};
 
   matrix<representation, row_indexes, column_indexes> a{span_a};
   column_vector<representation, representation, representation> x{span_x};

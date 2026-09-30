@@ -31,6 +31,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <array>
 #include <cstddef>
 #include <mdspan>
 
@@ -49,13 +50,13 @@ namespace {
 [[maybe_unused]] const auto test{[] -> int {
   using length = quantity<mp_units::isq::length[m]>;
 
-  double storage_a[2]{};
-  double storage_x[2]{};
-  double storage_y[2]{};
+  std::array<double, 2> storage_a{};
+  std::array<double, 2> storage_x{};
+  std::array<double, 2> storage_y{};
 
-  std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 2, 1>{}};
-  std::mdspan span_x{&storage_x[0], std::extents<std::size_t, 2, 1>{}};
-  std::mdspan span_y{&storage_y[0], std::extents<std::size_t, 2, 1>{}};
+  std::mdspan span_a{storage_a.data(), std::extents<std::size_t, 2, 1>{}};
+  std::mdspan span_x{storage_x.data(), std::extents<std::size_t, 2, 1>{}};
+  std::mdspan span_y{storage_y.data(), std::extents<std::size_t, 2, 1>{}};
 
   // Intended:
   // matrix<representation, std::tuple<length, length>,

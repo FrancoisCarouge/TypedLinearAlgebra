@@ -34,6 +34,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <units/length.h>
 #include <units/velocity.h>
 
+#include <array>
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
@@ -50,13 +51,13 @@ namespace {
   using position = units::length::meters<representation>;
   using velocity = units::velocity::meters_per_second<representation>;
 
-  representation storage_a[]{0., 0.};
-  representation storage_b[]{0., 0.};
-  representation storage_r[]{0., 0.};
+  std::array<representation, 2> storage_a{0., 0.};
+  std::array<representation, 2> storage_b{0., 0.};
+  std::array<representation, 2> storage_r{0., 0.};
 
-  std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 1, 2>{}};
-  std::mdspan span_b{&storage_b[0], std::extents<std::size_t, 1, 2>{}};
-  std::mdspan span_r{&storage_r[0], std::extents<std::size_t, 1, 2>{}};
+  std::mdspan span_a{storage_a.data(), std::extents<std::size_t, 1, 2>{}};
+  std::mdspan span_b{storage_b.data(), std::extents<std::size_t, 1, 2>{}};
+  std::mdspan span_r{storage_r.data(), std::extents<std::size_t, 1, 2>{}};
 
   row_vector<representation, position, velocity> a{span_a};
   row_vector<representation, position, velocity> b{span_b};

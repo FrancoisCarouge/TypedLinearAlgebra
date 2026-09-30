@@ -31,6 +31,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <array>
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
@@ -51,13 +52,13 @@ namespace {
   using position = quantity<mp_units::isq::length[m]>;
   using velocity = quantity<mp_units::isq::velocity[m / s]>;
 
-  double storage_a[]{0., 0.};
-  double storage_b[]{0., 0.};
-  double storage_r[]{0., 0.};
+  std::array<double, 2> storage_a{0., 0.};
+  std::array<double, 2> storage_b{0., 0.};
+  std::array<double, 2> storage_r{0., 0.};
 
-  std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 1, 2>{}};
-  std::mdspan span_b{&storage_b[0], std::extents<std::size_t, 1, 2>{}};
-  std::mdspan span_r{&storage_r[0], std::extents<std::size_t, 1, 2>{}};
+  std::mdspan span_a{storage_a.data(), std::extents<std::size_t, 1, 2>{}};
+  std::mdspan span_b{storage_b.data(), std::extents<std::size_t, 1, 2>{}};
+  std::mdspan span_r{storage_r.data(), std::extents<std::size_t, 1, 2>{}};
 
   row_vector<representation, position, velocity> a{span_a};
   row_vector<representation, position, velocity> b{span_b};

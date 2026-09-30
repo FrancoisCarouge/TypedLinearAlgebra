@@ -34,6 +34,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <units/area.h>
 #include <units/length.h>
 
+#include <array>
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
@@ -49,11 +50,11 @@ namespace {
 [[maybe_unused]] const auto test{[] -> int {
   using length = units::length::meters<representation>;
 
-  double storage_a[]{0., 0.};
-  double storage_b[]{0., 0.};
+  std::array<double, 2> storage_a{0., 0.};
+  std::array<double, 2> storage_b{0., 0.};
 
-  std::mdspan span_a{&storage_a[0], std::extents<std::size_t, 1, 2>{}};
-  std::mdspan span_b{&storage_b[0], std::extents<std::size_t, 1, 2>{}};
+  std::mdspan span_a{storage_a.data(), std::extents<std::size_t, 1, 2>{}};
+  std::mdspan span_b{storage_b.data(), std::extents<std::size_t, 1, 2>{}};
 
   row_vector<representation, length, length> a{span_a};
   row_vector<representation, length, length> b{span_b};
