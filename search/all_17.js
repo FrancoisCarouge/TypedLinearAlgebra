@@ -45,7 +45,6 @@ var searchData=
   ['typedlinearalgebra_42',['Contributing to TypedLinearAlgebra',['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml',1,'']]],
   ['typedlinearalgebra_20compare_200_201_200_200_202_200_200_202_200_20a_202026_2006_2030_43',['&lt;a href=&quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra/compare/0.1.0...0.2.0&quot; &gt;0.2.0&lt;/a&gt; - 2026-06-30',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md020---2026-06-30',1,'']]],
   ['typedlinearalgebra_20compare_200_202_200_200_203_200_200_203_200_20a_202026_2009_2012_44',['&lt;a href=&quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra/compare/0.2.0...0.3.0&quot; &gt;0.3.0&lt;/a&gt; - 2026-09-12',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2026-09-12',1,'']]],
-  ['typedlinearalgebra_20compare_200_203_200_20head_20unreleased_20a_45',['&lt;a href=&quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra/compare/0.3.0...HEAD&quot; &gt;Unreleased&lt;/a&gt;',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#unreleased',1,'']]],
-  ['typedlinearalgebra_20releases_20tag_200_201_200_200_201_200_20a_202026_2003_2016_46',['&lt;a href=&quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra/releases/tag/0.1.0&quot; &gt;0.1.0&lt;/a&gt; - 2026-03-16',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md010---2026-03-16',1,'']]],
-  ['types_47',['Member Types',['../index.xhtml#member-types',1,'']]]
+  ['typedlinearalgebra_20releases_20tag_200_201_200_200_201_200_20a_202026_2003_2016_45',['&lt;a href=&quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra/releases/tag/0.1.0&quot; &gt;0.1.0&lt;/a&gt; - 2026-03-16',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md010---2026-03-16',1,'']]],
+  ['types_46',['Member Types',['../index.xhtml#member-types',1,'']]]
 ];

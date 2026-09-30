@@ -44,7 +44,6 @@ var NAVTREE =
       [ "Results", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#results", null ]
     ] ],
     [ "Changelog", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml", [
-      [ "Unreleased", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#unreleased", null ],
       [ "0.3.0 - 2026-09-12", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2026-09-12", [
         [ "Added", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added", null ],
         [ "Changed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#changed", null ],
@@ -138,12 +137,12 @@ var NAVTREEINDEX =
 "assign_21x2__chrono__eigen_8cpp_source.xhtml",
 "conceptfcarouge_1_1quantity__element__typed__matrix.xhtml",
 "equal__to_21x2__mp__units__eigen_8cpp_source.xhtml",
-"mp__units_8hpp.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__chrono__eigen__fail_8cpp_03.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02call__3x3_8cpp_03.xhtml",
-"nested_23x3_8cpp_source.xhtml",
+"mp__units_8hpp.xhtml#aa12b09434a95cbb83a45985e0a63642a",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__chrono__eigen__fail_8cpp_03.xhtml#acf2ba6ec57ba8dd32339d3fa272cbfb4",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02call__3x3_8cpp_03.xhtml#acbd349324a44aae935b44660bee11abd",
+"nested_8cpp.xhtml",
 "structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor.xhtml#ab3a7be166c212ff62f45b776a0bae341",
-"test_2format_2mp__units__std_8cpp.xhtml#a65ddbf98705f50b3ee19de1b7d8ccb88"
+"test_2format_2mp__units__std_8cpp.xhtml#a691c568f5237e22d48779a7541011404"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
