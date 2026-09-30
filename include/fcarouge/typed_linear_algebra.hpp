@@ -40,6 +40,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "typed_linear_algebra/internal/utility.hpp"
 #include "typed_linear_algebra_forward.hpp"
 
+#include <array>
 #include <concepts>
 #include <cstddef>
 #include <format>
