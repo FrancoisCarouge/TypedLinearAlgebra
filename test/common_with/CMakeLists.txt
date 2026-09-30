@@ -31,9 +31,4 @@ For more information, please refer to <https://unlicense.org> ]]
 
 build(
   "3x1_eigen"
-  BACKENDS
-  "eigen"
-  "eigexed"
-  "nested_typed_eigen"
-  "armadilloxed"
-  "armadillo")
+  BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed" "armadillo")

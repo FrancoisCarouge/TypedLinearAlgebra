@@ -321,7 +321,7 @@ The library is designed, developed, and tested with the help of third-party tool
 - [clang-format](https://clang.llvm.org/docs/ClangFormat.html) for code formatting.
 - [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) for static analysis.
 - [CMake](https://cmake.org) for build automation.
-- [cmakelang](https://pypi.org/project/cmakelang) for pretty CMake list files.
+- [cmakefmt](https://cmakefmt.dev) for pretty CMake list files.
 - [cppcheck](https://cppcheck.sourceforge.io) for static analysis.
 - [Doxygen](https://doxygen.nl) for documentation generation.
 - [Doxygen Awesome](https://github.com/jothepro/doxygen-awesome-css) for pretty documentation.
