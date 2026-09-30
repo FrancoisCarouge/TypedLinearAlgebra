@@ -32,8 +32,9 @@ For more information, please refer to <https://unlicense.org> ]]
 add_library(typed_linear_algebra_mp_units_std INTERFACE)
 target_sources(
   typed_linear_algebra_mp_units_std
-  INTERFACE FILE_SET "typed_linear_algebra_headers" TYPE "HEADERS" FILES
-            "fcarouge/linalg.hpp")
+  INTERFACE
+  FILE_SET
+    "typed_linear_algebra_headers" TYPE "HEADERS" FILES "fcarouge/linalg.hpp")
 target_link_libraries(
   typed_linear_algebra_mp_units_std
   INTERFACE typed_linear_algebra_kokkos typed_linear_algebra_mp_units tlinalg)

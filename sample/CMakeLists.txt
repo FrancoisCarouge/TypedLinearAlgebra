@@ -37,103 +37,127 @@ add_executable(typed_linear_algebra_sample_au_armadillo_driver
                "au_armadillo.cpp")
 target_link_libraries(
   typed_linear_algebra_sample_au_armadillo_driver
-  PRIVATE typed_linear_algebra_au_armadillo typed_linear_algebra_main
-          typed_linear_algebra_options)
-add_test(NAME typed_linear_algebra_sample_au_armadillo
-         COMMAND typed_linear_algebra_sample_au_armadillo_driver)
+  PRIVATE
+    typed_linear_algebra_au_armadillo typed_linear_algebra_main
+    typed_linear_algebra_options)
+add_test(
+  NAME typed_linear_algebra_sample_au_armadillo
+  COMMAND typed_linear_algebra_sample_au_armadillo_driver)
 
 add_executable(typed_linear_algebra_sample_chrono_armadillo_driver
                "chrono_armadillo.cpp")
 target_link_libraries(
   typed_linear_algebra_sample_chrono_armadillo_driver
-  PRIVATE typed_linear_algebra_chrono_armadillo typed_linear_algebra_main
-          typed_linear_algebra_options)
-add_test(NAME typed_linear_algebra_sample_chrono_armadillo
-         COMMAND typed_linear_algebra_sample_chrono_armadillo_driver)
+  PRIVATE
+    typed_linear_algebra_chrono_armadillo typed_linear_algebra_main
+    typed_linear_algebra_options)
+add_test(
+  NAME typed_linear_algebra_sample_chrono_armadillo
+  COMMAND typed_linear_algebra_sample_chrono_armadillo_driver)
 
 add_executable(typed_linear_algebra_sample_mp_units_armadillo_driver
                "mp_units_armadillo.cpp")
 target_link_libraries(
   typed_linear_algebra_sample_mp_units_armadillo_driver
-  PRIVATE typed_linear_algebra_mp_units_armadillo typed_linear_algebra_main
-          typed_linear_algebra_options)
-add_test(NAME typed_linear_algebra_sample_mp_units_armadillo
-         COMMAND typed_linear_algebra_sample_mp_units_armadillo_driver)
+  PRIVATE
+    typed_linear_algebra_mp_units_armadillo typed_linear_algebra_main
+    typed_linear_algebra_options)
+add_test(
+  NAME typed_linear_algebra_sample_mp_units_armadillo
+  COMMAND typed_linear_algebra_sample_mp_units_armadillo_driver)
 
 add_executable(typed_linear_algebra_sample_nholthaus_armadillo_driver
                "nholthaus_armadillo.cpp")
 target_link_libraries(
   typed_linear_algebra_sample_nholthaus_armadillo_driver
-  PRIVATE typed_linear_algebra_nholthaus_armadillo typed_linear_algebra_main
-          typed_linear_algebra_options)
-add_test(NAME typed_linear_algebra_sample_nholthaus_armadillo
-         COMMAND typed_linear_algebra_sample_nholthaus_armadillo_driver)
+  PRIVATE
+    typed_linear_algebra_nholthaus_armadillo typed_linear_algebra_main
+    typed_linear_algebra_options)
+add_test(
+  NAME typed_linear_algebra_sample_nholthaus_armadillo
+  COMMAND typed_linear_algebra_sample_nholthaus_armadillo_driver)
 
 add_executable(typed_linear_algebra_sample_au_eigen_driver "au_eigen.cpp")
 target_link_libraries(
   typed_linear_algebra_sample_au_eigen_driver
-  PRIVATE typed_linear_algebra_au_eigen typed_linear_algebra_main
-          typed_linear_algebra_options)
-add_test(NAME typed_linear_algebra_sample_au_eigen
-         COMMAND typed_linear_algebra_sample_au_eigen_driver)
+  PRIVATE
+    typed_linear_algebra_au_eigen typed_linear_algebra_main
+    typed_linear_algebra_options)
+add_test(
+  NAME typed_linear_algebra_sample_au_eigen
+  COMMAND typed_linear_algebra_sample_au_eigen_driver)
 
 add_executable(typed_linear_algebra_sample_au_std_driver "au_std.cpp")
 target_link_libraries(
   typed_linear_algebra_sample_au_std_driver
-  PRIVATE typed_linear_algebra_main typed_linear_algebra_options
-          typed_linear_algebra_au_std)
-add_test(NAME typed_linear_algebra_sample_au_std
-         COMMAND typed_linear_algebra_sample_au_std_driver)
+  PRIVATE
+    typed_linear_algebra_main typed_linear_algebra_options
+    typed_linear_algebra_au_std)
+add_test(
+  NAME typed_linear_algebra_sample_au_std
+  COMMAND typed_linear_algebra_sample_au_std_driver)
 
 add_executable(typed_linear_algebra_sample_chrono_eigen_driver
                "chrono_eigen.cpp")
 target_link_libraries(
   typed_linear_algebra_sample_chrono_eigen_driver
-  PRIVATE typed_linear_algebra_chrono_eigen typed_linear_algebra_main
-          typed_linear_algebra_options)
-add_test(NAME typed_linear_algebra_sample_chrono_eigen
-         COMMAND typed_linear_algebra_sample_chrono_eigen_driver)
+  PRIVATE
+    typed_linear_algebra_chrono_eigen typed_linear_algebra_main
+    typed_linear_algebra_options)
+add_test(
+  NAME typed_linear_algebra_sample_chrono_eigen
+  COMMAND typed_linear_algebra_sample_chrono_eigen_driver)
 
 add_executable(typed_linear_algebra_sample_chrono_std_driver "chrono_std.cpp")
 target_link_libraries(
   typed_linear_algebra_sample_chrono_std_driver
-  PRIVATE typed_linear_algebra_main typed_linear_algebra_options
-          typed_linear_algebra_chrono_std)
-add_test(NAME typed_linear_algebra_sample_chrono_std
-         COMMAND typed_linear_algebra_sample_chrono_std_driver)
+  PRIVATE
+    typed_linear_algebra_main typed_linear_algebra_options
+    typed_linear_algebra_chrono_std)
+add_test(
+  NAME typed_linear_algebra_sample_chrono_std
+  COMMAND typed_linear_algebra_sample_chrono_std_driver)
 
 add_executable(typed_linear_algebra_sample_mp_units_eigen_driver
                "mp_units_eigen.cpp")
 target_link_libraries(
   typed_linear_algebra_sample_mp_units_eigen_driver
-  PRIVATE typed_linear_algebra_mp_units_eigen typed_linear_algebra_main
-          typed_linear_algebra_options)
-add_test(NAME typed_linear_algebra_sample_mp_units_eigen
-         COMMAND typed_linear_algebra_sample_mp_units_eigen_driver)
+  PRIVATE
+    typed_linear_algebra_mp_units_eigen typed_linear_algebra_main
+    typed_linear_algebra_options)
+add_test(
+  NAME typed_linear_algebra_sample_mp_units_eigen
+  COMMAND typed_linear_algebra_sample_mp_units_eigen_driver)
 
 add_executable(typed_linear_algebra_sample_mp_units_std_driver
                "mp_units_std.cpp")
 target_link_libraries(
   typed_linear_algebra_sample_mp_units_std_driver
-  PRIVATE typed_linear_algebra_main typed_linear_algebra_options
-          typed_linear_algebra_mp_units_std)
-add_test(NAME typed_linear_algebra_sample_mp_units_std
-         COMMAND typed_linear_algebra_sample_mp_units_std_driver)
+  PRIVATE
+    typed_linear_algebra_main typed_linear_algebra_options
+    typed_linear_algebra_mp_units_std)
+add_test(
+  NAME typed_linear_algebra_sample_mp_units_std
+  COMMAND typed_linear_algebra_sample_mp_units_std_driver)
 
 add_executable(typed_linear_algebra_sample_nholthaus_eigen_driver
                "nholthaus_eigen.cpp")
 target_link_libraries(
   typed_linear_algebra_sample_nholthaus_eigen_driver
-  PRIVATE typed_linear_algebra_nholthaus_eigen typed_linear_algebra_main
-          typed_linear_algebra_options)
-add_test(NAME typed_linear_algebra_sample_nholthaus_eigen
-         COMMAND typed_linear_algebra_sample_nholthaus_eigen_driver)
+  PRIVATE
+    typed_linear_algebra_nholthaus_eigen typed_linear_algebra_main
+    typed_linear_algebra_options)
+add_test(
+  NAME typed_linear_algebra_sample_nholthaus_eigen
+  COMMAND typed_linear_algebra_sample_nholthaus_eigen_driver)
 
 add_executable(typed_linear_algebra_sample_nholthaus_std_driver
                "nholthaus_std.cpp")
 target_link_libraries(
   typed_linear_algebra_sample_nholthaus_std_driver
-  PRIVATE typed_linear_algebra_main typed_linear_algebra_options
-          typed_linear_algebra_nholthaus_std)
-add_test(NAME typed_linear_algebra_sample_nholthaus_std
-         COMMAND typed_linear_algebra_sample_nholthaus_std_driver)
+  PRIVATE
+    typed_linear_algebra_main typed_linear_algebra_options
+    typed_linear_algebra_nholthaus_std)
+add_test(
+  NAME typed_linear_algebra_sample_nholthaus_std
+  COMMAND typed_linear_algebra_sample_nholthaus_std_driver)

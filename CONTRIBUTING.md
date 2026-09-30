@@ -32,6 +32,7 @@ This repository uses [pre-commit](https://pre-commit.com) to catch formatting an
 
 ```shell
 pip install pre-commit
+pipx install cmakefmt
 pre-commit install
 ```
 
@@ -41,7 +42,7 @@ Once installed, the hooks run automatically on `git commit`. To run them against
 pre-commit run --all-files
 ```
 
-See [.pre-commit-config.yaml](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/.pre-commit-config.yaml) for the exact hook set and versions ([gitleaks](https://github.com/gitleaks/gitleaks) for secrets, [shellcheck](https://github.com/jumanjihouse/pre-commit-hooks) for linting, plus whitespace and end-of-file fixers).
+See [.pre-commit-config.yaml](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/.pre-commit-config.yaml) for the exact hook set and versions ([cmakefmt](https://cmakefmt.dev) for CMake formatting, always the latest release from your `$PATH`, so keep it current with `pipx upgrade cmakefmt`, [gitleaks](https://github.com/gitleaks/gitleaks) for secrets, [shellcheck](https://github.com/jumanjihouse/pre-commit-hooks) for linting, plus whitespace and end-of-file fixers).
 
 ## Pull Request Merge Checklist
 

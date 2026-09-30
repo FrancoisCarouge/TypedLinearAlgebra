@@ -40,9 +40,7 @@ For more information, please refer to <https://unlicense.org> ]]
 # "INCLUDE_DIRS=<root>;<root>;..." \ -D "OUTPUT=<generated header>" -P
 # "amalgamate.cmake"
 
-if(NOT INPUT
-   OR NOT INCLUDE_DIRS
-   OR NOT OUTPUT)
+if(NOT INPUT OR NOT INCLUDE_DIRS OR NOT OUTPUT)
   message(
     FATAL_ERROR "amalgamate.cmake requires INPUT, INCLUDE_DIRS, and OUTPUT")
 endif()
@@ -59,9 +57,7 @@ function(amalgamate_get_inlined FILE_PATH OUT_VAR)
   get_property(SEEN GLOBAL PROPERTY AMALGAMATE_SEEN)
   list(FIND SEEN "${ABSOLUTE_PATH}" SEEN_INDEX)
   if(NOT SEEN_INDEX EQUAL -1)
-    set("${OUT_VAR}"
-        ""
-        PARENT_SCOPE)
+    set("${OUT_VAR}" "" PARENT_SCOPE)
     return()
   endif()
   set_property(GLOBAL APPEND PROPERTY AMALGAMATE_SEEN "${ABSOLUTE_PATH}")
@@ -122,9 +118,7 @@ function(amalgamate_get_inlined FILE_PATH OUT_VAR)
     set(CONTENT "${BEFORE}\n${INLINED}${AFTER}")
   endwhile()
 
-  set("${OUT_VAR}"
-      "${CONTENT}"
-      PARENT_SCOPE)
+  set("${OUT_VAR}" "${CONTENT}" PARENT_SCOPE)
 endfunction()
 
 amalgamate_get_inlined("${TOP_FILE}" RESULT)

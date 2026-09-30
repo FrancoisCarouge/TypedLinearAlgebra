@@ -33,7 +33,8 @@ FetchContent_Declare(
   mdspan
   GIT_REPOSITORY "https://github.com/kokkos/mdspan.git"
   GIT_TAG "stable"
-  SYSTEM FIND_PACKAGE_ARGS NAMES mdspan)
+  SYSTEM
+  FIND_PACKAGE_ARGS NAMES mdspan)
 FetchContent_MakeAvailable(mdspan)
 
 add_library(std::mdspan ALIAS mdspan)
@@ -42,34 +43,34 @@ FetchContent_Declare(
   linalg
   GIT_REPOSITORY "https://github.com/kokkos/stdBLAS.git"
   GIT_TAG "main"
-  SYSTEM FIND_PACKAGE_ARGS NAMES linalg)
+  SYSTEM
+  FIND_PACKAGE_ARGS NAMES linalg)
 FetchContent_MakeAvailable(linalg)
 
 add_library(typed_linear_algebra_kokkos INTERFACE)
 target_sources(
   typed_linear_algebra_kokkos
-  INTERFACE FILE_SET
-            "typed_linear_algebra_headers"
-            TYPE
-            "HEADERS"
-            FILES
-            "fcarouge/linalg"
-            "fcarouge/mdspan")
+  INTERFACE
+  FILE_SET
+    "typed_linear_algebra_headers" TYPE "HEADERS" FILES "fcarouge/linalg"
+    "fcarouge/mdspan")
 target_include_directories(typed_linear_algebra_kokkos INTERFACE "fcarouge")
 target_link_libraries(typed_linear_algebra_kokkos INTERFACE linalg)
 
 target_include_directories(
   typed_linear_algebra_kokkos
-  INTERFACE ${linalg_BINARY_DIR}/include/experimental
-            ${linalg_SOURCE_DIR}/include/experimental)
+  INTERFACE
+    ${linalg_BINARY_DIR}/include/experimental
+    ${linalg_SOURCE_DIR}/include/experimental)
 
 if(NOT CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
   target_compile_options(
-    typed_linear_algebra_kokkos INTERFACE "-Wno-unused-local-typedefs"
-                                          "-Wno-shadow" "-Wno-unused-parameter")
+    typed_linear_algebra_kokkos
+    INTERFACE "-Wno-unused-local-typedefs" "-Wno-shadow" "-Wno-unused-parameter")
 endif()
 
 target_compile_definitions(
   typed_linear_algebra_kokkos
-  INTERFACE "MDSPAN_IMPL_STANDARD_NAMESPACE=Kokkos"
-            "MDSPAN_IMPL_PROPOSED_NAMESPACE=experimental" "__cpp_lib_linalg")
+  INTERFACE
+    "MDSPAN_IMPL_STANDARD_NAMESPACE=Kokkos"
+    "MDSPAN_IMPL_PROPOSED_NAMESPACE=experimental" "__cpp_lib_linalg")

@@ -33,7 +33,8 @@ FetchContent_Declare(
   gsl-lite
   GIT_REPOSITORY "https://github.com/gsl-lite/gsl-lite"
   GIT_SHALLOW TRUE
-  SYSTEM FIND_PACKAGE_ARGS NAMES gsl-lite)
+  SYSTEM
+  FIND_PACKAGE_ARGS NAMES gsl-lite)
 FetchContent_MakeAvailable(gsl-lite)
 
 set(MP_UNITS_LIB_FORMAT_SUPPORTED ON)
@@ -44,19 +45,24 @@ FetchContent_Declare(
   mp-units
   GIT_REPOSITORY "https://github.com/mpusz/mp-units"
   GIT_SHALLOW TRUE
-  SOURCE_SUBDIR "src" SYSTEM FIND_PACKAGE_ARGS NAMES mp-units)
+  SOURCE_SUBDIR "src"
+  SYSTEM
+  FIND_PACKAGE_ARGS NAMES mp-units)
 FetchContent_MakeAvailable(mp-units)
 
 target_compile_options(
-  mp-units INTERFACE $<IF:$<CXX_COMPILER_ID:MSVC>, /wd4875,
+  mp-units
+  INTERFACE
+    $<IF:$<CXX_COMPILER_ID:MSVC>, /wd4875,
                      -Wno-double-promotion -Wno-undef>)
 
 add_library(typed_linear_algebra_mp_units INTERFACE)
 target_sources(
   typed_linear_algebra_mp_units
-  INTERFACE FILE_SET "mp_units_headers" TYPE "HEADERS" FILES
-            "fcarouge/mp_units.hpp")
+  INTERFACE
+  FILE_SET "mp_units_headers" TYPE "HEADERS" FILES "fcarouge/mp_units.hpp")
 target_link_libraries(
   typed_linear_algebra_mp_units
-  INTERFACE typed_linear_algebra_options mp-units::mp-units
-            mp-units::integrations tlinalg)
+  INTERFACE
+    typed_linear_algebra_options mp-units::mp-units mp-units::integrations
+    tlinalg)

@@ -46,19 +46,9 @@ pass("scalar_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
 pass("scalar_nholthaus_eigen" BACKENDS "nholthaus_eigen" "nholthaus_armadillo")
 pass(
   "scalar"
-  BACKENDS
-  "eigen"
-  "eigexed"
-  "nested_typed_eigen"
-  "armadilloxed"
-  "armadillo")
+  BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed" "armadillo")
 pass(
   "2x2_2x1"
-  BACKENDS
-  "eigen"
-  "eigexed"
-  "nested_typed_eigen"
-  "armadilloxed"
-  "armadillo")
+  BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed" "armadillo")
 pass("2x2_au_eigen" BACKENDS "au_eigen" "au_armadillo")
 pass("2x2_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")

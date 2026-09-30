@@ -59,8 +59,9 @@ target_include_directories(
   PRIVATE "${CMAKE_BINARY_DIR}/amalgamate/fcarouge")
 target_link_libraries(
   typed_linear_algebra_amalgamate_typed_linear_algebra_mp_units_eigen_driver
-  PRIVATE Eigen3::Eigen mp-units::mp-units mp-units::integrations
-          typed_linear_algebra_main typed_linear_algebra_options)
+  PRIVATE
+    Eigen3::Eigen mp-units::mp-units mp-units::integrations
+    typed_linear_algebra_main typed_linear_algebra_options)
 add_dependencies(
   typed_linear_algebra_amalgamate_typed_linear_algebra_mp_units_eigen_driver
   amalgamate_typed_linear_algebra_mp_units_eigen)
@@ -68,5 +69,4 @@ add_test(
   NAME typed_linear_algebra_amalgamate_typed_linear_algebra_mp_units_eigen
   COMMAND
     ${TEST_COMMAND}
-    $<TARGET_FILE:typed_linear_algebra_amalgamate_typed_linear_algebra_mp_units_eigen_driver>
-)
+    $<TARGET_FILE:typed_linear_algebra_amalgamate_typed_linear_algebra_mp_units_eigen_driver>)

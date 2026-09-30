@@ -35,13 +35,15 @@ fail("1x1_chrono_eigen_fail" BACKENDS "chrono_eigen" "chrono_armadillo")
 fail("1x1_chrono_std_fail" BACKENDS "chrono_std")
 fail("1x1_mp_units_eigen_fail" BACKENDS "mp_units_eigen" "mp_units_armadillo")
 fail("1x1_mp_units_std_fail" BACKENDS "mp_units_std")
-fail("1x1_nholthaus_eigen_fail" BACKENDS "nholthaus_eigen"
-     "nholthaus_armadillo")
+fail(
+  "1x1_nholthaus_eigen_fail"
+  BACKENDS "nholthaus_eigen" "nholthaus_armadillo")
 fail("1x1_nholthaus_std_fail" BACKENDS "nholthaus_std")
 fail("1x2_au_eigen_fail" BACKENDS "au_eigen" "au_armadillo")
 fail("1x2_mp_units_eigen_fail" BACKENDS "mp_units_eigen" "mp_units_armadillo")
-fail("1x2_nholthaus_eigen_fail" BACKENDS "nholthaus_eigen"
-     "nholthaus_armadillo")
+fail(
+  "1x2_nholthaus_eigen_fail"
+  BACKENDS "nholthaus_eigen" "nholthaus_armadillo")
 
 pass("1x1_au_eigen" BACKENDS "au_eigen" "au_armadillo")
 pass("1x1_au_std" BACKENDS "au_std")
@@ -54,11 +56,6 @@ pass("1x2_au_eigen" BACKENDS "au_eigen" "au_armadillo")
 pass("1x2_chrono_eigen" BACKENDS "chrono_eigen" "chrono_armadillo")
 pass(
   "1x2_eigen"
-  BACKENDS
-  "eigen"
-  "eigexed"
-  "nested_typed_eigen"
-  "armadilloxed"
-  "armadillo")
+  BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed" "armadillo")
 pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
 pass("1x2_nholthaus_eigen" BACKENDS "nholthaus_eigen" "nholthaus_armadillo")

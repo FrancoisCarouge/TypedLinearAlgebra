@@ -34,29 +34,31 @@ FetchContent_Declare(
   GIT_REPOSITORY "https://gitlab.com/conradsnicta/armadillo-code.git"
   GIT_TAG "15.6.0"
   GIT_SHALLOW TRUE
-  SOURCE_SUBDIR "include" SYSTEM FIND_PACKAGE_ARGS NAMES Armadillo)
+  SOURCE_SUBDIR "include"
+  SYSTEM
+  FIND_PACKAGE_ARGS NAMES Armadillo)
 FetchContent_MakeAvailable(armadillo)
 
 add_library(typed_linear_algebra_armadillo INTERFACE)
 target_sources(
   typed_linear_algebra_armadillo
-  INTERFACE FILE_SET
-            "typed_linear_algebra_headers"
-            TYPE
-            "HEADERS"
-            FILES
-            "fcarouge/armadillo.hpp"
-            "fcarouge/linalg.hpp")
+  INTERFACE
+  FILE_SET
+    "typed_linear_algebra_headers" TYPE "HEADERS" FILES "fcarouge/armadillo.hpp"
+    "fcarouge/linalg.hpp")
 target_link_libraries(typed_linear_algebra_armadillo INTERFACE tlinalg)
 target_compile_definitions(
   typed_linear_algebra_armadillo
-  INTERFACE "ARMA_DONT_USE_WRAPPER"
-            "ARMA_DONT_USE_LAPACK"
-            "ARMA_DONT_USE_BLAS"
-            "ARMA_DONT_USE_ARPACK"
-            "ARMA_DONT_USE_SUPERLU"
-            "ARMA_DONT_USE_HDF5"
-            "ARMA_DONT_USE_FFTW3")
+  INTERFACE
+    "ARMA_DONT_USE_WRAPPER"
+    "ARMA_DONT_USE_LAPACK"
+    "ARMA_DONT_USE_BLAS"
+    "ARMA_DONT_USE_ARPACK"
+    "ARMA_DONT_USE_SUPERLU"
+    "ARMA_DONT_USE_HDF5"
+    "ARMA_DONT_USE_FFTW3")
 
-target_include_directories(typed_linear_algebra_armadillo SYSTEM
-                           INTERFACE "${armadillo_SOURCE_DIR}/include")
+target_include_directories(
+  typed_linear_algebra_armadillo
+  SYSTEM
+  INTERFACE "${armadillo_SOURCE_DIR}/include")
