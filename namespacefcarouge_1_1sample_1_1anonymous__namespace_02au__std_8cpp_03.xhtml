@@ -346,14 +346,14 @@ template&lt;typename Extents &gt; </div>
 <div class="line"><span class="lineno">   97</span> </div>
 <div class="line"><span class="lineno">   98</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> s2{au::squared(s)};</div>
 <div class="line"><span class="lineno">   99</span> </div>
-<div class="line"><span class="lineno">  100</span>  <span class="comment">// Set up a heterogenous column vector type for the sample.</span></div>
+<div class="line"><span class="lineno">  100</span>  <span class="comment">// Set up a heterogeneous column vector type for the sample.</span></div>
 <div class="line"><span class="lineno">  101</span>  <span class="keyword">using </span>state = <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">column_vector&lt;position, velocity, acceleration&gt;</a>;</div>
 <div class="line"><span class="lineno">  102</span> </div>
 <div class="line"><span class="lineno">  103</span>  std::vector v0(extents_size&lt;column_extents&lt;3&gt;&gt;, representation{});</div>
 <div class="line"><span class="lineno">  104</span>  std::mdspan s0{v0.data(), column_extents&lt;3&gt;{}};</div>
 <div class="line"><span class="lineno">  105</span>  state x0{s0};</div>
 <div class="line"><span class="lineno">  106</span> </div>
-<div class="line"><span class="lineno">  107</span>  <span class="comment">// Elements asignment.</span></div>
+<div class="line"><span class="lineno">  107</span>  <span class="comment">// Elements assignment.</span></div>
 <div class="line"><span class="lineno">  108</span>  x0.at&lt;0&gt;(3. * m);</div>
 <div class="line"><span class="lineno">  109</span>  x0.at&lt;1&gt;(2. * m / s);</div>
 <div class="line"><span class="lineno">  110</span>  x0.at&lt;2&gt;(1. * m / s2);</div>
@@ -373,10 +373,10 @@ template&lt;typename Extents &gt; </div>
 <div class="line"><span class="lineno">  124</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x0) == <span class="stringliteral">&quot;[[9 m], [7.5 m / s], [3 m / s^2]]&quot;</span>);</div>
 <div class="line"><span class="lineno">  125</span> </div>
 <div class="line"><span class="lineno">  126</span>  <span class="comment">// Note: unlike mp-units, Au&#39;s `Quantity::operator=` is lvalue-only</span></div>
-<div class="line"><span class="lineno">  127</span>  <span class="comment">// (`&amp;`-ref-qualified), which this library&#39;s `add()`/`substract()`</span></div>
+<div class="line"><span class="lineno">  127</span>  <span class="comment">// (`&amp;`-ref-qualified), which this library&#39;s `add()`/`subtract()`</span></div>
 <div class="line"><span class="lineno">  128</span>  <span class="comment">// std::linalg-style free functions are incompatible with (their</span></div>
 <div class="line"><span class="lineno">  129</span>  <span class="comment">// element-compatibility check assigns into an rvalue `std::declval`).</span></div>
-<div class="line"><span class="lineno">  130</span>  <span class="comment">// Prefer `operator+`/`operator-` (used above) over `add()`/`substract()`</span></div>
+<div class="line"><span class="lineno">  130</span>  <span class="comment">// Prefer `operator+`/`operator-` (used above) over `add()`/`subtract()`</span></div>
 <div class="line"><span class="lineno">  131</span>  <span class="comment">// for Au-typed matrices.</span></div>
 <div class="line"><span class="lineno">  132</span> </div>
 <div class="line"><span class="lineno">  133</span>  <span class="keyword">using </span>state_transpose = row_vector&lt;position, velocity, acceleration&gt;;</div>

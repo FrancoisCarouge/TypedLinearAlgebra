@@ -170,7 +170,7 @@ $(function(){initNavTree('nholthaus__armadillo_8cpp_source.xhtml',''); initResiz
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
 <div class="foldopen" id="foldopen00077" data-start="{" data-end="};">
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02nholthaus__armadillo_8cpp_03.xhtml#aac6aa06f59365bfea000eefe88c75a23">   77</a></span>[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> sample{[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  <span class="comment">// Set up a heterogenous column vector type for the sample.</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  <span class="comment">// Set up a heterogeneous column vector type for the sample.</span></div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  <span class="keyword">using </span>state = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02nholthaus__armadillo_8cpp_03.xhtml#a28b9e7ad739f5eba585e0ce240985ca2">column_vector&lt;position, velocity, acceleration&gt;</a>;</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  <span class="comment">// A vector of quantities.</span></div>
@@ -190,7 +190,7 @@ $(function(){initNavTree('nholthaus__armadillo_8cpp_source.xhtml',''); initResiz
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  <span class="keyword">const</span> state x2{x1 / 2.};</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  assert(x2.at&lt;0&gt;() == 4.5 * m);</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  <span class="comment">// Substraction then addition of vectors of the same types.</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  <span class="comment">// Subtraction then addition of vectors of the same types.</span></div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  <span class="keyword">const</span> state x3{x2 - x0};</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  <span class="keyword">const</span> state x4{x3 + x3};</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  assert(x4.at&lt;0&gt;() == 3. * m);</div>

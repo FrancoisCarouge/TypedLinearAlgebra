@@ -300,7 +300,7 @@ template&lt;typename... Types&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="mp__units__armadillo_8cpp_source.xhtml#l00084">84</a> of file <a class="el" href="mp__units__armadillo_8cpp_source.xhtml">mp_units_armadillo.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   84</span>                                  {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   85</span>  <span class="comment">// Set up a heterogenous column vector type for the sample.</span></div>
+<div class="line"><span class="lineno">   85</span>  <span class="comment">// Set up a heterogeneous column vector type for the sample.</span></div>
 <div class="line"><span class="lineno">   86</span>  <span class="keyword">using </span>state = <a class="code hl_typedef" href="#a8341396202b3ab2598e6d2297c032311">column_vector&lt;position, velocity, acceleration&gt;</a>;</div>
 <div class="line"><span class="lineno">   87</span> </div>
 <div class="line"><span class="lineno">   88</span>  <span class="comment">// A vector of quantities:</span></div>
@@ -324,7 +324,7 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">  106</span>  state x2{x1 / 2.};</div>
 <div class="line"><span class="lineno">  107</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x2) == <span class="stringliteral">&quot;[[4.5 m], [3.75 m/s], [1.5 m/s²]]&quot;</span>);</div>
 <div class="line"><span class="lineno">  108</span> </div>
-<div class="line"><span class="lineno">  109</span>  <span class="comment">// Substraction of two vectors of the same types.</span></div>
+<div class="line"><span class="lineno">  109</span>  <span class="comment">// Subtraction of two vectors of the same types.</span></div>
 <div class="line"><span class="lineno">  110</span>  state x3{x2 - x0};</div>
 <div class="line"><span class="lineno">  111</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x3) == <span class="stringliteral">&quot;[[1.5 m], [1.25 m/s], [0.5 m/s²]]&quot;</span>);</div>
 <div class="line"><span class="lineno">  112</span> </div>

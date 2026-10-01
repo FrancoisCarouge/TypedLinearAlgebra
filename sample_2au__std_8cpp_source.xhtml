@@ -193,14 +193,14 @@ $(function(){initNavTree('sample_2au__std_8cpp_source.xhtml',''); initResizable(
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> s2{au::squared(s)};</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  <span class="comment">// Set up a heterogenous column vector type for the sample.</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  <span class="comment">// Set up a heterogeneous column vector type for the sample.</span></div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  <span class="keyword">using </span>state = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__std_8cpp_03.xhtml#af8a2a4a241788a178ce6f4e6424634d5">column_vector&lt;position, velocity, acceleration&gt;</a>;</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  std::vector v0(<a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__std_8cpp_03.xhtml#a029a815cdafeb9c0ff113a78e4ca31bc">extents_size</a>&lt;<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__std_8cpp_03.xhtml#a45b9ae231b1a3072c4bb41b4b73ae8ee">column_extents&lt;3&gt;</a>&gt;, representation{});</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  std::mdspan s0{v0.data(), <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__std_8cpp_03.xhtml#a45b9ae231b1a3072c4bb41b4b73ae8ee">column_extents&lt;3&gt;</a>{}};</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  state x0{s0};</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  <span class="comment">// Elements asignment.</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  <span class="comment">// Elements assignment.</span></div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  x0.at&lt;0&gt;(3. * m);</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  x0.at&lt;1&gt;(2. * m / s);</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  x0.at&lt;2&gt;(1. * m / s2);</div>
@@ -220,10 +220,10 @@ $(function(){initNavTree('sample_2au__std_8cpp_source.xhtml',''); initResizable(
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x0) == <span class="stringliteral">&quot;[[9 m], [7.5 m / s], [3 m / s^2]]&quot;</span>);</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  <span class="comment">// Note: unlike mp-units, Au&#39;s `Quantity::operator=` is lvalue-only</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>  <span class="comment">// (`&amp;`-ref-qualified), which this library&#39;s `add()`/`substract()`</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>  <span class="comment">// (`&amp;`-ref-qualified), which this library&#39;s `add()`/`subtract()`</span></div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  <span class="comment">// std::linalg-style free functions are incompatible with (their</span></div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  <span class="comment">// element-compatibility check assigns into an rvalue `std::declval`).</span></div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <span class="comment">// Prefer `operator+`/`operator-` (used above) over `add()`/`substract()`</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <span class="comment">// Prefer `operator+`/`operator-` (used above) over `add()`/`subtract()`</span></div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  <span class="comment">// for Au-typed matrices.</span></div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>  <span class="keyword">using </span>state_transpose = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__std_8cpp_03.xhtml#a47aad183b99956330634fc4063d3b56d">row_vector&lt;position, velocity, acceleration&gt;</a>;</div>

@@ -254,7 +254,7 @@ template&lt;typename... Types&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="nholthaus__armadillo_8cpp_source.xhtml#l00077">77</a> of file <a class="el" href="nholthaus__armadillo_8cpp_source.xhtml">nholthaus_armadillo.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   77</span>                                  {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   78</span>  <span class="comment">// Set up a heterogenous column vector type for the sample.</span></div>
+<div class="line"><span class="lineno">   78</span>  <span class="comment">// Set up a heterogeneous column vector type for the sample.</span></div>
 <div class="line"><span class="lineno">   79</span>  <span class="keyword">using </span>state = <a class="code hl_typedef" href="#a28b9e7ad739f5eba585e0ce240985ca2">column_vector&lt;position, velocity, acceleration&gt;</a>;</div>
 <div class="line"><span class="lineno">   80</span> </div>
 <div class="line"><span class="lineno">   81</span>  <span class="comment">// A vector of quantities.</span></div>
@@ -274,7 +274,7 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">   95</span>  <span class="keyword">const</span> state x2{x1 / 2.};</div>
 <div class="line"><span class="lineno">   96</span>  assert(x2.at&lt;0&gt;() == 4.5 * m);</div>
 <div class="line"><span class="lineno">   97</span> </div>
-<div class="line"><span class="lineno">   98</span>  <span class="comment">// Substraction then addition of vectors of the same types.</span></div>
+<div class="line"><span class="lineno">   98</span>  <span class="comment">// Subtraction then addition of vectors of the same types.</span></div>
 <div class="line"><span class="lineno">   99</span>  <span class="keyword">const</span> state x3{x2 - x0};</div>
 <div class="line"><span class="lineno">  100</span>  <span class="keyword">const</span> state x4{x3 + x3};</div>
 <div class="line"><span class="lineno">  101</span>  assert(x4.at&lt;0&gt;() == 3. * m);</div>

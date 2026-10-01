@@ -176,7 +176,7 @@ $(function(){initNavTree('sample_2mp__units__eigen_8cpp_source.xhtml',''); initR
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
 <div class="foldopen" id="foldopen00084" data-start="{" data-end="};">
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#acd935dd28de28e1e690f312632a507a9">   84</a></span>[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> sample{[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  <span class="comment">// Set up a heterogenous column vector type for the sample.</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  <span class="comment">// Set up a heterogeneous column vector type for the sample.</span></div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  <span class="keyword">using </span>state = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#ac654fecf137a61586430c32ad5004dfd">column_vector&lt;position, velocity, acceleration&gt;</a>;</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  <span class="comment">// A vector of quantities:</span></div>
@@ -210,7 +210,7 @@ $(function(){initNavTree('sample_2mp__units__eigen_8cpp_source.xhtml',''); initR
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>  state x2{x1 / 2.};</div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x2) == <span class="stringliteral">&quot;[[4.5 m], [3.75 m/s], [1.5 m/s²]]&quot;</span>);</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  <span class="comment">// Substraction of two vectors of the same types.</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  <span class="comment">// Subtraction of two vectors of the same types.</span></div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>  state x3{x2 - x0};</div>
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x3) == <span class="stringliteral">&quot;[[1.5 m], [1.25 m/s], [0.5 m/s²]]&quot;</span>);</div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>

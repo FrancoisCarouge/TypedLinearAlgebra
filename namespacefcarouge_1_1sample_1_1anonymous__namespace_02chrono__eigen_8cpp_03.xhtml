@@ -231,7 +231,7 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">   80</span>  <span class="keyword">const</span> durations x2{x1 / 2.};</div>
 <div class="line"><span class="lineno">   81</span>  assert(x2.at&lt;0&gt;() == seconds{45.});</div>
 <div class="line"><span class="lineno">   82</span> </div>
-<div class="line"><span class="lineno">   83</span>  <span class="comment">// Substraction then addition of vectors of the same types.</span></div>
+<div class="line"><span class="lineno">   83</span>  <span class="comment">// Subtraction then addition of vectors of the same types.</span></div>
 <div class="line"><span class="lineno">   84</span>  <span class="keyword">const</span> durations x3{x2 - x0};</div>
 <div class="line"><span class="lineno">   85</span>  assert(x3.at&lt;2&gt;() == hours{0.5});</div>
 <div class="line"><span class="lineno">   86</span>  <span class="keyword">const</span> durations x4{x3 + x3};</div>

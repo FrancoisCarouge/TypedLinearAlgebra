@@ -360,14 +360,14 @@ template&lt;typename Extents &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="sample_2mp__units__std_8cpp_source.xhtml#l00097">97</a> of file <a class="el" href="sample_2mp__units__std_8cpp_source.xhtml">mp_units_std.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   97</span>                                  {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   98</span>  <span class="comment">// Set up a heterogenous column vector type for the sample.</span></div>
+<div class="line"><span class="lineno">   98</span>  <span class="comment">// Set up a heterogeneous column vector type for the sample.</span></div>
 <div class="line"><span class="lineno">   99</span>  <span class="keyword">using </span>state = <a class="code hl_typedef" href="#a3e5057dcafa85555c20bb1c1d598a675">column_vector&lt;position, velocity, acceleration&gt;</a>;</div>
 <div class="line"><span class="lineno">  100</span> </div>
 <div class="line"><span class="lineno">  101</span>  std::vector v0(extents_size&lt;<a class="code hl_typedef" href="#a732541603d6fc0a976587e0ccd726a8d">column_extents&lt;3&gt;</a>&gt;, representation{});</div>
 <div class="line"><span class="lineno">  102</span>  std::mdspan s0{v0.data(), column_extents&lt;3&gt;{}};</div>
 <div class="line"><span class="lineno">  103</span>  state x0{s0};</div>
 <div class="line"><span class="lineno">  104</span> </div>
-<div class="line"><span class="lineno">  105</span>  <span class="comment">// Elements asignment.</span></div>
+<div class="line"><span class="lineno">  105</span>  <span class="comment">// Elements assignment.</span></div>
 <div class="line"><span class="lineno">  106</span>  x0.at&lt;0&gt;(3. * m);</div>
 <div class="line"><span class="lineno">  107</span>  x0.at&lt;1&gt;(2. * m / s);</div>
 <div class="line"><span class="lineno">  108</span>  x0.at&lt;2&gt;(1. * m / s2);</div>
