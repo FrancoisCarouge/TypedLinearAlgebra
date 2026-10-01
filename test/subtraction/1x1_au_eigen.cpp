@@ -34,46 +34,25 @@ For more information, please refer to <https://unlicense.org> */
 #include <au/units/meters.hh>
 
 #include <cassert>
-#include <cstddef>
-#include <mdspan>
 
 namespace fcarouge::test {
 using representation = double;
 
 namespace {
-//! @test Verifies the singleton by singleton matrix substraction operator
-//! with the mdspan backend.
-[[maybe_unused]] const auto test{[] {
+//! @test Verifies the singleton by singleton matrix subtraction operator.
+[[maybe_unused]] const auto test{[] -> int {
   using au::symbols::m;
 
-  constexpr auto m2{au::squared(m)};
-
   using length = au::QuantityD<au::Meters>;
-  using area = au::QuantityD<au::UnitPowerT<au::Meters, 2>>;
 
-  double storage_a{0.};
-  double storage_b{0.};
-  double storage_r{0.};
+  const row_vector<representation, length> a{2. * m};
+  const row_vector<representation, length> b{3. * m};
+  const row_vector<representation, length> r{a - b};
 
-  std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
-  std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
-
-  // Intended:
-  // row_vector<representation, length> a{span_a};
-  row_vector<representation, area> a{span_a};
-
-  row_vector<representation, length> b{span_b};
-  row_vector<representation, length> r{span_r};
-
-  a = 3. * m2;
-  b = 2. * m;
-  r = a - b;
-
-  assert(1. * m == r.at());
-  assert(1. * m == r[]);
-  assert(1. * m == r());
-  assert(1. * m == r);
+  assert(-1. * m == r.at());
+  assert(-1. * m == r[]);
+  assert(-1. * m == r());
+  assert(-1. * m == r);
 
   return 0;
 }()};

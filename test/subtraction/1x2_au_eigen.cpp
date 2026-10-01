@@ -31,26 +31,37 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <units/length.h>
+#include <au/units/meters.hh>
+#include <au/units/seconds.hh>
 
 #include <cassert>
 
 namespace fcarouge::test {
-using units::m;
+using literals::operator""_i;
 using representation = double;
 
 namespace {
-//! @test Verifies the singleton by singleton matrix substraction operator.
+//! @test Verifies the subtraction operator with non-trivial types.
 [[maybe_unused]] const auto test{[] -> int {
-  using length = units::length::meters<representation>;
+  using au::symbols::m;
+  using au::symbols::s;
 
-  const row_vector<representation, length> a{2. * m};
-  const row_vector<representation, length> b{3. * m};
-  const row_vector<representation, length> r{a - b};
+  using position = au::QuantityD<au::Meters>;
+  using velocity = au::QuantityD<au::UnitQuotientT<au::Meters, au::Seconds>>;
 
-  assert(-1. * m == r.at());
-  assert(-1. * m == r[]);
-  assert(-1. * m == r());
+  row_vector<representation, position, velocity> a{1. * m, 2. * m / s};
+  row_vector<representation, position, velocity> b{3. * m, 1. * m / s};
+  row_vector<representation, position, velocity> r{a - b};
+
+  assert((-2. * m == r.at<0_i>()));
+  assert((-2. * m == r.at<0>()));
+  assert((-2. * m == r(0_i)));
+  assert((-2. * m == r[0_i]));
+
+  assert((1. * m / s == r.at<1_i>()));
+  assert((1. * m / s == r.at<1>()));
+  assert((1. * m / s == r(1_i)));
+  assert((1. * m / s == r[1_i]));
 
   return 0;
 }()};

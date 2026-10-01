@@ -33,18 +33,17 @@ FetchContent_Declare(
   eigen
   GIT_REPOSITORY "https://gitlab.com/libeigen/eigen.git"
   GIT_SHALLOW TRUE
-  SYSTEM FIND_PACKAGE_ARGS NAMES Eigen3)
+  SYSTEM
+  FIND_PACKAGE_ARGS NAMES Eigen3)
 FetchContent_MakeAvailable(eigen)
 
 add_library(typed_linear_algebra_eigen INTERFACE)
 target_sources(
   typed_linear_algebra_eigen
-  INTERFACE FILE_SET
-            "typed_linear_algebra_headers"
-            TYPE
-            "HEADERS"
-            FILES
-            "fcarouge/eigen.hpp"
-            "fcarouge/linalg.hpp")
-target_link_libraries(typed_linear_algebra_eigen INTERFACE Eigen3::Eigen
-                                                           tlinalg)
+  INTERFACE
+  FILE_SET
+    "typed_linear_algebra_headers" TYPE "HEADERS" FILES "fcarouge/eigen.hpp"
+    "fcarouge/linalg.hpp")
+target_link_libraries(
+  typed_linear_algebra_eigen
+  INTERFACE Eigen3::Eigen tlinalg)

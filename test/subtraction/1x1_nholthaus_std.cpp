@@ -31,19 +31,21 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <units/length.h>
+
 #include <cassert>
-#include <chrono>
 #include <cstddef>
 #include <mdspan>
 
 namespace fcarouge::test {
+using units::m;
 using representation = double;
 
 namespace {
-//! @test Verifies the singleton by singleton matrix substraction operator
-//! with the mdspan backend and std::chrono duration element types.
+//! @test Verifies the singleton by singleton matrix subtraction operator
+//! with the mdspan backend.
 [[maybe_unused]] const auto test{[] -> int {
-  using seconds = std::chrono::duration<representation>;
+  using length = units::length::meters<representation>;
 
   representation storage_a{0.};
   representation storage_b{0.};
@@ -53,15 +55,17 @@ namespace {
   std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
   std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
 
-  row_vector<representation, seconds> a{span_a};
-  row_vector<representation, seconds> b{span_b};
-  row_vector<representation, seconds> r{span_r};
+  row_vector<representation, length> a{span_a};
+  row_vector<representation, length> b{span_b};
+  row_vector<representation, length> r{span_r};
 
-  a = seconds{3.};
-  b = seconds{2.};
+  a = 2. * m;
+  b = 3. * m;
   r = a - b;
 
-  assert(seconds{1.} == r.at());
+  assert(-1. * m == r.at());
+  assert(-1. * m == r[]);
+  assert(-1. * m == r());
 
   return 0;
 }()};

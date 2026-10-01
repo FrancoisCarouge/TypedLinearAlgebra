@@ -43,12 +43,12 @@ jobs:
       run: cmake --build 'build' --target amalgamate
     - name: Verify
       run: |
-        FILES=`find . \
+        FILES=$(find . \
           -type f \( \
             -path './benchmark/*.cpp' -o \
             -path './sample/*.cpp' -o \
             -path './support/*.cpp' -o \
             -path './test/*.cpp' \) \
-            ! -name '*_fail.cpp' | sort`
-        SHARD_FILES=`echo "$FILES" | awk "NR % ${{ strategy.job-total }} == ${{ strategy.job-index }}"`
-        run-clang-tidy -j 4 -p 'build' $SHARD_FILES
+            ! -name '*_fail.cpp' | sort)
+        mapfile -t SHARD_FILES < <(echo "$FILES" | awk "NR % ${{ strategy.job-total }} == ${{ strategy.job-index }}")
+        run-clang-tidy -j 4 -p 'build' "${SHARD_FILES[@]}"

@@ -82,7 +82,7 @@ using row_vector = row_vector<representation, Types...>;
 //! @details A variety of activities of strongly typed linear algebra with Eigen
 //! and mp-units.
 [[maybe_unused]] const auto sample{[] -> int {
-  // Set up a heterogenous column vector type for the sample.
+  // Set up a heterogeneous column vector type for the sample.
   using state = column_vector<position, velocity, acceleration>;
 
   // A vector of quantities:
@@ -116,7 +116,7 @@ using row_vector = row_vector<representation, Types...>;
   state x2{x1 / 2.};
   assert(std::format("{}", x2) == "[[4.5 m], [3.75 m/s], [1.5 m/s²]]");
 
-  // Substraction of two vectors of the same types.
+  // Subtraction of two vectors of the same types.
   state x3{x2 - x0};
   assert(std::format("{}", x3) == "[[1.5 m], [1.25 m/s], [0.5 m/s²]]");
 
@@ -209,7 +209,7 @@ using row_vector = row_vector<representation, Types...>;
                                        " [0.6666666666666666 1/s, 0, 0 s],"
                                        " [0.3333333333333333 1/s², 0 1/s, 0]]");
 
-  //! @todo A few more expression may be valid, mising: x5 / s1? s1 / x5?
+  //! @todo A few more expression may be valid, missing: x5 / s1? s1 / x5?
 
   // Homogeneously quantity typed vector.
   using vector3d =

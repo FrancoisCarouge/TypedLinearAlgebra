@@ -43,9 +43,15 @@ function(amalgamate NAME ENTRY)
   add_custom_command(
     OUTPUT "${OUTPUT_HEADER}"
     COMMAND
-      "${CMAKE_COMMAND}" -D "INPUT=${ENTRY}" -D
-      "INCLUDE_DIRS=${AMALGAMATION_INCLUDE_DIRS}" -D "OUTPUT=${OUTPUT_HEADER}"
-      -P "${CMAKE_CURRENT_SOURCE_DIR}/amalgamate.cmake"
+      "${CMAKE_COMMAND}"
+      -D
+      "INPUT=${ENTRY}"
+      -D
+      "INCLUDE_DIRS=${AMALGAMATION_INCLUDE_DIRS}"
+      -D
+      "OUTPUT=${OUTPUT_HEADER}"
+      -P
+      "${CMAKE_CURRENT_SOURCE_DIR}/amalgamate.cmake"
     DEPENDS "${ENTRY}"
     DEPFILE "${OUTPUT_HEADER}.d"
     COMMENT "Generating amalgamated ${NAME}.h header"
@@ -68,5 +74,7 @@ amalgamate(
   "${CMAKE_SOURCE_DIR}/support/mp_units_eigen")
 
 add_custom_target(
-  amalgamate DEPENDS amalgamate_typed_linear_algebra
-                     amalgamate_typed_linear_algebra_mp_units_eigen)
+  amalgamate
+  DEPENDS
+    amalgamate_typed_linear_algebra
+    amalgamate_typed_linear_algebra_mp_units_eigen)

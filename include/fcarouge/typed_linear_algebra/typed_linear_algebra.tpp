@@ -253,7 +253,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator[](this auto &&self,
   return self.operator()(indexes...);
 }
 
-//! @todo Unecessarily complicated, simplify?
+//! @todo Unnecessarily complicated, simplify?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 template <typename... Indexes>
 [[nodiscard]] constexpr auto

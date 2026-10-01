@@ -29,7 +29,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-configure_file("fcarouge-typed-linear-algebra.pc.in"
-               "fcarouge-typed-linear-algebra.pc" @ONLY)
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/fcarouge-typed-linear-algebra.pc"
-        DESTINATION "${CMAKE_INSTALL_DATADIR}/pkgconfig")
+configure_file(
+  "fcarouge-typed-linear-algebra.pc.in" "fcarouge-typed-linear-algebra.pc"
+  @ONLY)
+install(
+  FILES "${CMAKE_CURRENT_BINARY_DIR}/fcarouge-typed-linear-algebra.pc"
+  DESTINATION "${CMAKE_INSTALL_DATADIR}/pkgconfig")

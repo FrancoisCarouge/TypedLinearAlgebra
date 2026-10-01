@@ -25,17 +25,14 @@ jobs:
     - name: 'Checkout'
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: 'Install'
-      run: sudo apt update && sudo apt install cmake-format
+      run: pipx install cmakefmt
     - name: 'Test'
       run: |
-        find . \
+        find . \( \
           -iname '*.hpp' \
           -o -iname '*.cpp' \
-          -o -iname '*.tpp' \
-          | xargs \
+          -o -iname '*.tpp' \) \
+          -print0 \
+          | xargs -0 \
           clang-format-22 --Werror --dry-run --verbose -style=file
-        find . \
-          -iname 'CMakeLists.txt' \
-          -o -iname '*.cmake.in' \
-          | xargs \
-          cmake-format --check
+        cmakefmt --check --report-format github .

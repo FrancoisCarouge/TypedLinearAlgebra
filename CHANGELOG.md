@@ -2,8 +2,6 @@
 
 All notable changes to TypedLinearAlgebra are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
-
 ## [0.3.0] - 2026-09-12
 
 ### Added
@@ -42,7 +40,7 @@ All notable changes to TypedLinearAlgebra are documented here. The format follow
 
 ### Changed
 
-- Element and index-count checks now consistently require the number of indexes to match rank across `at`, construction, addition, substraction, multiplication, transpose, and operator tests.
+- Element and index-count checks now consistently require the number of indexes to match rank across `at`, construction, addition, subtraction, multiplication, transpose, and operator tests.
 - Documentation clarified around member and `explicit` semantics; test suite reorganized.
 
 ### Breaking Changes & Build Requirements
@@ -66,7 +64,7 @@ All notable changes to TypedLinearAlgebra are documented here. The format follow
 ### Added
 
 - Initial release: the `fcarouge::typed_matrix` strongly-typed facade over a linear algebra backend, composing (not inheriting) the underlying matrix representation.
-- Core algorithms and operators: `add`, `divide`, `magnitude`, `matrix_product`, `product`, `scale`, `substract`, plus structured bindings and compile-time subscripting.
+- Core algorithms and operators: `add`, `divide`, `magnitude`, `matrix_product`, `product`, `scale`, `subtract`, plus structured bindings and compile-time subscripting.
 - Backend plug-ins: `std::linalg`, Eigen, Kokkos, and mp-units.
 - `std::formatter` specialization for typed matrices.
 - CMake install/export support (`fcarouge-typed-linear-algebra::tlinalg`), Doxygen documentation, and initial samples.

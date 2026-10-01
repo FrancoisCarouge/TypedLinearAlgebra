@@ -31,37 +31,18 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <au/units/meters.hh>
-#include <au/units/seconds.hh>
-
 #include <cassert>
 
 namespace fcarouge::test {
-using literals::operator""_i;
-using representation = double;
-
 namespace {
-//! @test Verifies the substraction operator with non-trivial types.
+//! @test Verifies the subtraction operator.
 [[maybe_unused]] const auto test{[] -> int {
-  using au::symbols::m;
-  using au::symbols::s;
+  const matrix<double, 1, 2> a{3., 4.};
+  const matrix<double, 1, 2> b{1., 3.};
+  const matrix<double, 1, 2> r{a - b};
 
-  using position = au::QuantityD<au::Meters>;
-  using velocity = au::QuantityD<au::UnitQuotientT<au::Meters, au::Seconds>>;
-
-  row_vector<representation, position, velocity> a{1. * m, 2. * m / s};
-  row_vector<representation, position, velocity> b{3. * m, 1. * m / s};
-  row_vector<representation, position, velocity> r{a - b};
-
-  assert((-2. * m == r.at<0_i>()));
-  assert((-2. * m == r.at<0>()));
-  assert((-2. * m == r(0_i)));
-  assert((-2. * m == r[0_i]));
-
-  assert((1. * m / s == r.at<1_i>()));
-  assert((1. * m / s == r.at<1>()));
-  assert((1. * m / s == r(1_i)));
-  assert((1. * m / s == r[1_i]));
+  assert(r(0) == 2.);
+  assert(r(1) == 1.);
 
   return 0;
 }()};

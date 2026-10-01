@@ -32,7 +32,9 @@ For more information, please refer to <https://unlicense.org> ]]
 add_library(typed_linear_algebra_armadilloxed INTERFACE)
 target_sources(
   typed_linear_algebra_armadilloxed
-  INTERFACE FILE_SET "typed_linear_algebra_headers" TYPE "HEADERS" FILES
-            "fcarouge/linalg.hpp")
-target_link_libraries(typed_linear_algebra_armadilloxed
-                      INTERFACE tlinalg typed_linear_algebra_armadillo)
+  INTERFACE
+  FILE_SET
+    "typed_linear_algebra_headers" TYPE "HEADERS" FILES "fcarouge/linalg.hpp")
+target_link_libraries(
+  typed_linear_algebra_armadilloxed
+  INTERFACE tlinalg typed_linear_algebra_armadillo)

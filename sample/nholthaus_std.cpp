@@ -69,7 +69,7 @@ using column_vector = column_vector<representation, Types...>;
 //! @details A variety of activities of strongly typed linear algebra with
 //! std::mdspan, std::linalg, and nholthaus/units.
 [[maybe_unused]] const auto sample{[] -> int {
-  // Set up a heterogenous column vector type for the sample.
+  // Set up a heterogeneous column vector type for the sample.
   using state = column_vector<position, velocity, acceleration>;
 
   std::vector<representation> storage(3, representation{});

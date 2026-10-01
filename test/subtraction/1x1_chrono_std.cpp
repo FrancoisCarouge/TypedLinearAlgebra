@@ -31,33 +31,37 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <units/area.h>
-#include <units/length.h>
-
 #include <cassert>
+#include <chrono>
+#include <cstddef>
+#include <mdspan>
 
 namespace fcarouge::test {
-using units::m;
-using units::m2;
 using representation = double;
 
 namespace {
-//! @test Verifies the singleton by singleton matrix substraction operator.
-[[maybe_unused]] const auto test{[] {
-  using length = units::length::meters<representation>;
+//! @test Verifies the singleton by singleton matrix subtraction operator
+//! with the mdspan backend and std::chrono duration element types.
+[[maybe_unused]] const auto test{[] -> int {
+  using seconds = std::chrono::duration<representation>;
 
-  // Intended:
-  // const row_vector<representation, length> a{3. * m};
+  representation storage_a{0.};
+  representation storage_b{0.};
+  representation storage_r{0.};
 
-  using area = units::area::square_meters<representation>;
+  std::mdspan span_a{&storage_a, std::extents<std::size_t, 1, 1>{}};
+  std::mdspan span_b{&storage_b, std::extents<std::size_t, 1, 1>{}};
+  std::mdspan span_r{&storage_r, std::extents<std::size_t, 1, 1>{}};
 
-  const row_vector<representation, area> a{3. * m2};
-  const row_vector<representation, length> b{2. * m};
-  const row_vector<representation, length> r{a - b};
+  row_vector<representation, seconds> a{span_a};
+  row_vector<representation, seconds> b{span_b};
+  row_vector<representation, seconds> r{span_r};
 
-  assert(1. * m == r.at());
-  assert(1. * m == r[]);
-  assert(1. * m == r());
+  a = seconds{3.};
+  b = seconds{2.};
+  r = a - b;
+
+  assert(seconds{1.} == r.at());
 
   return 0;
 }()};

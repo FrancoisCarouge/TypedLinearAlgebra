@@ -31,6 +31,8 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <au/units/meters.hh>
+
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
@@ -38,16 +40,13 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 using representation = double;
 
-template <auto QuantityReference>
-using quantity = mp_units::quantity<QuantityReference, representation>;
-
-using mp_units::si::unit_symbols::m;
-
 namespace {
-//! @test Verifies the singleton by singleton matrix substraction operator
+//! @test Verifies the singleton by singleton matrix subtraction operator
 //! with the mdspan backend.
 [[maybe_unused]] const auto test{[] -> int {
-  using length = quantity<mp_units::isq::length[m]>;
+  using au::symbols::m;
+
+  using length = au::QuantityD<au::Meters>;
 
   double storage_a{0.};
   double storage_b{0.};
