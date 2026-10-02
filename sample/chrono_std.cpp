@@ -93,6 +93,12 @@ using column_extents = std::extents<std::size_t, Rows, 1>;
   add(x0, x0, x1);
   assert(x1.at<1>() == minutes{12.});
 
+  // Frobenius norm of a uniform duration vector.
+  std::vector<representation> v2{2., 3., 6.};
+  std::mdspan s2{v2.data(), column_extents<3>{}};
+  const column_vector<seconds, seconds, seconds> x2{s2};
+  assert(matrix_frob_norm(x2) == seconds{7.});
+
   return 0;
 }()};
 } // namespace

@@ -44,6 +44,7 @@ target_sources(
     "fcarouge/typed_linear_algebra/algorithm/dot.tpp"
     "fcarouge/typed_linear_algebra/algorithm/equal_to.tpp"
     "fcarouge/typed_linear_algebra/algorithm/magnitude.tpp"
+    "fcarouge/typed_linear_algebra/algorithm/matrix_frob_norm.tpp"
     "fcarouge/typed_linear_algebra/algorithm/matrix_product.tpp"
     "fcarouge/typed_linear_algebra/algorithm/matrix_vector_product.tpp"
     "fcarouge/typed_linear_algebra/algorithm/minus.tpp"
@@ -57,6 +58,7 @@ target_sources(
     "fcarouge/typed_linear_algebra/format.tpp"
     "fcarouge/typed_linear_algebra/tuple.tpp"
     "fcarouge/typed_linear_algebra/typed_linear_algebra.tpp"
+    "fcarouge/typed_linear_algebra/internal/as_vector_span.hpp"
     "fcarouge/typed_linear_algebra/internal/utility.hpp"
     "fcarouge/typed_linear_algebra.hpp")
 install(
