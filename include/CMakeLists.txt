@@ -45,6 +45,7 @@ target_sources(
     "fcarouge/typed_linear_algebra/algorithm/equal_to.tpp"
     "fcarouge/typed_linear_algebra/algorithm/magnitude.tpp"
     "fcarouge/typed_linear_algebra/algorithm/matrix_product.tpp"
+    "fcarouge/typed_linear_algebra/algorithm/matrix_vector_product.tpp"
     "fcarouge/typed_linear_algebra/algorithm/minus.tpp"
     "fcarouge/typed_linear_algebra/algorithm/product.tpp"
     "fcarouge/typed_linear_algebra/algorithm/scale.tpp"
