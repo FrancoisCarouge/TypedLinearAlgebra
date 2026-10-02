@@ -47,6 +47,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <concepts>
 #include <cstddef>
 #include <format>
+#include <system_error>
 #include <tuple>
 #include <type_traits>
 
@@ -215,10 +216,12 @@ struct std::formatter<Type, Char> {
     //! to produce the same shortest round-trip text as `std::format`, so the
     //! rendered output is unaffected.
     auto write{[&output](const typename Type::elem_type &element) {
-      std::array<char, 64> buffer;
-      const auto end{
-          std::to_chars(buffer.data(), buffer.data() + buffer.size(), element)
-              .ptr};
+      std::array<char, 64> buffer{};
+      const auto [end, error]{
+          std::to_chars(buffer.data(), buffer.data() + buffer.size(), element)};
+      if (error != std::errc{}) {
+        throw std::format_error{"Failed to convert the element to text."};
+      }
       output = std::copy(buffer.data(), end, output);
     }};
 
