@@ -29,24 +29,39 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MAGNITUDE_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MAGNITUDE_TPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_AS_VECTOR_SPAN_HPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_AS_VECTOR_SPAN_HPP
 
-namespace fcarouge {
-[[nodiscard]] constexpr auto
-matrix_frob_norm(const uniform_typed_matrix auto &value);
-
-//! @brief Euclidean L2 norm of a row or column vector.
+//! @file
+//! @brief Rank one view of a typed vector's storage, for `std::linalg`.
 //!
-//! @details The Frobenius norm of a vector, under its geometric name.
-//! Restricted to vectors, where the norm has this conventional meaning.
-[[nodiscard]] constexpr auto magnitude(const uniform_typed_matrix auto &value) {
-  static_assert(
-      rank_typed_matrix<decltype(value), 1>,
-      "The magnitude operation only supports vector types at this time.");
+//! @details Kept apart from `utility.hpp` so that only the backends providing
+//! `std::linalg` pull in `<mdspan>`.
 
-  return fcarouge::matrix_frob_norm(value);
+#if __has_include(<linalg>)
+
+#include <cstddef>
+#include <mdspan>
+#include <type_traits>
+
+namespace fcarouge::typed_linear_algebra::internal {
+//! @brief Reinterprets a row or column typed vector's contiguous, rank two,
+//! n-by-one or one-by-n storage as the rank one span required by
+//! `std::linalg`'s vector concepts.
+//!
+//! @details A typed row or column vector, `rank_typed_matrix<1>`, is stored
+//! as a rank two, n-by-one or one-by-n, underlying matrix, unlike the rank
+//! one `in-vector`, `out-vector` shapes expected by `std::linalg`.
+template <typename Type> constexpr auto as_vector_span(Type &value) {
+  using matrix = std::remove_cvref_t<Type>;
+  using underlying = typename matrix::underlying;
+
+  return std::mdspan<underlying,
+                     std::extents<std::size_t, matrix::rows * matrix::columns>>(
+      value.data().data_handle());
 }
-} // namespace fcarouge
+} // namespace fcarouge::typed_linear_algebra::internal
 
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MAGNITUDE_TPP
+#endif
+
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_AS_VECTOR_SPAN_HPP

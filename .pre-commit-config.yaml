@@ -45,7 +45,7 @@ repos:
   rev: 57b21406f092110c18776e39b0bda50d37c945c8 # v2.4.3
   hooks:
   - id: codespell
-    args: ['--ignore-words-list=hart']
+    args: ['--ignore-words-list=fro,hart']
 - repo: https://github.com/python-jsonschema/check-jsonschema
   rev: 0494aa7fa1314e98913a41227d8f0a515b2c1049 # 0.38.2
   hooks:

@@ -91,6 +91,9 @@ using column_vector = column_vector<representation, Types...>;
                                                    seconds{6.}};
   assert(std::format("{}", magnitude(v)) == "7s");
 
+  // Frobenius norm, the same as the Euclidean L2 norm for a vector.
+  assert(matrix_frob_norm(v) == seconds{7.});
+
   return 0;
 }()};
 } // namespace
