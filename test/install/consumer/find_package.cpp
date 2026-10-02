@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,43 +27,12 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-if(NOT BUILD_TESTING)
-  return()
-endif()
+//! @test Verifies the installed public headers are self-sufficient: the
+//! library header and every implementation file it includes compile from the
+//! installed package alone.
+#include "fcarouge/typed_linear_algebra.hpp"
+#include "fcarouge/typed_linear_algebra_forward.hpp"
 
-add_subdirectory("add")
-add_subdirectory("addition")
-add_subdirectory("amalgamate")
-add_subdirectory("assign")
-add_subdirectory("at")
-add_subdirectory("column_typed_matrix")
-add_subdirectory("common_with")
-add_subdirectory("constructor")
-add_subdirectory("copy")
-add_subdirectory("distinct_typed_matrix")
-add_subdirectory("division")
-add_subdirectory("dot")
-add_subdirectory("element")
-add_subdirectory("equal_to")
-add_subdirectory("format")
-add_subdirectory("install")
-add_subdirectory("magnitude")
-add_subdirectory("matrix_product")
-add_subdirectory("matrix_vector_product")
-add_subdirectory("minus")
-add_subdirectory("mp_units")
-add_subdirectory("multiplication")
-add_subdirectory("nested")
-add_subdirectory("operator")
-add_subdirectory("rank_typed_matrix")
-add_subdirectory("row_typed_matrix")
-add_subdirectory("same_as_typed_matrix")
-add_subdirectory("same_shape")
-add_subdirectory("scale")
-add_subdirectory("structured_bindings")
-add_subdirectory("subtraction")
-add_subdirectory("transposed")
-add_subdirectory("underlying")
-add_subdirectory("uniform_typed_matrix")
+auto main() -> int { return 0; }
