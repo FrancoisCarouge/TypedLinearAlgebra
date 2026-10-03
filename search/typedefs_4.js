@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['element_0',['element',['../classfcarouge_1_1typed__matrix.xhtml#a240af7a39b0d2a71206ae7029667438f',1,'fcarouge::typed_matrix::element'],['../namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a89cc53c1b6d742d0f50660c6895896cc',1,'fcarouge::typed_linear_algebra_internal::element']]],
-  ['element_5fat_1',['element_at',['../namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a65885388521eb0c9b910fc421e70b040',1,'fcarouge::typed_linear_algebra_internal']]],
+  ['element_0',['element',['../classfcarouge_1_1typed__matrix.xhtml#a240af7a39b0d2a71206ae7029667438f',1,'fcarouge::typed_matrix::element'],['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a9382a03c870ee0c7618bf220b95ed7a7',1,'fcarouge::typed_linear_algebra::internal::element']]],
+  ['element_5fat_1',['element_at',['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a0d908ebc1cc55da12d83d2fefc10ab1d',1,'fcarouge::typed_linear_algebra::internal']]],
   ['element_5ftype_2',['element_type',['../structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1accessor.xhtml#a9eb8fd7ce608aae613f5f17b849de804',1,'fcarouge::benchmark::anonymous_namespace{mdspan_tuple_product.cpp}::accessor::element_type'],['../structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor.xhtml#aadd19e041968413c737d3d88d5e2839b',1,'fcarouge::benchmark::anonymous_namespace{typed_mdspan_tupled_product.cpp}::accessor::element_type']]],
   ['expression_3',['expression',['../namespacefcarouge_1_1test_1_1anonymous__namespace_023x1__eigen_8cpp_03.xhtml#a0dfce1d30963be7903c8690f9ec4d8ef',1,'fcarouge::test::anonymous_namespace{3x1_eigen.cpp}']]]
 ];

@@ -65,7 +65,7 @@ var searchData=
   ['core_20header_62',['Core header',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#core-header',1,'']]],
   ['corner_63',['corner',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02rank__mismatch__fail_8cpp_03.xhtml#ae8f995d238aa83e091e26097e1be679d',1,'fcarouge::test::anonymous_namespace{rank_mismatch_fail.cpp}']]],
   ['corporations_20institutions_64',['Corporations &amp; Institutions',['../index.xhtml#corporations--institutions',1,'']]],
-  ['count_5fconvertible_5findexes_65',['count_convertible_indexes',['../namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#afae834fe0c7d914876a051b69f3f93f7',1,'fcarouge::typed_linear_algebra_internal']]],
+  ['count_5fconvertible_5findexes_65',['count_convertible_indexes',['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#afda6200599ba2c58e5656ebc21edf1d8',1,'fcarouge::typed_linear_algebra::internal']]],
   ['covenant_20code_20of_20conduct_66',['Contributor Covenant Code of Conduct',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml',1,'']]],
   ['coverage_67',['Unit Test Code Coverage',['../unit_test_coverage.xhtml',1,'']]],
   ['cppnow_202026_68',['As seen at CppNow 2026',['../index.xhtml#as-seen-at-cppnow-2026',1,'']]],

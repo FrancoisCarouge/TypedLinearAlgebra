@@ -180,7 +180,7 @@ template&lt;typename OutputIterator &gt; </div>
 <div class="fragment"><div class="line"><span class="lineno">  207</span>                        {</div>
 <div class="line"><span class="lineno">  208</span>    <span class="keyword">auto</span> output{format_context.out()};</div>
 <div class="line"><span class="lineno">  209</span> </div>
-<div class="line"><span class="lineno">  218</span>    <span class="keyword">auto</span> write{[&amp;output](<span class="keyword">const</span> <span class="keyword">typename</span> Type::elem_type &amp;<a class="code hl_typedef" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a89cc53c1b6d742d0f50660c6895896cc">element</a>) {</div>
+<div class="line"><span class="lineno">  218</span>    <span class="keyword">auto</span> write{[&amp;output](<span class="keyword">const</span> <span class="keyword">typename</span> Type::elem_type &amp;<a class="code hl_typedef" href="namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a9382a03c870ee0c7618bf220b95ed7a7">element</a>) {</div>
 <div class="line"><span class="lineno">  219</span>      std::array&lt;char, 64&gt; buffer{};</div>
 <div class="line"><span class="lineno">  220</span>      <span class="keyword">const</span> <span class="keyword">auto</span> [end, error]{</div>
 <div class="line"><span class="lineno">  221</span>          std::to_chars(buffer.data(), buffer.data() + buffer.size(), element)};</div>
@@ -225,7 +225,7 @@ template&lt;typename OutputIterator &gt; </div>
 <div class="line"><span class="lineno">  260</span>      <span class="keywordflow">return</span> output;</div>
 <div class="line"><span class="lineno">  261</span>    }</div>
 <div class="line"><span class="lineno">  262</span>  }</div>
-<div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra__internal_xhtml_a89cc53c1b6d742d0f50660c6895896cc"><div class="ttname"><a href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a89cc53c1b6d742d0f50660c6895896cc">fcarouge::typed_linear_algebra_internal::element</a></div><div class="ttdeci">element_t&lt; Type, Indexes... &gt;::type element</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00375">utility.hpp:375</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra_1_1internal_xhtml_a9382a03c870ee0c7618bf220b95ed7a7"><div class="ttname"><a href="namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a9382a03c870ee0c7618bf220b95ed7a7">fcarouge::typed_linear_algebra::internal::element</a></div><div class="ttdeci">element_t&lt; Type, Indexes... &gt;::type element</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00375">utility.hpp:375</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
