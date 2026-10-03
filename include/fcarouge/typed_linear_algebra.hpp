@@ -48,7 +48,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <utility>
 
 namespace fcarouge {
-namespace tla = typed_linear_algebra_internal;
+namespace tla = typed_linear_algebra::internal;
 
 //! @name Concepts
 //! @{
@@ -515,7 +515,7 @@ static inline constexpr element_caster<To, From> cast{};
 //! element type computation. This is a multiplication function object. Unlike
 //! `std::multiplies` the two operands and resulting types can be different: `W
 //! multiplies::operator(const U& lhs, const V& rhs)`.
-using typed_linear_algebra_internal::multiplies;
+using tla::multiplies;
 
 //! @brief Factory function for partial template deduction.
 //!

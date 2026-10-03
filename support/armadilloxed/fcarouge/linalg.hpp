@@ -49,8 +49,7 @@ namespace fcarouge {
 template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
 using matrix =
     typed_matrix<armadillo::matrix<Type, Row, Column>,
-                 typed_linear_algebra_internal::tuple_n_type<Type, Row>,
-                 typed_linear_algebra_internal::tuple_n_type<Type, Column>>;
+                 tla::tuple_n_type<Type, Row>, tla::tuple_n_type<Type, Column>>;
 
 //! @brief Scalar type column vector with Armadillo implementations.
 template <typename Type = double, std::size_t Row = 1>

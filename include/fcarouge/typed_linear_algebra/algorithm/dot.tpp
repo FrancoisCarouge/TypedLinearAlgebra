@@ -44,7 +44,7 @@ namespace fcarouge {
 [[nodiscard]] constexpr auto dot(const rank_typed_matrix<1> auto &lhs,
                                  const rank_typed_matrix<1> auto &rhs);
 
-namespace internal {
+namespace typed_linear_algebra::internal {
 #if __has_include(<linalg>)
 
 //! @brief Reinterprets a row or column typed vector's contiguous, rank two,
@@ -91,13 +91,13 @@ template <typename Type> constexpr auto as_vector_span(Type &value) {
                   "Dot is not supported for this linear algebra backend.");
   }
 }
-} // namespace internal
+} // namespace typed_linear_algebra::internal
 
 //! @brief Sum of the products of the corresponding elements of two vectors.
 //!
 //! @details Row or column orientation is not required to match between the
 //! two vectors, only their element count. Delegated to the linear algebra
-//! backend via `internal::dot`.
+//! backend via `tla::dot`.
 //!
 //! @param lhs The first vector.
 //! @param rhs The second vector.
@@ -126,7 +126,7 @@ template <typename Type> constexpr auto as_vector_span(Type &value) {
 
   using underlying = typename lhs_matrix::underlying;
 
-  return cast<first_term, underlying>(internal::dot(lhs, rhs));
+  return cast<first_term, underlying>(tla::dot(lhs, rhs));
 }
 } // namespace fcarouge
 

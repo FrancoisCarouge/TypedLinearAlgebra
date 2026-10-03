@@ -105,8 +105,8 @@ template <typename Tuple, typename Type> struct accessor {
 //! @benchmark `std::mdspan` square matrix-matrix product.
 template <auto Size> void bench() {
   using tuple =
-      fcarouge::typed_linear_algebra_internal::tuple_n_type<double,
-                                                            Size * Size>;
+      fcarouge::typed_linear_algebra::internal::tuple_n_type<double,
+                                                             Size * Size>;
   using mdspan = std::mdspan<double, std::extents<std::size_t, Size, Size>,
                              Kokkos::layout_right, accessor<tuple, double>>;
   tuple storage_a;

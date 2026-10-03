@@ -48,9 +48,8 @@ namespace fcarouge {
 //! @brief Scalar type matrix with Eigen implementations.
 template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
 using matrix =
-    typed_matrix<eigen::matrix<Type, Row, Column>,
-                 typed_linear_algebra_internal::tuple_n_type<Type, Row>,
-                 typed_linear_algebra_internal::tuple_n_type<Type, Column>>;
+    typed_matrix<eigen::matrix<Type, Row, Column>, tla::tuple_n_type<Type, Row>,
+                 tla::tuple_n_type<Type, Column>>;
 
 //! @brief Scalar type column vector with Eigen implementations.
 template <typename Type = double, std::size_t Row = 1>

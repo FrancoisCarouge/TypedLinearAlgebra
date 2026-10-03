@@ -41,7 +41,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <type_traits>
 #include <utility>
 
-namespace fcarouge::typed_linear_algebra_internal {
+namespace fcarouge::typed_linear_algebra::internal {
 //! @brief Linear algebra divides expression type specialization point.
 //!
 //! @details Matrix division is a mathematical abuse of terminology. Informally
@@ -615,6 +615,6 @@ template <typename Type> constexpr auto is_distinct_typed_matrix() -> bool {
 template <typename Type>
 concept distinct_typed_matrix =
     same_as_typed_matrix<Type> and is_distinct_typed_matrix<Type>();
-} // namespace fcarouge::typed_linear_algebra_internal
+} // namespace fcarouge::typed_linear_algebra::internal
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_UTILITY_HPP

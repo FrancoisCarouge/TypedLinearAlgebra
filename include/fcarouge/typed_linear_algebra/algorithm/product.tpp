@@ -33,8 +33,6 @@ For more information, please refer to <https://unlicense.org> */
 #define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_PRODUCT_TPP
 
 namespace fcarouge {
-namespace tla = typed_linear_algebra_internal;
-
 //! @brief Concept of typed matrix shapes admitting a matrix product.
 //!
 //! @details Excludes singleton by singleton, an ordinary scalar product
