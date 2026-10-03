@@ -142,7 +142,7 @@ struct std::formatter&lt; Type, Char &gt;</div><p>Opt Armadillo matrices out of 
 template, whose `Type`/`Row`/`Column` parameters are not deducible through
 Armadillo's nested `Mat&lt;eT&gt;::fixed&lt;R, C&gt;` type. 
 </pre> 
-<p class="definition">Definition at line <a class="el" href="armadillo_8hpp_source.xhtml#l00196">196</a> of file <a class="el" href="armadillo_8hpp_source.xhtml">armadillo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="armadillo_8hpp_source.xhtml#l00197">197</a> of file <a class="el" href="armadillo_8hpp_source.xhtml">armadillo.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a8926ae404f3f4ea40d15085f14e2e1ba" name="a8926ae404f3f4ea40d15085f14e2e1ba"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8926ae404f3f4ea40d15085f14e2e1ba">&#9670;&#160;</a></span>format()</h2>
@@ -176,54 +176,56 @@ template&lt;typename OutputIterator &gt; </div>
 </div><div class="memdoc">
 <p>Elements are written through <code>std::to_chars</code> directly, rather than through a nested, compile-time-checked <code>std::format_to("{}", ...)</code> call: MSVC's <code>&lt;format&gt;</code> immediate function evaluation for compile-time format string checking has trouble with a user-defined formatter's own <code><a class="el" href="#a8926ae404f3f4ea40d15085f14e2e1ba">format()</a></code> issuing further checked format strings. <code>to_chars</code>'s default numeric conversion is specified to produce the same shortest round-trip text as <code>std::format</code>, so the rendered output is unaffected.</p>
 
-<p class="definition">Definition at line <a class="el" href="armadillo_8hpp_source.xhtml#l00204">204</a> of file <a class="el" href="armadillo_8hpp_source.xhtml">armadillo.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  206</span>                        {</div>
-<div class="line"><span class="lineno">  207</span>    <span class="keyword">auto</span> output{format_context.out()};</div>
-<div class="line"><span class="lineno">  208</span> </div>
-<div class="line"><span class="lineno">  217</span>    <span class="keyword">auto</span> write{[&amp;output](<span class="keyword">const</span> <span class="keyword">typename</span> Type::elem_type &amp;<a class="code hl_typedef" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a89cc53c1b6d742d0f50660c6895896cc">element</a>) {</div>
-<div class="line"><span class="lineno">  218</span>      std::array&lt;char, 64&gt; buffer;</div>
-<div class="line"><span class="lineno">  219</span>      <span class="keyword">const</span> <span class="keyword">auto</span> end{</div>
-<div class="line"><span class="lineno">  220</span>          std::to_chars(buffer.data(), buffer.data() + buffer.size(), element)</div>
-<div class="line"><span class="lineno">  221</span>              .ptr};</div>
-<div class="line"><span class="lineno">  222</span>      output = std::copy(buffer.data(), end, output);</div>
-<div class="line"><span class="lineno">  223</span>    }};</div>
-<div class="line"><span class="lineno">  224</span> </div>
-<div class="line"><span class="lineno">  225</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Type::n_rows == 1 &amp;&amp; Type::n_cols == 1) {</div>
-<div class="line"><span class="lineno">  226</span>      write(value.at(0, 0));</div>
-<div class="line"><span class="lineno">  227</span>      <span class="keywordflow">return</span> output;</div>
-<div class="line"><span class="lineno">  228</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Type::n_rows == 1) {</div>
-<div class="line"><span class="lineno">  229</span>      *output++ = <span class="charliteral">&#39;[&#39;</span>;</div>
-<div class="line"><span class="lineno">  230</span>      <span class="keywordflow">for</span> (arma::uword j{0}; j &lt; Type::n_cols; ++j) {</div>
-<div class="line"><span class="lineno">  231</span>        <span class="keywordflow">if</span> (j != 0) {</div>
-<div class="line"><span class="lineno">  232</span>          *output++ = <span class="charliteral">&#39;,&#39;</span>;</div>
-<div class="line"><span class="lineno">  233</span>          *output++ = <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><span class="lineno">  234</span>        }</div>
-<div class="line"><span class="lineno">  235</span>        write(value.at(0, j));</div>
-<div class="line"><span class="lineno">  236</span>      }</div>
-<div class="line"><span class="lineno">  237</span>      *output++ = <span class="charliteral">&#39;]&#39;</span>;</div>
-<div class="line"><span class="lineno">  238</span>      <span class="keywordflow">return</span> output;</div>
-<div class="line"><span class="lineno">  239</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  240</span>      *output++ = <span class="charliteral">&#39;[&#39;</span>;</div>
-<div class="line"><span class="lineno">  241</span>      <span class="keywordflow">for</span> (arma::uword i{0}; i &lt; Type::n_rows; ++i) {</div>
-<div class="line"><span class="lineno">  242</span>        <span class="keywordflow">if</span> (i != 0) {</div>
-<div class="line"><span class="lineno">  243</span>          *output++ = <span class="charliteral">&#39;,&#39;</span>;</div>
-<div class="line"><span class="lineno">  244</span>          *output++ = <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><span class="lineno">  245</span>        }</div>
-<div class="line"><span class="lineno">  246</span>        *output++ = <span class="charliteral">&#39;[&#39;</span>;</div>
-<div class="line"><span class="lineno">  247</span>        <span class="keywordflow">for</span> (arma::uword j{0}; j &lt; Type::n_cols; ++j) {</div>
-<div class="line"><span class="lineno">  248</span>          <span class="keywordflow">if</span> (j != 0) {</div>
-<div class="line"><span class="lineno">  249</span>            *output++ = <span class="charliteral">&#39;,&#39;</span>;</div>
-<div class="line"><span class="lineno">  250</span>            *output++ = <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><span class="lineno">  251</span>          }</div>
-<div class="line"><span class="lineno">  252</span>          write(value.at(i, j));</div>
-<div class="line"><span class="lineno">  253</span>        }</div>
-<div class="line"><span class="lineno">  254</span>        *output++ = <span class="charliteral">&#39;]&#39;</span>;</div>
-<div class="line"><span class="lineno">  255</span>      }</div>
-<div class="line"><span class="lineno">  256</span>      *output++ = <span class="charliteral">&#39;]&#39;</span>;</div>
-<div class="line"><span class="lineno">  257</span>      <span class="keywordflow">return</span> output;</div>
-<div class="line"><span class="lineno">  258</span>    }</div>
-<div class="line"><span class="lineno">  259</span>  }</div>
-<div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra__internal_xhtml_a89cc53c1b6d742d0f50660c6895896cc"><div class="ttname"><a href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a89cc53c1b6d742d0f50660c6895896cc">fcarouge::typed_linear_algebra_internal::element</a></div><div class="ttdeci">element_t&lt; Type, Indexes... &gt;::type element</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00376">utility.hpp:376</a></div></div>
+<p class="definition">Definition at line <a class="el" href="armadillo_8hpp_source.xhtml#l00205">205</a> of file <a class="el" href="armadillo_8hpp_source.xhtml">armadillo.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  207</span>                        {</div>
+<div class="line"><span class="lineno">  208</span>    <span class="keyword">auto</span> output{format_context.out()};</div>
+<div class="line"><span class="lineno">  209</span> </div>
+<div class="line"><span class="lineno">  218</span>    <span class="keyword">auto</span> write{[&amp;output](<span class="keyword">const</span> <span class="keyword">typename</span> Type::elem_type &amp;<a class="code hl_typedef" href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a89cc53c1b6d742d0f50660c6895896cc">element</a>) {</div>
+<div class="line"><span class="lineno">  219</span>      std::array&lt;char, 64&gt; buffer{};</div>
+<div class="line"><span class="lineno">  220</span>      <span class="keyword">const</span> <span class="keyword">auto</span> [end, error]{</div>
+<div class="line"><span class="lineno">  221</span>          std::to_chars(buffer.data(), buffer.data() + buffer.size(), element)};</div>
+<div class="line"><span class="lineno">  222</span>      <span class="keywordflow">if</span> (error != std::errc{}) {</div>
+<div class="line"><span class="lineno">  223</span>        <span class="keywordflow">throw</span> std::format_error{<span class="stringliteral">&quot;Failed to convert the element to text.&quot;</span>};</div>
+<div class="line"><span class="lineno">  224</span>      }</div>
+<div class="line"><span class="lineno">  225</span>      output = std::copy(buffer.data(), end, output);</div>
+<div class="line"><span class="lineno">  226</span>    }};</div>
+<div class="line"><span class="lineno">  227</span> </div>
+<div class="line"><span class="lineno">  228</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Type::n_rows == 1 &amp;&amp; Type::n_cols == 1) {</div>
+<div class="line"><span class="lineno">  229</span>      write(value.at(0, 0));</div>
+<div class="line"><span class="lineno">  230</span>      <span class="keywordflow">return</span> output;</div>
+<div class="line"><span class="lineno">  231</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Type::n_rows == 1) {</div>
+<div class="line"><span class="lineno">  232</span>      *output++ = <span class="charliteral">&#39;[&#39;</span>;</div>
+<div class="line"><span class="lineno">  233</span>      <span class="keywordflow">for</span> (arma::uword j{0}; j &lt; Type::n_cols; ++j) {</div>
+<div class="line"><span class="lineno">  234</span>        <span class="keywordflow">if</span> (j != 0) {</div>
+<div class="line"><span class="lineno">  235</span>          *output++ = <span class="charliteral">&#39;,&#39;</span>;</div>
+<div class="line"><span class="lineno">  236</span>          *output++ = <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><span class="lineno">  237</span>        }</div>
+<div class="line"><span class="lineno">  238</span>        write(value.at(0, j));</div>
+<div class="line"><span class="lineno">  239</span>      }</div>
+<div class="line"><span class="lineno">  240</span>      *output++ = <span class="charliteral">&#39;]&#39;</span>;</div>
+<div class="line"><span class="lineno">  241</span>      <span class="keywordflow">return</span> output;</div>
+<div class="line"><span class="lineno">  242</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  243</span>      *output++ = <span class="charliteral">&#39;[&#39;</span>;</div>
+<div class="line"><span class="lineno">  244</span>      <span class="keywordflow">for</span> (arma::uword i{0}; i &lt; Type::n_rows; ++i) {</div>
+<div class="line"><span class="lineno">  245</span>        <span class="keywordflow">if</span> (i != 0) {</div>
+<div class="line"><span class="lineno">  246</span>          *output++ = <span class="charliteral">&#39;,&#39;</span>;</div>
+<div class="line"><span class="lineno">  247</span>          *output++ = <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><span class="lineno">  248</span>        }</div>
+<div class="line"><span class="lineno">  249</span>        *output++ = <span class="charliteral">&#39;[&#39;</span>;</div>
+<div class="line"><span class="lineno">  250</span>        <span class="keywordflow">for</span> (arma::uword j{0}; j &lt; Type::n_cols; ++j) {</div>
+<div class="line"><span class="lineno">  251</span>          <span class="keywordflow">if</span> (j != 0) {</div>
+<div class="line"><span class="lineno">  252</span>            *output++ = <span class="charliteral">&#39;,&#39;</span>;</div>
+<div class="line"><span class="lineno">  253</span>            *output++ = <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><span class="lineno">  254</span>          }</div>
+<div class="line"><span class="lineno">  255</span>          write(value.at(i, j));</div>
+<div class="line"><span class="lineno">  256</span>        }</div>
+<div class="line"><span class="lineno">  257</span>        *output++ = <span class="charliteral">&#39;]&#39;</span>;</div>
+<div class="line"><span class="lineno">  258</span>      }</div>
+<div class="line"><span class="lineno">  259</span>      *output++ = <span class="charliteral">&#39;]&#39;</span>;</div>
+<div class="line"><span class="lineno">  260</span>      <span class="keywordflow">return</span> output;</div>
+<div class="line"><span class="lineno">  261</span>    }</div>
+<div class="line"><span class="lineno">  262</span>  }</div>
+<div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra__internal_xhtml_a89cc53c1b6d742d0f50660c6895896cc"><div class="ttname"><a href="namespacefcarouge_1_1typed__linear__algebra__internal.xhtml#a89cc53c1b6d742d0f50660c6895896cc">fcarouge::typed_linear_algebra_internal::element</a></div><div class="ttdeci">element_t&lt; Type, Indexes... &gt;::type element</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00375">utility.hpp:375</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -252,10 +254,10 @@ template&lt;typename Type , typename Char &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="armadillo_8hpp_source.xhtml#l00198">198</a> of file <a class="el" href="armadillo_8hpp_source.xhtml">armadillo.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  198</span>                                                            {</div>
-<div class="line"><span class="lineno">  199</span>    <span class="keywordflow">return</span> parse_context.begin();</div>
-<div class="line"><span class="lineno">  200</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="armadillo_8hpp_source.xhtml#l00199">199</a> of file <a class="el" href="armadillo_8hpp_source.xhtml">armadillo.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  199</span>                                                            {</div>
+<div class="line"><span class="lineno">  200</span>    <span class="keywordflow">return</span> parse_context.begin();</div>
+<div class="line"><span class="lineno">  201</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>

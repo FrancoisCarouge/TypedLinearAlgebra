@@ -146,198 +146,201 @@ $(function(){initNavTree('armadillo_8hpp_source.xhtml',''); initResizable(true);
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#include &lt;concepts&gt;</span></div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#include &lt;cstddef&gt;</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#include &lt;format&gt;</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#include &lt;tuple&gt;</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#include &lt;type_traits&gt;</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#include &lt;armadillo&gt;</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1armadillo.xhtml">   55</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1armadillo.xhtml">fcarouge::armadillo</a> {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type&gt;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml">   66</a></span><span class="keyword">concept </span><a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml">is_armadillo</a> = arma::is_arma_type&lt;std::remove_cvref_t&lt;Type&gt;&gt;::value;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type&gt;</div>
-<div class="foldopen" id="foldopen00071" data-start="{" data-end="}">
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">   71</a></span><span class="keyword">concept </span><a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">statically_sized</a> =</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    arma::is_Mat_fixed&lt;std::remove_cvref_t&lt;Type&gt;&gt;::value &amp;&amp; <span class="keyword">requires</span> {</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>      { std::remove_cvref_t&lt;Type&gt;::n_rows } -&gt; std::convertible_to&lt;arma::uword&gt;;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>      { std::remove_cvref_t&lt;Type&gt;::n_cols } -&gt; std::convertible_to&lt;arma::uword&gt;;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    };</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#include &lt;system_error&gt;</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#include &lt;tuple&gt;</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#include &lt;armadillo&gt;</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="foldopen" id="foldopen00056" data-start="{" data-end="}">
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1armadillo.xhtml">   56</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1armadillo.xhtml">fcarouge::armadillo</a> {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type&gt;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml">   67</a></span><span class="keyword">concept </span><a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml">is_armadillo</a> = arma::is_arma_type&lt;std::remove_cvref_t&lt;Type&gt;&gt;::value;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type&gt;</div>
+<div class="foldopen" id="foldopen00072" data-start="{" data-end="}">
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">   72</a></span><span class="keyword">concept </span><a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">statically_sized</a> =</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    arma::is_Mat_fixed&lt;std::remove_cvref_t&lt;Type&gt;&gt;::value &amp;&amp; <span class="keyword">requires</span> {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>      { std::remove_cvref_t&lt;Type&gt;::n_rows } -&gt; std::convertible_to&lt;arma::uword&gt;;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>      { std::remove_cvref_t&lt;Type&gt;::n_cols } -&gt; std::convertible_to&lt;arma::uword&gt;;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    };</div>
 </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type = <span class="keywordtype">double</span>, arma::uword Row = 1, arma::uword Column = 1&gt;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">   90</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix</a> = <span class="keyword">typename</span> arma::Mat&lt;Type&gt;::template fixed&lt;Row, Column&gt;;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type = <span class="keywordtype">double</span>, arma::uword Column = 1&gt;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1armadillo.xhtml#a78babe39d09cdcd708529e3a99518e95">   94</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a78babe39d09cdcd708529e3a99518e95">row_vector</a> = <span class="keyword">typename</span> arma::Mat&lt;Type&gt;::template fixed&lt;1, Column&gt;;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type = <span class="keywordtype">double</span>, arma::uword Row = 1&gt;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">   98</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">column_vector</a> = <span class="keyword">typename</span> arma::Mat&lt;Type&gt;::template fixed&lt;Row, 1&gt;;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>} <span class="comment">// namespace fcarouge::armadillo</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type = <span class="keywordtype">double</span>, arma::uword Row = 1, arma::uword Column = 1&gt;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">   91</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix</a> = <span class="keyword">typename</span> arma::Mat&lt;Type&gt;::template fixed&lt;Row, Column&gt;;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type = <span class="keywordtype">double</span>, arma::uword Column = 1&gt;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1armadillo.xhtml#a78babe39d09cdcd708529e3a99518e95">   95</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a78babe39d09cdcd708529e3a99518e95">row_vector</a> = <span class="keyword">typename</span> arma::Mat&lt;Type&gt;::template fixed&lt;1, Column&gt;;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type = <span class="keywordtype">double</span>, arma::uword Row = 1&gt;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">   99</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">column_vector</a> = <span class="keyword">typename</span> arma::Mat&lt;Type&gt;::template fixed&lt;Row, 1&gt;;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>} <span class="comment">// namespace fcarouge::armadillo</span></div>
 </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="foldopen" id="foldopen00104" data-start="{" data-end="}">
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="namespacearma.xhtml">  104</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacearma.xhtml">arma</a> {</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Lhs, <span class="keyword">typename</span> Rhs&gt;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>  <span class="keyword">requires</span> <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized&lt;Lhs&gt;</a> &amp;&amp;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>           <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized&lt;Rhs&gt;</a></div>
-<div class="foldopen" id="foldopen00115" data-start="{" data-end="}">
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="namespacearma.xhtml#ac5008cc07f7a751e1d5bc9f0bac1e07f">  115</a></span>[[nodiscard]] <span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacearma.xhtml#ac5008cc07f7a751e1d5bc9f0bac1e07f">operator==</a>(<span class="keyword">const</span> Lhs &amp;lhs, <span class="keyword">const</span> Rhs &amp;rhs) -&gt; <span class="keywordtype">bool</span> {</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>  <span class="keyword">static_assert</span>(Lhs::n_rows == Rhs::n_rows &amp;&amp; Lhs::n_cols == Rhs::n_cols,</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                <span class="stringliteral">&quot;Equality requires matrices of the same shape.&quot;</span>);</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  <span class="keywordflow">for</span> (arma::uword k{0}; k &lt; Lhs::n_rows * Lhs::n_cols; ++k) {</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">if</span> (lhs[k] != rhs[k]) {</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    }</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>  }</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>}</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="foldopen" id="foldopen00105" data-start="{" data-end="}">
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="namespacearma.xhtml">  105</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacearma.xhtml">arma</a> {</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Lhs, <span class="keyword">typename</span> Rhs&gt;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>  <span class="keyword">requires</span> <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized&lt;Lhs&gt;</a> &amp;&amp;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>           <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized&lt;Rhs&gt;</a></div>
+<div class="foldopen" id="foldopen00116" data-start="{" data-end="}">
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="namespacearma.xhtml#ac5008cc07f7a751e1d5bc9f0bac1e07f">  116</a></span>[[nodiscard]] <span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacearma.xhtml#ac5008cc07f7a751e1d5bc9f0bac1e07f">operator==</a>(<span class="keyword">const</span> Lhs &amp;lhs, <span class="keyword">const</span> Rhs &amp;rhs) -&gt; <span class="keywordtype">bool</span> {</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  <span class="keyword">static_assert</span>(Lhs::n_rows == Rhs::n_rows &amp;&amp; Lhs::n_cols == Rhs::n_cols,</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                <span class="stringliteral">&quot;Equality requires matrices of the same shape.&quot;</span>);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>  <span class="keywordflow">for</span> (arma::uword k{0}; k &lt; Lhs::n_rows * Lhs::n_cols; ++k) {</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordflow">if</span> (lhs[k] != rhs[k]) {</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    }</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  }</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>}</div>
 </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Lhs, <span class="keyword">typename</span> Rhs&gt;</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  <span class="keyword">requires</span> <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized&lt;Lhs&gt;</a> &amp;&amp;</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>           <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized&lt;Rhs&gt;</a></div>
-<div class="foldopen" id="foldopen00131" data-start="{" data-end="}">
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="namespacearma.xhtml#ade9a1c6541239bad0f0721f091510c60">  131</a></span>[[nodiscard]] <span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacearma.xhtml#ade9a1c6541239bad0f0721f091510c60">operator!=</a>(<span class="keyword">const</span> Lhs &amp;lhs, <span class="keyword">const</span> Rhs &amp;rhs) -&gt; <span class="keywordtype">bool</span> {</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>  <span class="keywordflow">return</span> not(lhs == rhs);</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>}</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Lhs, <span class="keyword">typename</span> Rhs&gt;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <span class="keyword">requires</span> <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized&lt;Lhs&gt;</a> &amp;&amp;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>           <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized&lt;Rhs&gt;</a></div>
+<div class="foldopen" id="foldopen00132" data-start="{" data-end="}">
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="namespacearma.xhtml#ade9a1c6541239bad0f0721f091510c60">  132</a></span>[[nodiscard]] <span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacearma.xhtml#ade9a1c6541239bad0f0721f091510c60">operator!=</a>(<span class="keyword">const</span> Lhs &amp;lhs, <span class="keyword">const</span> Rhs &amp;rhs) -&gt; <span class="keywordtype">bool</span> {</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>  <span class="keywordflow">return</span> not(lhs == rhs);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>}</div>
 </div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> Index, <span class="keyword">typename</span> Type&gt;</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>  <span class="keyword">requires</span> <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml">fcarouge::armadillo::is_armadillo&lt;Type&gt;</a> &amp;&amp;</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>           <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized&lt;Type&gt;</a></div>
-<div class="foldopen" id="foldopen00145" data-start="{" data-end="}">
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="namespacearma.xhtml#ae5291718ff8a7b0f7487563ea45b0e98">  145</a></span>[[nodiscard]] <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacearma.xhtml#ae5291718ff8a7b0f7487563ea45b0e98">get</a>(Type &amp;value) -&gt; <span class="keyword">typename</span> Type::elem_type &amp; {</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>  <span class="keywordflow">return</span> value.at(Index / Type::n_cols, Index % Type::n_cols);</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>}</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> Index, <span class="keyword">typename</span> Type&gt;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>  <span class="keyword">requires</span> <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml">fcarouge::armadillo::is_armadillo&lt;Type&gt;</a> &amp;&amp;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>           <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized&lt;Type&gt;</a></div>
+<div class="foldopen" id="foldopen00146" data-start="{" data-end="}">
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="namespacearma.xhtml#ae5291718ff8a7b0f7487563ea45b0e98">  146</a></span>[[nodiscard]] <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacearma.xhtml#ae5291718ff8a7b0f7487563ea45b0e98">get</a>(Type &amp;value) -&gt; <span class="keyword">typename</span> Type::elem_type &amp; {</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>  <span class="keywordflow">return</span> value.at(Index / Type::n_cols, Index % Type::n_cols);</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>}</div>
 </div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> Index, <span class="keyword">typename</span> Type&gt;</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>  <span class="keyword">requires</span> <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml">fcarouge::armadillo::is_armadillo&lt;Type&gt;</a> &amp;&amp;</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>           <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized&lt;Type&gt;</a></div>
-<div class="foldopen" id="foldopen00154" data-start="{" data-end="}">
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="namespacearma.xhtml#a30b4d4c516275abca62a8a57eb435464">  154</a></span>[[nodiscard]] <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacearma.xhtml#ae5291718ff8a7b0f7487563ea45b0e98">get</a>(<span class="keyword">const</span> Type &amp;value) -&gt;</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keyword">typename</span> Type::elem_type {</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>  <span class="keywordflow">return</span> value.at(Index / Type::n_cols, Index % Type::n_cols);</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>}</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> Index, <span class="keyword">typename</span> Type&gt;</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>  <span class="keyword">requires</span> <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml">fcarouge::armadillo::is_armadillo&lt;Type&gt;</a> &amp;&amp;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>           <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized&lt;Type&gt;</a></div>
+<div class="foldopen" id="foldopen00155" data-start="{" data-end="}">
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="namespacearma.xhtml#a30b4d4c516275abca62a8a57eb435464">  155</a></span>[[nodiscard]] <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacearma.xhtml#ae5291718ff8a7b0f7487563ea45b0e98">get</a>(<span class="keyword">const</span> Type &amp;value) -&gt;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keyword">typename</span> Type::elem_type {</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>  <span class="keywordflow">return</span> value.at(Index / Type::n_cols, Index % Type::n_cols);</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>}</div>
 </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>} <span class="comment">// namespace arma</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>} <span class="comment">// namespace arma</span></div>
 </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="preprocessor">#if defined(__cpp_lib_format_ranges) || defined(_MSC_VER)</span></div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="keyword">namespace </span>std {</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type&gt;</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>  <span class="keyword">requires</span> <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml">fcarouge::armadillo::is_armadillo&lt;Type&gt;</a></div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="keyword">constexpr</span> range_format format_kind&lt;Type&gt; = range_format::disabled;</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>} <span class="comment">// namespace std</span></div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type, <span class="keyword">typename</span> Char&gt;</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>  <span class="keyword">requires</span> <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml">fcarouge::armadillo::is_armadillo&lt;Type&gt;</a> &amp;&amp;</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>           <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized&lt;Type&gt;</a></div>
-<div class="foldopen" id="foldopen00196" data-start="{" data-end="};">
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno"><a class="line" href="structstd_1_1formatter_3_01_type_00_01_char_01_4.xhtml">  196</a></span><span class="keyword">struct </span>std::formatter&lt;Type, Char&gt; {</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span></div>
-<div class="foldopen" id="foldopen00198" data-start="{" data-end="}">
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno"><a class="line" href="structstd_1_1formatter_3_01_type_00_01_char_01_4.xhtml#a388e4133c0afe6acb9f0d393c2d9d8da">  198</a></span>  <a class="code hl_function" href="structstd_1_1formatter_3_01_type_00_01_char_01_4.xhtml#a388e4133c0afe6acb9f0d393c2d9d8da">parse</a>(std::basic_format_parse_context&lt;Char&gt; &amp;parse_context) {</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keywordflow">return</span> parse_context.begin();</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>  }</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="preprocessor">#if defined(__cpp_lib_format_ranges) || defined(_MSC_VER)</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="keyword">namespace </span>std {</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type&gt;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>  <span class="keyword">requires</span> <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml">fcarouge::armadillo::is_armadillo&lt;Type&gt;</a></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="keyword">constexpr</span> range_format format_kind&lt;Type&gt; = range_format::disabled;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>} <span class="comment">// namespace std</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type, <span class="keyword">typename</span> Char&gt;</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>  <span class="keyword">requires</span> <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml">fcarouge::armadillo::is_armadillo&lt;Type&gt;</a> &amp;&amp;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>           <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized&lt;Type&gt;</a></div>
+<div class="foldopen" id="foldopen00197" data-start="{" data-end="};">
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno"><a class="line" href="structstd_1_1formatter_3_01_type_00_01_char_01_4.xhtml">  197</a></span><span class="keyword">struct </span>std::formatter&lt;Type, Char&gt; {</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>  <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span></div>
+<div class="foldopen" id="foldopen00199" data-start="{" data-end="}">
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno"><a class="line" href="structstd_1_1formatter_3_01_type_00_01_char_01_4.xhtml#a388e4133c0afe6acb9f0d393c2d9d8da">  199</a></span>  <a class="code hl_function" href="structstd_1_1formatter_3_01_type_00_01_char_01_4.xhtml#a388e4133c0afe6acb9f0d393c2d9d8da">parse</a>(std::basic_format_parse_context&lt;Char&gt; &amp;parse_context) {</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keywordflow">return</span> parse_context.begin();</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>  }</div>
 </div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> OutputIterator&gt;</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span></div>
-<div class="foldopen" id="foldopen00204" data-start="{" data-end="}">
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno"><a class="line" href="structstd_1_1formatter_3_01_type_00_01_char_01_4.xhtml#a8926ae404f3f4ea40d15085f14e2e1ba">  204</a></span>  <a class="code hl_function" href="structstd_1_1formatter_3_01_type_00_01_char_01_4.xhtml#a8926ae404f3f4ea40d15085f14e2e1ba">format</a>(<span class="keyword">const</span> Type &amp;value,</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>         std::basic_format_context&lt;OutputIterator, Char&gt; &amp;format_context) <span class="keyword">const</span></div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>      -&gt; OutputIterator {</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="keyword">auto</span> output{format_context.out()};</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="keyword">auto</span> write{[&amp;output](<span class="keyword">const</span> <span class="keyword">typename</span> Type::elem_type &amp;element) {</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>      std::array&lt;char, 64&gt; buffer;</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>      <span class="keyword">const</span> <span class="keyword">auto</span> end{</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>          std::to_chars(buffer.data(), buffer.data() + buffer.size(), element)</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>              .ptr};</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>      output = std::copy(buffer.data(), end, output);</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    }};</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Type::n_rows == 1 &amp;&amp; Type::n_cols == 1) {</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>      write(value.at(0, 0));</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>      <span class="keywordflow">return</span> output;</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Type::n_rows == 1) {</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>      *output++ = <span class="charliteral">&#39;[&#39;</span>;</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>      <span class="keywordflow">for</span> (arma::uword j{0}; j &lt; Type::n_cols; ++j) {</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        <span class="keywordflow">if</span> (j != 0) {</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>          *output++ = <span class="charliteral">&#39;,&#39;</span>;</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>          *output++ = <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        }</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        write(value.at(0, j));</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>      }</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>      *output++ = <span class="charliteral">&#39;]&#39;</span>;</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>      <span class="keywordflow">return</span> output;</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>      *output++ = <span class="charliteral">&#39;[&#39;</span>;</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>      <span class="keywordflow">for</span> (arma::uword i{0}; i &lt; Type::n_rows; ++i) {</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        <span class="keywordflow">if</span> (i != 0) {</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>          *output++ = <span class="charliteral">&#39;,&#39;</span>;</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>          *output++ = <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        }</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        *output++ = <span class="charliteral">&#39;[&#39;</span>;</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <span class="keywordflow">for</span> (arma::uword j{0}; j &lt; Type::n_cols; ++j) {</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>          <span class="keywordflow">if</span> (j != 0) {</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>            *output++ = <span class="charliteral">&#39;,&#39;</span>;</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>            *output++ = <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>          }</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>          write(value.at(i, j));</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        }</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        *output++ = <span class="charliteral">&#39;]&#39;</span>;</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>      }</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>      *output++ = <span class="charliteral">&#39;]&#39;</span>;</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>      <span class="keywordflow">return</span> output;</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    }</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>  }</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> OutputIterator&gt;</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span></div>
+<div class="foldopen" id="foldopen00205" data-start="{" data-end="}">
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno"><a class="line" href="structstd_1_1formatter_3_01_type_00_01_char_01_4.xhtml#a8926ae404f3f4ea40d15085f14e2e1ba">  205</a></span>  <a class="code hl_function" href="structstd_1_1formatter_3_01_type_00_01_char_01_4.xhtml#a8926ae404f3f4ea40d15085f14e2e1ba">format</a>(<span class="keyword">const</span> Type &amp;value,</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>         std::basic_format_context&lt;OutputIterator, Char&gt; &amp;format_context) <span class="keyword">const</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>      -&gt; OutputIterator {</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keyword">auto</span> output{format_context.out()};</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keyword">auto</span> write{[&amp;output](<span class="keyword">const</span> <span class="keyword">typename</span> Type::elem_type &amp;element) {</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>      std::array&lt;char, 64&gt; buffer{};</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>      <span class="keyword">const</span> <span class="keyword">auto</span> [end, error]{</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>          std::to_chars(buffer.data(), buffer.data() + buffer.size(), element)};</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>      <span class="keywordflow">if</span> (error != std::errc{}) {</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        <span class="keywordflow">throw</span> std::format_error{<span class="stringliteral">&quot;Failed to convert the element to text.&quot;</span>};</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>      }</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>      output = std::copy(buffer.data(), end, output);</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    }};</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Type::n_rows == 1 &amp;&amp; Type::n_cols == 1) {</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>      write(value.at(0, 0));</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>      <span class="keywordflow">return</span> output;</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Type::n_rows == 1) {</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>      *output++ = <span class="charliteral">&#39;[&#39;</span>;</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>      <span class="keywordflow">for</span> (arma::uword j{0}; j &lt; Type::n_cols; ++j) {</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        <span class="keywordflow">if</span> (j != 0) {</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>          *output++ = <span class="charliteral">&#39;,&#39;</span>;</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>          *output++ = <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        }</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        write(value.at(0, j));</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>      }</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>      *output++ = <span class="charliteral">&#39;]&#39;</span>;</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>      <span class="keywordflow">return</span> output;</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>      *output++ = <span class="charliteral">&#39;[&#39;</span>;</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>      <span class="keywordflow">for</span> (arma::uword i{0}; i &lt; Type::n_rows; ++i) {</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        <span class="keywordflow">if</span> (i != 0) {</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>          *output++ = <span class="charliteral">&#39;,&#39;</span>;</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>          *output++ = <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        }</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        *output++ = <span class="charliteral">&#39;[&#39;</span>;</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="keywordflow">for</span> (arma::uword j{0}; j &lt; Type::n_cols; ++j) {</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>          <span class="keywordflow">if</span> (j != 0) {</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>            *output++ = <span class="charliteral">&#39;,&#39;</span>;</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>            *output++ = <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>          }</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>          write(value.at(i, j));</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        }</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        *output++ = <span class="charliteral">&#39;]&#39;</span>;</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>      }</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>      *output++ = <span class="charliteral">&#39;]&#39;</span>;</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>      <span class="keywordflow">return</span> output;</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    }</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>  }</div>
 </div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>};</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>};</div>
 </div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type&gt;</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>  <span class="keyword">requires</span> <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml">fcarouge::armadillo::is_armadillo&lt;Type&gt;</a> &amp;&amp;</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>           <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized&lt;Type&gt;</a></div>
-<div class="foldopen" id="foldopen00267" data-start="{" data-end="};">
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno"><a class="line" href="structstd_1_1tuple__size_3_01_type_01_4.xhtml">  267</a></span><span class="keyword">struct </span>std::tuple_size&lt;Type&gt;</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    : std::integral_constant&lt;std::size_t, Type::n_rows * Type::n_cols&gt; {};</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span> </div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type&gt;</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>  <span class="keyword">requires</span> <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml">fcarouge::armadillo::is_armadillo&lt;Type&gt;</a> &amp;&amp;</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>           <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized&lt;Type&gt;</a></div>
+<div class="foldopen" id="foldopen00270" data-start="{" data-end="};">
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno"><a class="line" href="structstd_1_1tuple__size_3_01_type_01_4.xhtml">  270</a></span><span class="keyword">struct </span>std::tuple_size&lt;Type&gt;</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    : std::integral_constant&lt;std::size_t, Type::n_rows * Type::n_cols&gt; {};</div>
 </div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span><span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> Index, <span class="keyword">typename</span> Type&gt;</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>  <span class="keyword">requires</span> <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml">fcarouge::armadillo::is_armadillo&lt;Type&gt;</a> &amp;&amp;</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>           <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized&lt;Type&gt;</a> &amp;&amp;</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>           (Index &lt; std::tuple_size_v&lt;Type&gt;)</div>
-<div class="foldopen" id="foldopen00276" data-start="{" data-end="};">
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno"><a class="line" href="structstd_1_1tuple__element_3_01_index_00_01_type_01_4.xhtml">  276</a></span><span class="keyword">struct</span> std::tuple_element&lt;Index, Type&gt; {</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno"><a class="line" href="structstd_1_1tuple__element_3_01_index_00_01_type_01_4.xhtml#a5659f335d1bbfadb1d8c64ff266ce28a">  277</a></span>  <span class="keyword">using </span><a class="code hl_typedef" href="structstd_1_1tuple__element_3_01_index_00_01_type_01_4.xhtml#a5659f335d1bbfadb1d8c64ff266ce28a">type</a> = <span class="keyword">typename</span> Type::elem_type;</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>};</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span> </div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span><span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> Index, <span class="keyword">typename</span> Type&gt;</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>  <span class="keyword">requires</span> <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml">fcarouge::armadillo::is_armadillo&lt;Type&gt;</a> &amp;&amp;</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>           <a class="code hl_concept" href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized&lt;Type&gt;</a> &amp;&amp;</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>           (Index &lt; std::tuple_size_v&lt;Type&gt;)</div>
+<div class="foldopen" id="foldopen00279" data-start="{" data-end="};">
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno"><a class="line" href="structstd_1_1tuple__element_3_01_index_00_01_type_01_4.xhtml">  279</a></span><span class="keyword">struct</span> std::tuple_element&lt;Index, Type&gt; {</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno"><a class="line" href="structstd_1_1tuple__element_3_01_index_00_01_type_01_4.xhtml#a5659f335d1bbfadb1d8c64ff266ce28a">  280</a></span>  <span class="keyword">using </span><a class="code hl_typedef" href="structstd_1_1tuple__element_3_01_index_00_01_type_01_4.xhtml#a5659f335d1bbfadb1d8c64ff266ce28a">type</a> = <span class="keyword">typename</span> Type::elem_type;</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>};</div>
 </div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_ARMADILLO_HPP</span></div>
-<div class="ttc" id="aconceptfcarouge_1_1armadillo_1_1is__armadillo_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml">fcarouge::armadillo::is_armadillo</a></div><div class="ttdoc">An Armadillo algebraic concept.</div><div class="ttdef"><b>Definition</b> <a href="#l00066">armadillo.hpp:66</a></div></div>
-<div class="ttc" id="aconceptfcarouge_1_1armadillo_1_1statically__sized_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized</a></div><div class="ttdoc">An Armadillo type with compile-time known dimensions, that is, a fixed matrix or vector.</div><div class="ttdef"><b>Definition</b> <a href="#l00071">armadillo.hpp:71</a></div></div>
-<div class="ttc" id="anamespacearma_xhtml"><div class="ttname"><a href="namespacearma.xhtml">arma</a></div><div class="ttdef"><b>Definition</b> <a href="#l00104">armadillo.hpp:104</a></div></div>
-<div class="ttc" id="anamespacearma_xhtml_ac5008cc07f7a751e1d5bc9f0bac1e07f"><div class="ttname"><a href="namespacearma.xhtml#ac5008cc07f7a751e1d5bc9f0bac1e07f">arma::operator==</a></div><div class="ttdeci">auto operator==(const Lhs &amp;lhs, const Rhs &amp;rhs) -&gt; bool</div><div class="ttdoc">Whole-matrix equality for compile-time sized Armadillo types.</div><div class="ttdef"><b>Definition</b> <a href="#l00115">armadillo.hpp:115</a></div></div>
-<div class="ttc" id="anamespacearma_xhtml_ade9a1c6541239bad0f0721f091510c60"><div class="ttname"><a href="namespacearma.xhtml#ade9a1c6541239bad0f0721f091510c60">arma::operator!=</a></div><div class="ttdeci">auto operator!=(const Lhs &amp;lhs, const Rhs &amp;rhs) -&gt; bool</div><div class="ttdef"><b>Definition</b> <a href="#l00131">armadillo.hpp:131</a></div></div>
-<div class="ttc" id="anamespacearma_xhtml_ae5291718ff8a7b0f7487563ea45b0e98"><div class="ttname"><a href="namespacearma.xhtml#ae5291718ff8a7b0f7487563ea45b0e98">arma::get</a></div><div class="ttdeci">constexpr auto get(Type &amp;value) -&gt; typename Type::elem_type &amp;</div><div class="ttdoc">Get function argument-dependent lookup overload of Armadillo types for structured bindings.</div><div class="ttdef"><b>Definition</b> <a href="#l00145">armadillo.hpp:145</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml">fcarouge::armadillo</a></div><div class="ttdef"><b>Definition</b> <a href="#l00055">armadillo.hpp:55</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_a0fa52776262afae30db82d7c0a9339ac"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">fcarouge::armadillo::matrix</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Armadillo matrix.</div><div class="ttdef"><b>Definition</b> <a href="#l00090">armadillo.hpp:90</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_a78babe39d09cdcd708529e3a99518e95"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#a78babe39d09cdcd708529e3a99518e95">fcarouge::armadillo::row_vector</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; 1, Column &gt; row_vector</div><div class="ttdoc">Compile-time sized Armadillo row vector.</div><div class="ttdef"><b>Definition</b> <a href="#l00094">armadillo.hpp:94</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_ab95c9e8d65ece459f17360e871fb7490"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">fcarouge::armadillo::column_vector</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; Row, 1 &gt; column_vector</div><div class="ttdoc">Compile-time sized Armadillo column vector.</div><div class="ttdef"><b>Definition</b> <a href="#l00098">armadillo.hpp:98</a></div></div>
-<div class="ttc" id="astructstd_1_1formatter_3_01_type_00_01_char_01_4_xhtml_a388e4133c0afe6acb9f0d393c2d9d8da"><div class="ttname"><a href="structstd_1_1formatter_3_01_type_00_01_char_01_4.xhtml#a388e4133c0afe6acb9f0d393c2d9d8da">std::formatter&lt; Type, Char &gt;::parse</a></div><div class="ttdeci">static constexpr auto parse(std::basic_format_parse_context&lt; Char &gt; &amp;parse_context)</div><div class="ttdef"><b>Definition</b> <a href="#l00198">armadillo.hpp:198</a></div></div>
-<div class="ttc" id="astructstd_1_1formatter_3_01_type_00_01_char_01_4_xhtml_a8926ae404f3f4ea40d15085f14e2e1ba"><div class="ttname"><a href="structstd_1_1formatter_3_01_type_00_01_char_01_4.xhtml#a8926ae404f3f4ea40d15085f14e2e1ba">std::formatter&lt; Type, Char &gt;::format</a></div><div class="ttdeci">constexpr auto format(const Type &amp;value, std::basic_format_context&lt; OutputIterator, Char &gt; &amp;format_context) const -&gt; OutputIterator</div><div class="ttdef"><b>Definition</b> <a href="#l00204">armadillo.hpp:204</a></div></div>
-<div class="ttc" id="astructstd_1_1tuple__element_3_01_index_00_01_type_01_4_xhtml_a5659f335d1bbfadb1d8c64ff266ce28a"><div class="ttname"><a href="structstd_1_1tuple__element_3_01_index_00_01_type_01_4.xhtml#a5659f335d1bbfadb1d8c64ff266ce28a">std::tuple_element&lt; Index, Type &gt;::type</a></div><div class="ttdeci">typename Type::elem_type type</div><div class="ttdef"><b>Definition</b> <a href="#l00277">armadillo.hpp:277</a></div></div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span> </div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_ARMADILLO_HPP</span></div>
+<div class="ttc" id="aconceptfcarouge_1_1armadillo_1_1is__armadillo_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml">fcarouge::armadillo::is_armadillo</a></div><div class="ttdoc">An Armadillo algebraic concept.</div><div class="ttdef"><b>Definition</b> <a href="#l00067">armadillo.hpp:67</a></div></div>
+<div class="ttc" id="aconceptfcarouge_1_1armadillo_1_1statically__sized_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml">fcarouge::armadillo::statically_sized</a></div><div class="ttdoc">An Armadillo type with compile-time known dimensions, that is, a fixed matrix or vector.</div><div class="ttdef"><b>Definition</b> <a href="#l00072">armadillo.hpp:72</a></div></div>
+<div class="ttc" id="anamespacearma_xhtml"><div class="ttname"><a href="namespacearma.xhtml">arma</a></div><div class="ttdef"><b>Definition</b> <a href="#l00105">armadillo.hpp:105</a></div></div>
+<div class="ttc" id="anamespacearma_xhtml_ac5008cc07f7a751e1d5bc9f0bac1e07f"><div class="ttname"><a href="namespacearma.xhtml#ac5008cc07f7a751e1d5bc9f0bac1e07f">arma::operator==</a></div><div class="ttdeci">auto operator==(const Lhs &amp;lhs, const Rhs &amp;rhs) -&gt; bool</div><div class="ttdoc">Whole-matrix equality for compile-time sized Armadillo types.</div><div class="ttdef"><b>Definition</b> <a href="#l00116">armadillo.hpp:116</a></div></div>
+<div class="ttc" id="anamespacearma_xhtml_ade9a1c6541239bad0f0721f091510c60"><div class="ttname"><a href="namespacearma.xhtml#ade9a1c6541239bad0f0721f091510c60">arma::operator!=</a></div><div class="ttdeci">auto operator!=(const Lhs &amp;lhs, const Rhs &amp;rhs) -&gt; bool</div><div class="ttdef"><b>Definition</b> <a href="#l00132">armadillo.hpp:132</a></div></div>
+<div class="ttc" id="anamespacearma_xhtml_ae5291718ff8a7b0f7487563ea45b0e98"><div class="ttname"><a href="namespacearma.xhtml#ae5291718ff8a7b0f7487563ea45b0e98">arma::get</a></div><div class="ttdeci">constexpr auto get(Type &amp;value) -&gt; typename Type::elem_type &amp;</div><div class="ttdoc">Get function argument-dependent lookup overload of Armadillo types for structured bindings.</div><div class="ttdef"><b>Definition</b> <a href="#l00146">armadillo.hpp:146</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml">fcarouge::armadillo</a></div><div class="ttdef"><b>Definition</b> <a href="#l00056">armadillo.hpp:56</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_a0fa52776262afae30db82d7c0a9339ac"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">fcarouge::armadillo::matrix</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Armadillo matrix.</div><div class="ttdef"><b>Definition</b> <a href="#l00091">armadillo.hpp:91</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_a78babe39d09cdcd708529e3a99518e95"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#a78babe39d09cdcd708529e3a99518e95">fcarouge::armadillo::row_vector</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; 1, Column &gt; row_vector</div><div class="ttdoc">Compile-time sized Armadillo row vector.</div><div class="ttdef"><b>Definition</b> <a href="#l00095">armadillo.hpp:95</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_ab95c9e8d65ece459f17360e871fb7490"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">fcarouge::armadillo::column_vector</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; Row, 1 &gt; column_vector</div><div class="ttdoc">Compile-time sized Armadillo column vector.</div><div class="ttdef"><b>Definition</b> <a href="#l00099">armadillo.hpp:99</a></div></div>
+<div class="ttc" id="astructstd_1_1formatter_3_01_type_00_01_char_01_4_xhtml_a388e4133c0afe6acb9f0d393c2d9d8da"><div class="ttname"><a href="structstd_1_1formatter_3_01_type_00_01_char_01_4.xhtml#a388e4133c0afe6acb9f0d393c2d9d8da">std::formatter&lt; Type, Char &gt;::parse</a></div><div class="ttdeci">static constexpr auto parse(std::basic_format_parse_context&lt; Char &gt; &amp;parse_context)</div><div class="ttdef"><b>Definition</b> <a href="#l00199">armadillo.hpp:199</a></div></div>
+<div class="ttc" id="astructstd_1_1formatter_3_01_type_00_01_char_01_4_xhtml_a8926ae404f3f4ea40d15085f14e2e1ba"><div class="ttname"><a href="structstd_1_1formatter_3_01_type_00_01_char_01_4.xhtml#a8926ae404f3f4ea40d15085f14e2e1ba">std::formatter&lt; Type, Char &gt;::format</a></div><div class="ttdeci">constexpr auto format(const Type &amp;value, std::basic_format_context&lt; OutputIterator, Char &gt; &amp;format_context) const -&gt; OutputIterator</div><div class="ttdef"><b>Definition</b> <a href="#l00205">armadillo.hpp:205</a></div></div>
+<div class="ttc" id="astructstd_1_1tuple__element_3_01_index_00_01_type_01_4_xhtml_a5659f335d1bbfadb1d8c64ff266ce28a"><div class="ttname"><a href="structstd_1_1tuple__element_3_01_index_00_01_type_01_4.xhtml#a5659f335d1bbfadb1d8c64ff266ce28a">std::tuple_element&lt; Index, Type &gt;::type</a></div><div class="ttdeci">typename Type::elem_type type</div><div class="ttdef"><b>Definition</b> <a href="#l00280">armadillo.hpp:280</a></div></div>
 <div class="ttc" id="atyped__linear__algebra_8hpp_xhtml"><div class="ttname"><a href="typed__linear__algebra_8hpp.xhtml">typed_linear_algebra.hpp</a></div><div class="ttdoc">Typed linear algebra implementation.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
