@@ -15,6 +15,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "element", "dir_974b212e1e2ae05a6e4111a20679b9dc.xhtml", "dir_974b212e1e2ae05a6e4111a20679b9dc" ],
     [ "equal_to", "dir_6071415610cde49b13e346d9225dcd79.xhtml", "dir_6071415610cde49b13e346d9225dcd79" ],
     [ "format", "dir_74a3c9427e9a4782c7a8462862ac57cd.xhtml", "dir_74a3c9427e9a4782c7a8462862ac57cd" ],
+    [ "install", "dir_3f95608e7abb65f9cbed73c5282f33d4.xhtml", "dir_3f95608e7abb65f9cbed73c5282f33d4" ],
     [ "magnitude", "dir_a3e49a7e1a799e12d26b70031305b663.xhtml", "dir_a3e49a7e1a799e12d26b70031305b663" ],
     [ "matrix_product", "dir_0a5c94c6b1800719290ff7c8ab5d7918.xhtml", "dir_0a5c94c6b1800719290ff7c8ab5d7918" ],
     [ "matrix_vector_product", "dir_6984f3d25fc75ffbd2807029da830d08.xhtml", "dir_6984f3d25fc75ffbd2807029da830d08" ],

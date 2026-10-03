@@ -136,13 +136,13 @@ var NAVTREEINDEX =
 "1x1__array_8cpp.xhtml",
 "assign_21x2__chrono__eigen_8cpp_source.xhtml",
 "conceptfcarouge_1_1quantity__element__typed__matrix.xhtml",
-"equal__to_21x2__mp__units__eigen_8cpp_source.xhtml",
-"mp__units_8hpp.xhtml#aa12b09434a95cbb83a45985e0a63642a",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__chrono__eigen__fail_8cpp_03.xhtml#acf2ba6ec57ba8dd32339d3fa272cbfb4",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02call__3x3_8cpp_03.xhtml#acbd349324a44aae935b44660bee11abd",
-"nested_8cpp.xhtml",
-"structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor.xhtml#ab3a7be166c212ff62f45b776a0bae341",
-"test_2format_2mp__units__std_8cpp.xhtml#a691c568f5237e22d48779a7541011404"
+"equal__to_21x2__eigen_8cpp_source.xhtml",
+"minus_22x3__eigen_8cpp_source.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__au__std__fail_8cpp_03.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02call__3x1_8cpp_03.xhtml",
+"namespacemp__units.xhtml",
+"structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor.xhtml#a9f69520c35cf84e694b3cae663b7634c",
+"test_2format_2mp__units__eigen_8cpp.xhtml#aef1bfce6bb48175244b16a33342feaf2"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
