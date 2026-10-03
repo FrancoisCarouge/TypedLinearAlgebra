@@ -43,7 +43,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <utility>
 
 namespace fcarouge {
-namespace internal {
+namespace typed_linear_algebra::internal {
 [[nodiscard]] constexpr decltype(auto) transposed(const auto &storage) {
 #if __has_include(<linalg>)
   using std::linalg::transposed;
@@ -61,7 +61,7 @@ namespace internal {
         "Transposed is not supported for this linear algebra backend.");
   }
 }
-} // namespace internal
+} // namespace typed_linear_algebra::internal
 
 //! @brief Transpose the input matrix.
 //!
@@ -74,7 +74,7 @@ transposed(const same_as_typed_matrix auto &value) {
   using transposed_row_indexes = typename matrix::column_indexes;
   using transposed_column_indexes = typename matrix::row_indexes;
 
-  auto data{internal::transposed(value.data())};
+  auto data{tla::transposed(value.data())};
 
   return make_typed_matrix<transposed_row_indexes, transposed_column_indexes>(
       std::move(data));
