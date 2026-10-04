@@ -29,38 +29,39 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_LINALG_HPP
-#define FCAROUGE_LINALG_HPP
+#include "fcarouge/linalg.hpp"
 
-//! @file
-//! @brief Scalar type typed linear algebra with the Armadillo implementation.
+#include <units/area.h>
+#include <units/length.h>
 
-#include "fcarouge/armadillo.hpp"
-#include "fcarouge/typed_linear_algebra.hpp"
-
+#include <cassert>
 #include <cstddef>
+#include <mdspan>
+#include <tuple>
 
-namespace fcarouge {
+namespace fcarouge::test {
+using representation = double;
 
-//! @name Types
-//! @{
+namespace {
+//! @test Verifies the Frobenius norm of a two-by-two matrix of areas with
+//! nholthaus/units element types and the mdspan-backed storage backend.
+[[maybe_unused]] const auto test{[] -> int {
+  using units::m2;
+  using length = units::length::meters<representation>;
+  using indexes = std::tuple<length, length>;
 
-//! @brief Scalar type matrix with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
-using matrix =
-    typed_matrix<armadillo::matrix<Type, Row, Column>,
-                 tla::tuple_n_type<Type, Row>, tla::tuple_n_type<Type, Column>>;
+  double storage[4]{};
+  std::mdspan span{&storage[0], std::extents<std::size_t, 2, 2>{}};
+  matrix<representation, indexes, indexes> value{span};
 
-//! @brief Scalar type column vector with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1>
-using column_vector = matrix<Type, Row, 1>;
+  value.at<0, 0>(1. * m2);
+  value.at<0, 1>(2. * m2);
+  value.at<1, 0>(2. * m2);
+  value.at<1, 1>(4. * m2);
 
-//! @brief Scalar type row vector with Armadillo implementations.
-template <typename Type = double, std::size_t Column = 1>
-using row_vector = matrix<Type, 1, Column>;
+  assert(matrix_frob_norm(value) == 5. * m2);
 
-//! @}
-
-} // namespace fcarouge
-
-#endif // FCAROUGE_LINALG_HPP
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

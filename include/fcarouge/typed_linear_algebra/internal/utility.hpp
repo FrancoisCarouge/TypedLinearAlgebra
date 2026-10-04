@@ -41,7 +41,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <type_traits>
 #include <utility>
 
-namespace fcarouge::typed_linear_algebra_internal {
+namespace fcarouge::typed_linear_algebra::internal {
 //! @brief Linear algebra divides expression type specialization point.
 //!
 //! @details Matrix division is a mathematical abuse of terminology. Informally
@@ -168,15 +168,14 @@ struct multiplies<std::tuple<Types1...>, std::tuple<Types2...>> {
 template <std::size_t... Is, typename F>
 constexpr void
 for_constexpr_detail([[maybe_unused]] std::index_sequence<Is...> indexes,
-                     F &&f) {
-  (std::forward<F>(f)(std::integral_constant<std::size_t, Is>{}), ...);
+                     F &f) {
+  (f(std::integral_constant<std::size_t, Is>{}), ...);
 }
 
 //! @todo Remove for C++26 P1789 Library Support for Expansion Statements.
 template <std::size_t Size, typename Function>
-constexpr void for_constexpr(Function &&function) {
-  for_constexpr_detail(std::make_index_sequence<Size>{},
-                       std::forward<Function>(function));
+constexpr void for_constexpr(Function function) {
+  for_constexpr_detail(std::make_index_sequence<Size>{}, function);
 }
 
 template <typename Type>
@@ -558,7 +557,7 @@ template <char... Digits> constexpr auto parse_digits() -> std::size_t {
                 "Characters must only be digits.");
 
   std::size_t number{0};
-  ((number = number * 10 + (Digits - '0')), ...);
+  ((number = (number * 10) + (Digits - '0')), ...);
 
   return number;
 }
@@ -616,6 +615,6 @@ template <typename Type> constexpr auto is_distinct_typed_matrix() -> bool {
 template <typename Type>
 concept distinct_typed_matrix =
     same_as_typed_matrix<Type> and is_distinct_typed_matrix<Type>();
-} // namespace fcarouge::typed_linear_algebra_internal
+} // namespace fcarouge::typed_linear_algebra::internal
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_UTILITY_HPP

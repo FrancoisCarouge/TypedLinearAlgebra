@@ -55,10 +55,8 @@ template <auto Size> void bench() {
   using mdspan =
       std::mdspan<double, std::extents<std::size_t, Size, Size>,
                   Kokkos::layout_right, Kokkos::default_accessor<double>>;
-  using matrix =
-      typed_matrix<mdspan,
-                   typed_linear_algebra_internal::tuple_n_type<double, Size>,
-                   typed_linear_algebra_internal::tuple_n_type<double, Size>>;
+  using matrix = typed_matrix<mdspan, tla::tuple_n_type<double, Size>,
+                              tla::tuple_n_type<double, Size>>;
 
   std::vector<double> storage_a(Size * Size);
   std::vector<double> storage_b(Size * Size);

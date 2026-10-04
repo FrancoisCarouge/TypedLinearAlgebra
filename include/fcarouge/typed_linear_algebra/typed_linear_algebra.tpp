@@ -33,8 +33,6 @@ For more information, please refer to <https://unlicense.org> */
 #define FCAROUGE_TYPED_LINEAR_ALGEBRA_TYPED_LINEAR_ALGEBRA_TPP
 
 namespace fcarouge {
-namespace tla = typed_linear_algebra_internal;
-
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix()
   requires std::default_initializable<Matrix>

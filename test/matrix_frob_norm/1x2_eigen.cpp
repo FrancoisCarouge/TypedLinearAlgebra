@@ -29,38 +29,20 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_LINALG_HPP
-#define FCAROUGE_LINALG_HPP
+#include "fcarouge/linalg.hpp"
 
-//! @file
-//! @brief Scalar type typed linear algebra with the Armadillo implementation.
+#include <cassert>
 
-#include "fcarouge/armadillo.hpp"
-#include "fcarouge/typed_linear_algebra.hpp"
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the Frobenius norm of a row vector is its magnitude.
+[[maybe_unused]] const auto test{[] -> int {
+  const matrix<double, 1, 2> value{3., 4.};
 
-#include <cstddef>
+  assert(matrix_frob_norm(value) == 5.);
+  assert(matrix_frob_norm(value) == magnitude(value));
 
-namespace fcarouge {
-
-//! @name Types
-//! @{
-
-//! @brief Scalar type matrix with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
-using matrix =
-    typed_matrix<armadillo::matrix<Type, Row, Column>,
-                 tla::tuple_n_type<Type, Row>, tla::tuple_n_type<Type, Column>>;
-
-//! @brief Scalar type column vector with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1>
-using column_vector = matrix<Type, Row, 1>;
-
-//! @brief Scalar type row vector with Armadillo implementations.
-template <typename Type = double, std::size_t Column = 1>
-using row_vector = matrix<Type, 1, Column>;
-
-//! @}
-
-} // namespace fcarouge
-
-#endif // FCAROUGE_LINALG_HPP
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

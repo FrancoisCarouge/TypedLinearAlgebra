@@ -32,30 +32,20 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MAGNITUDE_TPP
 #define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MAGNITUDE_TPP
 
-#include <cmath>
-
 namespace fcarouge {
+[[nodiscard]] constexpr auto
+matrix_frob_norm(const uniform_typed_matrix auto &value);
+
+//! @brief Euclidean L2 norm of a row or column vector.
+//!
+//! @details The Frobenius norm of a vector, under its geometric name.
+//! Restricted to vectors, where the norm has this conventional meaning.
 [[nodiscard]] constexpr auto magnitude(const uniform_typed_matrix auto &value) {
   static_assert(
       rank_typed_matrix<decltype(value), 1>,
       "The magnitude operation only supports vector types at this time.");
 
-  using matrix = std::remove_cvref_t<decltype(value)>;
-  using element = typename matrix::template element<0>;
-  using underlying = typename matrix::underlying;
-
-  underlying sums{};
-
-  // There exists a variety of implementation tradeoffs to explore. Delegate to
-  // underlying linear algebra library? Implement atop strong types?
-  tla::for_constexpr<matrix::rows * matrix::columns>([&](auto i) {
-    const underlying term{cast<underlying, element>(value.template at<i>())};
-    sums += term * term;
-  });
-
-  using std::sqrt;
-
-  return cast<element, underlying>(sqrt(sums));
+  return fcarouge::matrix_frob_norm(value);
 }
 } // namespace fcarouge
 

@@ -48,7 +48,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <utility>
 
 namespace fcarouge {
-namespace tla = typed_linear_algebra_internal;
+namespace tla = typed_linear_algebra::internal;
 
 //! @name Concepts
 //! @{
@@ -515,7 +515,7 @@ static inline constexpr element_caster<To, From> cast{};
 //! element type computation. This is a multiplication function object. Unlike
 //! `std::multiplies` the two operands and resulting types can be different: `W
 //! multiplies::operator(const U& lhs, const V& rhs)`.
-using typed_linear_algebra_internal::multiplies;
+using tla::multiplies;
 
 //! @brief Factory function for partial template deduction.
 //!
@@ -560,6 +560,7 @@ template <char... Digits> constexpr auto operator""_i() noexcept {
 #include "typed_linear_algebra/algorithm/dot.tpp"
 #include "typed_linear_algebra/algorithm/equal_to.tpp"
 #include "typed_linear_algebra/algorithm/magnitude.tpp"
+#include "typed_linear_algebra/algorithm/matrix_frob_norm.tpp"
 #include "typed_linear_algebra/algorithm/matrix_product.tpp"
 #include "typed_linear_algebra/algorithm/matrix_vector_product.tpp"
 #include "typed_linear_algebra/algorithm/minus.tpp"
@@ -583,6 +584,9 @@ namespace fcarouge {
                                  const rank_typed_matrix<1> auto &rhs);
 
 [[nodiscard]] constexpr auto magnitude(const uniform_typed_matrix auto &value);
+
+[[nodiscard]] constexpr auto
+matrix_frob_norm(const uniform_typed_matrix auto &value);
 
 [[nodiscard]] constexpr auto operator==(const rank_typed_matrix<2> auto &lhs,
                                         const rank_typed_matrix<2> auto &rhs)

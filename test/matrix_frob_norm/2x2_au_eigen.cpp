@@ -29,38 +29,39 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_LINALG_HPP
-#define FCAROUGE_LINALG_HPP
+#include "fcarouge/linalg.hpp"
 
-//! @file
-//! @brief Scalar type typed linear algebra with the Armadillo implementation.
+#include <au/units/meters.hh>
 
-#include "fcarouge/armadillo.hpp"
-#include "fcarouge/typed_linear_algebra.hpp"
+#include <cassert>
+#include <concepts>
+#include <tuple>
 
-#include <cstddef>
+namespace fcarouge::test {
+using representation = double;
 
-namespace fcarouge {
+namespace {
+//! @test Verifies the Frobenius norm of a two-by-two matrix of areas, the
+//! product of its length row and column indexes, is an area.
+[[maybe_unused]] const auto test{[] -> int {
+  using au::symbols::m;
+  using length = au::QuantityD<au::Meters>;
+  using indexes = std::tuple<length, length>;
 
-//! @name Types
-//! @{
+  constexpr auto m2{au::squared(m)};
 
-//! @brief Scalar type matrix with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
-using matrix =
-    typed_matrix<armadillo::matrix<Type, Row, Column>,
-                 tla::tuple_n_type<Type, Row>, tla::tuple_n_type<Type, Column>>;
+  matrix<representation, indexes, indexes> value;
 
-//! @brief Scalar type column vector with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1>
-using column_vector = matrix<Type, Row, 1>;
+  value.at<0, 0>(1. * m2);
+  value.at<0, 1>(2. * m2);
+  value.at<1, 0>(2. * m2);
+  value.at<1, 1>(4. * m2);
 
-//! @brief Scalar type row vector with Armadillo implementations.
-template <typename Type = double, std::size_t Column = 1>
-using row_vector = matrix<Type, 1, Column>;
+  static_assert(std::same_as<decltype(matrix_frob_norm(value)),
+                             decltype(value)::element<0, 0>>);
+  assert(matrix_frob_norm(value) == 5. * m2);
 
-//! @}
-
-} // namespace fcarouge
-
-#endif // FCAROUGE_LINALG_HPP
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

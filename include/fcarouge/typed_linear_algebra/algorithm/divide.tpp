@@ -33,8 +33,6 @@ For more information, please refer to <https://unlicense.org> */
 #define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_DIVIDE_TPP
 
 namespace fcarouge {
-namespace tla = typed_linear_algebra_internal;
-
 //! @details Matrix division is a mathematical abuse of terminology. Informally
 //! defined as multiplication by the inverse. Similarly to division by zero in
 //! real numbers, there exist matrices that are not invertible. Remember the

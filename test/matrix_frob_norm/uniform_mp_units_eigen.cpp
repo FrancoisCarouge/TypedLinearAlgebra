@@ -29,38 +29,33 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_LINALG_HPP
-#define FCAROUGE_LINALG_HPP
+#include "fcarouge/linalg.hpp"
 
-//! @file
-//! @brief Scalar type typed linear algebra with the Armadillo implementation.
+#include <functional>
+#include <tuple>
 
-#include "fcarouge/armadillo.hpp"
-#include "fcarouge/typed_linear_algebra.hpp"
+namespace fcarouge::test {
+namespace {
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::s;
+template <auto Reference>
+using quantity = mp_units::quantity<Reference, double>;
+using position = quantity<mp_units::isq::length[m]>;
+using velocity = quantity<mp_units::isq::velocity[m / s]>;
 
-#include <cstddef>
+using identity = std::tuple<std::identity>;
+using positions = matrix<double, std::tuple<position, position>, identity>;
+using state = matrix<double, std::tuple<position, velocity>, identity>;
 
-namespace fcarouge {
+//! @brief A requires-expression only yields `false` on substitution failure
+//! within a template, hence the concept.
+template <typename Type>
+concept frobenius_normable = requires(Type value) { matrix_frob_norm(value); };
 
-//! @name Types
-//! @{
-
-//! @brief Scalar type matrix with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
-using matrix =
-    typed_matrix<armadillo::matrix<Type, Row, Column>,
-                 tla::tuple_n_type<Type, Row>, tla::tuple_n_type<Type, Column>>;
-
-//! @brief Scalar type column vector with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1>
-using column_vector = matrix<Type, Row, 1>;
-
-//! @brief Scalar type row vector with Armadillo implementations.
-template <typename Type = double, std::size_t Column = 1>
-using row_vector = matrix<Type, 1, Column>;
-
-//! @}
-
-} // namespace fcarouge
-
-#endif // FCAROUGE_LINALG_HPP
+//! @test Verifies the Frobenius norm constraint is SFINAE-friendly: a
+//! uniform matrix is accepted, a non-uniform one is excluded from overload
+//! resolution rather than hard-erroring.
+static_assert(frobenius_normable<positions>);
+static_assert(not frobenius_normable<state>);
+} // namespace
+} // namespace fcarouge::test

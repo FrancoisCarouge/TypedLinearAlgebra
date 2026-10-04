@@ -29,38 +29,28 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_LINALG_HPP
-#define FCAROUGE_LINALG_HPP
+#include "fcarouge/linalg.hpp"
 
-//! @file
-//! @brief Scalar type typed linear algebra with the Armadillo implementation.
+#include <cassert>
+#include <chrono>
+#include <concepts>
 
-#include "fcarouge/armadillo.hpp"
-#include "fcarouge/typed_linear_algebra.hpp"
+namespace fcarouge::test {
+using representation = double;
 
-#include <cstddef>
+namespace {
+//! @test Verifies the Frobenius norm of a column vector of std::chrono
+//! durations is a duration.
+[[maybe_unused]] const auto test{[] -> int {
+  using seconds = std::chrono::duration<representation>;
 
-namespace fcarouge {
+  const column_vector<representation, seconds, seconds, seconds> value{
+      seconds{2.}, seconds{3.}, seconds{6.}};
 
-//! @name Types
-//! @{
+  static_assert(std::same_as<decltype(matrix_frob_norm(value)), seconds>);
+  assert(matrix_frob_norm(value) == seconds{7.});
 
-//! @brief Scalar type matrix with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
-using matrix =
-    typed_matrix<armadillo::matrix<Type, Row, Column>,
-                 tla::tuple_n_type<Type, Row>, tla::tuple_n_type<Type, Column>>;
-
-//! @brief Scalar type column vector with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1>
-using column_vector = matrix<Type, Row, 1>;
-
-//! @brief Scalar type row vector with Armadillo implementations.
-template <typename Type = double, std::size_t Column = 1>
-using row_vector = matrix<Type, 1, Column>;
-
-//! @}
-
-} // namespace fcarouge
-
-#endif // FCAROUGE_LINALG_HPP
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

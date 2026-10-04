@@ -29,38 +29,39 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_LINALG_HPP
-#define FCAROUGE_LINALG_HPP
+#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_AS_VECTOR_SPAN_HPP
+#define FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_AS_VECTOR_SPAN_HPP
 
 //! @file
-//! @brief Scalar type typed linear algebra with the Armadillo implementation.
+//! @brief Rank one view of a typed vector's storage, for `std::linalg`.
+//!
+//! @details Kept apart from `utility.hpp` so that only the backends providing
+//! `std::linalg` pull in `<mdspan>`.
 
-#include "fcarouge/armadillo.hpp"
-#include "fcarouge/typed_linear_algebra.hpp"
+#if __has_include(<linalg>)
 
 #include <cstddef>
+#include <mdspan>
+#include <type_traits>
 
-namespace fcarouge {
+namespace fcarouge::typed_linear_algebra::internal {
+//! @brief Reinterprets a row or column typed vector's contiguous, rank two,
+//! n-by-one or one-by-n storage as the rank one span required by
+//! `std::linalg`'s vector concepts.
+//!
+//! @details A typed row or column vector, `rank_typed_matrix<1>`, is stored
+//! as a rank two, n-by-one or one-by-n, underlying matrix, unlike the rank
+//! one `in-vector`, `out-vector` shapes expected by `std::linalg`.
+template <typename Type> constexpr auto as_vector_span(Type &value) {
+  using matrix = std::remove_cvref_t<Type>;
+  using underlying = typename matrix::underlying;
 
-//! @name Types
-//! @{
+  return std::mdspan<underlying,
+                     std::extents<std::size_t, matrix::rows * matrix::columns>>(
+      value.data().data_handle());
+}
+} // namespace fcarouge::typed_linear_algebra::internal
 
-//! @brief Scalar type matrix with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
-using matrix =
-    typed_matrix<armadillo::matrix<Type, Row, Column>,
-                 tla::tuple_n_type<Type, Row>, tla::tuple_n_type<Type, Column>>;
+#endif
 
-//! @brief Scalar type column vector with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1>
-using column_vector = matrix<Type, Row, 1>;
-
-//! @brief Scalar type row vector with Armadillo implementations.
-template <typename Type = double, std::size_t Column = 1>
-using row_vector = matrix<Type, 1, Column>;
-
-//! @}
-
-} // namespace fcarouge
-
-#endif // FCAROUGE_LINALG_HPP
+#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_AS_VECTOR_SPAN_HPP

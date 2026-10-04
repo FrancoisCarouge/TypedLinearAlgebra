@@ -1,4 +1,4 @@
-/* Typed Linear Algebra
+#[[ Typed Linear Algebra
 Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,40 +27,19 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> */
+For more information, please refer to <https://unlicense.org> ]]
 
-#ifndef FCAROUGE_LINALG_HPP
-#define FCAROUGE_LINALG_HPP
+cmake_minimum_required(VERSION "4.3")
+project(typed_linear_algebra_install_consumer LANGUAGES "CXX")
 
-//! @file
-//! @brief Scalar type typed linear algebra with the Armadillo implementation.
+if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+  add_compile_options("/std:c++latest")
+else()
+  set(CMAKE_CXX_STANDARD 26)
+endif()
 
-#include "fcarouge/armadillo.hpp"
-#include "fcarouge/typed_linear_algebra.hpp"
-
-#include <cstddef>
-
-namespace fcarouge {
-
-//! @name Types
-//! @{
-
-//! @brief Scalar type matrix with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
-using matrix =
-    typed_matrix<armadillo::matrix<Type, Row, Column>,
-                 tla::tuple_n_type<Type, Row>, tla::tuple_n_type<Type, Column>>;
-
-//! @brief Scalar type column vector with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1>
-using column_vector = matrix<Type, Row, 1>;
-
-//! @brief Scalar type row vector with Armadillo implementations.
-template <typename Type = double, std::size_t Column = 1>
-using row_vector = matrix<Type, 1, Column>;
-
-//! @}
-
-} // namespace fcarouge
-
-#endif // FCAROUGE_LINALG_HPP
+find_package(fcarouge-typed-linear-algebra REQUIRED CONFIG)
+add_executable(typed_linear_algebra_install_consumer "find_package.cpp")
+target_link_libraries(
+  typed_linear_algebra_install_consumer
+  PRIVATE fcarouge-typed-linear-algebra::tlinalg)

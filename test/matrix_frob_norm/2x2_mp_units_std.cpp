@@ -29,38 +29,40 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_LINALG_HPP
-#define FCAROUGE_LINALG_HPP
+#include "fcarouge/linalg.hpp"
 
-//! @file
-//! @brief Scalar type typed linear algebra with the Armadillo implementation.
-
-#include "fcarouge/armadillo.hpp"
-#include "fcarouge/typed_linear_algebra.hpp"
-
+#include <cassert>
 #include <cstddef>
+#include <functional>
+#include <mdspan>
+#include <tuple>
 
-namespace fcarouge {
+namespace fcarouge::test {
+using representation = double;
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+using mp_units::si::unit_symbols::m;
 
-//! @name Types
-//! @{
+namespace {
+//! @test Verifies the Frobenius norm of a two-by-two matrix of lengths, with
+//! the mdspan-backed, non-owning storage backend.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = quantity<mp_units::isq::length[m]>;
+  using row_indexes = std::tuple<length, length>;
+  using column_indexes = std::tuple<std::identity, std::identity>;
 
-//! @brief Scalar type matrix with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
-using matrix =
-    typed_matrix<armadillo::matrix<Type, Row, Column>,
-                 tla::tuple_n_type<Type, Row>, tla::tuple_n_type<Type, Column>>;
+  double storage[4]{};
+  std::mdspan span{&storage[0], std::extents<std::size_t, 2, 2>{}};
+  matrix<representation, row_indexes, column_indexes> value{span};
 
-//! @brief Scalar type column vector with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1>
-using column_vector = matrix<Type, Row, 1>;
+  value.at<0, 0>(1. * m);
+  value.at<0, 1>(2. * m);
+  value.at<1, 0>(2. * m);
+  value.at<1, 1>(4. * m);
 
-//! @brief Scalar type row vector with Armadillo implementations.
-template <typename Type = double, std::size_t Column = 1>
-using row_vector = matrix<Type, 1, Column>;
+  assert(matrix_frob_norm(value) == 5. * m);
 
-//! @}
-
-} // namespace fcarouge
-
-#endif // FCAROUGE_LINALG_HPP
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

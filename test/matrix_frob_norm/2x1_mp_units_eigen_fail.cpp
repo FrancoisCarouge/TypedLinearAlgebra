@@ -29,38 +29,31 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_LINALG_HPP
-#define FCAROUGE_LINALG_HPP
+#include "fcarouge/linalg.hpp"
 
-//! @file
-//! @brief Scalar type typed linear algebra with the Armadillo implementation.
+#include <functional>
+#include <tuple>
 
-#include "fcarouge/armadillo.hpp"
-#include "fcarouge/typed_linear_algebra.hpp"
+namespace fcarouge::test {
+namespace {
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::s;
+template <auto Reference>
+using quantity = mp_units::quantity<Reference, double>;
+using position = quantity<mp_units::isq::length[m]>;
+using velocity = quantity<mp_units::isq::velocity[m / s]>;
 
-#include <cstddef>
+//! @test Verifies the Frobenius norm rejects a non-uniform vector: the norm
+//! of a position and a velocity has no meaningful type.
+[[maybe_unused]] const auto test{[] {
+  // Intended: const matrix<double, std::tuple<position, position>,
+  const matrix<double, std::tuple<position, velocity>,
+               std::tuple<std::identity>>
+      value{};
 
-namespace fcarouge {
+  [[maybe_unused]] const auto norm{matrix_frob_norm(value)};
 
-//! @name Types
-//! @{
-
-//! @brief Scalar type matrix with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
-using matrix =
-    typed_matrix<armadillo::matrix<Type, Row, Column>,
-                 tla::tuple_n_type<Type, Row>, tla::tuple_n_type<Type, Column>>;
-
-//! @brief Scalar type column vector with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1>
-using column_vector = matrix<Type, Row, 1>;
-
-//! @brief Scalar type row vector with Armadillo implementations.
-template <typename Type = double, std::size_t Column = 1>
-using row_vector = matrix<Type, 1, Column>;
-
-//! @}
-
-} // namespace fcarouge
-
-#endif // FCAROUGE_LINALG_HPP
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

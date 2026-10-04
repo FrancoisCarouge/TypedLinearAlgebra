@@ -104,14 +104,11 @@ template <typename Tuple, typename Type> struct accessor {
 
 //! @benchmark `std::mdspan` square matrix-matrix product.
 template <auto Size> void bench() {
-  using tuple =
-      typed_linear_algebra_internal::tuple_n_type<double, Size * Size>;
+  using tuple = tla::tuple_n_type<double, Size * Size>;
   using mdspan = std::mdspan<double, std::extents<std::size_t, Size, Size>,
                              Kokkos::layout_right, accessor<tuple, double>>;
-  using matrix =
-      typed_matrix<mdspan,
-                   typed_linear_algebra_internal::tuple_n_type<double, Size>,
-                   typed_linear_algebra_internal::tuple_n_type<double, Size>>;
+  using matrix = typed_matrix<mdspan, tla::tuple_n_type<double, Size>,
+                              tla::tuple_n_type<double, Size>>;
 
   tuple storage_a;
   tuple storage_b;

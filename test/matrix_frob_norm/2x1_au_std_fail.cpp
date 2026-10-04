@@ -29,38 +29,32 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_LINALG_HPP
-#define FCAROUGE_LINALG_HPP
+#include "fcarouge/linalg.hpp"
 
-//! @file
-//! @brief Scalar type typed linear algebra with the Armadillo implementation.
-
-#include "fcarouge/armadillo.hpp"
-#include "fcarouge/typed_linear_algebra.hpp"
+#include <au/units/meters.hh>
+#include <au/units/seconds.hh>
 
 #include <cstddef>
+#include <mdspan>
 
-namespace fcarouge {
+namespace fcarouge::test {
+using representation = double;
 
-//! @name Types
-//! @{
+namespace {
+//! @test Verifies the Frobenius norm rejects a non-uniform vector, with the
+//! mdspan-backed, non-owning storage backend.
+[[maybe_unused]] const auto test{[] {
+  using position = au::QuantityD<au::Meters>;
+  using velocity = au::QuantityD<au::UnitQuotientT<au::Meters, au::Seconds>>;
 
-//! @brief Scalar type matrix with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
-using matrix =
-    typed_matrix<armadillo::matrix<Type, Row, Column>,
-                 tla::tuple_n_type<Type, Row>, tla::tuple_n_type<Type, Column>>;
+  double storage[]{0., 0.};
+  std::mdspan span{&storage[0], std::extents<std::size_t, 2, 1>{}};
+  // Intended: const column_vector<representation, position, position> value{
+  const column_vector<representation, position, velocity> value{span};
 
-//! @brief Scalar type column vector with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1>
-using column_vector = matrix<Type, Row, 1>;
+  [[maybe_unused]] const auto norm{matrix_frob_norm(value)};
 
-//! @brief Scalar type row vector with Armadillo implementations.
-template <typename Type = double, std::size_t Column = 1>
-using row_vector = matrix<Type, 1, Column>;
-
-//! @}
-
-} // namespace fcarouge
-
-#endif // FCAROUGE_LINALG_HPP
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

@@ -29,38 +29,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_LINALG_HPP
-#define FCAROUGE_LINALG_HPP
-
-//! @file
-//! @brief Scalar type typed linear algebra with the Armadillo implementation.
-
-#include "fcarouge/armadillo.hpp"
+//! @test Verifies the installed public headers are self-sufficient: the
+//! library header and every implementation file it includes compile from the
+//! installed package alone.
 #include "fcarouge/typed_linear_algebra.hpp"
+#include "fcarouge/typed_linear_algebra_forward.hpp"
 
-#include <cstddef>
-
-namespace fcarouge {
-
-//! @name Types
-//! @{
-
-//! @brief Scalar type matrix with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
-using matrix =
-    typed_matrix<armadillo::matrix<Type, Row, Column>,
-                 tla::tuple_n_type<Type, Row>, tla::tuple_n_type<Type, Column>>;
-
-//! @brief Scalar type column vector with Armadillo implementations.
-template <typename Type = double, std::size_t Row = 1>
-using column_vector = matrix<Type, Row, 1>;
-
-//! @brief Scalar type row vector with Armadillo implementations.
-template <typename Type = double, std::size_t Column = 1>
-using row_vector = matrix<Type, 1, Column>;
-
-//! @}
-
-} // namespace fcarouge
-
-#endif // FCAROUGE_LINALG_HPP
+auto main() -> int { return 0; }

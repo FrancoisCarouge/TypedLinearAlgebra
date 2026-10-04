@@ -49,7 +49,7 @@ set(_out "${CMAKE_CURRENT_LIST_DIR}/test_matrix.html")
 # library> (e.g. "au_eigen" is the Au strong type over the Eigen backend). These
 # backends have no strong type component, just the library itself.
 set(_type_less_backends "eigen" "eigexed" "nested_typed_eigen" "armadillo"
-                        "armadilloxed")
+    "armadilloxed")
 
 file(GLOB _lists "${CMAKE_CURRENT_LIST_DIR}/../test/*/CMakeLists.txt")
 
