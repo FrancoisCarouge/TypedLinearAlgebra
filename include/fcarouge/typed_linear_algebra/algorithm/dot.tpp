@@ -32,11 +32,11 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_DOT_TPP
 #define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_DOT_TPP
 
+#include "fcarouge/typed_linear_algebra/internal/as_vector_span.hpp"
+
 #if __has_include(<linalg>)
 
-#include <cstddef>
 #include <linalg>
-#include <mdspan>
 
 #endif
 
@@ -45,26 +45,6 @@ namespace fcarouge {
                                  const rank_typed_matrix<1> auto &rhs);
 
 namespace typed_linear_algebra::internal {
-#if __has_include(<linalg>)
-
-//! @brief Reinterprets a row or column typed vector's contiguous, rank two,
-//! n-by-one or one-by-n storage as the rank one span required by
-//! `std::linalg`'s vector concepts.
-//!
-//! @details A typed row or column vector, `rank_typed_matrix<1>`, is stored
-//! as a rank two, n-by-one or one-by-n, underlying matrix, unlike the rank
-//! one `in-vector`, `out-vector` shapes expected by `std::linalg`.
-template <typename Type> constexpr auto as_vector_span(Type &value) {
-  using matrix = std::remove_cvref_t<Type>;
-  using underlying = typename matrix::underlying;
-
-  return std::mdspan<underlying,
-                     std::extents<std::size_t, matrix::rows * matrix::columns>>(
-      value.data().data_handle());
-}
-
-#endif
-
 [[nodiscard]] constexpr auto dot(const rank_typed_matrix<1> auto &lhs,
                                  const rank_typed_matrix<1> auto &rhs) {
 #if __has_include(<linalg>)
@@ -80,10 +60,9 @@ template <typename Type> constexpr auto as_vector_span(Type &value) {
   }
 #if __has_include(<linalg>)
   else if constexpr (requires {
-                       dot(internal::as_vector_span(lhs),
-                           internal::as_vector_span(rhs));
+                       dot(tla::as_vector_span(lhs), tla::as_vector_span(rhs));
                      }) {
-    return dot(internal::as_vector_span(lhs), internal::as_vector_span(rhs));
+    return dot(tla::as_vector_span(lhs), tla::as_vector_span(rhs));
   }
 #endif
   else {
@@ -96,8 +75,7 @@ template <typename Type> constexpr auto as_vector_span(Type &value) {
 //! @brief Sum of the products of the corresponding elements of two vectors.
 //!
 //! @details Row or column orientation is not required to match between the
-//! two vectors, only their element count. Delegated to the linear algebra
-//! backend via `tla::dot`.
+//! two vectors, only their element count.
 //!
 //! @param lhs The first vector.
 //! @param rhs The second vector.

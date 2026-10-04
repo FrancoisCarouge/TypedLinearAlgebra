@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,44 +27,39 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-if(NOT BUILD_TESTING)
-  return()
-endif()
+#include "fcarouge/linalg.hpp"
 
-add_subdirectory("add")
-add_subdirectory("addition")
-add_subdirectory("amalgamate")
-add_subdirectory("assign")
-add_subdirectory("at")
-add_subdirectory("column_typed_matrix")
-add_subdirectory("common_with")
-add_subdirectory("constructor")
-add_subdirectory("copy")
-add_subdirectory("distinct_typed_matrix")
-add_subdirectory("division")
-add_subdirectory("dot")
-add_subdirectory("element")
-add_subdirectory("equal_to")
-add_subdirectory("format")
-add_subdirectory("install")
-add_subdirectory("magnitude")
-add_subdirectory("matrix_frob_norm")
-add_subdirectory("matrix_product")
-add_subdirectory("matrix_vector_product")
-add_subdirectory("minus")
-add_subdirectory("mp_units")
-add_subdirectory("multiplication")
-add_subdirectory("nested")
-add_subdirectory("operator")
-add_subdirectory("rank_typed_matrix")
-add_subdirectory("row_typed_matrix")
-add_subdirectory("same_as_typed_matrix")
-add_subdirectory("same_shape")
-add_subdirectory("scale")
-add_subdirectory("structured_bindings")
-add_subdirectory("subtraction")
-add_subdirectory("transposed")
-add_subdirectory("underlying")
-add_subdirectory("uniform_typed_matrix")
+#include <cassert>
+#include <concepts>
+#include <functional>
+#include <tuple>
+
+namespace fcarouge::test {
+using representation = double;
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+using mp_units::si::unit_symbols::m;
+
+namespace {
+//! @test Verifies the Frobenius norm of a two-by-two matrix of lengths.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = quantity<mp_units::isq::length[m]>;
+  using row_indexes = std::tuple<length, length>;
+  using column_indexes = std::tuple<std::identity, std::identity>;
+
+  matrix<representation, row_indexes, column_indexes> value;
+
+  value.at<0, 0>(1. * m);
+  value.at<0, 1>(2. * m);
+  value.at<1, 0>(2. * m);
+  value.at<1, 1>(4. * m);
+
+  static_assert(std::same_as<decltype(matrix_frob_norm(value)), length>);
+  assert(matrix_frob_norm(value) == 5. * m);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
