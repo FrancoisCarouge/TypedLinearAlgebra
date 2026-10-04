@@ -52,12 +52,12 @@ namespace {
   matrix<representation, row_indexes, column_indexes> value;
 
   value.at<0, 0>(1. * m);
-  value.at<0, 1>(2. * m);
-  value.at<1, 0>(2. * m);
+  value.at<0, 1>(-4. * m);
+  value.at<1, 0>(4. * m);
   value.at<1, 1>(4. * m);
 
   static_assert(std::same_as<decltype(matrix_frob_norm(value)), length>);
-  assert(matrix_frob_norm(value) == 5. * m);
+  assert(matrix_frob_norm(value) == 7. * m);
 
   return 0;
 }()};

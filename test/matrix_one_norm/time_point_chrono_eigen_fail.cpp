@@ -31,16 +31,23 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <cassert>
+#include <chrono>
 
 namespace fcarouge::test {
-namespace {
-//! @test Verifies the Frobenius norm of a row vector is its magnitude.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 1, 2> value{3., -4.};
+using representation = double;
 
-  assert(matrix_frob_norm(value) == 5.);
-  assert(matrix_frob_norm(value) == magnitude(value));
+namespace {
+//! @test Verifies the one norm rejects affine std::chrono time points,
+//! which are not addable, unlike durations.
+[[maybe_unused]] const auto test{[] {
+  using seconds = std::chrono::duration<representation>;
+  using time_point = std::chrono::sys_time<seconds>;
+
+  // Intended: const column_vector<representation, seconds, seconds> value{
+  const column_vector<representation, time_point, time_point> value{
+      time_point{seconds{3.}}, time_point{seconds{4.}}};
+
+  [[maybe_unused]] const auto norm{matrix_one_norm(value)};
 
   return 0;
 }()};

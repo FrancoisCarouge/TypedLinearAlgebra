@@ -32,15 +32,28 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
+#include <cstddef>
+#include <mdspan>
 
 namespace fcarouge::test {
-namespace {
-//! @test Verifies the Frobenius norm of a row vector is its magnitude.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 1, 2> value{3., -4.};
+using representation = double;
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+using mp_units::si::unit_symbols::m;
 
-  assert(matrix_frob_norm(value) == 5.);
-  assert(matrix_frob_norm(value) == magnitude(value));
+namespace {
+//! @test Verifies the one norm of a singleton is its absolute value,
+//! with the mdspan-backed, non-owning storage backend.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = quantity<mp_units::isq::length[m]>;
+
+  double storage{0.};
+  std::mdspan span{&storage, std::extents<std::size_t, 1, 1>{}};
+  row_vector<representation, length> value{span};
+
+  value = -5. * m;
+
+  assert(matrix_one_norm(value) == 5. * m);
 
   return 0;
 }()};

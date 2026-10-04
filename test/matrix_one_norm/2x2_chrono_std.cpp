@@ -32,15 +32,33 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
+#include <chrono>
+#include <cstddef>
+#include <functional>
+#include <mdspan>
+#include <tuple>
 
 namespace fcarouge::test {
-namespace {
-//! @test Verifies the Frobenius norm of a row vector is its magnitude.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 1, 2> value{3., -4.};
+using representation = double;
 
-  assert(matrix_frob_norm(value) == 5.);
-  assert(matrix_frob_norm(value) == magnitude(value));
+namespace {
+//! @test Verifies the one norm of a two-by-two matrix of std::chrono
+//! durations, with the mdspan-backed, non-owning storage backend.
+[[maybe_unused]] const auto test{[] -> int {
+  using seconds = std::chrono::duration<representation>;
+  using row_indexes = std::tuple<seconds, seconds>;
+  using column_indexes = std::tuple<std::identity, std::identity>;
+
+  double storage[4]{};
+  std::mdspan span{&storage[0], std::extents<std::size_t, 2, 2>{}};
+  matrix<representation, row_indexes, column_indexes> value{span};
+
+  value.at<0, 0>(seconds{1.});
+  value.at<0, 1>(seconds{-2.});
+  value.at<1, 0>(seconds{-3.});
+  value.at<1, 1>(seconds{4.});
+
+  assert(matrix_one_norm(value) == seconds{6.});
 
   return 0;
 }()};

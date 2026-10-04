@@ -31,16 +31,28 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <cassert>
+#include <au/units/meters.hh>
+#include <au/units/seconds.hh>
+
+#include <cstddef>
+#include <mdspan>
 
 namespace fcarouge::test {
-namespace {
-//! @test Verifies the Frobenius norm of a row vector is its magnitude.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 1, 2> value{3., -4.};
+using representation = double;
 
-  assert(matrix_frob_norm(value) == 5.);
-  assert(matrix_frob_norm(value) == magnitude(value));
+namespace {
+//! @test Verifies the one norm rejects a non-uniform vector, with the
+//! mdspan-backed, non-owning storage backend.
+[[maybe_unused]] const auto test{[] {
+  using position = au::QuantityD<au::Meters>;
+  using velocity = au::QuantityD<au::UnitQuotientT<au::Meters, au::Seconds>>;
+
+  double storage[]{0., 0.};
+  std::mdspan span{&storage[0], std::extents<std::size_t, 2, 1>{}};
+  // Intended: const column_vector<representation, position, position> value{
+  const column_vector<representation, position, velocity> value{span};
+
+  [[maybe_unused]] const auto norm{matrix_one_norm(value)};
 
   return 0;
 }()};

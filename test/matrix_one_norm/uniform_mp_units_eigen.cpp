@@ -31,18 +31,31 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <cassert>
+#include <functional>
+#include <tuple>
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the Frobenius norm of a row vector is its magnitude.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 1, 2> value{3., -4.};
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::s;
+template <auto Reference>
+using quantity = mp_units::quantity<Reference, double>;
+using position = quantity<mp_units::isq::length[m]>;
+using velocity = quantity<mp_units::isq::velocity[m / s]>;
 
-  assert(matrix_frob_norm(value) == 5.);
-  assert(matrix_frob_norm(value) == magnitude(value));
+using identity = std::tuple<std::identity>;
+using positions = matrix<double, std::tuple<position, position>, identity>;
+using state = matrix<double, std::tuple<position, velocity>, identity>;
 
-  return 0;
-}()};
+//! @brief A requires-expression only yields `false` on substitution failure
+//! within a template, hence the concept.
+template <typename Type>
+concept one_normable = requires(Type value) { matrix_one_norm(value); };
+
+//! @test Verifies the one norm constraint is SFINAE-friendly: a
+//! uniform matrix is accepted, a non-uniform one is excluded from overload
+//! resolution rather than hard-erroring.
+static_assert(one_normable<positions>);
+static_assert(not one_normable<state>);
 } // namespace
 } // namespace fcarouge::test
