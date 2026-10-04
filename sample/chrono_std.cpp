@@ -99,6 +99,9 @@ using column_extents = std::extents<std::size_t, Rows, 1>;
   const column_vector<seconds, seconds, seconds> x2{s2};
   assert(matrix_frob_norm(x2) == seconds{7.});
 
+  // One norm of the same vector, the sum of its absolute elements.
+  assert(matrix_one_norm(x2) == seconds{11.});
+
   return 0;
 }()};
 } // namespace

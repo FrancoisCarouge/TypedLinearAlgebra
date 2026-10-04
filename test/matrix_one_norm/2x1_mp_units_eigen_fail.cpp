@@ -31,16 +31,27 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <cassert>
+#include <functional>
+#include <tuple>
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the Frobenius norm of a row vector is its magnitude.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 1, 2> value{3., -4.};
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::s;
+template <auto Reference>
+using quantity = mp_units::quantity<Reference, double>;
+using position = quantity<mp_units::isq::length[m]>;
+using velocity = quantity<mp_units::isq::velocity[m / s]>;
 
-  assert(matrix_frob_norm(value) == 5.);
-  assert(matrix_frob_norm(value) == magnitude(value));
+//! @test Verifies the one norm rejects a non-uniform vector: the norm
+//! of a position and a velocity has no meaningful type.
+[[maybe_unused]] const auto test{[] {
+  // Intended: const matrix<double, std::tuple<position, position>,
+  const matrix<double, std::tuple<position, velocity>,
+               std::tuple<std::identity>>
+      value{};
+
+  [[maybe_unused]] const auto norm{matrix_one_norm(value)};
 
   return 0;
 }()};

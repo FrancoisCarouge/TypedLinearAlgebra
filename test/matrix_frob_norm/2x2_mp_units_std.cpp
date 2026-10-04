@@ -56,11 +56,11 @@ namespace {
   matrix<representation, row_indexes, column_indexes> value{span};
 
   value.at<0, 0>(1. * m);
-  value.at<0, 1>(2. * m);
-  value.at<1, 0>(2. * m);
+  value.at<0, 1>(-4. * m);
+  value.at<1, 0>(4. * m);
   value.at<1, 1>(4. * m);
 
-  assert(matrix_frob_norm(value) == 5. * m);
+  assert(matrix_frob_norm(value) == 7. * m);
 
   return 0;
 }()};

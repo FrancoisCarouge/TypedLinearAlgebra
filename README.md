@@ -170,7 +170,8 @@ The following useful operations are supported. This library attempts to align it
 | `add` | Element-wise add two matrices. |
 | `dot` | Sum of the products of the corresponding elements of two vectors. |
 | `magnitude` | Euclidean L2 norm of a row or column vector. |
-| `matrix_frob_norm` | Frobenius norm of a matrix: the square root of the sum of the squares of its elements. |
+| `matrix_frob_norm` | Frobenius norm of a matrix: the square root of the sum of the squares of the absolute values of its elements. |
+| `matrix_one_norm` | One norm of a matrix: the maximum absolute column sum. |
 | `matrix_product` | General matrix-matrix product. |
 | `matrix_vector_product` | Matrix-vector product. |
 | `scale` | Multiply matrix elements by a scalar. |

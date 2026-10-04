@@ -53,13 +53,13 @@ namespace {
   matrix<representation, indexes, indexes> value;
 
   value.at<0, 0>(1. * m2);
-  value.at<0, 1>(2. * m2);
-  value.at<1, 0>(2. * m2);
+  value.at<0, 1>(-4. * m2);
+  value.at<1, 0>(4. * m2);
   value.at<1, 1>(4. * m2);
 
   static_assert(std::same_as<decltype(matrix_frob_norm(value)),
                              decltype(value)::element<0, 0>>);
-  assert(matrix_frob_norm(value) == 5. * m2);
+  assert(matrix_frob_norm(value) == 7. * m2);
 
   return 0;
 }()};

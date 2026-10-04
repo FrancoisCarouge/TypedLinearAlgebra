@@ -32,15 +32,16 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
+#include <concepts>
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the Frobenius norm of a row vector is its magnitude.
+//! @test Verifies the one norm of a singleton is its absolute value.
 [[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 1, 2> value{3., -4.};
+  const matrix<double, 1, 1> value{-5.};
 
-  assert(matrix_frob_norm(value) == 5.);
-  assert(matrix_frob_norm(value) == magnitude(value));
+  static_assert(std::same_as<decltype(matrix_one_norm(value)), double>);
+  assert(matrix_one_norm(value) == 5.);
 
   return 0;
 }()};

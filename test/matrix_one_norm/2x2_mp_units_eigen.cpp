@@ -32,15 +32,32 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
+#include <concepts>
+#include <functional>
+#include <tuple>
 
 namespace fcarouge::test {
-namespace {
-//! @test Verifies the Frobenius norm of a row vector is its magnitude.
-[[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 1, 2> value{3., -4.};
+using representation = double;
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+using mp_units::si::unit_symbols::m;
 
-  assert(matrix_frob_norm(value) == 5.);
-  assert(matrix_frob_norm(value) == magnitude(value));
+namespace {
+//! @test Verifies the one norm of a two-by-two matrix of lengths.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = quantity<mp_units::isq::length[m]>;
+  using row_indexes = std::tuple<length, length>;
+  using column_indexes = std::tuple<std::identity, std::identity>;
+
+  matrix<representation, row_indexes, column_indexes> value;
+
+  value.at<0, 0>(1. * m);
+  value.at<0, 1>(-2. * m);
+  value.at<1, 0>(-3. * m);
+  value.at<1, 1>(4. * m);
+
+  static_assert(std::same_as<decltype(matrix_one_norm(value)), length>);
+  assert(matrix_one_norm(value) == 6. * m);
 
   return 0;
 }()};

@@ -78,11 +78,12 @@ matrix_frob_norm(const uniform_typed_matrix auto &value) {
 
 //! @brief Frobenius norm of a matrix.
 //!
-//! @details The square root of the sum of the squares of all the elements. For
-//! a row or column vector, the Euclidean L2 norm. For a singleton, the absolute
-//! value. The elements must be of a uniform type supporting addition, so that
-//! the norm shares the element's type: a matrix of lengths has a length norm.
-//! Affine types, for example `std::chrono::time_point`, are rejected.
+//! @details The square root of the sum of the squares of the absolute values of
+//! all the elements. For a row or column vector, the Euclidean L2 norm. For a
+//! singleton, the absolute value. The elements must be of a uniform type
+//! supporting addition, so that the norm shares the element's type: a matrix of
+//! lengths has a length norm. Affine types, for example
+//! `std::chrono::time_point`, are rejected.
 //!
 //! @param value The typed matrix.
 //!

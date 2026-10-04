@@ -94,6 +94,9 @@ using column_vector = column_vector<representation, Types...>;
   // Frobenius norm, the same as the Euclidean L2 norm for a vector.
   assert(matrix_frob_norm(v) == seconds{7.});
 
+  // One norm, the sum of the absolute elements for a column vector.
+  assert(matrix_one_norm(v) == seconds{11.});
+
   return 0;
 }()};
 } // namespace
