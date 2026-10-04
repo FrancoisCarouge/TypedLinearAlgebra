@@ -1,7 +1,7 @@
 var dir_6984f3d25fc75ffbd2807029da830d08 =
 [
     [ "2x2_au_std.cpp", "matrix__vector__product_22x2__au__std_8cpp.xhtml", null ],
-    [ "2x2_chrono_std.cpp", "2x2__chrono__std_8cpp.xhtml", "2x2__chrono__std_8cpp" ],
+    [ "2x2_chrono_std.cpp", "matrix__vector__product_22x2__chrono__std_8cpp.xhtml", null ],
     [ "2x2_mp_units_std.cpp", "matrix__vector__product_22x2__mp__units__std_8cpp.xhtml", null ],
     [ "2x2_nholthaus_std.cpp", "matrix__vector__product_22x2__nholthaus__std_8cpp.xhtml", null ],
     [ "3x2_au_std.cpp", "3x2__au__std_8cpp.xhtml", "3x2__au__std_8cpp" ],

@@ -28,17 +28,7 @@ var NAVTREE =
     [ "François Carouge / Typed Linear Algebra", "index.xhtml", "index" ],
     [ "AGENTS.md", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml", [
       [ "AI agent conduct", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#ai-agent-conduct", null ],
-      [ "Build & test", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#build--test", null ],
-      [ "Architecture", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#architecture", [
-        [ "Core header", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#core-header", null ],
-        [ "Backend plug-in pattern", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#backend-plug-in-pattern", null ],
-        [ "Algorithms (include/fcarouge/typed_linear_algebra/algorithm/)", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#algorithms-includefcarougetyped_linear_algebraalgorithm", null ],
-        [ "Test/benchmark generation (support/support.cmake)", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#testbenchmark-generation-supportsupportcmake", null ],
-        [ "Other directories", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#other-directories", null ]
-      ] ],
-      [ "Recipe: adding an algorithm", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#recipe-adding-an-algorithm", null ],
-      [ "Completion checklist", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#completion-checklist", null ],
-      [ "Conventions", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#conventions", null ]
+      [ "Build & test", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#build--test", null ]
     ] ],
     [ "Benchmarks", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml", [
       [ "Results", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#results", null ]
@@ -134,15 +124,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
-"assign_21x2__chrono__eigen_8cpp_source.xhtml",
-"conceptfcarouge_1_1quantity__element__typed__matrix.xhtml",
-"equal__to_21x2__eigen_8cpp_source.xhtml",
-"minus_22x3__eigen_8cpp_source.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__au__std__fail_8cpp_03.xhtml#ab8bf6cd6abd840d75c4c8eaf5bced132",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02call__3x1_8cpp_03.xhtml#a0182412ce9b7ff64736da9306e3e6b8e",
-"namespacemp__units.xhtml",
-"structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor.xhtml#a9f69520c35cf84e694b3cae663b7634c",
-"test_2format_2mp__units__eigen_8cpp.xhtml#aef1bfce6bb48175244b16a33342feaf2"
+"assign_21x2__au__eigen_8cpp_source.xhtml",
+"conceptfcarouge_1_1other__tuple__like__vector.xhtml",
+"equal__to_21x2__au__std_8cpp.xhtml",
+"md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#supported-versions",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02nholthaus__eigen_8cpp_03.xhtml#aed9a08256c48daf0c75ca1cd738f6cb8",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_025x1__is__assignable_8cpp_03.xhtml",
+"namespacemembers_f.xhtml",
+"structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1accessor.xhtml#a05056645419ecc84e33ed2633db92d16",
+"test_2distinct__typed__matrix_2chrono__eigen_8cpp.xhtml#abcc8cac5b9b801bf290ccaa8d3b1e1f6"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

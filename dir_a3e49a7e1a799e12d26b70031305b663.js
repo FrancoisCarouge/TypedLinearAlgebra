@@ -14,7 +14,7 @@ var dir_a3e49a7e1a799e12d26b70031305b663 =
     [ "2x1_nholthaus_eigen_fail.cpp", "2x1__nholthaus__eigen__fail_8cpp.xhtml", "2x1__nholthaus__eigen__fail_8cpp" ],
     [ "2x2_fail.cpp", "magnitude_22x2__fail_8cpp.xhtml", null ],
     [ "3x1_au_eigen.cpp", "3x1__au__eigen_8cpp.xhtml", "3x1__au__eigen_8cpp" ],
-    [ "3x1_chrono_eigen.cpp", "3x1__chrono__eigen_8cpp.xhtml", "3x1__chrono__eigen_8cpp" ],
+    [ "3x1_chrono_eigen.cpp", "magnitude_23x1__chrono__eigen_8cpp.xhtml", "magnitude_23x1__chrono__eigen_8cpp" ],
     [ "3x1_chrono_std.cpp", "3x1__chrono__std_8cpp.xhtml", "3x1__chrono__std_8cpp" ],
     [ "3x1_mp_units_eigen.cpp", "magnitude_23x1__mp__units__eigen_8cpp.xhtml", null ],
     [ "3x1_mp_units_std.cpp", "3x1__mp__units__std_8cpp.xhtml", "3x1__mp__units__std_8cpp" ],

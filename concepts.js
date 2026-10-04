@@ -10,6 +10,11 @@ var concepts =
         [ "derived_from_eigen_base", "conceptfcarouge_1_1eigen_1_1derived__from__eigen__base.xhtml", null ],
         [ "statically_sized", "conceptfcarouge_1_1eigen_1_1statically__sized.xhtml", null ]
       ] ],
+      [ "test", "namespacefcarouge_1_1test.xhtml", [
+        [ "anonymous_namespace{uniform_mp_units_eigen.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03.xhtml", [
+          [ "frobenius_normable", "conceptfcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03_1_1frobenius__normable.xhtml", null ]
+        ] ]
+      ] ],
       [ "same_as_typed_matrix", "conceptfcarouge_1_1same__as__typed__matrix.xhtml", null ],
       [ "uniform_typed_matrix", "conceptfcarouge_1_1uniform__typed__matrix.xhtml", null ],
       [ "distinct_typed_matrix", "conceptfcarouge_1_1distinct__typed__matrix.xhtml", null ],
