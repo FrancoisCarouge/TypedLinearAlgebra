@@ -112,69 +112,72 @@ Concepts</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03_1_1frobenius__normable.xhtml">frobenius_normable</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A requires-expression only yields <code>false</code> on substitution failure within a template, hence the concept. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03_1_1one__normable.xhtml">one_normable</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A requires-expression only yields <code>false</code> on substitution failure within a template, hence the concept. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:ac69ec7404212df4ba2de7be92b717e4c" id="r_ac69ec7404212df4ba2de7be92b717e4c"><td class="memTemplParams" colspan="2">template&lt;auto Reference&gt; </td></tr>
 <tr class="memitem:ac69ec7404212df4ba2de7be92b717e4c"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ac69ec7404212df4ba2de7be92b717e4c">quantity</a> = mp_units::quantity&lt;Reference, double&gt;</td></tr>
 <tr class="separator:ac69ec7404212df4ba2de7be92b717e4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af20f695f7962e08c890c3fcaab29dbd1" id="r_af20f695f7962e08c890c3fcaab29dbd1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af20f695f7962e08c890c3fcaab29dbd1">position</a> = <a class="el" href="#ac69ec7404212df4ba2de7be92b717e4c">quantity</a>&lt;mp_units::isq::length[m]&gt;</td></tr>
-<tr class="separator:af20f695f7962e08c890c3fcaab29dbd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada6a30d76bf0a6e2422a8f1f63f573ad" id="r_ada6a30d76bf0a6e2422a8f1f63f573ad"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada6a30d76bf0a6e2422a8f1f63f573ad">velocity</a> = <a class="el" href="#ac69ec7404212df4ba2de7be92b717e4c">quantity</a>&lt;mp_units::isq::velocity[m / s]&gt;</td></tr>
-<tr class="separator:ada6a30d76bf0a6e2422a8f1f63f573ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed0444703bf99309d839a87686c0108e" id="r_aed0444703bf99309d839a87686c0108e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed0444703bf99309d839a87686c0108e">identity</a> = std::tuple&lt;std::identity&gt;</td></tr>
-<tr class="separator:aed0444703bf99309d839a87686c0108e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a358ab52663947fd66b220b8e23e4f0c2" id="r_a358ab52663947fd66b220b8e23e4f0c2"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a358ab52663947fd66b220b8e23e4f0c2">positions</a> = <a class="el" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix</a>&lt;double, std::tuple&lt;<a class="el" href="#af20f695f7962e08c890c3fcaab29dbd1">position</a>, <a class="el" href="#af20f695f7962e08c890c3fcaab29dbd1">position</a>&gt;, <a class="el" href="#aed0444703bf99309d839a87686c0108e">identity</a>&gt;</td></tr>
-<tr class="separator:a358ab52663947fd66b220b8e23e4f0c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7486db270837ce693592bd5c14c095c8" id="r_a7486db270837ce693592bd5c14c095c8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7486db270837ce693592bd5c14c095c8">state</a> = <a class="el" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix</a>&lt;double, std::tuple&lt;<a class="el" href="#af20f695f7962e08c890c3fcaab29dbd1">position</a>, <a class="el" href="#ada6a30d76bf0a6e2422a8f1f63f573ad">velocity</a>&gt;, <a class="el" href="#aed0444703bf99309d839a87686c0108e">identity</a>&gt;</td></tr>
-<tr class="separator:a7486db270837ce693592bd5c14c095c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0683250fea316f9433c07de8040fc5a" id="r_ad0683250fea316f9433c07de8040fc5a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0683250fea316f9433c07de8040fc5a">position</a> = <a class="el" href="#ac69ec7404212df4ba2de7be92b717e4c">quantity</a>&lt;mp_units::isq::length[m]&gt;</td></tr>
+<tr class="separator:ad0683250fea316f9433c07de8040fc5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a917eec539b440823f3a485d000a374d1" id="r_a917eec539b440823f3a485d000a374d1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a917eec539b440823f3a485d000a374d1">velocity</a> = <a class="el" href="#ac69ec7404212df4ba2de7be92b717e4c">quantity</a>&lt;mp_units::isq::velocity[m / s]&gt;</td></tr>
+<tr class="separator:a917eec539b440823f3a485d000a374d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21969854b4381102f37fc045903db5ec" id="r_a21969854b4381102f37fc045903db5ec"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21969854b4381102f37fc045903db5ec">identity</a> = std::tuple&lt;std::identity&gt;</td></tr>
+<tr class="separator:a21969854b4381102f37fc045903db5ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc5372a6f12ef5a5be5b42c4d1abb7f4" id="r_adc5372a6f12ef5a5be5b42c4d1abb7f4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc5372a6f12ef5a5be5b42c4d1abb7f4">positions</a> = <a class="el" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix</a>&lt;double, std::tuple&lt;<a class="el" href="#ad0683250fea316f9433c07de8040fc5a">position</a>, <a class="el" href="#ad0683250fea316f9433c07de8040fc5a">position</a>&gt;, <a class="el" href="#a21969854b4381102f37fc045903db5ec">identity</a>&gt;</td></tr>
+<tr class="separator:adc5372a6f12ef5a5be5b42c4d1abb7f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4317f99eb96c56804eb9416c461d2f25" id="r_a4317f99eb96c56804eb9416c461d2f25"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4317f99eb96c56804eb9416c461d2f25">state</a> = <a class="el" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix</a>&lt;double, std::tuple&lt;<a class="el" href="#ad0683250fea316f9433c07de8040fc5a">position</a>, <a class="el" href="#a917eec539b440823f3a485d000a374d1">velocity</a>&gt;, <a class="el" href="#a21969854b4381102f37fc045903db5ec">identity</a>&gt;</td></tr>
+<tr class="separator:a4317f99eb96c56804eb9416c461d2f25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="aed0444703bf99309d839a87686c0108e" name="aed0444703bf99309d839a87686c0108e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed0444703bf99309d839a87686c0108e">&#9670;&#160;</a></span>identity</h2>
+<a id="a21969854b4381102f37fc045903db5ec" name="a21969854b4381102f37fc045903db5ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21969854b4381102f37fc045903db5ec">&#9670;&#160;</a></span>identity</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using fcarouge::test::anonymous_namespace{uniform_mp_units_eigen.cpp}::identity = std::tuple&lt;std::identity&gt;</td>
+          <td class="memname">typedef std::tuple&lt; std::identity &gt; fcarouge::test::anonymous_namespace{uniform_mp_units_eigen.cpp}::identity = std::tuple&lt;std::identity&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="uniform__mp__units__eigen_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="uniform__mp__units__eigen_8cpp_source.xhtml">uniform_mp_units_eigen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="matrix__frob__norm_2uniform__mp__units__eigen_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="matrix__frob__norm_2uniform__mp__units__eigen_8cpp_source.xhtml">uniform_mp_units_eigen.cpp</a>.</p>
 
 </div>
 </div>
-<a id="af20f695f7962e08c890c3fcaab29dbd1" name="af20f695f7962e08c890c3fcaab29dbd1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af20f695f7962e08c890c3fcaab29dbd1">&#9670;&#160;</a></span>position</h2>
+<a id="ad0683250fea316f9433c07de8040fc5a" name="ad0683250fea316f9433c07de8040fc5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0683250fea316f9433c07de8040fc5a">&#9670;&#160;</a></span>position</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using fcarouge::test::anonymous_namespace{uniform_mp_units_eigen.cpp}::position = <a class="el" href="#ac69ec7404212df4ba2de7be92b717e4c">quantity</a>&lt;mp_units::isq::length[m]&gt;</td>
+          <td class="memname">typedef <a class="el" href="#ac69ec7404212df4ba2de7be92b717e4c">quantity</a>&lt; mp_units::isq::length[m]&gt; fcarouge::test::anonymous_namespace{uniform_mp_units_eigen.cpp}::position = <a class="el" href="#ac69ec7404212df4ba2de7be92b717e4c">quantity</a>&lt;mp_units::isq::length[m]&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="uniform__mp__units__eigen_8cpp_source.xhtml#l00043">43</a> of file <a class="el" href="uniform__mp__units__eigen_8cpp_source.xhtml">uniform_mp_units_eigen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="matrix__frob__norm_2uniform__mp__units__eigen_8cpp_source.xhtml#l00043">43</a> of file <a class="el" href="matrix__frob__norm_2uniform__mp__units__eigen_8cpp_source.xhtml">uniform_mp_units_eigen.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a358ab52663947fd66b220b8e23e4f0c2" name="a358ab52663947fd66b220b8e23e4f0c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a358ab52663947fd66b220b8e23e4f0c2">&#9670;&#160;</a></span>positions</h2>
+<a id="adc5372a6f12ef5a5be5b42c4d1abb7f4" name="adc5372a6f12ef5a5be5b42c4d1abb7f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc5372a6f12ef5a5be5b42c4d1abb7f4">&#9670;&#160;</a></span>positions</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using fcarouge::test::anonymous_namespace{uniform_mp_units_eigen.cpp}::positions = <a class="el" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix</a>&lt;double, std::tuple&lt;<a class="el" href="#af20f695f7962e08c890c3fcaab29dbd1">position</a>, <a class="el" href="#af20f695f7962e08c890c3fcaab29dbd1">position</a>&gt;, <a class="el" href="#aed0444703bf99309d839a87686c0108e">identity</a>&gt;</td>
+          <td class="memname">typedef <a class="el" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix</a>&lt; double, std::tuple&lt; <a class="el" href="#ad0683250fea316f9433c07de8040fc5a">position</a>, <a class="el" href="#ad0683250fea316f9433c07de8040fc5a">position</a> &gt;, <a class="el" href="#a21969854b4381102f37fc045903db5ec">identity</a> &gt; fcarouge::test::anonymous_namespace{uniform_mp_units_eigen.cpp}::positions = <a class="el" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix</a>&lt;double, std::tuple&lt;<a class="el" href="#ad0683250fea316f9433c07de8040fc5a">position</a>, <a class="el" href="#ad0683250fea316f9433c07de8040fc5a">position</a>&gt;, <a class="el" href="#a21969854b4381102f37fc045903db5ec">identity</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="uniform__mp__units__eigen_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="uniform__mp__units__eigen_8cpp_source.xhtml">uniform_mp_units_eigen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="matrix__frob__norm_2uniform__mp__units__eigen_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="matrix__frob__norm_2uniform__mp__units__eigen_8cpp_source.xhtml">uniform_mp_units_eigen.cpp</a>.</p>
 
 </div>
 </div>
@@ -192,39 +195,39 @@ template&lt;auto Reference&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="uniform__mp__units__eigen_8cpp_source.xhtml#l00042">42</a> of file <a class="el" href="uniform__mp__units__eigen_8cpp_source.xhtml">uniform_mp_units_eigen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="matrix__frob__norm_2uniform__mp__units__eigen_8cpp_source.xhtml#l00042">42</a> of file <a class="el" href="matrix__frob__norm_2uniform__mp__units__eigen_8cpp_source.xhtml">uniform_mp_units_eigen.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a7486db270837ce693592bd5c14c095c8" name="a7486db270837ce693592bd5c14c095c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7486db270837ce693592bd5c14c095c8">&#9670;&#160;</a></span>state</h2>
+<a id="a4317f99eb96c56804eb9416c461d2f25" name="a4317f99eb96c56804eb9416c461d2f25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4317f99eb96c56804eb9416c461d2f25">&#9670;&#160;</a></span>state</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using fcarouge::test::anonymous_namespace{uniform_mp_units_eigen.cpp}::state = <a class="el" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix</a>&lt;double, std::tuple&lt;<a class="el" href="#af20f695f7962e08c890c3fcaab29dbd1">position</a>, <a class="el" href="#ada6a30d76bf0a6e2422a8f1f63f573ad">velocity</a>&gt;, <a class="el" href="#aed0444703bf99309d839a87686c0108e">identity</a>&gt;</td>
+          <td class="memname">typedef <a class="el" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix</a>&lt; double, std::tuple&lt; <a class="el" href="#ad0683250fea316f9433c07de8040fc5a">position</a>, <a class="el" href="#a917eec539b440823f3a485d000a374d1">velocity</a> &gt;, <a class="el" href="#a21969854b4381102f37fc045903db5ec">identity</a> &gt; fcarouge::test::anonymous_namespace{uniform_mp_units_eigen.cpp}::state = <a class="el" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix</a>&lt;double, std::tuple&lt;<a class="el" href="#ad0683250fea316f9433c07de8040fc5a">position</a>, <a class="el" href="#a917eec539b440823f3a485d000a374d1">velocity</a>&gt;, <a class="el" href="#a21969854b4381102f37fc045903db5ec">identity</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="uniform__mp__units__eigen_8cpp_source.xhtml#l00048">48</a> of file <a class="el" href="uniform__mp__units__eigen_8cpp_source.xhtml">uniform_mp_units_eigen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="matrix__frob__norm_2uniform__mp__units__eigen_8cpp_source.xhtml#l00048">48</a> of file <a class="el" href="matrix__frob__norm_2uniform__mp__units__eigen_8cpp_source.xhtml">uniform_mp_units_eigen.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ada6a30d76bf0a6e2422a8f1f63f573ad" name="ada6a30d76bf0a6e2422a8f1f63f573ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada6a30d76bf0a6e2422a8f1f63f573ad">&#9670;&#160;</a></span>velocity</h2>
+<a id="a917eec539b440823f3a485d000a374d1" name="a917eec539b440823f3a485d000a374d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a917eec539b440823f3a485d000a374d1">&#9670;&#160;</a></span>velocity</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using fcarouge::test::anonymous_namespace{uniform_mp_units_eigen.cpp}::velocity = <a class="el" href="#ac69ec7404212df4ba2de7be92b717e4c">quantity</a>&lt;mp_units::isq::velocity[m / s]&gt;</td>
+          <td class="memname">typedef <a class="el" href="#ac69ec7404212df4ba2de7be92b717e4c">quantity</a>&lt; mp_units::isq::velocity[m/s]&gt; fcarouge::test::anonymous_namespace{uniform_mp_units_eigen.cpp}::velocity = <a class="el" href="#ac69ec7404212df4ba2de7be92b717e4c">quantity</a>&lt;mp_units::isq::velocity[m / s]&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="uniform__mp__units__eigen_8cpp_source.xhtml#l00044">44</a> of file <a class="el" href="uniform__mp__units__eigen_8cpp_source.xhtml">uniform_mp_units_eigen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="matrix__frob__norm_2uniform__mp__units__eigen_8cpp_source.xhtml#l00044">44</a> of file <a class="el" href="matrix__frob__norm_2uniform__mp__units__eigen_8cpp_source.xhtml">uniform_mp_units_eigen.cpp</a>.</p>
 
 </div>
 </div>

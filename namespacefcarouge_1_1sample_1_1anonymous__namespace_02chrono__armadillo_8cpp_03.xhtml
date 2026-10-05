@@ -245,10 +245,14 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">   94</span>  <span class="comment">// Frobenius norm, the same as the Euclidean L2 norm for a vector.</span></div>
 <div class="line"><span class="lineno">   95</span>  assert(<a class="code hl_function" href="namespacefcarouge.xhtml#aa315b3e178e104f9914d9c34f4caa464">matrix_frob_norm</a>(v) == seconds{7.});</div>
 <div class="line"><span class="lineno">   96</span> </div>
-<div class="line"><span class="lineno">   97</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   98</span>}()};</div>
+<div class="line"><span class="lineno">   97</span>  <span class="comment">// One norm, the sum of the absolute elements for a column vector.</span></div>
+<div class="line"><span class="lineno">   98</span>  assert(<a class="code hl_function" href="namespacefcarouge.xhtml#a7d5d3b12f0d7e033c68631bccf60765f">matrix_one_norm</a>(v) == seconds{11.});</div>
+<div class="line"><span class="lineno">   99</span> </div>
+<div class="line"><span class="lineno">  100</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  101</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03_xhtml_a2e9f477356efe202763946e452f3e6b7"><div class="ttname"><a href="#a2e9f477356efe202763946e452f3e6b7">fcarouge::sample::anonymous_namespace{chrono_armadillo.cpp}::column_vector</a></div><div class="ttdeci">column_vector&lt; representation, Types... &gt; column_vector</div><div class="ttdef"><b>Definition</b> <a href="chrono__armadillo_8cpp_source.xhtml#l00057">chrono_armadillo.cpp:57</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03_xhtml_ae70c68b2dc64c8d5fdd6ba74c59c09d2"><div class="ttname"><a href="#ae70c68b2dc64c8d5fdd6ba74c59c09d2">fcarouge::sample::anonymous_namespace{chrono_armadillo.cpp}::seconds</a></div><div class="ttdeci">std::chrono::duration&lt; representation &gt; seconds</div><div class="ttdef"><b>Definition</b> <a href="chrono__armadillo_8cpp_source.xhtml#l00052">chrono_armadillo.cpp:52</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a7d5d3b12f0d7e033c68631bccf60765f"><div class="ttname"><a href="namespacefcarouge.xhtml#a7d5d3b12f0d7e033c68631bccf60765f">fcarouge::matrix_one_norm</a></div><div class="ttdeci">constexpr auto matrix_one_norm(const uniform_typed_matrix auto &amp;value)</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_aa315b3e178e104f9914d9c34f4caa464"><div class="ttname"><a href="namespacefcarouge.xhtml#aa315b3e178e104f9914d9c34f4caa464">fcarouge::matrix_frob_norm</a></div><div class="ttdeci">constexpr auto matrix_frob_norm(const uniform_typed_matrix auto &amp;value)</div></div>
 </div><!-- fragment -->
 </div>

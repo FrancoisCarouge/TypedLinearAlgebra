@@ -124,22 +124,23 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line">  <span class="keyword">const</span> matrix&lt;double, 2, 2&gt; value{{1., 2.}, {2., 4.}};</div>
+<div class="line">  <span class="keyword">const</span> matrix&lt;double, 2, 2&gt; value{{1., -4.}, {4., 4.}};</div>
 <div class="line"> </div>
 <div class="line">  <span class="keyword">static_assert</span>(std::same_as&lt;<span class="keyword">decltype</span>(<a class="code hl_function" href="namespacefcarouge.xhtml#aa315b3e178e104f9914d9c34f4caa464">matrix_frob_norm</a>(value)), <span class="keywordtype">double</span>&gt;);</div>
-<div class="line">  assert(<a class="code hl_function" href="namespacefcarouge.xhtml#aa315b3e178e104f9914d9c34f4caa464">matrix_frob_norm</a>(value) == 5.);</div>
+<div class="line">  assert(<a class="code hl_function" href="namespacefcarouge.xhtml#aa315b3e178e104f9914d9c34f4caa464">matrix_frob_norm</a>(value) == 7.);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
 <div class="ttc" id="anamespacefcarouge_xhtml_aa315b3e178e104f9914d9c34f4caa464"><div class="ttname"><a href="namespacefcarouge.xhtml#aa315b3e178e104f9914d9c34f4caa464">fcarouge::matrix_frob_norm</a></div><div class="ttdeci">constexpr auto matrix_frob_norm(const uniform_typed_matrix auto &amp;value)</div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000206">Test</a></b></dt><dd>Verifies the Frobenius norm of a two-by-two matrix. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000204">Test</a></b></dt><dd>Verifies the Frobenius norm of a two-by-two matrix. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000221">Test</a></b></dt><dd>Verifies the one norm of a two-by-two matrix is its largest absolute column sum. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="2x2__eigen_8cpp_source.xhtml#l00040">40</a> of file <a class="el" href="2x2__eigen_8cpp_source.xhtml">2x2_eigen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="matrix__frob__norm_22x2__eigen_8cpp_source.xhtml#l00040">40</a> of file <a class="el" href="matrix__frob__norm_22x2__eigen_8cpp_source.xhtml">2x2_eigen.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   40</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   41</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;double, 2, 2&gt;</a> value{{1., 2.}, {2., 4.}};</div>
+<div class="line"><span class="lineno">   41</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;double, 2, 2&gt;</a> value{{1., -4.}, {4., 4.}};</div>
 <div class="line"><span class="lineno">   42</span> </div>
 <div class="line"><span class="lineno">   43</span>  <span class="keyword">static_assert</span>(std::same_as&lt;<span class="keyword">decltype</span>(matrix_frob_norm(value)), <span class="keywordtype">double</span>&gt;);</div>
-<div class="line"><span class="lineno">   44</span>  assert(matrix_frob_norm(value) == 5.);</div>
+<div class="line"><span class="lineno">   44</span>  assert(matrix_frob_norm(value) == 7.);</div>
 <div class="line"><span class="lineno">   45</span> </div>
 <div class="line"><span class="lineno">   46</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">   47</span>}()};</div>

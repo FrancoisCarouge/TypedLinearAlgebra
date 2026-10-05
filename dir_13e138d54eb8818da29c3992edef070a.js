@@ -18,6 +18,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "install", "dir_3f95608e7abb65f9cbed73c5282f33d4.xhtml", "dir_3f95608e7abb65f9cbed73c5282f33d4" ],
     [ "magnitude", "dir_a3e49a7e1a799e12d26b70031305b663.xhtml", "dir_a3e49a7e1a799e12d26b70031305b663" ],
     [ "matrix_frob_norm", "dir_70b3a29f6572a7a03cf0fb3c35883315.xhtml", "dir_70b3a29f6572a7a03cf0fb3c35883315" ],
+    [ "matrix_one_norm", "dir_ea5954d6bf726df20589d7aa478e6f13.xhtml", "dir_ea5954d6bf726df20589d7aa478e6f13" ],
     [ "matrix_product", "dir_0a5c94c6b1800719290ff7c8ab5d7918.xhtml", "dir_0a5c94c6b1800719290ff7c8ab5d7918" ],
     [ "matrix_vector_product", "dir_6984f3d25fc75ffbd2807029da830d08.xhtml", "dir_6984f3d25fc75ffbd2807029da830d08" ],
     [ "minus", "dir_c2689131500af98a26694fed65bbca21.xhtml", "dir_c2689131500af98a26694fed65bbca21" ],

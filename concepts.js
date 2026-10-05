@@ -12,7 +12,8 @@ var concepts =
       ] ],
       [ "test", "namespacefcarouge_1_1test.xhtml", [
         [ "anonymous_namespace{uniform_mp_units_eigen.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03.xhtml", [
-          [ "frobenius_normable", "conceptfcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03_1_1frobenius__normable.xhtml", null ]
+          [ "frobenius_normable", "conceptfcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03_1_1frobenius__normable.xhtml", null ],
+          [ "one_normable", "conceptfcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03_1_1one__normable.xhtml", null ]
         ] ]
       ] ],
       [ "same_as_typed_matrix", "conceptfcarouge_1_1same__as__typed__matrix.xhtml", null ],

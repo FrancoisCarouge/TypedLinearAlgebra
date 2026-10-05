@@ -44,6 +44,7 @@ var namespacefcarouge =
     [ "magnitude", "namespacefcarouge.xhtml#a3b31459df9951d183e7e7f065a28bc32", null ],
     [ "make_typed_matrix", "namespacefcarouge.xhtml#a4073b31d56e98e110bf4a993ed190c80", null ],
     [ "matrix_frob_norm", "namespacefcarouge.xhtml#aa315b3e178e104f9914d9c34f4caa464", null ],
+    [ "matrix_one_norm", "namespacefcarouge.xhtml#a7d5d3b12f0d7e033c68631bccf60765f", null ],
     [ "operator*", "namespacefcarouge.xhtml#a100b431697408a4a9d851e4ffab901e1", null ],
     [ "operator*", "namespacefcarouge.xhtml#a6f98d198d18c9c551d21f2eb602cdfd2", null ],
     [ "operator*", "namespacefcarouge.xhtml#a2b908a38283a6aaa27d38ab45ec41858", null ],

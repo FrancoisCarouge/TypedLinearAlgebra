@@ -277,19 +277,19 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">   95</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x0_1) == <span class="stringliteral">&quot;2.5 m / s&quot;</span>);</div>
 <div class="line"><span class="lineno">   96</span> </div>
 <div class="line"><span class="lineno">   97</span>  <span class="comment">// Multiplication with a scalar factor.</span></div>
-<div class="line"><span class="lineno">   98</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03.xhtml#a7486db270837ce693592bd5c14c095c8">state</a> x1{x0 * 3.};</div>
+<div class="line"><span class="lineno">   98</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03.xhtml#a4317f99eb96c56804eb9416c461d2f25">state</a> x1{x0 * 3.};</div>
 <div class="line"><span class="lineno">   99</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x1) == <span class="stringliteral">&quot;[[9 m], [7.5 m / s], [3 m / s^2]]&quot;</span>);</div>
 <div class="line"><span class="lineno">  100</span> </div>
 <div class="line"><span class="lineno">  101</span>  <span class="comment">// Division with a scalar divisor.</span></div>
-<div class="line"><span class="lineno">  102</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03.xhtml#a7486db270837ce693592bd5c14c095c8">state</a> x2{x1 / 2.};</div>
+<div class="line"><span class="lineno">  102</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03.xhtml#a4317f99eb96c56804eb9416c461d2f25">state</a> x2{x1 / 2.};</div>
 <div class="line"><span class="lineno">  103</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x2) == <span class="stringliteral">&quot;[[4.5 m], [3.75 m / s], [1.5 m / s^2]]&quot;</span>);</div>
 <div class="line"><span class="lineno">  104</span> </div>
 <div class="line"><span class="lineno">  105</span>  <span class="comment">// Subtraction of two vectors of the same types.</span></div>
-<div class="line"><span class="lineno">  106</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03.xhtml#a7486db270837ce693592bd5c14c095c8">state</a> x3{x2 - x0};</div>
+<div class="line"><span class="lineno">  106</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03.xhtml#a4317f99eb96c56804eb9416c461d2f25">state</a> x3{x2 - x0};</div>
 <div class="line"><span class="lineno">  107</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x3) == <span class="stringliteral">&quot;[[1.5 m], [1.25 m / s], [0.5 m / s^2]]&quot;</span>);</div>
 <div class="line"><span class="lineno">  108</span> </div>
 <div class="line"><span class="lineno">  109</span>  <span class="comment">// Additions of two vectors of the same types.</span></div>
-<div class="line"><span class="lineno">  110</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03.xhtml#a7486db270837ce693592bd5c14c095c8">state</a> x4{x3 + x3};</div>
+<div class="line"><span class="lineno">  110</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03.xhtml#a4317f99eb96c56804eb9416c461d2f25">state</a> x4{x3 + x3};</div>
 <div class="line"><span class="lineno">  111</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x4) == <span class="stringliteral">&quot;[[3 m], [2.5 m / s], [1 m / s^2]]&quot;</span>);</div>
 <div class="line"><span class="lineno">  112</span> </div>
 <div class="line"><span class="lineno">  113</span>  <span class="comment">// Matrix and uniform typed access.</span></div>
@@ -318,7 +318,7 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">  136</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">  137</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_ab95c9e8d65ece459f17360e871fb7490"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">fcarouge::armadillo::column_vector</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; Row, 1 &gt; column_vector</div><div class="ttdoc">Compile-time sized Armadillo column vector.</div><div class="ttdef"><b>Definition</b> <a href="armadillo_8hpp_source.xhtml#l00099">armadillo.hpp:99</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03_xhtml_a7486db270837ce693592bd5c14c095c8"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03.xhtml#a7486db270837ce693592bd5c14c095c8">fcarouge::test::anonymous_namespace{uniform_mp_units_eigen.cpp}::state</a></div><div class="ttdeci">matrix&lt; double, std::tuple&lt; position, velocity &gt;, identity &gt; state</div><div class="ttdef"><b>Definition</b> <a href="uniform__mp__units__eigen_8cpp_source.xhtml#l00048">uniform_mp_units_eigen.cpp:48</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03_xhtml_a4317f99eb96c56804eb9416c461d2f25"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03.xhtml#a4317f99eb96c56804eb9416c461d2f25">fcarouge::test::anonymous_namespace{uniform_mp_units_eigen.cpp}::state</a></div><div class="ttdeci">matrix&lt; double, std::tuple&lt; position, velocity &gt;, identity &gt; state</div><div class="ttdef"><b>Definition</b> <a href="matrix__frob__norm_2uniform__mp__units__eigen_8cpp_source.xhtml#l00048">uniform_mp_units_eigen.cpp:48</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
