@@ -153,8 +153,8 @@ function(bench NAME SIZE)
     target_link_libraries(
       typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench_driver
       PRIVATE
-        tlinalg typed_linear_algebra_options typed_linear_algebra_${BACKEND}
-        nanobench::nanobench)
+        tlinalg typed_linear_algebra_options typed_linear_algebra_realtime
+        typed_linear_algebra_${BACKEND} nanobench::nanobench)
     if(IPO_SUPPORTED)
       set_target_properties(
         typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench_driver

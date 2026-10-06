@@ -30,6 +30,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <au/std_format.hh>
 #include <au/units/meters.hh>
@@ -43,6 +44,7 @@ using representation = double;
 namespace {
 //! @test Verifies the quantity by column vector division operator.
 [[maybe_unused]] const auto test{[] -> int {
+  const not_realtime opt_out;
   using au::symbols::m;
 
   constexpr auto m2{au::squared(m)};

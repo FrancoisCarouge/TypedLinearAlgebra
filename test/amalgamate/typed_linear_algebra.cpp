@@ -34,6 +34,7 @@ For more information, please refer to <https://unlicense.org> */
 //! replacement for the multi-file headers.
 
 #include "typed_linear_algebra.h"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <format>
@@ -50,6 +51,7 @@ using matrix =
                  RowIndexes, ColumnIndexes>;
 
 [[maybe_unused]] const auto test{[] -> int {
+  const not_realtime opt_out;
   using indexes = std::tuple<int, int, int>;
   const matrix<int, indexes, indexes> m{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 

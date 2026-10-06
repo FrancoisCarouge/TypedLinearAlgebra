@@ -30,6 +30,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <au/std_format.hh>
 #include <au/units/meters.hh>
@@ -64,6 +65,7 @@ static_assert(std::formattable<rectangle, char>);
 //! Eigen backend: the rank-0 singleton, the row vector, the column vector, and
 //! the general rectangular overloads.
 [[maybe_unused]] const auto test{[] -> int {
+  const not_realtime opt_out;
   using au::symbols::m;
   constexpr auto m2{au::squared(m)};
 

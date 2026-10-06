@@ -30,6 +30,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <au/std_format.hh>
 #include <au/units/meters.hh>
@@ -47,6 +48,7 @@ namespace {
 //! @test Verifies the magnitude, the Euclidean L2 norm, of a row vector of
 //! quantities with the mdspan-backed, non-owning storage backend.
 [[maybe_unused]] const auto test{[] -> int {
+  const not_realtime opt_out;
   using au::symbols::m;
   using au::symbols::s;
 
