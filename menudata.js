@@ -50,6 +50,7 @@ var menudata={children:[
 {text:"t",url:"namespacemembers_t.xhtml#index_t"},
 {text:"u",url:"namespacemembers_u.xhtml#index_u"},
 {text:"v",url:"namespacemembers_v.xhtml#index_v"},
+{text:"w",url:"namespacemembers_w.xhtml#index_w"},
 {text:"z",url:"namespacemembers_z.xhtml#index_z"}]},
 {text:"Functions",url:"namespacemembers_func.xhtml",children:[
 {text:"b",url:"namespacemembers_func.xhtml#index_b"},
@@ -61,8 +62,9 @@ var menudata={children:[
 {text:"m",url:"namespacemembers_func.xhtml#index_m"},
 {text:"o",url:"namespacemembers_func.xhtml#index_o"},
 {text:"p",url:"namespacemembers_func.xhtml#index_p"},
-{text:"s",url:"namespacemembers_func.xhtml#index_s"},
-{text:"t",url:"namespacemembers_func.xhtml#index_t"}]},
+{text:"r",url:"namespacemembers_func.xhtml#index_r"},
+{text:"t",url:"namespacemembers_func.xhtml#index_t"},
+{text:"w",url:"namespacemembers_func.xhtml#index_w"}]},
 {text:"Variables",url:"namespacemembers_vars.xhtml",children:[
 {text:"c",url:"namespacemembers_vars.xhtml#index_c"},
 {text:"e",url:"namespacemembers_vars.xhtml#index_e"},

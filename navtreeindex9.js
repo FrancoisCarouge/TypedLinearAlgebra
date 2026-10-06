@@ -1,5 +1,10 @@
 var NAVTREEINDEX9 =
 {
+"subtraction_21x1__chrono__eigen__fail_8cpp_source.xhtml":[17,0,6,32,4],
+"subtraction_21x1__chrono__std_8cpp.xhtml":[17,0,6,32,5],
+"subtraction_21x1__chrono__std_8cpp_source.xhtml":[17,0,6,32,5],
+"subtraction_21x1__chrono__std__fail_8cpp.xhtml":[17,0,6,32,6],
+"subtraction_21x1__chrono__std__fail_8cpp_source.xhtml":[17,0,6,32,6],
 "subtraction_21x1__mp__units__eigen_8cpp.xhtml":[17,0,6,32,7],
 "subtraction_21x1__mp__units__eigen_8cpp_source.xhtml":[17,0,6,32,7],
 "subtraction_21x1__mp__units__eigen__fail_8cpp.xhtml":[17,0,6,32,8],
@@ -244,10 +249,5 @@ var NAVTREEINDEX9 =
 "underlying_23x3_8cpp_source.xhtml":[17,0,6,34,0],
 "uniform__typed__matrix_8cpp.xhtml":[17,0,6,35,2],
 "uniform__typed__matrix_8cpp.xhtml#a12fe8c59c681cdb089ab5577a7d216e5":[17,0,6,35,2,0],
-"uniform__typed__matrix_8cpp_source.xhtml":[17,0,6,35,2],
-"unit_test_coverage.xhtml":[7],
-"utility_8hpp.xhtml":[17,0,2,0,0,0,1],
-"utility_8hpp.xhtml#a00297c357886f0244dee013a5ea4a183":[17,0,2,0,0,0,1,14],
-"utility_8hpp.xhtml#a0659020dfaef848bf9f5f3b745fa7690":[17,0,2,0,0,0,1,3],
-"utility_8hpp.xhtml#a0d908ebc1cc55da12d83d2fefc10ab1d":[17,0,2,0,0,0,1,1]
+"uniform__typed__matrix_8cpp_source.xhtml":[17,0,6,35,2]
 };

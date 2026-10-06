@@ -16,8 +16,8 @@ var namespacefcarouge_1_1typed__linear__algebra =
       [ "is_distinct_typed_matrix", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a0f08ea7eb926c990cdcb66508f01466f", null ],
       [ "is_uniform_typed_matrix", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a2238a99ab35d65098efb485ef3e05611", null ],
       [ "parse_digits", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a00297c357886f0244dee013a5ea4a183", null ],
-      [ "storage_element", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a22a6c3a9a9a49747229a8ca93fb43fb7", null ],
-      [ "store_element", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#ac8fd7e3540561205fdd54112b8e222a4", null ],
+      [ "read_element", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#aeaac2b3147a168c0a834b924fb008364", null ],
+      [ "write_element", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#ad8b49524f3f1b03ddf34a0c5d6c10293", null ],
       [ "rank", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a5b8f7212f7676df392e49713c7d9b89a", null ]
     ] ]
 ];

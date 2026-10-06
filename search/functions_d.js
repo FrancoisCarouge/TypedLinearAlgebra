@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7etyped_5fmatrix_0',['~typed_matrix',['../classfcarouge_1_1typed__matrix.xhtml#a11b18c32111d6f1651c01469c7a0322f',1,'fcarouge::typed_matrix']]]
+  ['write_5felement_0',['write_element',['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#ad8b49524f3f1b03ddf34a0c5d6c10293',1,'fcarouge::typed_linear_algebra::internal']]]
 ];

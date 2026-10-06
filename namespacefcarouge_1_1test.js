@@ -284,6 +284,7 @@ var namespacefcarouge_1_1test =
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_023x1__chrono__eigen_8cpp_03.xhtml#ad3e4e76c51c5371dd5b54d3c4187e834", null ]
     ] ],
     [ "anonymous_namespace{3x1_chrono_std.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_023x1__chrono__std_8cpp_03.xhtml", [
+      [ "seconds", "namespacefcarouge_1_1test_1_1anonymous__namespace_023x1__chrono__std_8cpp_03.xhtml#adaab46bedefb092a8652b5bca136f270", null ],
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_023x1__chrono__std_8cpp_03.xhtml#ac43e57d04ebea68eed0794250b657a61", null ]
     ] ],
     [ "anonymous_namespace{3x1_const.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_023x1__const_8cpp_03.xhtml", [
