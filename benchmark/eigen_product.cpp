@@ -29,6 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "fcarouge/realtime.hpp"
+
 #include <Eigen/Eigen>
 #include <nanobench.h>
 
@@ -40,11 +42,17 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::benchmark {
 namespace {
-template <auto Size>
-const std::string csv{std::format(
-    "{{{{#result}}}}| {{{{title}}}} | {:5d}x{:<5d} | {{{{median(elapsed)}}}} | "
-    "{{{{medianAbsolutePercentError(elapsed)}}}} |{{{{/result}}}}\n",
-    Size, Size)};
+//! @brief The benchmark measures, prints, and tears down its counters past its
+//! entry point: it opts out of the real-time verification for its lifetime.
+const not_realtime opt_out;
+
+template <auto Size> auto csv() -> std::string {
+  return std::format(
+      "{{{{#result}}}}| {{{{title}}}} | {:5d}x{:<5d} | "
+      "{{{{median(elapsed)}}}} | "
+      "{{{{medianAbsolutePercentError(elapsed)}}}} |{{{{/result}}}}\n",
+      Size, Size);
+}
 
 //! @benchmark Eigen square matrix-matrix product.
 template <auto Size> void bench() {
@@ -69,7 +77,7 @@ template <auto Size> void bench() {
         Eigen::Matrix<double, Size, Size> r{a * b};
         ankerl::nanobench::doNotOptimizeAway(r);
       })
-      .render(csv<Size>.c_str(), results);
+      .render(csv<Size>().c_str(), results);
 }
 } // namespace
 } // namespace fcarouge::benchmark

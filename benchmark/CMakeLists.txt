@@ -120,7 +120,9 @@ bench("typed_mdspan_tupled_product" "16" BACKENDS "mp_units_std")
 
 if(BUILD_BENCHMARKING)
   add_executable(plot plot.cpp)
-  target_link_libraries(plot PRIVATE Matplot++::matplot)
+  target_link_libraries(
+    plot
+    PRIVATE Matplot++::matplot typed_linear_algebra_realtime)
   add_test(
     NAME typed_linear_algebra_plot_bench
     COMMAND $<TARGET_FILE:plot> DEPENDS ${DEPENDENCIES})
