@@ -7,7 +7,8 @@ var searchData=
   ['derived_4',['derived',['../structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1derived.xhtml',1,'fcarouge::test::anonymous_namespace{same_as_typed_matrix.cpp}']]],
   ['development_20build_20run_5',['Development Build &amp; Run',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run',1,'']]],
   ['directories_6',['Other directories',['..//github/workspace/AGENTS.md#other-directories',1,'']]],
-  ['distinct_5ftyped_5fmatrix_2ecpp_7',['distinct_typed_matrix.cpp',['../distinct__typed__matrix_8cpp.xhtml',1,'']]],
-  ['documentation_2edox_8',['documentation.dox',['../documentation_8dox.xhtml',1,'']]],
-  ['dot_9',['dot',['../namespacefcarouge.xhtml#abd59a3fd717517a0bf8904bb70974aab',1,'fcarouge']]]
+  ['disable_7',['disable',['../classfcarouge_1_1not__realtime.xhtml#a297a7276ba8ffd478582a9a30af573db',1,'fcarouge::not_realtime']]],
+  ['distinct_5ftyped_5fmatrix_2ecpp_8',['distinct_typed_matrix.cpp',['../distinct__typed__matrix_8cpp.xhtml',1,'']]],
+  ['documentation_2edox_9',['documentation.dox',['../documentation_8dox.xhtml',1,'']]],
+  ['dot_10',['dot',['../namespacefcarouge.xhtml#abd59a3fd717517a0bf8904bb70974aab',1,'fcarouge']]]
 ];

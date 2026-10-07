@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['parse_0',['parse',['../structstd_1_1formatter_3_01_type_00_01_char_01_4.xhtml#a388e4133c0afe6acb9f0d393c2d9d8da',1,'std::formatter&lt; Type, Char &gt;::parse()'],['../structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml#a2714c8e0d69d59ff242fda31e5048732',1,'std::formatter&lt; fcarouge::eigen::matrix&lt; Type, Row, Column &gt;, Char &gt;::parse()']]],
-  ['parse_5fdigits_1',['parse_digits',['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a00297c357886f0244dee013a5ea4a183',1,'fcarouge::typed_linear_algebra::internal']]]
+  ['not_5frealtime_0',['not_realtime',['../classfcarouge_1_1not__realtime.xhtml#a3ca899e44650eab34bee32bcea413d7f',1,'fcarouge::not_realtime::not_realtime()'],['../classfcarouge_1_1not__realtime.xhtml#ad10997c01278a2923cd6b55a1a898a73',1,'fcarouge::not_realtime::not_realtime(const not_realtime &amp;)=delete'],['../classfcarouge_1_1not__realtime.xhtml#a5bb3432030dffe59ec52e8e53e228f91',1,'fcarouge::not_realtime::not_realtime(not_realtime &amp;&amp;)=delete']]]
 ];

@@ -108,6 +108,7 @@ $(function(){initNavTree('typed__eigen__product_8cpp.xhtml',''); initResizable(t
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;fcarouge/linalg.hpp&quot;</code><br />
+<code>#include &quot;<a class="el" href="realtime_8hpp_source.xhtml">fcarouge/realtime.hpp</a>&quot;</code><br />
 <code>#include &lt;nanobench.h&gt;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
 <code>#include &lt;format&gt;</code><br />
@@ -136,6 +137,9 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a844800d1f15d89381d68ad27caf41807" id="r_a844800d1f15d89381d68ad27caf41807"><td class="memTemplParams" colspan="2">template&lt;auto Size&gt; </td></tr>
+<tr class="memitem:a844800d1f15d89381d68ad27caf41807"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__eigen__product_8cpp_03.xhtml#a844800d1f15d89381d68ad27caf41807">fcarouge::benchmark::anonymous_namespace{typed_eigen_product.cpp}::csv</a> () -&gt; std::string</td></tr>
+<tr class="separator:a844800d1f15d89381d68ad27caf41807"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf9f1c1263f54f8440979ddb0f64d273" id="r_adf9f1c1263f54f8440979ddb0f64d273"><td class="memTemplParams" colspan="2">template&lt;auto Size&gt; </td></tr>
 <tr class="memitem:adf9f1c1263f54f8440979ddb0f64d273"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__eigen__product_8cpp_03.xhtml#adf9f1c1263f54f8440979ddb0f64d273">fcarouge::benchmark::anonymous_namespace{typed_eigen_product.cpp}::bench</a> ()</td></tr>
 <tr class="separator:adf9f1c1263f54f8440979ddb0f64d273"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,9 +148,9 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a137a2931c2ede40891ccbb86cdf10c52" id="r_a137a2931c2ede40891ccbb86cdf10c52"><td class="memTemplParams" colspan="2">template&lt;auto Size&gt; </td></tr>
-<tr class="memitem:a137a2931c2ede40891ccbb86cdf10c52"><td class="memTemplItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__eigen__product_8cpp_03.xhtml#a137a2931c2ede40891ccbb86cdf10c52">fcarouge::benchmark::anonymous_namespace{typed_eigen_product.cpp}::csv</a></td></tr>
-<tr class="separator:a137a2931c2ede40891ccbb86cdf10c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fbfe6b335aaa8f341c20489cccfa1e4" id="r_a2fbfe6b335aaa8f341c20489cccfa1e4"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classfcarouge_1_1not__realtime.xhtml">not_realtime</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__eigen__product_8cpp_03.xhtml#a2fbfe6b335aaa8f341c20489cccfa1e4">fcarouge::benchmark::anonymous_namespace{typed_eigen_product.cpp}::opt_out</a></td></tr>
+<tr class="memdesc:a2fbfe6b335aaa8f341c20489cccfa1e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The benchmark measures, prints, and tears down its counters past its entry point: it opts out of the real-time verification for its lifetime.  <br /></td></tr>
+<tr class="separator:a2fbfe6b335aaa8f341c20489cccfa1e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ae66f6b31b5ad750f1fe042a706a4e3d4" name="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
@@ -164,8 +168,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typed__eigen__product_8cpp_source.xhtml#l00078">78</a> of file <a class="el" href="typed__eigen__product_8cpp_source.xhtml">typed_eigen_product.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   78</span>{ fcarouge::benchmark::bench&lt;${SIZE}&gt;(); }</div>
+<p class="definition">Definition at line <a class="el" href="typed__eigen__product_8cpp_source.xhtml#l00085">85</a> of file <a class="el" href="typed__eigen__product_8cpp_source.xhtml">typed_eigen_product.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   85</span>{ fcarouge::benchmark::bench&lt;${SIZE}&gt;(); }</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['read_5felement_0',['read_element',['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#aeaac2b3147a168c0a834b924fb008364',1,'fcarouge::typed_linear_algebra::internal']]]
+  ['parse_0',['parse',['../structstd_1_1formatter_3_01_type_00_01_char_01_4.xhtml#a388e4133c0afe6acb9f0d393c2d9d8da',1,'std::formatter&lt; Type, Char &gt;::parse()'],['../structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml#a2714c8e0d69d59ff242fda31e5048732',1,'std::formatter&lt; fcarouge::eigen::matrix&lt; Type, Row, Column &gt;, Char &gt;::parse()']]],
+  ['parse_5fdigits_1',['parse_digits',['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a00297c357886f0244dee013a5ea4a183',1,'fcarouge::typed_linear_algebra::internal']]]
 ];

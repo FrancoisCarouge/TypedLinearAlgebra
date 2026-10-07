@@ -1,5 +1,8 @@
 var namespaces_dup =
 [
+    [ "anonymous_namespace{plot.cpp}", "namespaceanonymous__namespace_02plot_8cpp_03.xhtml", [
+      [ "opt_out", "namespaceanonymous__namespace_02plot_8cpp_03.xhtml#a4a13e853a3fd53613e37d7ccae207678", null ]
+    ] ],
     [ "arma", "namespacearma.xhtml", [
       [ "get", "namespacearma.xhtml#a30b4d4c516275abca62a8a57eb435464", null ],
       [ "get", "namespacearma.xhtml#ae5291718ff8a7b0f7487563ea45b0e98", null ],

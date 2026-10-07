@@ -119,6 +119,9 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a95ae50288c59c32baf0a89ed2d662cb6" id="r_a95ae50288c59c32baf0a89ed2d662cb6"><td class="memTemplParams" colspan="2">template&lt;auto Size&gt; </td></tr>
+<tr class="memitem:a95ae50288c59c32baf0a89ed2d662cb6"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a95ae50288c59c32baf0a89ed2d662cb6">csv</a> () -&gt; std::string</td></tr>
+<tr class="separator:a95ae50288c59c32baf0a89ed2d662cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71525c6f365a94eb9037eb451b216050" id="r_a71525c6f365a94eb9037eb451b216050"><td class="memTemplParams" colspan="2">template&lt;typename Tuple &gt; </td></tr>
 <tr class="memitem:a71525c6f365a94eb9037eb451b216050"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::tuple_element&lt; 0, typenamestd::remove_reference&lt; Tuple &gt;::type &gt;::type &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a71525c6f365a94eb9037eb451b216050">get</a> (std::size_t index, Tuple &amp;&amp;tuple)</td></tr>
 <tr class="separator:a71525c6f365a94eb9037eb451b216050"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -128,9 +131,9 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a98382c76342caef47aa7579ef28b182c" id="r_a98382c76342caef47aa7579ef28b182c"><td class="memTemplParams" colspan="2">template&lt;auto Size&gt; </td></tr>
-<tr class="memitem:a98382c76342caef47aa7579ef28b182c"><td class="memTemplItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a98382c76342caef47aa7579ef28b182c">csv</a></td></tr>
-<tr class="separator:a98382c76342caef47aa7579ef28b182c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f6f54c71feeab59296064079505039b" id="r_a9f6f54c71feeab59296064079505039b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classfcarouge_1_1not__realtime.xhtml">not_realtime</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f6f54c71feeab59296064079505039b">opt_out</a></td></tr>
+<tr class="memdesc:a9f6f54c71feeab59296064079505039b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The benchmark measures, prints, and tears down its counters past its entry point: it opts out of the real-time verification for its lifetime.  <br /></td></tr>
+<tr class="separator:a9f6f54c71feeab59296064079505039b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a1665dec3a4d2ccf77fc801c06edc2ca2" name="a1665dec3a4d2ccf77fc801c06edc2ca2"></a>
@@ -151,49 +154,77 @@ template&lt;auto Size&gt; </div>
 </div><div class="memdoc">
 <dl class="section user"><dt>Benchmark</dt><dd><code>std::mdspan</code> square matrix-matrix product. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="typed__mdspan__tupled__product_8cpp_source.xhtml#l00106">106</a> of file <a class="el" href="typed__mdspan__tupled__product_8cpp_source.xhtml">typed_mdspan_tupled_product.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  106</span>                                  {</div>
-<div class="line"><span class="lineno">  107</span>  <span class="keyword">using </span>tuple = <a class="code hl_typedef" href="namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#aeffe7fc6bb97d584b4a063eb0a2641a0">tla::tuple_n_type&lt;double, Size * Size&gt;</a>;</div>
-<div class="line"><span class="lineno">  108</span>  <span class="keyword">using </span>mdspan = std::mdspan&lt;double, std::extents&lt;std::size_t, Size, Size&gt;,</div>
-<div class="line"><span class="lineno">  109</span>                             Kokkos::layout_right, <a class="code hl_struct" href="structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor.xhtml">accessor&lt;tuple, double&gt;</a>&gt;;</div>
-<div class="line"><span class="lineno">  110</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix</a> = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix&lt;mdspan, tla::tuple_n_type&lt;double, Size&gt;</a>,</div>
-<div class="line"><span class="lineno">  111</span>                              <a class="code hl_typedef" href="namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#aeffe7fc6bb97d584b4a063eb0a2641a0">tla::tuple_n_type&lt;double, Size&gt;</a>&gt;;</div>
-<div class="line"><span class="lineno">  112</span> </div>
-<div class="line"><span class="lineno">  113</span>  tuple storage_a;</div>
-<div class="line"><span class="lineno">  114</span>  tuple storage_b;</div>
-<div class="line"><span class="lineno">  115</span>  tuple storage_r;</div>
-<div class="line"><span class="lineno">  116</span>  mdspan mdspan_a{&amp;storage_a};</div>
-<div class="line"><span class="lineno">  117</span>  mdspan mdspan_b{&amp;storage_b};</div>
-<div class="line"><span class="lineno">  118</span>  mdspan mdspan_r{&amp;storage_r};</div>
-<div class="line"><span class="lineno">  119</span>  matrix a{mdspan_a};</div>
-<div class="line"><span class="lineno">  120</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#ab2c1576384ba08f93784395ea8071fd9">matrix</a> b{mdspan_b};</div>
-<div class="line"><span class="lineno">  121</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#ab2c1576384ba08f93784395ea8071fd9">matrix</a> r{mdspan_r};</div>
-<div class="line"><span class="lineno">  122</span>  std::random_device device;</div>
-<div class="line"><span class="lineno">  123</span>  std::mt19937 generator{device()};</div>
-<div class="line"><span class="lineno">  124</span>  std::uniform_real_distribution&lt;&gt; distribution{0., 1.};</div>
-<div class="line"><span class="lineno">  125</span> </div>
-<div class="line"><span class="lineno">  126</span>  <span class="keywordflow">for</span> (std::size_t i{0}; i &lt; Size; ++i) {</div>
-<div class="line"><span class="lineno">  127</span>    <span class="keywordflow">for</span> (std::size_t j{0}; j &lt; Size; ++j) {</div>
-<div class="line"><span class="lineno">  128</span>      a(i, j) = distribution(generator);</div>
-<div class="line"><span class="lineno">  129</span>      b(i, j) = distribution(generator);</div>
-<div class="line"><span class="lineno">  130</span>    }</div>
-<div class="line"><span class="lineno">  131</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="typed__mdspan__tupled__product_8cpp_source.xhtml#l00113">113</a> of file <a class="el" href="typed__mdspan__tupled__product_8cpp_source.xhtml">typed_mdspan_tupled_product.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  113</span>                                  {</div>
+<div class="line"><span class="lineno">  114</span>  <span class="keyword">using </span>tuple = <a class="code hl_typedef" href="namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#aeffe7fc6bb97d584b4a063eb0a2641a0">tla::tuple_n_type&lt;double, Size * Size&gt;</a>;</div>
+<div class="line"><span class="lineno">  115</span>  <span class="keyword">using </span>mdspan = std::mdspan&lt;double, std::extents&lt;std::size_t, Size, Size&gt;,</div>
+<div class="line"><span class="lineno">  116</span>                             Kokkos::layout_right, <a class="code hl_struct" href="structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor.xhtml">accessor&lt;tuple, double&gt;</a>&gt;;</div>
+<div class="line"><span class="lineno">  117</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix</a> = <a class="code hl_class" href="classfcarouge_1_1typed__matrix.xhtml">typed_matrix&lt;mdspan, tla::tuple_n_type&lt;double, Size&gt;</a>,</div>
+<div class="line"><span class="lineno">  118</span>                              <a class="code hl_typedef" href="namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#aeffe7fc6bb97d584b4a063eb0a2641a0">tla::tuple_n_type&lt;double, Size&gt;</a>&gt;;</div>
+<div class="line"><span class="lineno">  119</span> </div>
+<div class="line"><span class="lineno">  120</span>  tuple storage_a;</div>
+<div class="line"><span class="lineno">  121</span>  tuple storage_b;</div>
+<div class="line"><span class="lineno">  122</span>  tuple storage_r;</div>
+<div class="line"><span class="lineno">  123</span>  mdspan mdspan_a{&amp;storage_a};</div>
+<div class="line"><span class="lineno">  124</span>  mdspan mdspan_b{&amp;storage_b};</div>
+<div class="line"><span class="lineno">  125</span>  mdspan mdspan_r{&amp;storage_r};</div>
+<div class="line"><span class="lineno">  126</span>  matrix a{mdspan_a};</div>
+<div class="line"><span class="lineno">  127</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#ab2c1576384ba08f93784395ea8071fd9">matrix</a> b{mdspan_b};</div>
+<div class="line"><span class="lineno">  128</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#ab2c1576384ba08f93784395ea8071fd9">matrix</a> r{mdspan_r};</div>
+<div class="line"><span class="lineno">  129</span>  std::random_device device;</div>
+<div class="line"><span class="lineno">  130</span>  std::mt19937 generator{device()};</div>
+<div class="line"><span class="lineno">  131</span>  std::uniform_real_distribution&lt;&gt; distribution{0., 1.};</div>
 <div class="line"><span class="lineno">  132</span> </div>
-<div class="line"><span class="lineno">  133</span>  std::ofstream results{<span class="stringliteral">&quot;results.txt&quot;</span>, std::ios::app};</div>
-<div class="line"><span class="lineno">  134</span>  ankerl::nanobench::Bench()</div>
-<div class="line"><span class="lineno">  135</span>      .output(<span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  136</span>      .title(<span class="stringliteral">&quot;typed matrix from std::mdspan from std::tuple&quot;</span>)</div>
-<div class="line"><span class="lineno">  137</span>      .run([&amp;]() {</div>
-<div class="line"><span class="lineno">  138</span>        matrix_product(a, b, r);</div>
-<div class="line"><span class="lineno">  139</span>        ankerl::nanobench::doNotOptimizeAway(r);</div>
-<div class="line"><span class="lineno">  140</span>      })</div>
-<div class="line"><span class="lineno">  141</span>      .render(csv&lt;Size&gt;.c_str(), results);</div>
-<div class="line"><span class="lineno">  142</span>}</div>
+<div class="line"><span class="lineno">  133</span>  <span class="keywordflow">for</span> (std::size_t i{0}; i &lt; Size; ++i) {</div>
+<div class="line"><span class="lineno">  134</span>    <span class="keywordflow">for</span> (std::size_t j{0}; j &lt; Size; ++j) {</div>
+<div class="line"><span class="lineno">  135</span>      a(i, j) = distribution(generator);</div>
+<div class="line"><span class="lineno">  136</span>      b(i, j) = distribution(generator);</div>
+<div class="line"><span class="lineno">  137</span>    }</div>
+<div class="line"><span class="lineno">  138</span>  }</div>
+<div class="line"><span class="lineno">  139</span> </div>
+<div class="line"><span class="lineno">  140</span>  std::ofstream results{<span class="stringliteral">&quot;results.txt&quot;</span>, std::ios::app};</div>
+<div class="line"><span class="lineno">  141</span>  ankerl::nanobench::Bench()</div>
+<div class="line"><span class="lineno">  142</span>      .output(<span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  143</span>      .title(<span class="stringliteral">&quot;typed matrix from std::mdspan from std::tuple&quot;</span>)</div>
+<div class="line"><span class="lineno">  144</span>      .run([&amp;]() {</div>
+<div class="line"><span class="lineno">  145</span>        matrix_product(a, b, r);</div>
+<div class="line"><span class="lineno">  146</span>        ankerl::nanobench::doNotOptimizeAway(r);</div>
+<div class="line"><span class="lineno">  147</span>      })</div>
+<div class="line"><span class="lineno">  148</span>      .render(csv&lt;Size&gt;().c_str(), results);</div>
+<div class="line"><span class="lineno">  149</span>}</div>
 <div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a></div><div class="ttdoc">Strongly typed matrix.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__forward_8hpp_source.xhtml#l00043">typed_linear_algebra_forward.hpp:43</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_a0fa52776262afae30db82d7c0a9339ac"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">fcarouge::armadillo::matrix</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Armadillo matrix.</div><div class="ttdef"><b>Definition</b> <a href="armadillo_8hpp_source.xhtml#l00091">armadillo.hpp:91</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03_xhtml_ab2c1576384ba08f93784395ea8071fd9"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#ab2c1576384ba08f93784395ea8071fd9">fcarouge::sample::anonymous_namespace{au_armadillo.cpp}::matrix</a></div><div class="ttdeci">matrix&lt; representation, RowIndexes, ColumnIndexes &gt; matrix</div><div class="ttdef"><b>Definition</b> <a href="au__armadillo_8cpp_source.xhtml#l00062">au_armadillo.cpp:62</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03_xhtml_ab2c1576384ba08f93784395ea8071fd9"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#ab2c1576384ba08f93784395ea8071fd9">fcarouge::sample::anonymous_namespace{au_armadillo.cpp}::matrix</a></div><div class="ttdeci">matrix&lt; representation, RowIndexes, ColumnIndexes &gt; matrix</div><div class="ttdef"><b>Definition</b> <a href="au__armadillo_8cpp_source.xhtml#l00063">au_armadillo.cpp:63</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra_1_1internal_xhtml_aeffe7fc6bb97d584b4a063eb0a2641a0"><div class="ttname"><a href="namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#aeffe7fc6bb97d584b4a063eb0a2641a0">fcarouge::typed_linear_algebra::internal::tuple_n_type</a></div><div class="ttdeci">typename tupler&lt; Type, Size &gt;::type tuple_n_type</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00471">utility.hpp:471</a></div></div>
-<div class="ttc" id="astructfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor_xhtml"><div class="ttname"><a href="structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor.xhtml">fcarouge::benchmark::anonymous_namespace{typed_mdspan_tupled_product.cpp}::accessor</a></div><div class="ttdef"><b>Definition</b> <a href="typed__mdspan__tupled__product_8cpp_source.xhtml#l00086">typed_mdspan_tupled_product.cpp:86</a></div></div>
+<div class="ttc" id="astructfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor_xhtml"><div class="ttname"><a href="structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1accessor.xhtml">fcarouge::benchmark::anonymous_namespace{typed_mdspan_tupled_product.cpp}::accessor</a></div><div class="ttdef"><b>Definition</b> <a href="typed__mdspan__tupled__product_8cpp_source.xhtml#l00093">typed_mdspan_tupled_product.cpp:93</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a95ae50288c59c32baf0a89ed2d662cb6" name="a95ae50288c59c32baf0a89ed2d662cb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95ae50288c59c32baf0a89ed2d662cb6">&#9670;&#160;</a></span>csv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;auto Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">auto fcarouge::benchmark::anonymous_namespace{typed_mdspan_tupled_product.cpp}::csv </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> -&gt; std::string </td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="typed__mdspan__tupled__product_8cpp_source.xhtml#l00052">52</a> of file <a class="el" href="typed__mdspan__tupled__product_8cpp_source.xhtml">typed_mdspan_tupled_product.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   52</span>                                             {</div>
+<div class="line"><span class="lineno">   53</span>  <span class="keywordflow">return</span> std::format(</div>
+<div class="line"><span class="lineno">   54</span>      <span class="stringliteral">&quot;{{{{#result}}}}| {{{{title}}}} | {:5d}x{:&lt;5d} | &quot;</span></div>
+<div class="line"><span class="lineno">   55</span>      <span class="stringliteral">&quot;{{{{median(elapsed)}}}} | &quot;</span></div>
+<div class="line"><span class="lineno">   56</span>      <span class="stringliteral">&quot;{{{{medianAbsolutePercentError(elapsed)}}}} |{{{{/result}}}}\n&quot;</span>,</div>
+<div class="line"><span class="lineno">   57</span>      Size, Size);</div>
+<div class="line"><span class="lineno">   58</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -226,45 +257,37 @@ template&lt;typename Tuple &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typed__mdspan__tupled__product_8cpp_source.xhtml#l00076">76</a> of file <a class="el" href="typed__mdspan__tupled__product_8cpp_source.xhtml">typed_mdspan_tupled_product.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   76</span>                                    {</div>
-<div class="line"><span class="lineno">   77</span>  <span class="keyword">using </span>tuple_type = <span class="keyword">typename</span> std::remove_reference&lt;Tuple&gt;::type;</div>
-<div class="line"><span class="lineno">   78</span> </div>
-<div class="line"><span class="lineno">   79</span>  <span class="keywordflow">if</span> (<a class="code hl_concept" href="conceptfcarouge_1_1index.xhtml">index</a> &gt;= std::tuple_size&lt;tuple_type&gt;::value) {</div>
-<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Out of range&quot;</span>);</div>
-<div class="line"><span class="lineno">   81</span>  }</div>
-<div class="line"><span class="lineno">   82</span> </div>
-<div class="line"><span class="lineno">   83</span>  <span class="keywordflow">return</span> lookup&lt;tuple_type&gt;::table[<a class="code hl_concept" href="conceptfcarouge_1_1index.xhtml">index</a>](tuple);</div>
-<div class="line"><span class="lineno">   84</span>}</div>
+<p class="definition">Definition at line <a class="el" href="typed__mdspan__tupled__product_8cpp_source.xhtml#l00083">83</a> of file <a class="el" href="typed__mdspan__tupled__product_8cpp_source.xhtml">typed_mdspan_tupled_product.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   83</span>                                    {</div>
+<div class="line"><span class="lineno">   84</span>  <span class="keyword">using </span>tuple_type = <span class="keyword">typename</span> std::remove_reference&lt;Tuple&gt;::type;</div>
+<div class="line"><span class="lineno">   85</span> </div>
+<div class="line"><span class="lineno">   86</span>  <span class="keywordflow">if</span> (<a class="code hl_concept" href="conceptfcarouge_1_1index.xhtml">index</a> &gt;= std::tuple_size&lt;tuple_type&gt;::value) {</div>
+<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Out of range&quot;</span>);</div>
+<div class="line"><span class="lineno">   88</span>  }</div>
+<div class="line"><span class="lineno">   89</span> </div>
+<div class="line"><span class="lineno">   90</span>  <span class="keywordflow">return</span> lookup&lt;tuple_type&gt;::table[<a class="code hl_concept" href="conceptfcarouge_1_1index.xhtml">index</a>](tuple);</div>
+<div class="line"><span class="lineno">   91</span>}</div>
 <div class="ttc" id="aconceptfcarouge_1_1index_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1index.xhtml">fcarouge::index</a></div><div class="ttdoc">Concept of compile-time index.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00126">typed_linear_algebra.hpp:126</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a98382c76342caef47aa7579ef28b182c" name="a98382c76342caef47aa7579ef28b182c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98382c76342caef47aa7579ef28b182c">&#9670;&#160;</a></span>csv</h2>
+<a id="a9f6f54c71feeab59296064079505039b" name="a9f6f54c71feeab59296064079505039b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f6f54c71feeab59296064079505039b">&#9670;&#160;</a></span>opt_out</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;auto Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const std::string fcarouge::benchmark::anonymous_namespace{typed_mdspan_tupled_product.cpp}::csv</td>
+          <td class="memname">const <a class="el" href="classfcarouge_1_1not__realtime.xhtml">not_realtime</a> fcarouge::benchmark::anonymous_namespace{typed_mdspan_tupled_product.cpp}::opt_out</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{std::format(</div>
-<div class="line">    <span class="stringliteral">&quot;{{{{#result}}}}| {{{{title}}}} | {:5d}x{:&lt;5d} | {{{{median(elapsed)}}}} | &quot;</span></div>
-<div class="line">    <span class="stringliteral">&quot;{{{{medianAbsolutePercentError(elapsed)}}}} |{{{{/result}}}}\n&quot;</span>,</div>
-<div class="line">    Size, Size)}</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="typed__mdspan__tupled__product_8cpp_source.xhtml#l00048">48</a> of file <a class="el" href="typed__mdspan__tupled__product_8cpp_source.xhtml">typed_mdspan_tupled_product.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   48</span>                   {std::format(</div>
-<div class="line"><span class="lineno">   49</span>    <span class="stringliteral">&quot;{{{{#result}}}}| {{{{title}}}} | {:5d}x{:&lt;5d} | {{{{median(elapsed)}}}} | &quot;</span></div>
-<div class="line"><span class="lineno">   50</span>    <span class="stringliteral">&quot;{{{{medianAbsolutePercentError(elapsed)}}}} |{{{{/result}}}}\n&quot;</span>,</div>
-<div class="line"><span class="lineno">   51</span>    Size, Size)};</div>
-</div><!-- fragment -->
+
+<p>The benchmark measures, prints, and tears down its counters past its entry point: it opts out of the real-time verification for its lifetime. </p>
+
+<p class="definition">Definition at line <a class="el" href="typed__mdspan__tupled__product_8cpp_source.xhtml#l00050">50</a> of file <a class="el" href="typed__mdspan__tupled__product_8cpp_source.xhtml">typed_mdspan_tupled_product.cpp</a>.</p>
+
 </div>
 </div>
 </div><!-- contents -->

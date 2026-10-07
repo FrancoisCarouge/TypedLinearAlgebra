@@ -14,6 +14,7 @@ var namespacefcarouge =
     [ "element_caster< To, From >", "structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml", "structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4" ],
     [ "element_caster< To, Magnitude >", "structfcarouge_1_1element__caster_3_01_to_00_01_magnitude_01_4.xhtml", "structfcarouge_1_1element__caster_3_01_to_00_01_magnitude_01_4" ],
     [ "multiplies< Type, Magnitude >", "structfcarouge_1_1multiplies_3_01_type_00_01_magnitude_01_4.xhtml", "structfcarouge_1_1multiplies_3_01_type_00_01_magnitude_01_4" ],
+    [ "not_realtime", "classfcarouge_1_1not__realtime.xhtml", "classfcarouge_1_1not__realtime" ],
     [ "typed_matrix", "classfcarouge_1_1typed__matrix.xhtml", "classfcarouge_1_1typed__matrix" ],
     [ "same_as_typed_matrix", "conceptfcarouge_1_1same__as__typed__matrix.xhtml", null ],
     [ "uniform_typed_matrix", "conceptfcarouge_1_1uniform__typed__matrix.xhtml", null ],

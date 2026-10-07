@@ -140,7 +140,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml#l00054">54</a> of file <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml">typed_linear_algebra_mp_units_eigen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml#l00055">55</a> of file <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml">typed_linear_algebra_mp_units_eigen.cpp</a>.</p>
 
 </div>
 </div>
@@ -158,7 +158,7 @@ template&lt;typename... Types&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml#l00057">57</a> of file <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml">typed_linear_algebra_mp_units_eigen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml#l00058">58</a> of file <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml">typed_linear_algebra_mp_units_eigen.cpp</a>.</p>
 
 </div>
 </div>
@@ -174,7 +174,7 @@ template&lt;typename... Types&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml#l00052">52</a> of file <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml">typed_linear_algebra_mp_units_eigen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml#l00053">53</a> of file <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml">typed_linear_algebra_mp_units_eigen.cpp</a>.</p>
 
 </div>
 </div>
@@ -192,7 +192,7 @@ template&lt;auto QuantityReference&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml">typed_linear_algebra_mp_units_eigen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml">typed_linear_algebra_mp_units_eigen.cpp</a>.</p>
 
 </div>
 </div>
@@ -208,7 +208,7 @@ template&lt;auto QuantityReference&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml#l00053">53</a> of file <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml">typed_linear_algebra_mp_units_eigen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml#l00054">54</a> of file <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml">typed_linear_algebra_mp_units_eigen.cpp</a>.</p>
 
 </div>
 </div>
@@ -225,6 +225,7 @@ template&lt;auto QuantityReference&gt; </div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line">  <span class="keyword">const</span> not_realtime opt_out;</div>
 <div class="line">  <span class="keyword">using </span>state = column_vector&lt;position, velocity, acceleration&gt;;</div>
 <div class="line"> </div>
 <div class="line">  state x0{3. * m, 2. * m / s, 1. * m / s2};</div>
@@ -240,23 +241,25 @@ template&lt;auto QuantityReference&gt; </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml#l00059">59</a> of file <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml">typed_linear_algebra_mp_units_eigen.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   59</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   60</span>  <span class="keyword">using </span>state = <a class="code hl_typedef" href="#a4697fefacf97a0aca9d7d080becf92cf">column_vector&lt;position, velocity, acceleration&gt;</a>;</div>
-<div class="line"><span class="lineno">   61</span> </div>
-<div class="line"><span class="lineno">   62</span>  state x0{3. * m, 2. * m / s, 1. * m / s2};</div>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml#l00060">60</a> of file <a class="el" href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml">typed_linear_algebra_mp_units_eigen.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   60</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><span class="lineno">   61</span>  <span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1not__realtime.xhtml">not_realtime</a> opt_out;</div>
+<div class="line"><span class="lineno">   62</span>  <span class="keyword">using </span>state = <a class="code hl_typedef" href="#a4697fefacf97a0aca9d7d080becf92cf">column_vector&lt;position, velocity, acceleration&gt;</a>;</div>
 <div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x0) == <span class="stringliteral">&quot;[[3 m], [2 m/s], [1 m/s²]]&quot;</span>);</div>
+<div class="line"><span class="lineno">   64</span>  state x0{3. * m, 2. * m / s, 1. * m / s2};</div>
 <div class="line"><span class="lineno">   65</span> </div>
-<div class="line"><span class="lineno">   66</span>  x0.at&lt;1&gt;(2.5 * m / s);</div>
-<div class="line"><span class="lineno">   67</span>  assert(x0.at&lt;1&gt;() == 2.5 * m / s);</div>
-<div class="line"><span class="lineno">   68</span> </div>
-<div class="line"><span class="lineno">   69</span>  state x1{x0 * 3.};</div>
-<div class="line"><span class="lineno">   70</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x1) == <span class="stringliteral">&quot;[[9 m], [7.5 m/s], [3 m/s²]]&quot;</span>);</div>
-<div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   73</span>}()};</div>
-<div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02typed__linear__algebra__mp__units__eigen_8cpp_03_xhtml_a4697fefacf97a0aca9d7d080becf92cf"><div class="ttname"><a href="#a4697fefacf97a0aca9d7d080becf92cf">fcarouge::test::anonymous_namespace{typed_linear_algebra_mp_units_eigen.cpp}::column_vector</a></div><div class="ttdeci">column_vector&lt; representation, Types... &gt; column_vector</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml#l00057">typed_linear_algebra_mp_units_eigen.cpp:57</a></div></div>
+<div class="line"><span class="lineno">   66</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x0) == <span class="stringliteral">&quot;[[3 m], [2 m/s], [1 m/s²]]&quot;</span>);</div>
+<div class="line"><span class="lineno">   67</span> </div>
+<div class="line"><span class="lineno">   68</span>  x0.at&lt;1&gt;(2.5 * m / s);</div>
+<div class="line"><span class="lineno">   69</span>  assert(x0.at&lt;1&gt;() == 2.5 * m / s);</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>  state x1{x0 * 3.};</div>
+<div class="line"><span class="lineno">   72</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, x1) == <span class="stringliteral">&quot;[[9 m], [7.5 m/s], [3 m/s²]]&quot;</span>);</div>
+<div class="line"><span class="lineno">   73</span> </div>
+<div class="line"><span class="lineno">   74</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   75</span>}()};</div>
+<div class="ttc" id="aclassfcarouge_1_1not__realtime_xhtml"><div class="ttname"><a href="classfcarouge_1_1not__realtime.xhtml">fcarouge::not_realtime</a></div><div class="ttdoc">Opt-out token of the real-time verification.</div><div class="ttdef"><b>Definition</b> <a href="realtime_8hpp_source.xhtml#l00056">realtime.hpp:56</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02typed__linear__algebra__mp__units__eigen_8cpp_03_xhtml_a4697fefacf97a0aca9d7d080becf92cf"><div class="ttname"><a href="#a4697fefacf97a0aca9d7d080becf92cf">fcarouge::test::anonymous_namespace{typed_linear_algebra_mp_units_eigen.cpp}::column_vector</a></div><div class="ttdeci">column_vector&lt; representation, Types... &gt; column_vector</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__mp__units__eigen_8cpp_source.xhtml#l00058">typed_linear_algebra_mp_units_eigen.cpp:58</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

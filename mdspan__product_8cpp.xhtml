@@ -107,7 +107,8 @@ $(function(){initNavTree('mdspan__product_8cpp.xhtml',''); initResizable(true); 
   <div class="headertitle"><div class="title">mdspan_product.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;nanobench.h&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="realtime_8hpp_source.xhtml">fcarouge/realtime.hpp</a>&quot;</code><br />
+<code>#include &lt;nanobench.h&gt;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
 <code>#include &lt;format&gt;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
@@ -138,6 +139,9 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a0d434113c3c7044d7371267335fa9b77" id="r_a0d434113c3c7044d7371267335fa9b77"><td class="memTemplParams" colspan="2">template&lt;auto Size&gt; </td></tr>
+<tr class="memitem:a0d434113c3c7044d7371267335fa9b77"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__product_8cpp_03.xhtml#a0d434113c3c7044d7371267335fa9b77">fcarouge::benchmark::anonymous_namespace{mdspan_product.cpp}::csv</a> () -&gt; std::string</td></tr>
+<tr class="separator:a0d434113c3c7044d7371267335fa9b77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f22864eff8e6dcdd69511bd6b832bb6" id="r_a8f22864eff8e6dcdd69511bd6b832bb6"><td class="memTemplParams" colspan="2">template&lt;auto Size&gt; </td></tr>
 <tr class="memitem:a8f22864eff8e6dcdd69511bd6b832bb6"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__product_8cpp_03.xhtml#a8f22864eff8e6dcdd69511bd6b832bb6">fcarouge::benchmark::anonymous_namespace{mdspan_product.cpp}::bench</a> ()</td></tr>
 <tr class="separator:a8f22864eff8e6dcdd69511bd6b832bb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,9 +150,9 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a5bdc908c95df4c92afe8ee7cc9be30dc" id="r_a5bdc908c95df4c92afe8ee7cc9be30dc"><td class="memTemplParams" colspan="2">template&lt;auto Size&gt; </td></tr>
-<tr class="memitem:a5bdc908c95df4c92afe8ee7cc9be30dc"><td class="memTemplItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__product_8cpp_03.xhtml#a5bdc908c95df4c92afe8ee7cc9be30dc">fcarouge::benchmark::anonymous_namespace{mdspan_product.cpp}::csv</a></td></tr>
-<tr class="separator:a5bdc908c95df4c92afe8ee7cc9be30dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c9f5e2e18b448ad9bd708ed318e5d39" id="r_a6c9f5e2e18b448ad9bd708ed318e5d39"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classfcarouge_1_1not__realtime.xhtml">not_realtime</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__product_8cpp_03.xhtml#a6c9f5e2e18b448ad9bd708ed318e5d39">fcarouge::benchmark::anonymous_namespace{mdspan_product.cpp}::opt_out</a></td></tr>
+<tr class="memdesc:a6c9f5e2e18b448ad9bd708ed318e5d39"><td class="mdescLeft">&#160;</td><td class="mdescRight">The benchmark measures, prints, and tears down its counters past its entry point: it opts out of the real-time verification for its lifetime.  <br /></td></tr>
+<tr class="separator:a6c9f5e2e18b448ad9bd708ed318e5d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ae66f6b31b5ad750f1fe042a706a4e3d4" name="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
@@ -166,8 +170,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mdspan__product_8cpp_source.xhtml#l00083">83</a> of file <a class="el" href="mdspan__product_8cpp_source.xhtml">mdspan_product.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   83</span>{ fcarouge::benchmark::bench&lt;${SIZE}&gt;(); }</div>
+<p class="definition">Definition at line <a class="el" href="mdspan__product_8cpp_source.xhtml#l00091">91</a> of file <a class="el" href="mdspan__product_8cpp_source.xhtml">mdspan_product.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   91</span>{ fcarouge::benchmark::bench&lt;${SIZE}&gt;(); }</div>
 </div><!-- fragment -->
 </div>
 </div>

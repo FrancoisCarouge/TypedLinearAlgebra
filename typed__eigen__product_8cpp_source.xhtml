@@ -135,60 +135,67 @@ $(function(){initNavTree('typed__eigen__product_8cpp_source.xhtml',''); initResi
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">For more information, please refer to &lt;https://unlicense.org&gt; */</span></div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;fcarouge/linalg.hpp&quot;</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &lt;nanobench.h&gt;</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &lt;cstddef&gt;</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &lt;format&gt;</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &lt;random&gt;</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1benchmark.xhtml">fcarouge::benchmark</a> {</div>
-<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__eigen__product_8cpp_03.xhtml">   43</a></span><span class="keyword">namespace </span>{</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">template</span> &lt;auto Size&gt;</div>
-<div class="foldopen" id="foldopen00045" data-start="{" data-end="};">
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__eigen__product_8cpp_03.xhtml#a137a2931c2ede40891ccbb86cdf10c52">   45</a></span><span class="keyword">const</span> std::string csv{std::format(</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="stringliteral">&quot;{{{{#result}}}}| {{{{title}}}} | {:5d}x{:&lt;5d} | {{{{median(elapsed)}}}} | &quot;</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="stringliteral">&quot;{{{{medianAbsolutePercentError(elapsed)}}}} |{{{{/result}}}}\n&quot;</span>,</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    Size, Size)};</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;<a class="code" href="realtime_8hpp.xhtml">fcarouge/realtime.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &lt;nanobench.h&gt;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &lt;cstddef&gt;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#include &lt;format&gt;</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &lt;random&gt;</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1benchmark.xhtml">fcarouge::benchmark</a> {</div>
+<div class="foldopen" id="foldopen00044" data-start="{" data-end="}">
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__eigen__product_8cpp_03.xhtml">   44</a></span><span class="keyword">namespace </span>{</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__eigen__product_8cpp_03.xhtml#a2fbfe6b335aaa8f341c20489cccfa1e4">   47</a></span><span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1not__realtime.xhtml">not_realtime</a> opt_out;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__eigen__product_8cpp_03.xhtml#a844800d1f15d89381d68ad27caf41807">   49</a></span><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">auto</span> csv() -&gt; std::string {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="keywordflow">return</span> std::format(</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>      <span class="stringliteral">&quot;{{{{#result}}}}| {{{{title}}}} | {:5d}x{:&lt;5d} | &quot;</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>      <span class="stringliteral">&quot;{{{{median(elapsed)}}}} | &quot;</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>      <span class="stringliteral">&quot;{{{{medianAbsolutePercentError(elapsed)}}}} |{{{{/result}}}}\n&quot;</span>,</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>      Size, Size);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>
 </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__eigen__product_8cpp_03.xhtml#adf9f1c1263f54f8440979ddb0f64d273">   51</a></span><span class="keyword">template</span> &lt;auto Size&gt; <span class="keywordtype">void</span> bench() {</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;double, Size, Size&gt;</a> a;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;double, Size, Size&gt;</a> b;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  std::random_device device;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  std::mt19937 generator{device()};</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  std::uniform_real_distribution&lt;&gt; distribution{0., 1.};</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="keywordflow">for</span> (std::size_t i{0}; i &lt; Size; ++i) {</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordflow">for</span> (std::size_t j{0}; j &lt; Size; ++j) {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>      a(i, j) = distribution(generator);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>      b(i, j) = distribution(generator);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="foldopen" id="foldopen00058" data-start="{" data-end="}">
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__eigen__product_8cpp_03.xhtml#adf9f1c1263f54f8440979ddb0f64d273">   58</a></span><span class="keyword">template</span> &lt;auto Size&gt; <span class="keywordtype">void</span> bench() {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;double, Size, Size&gt;</a> a;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;double, Size, Size&gt;</a> b;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  std::random_device device;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  std::mt19937 generator{device()};</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  std::uniform_real_distribution&lt;&gt; distribution{0., 1.};</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  std::ofstream results{<span class="stringliteral">&quot;results.txt&quot;</span>, std::ios::app};</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  ankerl::nanobench::Bench()</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>      .output(<span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>      .title(<span class="stringliteral">&quot;typed matrix from Eigen::Matrix&quot;</span>)</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>      .run([&amp;]() {</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;double, Size, Size&gt;</a> r{a * b};</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        ankerl::nanobench::doNotOptimizeAway(r);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>      })</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>      .render(csv&lt;Size&gt;.c_str(), results);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <span class="keywordflow">for</span> (std::size_t i{0}; i &lt; Size; ++i) {</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordflow">for</span> (std::size_t j{0}; j &lt; Size; ++j) {</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>      a(i, j) = distribution(generator);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>      b(i, j) = distribution(generator);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  std::ofstream results{<span class="stringliteral">&quot;results.txt&quot;</span>, std::ios::app};</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  ankerl::nanobench::Bench()</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>      .output(<span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>      .title(<span class="stringliteral">&quot;typed matrix from Eigen::Matrix&quot;</span>)</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>      .run([&amp;]() {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;double, Size, Size&gt;</a> r{a * b};</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        ankerl::nanobench::doNotOptimizeAway(r);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>      })</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>      .render(csv&lt;Size&gt;().c_str(), results);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>}</div>
 </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>} <span class="comment">// namespace</span></div>
 </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>} <span class="comment">// namespace fcarouge::benchmark</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="typed__eigen__product_8cpp.xhtml#ae66f6b31b5ad750f1fe042a706a4e3d4">   78</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="typed__eigen__product_8cpp.xhtml#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>() { fcarouge::benchmark::bench&lt;${SIZE}&gt;(); }</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>} <span class="comment">// namespace fcarouge::benchmark</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="typed__eigen__product_8cpp.xhtml#ae66f6b31b5ad750f1fe042a706a4e3d4">   85</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="typed__eigen__product_8cpp.xhtml#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>() { fcarouge::benchmark::bench&lt;${SIZE}&gt;(); }</div>
+<div class="ttc" id="aclassfcarouge_1_1not__realtime_xhtml"><div class="ttname"><a href="classfcarouge_1_1not__realtime.xhtml">fcarouge::not_realtime</a></div><div class="ttdoc">Opt-out token of the real-time verification.</div><div class="ttdef"><b>Definition</b> <a href="realtime_8hpp_source.xhtml#l00056">realtime.hpp:56</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_a0fa52776262afae30db82d7c0a9339ac"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">fcarouge::armadillo::matrix</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Armadillo matrix.</div><div class="ttdef"><b>Definition</b> <a href="armadillo_8hpp_source.xhtml#l00091">armadillo.hpp:91</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1benchmark_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1benchmark.xhtml">fcarouge::benchmark</a></div><div class="ttdef"><b>Definition</b> <a href="eigen__product_8cpp_source.xhtml#l00041">eigen_product.cpp:41</a></div></div>
-<div class="ttc" id="atyped__eigen__product_8cpp_xhtml_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="typed__eigen__product_8cpp.xhtml#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition</b> <a href="#l00078">typed_eigen_product.cpp:78</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1benchmark_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1benchmark.xhtml">fcarouge::benchmark</a></div><div class="ttdef"><b>Definition</b> <a href="eigen__product_8cpp_source.xhtml#l00043">eigen_product.cpp:43</a></div></div>
+<div class="ttc" id="arealtime_8hpp_xhtml"><div class="ttname"><a href="realtime_8hpp.xhtml">realtime.hpp</a></div><div class="ttdoc">Opt-out of the real-time verification.</div></div>
+<div class="ttc" id="atyped__eigen__product_8cpp_xhtml_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="typed__eigen__product_8cpp.xhtml#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition</b> <a href="#l00085">typed_eigen_product.cpp:85</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

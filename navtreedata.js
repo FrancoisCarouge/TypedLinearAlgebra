@@ -125,15 +125,15 @@ var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
 "assign_21x2__mp__units__eigen_8cpp.xhtml",
-"conceptfcarouge_1_1other.xhtml",
-"equal__to_21x2__au__eigen_8cpp.xhtml",
-"matrix__product_22x2__nholthaus__std_8cpp_source.xhtml",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__eigen_8cpp_03.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_022x3__au__eigen__fail_8cpp_03.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02subscript__1x3__const_8cpp_03.xhtml#a414ce167ef5233009fe2d62b20007ef0",
-"sample_2mp__units__std_8cpp.xhtml#a3e5057dcafa85555c20bb1c1d598a675",
-"subtraction_21x1__chrono__eigen__fail_8cpp_source.xhtml",
-"unit_test_coverage.xhtml"
+"conceptfcarouge_1_1armadillo_1_1statically__sized.xhtml",
+"equal__to_21x1__au__eigen__fail_8cpp_source.xhtml",
+"matrix__one__norm_22x3__eigen_8cpp.xhtml",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#a720da609d4006c1b1945d347ac5494c5",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_022x2__au__eigen__fail_8cpp_03.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03.xhtml#a92dedf7eb6fd575ec96fd923a67f53e0",
+"sample_2au__std_8cpp.xhtml#a7a20d722c5f241b52488d62dfae31959",
+"structured__bindings_23x1__const_8cpp.xhtml",
+"typed__linear__algebra_8hpp.xhtml#aff2f70ca99030562d79527d2c291d50e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
