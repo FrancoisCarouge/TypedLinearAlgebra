@@ -31,3 +31,4 @@ For more information, please refer to <https://unlicense.org> ]]
 
 build("same_as_typed_matrix" BACKENDS "eigexed")
 build("nested" BACKENDS "nested_typed_eigen")
+build("reentrant_tuple_size" BACKENDS "chrono_std")
