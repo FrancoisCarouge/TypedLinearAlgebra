@@ -179,12 +179,23 @@ constexpr void for_constexpr(Function function) {
   for_constexpr_detail(std::make_index_sequence<Size>{}, function);
 }
 
+//! @brief Whether the type is a typed matrix class template instantiation.
+//!
+//! @details Matched by partial specialization on the template arguments alone,
+//! so asking about any other type never instantiates it. Probing a member of
+//! the type instead would complete it: completing a `std::tuple` is then
+//! reentrant when that question arises while selecting its own
+//! `std::tuple_size` specialization, as libc++'s does by evaluating
+//! `std::tuple_size_v` of itself in its class definition.
+template <typename Type> struct is_typed_matrix : std::false_type {};
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+struct is_typed_matrix<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
+    : std::true_type {};
+
 template <typename Type>
-concept same_as_typed_matrix = std::same_as<
-    std::remove_cvref_t<Type>,
-    typed_matrix<typename std::remove_cvref_t<Type>::matrix,
-                 typename std::remove_cvref_t<Type>::row_indexes,
-                 typename std::remove_cvref_t<Type>::column_indexes>>;
+concept same_as_typed_matrix =
+    is_typed_matrix<std::remove_cvref_t<Type>>::value;
 
 //! @brief Read the storage element at the given typed matrix index(es).
 //!
