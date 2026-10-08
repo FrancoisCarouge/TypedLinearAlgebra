@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -30,6 +30,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <format>
@@ -59,6 +60,7 @@ using mp_units::si::unit_symbols::s;
 //!
 //! @details Explore areas of interests.
 [[maybe_unused]] const auto test{[] -> int {
+  const not_realtime opt_out;
   // The typed linear algebra library's vector can be used as a representation
   // for a quantity:
   {

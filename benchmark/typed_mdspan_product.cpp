@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "fcarouge/realtime.hpp"
 #include "fcarouge/typed_linear_algebra.hpp"
 
 #include <nanobench.h>
@@ -44,21 +45,25 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::benchmark {
 namespace {
-template <auto Size>
-const std::string csv{std::format(
-    "{{{{#result}}}}| {{{{title}}}} | {:5d}x{:<5d} | {{{{median(elapsed)}}}} | "
-    "{{{{medianAbsolutePercentError(elapsed)}}}} |{{{{/result}}}}\n",
-    Size, Size)};
+//! @brief The benchmark measures, prints, and tears down its counters past its
+//! entry point: it opts out of the real-time verification for its lifetime.
+const not_realtime opt_out;
+
+template <auto Size> auto csv() -> std::string {
+  return std::format(
+      "{{{{#result}}}}| {{{{title}}}} | {:5d}x{:<5d} | "
+      "{{{{median(elapsed)}}}} | "
+      "{{{{medianAbsolutePercentError(elapsed)}}}} |{{{{/result}}}}\n",
+      Size, Size);
+}
 
 //! @benchmark `std::mdspan` square matrix-matrix product.
 template <auto Size> void bench() {
   using mdspan =
       std::mdspan<double, std::extents<std::size_t, Size, Size>,
                   Kokkos::layout_right, Kokkos::default_accessor<double>>;
-  using matrix =
-      typed_matrix<mdspan,
-                   typed_linear_algebra_internal::tuple_n_type<double, Size>,
-                   typed_linear_algebra_internal::tuple_n_type<double, Size>>;
+  using matrix = typed_matrix<mdspan, tla::tuple_n_type<double, Size>,
+                              tla::tuple_n_type<double, Size>>;
 
   std::vector<double> storage_a(Size * Size);
   std::vector<double> storage_b(Size * Size);
@@ -91,7 +96,7 @@ template <auto Size> void bench() {
         matrix_product(a, b, r);
         ankerl::nanobench::doNotOptimizeAway(r);
       })
-      .render(csv<Size>.c_str(), results);
+      .render(csv<Size>().c_str(), results);
 }
 } // namespace
 } // namespace fcarouge::benchmark

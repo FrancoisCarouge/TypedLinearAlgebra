@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -30,6 +30,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <format>
@@ -46,6 +47,7 @@ using mp_units::si::unit_symbols::m2;
 namespace {
 //! @test Verifies the quantity by column vector division operator.
 [[maybe_unused]] const auto test{[] -> int {
+  const not_realtime opt_out;
   using length = quantity<mp_units::isq::length[m]>;
   using area = quantity<mp_units::isq::area[m2]>;
 

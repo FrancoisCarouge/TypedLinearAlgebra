@@ -1,5 +1,5 @@
 #[[ Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -35,8 +35,14 @@ fail("vector_lhs_au_std_fail" BACKENDS "au_std")
 fail("vector_lhs_mp_units_std_fail" BACKENDS "mp_units_std")
 
 pass("2x2_au_std" BACKENDS "au_std")
+pass("2x2_chrono_std" BACKENDS "chrono_std")
 pass("2x2_mp_units_std" BACKENDS "mp_units_std")
+pass("2x2_nholthaus_std" BACKENDS "nholthaus_std")
 pass("3x2_au_std" BACKENDS "au_std")
+pass("3x2_chrono_std" BACKENDS "chrono_std")
 pass("3x2_mp_units_std" BACKENDS "mp_units_std")
+pass("3x2_nholthaus_std" BACKENDS "nholthaus_std")
 pass("row_au_std" BACKENDS "au_std")
+pass("row_chrono_std" BACKENDS "chrono_std")
 pass("row_mp_units_std" BACKENDS "mp_units_std")
+pass("row_nholthaus_std" BACKENDS "nholthaus_std")

@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -48,8 +48,8 @@ using position = quantity<mp_units::isq::length[m]>;
 using velocity = quantity<mp_units::isq::velocity[m / s]>;
 using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
 
-//! @test Verifies the at member accessor looking up the element by type on a
-//! distinct column vector.
+//! @test The by-type `at` accessor resolves each element of a distinct column
+//! vector to the same position its integral index does.
 [[maybe_unused]] const auto test{[] -> int {
   column_vector<representation, position, velocity, acceleration> x{
       3. * m, 2. * m / s, 1. * m / s2};
@@ -58,7 +58,6 @@ using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
   assert(x.at<velocity>() == 2. * m / s);
   assert(x.at<acceleration>() == 1. * m / s2);
 
-  // The looked-up position matches the explicit index.
   assert(x.at<position>() == x.at<0>());
   assert(x.at<velocity>() == x.at<1>());
   assert(x.at<acceleration>() == x.at<2>());

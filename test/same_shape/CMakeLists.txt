@@ -1,5 +1,5 @@
 #[[ Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -30,9 +30,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 build("same_shape" BACKENDS "eigexed")
-build("mp_units_eigen" BACKENDS "mp_units_eigen")
-build("chrono_eigen" BACKENDS "chrono_eigen")
+build("mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
+build("chrono_eigen" BACKENDS "chrono_eigen" "chrono_armadillo")
 build("au_std" BACKENDS "au_std")
 build("nested_typed_eigen" BACKENDS "nested_typed_eigen")
 
-fail("transpose_shape_fail" BACKENDS "eigexed")
+fail("transpose_shape_fail" BACKENDS "eigexed" "armadilloxed")

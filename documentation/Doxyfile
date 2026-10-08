@@ -5,7 +5,7 @@
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = Typed Linear Algebra
-PROJECT_NUMBER         = 0.3.0
+PROJECT_NUMBER         = 0.4.0
 PROJECT_BRIEF          = "Typed Linear Algebra"
 PROJECT_LOGO           =
 OUTPUT_DIRECTORY       = .
@@ -181,7 +181,7 @@ RECURSIVE              = YES
 EXCLUDE                =
 EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       = */documentation/html/*
-EXCLUDE_SYMBOLS        = *::typed_linear_algebra_internal::*
+EXCLUDE_SYMBOLS        = *::typed_linear_algebra::internal::*
 EXAMPLE_PATH           = ../test
 EXAMPLE_PATTERNS       = *
 EXAMPLE_RECURSIVE      = NO

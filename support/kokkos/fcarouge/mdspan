@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -36,6 +36,7 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace std {
 using Kokkos::extents;
+using Kokkos::layout_left;
 using Kokkos::mdspan;
 } // namespace std
 

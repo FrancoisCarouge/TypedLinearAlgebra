@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -40,6 +40,7 @@ For more information, please refer to <https://unlicense.org> */
 //! the strongly typed units.
 
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <au/std_format.hh>
 #include <au/units/meters.hh>
@@ -92,19 +93,20 @@ constexpr std::size_t extents_size{[] -> auto {
 //! @details A variety of activities of strongly typed linear algebra with
 //! std::mdspan, std::linalg, and Au.
 [[maybe_unused]] const auto sample{[] -> int {
+  const not_realtime opt_out;
   using au::symbols::m;
   using au::symbols::s;
 
   constexpr auto s2{au::squared(s)};
 
-  // Set up a heterogenous column vector type for the sample.
+  // Set up a heterogeneous column vector type for the sample.
   using state = column_vector<position, velocity, acceleration>;
 
   std::vector v0(extents_size<column_extents<3>>, representation{});
   std::mdspan s0{v0.data(), column_extents<3>{}};
   state x0{s0};
 
-  // Elements asignment.
+  // Elements assignment.
   x0.at<0>(3. * m);
   x0.at<1>(2. * m / s);
   x0.at<2>(1. * m / s2);
@@ -124,10 +126,10 @@ constexpr std::size_t extents_size{[] -> auto {
   assert(std::format("{}", x0) == "[[9 m], [7.5 m / s], [3 m / s^2]]");
 
   // Note: unlike mp-units, Au's `Quantity::operator=` is lvalue-only
-  // (`&`-ref-qualified), which this library's `add()`/`substract()`
+  // (`&`-ref-qualified), which this library's `add()`/`subtract()`
   // std::linalg-style free functions are incompatible with (their
   // element-compatibility check assigns into an rvalue `std::declval`).
-  // Prefer `operator+`/`operator-` (used above) over `add()`/`substract()`
+  // Prefer `operator+`/`operator-` (used above) over `add()`/`subtract()`
   // for Au-typed matrices.
 
   using state_transpose = row_vector<position, velocity, acceleration>;

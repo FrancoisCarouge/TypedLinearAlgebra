@@ -1,0 +1,28 @@
+format:
+  command_case: unchanged
+
+commands:
+  pass:
+    pargs: 1
+    kwargs:
+      BACKENDS:
+        nargs: "+"
+  build:
+    pargs: 1
+    kwargs:
+      BACKENDS:
+        nargs: "+"
+  fail:
+    pargs: 1
+    kwargs:
+      BACKENDS:
+        nargs: "+"
+  bench:
+    pargs: 2
+    kwargs:
+      BACKENDS:
+        nargs: "+"
+  amalgamate:
+    pargs: 2
+  amalgamate_get_inlined:
+    pargs: 2

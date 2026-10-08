@@ -1,5 +1,5 @@
 #[[ Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -57,15 +57,15 @@ function(pass NAME)
                    "${NAME}.cpp")
     target_link_libraries(
       typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_pass_driver
-      PRIVATE tlinalg typed_linear_algebra_options typed_linear_algebra_main
-              typed_linear_algebra_${BACKEND})
+      PRIVATE
+        tlinalg typed_linear_algebra_options typed_linear_algebra_main
+        typed_linear_algebra_${BACKEND})
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(
       NAME typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_pass
       COMMAND
         ${TEST_COMMAND}
-        $<TARGET_FILE:typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_pass_driver>
-    )
+        $<TARGET_FILE:typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_pass_driver>)
   endforeach()
 endfunction(pass)
 
@@ -81,19 +81,21 @@ function(build NAME)
   get_filename_component(CALLER "${CMAKE_CURRENT_SOURCE_DIR}" NAME)
 
   foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
-    add_library(typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_build_driver
-                OBJECT "${NAME}.cpp")
+    add_library(
+      typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_build_driver
+      OBJECT "${NAME}.cpp")
     target_link_libraries(
       typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_build_driver
-      PRIVATE tlinalg typed_linear_algebra_options
-              typed_linear_algebra_${BACKEND})
+      PRIVATE
+        tlinalg typed_linear_algebra_options typed_linear_algebra_${BACKEND})
     set_target_properties(
       typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_build_driver
       PROPERTIES EXCLUDE_FROM_ALL TRUE)
     add_test(
       NAME typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_pass
-      COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target
-              typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_build_driver)
+      COMMAND
+        ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target
+        typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_build_driver)
   endforeach()
 endfunction(build)
 
@@ -113,17 +115,21 @@ function(fail NAME)
                    "${NAME}.cpp")
     target_link_libraries(
       typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_driver
-      PRIVATE tlinalg typed_linear_algebra_options typed_linear_algebra_main
-              typed_linear_algebra_${BACKEND})
+      PRIVATE
+        tlinalg typed_linear_algebra_options typed_linear_algebra_main
+        typed_linear_algebra_${BACKEND})
     set_target_properties(
       typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_driver
       PROPERTIES EXCLUDE_FROM_ALL TRUE)
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
-    add_test(NAME typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}
-             COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target
-                     typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_driver)
-    set_tests_properties(typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}
-                         PROPERTIES WILL_FAIL TRUE)
+    add_test(
+      NAME typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}
+      COMMAND
+        ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target
+        typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_driver)
+    set_tests_properties(
+      typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}
+      PROPERTIES WILL_FAIL TRUE)
   endforeach()
 endfunction(fail)
 
@@ -146,8 +152,9 @@ function(bench NAME SIZE)
       "${NAME}_${SIZE}.cpp")
     target_link_libraries(
       typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench_driver
-      PRIVATE tlinalg typed_linear_algebra_options
-              typed_linear_algebra_${BACKEND} nanobench::nanobench)
+      PRIVATE
+        tlinalg typed_linear_algebra_options typed_linear_algebra_realtime
+        typed_linear_algebra_${BACKEND} nanobench::nanobench)
     if(IPO_SUPPORTED)
       set_target_properties(
         typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench_driver
@@ -158,8 +165,7 @@ function(bench NAME SIZE)
       NAME typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench
       COMMAND
         ${TEST_COMMAND}
-        $<TARGET_FILE:typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench_driver>
-    )
+        $<TARGET_FILE:typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench_driver>)
     if(DEFINED DEPENDENCIES)
       list(APPEND ${DEPENDENCIES}
            "typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench")

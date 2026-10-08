@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -37,8 +37,8 @@ For more information, please refer to <https://unlicense.org> */
 //!
 //! @details Typed matrix, vectors, and operations.
 
+#include "typed_linear_algebra/internal/utility.hpp"
 #include "typed_linear_algebra_forward.hpp"
-#include "typed_linear_algebra_internal/utility.hpp"
 
 #include <concepts>
 #include <cstddef>
@@ -48,7 +48,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <utility>
 
 namespace fcarouge {
-namespace tla = typed_linear_algebra_internal;
+namespace tla = typed_linear_algebra::internal;
 
 //! @name Concepts
 //! @{
@@ -150,6 +150,10 @@ concept index = tla::index<Type>;
 //!
 //! @note Deduction guides are tricky because a given element type comes from
 //! a row and column index to be deduced.
+//!
+//! @note Constructors, operators, and algorithms forward to the composed
+//! `Matrix` where possible. The value semantics and memory guarantees are those
+//! of the backend's.
 //!
 //! @todo Don't limit the dimension to two? Use parameter pack of index tuples
 //! for tensor types.
@@ -326,10 +330,10 @@ public:
   //! @brief Convert construct a typed matrix from an underlying matrix.
   //!
   //! @warning Useful for operations implementation where underlying data
-  //! constrution is needed. Not recommended for convenience construction due to
-  //! absence of type validation.
+  //! construction is needed. Not recommended for convenience construction due
+  //! to absence of type validation.
   //!
-  //! @note Alternative design could evaluate feasability of private
+  //! @note Alternative design could evaluate feasibility of private
   //! constructor, operator friendship, attorney-client, or key idioms.
   constexpr explicit typed_matrix(Matrix other);
 
@@ -511,15 +515,17 @@ static inline constexpr element_caster<To, From> cast{};
 //! element type computation. This is a multiplication function object. Unlike
 //! `std::multiplies` the two operands and resulting types can be different: `W
 //! multiplies::operator(const U& lhs, const V& rhs)`.
-using typed_linear_algebra_internal::multiplies;
+using tla::multiplies;
 
 //! @brief Factory function for partial template deduction.
 //!
+//! @details Composed as-is, expression templates included.
+//!
 //! @warning Useful for operations implementation where underlying data
-//! constrution is needed. Not recommended for convenience construction due to
+//! construction is needed. Not recommended for convenience construction due to
 //! absence of type validation.
 //!
-//! @note Alternative design could evaluate feasability of hiding this support.
+//! @note Alternative design could evaluate feasibility of hiding this support.
 template <typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] constexpr auto make_typed_matrix(auto &&value);
 
@@ -549,30 +555,42 @@ template <char... Digits> constexpr auto operator""_i() noexcept {
 
 } // namespace fcarouge
 
-#include "typed_linear_algebra_internal/algorithm/add.tpp"
-#include "typed_linear_algebra_internal/algorithm/divide.tpp"
-#include "typed_linear_algebra_internal/algorithm/equal_to.tpp"
-#include "typed_linear_algebra_internal/algorithm/magnitude.tpp"
-#include "typed_linear_algebra_internal/algorithm/matrix_product.tpp"
-#include "typed_linear_algebra_internal/algorithm/matrix_vector_product.tpp"
-#include "typed_linear_algebra_internal/algorithm/minus.tpp"
-#include "typed_linear_algebra_internal/algorithm/product.tpp"
-#include "typed_linear_algebra_internal/algorithm/scale.tpp"
-#include "typed_linear_algebra_internal/algorithm/substract.tpp"
-#include "typed_linear_algebra_internal/algorithm/transposed.tpp"
-#include "typed_linear_algebra_internal/cast.tpp"
-#include "typed_linear_algebra_internal/chrono.tpp"
-#include "typed_linear_algebra_internal/common_type.tpp"
-#include "typed_linear_algebra_internal/format.tpp"
-#include "typed_linear_algebra_internal/tuple.tpp"
-#include "typed_linear_algebra_internal/typed_linear_algebra.tpp"
+#include "typed_linear_algebra/algorithm/add.tpp"
+#include "typed_linear_algebra/algorithm/divide.tpp"
+#include "typed_linear_algebra/algorithm/dot.tpp"
+#include "typed_linear_algebra/algorithm/equal_to.tpp"
+#include "typed_linear_algebra/algorithm/magnitude.tpp"
+#include "typed_linear_algebra/algorithm/matrix_frob_norm.tpp"
+#include "typed_linear_algebra/algorithm/matrix_one_norm.tpp"
+#include "typed_linear_algebra/algorithm/matrix_product.tpp"
+#include "typed_linear_algebra/algorithm/matrix_vector_product.tpp"
+#include "typed_linear_algebra/algorithm/minus.tpp"
+#include "typed_linear_algebra/algorithm/product.tpp"
+#include "typed_linear_algebra/algorithm/scale.tpp"
+#include "typed_linear_algebra/algorithm/subtract.tpp"
+#include "typed_linear_algebra/algorithm/transposed.tpp"
+#include "typed_linear_algebra/cast.tpp"
+#include "typed_linear_algebra/chrono.tpp"
+#include "typed_linear_algebra/common_type.tpp"
+#include "typed_linear_algebra/format.tpp"
+#include "typed_linear_algebra/tuple.tpp"
+#include "typed_linear_algebra/typed_linear_algebra.tpp"
 
 namespace fcarouge {
 
 //! @name Algorithms
 //! @{
 
+[[nodiscard]] constexpr auto dot(const rank_typed_matrix<1> auto &lhs,
+                                 const rank_typed_matrix<1> auto &rhs);
+
 [[nodiscard]] constexpr auto magnitude(const uniform_typed_matrix auto &value);
+
+[[nodiscard]] constexpr auto
+matrix_frob_norm(const uniform_typed_matrix auto &value);
+
+[[nodiscard]] constexpr auto
+matrix_one_norm(const uniform_typed_matrix auto &value);
 
 [[nodiscard]] constexpr auto operator==(const rank_typed_matrix<2> auto &lhs,
                                         const rank_typed_matrix<2> auto &rhs)

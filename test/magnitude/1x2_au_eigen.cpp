@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -30,6 +30,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <au/std_format.hh>
 #include <au/units/meters.hh>
@@ -46,6 +47,7 @@ namespace {
 //! quantities. The result carries the same unit as the vector's uniform
 //! element type.
 [[maybe_unused]] const auto test{[] -> int {
+  const not_realtime opt_out;
   using au::symbols::m;
   using au::symbols::s;
 

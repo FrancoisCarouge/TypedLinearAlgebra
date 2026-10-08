@@ -1,5 +1,5 @@
 #[[ Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -33,6 +33,7 @@ pass("1x1_au_std" BACKENDS "au_std")
 pass("1x1_mp_units_std" BACKENDS "mp_units_std")
 pass("2x2_au_std" BACKENDS "au_std")
 pass("2x2_mp_units_std" BACKENDS "mp_units_std")
+pass("2x2_nholthaus_std" BACKENDS "nholthaus_std")
 pass("2x1_1x2_au_std" BACKENDS "au_std")
 pass("2x1_1x2_mp_units_std" BACKENDS "mp_units_std")
 pass("1x2_2x1_au_std" BACKENDS "au_std")

@@ -1,5 +1,5 @@
 #[[ Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -37,7 +37,8 @@ FetchContent_Declare(
   nanobench
   GIT_REPOSITORY "https://github.com/martinus/nanobench.git"
   GIT_SHALLOW TRUE
-  SYSTEM FIND_PACKAGE_ARGS NAMES nanobench)
+  SYSTEM
+  FIND_PACKAGE_ARGS NAMES nanobench)
 FetchContent_MakeAvailable(nanobench)
 
 target_link_libraries(nanobench PRIVATE typed_linear_algebra_options)
@@ -47,7 +48,8 @@ if(BUILD_BENCHMARKING)
     matplotplusplus
     GIT_REPOSITORY "https://github.com/alandefreitas/matplotplusplus.git"
     GIT_SHALLOW TRUE
-    SYSTEM FIND_PACKAGE_ARGS NAMES matplot)
+    SYSTEM
+    FIND_PACKAGE_ARGS NAMES matplot)
   FetchContent_MakeAvailable(matplotplusplus)
 
   set(DEPENDENCIES "")
@@ -118,7 +120,10 @@ bench("typed_mdspan_tupled_product" "16" BACKENDS "mp_units_std")
 
 if(BUILD_BENCHMARKING)
   add_executable(plot plot.cpp)
-  target_link_libraries(plot PRIVATE Matplot++::matplot)
-  add_test(NAME typed_linear_algebra_plot_bench COMMAND $<TARGET_FILE:plot>
-                                                        DEPENDS ${DEPENDENCIES})
+  target_link_libraries(
+    plot
+    PRIVATE Matplot++::matplot typed_linear_algebra_realtime)
+  add_test(
+    NAME typed_linear_algebra_plot_bench
+    COMMAND $<TARGET_FILE:plot> DEPENDS ${DEPENDENCIES})
 endif()

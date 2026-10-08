@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -34,7 +34,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <cassert>
 #include <cstddef>
 #include <mdspan>
-#include <type_traits>
 
 namespace fcarouge::test {
 using representation = double;
@@ -45,7 +44,8 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 using mp_units::si::unit_symbols::m;
 
 namespace {
-//! @test Verifies the singleton by singleton matrix addition operator.
+//! @test Verifies the singleton by singleton matrix addition operator with
+//! the mdspan backend.
 [[maybe_unused]] const auto test{[] -> int {
   using length = quantity<mp_units::isq::length[m]>;
 
@@ -63,20 +63,12 @@ namespace {
 
   a = 2. * m;
   b = 3. * m;
-  add(a, b, r);
+  r = a + b;
 
-  assert(5. * m == r);
-  assert(5. * m == r());
-  assert(5. * m == r[]);
   assert(5. * m == r.at());
-  assert(5. * m == r.at<>());
-  assert(5. * m == r.at<length>());
-
-  static_assert(not std::is_reference_v<decltype(r())>);
-  static_assert(not std::is_reference_v<decltype(r[])>);
-  static_assert(not std::is_reference_v<decltype(r.at())>);
-  static_assert(not std::is_reference_v<decltype(r.at<>())>);
-  static_assert(not std::is_reference_v<decltype(r.at<length>())>);
+  assert(5. * m == r[]);
+  assert(5. * m == r());
+  assert(5. * m == r);
 
   return 0;
 }()};

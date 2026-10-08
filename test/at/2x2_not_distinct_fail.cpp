@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -33,13 +33,13 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-//! @test The type-indexed accessor is unavailable on a non-distinct matrix:
+//! @test The by-type `at` accessor is unavailable on a non-distinct matrix:
 //! several positions share the element type, so a by-type lookup would be
 //! ambiguous. The `requires distinct_typed_matrix` clause removes the overload.
 [[maybe_unused]] const auto test{[] -> int {
   matrix<double, 2, 2> m{{1., 2.}, {3., 4.}};
 
-  (void)m.at<double>();
+  [[maybe_unused]] const auto value{m.at<double>()};
 
   return 0;
 }()};

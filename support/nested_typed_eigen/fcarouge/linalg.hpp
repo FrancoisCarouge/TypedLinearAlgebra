@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -44,21 +44,18 @@ namespace fcarouge {
 
 template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
 using matrix0 =
-    typed_matrix<eigen::matrix<Type, Row, Column>,
-                 typed_linear_algebra_internal::tuple_n_type<Type, Row>,
-                 typed_linear_algebra_internal::tuple_n_type<Type, Column>>;
+    typed_matrix<eigen::matrix<Type, Row, Column>, tla::tuple_n_type<Type, Row>,
+                 tla::tuple_n_type<Type, Column>>;
 
 template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
 using matrix1 =
-    typed_matrix<matrix0<Type, Row, Column>,
-                 typed_linear_algebra_internal::tuple_n_type<Type, Row>,
-                 typed_linear_algebra_internal::tuple_n_type<Type, Column>>;
+    typed_matrix<matrix0<Type, Row, Column>, tla::tuple_n_type<Type, Row>,
+                 tla::tuple_n_type<Type, Column>>;
 
 template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
 using matrix =
-    typed_matrix<matrix1<Type, Row, Column>,
-                 typed_linear_algebra_internal::tuple_n_type<Type, Row>,
-                 typed_linear_algebra_internal::tuple_n_type<Type, Column>>;
+    typed_matrix<matrix1<Type, Row, Column>, tla::tuple_n_type<Type, Row>,
+                 tla::tuple_n_type<Type, Column>>;
 
 template <typename Type = double, std::size_t Row = 1>
 using column_vector = matrix<Type, Row, 1>;

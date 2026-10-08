@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -50,13 +50,13 @@ using mp_units::si::unit_symbols::s;
 
 using length = quantity<mp_units::isq::length[m]>;
 using mass = quantity<mp_units::isq::mass[kg]>;
-using time = quantity<mp_units::isq::time[s]>;
 
-//! @test Verifies the at member accessor looking up the element by type on a
-//! distinct two-dimension matrix.
+//! @test The by-type `at` accessor resolves an element of a distinct
+//! two-dimension matrix to the same position its row and column indexes do,
+//! including for a composed element type never named as a row or column index.
 [[maybe_unused]] const auto test{[] -> int {
   using rows = std::tuple<length, mass>;
-  using columns = std::tuple<std::identity, time>;
+  using columns = std::tuple<std::identity, quantity<mp_units::isq::time[s]>>;
   using matrix =
       typed_matrix<Eigen::Matrix<representation, 2, 2>, rows, columns>;
 
@@ -64,15 +64,16 @@ using time = quantity<mp_units::isq::time[s]>;
   storage << 1., 2., 3., 4.;
   const matrix x{storage};
 
-  // Element types: length, length*time, mass, mass*time.
+  // Row-major element types: length, length*time, mass, mass*time.
   assert((x.at<length>() == 1. * m));
   assert((x.at<decltype(1. * m * s)>() == 2. * m * s));
   assert((x.at<mass>() == 3. * kg));
   assert((x.at<decltype(1. * kg * s)>() == 4. * kg * s));
 
-  // The looked-up position matches the explicit indexes.
   assert((x.at<length>() == x.at<0, 0>()));
+  assert((x.at<decltype(1. * m * s)>() == x.at<0, 1>()));
   assert((x.at<mass>() == x.at<1, 0>()));
+  assert((x.at<decltype(1. * kg * s)>() == x.at<1, 1>()));
 
   return 0;
 }()};

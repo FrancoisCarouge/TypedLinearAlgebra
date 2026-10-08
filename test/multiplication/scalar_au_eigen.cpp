@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -63,10 +63,7 @@ namespace {
   // operator.
   const matrix<representation, std::tuple<length, length>,
                std::tuple<area, area>>
-      r {
-        fcarouge::
-        operator*(a, 2. * m)
-      };
+      r{fcarouge::operator*(a, 2. * m)};
 
   assert(r(0_i, 0_i) == 2. * m3);
   assert(r(0_i, 1_i) == 4. * m3);

@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -29,7 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/typed_linear_algebra_internal/utility.hpp"
+#include "fcarouge/realtime.hpp"
+#include "fcarouge/typed_linear_algebra/internal/utility.hpp"
 
 #include <nanobench.h>
 
@@ -44,11 +45,17 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::benchmark {
 namespace {
-template <auto Size>
-const std::string csv{std::format(
-    "{{{{#result}}}}| {{{{title}}}} | {:5d}x{:<5d} | {{{{median(elapsed)}}}} | "
-    "{{{{medianAbsolutePercentError(elapsed)}}}} |{{{{/result}}}}\n",
-    Size, Size)};
+//! @brief The benchmark measures, prints, and tears down its counters past its
+//! entry point: it opts out of the real-time verification for its lifetime.
+const not_realtime opt_out;
+
+template <auto Size> auto csv() -> std::string {
+  return std::format(
+      "{{{{#result}}}}| {{{{title}}}} | {:5d}x{:<5d} | "
+      "{{{{median(elapsed)}}}} | "
+      "{{{{medianAbsolutePercentError(elapsed)}}}} |{{{{/result}}}}\n",
+      Size, Size);
+}
 
 template <typename Tuple,
           typename Indices =
@@ -105,8 +112,8 @@ template <typename Tuple, typename Type> struct accessor {
 //! @benchmark `std::mdspan` square matrix-matrix product.
 template <auto Size> void bench() {
   using tuple =
-      fcarouge::typed_linear_algebra_internal::tuple_n_type<double,
-                                                            Size * Size>;
+      fcarouge::typed_linear_algebra::internal::tuple_n_type<double,
+                                                             Size * Size>;
   using mdspan = std::mdspan<double, std::extents<std::size_t, Size, Size>,
                              Kokkos::layout_right, accessor<tuple, double>>;
   tuple storage_a;
@@ -134,7 +141,7 @@ template <auto Size> void bench() {
         std::linalg::matrix_product(a, b, r);
         ankerl::nanobench::doNotOptimizeAway(r);
       })
-      .render(csv<Size>.c_str(), results);
+      .render(csv<Size>().c_str(), results);
 }
 } // namespace
 } // namespace fcarouge::benchmark

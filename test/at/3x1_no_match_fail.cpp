@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -46,12 +46,13 @@ using position = quantity<mp_units::isq::length[m]>;
 using velocity = quantity<mp_units::isq::velocity[m / s]>;
 using acceleration = quantity<mp_units::isq::acceleration[m / s2]>;
 
-//! @test No element type is convertible to the requested type on a vector.
+//! @test The by-type `at` accessor rejects, at compile time, a request no
+//! element type of a distinct vector is convertible to.
 [[maybe_unused]] const auto test{[] -> int {
   column_vector<representation, position, velocity, acceleration> x{
       3. * m, 2. * m / s, 1. * m / s2};
 
-  (void)x.at<double *>();
+  [[maybe_unused]] const auto value{x.at<double *>()};
 
   return 0;
 }()};

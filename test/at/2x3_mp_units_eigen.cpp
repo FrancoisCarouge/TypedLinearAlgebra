@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -52,10 +52,9 @@ using length = quantity<mp_units::isq::length[m]>;
 using mass = quantity<mp_units::isq::mass[kg]>;
 using time = quantity<mp_units::isq::time[s]>;
 
-//! @test Verifies the at member accessor looking up the element by type on a
-//! distinct, non-square two-dimension matrix. A rectangular shape catches a
-//! row/column transposition in the linear-index arithmetic that a square shape
-//! cannot.
+//! @test The by-type `at` accessor on a distinct, non-square two-dimension
+//! matrix. A rectangular shape catches a row/column transposition in the
+//! linear-index arithmetic that a square shape cannot.
 [[maybe_unused]] const auto test{[] -> int {
   using rows = std::tuple<length, mass>;
   using columns = std::tuple<std::identity, time, decltype(1. * s * s)>;
@@ -67,8 +66,8 @@ using time = quantity<mp_units::isq::time[s]>;
   const matrix x{storage};
 
   // Row-major element types:
-  //   (0,0) length     (0,1) length*time     (0,2) length*time^2
-  //   (1,0) mass       (1,1) mass*time       (1,2) mass*time^2
+  //   (0,0) length   (0,1) length*time   (0,2) length*time^2
+  //   (1,0) mass     (1,1) mass*time     (1,2) mass*time^2
   assert((x.at<length>() == x.at<0, 0>()));
   assert((x.at<decltype(1. * m * s)>() == x.at<0, 1>()));
   assert((x.at<decltype(1. * m * s * s)>() == x.at<0, 2>()));

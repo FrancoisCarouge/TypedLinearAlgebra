@@ -1,5 +1,5 @@
 #[[ Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -33,7 +33,9 @@ if(NOT BUILD_TESTING)
   return()
 endif()
 
+add_subdirectory("add")
 add_subdirectory("addition")
+add_subdirectory("amalgamate")
 add_subdirectory("assign")
 add_subdirectory("at")
 add_subdirectory("column_typed_matrix")
@@ -42,10 +44,14 @@ add_subdirectory("constructor")
 add_subdirectory("copy")
 add_subdirectory("distinct_typed_matrix")
 add_subdirectory("division")
+add_subdirectory("dot")
 add_subdirectory("element")
 add_subdirectory("equal_to")
 add_subdirectory("format")
+add_subdirectory("install")
 add_subdirectory("magnitude")
+add_subdirectory("matrix_frob_norm")
+add_subdirectory("matrix_one_norm")
 add_subdirectory("matrix_product")
 add_subdirectory("matrix_vector_product")
 add_subdirectory("minus")
@@ -59,7 +65,7 @@ add_subdirectory("same_as_typed_matrix")
 add_subdirectory("same_shape")
 add_subdirectory("scale")
 add_subdirectory("structured_bindings")
-add_subdirectory("substraction")
+add_subdirectory("subtraction")
 add_subdirectory("transposed")
 add_subdirectory("underlying")
 add_subdirectory("uniform_typed_matrix")

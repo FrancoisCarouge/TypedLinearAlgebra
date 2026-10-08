@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -41,7 +41,14 @@ For more information, please refer to <https://unlicense.org> */
 //! using-declarations or namespace-alias-definition per your project
 //! guidelines.
 
-//! @namespace fcarouge::internal
+//! @namespace fcarouge::typed_linear_algebra
+//!
+//! @brief Typed linear algebra library namespace.
+//!
+//! @details Scopes the library's implementation details apart from the
+//! public definitions of the `fcarouge` namespace.
+
+//! @namespace fcarouge::typed_linear_algebra::internal
 //!
 //! @brief Internal implementation details.
 //!

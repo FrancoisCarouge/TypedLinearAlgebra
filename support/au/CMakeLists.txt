@@ -1,5 +1,5 @@
 #[[ Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -39,12 +39,17 @@ FetchContent_Declare(
   FIND_PACKAGE_ARGS NAMES Au)
 FetchContent_MakeAvailable(au)
 
-target_compile_options(au INTERFACE $<IF:$<CXX_COMPILER_ID:MSVC>, /wd4244,
+target_compile_options(
+  au
+  INTERFACE
+    $<IF:$<CXX_COMPILER_ID:MSVC>, /wd4244,
                                     -Wno-double-promotion>)
 
 add_library(typed_linear_algebra_au INTERFACE)
 target_sources(
-  typed_linear_algebra_au INTERFACE FILE_SET "au_headers" TYPE "HEADERS" FILES
-                                    "fcarouge/au.hpp")
-target_link_libraries(typed_linear_algebra_au
-                      INTERFACE typed_linear_algebra_options Au::au)
+  typed_linear_algebra_au
+  INTERFACE
+  FILE_SET "au_headers" TYPE "HEADERS" FILES "fcarouge/au.hpp")
+target_link_libraries(
+  typed_linear_algebra_au
+  INTERFACE typed_linear_algebra_options Au::au)

@@ -1,5 +1,5 @@
 #[[ Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -36,11 +36,13 @@ configure_package_config_file(
   "fcarouge-typed-linear-algebra-config.cmake"
   INSTALL_DESTINATION
     "${CMAKE_INSTALL_DATADIR}/fcarouge-typed-linear-algebra/cmake"
-  NO_SET_AND_CHECK_MACRO NO_CHECK_REQUIRED_COMPONENTS_MACRO)
+  NO_SET_AND_CHECK_MACRO
+  NO_CHECK_REQUIRED_COMPONENTS_MACRO)
 
 write_basic_package_version_file(
   "fcarouge-typed-linear-algebra-config-version.cmake"
-  COMPATIBILITY SameMajorVersion ARCH_INDEPENDENT)
+  COMPATIBILITY SameMajorVersion
+  ARCH_INDEPENDENT)
 
 install(
   EXPORT "fcarouge-typed-linear-algebra-target"
@@ -48,7 +50,6 @@ install(
   DESTINATION "${CMAKE_INSTALL_DATADIR}/fcarouge-typed-linear-algebra/cmake")
 
 install(
-  FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/fcarouge-typed-linear-algebra-config.cmake"
-    "${CMAKE_CURRENT_BINARY_DIR}/fcarouge-typed-linear-algebra-config-version.cmake"
+  FILES "${CMAKE_CURRENT_BINARY_DIR}/fcarouge-typed-linear-algebra-config.cmake"
+  "${CMAKE_CURRENT_BINARY_DIR}/fcarouge-typed-linear-algebra-config-version.cmake"
   DESTINATION "${CMAKE_INSTALL_DATADIR}/fcarouge-typed-linear-algebra/cmake")

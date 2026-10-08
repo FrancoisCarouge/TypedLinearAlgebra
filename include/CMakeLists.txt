@@ -1,5 +1,5 @@
 #[[ Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -33,29 +33,34 @@ add_library(tlinalg INTERFACE)
 target_sources(
   tlinalg
   INTERFACE
-    FILE_SET
+  FILE_SET
     "typed_linear_algebra_headers"
     TYPE
     "HEADERS"
     FILES
     "fcarouge/typed_linear_algebra_forward.hpp"
-    "fcarouge/typed_linear_algebra_internal/algorithm/add.tpp"
-    "fcarouge/typed_linear_algebra_internal/algorithm/divide.tpp"
-    "fcarouge/typed_linear_algebra_internal/algorithm/equal_to.tpp"
-    "fcarouge/typed_linear_algebra_internal/algorithm/magnitude.tpp"
-    "fcarouge/typed_linear_algebra_internal/algorithm/matrix_product.tpp"
-    "fcarouge/typed_linear_algebra_internal/algorithm/minus.tpp"
-    "fcarouge/typed_linear_algebra_internal/algorithm/product.tpp"
-    "fcarouge/typed_linear_algebra_internal/algorithm/scale.tpp"
-    "fcarouge/typed_linear_algebra_internal/algorithm/substract.tpp"
-    "fcarouge/typed_linear_algebra_internal/algorithm/transposed.tpp"
-    "fcarouge/typed_linear_algebra_internal/cast.tpp"
-    "fcarouge/typed_linear_algebra_internal/chrono.tpp"
-    "fcarouge/typed_linear_algebra_internal/common_type.tpp"
-    "fcarouge/typed_linear_algebra_internal/format.tpp"
-    "fcarouge/typed_linear_algebra_internal/tuple.tpp"
-    "fcarouge/typed_linear_algebra_internal/typed_linear_algebra.tpp"
-    "fcarouge/typed_linear_algebra_internal/utility.hpp"
+    "fcarouge/typed_linear_algebra/algorithm/add.tpp"
+    "fcarouge/typed_linear_algebra/algorithm/divide.tpp"
+    "fcarouge/typed_linear_algebra/algorithm/dot.tpp"
+    "fcarouge/typed_linear_algebra/algorithm/equal_to.tpp"
+    "fcarouge/typed_linear_algebra/algorithm/magnitude.tpp"
+    "fcarouge/typed_linear_algebra/algorithm/matrix_frob_norm.tpp"
+    "fcarouge/typed_linear_algebra/algorithm/matrix_one_norm.tpp"
+    "fcarouge/typed_linear_algebra/algorithm/matrix_product.tpp"
+    "fcarouge/typed_linear_algebra/algorithm/matrix_vector_product.tpp"
+    "fcarouge/typed_linear_algebra/algorithm/minus.tpp"
+    "fcarouge/typed_linear_algebra/algorithm/product.tpp"
+    "fcarouge/typed_linear_algebra/algorithm/scale.tpp"
+    "fcarouge/typed_linear_algebra/algorithm/subtract.tpp"
+    "fcarouge/typed_linear_algebra/algorithm/transposed.tpp"
+    "fcarouge/typed_linear_algebra/cast.tpp"
+    "fcarouge/typed_linear_algebra/chrono.tpp"
+    "fcarouge/typed_linear_algebra/common_type.tpp"
+    "fcarouge/typed_linear_algebra/format.tpp"
+    "fcarouge/typed_linear_algebra/tuple.tpp"
+    "fcarouge/typed_linear_algebra/typed_linear_algebra.tpp"
+    "fcarouge/typed_linear_algebra/internal/as_vector_span.hpp"
+    "fcarouge/typed_linear_algebra/internal/utility.hpp"
     "fcarouge/typed_linear_algebra.hpp")
 install(
   TARGETS tlinalg

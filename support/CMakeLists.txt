@@ -1,5 +1,5 @@
 #[[ Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -29,13 +29,19 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+add_subdirectory("amalgamate")
+
 if(NOT BUILD_TESTING)
   return()
 endif()
 
+add_subdirectory("armadillo")
+add_subdirectory("armadilloxed")
 add_subdirectory("au")
+add_subdirectory("au_armadillo")
 add_subdirectory("au_eigen")
 add_subdirectory("au_std")
+add_subdirectory("chrono_armadillo")
 add_subdirectory("chrono_eigen")
 add_subdirectory("chrono_std")
 add_subdirectory("eigen")
@@ -43,10 +49,12 @@ add_subdirectory("eigexed")
 add_subdirectory("kokkos")
 add_subdirectory("main")
 add_subdirectory("mp_units")
+add_subdirectory("mp_units_armadillo")
 add_subdirectory("mp_units_eigen")
 add_subdirectory("mp_units_std")
 add_subdirectory("nested_typed_eigen")
 add_subdirectory("nholthaus")
+add_subdirectory("nholthaus_armadillo")
 add_subdirectory("nholthaus_eigen")
 add_subdirectory("nholthaus_std")
 
@@ -55,88 +63,94 @@ add_library(typed_linear_algebra_options INTERFACE)
 if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
   target_compile_options(
     typed_linear_algebra_options
-    INTERFACE "-D_FORTIFY_SOURCE=3"
-              "-D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_FAST"
-              "-fcf-protection=full"
-              "-fconstexpr-backtrace-limit=0"
-              "-fdiagnostics-absolute-paths"
-              "-fdiagnostics-show-template-tree"
-              "-fmacro-backtrace-limit=0"
-              "-fno-builtin-std-forward_like"
-              "-fno-check-new"
-              "-fno-common"
-              "-fno-elide-type"
-              "-fPIE"
-              "-fstack-protector-strong"
-              "-fstrict-aliasing"
-              "-ftemplate-backtrace-limit=0"
-              "-ftrivial-auto-var-init=pattern"
-              "-pedantic"
-              "-stdlib=libc++"
-              "-Wall"
-              "-Wcast-align"
-              "-Wdouble-promotion"
-              "-Wenum-conversion"
-              "-Werror"
-              "-Wextra"
-              "-Wformat-security"
-              "-Wno-long-long"
-              "-Wno-psabi"
-              "-Wno-variadic-macros"
-              "-Wnon-virtual-dtor"
-              "-Wpointer-arith"
-              "-Wshadow"
-              "-Wstrict-aliasing=1"
-              "-Wundef"
-              "-Wunused-local-typedefs"
-              "-Wwrite-strings")
-  target_link_options(typed_linear_algebra_options INTERFACE "-stdlib=libc++"
-                      "LINKER:-pie")
+    INTERFACE
+      "-D_FORTIFY_SOURCE=3"
+      "-D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_FAST"
+      "-fcf-protection=full"
+      "-fconstexpr-backtrace-limit=0"
+      "-fdiagnostics-absolute-paths"
+      "-fdiagnostics-show-template-tree"
+      "-fmacro-backtrace-limit=0"
+      "-fno-builtin-std-forward_like"
+      "-fno-check-new"
+      "-fno-common"
+      "-fno-elide-type"
+      "-fPIE"
+      "-fstack-protector-strong"
+      "-fstrict-aliasing"
+      "-ftemplate-backtrace-limit=0"
+      "-ftrivial-auto-var-init=pattern"
+      "-pedantic"
+      "-stdlib=libc++"
+      "-Wall"
+      "-Wcast-align"
+      "-Wdouble-promotion"
+      "-Wenum-conversion"
+      "-Werror"
+      "-Wextra"
+      "-Wformat-security"
+      "-Wno-long-long"
+      "-Wno-psabi"
+      "-Wno-variadic-macros"
+      "-Wnon-virtual-dtor"
+      "-Wpointer-arith"
+      "-Wshadow"
+      "-Wstrict-aliasing=1"
+      "-Wundef"
+      "-Wunused-local-typedefs"
+      "-Wwrite-strings")
+  target_link_options(
+    typed_linear_algebra_options
+    INTERFACE "-stdlib=libc++" "LINKER:-pie")
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   target_compile_options(
     typed_linear_algebra_options
-    INTERFACE "-D_FORTIFY_SOURCE=3"
-              "-D_GLIBCXX_ASSERTIONS"
-              "-fcf-protection=full"
-              "-fconcepts-diagnostics-depth=4"
-              "-fdiagnostics-show-template-tree"
-              "-fno-check-new"
-              "-fno-common"
-              "-fno-elide-type"
-              "-fPIE"
-              "-fstack-clash-protection"
-              "-fstack-protector-strong"
-              "-fstrict-aliasing"
-              "-ftemplate-backtrace-limit=0"
-              "-ftrivial-auto-var-init=pattern"
-              "-pedantic"
-              "-Wall"
-              "-Wcast-align"
-              "-Wdouble-promotion"
-              "-Wenum-conversion"
-              "-Werror"
-              "-Wextra"
-              "-Wformat-security"
-              "-Wno-long-long"
-              "-Wno-psabi"
-              "-Wno-variadic-macros"
-              "-Wnon-virtual-dtor"
-              "-Wpointer-arith"
-              "-Wshadow"
-              "-Wstrict-aliasing=1"
-              "-Wundef"
-              "-Wunused-local-typedefs"
-              "-Wwrite-strings")
-  target_link_options(typed_linear_algebra_options INTERFACE "LINKER:-pie"
-                      "LINKER:-z,relro,-z,now")
+    INTERFACE
+      "-D_FORTIFY_SOURCE=3"
+      "-D_GLIBCXX_ASSERTIONS"
+      "-fcf-protection=full"
+      "-fconcepts-diagnostics-depth=4"
+      "-fdiagnostics-show-template-tree"
+      "-fno-check-new"
+      "-fno-common"
+      "-fno-elide-type"
+      "-fPIE"
+      "-fstack-clash-protection"
+      "-fstack-protector-strong"
+      "-fstrict-aliasing"
+      "-ftemplate-backtrace-limit=0"
+      "-ftrivial-auto-var-init=pattern"
+      "-pedantic"
+      "-Wall"
+      "-Wcast-align"
+      "-Wdouble-promotion"
+      "-Wenum-conversion"
+      "-Werror"
+      "-Wextra"
+      "-Wformat-security"
+      "-Wno-long-long"
+      "-Wno-psabi"
+      "-Wno-variadic-macros"
+      "-Wnon-virtual-dtor"
+      "-Wpointer-arith"
+      "-Wshadow"
+      "-Wstrict-aliasing=1"
+      "-Wundef"
+      "-Wunused-local-typedefs"
+      "-Wwrite-strings")
+  target_link_options(
+    typed_linear_algebra_options
+    INTERFACE "LINKER:-pie" "LINKER:-z,relro,-z,now")
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
   target_compile_options(
     typed_linear_algebra_options
-    INTERFACE "/diagnostics:caret"
-              "/EHsc"
-              "/FC"
-              "/std:c++latest"
-              "/utf-8"
-              "/W4"
-              "/WX")
+    INTERFACE
+      "/diagnostics:caret"
+      "/EHsc"
+      "/FC"
+      "/std:c++latest"
+      "/utf-8"
+      "/W4"
+      "/wd4702"
+      "/WX")
 endif()

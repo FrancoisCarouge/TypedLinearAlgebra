@@ -1,5 +1,5 @@
 #[[ Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -32,7 +32,9 @@ For more information, please refer to <https://unlicense.org> ]]
 add_library(typed_linear_algebra_chrono_eigen INTERFACE)
 target_sources(
   typed_linear_algebra_chrono_eigen
-  INTERFACE FILE_SET "typed_linear_algebra_headers" TYPE "HEADERS" FILES
-            "fcarouge/linalg.hpp")
-target_link_libraries(typed_linear_algebra_chrono_eigen
-                      INTERFACE typed_linear_algebra_eigen tlinalg)
+  INTERFACE
+  FILE_SET
+    "typed_linear_algebra_headers" TYPE "HEADERS" FILES "fcarouge/linalg.hpp")
+target_link_libraries(
+  typed_linear_algebra_chrono_eigen
+  INTERFACE typed_linear_algebra_eigen tlinalg)

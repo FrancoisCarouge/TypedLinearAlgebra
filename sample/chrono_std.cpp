@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -40,6 +40,7 @@ For more information, please refer to <https://unlicense.org> */
 //! `add()` free function applies here.
 
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <chrono>
@@ -66,6 +67,7 @@ using column_extents = std::extents<std::size_t, Rows, 1>;
 
 //! @brief Time typed linear algebra samples with std::mdspan and std::linalg.
 [[maybe_unused]] const auto sample{[] -> int {
+  const not_realtime opt_out;
   using durations = column_vector<seconds, minutes, hours>;
 
   std::vector v0(std::size_t{3}, representation{});
@@ -92,6 +94,15 @@ using column_extents = std::extents<std::size_t, Rows, 1>;
   durations x1{s1};
   add(x0, x0, x1);
   assert(x1.at<1>() == minutes{12.});
+
+  // Frobenius norm of a uniform duration vector.
+  std::vector<representation> v2{2., 3., 6.};
+  std::mdspan s2{v2.data(), column_extents<3>{}};
+  const column_vector<seconds, seconds, seconds> x2{s2};
+  assert(matrix_frob_norm(x2) == seconds{7.});
+
+  // One norm of the same vector, the sum of its absolute elements.
+  assert(matrix_one_norm(x2) == seconds{11.});
 
   return 0;
 }()};

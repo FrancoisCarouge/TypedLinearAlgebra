@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -33,12 +33,12 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-//! @test The type-indexed accessor rejects, at compile time, a request whose
+//! @test The by-type `at` accessor rejects, at compile time, a request whose
 //! type no element is convertible to.
 [[maybe_unused]] const auto test{[] -> int {
   matrix<> m{42.};
 
-  (void)m.at<double *>();
+  [[maybe_unused]] const auto value{m.at<double *>()};
 
   return 0;
 }()};

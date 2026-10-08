@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -75,7 +75,7 @@ using row_vector = row_vector<representation, Types...>;
 //! @details A variety of activities of strongly typed linear algebra with
 //! Eigen and nholthaus/units.
 [[maybe_unused]] const auto sample{[] -> int {
-  // Set up a heterogenous column vector type for the sample.
+  // Set up a heterogeneous column vector type for the sample.
   using state = column_vector<position, velocity, acceleration>;
 
   // A vector of quantities.
@@ -95,7 +95,7 @@ using row_vector = row_vector<representation, Types...>;
   const state x2{x1 / 2.};
   assert(x2.at<0>() == 4.5 * m);
 
-  // Substraction then addition of vectors of the same types.
+  // Subtraction then addition of vectors of the same types.
   const state x3{x2 - x0};
   const state x4{x3 + x3};
   assert(x4.at<0>() == 3. * m);

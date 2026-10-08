@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -39,6 +39,7 @@ For more information, please refer to <https://unlicense.org> */
 //! precision floating point representation.
 
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <chrono>
@@ -58,6 +59,7 @@ using column_vector = column_vector<representation, Types...>;
 
 //! @brief Time typed linear algebra samples.
 [[maybe_unused]] const auto sample{[] -> int {
+  const not_realtime opt_out;
   // A heterogeneous vector: each element keeps its own period.
   using durations = column_vector<seconds, minutes, hours>;
   durations x0{seconds{30.}, minutes{2.}, hours{1.}};
@@ -80,7 +82,7 @@ using column_vector = column_vector<representation, Types...>;
   const durations x2{x1 / 2.};
   assert(x2.at<0>() == seconds{45.});
 
-  // Substraction then addition of vectors of the same types.
+  // Subtraction then addition of vectors of the same types.
   const durations x3{x2 - x0};
   assert(x3.at<2>() == hours{0.5});
   const durations x4{x3 + x3};
@@ -90,6 +92,12 @@ using column_vector = column_vector<representation, Types...>;
   const column_vector<seconds, seconds, seconds> v{seconds{2.}, seconds{3.},
                                                    seconds{6.}};
   assert(std::format("{}", magnitude(v)) == "7s");
+
+  // Frobenius norm, the same as the Euclidean L2 norm for a vector.
+  assert(matrix_frob_norm(v) == seconds{7.});
+
+  // One norm, the sum of the absolute elements for a column vector.
+  assert(matrix_one_norm(v) == seconds{11.});
 
   return 0;
 }()};

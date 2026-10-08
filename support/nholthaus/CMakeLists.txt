@@ -1,5 +1,5 @@
 #[[ Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -39,14 +39,15 @@ FetchContent_Declare(
   GIT_REPOSITORY "https://github.com/nholthaus/units"
   GIT_TAG "main"
   GIT_SHALLOW TRUE
-  SYSTEM FIND_PACKAGE_ARGS NAMES units)
+  SYSTEM
+  FIND_PACKAGE_ARGS NAMES units)
 FetchContent_MakeAvailable(units)
 
 add_library(typed_linear_algebra_nholthaus INTERFACE)
 target_sources(
   typed_linear_algebra_nholthaus
-  INTERFACE FILE_SET "nholthaus_headers" TYPE "HEADERS" FILES
-            "fcarouge/nholthaus.hpp")
+  INTERFACE
+  FILE_SET "nholthaus_headers" TYPE "HEADERS" FILES "fcarouge/nholthaus.hpp")
 target_link_libraries(
-  typed_linear_algebra_nholthaus INTERFACE typed_linear_algebra_options
-                                           units::units tlinalg)
+  typed_linear_algebra_nholthaus
+  INTERFACE typed_linear_algebra_options units::units tlinalg)

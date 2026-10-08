@@ -1,5 +1,5 @@
 /* Typed Linear Algebra
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
 SPDX-License-Identifier: Unlicense
@@ -32,6 +32,8 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief Benchmark result visualization tool.
 
+#include "fcarouge/realtime.hpp"
+
 #include <algorithm>
 #include <cmath>
 #include <cstdlib>
@@ -43,6 +45,12 @@ For more information, please refer to <https://unlicense.org> */
 #include <vector>
 
 #include <matplot/matplot.h>
+
+namespace {
+//! @brief The plot reads files and drives gnuplot: it opts out of the real-time
+//! verification for its lifetime.
+const fcarouge::not_realtime opt_out;
+} // namespace
 
 //! @brief Main entry point for benchmark result visualization.
 //! @details Reads benchmark results from results.txt, parses the data,
