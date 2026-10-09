@@ -30,34 +30,32 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
-#include "fcarouge/realtime.hpp"
 
-#include <au/std_format.hh>
-#include <au/units/meters.hh>
-
-#include <cassert>
-#include <format>
+#include <tuple>
 
 namespace fcarouge::test {
 using representation = double;
 
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::s;
+
 namespace {
-//! @test Verifies the quantity by column vector division operator.
+//! @test Verifies the converting constructor rejects a matrix whose element
+//! types do not convert to the constructed matrix's, rather than relabeling its
+//! storage.
 [[maybe_unused]] const auto test{[] -> int {
-  const not_realtime opt_out;
-  using au::symbols::m;
+  using length = quantity<mp_units::isq::length[m]>;
+  using time = quantity<mp_units::isq::duration[s]>;
+  using lengths = std::tuple<length, length>;
+  using times = std::tuple<time, time>;
 
-  constexpr auto m2{au::squared(m)};
-
-  using length = au::QuantityD<au::Meters>;
-  using area = au::QuantityD<au::UnitPowerT<au::Meters, 2>>;
-  using inverse_length = au::QuantityD<au::UnitInverseT<au::Meters>>;
-
-  const column_vector<representation, length> a{3. * m};
-  const column_vector<representation, length, area> b{2. * m, 6. * m2};
-  const row_vector<representation, double, inverse_length> r{a / b};
-
-  assert(std::format("{}", r) == "[0, 0.5 m^(-1)]");
+  // Intended: const matrix<representation, lengths, lengths> source;
+  const matrix<representation, lengths, times> source;
+  [[maybe_unused]] const matrix<representation, lengths, lengths> destination{
+      source};
 
   return 0;
 }()};

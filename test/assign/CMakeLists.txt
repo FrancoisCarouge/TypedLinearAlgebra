@@ -29,6 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+fail("2x2_mp_units_eigen_fail" BACKENDS "mp_units_eigen")
+
 pass("5x5" BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed")
 pass("5x1_is_assignable" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
 pass("1x5_is_assignable" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
@@ -37,4 +39,5 @@ pass("1x2_au_eigen" BACKENDS "au_eigen" "au_armadillo")
 pass("1x2_chrono_eigen" BACKENDS "chrono_eigen" "chrono_armadillo")
 pass("1x2_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
 pass("1x2_nholthaus_eigen" BACKENDS "nholthaus_eigen" "nholthaus_armadillo")
+pass("2x2_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
 pass("copy" BACKENDS "eigexed" "nested_typed_eigen")

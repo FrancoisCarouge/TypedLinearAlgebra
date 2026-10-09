@@ -59,12 +59,17 @@ namespace fcarouge {
   using lhs_column_indexes = typename lhs_matrix::column_indexes;
   using rhs_row_indexes = typename rhs_matrix::row_indexes;
   using rhs_column_indexes = typename rhs_matrix::column_indexes;
+  // Solving `X(i, k) * rhs(k, 0) = lhs(i, 0)` for the first column gives
+  // `X(i, k) = lhs_row(i) * lhs_column(0) / (rhs_row(k) * rhs_column(0))`. The
+  // per-column ratio `lhs_column(0) / rhs_column(0)` is folded into the rows.
+  // It is not unity in general: the split of an element type between its row
+  // and column indexes is not unique, for example a product may carry all units
+  // in its rows and leave its columns dimensionless.
   using row_indexes =
-      tla::quotient<lhs_row_indexes,
-                    std::tuple_element_t<0, lhs_column_indexes>>;
-  using column_indexes =
-      tla::quotient<std::tuple_element_t<0, rhs_column_indexes>,
-                    rhs_row_indexes>;
+      tla::product<lhs_row_indexes,
+                   tla::quotient<std::tuple_element_t<0, lhs_column_indexes>,
+                                 std::tuple_element_t<0, rhs_column_indexes>>>;
+  using column_indexes = tla::quotient<std::identity, rhs_row_indexes>;
 
   // The quotient `X` must satisfy `X * rhs = lhs` element-wise: every term
   // `X(i, k) * rhs(k, j)` must convert to `lhs(i, j)`. The result indexes are

@@ -29,37 +29,30 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/linalg.hpp"
-#include "fcarouge/realtime.hpp"
+#ifdef __has_feature
+#if __has_feature(realtime_sanitizer)
+#define FCAROUGE_REALTIME_SANITIZER
+#endif
+#endif
 
-#include <au/std_format.hh>
-#include <au/units/meters.hh>
+#ifdef FCAROUGE_REALTIME_SANITIZER
+#include <Eigen/Core>
 
-#include <cassert>
-#include <format>
-
-namespace fcarouge::test {
-using representation = double;
-
+namespace fcarouge::eigen {
 namespace {
-//! @test Verifies the quantity by column vector division operator.
-[[maybe_unused]] const auto test{[] -> int {
-  const not_realtime opt_out;
-  using au::symbols::m;
-
-  constexpr auto m2{au::squared(m)};
-
-  using length = au::QuantityD<au::Meters>;
-  using area = au::QuantityD<au::UnitPowerT<au::Meters, 2>>;
-  using inverse_length = au::QuantityD<au::UnitInverseT<au::Meters>>;
-
-  const column_vector<representation, length> a{3. * m};
-  const column_vector<representation, length, area> b{2. * m, 6. * m2};
-  const row_vector<representation, double, inverse_length> r{a / b};
-
-  assert(std::format("{}", r) == "[0, 0.5 m^(-1)]");
-
-  return 0;
-}()};
+//! @brief Initializes the Eigen state lazily initialized on first use, ahead of
+//! the real-time context entered at the next constructor priority.
+//!
+//! @details Eigen sizes the blocking of its matrix kernels, for example the
+//! triangular solve of a division with a multi-column right-hand side, from
+//! CPU cache sizes held in a function-local static variable. Its thread-safe
+//! initialization on first use takes a lock, a real-time unsafe call. A
+//! real-time application initializes it before entering its real-time
+//! context, as done here for every test, sample, and benchmark of an Eigen
+//! backend.
+[[gnu::constructor(101)]] void realtime_prepare() {
+  static_cast<void>(Eigen::l1CacheSize());
+}
 } // namespace
-} // namespace fcarouge::test
+} // namespace fcarouge::eigen
+#endif
