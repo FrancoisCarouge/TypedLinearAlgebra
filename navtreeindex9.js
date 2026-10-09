@@ -1,5 +1,16 @@
 var NAVTREEINDEX9 =
 {
+"structstd_1_1tuple__size_3_01mp__units_1_1quantity_3_01_reference_00_01_representation_01_4_01_4.xhtml":[16,0,2,6],
+"structured__bindings_21x1_8cpp.xhtml":[17,0,6,31,0],
+"structured__bindings_21x1_8cpp_source.xhtml":[17,0,6,31,0],
+"structured__bindings_21x1__const_8cpp.xhtml":[17,0,6,31,1],
+"structured__bindings_21x1__const_8cpp_source.xhtml":[17,0,6,31,1],
+"structured__bindings_21x3_8cpp.xhtml":[17,0,6,31,2],
+"structured__bindings_21x3_8cpp_source.xhtml":[17,0,6,31,2],
+"structured__bindings_21x3__const_8cpp.xhtml":[17,0,6,31,3],
+"structured__bindings_21x3__const_8cpp_source.xhtml":[17,0,6,31,3],
+"structured__bindings_23x1_8cpp.xhtml":[17,0,6,31,4],
+"structured__bindings_23x1_8cpp_source.xhtml":[17,0,6,31,4],
 "structured__bindings_23x1__const_8cpp.xhtml":[17,0,6,31,5],
 "structured__bindings_23x1__const_8cpp_source.xhtml":[17,0,6,31,5],
 "subscript__1x1_8cpp.xhtml":[17,0,6,25,10],
@@ -238,16 +249,5 @@ var NAVTREEINDEX9 =
 "typed__linear__algebra_8hpp.xhtml#a9343adf455a88982fd1efabe086673b7":[17,0,2,0,1,26],
 "typed__linear__algebra_8hpp.xhtml#a96bdab646ac7be1505482cf553b9650b":[17,0,2,0,1,21],
 "typed__linear__algebra_8hpp.xhtml#a96fea71ab24114a61950988fdac23f58":[17,0,2,0,1,12],
-"typed__linear__algebra_8hpp.xhtml#aa315b3e178e104f9914d9c34f4caa464":[17,0,2,0,1,19],
-"typed__linear__algebra_8hpp.xhtml#aa6f7f6a8d1b65520e70b3e1330e880d2":[17,0,2,0,1,50],
-"typed__linear__algebra_8hpp.xhtml#aa8e8adfcb1bb983c404fcd14282fcafa":[17,0,2,0,1,30],
-"typed__linear__algebra_8hpp.xhtml#aacecad4061af6cb38f708f815921eb5c":[17,0,2,0,1,45],
-"typed__linear__algebra_8hpp.xhtml#ab0b660d7a013025989c027fd286d9e0c":[17,0,2,0,1,42],
-"typed__linear__algebra_8hpp.xhtml#ab6014eb6c1cf2576e5b75ebb5b8c41ed":[17,0,2,0,1,36],
-"typed__linear__algebra_8hpp.xhtml#ab6a1b6f7873a10f4ec2fa8d6e14882dd":[17,0,2,0,1,35],
-"typed__linear__algebra_8hpp.xhtml#abd59a3fd717517a0bf8904bb70974aab":[17,0,2,0,1,14],
-"typed__linear__algebra_8hpp.xhtml#ad978c01bfb7916300af3a28970bf7824":[17,0,2,0,1,39],
-"typed__linear__algebra_8hpp.xhtml#ad9c010901f4d2e7d97a906653a2b751c":[17,0,2,0,1,46],
-"typed__linear__algebra_8hpp.xhtml#adc895f9d4a1c299ca7e31547e040ef67":[17,0,2,0,1,31],
-"typed__linear__algebra_8hpp.xhtml#ae6f2fed3e944cb891edc8ae34fd43b57":[17,0,2,0,1,33]
+"typed__linear__algebra_8hpp.xhtml#aa315b3e178e104f9914d9c34f4caa464":[17,0,2,0,1,19]
 };

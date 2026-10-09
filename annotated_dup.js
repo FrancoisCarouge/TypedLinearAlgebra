@@ -26,6 +26,9 @@ var annotated_dup =
             [ "second", "structfcarouge_1_1test_1_1anonymous__namespace_02mp__units__eigen_8cpp_03_1_1shared__base_1_1second.xhtml", null ]
           ] ]
         ] ],
+        [ "anonymous_namespace{reentrant_tuple_size.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02reentrant__tuple__size_8cpp_03.xhtml", [
+          [ "self_sized", "structfcarouge_1_1test_1_1anonymous__namespace_02reentrant__tuple__size_8cpp_03_1_1self__sized.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02reentrant__tuple__size_8cpp_03_1_1self__sized" ]
+        ] ],
         [ "anonymous_namespace{same_as_typed_matrix.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03.xhtml", [
           [ "derived", "structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1derived.xhtml", null ],
           [ "fake", "structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1fake.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1fake" ]
@@ -47,8 +50,10 @@ var annotated_dup =
     [ "std", null, [
       [ "formatter< fcarouge::eigen::matrix< Type, Row, Column >, Char >", "structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml", "structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4" ],
       [ "formatter< Type, Char >", "structstd_1_1formatter_3_01_type_00_01_char_01_4.xhtml", "structstd_1_1formatter_3_01_type_00_01_char_01_4" ],
+      [ "tuple_element< Index, fcarouge::test::self_sized< Types... > >", "structstd_1_1tuple__element_3_01_index_00_01fcarouge_1_1test_1_1self__sized_3_01_types_8_8_8_01_4_01_4.xhtml", null ],
       [ "tuple_element< Index, mp_units::quantity< Reference, Representation > >", "structstd_1_1tuple__element_3_01_index_00_01mp__units_1_1quantity_3_01_reference_00_01_representation_01_4_01_4.xhtml", "structstd_1_1tuple__element_3_01_index_00_01mp__units_1_1quantity_3_01_reference_00_01_representation_01_4_01_4" ],
       [ "tuple_element< Index, Type >", "structstd_1_1tuple__element_3_01_index_00_01_type_01_4.xhtml", "structstd_1_1tuple__element_3_01_index_00_01_type_01_4" ],
+      [ "tuple_size< fcarouge::test::self_sized< Types... > >", "structstd_1_1tuple__size_3_01fcarouge_1_1test_1_1self__sized_3_01_types_8_8_8_01_4_01_4.xhtml", null ],
       [ "tuple_size< mp_units::quantity< Reference, Representation > >", "structstd_1_1tuple__size_3_01mp__units_1_1quantity_3_01_reference_00_01_representation_01_4_01_4.xhtml", null ],
       [ "tuple_size< Type >", "structstd_1_1tuple__size_3_01_type_01_4.xhtml", null ]
     ] ],
