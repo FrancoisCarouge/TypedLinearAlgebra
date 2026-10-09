@@ -570,6 +570,7 @@ template <char... Digits> constexpr auto operator""_i() noexcept {
 #include "typed_linear_algebra/algorithm/matrix_frob_norm.tpp"
 #include "typed_linear_algebra/algorithm/matrix_one_norm.tpp"
 #include "typed_linear_algebra/algorithm/matrix_product.tpp"
+#include "typed_linear_algebra/algorithm/matrix_rank_1_update.tpp"
 #include "typed_linear_algebra/algorithm/matrix_vector_product.tpp"
 #include "typed_linear_algebra/algorithm/minus.tpp"
 #include "typed_linear_algebra/algorithm/product.tpp"
@@ -679,11 +680,19 @@ constexpr void matrix_product(const same_as_typed_matrix auto &lhs,
                               const same_as_typed_matrix auto &rhs,
                               same_as_typed_matrix auto &result);
 
+constexpr void matrix_rank_1_update(const rank_typed_matrix<1> auto &lhs,
+                                    const rank_typed_matrix<1> auto &rhs,
+                                    rank_typed_matrix<2> auto &result);
+constexpr void matrix_rank_1_update(const rank_typed_matrix<1> auto &lhs,
+                                    const rank_typed_matrix<1> auto &rhs,
+                                    const rank_typed_matrix<2> auto &addend,
+                                    rank_typed_matrix<2> auto &result);
+
 constexpr void matrix_vector_product(const rank_typed_matrix<2> auto &lhs,
                                      const rank_typed_matrix<1> auto &rhs,
                                      rank_typed_matrix<1> auto &result);
 
-constexpr void scale(const auto &α, same_as_typed_matrix auto &x);
+constexpr void scale(const auto &α, same_as_typed_matrix auto &result);
 
 #endif
 

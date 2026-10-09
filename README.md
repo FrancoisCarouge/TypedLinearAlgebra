@@ -173,6 +173,7 @@ The following useful operations are supported. This library attempts to align it
 | `matrix_frob_norm` | Frobenius norm of a matrix: the square root of the sum of the squares of the absolute values of its elements. |
 | `matrix_one_norm` | One norm of a matrix: the maximum absolute column sum. |
 | `matrix_product` | General matrix-matrix product. |
+| `matrix_rank_1_update` | Outer product `A = x yᵀ` of two vectors, or its sum `A = E + x yᵀ` with a matrix. |
 | `matrix_vector_product` | Matrix-vector product. |
 | `scale` | Multiply matrix elements by a scalar. |
 | `transposed` | Transpose the input matrix. |

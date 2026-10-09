@@ -47,6 +47,7 @@ target_sources(
     "fcarouge/typed_linear_algebra/algorithm/matrix_frob_norm.tpp"
     "fcarouge/typed_linear_algebra/algorithm/matrix_one_norm.tpp"
     "fcarouge/typed_linear_algebra/algorithm/matrix_product.tpp"
+    "fcarouge/typed_linear_algebra/algorithm/matrix_rank_1_update.tpp"
     "fcarouge/typed_linear_algebra/algorithm/matrix_vector_product.tpp"
     "fcarouge/typed_linear_algebra/algorithm/minus.tpp"
     "fcarouge/typed_linear_algebra/algorithm/product.tpp"
