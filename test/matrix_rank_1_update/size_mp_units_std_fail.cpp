@@ -29,26 +29,47 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_SCALE_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_SCALE_TPP
+#include "fcarouge/linalg.hpp"
 
-//! @todo Remove the feature check when supporting native C++26.
-#ifdef __cpp_lib_linalg
+#include <cstddef>
+#include <mdspan>
+#include <tuple>
 
-#include <linalg>
+namespace fcarouge::test {
+using representation = double;
 
-//! @todo Reflect over the std::linalg algorithms to provide the typed bindings?
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
 
-namespace fcarouge {
+using mp_units::si::unit_symbols::m;
 
-//! @brief Multiply the elements of an object in place by a scalar.
-//!
-//! @see std::linalg::scale
-constexpr void scale(const auto &α, same_as_typed_matrix auto &result) {
-  using std::linalg::scale;
-  scale(α, result.data());
-}
-} // namespace fcarouge
+namespace {
+//! @test Verifies the matrix rank-1 update algorithm rejects an x vector whose
+//! size does not match the row count of the result matrix.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = quantity<mp_units::isq::length[m]>;
+  using indexes = std::tuple<length, length>;
 
-#endif
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_SCALE_TPP
+  representation storage_lhs[3]{};
+  representation storage_rhs[2]{};
+  representation storage_result[4]{};
+
+  std::mdspan span_lhs{&storage_lhs[0], std::extents<std::size_t, 3, 1>{}};
+  std::mdspan span_rhs{&storage_rhs[0], std::extents<std::size_t, 2, 1>{}};
+  std::mdspan span_result{&storage_result[0],
+                          std::extents<std::size_t, 2, 2>{}};
+
+  // Intended:
+  // column_vector<representation, length, length> lhs{...};
+
+  column_vector<representation, length, length, length> lhs{span_lhs};
+
+  column_vector<representation, length, length> rhs{span_rhs};
+  matrix<representation, indexes, indexes> result{span_result};
+
+  matrix_rank_1_update(lhs, rhs, result);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

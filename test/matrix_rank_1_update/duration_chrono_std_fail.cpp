@@ -29,26 +29,46 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_SCALE_TPP
-#define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_SCALE_TPP
+#include "fcarouge/linalg.hpp"
 
-//! @todo Remove the feature check when supporting native C++26.
-#ifdef __cpp_lib_linalg
+#include <chrono>
+#include <cstddef>
+#include <mdspan>
+#include <tuple>
 
-#include <linalg>
+namespace fcarouge::test {
+using representation = double;
 
-//! @todo Reflect over the std::linalg algorithms to provide the typed bindings?
+namespace {
+//! @test Verifies the matrix rank-1 update algorithm rejects two vectors of
+//! durations: there is no duration-by-duration product.
+[[maybe_unused]] const auto test{[] -> int {
+  using seconds = std::chrono::duration<representation>;
 
-namespace fcarouge {
+  using row_indexes = std::tuple<seconds, seconds>;
+  using column_indexes = std::tuple<representation, representation>;
 
-//! @brief Multiply the elements of an object in place by a scalar.
-//!
-//! @see std::linalg::scale
-constexpr void scale(const auto &α, same_as_typed_matrix auto &result) {
-  using std::linalg::scale;
-  scale(α, result.data());
-}
-} // namespace fcarouge
+  representation storage_lhs[2]{};
+  representation storage_rhs[2]{};
+  representation storage_result[4]{};
 
-#endif
-#endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_SCALE_TPP
+  std::mdspan span_lhs{&storage_lhs[0], std::extents<std::size_t, 2, 1>{}};
+  std::mdspan span_rhs{&storage_rhs[0], std::extents<std::size_t, 2, 1>{}};
+  std::mdspan span_result{&storage_result[0],
+                          std::extents<std::size_t, 2, 2>{}};
+
+  column_vector<representation, seconds, seconds> lhs{span_lhs};
+
+  // Intended:
+  // column_vector<representation, representation, representation> rhs{...};
+
+  column_vector<representation, seconds, seconds> rhs{span_rhs};
+
+  matrix<representation, row_indexes, column_indexes> result{span_result};
+
+  matrix_rank_1_update(lhs, rhs, result);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
