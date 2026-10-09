@@ -80,6 +80,12 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{1x2_2x1_mp_units_std.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__2x1__mp__units__std_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__2x1__mp__units__std_8cpp_03.xhtml#aac40144b3fd64d66e2d2972e0b42735b", null ]
     ] ],
+    [ "anonymous_namespace{1x2_2x2_mp_units_eigen.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__2x2__mp__units__eigen_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__2x2__mp__units__eigen_8cpp_03.xhtml#a562f5936a4286918f665a1834ef7501b", null ]
+    ] ],
+    [ "anonymous_namespace{1x2_2x2_mp_units_eigen_fail.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__2x2__mp__units__eigen__fail_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__2x2__mp__units__eigen__fail_8cpp_03.xhtml#ada804c41b02bfa45a54c12fc7ecd988f", null ]
+    ] ],
     [ "anonymous_namespace{1x2_ambiguous_fail.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03.xhtml", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03" ],
     [ "anonymous_namespace{1x2_au_eigen.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__au__eigen_8cpp_03.xhtml", [
       [ "matrix", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__au__eigen_8cpp_03.xhtml#a13878b26172f22f64f16bad2b765e9ee", null ],

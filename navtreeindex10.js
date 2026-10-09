@@ -1,5 +1,15 @@
 var NAVTREEINDEX10 =
 {
+"typed__linear__algebra_8hpp.xhtml#a6f98d198d18c9c551d21f2eb602cdfd2":[17,0,2,0,1,23],
+"typed__linear__algebra_8hpp.xhtml#a7558e7ccc03031fb7de678cf4977e1bf":[17,0,2,0,1,13],
+"typed__linear__algebra_8hpp.xhtml#a7d5d3b12f0d7e033c68631bccf60765f":[17,0,2,0,1,20],
+"typed__linear__algebra_8hpp.xhtml#a849c1178704a7344b77fef59ac80cb56":[17,0,2,0,1,47],
+"typed__linear__algebra_8hpp.xhtml#a851f07d816a2f625ad6deeebdf91576e":[17,0,2,0,1,38],
+"typed__linear__algebra_8hpp.xhtml#a85bf4d94c90e04287495f05e468ca66f":[17,0,2,0,1,15],
+"typed__linear__algebra_8hpp.xhtml#a9343adf455a88982fd1efabe086673b7":[17,0,2,0,1,26],
+"typed__linear__algebra_8hpp.xhtml#a96bdab646ac7be1505482cf553b9650b":[17,0,2,0,1,21],
+"typed__linear__algebra_8hpp.xhtml#a96fea71ab24114a61950988fdac23f58":[17,0,2,0,1,12],
+"typed__linear__algebra_8hpp.xhtml#aa315b3e178e104f9914d9c34f4caa464":[17,0,2,0,1,19],
 "typed__linear__algebra_8hpp.xhtml#aa6f7f6a8d1b65520e70b3e1330e880d2":[17,0,2,0,1,50],
 "typed__linear__algebra_8hpp.xhtml#aa8e8adfcb1bb983c404fcd14282fcafa":[17,0,2,0,1,30],
 "typed__linear__algebra_8hpp.xhtml#aacecad4061af6cb38f708f815921eb5c":[17,0,2,0,1,45],
