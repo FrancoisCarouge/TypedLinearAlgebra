@@ -466,6 +466,35 @@ concept same_shape =
     (std::remove_cvref_t<Lhs>::rows == std::remove_cvref_t<Rhs>::rows) and
     (std::remove_cvref_t<Lhs>::columns == std::remove_cvref_t<Rhs>::columns);
 
+//! @brief Verifies a typed matrix converts to another, element by element.
+//!
+//! @details The storage holds representations oblivious to the indexes, so a
+//! conversion between typed matrices copies the storage as-is and relabels its
+//! elements with the destination's types. Each source element type must
+//! therefore implicitly convert to the corresponding destination element type,
+//! otherwise a mistyped expression would be silently relabeled on conversion.
+//! The element types are compared, not the indexes: the split of an element
+//! type between its row and column indexes is not unique.
+template <typename To, typename From>
+constexpr void verify_convertible_elements() {
+  using to_matrix = std::remove_cvref_t<To>;
+  using from_matrix = std::remove_cvref_t<From>;
+
+  static_assert(same_shape<to_matrix, from_matrix>,
+                "Typed matrix conversion requires matrices of the same "
+                "shapes, sizes.");
+
+  for_constexpr<to_matrix::rows>([](auto i) {
+    for_constexpr<to_matrix::columns>([i](auto j) {
+      static_cast<void>(i); // Compiler compatibility.
+      static_assert(std::is_convertible_v<element_at<from_matrix, i, j>,
+                                          element_at<to_matrix, i, j>>,
+                    "Typed matrix conversion requires compatible element "
+                    "types.");
+    });
+  });
+}
+
 template <typename Type, std::size_t Size> struct tupler {
   template <typename = std::make_index_sequence<Size>> struct helper;
 

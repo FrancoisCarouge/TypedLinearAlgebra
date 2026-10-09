@@ -30,10 +30,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
-#include "fcarouge/realtime.hpp"
 
 #include <cassert>
-#include <format>
+#include <tuple>
 
 namespace fcarouge::test {
 using representation = double;
@@ -41,23 +40,42 @@ using representation = double;
 template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
+using mp_units::one;
 using mp_units::si::unit_symbols::m;
 using mp_units::si::unit_symbols::m2;
+using mp_units::si::unit_symbols::s;
 
 namespace {
-//! @test Verifies the quantity by column vector division operator.
+//! @test Verifies the assignment operator between matrices whose element types
+//! agree while their indexes split them differently: all units in the rows and
+//! dimensionless columns for the source, units in both for the destination.
 [[maybe_unused]] const auto test{[] -> int {
-  const not_realtime opt_out;
-  using dimensionless = quantity<mp_units::one>;
+  using dimensionless = quantity<one>;
   using length = quantity<mp_units::isq::length[m]>;
-  using area = quantity<mp_units::isq::area[m2]>;
-  using inverse_length = quantity<mp_units::one / m>;
+  using velocity = quantity<mp_units::isq::velocity[m / s]>;
+  using area = quantity<mp_units::isq::length[m] * mp_units::isq::length[m]>;
+  using area_rate =
+      quantity<mp_units::isq::velocity[m / s] * mp_units::isq::length[m]>;
+  using source_row_indexes = std::tuple<area, area_rate>;
+  using source_column_indexes = std::tuple<dimensionless, dimensionless>;
+  using destination_row_indexes = std::tuple<length, velocity>;
+  using destination_column_indexes = std::tuple<length, length>;
 
-  const column_vector<representation, length> a{3. * m};
-  const column_vector<representation, length, area> b{2. * m, 6. * m2};
-  const row_vector<representation, dimensionless, inverse_length> r{a / b};
+  matrix<representation, source_row_indexes, source_column_indexes> source;
+  matrix<representation, destination_row_indexes, destination_column_indexes>
+      destination;
 
-  assert(std::format("{}", r) == "[0, 0.5 1/m]");
+  source.at<0, 0>(1. * m2);
+  source.at<0, 1>(2. * m2);
+  source.at<1, 0>(3. * m2 / s);
+  source.at<1, 1>(4. * m2 / s);
+
+  destination = source;
+
+  assert((destination.at<0, 0>() == 1. * m2));
+  assert((destination.at<0, 1>() == 2. * m2));
+  assert((destination.at<1, 0>() == 3. * m2 / s));
+  assert((destination.at<1, 1>() == 4. * m2 / s));
 
   return 0;
 }()};

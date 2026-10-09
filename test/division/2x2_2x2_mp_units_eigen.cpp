@@ -30,10 +30,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
-#include "fcarouge/realtime.hpp"
 
 #include <cassert>
-#include <format>
+#include <tuple>
 
 namespace fcarouge::test {
 using representation = double;
@@ -41,23 +40,51 @@ using representation = double;
 template <auto QuantityReference>
 using quantity = mp_units::quantity<QuantityReference, representation>;
 
+using mp_units::one;
 using mp_units::si::unit_symbols::m;
 using mp_units::si::unit_symbols::m2;
+using mp_units::si::unit_symbols::s;
 
 namespace {
-//! @test Verifies the quantity by column vector division operator.
+//! @test Verifies the matrix by matrix division operator when the operands'
+//! first column indexes carry different units: dimensionless columns for the
+//! dividend, length columns for the divisor. The shape of a Kalman filter gain
+//! `P * transposed(H) / S`, where the indexes of the quotient must not be
+//! derived as if both first columns were alike.
 [[maybe_unused]] const auto test{[] -> int {
-  const not_realtime opt_out;
-  using dimensionless = quantity<mp_units::one>;
+  using dimensionless = quantity<one>;
   using length = quantity<mp_units::isq::length[m]>;
   using area = quantity<mp_units::isq::area[m2]>;
-  using inverse_length = quantity<mp_units::one / m>;
+  using area_rate =
+      quantity<mp_units::isq::area[m2] / mp_units::isq::duration[s]>;
+  using lhs_row_indexes = std::tuple<area, area_rate>;
+  using lhs_column_indexes = std::tuple<dimensionless, dimensionless>;
+  using rhs_indexes = std::tuple<length, length>;
 
-  const column_vector<representation, length> a{3. * m};
-  const column_vector<representation, length, area> b{2. * m, 6. * m2};
-  const row_vector<representation, dimensionless, inverse_length> r{a / b};
+  matrix<representation, lhs_row_indexes, lhs_column_indexes> lhs;
+  matrix<representation, rhs_indexes, rhs_indexes> rhs;
 
-  assert(std::format("{}", r) == "[0, 0.5 1/m]");
+  lhs.at<0, 0>(6. * m2);
+  lhs.at<0, 1>(5. * m2);
+  lhs.at<1, 0>(11. * m2 / s);
+  lhs.at<1, 1>(1. * m2 / s);
+
+  rhs.at<0, 0>(4. * m2);
+  rhs.at<0, 1>(1. * m2);
+  rhs.at<1, 0>(1. * m2);
+  rhs.at<1, 1>(2. * m2);
+
+  const auto quotient{lhs / rhs};
+  const auto product{quotient * rhs};
+
+  assert(abs(quotient.at<0, 0>() - 1. * one) < 1e-9 * one);
+  assert(abs(quotient.at<0, 1>() - 2. * one) < 1e-9 * one);
+  assert(abs(quotient.at<1, 0>() - 3. / s) < 1e-9 / s);
+  assert(abs(quotient.at<1, 1>() + 1. / s) < 1e-9 / s);
+  assert(abs(product.at<0, 0>() - 6. * m2) < 1e-9 * m2);
+  assert(abs(product.at<0, 1>() - 5. * m2) < 1e-9 * m2);
+  assert(abs(product.at<1, 0>() - 11. * m2 / s) < 1e-9 * m2 / s);
+  assert(abs(product.at<1, 1>() - 1. * m2 / s) < 1e-9 * m2 / s);
 
   return 0;
 }()};

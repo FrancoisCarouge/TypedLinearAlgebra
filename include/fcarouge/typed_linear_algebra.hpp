@@ -227,20 +227,27 @@ public:
 
   //! @brief Copy construct generalization of a compatible typed matrix.
   //!
-  //! @details Implicit conversions expected per default equivalency.
+  //! @details Implicit conversions expected per default equivalency. The
+  //! matrices must be of the same shape, and each element type of the other
+  //! matrix must implicitly convert to the corresponding element type of this
+  //! matrix, whatever their row and column indexes.
   constexpr explicit(false)
       typed_matrix(const same_as_typed_matrix auto &other);
 
   //! @brief Copy assign generalization of a compatible typed matrix.
+  //!
+  //! @details Same element type requirements as the converting constructor.
   constexpr auto operator=(const same_as_typed_matrix auto &other)
       -> typed_matrix &;
 
   //! @brief Move construct generalization of a compatible typed matrix.
   //!
-  //! @details Implicit conversions expected per default equivalency.
+  //! @details Same element type requirements as the converting constructor.
   constexpr explicit(false) typed_matrix(same_as_typed_matrix auto &&other);
 
   //! @brief Move assign generalization of a compatible typed matrix.
+  //!
+  //! @details Same element type requirements as the converting constructor.
   constexpr auto operator=(same_as_typed_matrix auto &&other) -> typed_matrix &;
 
   //! @brief Convert construct a singleton typed matrix from a single value.

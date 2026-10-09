@@ -42,32 +42,40 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix()
   }
 }
 
-//! @todo Verify types and storage (?) compatibility.
+//! @todo Verify storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const same_as_typed_matrix auto &other)
-    : storage{other.data()} {}
+    : storage{other.data()} {
+  tla::verify_convertible_elements<typed_matrix, decltype(other)>();
+}
 
-//! @todo Verify types and storage (?) compatibility.
+//! @todo Verify storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr auto typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
     const same_as_typed_matrix auto &other)
     -> typed_matrix<Matrix, RowIndexes, ColumnIndexes> & {
+  tla::verify_convertible_elements<typed_matrix, decltype(other)>();
+
   storage = other.data();
   return *this;
 }
 
-//! @todo Verify types and storage (?) compatibility.
+//! @todo Verify storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     same_as_typed_matrix auto &&other)
-    : storage{std::forward<decltype(other)>(other).data()} {}
+    : storage{std::forward<decltype(other)>(other).data()} {
+  tla::verify_convertible_elements<typed_matrix, decltype(other)>();
+}
 
-//! @todo Verify types and storage (?) compatibility.
+//! @todo Verify storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr auto typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
     same_as_typed_matrix auto &&other)
     -> typed_matrix<Matrix, RowIndexes, ColumnIndexes> & {
+  tla::verify_convertible_elements<typed_matrix, decltype(other)>();
+
   storage = std::forward<decltype(other)>(other).data();
   return *this;
 }
