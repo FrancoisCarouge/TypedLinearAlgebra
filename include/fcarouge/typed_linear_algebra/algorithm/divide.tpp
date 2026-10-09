@@ -40,7 +40,10 @@ namespace fcarouge {
 //! solving `X * rhs = lhs` for `rhs` through a decomposer. There exist several
 //! ways to decompose and solve the equation. Implementations trade off
 //! numerical stability, triangularity, symmetry, space, time, etc. Dividing an
-//! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix.
+//! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix. The
+//! division is rejected when no element types make `X * rhs = lhs`
+//! dimensionally consistent, for example a dimensionless row divided by a
+//! matrix whose columns carry different units.
 //!
 //! @todo Combine? Generalize?
 [[nodiscard]] constexpr auto operator/(const same_as_typed_matrix auto &lhs,
@@ -63,8 +66,25 @@ namespace fcarouge {
       tla::quotient<std::tuple_element_t<0, rhs_column_indexes>,
                     rhs_row_indexes>;
 
-  //! @todo Add type verification, perhaps with a generalization of the
-  //! multiplication verification?
+  // The quotient `X` must satisfy `X * rhs = lhs` element-wise: every term
+  // `X(i, k) * rhs(k, j)` must convert to `lhs(i, j)`. The result indexes are
+  // derived from the first columns only, so this does not hold by construction.
+  tla::for_constexpr<lhs_matrix::rows>([](auto i) {
+    tla::for_constexpr<rhs_matrix::rows>([i](auto k) {
+      tla::for_constexpr<lhs_matrix::columns>([i, k](auto j) {
+        static_cast<void>(i); // Compiler compatibility.
+        static_cast<void>(k); // Compiler compatibility.
+        static_assert(
+            std::is_convertible_v<
+                tla::product<
+                    tla::product<std::tuple_element_t<i, row_indexes>,
+                                 std::tuple_element_t<k, column_indexes>>,
+                    tla::element_at<rhs_matrix, k, j>>,
+                tla::element_at<lhs_matrix, i, j>>,
+            "Matrix division requires compatible element types.");
+      });
+    });
+  });
 
   return make_typed_matrix<row_indexes, column_indexes>(lhs.data() /
                                                         rhs.data());

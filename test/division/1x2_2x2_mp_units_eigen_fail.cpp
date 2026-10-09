@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,12 +27,35 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-fail("1x2_2x2_mp_units_eigen_fail" BACKENDS "mp_units_eigen")
+#include "fcarouge/linalg.hpp"
 
-pass("1x1_au_eigen" BACKENDS "au_eigen")
-pass("1x1_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("1x2_2x2_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("2x1_au_eigen" BACKENDS "au_eigen")
-pass("2x1_mp_units_eigen" BACKENDS "mp_units_eigen")
+namespace fcarouge::test {
+using representation = double;
+
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::s;
+
+namespace {
+//! @test Verifies the division of a dimensionless row vector by a normal
+//! matrix of mixed units is rejected: no quotient makes it consistent.
+[[maybe_unused]] const auto test{[] -> int {
+  using length = quantity<mp_units::isq::length[m]>;
+  using time = quantity<mp_units::isq::duration[s]>;
+
+  const column_vector<representation, length, time> u{2. * m, 1. * s};
+  const column_vector<representation, length, time> v{0. * m, 1. * s};
+  const auto rhs{u * transposed(u) + v * transposed(v)};
+  // Intended: const row_vector<representation, length, time> lhs{10. * m, 7. *
+  // s};
+  const row_vector<representation, double, double> lhs{10., 6.};
+  [[maybe_unused]] const auto quotient{lhs / rhs};
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
