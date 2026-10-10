@@ -522,7 +522,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div><div class="memdoc">
 
 <p>Copy construct generalization of a compatible typed matrix. </p>
-<p>Implicit conversions expected per default equivalency. </p>
+<p>Implicit conversions expected per default equivalency. The matrices must be of the same shape, and each element type of the other matrix must implicitly convert to the corresponding element type of this matrix, whatever their row and column indexes. </p>
 
 </div>
 </div>
@@ -552,7 +552,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div><div class="memdoc">
 
 <p>Move construct generalization of a compatible typed matrix. </p>
-<p>Implicit conversions expected per default equivalency. </p>
+<p>Same element type requirements as the converting constructor. </p>
 
 </div>
 </div>
@@ -1189,6 +1189,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div><div class="memdoc">
 
 <p>Copy assign generalization of a compatible typed matrix. </p>
+<p>Same element type requirements as the converting constructor. </p>
 
 </div>
 </div>
@@ -1247,6 +1248,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div><div class="memdoc">
 
 <p>Move assign generalization of a compatible typed matrix. </p>
+<p>Same element type requirements as the converting constructor. </p>
 
 </div>
 </div>
@@ -1442,7 +1444,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p>Underlying algebraic backend data storage. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00474">474</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00481">481</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>

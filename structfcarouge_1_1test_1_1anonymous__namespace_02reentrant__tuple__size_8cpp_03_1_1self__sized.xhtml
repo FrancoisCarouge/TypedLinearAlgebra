@@ -121,7 +121,7 @@ Public Types</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename... Types&gt;<br />
-struct fcarouge::test::anonymous_namespace{reentrant_tuple_size.cpp}::self_sized&lt; Types &gt;</div><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000322">Test</a></b></dt><dd>Verifies a typed matrix over index tuples whose own definition evaluates their tuple size, as libc++'s <code>std::tuple</code> does, compiles.</dd></dl>
+struct fcarouge::test::anonymous_namespace{reentrant_tuple_size.cpp}::self_sized&lt; Types &gt;</div><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000325">Test</a></b></dt><dd>Verifies a typed matrix over index tuples whose own definition evaluates their tuple size, as libc++'s <code>std::tuple</code> does, compiles.</dd></dl>
 <p>The typed matrix is the first to name the index tuple type, so selecting its <code>std::tuple_size</code> specialization is what completes it. Completing it evaluates that same tuple size again, which is only a constant expression if the selection did not need it complete already. </p>
 
 <p class="definition">Definition at line <a class="el" href="reentrant__tuple__size_8cpp_source.xhtml#l00050">50</a> of file <a class="el" href="reentrant__tuple__size_8cpp_source.xhtml">reentrant_tuple_size.cpp</a>.</p>
