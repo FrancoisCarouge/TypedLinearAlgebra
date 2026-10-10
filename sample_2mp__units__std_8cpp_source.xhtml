@@ -250,12 +250,18 @@ $(function(){initNavTree('sample_2mp__units__std_8cpp_source.xhtml',''); initRes
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                                  <span class="stringliteral">&quot; [22.5 m²/s, 15 m²/s², 7.5 m²/s³],&quot;</span> <span class="comment">//</span></div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>                                  <span class="stringliteral">&quot; [9 m²/s², 6 m²/s³, 3 m²/s⁴]]&quot;</span>);</div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>}()};</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>  <span class="comment">// In-place rank-1 update with the outer product of two vectors.</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>  matrix_rank_1_update(x0, x4, p6, p6);</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, p6) == <span class="stringliteral">&quot;[[189 m², 153 m²/s, 63 m²/s²],&quot;</span>          <span class="comment">//</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>                                  <span class="stringliteral">&quot; [157.5 m²/s, 127.5 m²/s², 52.5 m²/s³],&quot;</span> <span class="comment">//</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                                  <span class="stringliteral">&quot; [63 m²/s², 51 m²/s³, 21 m²/s⁴]]&quot;</span>);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>}()};</div>
 </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>} <span class="comment">// namespace</span></div>
 </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>} <span class="comment">// namespace fcarouge::sample</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="aclassfcarouge_1_1not__realtime_xhtml"><div class="ttname"><a href="classfcarouge_1_1not__realtime.xhtml">fcarouge::not_realtime</a></div><div class="ttdoc">Opt-out token of the real-time verification.</div><div class="ttdef"><b>Definition</b> <a href="realtime_8hpp_source.xhtml#l00056">realtime.hpp:56</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03_xhtml_a2e439af319622c8b449ced74cab8f061"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#a2e439af319622c8b449ced74cab8f061">fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::velocity</a></div><div class="ttdeci">quantity&lt; mp_units::isq::velocity[m/s]&gt; velocity</div><div class="ttdef"><b>Definition</b> <a href="#l00066">mp_units_std.cpp:66</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03_xhtml_a3e5057dcafa85555c20bb1c1d598a675"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#a3e5057dcafa85555c20bb1c1d598a675">fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::column_vector</a></div><div class="ttdeci">column_vector&lt; representation, Types... &gt; column_vector</div><div class="ttdef"><b>Definition</b> <a href="#l00073">mp_units_std.cpp:73</a></div></div>

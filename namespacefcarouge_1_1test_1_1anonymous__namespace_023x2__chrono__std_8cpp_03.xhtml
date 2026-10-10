@@ -123,45 +123,47 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000253">Test</a></b></dt><dd>Verifies the matrix-vector product algorithm for a non-square, three-by-two matrix and a two element column vector, producing a three element column vector, with std::chrono element types. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000249">Test</a></b></dt><dd>Verifies the overwriting matrix rank-1 update algorithm, the outer product of a three element and a two element column vector, into a non-square, three-by-two matrix with std::chrono element types. The y vector and the matrix columns are the dimensionless representation type: durations have no duration-by-duration product. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000269">Test</a></b></dt><dd>Verifies the matrix-vector product algorithm for a non-square, three-by-two matrix and a two element column vector, producing a three element column vector, with std::chrono element types. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="3x2__chrono__std_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="3x2__chrono__std_8cpp_source.xhtml">3x2_chrono_std.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   47</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   48</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#af24586dd705e9c93d9869bce929d5213">seconds</a> = std::chrono::duration&lt;representation&gt;;</div>
-<div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>  <span class="keyword">using </span>row_indexes = std::tuple&lt;seconds, seconds, seconds&gt;;</div>
-<div class="line"><span class="lineno">   51</span>  <span class="keyword">using </span>column_indexes = std::tuple&lt;representation, representation&gt;;</div>
-<div class="line"><span class="lineno">   52</span> </div>
-<div class="line"><span class="lineno">   53</span>  representation storage_a[6]{};</div>
-<div class="line"><span class="lineno">   54</span>  representation storage_x[2]{};</div>
-<div class="line"><span class="lineno">   55</span>  representation storage_y[3]{};</div>
-<div class="line"><span class="lineno">   56</span> </div>
-<div class="line"><span class="lineno">   57</span>  std::mdspan span_a{&amp;storage_a[0], std::extents&lt;std::size_t, 3, 2&gt;{}};</div>
-<div class="line"><span class="lineno">   58</span>  std::mdspan span_x{&amp;storage_x[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
-<div class="line"><span class="lineno">   59</span>  std::mdspan span_y{&amp;storage_y[0], std::extents&lt;std::size_t, 3, 1&gt;{}};</div>
-<div class="line"><span class="lineno">   60</span> </div>
-<div class="line"><span class="lineno">   61</span>  matrix&lt;representation, row_indexes, column_indexes&gt; a{span_a};</div>
-<div class="line"><span class="lineno">   62</span>  column_vector&lt;representation, representation, representation&gt; x{span_x};</div>
-<div class="line"><span class="lineno">   63</span>  column_vector&lt;representation, seconds, seconds, seconds&gt; y{span_y};</div>
-<div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>  a.at&lt;0, 0&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#ae70c68b2dc64c8d5fdd6ba74c59c09d2">seconds</a>{1.});</div>
-<div class="line"><span class="lineno">   66</span>  a.at&lt;0, 1&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#ae70c68b2dc64c8d5fdd6ba74c59c09d2">seconds</a>{2.});</div>
-<div class="line"><span class="lineno">   67</span>  a.at&lt;1, 0&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#ae70c68b2dc64c8d5fdd6ba74c59c09d2">seconds</a>{3.});</div>
-<div class="line"><span class="lineno">   68</span>  a.at&lt;1, 1&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#ae70c68b2dc64c8d5fdd6ba74c59c09d2">seconds</a>{4.});</div>
-<div class="line"><span class="lineno">   69</span>  a.at&lt;2, 0&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#ae70c68b2dc64c8d5fdd6ba74c59c09d2">seconds</a>{5.});</div>
-<div class="line"><span class="lineno">   70</span>  a.at&lt;2, 1&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#ae70c68b2dc64c8d5fdd6ba74c59c09d2">seconds</a>{6.});</div>
+<p class="definition">Definition at line <a class="el" href="matrix__rank__1__update_23x2__chrono__std_8cpp_source.xhtml#l00049">49</a> of file <a class="el" href="matrix__rank__1__update_23x2__chrono__std_8cpp_source.xhtml">3x2_chrono_std.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><span class="lineno">   50</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#af24586dd705e9c93d9869bce929d5213">seconds</a> = std::chrono::duration&lt;representation&gt;;</div>
+<div class="line"><span class="lineno">   51</span>  <span class="keyword">using </span>row_indexes = std::tuple&lt;seconds, seconds, seconds&gt;;</div>
+<div class="line"><span class="lineno">   52</span>  <span class="keyword">using </span>column_indexes = std::tuple&lt;representation, representation&gt;;</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>  representation storage_lhs[3]{};</div>
+<div class="line"><span class="lineno">   55</span>  representation storage_rhs[2]{};</div>
+<div class="line"><span class="lineno">   56</span>  <span class="comment">// Stale values the overwriting update must replace, not accumulate onto.</span></div>
+<div class="line"><span class="lineno">   57</span>  representation storage_result[6]{9., 9., 9., 9., 9., 9.};</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>  std::mdspan span_lhs{&amp;storage_lhs[0], std::extents&lt;std::size_t, 3, 1&gt;{}};</div>
+<div class="line"><span class="lineno">   60</span>  std::mdspan span_rhs{&amp;storage_rhs[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
+<div class="line"><span class="lineno">   61</span>  std::mdspan span_result{&amp;storage_result[0],</div>
+<div class="line"><span class="lineno">   62</span>                          std::extents&lt;std::size_t, 3, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>  column_vector&lt;representation, seconds, seconds, seconds&gt; lhs{span_lhs};</div>
+<div class="line"><span class="lineno">   65</span>  column_vector&lt;representation, representation, representation&gt; rhs{span_rhs};</div>
+<div class="line"><span class="lineno">   66</span>  matrix&lt;representation, row_indexes, column_indexes&gt; result{span_result};</div>
+<div class="line"><span class="lineno">   67</span> </div>
+<div class="line"><span class="lineno">   68</span>  lhs.at&lt;0&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#ae70c68b2dc64c8d5fdd6ba74c59c09d2">seconds</a>{1.});</div>
+<div class="line"><span class="lineno">   69</span>  lhs.at&lt;1&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#ae70c68b2dc64c8d5fdd6ba74c59c09d2">seconds</a>{2.});</div>
+<div class="line"><span class="lineno">   70</span>  lhs.at&lt;2&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#ae70c68b2dc64c8d5fdd6ba74c59c09d2">seconds</a>{3.});</div>
 <div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>  x.at&lt;0&gt;(1.);</div>
-<div class="line"><span class="lineno">   73</span>  x.at&lt;1&gt;(1.);</div>
+<div class="line"><span class="lineno">   72</span>  rhs.at&lt;0&gt;(4.);</div>
+<div class="line"><span class="lineno">   73</span>  rhs.at&lt;1&gt;(-5.);</div>
 <div class="line"><span class="lineno">   74</span> </div>
-<div class="line"><span class="lineno">   75</span>  matrix_vector_product(a, x, y);</div>
+<div class="line"><span class="lineno">   75</span>  matrix_rank_1_update(lhs, rhs, result);</div>
 <div class="line"><span class="lineno">   76</span> </div>
-<div class="line"><span class="lineno">   77</span>  assert((y.at&lt;0&gt;() == seconds{3.}));</div>
-<div class="line"><span class="lineno">   78</span>  assert((y.at&lt;1&gt;() == seconds{7.}));</div>
-<div class="line"><span class="lineno">   79</span>  assert((y.at&lt;2&gt;() == seconds{11.}));</div>
-<div class="line"><span class="lineno">   80</span> </div>
-<div class="line"><span class="lineno">   81</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   82</span>}()};</div>
+<div class="line"><span class="lineno">   77</span>  assert((result.at&lt;0, 0&gt;() == seconds{4.}));</div>
+<div class="line"><span class="lineno">   78</span>  assert((result.at&lt;0, 1&gt;() == seconds{-5.}));</div>
+<div class="line"><span class="lineno">   79</span>  assert((result.at&lt;1, 0&gt;() == seconds{8.}));</div>
+<div class="line"><span class="lineno">   80</span>  assert((result.at&lt;1, 1&gt;() == seconds{-10.}));</div>
+<div class="line"><span class="lineno">   81</span>  assert((result.at&lt;2, 0&gt;() == seconds{12.}));</div>
+<div class="line"><span class="lineno">   82</span>  assert((result.at&lt;2, 1&gt;() == seconds{-15.}));</div>
+<div class="line"><span class="lineno">   83</span> </div>
+<div class="line"><span class="lineno">   84</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   85</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03_xhtml_ae70c68b2dc64c8d5fdd6ba74c59c09d2"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#ae70c68b2dc64c8d5fdd6ba74c59c09d2">fcarouge::sample::anonymous_namespace{chrono_armadillo.cpp}::seconds</a></div><div class="ttdeci">std::chrono::duration&lt; representation &gt; seconds</div><div class="ttdef"><b>Definition</b> <a href="chrono__armadillo_8cpp_source.xhtml#l00053">chrono_armadillo.cpp:53</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml_af24586dd705e9c93d9869bce929d5213"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#af24586dd705e9c93d9869bce929d5213">fcarouge::test::seconds</a></div><div class="ttdeci">std::chrono::duration&lt; representation &gt; seconds</div><div class="ttdef"><b>Definition</b> <a href="test_2format_2chrono__eigen_8cpp_source.xhtml#l00041">chrono_eigen.cpp:41</a></div></div>
 </div><!-- fragment -->

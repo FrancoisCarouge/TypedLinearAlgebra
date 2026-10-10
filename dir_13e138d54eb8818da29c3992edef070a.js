@@ -20,6 +20,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "matrix_frob_norm", "dir_70b3a29f6572a7a03cf0fb3c35883315.xhtml", "dir_70b3a29f6572a7a03cf0fb3c35883315" ],
     [ "matrix_one_norm", "dir_ea5954d6bf726df20589d7aa478e6f13.xhtml", "dir_ea5954d6bf726df20589d7aa478e6f13" ],
     [ "matrix_product", "dir_0a5c94c6b1800719290ff7c8ab5d7918.xhtml", "dir_0a5c94c6b1800719290ff7c8ab5d7918" ],
+    [ "matrix_rank_1_update", "dir_a23e95efa123be6804d539894653a606.xhtml", "dir_a23e95efa123be6804d539894653a606" ],
     [ "matrix_vector_product", "dir_6984f3d25fc75ffbd2807029da830d08.xhtml", "dir_6984f3d25fc75ffbd2807029da830d08" ],
     [ "minus", "dir_c2689131500af98a26694fed65bbca21.xhtml", "dir_c2689131500af98a26694fed65bbca21" ],
     [ "mp_units", "dir_f408fcf1297947454c84a3486bce03f6.xhtml", "dir_f408fcf1297947454c84a3486bce03f6" ],

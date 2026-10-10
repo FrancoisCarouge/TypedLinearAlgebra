@@ -10,5 +10,6 @@ var searchData=
   ['disable_7',['disable',['../classfcarouge_1_1not__realtime.xhtml#a297a7276ba8ffd478582a9a30af573db',1,'fcarouge::not_realtime']]],
   ['distinct_5ftyped_5fmatrix_2ecpp_8',['distinct_typed_matrix.cpp',['../distinct__typed__matrix_8cpp.xhtml',1,'']]],
   ['documentation_2edox_9',['documentation.dox',['../documentation_8dox.xhtml',1,'']]],
-  ['dot_10',['dot',['../namespacefcarouge.xhtml#abd59a3fd717517a0bf8904bb70974aab',1,'fcarouge']]]
+  ['dot_10',['dot',['../namespacefcarouge.xhtml#abd59a3fd717517a0bf8904bb70974aab',1,'fcarouge']]],
+  ['duration_5fchrono_5fstd_5ffail_2ecpp_11',['duration_chrono_std_fail.cpp',['../duration__chrono__std__fail_8cpp.xhtml',1,'']]]
 ];

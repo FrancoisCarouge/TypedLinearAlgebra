@@ -123,49 +123,50 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000255">Test</a></b></dt><dd>Verifies the matrix-vector product algorithm for a non-square, three-by-two matrix and a two element column vector, producing a three element column vector, with nholthaus/units element types. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000250">Test</a></b></dt><dd>Verifies the overwriting matrix rank-1 update algorithm, the outer product of a three element and a two element column vector, into a non-square, three-by-two matrix with nholthaus/units element types. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000270">Test</a></b></dt><dd>Verifies the matrix-vector product algorithm for a non-square, three-by-two matrix and a two element column vector, producing a three element column vector, with nholthaus/units element types. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="3x2__nholthaus__std_8cpp_source.xhtml#l00050">50</a> of file <a class="el" href="3x2__nholthaus__std_8cpp_source.xhtml">3x2_nholthaus_std.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   50</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   51</span>  <span class="keyword">using </span>units::m;</div>
-<div class="line"><span class="lineno">   52</span>  <span class="keyword">using </span>units::m2;</div>
-<div class="line"><span class="lineno">   53</span>  <span class="keyword">using </span>units::m3;</div>
-<div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">length</a> = units::length::meters&lt;representation&gt;;</div>
-<div class="line"><span class="lineno">   56</span>  <span class="keyword">using </span>volume = units::volume::cubic_meters&lt;representation&gt;;</div>
-<div class="line"><span class="lineno">   57</span>  <span class="keyword">using </span>row_indexes = std::tuple&lt;length, length, length&gt;;</div>
-<div class="line"><span class="lineno">   58</span>  <span class="keyword">using </span>column_indexes = std::tuple&lt;length, length&gt;;</div>
-<div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>  representation storage_a[6]{};</div>
-<div class="line"><span class="lineno">   61</span>  representation storage_x[2]{};</div>
-<div class="line"><span class="lineno">   62</span>  representation storage_y[3]{};</div>
-<div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>  std::mdspan span_a{&amp;storage_a[0], std::extents&lt;std::size_t, 3, 2&gt;{}};</div>
-<div class="line"><span class="lineno">   65</span>  std::mdspan span_x{&amp;storage_x[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
-<div class="line"><span class="lineno">   66</span>  std::mdspan span_y{&amp;storage_y[0], std::extents&lt;std::size_t, 3, 1&gt;{}};</div>
-<div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>  matrix&lt;representation, row_indexes, column_indexes&gt; a{span_a};</div>
-<div class="line"><span class="lineno">   69</span>  column_vector&lt;representation, length, length&gt; x{span_x};</div>
-<div class="line"><span class="lineno">   70</span>  column_vector&lt;representation, volume, volume, volume&gt; y{span_y};</div>
-<div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>  a.at&lt;0, 0&gt;(1. * m2);</div>
-<div class="line"><span class="lineno">   73</span>  a.at&lt;0, 1&gt;(2. * m2);</div>
-<div class="line"><span class="lineno">   74</span>  a.at&lt;1, 0&gt;(3. * m2);</div>
-<div class="line"><span class="lineno">   75</span>  a.at&lt;1, 1&gt;(4. * m2);</div>
-<div class="line"><span class="lineno">   76</span>  a.at&lt;2, 0&gt;(5. * m2);</div>
-<div class="line"><span class="lineno">   77</span>  a.at&lt;2, 1&gt;(6. * m2);</div>
-<div class="line"><span class="lineno">   78</span> </div>
-<div class="line"><span class="lineno">   79</span>  x.at&lt;0&gt;(1. * m);</div>
-<div class="line"><span class="lineno">   80</span>  x.at&lt;1&gt;(1. * m);</div>
-<div class="line"><span class="lineno">   81</span> </div>
-<div class="line"><span class="lineno">   82</span>  matrix_vector_product(a, x, y);</div>
-<div class="line"><span class="lineno">   83</span> </div>
-<div class="line"><span class="lineno">   84</span>  assert((y.at&lt;0&gt;() == 3. * m3));</div>
-<div class="line"><span class="lineno">   85</span>  assert((y.at&lt;1&gt;() == 7. * m3));</div>
-<div class="line"><span class="lineno">   86</span>  assert((y.at&lt;2&gt;() == 11. * m3));</div>
-<div class="line"><span class="lineno">   87</span> </div>
-<div class="line"><span class="lineno">   88</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   89</span>}()};</div>
+<p class="definition">Definition at line <a class="el" href="matrix__rank__1__update_23x2__nholthaus__std_8cpp_source.xhtml#l00049">49</a> of file <a class="el" href="matrix__rank__1__update_23x2__nholthaus__std_8cpp_source.xhtml">3x2_nholthaus_std.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><span class="lineno">   50</span>  <span class="keyword">using </span>units::m;</div>
+<div class="line"><span class="lineno">   51</span>  <span class="keyword">using </span>units::m2;</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">length</a> = units::length::meters&lt;representation&gt;;</div>
+<div class="line"><span class="lineno">   54</span>  <span class="keyword">using </span>row_indexes = std::tuple&lt;length, length, length&gt;;</div>
+<div class="line"><span class="lineno">   55</span>  <span class="keyword">using </span>column_indexes = std::tuple&lt;length, length&gt;;</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>  representation storage_lhs[3]{};</div>
+<div class="line"><span class="lineno">   58</span>  representation storage_rhs[2]{};</div>
+<div class="line"><span class="lineno">   59</span>  <span class="comment">// Stale values the overwriting update must replace, not accumulate onto.</span></div>
+<div class="line"><span class="lineno">   60</span>  representation storage_result[6]{9., 9., 9., 9., 9., 9.};</div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>  std::mdspan span_lhs{&amp;storage_lhs[0], std::extents&lt;std::size_t, 3, 1&gt;{}};</div>
+<div class="line"><span class="lineno">   63</span>  std::mdspan span_rhs{&amp;storage_rhs[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
+<div class="line"><span class="lineno">   64</span>  std::mdspan span_result{&amp;storage_result[0],</div>
+<div class="line"><span class="lineno">   65</span>                          std::extents&lt;std::size_t, 3, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>  column_vector&lt;representation, length, length, length&gt; lhs{span_lhs};</div>
+<div class="line"><span class="lineno">   68</span>  column_vector&lt;representation, length, length&gt; rhs{span_rhs};</div>
+<div class="line"><span class="lineno">   69</span>  matrix&lt;representation, row_indexes, column_indexes&gt; result{span_result};</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>  lhs.at&lt;0&gt;(1. * m);</div>
+<div class="line"><span class="lineno">   72</span>  lhs.at&lt;1&gt;(2. * m);</div>
+<div class="line"><span class="lineno">   73</span>  lhs.at&lt;2&gt;(3. * m);</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>  rhs.at&lt;0&gt;(4. * m);</div>
+<div class="line"><span class="lineno">   76</span>  rhs.at&lt;1&gt;(-5. * m);</div>
+<div class="line"><span class="lineno">   77</span> </div>
+<div class="line"><span class="lineno">   78</span>  matrix_rank_1_update(lhs, rhs, result);</div>
+<div class="line"><span class="lineno">   79</span> </div>
+<div class="line"><span class="lineno">   80</span>  assert((result.at&lt;0, 0&gt;() == 4. * m2));</div>
+<div class="line"><span class="lineno">   81</span>  assert((result.at&lt;0, 1&gt;() == -5. * m2));</div>
+<div class="line"><span class="lineno">   82</span>  assert((result.at&lt;1, 0&gt;() == 8. * m2));</div>
+<div class="line"><span class="lineno">   83</span>  assert((result.at&lt;1, 1&gt;() == -10. * m2));</div>
+<div class="line"><span class="lineno">   84</span>  assert((result.at&lt;2, 0&gt;() == 12. * m2));</div>
+<div class="line"><span class="lineno">   85</span>  assert((result.at&lt;2, 1&gt;() == -15. * m2));</div>
+<div class="line"><span class="lineno">   86</span> </div>
+<div class="line"><span class="lineno">   87</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   88</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml_a7194bc200104fad679ef56587aaec86f"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">fcarouge::test::length</a></div><div class="ttdeci">au::QuantityD&lt; au::Meters &gt; length</div><div class="ttdef"><b>Definition</b> <a href="test_2format_2au__eigen_8cpp_source.xhtml#l00045">au_eigen.cpp:45</a></div></div>
 </div><!-- fragment -->
 </div>
