@@ -399,11 +399,11 @@ constexpr auto find_first_convertible_index() -> std::size_t {
 
   constexpr auto search{
       []<std::size_t... Indexes>(std::index_sequence<Indexes...>) {
-        std::size_t result{size};
+        std::size_t result{0};
 
         (void)((std::is_convertible_v<std::tuple_element_t<Indexes, Tuple>, To>
-                    ? (result = Indexes, true)
-                    : false) ||
+                    ? true
+                    : (++result, false)) ||
                ...);
 
         return result;
