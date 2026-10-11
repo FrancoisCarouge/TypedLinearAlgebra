@@ -435,11 +435,11 @@ $(function(){initNavTree('utility_8hpp_source.xhtml',''); initResizable(true); }
 <div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span> </div>
 <div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> search{</div>
 <div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>      []&lt;std::size_t... Indexes&gt;(std::index_sequence&lt;Indexes...&gt;) {</div>
-<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>        std::size_t result{size};</div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>        std::size_t result{0};</div>
 <div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span> </div>
 <div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>        (void)((std::is_convertible_v&lt;std::tuple_element_t&lt;Indexes, Tuple&gt;, To&gt;</div>
-<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>                    ? (result = Indexes, <span class="keyword">true</span>)</div>
-<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>                    : <span class="keyword">false</span>) ||</div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>                    ? <span class="keyword">true</span></div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>                    : (++result, <span class="keyword">false</span>)) ||</div>
 <div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>               ...);</div>
 <div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span> </div>
 <div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>        <span class="keywordflow">return</span> result;</div>
