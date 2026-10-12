@@ -93,6 +93,7 @@ Add a plug-in for each strong type and/or linear algebra backend you use:
 | mp-units + Eigen | [Usage example: `sample/mp_units_eigen.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_eigen.cpp). |
 | mp-units + std::linalg | [Usage example: `sample/mp_units_std.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std.cpp). |
 | mp-units + std::linalg + std::array | [Usage example: `sample/mp_units_std_array.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std_array.cpp). |
+| mp-units + std::linalg + Boost.Multi | [Usage example: `sample/mp_units_std_boost_multi.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std_boost_multi.cpp). |
 | nholthaus/units + Armadillo | [Usage example: `sample/nholthaus_armadillo.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_armadillo.cpp). |
 | nholthaus/units + Eigen | [Usage example: `sample/nholthaus_eigen.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_eigen.cpp). |
 | nholthaus/units + std::linalg | [Usage example: `sample/nholthaus_std.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_std.cpp). |
@@ -327,6 +328,7 @@ The library is designed, developed, and tested with the help of third-party tool
 - [actions-gh-pages](https://github.com/peaceiris/actions-gh-pages) to upload the documentation to GitHub pages.
 - [Armadillo](https://arma.sourceforge.net/) for linear algebra.
 - [Au](https://github.com/aurora-opensource/au) the physical units library for C++, by Aurora Innovation.
+- [Boost.Multi](https://gitlab.com/correaa/boost-multi) for multidimensional arrays.
 - [Clang](https://clang.llvm.org) for compilation and code sanitizers.
 - [clang-format](https://clang.llvm.org/docs/ClangFormat.html) for code formatting.
 - [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) for static analysis.

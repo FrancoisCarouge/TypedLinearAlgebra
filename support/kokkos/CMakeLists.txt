@@ -51,9 +51,9 @@ add_library(typed_linear_algebra_kokkos INTERFACE)
 target_sources(
   typed_linear_algebra_kokkos
   INTERFACE
-  FILE_SET
-    "typed_linear_algebra_headers" TYPE "HEADERS" FILES "fcarouge/linalg"
-    "fcarouge/mdspan")
+  FILE_SET "typed_linear_algebra_headers"
+    TYPE "HEADERS"
+    FILES "fcarouge/linalg" "fcarouge/mdspan")
 target_include_directories(typed_linear_algebra_kokkos INTERFACE "fcarouge")
 target_link_libraries(typed_linear_algebra_kokkos INTERFACE linalg)
 

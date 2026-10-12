@@ -35,8 +35,10 @@ For more information, please refer to <https://unlicense.org> */
 #include <experimental/mdspan>
 
 namespace std {
+using Kokkos::dextents;
 using Kokkos::extents;
 using Kokkos::layout_left;
+using Kokkos::layout_stride;
 using Kokkos::mdspan;
 } // namespace std
 
