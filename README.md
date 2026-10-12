@@ -38,6 +38,12 @@ See [INSTALL.md](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/mast
 
 ## Reference
 
+### Layers
+
+![Where Typed Linear Algebra sits in the technical stack: below the application, composing a linear algebra backend and adapting strong element types.](https://francoiscarouge.github.io/TypedLinearAlgebra/typed_linear_algebra/layers.svg)
+
+The library is the type-safety layer between the application and an established linear algebra backend.
+
 ### CMake
 
 Link against the CMake target `fcarouge-typed-linear-algebra::tlinalg`.
