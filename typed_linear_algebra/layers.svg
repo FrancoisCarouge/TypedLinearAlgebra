@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 460" width="880" height="460" role="img" aria-labelledby="title description" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, 'DejaVu Sans', sans-serif">
+  <title id="title">Where Typed Linear Algebra sits in the technical stack</title>
+  <desc id="description">The application sits on top. Typed Linear Algebra is the layer directly below it. It composes a linear algebra backend, itself layered as low-level mathematics, performance primitives, and fundamentals, and it adapts strong element types.</desc>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      .card { fill: #0d1117; stroke: #3d444d; }
+      .layer { fill: #151b23; stroke: #3d444d; }
+      .ink { fill: #f0f6fc; }
+      .muted { fill: #9198a1; }
+      .link { stroke: #9198a1; }
+      .accent { fill: #238636; }
+    }
+  </style>
+
+  <rect class="card" x="0.5" y="0.5" width="879" height="459" rx="10" fill="#ffffff" stroke="#d1d9e0"/>
+
+  <!-- Application -->
+  <rect class="layer" x="24" y="24" width="832" height="60" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <text class="ink" x="40" y="49" font-size="15" font-weight="600" fill="#1f2328">Application</text>
+  <text class="muted" x="40" y="69" font-size="12" fill="#59636e">high-level, domain-specific mathematics</text>
+  <text class="ink" x="840" y="59" font-size="13" text-anchor="end" fill="#1f2328">Kalman filtering · navigation and control · robotics · simulation</text>
+
+  <!-- Typed Linear Algebra -->
+  <rect class="accent" x="24" y="100" width="832" height="100" rx="6" fill="#1a7f37"/>
+  <text x="40" y="131" font-size="19" font-weight="700" fill="#ffffff">Typed Linear Algebra</text>
+  <text x="40" y="157" font-size="13" fill="#ffffff">Strongly-typed matrix elements: units, axes, frames.</text>
+  <text x="40" y="179" font-size="13" fill="#ffffff">A mismatch is a compile error. The backend still does the arithmetic.</text>
+  <text x="840" y="127" font-size="11" text-anchor="end" fill="#ffffff" fill-opacity="0.8">operator style</text>
+  <text x="840" y="145" font-size="13" text-anchor="end" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">x * transposed(x)</text>
+  <text x="840" y="167" font-size="11" text-anchor="end" fill="#ffffff" fill-opacity="0.8">std::linalg style</text>
+  <text x="840" y="185" font-size="13" text-anchor="end" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">matrix_product(a, b, c)</text>
+
+  <!-- Composition links -->
+  <line class="link" x1="44" y1="200" x2="44" y2="240" stroke="#59636e" stroke-width="1.5"/>
+  <text class="muted" x="56" y="225" font-size="12" fill="#59636e">composes a linear algebra backend</text>
+  <line class="link" x1="660" y1="200" x2="660" y2="240" stroke="#59636e" stroke-width="1.5"/>
+  <text class="muted" x="672" y="225" font-size="12" fill="#59636e">adapts strong element types</text>
+
+  <!-- Linear algebra backend -->
+  <rect class="layer" x="24" y="240" width="600" height="60" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <text class="ink" x="40" y="265" font-size="15" font-weight="600" fill="#1f2328">Low-level mathematics</text>
+  <text class="muted" x="40" y="285" font-size="12" fill="#59636e">linear systems, least squares, eigenvalues</text>
+  <text class="ink" x="608" y="275" font-size="13" text-anchor="end" fill="#1f2328">Eigen · Armadillo · LAPACK</text>
+
+  <rect class="layer" x="24" y="308" width="600" height="60" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <text class="ink" x="40" y="333" font-size="15" font-weight="600" fill="#1f2328">Performance primitives</text>
+  <text class="muted" x="40" y="353" font-size="12" fill="#59636e">vector and matrix operations</text>
+  <text class="ink" x="608" y="343" font-size="13" text-anchor="end" fill="#1f2328">std::linalg · BLAS · NVBLAS</text>
+
+  <rect class="layer" x="24" y="376" width="600" height="60" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <text class="ink" x="40" y="401" font-size="15" font-weight="600" fill="#1f2328">Fundamentals</text>
+  <text class="muted" x="40" y="421" font-size="12" fill="#59636e">multidimensional arrays, iteration</text>
+  <text class="ink" x="608" y="411" font-size="13" text-anchor="end" fill="#1f2328">std::array · std::mdspan · Boost.Multi · Kokkos · std::simd</text>
+
+  <!-- Strong element types -->
+  <rect class="layer" x="640" y="240" width="216" height="196" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <text class="ink" x="656" y="265" font-size="15" font-weight="600" fill="#1f2328">Strong types</text>
+  <text class="muted" x="656" y="285" font-size="12" fill="#59636e">units, quantities, time</text>
+  <text class="ink" x="656" y="319" font-size="13" fill="#1f2328">Au</text>
+  <text class="ink" x="656" y="343" font-size="13" fill="#1f2328">mp-units</text>
+  <text class="ink" x="656" y="367" font-size="13" fill="#1f2328">nholthaus/units</text>
+  <text class="ink" x="656" y="391" font-size="13" fill="#1f2328">std::chrono</text>
+  <text class="ink" x="656" y="415" font-size="13" fill="#1f2328">built-in types</text>
+</svg>

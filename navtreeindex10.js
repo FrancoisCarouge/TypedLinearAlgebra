@@ -1,5 +1,6 @@
 var NAVTREEINDEX10 =
 {
+"test_2format_2nholthaus__std_8cpp.xhtml#aaf8770fb35d2831cf95982a15e84d172":[17,0,6,14,12,3],
 "test_2format_2nholthaus__std_8cpp_source.xhtml":[17,0,6,14,12],
 "test_2rank__typed__matrix_2au__std_8cpp.xhtml":[17,0,6,27,0],
 "test_2rank__typed__matrix_2au__std_8cpp_source.xhtml":[17,0,6,27,0],
