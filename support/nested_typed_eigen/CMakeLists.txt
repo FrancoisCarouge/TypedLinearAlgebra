@@ -33,8 +33,9 @@ add_library(typed_linear_algebra_nested_typed_eigen INTERFACE)
 target_sources(
   typed_linear_algebra_nested_typed_eigen
   INTERFACE
-  FILE_SET
-    "typed_linear_algebra_headers" TYPE "HEADERS" FILES "fcarouge/linalg.hpp")
+  FILE_SET "typed_linear_algebra_headers"
+    TYPE "HEADERS"
+    FILES "fcarouge/linalg.hpp")
 target_link_libraries(
   typed_linear_algebra_nested_typed_eigen
   INTERFACE tlinalg typed_linear_algebra_eigen)

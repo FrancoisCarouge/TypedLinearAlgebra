@@ -43,9 +43,9 @@ add_library(typed_linear_algebra_armadillo INTERFACE)
 target_sources(
   typed_linear_algebra_armadillo
   INTERFACE
-  FILE_SET
-    "typed_linear_algebra_headers" TYPE "HEADERS" FILES "fcarouge/armadillo.hpp"
-    "fcarouge/linalg.hpp")
+  FILE_SET "typed_linear_algebra_headers"
+    TYPE "HEADERS"
+    FILES "fcarouge/armadillo.hpp" "fcarouge/linalg.hpp")
 target_link_libraries(typed_linear_algebra_armadillo INTERFACE tlinalg)
 target_compile_definitions(
   typed_linear_algebra_armadillo

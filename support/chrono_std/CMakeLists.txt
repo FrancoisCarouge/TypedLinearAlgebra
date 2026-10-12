@@ -33,8 +33,9 @@ add_library(typed_linear_algebra_chrono_std INTERFACE)
 target_sources(
   typed_linear_algebra_chrono_std
   INTERFACE
-  FILE_SET
-    "typed_linear_algebra_headers" TYPE "HEADERS" FILES "fcarouge/linalg.hpp")
+  FILE_SET "typed_linear_algebra_headers"
+    TYPE "HEADERS"
+    FILES "fcarouge/linalg.hpp")
 target_link_libraries(
   typed_linear_algebra_chrono_std
   INTERFACE typed_linear_algebra_kokkos tlinalg)
