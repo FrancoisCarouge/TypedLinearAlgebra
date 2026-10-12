@@ -92,6 +92,7 @@ Add a plug-in for each strong type and/or linear algebra backend you use:
 | mp-units + Armadillo | [Usage example: `sample/mp_units_armadillo.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_armadillo.cpp). |
 | mp-units + Eigen | [Usage example: `sample/mp_units_eigen.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_eigen.cpp). |
 | mp-units + std::linalg | [Usage example: `sample/mp_units_std.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std.cpp). |
+| mp-units + std::linalg + std::array | [Usage example: `sample/mp_units_std_array.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std_array.cpp). |
 | nholthaus/units + Armadillo | [Usage example: `sample/nholthaus_armadillo.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_armadillo.cpp). |
 | nholthaus/units + Eigen | [Usage example: `sample/nholthaus_eigen.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_eigen.cpp). |
 | nholthaus/units + std::linalg | [Usage example: `sample/nholthaus_std.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_std.cpp). |
