@@ -352,7 +352,7 @@ template&lt;typename Extents &gt; </div>
 <div class="line"><span class="lineno">  104</span> </div>
 <div class="line"><span class="lineno">  105</span>  std::vector v0(extents_size&lt;column_extents&lt;3&gt;&gt;, representation{});</div>
 <div class="line"><span class="lineno">  106</span>  std::mdspan s0{v0.data(), column_extents&lt;3&gt;{}};</div>
-<div class="line"><span class="lineno">  107</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03.xhtml#a4317f99eb96c56804eb9416c461d2f25">state</a> x0{s0};</div>
+<div class="line"><span class="lineno">  107</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__array_8cpp_03.xhtml#adccd5c3bcffe2afa682f9f47acb76cd5">state</a> x0{s0};</div>
 <div class="line"><span class="lineno">  108</span> </div>
 <div class="line"><span class="lineno">  109</span>  <span class="comment">// Elements assignment.</span></div>
 <div class="line"><span class="lineno">  110</span>  x0.at&lt;0&gt;(3. * m);</div>
@@ -380,22 +380,22 @@ template&lt;typename Extents &gt; </div>
 <div class="line"><span class="lineno">  132</span>  <span class="comment">// Prefer `operator+`/`operator-` (used above) over `add()`/`subtract()`</span></div>
 <div class="line"><span class="lineno">  133</span>  <span class="comment">// for Au-typed matrices.</span></div>
 <div class="line"><span class="lineno">  134</span> </div>
-<div class="line"><span class="lineno">  135</span>  <span class="keyword">using </span>state_transpose = row_vector&lt;position, velocity, acceleration&gt;;</div>
+<div class="line"><span class="lineno">  135</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__array_8cpp_03.xhtml#add5103aac12fd136aed9783e59f657c0">state_transpose</a> = row_vector&lt;position, velocity, acceleration&gt;;</div>
 <div class="line"><span class="lineno">  136</span> </div>
 <div class="line"><span class="lineno">  137</span>  std::vector v5(extents_size&lt;row_extents&lt;3&gt;&gt;, representation{});</div>
 <div class="line"><span class="lineno">  138</span>  std::mdspan s5{v5.data(), row_extents&lt;3&gt;{}};</div>
-<div class="line"><span class="lineno">  139</span>  state_transpose xt5{s5};</div>
+<div class="line"><span class="lineno">  139</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__array_8cpp_03.xhtml#add5103aac12fd136aed9783e59f657c0">state_transpose</a> xt5{s5};</div>
 <div class="line"><span class="lineno">  140</span>  xt5.at&lt;0&gt;(3. * m);</div>
 <div class="line"><span class="lineno">  141</span>  xt5.at&lt;1&gt;(2. * m / s);</div>
 <div class="line"><span class="lineno">  142</span>  xt5.at&lt;2&gt;(1. * m / s2);</div>
 <div class="line"><span class="lineno">  143</span> </div>
-<div class="line"><span class="lineno">  144</span>  <span class="keyword">using </span>estimate_uncertainty =</div>
+<div class="line"><span class="lineno">  144</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__array_8cpp_03.xhtml#aa695b6cff3fdd30e2adf58a9f615578d">estimate_uncertainty</a> =</div>
 <div class="line"><span class="lineno">  145</span>      matrix&lt;std::tuple&lt;position, velocity, acceleration&gt;,</div>
 <div class="line"><span class="lineno">  146</span>             std::tuple&lt;position, velocity, acceleration&gt;&gt;;</div>
 <div class="line"><span class="lineno">  147</span>  std::vector v6(extents_size&lt;std::extents&lt;std::size_t, 3, 3&gt;&gt;,</div>
 <div class="line"><span class="lineno">  148</span>                 representation{});</div>
 <div class="line"><span class="lineno">  149</span>  std::mdspan s6{v6.data(), std::extents&lt;std::size_t, 3, 3&gt;{}};</div>
-<div class="line"><span class="lineno">  150</span>  estimate_uncertainty p6{s6};</div>
+<div class="line"><span class="lineno">  150</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__array_8cpp_03.xhtml#aa695b6cff3fdd30e2adf58a9f615578d">estimate_uncertainty</a> p6{s6};</div>
 <div class="line"><span class="lineno">  151</span> </div>
 <div class="line"><span class="lineno">  152</span>  <span class="comment">// Column-row matrix product.</span></div>
 <div class="line"><span class="lineno">  153</span>  matrix_product(x0, xt5, p6);</div>
@@ -408,7 +408,9 @@ template&lt;typename Extents &gt; </div>
 <div class="line"><span class="lineno">  160</span>}()};</div>
 <div class="ttc" id="aclassfcarouge_1_1not__realtime_xhtml"><div class="ttname"><a href="classfcarouge_1_1not__realtime.xhtml">fcarouge::not_realtime</a></div><div class="ttdoc">Opt-out token of the real-time verification.</div><div class="ttdef"><b>Definition</b> <a href="realtime_8hpp_source.xhtml#l00056">realtime.hpp:56</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_ab95c9e8d65ece459f17360e871fb7490"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">fcarouge::armadillo::column_vector</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; Row, 1 &gt; column_vector</div><div class="ttdoc">Compile-time sized Armadillo column vector.</div><div class="ttdef"><b>Definition</b> <a href="armadillo_8hpp_source.xhtml#l00099">armadillo.hpp:99</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03_xhtml_a4317f99eb96c56804eb9416c461d2f25"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03.xhtml#a4317f99eb96c56804eb9416c461d2f25">fcarouge::test::anonymous_namespace{uniform_mp_units_eigen.cpp}::state</a></div><div class="ttdeci">matrix&lt; double, std::tuple&lt; position, velocity &gt;, identity &gt; state</div><div class="ttdef"><b>Definition</b> <a href="matrix__frob__norm_2uniform__mp__units__eigen_8cpp_source.xhtml#l00048">uniform_mp_units_eigen.cpp:48</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__array_8cpp_03_xhtml_aa695b6cff3fdd30e2adf58a9f615578d"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__array_8cpp_03.xhtml#aa695b6cff3fdd30e2adf58a9f615578d">fcarouge::sample::anonymous_namespace{mp_units_std_array.cpp}::estimate_uncertainty</a></div><div class="ttdeci">matrix&lt; std::tuple&lt; position, velocity, acceleration &gt;, std::tuple&lt; position, velocity, acceleration &gt; &gt; estimate_uncertainty</div><div class="ttdef"><b>Definition</b> <a href="mp__units__std__array_8cpp_source.xhtml#l00078">mp_units_std_array.cpp:78</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__array_8cpp_03_xhtml_adccd5c3bcffe2afa682f9f47acb76cd5"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__array_8cpp_03.xhtml#adccd5c3bcffe2afa682f9f47acb76cd5">fcarouge::sample::anonymous_namespace{mp_units_std_array.cpp}::state</a></div><div class="ttdeci">column_vector&lt; position, velocity, acceleration &gt; state</div><div class="ttdef"><b>Definition</b> <a href="mp__units__std__array_8cpp_source.xhtml#l00076">mp_units_std_array.cpp:76</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__array_8cpp_03_xhtml_add5103aac12fd136aed9783e59f657c0"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__array_8cpp_03.xhtml#add5103aac12fd136aed9783e59f657c0">fcarouge::sample::anonymous_namespace{mp_units_std_array.cpp}::state_transpose</a></div><div class="ttdeci">row_vector&lt; position, velocity, acceleration &gt; state_transpose</div><div class="ttdef"><b>Definition</b> <a href="mp__units__std__array_8cpp_source.xhtml#l00077">mp_units_std_array.cpp:77</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

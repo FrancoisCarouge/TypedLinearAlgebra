@@ -15,6 +15,7 @@ var searchData=
   ['enable_12',['enable',['../classfcarouge_1_1not__realtime.xhtml#a7e9fe4f0c2660883d0df50a3b8404a2e',1,'fcarouge::not_realtime']]],
   ['enforcement_13',['Enforcement',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#enforcement',1,'']]],
   ['equality_2ecpp_14',['equality.cpp',['../equality_8cpp.xhtml',1,'']]],
-  ['expression_15',['expression',['../namespacefcarouge_1_1test_1_1anonymous__namespace_023x1__eigen_8cpp_03.xhtml#a0dfce1d30963be7903c8690f9ec4d8ef',1,'fcarouge::test::anonymous_namespace{3x1_eigen.cpp}']]],
-  ['extents_5fsize_16',['extents_size',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__std_8cpp_03.xhtml#a029a815cdafeb9c0ff113a78e4ca31bc',1,'fcarouge::sample::anonymous_namespace{au_std.cpp}::extents_size'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#abadda8a5417037ae0b6596f861948290',1,'fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::extents_size']]]
+  ['estimate_5funcertainty_15',['estimate_uncertainty',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__array_8cpp_03.xhtml#aa695b6cff3fdd30e2adf58a9f615578d',1,'fcarouge::sample::anonymous_namespace{mp_units_std_array.cpp}']]],
+  ['expression_16',['expression',['../namespacefcarouge_1_1test_1_1anonymous__namespace_023x1__eigen_8cpp_03.xhtml#a0dfce1d30963be7903c8690f9ec4d8ef',1,'fcarouge::test::anonymous_namespace{3x1_eigen.cpp}']]],
+  ['extents_5fsize_17',['extents_size',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__std_8cpp_03.xhtml#a029a815cdafeb9c0ff113a78e4ca31bc',1,'fcarouge::sample::anonymous_namespace{au_std.cpp}::extents_size'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#abadda8a5417037ae0b6596f861948290',1,'fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::extents_size']]]
 ];

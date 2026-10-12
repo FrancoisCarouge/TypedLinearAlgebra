@@ -32,6 +32,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "same_as_typed_matrix", "dir_85672508e764db47551cde85626f251e.xhtml", "dir_85672508e764db47551cde85626f251e" ],
     [ "same_shape", "dir_d14f5c435c62ead2135e63bab969fae5.xhtml", "dir_d14f5c435c62ead2135e63bab969fae5" ],
     [ "scale", "dir_c79a22093641195bc122213b64dc8191.xhtml", "dir_c79a22093641195bc122213b64dc8191" ],
+    [ "std_array", "dir_fe32dd00d0b128382030f1631f05509c.xhtml", "dir_fe32dd00d0b128382030f1631f05509c" ],
     [ "structured_bindings", "dir_bb833da45de611d79770d70c20939231.xhtml", "dir_bb833da45de611d79770d70c20939231" ],
     [ "subtraction", "dir_4f3678926883fd205cbee147b4936add.xhtml", "dir_4f3678926883fd205cbee147b4936add" ],
     [ "transposed", "dir_1a6ddf7e0d22624ef70b722ca0f63316.xhtml", "dir_1a6ddf7e0d22624ef70b722ca0f63316" ],

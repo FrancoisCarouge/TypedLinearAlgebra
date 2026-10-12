@@ -94,7 +94,7 @@ var NAVTREE =
       [ "Namespace Members", "namespacemembers.xhtml", [
         [ "All", "namespacemembers.xhtml", "namespacemembers_dup" ],
         [ "Functions", "namespacemembers_func.xhtml", null ],
-        [ "Variables", "namespacemembers_vars.xhtml", null ],
+        [ "Variables", "namespacemembers_vars.xhtml", "namespacemembers_vars" ],
         [ "Typedefs", "namespacemembers_type.xhtml", "namespacemembers_type" ]
       ] ]
     ] ],
@@ -124,16 +124,16 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
-"assign_22x2__mp__units__eigen_8cpp_source.xhtml",
-"conceptfcarouge_1_1au__quantity.xhtml",
-"element_22x2__au__eigen_8cpp_source.xhtml",
-"matrix__one__norm_22x1__mp__units__eigen__fail_8cpp.xhtml",
-"namespacefcarouge.xhtml#ad06bb441aa2dcec149c52de0c297a967",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x3__const_8cpp_03.xhtml#a6629bca36a58923c536d9d63879be2bc",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02mp__units__eigen_8cpp_03.xhtml#a895c64682f76b41f1dab7cfa45675f0d",
-"plot_8cpp_source.xhtml",
-"structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml#af56923b5cacc6eb1ec7529eb821b8f65",
-"test_2format_2nholthaus__std_8cpp.xhtml#aaf8770fb35d2831cf95982a15e84d172"
+"assign_21x2__nholthaus__eigen_8cpp_source.xhtml",
+"conceptfcarouge_1_1armadillo_1_1is__armadillo.xhtml",
+"element_22x1__mp__units__eigen_8cpp.xhtml#a53c22770cd4dd5d2bb3c82878dd3e4d4",
+"matrix__frob__norm_2uniform__mp__units__eigen_8cpp_source.xhtml",
+"namespacefcarouge.xhtml#a38293a160a5055f6c2f29b21c346773f",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__2x2__mp__units__eigen_8cpp_03.xhtml#a562f5936a4286918f665a1834ef7501b",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02column__chrono__std_8cpp_03.xhtml",
+"namespacemembers_type_k.xhtml",
+"structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1accessor.xhtml#a08e37283564010bd655ff467ea02060a",
+"test_2distinct__typed__matrix_2chrono__eigen_8cpp.xhtml#a85f190becbb0c5511d1df7037389bb51"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
