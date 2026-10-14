@@ -123,61 +123,43 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line">  <span class="keyword">using </span>seconds = std::chrono::duration&lt;double&gt;;</div>
-<div class="line">  <span class="keyword">using </span>minutes = std::chrono::duration&lt;double, std::ratio&lt;60&gt;&gt;;</div>
-<div class="line"> </div>
-<div class="line">  std::array storage_a{1., 2.};</div>
-<div class="line">  std::array storage_b{3., 4.};</div>
-<div class="line">  std::array&lt;double, 2&gt; storage_r{};</div>
-<div class="line"> </div>
-<div class="line">  std::mdspan span_a{storage_a.data(), std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
-<div class="line">  std::mdspan span_b{storage_b.data(), std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
-<div class="line">  std::mdspan span_r{storage_r.data(), std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
-<div class="line"> </div>
-<div class="line">  row_vector&lt;double, seconds, minutes&gt; a{span_a};</div>
-<div class="line">  row_vector&lt;double, seconds, minutes&gt; b{span_b};</div>
-<div class="line">  row_vector&lt;double, seconds, minutes&gt; r{span_r};</div>
-<div class="line"> </div>
-<div class="line">  add(a, b, r);</div>
-<div class="line"> </div>
-<div class="line">  assert(a.at&lt;0&gt;() == seconds{1.});</div>
-<div class="line">  assert(a.at&lt;1&gt;() == minutes{2.});</div>
-<div class="line">  assert(r.at&lt;0&gt;() == seconds{4.});</div>
-<div class="line">  assert(r.at&lt;1&gt;() == minutes{6.});</div>
-<div class="line">  assert((storage_r == std::array{4., 6.}));</div>
-<div class="line"> </div>
-<div class="line">  <span class="keywordflow">return</span> 0;</div>
-<div class="line">}()}</div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000357">Test</a></b></dt><dd>Verifies the <code>add</code> function over row vectors of distinct std::chrono duration periods viewing caller-owned <code>std::array</code> memory. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000068">Test</a></b></dt><dd>Verifies the <code>add</code> function over row vectors of distinct std::chrono duration periods viewing memory owned by Boost.Multi arrays. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000362">Test</a></b></dt><dd>Verifies the <code>add</code> function over row vectors of distinct std::chrono duration periods viewing caller-owned <code>std::array</code> memory. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="add__1x2__chrono__std_8cpp_source.xhtml#l00044">44</a> of file <a class="el" href="add__1x2__chrono__std_8cpp_source.xhtml">add_1x2_chrono_std.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   44</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   45</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#af24586dd705e9c93d9869bce929d5213">seconds</a> = std::chrono::duration&lt;double&gt;;</div>
-<div class="line"><span class="lineno">   46</span>  <span class="keyword">using </span>minutes = std::chrono::duration&lt;double, std::ratio&lt;60&gt;&gt;;</div>
-<div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>  std::array storage_a{1., 2.};</div>
-<div class="line"><span class="lineno">   49</span>  std::array storage_b{3., 4.};</div>
-<div class="line"><span class="lineno">   50</span>  std::array&lt;double, 2&gt; storage_r{};</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>  std::mdspan span_a{storage_a.data(), std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
-<div class="line"><span class="lineno">   53</span>  std::mdspan span_b{storage_b.data(), std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
-<div class="line"><span class="lineno">   54</span>  std::mdspan span_r{storage_r.data(), std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
-<div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>  row_vector&lt;double, seconds, minutes&gt; a{span_a};</div>
-<div class="line"><span class="lineno">   57</span>  row_vector&lt;double, seconds, minutes&gt; b{span_b};</div>
-<div class="line"><span class="lineno">   58</span>  row_vector&lt;double, seconds, minutes&gt; r{span_r};</div>
+<p class="definition">Definition at line <a class="el" href="boost__multi_2add__1x2__chrono__std_8cpp_source.xhtml#l00048">48</a> of file <a class="el" href="boost__multi_2add__1x2__chrono__std_8cpp_source.xhtml">add_1x2_chrono_std.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><span class="lineno">   49</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#af24586dd705e9c93d9869bce929d5213">seconds</a> = std::chrono::duration&lt;double&gt;;</div>
+<div class="line"><span class="lineno">   50</span>  <span class="keyword">using </span>minutes = std::chrono::duration&lt;double, std::ratio&lt;60&gt;&gt;;</div>
+<div class="line"><span class="lineno">   51</span>  <span class="keyword">using </span>storage = boost::multi::inplace_array&lt;double, 2&gt;;</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span>  storage storage_a({1, 2}, 0.);</div>
+<div class="line"><span class="lineno">   54</span>  storage storage_b({1, 2}, 0.);</div>
+<div class="line"><span class="lineno">   55</span>  storage storage_r({1, 2}, 0.);</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>  storage_a.elements() = {1., 2.};</div>
+<div class="line"><span class="lineno">   58</span>  storage_b.elements() = {3., 4.};</div>
 <div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>  add(a, b, r);</div>
-<div class="line"><span class="lineno">   61</span> </div>
-<div class="line"><span class="lineno">   62</span>  assert(a.at&lt;0&gt;() == seconds{1.});</div>
-<div class="line"><span class="lineno">   63</span>  assert(a.at&lt;1&gt;() == minutes{2.});</div>
-<div class="line"><span class="lineno">   64</span>  assert(r.at&lt;0&gt;() == seconds{4.});</div>
-<div class="line"><span class="lineno">   65</span>  assert(r.at&lt;1&gt;() == minutes{6.});</div>
-<div class="line"><span class="lineno">   66</span>  assert((storage_r == std::array{4., 6.}));</div>
-<div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   69</span>}()};</div>
+<div class="line"><span class="lineno">   60</span>  std::mdspan span_a{std::to_address(storage_a.data_elements()),</div>
+<div class="line"><span class="lineno">   61</span>                     std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   62</span>  std::mdspan span_b{std::to_address(storage_b.data_elements()),</div>
+<div class="line"><span class="lineno">   63</span>                     std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   64</span>  std::mdspan span_r{std::to_address(storage_r.data_elements()),</div>
+<div class="line"><span class="lineno">   65</span>                     std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>  row_vector&lt;double, seconds, minutes&gt; a{span_a};</div>
+<div class="line"><span class="lineno">   68</span>  row_vector&lt;double, seconds, minutes&gt; b{span_b};</div>
+<div class="line"><span class="lineno">   69</span>  row_vector&lt;double, seconds, minutes&gt; r{span_r};</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>  add(a, b, r);</div>
+<div class="line"><span class="lineno">   72</span> </div>
+<div class="line"><span class="lineno">   73</span>  assert(a.at&lt;0&gt;() == seconds{1.});</div>
+<div class="line"><span class="lineno">   74</span>  assert(a.at&lt;1&gt;() == minutes{2.});</div>
+<div class="line"><span class="lineno">   75</span>  assert(r.at&lt;0&gt;() == seconds{4.});</div>
+<div class="line"><span class="lineno">   76</span>  assert(r.at&lt;1&gt;() == minutes{6.});</div>
+<div class="line"><span class="lineno">   77</span>  assert(std::ranges::equal(storage_r.elements(), std::array{4., 6.}));</div>
+<div class="line"><span class="lineno">   78</span> </div>
+<div class="line"><span class="lineno">   79</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   80</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml_af24586dd705e9c93d9869bce929d5213"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#af24586dd705e9c93d9869bce929d5213">fcarouge::test::seconds</a></div><div class="ttdeci">std::chrono::duration&lt; representation &gt; seconds</div><div class="ttdef"><b>Definition</b> <a href="test_2format_2chrono__eigen_8cpp_source.xhtml#l00041">chrono_eigen.cpp:41</a></div></div>
 </div><!-- fragment -->
 </div>

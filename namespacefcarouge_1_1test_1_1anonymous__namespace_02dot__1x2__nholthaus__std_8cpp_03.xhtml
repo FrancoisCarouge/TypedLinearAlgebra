@@ -125,12 +125,18 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line">  <span class="keyword">using </span>length = units::length::meters&lt;representation&gt;;</div>
+<div class="line">  <span class="keyword">using </span>storage = boost::multi::inplace_array&lt;representation, 2&gt;;</div>
 <div class="line"> </div>
-<div class="line">  std::array storage_a{2., -3.};</div>
-<div class="line">  std::array storage_b{4., 5.};</div>
+<div class="line">  storage storage_a({1, 2}, 0.);</div>
+<div class="line">  storage storage_b({1, 2}, 0.);</div>
 <div class="line"> </div>
-<div class="line">  std::mdspan span_a{storage_a.data(), std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
-<div class="line">  std::mdspan span_b{storage_b.data(), std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
+<div class="line">  storage_a.elements() = {2., -3.};</div>
+<div class="line">  storage_b.elements() = {4., 5.};</div>
+<div class="line"> </div>
+<div class="line">  std::mdspan span_a{std::to_address(storage_a.data_elements()),</div>
+<div class="line">                     std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
+<div class="line">  std::mdspan span_b{std::to_address(storage_b.data_elements()),</div>
+<div class="line">                     std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
 <div class="line"> </div>
 <div class="line">  row_vector&lt;representation, length, length&gt; a{span_a};</div>
 <div class="line">  row_vector&lt;representation, length, length&gt; b{span_b};</div>
@@ -141,26 +147,33 @@ Variables</h2></td></tr>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
 <div class="ttc" id="anamespacefcarouge_xhtml_abd59a3fd717517a0bf8904bb70974aab"><div class="ttname"><a href="namespacefcarouge.xhtml#abd59a3fd717517a0bf8904bb70974aab">fcarouge::dot</a></div><div class="ttdeci">constexpr auto dot(const rank_typed_matrix&lt; 1 &gt; auto &amp;lhs, const rank_typed_matrix&lt; 1 &gt; auto &amp;rhs)</div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000358">Test</a></b></dt><dd>Verifies the dot product of two row vectors of quantities viewing caller-owned <code>std::array</code> memory. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000069">Test</a></b></dt><dd>Verifies the dot product of two row vectors of quantities viewing memory owned by Boost.Multi arrays. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000363">Test</a></b></dt><dd>Verifies the dot product of two row vectors of quantities viewing caller-owned <code>std::array</code> memory. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="dot__1x2__nholthaus__std_8cpp_source.xhtml#l00049">49</a> of file <a class="el" href="dot__1x2__nholthaus__std_8cpp_source.xhtml">dot_1x2_nholthaus_std.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   50</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">length</a> = units::length::meters&lt;representation&gt;;</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>  std::array storage_a{2., -3.};</div>
-<div class="line"><span class="lineno">   53</span>  std::array storage_b{4., 5.};</div>
+<p class="definition">Definition at line <a class="el" href="boost__multi_2dot__1x2__nholthaus__std_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="boost__multi_2dot__1x2__nholthaus__std_8cpp_source.xhtml">dot_1x2_nholthaus_std.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><span class="lineno">   52</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">length</a> = units::length::meters&lt;representation&gt;;</div>
+<div class="line"><span class="lineno">   53</span>  <span class="keyword">using </span>storage = boost::multi::inplace_array&lt;representation, 2&gt;;</div>
 <div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>  std::mdspan span_a{storage_a.data(), std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
-<div class="line"><span class="lineno">   56</span>  std::mdspan span_b{storage_b.data(), std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   55</span>  storage storage_a({1, 2}, 0.);</div>
+<div class="line"><span class="lineno">   56</span>  storage storage_b({1, 2}, 0.);</div>
 <div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>  row_vector&lt;representation, length, length&gt; a{span_a};</div>
-<div class="line"><span class="lineno">   59</span>  row_vector&lt;representation, length, length&gt; b{span_b};</div>
+<div class="line"><span class="lineno">   58</span>  storage_a.elements() = {2., -3.};</div>
+<div class="line"><span class="lineno">   59</span>  storage_b.elements() = {4., 5.};</div>
 <div class="line"><span class="lineno">   60</span> </div>
-<div class="line"><span class="lineno">   61</span>  assert(a.at&lt;1&gt;() == -3. * m);</div>
-<div class="line"><span class="lineno">   62</span>  assert(<a class="code hl_function" href="namespacefcarouge.xhtml#abd59a3fd717517a0bf8904bb70974aab">dot</a>(a, b) == -7. * m2);</div>
-<div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   65</span>}()};</div>
+<div class="line"><span class="lineno">   61</span>  std::mdspan span_a{std::to_address(storage_a.data_elements()),</div>
+<div class="line"><span class="lineno">   62</span>                     std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   63</span>  std::mdspan span_b{std::to_address(storage_b.data_elements()),</div>
+<div class="line"><span class="lineno">   64</span>                     std::extents&lt;std::size_t, 1, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>  row_vector&lt;representation, length, length&gt; a{span_a};</div>
+<div class="line"><span class="lineno">   67</span>  row_vector&lt;representation, length, length&gt; b{span_b};</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>  assert(a.at&lt;1&gt;() == -3. * m);</div>
+<div class="line"><span class="lineno">   70</span>  assert(<a class="code hl_function" href="namespacefcarouge.xhtml#abd59a3fd717517a0bf8904bb70974aab">dot</a>(a, b) == -7. * m2);</div>
+<div class="line"><span class="lineno">   71</span> </div>
+<div class="line"><span class="lineno">   72</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   73</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml_a7194bc200104fad679ef56587aaec86f"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">fcarouge::test::length</a></div><div class="ttdeci">au::QuantityD&lt; au::Meters &gt; length</div><div class="ttdef"><b>Definition</b> <a href="test_2format_2au__eigen_8cpp_source.xhtml#l00045">au_eigen.cpp:45</a></div></div>
 </div><!-- fragment -->
 </div>

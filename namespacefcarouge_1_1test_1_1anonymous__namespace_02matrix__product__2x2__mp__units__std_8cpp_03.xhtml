@@ -123,65 +123,46 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line">  <span class="keyword">using </span>length = quantity&lt;mp_units::isq::length[m]&gt;;</div>
-<div class="line">  <span class="keyword">using </span>indexes = std::tuple&lt;length, length&gt;;</div>
-<div class="line"> </div>
-<div class="line">  std::array storage_a{1., 2., 3., 4.};</div>
-<div class="line">  std::array storage_b{5., 6., 7., 8.};</div>
-<div class="line">  std::array&lt;representation, 4&gt; storage_r{};</div>
-<div class="line"> </div>
-<div class="line">  std::mdspan span_a{storage_a.data(), std::extents&lt;std::size_t, 2, 2&gt;{}};</div>
-<div class="line">  std::mdspan span_b{storage_b.data(), std::extents&lt;std::size_t, 2, 2&gt;{}};</div>
-<div class="line">  std::mdspan span_r{storage_r.data(), std::extents&lt;std::size_t, 2, 2&gt;{}};</div>
-<div class="line"> </div>
-<div class="line">  matrix&lt;representation, indexes, indexes&gt; a{span_a};</div>
-<div class="line">  matrix&lt;representation, indexes, indexes&gt; b{span_b};</div>
-<div class="line">  matrix&lt;representation, indexes, indexes&gt; r{span_r};</div>
-<div class="line"> </div>
-<div class="line">  matrix_product(a, b, r);</div>
-<div class="line"> </div>
-<div class="line">  assert((a.at&lt;0, 1&gt;() == 2. * m2));</div>
-<div class="line">  assert((a.at&lt;1, 0&gt;() == 3. * m2));</div>
-<div class="line">  assert((r.at&lt;0, 0&gt;() == 19. * m2));</div>
-<div class="line">  assert((r.at&lt;0, 1&gt;() == 22. * m2));</div>
-<div class="line">  assert((r.at&lt;1, 0&gt;() == 43. * m2));</div>
-<div class="line">  assert((r.at&lt;1, 1&gt;() == 50. * m2));</div>
-<div class="line">  assert((storage_r == std::array{19., 22., 43., 50.}));</div>
-<div class="line"> </div>
-<div class="line">  <span class="keywordflow">return</span> 0;</div>
-<div class="line">}()}</div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000359">Test</a></b></dt><dd>Verifies the matrix product algorithm for two-by-two matrices viewing caller-owned <code>std::array</code> memory, read and written in row-major order. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000070">Test</a></b></dt><dd>Verifies the matrix product algorithm for two-by-two matrices viewing memory owned by Boost.Multi arrays, read and written in row-major order. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000364">Test</a></b></dt><dd>Verifies the matrix product algorithm for two-by-two matrices viewing caller-owned <code>std::array</code> memory, read and written in row-major order. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix__product__2x2__mp__units__std_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="matrix__product__2x2__mp__units__std_8cpp_source.xhtml">matrix_product_2x2_mp_units_std.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   51</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   52</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">length</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">quantity&lt;mp_units::isq::length[m]&gt;</a>;</div>
-<div class="line"><span class="lineno">   53</span>  <span class="keyword">using </span>indexes = std::tuple&lt;length, length&gt;;</div>
-<div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>  std::array storage_a{1., 2., 3., 4.};</div>
-<div class="line"><span class="lineno">   56</span>  std::array storage_b{5., 6., 7., 8.};</div>
-<div class="line"><span class="lineno">   57</span>  std::array&lt;representation, 4&gt; storage_r{};</div>
-<div class="line"><span class="lineno">   58</span> </div>
-<div class="line"><span class="lineno">   59</span>  std::mdspan span_a{storage_a.data(), std::extents&lt;std::size_t, 2, 2&gt;{}};</div>
-<div class="line"><span class="lineno">   60</span>  std::mdspan span_b{storage_b.data(), std::extents&lt;std::size_t, 2, 2&gt;{}};</div>
-<div class="line"><span class="lineno">   61</span>  std::mdspan span_r{storage_r.data(), std::extents&lt;std::size_t, 2, 2&gt;{}};</div>
-<div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>  matrix&lt;representation, indexes, indexes&gt; a{span_a};</div>
-<div class="line"><span class="lineno">   64</span>  matrix&lt;representation, indexes, indexes&gt; b{span_b};</div>
-<div class="line"><span class="lineno">   65</span>  matrix&lt;representation, indexes, indexes&gt; r{span_r};</div>
+<p class="definition">Definition at line <a class="el" href="boost__multi_2matrix__product__2x2__mp__units__std_8cpp_source.xhtml#l00055">55</a> of file <a class="el" href="boost__multi_2matrix__product__2x2__mp__units__std_8cpp_source.xhtml">matrix_product_2x2_mp_units_std.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   55</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><span class="lineno">   56</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">length</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">quantity&lt;mp_units::isq::length[m]&gt;</a>;</div>
+<div class="line"><span class="lineno">   57</span>  <span class="keyword">using </span>indexes = std::tuple&lt;length, length&gt;;</div>
+<div class="line"><span class="lineno">   58</span>  <span class="keyword">using </span>storage = boost::multi::inplace_array&lt;representation, 2&gt;;</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>  storage storage_a({2, 2}, 0.);</div>
+<div class="line"><span class="lineno">   61</span>  storage storage_b({2, 2}, 0.);</div>
+<div class="line"><span class="lineno">   62</span>  storage storage_r({2, 2}, 0.);</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>  storage_a.elements() = {1., 2., 3., 4.};</div>
+<div class="line"><span class="lineno">   65</span>  storage_b.elements() = {5., 6., 7., 8.};</div>
 <div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>  matrix_product(a, b, r);</div>
-<div class="line"><span class="lineno">   68</span> </div>
-<div class="line"><span class="lineno">   69</span>  assert((a.at&lt;0, 1&gt;() == 2. * m2));</div>
-<div class="line"><span class="lineno">   70</span>  assert((a.at&lt;1, 0&gt;() == 3. * m2));</div>
-<div class="line"><span class="lineno">   71</span>  assert((r.at&lt;0, 0&gt;() == 19. * m2));</div>
-<div class="line"><span class="lineno">   72</span>  assert((r.at&lt;0, 1&gt;() == 22. * m2));</div>
-<div class="line"><span class="lineno">   73</span>  assert((r.at&lt;1, 0&gt;() == 43. * m2));</div>
-<div class="line"><span class="lineno">   74</span>  assert((r.at&lt;1, 1&gt;() == 50. * m2));</div>
-<div class="line"><span class="lineno">   75</span>  assert((storage_r == std::array{19., 22., 43., 50.}));</div>
-<div class="line"><span class="lineno">   76</span> </div>
-<div class="line"><span class="lineno">   77</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   78</span>}()};</div>
+<div class="line"><span class="lineno">   67</span>  std::mdspan span_a{std::to_address(storage_a.data_elements()),</div>
+<div class="line"><span class="lineno">   68</span>                     std::extents&lt;std::size_t, 2, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   69</span>  std::mdspan span_b{std::to_address(storage_b.data_elements()),</div>
+<div class="line"><span class="lineno">   70</span>                     std::extents&lt;std::size_t, 2, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   71</span>  std::mdspan span_r{std::to_address(storage_r.data_elements()),</div>
+<div class="line"><span class="lineno">   72</span>                     std::extents&lt;std::size_t, 2, 2&gt;{}};</div>
+<div class="line"><span class="lineno">   73</span> </div>
+<div class="line"><span class="lineno">   74</span>  matrix&lt;representation, indexes, indexes&gt; a{span_a};</div>
+<div class="line"><span class="lineno">   75</span>  matrix&lt;representation, indexes, indexes&gt; b{span_b};</div>
+<div class="line"><span class="lineno">   76</span>  matrix&lt;representation, indexes, indexes&gt; r{span_r};</div>
+<div class="line"><span class="lineno">   77</span> </div>
+<div class="line"><span class="lineno">   78</span>  matrix_product(a, b, r);</div>
+<div class="line"><span class="lineno">   79</span> </div>
+<div class="line"><span class="lineno">   80</span>  assert((a.at&lt;0, 1&gt;() == 2. * m2));</div>
+<div class="line"><span class="lineno">   81</span>  assert((a.at&lt;1, 0&gt;() == 3. * m2));</div>
+<div class="line"><span class="lineno">   82</span>  assert((r.at&lt;0, 0&gt;() == 19. * m2));</div>
+<div class="line"><span class="lineno">   83</span>  assert((r.at&lt;0, 1&gt;() == 22. * m2));</div>
+<div class="line"><span class="lineno">   84</span>  assert((r.at&lt;1, 0&gt;() == 43. * m2));</div>
+<div class="line"><span class="lineno">   85</span>  assert((r.at&lt;1, 1&gt;() == 50. * m2));</div>
+<div class="line"><span class="lineno">   86</span>  assert(</div>
+<div class="line"><span class="lineno">   87</span>      std::ranges::equal(storage_r.elements(), std::array{19., 22., 43., 50.}));</div>
+<div class="line"><span class="lineno">   88</span> </div>
+<div class="line"><span class="lineno">   89</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   90</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml_a7194bc200104fad679ef56587aaec86f"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">fcarouge::test::length</a></div><div class="ttdeci">au::QuantityD&lt; au::Meters &gt; length</div><div class="ttdef"><b>Definition</b> <a href="test_2format_2au__eigen_8cpp_source.xhtml#l00045">au_eigen.cpp:45</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml_a9770b8c17efb82bfa80edbfb9a1de8a7"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">fcarouge::test::quantity</a></div><div class="ttdeci">mp_units::quantity&lt; QuantityReference, representation &gt; quantity</div><div class="ttdef"><b>Definition</b> <a href="add_21x1__mp__units__std_8cpp_source.xhtml#l00043">1x1_mp_units_std.cpp:43</a></div></div>
 </div><!-- fragment -->

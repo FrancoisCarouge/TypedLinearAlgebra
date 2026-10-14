@@ -7,6 +7,7 @@ var dir_5815af820a9cc9481f1d0990a0d60286 =
     [ "au_armadillo", "dir_306b7748d0bdd9aaaa796e9def489455.xhtml", "dir_306b7748d0bdd9aaaa796e9def489455" ],
     [ "au_eigen", "dir_86703845652ab42de5588adc91d141d5.xhtml", "dir_86703845652ab42de5588adc91d141d5" ],
     [ "au_std", "dir_e107d306c15e1a5005d56c500e4f5374.xhtml", "dir_e107d306c15e1a5005d56c500e4f5374" ],
+    [ "boost_multi", "dir_25eeb16eef02473790d0f282fb5b6f16.xhtml", null ],
     [ "chrono_armadillo", "dir_601454b08d707e8a75e734249537f813.xhtml", "dir_601454b08d707e8a75e734249537f813" ],
     [ "chrono_eigen", "dir_7a3cf7ae7f125d2f20ef1f0e28de6407.xhtml", "dir_7a3cf7ae7f125d2f20ef1f0e28de6407" ],
     [ "chrono_std", "dir_4b298fe5fe1b5554f10820f4702d0deb.xhtml", "dir_4b298fe5fe1b5554f10820f4702d0deb" ],

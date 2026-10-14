@@ -8,7 +8,7 @@ var searchData=
   ['scalar_5fchrono_5fstd_2ecpp_5',['scalar_chrono_std.cpp',['../scalar__chrono__std_8cpp.xhtml',1,'']]],
   ['scalar_5fmp_5funits_5feigen_2ecpp_6',['scalar_mp_units_eigen.cpp',['../scalar__mp__units__eigen_8cpp.xhtml',1,'']]],
   ['scalar_5fnholthaus_5feigen_2ecpp_7',['scalar_nholthaus_eigen.cpp',['../scalar__nholthaus__eigen_8cpp.xhtml',1,'']]],
-  ['scale_5f1x1_5fmp_5funits_5fstd_2ecpp_8',['scale_1x1_mp_units_std.cpp',['../scale__1x1__mp__units__std_8cpp.xhtml',1,'']]],
+  ['scale_5f1x1_5fmp_5funits_5fstd_2ecpp_8',['scale_1x1_mp_units_std.cpp',['../boost__multi_2scale__1x1__mp__units__std_8cpp.xhtml',1,'(Global Namespace)'],['../std__array_2scale__1x1__mp__units__std_8cpp.xhtml',1,'(Global Namespace)']]],
   ['security_2emd_9',['SECURITY.md',['../_s_e_c_u_r_i_t_y_8md.xhtml',1,'']]],
   ['shape_5fmp_5funits_5fstd_5ffail_2ecpp_10',['shape_mp_units_std_fail.cpp',['../shape__mp__units__std__fail_8cpp.xhtml',1,'']]],
   ['size_5fmismatch_5ffail_2ecpp_11',['size_mismatch_fail.cpp',['../size__mismatch__fail_8cpp.xhtml',1,'']]],

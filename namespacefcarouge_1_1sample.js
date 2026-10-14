@@ -104,6 +104,23 @@ var namespacefcarouge_1_1sample =
       [ "velocity", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__array_8cpp_03.xhtml#a864dcfa06b707487ab5520036ebef946", null ],
       [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__array_8cpp_03.xhtml#a517f8977b5231ad8fcdef21aecfe16cb", null ]
     ] ],
+    [ "anonymous_namespace{mp_units_std_boost_multi.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml", [
+      [ "acceleration", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#ac82922459e999bdf343b9d0f69b2f101", null ],
+      [ "column_extents", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#ae4e39aebff92097cddfd470a79445da0", null ],
+      [ "column_vector", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a0036b62c1b0b9634976f094399c1bfca", null ],
+      [ "estimate_uncertainty", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#aba36da3d81d7ff9be71bd902cc3c2e08", null ],
+      [ "matrix", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a466dba079a550375d1a0ceb23e7a5014", null ],
+      [ "matrix_extents", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#ad838344a0cf5f3f2b164352333fd35e4", null ],
+      [ "position", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a7664efcfeeacde2a2674222a1e3ffbc8", null ],
+      [ "quantity", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#ada6129b33ca4a0e89c09f9929891d3f2", null ],
+      [ "row_extents", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#ab92d901dc190889034bbb689fd29c0c0", null ],
+      [ "row_vector", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#af7237967f86373b680af7454c2c129a2", null ],
+      [ "state", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a955a0e69bbb9ee1558136e9791a09039", null ],
+      [ "state_transpose", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#aebb51a2bf050f60037b08ab2ce460da3", null ],
+      [ "storage", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25", null ],
+      [ "velocity", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#ad933da5af1bf8ebc56a07d958a23b2bc", null ],
+      [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a89cb464037a735a10969fda4732cd73c", null ]
+    ] ],
     [ "anonymous_namespace{nholthaus_armadillo.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02nholthaus__armadillo_8cpp_03.xhtml", [
       [ "acceleration", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02nholthaus__armadillo_8cpp_03.xhtml#a022f0146b84f74bc0077dbab44c9b9b0", null ],
       [ "column_vector", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02nholthaus__armadillo_8cpp_03.xhtml#a28b9e7ad739f5eba585e0ce240985ca2", null ],

@@ -5,6 +5,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "amalgamate", "dir_17fe3c0cc77a147809ce78812d28f980.xhtml", "dir_17fe3c0cc77a147809ce78812d28f980" ],
     [ "assign", "dir_0e0710f50cc64881006e62ab338f5134.xhtml", "dir_0e0710f50cc64881006e62ab338f5134" ],
     [ "at", "dir_5dcc120ce88763492754ea9f01fb177a.xhtml", "dir_5dcc120ce88763492754ea9f01fb177a" ],
+    [ "boost_multi", "dir_34e0cdf9191cabe2220a6f6a680be141.xhtml", "dir_34e0cdf9191cabe2220a6f6a680be141" ],
     [ "column_typed_matrix", "dir_8fd7668f9c62e73ca70932a35c2c994e.xhtml", "dir_8fd7668f9c62e73ca70932a35c2c994e" ],
     [ "common_with", "dir_df5deb2192b04082d8407ec09bc6e3ec.xhtml", "dir_df5deb2192b04082d8407ec09bc6e3ec" ],
     [ "constructor", "dir_38eb1dc5b1c36523e6cf628b0c17f528.xhtml", "dir_38eb1dc5b1c36523e6cf628b0c17f528" ],
