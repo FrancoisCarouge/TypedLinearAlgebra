@@ -104,6 +104,9 @@ using column_extents = std::extents<std::size_t, Rows, 1>;
   // One norm of the same vector, the sum of its absolute elements.
   assert(matrix_one_norm(x2) == seconds{11.});
 
+  // Infinity norm of the same vector, its largest absolute element.
+  assert(matrix_inf_norm(x2) == seconds{6.});
+
   return 0;
 }()};
 } // namespace

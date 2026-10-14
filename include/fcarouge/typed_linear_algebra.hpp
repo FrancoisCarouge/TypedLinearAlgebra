@@ -568,6 +568,7 @@ template <char... Digits> constexpr auto operator""_i() noexcept {
 #include "typed_linear_algebra/algorithm/equal_to.tpp"
 #include "typed_linear_algebra/algorithm/magnitude.tpp"
 #include "typed_linear_algebra/algorithm/matrix_frob_norm.tpp"
+#include "typed_linear_algebra/algorithm/matrix_inf_norm.tpp"
 #include "typed_linear_algebra/algorithm/matrix_one_norm.tpp"
 #include "typed_linear_algebra/algorithm/matrix_product.tpp"
 #include "typed_linear_algebra/algorithm/matrix_rank_1_update.tpp"
@@ -596,6 +597,9 @@ namespace fcarouge {
 
 [[nodiscard]] constexpr auto
 matrix_frob_norm(const uniform_typed_matrix auto &value);
+
+[[nodiscard]] constexpr auto
+matrix_inf_norm(const uniform_typed_matrix auto &value);
 
 [[nodiscard]] constexpr auto
 matrix_one_norm(const uniform_typed_matrix auto &value);

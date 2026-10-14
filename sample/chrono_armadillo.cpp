@@ -99,6 +99,9 @@ using column_vector = column_vector<representation, Types...>;
   // One norm, the sum of the absolute elements for a column vector.
   assert(matrix_one_norm(v) == seconds{11.});
 
+  // Infinity norm, the largest absolute element for a column vector.
+  assert(matrix_inf_norm(v) == seconds{6.});
+
   return 0;
 }()};
 } // namespace
