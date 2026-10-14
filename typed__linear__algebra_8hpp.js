@@ -20,6 +20,7 @@ var typed__linear__algebra_8hpp =
     [ "magnitude", "typed__linear__algebra_8hpp.xhtml#a3b31459df9951d183e7e7f065a28bc32", null ],
     [ "make_typed_matrix", "typed__linear__algebra_8hpp.xhtml#a4073b31d56e98e110bf4a993ed190c80", null ],
     [ "matrix_frob_norm", "typed__linear__algebra_8hpp.xhtml#aa315b3e178e104f9914d9c34f4caa464", null ],
+    [ "matrix_inf_norm", "typed__linear__algebra_8hpp.xhtml#a913f5d0fe3d1db7677e3d1462b57829c", null ],
     [ "matrix_one_norm", "typed__linear__algebra_8hpp.xhtml#a7d5d3b12f0d7e033c68631bccf60765f", null ],
     [ "operator\"\"_i", "typed__linear__algebra_8hpp.xhtml#a96bdab646ac7be1505482cf553b9650b", null ],
     [ "operator*", "typed__linear__algebra_8hpp.xhtml#a100b431697408a4a9d851e4ffab901e1", null ],

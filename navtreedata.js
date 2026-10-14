@@ -124,17 +124,17 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
-"assign_22x2__mp__units__eigen_8cpp_source.xhtml",
-"column__mp__units__std_8cpp.xhtml",
-"element_21x2__chrono__eigen_8cpp.xhtml#a244e284ab27387d9c6534963a7f0619e",
-"matrix__frob__norm_23x1__chrono__eigen_8cpp_source.xhtml",
-"namespace_eigen.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__chrono__eigen__fail_8cpp_03.xhtml#acf2ba6ec57ba8dd32339d3fa272cbfb4",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02au__std_8cpp_03.xhtml#a4b4f99db2096c7e4cc531f5742b83cce",
-"namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a8bf375922e0a95892ba40668aa0d5599",
-"scalar__chrono__std_8cpp_source.xhtml",
-"subtraction_21x1__nholthaus__eigen__fail_8cpp_source.xhtml",
-"utility_8hpp.xhtml"
+"assign_25x5_8cpp_source.xhtml",
+"column__typed__matrix_8cpp_source.xhtml",
+"element_21x2__mp__units__eigen_8cpp.xhtml#a37464e3cc696e135d3ff265d1883aa7b",
+"matrix__frob__norm_2time__point__chrono__eigen__fail_8cpp_source.xhtml",
+"mp__units__std__array_8cpp.xhtml#adccd5c3bcffe2afa682f9f47acb76cd5",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02nholthaus__armadillo_8cpp_03.xhtml#a28b9e7ad739f5eba585e0ce240985ca2",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_023x1__nholthaus__std_8cpp_03.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__linear__algebra__mp__units__eigen_8cpp_03.xhtml",
+"sample_2mp__units__eigen_8cpp.xhtml#ada484be0783b5d9d405634f67bb9d0f9",
+"subscript__1x3_8cpp.xhtml#af50a77888c4e82323c0441aa14c89c53",
+"typed__linear__algebra__mp__units__eigen_8cpp.xhtml#a5eea1f69f4ba1f9d9089a627ae0c95b4"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

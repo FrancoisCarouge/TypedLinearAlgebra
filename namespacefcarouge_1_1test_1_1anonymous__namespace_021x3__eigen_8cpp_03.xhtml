@@ -126,18 +126,19 @@ Variables</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line">  <span class="keyword">const</span> matrix&lt;double, 1, 3&gt; value{3., -4., 2.};</div>
 <div class="line"> </div>
-<div class="line">  assert(<a class="code hl_function" href="namespacefcarouge.xhtml#a7d5d3b12f0d7e033c68631bccf60765f">matrix_one_norm</a>(value) == 4.);</div>
+<div class="line">  assert(<a class="code hl_function" href="namespacefcarouge.xhtml#a913f5d0fe3d1db7677e3d1462b57829c">matrix_inf_norm</a>(value) == 9.);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a7d5d3b12f0d7e033c68631bccf60765f"><div class="ttname"><a href="namespacefcarouge.xhtml#a7d5d3b12f0d7e033c68631bccf60765f">fcarouge::matrix_one_norm</a></div><div class="ttdeci">constexpr auto matrix_one_norm(const uniform_typed_matrix auto &amp;value)</div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000226">Test</a></b></dt><dd>Verifies the one norm of a row vector is its largest absolute element, not the sum of its absolute elements. </dd></dl>
+<div class="ttc" id="anamespacefcarouge_xhtml_a913f5d0fe3d1db7677e3d1462b57829c"><div class="ttname"><a href="namespacefcarouge.xhtml#a913f5d0fe3d1db7677e3d1462b57829c">fcarouge::matrix_inf_norm</a></div><div class="ttdeci">constexpr auto matrix_inf_norm(const uniform_typed_matrix auto &amp;value)</div></div>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000226">Test</a></b></dt><dd>Verifies the infinity norm of a row vector is the sum of its absolute elements, not its largest absolute element. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000244">Test</a></b></dt><dd>Verifies the one norm of a row vector is its largest absolute element, not the sum of its absolute elements. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="1x3__eigen_8cpp_source.xhtml#l00040">40</a> of file <a class="el" href="1x3__eigen_8cpp_source.xhtml">1x3_eigen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="matrix__inf__norm_21x3__eigen_8cpp_source.xhtml#l00040">40</a> of file <a class="el" href="matrix__inf__norm_21x3__eigen_8cpp_source.xhtml">1x3_eigen.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   40</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line"><span class="lineno">   41</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;double, 1, 3&gt;</a> value{3., -4., 2.};</div>
 <div class="line"><span class="lineno">   42</span> </div>
-<div class="line"><span class="lineno">   43</span>  assert(<a class="code hl_function" href="namespacefcarouge.xhtml#a7d5d3b12f0d7e033c68631bccf60765f">matrix_one_norm</a>(value) == 4.);</div>
+<div class="line"><span class="lineno">   43</span>  assert(<a class="code hl_function" href="namespacefcarouge.xhtml#a913f5d0fe3d1db7677e3d1462b57829c">matrix_inf_norm</a>(value) == 9.);</div>
 <div class="line"><span class="lineno">   44</span> </div>
 <div class="line"><span class="lineno">   45</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">   46</span>}()};</div>

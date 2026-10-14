@@ -12,7 +12,7 @@ var searchData=
   ['time_9',['time',['../namespacefcarouge_1_1test_1_1anonymous__namespace_022x3__mp__units__eigen_8cpp_03.xhtml#a3a244a5559d999ec8bc94ecb7f62ee3c',1,'fcarouge::test::anonymous_namespace{2x3_mp_units_eigen.cpp}']]],
   ['time_20call_20traces_10',['Run-Time Call Traces',['../call_trace.xhtml',1,'']]],
   ['time_20traces_11',['Compile-Time Traces',['../time_trace.xhtml',1,'']]],
-  ['time_5fpoint_5fchrono_5feigen_5ffail_2ecpp_12',['time_point_chrono_eigen_fail.cpp',['../matrix__frob__norm_2time__point__chrono__eigen__fail_8cpp.xhtml',1,'(Global Namespace)'],['../matrix__one__norm_2time__point__chrono__eigen__fail_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['time_5fpoint_5fchrono_5feigen_5ffail_2ecpp_12',['time_point_chrono_eigen_fail.cpp',['../matrix__frob__norm_2time__point__chrono__eigen__fail_8cpp.xhtml',1,'(Global Namespace)'],['../matrix__inf__norm_2time__point__chrono__eigen__fail_8cpp.xhtml',1,'(Global Namespace)'],['../matrix__one__norm_2time__point__chrono__eigen__fail_8cpp.xhtml',1,'(Global Namespace)']]],
   ['timestamp_13',['timestamp',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02chrono__eigen_8cpp_03.xhtml#aaca4b585085f504c4c83b4d6cc6d2646',1,'fcarouge::test::anonymous_namespace{chrono_eigen.cpp}']]],
   ['to_20typedlinearalgebra_14',['Contributing to TypedLinearAlgebra',['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml',1,'']]],
   ['todo_20list_15',['Todo List',['../todo.xhtml',1,'']]],

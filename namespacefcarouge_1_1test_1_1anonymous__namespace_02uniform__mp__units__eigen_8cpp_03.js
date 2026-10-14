@@ -1,6 +1,7 @@
 var namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03 =
 [
     [ "frobenius_normable", "conceptfcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03_1_1frobenius__normable.xhtml", null ],
+    [ "inf_normable", "conceptfcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03_1_1inf__normable.xhtml", null ],
     [ "one_normable", "conceptfcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03_1_1one__normable.xhtml", null ],
     [ "identity", "namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03.xhtml#a21969854b4381102f37fc045903db5ec", null ],
     [ "position", "namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03.xhtml#ad0683250fea316f9433c07de8040fc5a", null ],
