@@ -1,0 +1,52 @@
+#[[ Typed Linear Algebra
+Version 0.4.0
+https://github.com/FrancoisCarouge/TypedLinearAlgebra
+
+SPDX-License-Identifier: Unlicense
+
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to <https://unlicense.org> ]]
+
+fail("2x1_au_std_fail" BACKENDS "au_std")
+fail("2x1_mp_units_eigen_fail" BACKENDS "mp_units_eigen" "mp_units_armadillo")
+fail("time_point_chrono_eigen_fail" BACKENDS "chrono_eigen" "chrono_armadillo")
+
+build("uniform_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
+
+pass("1x1_eigen" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("1x1_mp_units_std" BACKENDS "mp_units_std")
+pass("1x3_eigen" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("1x3_mp_units_std" BACKENDS "mp_units_std")
+pass("2x2_au_eigen" BACKENDS "au_eigen" "au_armadillo")
+pass("2x2_au_std" BACKENDS "au_std")
+pass("2x2_chrono_std" BACKENDS "chrono_std")
+pass("2x2_eigen" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("2x2_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
+pass("2x2_mp_units_std" BACKENDS "mp_units_std")
+pass("2x2_nholthaus_eigen" BACKENDS "nholthaus_eigen" "nholthaus_armadillo")
+pass("2x2_nholthaus_std" BACKENDS "nholthaus_std")
+pass("2x3_eigen" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
+pass("3x1_chrono_eigen" BACKENDS "chrono_eigen" "chrono_armadillo")
+pass("3x1_eigen" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")

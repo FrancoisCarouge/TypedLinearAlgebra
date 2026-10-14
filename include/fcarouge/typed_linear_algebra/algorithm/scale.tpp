@@ -44,9 +44,9 @@ namespace fcarouge {
 //! @brief Multiply the elements of an object in place by a scalar.
 //!
 //! @see std::linalg::scale
-constexpr void scale(const auto &α, same_as_typed_matrix auto &x) {
+constexpr void scale(const auto &α, same_as_typed_matrix auto &result) {
   using std::linalg::scale;
-  scale(α, x.data());
+  scale(α, result.data());
 }
 } // namespace fcarouge
 

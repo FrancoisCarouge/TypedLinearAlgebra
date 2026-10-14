@@ -34,6 +34,7 @@ For more information, please refer to <https://unlicense.org> */
 //! replacement for the multi-file headers.
 
 #include "typed_linear_algebra_mp_units_eigen.h"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <format>
@@ -57,6 +58,7 @@ template <typename... Types>
 using column_vector = column_vector<representation, Types...>;
 
 [[maybe_unused]] const auto test{[] -> int {
+  const not_realtime opt_out;
   using state = column_vector<position, velocity, acceleration>;
 
   state x0{3. * m, 2. * m / s, 1. * m / s2};

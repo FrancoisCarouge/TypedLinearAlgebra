@@ -37,7 +37,7 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the Frobenius norm of a row vector is its magnitude.
 [[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 1, 2> value{3., 4.};
+  const matrix<double, 1, 2> value{3., -4.};
 
   assert(matrix_frob_norm(value) == 5.);
   assert(matrix_frob_norm(value) == magnitude(value));

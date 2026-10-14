@@ -47,3 +47,10 @@ target_sources(
 target_link_libraries(
   typed_linear_algebra_eigen
   INTERFACE Eigen3::Eigen tlinalg)
+
+add_library(typed_linear_algebra_eigen_realtime OBJECT "realtime.cpp")
+target_link_libraries(typed_linear_algebra_eigen_realtime PRIVATE Eigen3::Eigen)
+
+target_sources(
+  typed_linear_algebra_eigen
+  INTERFACE "$<TARGET_OBJECTS:typed_linear_algebra_eigen_realtime>")

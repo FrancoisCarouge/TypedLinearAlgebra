@@ -54,11 +54,11 @@ namespace {
   matrix<representation, row_indexes, column_indexes> value{span};
 
   value.at<0, 0>(seconds{1.});
-  value.at<0, 1>(seconds{2.});
-  value.at<1, 0>(seconds{2.});
+  value.at<0, 1>(seconds{-4.});
+  value.at<1, 0>(seconds{4.});
   value.at<1, 1>(seconds{4.});
 
-  assert(matrix_frob_norm(value) == seconds{5.});
+  assert(matrix_frob_norm(value) == seconds{7.});
 
   return 0;
 }()};

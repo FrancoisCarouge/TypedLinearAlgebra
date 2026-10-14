@@ -45,7 +45,7 @@ namespace {
   using seconds = std::chrono::duration<representation>;
 
   const column_vector<representation, seconds, seconds, seconds> value{
-      seconds{2.}, seconds{3.}, seconds{6.}};
+      seconds{2.}, seconds{-3.}, seconds{6.}};
 
   static_assert(std::same_as<decltype(matrix_frob_norm(value)), seconds>);
   assert(matrix_frob_norm(value) == seconds{7.});

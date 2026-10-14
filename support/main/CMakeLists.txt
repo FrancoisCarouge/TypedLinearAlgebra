@@ -29,4 +29,16 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+add_library(typed_linear_algebra_realtime OBJECT "realtime.cpp")
+target_sources(
+  typed_linear_algebra_realtime
+  PUBLIC
+  FILE_SET "realtime_headers" TYPE "HEADERS" FILES "fcarouge/realtime.hpp")
+
 add_library(typed_linear_algebra_main "main.cpp")
+target_link_libraries(
+  typed_linear_algebra_main
+  INTERFACE typed_linear_algebra_realtime)
+target_sources(
+  typed_linear_algebra_main
+  INTERFACE "$<TARGET_OBJECTS:typed_linear_algebra_realtime>")

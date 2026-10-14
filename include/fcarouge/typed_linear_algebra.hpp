@@ -227,20 +227,27 @@ public:
 
   //! @brief Copy construct generalization of a compatible typed matrix.
   //!
-  //! @details Implicit conversions expected per default equivalency.
+  //! @details Implicit conversions expected per default equivalency. The
+  //! matrices must be of the same shape, and each element type of the other
+  //! matrix must implicitly convert to the corresponding element type of this
+  //! matrix, whatever their row and column indexes.
   constexpr explicit(false)
       typed_matrix(const same_as_typed_matrix auto &other);
 
   //! @brief Copy assign generalization of a compatible typed matrix.
+  //!
+  //! @details Same element type requirements as the converting constructor.
   constexpr auto operator=(const same_as_typed_matrix auto &other)
       -> typed_matrix &;
 
   //! @brief Move construct generalization of a compatible typed matrix.
   //!
-  //! @details Implicit conversions expected per default equivalency.
+  //! @details Same element type requirements as the converting constructor.
   constexpr explicit(false) typed_matrix(same_as_typed_matrix auto &&other);
 
   //! @brief Move assign generalization of a compatible typed matrix.
+  //!
+  //! @details Same element type requirements as the converting constructor.
   constexpr auto operator=(same_as_typed_matrix auto &&other) -> typed_matrix &;
 
   //! @brief Convert construct a singleton typed matrix from a single value.
@@ -561,7 +568,10 @@ template <char... Digits> constexpr auto operator""_i() noexcept {
 #include "typed_linear_algebra/algorithm/equal_to.tpp"
 #include "typed_linear_algebra/algorithm/magnitude.tpp"
 #include "typed_linear_algebra/algorithm/matrix_frob_norm.tpp"
+#include "typed_linear_algebra/algorithm/matrix_inf_norm.tpp"
+#include "typed_linear_algebra/algorithm/matrix_one_norm.tpp"
 #include "typed_linear_algebra/algorithm/matrix_product.tpp"
+#include "typed_linear_algebra/algorithm/matrix_rank_1_update.tpp"
 #include "typed_linear_algebra/algorithm/matrix_vector_product.tpp"
 #include "typed_linear_algebra/algorithm/minus.tpp"
 #include "typed_linear_algebra/algorithm/product.tpp"
@@ -587,6 +597,12 @@ namespace fcarouge {
 
 [[nodiscard]] constexpr auto
 matrix_frob_norm(const uniform_typed_matrix auto &value);
+
+[[nodiscard]] constexpr auto
+matrix_inf_norm(const uniform_typed_matrix auto &value);
+
+[[nodiscard]] constexpr auto
+matrix_one_norm(const uniform_typed_matrix auto &value);
 
 [[nodiscard]] constexpr auto operator==(const rank_typed_matrix<2> auto &lhs,
                                         const rank_typed_matrix<2> auto &rhs)
@@ -668,11 +684,19 @@ constexpr void matrix_product(const same_as_typed_matrix auto &lhs,
                               const same_as_typed_matrix auto &rhs,
                               same_as_typed_matrix auto &result);
 
+constexpr void matrix_rank_1_update(const rank_typed_matrix<1> auto &lhs,
+                                    const rank_typed_matrix<1> auto &rhs,
+                                    rank_typed_matrix<2> auto &result);
+constexpr void matrix_rank_1_update(const rank_typed_matrix<1> auto &lhs,
+                                    const rank_typed_matrix<1> auto &rhs,
+                                    const rank_typed_matrix<2> auto &addend,
+                                    rank_typed_matrix<2> auto &result);
+
 constexpr void matrix_vector_product(const rank_typed_matrix<2> auto &lhs,
                                      const rank_typed_matrix<1> auto &rhs,
                                      rank_typed_matrix<1> auto &result);
 
-constexpr void scale(const auto &α, same_as_typed_matrix auto &x);
+constexpr void scale(const auto &α, same_as_typed_matrix auto &result);
 
 #endif
 

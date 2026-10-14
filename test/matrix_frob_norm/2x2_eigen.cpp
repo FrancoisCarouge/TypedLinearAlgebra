@@ -38,10 +38,10 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the Frobenius norm of a two-by-two matrix.
 [[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 2, 2> value{{1., 2.}, {2., 4.}};
+  const matrix<double, 2, 2> value{{1., -4.}, {4., 4.}};
 
   static_assert(std::same_as<decltype(matrix_frob_norm(value)), double>);
-  assert(matrix_frob_norm(value) == 5.);
+  assert(matrix_frob_norm(value) == 7.);
 
   return 0;
 }()};

@@ -40,6 +40,7 @@ For more information, please refer to <https://unlicense.org> */
 //! typed units.
 
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <cstddef>
@@ -95,6 +96,7 @@ constexpr std::size_t extents_size{[] -> auto {
 //! @details A variety of activities of strongly typed linear algebra with
 //! std::mdspan, std::linalg, and mp-units.
 [[maybe_unused]] const auto sample{[] -> int {
+  const not_realtime opt_out;
   // Set up a heterogeneous column vector type for the sample.
   using state = column_vector<position, velocity, acceleration>;
 
@@ -151,6 +153,12 @@ constexpr std::size_t extents_size{[] -> auto {
   assert(std::format("{}", p6) == "[[27 m², 18 m²/s, 9 m²/s²],"        //
                                   " [22.5 m²/s, 15 m²/s², 7.5 m²/s³]," //
                                   " [9 m²/s², 6 m²/s³, 3 m²/s⁴]]");
+
+  // In-place rank-1 update with the outer product of two vectors.
+  matrix_rank_1_update(x0, x4, p6, p6);
+  assert(std::format("{}", p6) == "[[189 m², 153 m²/s, 63 m²/s²],"          //
+                                  " [157.5 m²/s, 127.5 m²/s², 52.5 m²/s³]," //
+                                  " [63 m²/s², 51 m²/s³, 21 m²/s⁴]]");
 
   return 0;
 }()};

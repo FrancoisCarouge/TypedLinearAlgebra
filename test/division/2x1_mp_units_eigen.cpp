@@ -30,6 +30,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <format>
@@ -46,14 +47,17 @@ using mp_units::si::unit_symbols::m2;
 namespace {
 //! @test Verifies the quantity by column vector division operator.
 [[maybe_unused]] const auto test{[] -> int {
+  const not_realtime opt_out;
+  using dimensionless = quantity<mp_units::one>;
   using length = quantity<mp_units::isq::length[m]>;
   using area = quantity<mp_units::isq::area[m2]>;
+  using inverse_length = quantity<mp_units::one / m>;
 
   const column_vector<representation, length> a{3. * m};
   const column_vector<representation, length, area> b{2. * m, 6. * m2};
-  const row_vector<representation, double, length> r{a / b};
+  const row_vector<representation, dimensionless, inverse_length> r{a / b};
 
-  assert(std::format("{}", r) == "[0, 0.5 m]");
+  assert(std::format("{}", r) == "[0, 0.5 1/m]");
 
   return 0;
 }()};

@@ -39,6 +39,7 @@ For more information, please refer to <https://unlicense.org> */
 //! precision floating point representation.
 
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <chrono>
@@ -58,6 +59,7 @@ using column_vector = column_vector<representation, Types...>;
 
 //! @brief Time typed linear algebra samples.
 [[maybe_unused]] const auto sample{[] -> int {
+  const not_realtime opt_out;
   // A heterogeneous vector: each element keeps its own period.
   using durations = column_vector<seconds, minutes, hours>;
   durations x0{seconds{30.}, minutes{2.}, hours{1.}};
@@ -93,6 +95,12 @@ using column_vector = column_vector<representation, Types...>;
 
   // Frobenius norm, the same as the Euclidean L2 norm for a vector.
   assert(matrix_frob_norm(v) == seconds{7.});
+
+  // One norm, the sum of the absolute elements for a column vector.
+  assert(matrix_one_norm(v) == seconds{11.});
+
+  // Infinity norm, the largest absolute element for a column vector.
+  assert(matrix_inf_norm(v) == seconds{6.});
 
   return 0;
 }()};

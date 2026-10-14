@@ -140,6 +140,28 @@ add_test(
   NAME typed_linear_algebra_sample_mp_units_std
   COMMAND typed_linear_algebra_sample_mp_units_std_driver)
 
+add_executable(typed_linear_algebra_sample_mp_units_std_array_driver
+               "mp_units_std_array.cpp")
+target_link_libraries(
+  typed_linear_algebra_sample_mp_units_std_array_driver
+  PRIVATE
+    typed_linear_algebra_main typed_linear_algebra_options
+    typed_linear_algebra_mp_units_std)
+add_test(
+  NAME typed_linear_algebra_sample_mp_units_std_array
+  COMMAND typed_linear_algebra_sample_mp_units_std_array_driver)
+
+add_executable(typed_linear_algebra_sample_mp_units_std_boost_multi_driver
+               "mp_units_std_boost_multi.cpp")
+target_link_libraries(
+  typed_linear_algebra_sample_mp_units_std_boost_multi_driver
+  PRIVATE
+    typed_linear_algebra_main typed_linear_algebra_options
+    typed_linear_algebra_mp_units_std_boost_multi)
+add_test(
+  NAME typed_linear_algebra_sample_mp_units_std_boost_multi
+  COMMAND typed_linear_algebra_sample_mp_units_std_boost_multi_driver)
+
 add_executable(typed_linear_algebra_sample_nholthaus_eigen_driver
                "nholthaus_eigen.cpp")
 target_link_libraries(

@@ -60,21 +60,19 @@ static_assert(same_as_typed_matrix<const m &>);
 static_assert(same_as_typed_matrix<m &&>);
 static_assert(same_as_typed_matrix<const m &&>);
 
-// Negative, special case: fundamental and unrelated types have no nested
-// `matrix`, `row_indexes`, `column_indexes` member types for the concept to
-// probe. That probe is in the immediate context of the constraint, so the
-// substitution failure makes the concept simply unsatisfied; it does not
-// make the program ill-formed. `void` is included since it cannot have
-// members at all.
+// Negative, special case: fundamental and unrelated types are not
+// `typed_matrix` class template instantiations, so the concept is simply
+// unsatisfied; checking it neither inspects nor instantiates them. `void` is
+// included since it cannot have members at all.
 static_assert(not same_as_typed_matrix<void>);
 static_assert(not same_as_typed_matrix<int>);
 static_assert(not same_as_typed_matrix<double>);
 static_assert(not same_as_typed_matrix<std::string>);
 static_assert(not same_as_typed_matrix<std::tuple<double>>);
 
-// Negative, special case: an incomplete type also has no accessible nested
-// types yet, and probing one still fails safely instead of hard-erroring on
-// "invalid use of incomplete type".
+// Negative, special case: an incomplete type is not completed by the check,
+// which fails safely instead of hard-erroring on "invalid use of incomplete
+// type".
 struct incomplete;
 static_assert(not same_as_typed_matrix<incomplete>);
 
@@ -91,9 +89,9 @@ static_assert(not same_as_typed_matrix<eigen::matrix<double, 2, 2>>);
 
 // Negative, special case: the concept is not structural, duck typing. A type
 // exposing the same `matrix`, `row_indexes`, and `column_indexes` member
-// aliases as a typed matrix, but that is not literally that `typed_matrix`
-// class template instantiation, does not satisfy the concept:
-// `std::same_as` requires nominal type identity.
+// aliases as a typed matrix, but that is not literally a `typed_matrix`
+// class template instantiation, does not satisfy the concept: it requires
+// nominal type identity.
 struct fake {
   using matrix = eigen::matrix<double, 1, 1>;
   using row_indexes = std::tuple<double>;
@@ -102,13 +100,11 @@ struct fake {
 static_assert(not same_as_typed_matrix<fake>);
 
 // Negative, special case: a type publicly inheriting from a typed matrix
-// inherits its `matrix`, `row_indexes`, `column_indexes` member aliases, so
-// the concept reconstructs the *base* typed matrix from them, but
-// `std::same_as` then compares the derived type itself against that
-// reconstructed base. They are different types, so a derived type never
-// satisfies `same_as_typed_matrix`, even though it "is a" typed matrix in the
-// inheritance sense and adds no members of its own. One consequence: such a
-// derived type instead satisfies `other`, so operators and constructors
+// inherits its `matrix`, `row_indexes`, `column_indexes` member aliases, but
+// is itself not a `typed_matrix` class template instantiation. A derived type
+// never satisfies `same_as_typed_matrix`, even though it "is a" typed matrix
+// in the inheritance sense and adds no members of its own. One consequence:
+// such a derived type instead satisfies `other`, so operators and constructors
 // overloaded on `same_as_typed_matrix` versus `other` would treat it as
 // "anything else", not as a typed matrix.
 using base = matrix<double, 1, 1>;

@@ -39,6 +39,7 @@ For more information, please refer to <https://unlicense.org> */
 //! floating point numbers as the underlying representation.
 
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <units/acceleration.h>
 #include <units/length.h>
@@ -69,6 +70,7 @@ using column_vector = column_vector<representation, Types...>;
 //! @details A variety of activities of strongly typed linear algebra with
 //! std::mdspan, std::linalg, and nholthaus/units.
 [[maybe_unused]] const auto sample{[] -> int {
+  const not_realtime opt_out;
   // Set up a heterogeneous column vector type for the sample.
   using state = column_vector<position, velocity, acceleration>;
 

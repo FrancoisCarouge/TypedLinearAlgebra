@@ -30,6 +30,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <concepts>
@@ -71,6 +72,7 @@ static_assert(std::formattable<rectangle, char>);
 //! with the mdspan backend: the rank-0 singleton, the row vector, the column
 //! vector, and the general rectangular overloads.
 [[maybe_unused]] const auto test{[] -> int {
+  const not_realtime opt_out;
   representation singleton_storage{};
   std::mdspan singleton_span{&singleton_storage,
                              std::extents<std::size_t, 1, 1>{}};

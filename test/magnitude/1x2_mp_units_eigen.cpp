@@ -30,6 +30,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <format>
@@ -48,6 +49,7 @@ namespace {
 //! quantities. The result carries the same unit as the vector's uniform
 //! element type.
 [[maybe_unused]] const auto test{[] -> int {
+  const not_realtime opt_out;
   using velocity = quantity<mp_units::isq::velocity[m / s]>;
 
   const row_vector<representation, velocity, velocity> v2{3. * m / s,

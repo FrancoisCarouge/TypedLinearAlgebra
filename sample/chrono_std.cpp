@@ -40,6 +40,7 @@ For more information, please refer to <https://unlicense.org> */
 //! `add()` free function applies here.
 
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <chrono>
@@ -66,6 +67,7 @@ using column_extents = std::extents<std::size_t, Rows, 1>;
 
 //! @brief Time typed linear algebra samples with std::mdspan and std::linalg.
 [[maybe_unused]] const auto sample{[] -> int {
+  const not_realtime opt_out;
   using durations = column_vector<seconds, minutes, hours>;
 
   std::vector v0(std::size_t{3}, representation{});
@@ -98,6 +100,12 @@ using column_extents = std::extents<std::size_t, Rows, 1>;
   std::mdspan s2{v2.data(), column_extents<3>{}};
   const column_vector<seconds, seconds, seconds> x2{s2};
   assert(matrix_frob_norm(x2) == seconds{7.});
+
+  // One norm of the same vector, the sum of its absolute elements.
+  assert(matrix_one_norm(x2) == seconds{11.});
+
+  // Infinity norm of the same vector, its largest absolute element.
+  assert(matrix_inf_norm(x2) == seconds{6.});
 
   return 0;
 }()};

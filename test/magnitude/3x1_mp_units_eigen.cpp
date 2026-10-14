@@ -30,6 +30,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <format>
@@ -46,6 +47,7 @@ namespace {
 //! @test Verifies the magnitude, the Euclidean L2 norm, of a column vector
 //! of quantities.
 [[maybe_unused]] const auto test{[] -> int {
+  const not_realtime opt_out;
   using force = quantity<mp_units::isq::force[N]>;
 
   const column_vector<representation, force, force, force> v3{2. * N, 3. * N,
