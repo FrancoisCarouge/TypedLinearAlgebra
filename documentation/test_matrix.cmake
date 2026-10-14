@@ -46,8 +46,10 @@ cmake_minimum_required(VERSION 3.20)
 set(_out "${CMAKE_CURRENT_LIST_DIR}/test_matrix.html")
 
 # A backend name is <linear algebra library> or <strong type>_<linear algebra
-# library> (e.g. "au_eigen" is the Au strong type over the Eigen backend). These
-# backends have no strong type component, just the library itself.
+# library> (e.g. "au_eigen" is the Au strong type over the Eigen backend). The
+# library may carry a storage suffix (e.g. "au_std_boost_multi" is the Au strong
+# type over the std backend in Boost.Multi storage). These backends have no
+# strong type component, just the library itself.
 set(_type_less_backends "eigen" "eigexed" "nested_typed_eigen" "armadillo"
     "armadilloxed")
 
@@ -96,7 +98,7 @@ foreach(_backend IN LISTS _backends)
   set(_type "")
   set(_library "${_backend}")
   if(NOT _backend IN_LIST _type_less_backends
-     AND _backend MATCHES "^(.+)_(eigen|std|armadillo)$")
+     AND _backend MATCHES "^(.+)_(eigen|std|std_boost_multi|armadillo)$")
     set(_type "${CMAKE_MATCH_1}")
     set(_library "${CMAKE_MATCH_2}")
   endif()
