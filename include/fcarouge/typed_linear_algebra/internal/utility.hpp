@@ -197,15 +197,99 @@ template <typename Type>
 concept same_as_typed_matrix =
     is_typed_matrix<std::remove_cvref_t<Type>>::value;
 
+//! @brief Access the storage element at the given storage row and column.
+//!
+//! @details Tries the storage access syntaxes from most to least specific: a
+//! two-index subscript, a two-index call operator, and a two-index `.at()`
+//! member. Each overload spells its access in its return type, so naming the
+//! type of an access only needs the declaration: the body, with its index
+//! conversions, is not instantiated.
+template <typename Storage>
+[[nodiscard]] constexpr auto access_element(Storage &storage, auto row,
+                                            auto column)
+    -> decltype(storage[row, column]) {
+  return storage[row, column];
+}
+
+template <typename Storage>
+[[nodiscard]] constexpr auto access_element(Storage &storage, auto row,
+                                            auto column)
+    -> decltype(storage(row, column))
+  requires(not requires { storage[row, column]; })
+{
+  return storage(row, column);
+}
+
+template <typename Storage>
+[[nodiscard]] constexpr auto access_element(Storage &storage, auto row,
+                                            auto column)
+    -> decltype(storage.at(row, column))
+  requires(
+      not requires { storage[row, column]; } and
+      not requires { storage(row, column); })
+{
+  return storage.at(row, column);
+}
+
+//! @brief An index argument converting to exactly the `Index` type.
+//!
+//! @details Only named in unevaluated operands, never constructed. Its
+//! conversion function template deduces the parameter type of the access it
+//! is passed to, and is constrained to `Index` alone: an access accepting it
+//! takes `Index` as its exact index parameter type.
+template <typename Index> struct exact_index {
+  template <std::same_as<Index> Type> operator Type() const noexcept;
+};
+
+//! @brief Whether the storage element access takes exactly `Index` indexes.
+//!
+//! @details The access with `Index` indexes must also reach the same access as
+//! with `std::size_t` indexes, so that a templated access selecting another
+//! overload for a class type argument, as Eigen's `IndexedView` call operator,
+//! does not match.
+template <typename Storage, typename Index>
+concept indexed_by = requires(Storage &storage) {
+  {
+    access_element(storage, exact_index<Index>{}, exact_index<Index>{})
+  } -> std::same_as<decltype(access_element(storage, std::size_t{},
+                                            std::size_t{}))>;
+};
+
+//! @brief A candidate storage index type, matching or not.
+template <typename Index, bool Matches = true>
+struct index_candidate : std::bool_constant<Matches> {
+  using type = Index;
+};
+
+//! @brief The index type of the storage element access.
+//!
+//! @details The first standard integer type the access takes as its exact
+//! index parameter type, such as Eigen's signed `Index` or Armadillo's
+//! unsigned `uword`. Otherwise `std::size_t`, for an access taking any index
+//! type and converting it itself, such as `std::mdspan`'s.
+template <typename Storage>
+using storage_index_t = typename std::disjunction<
+    index_candidate<std::size_t, indexed_by<Storage, std::size_t>>,
+    index_candidate<std::ptrdiff_t, indexed_by<Storage, std::ptrdiff_t>>,
+    index_candidate<int, indexed_by<Storage, int>>,
+    index_candidate<unsigned int, indexed_by<Storage, unsigned int>>,
+    index_candidate<long, indexed_by<Storage, long>>,
+    index_candidate<unsigned long, indexed_by<Storage, unsigned long>>,
+    index_candidate<long long, indexed_by<Storage, long long>>,
+    index_candidate<unsigned long long,
+                    indexed_by<Storage, unsigned long long>>,
+    index_candidate<short, indexed_by<Storage, short>>,
+    index_candidate<unsigned short, indexed_by<Storage, unsigned short>>,
+    index_candidate<std::size_t>>::type;
+
 //! @brief Read the storage element at the given typed matrix index(es).
 //!
 //! @details Maps the index(es) to a storage row and column: two indexes as-is,
 //! the linear index of a one-dimension matrix split row-major as `element_t`
-//! does, no index to the origin. Then tries the storage access syntaxes from
-//! most to least specific: recursing into a composed `typed_matrix` storage of
-//! the same shape, a two-index subscript, a two-index call operator, a
-//! two-index `.at()` member, and finally materializing an unevaluated
-//! expression template.
+//! does, no index to the origin. Then reads through a composed `typed_matrix`
+//! storage, a two-index element access, or a materialized expression template,
+//! in that order. The row and column cast to the storage index type, so none
+//! reaches the storage through an implicit sign or narrowing conversion.
 //!
 //! @tparam Columns The count of columns of the typed matrix.
 //! @param storage Passed unforwarded, as an lvalue: constness, not value
@@ -229,12 +313,11 @@ read_element(Storage &&storage,
 
   if constexpr (same_as_typed_matrix<Storage>) {
     return read_element<Columns>(storage.data(), indexes...);
-  } else if constexpr (requires { storage[row, column]; }) {
-    return storage[row, column];
-  } else if constexpr (requires { storage(row, column); }) {
-    return storage(row, column);
-  } else if constexpr (requires { storage.at(row, column); }) {
-    return storage.at(row, column);
+  } else if constexpr (requires { access_element(storage, row, column); }) {
+    using storage_index = storage_index_t<std::remove_reference_t<Storage>>;
+
+    return access_element(storage, static_cast<storage_index>(row),
+                          static_cast<storage_index>(column));
   } else if constexpr (requires { storage.eval(); }) {
     // `auto(...)` copies the element out of the local evaluation before it
     // goes out of scope.
@@ -512,17 +595,9 @@ using tuple_n_type = typename tupler<Type, Size>::type;
 
 using identity_index = std::tuple<std::identity>;
 
-template <typename> struct is_integral_constant_t;
-
-template <std::size_t Index>
-struct is_integral_constant_t<std::integral_constant<std::size_t, Index>>
-    : std::bool_constant<true> {};
-
-template <typename>
-struct is_integral_constant_t : std::bool_constant<false> {};
-
 template <typename Type>
-concept index = is_integral_constant_t<Type>::value;
+concept index =
+    std::same_as<Type, std::integral_constant<std::size_t, Type::value>>;
 
 //! @brief A type presenting the standard tuple-like protocol with exactly
 //! `Size` gettable elements.

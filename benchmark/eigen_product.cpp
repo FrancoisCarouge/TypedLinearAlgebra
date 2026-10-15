@@ -34,7 +34,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <Eigen/Eigen>
 #include <nanobench.h>
 
-#include <cstddef>
 #include <format>
 #include <fstream>
 #include <random>
@@ -62,8 +61,8 @@ template <auto Size> void bench() {
   std::mt19937 generator{device()};
   std::uniform_real_distribution<> distribution{0., 1.};
 
-  for (std::size_t i{0}; i < Size; ++i) {
-    for (std::size_t j{0}; j < Size; ++j) {
+  for (Eigen::Index i{0}; i < Size; ++i) {
+    for (Eigen::Index j{0}; j < Size; ++j) {
       a(i, j) = distribution(generator);
       b(i, j) = distribution(generator);
     }
