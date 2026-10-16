@@ -25,3 +25,19 @@ The following top-10 operations and their variations are to be implemented. They
 | 10 | **Cholesky decomposition**: lower triangular factor `L` of a symmetric positive-definite `A = L Lᵀ`, and its `L D Lᵀ` variant. Eigen `LLT`, `LDLT`; Armadillo `chol()`; LAPACK POTRF; NumPy `linalg.cholesky`; SciPy `linalg.cholesky`, `linalg.cho_factor`. | `[[nodiscard]] constexpr auto cholesky(const rank_typed_matrix<2> auto &A);` |
 
 The `std::linalg` operations come first, then the others by decreasing usage, measured as call counts in the non-test code of about 4,000 scientific Python repositories surveyed by [python-api-inspect](https://github.com/Quansight-Labs/python-api-inspect): norm 6,690; inverse 2,088; outer product 1,990; element-wise product 1,911; eigendecomposition 1,798; cross product 1,506; singular value decomposition 1,190; trace 761; Cholesky 751; determinant 663; least-squares 568; triangular solve 153.
+
+## Proposals from the ArduPilot integration
+
+Options for the owner to decide, not implemented. Finding numbers refer to `BUG.md`.
+
+**In-place evaluation (F28).** Every typed operation returns a new matrix, so `P = P - K * H * P` on a 24-state covariance holds several 24x24 temporaries: 19 kB of stack in double precision on Cortex-M7, where ArduPilot allows 2.6 kB per function. ArduPilot works around it by checking the expression's type with `decltype` and writing the backend storage by hand.
+
+- A. Compound assignment, `P -= K * HP;`, defined when the right-hand side's type converts to the left-hand side's, delegating to the backend's `-=` (Eigen evaluates `K * HP` into the destination without a temporary of P's size). Smallest change; the backend decides the temporaries.
+- B. An explicit `assign(destination, expression)` evaluating a typed expression into existing storage, with the same type check. More general (also `=`), and makes the in-place intent visible at the call site.
+- C. Rank-one updates without `<linalg>`: the existing `matrix_rank_1_update` signature, implemented by a loop over the backend storage when `std::linalg` is unavailable (libstdc++ 14 and 15, Arm GCC 15.2). Covers `P -= K (H P)` exactly, the EKF's most common step.
+
+**Blocks and selections (F26, F39).** Grouped states and sparse Jacobians need typed sub-matrices.
+
+- A. `block<Row, Column, Rows, Columns>(matrix)` returning a typed copy whose element types are the selected ones.
+- B. The same as a typed view over the backend storage, writable, which would also give in-place updates of a block.
+- C. `select<indexes...>(vector)` for non-contiguous selections, such as the five non-zero elements of an EKF3 observation Jacobian.
