@@ -143,9 +143,11 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>element_t&lt; Type, RowIndex, ColumnIndex &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>is_integral_constant_t</b></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>exact_index</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An index argument converting to exactly the <code>Index</code> type. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>is_integral_constant_t&lt; std::integral_constant&lt; std::size_t, Index &gt; &gt;</b></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>index_candidate</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A candidate storage index type, matching or not. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>is_typed_matrix</b></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the type is a typed matrix class template instantiation. <br /></td></tr>
@@ -183,6 +185,10 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a0659020dfaef848bf9f5f3b745fa7690" id="r_a0659020dfaef848bf9f5f3b745fa7690"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
 <tr class="memitem:a0659020dfaef848bf9f5f3b745fa7690"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a0659020dfaef848bf9f5f3b745fa7690">product</a> = std::invoke_result_t&lt;multiplies&lt;Lhs, Rhs&gt;, Lhs, Rhs&gt;</td></tr>
 <tr class="separator:a0659020dfaef848bf9f5f3b745fa7690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e34d14107202dcfa913aa2658018a7c" id="r_a9e34d14107202dcfa913aa2658018a7c"><td class="memTemplParams" colspan="2">template&lt;typename Storage &gt; </td></tr>
+<tr class="memitem:a9e34d14107202dcfa913aa2658018a7c"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a9e34d14107202dcfa913aa2658018a7c">storage_index_t</a></td></tr>
+<tr class="memdesc:a9e34d14107202dcfa913aa2658018a7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The index type of the storage element access.  <br /></td></tr>
+<tr class="separator:a9e34d14107202dcfa913aa2658018a7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47f2d246dc0f293daafe913a3aba2a10" id="r_a47f2d246dc0f293daafe913a3aba2a10"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
 <tr class="memitem:a47f2d246dc0f293daafe913a3aba2a10"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a47f2d246dc0f293daafe913a3aba2a10">underlying_t</a> = typename std::invoke_result_t&lt;underlying&lt;Type&gt;&gt;::type</td></tr>
 <tr class="separator:a47f2d246dc0f293daafe913a3aba2a10"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -210,6 +216,10 @@ Functions</h2></td></tr>
 <tr class="memitem:ae001291878746fdd7db287616a067664" id="r_ae001291878746fdd7db287616a067664"><td class="memTemplParams" colspan="2">template&lt;std::size_t Size, typename Function &gt; </td></tr>
 <tr class="memitem:ae001291878746fdd7db287616a067664"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae001291878746fdd7db287616a067664">for_constexpr</a> (Function function)</td></tr>
 <tr class="separator:ae001291878746fdd7db287616a067664"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af699ec1d59850ee3df349a2fa6e39832" id="r_af699ec1d59850ee3df349a2fa6e39832"><td class="memTemplParams" colspan="2">template&lt;typename Storage &gt; </td></tr>
+<tr class="memitem:af699ec1d59850ee3df349a2fa6e39832"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#af699ec1d59850ee3df349a2fa6e39832">access_element</a> (Storage &amp;storage, auto row, auto column) -&gt; decltype(storage[row, column])</td></tr>
+<tr class="memdesc:af699ec1d59850ee3df349a2fa6e39832"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the storage element at the given storage row and column.  <br /></td></tr>
+<tr class="separator:af699ec1d59850ee3df349a2fa6e39832"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeaac2b3147a168c0a834b924fb008364" id="r_aeaac2b3147a168c0a834b924fb008364"><td class="memTemplParams" colspan="2">template&lt;std::size_t Columns, typename Storage &gt; </td></tr>
 <tr class="memitem:aeaac2b3147a168c0a834b924fb008364"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aeaac2b3147a168c0a834b924fb008364">read_element</a> (Storage &amp;&amp;storage, std::convertible_to&lt; std::size_t &gt; auto... indexes) -&gt; decltype(auto)</td></tr>
 <tr class="memdesc:aeaac2b3147a168c0a834b924fb008364"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the storage element at the given typed matrix index(es).  <br /></td></tr>
@@ -243,6 +253,8 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:a78930c589db3e9281461c7040f16c208" id="r_a78930c589db3e9281461c7040f16c208"><td class="memItemLeft" align="right" valign="top">&amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78930c589db3e9281461c7040f16c208">!requires</a> { storage(row, column)</td></tr>
+<tr class="separator:a78930c589db3e9281461c7040f16c208"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b8f7212f7676df392e49713c7d9b89a" id="r_a5b8f7212f7676df392e49713c7d9b89a"><td class="memTemplParams" colspan="2">template&lt;std::size_t Rows, std::size_t Columns&gt; </td></tr>
 <tr class="memitem:a5b8f7212f7676df392e49713c7d9b89a"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a5b8f7212f7676df392e49713c7d9b89a">rank</a></td></tr>
 <tr class="separator:a5b8f7212f7676df392e49713c7d9b89a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -265,7 +277,7 @@ template&lt;typename Type , std::size_t... Indexes&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00360">360</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00443">443</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -292,7 +304,7 @@ template&lt;typename Type , std::size_t RowIndex, std::size_t ColumnIndex&gt; </
 <p>The type of the element at the given row and column matrix indexes. </p>
 <p>Internal helper, oblivious to the matrix's rank. Reused by the rank-checked <code>element_t</code> specializations below and by algorithms that must visit every row and column position of a matrix regardless of its rank, for example homogeneity checks. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00309">309</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00392">392</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -308,7 +320,7 @@ template&lt;typename Type , std::size_t RowIndex, std::size_t ColumnIndex&gt; </
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00513">513</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00596">596</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -350,6 +362,40 @@ template&lt;typename Lhs , typename Rhs &gt; </div>
 
 </div>
 </div>
+<a id="a9e34d14107202dcfa913aa2658018a7c" name="a9e34d14107202dcfa913aa2658018a7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e34d14107202dcfa913aa2658018a7c">&#9670;&#160;</a></span>storage_index_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Storage &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a9e34d14107202dcfa913aa2658018a7c">fcarouge::typed_linear_algebra::internal::storage_index_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> <span class="keyword">typename</span> std::disjunction&lt;</div>
+<div class="line">    index_candidate&lt;std::size_t, indexed_by&lt;Storage, std::size_t&gt;&gt;,</div>
+<div class="line">    index_candidate&lt;std::ptrdiff_t, indexed_by&lt;Storage, std::ptrdiff_t&gt;&gt;,</div>
+<div class="line">    index_candidate&lt;int, indexed_by&lt;Storage, int&gt;&gt;,</div>
+<div class="line">    index_candidate&lt;unsigned int, indexed_by&lt;Storage, unsigned int&gt;&gt;,</div>
+<div class="line">    index_candidate&lt;long, indexed_by&lt;Storage, long&gt;&gt;,</div>
+<div class="line">    index_candidate&lt;unsigned long, indexed_by&lt;Storage, unsigned long&gt;&gt;,</div>
+<div class="line">    index_candidate&lt;long long, indexed_by&lt;Storage, long long&gt;&gt;,</div>
+<div class="line">    index_candidate&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> long,</div>
+<div class="line">                    indexed_by&lt;Storage, unsigned long long&gt;&gt;,</div>
+<div class="line">    index_candidate&lt;short, indexed_by&lt;Storage, short&gt;&gt;,</div>
+<div class="line">    index_candidate&lt;unsigned short, indexed_by&lt;Storage, unsigned short&gt;&gt;,</div>
+<div class="line">    index_candidate&lt;std::size_t&gt;&gt;::type</div>
+</div><!-- fragment -->
+<p>The index type of the storage element access. </p>
+<p>The first standard integer type the access takes as its exact index parameter type, such as <a class="el" href="namespace_eigen.xhtml">Eigen</a>'s signed <code>Index</code> or Armadillo's unsigned <code>uword</code>. Otherwise <code>std::size_t</code>, for an access taking any index type and converting it itself, such as <code>std::mdspan</code>'s. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00271">271</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
 <a id="aeffe7fc6bb97d584b4a063eb0a2641a0" name="aeffe7fc6bb97d584b4a063eb0a2641a0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aeffe7fc6bb97d584b4a063eb0a2641a0">&#9670;&#160;</a></span>tuple_n_type</h2>
 
@@ -364,7 +410,7 @@ template&lt;typename Type , std::size_t Size&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00511">511</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00594">594</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -382,7 +428,7 @@ template&lt;same_as_typed_matrix Type&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00386">386</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00469">469</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -400,11 +446,66 @@ template&lt;typename Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00288">288</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00371">371</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="af699ec1d59850ee3df349a2fa6e39832" name="af699ec1d59850ee3df349a2fa6e39832"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af699ec1d59850ee3df349a2fa6e39832">&#9670;&#160;</a></span>access_element()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Storage &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto fcarouge::typed_linear_algebra::internal::access_element </td>
+          <td>(</td>
+          <td class="paramtype">Storage &amp;</td>          <td class="paramname"><span class="paramname"><em>storage</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">auto</td>          <td class="paramname"><span class="paramname"><em>row</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">auto</td>          <td class="paramname"><span class="paramname"><em>column</em></span>&#160;) -&gt; decltype(storage[row, column]) </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordflow">return</span> storage(row, column)</div>
+</div><!-- fragment -->
+<p>Access the storage element at the given storage row and column. </p>
+<p>Tries the storage access syntaxes from most to least specific: a two-index subscript, a two-index call operator, and a two-index <code>.at()</code> member. Each overload spells its access in its return type, so naming the type of an access only needs the declaration: the body, with its index conversions, is not instantiated. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00208">208</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  210</span>                                      {</div>
+<div class="line"><span class="lineno">  211</span>  <span class="keywordflow">return</span> storage[row, column];</div>
+<div class="line"><span class="lineno">  212</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00300">read_element()</a>.</p>
+<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra_1_1internal_af699ec1d59850ee3df349a2fa6e39832_icgraph.svg" width="575" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="afda6200599ba2c58e5656ebc21edf1d8" name="afda6200599ba2c58e5656ebc21edf1d8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afda6200599ba2c58e5656ebc21edf1d8">&#9670;&#160;</a></span>count_convertible_indexes()</h2>
 
@@ -433,18 +534,18 @@ template&lt;typename To , typename Tuple &gt; </div>
 <p>The count of <code>Tuple</code> elements implicitly convertible to <code>To</code>. </p>
 <p>More than one means a by-type lookup of <code>To</code> would be ambiguous. Same element-to-request direction as <code>find_first_convertible_index</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00420">420</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  420</span>                                                        {</div>
-<div class="line"><span class="lineno">  421</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> counter{</div>
-<div class="line"><span class="lineno">  422</span>      []&lt;std::size_t... Indexes&gt;(std::index_sequence&lt;Indexes...&gt;) {</div>
-<div class="line"><span class="lineno">  423</span>        <span class="keywordflow">return</span> (std::size_t{0} + ... +</div>
-<div class="line"><span class="lineno">  424</span>                (std::is_convertible_v&lt;std::tuple_element_t&lt;Indexes, Tuple&gt;, To&gt;</div>
-<div class="line"><span class="lineno">  425</span>                     ? std::size_t{1}</div>
-<div class="line"><span class="lineno">  426</span>                     : std::size_t{0}));</div>
-<div class="line"><span class="lineno">  427</span>      }};</div>
-<div class="line"><span class="lineno">  428</span> </div>
-<div class="line"><span class="lineno">  429</span>  <span class="keywordflow">return</span> counter(std::make_index_sequence&lt;std::tuple_size_v&lt;Tuple&gt;&gt;{});</div>
-<div class="line"><span class="lineno">  430</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00503">503</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  503</span>                                                        {</div>
+<div class="line"><span class="lineno">  504</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> counter{</div>
+<div class="line"><span class="lineno">  505</span>      []&lt;std::size_t... Indexes&gt;(std::index_sequence&lt;Indexes...&gt;) {</div>
+<div class="line"><span class="lineno">  506</span>        <span class="keywordflow">return</span> (std::size_t{0} + ... +</div>
+<div class="line"><span class="lineno">  507</span>                (std::is_convertible_v&lt;std::tuple_element_t&lt;Indexes, Tuple&gt;, To&gt;</div>
+<div class="line"><span class="lineno">  508</span>                     ? std::size_t{1}</div>
+<div class="line"><span class="lineno">  509</span>                     : std::size_t{0}));</div>
+<div class="line"><span class="lineno">  510</span>      }};</div>
+<div class="line"><span class="lineno">  511</span> </div>
+<div class="line"><span class="lineno">  512</span>  <span class="keywordflow">return</span> counter(std::make_index_sequence&lt;std::tuple_size_v&lt;Tuple&gt;&gt;{});</div>
+<div class="line"><span class="lineno">  513</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -476,24 +577,24 @@ template&lt;typename To , typename Tuple &gt; </div>
 <p>The linear position of the first <code>Tuple</code> element implicitly convertible to <code>To</code>, or <code>std::tuple_size_v&lt;Tuple&gt;</code> when none is. </p>
 <p>The direction is element-to-request: a position matches when its type implicitly converts to <code>To</code>, mirroring <code>element_at</code> and the <code>have_common_conversion_target</code> relation. Row-major, like <code>tuple_typed_matrix</code>. Use <code>count_convertible_indexes</code> to detect an ambiguous request before trusting this position. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00397">397</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  397</span>                                                           {</div>
-<div class="line"><span class="lineno">  398</span>  <span class="keyword">constexpr</span> std::size_t size{std::tuple_size_v&lt;Tuple&gt;};</div>
-<div class="line"><span class="lineno">  399</span> </div>
-<div class="line"><span class="lineno">  400</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> search{</div>
-<div class="line"><span class="lineno">  401</span>      []&lt;std::size_t... Indexes&gt;(std::index_sequence&lt;Indexes...&gt;) {</div>
-<div class="line"><span class="lineno">  402</span>        std::size_t result{0};</div>
-<div class="line"><span class="lineno">  403</span> </div>
-<div class="line"><span class="lineno">  404</span>        (void)((std::is_convertible_v&lt;std::tuple_element_t&lt;Indexes, Tuple&gt;, To&gt;</div>
-<div class="line"><span class="lineno">  405</span>                    ? <span class="keyword">true</span></div>
-<div class="line"><span class="lineno">  406</span>                    : (++result, <span class="keyword">false</span>)) ||</div>
-<div class="line"><span class="lineno">  407</span>               ...);</div>
-<div class="line"><span class="lineno">  408</span> </div>
-<div class="line"><span class="lineno">  409</span>        <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">  410</span>      }};</div>
-<div class="line"><span class="lineno">  411</span> </div>
-<div class="line"><span class="lineno">  412</span>  <span class="keywordflow">return</span> search(std::make_index_sequence&lt;size&gt;{});</div>
-<div class="line"><span class="lineno">  413</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00480">480</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  480</span>                                                           {</div>
+<div class="line"><span class="lineno">  481</span>  <span class="keyword">constexpr</span> std::size_t size{std::tuple_size_v&lt;Tuple&gt;};</div>
+<div class="line"><span class="lineno">  482</span> </div>
+<div class="line"><span class="lineno">  483</span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> search{</div>
+<div class="line"><span class="lineno">  484</span>      []&lt;std::size_t... Indexes&gt;(std::index_sequence&lt;Indexes...&gt;) {</div>
+<div class="line"><span class="lineno">  485</span>        std::size_t result{0};</div>
+<div class="line"><span class="lineno">  486</span> </div>
+<div class="line"><span class="lineno">  487</span>        (void)((std::is_convertible_v&lt;std::tuple_element_t&lt;Indexes, Tuple&gt;, To&gt;</div>
+<div class="line"><span class="lineno">  488</span>                    ? <span class="keyword">true</span></div>
+<div class="line"><span class="lineno">  489</span>                    : (++result, <span class="keyword">false</span>)) ||</div>
+<div class="line"><span class="lineno">  490</span>               ...);</div>
+<div class="line"><span class="lineno">  491</span> </div>
+<div class="line"><span class="lineno">  492</span>        <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  493</span>      }};</div>
+<div class="line"><span class="lineno">  494</span> </div>
+<div class="line"><span class="lineno">  495</span>  <span class="keywordflow">return</span> search(std::make_index_sequence&lt;size&gt;{});</div>
+<div class="line"><span class="lineno">  496</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -531,19 +632,19 @@ template&lt;std::size_t Size, typename Function &gt; </div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00171">for_constexpr_detail()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00597">is_distinct_typed_matrix()</a>, <a class="el" href="utility_8hpp_source.xhtml#l00432">is_uniform_typed_matrix()</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00479">verify_convertible_elements()</a>.</p>
-<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra_1_1internal_ae001291878746fdd7db287616a067664_cgraph.svg" width="352" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00672">is_distinct_typed_matrix()</a>, <a class="el" href="utility_8hpp_source.xhtml#l00515">is_uniform_typed_matrix()</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00562">verify_convertible_elements()</a>.</p>
 <div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra_1_1internal_ae001291878746fdd7db287616a067664_cgraph.svg" width="352" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra_1_1internal_ae001291878746fdd7db287616a067664_icgraph.svg" width="360" height="227"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -584,11 +685,11 @@ template&lt;std::size_t... Is, typename F &gt; </div>
 <div class="line"><span class="lineno">  174</span>}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00178">for_constexpr()</a>.</p>
-<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra_1_1internal_a7ddbf3e8193c90dc7ae78735063b0a0e_icgraph.svg" width="555" height="227"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -630,38 +731,38 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000005">Todo</a></b></dt><dd>Evaluate compile-time performance. Instantiation, evaluation, and compilation of this function may be expensive. We may want to use a pure concept approach. The ordered-pair traversal also tests each unordered pair twice. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00597">597</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  597</span>                                                                           {</div>
-<div class="line"><span class="lineno">  598</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix</a> = std::remove_cvref_t&lt;Type&gt;;</div>
-<div class="line"><span class="lineno">  599</span>  <span class="keywordtype">bool</span> result{<span class="keyword">true</span>};</div>
-<div class="line"><span class="lineno">  600</span> </div>
-<div class="line"><span class="lineno">  601</span>  for_constexpr&lt;matrix::rows&gt;([&amp;result](<span class="keyword">auto</span> i) {</div>
-<div class="line"><span class="lineno">  602</span>    for_constexpr&lt;matrix::columns&gt;([&amp;result, &amp;i](<span class="keyword">auto</span> j) {</div>
-<div class="line"><span class="lineno">  603</span>      for_constexpr&lt;matrix::rows&gt;([&amp;result, &amp;i, &amp;j](<span class="keyword">auto</span> k) {</div>
-<div class="line"><span class="lineno">  604</span>        for_constexpr&lt;matrix::columns&gt;([&amp;result, &amp;i, &amp;j, &amp;k](<span class="keyword">auto</span> l) {</div>
-<div class="line"><span class="lineno">  605</span>          <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (i != k || j != l) {</div>
-<div class="line"><span class="lineno">  606</span>            <span class="keyword">using </span>lhs = element_at&lt;matrix, i, j&gt;;</div>
-<div class="line"><span class="lineno">  607</span>            <span class="keyword">using </span>rhs = element_at&lt;matrix, k, l&gt;;</div>
-<div class="line"><span class="lineno">  608</span> </div>
-<div class="line"><span class="lineno">  609</span>            result &amp;= not(std::is_convertible_v&lt;lhs, rhs&gt; or</div>
-<div class="line"><span class="lineno">  610</span>                          std::is_convertible_v&lt;rhs, lhs&gt; or</div>
-<div class="line"><span class="lineno">  611</span>                          <span class="keyword">requires</span> { <span class="keyword">typename</span> std::common_type_t&lt;lhs, rhs&gt;; });</div>
-<div class="line"><span class="lineno">  612</span>          }</div>
-<div class="line"><span class="lineno">  613</span>        });</div>
-<div class="line"><span class="lineno">  614</span>      });</div>
-<div class="line"><span class="lineno">  615</span>    });</div>
-<div class="line"><span class="lineno">  616</span>  });</div>
-<div class="line"><span class="lineno">  617</span> </div>
-<div class="line"><span class="lineno">  618</span>  <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">  619</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00672">672</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  672</span>                                                                           {</div>
+<div class="line"><span class="lineno">  673</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix</a> = std::remove_cvref_t&lt;Type&gt;;</div>
+<div class="line"><span class="lineno">  674</span>  <span class="keywordtype">bool</span> result{<span class="keyword">true</span>};</div>
+<div class="line"><span class="lineno">  675</span> </div>
+<div class="line"><span class="lineno">  676</span>  for_constexpr&lt;matrix::rows&gt;([&amp;result](<span class="keyword">auto</span> i) {</div>
+<div class="line"><span class="lineno">  677</span>    for_constexpr&lt;matrix::columns&gt;([&amp;result, &amp;i](<span class="keyword">auto</span> j) {</div>
+<div class="line"><span class="lineno">  678</span>      for_constexpr&lt;matrix::rows&gt;([&amp;result, &amp;i, &amp;j](<span class="keyword">auto</span> k) {</div>
+<div class="line"><span class="lineno">  679</span>        for_constexpr&lt;matrix::columns&gt;([&amp;result, &amp;i, &amp;j, &amp;k](<span class="keyword">auto</span> l) {</div>
+<div class="line"><span class="lineno">  680</span>          <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (i != k || j != l) {</div>
+<div class="line"><span class="lineno">  681</span>            <span class="keyword">using </span>lhs = element_at&lt;matrix, i, j&gt;;</div>
+<div class="line"><span class="lineno">  682</span>            <span class="keyword">using </span>rhs = element_at&lt;matrix, k, l&gt;;</div>
+<div class="line"><span class="lineno">  683</span> </div>
+<div class="line"><span class="lineno">  684</span>            result &amp;= not(std::is_convertible_v&lt;lhs, rhs&gt; or</div>
+<div class="line"><span class="lineno">  685</span>                          std::is_convertible_v&lt;rhs, lhs&gt; or</div>
+<div class="line"><span class="lineno">  686</span>                          <span class="keyword">requires</span> { <span class="keyword">typename</span> std::common_type_t&lt;lhs, rhs&gt;; });</div>
+<div class="line"><span class="lineno">  687</span>          }</div>
+<div class="line"><span class="lineno">  688</span>        });</div>
+<div class="line"><span class="lineno">  689</span>      });</div>
+<div class="line"><span class="lineno">  690</span>    });</div>
+<div class="line"><span class="lineno">  691</span>  });</div>
+<div class="line"><span class="lineno">  692</span> </div>
+<div class="line"><span class="lineno">  693</span>  <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  694</span>}</div>
 <div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_a0fa52776262afae30db82d7c0a9339ac"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">fcarouge::armadillo::matrix</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Armadillo matrix.</div><div class="ttdef"><b>Definition</b> <a href="armadillo_8hpp_source.xhtml#l00091">armadillo.hpp:91</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00178">for_constexpr()</a>.</p>
-<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra_1_1internal_a0f08ea7eb926c990cdcb66508f01466f_cgraph.svg" width="550" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -692,27 +793,27 @@ template&lt;typename Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00432">432</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  432</span>                                                                          {</div>
-<div class="line"><span class="lineno">  433</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix</a> = std::remove_cvref_t&lt;Type&gt;;</div>
-<div class="line"><span class="lineno">  434</span>  <span class="keywordtype">bool</span> result{<span class="keyword">true</span>};</div>
-<div class="line"><span class="lineno">  435</span> </div>
-<div class="line"><span class="lineno">  436</span>  for_constexpr&lt;matrix::rows&gt;([&amp;result](<span class="keyword">auto</span> i) {</div>
-<div class="line"><span class="lineno">  437</span>    for_constexpr&lt;matrix::columns&gt;([&amp;result, &amp;i](<span class="keyword">auto</span> j) {</div>
-<div class="line"><span class="lineno">  438</span>      result &amp;=</div>
-<div class="line"><span class="lineno">  439</span>          std::is_same_v&lt;element_at&lt;matrix, i, j&gt;, element_at&lt;matrix, 0, 0&gt;&gt;;</div>
-<div class="line"><span class="lineno">  440</span>    });</div>
-<div class="line"><span class="lineno">  441</span>  });</div>
-<div class="line"><span class="lineno">  442</span> </div>
-<div class="line"><span class="lineno">  443</span>  <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">  444</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00515">515</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  515</span>                                                                          {</div>
+<div class="line"><span class="lineno">  516</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix</a> = std::remove_cvref_t&lt;Type&gt;;</div>
+<div class="line"><span class="lineno">  517</span>  <span class="keywordtype">bool</span> result{<span class="keyword">true</span>};</div>
+<div class="line"><span class="lineno">  518</span> </div>
+<div class="line"><span class="lineno">  519</span>  for_constexpr&lt;matrix::rows&gt;([&amp;result](<span class="keyword">auto</span> i) {</div>
+<div class="line"><span class="lineno">  520</span>    for_constexpr&lt;matrix::columns&gt;([&amp;result, &amp;i](<span class="keyword">auto</span> j) {</div>
+<div class="line"><span class="lineno">  521</span>      result &amp;=</div>
+<div class="line"><span class="lineno">  522</span>          std::is_same_v&lt;element_at&lt;matrix, i, j&gt;, element_at&lt;matrix, 0, 0&gt;&gt;;</div>
+<div class="line"><span class="lineno">  523</span>    });</div>
+<div class="line"><span class="lineno">  524</span>  });</div>
+<div class="line"><span class="lineno">  525</span> </div>
+<div class="line"><span class="lineno">  526</span>  <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  527</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00178">for_constexpr()</a>.</p>
-<div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-5" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra_1_1internal_a2238a99ab35d65098efb485ef3e05611_cgraph.svg" width="551" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -743,16 +844,16 @@ template&lt;char... Digits&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00569">569</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  569</span>                                                                     {</div>
-<div class="line"><span class="lineno">  570</span>  <span class="keyword">static_assert</span>(((<span class="charliteral">&#39;0&#39;</span> &lt;= Digits &amp;&amp; Digits &lt;= <span class="charliteral">&#39;9&#39;</span>) &amp;&amp; ...),</div>
-<div class="line"><span class="lineno">  571</span>                <span class="stringliteral">&quot;Characters must only be digits.&quot;</span>);</div>
-<div class="line"><span class="lineno">  572</span> </div>
-<div class="line"><span class="lineno">  573</span>  std::size_t number{0};</div>
-<div class="line"><span class="lineno">  574</span>  ((number = (number * 10) + (Digits - <span class="charliteral">&#39;0&#39;</span>)), ...);</div>
-<div class="line"><span class="lineno">  575</span> </div>
-<div class="line"><span class="lineno">  576</span>  <span class="keywordflow">return</span> number;</div>
-<div class="line"><span class="lineno">  577</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00644">644</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  644</span>                                                                     {</div>
+<div class="line"><span class="lineno">  645</span>  <span class="keyword">static_assert</span>(((<span class="charliteral">&#39;0&#39;</span> &lt;= Digits &amp;&amp; Digits &lt;= <span class="charliteral">&#39;9&#39;</span>) &amp;&amp; ...),</div>
+<div class="line"><span class="lineno">  646</span>                <span class="stringliteral">&quot;Characters must only be digits.&quot;</span>);</div>
+<div class="line"><span class="lineno">  647</span> </div>
+<div class="line"><span class="lineno">  648</span>  std::size_t number{0};</div>
+<div class="line"><span class="lineno">  649</span>  ((number = (number * 10) + (Digits - <span class="charliteral">&#39;0&#39;</span>)), ...);</div>
+<div class="line"><span class="lineno">  650</span> </div>
+<div class="line"><span class="lineno">  651</span>  <span class="keywordflow">return</span> number;</div>
+<div class="line"><span class="lineno">  652</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -786,7 +887,7 @@ template&lt;std::size_t Columns, typename Storage &gt; </div>
 </div><div class="memdoc">
 
 <p>Read the storage element at the given typed matrix index(es). </p>
-<p>Maps the index(es) to a storage row and column: two indexes as-is, the linear index of a one-dimension matrix split row-major as <code>element_t</code> does, no index to the origin. Then tries the storage access syntaxes from most to least specific: recursing into a composed <code><a class="el" href="classfcarouge_1_1typed__matrix.xhtml" title="Strongly typed matrix.">typed_matrix</a></code> storage of the same shape, a two-index subscript, a two-index call operator, a two-index <code>.at()</code> member, and finally materializing an unevaluated expression template.</p>
+<p>Maps the index(es) to a storage row and column: two indexes as-is, the linear index of a one-dimension matrix split row-major as <code>element_t</code> does, no index to the origin. Then reads through a composed <code><a class="el" href="classfcarouge_1_1typed__matrix.xhtml" title="Strongly typed matrix.">typed_matrix</a></code> storage, a two-index element access, or a materialized expression template, in that order. The row and column cast to the storage index type, so none reaches the storage through an implicit sign or narrowing conversion.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Columns</td><td>The count of columns of the typed matrix. </td></tr>
@@ -801,58 +902,56 @@ template&lt;std::size_t Columns, typename Storage &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00216">216</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  218</span>                      {</div>
-<div class="line"><span class="lineno">  219</span>  <span class="keyword">const</span> <span class="keyword">auto</span> [row, column]{[&amp;] -&gt; std::array&lt;std::size_t, 2&gt; {</div>
-<div class="line"><span class="lineno">  220</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">sizeof</span>...(indexes) == 2) {</div>
-<div class="line"><span class="lineno">  221</span>      <span class="keywordflow">return</span> {<span class="keyword">static_cast&lt;</span>std::size_t<span class="keyword">&gt;</span>(indexes)...};</div>
-<div class="line"><span class="lineno">  222</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">sizeof</span>...(indexes) == 1) {</div>
-<div class="line"><span class="lineno">  223</span>      <span class="keyword">const</span> std::size_t <a class="code hl_concept" href="conceptfcarouge_1_1index.xhtml">index</a>{<span class="keyword">static_cast&lt;</span>std::size_t<span class="keyword">&gt;</span>(indexes)...};</div>
-<div class="line"><span class="lineno">  224</span>      <span class="keywordflow">return</span> {index / Columns, index % Columns};</div>
-<div class="line"><span class="lineno">  225</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  226</span>      <span class="keywordflow">return</span> {0, 0};</div>
-<div class="line"><span class="lineno">  227</span>    }</div>
-<div class="line"><span class="lineno">  228</span>  }()};</div>
-<div class="line"><span class="lineno">  229</span> </div>
-<div class="line"><span class="lineno">  230</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (same_as_typed_matrix&lt;Storage&gt;) {</div>
-<div class="line"><span class="lineno">  231</span>    <span class="keywordflow">return</span> read_element&lt;Columns&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25">storage</a>.data(), indexes...);</div>
-<div class="line"><span class="lineno">  232</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">requires</span> { <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25">storage</a>[<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03.xhtml#a20285d1fe38e6a2a381cc08b7d212651">row</a>, <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03.xhtml#ae3c376a1446aaa17c84a95188cb68b40">column</a>]; }) {</div>
-<div class="line"><span class="lineno">  233</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25">storage</a>[<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03.xhtml#a20285d1fe38e6a2a381cc08b7d212651">row</a>, <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03.xhtml#ae3c376a1446aaa17c84a95188cb68b40">column</a>];</div>
-<div class="line"><span class="lineno">  234</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">requires</span> { <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25">storage</a>(row, column); }) {</div>
-<div class="line"><span class="lineno">  235</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25">storage</a>(row, column);</div>
-<div class="line"><span class="lineno">  236</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">requires</span> { <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25">storage</a>.at(row, column); }) {</div>
-<div class="line"><span class="lineno">  237</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25">storage</a>.at(row, column);</div>
-<div class="line"><span class="lineno">  238</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">requires</span> { <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25">storage</a>.eval(); }) {</div>
-<div class="line"><span class="lineno">  239</span>    <span class="comment">// `auto(...)` copies the element out of the local evaluation before it</span></div>
-<div class="line"><span class="lineno">  240</span>    <span class="comment">// goes out of scope.</span></div>
-<div class="line"><span class="lineno">  241</span>    <span class="keyword">auto</span> evaluated{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25">storage</a>.eval()};</div>
-<div class="line"><span class="lineno">  242</span>    <span class="keywordflow">return</span> <span class="keyword">auto</span>(read_element&lt;Columns&gt;(evaluated, indexes...));</div>
-<div class="line"><span class="lineno">  243</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  244</span>    <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(Storage) == 0,</div>
-<div class="line"><span class="lineno">  245</span>                  <span class="stringliteral">&quot;Element access is not supported for this linear algebra &quot;</span></div>
-<div class="line"><span class="lineno">  246</span>                  <span class="stringliteral">&quot;backend.&quot;</span>);</div>
-<div class="line"><span class="lineno">  247</span>  }</div>
-<div class="line"><span class="lineno">  248</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00300">300</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  302</span>                      {</div>
+<div class="line"><span class="lineno">  303</span>  <span class="keyword">const</span> <span class="keyword">auto</span> [row, column]{[&amp;] -&gt; std::array&lt;std::size_t, 2&gt; {</div>
+<div class="line"><span class="lineno">  304</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">sizeof</span>...(indexes) == 2) {</div>
+<div class="line"><span class="lineno">  305</span>      <span class="keywordflow">return</span> {<span class="keyword">static_cast&lt;</span>std::size_t<span class="keyword">&gt;</span>(indexes)...};</div>
+<div class="line"><span class="lineno">  306</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">sizeof</span>...(indexes) == 1) {</div>
+<div class="line"><span class="lineno">  307</span>      <span class="keyword">const</span> std::size_t <a class="code hl_concept" href="conceptfcarouge_1_1index.xhtml">index</a>{<span class="keyword">static_cast&lt;</span>std::size_t<span class="keyword">&gt;</span>(indexes)...};</div>
+<div class="line"><span class="lineno">  308</span>      <span class="keywordflow">return</span> {index / Columns, index % Columns};</div>
+<div class="line"><span class="lineno">  309</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  310</span>      <span class="keywordflow">return</span> {0, 0};</div>
+<div class="line"><span class="lineno">  311</span>    }</div>
+<div class="line"><span class="lineno">  312</span>  }()};</div>
+<div class="line"><span class="lineno">  313</span> </div>
+<div class="line"><span class="lineno">  314</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (same_as_typed_matrix&lt;Storage&gt;) {</div>
+<div class="line"><span class="lineno">  315</span>    <span class="keywordflow">return</span> read_element&lt;Columns&gt;(<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25">storage</a>.data(), indexes...);</div>
+<div class="line"><span class="lineno">  316</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">requires</span> { <a class="code hl_function" href="#af699ec1d59850ee3df349a2fa6e39832">access_element</a>(storage, row, column); }) {</div>
+<div class="line"><span class="lineno">  317</span>    <span class="keyword">using </span>storage_index = storage_index_t&lt;std::remove_reference_t&lt;Storage&gt;&gt;;</div>
+<div class="line"><span class="lineno">  318</span> </div>
+<div class="line"><span class="lineno">  319</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#af699ec1d59850ee3df349a2fa6e39832">access_element</a>(storage, <span class="keyword">static_cast&lt;</span>storage_index<span class="keyword">&gt;</span>(row),</div>
+<div class="line"><span class="lineno">  320</span>                          <span class="keyword">static_cast&lt;</span>storage_index<span class="keyword">&gt;</span>(column));</div>
+<div class="line"><span class="lineno">  321</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">requires</span> { <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25">storage</a>.eval(); }) {</div>
+<div class="line"><span class="lineno">  322</span>    <span class="comment">// `auto(...)` copies the element out of the local evaluation before it</span></div>
+<div class="line"><span class="lineno">  323</span>    <span class="comment">// goes out of scope.</span></div>
+<div class="line"><span class="lineno">  324</span>    <span class="keyword">auto</span> evaluated{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25">storage</a>.eval()};</div>
+<div class="line"><span class="lineno">  325</span>    <span class="keywordflow">return</span> <span class="keyword">auto</span>(read_element&lt;Columns&gt;(evaluated, indexes...));</div>
+<div class="line"><span class="lineno">  326</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  327</span>    <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(Storage) == 0,</div>
+<div class="line"><span class="lineno">  328</span>                  <span class="stringliteral">&quot;Element access is not supported for this linear algebra &quot;</span></div>
+<div class="line"><span class="lineno">  329</span>                  <span class="stringliteral">&quot;backend.&quot;</span>);</div>
+<div class="line"><span class="lineno">  330</span>  }</div>
+<div class="line"><span class="lineno">  331</span>}</div>
 <div class="ttc" id="aconceptfcarouge_1_1index_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1index.xhtml">fcarouge::index</a></div><div class="ttdoc">Concept of compile-time index.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00126">typed_linear_algebra.hpp:126</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03_xhtml_a4f249c13a6fe6cfdd036b6f765fe8e25"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25">fcarouge::sample::anonymous_namespace{mp_units_std_boost_multi.cpp}::storage</a></div><div class="ttdeci">boost::multi::inplace_array&lt; representation, 2 &gt; storage</div><div class="ttdef"><b>Definition</b> <a href="mp__units__std__boost__multi_8cpp_source.xhtml#l00093">mp_units_std_boost_multi.cpp:93</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03_xhtml_a20285d1fe38e6a2a381cc08b7d212651"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03.xhtml#a20285d1fe38e6a2a381cc08b7d212651">fcarouge::test::anonymous_namespace{1x2_ambiguous_fail.cpp}::row</a></div><div class="ttdeci">std::tuple&lt; std::identity &gt; row</div><div class="ttdef"><b>Definition</b> <a href="1x2__ambiguous__fail_8cpp_source.xhtml#l00049">1x2_ambiguous_fail.cpp:49</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03_xhtml_ae3c376a1446aaa17c84a95188cb68b40"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03.xhtml#ae3c376a1446aaa17c84a95188cb68b40">fcarouge::test::anonymous_namespace{1x2_ambiguous_fail.cpp}::column</a></div><div class="ttdeci">std::tuple&lt; first, second &gt; column</div><div class="ttdef"><b>Definition</b> <a href="1x2__ambiguous__fail_8cpp_source.xhtml#l00050">1x2_ambiguous_fail.cpp:50</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra_1_1internal_xhtml_af699ec1d59850ee3df349a2fa6e39832"><div class="ttname"><a href="#af699ec1d59850ee3df349a2fa6e39832">fcarouge::typed_linear_algebra::internal::access_element</a></div><div class="ttdeci">constexpr auto access_element(Storage &amp;storage, auto row, auto column) -&gt; decltype(storage[row, column])</div><div class="ttdoc">Access the storage element at the given storage row and column.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00208">utility.hpp:208</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00216">read_element()</a>.</p>
+<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00208">access_element()</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00300">read_element()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00216">read_element()</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00255">write_element()</a>.</p>
-<div id="dynsection-5" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra_1_1internal_aeaac2b3147a168c0a834b924fb008364_cgraph.svg" width="160" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00300">read_element()</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00338">write_element()</a>.</p>
 <div id="dynsection-6" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra_1_1internal_aeaac2b3147a168c0a834b924fb008364_cgraph.svg" width="375" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-7" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra_1_1internal_aeaac2b3147a168c0a834b924fb008364_icgraph.svg" width="360" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -886,33 +985,33 @@ template&lt;typename To , typename From &gt; </div>
 <p>Verifies a typed matrix converts to another, element by element. </p>
 <p>The storage holds representations oblivious to the indexes, so a conversion between typed matrices copies the storage as-is and relabels its elements with the destination's types. Each source element type must therefore implicitly convert to the corresponding destination element type, otherwise a mistyped expression would be silently relabeled on conversion. The element types are compared, not the indexes: the split of an element type between its row and column indexes is not unique. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00479">479</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  479</span>                                             {</div>
-<div class="line"><span class="lineno">  480</span>  <span class="keyword">using </span>to_matrix = std::remove_cvref_t&lt;To&gt;;</div>
-<div class="line"><span class="lineno">  481</span>  <span class="keyword">using </span>from_matrix = std::remove_cvref_t&lt;From&gt;;</div>
-<div class="line"><span class="lineno">  482</span> </div>
-<div class="line"><span class="lineno">  483</span>  <span class="keyword">static_assert</span>(same_shape&lt;to_matrix, from_matrix&gt;,</div>
-<div class="line"><span class="lineno">  484</span>                <span class="stringliteral">&quot;Typed matrix conversion requires matrices of the same &quot;</span></div>
-<div class="line"><span class="lineno">  485</span>                <span class="stringliteral">&quot;shapes, sizes.&quot;</span>);</div>
-<div class="line"><span class="lineno">  486</span> </div>
-<div class="line"><span class="lineno">  487</span>  for_constexpr&lt;to_matrix::rows&gt;([](<span class="keyword">auto</span> i) {</div>
-<div class="line"><span class="lineno">  488</span>    for_constexpr&lt;to_matrix::columns&gt;([i](<span class="keyword">auto</span> j) {</div>
-<div class="line"><span class="lineno">  489</span>      <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(i); <span class="comment">// Compiler compatibility.</span></div>
-<div class="line"><span class="lineno">  490</span>      <span class="keyword">static_assert</span>(std::is_convertible_v&lt;element_at&lt;from_matrix, i, j&gt;,</div>
-<div class="line"><span class="lineno">  491</span>                                          <a class="code hl_typedef" href="#a0d908ebc1cc55da12d83d2fefc10ab1d">element_at&lt;to_matrix, i, j&gt;</a>&gt;,</div>
-<div class="line"><span class="lineno">  492</span>                    <span class="stringliteral">&quot;Typed matrix conversion requires compatible element &quot;</span></div>
-<div class="line"><span class="lineno">  493</span>                    <span class="stringliteral">&quot;types.&quot;</span>);</div>
-<div class="line"><span class="lineno">  494</span>    });</div>
-<div class="line"><span class="lineno">  495</span>  });</div>
-<div class="line"><span class="lineno">  496</span>}</div>
-<div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra_1_1internal_xhtml_a0d908ebc1cc55da12d83d2fefc10ab1d"><div class="ttname"><a href="#a0d908ebc1cc55da12d83d2fefc10ab1d">fcarouge::typed_linear_algebra::internal::element_at</a></div><div class="ttdeci">std::remove_cvref_t&lt; product&lt; std::tuple_element_t&lt; RowIndex, typename std::remove_cvref_t&lt; Type &gt;::row_indexes &gt;, std::tuple_element_t&lt; ColumnIndex, typename std::remove_cvref_t&lt; Type &gt;::column_indexes &gt; &gt; &gt; element_at</div><div class="ttdoc">The type of the element at the given row and column matrix indexes.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00309">utility.hpp:309</a></div></div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00562">562</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  562</span>                                             {</div>
+<div class="line"><span class="lineno">  563</span>  <span class="keyword">using </span>to_matrix = std::remove_cvref_t&lt;To&gt;;</div>
+<div class="line"><span class="lineno">  564</span>  <span class="keyword">using </span>from_matrix = std::remove_cvref_t&lt;From&gt;;</div>
+<div class="line"><span class="lineno">  565</span> </div>
+<div class="line"><span class="lineno">  566</span>  <span class="keyword">static_assert</span>(same_shape&lt;to_matrix, from_matrix&gt;,</div>
+<div class="line"><span class="lineno">  567</span>                <span class="stringliteral">&quot;Typed matrix conversion requires matrices of the same &quot;</span></div>
+<div class="line"><span class="lineno">  568</span>                <span class="stringliteral">&quot;shapes, sizes.&quot;</span>);</div>
+<div class="line"><span class="lineno">  569</span> </div>
+<div class="line"><span class="lineno">  570</span>  for_constexpr&lt;to_matrix::rows&gt;([](<span class="keyword">auto</span> i) {</div>
+<div class="line"><span class="lineno">  571</span>    for_constexpr&lt;to_matrix::columns&gt;([i](<span class="keyword">auto</span> j) {</div>
+<div class="line"><span class="lineno">  572</span>      <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(i); <span class="comment">// Compiler compatibility.</span></div>
+<div class="line"><span class="lineno">  573</span>      <span class="keyword">static_assert</span>(std::is_convertible_v&lt;element_at&lt;from_matrix, i, j&gt;,</div>
+<div class="line"><span class="lineno">  574</span>                                          <a class="code hl_typedef" href="#a0d908ebc1cc55da12d83d2fefc10ab1d">element_at&lt;to_matrix, i, j&gt;</a>&gt;,</div>
+<div class="line"><span class="lineno">  575</span>                    <span class="stringliteral">&quot;Typed matrix conversion requires compatible element &quot;</span></div>
+<div class="line"><span class="lineno">  576</span>                    <span class="stringliteral">&quot;types.&quot;</span>);</div>
+<div class="line"><span class="lineno">  577</span>    });</div>
+<div class="line"><span class="lineno">  578</span>  });</div>
+<div class="line"><span class="lineno">  579</span>}</div>
+<div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra_1_1internal_xhtml_a0d908ebc1cc55da12d83d2fefc10ab1d"><div class="ttname"><a href="#a0d908ebc1cc55da12d83d2fefc10ab1d">fcarouge::typed_linear_algebra::internal::element_at</a></div><div class="ttdeci">std::remove_cvref_t&lt; product&lt; std::tuple_element_t&lt; RowIndex, typename std::remove_cvref_t&lt; Type &gt;::row_indexes &gt;, std::tuple_element_t&lt; ColumnIndex, typename std::remove_cvref_t&lt; Type &gt;::column_indexes &gt; &gt; &gt; element_at</div><div class="ttdoc">The type of the element at the given row and column matrix indexes.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00392">utility.hpp:392</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00178">for_constexpr()</a>.</p>
-<div id="dynsection-7" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-8" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra_1_1internal_a8bf375922e0a95892ba40668aa0d5599_cgraph.svg" width="555" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -955,28 +1054,44 @@ template&lt;std::size_t Columns, typename Storage , typename Value &gt; </div>
 <p>Write the storage element at the given typed matrix index(es). </p>
 <p>Writes through <code>read_element</code>, whose access must therefore yield a reference. The <code>value</code> is already converted to the storage underlying type. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00255">255</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  256</span>                                                                           {</div>
-<div class="line"><span class="lineno">  257</span>  <span class="keyword">static_assert</span>(std::is_lvalue_reference_v&lt;decltype(read_element&lt;Columns&gt;(</div>
-<div class="line"><span class="lineno">  258</span>                    storage, indexes...))&gt;,</div>
-<div class="line"><span class="lineno">  259</span>                <span class="stringliteral">&quot;Element write access requires a referenceable storage &quot;</span></div>
-<div class="line"><span class="lineno">  260</span>                <span class="stringliteral">&quot;element.&quot;</span>);</div>
-<div class="line"><span class="lineno">  261</span> </div>
-<div class="line"><span class="lineno">  262</span>  read_element&lt;Columns&gt;(storage, indexes...) = std::forward&lt;Value&gt;(value);</div>
-<div class="line"><span class="lineno">  263</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00338">338</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  339</span>                                                                           {</div>
+<div class="line"><span class="lineno">  340</span>  <span class="keyword">static_assert</span>(std::is_lvalue_reference_v&lt;decltype(read_element&lt;Columns&gt;(</div>
+<div class="line"><span class="lineno">  341</span>                    storage, indexes...))&gt;,</div>
+<div class="line"><span class="lineno">  342</span>                <span class="stringliteral">&quot;Element write access requires a referenceable storage &quot;</span></div>
+<div class="line"><span class="lineno">  343</span>                <span class="stringliteral">&quot;element.&quot;</span>);</div>
+<div class="line"><span class="lineno">  344</span> </div>
+<div class="line"><span class="lineno">  345</span>  read_element&lt;Columns&gt;(storage, indexes...) = std::forward&lt;Value&gt;(value);</div>
+<div class="line"><span class="lineno">  346</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00216">read_element()</a>.</p>
-<div id="dynsection-8" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00300">read_element()</a>.</p>
+<div id="dynsection-9" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra_1_1internal_ad8b49524f3f1b03ddf34a0c5d6c10293_cgraph.svg" width="360" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1typed__linear__algebra_1_1internal_ad8b49524f3f1b03ddf34a0c5d6c10293_cgraph.svg" width="575" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a78930c589db3e9281461c7040f16c208" name="a78930c589db3e9281461c7040f16c208"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78930c589db3e9281461c7040f16c208">&#9670;&#160;</a></span>!requires</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">&amp;&amp; fcarouge::typed_linear_algebra::internal::!requires { storage(row, column)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00229">229</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a5b8f7212f7676df392e49713c7d9b89a" name="a5b8f7212f7676df392e49713c7d9b89a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5b8f7212f7676df392e49713c7d9b89a">&#9670;&#160;</a></span>rank</h2>
 
@@ -1008,16 +1123,16 @@ template&lt;std::size_t Rows, std::size_t Columns&gt; </div>
 <div class="line">  }</div>
 <div class="line">}()}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00291">291</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  291</span>                        {[] {</div>
-<div class="line"><span class="lineno">  292</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows &gt; 1 &amp;&amp; Columns &gt; 1) {</div>
-<div class="line"><span class="lineno">  293</span>    <span class="keywordflow">return</span> 2;</div>
-<div class="line"><span class="lineno">  294</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows == 1 &amp;&amp; Columns == 1) {</div>
-<div class="line"><span class="lineno">  295</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  296</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  297</span>    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  298</span>  }</div>
-<div class="line"><span class="lineno">  299</span>}()};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00374">374</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  374</span>                        {[] {</div>
+<div class="line"><span class="lineno">  375</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows &gt; 1 &amp;&amp; Columns &gt; 1) {</div>
+<div class="line"><span class="lineno">  376</span>    <span class="keywordflow">return</span> 2;</div>
+<div class="line"><span class="lineno">  377</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Rows == 1 &amp;&amp; Columns == 1) {</div>
+<div class="line"><span class="lineno">  378</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  379</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  380</span>    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  381</span>  }</div>
+<div class="line"><span class="lineno">  382</span>}()};</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -5,9 +5,11 @@ var utility_8hpp =
     [ "identity_index", "utility_8hpp.xhtml#ae8c912e436a2523bb6d22e98883960cd", null ],
     [ "product", "utility_8hpp.xhtml#a0659020dfaef848bf9f5f3b745fa7690", null ],
     [ "quotient", "utility_8hpp.xhtml#a42f888090e0022b7f6cff2915b7ba65d", null ],
+    [ "storage_index_t", "utility_8hpp.xhtml#a9e34d14107202dcfa913aa2658018a7c", null ],
     [ "tuple_n_type", "utility_8hpp.xhtml#aeffe7fc6bb97d584b4a063eb0a2641a0", null ],
     [ "tuple_typed_matrix", "utility_8hpp.xhtml#aa7edbb6c75d6e336989e7c49fdc1c570", null ],
     [ "underlying_t", "utility_8hpp.xhtml#a47f2d246dc0f293daafe913a3aba2a10", null ],
+    [ "access_element", "utility_8hpp.xhtml#af699ec1d59850ee3df349a2fa6e39832", null ],
     [ "count_convertible_indexes", "utility_8hpp.xhtml#afda6200599ba2c58e5656ebc21edf1d8", null ],
     [ "find_first_convertible_index", "utility_8hpp.xhtml#a28d8419fc35e153a8b037928ac0dcdf6", null ],
     [ "for_constexpr", "utility_8hpp.xhtml#ae001291878746fdd7db287616a067664", null ],
@@ -18,5 +20,6 @@ var utility_8hpp =
     [ "read_element", "utility_8hpp.xhtml#aeaac2b3147a168c0a834b924fb008364", null ],
     [ "verify_convertible_elements", "utility_8hpp.xhtml#a8bf375922e0a95892ba40668aa0d5599", null ],
     [ "write_element", "utility_8hpp.xhtml#ad8b49524f3f1b03ddf34a0c5d6c10293", null ],
+    [ "!requires", "utility_8hpp.xhtml#a78930c589db3e9281461c7040f16c208", null ],
     [ "rank", "utility_8hpp.xhtml#a5b8f7212f7676df392e49713c7d9b89a", null ]
 ];
