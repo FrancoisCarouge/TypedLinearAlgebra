@@ -40,8 +40,6 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/typed_linear_algebra.hpp"
 
 #include <concepts>
-#include <cstddef>
-#include <tuple>
 
 #include <mp-units/framework/customization_points.h>
 #include <mp-units/framework/quantity.h>
@@ -53,58 +51,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <mp-units/systems/si.h>
 
 namespace fcarouge {
-// A vector quantity whose specification has no named-axis decomposition (no
-// `vector_components` specialization) but whose own representation is itself
-// tuple-like (e.g. a fcarouge typed vector). `not requires { ...::size; }`
-// mirrors mp-units's own `Decomposable` prerequisite check and is therefore
-// guaranteed mutually exclusive with it: mp-units's `std::tuple_size` and
-// `get<Idx>` specializations for `mp_units::quantity` require `Decomposable`,
-// which itself requires `vector_components<Spec>::size` to exist.
-template <auto Reference, typename Representation>
-concept undecomposed_tuple_like_quantity =
-    (not requires {
-      mp_units::vector_components<get_quantity_spec(Reference)>::size;
-    }) and requires(const Representation &representation) {
-      {
-        std::tuple_size<Representation>::value
-      } -> std::convertible_to<std::size_t>;
-      get<0>(representation);
-    };
-} // namespace fcarouge
-
-// Extend the standard tuple-like protocol (`std::tuple_size`,
-// `std::tuple_element`, and the ADL-found `get<Idx>` below) to vector
-// quantities left undecomposed by mp-units itself, forwarding to their own
-// tuple-like representation. This is what lets `fcarouge::typed_matrix`'s
-// core, vanilla-C++ `other_tuple_like_vector` converting constructor accept
-// such a quantity directly: `get<Idx>` is found purely through
-// argument-dependent lookup on `Representation` (which names `fcarouge`, and
-// the underlying matrix backend), so the core library never names any
-// mp-units-specific member.
-template <auto Reference, typename Representation>
-  requires fcarouge::undecomposed_tuple_like_quantity<Reference, Representation>
-struct std::tuple_size<mp_units::quantity<Reference, Representation>>
-    : std::tuple_size<Representation> {};
-
-template <std::size_t Index, auto Reference, typename Representation>
-  requires fcarouge::undecomposed_tuple_like_quantity<Reference,
-                                                      Representation> and
-           (Index < std::tuple_size_v<Representation>)
-struct std::tuple_element<Index,
-                          mp_units::quantity<Reference, Representation>> {
-  using type = mp_units::quantity<Reference,
-                                  std::tuple_element_t<Index, Representation>>;
-};
-
-namespace fcarouge {
-template <std::size_t Index, auto Reference, typename Representation>
-  requires undecomposed_tuple_like_quantity<Reference, Representation> and
-           (Index < std::tuple_size_v<Representation>)
-[[nodiscard]] constexpr auto
-get(const mp_units::quantity<Reference, Representation> &value) {
-  return get<Index>(value.numerical_value_in(value.unit)) * value.unit;
-}
-
 // Teach the typed linear algebra library how to convert underlying scalar types
 // to and from mp-units' types. Support castable quantity specifications.
 template <typename To, mp_units::Quantity From>
