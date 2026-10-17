@@ -26,6 +26,17 @@ The following top-10 operations and their variations are to be implemented. They
 
 The `std::linalg` operations come first, then the others by decreasing usage, measured as call counts in the non-test code of about 4,000 scientific Python repositories surveyed by [python-api-inspect](https://github.com/Quansight-Labs/python-api-inspect): norm 6,690; inverse 2,088; outer product 1,990; element-wise product 1,911; eigendecomposition 1,798; cross product 1,506; singular value decomposition 1,190; trace 761; Cholesky 751; determinant 663; least-squares 568; triangular solve 153.
 
+## Named values
+
+Elevate the identity and zero named values from Kalman into this library, for reuse by any typed linear algebra client. Kalman pull request [#1026](https://github.com/FrancoisCarouge/Kalman/pull/1026) gives them their constant-initialized form (finding F41 in `BUG.md`):
+
+- `one<Type>` and `zero<Type>`, `inline constexpr` variables, defined only when the backend's value is a constant expression, so that no client copies them before their dynamic initialization.
+- The `ones<Type>` and `zeros<Type>` factories, the customization points a backend specializes, building the value at the point of use when it is not a constant expression, with `make_one<Type>()` and `make_zero<Type>()` choosing between the two.
+- The `constant_evaluable` concept they rely on.
+- Their specializations for `typed_matrix` (today in Kalman's `support/eigen_typed` and `support/quantity`) and for mp-units quantities (today in Kalman's `support/mp_units`), next to this library's `element_caster` specializations.
+
+Today each client carries its own copy: Kalman's two facades, and ArduPilot's `AP_LinearAlgebra_Kalman.h`, which re-specializes the four for its backend. Kalman would then use this library's named values; its scalar `one<double>` and `zero<double>` specializations could stay in Kalman or move too.
+
 ## Proposals from the ArduPilot integration
 
 Options for the owner to decide, not implemented. Finding numbers refer to `BUG.md`.
