@@ -1,6 +1,6 @@
 # BUG
 
-Shortcomings, frictions and improvement opportunities in TypedLinearAlgebra, found while integrating it with [FrancoisCarouge/Kalman](https://github.com/FrancoisCarouge/Kalman) into [ArduPilot](https://github.com/FrancoisCarouge/ardupilot/tree/fcarouge). Copied from the TypedLinearAlgebra findings of the integration's [findings table](https://github.com/FrancoisCarouge/ardupilot/blob/fcarouge/docs/FCAROUGE_FINDINGS.md), which keeps the numbering and the Kalman-only findings.
+Findings in TypedLinearAlgebra, found while integrating it with [FrancoisCarouge/Kalman](https://github.com/FrancoisCarouge/Kalman) into [ArduPilot](https://github.com/FrancoisCarouge/ardupilot/tree/fcarouge). Copied from the TypedLinearAlgebra findings of the integration's [findings table](https://github.com/FrancoisCarouge/ardupilot/blob/fcarouge/docs/FCAROUGE_FINDINGS.md), which keeps the numbering and the Kalman-only findings.
 
 Only blocking findings, and findings that prevent performance improvements or let regressions through, are kept; resolved findings are removed. Rechecked on 2026-10-18 against Kalman d80652ace, TypedLinearAlgebra a62bbca6e and mp-units c85584d65.
 
