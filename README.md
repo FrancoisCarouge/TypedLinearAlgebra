@@ -215,6 +215,7 @@ std::println("{}", m[1_i, 2_i]); // Same as: m.at<1, 2>()
 | Concept | Definition |
 | --- | --- |
 | `column_typed_matrix` | Concept of a column typed matrix, vector. |
+| `convertible_typed_matrix` | Concept of a typed matrix implicitly convertible to another typed matrix of the same shape, element by element. |
 | `distinct_typed_matrix` | Concept of a typed matrix in which no two element positions share an implicit conversion target, so an element can be located by type. |
 | `index` | Concept of a compile-time index. |
 | `other` | Concept of any type other than the typed matrix type. |

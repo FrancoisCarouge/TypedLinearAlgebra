@@ -41,7 +41,7 @@ QUANTITY_SPEC(lateral_velocity, mp_units::isq::velocity, mp_units::is_kind);
 QUANTITY_SPEC(vertical_velocity, mp_units::isq::velocity, mp_units::is_kind);
 
 template <>
-struct mp_units::vector_components<flight_velocity>
+struct mp_units::component_vectors<flight_velocity>
     : mp_units::vector_axes<forward_velocity, lateral_velocity,
                             vertical_velocity> {};
 

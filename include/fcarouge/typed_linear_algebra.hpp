@@ -106,6 +106,21 @@ concept rank_typed_matrix = tla::rank_typed_matrix<Type, Rank>;
 template <typename Lhs, typename Rhs>
 concept same_shape = tla::same_shape<Lhs, Rhs>;
 
+//! @brief Concept of a typed matrix implicitly convertible to another typed
+//! matrix, element by element.
+//!
+//! @details The matrices are of the same shape, and each element type of the
+//! source matrix implicitly converts to the corresponding element type of the
+//! destination matrix, whatever their row and column indexes. A typed matrix
+//! converts its elements' representations as-is, relabeled with the
+//! destination's element types, so an element type that does not convert would
+//! otherwise silently change the meaning of its value.
+//!
+//! @tparam From The source typed matrix type.
+//! @tparam To The destination typed matrix type.
+template <typename From, typename To>
+concept convertible_typed_matrix = tla::convertible_typed_matrix<From, To>;
+
 //! @brief Concept of any type other than the typed matrix type.
 //!
 //! @details Practical for disambiguation.
@@ -230,25 +245,30 @@ public:
   //! @details Implicit conversions expected per default equivalency. The
   //! matrices must be of the same shape, and each element type of the other
   //! matrix must implicitly convert to the corresponding element type of this
-  //! matrix, whatever their row and column indexes.
+  //! matrix, whatever their row and column indexes. Otherwise, the constructor
+  //! does not participate in overload resolution, so that the typed matrix is
+  //! not reported convertible from a matrix it cannot be constructed from.
   constexpr explicit(false)
-      typed_matrix(const same_as_typed_matrix auto &other);
+      typed_matrix(const convertible_typed_matrix<typed_matrix> auto &other);
 
   //! @brief Copy assign generalization of a compatible typed matrix.
   //!
   //! @details Same element type requirements as the converting constructor.
-  constexpr auto operator=(const same_as_typed_matrix auto &other)
+  constexpr auto
+  operator=(const convertible_typed_matrix<typed_matrix> auto &other)
       -> typed_matrix &;
 
   //! @brief Move construct generalization of a compatible typed matrix.
   //!
   //! @details Same element type requirements as the converting constructor.
-  constexpr explicit(false) typed_matrix(same_as_typed_matrix auto &&other);
+  constexpr explicit(false)
+      typed_matrix(convertible_typed_matrix<typed_matrix> auto &&other);
 
   //! @brief Move assign generalization of a compatible typed matrix.
   //!
   //! @details Same element type requirements as the converting constructor.
-  constexpr auto operator=(same_as_typed_matrix auto &&other) -> typed_matrix &;
+  constexpr auto operator=(convertible_typed_matrix<typed_matrix> auto &&other)
+      -> typed_matrix &;
 
   //! @brief Convert construct a singleton typed matrix from a single value.
   //!
