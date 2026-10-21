@@ -26,18 +26,33 @@ The following top-10 operations and their variations are to be implemented. They
 
 The `std::linalg` operations come first, then the others by decreasing usage, measured as call counts in the non-test code of about 4,000 scientific Python repositories surveyed by [python-api-inspect](https://github.com/Quansight-Labs/python-api-inspect): norm 6,690; inverse 2,088; outer product 1,990; element-wise product 1,911; eigendecomposition 1,798; cross product 1,506; singular value decomposition 1,190; trace 761; Cholesky 751; determinant 663; least-squares 568; triangular solve 153.
 
-## Unit dropped when building a typed vector of quantities from a tuple-like value
+## Element conversions: dropped units and wrong convertibility answers
 
-**Symptom.** `velocities state{q};` with `q` in m/s and elements declared in km/h stores the m/s numbers unchanged: 10 m/s becomes `10 km/h` (it should be 36 km/h). No diagnostic.
+**Symptoms.**
 
-**Cause.** `typed_matrix(const other_tuple_like_vector<typed_matrix> auto&)` calls `cast<underlying, element<i>>(get<i>(value))` on the *source* element, without first converting it to `element<i>`. The mp-units `element_caster<To, From>` (`support/mp_units/fcarouge/mp_units.hpp`) then returns `quantity_cast<spec>(value).numerical_value_in(specified.unit)`, which is the number in the *source* unit, while `From` (the element type) declares another unit.
+- `velocities state{q};` with `q` in m/s and elements declared in km/h stores the m/s numbers unchanged: 10 m/s becomes `10 km/h` (it should be 36 km/h). No diagnostic.
+- `std::convertible_to<velocities, vector3d>` is true, yet `vector3d dropped = state;` fails a `static_assert`.
+
+**Causes.**
+
+- `typed_matrix(const other_tuple_like_vector<typed_matrix> auto&)` calls `cast<underlying, element<i>>(get<i>(value))` on the *source* element, without first converting it to `element<i>`. The mp-units `element_caster<To, From>` (`support/mp_units/fcarouge/mp_units.hpp`) then returns `quantity_cast<spec>(value).numerical_value_in(specified.unit)`, the number in the *source* unit, while `From` (the element type) declares another unit.
+- `typed_matrix(const same_as_typed_matrix auto&)`, the `&&` overload, and the matching assignments are constrained only on "is a typed matrix". Element compatibility is checked inside the body, by `verify_convertible_elements`.
+
+**Impact.** Values are silently reinterpreted in the wrong unit, and any library that asks whether a typed matrix converts gets the wrong answer. In particular, mp-units' new composition is excluded for quantities represented by typed matrices.
+
+**Fix.**
 
 - [ ] In the tuple-like constructor, convert each element to its declared type first: `cast<underlying, element<i>>(element<i>{get<i>(value)})`. This gets the unit conversion, and mp-units' truncation and kind checks, for free.
 - [ ] In `element_caster<To, mp_units::Quantity From>`, read the number in `From`'s unit, not the argument's: `.numerical_value_in(get_unit(reference))`.
 - [ ] Check whether the `quantity_cast<specification>` there lets a wrong axis through, e.g. a `lateral_velocity` element into a `forward_velocity` slot. If it does, use implicit conversion to `From` instead of a forcing cast.
-- [ ] Constrain `other_tuple_like_vector` on element-wise implicit convertibility, so an incompatible tuple is rejected by overload resolution instead of being silently reinterpreted.
-- [ ] Constrain the converting constructors and assignments (`same_as_typed_matrix auto&` and `&&`) on element convertibility instead of `static_assert`ing it in the body (`verify_convertible_elements`). Today `std::convertible_to<velocities, vector3d>` is true although the conversion doesn't compile, which misleads every library that asks (mp-units' composition among them).
-- [ ] Tests: build from a quantity in a different unit (m/s into km/h elements) and check the values; a mismatched-unit tuple; `static_assert(!std::convertible_to<velocities, vector3d>)`.
+- [ ] Move the element-convertibility check of the converting constructors and assignments into their constraints, instead of `verify_convertible_elements` in the body.
+- [ ] Constrain `other_tuple_like_vector` the same way, on element-wise implicit convertibility, so an incompatible tuple is rejected by overload resolution instead of being silently reinterpreted.
+
+**Tests to add.**
+
+- [ ] Building from a quantity in a different unit (m/s into km/h elements), with the values checked.
+- [ ] A tuple whose elements have mismatched units.
+- [ ] `static_assert(!std::convertible_to<velocities, vector3d>)`.
 
 ## Named values
 
