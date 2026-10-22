@@ -328,13 +328,33 @@ public:
   //!
   //! @details Applicable to one-dimension matrix. The first and second value
   //! parameter help in determining which constructor should the compiler call.
+  //! The count of values must match the size of the vector. Each value is
+  //! converted to the corresponding element type, e.g. to the element's unit.
+  //! The constructor is implicit when every value implicitly converts, explicit
+  //! otherwise. See the tuple-like constructor.
+  //!
+  //! @tparam First First element type.
+  //! @tparam Second Second element type.
+  //! @tparam Values Other elements types.
   //!
   //! @param first_value First element.
   //! @param second_value Second element.
   //! @param values Other elements.
-  constexpr typed_matrix(const auto &first_value, const auto &second_value,
-                         const auto &...values)
-    requires rank_typed_matrix<typed_matrix, 1>;
+  //
+  // Defined in the class: MSVC drops the value-dependent explicit specifier
+  // of a constructor template once its out-of-class definition is seen, see
+  // https://developercommunity.visualstudio.com/t/856958.
+  template <typename First, typename Second, typename... Values>
+  constexpr explicit(
+      not tla::is_convertible_tuple_like<
+          std::tuple<const First &, const Second &, const Values &...>,
+          typed_matrix>())
+      typed_matrix(const First &first_value, const Second &second_value,
+                   const Values &...values)
+    requires other_tuple_like_vector<
+        std::tuple<const First &, const Second &, const Values &...>,
+        typed_matrix>
+      : typed_matrix{std::tie(first_value, second_value, values...)} {}
 
   //! @brief Convert construct a typed matrix from an underlying matrix.
   //!
@@ -352,12 +372,30 @@ public:
   //! matching the vector's size and presenting the standard tuple-like
   //! protocol (`std::tuple_size` and an unqualified, argument-dependent
   //! `get<Index>`), e.g. `std::tuple`, `std::array`, or `std::pair`. See
-  //! `other_tuple_like_vector`.
+  //! `other_tuple_like_vector`. Each element of the value is converted to the
+  //! corresponding element type, e.g. to the element's unit. The constructor
+  //! is implicit when every element implicitly converts, explicit otherwise.
+  //!
+  //! @tparam Value Tuple-like type.
   //!
   //! @param value Tuple-like value presenting a `get<Index>` API over its
   //! elements.
-  constexpr explicit(false)
-      typed_matrix(const other_tuple_like_vector<typed_matrix> auto &value);
+  //
+  // Defined in the class: MSVC drops the value-dependent explicit specifier
+  // of a constructor template once its out-of-class definition is seen, see
+  // https://developercommunity.visualstudio.com/t/856958.
+  template <other_tuple_like_vector<typed_matrix> Value>
+  constexpr explicit(not tla::is_convertible_tuple_like<Value, typed_matrix>())
+      typed_matrix(const Value &value) {
+    tla::for_constexpr<rows * columns>([&](auto i) {
+      // Convert to the element type first, e.g. to the element's unit, so the
+      // caster only ever stores values of the element type. The caster is
+      // named directly, the `cast` object is declared after the class.
+      const element<i> converted(get<i>(value));
+      tla::write_element<columns>(
+          storage, element_caster<underlying, element<i>>{}(converted), i);
+    });
+  }
 
   //! @brief Read the singleton, one-element typed matrix element.
   //!
