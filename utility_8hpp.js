@@ -14,11 +14,11 @@ var utility_8hpp =
     [ "find_first_convertible_index", "utility_8hpp.xhtml#a28d8419fc35e153a8b037928ac0dcdf6", null ],
     [ "for_constexpr", "utility_8hpp.xhtml#ae001291878746fdd7db287616a067664", null ],
     [ "for_constexpr_detail", "utility_8hpp.xhtml#a7ddbf3e8193c90dc7ae78735063b0a0e", null ],
+    [ "is_convertible_typed_matrix", "utility_8hpp.xhtml#a19891acc4dc45bd42753c68d70251411", null ],
     [ "is_distinct_typed_matrix", "utility_8hpp.xhtml#a0f08ea7eb926c990cdcb66508f01466f", null ],
     [ "is_uniform_typed_matrix", "utility_8hpp.xhtml#a2238a99ab35d65098efb485ef3e05611", null ],
     [ "parse_digits", "utility_8hpp.xhtml#a00297c357886f0244dee013a5ea4a183", null ],
     [ "read_element", "utility_8hpp.xhtml#aeaac2b3147a168c0a834b924fb008364", null ],
-    [ "verify_convertible_elements", "utility_8hpp.xhtml#a8bf375922e0a95892ba40668aa0d5599", null ],
     [ "write_element", "utility_8hpp.xhtml#ad8b49524f3f1b03ddf34a0c5d6c10293", null ],
     [ "!requires", "utility_8hpp.xhtml#a78930c589db3e9281461c7040f16c208", null ],
     [ "rank", "utility_8hpp.xhtml#a5b8f7212f7676df392e49713c7d9b89a", null ]

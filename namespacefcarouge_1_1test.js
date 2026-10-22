@@ -530,6 +530,14 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{representation.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02representation_8cpp_03.xhtml", [
       [ "vector3d", "namespacefcarouge_1_1test_1_1anonymous__namespace_02representation_8cpp_03.xhtml#a0a0f2bfd05edbf706f65ec4f25c9d222", null ]
     ] ],
+    [ "anonymous_namespace{round_trip.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02round__trip_8cpp_03.xhtml", [
+      [ "flight_velocity_kmph", "namespacefcarouge_1_1test_1_1anonymous__namespace_02round__trip_8cpp_03.xhtml#a481ee22ee3b4598ae2f5ceafe90c7260", null ],
+      [ "flight_velocity_mps", "namespacefcarouge_1_1test_1_1anonymous__namespace_02round__trip_8cpp_03.xhtml#aa54fd7e3d3a1d046d756152678f24e2d", null ],
+      [ "swapped_velocities", "namespacefcarouge_1_1test_1_1anonymous__namespace_02round__trip_8cpp_03.xhtml#abd948208808694828f6ac8753f7acbe6", null ],
+      [ "vector3d", "namespacefcarouge_1_1test_1_1anonymous__namespace_02round__trip_8cpp_03.xhtml#a0f20e261f124c84d86e60323b50cc3a0", null ],
+      [ "velocities", "namespacefcarouge_1_1test_1_1anonymous__namespace_02round__trip_8cpp_03.xhtml#adfc4cbebd15c1d3ae9a2f285d0b5fd15", null ],
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02round__trip_8cpp_03.xhtml#a66114ee0c8d8b6076290b061e4745e79", null ]
+    ] ],
     [ "anonymous_namespace{row_au_std.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02row__au__std_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02row__au__std_8cpp_03.xhtml#a5b477f3eee11ac61805bc9f8814588e9", null ]
     ] ],

@@ -24,6 +24,7 @@ var concepts =
       [ "column_typed_matrix", "conceptfcarouge_1_1column__typed__matrix.xhtml", null ],
       [ "rank_typed_matrix", "conceptfcarouge_1_1rank__typed__matrix.xhtml", null ],
       [ "same_shape", "conceptfcarouge_1_1same__shape.xhtml", null ],
+      [ "convertible_typed_matrix", "conceptfcarouge_1_1convertible__typed__matrix.xhtml", null ],
       [ "other", "conceptfcarouge_1_1other.xhtml", null ],
       [ "other_tuple_like_vector", "conceptfcarouge_1_1other__tuple__like__vector.xhtml", null ],
       [ "index", "conceptfcarouge_1_1index.xhtml", null ],

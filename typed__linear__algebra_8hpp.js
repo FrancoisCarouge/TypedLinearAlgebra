@@ -9,6 +9,7 @@ var typed__linear__algebra_8hpp =
     [ "fcarouge::column_typed_matrix", "conceptfcarouge_1_1column__typed__matrix.xhtml", null ],
     [ "fcarouge::rank_typed_matrix", "conceptfcarouge_1_1rank__typed__matrix.xhtml", null ],
     [ "fcarouge::same_shape", "conceptfcarouge_1_1same__shape.xhtml", null ],
+    [ "fcarouge::convertible_typed_matrix", "conceptfcarouge_1_1convertible__typed__matrix.xhtml", null ],
     [ "fcarouge::other", "conceptfcarouge_1_1other.xhtml", null ],
     [ "fcarouge::other_tuple_like_vector", "conceptfcarouge_1_1other__tuple__like__vector.xhtml", null ],
     [ "fcarouge::index", "conceptfcarouge_1_1index.xhtml", null ],
