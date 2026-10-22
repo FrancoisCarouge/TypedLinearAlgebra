@@ -38,10 +38,8 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-// Two positions publicly inheriting a common, otherwise unrelated base: the
-// distinctness check does not see the shared base as a conversion target, so
-// the matrix stays distinct (see distinct_typed_matrix/mp_units_eigen.cpp's
-// known over-approximation), yet both positions convert to it.
+// Two positions of different element types publicly inheriting a common,
+// otherwise unrelated base: both positions convert to it.
 struct base {};
 struct first : base {};
 struct second : base {};
@@ -50,8 +48,8 @@ using row = std::tuple<std::identity>;
 using column = std::tuple<first, second>;
 
 //! @test The by-type `at` accessor rejects, at compile time, a request whose
-//! type more than one element converts to, even on an otherwise distinct
-//! matrix.
+//! type more than one element converts to, even when no two elements share a
+//! type.
 [[maybe_unused]] const auto test{[] -> int {
   typed_matrix<Eigen::Matrix<double, 1, 2>, row, column> x{};
 

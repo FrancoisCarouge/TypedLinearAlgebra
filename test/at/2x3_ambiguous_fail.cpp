@@ -1,4 +1,4 @@
-#[[ Typed Linear Algebra
+/* Typed Linear Algebra
 Version 0.4.0
 https://github.com/FrancoisCarouge/TypedLinearAlgebra
 
@@ -27,9 +27,42 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-build("distinct_typed_matrix" BACKENDS "eigexed")
-build("mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
-build("au_eigen" BACKENDS "au_eigen" "au_armadillo")
-build("chrono_eigen" BACKENDS "chrono_eigen" "chrono_armadillo")
+#include "fcarouge/linalg.hpp"
+
+#include <functional>
+#include <tuple>
+
+namespace fcarouge::test {
+namespace {
+using representation = double;
+
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+
+using mp_units::si::unit_symbols::kg;
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::s;
+
+using length = quantity<mp_units::isq::length[m]>;
+using mass = quantity<mp_units::isq::mass[kg]>;
+using time = quantity<mp_units::isq::time[s]>;
+using mass_time = decltype(1. * kg * s);
+
+using rows = std::tuple<length, mass>;
+using columns = std::tuple<std::identity, std::identity, time>;
+
+//! @test The by-type `at` accessor rejects, at compile time, a request whose
+//! type is the element type of several positions of a two-dimension matrix,
+//! even though other, unrepeated element types remain locatable.
+[[maybe_unused]] const auto test{[] -> int {
+  const matrix<representation, rows, columns> x;
+
+  // Intended: [[maybe_unused]] const auto value{x.at<mass_time>()};
+  [[maybe_unused]] const auto value{x.at<mass>()};
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

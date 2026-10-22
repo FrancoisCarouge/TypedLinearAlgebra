@@ -73,7 +73,6 @@ All notable changes to TypedLinearAlgebra are documented here. The format follow
 
 - CI established across multiple compilers and Windows, with CppCheck and CodeQL integrated.
 
-[Unreleased]: https://github.com/FrancoisCarouge/TypedLinearAlgebra/compare/0.3.0...HEAD
 [0.3.0]: https://github.com/FrancoisCarouge/TypedLinearAlgebra/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/FrancoisCarouge/TypedLinearAlgebra/compare/0.1.0...0.2.0
 [0.1.0]: https://github.com/FrancoisCarouge/TypedLinearAlgebra/releases/tag/0.1.0
