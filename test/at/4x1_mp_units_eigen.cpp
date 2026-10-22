@@ -31,15 +31,44 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
+#include <cassert>
+#include <concepts>
+
 namespace fcarouge::test {
 namespace {
-//! @test The by-type `at` accessor is unavailable on a non-distinct matrix:
-//! several positions share the element type, so a by-type lookup would be
-//! ambiguous. The `requires distinct_typed_matrix` clause removes the overload.
-[[maybe_unused]] const auto test{[] -> int {
-  matrix<double, 2, 2> m{{1., 2.}, {3., 4.}};
+using representation = double;
 
-  [[maybe_unused]] const auto value{m.at<double>()};
+template <auto QuantityReference>
+using quantity = mp_units::quantity<QuantityReference, representation>;
+
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::s;
+
+using position = quantity<mp_units::isq::length[m]>;
+using duration = quantity<mp_units::isq::duration[s]>;
+using state =
+    column_vector<representation, position, position, position, duration>;
+
+template <typename Matrix, typename Type>
+concept locatable = requires(Matrix value) { value.template at<Type>(); };
+
+//! @test The by-type `at` accessor resolves the one element of a non-uniform
+//! column vector whose type occurs once, while the type
+//! repeated across several positions is not locatable.
+[[maybe_unused]] const auto test{[] -> int {
+  state x{1. * m, 2. * m, 3. * m, 4. * s};
+
+  assert(x.at<duration>() == 4. * s);
+  assert(x.at<duration>() == x.at<3>());
+
+  static_assert(std::same_as<decltype(x.at<duration>()), decltype(x.at<3>())>);
+  static_assert(not uniform_typed_matrix<state>);
+  static_assert(locatable<state, duration>);
+  static_assert(not locatable<state, position>);
+
+  x.at<3>(9. * s);
+
+  assert(x.at<duration>() == 9. * s);
 
   return 0;
 }()};

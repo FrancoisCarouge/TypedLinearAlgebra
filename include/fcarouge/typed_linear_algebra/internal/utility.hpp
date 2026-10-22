@@ -472,10 +472,9 @@ using tuple_typed_matrix = typename tuple_typed_matrix_t<Type>::type;
 //! convertible to `To`, or `std::tuple_size_v<Tuple>` when none is.
 //!
 //! @details The direction is element-to-request: a position matches when its
-//! type implicitly converts to `To`, mirroring `element_at` and the
-//! `have_common_conversion_target` relation. Row-major, like
-//! `tuple_typed_matrix`. Use `count_convertible_indexes` to detect an ambiguous
-//! request before trusting this position.
+//! type implicitly converts to `To`. Row-major, like `tuple_typed_matrix`. Use
+//! `count_convertible_indexes` to detect an ambiguous request before trusting
+//! this position.
 template <typename To, typename Tuple>
 constexpr auto find_first_convertible_index() -> std::size_t {
   constexpr std::size_t size{std::tuple_size_v<Tuple>};
@@ -511,6 +510,20 @@ constexpr auto count_convertible_indexes() -> std::size_t {
 
   return counter(std::make_index_sequence<std::tuple_size_v<Tuple>>{});
 }
+
+//! @brief Concept of a typed matrix in which exactly one element type is
+//! implicitly convertible to `Type`.
+//!
+//! @details The exact, per-request precondition of a by-type lookup: the
+//! request names a single position, whatever the other positions' types. The
+//! direction is element-to-request, as in `count_convertible_indexes`.
+//!
+//! @tparam TypedMatrix The typed matrix type to look into.
+//! @tparam Type The requested type the element is looked up by.
+template <typename TypedMatrix, typename Type>
+concept locatable_by =
+    same_as_typed_matrix<TypedMatrix> and
+    count_convertible_indexes<Type, tuple_typed_matrix<TypedMatrix>>() == 1;
 
 template <typename Type> constexpr auto is_uniform_typed_matrix() -> bool {
   using matrix = std::remove_cvref_t<Type>;
@@ -661,60 +674,6 @@ template <char... Digits> constexpr auto parse_digits() -> std::size_t {
 
   return number;
 }
-
-//! @brief Whether no two distinct element positions of the typed matrix share
-//! an implicit conversion target.
-//!
-//! @details Visits every ordered pair of row/column positions, skipping a
-//! position paired with itself, and requires that the two element types do not
-//! `have_common_conversion_target`. Rank-oblivious: uses `element_at` so it
-//! applies to singleton, vector, and two-dimension typed matrices alike.
-//!
-//! Because `have_common_conversion_target` is a decidable over-approximation,
-//! this is a necessary but not fully sufficient condition for an unambiguous
-//! by-type lookup.
-//!
-//! @tparam Type The typed matrix type to inspect.
-//!
-//! @todo Evaluate compile-time performance. Instantiation, evaluation, and
-//! compilation of this function may be expensive. We may want to use a pure
-//! concept approach. The ordered-pair traversal also tests each unordered
-//! pair twice.
-template <typename Type> constexpr auto is_distinct_typed_matrix() -> bool {
-  using matrix = std::remove_cvref_t<Type>;
-  bool result{true};
-
-  for_constexpr<matrix::rows>([&result](auto i) {
-    for_constexpr<matrix::columns>([&result, &i](auto j) {
-      for_constexpr<matrix::rows>([&result, &i, &j](auto k) {
-        for_constexpr<matrix::columns>([&result, &i, &j, &k](auto l) {
-          if constexpr (i != k || j != l) {
-            using lhs = element_at<matrix, i, j>;
-            using rhs = element_at<matrix, k, l>;
-
-            result &= not(std::is_convertible_v<lhs, rhs> or
-                          std::is_convertible_v<rhs, lhs> or
-                          requires { typename std::common_type_t<lhs, rhs>; });
-          }
-        });
-      });
-    });
-  });
-
-  return result;
-}
-
-//! @brief Concept of a typed matrix whose element positions share no implicit
-//! conversion target.
-//!
-//! @details Satisfied when `Type` is a typed matrix and no type is an implicit
-//! conversion target of the element types at two different positions, so an
-//! element can be picked out by type. See the public
-//! `fcarouge::distinct_typed_matrix` for the rationale and the relationship
-//! with `uniform_typed_matrix`.
-template <typename Type>
-concept distinct_typed_matrix =
-    same_as_typed_matrix<Type> and is_distinct_typed_matrix<Type>();
 } // namespace fcarouge::typed_linear_algebra::internal
 
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_INTERNAL_UTILITY_HPP
