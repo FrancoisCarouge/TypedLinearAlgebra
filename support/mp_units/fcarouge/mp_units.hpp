@@ -43,7 +43,6 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <mp-units/framework/customization_points.h>
 #include <mp-units/framework/quantity.h>
-#include <mp-units/framework/quantity_cast.h>
 #include <mp-units/framework/quantity_point.h>
 #include <mp-units/framework/vector_components.h>
 #include <mp-units/math.h>
@@ -52,11 +51,12 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge {
 // Teach the typed linear algebra library how to convert underlying scalar types
-// to and from mp-units' types. Support castable quantity specifications.
+// to and from mp-units' types. A quantity of another unit or quantity
+// specification implicitly converts to the element's quantity type first, if
+// at all, so the stored numerical value is always in the element's unit.
 template <typename To, mp_units::Quantity From>
 struct element_caster<To, From> {
-  [[nodiscard]] static constexpr auto operator()(mp_units::Quantity auto value)
-      -> To {
+  [[nodiscard]] static constexpr auto operator()(From value) -> To {
     using representation = typename std::remove_cvref_t<From>::rep;
 
     static_assert(std::same_as<representation, std::remove_cvref_t<To>>,
@@ -64,11 +64,7 @@ struct element_caster<To, From> {
                   "quantity representation type to guarantee the conversion is "
                   "explicitly decided by the end-user.");
 
-    constexpr auto reference{std::remove_cvref_t<From>::reference};
-    constexpr auto specification{get_quantity_spec(reference)};
-    auto specified{mp_units::quantity_cast<specification>(value)};
-
-    return specified.numerical_value_in(specified.unit);
+    return value.numerical_value_in(std::remove_cvref_t<From>::unit);
   }
 };
 
