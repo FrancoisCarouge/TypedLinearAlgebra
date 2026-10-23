@@ -80,3 +80,8 @@ Options for the owner to decide, not implemented. Finding numbers refer to `BUG.
 - A. `block<Row, Column, Rows, Columns>(matrix)` returning a typed copy whose element types are the selected ones.
 - B. The same as a typed view over the backend storage, writable, which would also give in-place updates of a block.
 - C. `select<indexes...>(vector)` for non-contiguous selections, such as the five non-zero elements of an EKF3 observation Jacobian.
+
+**Code generation (PX4 EKF2).** PX4's EKF2 and ArduPilot's EKF3 derivations generate their Jacobians, gains and covariance predictions with SymForce or SymPy as plain arrays of floats; only the hand-written code around them can be typed, and wrapping the generated outputs in typed matrices restates the units the derivations assume without checking them.
+
+- A. A SymForce code generation backend emitting TypedLinearAlgebra types: each symbol declared with its unit, the generated functions taking and returning typed vectors and matrices, so that the derivation itself is checked when compiled.
+- B. Typed wrappers generated from a unit table beside the derivation, checked against the generated function's signature: less complete, no change to SymForce.
