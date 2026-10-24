@@ -648,6 +648,57 @@ concept tuple_like =
 }
 (std::make_index_sequence<Size>());
 
+// The element-wise folds are partially specialized variable templates rather
+// than immediately invoked templated lambdas: MSVC evaluating such a lambda
+// within a constraint reports control reaching the end of its constexpr call
+// operator, failing the constraint as not a constant expression.
+template <typename Value, typename Matrix, typename Indexes>
+inline constexpr bool is_convertible_tuple_like_v{false};
+
+template <typename Value, typename Matrix, std::size_t... Indexes>
+inline constexpr bool is_convertible_tuple_like_v<
+    Value, Matrix, std::index_sequence<Indexes...>>{(
+    std::is_convertible_v<decltype(get<Indexes>(std::declval<const Value &>())),
+                          element<Matrix, Indexes>> and
+    ...)};
+
+template <typename Value, typename Matrix, typename Indexes>
+inline constexpr bool is_constructible_tuple_like_v{false};
+
+template <typename Value, typename Matrix, std::size_t... Indexes>
+inline constexpr bool is_constructible_tuple_like_v<
+    Value, Matrix, std::index_sequence<Indexes...>>{
+    (std::is_constructible_v<element<Matrix, Indexes>,
+                             decltype(get<Indexes>(
+                                 std::declval<const Value &>()))> and
+     ...)};
+
+//! @brief Whether each element of a tuple-like value implicitly converts to
+//! the corresponding element type of a one-dimension typed matrix.
+//!
+//! @tparam Value The tuple-like type, of the typed matrix's size.
+//! @tparam TypedMatrix The destination typed matrix type.
+template <typename Value, typename TypedMatrix>
+constexpr auto is_convertible_tuple_like() -> bool {
+  using matrix = std::remove_cvref_t<TypedMatrix>;
+
+  return is_convertible_tuple_like_v<
+      Value, matrix, std::make_index_sequence<matrix::rows * matrix::columns>>;
+}
+
+//! @brief Whether each element of a tuple-like value explicitly converts to
+//! the corresponding element type of a one-dimension typed matrix.
+//!
+//! @tparam Value The tuple-like type, of the typed matrix's size.
+//! @tparam TypedMatrix The destination typed matrix type.
+template <typename Value, typename TypedMatrix>
+constexpr auto is_constructible_tuple_like() -> bool {
+  using matrix = std::remove_cvref_t<TypedMatrix>;
+
+  return is_constructible_tuple_like_v<
+      Value, matrix, std::make_index_sequence<matrix::rows * matrix::columns>>;
+}
+
 //! @brief A tuple-like value convertible to the given one-dimension typed
 //! matrix, but neither that typed matrix nor already convertible to its
 //! underlying matrix.
@@ -656,14 +707,18 @@ concept tuple_like =
 //! convert-constructor from the copy/move and raw-matrix constructors: both
 //! `Value` being another typed matrix and `Value` being convertible to
 //! `TypedMatrix`'s underlying matrix are excluded, else those constructors
-//! would compete with this one. See `tuple_like`.
+//! would compete with this one. Each element of the value must at least
+//! explicitly convert to the corresponding element type, e.g. a quantity of
+//! the same kind in any unit, otherwise the value is not convertible. See
+//! `tuple_like`.
 template <typename Value, typename TypedMatrix>
 concept other_tuple_like_vector =
     rank_typed_matrix<TypedMatrix, 1> and (not same_as_typed_matrix<Value>) and
     (not std::convertible_to<
         Value, typename std::remove_cvref_t<TypedMatrix>::matrix>) and
     tuple_like<Value, std::remove_cvref_t<TypedMatrix>::rows *
-                          std::remove_cvref_t<TypedMatrix>::columns>;
+                          std::remove_cvref_t<TypedMatrix>::columns> and
+    is_constructible_tuple_like<Value, TypedMatrix>();
 
 template <char... Digits> constexpr auto parse_digits() -> std::size_t {
   static_assert((('0' <= Digits && Digits <= '9') && ...),

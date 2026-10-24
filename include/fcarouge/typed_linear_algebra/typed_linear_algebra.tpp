@@ -185,9 +185,15 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     std::initializer_list<std::initializer_list<Type>> row_list)
   requires uniform_typed_matrix<typed_matrix>
 {
+  using element_type = tla::element_at<typed_matrix, 0, 0>;
+
   for (std::size_t i{0}; const auto &row : row_list) {
     for (std::size_t j{0}; const auto &value : row) {
-      tla::write_element<columns>(storage, cast<underlying, Type>(value), i, j);
+      // Convert to the element type first, e.g. to the element's unit, so the
+      // caster only ever stores values of the element type.
+      const element_type converted = value;
+      tla::write_element<columns>(
+          storage, cast<underlying, element_type>(converted), i, j);
       ++j;
     }
     ++i;
@@ -195,32 +201,18 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const auto &first_value, const auto &second_value, const auto &...values)
-  requires rank_typed_matrix<typed_matrix, 1>
-{
-  //! @todo Move the assert as a require clause when the compilers support it.
-  static_assert(columns * rows == 2 + sizeof...(values),
-                "The count of parameters must match the size of the vector.");
-  std::tuple value_pack{first_value, second_value, values...};
-  tla::for_constexpr<typed_matrix::rows * typed_matrix::columns>(
-      [this, &value_pack](auto position) {
-        auto value{std::get<position>(value_pack)};
-        using type = std::remove_cvref_t<decltype(value)>;
-        static_assert(
-            std::is_assignable_v<element<std::size_t{position}> &, type>,
-            "The parameter type is not compatible with the element type.");
-        tla::write_element<columns>(storage, cast<underlying, type>(value),
-                                    position);
-      });
-}
-
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    const other_tuple_like_vector<typed_matrix> auto &value) {
+template <
+    other_tuple_like_vector<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
+        Value>
+constexpr void
+typed_matrix<Matrix, RowIndexes, ColumnIndexes>::write_tuple_like(
+    const Value &value) {
   tla::for_constexpr<rows * columns>([&](auto i) {
+    // Convert to the element type first, e.g. to the element's unit, so the
+    // caster only ever stores values of the element type.
+    const element<i> converted(get<i>(value));
     tla::write_element<columns>(storage,
-                                cast<underlying, element<i>>(get<i>(value)), i);
+                                cast<underlying, element<i>>(converted), i);
   });
 }
 
