@@ -38,6 +38,8 @@ The `std::linalg` operations come first, then the others by decreasing usage, me
 - `typed_matrix(const other_tuple_like_vector<typed_matrix> auto&)` calls `cast<underlying, element<i>>(get<i>(value))` on the *source* element, without first converting it to `element<i>`. The mp-units `element_caster<To, From>` (`support/mp_units/fcarouge/mp_units.hpp`) then returns `quantity_cast<spec>(value).numerical_value_in(specified.unit)`, the number in the *source* unit, while `From` (the element type) declares another unit.
 - `typed_matrix(const same_as_typed_matrix auto&)`, the `&&` overload, and the matching assignments are constrained only on "is a typed matrix". Element compatibility is checked inside the body, by `verify_convertible_elements`.
 
+**Status, 2026-10-23 (`e5d01befb`).** The convertibility answers are fixed; the dropped unit is not: a `velocities` of km/h elements built from a `std::tuple` of m/s quantities `{10, -20, 5}` reads `[[10 km/h], [-20 km/h], [5 km/h]]`.
+
 **Impact.** Values are silently reinterpreted in the wrong unit, and any library that asks whether a typed matrix converts gets the wrong answer. In particular, mp-units' new composition is excluded for quantities represented by typed matrices.
 
 **Fix.**
@@ -45,14 +47,14 @@ The `std::linalg` operations come first, then the others by decreasing usage, me
 - [ ] In the tuple-like constructor, convert each element to its declared type first: `cast<underlying, element<i>>(element<i>{get<i>(value)})`. This gets the unit conversion, and mp-units' truncation and kind checks, for free.
 - [ ] In `element_caster<To, mp_units::Quantity From>`, read the number in `From`'s unit, not the argument's: `.numerical_value_in(get_unit(reference))`.
 - [ ] Check whether the `quantity_cast<specification>` there lets a wrong axis through, e.g. a `lateral_velocity` element into a `forward_velocity` slot. If it does, use implicit conversion to `From` instead of a forcing cast.
-- [ ] Move the element-convertibility check of the converting constructors and assignments into their constraints, instead of `verify_convertible_elements` in the body.
+- [x] Move the element-convertibility check of the converting constructors and assignments into their constraints, instead of `verify_convertible_elements` in the body (`27c8e2bfb`, `convertible_typed_matrix`).
 - [ ] Constrain `other_tuple_like_vector` the same way, on element-wise implicit convertibility, so an incompatible tuple is rejected by overload resolution instead of being silently reinterpreted.
 
 **Tests to add.**
 
 - [ ] Building from a quantity in a different unit (m/s into km/h elements), with the values checked.
 - [ ] A tuple whose elements have mismatched units.
-- [ ] `static_assert(!std::convertible_to<velocities, vector3d>)`.
+- [x] `static_assert(!std::convertible_to<velocities, vector3d>)` (`27c8e2bfb`, `test/mp_units/round_trip.cpp`).
 
 ## Named values
 
@@ -86,7 +88,7 @@ Options for the owner to decide, not implemented. Finding numbers refer to `BUG.
 - A. A SymForce code generation backend emitting TypedLinearAlgebra types: each symbol declared with its unit, the generated functions taking and returning typed vectors and matrices, so that the derivation itself is checked when compiled.
 - B. Typed wrappers generated from a unit table beside the derivation, checked against the generated function's signature: less complete, no change to SymForce.
 
-**Storage access of a temporary (Kalman F46).** `data(this auto && self)` returns `std::forward_like<decltype(self)>(self.storage)`: an rvalue reference into an rvalue typed matrix, so `const auto & m = make_matrix().data();` binds to storage that dies at the end of the statement, without a diagnostic from g++ 15 `-Wall -Wextra` (MRPT's tracking comparison read a zero state through `filter.x().data()`).
+**Storage access of a temporary.** Kalman's getters no longer return copies of an lvalue filter's characteristics (`f8d89c95c`), which removes the common trigger, `filter.x().data()`; a temporary typed matrix keeps the hazard. `data(this auto && self)` returns `std::forward_like<decltype(self)>(self.storage)`: an rvalue reference into an rvalue typed matrix, so `const auto & m = make_matrix().data();` binds to storage that dies at the end of the statement, without a diagnostic from g++ 15 `-Wall -Wextra` (MRPT's tracking comparison read a zero state through `filter.x().data()`).
 
 - A. A value for an rvalue matrix, `return std::move(self.storage);` into a `Matrix` return type for rvalue `self`, references otherwise: lifetime extension then applies to the bound result. A copy or move of the storage where a reference was returned.
 - B. Keep it, as `std::optional::value() &&` does, and document the hazard.
