@@ -20,5 +20,6 @@ var searchData=
   ['subscript_5f3x1_2ecpp_17',['subscript_3x1.cpp',['../subscript__3x1_8cpp.xhtml',1,'']]],
   ['subscript_5f3x1_5fconst_2ecpp_18',['subscript_3x1_const.cpp',['../subscript__3x1__const_8cpp.xhtml',1,'']]],
   ['subscript_5f3x3_2ecpp_19',['subscript_3x3.cpp',['../subscript__3x3_8cpp.xhtml',1,'']]],
-  ['subscript_5f3x3_5fconst_2ecpp_20',['subscript_3x3_const.cpp',['../subscript__3x3__const_8cpp.xhtml',1,'']]]
+  ['subscript_5f3x3_5fconst_2ecpp_20',['subscript_3x3_const.cpp',['../subscript__3x3__const_8cpp.xhtml',1,'']]],
+  ['subtraction_5f2x2_2ecpp_21',['subtraction_2x2.cpp',['../subtraction__2x2_8cpp.xhtml',1,'']]]
 ];

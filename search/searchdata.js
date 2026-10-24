@@ -7,8 +7,9 @@ var indexSectionsWithContent =
   4: "abcdefgimnopqrtw~",
   5: "!bcefhiklmoprstu",
   6: "abcdefhilmnopqrstuvz",
-  7: "abcfilmoprstu",
-  8: "f"
+  7: "o",
+  8: "abcfilmoprstu",
+  9: "f"
 };
 
 var indexSectionNames =
@@ -20,8 +21,9 @@ var indexSectionNames =
   4: "functions",
   5: "variables",
   6: "typedefs",
-  7: "pages",
-  8: "concepts"
+  7: "related",
+  8: "pages",
+  9: "concepts"
 };
 
 var indexSectionLabels =
@@ -33,7 +35,8 @@ var indexSectionLabels =
   4: "Functions",
   5: "Variables",
   6: "Typedefs",
-  7: "Pages",
-  8: "Concepts"
+  7: "Friends",
+  8: "Pages",
+  9: "Concepts"
 };
 

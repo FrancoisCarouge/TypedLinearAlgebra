@@ -3,6 +3,7 @@ var namespacefcarouge =
     [ "armadillo", "namespacefcarouge_1_1armadillo.xhtml", "namespacefcarouge_1_1armadillo" ],
     [ "benchmark", "namespacefcarouge_1_1benchmark.xhtml", "namespacefcarouge_1_1benchmark" ],
     [ "eigen", "namespacefcarouge_1_1eigen.xhtml", "namespacefcarouge_1_1eigen" ],
+    [ "freestanding", "namespacefcarouge_1_1freestanding.xhtml", "namespacefcarouge_1_1freestanding" ],
     [ "literals", "namespacefcarouge_1_1literals.xhtml", [
       [ "operator\"\"_i", "namespacefcarouge_1_1literals.xhtml#a96bdab646ac7be1505482cf553b9650b", null ]
     ] ],

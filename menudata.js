@@ -128,7 +128,8 @@ var menudata={children:[
 {text:"t",url:"functions_func.xhtml#index_t"},
 {text:"~",url:"functions_func.xhtml#index__7E"}]},
 {text:"Variables",url:"functions_vars.xhtml"},
-{text:"Typedefs",url:"functions_type.xhtml"}]}]},
+{text:"Typedefs",url:"functions_type.xhtml"},
+{text:"Related Symbols",url:"functions_rela.xhtml"}]}]},
 {text:"Files",url:"files.xhtml",children:[
 {text:"File List",url:"files.xhtml"},
 {text:"File Members",url:"globals.xhtml",children:[

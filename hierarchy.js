@@ -25,6 +25,7 @@ var hierarchy =
     [ "fcarouge::benchmark::anonymous_namespace{typed_mdspan_tupled_product.cpp}::lookup< Tuple, Indices >", "structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_1lookup.xhtml", null ],
     [ "fcarouge::benchmark::anonymous_namespace{mdspan_tuple_product.cpp}::lookup< Tuple, std::index_sequence< Indices... > >", "structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1lookup_3b299f5c7aa92788bf7430e8496a9663f.xhtml", null ],
     [ "fcarouge::benchmark::anonymous_namespace{typed_mdspan_tupled_product.cpp}::lookup< Tuple, std::index_sequence< Indices... > >", "structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_15386429b33ff9e937e5c930e789c80a9.xhtml", null ],
+    [ "fcarouge::freestanding::matrix< Type, Row, Column >", "structfcarouge_1_1freestanding_1_1matrix.xhtml", null ],
     [ "fcarouge::multiplies< Type, Magnitude >", "structfcarouge_1_1multiplies_3_01_type_00_01_magnitude_01_4.xhtml", null ],
     [ "fcarouge::not_realtime", "classfcarouge_1_1not__realtime.xhtml", null ],
     [ "mp_units::representation_canonical_type< fcarouge::typed_matrix< Matrix, RowIndexes, ColumnIndexes > >", "structmp__units_1_1representation__canonical__type_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_88cb568bfd22172f87f75426ff9b1681.xhtml", null ],

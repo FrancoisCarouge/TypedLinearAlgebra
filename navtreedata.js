@@ -107,7 +107,8 @@ var NAVTREE =
         [ "All", "functions.xhtml", null ],
         [ "Functions", "functions_func.xhtml", null ],
         [ "Variables", "functions_vars.xhtml", null ],
-        [ "Typedefs", "functions_type.xhtml", null ]
+        [ "Typedefs", "functions_type.xhtml", null ],
+        [ "Related Symbols", "functions_rela.xhtml", null ]
       ] ]
     ] ],
     [ "Files", "files.xhtml", [
@@ -125,16 +126,16 @@ var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
 "addition_21x2__nholthaus__eigen_8cpp_source.xhtml",
-"classfcarouge_1_1typed__matrix.xhtml#a9904db59b08b0dfa24fe08ef574039b3",
-"eigen_2fcarouge_2linalg_8hpp_source.xhtml",
-"magnitude_23x1__mp__units__eigen_8cpp_source.xhtml",
-"minus_21x2__eigen_8cpp.xhtml",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#a616147988d0965e7c76da2e488a5e771",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_022x3__ambiguous__fail_8cpp_03.xhtml#a0659174b81a01793d93d21d335b9babe",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02row__chrono__std_8cpp_03.xhtml",
-"row__chrono__std_8cpp.xhtml",
-"structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4.xhtml#ae396becfe457af8289d5ec8ec6c39885",
-"typed__eigen__product_8cpp.xhtml#ae66f6b31b5ad750f1fe042a706a4e3d4"
+"classfcarouge_1_1typed__matrix.xhtml#a9306bc4bf71f7ab43cda2f24ede44e91",
+"dot_22x2__fail_8cpp.xhtml",
+"magnitude_22x1__au__std__fail_8cpp_source.xhtml",
+"mdspan__tuple__product_8cpp.xhtml#a840a526a76b11bc39dc68b73a472c4f5",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__armadillo_8cpp_03.xhtml#a325b5207ad1f2b919295206f7852f8b3",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_022x2__eigen_8cpp_03.xhtml#adbce1b057a439bd973fe72717239657a",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02nholthaus__std_8cpp_03.xhtml#a5e4ee80435ed99eec9c3a83c15dcfdf4",
+"rank__mismatch__fail_8cpp_source.xhtml",
+"structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml",
+"test_2format_2nholthaus__eigen_8cpp_source.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

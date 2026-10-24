@@ -13,6 +13,9 @@ var annotated_dup =
           [ "lookup< Tuple, std::index_sequence< Indices... > >", "structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_15386429b33ff9e937e5c930e789c80a9.xhtml", "structfcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03_1_15386429b33ff9e937e5c930e789c80a9" ]
         ] ]
       ] ],
+      [ "freestanding", "namespacefcarouge_1_1freestanding.xhtml", [
+        [ "matrix", "structfcarouge_1_1freestanding_1_1matrix.xhtml", "structfcarouge_1_1freestanding_1_1matrix" ]
+      ] ],
       [ "test", "namespacefcarouge_1_1test.xhtml", [
         [ "anonymous_namespace{1x2_ambiguous_fail.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03.xhtml", [
           [ "base", "structfcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03_1_1base.xhtml", null ],
