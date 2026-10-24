@@ -96,6 +96,9 @@ function(build NAME)
       COMMAND
         ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target
         typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_build_driver)
+    set_tests_properties(
+      typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_pass
+      PROPERTIES RESOURCE_LOCK "typed_linear_algebra_build_tree")
   endforeach()
 endfunction(build)
 
@@ -129,7 +132,7 @@ function(fail NAME)
         typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_driver)
     set_tests_properties(
       typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}
-      PROPERTIES WILL_FAIL TRUE)
+      PROPERTIES RESOURCE_LOCK "typed_linear_algebra_build_tree" WILL_FAIL TRUE)
   endforeach()
 endfunction(fail)
 
