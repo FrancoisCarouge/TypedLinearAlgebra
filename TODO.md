@@ -85,3 +85,8 @@ Options for the owner to decide, not implemented. Finding numbers refer to `BUG.
 
 - A. A SymForce code generation backend emitting TypedLinearAlgebra types: each symbol declared with its unit, the generated functions taking and returning typed vectors and matrices, so that the derivation itself is checked when compiled.
 - B. Typed wrappers generated from a unit table beside the derivation, checked against the generated function's signature: less complete, no change to SymForce.
+
+**Storage access of a temporary (Kalman F46).** `data(this auto && self)` returns `std::forward_like<decltype(self)>(self.storage)`: an rvalue reference into an rvalue typed matrix, so `const auto & m = make_matrix().data();` binds to storage that dies at the end of the statement, without a diagnostic from g++ 15 `-Wall -Wextra` (MRPT's tracking comparison read a zero state through `filter.x().data()`).
+
+- A. A value for an rvalue matrix, `return std::move(self.storage);` into a `Matrix` return type for rvalue `self`, references otherwise: lifetime extension then applies to the bound result. A copy or move of the storage where a reference was returned.
+- B. Keep it, as `std::optional::value() &&` does, and document the hazard.
