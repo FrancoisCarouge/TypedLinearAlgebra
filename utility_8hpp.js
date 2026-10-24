@@ -14,11 +14,15 @@ var utility_8hpp =
     [ "find_first_convertible_index", "utility_8hpp.xhtml#a28d8419fc35e153a8b037928ac0dcdf6", null ],
     [ "for_constexpr", "utility_8hpp.xhtml#ae001291878746fdd7db287616a067664", null ],
     [ "for_constexpr_detail", "utility_8hpp.xhtml#a7ddbf3e8193c90dc7ae78735063b0a0e", null ],
+    [ "is_constructible_tuple_like", "utility_8hpp.xhtml#a57e2eefcce5d89a6ed6b703e1f651096", null ],
+    [ "is_convertible_tuple_like", "utility_8hpp.xhtml#ac9dee384412cd40e94627a95061691a9", null ],
     [ "is_convertible_typed_matrix", "utility_8hpp.xhtml#a19891acc4dc45bd42753c68d70251411", null ],
     [ "is_uniform_typed_matrix", "utility_8hpp.xhtml#a2238a99ab35d65098efb485ef3e05611", null ],
     [ "parse_digits", "utility_8hpp.xhtml#a00297c357886f0244dee013a5ea4a183", null ],
     [ "read_element", "utility_8hpp.xhtml#aeaac2b3147a168c0a834b924fb008364", null ],
     [ "write_element", "utility_8hpp.xhtml#ad8b49524f3f1b03ddf34a0c5d6c10293", null ],
     [ "!requires", "utility_8hpp.xhtml#a78930c589db3e9281461c7040f16c208", null ],
+    [ "is_constructible_tuple_like_v", "utility_8hpp.xhtml#afc5ec77bcdbc3ccad4b052e5f1e7b475", null ],
+    [ "is_convertible_tuple_like_v", "utility_8hpp.xhtml#a87e17afa739b457ae25fb330173e3214", null ],
     [ "rank", "utility_8hpp.xhtml#a5b8f7212f7676df392e49713c7d9b89a", null ]
 ];

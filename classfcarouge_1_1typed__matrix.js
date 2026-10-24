@@ -15,9 +15,8 @@ var classfcarouge_1_1typed__matrix =
     [ "typed_matrix", "classfcarouge_1_1typed__matrix.xhtml#a5cbd6955cb6a2fc3b563e052a7323296", null ],
     [ "typed_matrix", "classfcarouge_1_1typed__matrix.xhtml#a891853420126c9f629cb99a08a452168", null ],
     [ "typed_matrix", "classfcarouge_1_1typed__matrix.xhtml#a11e2205f0d772bd9a39d1fe3b520fa7b", null ],
-    [ "typed_matrix", "classfcarouge_1_1typed__matrix.xhtml#a3f2e3dfd7acdc40ecca2b7b04da9d77c", null ],
-    [ "typed_matrix", "classfcarouge_1_1typed__matrix.xhtml#ae69f8cb59e41c7b9c18b73c1c503dc12", null ],
-    [ "typed_matrix", "classfcarouge_1_1typed__matrix.xhtml#a911c8d7db108abddf2b510b502a39c97", null ],
+    [ "typed_matrix", "classfcarouge_1_1typed__matrix.xhtml#ae014b983605e224a4aaca58940f2cb52", null ],
+    [ "typed_matrix", "classfcarouge_1_1typed__matrix.xhtml#a61e17e74f5cb17bfd0640a26dad4c265", null ],
     [ "at", "classfcarouge_1_1typed__matrix.xhtml#afc61b67297edcfc7d7130945422e281d", null ],
     [ "at", "classfcarouge_1_1typed__matrix.xhtml#a9f0415b7e8fccdbce89d2f3e476ab4f5", null ],
     [ "at", "classfcarouge_1_1typed__matrix.xhtml#a4f021cdbb68e3e5bbe51c5962b312508", null ],
@@ -35,5 +34,9 @@ var classfcarouge_1_1typed__matrix =
     [ "columns", "classfcarouge_1_1typed__matrix.xhtml#ac58c4338ccd368b56b8dcf8d5c189769", null ],
     [ "rank", "classfcarouge_1_1typed__matrix.xhtml#a187f5727fc775dc07aff603ee5f66c30", null ],
     [ "rows", "classfcarouge_1_1typed__matrix.xhtml#afd5534246d7ed85750e1cf58e2b85f5b", null ],
-    [ "storage", "classfcarouge_1_1typed__matrix.xhtml#a4329fed7250ec71b8b0312accb3ddff6", null ]
+    [ "second_value", "classfcarouge_1_1typed__matrix.xhtml#ad141a90cb2a922aa08f840f7a0a863fc", null ],
+    [ "second_value", "classfcarouge_1_1typed__matrix.xhtml#a0950a08ca40ab315141910fa55d01c5e", null ],
+    [ "storage", "classfcarouge_1_1typed__matrix.xhtml#a4329fed7250ec71b8b0312accb3ddff6", null ],
+    [ "values", "classfcarouge_1_1typed__matrix.xhtml#a7b479e434ccb36e8f13c7baa4bffd28e", null ],
+    [ "values", "classfcarouge_1_1typed__matrix.xhtml#aa8fa6e62076ce73228ee6caa855af402", null ]
 ];

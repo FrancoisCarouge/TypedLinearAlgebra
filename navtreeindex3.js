@@ -1,5 +1,11 @@
 var NAVTREEINDEX3 =
 {
+"dot_21x2__nholthaus__eigen_8cpp_source.xhtml":[17,0,6,11,7],
+"dot_21x2__nholthaus__std_8cpp.xhtml":[17,0,6,11,8],
+"dot_21x2__nholthaus__std_8cpp_source.xhtml":[17,0,6,11,8],
+"dot_22x1__au__std__fail_8cpp.xhtml":[17,0,6,11,9],
+"dot_22x1__au__std__fail_8cpp.xhtml#a01dea07200aea553173a6b6b3553f763":[17,0,6,11,9,0],
+"dot_22x1__au__std__fail_8cpp_source.xhtml":[17,0,6,11,9],
 "dot_22x2__fail_8cpp.xhtml":[17,0,6,11,10],
 "dot_22x2__fail_8cpp.xhtml#a5093dc1ffefe913dc9a34fdfdec73e75":[17,0,6,11,10,0],
 "dot_22x2__fail_8cpp_source.xhtml":[17,0,6,11,10],
@@ -177,6 +183,7 @@ var NAVTREEINDEX3 =
 "globals_q.xhtml":[17,1,0,10],
 "globals_s.xhtml":[17,1,0,11],
 "globals_u.xhtml":[17,1,0,12],
+"globals_v.xhtml":[17,1,0,13],
 "globals_vars.xhtml":[17,1,2],
 "globals_vars.xhtml":[17,1,2,0],
 "globals_vars_c.xhtml":[17,1,2,1],
@@ -190,6 +197,7 @@ var NAVTREEINDEX3 =
 "globals_vars_p.xhtml":[17,1,2,9],
 "globals_vars_s.xhtml":[17,1,2,10],
 "globals_vars_u.xhtml":[17,1,2,11],
+"globals_vars_v.xhtml":[17,1,2,12],
 "hierarchy.xhtml":[16,2],
 "in__place__mp__units__std_8cpp.xhtml":[17,0,6,22,6],
 "in__place__mp__units__std_8cpp.xhtml#aa28153b6664f1dcc4e0e0878ef21c3d5":[17,0,6,22,6,0],
@@ -241,13 +249,5 @@ var NAVTREEINDEX3 =
 "magnitude_21x2__au__std_8cpp_source.xhtml":[17,0,6,17,1],
 "magnitude_21x2__eigen_8cpp.xhtml":[17,0,6,17,2],
 "magnitude_21x2__eigen_8cpp_source.xhtml":[17,0,6,17,2],
-"magnitude_21x2__mp__units__eigen_8cpp.xhtml":[17,0,6,17,3],
-"magnitude_21x2__mp__units__eigen_8cpp_source.xhtml":[17,0,6,17,3],
-"magnitude_21x2__mp__units__std_8cpp.xhtml":[17,0,6,17,4],
-"magnitude_21x2__mp__units__std_8cpp_source.xhtml":[17,0,6,17,4],
-"magnitude_21x2__nholthaus__eigen_8cpp.xhtml":[17,0,6,17,5],
-"magnitude_21x2__nholthaus__eigen_8cpp_source.xhtml":[17,0,6,17,5],
-"magnitude_22x1__au__std_8cpp.xhtml":[17,0,6,17,6],
-"magnitude_22x1__au__std_8cpp_source.xhtml":[17,0,6,17,6],
-"magnitude_22x1__au__std__fail_8cpp.xhtml":[17,0,6,17,7]
+"magnitude_21x2__mp__units__eigen_8cpp.xhtml":[17,0,6,17,3]
 };

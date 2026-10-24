@@ -6,6 +6,7 @@ var namespacemembers_type =
     [ "d", "namespacemembers_type_d.xhtml", null ],
     [ "e", "namespacemembers_type_e.xhtml", null ],
     [ "f", "namespacemembers_type_f.xhtml", null ],
+    [ "g", "namespacemembers_type_g.xhtml", null ],
     [ "h", "namespacemembers_type_h.xhtml", null ],
     [ "i", "namespacemembers_type_i.xhtml", null ],
     [ "l", "namespacemembers_type_l.xhtml", null ],

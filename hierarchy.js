@@ -28,6 +28,12 @@ var hierarchy =
     [ "fcarouge::freestanding::matrix< Type, Row, Column >", "structfcarouge_1_1freestanding_1_1matrix.xhtml", null ],
     [ "fcarouge::multiplies< Type, Magnitude >", "structfcarouge_1_1multiplies_3_01_type_00_01_magnitude_01_4.xhtml", null ],
     [ "fcarouge::not_realtime", "classfcarouge_1_1not__realtime.xhtml", null ],
+    [ "mp_units::quantity_spec", null, [
+      [ "flight_velocity", "structflight__velocity.xhtml", null ],
+      [ "forward_velocity", "structforward__velocity.xhtml", null ],
+      [ "lateral_velocity", "structlateral__velocity.xhtml", null ],
+      [ "vertical_velocity", "structvertical__velocity.xhtml", null ]
+    ] ],
     [ "mp_units::representation_canonical_type< fcarouge::typed_matrix< Matrix, RowIndexes, ColumnIndexes > >", "structmp__units_1_1representation__canonical__type_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_88cb568bfd22172f87f75426ff9b1681.xhtml", null ],
     [ "mp_units::representation_underlying_type< fcarouge::typed_matrix< Matrix, RowIndexes, ColumnIndexes > >", "structmp__units_1_1representation__underlying__type_3_01fcarouge_1_1typed__matrix_3_01_matrix_007bb3dc97a35e2d584c04497c33efbeb2.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{reentrant_tuple_size.cpp}::self_sized< Types >", "structfcarouge_1_1test_1_1anonymous__namespace_02reentrant__tuple__size_8cpp_03_1_1self__sized.xhtml", null ],
@@ -37,6 +43,7 @@ var hierarchy =
     [ "std::tuple_element< Index, Type >", "structstd_1_1tuple__element_3_01_index_00_01_type_01_4.xhtml", null ],
     [ "fcarouge::typed_matrix< Matrix, RowIndexes, ColumnIndexes >", "classfcarouge_1_1typed__matrix.xhtml", null ],
     [ "mp_units::vector_axes", null, [
+      [ "mp_units::component_vectors< flight_velocity >", "structmp__units_1_1component__vectors_3_01flight__velocity_01_4.xhtml", null ],
       [ "mp_units::component_vectors< flight_velocity >", "structmp__units_1_1component__vectors_3_01flight__velocity_01_4.xhtml", null ],
       [ "mp_units::component_vectors< flight_velocity >", "structmp__units_1_1component__vectors_3_01flight__velocity_01_4.xhtml", null ]
     ] ]

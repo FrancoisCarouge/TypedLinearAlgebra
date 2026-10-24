@@ -70,6 +70,7 @@ var menudata={children:[
 {text:"!",url:"namespacemembers_vars.xhtml#index__21"},
 {text:"c",url:"namespacemembers_vars_c.xhtml#index_c"},
 {text:"e",url:"namespacemembers_vars_e.xhtml#index_e"},
+{text:"i",url:"namespacemembers_vars_i.xhtml#index_i"},
 {text:"m",url:"namespacemembers_vars_m.xhtml#index_m"},
 {text:"o",url:"namespacemembers_vars_o.xhtml#index_o"},
 {text:"r",url:"namespacemembers_vars_r.xhtml#index_r"},
@@ -82,6 +83,7 @@ var menudata={children:[
 {text:"d",url:"namespacemembers_type_d.xhtml#index_d"},
 {text:"e",url:"namespacemembers_type_e.xhtml#index_e"},
 {text:"f",url:"namespacemembers_type_f.xhtml#index_f"},
+{text:"g",url:"namespacemembers_type_g.xhtml#index_g"},
 {text:"h",url:"namespacemembers_type_h.xhtml#index_h"},
 {text:"i",url:"namespacemembers_type_i.xhtml#index_i"},
 {text:"l",url:"namespacemembers_type_l.xhtml#index_l"},
@@ -116,6 +118,7 @@ var menudata={children:[
 {text:"s",url:"functions.xhtml#index_s"},
 {text:"t",url:"functions.xhtml#index_t"},
 {text:"u",url:"functions.xhtml#index_u"},
+{text:"v",url:"functions.xhtml#index_v"},
 {text:"~",url:"functions.xhtml#index__7E"}]},
 {text:"Functions",url:"functions_func.xhtml",children:[
 {text:"a",url:"functions_func.xhtml#index_a"},
@@ -146,7 +149,8 @@ var menudata={children:[
 {text:"p",url:"globals_p.xhtml#index_p"},
 {text:"q",url:"globals_q.xhtml#index_q"},
 {text:"s",url:"globals_s.xhtml#index_s"},
-{text:"u",url:"globals_u.xhtml#index_u"}]},
+{text:"u",url:"globals_u.xhtml#index_u"},
+{text:"v",url:"globals_v.xhtml#index_v"}]},
 {text:"Functions",url:"globals_func.xhtml"},
 {text:"Variables",url:"globals_vars.xhtml",children:[
 {text:"b",url:"globals_vars.xhtml#index_b"},
@@ -160,4 +164,5 @@ var menudata={children:[
 {text:"o",url:"globals_vars_o.xhtml#index_o"},
 {text:"p",url:"globals_vars_p.xhtml#index_p"},
 {text:"s",url:"globals_vars_s.xhtml#index_s"},
-{text:"u",url:"globals_vars_u.xhtml#index_u"}]}]}]}]}
+{text:"u",url:"globals_vars_u.xhtml#index_u"},
+{text:"v",url:"globals_vars_v.xhtml#index_v"}]}]}]}]}

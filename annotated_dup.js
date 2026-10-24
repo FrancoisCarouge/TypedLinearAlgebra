@@ -51,5 +51,9 @@ var annotated_dup =
       [ "tuple_size< fcarouge::test::self_sized< Types... > >", "structstd_1_1tuple__size_3_01fcarouge_1_1test_1_1self__sized_3_01_types_8_8_8_01_4_01_4.xhtml", null ],
       [ "tuple_size< Type >", "structstd_1_1tuple__size_3_01_type_01_4.xhtml", null ]
     ] ],
-    [ "base", "classbase.xhtml", null ]
+    [ "base", "classbase.xhtml", null ],
+    [ "flight_velocity", "structflight__velocity.xhtml", null ],
+    [ "forward_velocity", "structforward__velocity.xhtml", null ],
+    [ "lateral_velocity", "structlateral__velocity.xhtml", null ],
+    [ "vertical_velocity", "structvertical__velocity.xhtml", null ]
 ];

@@ -142,11 +142,20 @@ template&lt;char... Digits&gt; </div>
 <p>Integer literal operator to compile-time index. </p>
 <p>Converts an integer to an integral constant typed index which permits compile-time indexing for the access operators. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00561">561</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  561</span>                                                                 {</div>
-<div class="line"><span class="lineno">  562</span>  <span class="keywordflow">return</span> std::integral_constant&lt;size_t, tla::parse_digits&lt;Digits...&gt;()&gt;{};</div>
-<div class="line"><span class="lineno">  563</span>}</div>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00599">599</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  599</span>                                                                 {</div>
+<div class="line"><span class="lineno">  600</span>  <span class="keywordflow">return</span> std::integral_constant&lt;size_t, tla::parse_digits&lt;Digits...&gt;()&gt;{};</div>
+<div class="line"><span class="lineno">  601</span>}</div>
 </div><!-- fragment -->
+<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00723">fcarouge::typed_linear_algebra::internal::parse_digits()</a>.</p>
+<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1literals_a96bdab646ac7be1505482cf553b9650b_cgraph.svg" width="331" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
 </div>
 </div>
 </div><!-- contents -->

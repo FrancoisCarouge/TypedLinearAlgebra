@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['flight_5fvelocity_5fkmph_0',['flight_velocity_kmph',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02round__trip_8cpp_03.xhtml#a481ee22ee3b4598ae2f5ceafe90c7260',1,'fcarouge::test::anonymous_namespace{round_trip.cpp}']]],
-  ['flight_5fvelocity_5fmps_1',['flight_velocity_mps',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02round__trip_8cpp_03.xhtml#aa54fd7e3d3a1d046d756152678f24e2d',1,'fcarouge::test::anonymous_namespace{round_trip.cpp}']]],
-  ['full_2',['full',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03.xhtml#a92dedf7eb6fd575ec96fd923a67f53e0',1,'fcarouge::test::anonymous_namespace{same_as_typed_matrix.cpp}']]]
+  ['flight_5fvelocity_5fkmph_0',['flight_velocity_kmph',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02round__trip_8cpp_03.xhtml#a481ee22ee3b4598ae2f5ceafe90c7260',1,'fcarouge::test::anonymous_namespace{round_trip.cpp}::flight_velocity_kmph'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#af53afe82e1f41d49857a58d1460fcd3f',1,'fcarouge::test::anonymous_namespace{unit_conversion.cpp}::flight_velocity_kmph']]],
+  ['flight_5fvelocity_5fmps_1',['flight_velocity_mps',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02round__trip_8cpp_03.xhtml#aa54fd7e3d3a1d046d756152678f24e2d',1,'fcarouge::test::anonymous_namespace{round_trip.cpp}::flight_velocity_mps'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#a22f1235f9d066c6cca00053ea47462c4',1,'fcarouge::test::anonymous_namespace{unit_conversion.cpp}::flight_velocity_mps']]],
+  ['forward_5fkmph_2',['forward_kmph',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#a891daebd22e9f8788fe66f41a93774b3',1,'fcarouge::test::anonymous_namespace{unit_conversion.cpp}']]],
+  ['forward_5fmps_3',['forward_mps',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#a37ec7fea26c5ed2a6a53b74b6b4559aa',1,'fcarouge::test::anonymous_namespace{unit_conversion.cpp}']]],
+  ['full_4',['full',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03.xhtml#a92dedf7eb6fd575ec96fd923a67f53e0',1,'fcarouge::test::anonymous_namespace{same_as_typed_matrix.cpp}']]]
 ];

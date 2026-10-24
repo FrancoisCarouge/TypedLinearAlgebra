@@ -670,6 +670,27 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{uniform_typed_matrix.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__typed__matrix_8cpp_03.xhtml", [
       [ "m", "namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__typed__matrix_8cpp_03.xhtml#a12fe8c59c681cdb089ab5577a7d216e5", null ]
     ] ],
+    [ "anonymous_namespace{unit_conversion.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml", [
+      [ "flight_velocity_kmph", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#af53afe82e1f41d49857a58d1460fcd3f", null ],
+      [ "flight_velocity_mps", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#a22f1235f9d066c6cca00053ea47462c4", null ],
+      [ "forward_kmph", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#a891daebd22e9f8788fe66f41a93774b3", null ],
+      [ "forward_mps", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#a37ec7fea26c5ed2a6a53b74b6b4559aa", null ],
+      [ "generic_velocities", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#a49146e01c30b4a16a8df86401d278548", null ],
+      [ "lateral_kmph", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#abdca7995c8b1e7a94081de3a5b195b07", null ],
+      [ "lateral_mps", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#a0273d189bc4473012f208a42cc56ed03", null ],
+      [ "length_m", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#ac183290662d8ab35685ff4fadb33fa54", null ],
+      [ "speed_kmph", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#a8cebf9028c713f71d1618cb4c63b099c", null ],
+      [ "speed_mps", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#ab4cbd3951561e3da5742735c41cb0f38", null ],
+      [ "speeds", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#ad774ac28df820dbb4d3841b7c4f264d3", null ],
+      [ "swapped_velocities", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#a9f970fac5f4549ca9260d9ded77b4f3b", null ],
+      [ "vector3d", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#a3071062bf3cce8189e4aaa74c0f38504", null ],
+      [ "velocities", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#a1051a5e075c07fb213cbf3f6e5a12ec2", null ],
+      [ "velocity_kmph", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#a06af7cf3807106932998a4711314e0a6", null ],
+      [ "velocity_mps", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#a9ff17f7abc415a2229bb1d0b3ba8e056", null ],
+      [ "vertical_kmph", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#a2b8317b4274804e7555a3e27053523f6", null ],
+      [ "vertical_mps", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#aa607ee0615f1276ac1fd77de67f1214c", null ],
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#a71450a22c039ae15eb0785a55633fbc3", null ]
+    ] ],
     [ "anonymous_namespace{update_au_std.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02update__au__std_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02update__au__std_8cpp_03.xhtml#ab27107caa1b6564d4280463e95275e30", null ]
     ] ],

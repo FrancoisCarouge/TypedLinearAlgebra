@@ -138,7 +138,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line"> </div>
-<div class="line">    mp_units::quantity&lt;flight_velocity[km / h], vector3d&gt;</div>
+<div class="line">    mp_units::quantity&lt;<a class="code hl_struct" href="structflight__velocity.xhtml">flight_velocity</a>[km / h], vector3d&gt;</div>
+<div class="ttc" id="astructflight__velocity_xhtml"><div class="ttname"><a href="structflight__velocity.xhtml">flight_velocity</a></div><div class="ttdef"><b>Definition</b> <a href="unit__conversion_8cpp_source.xhtml#l00042">unit_conversion.cpp:43</a></div></div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="round__trip_8cpp_source.xhtml#l00074">74</a> of file <a class="el" href="round__trip_8cpp_source.xhtml">round_trip.cpp</a>.</p>
 
@@ -156,7 +157,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line"> </div>
-<div class="line">    mp_units::quantity&lt;flight_velocity[m / s], vector3d&gt;</div>
+<div class="line">    mp_units::quantity&lt;<a class="code hl_struct" href="structflight__velocity.xhtml">flight_velocity</a>[m / s], vector3d&gt;</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="round__trip_8cpp_source.xhtml#l00076">76</a> of file <a class="el" href="round__trip_8cpp_source.xhtml">round_trip.cpp</a>.</p>
 
@@ -174,9 +175,12 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line"> </div>
-<div class="line">    column_vector&lt;double, mp_units::quantity&lt;lateral_velocity[km / h]&gt;,</div>
-<div class="line">                  mp_units::quantity&lt;forward_velocity[km / h]&gt;,</div>
-<div class="line">                  mp_units::quantity&lt;vertical_velocity[km / h]&gt;&gt;</div>
+<div class="line">    column_vector&lt;double, mp_units::quantity&lt;<a class="code hl_struct" href="structlateral__velocity.xhtml">lateral_velocity</a>[km / h]&gt;,</div>
+<div class="line">                  mp_units::quantity&lt;<a class="code hl_struct" href="structforward__velocity.xhtml">forward_velocity</a>[km / h]&gt;,</div>
+<div class="line">                  mp_units::quantity&lt;<a class="code hl_struct" href="structvertical__velocity.xhtml">vertical_velocity</a>[km / h]&gt;&gt;</div>
+<div class="ttc" id="astructforward__velocity_xhtml"><div class="ttname"><a href="structforward__velocity.xhtml">forward_velocity</a></div><div class="ttdef"><b>Definition</b> <a href="unit__conversion_8cpp_source.xhtml#l00045">unit_conversion.cpp:46</a></div></div>
+<div class="ttc" id="astructlateral__velocity_xhtml"><div class="ttname"><a href="structlateral__velocity.xhtml">lateral_velocity</a></div><div class="ttdef"><b>Definition</b> <a href="unit__conversion_8cpp_source.xhtml#l00048">unit_conversion.cpp:49</a></div></div>
+<div class="ttc" id="astructvertical__velocity_xhtml"><div class="ttname"><a href="structvertical__velocity.xhtml">vertical_velocity</a></div><div class="ttdef"><b>Definition</b> <a href="unit__conversion_8cpp_source.xhtml#l00051">unit_conversion.cpp:52</a></div></div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="round__trip_8cpp_source.xhtml#l00068">68</a> of file <a class="el" href="round__trip_8cpp_source.xhtml">round_trip.cpp</a>.</p>
 
@@ -210,9 +214,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line"> </div>
-<div class="line">    column_vector&lt;double, mp_units::quantity&lt;forward_velocity[km / h]&gt;,</div>
-<div class="line">                  mp_units::quantity&lt;lateral_velocity[km / h]&gt;,</div>
-<div class="line">                  mp_units::quantity&lt;vertical_velocity[km / h]&gt;&gt;</div>
+<div class="line">    column_vector&lt;double, mp_units::quantity&lt;<a class="code hl_struct" href="structforward__velocity.xhtml">forward_velocity</a>[km / h]&gt;,</div>
+<div class="line">                  mp_units::quantity&lt;<a class="code hl_struct" href="structlateral__velocity.xhtml">lateral_velocity</a>[km / h]&gt;,</div>
+<div class="line">                  mp_units::quantity&lt;<a class="code hl_struct" href="structvertical__velocity.xhtml">vertical_velocity</a>[km / h]&gt;&gt;</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="round__trip_8cpp_source.xhtml#l00062">62</a> of file <a class="el" href="round__trip_8cpp_source.xhtml">round_trip.cpp</a>.</p>
 
@@ -233,7 +237,7 @@ Variables</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line">  <span class="keyword">const</span> not_realtime opt_out;</div>
 <div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="#a481ee22ee3b4598ae2f5ceafe90c7260">flight_velocity_kmph</a> velocity{</div>
-<div class="line">      flight_velocity(vector3d{36, -72, 18} * km / h)};</div>
+<div class="line">      <a class="code hl_variable" href="unit__conversion_8cpp.xhtml#a492abf3227d815c0027f72069a94836e">flight_velocity</a>(vector3d{36, -72, 18} * km / h)};</div>
 <div class="line"> </div>
 <div class="line">  </div>
 <div class="line">  <span class="keyword">const</span> velocities state{velocity};</div>
@@ -252,13 +256,14 @@ Variables</h2></td></tr>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02round__trip_8cpp_03_xhtml_a481ee22ee3b4598ae2f5ceafe90c7260"><div class="ttname"><a href="#a481ee22ee3b4598ae2f5ceafe90c7260">fcarouge::test::anonymous_namespace{round_trip.cpp}::flight_velocity_kmph</a></div><div class="ttdeci">mp_units::quantity&lt; flight_velocity[km/h], vector3d &gt; flight_velocity_kmph</div><div class="ttdef"><b>Definition</b> <a href="round__trip_8cpp_source.xhtml#l00074">round_trip.cpp:74</a></div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000325">Test</a></b></dt><dd>Verifies a vector quantity with strongly typed axes round trips through a heterogeneous typed vector of quantities. </dd></dl>
+<div class="ttc" id="aunit__conversion_8cpp_xhtml_a492abf3227d815c0027f72069a94836e"><div class="ttname"><a href="unit__conversion_8cpp.xhtml#a492abf3227d815c0027f72069a94836e">flight_velocity</a></div><div class="ttdeci">flight_velocity flight_velocity</div></div>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000324">Test</a></b></dt><dd>Verifies a vector quantity with strongly typed axes round trips through a heterogeneous typed vector of quantities. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="round__trip_8cpp_source.xhtml#l00101">101</a> of file <a class="el" href="round__trip_8cpp_source.xhtml">round_trip.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  101</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line"><span class="lineno">  102</span>  <span class="keyword">const</span> <a class="code hl_class" href="classfcarouge_1_1not__realtime.xhtml">not_realtime</a> opt_out;</div>
 <div class="line"><span class="lineno">  103</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="#a481ee22ee3b4598ae2f5ceafe90c7260">flight_velocity_kmph</a> velocity{</div>
-<div class="line"><span class="lineno">  104</span>      flight_velocity(<a class="code hl_typedef" href="#a0f20e261f124c84d86e60323b50cc3a0">vector3d</a>{36, -72, 18} * km / h)};</div>
+<div class="line"><span class="lineno">  104</span>      <a class="code hl_variable" href="unit__conversion_8cpp.xhtml#a492abf3227d815c0027f72069a94836e">flight_velocity</a>(<a class="code hl_typedef" href="#a0f20e261f124c84d86e60323b50cc3a0">vector3d</a>{36, -72, 18} * km / h)};</div>
 <div class="line"><span class="lineno">  105</span> </div>
 <div class="line"><span class="lineno">  106</span>  <span class="comment">// Decompose the vector quantity into the heterogeneous typed vector.</span></div>
 <div class="line"><span class="lineno">  107</span>  <span class="keyword">const</span> velocities state{velocity};</div>

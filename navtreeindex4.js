@@ -1,5 +1,13 @@
 var NAVTREEINDEX4 =
 {
+"magnitude_21x2__mp__units__eigen_8cpp_source.xhtml":[17,0,6,17,3],
+"magnitude_21x2__mp__units__std_8cpp.xhtml":[17,0,6,17,4],
+"magnitude_21x2__mp__units__std_8cpp_source.xhtml":[17,0,6,17,4],
+"magnitude_21x2__nholthaus__eigen_8cpp.xhtml":[17,0,6,17,5],
+"magnitude_21x2__nholthaus__eigen_8cpp_source.xhtml":[17,0,6,17,5],
+"magnitude_22x1__au__std_8cpp.xhtml":[17,0,6,17,6],
+"magnitude_22x1__au__std_8cpp_source.xhtml":[17,0,6,17,6],
+"magnitude_22x1__au__std__fail_8cpp.xhtml":[17,0,6,17,7],
 "magnitude_22x1__au__std__fail_8cpp_source.xhtml":[17,0,6,17,7],
 "magnitude_22x1__mp__units__eigen__fail_8cpp.xhtml":[17,0,6,17,9],
 "magnitude_22x1__mp__units__eigen__fail_8cpp.xhtml#a090e2eedfafc722a310419bffe6f27ea":[17,0,6,17,9,2],
@@ -241,13 +249,5 @@ var NAVTREEINDEX4 =
 "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml":[11],
 "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#reporting-a-vulnerability":[11,1],
 "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#supported-versions":[11,0],
-"md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml":[2],
-"md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#results":[2,0],
-"mdspan__product_8cpp.xhtml":[17,0,0,1],
-"mdspan__product_8cpp.xhtml#a0d434113c3c7044d7371267335fa9b77":[17,0,0,1,1],
-"mdspan__product_8cpp.xhtml#a6c9f5e2e18b448ad9bd708ed318e5d39":[17,0,0,1,3],
-"mdspan__product_8cpp.xhtml#a8f22864eff8e6dcdd69511bd6b832bb6":[17,0,0,1,0],
-"mdspan__product_8cpp.xhtml#ae66f6b31b5ad750f1fe042a706a4e3d4":[17,0,0,1,2],
-"mdspan__product_8cpp_source.xhtml":[17,0,0,1],
-"mdspan__tuple__product_8cpp.xhtml":[17,0,0,2]
+"md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml":[2]
 };
