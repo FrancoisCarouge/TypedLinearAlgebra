@@ -32,7 +32,7 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_TRANSPOSED_TPP
 #define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_TRANSPOSED_TPP
 
-#if __has_include(<linalg>)
+#if __STDC_HOSTED__ && __has_include(<linalg>)
 
 #include <linalg>
 
@@ -45,7 +45,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 namespace typed_linear_algebra::internal {
 [[nodiscard]] constexpr decltype(auto) transposed(const auto &storage) {
-#if __has_include(<linalg>)
+#if __STDC_HOSTED__ && __has_include(<linalg>)
   using std::linalg::transposed;
 #endif
 

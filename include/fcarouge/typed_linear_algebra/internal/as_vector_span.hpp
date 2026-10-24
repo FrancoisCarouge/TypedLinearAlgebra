@@ -35,10 +35,10 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief Rank one view of a typed vector's storage, for `std::linalg`.
 //!
-//! @details Kept apart from `utility.hpp` so that only the backends providing
-//! `std::linalg` pull in `<mdspan>`.
+//! @details Kept apart from `utility.hpp` so that only the hosted backends
+//! providing `std::linalg` pull in `<mdspan>`.
 
-#if __has_include(<linalg>)
+#if __STDC_HOSTED__ && __has_include(<linalg>)
 
 #include <cstddef>
 #include <mdspan>

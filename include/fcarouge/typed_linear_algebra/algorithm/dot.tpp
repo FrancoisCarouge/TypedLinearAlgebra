@@ -34,7 +34,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/typed_linear_algebra/internal/as_vector_span.hpp"
 
-#if __has_include(<linalg>)
+#if __STDC_HOSTED__ && __has_include(<linalg>)
 
 #include <linalg>
 
@@ -47,7 +47,7 @@ namespace fcarouge {
 namespace typed_linear_algebra::internal {
 [[nodiscard]] constexpr auto dot(const rank_typed_matrix<1> auto &lhs,
                                  const rank_typed_matrix<1> auto &rhs) {
-#if __has_include(<linalg>)
+#if __STDC_HOSTED__ && __has_include(<linalg>)
   using std::linalg::dot;
 #endif
 
@@ -58,7 +58,7 @@ namespace typed_linear_algebra::internal {
   } else if constexpr (requires { dot(lhs.data(), rhs.data()); }) {
     return dot(lhs.data(), rhs.data());
   }
-#if __has_include(<linalg>)
+#if __STDC_HOSTED__ && __has_include(<linalg>)
   else if constexpr (requires {
                        dot(tla::as_vector_span(lhs), tla::as_vector_span(rhs));
                      }) {

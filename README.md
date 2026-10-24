@@ -17,6 +17,7 @@ std::println("{}", x * transposed(x));
 [![Try it live on Compiler Explorer](https://img.shields.io/badge/Try_live_on-Compiler_Explorer-black?style=for-the-badge&logo=compilerexplorer&labelColor=black&color=67C52A)](https://godbolt.org/z/cW3TGqf6r)
 
 [![Pipeline](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/pipeline.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/pipeline.yml)
+[![Freestanding](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/freestanding.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/freestanding.yml)
 [![Sanitizer](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/sanitizer.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/sanitizer.yml)
 [![Format](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/format.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/format.yml)
 [![ClangTidy](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/clang_tidy.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/clang_tidy.yml)
@@ -76,11 +77,12 @@ Add a plug-in for each strong type and/or linear algebra backend you use:
 | Au | [Example plug-in: `support/au`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | Built-in Types | No plug-in needed. |
 | Eigen | [Example plug-in: `support/eigen`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
+| Freestanding | [Example plug-in: `support/freestanding`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | Kokkos | [Example plug-in: `support/kokkos`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | mp-units | [Example plug-in: `support/mp_units`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | nholthaus/units | [Example plug-in: `support/nholthaus`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
-| std::chrono | No plug-in needed. |
-| std::linalg | No plug-in needed. |
+| std::chrono | No plug-in needed. Hosted implementation only. |
+| std::linalg | No plug-in needed. Hosted implementation only. |
 
 ### Samples
 
@@ -199,7 +201,7 @@ typed_column_vector;
 
 ### Format
 
-A specialization of the standard formatter is provided for the typed matrix. Use `std::format` to store a formatted representation of the matrix. Standard format parameters to be supported.
+A specialization of the standard formatter is provided for the typed matrix. Use `std::format` to store a formatted representation of the matrix. Standard format parameters to be supported. Hosted implementation only.
 
 ### Literals
 

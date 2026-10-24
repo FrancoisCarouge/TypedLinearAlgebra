@@ -32,7 +32,7 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MATRIX_ONE_NORM_TPP
 #define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MATRIX_ONE_NORM_TPP
 
-#if __has_include(<linalg>)
+#if __STDC_HOSTED__ && __has_include(<linalg>)
 
 #include <linalg>
 
@@ -68,7 +68,7 @@ matrix_one_norm(const uniform_typed_matrix auto &value) {
   } else if constexpr (requires { sum(abs(value.data()), 0).max(); }) {
     return sum(abs(value.data()), 0).max();
   }
-#if __has_include(<linalg>)
+#if __STDC_HOSTED__ && __has_include(<linalg>)
   else if constexpr (requires { std::linalg::matrix_one_norm(value.data()); }) {
     return std::linalg::matrix_one_norm(value.data());
   }

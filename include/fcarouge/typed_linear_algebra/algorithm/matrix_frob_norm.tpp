@@ -32,7 +32,7 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MATRIX_FROB_NORM_TPP
 #define FCAROUGE_TYPED_LINEAR_ALGEBRA_ALGORITHM_MATRIX_FROB_NORM_TPP
 
-#if __has_include(<linalg>)
+#if __STDC_HOSTED__ && __has_include(<linalg>)
 
 #include <linalg>
 
@@ -61,7 +61,7 @@ matrix_frob_norm(const uniform_typed_matrix auto &value) {
   } else if constexpr (requires { norm(value.data(), "fro"); }) {
     return norm(value.data(), "fro");
   }
-#if __has_include(<linalg>)
+#if __STDC_HOSTED__ && __has_include(<linalg>)
   else if constexpr (requires {
                        std::linalg::matrix_frob_norm(value.data());
                      }) {

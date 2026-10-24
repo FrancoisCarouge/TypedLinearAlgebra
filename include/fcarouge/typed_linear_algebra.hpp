@@ -36,13 +36,15 @@ For more information, please refer to <https://unlicense.org> */
 //! @brief Typed linear algebra implementation.
 //!
 //! @details Typed matrix, vectors, and operations.
+//!
+//! @note Freestanding compatible. The formatting and `std::chrono` support
+//! require a hosted implementation.
 
 #include "typed_linear_algebra/internal/utility.hpp"
 #include "typed_linear_algebra_forward.hpp"
 
 #include <concepts>
 #include <cstddef>
-#include <format>
 #include <initializer_list>
 #include <tuple>
 #include <utility>
