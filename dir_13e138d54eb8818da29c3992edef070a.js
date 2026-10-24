@@ -10,7 +10,6 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "common_with", "dir_df5deb2192b04082d8407ec09bc6e3ec.xhtml", "dir_df5deb2192b04082d8407ec09bc6e3ec" ],
     [ "constructor", "dir_38eb1dc5b1c36523e6cf628b0c17f528.xhtml", "dir_38eb1dc5b1c36523e6cf628b0c17f528" ],
     [ "copy", "dir_b66f3f6eb7a21060cc06c8fbad46effd.xhtml", "dir_b66f3f6eb7a21060cc06c8fbad46effd" ],
-    [ "distinct_typed_matrix", "dir_ba6075e788cb55bdc5ef722c50eccc6e.xhtml", "dir_ba6075e788cb55bdc5ef722c50eccc6e" ],
     [ "division", "dir_86f6ebe56cc983d5021582182b7bf87c.xhtml", "dir_86f6ebe56cc983d5021582182b7bf87c" ],
     [ "dot", "dir_754050894e9c52d6e85ebe2d666052cc.xhtml", "dir_754050894e9c52d6e85ebe2d666052cc" ],
     [ "element", "dir_974b212e1e2ae05a6e4111a20679b9dc.xhtml", "dir_974b212e1e2ae05a6e4111a20679b9dc" ],

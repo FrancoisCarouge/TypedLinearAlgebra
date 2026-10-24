@@ -1,10 +1,13 @@
 var searchData=
 [
-  ['uniform_5fmp_5funits_5feigen_2ecpp_0',['uniform_mp_units_eigen.cpp',['../matrix__frob__norm_2uniform__mp__units__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../matrix__inf__norm_2uniform__mp__units__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../matrix__one__norm_2uniform__mp__units__eigen_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['uniform_5ftyped_5fmatrix_2ecpp_1',['uniform_typed_matrix.cpp',['../uniform__typed__matrix_8cpp.xhtml',1,'']]],
-  ['update_5fau_5fstd_2ecpp_2',['update_au_std.cpp',['../update__au__std_8cpp.xhtml',1,'']]],
-  ['update_5fchrono_5fstd_2ecpp_3',['update_chrono_std.cpp',['../update__chrono__std_8cpp.xhtml',1,'']]],
-  ['update_5fmp_5funits_5fstd_2ecpp_4',['update_mp_units_std.cpp',['../update__mp__units__std_8cpp.xhtml',1,'']]],
-  ['update_5fnholthaus_5fstd_2ecpp_5',['update_nholthaus_std.cpp',['../update__nholthaus__std_8cpp.xhtml',1,'']]],
-  ['utility_2ehpp_6',['utility.hpp',['../utility_8hpp.xhtml',1,'']]]
+  ['time_5fpoint_5fchrono_5feigen_5ffail_2ecpp_0',['time_point_chrono_eigen_fail.cpp',['../matrix__frob__norm_2time__point__chrono__eigen__fail_8cpp.xhtml',1,'(Global Namespace)'],['../matrix__inf__norm_2time__point__chrono__eigen__fail_8cpp.xhtml',1,'(Global Namespace)'],['../matrix__one__norm_2time__point__chrono__eigen__fail_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['transpose_5fshape_5ffail_2ecpp_1',['transpose_shape_fail.cpp',['../transpose__shape__fail_8cpp.xhtml',1,'']]],
+  ['typed_5feigen_5fproduct_2ecpp_2',['typed_eigen_product.cpp',['../typed__eigen__product_8cpp.xhtml',1,'']]],
+  ['typed_5flinear_5falgebra_2ecpp_3',['typed_linear_algebra.cpp',['../typed__linear__algebra_8cpp.xhtml',1,'']]],
+  ['typed_5flinear_5falgebra_2ehpp_4',['typed_linear_algebra.hpp',['../typed__linear__algebra_8hpp.xhtml',1,'']]],
+  ['typed_5flinear_5falgebra_5fforward_2ehpp_5',['typed_linear_algebra_forward.hpp',['../typed__linear__algebra__forward_8hpp.xhtml',1,'']]],
+  ['typed_5flinear_5falgebra_5fmp_5funits_5feigen_2ecpp_6',['typed_linear_algebra_mp_units_eigen.cpp',['../typed__linear__algebra__mp__units__eigen_8cpp.xhtml',1,'']]],
+  ['typed_5fmdspan_5fproduct_2ecpp_7',['typed_mdspan_product.cpp',['../typed__mdspan__product_8cpp.xhtml',1,'']]],
+  ['typed_5fmdspan_5ftupled_5fproduct_2ecpp_8',['typed_mdspan_tupled_product.cpp',['../typed__mdspan__tupled__product_8cpp.xhtml',1,'']]],
+  ['typed_5fvector_5fas_5fquantity_2ecpp_9',['typed_vector_as_quantity.cpp',['../typed__vector__as__quantity_8cpp.xhtml',1,'']]]
 ];

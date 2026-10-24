@@ -205,7 +205,7 @@ template&lt;auto QuantityReference&gt; </div>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line">  <span class="keyword">using </span>rows = std::tuple&lt;length, mass&gt;;</div>
-<div class="line">  <span class="keyword">using </span>columns = std::tuple&lt;std::identity, <a class="code hl_typedef" href="#a3a244a5559d999ec8bc94ecb7f62ee3c">time</a>, <span class="keyword">decltype</span>(1. * s * s)&gt;;</div>
+<div class="line">  <span class="keyword">using </span>columns = std::tuple&lt;std::identity, time, <span class="keyword">decltype</span>(1. * s * s)&gt;;</div>
 <div class="line">  <span class="keyword">using </span>matrix =</div>
 <div class="line">      typed_matrix&lt;Eigen::Matrix&lt;representation, 2, 3&gt;, rows, columns&gt;;</div>
 <div class="line"> </div>
@@ -228,12 +228,11 @@ template&lt;auto QuantityReference&gt; </div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-<div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_022x3__mp__units__eigen_8cpp_03_xhtml_a3a244a5559d999ec8bc94ecb7f62ee3c"><div class="ttname"><a href="#a3a244a5559d999ec8bc94ecb7f62ee3c">fcarouge::test::anonymous_namespace{2x3_mp_units_eigen.cpp}::time</a></div><div class="ttdeci">quantity&lt; mp_units::isq::time[s]&gt; time</div><div class="ttdef"><b>Definition</b> <a href="at_22x3__mp__units__eigen_8cpp_source.xhtml#l00053">2x3_mp_units_eigen.cpp:53</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_022x3__mp__units__eigen_8cpp_03_xhtml_a9ae6de0aa744f55ef2b086bca01029bb"><div class="ttname"><a href="#a9ae6de0aa744f55ef2b086bca01029bb">fcarouge::test::anonymous_namespace{2x3_mp_units_eigen.cpp}::length</a></div><div class="ttdeci">quantity&lt; mp_units::isq::length[m]&gt; length</div><div class="ttdef"><b>Definition</b> <a href="at_22x3__mp__units__eigen_8cpp_source.xhtml#l00051">2x3_mp_units_eigen.cpp:51</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_022x3__mp__units__eigen_8cpp_03_xhtml_ad5b7b8c60f167fcbca92d5754df2a2aa"><div class="ttname"><a href="#ad5b7b8c60f167fcbca92d5754df2a2aa">fcarouge::test::anonymous_namespace{2x3_mp_units_eigen.cpp}::mass</a></div><div class="ttdeci">quantity&lt; mp_units::isq::mass[kg]&gt; mass</div><div class="ttdef"><b>Definition</b> <a href="at_22x3__mp__units__eigen_8cpp_source.xhtml#l00052">2x3_mp_units_eigen.cpp:52</a></div></div>
 </div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000061">Test</a></b></dt><dd>The by-type <code>at</code> accessor on a distinct, non-square two-dimension matrix. A rectangular shape catches a row/column transposition in the linear-index arithmetic that a square shape cannot. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000163">Test</a></b></dt><dd>Verifies the equal to algorithm for a rectangular matrix shape with non-trivial types. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000424">Test</a></b></dt><dd>Verifies the transposed algorithm for a rectangular matrix shape with non-trivial types. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000165">Test</a></b></dt><dd>Verifies the equal to algorithm for a rectangular matrix shape with non-trivial types. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000427">Test</a></b></dt><dd>Verifies the transposed algorithm for a rectangular matrix shape with non-trivial types. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="at_22x3__mp__units__eigen_8cpp_source.xhtml#l00058">58</a> of file <a class="el" href="at_22x3__mp__units__eigen_8cpp_source.xhtml">2x3_mp_units_eigen.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   58</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
@@ -263,6 +262,7 @@ template&lt;auto QuantityReference&gt; </div>
 <div class="line"><span class="lineno">   82</span>}()};</div>
 <div class="ttc" id="aclassfcarouge_1_1typed__matrix_xhtml"><div class="ttname"><a href="classfcarouge_1_1typed__matrix.xhtml">fcarouge::typed_matrix</a></div><div class="ttdoc">Strongly typed matrix.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra__forward_8hpp_source.xhtml#l00043">typed_linear_algebra_forward.hpp:43</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_a0fa52776262afae30db82d7c0a9339ac"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">fcarouge::armadillo::matrix</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Armadillo matrix.</div><div class="ttdef"><b>Definition</b> <a href="armadillo_8hpp_source.xhtml#l00091">armadillo.hpp:91</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_022x3__mp__units__eigen_8cpp_03_xhtml_a3a244a5559d999ec8bc94ecb7f62ee3c"><div class="ttname"><a href="#a3a244a5559d999ec8bc94ecb7f62ee3c">fcarouge::test::anonymous_namespace{2x3_mp_units_eigen.cpp}::time</a></div><div class="ttdeci">quantity&lt; mp_units::isq::time[s]&gt; time</div><div class="ttdef"><b>Definition</b> <a href="at_22x3__mp__units__eigen_8cpp_source.xhtml#l00053">2x3_mp_units_eigen.cpp:53</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml_a7194bc200104fad679ef56587aaec86f"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">fcarouge::test::length</a></div><div class="ttdeci">au::QuantityD&lt; au::Meters &gt; length</div><div class="ttdef"><b>Definition</b> <a href="test_2format_2au__eigen_8cpp_source.xhtml#l00045">au_eigen.cpp:45</a></div></div>
 </div><!-- fragment -->
 </div>
