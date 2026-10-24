@@ -34,6 +34,11 @@ For more information, please refer to <https://unlicense.org> */
 
 //! @file
 //! @brief Formatting support for the typed matrix.
+//!
+//! @note The standard `<format>` library is not part of the freestanding
+//! subset: a freestanding implementation omits this formatting support.
+
+#if __STDC_HOSTED__
 
 #include "fcarouge/typed_linear_algebra/internal/utility.hpp"
 #include "fcarouge/typed_linear_algebra_forward.hpp"
@@ -152,4 +157,5 @@ public:
   }
 };
 
+#endif // __STDC_HOSTED__
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_FORMAT_TPP

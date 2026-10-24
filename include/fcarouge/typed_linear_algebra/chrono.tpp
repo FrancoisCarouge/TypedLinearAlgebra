@@ -40,9 +40,12 @@ For more information, please refer to <https://unlicense.org> */
 //! its representation and its period, so a typed vector element keeps its unit
 //! (seconds, minutes, ...) while the backend stores the bare representation.
 //!
-//! @note The standard `<chrono>` library ships with every conforming C++
-//! implementation, so this facade is part of the core header rather than an
-//! external backend plug-in under `support/`.
+//! @note The standard `<chrono>` library ships with every conforming hosted
+//! C++ implementation, so this facade is part of the core header rather than
+//! an external backend plug-in under `support/`. It is not part of the
+//! freestanding subset: a freestanding implementation omits this facade.
+
+#if __STDC_HOSTED__
 
 #include "fcarouge/typed_linear_algebra_forward.hpp"
 
@@ -147,4 +150,5 @@ struct element_caster<To &, From &> {
 };
 } // namespace fcarouge
 
+#endif // __STDC_HOSTED__
 #endif // FCAROUGE_TYPED_LINEAR_ALGEBRA_CHRONO_TPP
