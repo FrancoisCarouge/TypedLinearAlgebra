@@ -32,7 +32,8 @@ For more information, please refer to <https://unlicense.org> */
 // MSVC drops the value-dependent `explicit(bool)` specifier of a member
 // template once its out-of-class definition is seen: the definition, which
 // does not and cannot repeat the specifier, makes the member implicit.
-// See [class.conv.ctor], [class.conv.fct], and [dcl.fct.spec].
+// See [class.conv.ctor], [class.conv.fct], and [dcl.fct.spec]. Reported as
+// https://developercommunity.visualstudio.com/t/856958, open since 2019.
 
 #include <type_traits>
 
