@@ -1,0 +1,38 @@
+name: 'MSVC explicit(bool) Reproduction'
+
+on:
+  pull_request:
+    branches: [ 'master' ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - { os: 'ubuntu-26.04', cxx: 'clang++-21', generator: 'Ninja', build_dir: 'build' }
+        - { os: 'ubuntu-26.04', cxx: 'g++-15', generator: 'Unix Makefiles', build_dir: 'build' }
+        - { os: 'windows-2025', cxx: 'cl', generator: 'Visual Studio 18 2026', build_dir: 'D:\b' }
+    name: '${{ matrix.os }} / ${{ matrix.cxx }}'
+    runs-on: '${{ matrix.os }}'
+    permissions:
+      contents: read
+    steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
+      with:
+        egress-policy: audit
+    - name: 'Checkout'
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - name: 'Install: Latest CMake'
+      uses: lukka/get-cmake@a89e43e22a96abafcd7a62db652a65ecd33052c9 # v4.4.4
+    - name: 'Configure'
+      env:
+        CXX: '${{ matrix.cxx }}'
+      run: cmake -S '.github/repro/msvc_explicit_bool' -B '${{ matrix.build_dir }}' -G '${{ matrix.generator }}'
+    - name: 'Build'
+      run: cmake --build '${{ matrix.build_dir }}' --verbose
