@@ -13,5 +13,8 @@ var dir_38eb1dc5b1c36523e6cf628b0c17f528 =
     [ "3x1.cpp", "constructor_23x1_8cpp.xhtml", null ],
     [ "3x1_array.cpp", "3x1__array_8cpp.xhtml", "3x1__array_8cpp" ],
     [ "copy.cpp", "constructor_2copy_8cpp.xhtml", null ],
-    [ "initializer_lists.cpp", "initializer__lists_8cpp.xhtml", "initializer__lists_8cpp" ]
+    [ "initializer_lists.cpp", "initializer__lists_8cpp.xhtml", "initializer__lists_8cpp" ],
+    [ "underlying.cpp", "underlying_8cpp.xhtml", "underlying_8cpp" ],
+    [ "underlying_count.cpp", "underlying__count_8cpp.xhtml", "underlying__count_8cpp" ],
+    [ "underlying_expression.cpp", "underlying__expression_8cpp.xhtml", "underlying__expression_8cpp" ]
 ];

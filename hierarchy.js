@@ -9,6 +9,7 @@ var hierarchy =
       [ "fcarouge::test::anonymous_namespace{1x2_ambiguous_fail.cpp}::first", "structfcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03_1_1first.xhtml", null ],
       [ "fcarouge::test::anonymous_namespace{1x2_ambiguous_fail.cpp}::second", "structfcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03_1_1second.xhtml", null ]
     ] ],
+    [ "fcarouge::test::anonymous_namespace{underlying_count.cpp}::counted_storage", "classfcarouge_1_1test_1_1anonymous__namespace_02underlying__count_8cpp_03_1_1counted__storage.xhtml", null ],
     [ "fcarouge::element_caster< To, From >", "structfcarouge_1_1element__caster.xhtml", null ],
     [ "fcarouge::element_caster< To &, From & >", "structfcarouge_1_1element__caster_3_01_to_01_6_00_01_from_01_6_01_4.xhtml", null ],
     [ "fcarouge::element_caster< To, From >", "structfcarouge_1_1element__caster_3_01_to_00_01_from_01_4.xhtml", null ],

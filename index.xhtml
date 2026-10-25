@@ -270,26 +270,28 @@ Member Functions</h3>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>(conversion move assignment operator)</code>   </td><td class="markdownTableBodyNone">Move assign generalization of a compatible typed matrix.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Convert construct a typed matrix from an underlying matrix.    </td></tr>
+<td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Convert copy construct a typed matrix from an underlying matrix.    </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>(conversion move constructor)</code>   </td><td class="markdownTableBodyNone">Convert move construct a typed matrix from an underlying matrix.    </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Convert construct a one-dimension uniformly typed matrix from array.    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Convert construct a uniformly typed matrix from list-initializers.    </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Convert construct a row or column typed vector from elements.    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>(conversion copy constructor)</code>   </td><td class="markdownTableBodyNone">Convert construct a singleton typed matrix from a single value.    </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>operator[i, j]</code>   </td><td class="markdownTableBodyNone">Read the specified element.    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>operator(i, j)</code>   </td><td class="markdownTableBodyNone">Read the specified element.    </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>at&lt;i, j&gt;()</code>   </td><td class="markdownTableBodyNone">Read, write the specified element.    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>at&lt;Type&gt;()</code>   </td><td class="markdownTableBodyNone">Read the one element whose type is implicitly convertible to <code>Type</code>.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>(conversion operator)</code>   </td><td class="markdownTableBodyNone">Access the singleton typed matrix element.    </td></tr>
+<td class="markdownTableBodyNone"><code>at&lt;Type&gt;()</code>   </td><td class="markdownTableBodyNone">Read the one element whose type is implicitly convertible to <code>Type</code>.    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>(conversion operator)</code>   </td><td class="markdownTableBodyNone">Access the singleton typed matrix element.    </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>(destructor)</code>   </td><td class="markdownTableBodyNone">Destruct a default typed matrix.   </td></tr>
 </table>
 <h2><a class="anchor" id="operations"></a>

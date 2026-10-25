@@ -28,6 +28,9 @@ var annotated_dup =
         [ "anonymous_namespace{same_as_typed_matrix.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03.xhtml", [
           [ "derived", "structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1derived.xhtml", null ],
           [ "fake", "structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1fake.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1fake" ]
+        ] ],
+        [ "anonymous_namespace{underlying_count.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02underlying__count_8cpp_03.xhtml", [
+          [ "counted_storage", "classfcarouge_1_1test_1_1anonymous__namespace_02underlying__count_8cpp_03_1_1counted__storage.xhtml", "classfcarouge_1_1test_1_1anonymous__namespace_02underlying__count_8cpp_03_1_1counted__storage" ]
         ] ]
       ] ],
       [ "element_caster", "structfcarouge_1_1element__caster.xhtml", "structfcarouge_1_1element__caster" ],

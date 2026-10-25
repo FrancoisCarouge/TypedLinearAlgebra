@@ -122,9 +122,11 @@ var menudata={children:[
 {text:"~",url:"functions.xhtml#index__7E"}]},
 {text:"Functions",url:"functions_func.xhtml",children:[
 {text:"a",url:"functions_func.xhtml#index_a"},
+{text:"c",url:"functions_func.xhtml#index_c"},
 {text:"d",url:"functions_func.xhtml#index_d"},
 {text:"e",url:"functions_func.xhtml#index_e"},
 {text:"f",url:"functions_func.xhtml#index_f"},
+{text:"m",url:"functions_func.xhtml#index_m"},
 {text:"n",url:"functions_func.xhtml#index_n"},
 {text:"o",url:"functions_func.xhtml#index_o"},
 {text:"p",url:"functions_func.xhtml#index_p"},

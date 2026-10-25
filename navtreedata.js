@@ -126,16 +126,17 @@ var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
 "addition_21x2__nholthaus__eigen_8cpp_source.xhtml",
-"classfcarouge_1_1typed__matrix.xhtml#a9172dd9b9b5202dfdd46e6404220131c",
-"dot_21x2__nholthaus__eigen_8cpp_source.xhtml",
-"magnitude_21x2__mp__units__eigen_8cpp_source.xhtml",
-"md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#results",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__std_8cpp_03.xhtml#a4cab88d03619c22bdb68fb3ebb6d901c",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_022x2__au__eigen_8cpp_03.xhtml#ac8cbc10d83ba0975f96294e0f1bfcb13",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02nholthaus__eigen_8cpp_03.xhtml#a11ac2563adf3ac002c991c161598f016",
-"nested__typed__eigen_2fcarouge_2linalg_8hpp.xhtml#a2f109ee3004a074298a7f8d006d56db4",
-"structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1lookup_3b299f5c7aa92788bf7430e8496a9663f.xhtml#a4ce55ac82c8ced0a37676f2fd968a5ad",
-"test_2format_2au__std_8cpp.xhtml"
+"classfcarouge_1_1typed__matrix.xhtml#a240af7a39b0d2a71206ae7029667438f",
+"dir_f8792443906585b6c5977f372edea2ac.xhtml",
+"index.xhtml#member-functions",
+"md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#dependencies",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a21aa6560df20cbba27b26052c8097645",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_022x1__chrono__eigen_8cpp_03.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02matrix__x__au__std__fail_8cpp_03.xhtml",
+"namespacemembers_type_n.xhtml",
+"size__mp__units__std__fail_8cpp.xhtml",
+"subtraction_21x2__chrono__eigen_8cpp_source.xhtml",
+"update__chrono__std_8cpp.xhtml#abb7b4f805d004a4dad59ef7723b7f66a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

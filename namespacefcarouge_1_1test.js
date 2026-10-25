@@ -666,6 +666,13 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{typed_vector_as_quantity.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__vector__as__quantity_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__vector__as__quantity_8cpp_03.xhtml#a0f621f4c56c49ecc3bbad51e8dcf2b21", null ]
     ] ],
+    [ "anonymous_namespace{underlying.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02underlying_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02underlying_8cpp_03.xhtml#ae337e6d7e2e77329f3f4f5141ad525d0", null ]
+    ] ],
+    [ "anonymous_namespace{underlying_count.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02underlying__count_8cpp_03.xhtml", "namespacefcarouge_1_1test_1_1anonymous__namespace_02underlying__count_8cpp_03" ],
+    [ "anonymous_namespace{underlying_expression.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02underlying__expression_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02underlying__expression_8cpp_03.xhtml#a216b639c394c14be6e1ec4cd8f496756", null ]
+    ] ],
     [ "anonymous_namespace{uniform_mp_units_eigen.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03.xhtml", "namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03" ],
     [ "anonymous_namespace{uniform_typed_matrix.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__typed__matrix_8cpp_03.xhtml", [
       [ "m", "namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__typed__matrix_8cpp_03.xhtml#a12fe8c59c681cdb089ab5577a7d216e5", null ]

@@ -5,5 +5,6 @@ var searchData=
   ['make_5ftyped_5fmatrix_2',['make_typed_matrix',['../namespacefcarouge.xhtml#a4073b31d56e98e110bf4a993ed190c80',1,'fcarouge']]],
   ['matrix_5ffrob_5fnorm_3',['matrix_frob_norm',['../namespacefcarouge.xhtml#aa315b3e178e104f9914d9c34f4caa464',1,'fcarouge']]],
   ['matrix_5finf_5fnorm_4',['matrix_inf_norm',['../namespacefcarouge.xhtml#a913f5d0fe3d1db7677e3d1462b57829c',1,'fcarouge']]],
-  ['matrix_5fone_5fnorm_5',['matrix_one_norm',['../namespacefcarouge.xhtml#a7d5d3b12f0d7e033c68631bccf60765f',1,'fcarouge']]]
+  ['matrix_5fone_5fnorm_5',['matrix_one_norm',['../namespacefcarouge.xhtml#a7d5d3b12f0d7e033c68631bccf60765f',1,'fcarouge']]],
+  ['moves_6',['moves',['../classfcarouge_1_1test_1_1anonymous__namespace_02underlying__count_8cpp_03_1_1counted__storage.xhtml#acfc00231d2ba8214b9ec905843ab1c5f',1,'fcarouge::test::anonymous_namespace{underlying_count.cpp}::counted_storage']]]
 ];
