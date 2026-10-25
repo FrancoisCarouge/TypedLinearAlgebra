@@ -31,6 +31,8 @@ For more information, please refer to <https://unlicense.org> ]]
 
 fail("2x2_mp_units_eigen_fail" BACKENDS "mp_units_eigen")
 
+build("underlying_count" BACKENDS "eigexed" "freestanding")
+
 pass("1x1_array" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")
 pass("1x1_au_eigen" BACKENDS "au_eigen" "au_armadillo")
 pass("1x1_au_std" BACKENDS "au_std")
@@ -54,3 +56,5 @@ pass(
 pass(
   "3x1"
   BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed" "armadillo")
+pass("underlying_expression" BACKENDS "eigexed" "armadilloxed")
+pass("underlying" BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed")

@@ -154,7 +154,8 @@ class typed_matrix
 | `(conversion copy assignment operator)` | Copy assign generalization of a compatible typed matrix. |
 | `(conversion move constructor)` | Move construct generalization of a compatible typed matrix. |
 | `(conversion move assignment operator)` | Move assign generalization of a compatible typed matrix. |
-| `(conversion copy constructor)` | Convert construct a typed matrix from an underlying matrix. |
+| `(conversion copy constructor)` | Convert copy construct a typed matrix from an underlying matrix. |
+| `(conversion move constructor)` | Convert move construct a typed matrix from an underlying matrix. |
 | `(conversion copy constructor)` | Convert construct a one-dimension uniformly typed matrix from array. |
 | `(conversion copy constructor)` | Convert construct a uniformly typed matrix from list-initializers. |
 | `(conversion copy constructor)` | Convert construct a row or column typed vector from elements. |
