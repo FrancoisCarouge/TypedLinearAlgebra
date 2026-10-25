@@ -74,7 +74,12 @@ constexpr auto typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
-    Matrix other)
+    const Matrix &other)
+    : storage{other} {}
+
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
+    Matrix &&other)
     : storage{std::move(other)} {}
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>

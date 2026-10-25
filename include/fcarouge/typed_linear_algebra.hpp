@@ -358,7 +358,7 @@ public:
         typed_matrix>
       : typed_matrix{std::tie(first_value, second_value, values...)} {}
 
-  //! @brief Convert construct a typed matrix from an underlying matrix.
+  //! @brief Convert copy construct a typed matrix from an underlying matrix.
   //!
   //! @warning Useful for operations implementation where underlying data
   //! construction is needed. Not recommended for convenience construction due
@@ -366,7 +366,12 @@ public:
   //!
   //! @note Alternative design could evaluate feasibility of private
   //! constructor, operator friendship, attorney-client, or key idioms.
-  constexpr explicit typed_matrix(Matrix other);
+  constexpr explicit typed_matrix(const Matrix &other);
+
+  //! @brief Convert move construct a typed matrix from an underlying matrix.
+  //!
+  //! @warning Same type validation absence as the copy overload.
+  constexpr explicit typed_matrix(Matrix &&other);
 
   //! @brief Convert construct a typed vector from a tuple-like value.
   //!
