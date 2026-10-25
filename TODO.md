@@ -41,13 +41,13 @@ Today each client carries its own copy: Kalman's two facades, and ArduPilot's `A
 
 Options for the owner to decide, not implemented. Finding numbers refer to `BUG.md`.
 
-**In-place evaluation (F28).** Every typed operation returns a new matrix, so `P = P - K * H * P` on a 24-state covariance holds several 24x24 temporaries: 19 kB of stack in double precision on Cortex-M7, where ArduPilot allows 2.6 kB per function. ArduPilot works around it by checking the expression's type with `decltype` and writing the backend storage by hand.
+**In-place evaluation (F28).** Every typed operation returns a new matrix, so `P = P - K * H * P` on a 24-state covariance holds several 24x24 temporaries: 19 kB of stack in double precision on Cortex-M7, where ArduPilot allows 2.6 kB per function. ArduPilot works around it by checking the expression's type with `decltype` and writing the backend storage by hand. On the host, the same cost shows in time: ROS 2's typed covariance transformation takes 1.17 times the identical product on plain Eigen, about half of it from evaluating each product into its own matrix.
 
 - A. Compound assignment, `P -= K * HP;`, defined when the right-hand side's type converts to the left-hand side's, delegating to the backend's `-=` (Eigen evaluates `K * HP` into the destination without a temporary of P's size). Smallest change; the backend decides the temporaries.
 - B. An explicit `assign(destination, expression)` evaluating a typed expression into existing storage, with the same type check. More general (also `=`), and makes the in-place intent visible at the call site.
 - C. Rank-one updates without `<linalg>`: the existing `matrix_rank_1_update` signature, implemented by a loop over the backend storage when `std::linalg` is unavailable (libstdc++ 14 and 15, Arm GCC 15.2). Covers `P -= K (H P)` exactly, the EKF's most common step.
 
-**Blocks and selections (F26, F39).** Grouped states and sparse Jacobians need typed sub-matrices.
+**Blocks and selections (F26, F39).** Grouped states and sparse Jacobians need typed sub-matrices. ROS 2's typed `transformCovariance()` takes 2.2 times its original's time, 1.9 of it from multiplying the dense 6x6 block-diagonal Jacobian where the original rotates four 3x3 blocks.
 
 - A. `block<Row, Column, Rows, Columns>(matrix)` returning a typed copy whose element types are the selected ones.
 - B. The same as a typed view over the backend storage, writable, which would also give in-place updates of a block.
