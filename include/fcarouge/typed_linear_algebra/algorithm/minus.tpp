@@ -79,7 +79,7 @@ namespace fcarouge {
       requires { -std::declval<element>(); },
       "Matrix negation requires negatable element types.");
 
-  return -element{value};
+  return -value.template at<>();
 }
 } // namespace fcarouge
 

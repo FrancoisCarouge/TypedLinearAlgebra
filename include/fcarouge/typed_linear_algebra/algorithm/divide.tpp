@@ -97,30 +97,19 @@ namespace fcarouge {
 
 [[nodiscard]] constexpr auto operator/(const rank_typed_matrix<0> auto &lhs,
                                        const other auto &rhs) {
-  using matrix = std::remove_cvref_t<decltype(lhs)>;
-  using element = typename matrix::template element<>;
-
-  return element{lhs} / rhs;
+  return lhs.template at<>() / rhs;
 }
 
 [[nodiscard]] constexpr auto operator/(const other auto &lhs,
                                        const rank_typed_matrix<0> auto &rhs) {
   //! @todo Should there be constraints on the type?
-  using matrix = std::remove_cvref_t<decltype(rhs)>;
-  using element = typename matrix::template element<>;
-
-  return lhs / element{rhs};
+  return lhs / rhs.template at<>();
 }
 
 [[nodiscard]] constexpr auto operator/(const rank_typed_matrix<0> auto &lhs,
                                        const rank_typed_matrix<0> auto &rhs) {
   //! @todo Should there be constraints on the type?
-  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
-  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
-  using lhs_element = typename lhs_matrix::template element<>;
-  using rhs_element = typename rhs_matrix::template element<>;
-
-  return lhs_element{lhs} / rhs_element{rhs};
+  return lhs.template at<>() / rhs.template at<>();
 }
 
 [[nodiscard]] constexpr auto operator/(const other auto &lhs,
