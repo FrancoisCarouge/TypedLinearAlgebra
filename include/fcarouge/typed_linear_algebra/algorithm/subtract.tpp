@@ -108,25 +108,19 @@ namespace fcarouge {
       requires { std::declval<lhs_element>() - std::declval<rhs_element>(); },
       "Matrix subtraction requires compatible element types.");
 
-  return lhs_element{lhs} - rhs_element{rhs};
+  return lhs.template at<>() - rhs.template at<>();
 }
 
 [[nodiscard]] constexpr auto operator-(const other auto &lhs,
                                        const rank_typed_matrix<0> auto &rhs) {
   //! @todo Should there be constraints on the type?
-  using matrix = std::remove_cvref_t<decltype(rhs)>;
-  using element = typename matrix::template element<>;
-
-  return lhs - element{rhs};
+  return lhs - rhs.template at<>();
 }
 
 [[nodiscard]] constexpr auto operator-(const rank_typed_matrix<0> auto &lhs,
                                        const other auto &rhs) {
   //! @todo Should there be constraints on the type?
-  using matrix = std::remove_cvref_t<decltype(rhs)>;
-  using element = typename matrix::template element<>;
-
-  return element{lhs} - rhs;
+  return lhs.template at<>() - rhs;
 }
 } // namespace fcarouge
 
