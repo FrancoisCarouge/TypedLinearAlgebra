@@ -1,5 +1,10 @@
 var NAVTREEINDEX4 =
 {
+"index.xhtml#installation--usage":[0,0],
+"index.xhtml#layers":[0,1,0],
+"index.xhtml#lessons-learned":[0,2,3],
+"index.xhtml#license":[0,3],
+"index.xhtml#literals":[0,1,10],
 "index.xhtml#member-functions":[0,1,6,4],
 "index.xhtml#member-types":[0,1,6,2],
 "index.xhtml#member-variables":[0,1,6,3],
@@ -244,10 +249,5 @@ var NAVTREEINDEX4 =
 "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added-2":[3,2,0],
 "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md010---2026-03-16":[3,2],
 "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md020---2026-06-30":[3,1],
-"md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2026-09-12":[3,0],
-"md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#breaking-changes--build-requirements":[3,1,2],
-"md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#changed":[3,0,1],
-"md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#changed-1":[3,1,1],
-"md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build":[3,0,2],
-"md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-1":[3,2,1]
+"md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2026-09-12":[3,0]
 };

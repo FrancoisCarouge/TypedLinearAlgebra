@@ -125,18 +125,18 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
-"addition_21x2__nholthaus__eigen_8cpp_source.xhtml",
-"classfcarouge_1_1typed__matrix.xhtml#a240af7a39b0d2a71206ae7029667438f",
-"dir_f8792443906585b6c5977f372edea2ac.xhtml",
-"index.xhtml#member-functions",
-"md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#dependencies",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a21aa6560df20cbba27b26052c8097645",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_022x1__chrono__eigen_8cpp_03.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02matrix__x__au__std__fail_8cpp_03.xhtml",
-"namespacemembers_type_n.xhtml",
-"size__mp__units__std__fail_8cpp.xhtml",
-"subtraction_21x2__chrono__eigen_8cpp_source.xhtml",
-"update__chrono__std_8cpp.xhtml#abb7b4f805d004a4dad59ef7723b7f66a"
+"addition_21x2__mp__units__eigen__fail_8cpp_source.xhtml",
+"classfcarouge_1_1typed__matrix.xhtml#a1dc38147712504cb9cf88b6c2f9dc968",
+"dir_ee1764ef7e89f8bab90de731673224c8.xhtml",
+"index.xhtml#installation--usage",
+"md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#breaking-changes--build-requirements",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#a5981ba7054407b047ccaa99ef849d77d",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_022x1__1x2__mp__units__std_8cpp_03.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02initializer__lists_8cpp_03.xhtml#afeda3bcc35b67e6f14a5a2250988baa2",
+"namespacemembers_type.xhtml",
+"scale_21x2__nholthaus__std_8cpp_source.xhtml",
+"subtraction_21x1__nholthaus__eigen_8cpp.xhtml",
+"unit__conversion_8cpp.xhtml#aa607ee0615f1276ac1fd77de67f1214c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
