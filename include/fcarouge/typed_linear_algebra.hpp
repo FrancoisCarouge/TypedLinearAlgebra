@@ -398,6 +398,8 @@ public:
       // Convert to the element type first, e.g. to the element's unit, so the
       // caster only ever stores values of the element type. The caster is
       // named directly, the `cast` object is declared after the class.
+      // Parentheses, not braces: the conversion may narrow, for example an
+      // `int` tuple element to a `double` matrix element.
       const element<i> converted(get<i>(value));
       tla::write_element<columns>(
           storage, element_caster<underlying, element<i>>{}(converted), i);
