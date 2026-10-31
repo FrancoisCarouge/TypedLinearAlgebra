@@ -65,7 +65,8 @@ function(pass NAME)
       NAME typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_pass
       COMMAND
         ${TEST_COMMAND}
-        $<TARGET_FILE:typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_pass_driver>)
+        $<TARGET_FILE:typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_pass_driver>
+    )
   endforeach()
 endfunction(pass)
 
@@ -168,7 +169,8 @@ function(bench NAME SIZE)
       NAME typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench
       COMMAND
         ${TEST_COMMAND}
-        $<TARGET_FILE:typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench_driver>)
+        $<TARGET_FILE:typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench_driver>
+    )
     if(DEFINED DEPENDENCIES)
       list(APPEND ${DEPENDENCIES}
            "typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_${SIZE}_bench")

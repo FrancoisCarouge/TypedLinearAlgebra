@@ -101,7 +101,7 @@ static_assert(
 [[maybe_unused]] const auto test{[] -> int {
   const not_realtime opt_out;
   const flight_velocity_kmph velocity{
-      flight_velocity(vector3d{36, -72, 18} * km / h)};
+      flight_velocity(vector3d{36., -72., 18.} * km / h)};
 
   // Decompose the vector quantity into the heterogeneous typed vector.
   const velocities state{velocity};

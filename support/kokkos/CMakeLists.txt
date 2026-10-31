@@ -66,7 +66,8 @@ target_include_directories(
 if(NOT CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
   target_compile_options(
     typed_linear_algebra_kokkos
-    INTERFACE "-Wno-unused-local-typedefs" "-Wno-shadow" "-Wno-unused-parameter")
+    INTERFACE "-Wno-unused-local-typedefs" "-Wno-shadow" "-Wno-unused-parameter"
+  )
 endif()
 
 target_compile_definitions(

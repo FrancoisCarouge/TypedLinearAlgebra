@@ -63,7 +63,9 @@ add_library(typed_linear_algebra_mp_units INTERFACE)
 target_sources(
   typed_linear_algebra_mp_units
   INTERFACE
-  FILE_SET "mp_units_headers" TYPE "HEADERS" FILES "fcarouge/mp_units.hpp")
+  FILE_SET "mp_units_headers"
+    TYPE "HEADERS"
+    FILES "fcarouge/mp_units.hpp")
 target_link_libraries(
   typed_linear_algebra_mp_units
   INTERFACE

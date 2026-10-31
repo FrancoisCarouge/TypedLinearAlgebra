@@ -49,5 +49,6 @@ foreach(TYPES IN ITEMS "au" "chrono" "mp_units" "nholthaus")
   add_library(typed_linear_algebra_${TYPES}_std_boost_multi INTERFACE)
   target_link_libraries(
     typed_linear_algebra_${TYPES}_std_boost_multi
-    INTERFACE typed_linear_algebra_${TYPES}_std typed_linear_algebra_boost_multi)
+    INTERFACE typed_linear_algebra_${TYPES}_std typed_linear_algebra_boost_multi
+  )
 endforeach()

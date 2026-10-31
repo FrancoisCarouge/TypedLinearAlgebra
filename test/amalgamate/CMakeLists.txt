@@ -69,4 +69,5 @@ add_test(
   NAME typed_linear_algebra_amalgamate_typed_linear_algebra_mp_units_eigen
   COMMAND
     ${TEST_COMMAND}
-    $<TARGET_FILE:typed_linear_algebra_amalgamate_typed_linear_algebra_mp_units_eigen_driver>)
+    $<TARGET_FILE:typed_linear_algebra_amalgamate_typed_linear_algebra_mp_units_eigen_driver>
+)
