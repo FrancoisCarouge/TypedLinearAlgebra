@@ -76,7 +76,7 @@ template <auto Size> void bench() {
   }
 
   std::ofstream results{"results.txt", std::ios::app};
-  ankerl::nanobench::Bench()
+  ankerl::nanobench::Bench{}
       .output(nullptr)
       .title("std::mdspan")
       .run([&]() {

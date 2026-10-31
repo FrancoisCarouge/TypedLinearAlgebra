@@ -191,7 +191,7 @@ using mp_units::si::unit_symbols::s;
     // requirements to back up a vector quantity.
     mp_units::quantity velocity{flight_velocity(vector3d{30, 40, 0} * km / h)};
 
-    [[maybe_unused]] auto [x, y, z] = velocity;
+    [[maybe_unused]] auto [x, y, z]{velocity};
   }
 
   return 0;
