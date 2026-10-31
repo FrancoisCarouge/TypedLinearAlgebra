@@ -57,8 +57,8 @@ template <typename Type> constexpr auto as_vector_span(Type &value) {
   using underlying = typename matrix::underlying;
 
   return std::mdspan<underlying,
-                     std::extents<std::size_t, matrix::rows * matrix::columns>>(
-      value.data().data_handle());
+                     std::extents<std::size_t, matrix::rows * matrix::columns>>{
+      value.data().data_handle()};
 }
 } // namespace fcarouge::typed_linear_algebra::internal
 

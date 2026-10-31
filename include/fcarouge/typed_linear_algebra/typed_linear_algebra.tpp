@@ -196,6 +196,8 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     for (std::size_t j{0}; const auto &value : row) {
       // Convert to the element type first, e.g. to the element's unit, so the
       // caster only ever stores values of the element type.
+      // Copy-initialization, not braces: the conversion is implicit and may
+      // narrow, for example an `int` list element to a `double` matrix element.
       const element_type converted = value;
       tla::write_element<columns>(
           storage, cast<underlying, element_type>(converted), i, j);

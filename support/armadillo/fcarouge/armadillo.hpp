@@ -178,7 +178,7 @@ template <std::size_t Index, typename Type>
 namespace std {
 template <typename Type>
   requires fcarouge::armadillo::is_armadillo<Type>
-constexpr range_format format_kind<Type> = range_format::disabled;
+constexpr range_format format_kind<Type>{range_format::disabled};
 } // namespace std
 #endif
 

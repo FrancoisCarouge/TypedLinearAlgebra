@@ -82,7 +82,7 @@ struct element_caster<To, From> {
         "quantity representation type to guarantee the conversion "
         "is explicitly decided by the end-user.");
 
-    return To(value);
+    return To{value};
   }
 };
 
@@ -100,7 +100,7 @@ struct element_caster<To &, From &> {
         "quantity representation type to guarantee the conversion "
         "is explicitly decided by the end-user.");
 
-    return To(value);
+    return To{value};
   }
 };
 } // namespace fcarouge

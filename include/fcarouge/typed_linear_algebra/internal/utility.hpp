@@ -319,10 +319,10 @@ read_element(Storage &&storage,
     return access_element(storage, static_cast<storage_index>(row),
                           static_cast<storage_index>(column));
   } else if constexpr (requires { storage.eval(); }) {
-    // `auto(...)` copies the element out of the local evaluation before it
+    // `auto{...}` copies the element out of the local evaluation before it
     // goes out of scope.
     auto evaluated{storage.eval()};
-    return auto(read_element<Columns>(evaluated, indexes...));
+    return auto{read_element<Columns>(evaluated, indexes...)};
   } else {
     static_assert(sizeof(Storage) == 0,
                   "Element access is not supported for this linear algebra "
@@ -646,7 +646,7 @@ concept tuple_like =
      Size) and[]<std::size_t... Indexes>(std::index_sequence<Indexes...>) {
   return (requires(const Type &value) { get<Indexes>(value); } and ...);
 }
-(std::make_index_sequence<Size>());
+(std::make_index_sequence<Size>{});
 
 // The element-wise folds are partially specialized variable templates rather
 // than immediately invoked templated lambdas: MSVC evaluating such a lambda

@@ -67,7 +67,7 @@ struct lookup<Tuple, std::index_sequence<Indices...>> {
   using result = typename std::tuple_element<0, Tuple>::type &;
   using pointer = result (*)(Tuple &) noexcept;
 
-  static constexpr pointer table[std::tuple_size<Tuple>::value] = {
+  static constexpr pointer table[std::tuple_size<Tuple>::value]{
       &std::get<Indices>...};
 };
 
@@ -84,7 +84,7 @@ get(std::size_t index, Tuple &&tuple) {
   using tuple_type = typename std::remove_reference<Tuple>::type;
 
   if (index >= std::tuple_size<tuple_type>::value) {
-    throw std::runtime_error("Out of range");
+    throw std::runtime_error{"Out of range"};
   }
 
   return lookup<tuple_type>::table[index](tuple);
@@ -138,7 +138,7 @@ template <auto Size> void bench() {
   }
 
   std::ofstream results{"results.txt", std::ios::app};
-  ankerl::nanobench::Bench()
+  ankerl::nanobench::Bench{}
       .output(nullptr)
       .title("typed matrix from std::mdspan from std::tuple")
       .run([&]() {
