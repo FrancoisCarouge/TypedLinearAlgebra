@@ -49,7 +49,9 @@ add_library(typed_linear_algebra_au INTERFACE)
 target_sources(
   typed_linear_algebra_au
   INTERFACE
-  FILE_SET "au_headers" TYPE "HEADERS" FILES "fcarouge/au.hpp")
+  FILE_SET "au_headers"
+    TYPE "HEADERS"
+    FILES "fcarouge/au.hpp")
 target_link_libraries(
   typed_linear_algebra_au
   INTERFACE typed_linear_algebra_options Au::au)

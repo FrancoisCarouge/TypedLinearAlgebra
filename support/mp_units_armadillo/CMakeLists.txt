@@ -38,4 +38,5 @@ target_sources(
     FILES "fcarouge/linalg.hpp")
 target_link_libraries(
   typed_linear_algebra_mp_units_armadillo
-  INTERFACE typed_linear_algebra_armadillo typed_linear_algebra_mp_units tlinalg)
+  INTERFACE typed_linear_algebra_armadillo typed_linear_algebra_mp_units tlinalg
+)

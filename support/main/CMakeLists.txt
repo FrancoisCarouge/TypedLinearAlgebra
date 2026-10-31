@@ -33,7 +33,9 @@ add_library(typed_linear_algebra_realtime OBJECT "realtime.cpp")
 target_sources(
   typed_linear_algebra_realtime
   PUBLIC
-  FILE_SET "realtime_headers" TYPE "HEADERS" FILES "fcarouge/realtime.hpp")
+  FILE_SET "realtime_headers"
+    TYPE "HEADERS"
+    FILES "fcarouge/realtime.hpp")
 
 add_library(typed_linear_algebra_main "main.cpp")
 target_link_libraries(

@@ -47,7 +47,9 @@ add_library(typed_linear_algebra_nholthaus INTERFACE)
 target_sources(
   typed_linear_algebra_nholthaus
   INTERFACE
-  FILE_SET "nholthaus_headers" TYPE "HEADERS" FILES "fcarouge/nholthaus.hpp")
+  FILE_SET "nholthaus_headers"
+    TYPE "HEADERS"
+    FILES "fcarouge/nholthaus.hpp")
 target_link_libraries(
   typed_linear_algebra_nholthaus
   INTERFACE typed_linear_algebra_options units::units tlinalg)

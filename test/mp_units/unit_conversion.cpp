@@ -179,7 +179,7 @@ static_assert(not std::is_constructible_v<velocities, double, double, double>);
   // From a vector quantity in another unit.
   {
     const flight_velocity_mps value{
-        flight_velocity(vector3d{10, -20, 5} * m / s)};
+        flight_velocity(vector3d{10., -20., 5.} * m / s)};
     const velocities state = value;
 
     assert(std::format("{}", state) == "[[36 km/h], [-72 km/h], [18 km/h]]");
@@ -188,7 +188,7 @@ static_assert(not std::is_constructible_v<velocities, double, double, double>);
   // From a vector quantity in another unit, explicitly dropping its axes.
   {
     const flight_velocity_mps value{
-        flight_velocity(vector3d{10, -20, 5} * m / s)};
+        flight_velocity(vector3d{10., -20., 5.} * m / s)};
     const generic_velocities state{value};
 
     assert(std::format("{}", state) == "[[36 km/h], [-72 km/h], [18 km/h]]");

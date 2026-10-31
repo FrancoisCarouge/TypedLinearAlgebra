@@ -70,7 +70,7 @@ using mp_units::si::unit_symbols::s;
     // The homogeneous, double-typed vector satisfies mp-units's representation
     // requirements to back up a vector quantity.
     mp_units::quantity velocity{
-        mp_units::isq::velocity(vector3d{30, 40, 0} * km / h)};
+        mp_units::isq::velocity(vector3d{30., 40., 0.} * km / h)};
 
     // From there the framework treats the vector exactly like any other
     // representation:
@@ -98,7 +98,8 @@ using mp_units::si::unit_symbols::s;
 
     // A velocity vector quantity with strongly typed axes backed by a
     // 3-component double-typed column vector, backed by an Eigen vector.
-    mp_units::quantity velocity{flight_velocity(vector3d{30, 40, 0} * km / h)};
+    mp_units::quantity velocity{
+        flight_velocity(vector3d{30., 40., 0.} * km / h)};
 
     // A heterogeneous 3-component quantity-typed column vector, backed by an
     // Eigen vector.
@@ -134,7 +135,8 @@ using mp_units::si::unit_symbols::s;
 
     // A velocity vector quantity with strongly typed axes backed by a
     // 3-component double-typed column vector, backed by an Eigen vector.
-    mp_units::quantity velocity{flight_velocity(vector3d{30, 40, 0} * km / h)};
+    mp_units::quantity velocity{
+        flight_velocity(vector3d{30., 40., 0.} * km / h)};
 
     assert(std::format("{}", get<0>(velocity)) == "30 km/h");
     assert(std::format("{}", get<forward_velocity>(velocity)) == "30 km/h");
@@ -165,7 +167,7 @@ using mp_units::si::unit_symbols::s;
     // The homogeneous, double-typed vector satisfies mp-units's representation
     // requirements to back up a vector quantity.
     mp_units::quantity velocity{
-        mp_units::isq::velocity(vector3d{30, 40, 0} * km / h)};
+        mp_units::isq::velocity(vector3d{30., 40., 0.} * km / h)};
 
     assert(std::format("{}", velocity) == "[[30], [40], [0]] km/h");
 
@@ -189,7 +191,8 @@ using mp_units::si::unit_symbols::s;
 
     // The homogeneous, double-typed vector satisfies mp-units's representation
     // requirements to back up a vector quantity.
-    mp_units::quantity velocity{flight_velocity(vector3d{30, 40, 0} * km / h)};
+    mp_units::quantity velocity{
+        flight_velocity(vector3d{30., 40., 0.} * km / h)};
 
     [[maybe_unused]] auto [x, y, z]{velocity};
   }

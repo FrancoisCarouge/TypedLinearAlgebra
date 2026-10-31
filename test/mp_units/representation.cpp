@@ -63,23 +63,23 @@ static_assert(std::same_as<mp_units::representation_canonical_type_t<
 
 // Consequently, arithmetic on vector quantities stores the concrete vector
 // type, not a proxy.
-static_assert(
-    std::same_as<decltype(vector3d{1, 2, 3} * mp_units::isq::velocity[m / s] *
-                          (2. * mp_units::isq::duration[s]))::rep,
-                 vector3d>);
+static_assert(std::same_as<decltype(vector3d{1., 2., 3.} *
+                                    mp_units::isq::velocity[m / s] *
+                                    (2. * mp_units::isq::duration[s]))::rep,
+                           vector3d>);
 
 // A vector quantity is NOT a representation type: a quantity can never be
 // nested as another quantity's representation (`value_type_t<quantity>` is
 // the quantity itself, which `disable_representation` rejects).
 static_assert(!mp_units::detail::VectorRepresentation<
-              decltype(vector3d{0, 0, 0} * mp_units::isq::velocity[m / s])>);
+              decltype(vector3d{0., 0., 0.} * mp_units::isq::velocity[m / s])>);
 static_assert(!mp_units::RepresentationOf<
-              decltype(vector3d{0, 0, 0} * mp_units::isq::velocity[m / s]),
+              decltype(vector3d{0., 0., 0.} * mp_units::isq::velocity[m / s]),
               mp_units::quantity_tensor_order::vector>);
 
 // `magnitude()` of a vector quantity is a scalar quantity in the same unit.
 static_assert(
-    mp_units::QuantityOf<decltype(magnitude(vector3d{3, 4, 0} *
+    mp_units::QuantityOf<decltype(magnitude(vector3d{3., 4., 0.} *
                                             mp_units::isq::velocity[m / s])),
                          mp_units::isq::speed>);
 } // namespace
