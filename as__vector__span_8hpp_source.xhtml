@@ -150,8 +150,8 @@ $(function(){initNavTree('as__vector__span_8hpp_source.xhtml',''); initResizable
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_023x3_8cpp_03.xhtml#a99bff07aa65390566aef46990bf6a2c3">underlying</a> = <span class="keyword">typename</span> matrix::underlying;</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <span class="keywordflow">return</span> std::mdspan&lt;<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_023x3_8cpp_03.xhtml#a99bff07aa65390566aef46990bf6a2c3">underlying</a>,</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                     std::extents&lt;std::size_t, matrix::rows * matrix::columns&gt;&gt;(</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>      value.data().data_handle());</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                     std::extents&lt;std::size_t, matrix::rows * matrix::columns&gt;&gt;{</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>      value.data().data_handle()};</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>} <span class="comment">// namespace fcarouge::typed_linear_algebra::internal</span></div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>

@@ -477,7 +477,7 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">  179</span>  <span class="comment">// From a vector quantity in another unit.</span></div>
 <div class="line"><span class="lineno">  180</span>  {</div>
 <div class="line"><span class="lineno">  181</span>    <span class="keyword">const</span> flight_velocity_mps value{</div>
-<div class="line"><span class="lineno">  182</span>        <a class="code hl_variable" href="unit__conversion_8cpp.xhtml#a492abf3227d815c0027f72069a94836e">flight_velocity</a>(vector3d{10, -20, 5} * m / s)};</div>
+<div class="line"><span class="lineno">  182</span>        <a class="code hl_variable" href="unit__conversion_8cpp.xhtml#a492abf3227d815c0027f72069a94836e">flight_velocity</a>(vector3d{10., -20., 5.} * m / s)};</div>
 <div class="line"><span class="lineno">  183</span>    <span class="keyword">const</span> velocities state = value;</div>
 <div class="line"><span class="lineno">  184</span> </div>
 <div class="line"><span class="lineno">  185</span>    assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, state) == <span class="stringliteral">&quot;[[36 km/h], [-72 km/h], [18 km/h]]&quot;</span>);</div>
@@ -486,7 +486,7 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">  188</span>  <span class="comment">// From a vector quantity in another unit, explicitly dropping its axes.</span></div>
 <div class="line"><span class="lineno">  189</span>  {</div>
 <div class="line"><span class="lineno">  190</span>    <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02round__trip_8cpp_03.xhtml#aa54fd7e3d3a1d046d756152678f24e2d">flight_velocity_mps</a> value{</div>
-<div class="line"><span class="lineno">  191</span>        <a class="code hl_variable" href="unit__conversion_8cpp.xhtml#a492abf3227d815c0027f72069a94836e">flight_velocity</a>(vector3d{10, -20, 5} * m / s)};</div>
+<div class="line"><span class="lineno">  191</span>        <a class="code hl_variable" href="unit__conversion_8cpp.xhtml#a492abf3227d815c0027f72069a94836e">flight_velocity</a>(vector3d{10., -20., 5.} * m / s)};</div>
 <div class="line"><span class="lineno">  192</span>    <span class="keyword">const</span> <a class="code hl_typedef" href="#a49146e01c30b4a16a8df86401d278548">generic_velocities</a> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__array_8cpp_03.xhtml#adccd5c3bcffe2afa682f9f47acb76cd5">state</a>{value};</div>
 <div class="line"><span class="lineno">  193</span> </div>
 <div class="line"><span class="lineno">  194</span>    assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, state) == <span class="stringliteral">&quot;[[36 km/h], [-72 km/h], [18 km/h]]&quot;</span>);</div>

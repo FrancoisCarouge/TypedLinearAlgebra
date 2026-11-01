@@ -161,7 +161,7 @@ template&lt;auto Size&gt; </div>
 <div class="line"><span class="lineno">   76</span>  }</div>
 <div class="line"><span class="lineno">   77</span> </div>
 <div class="line"><span class="lineno">   78</span>  std::ofstream results{<span class="stringliteral">&quot;results.txt&quot;</span>, std::ios::app};</div>
-<div class="line"><span class="lineno">   79</span>  ankerl::nanobench::Bench()</div>
+<div class="line"><span class="lineno">   79</span>  ankerl::nanobench::Bench{}</div>
 <div class="line"><span class="lineno">   80</span>      .output(<span class="keyword">nullptr</span>)</div>
 <div class="line"><span class="lineno">   81</span>      .title(<span class="stringliteral">&quot;std::mdspan&quot;</span>)</div>
 <div class="line"><span class="lineno">   82</span>      .run([&amp;]() {</div>

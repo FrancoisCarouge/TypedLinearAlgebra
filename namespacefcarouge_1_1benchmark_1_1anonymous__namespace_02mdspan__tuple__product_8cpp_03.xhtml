@@ -179,7 +179,7 @@ template&lt;auto Size&gt; </div>
 <div class="line"><span class="lineno">  134</span>  }</div>
 <div class="line"><span class="lineno">  135</span> </div>
 <div class="line"><span class="lineno">  136</span>  std::ofstream results{<span class="stringliteral">&quot;results.txt&quot;</span>, std::ios::app};</div>
-<div class="line"><span class="lineno">  137</span>  ankerl::nanobench::Bench()</div>
+<div class="line"><span class="lineno">  137</span>  ankerl::nanobench::Bench{}</div>
 <div class="line"><span class="lineno">  138</span>      .output(<span class="keyword">nullptr</span>)</div>
 <div class="line"><span class="lineno">  139</span>      .title(<span class="stringliteral">&quot;std::mdspan from std::tuple&quot;</span>)</div>
 <div class="line"><span class="lineno">  140</span>      .run([&amp;]() {</div>
@@ -255,7 +255,7 @@ template&lt;typename Tuple &gt; </div>
 <div class="line"><span class="lineno">   84</span>  <span class="keyword">using </span>tuple_type = <span class="keyword">typename</span> std::remove_reference&lt;Tuple&gt;::type;</div>
 <div class="line"><span class="lineno">   85</span> </div>
 <div class="line"><span class="lineno">   86</span>  <span class="keywordflow">if</span> (<a class="code hl_concept" href="conceptfcarouge_1_1index.xhtml">index</a> &gt;= std::tuple_size&lt;tuple_type&gt;::value) {</div>
-<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Out of range&quot;</span>);</div>
+<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">throw</span> std::runtime_error{<span class="stringliteral">&quot;Out of range&quot;</span>};</div>
 <div class="line"><span class="lineno">   88</span>  }</div>
 <div class="line"><span class="lineno">   89</span> </div>
 <div class="line"><span class="lineno">   90</span>  <span class="keywordflow">return</span> lookup&lt;tuple_type&gt;::table[<a class="code hl_concept" href="conceptfcarouge_1_1index.xhtml">index</a>](tuple);</div>
