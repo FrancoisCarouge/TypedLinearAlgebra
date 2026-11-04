@@ -58,6 +58,10 @@ namespace fcarouge {
           requires {
             std::declval<lhs_element>() + std::declval<rhs_element>();
           }, "Matrix addition requires compatible element types.");
+      static_assert(tla::is_same_scale<lhs_element, rhs_element,
+                                       typename lhs_matrix::underlying>(),
+                    "Matrix addition requires elements of the same scale, "
+                    "convert first.");
     });
   });
 
@@ -85,6 +89,10 @@ namespace fcarouge {
     static_assert(
         requires { std::declval<lhs_element>() + std::declval<rhs_element>(); },
         "Matrix addition requires compatible element types.");
+    static_assert(
+        tla::is_same_scale<lhs_element, rhs_element,
+                           typename lhs_matrix::underlying>(),
+        "Matrix addition requires elements of the same scale, convert first.");
   });
 
   using row_indexes = typename lhs_matrix::row_indexes;
@@ -151,6 +159,12 @@ constexpr void add(const rank_typed_matrix<2> auto &lhs,
             std::declval<result_element &>() =
                 std::declval<lhs_element>() + std::declval<rhs_element>();
           }, "Matrix addition requires compatible element types.");
+      static_assert(tla::is_same_scale<lhs_element, result_element,
+                                       typename lhs_matrix::underlying>() and
+                        tla::is_same_scale<rhs_element, result_element,
+                                           typename lhs_matrix::underlying>(),
+                    "Matrix addition requires elements of the same scale, "
+                    "convert first.");
     });
   });
 
@@ -181,6 +195,12 @@ constexpr void add(const rank_typed_matrix<1> auto &lhs,
           std::declval<result_element &>() =
               std::declval<lhs_element>() + std::declval<rhs_element>();
         }, "Matrix addition requires compatible element types.");
+    static_assert(
+        tla::is_same_scale<lhs_element, result_element,
+                           typename lhs_matrix::underlying>() and
+            tla::is_same_scale<rhs_element, result_element,
+                               typename lhs_matrix::underlying>(),
+        "Matrix addition requires elements of the same scale, convert first.");
   });
 
   using std::linalg::add;
@@ -206,6 +226,12 @@ constexpr void add(const rank_typed_matrix<0> auto &lhs,
         std::declval<result_element &>() =
             std::declval<lhs_element>() + std::declval<rhs_element>();
       }, "Matrix addition requires compatible element types.");
+  static_assert(
+      tla::is_same_scale<lhs_element, result_element,
+                         typename lhs_matrix::underlying>() and
+          tla::is_same_scale<rhs_element, result_element,
+                             typename lhs_matrix::underlying>(),
+      "Matrix addition requires elements of the same scale, convert first.");
 
   using std::linalg::add;
   add(lhs.data(), rhs.data(), result.data());

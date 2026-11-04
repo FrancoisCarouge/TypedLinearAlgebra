@@ -46,14 +46,14 @@ constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix()
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     const convertible_typed_matrix<typed_matrix> auto &other)
-    : storage{other.data()} {}
+    : storage{tla::converted_storage<typed_matrix>(other)} {}
 
 //! @todo Verify storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr auto typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
     const convertible_typed_matrix<typed_matrix> auto &other)
     -> typed_matrix<Matrix, RowIndexes, ColumnIndexes> & {
-  storage = other.data();
+  storage = tla::converted_storage<typed_matrix>(other);
   return *this;
 }
 
@@ -61,14 +61,16 @@ constexpr auto typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr typed_matrix<Matrix, RowIndexes, ColumnIndexes>::typed_matrix(
     convertible_typed_matrix<typed_matrix> auto &&other)
-    : storage{std::forward<decltype(other)>(other).data()} {}
+    : storage{tla::converted_storage<typed_matrix>(
+          std::forward<decltype(other)>(other))} {}
 
 //! @todo Verify storage (?) compatibility.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 constexpr auto typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator=(
     convertible_typed_matrix<typed_matrix> auto &&other)
     -> typed_matrix<Matrix, RowIndexes, ColumnIndexes> & {
-  storage = std::forward<decltype(other)>(other).data();
+  storage = tla::converted_storage<typed_matrix>(
+      std::forward<decltype(other)>(other));
   return *this;
 }
 

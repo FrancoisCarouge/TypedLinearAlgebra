@@ -48,9 +48,12 @@ namespace {
   using au::symbols::m;
 
   constexpr auto m2{au::squared(m)};
+  constexpr auto m4{m2 * m2};
 
   using length = au::QuantityD<au::Meters>;
+  using area = tla::product<length, length>;
   using indexes = std::tuple<length, length>;
+  using area_indexes = std::tuple<area, area>;
 
   double storage_a[4]{};
   double storage_b[4]{};
@@ -62,7 +65,7 @@ namespace {
 
   matrix<representation, indexes, indexes> a{span_a};
   matrix<representation, indexes, indexes> b{span_b};
-  matrix<representation, indexes, indexes> r{span_r};
+  matrix<representation, area_indexes, area_indexes> r{span_r};
 
   a.at<0, 0>(1. * m2);
   a.at<0, 1>(2. * m2);
@@ -76,10 +79,10 @@ namespace {
 
   matrix_product(a, b, r);
 
-  assert((r.at<0, 0>() == 19. * m2));
-  assert((r.at<0, 1>() == 22. * m2));
-  assert((r.at<1, 0>() == 43. * m2));
-  assert((r.at<1, 1>() == 50. * m2));
+  assert((r.at<0, 0>() == 19. * m4));
+  assert((r.at<0, 1>() == 22. * m4));
+  assert((r.at<1, 0>() == 43. * m4));
+  assert((r.at<1, 1>() == 50. * m4));
 
   return 0;
 }()};

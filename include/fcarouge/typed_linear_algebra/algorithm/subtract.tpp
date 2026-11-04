@@ -55,6 +55,10 @@ namespace fcarouge {
           requires {
             std::declval<lhs_element>() - std::declval<rhs_element>();
           }, "Matrix subtraction requires compatible element types.");
+      static_assert(tla::is_same_scale<lhs_element, rhs_element,
+                                       typename lhs_matrix::underlying>(),
+                    "Matrix subtraction requires elements of the same scale, "
+                    "convert first.");
     });
   });
 
@@ -83,6 +87,10 @@ namespace fcarouge {
     static_assert(
         requires { std::declval<lhs_element>() - std::declval<rhs_element>(); },
         "Matrix subtraction requires compatible element types.");
+    static_assert(tla::is_same_scale<lhs_element, rhs_element,
+                                     typename lhs_matrix::underlying>(),
+                  "Matrix subtraction requires elements of the same scale, "
+                  "convert first.");
   });
 
   using row_indexes = typename lhs_matrix::row_indexes;

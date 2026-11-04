@@ -87,6 +87,15 @@ namespace fcarouge {
                     tla::element_at<rhs_matrix, k, j>>,
                 tla::element_at<lhs_matrix, i, j>>,
             "Matrix division requires compatible element types.");
+        static_assert(
+            tla::is_same_scale<
+                tla::product<
+                    tla::product<std::tuple_element_t<i, row_indexes>,
+                                 std::tuple_element_t<k, column_indexes>>,
+                    tla::element_at<rhs_matrix, k, j>>,
+                tla::element_at<lhs_matrix, i, j>,
+                typename lhs_matrix::underlying>(),
+            "Matrix division requires terms of the same scale, convert first.");
       });
     });
   });
