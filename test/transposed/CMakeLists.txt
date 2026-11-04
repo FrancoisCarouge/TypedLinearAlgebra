@@ -32,11 +32,13 @@ For more information, please refer to <https://unlicense.org> ]]
 pass("1x1_au_std" BACKENDS "au_std")
 pass("1x1_mp_units_std" BACKENDS "mp_units_std")
 pass("2x1_au_std" BACKENDS "au_std")
-pass("2x1_chrono_eigen" BACKENDS "chrono_eigen")
+pass("2x1_chrono_eigen" BACKENDS "chrono_eigen" "chrono_sparse")
 pass("2x1_chrono_std" BACKENDS "chrono_std")
 pass("2x1_mp_units_std" BACKENDS "mp_units_std")
-pass("2x3_au_eigen" BACKENDS "au_eigen" "au_armadillo")
-pass("2x3_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
-pass("2x3_nholthaus_eigen" BACKENDS "nholthaus_eigen")
+pass("2x3_au_eigen" BACKENDS "au_eigen" "au_armadillo" "au_sparse")
+pass(
+  "2x3_mp_units_eigen"
+  BACKENDS "mp_units_eigen" "mp_units_armadillo" "mp_units_sparse")
+pass("2x3_nholthaus_eigen" BACKENDS "nholthaus_eigen" "nholthaus_sparse")
 pass("2x3_nholthaus_std" BACKENDS "nholthaus_std")
-pass("2x3" BACKENDS "eigexed" "armadilloxed")
+pass("2x3" BACKENDS "eigexed" "armadilloxed" "sparse")

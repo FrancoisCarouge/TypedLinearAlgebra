@@ -98,7 +98,9 @@ concept same_shape = tla::same_shape<Lhs, Rhs>;
 //! destination matrix, whatever their row and column indexes. A conversion
 //! keeps the value of each element, as converting the element itself does. A
 //! non-owning view cannot hold converted values, so it only converts from
-//! elements of the same scale.
+//! elements of the same scale. An element the storage cannot write, as a
+//! structural zero, only converts when its conversion keeps its value, as one
+//! without an offset keeps a zero.
 //!
 //! @tparam From The source typed matrix type.
 //! @tparam To The destination typed matrix type.
@@ -235,7 +237,8 @@ public:
   //! element keeps its value, as converting the element itself does. Between
   //! elements of different scales, each element converts in turn, so a
   //! non-owning view, which cannot hold the converted values, does not
-  //! participate.
+  //! participate, nor does a storage element it cannot write whose conversion
+  //! would change its value.
   constexpr explicit(false)
       typed_matrix(const convertible_typed_matrix<typed_matrix> auto &other);
 
@@ -420,9 +423,10 @@ public:
   //! @brief Read the specified element.
   //!
   //! @details Returns a strongly typed element at the specified location. A
-  //! reference is returned for non-const calls. Bound checking is performed for
-  //! compile-time indexes. This access operator cannot exist for heterogeneous
-  //! matrices with runtime indexes.
+  //! reference is returned for non-const calls, a const value when the storage
+  //! has no addressable element, so that a lost write does not compile. Bound
+  //! checking is performed for compile-time indexes. This access operator
+  //! cannot exist for heterogeneous matrices with runtime indexes.
   //!
   //! @tparam Indexes Type(s) of the indexes. Use a template pack because some
   //! compilers have internal compiler errors with a placeholder type specifier.
@@ -440,9 +444,10 @@ public:
   //! @brief Read the specified element.
   //!
   //! @details Returns a strongly typed element at the specified location. A
-  //! reference is returned for non-const calls. Bound checking is performed for
-  //! compile-time indexes. This access operator cannot exist for heterogeneous
-  //! matrices with runtime indexes.
+  //! reference is returned for non-const calls, a const value when the storage
+  //! has no addressable element, so that a lost write does not compile. Bound
+  //! checking is performed for compile-time indexes. This access operator
+  //! cannot exist for heterogeneous matrices with runtime indexes.
   //!
   //! @tparam Indexes Type(s) of the indexes. Use a template pack because some
   //! compilers have internal compiler errors with a placeholder type specifier.
