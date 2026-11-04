@@ -30,5 +30,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 build("uniform_typed_matrix" BACKENDS "eigexed")
-build("mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
-build("au_eigen" BACKENDS "au_eigen" "au_armadillo")
+build(
+  "mp_units_eigen"
+  BACKENDS "mp_units_eigen" "mp_units_armadillo" "mp_units_sparse")
+build("au_eigen" BACKENDS "au_eigen" "au_armadillo" "au_sparse")

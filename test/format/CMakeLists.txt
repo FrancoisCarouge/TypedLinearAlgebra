@@ -29,18 +29,26 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-pass("1x1" BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("1x3" BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("3x1" BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("3x3" BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed")
+pass(
+  "1x1"
+  BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed" "sparse")
+pass(
+  "1x3"
+  BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed" "sparse")
+pass(
+  "3x1"
+  BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed" "sparse")
+pass(
+  "3x3"
+  BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed" "sparse")
 pass(
   "formattable"
-  BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed")
-pass("au_eigen" BACKENDS "au_eigen")
+  BACKENDS "eigen" "eigexed" "nested_typed_eigen" "armadilloxed" "sparse")
+pass("au_eigen" BACKENDS "au_eigen" "au_sparse")
 pass("au_std" BACKENDS "au_std")
-pass("chrono_eigen" BACKENDS "chrono_eigen")
+pass("chrono_eigen" BACKENDS "chrono_eigen" "chrono_sparse")
 pass("chrono_std" BACKENDS "chrono_std")
-pass("mp_units_eigen" BACKENDS "mp_units_eigen")
+pass("mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_sparse")
 pass("mp_units_std" BACKENDS "mp_units_std")
-pass("nholthaus_eigen" BACKENDS "nholthaus_eigen")
+pass("nholthaus_eigen" BACKENDS "nholthaus_eigen" "nholthaus_sparse")
 pass("nholthaus_std" BACKENDS "nholthaus_std")

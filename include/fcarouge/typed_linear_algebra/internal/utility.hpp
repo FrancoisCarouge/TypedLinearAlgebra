@@ -282,11 +282,31 @@ using storage_index_t = typename std::disjunction<
     index_candidate<unsigned short, indexed_by<Storage, unsigned short>>,
     index_candidate<std::size_t>>::type;
 
+//! @brief The storage row and column of the given typed matrix index(es).
+//!
+//! @details Two indexes as-is, the linear index of a one-dimension matrix split
+//! row-major as `element_t` does, no index to the origin.
+//!
+//! @tparam Columns The count of columns of the typed matrix.
+//! @param indexes Compile-time or runtime position(s) of the element.
+template <std::size_t Columns>
+[[nodiscard]] constexpr auto
+storage_position(std::convertible_to<std::size_t> auto... indexes)
+    -> std::array<std::size_t, 2> {
+  if constexpr (sizeof...(indexes) == 2) {
+    return {static_cast<std::size_t>(indexes)...};
+  } else if constexpr (sizeof...(indexes) == 1) {
+    const std::size_t index{static_cast<std::size_t>(indexes)...};
+    return {index / Columns, index % Columns};
+  } else {
+    return {0, 0};
+  }
+}
+
 //! @brief Read the storage element at the given typed matrix index(es).
 //!
-//! @details Maps the index(es) to a storage row and column: two indexes as-is,
-//! the linear index of a one-dimension matrix split row-major as `element_t`
-//! does, no index to the origin. Then reads through a composed `typed_matrix`
+//! @details Maps the index(es) to a storage row and column, see
+//! `storage_position`. Then reads through a composed `typed_matrix`
 //! storage, a two-index element access, or a materialized expression template,
 //! in that order. The row and column cast to the storage index type, so none
 //! reaches the storage through an implicit sign or narrowing conversion.
@@ -300,16 +320,7 @@ template <std::size_t Columns, typename Storage>
 read_element(Storage &&storage,
              std::convertible_to<std::size_t> auto... indexes)
     -> decltype(auto) {
-  const auto [row, column]{[&] -> std::array<std::size_t, 2> {
-    if constexpr (sizeof...(indexes) == 2) {
-      return {static_cast<std::size_t>(indexes)...};
-    } else if constexpr (sizeof...(indexes) == 1) {
-      const std::size_t index{static_cast<std::size_t>(indexes)...};
-      return {index / Columns, index % Columns};
-    } else {
-      return {0, 0};
-    }
-  }()};
+  const auto [row, column]{storage_position<Columns>(indexes...)};
 
   if constexpr (same_as_typed_matrix<Storage>) {
     return read_element<Columns>(storage.data(), indexes...);
@@ -343,6 +354,53 @@ constexpr void write_element(Storage &&storage, Value &&value,
                 "element.");
 
   read_element<Columns>(storage, indexes...) = std::forward<Value>(value);
+}
+
+//! @brief Concept of a storage with a reference to its element at the given
+//! compile-time storage row and column, through either element access.
+//!
+//! @tparam Storage The backend matrix type.
+//! @tparam Columns The count of columns of the typed matrix.
+//! @tparam Row The storage row of the element.
+//! @tparam Column The storage column of the element.
+template <typename Storage, std::size_t Columns, std::size_t Row,
+          std::size_t Column>
+concept writable_element_at =
+    requires(Storage &storage) {
+      requires std::is_lvalue_reference_v<
+          decltype(storage[std::integral_constant<std::size_t, Row>{},
+                           std::integral_constant<std::size_t, Column>{}])>;
+    } or
+    std::is_lvalue_reference_v<decltype(read_element<Columns>(
+        std::declval<Storage &>(), Row, Column))>;
+
+//! @brief Write the storage element at the given compile-time typed matrix
+//! index(es).
+//!
+//! @details Offers the storage the position as compile-time constants, of the
+//! standard type of the `_i` literal, for a storage whose addressable elements
+//! depend on the position. A storage without a reference for this position
+//! writes as for a run-time position.
+//!
+//! @tparam Columns The count of columns of the typed matrix.
+//! @tparam Indexes Compile-time position(s) of the element.
+template <std::size_t Columns, auto... Indexes, typename Storage,
+          typename Value>
+constexpr void write_element_at(Storage &&storage, Value &&value) {
+  static constexpr std::array<std::size_t, 2> position{
+      storage_position<Columns>(Indexes...)};
+
+  using row = std::integral_constant<std::size_t, position[0]>;
+  using column = std::integral_constant<std::size_t, position[1]>;
+
+  if constexpr (requires {
+                  requires std::is_lvalue_reference_v<
+                      decltype(storage[row{}, column{}])>;
+                }) {
+    storage[row{}, column{}] = std::forward<Value>(value);
+  } else {
+    write_element<Columns>(storage, std::forward<Value>(value), Indexes...);
+  }
 }
 
 //! @brief The scalar representation type stored by a linear algebra backend.
@@ -648,6 +706,49 @@ template <typename Matrix>
 concept owning_storage = std::default_initializable<Matrix> and
                          not requires(Matrix &value) { value.data_handle(); };
 
+//! @brief Whether each element the storage of `To` cannot write keeps its value
+//! on conversion from `From`.
+//!
+//! @details An element the storage cannot write, as a structural zero, is a
+//! constant of the storage, the value it reads by default. A conversion cannot
+//! change it, so it is only exact when converting the element keeps that value:
+//! a conversion between scales without an offset keeps a zero, one with an
+//! offset, as between temperatures in degrees Celsius and in kelvin, does not.
+//!
+//! @tparam From The source typed matrix type.
+//! @tparam To The destination typed matrix type, of the same shape.
+template <typename From, typename To>
+constexpr auto keeps_fixed_elements() -> bool {
+  using from_matrix = std::remove_cvref_t<From>;
+  using to_matrix = std::remove_cvref_t<To>;
+  using storage = typename to_matrix::matrix;
+  using from_underlying = typename from_matrix::underlying;
+  using to_underlying = typename to_matrix::underlying;
+  bool result{true};
+
+  for_constexpr<to_matrix::rows>([&result](auto i) {
+    for_constexpr<to_matrix::columns>([&result, &i](auto j) {
+      if constexpr (not writable_element_at<storage, to_matrix::columns, i,
+                                            j>) {
+        using from_element = element_at<from_matrix, i, j>;
+        using to_element = element_at<to_matrix, i, j>;
+
+        constexpr to_underlying fixed{
+            read_element<to_matrix::columns>(storage{}, i, j)};
+
+        // Copy-initialization: the implicit conversion the concept verifies.
+        const to_element converted =
+            element_caster<from_element, from_underlying>{}(fixed);
+
+        result &=
+            element_caster<to_underlying, to_element>{}(converted) == fixed;
+      }
+    });
+  });
+
+  return result;
+}
+
 //! @brief Concept of a typed matrix implicitly convertible to another typed
 //! matrix, element by element.
 //!
@@ -656,21 +757,30 @@ concept owning_storage = std::default_initializable<Matrix> and
 //! element type must implicitly convert to the corresponding destination
 //! element type, otherwise a mistyped expression would be silently relabeled on
 //! conversion. Elements of different scales must also convert into a storage
-//! able to hold the converted values, which a non-owning view cannot.
+//! able to hold the converted values, which a non-owning view cannot, nor an
+//! element the storage cannot write whose value the conversion would change.
+//! Either way, the destination storage is constructed from the source storage,
+//! which a storage holding fewer elements, as a narrower sparsity pattern, may
+//! not be.
 //!
 //! @tparam From The source typed matrix type.
 //! @tparam To The destination typed matrix type.
 template <typename From, typename To>
 concept convertible_typed_matrix =
     same_shape<From, To> and is_convertible_typed_matrix<From, To>() and
-    (owning_storage<typename std::remove_cvref_t<To>::matrix> or
-     is_same_scale_typed_matrix<From, To>());
+    std::constructible_from<typename std::remove_cvref_t<To>::matrix,
+                            decltype(std::declval<const From &>().data())> and
+    (is_same_scale_typed_matrix<From, To>() or
+     (owning_storage<typename std::remove_cvref_t<To>::matrix> and
+      keeps_fixed_elements<From, To>()));
 
 //! @brief The storage of the typed matrix `To` keeping the values of `from`.
 //!
 //! @details Elements of one scale need no conversion: their storage is passed
 //! as-is. Otherwise, each element converts through its type, read from an
-//! evaluation of the source, which may be an expression template.
+//! evaluation of the source, which may be an expression template, and written
+//! at its compile-time position. An element the storage cannot write keeps its
+//! default value, which the concept verified the conversion keeps.
 template <typename To>
 [[nodiscard]] constexpr auto converted_storage(auto &&from) -> decltype(auto) {
   using from_matrix = std::remove_cvref_t<decltype(from)>;
@@ -693,13 +803,16 @@ template <typename To>
         using from_element = element_at<from_matrix, i, j>;
         using to_element = element_at<to_matrix, i, j>;
 
-        // Copy-initialization: the implicit conversion the concept verified.
-        const to_element converted =
-            element_caster<from_element, from_underlying>{}(
-                read_element<from_matrix::columns>(evaluated, i, j));
-        write_element<to_matrix::columns>(
-            result, element_caster<to_underlying, to_element>{}(converted), i,
-            j);
+        if constexpr (writable_element_at<storage, to_matrix::columns, i, j>) {
+          // Copy-initialization: the implicit conversion the concept verified.
+          const to_element converted =
+              element_caster<from_element, from_underlying>{}(
+                  read_element<from_matrix::columns>(evaluated, i, j));
+
+          write_element_at<to_matrix::columns, decltype(i)::value,
+                           decltype(j)::value>(
+              result, element_caster<to_underlying, to_element>{}(converted));
+        }
       });
     });
 

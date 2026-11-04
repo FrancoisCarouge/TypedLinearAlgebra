@@ -30,6 +30,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 pass("representation" BACKENDS "mp_units_eigen")
-pass("round_trip" BACKENDS "mp_units_eigen")
-pass("typed_vector_as_quantity" BACKENDS "mp_units_eigen")
-pass("unit_conversion" BACKENDS "mp_units_eigen")
+pass("round_trip" BACKENDS "mp_units_eigen" "mp_units_sparse")
+pass("typed_vector_as_quantity" BACKENDS "mp_units_eigen" "mp_units_sparse")
+pass("unit_conversion" BACKENDS "mp_units_eigen" "mp_units_sparse")

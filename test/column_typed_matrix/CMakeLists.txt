@@ -30,8 +30,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 build("column_typed_matrix" BACKENDS "eigexed")
-build("mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
-build("chrono_eigen" BACKENDS "chrono_eigen" "chrono_armadillo")
+build(
+  "mp_units_eigen"
+  BACKENDS "mp_units_eigen" "mp_units_armadillo" "mp_units_sparse")
+build("chrono_eigen" BACKENDS "chrono_eigen" "chrono_armadillo" "chrono_sparse")
 build("au_std" BACKENDS "au_std")
 build("nested_typed_eigen" BACKENDS "nested_typed_eigen")
 
