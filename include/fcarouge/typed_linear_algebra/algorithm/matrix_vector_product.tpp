@@ -73,6 +73,10 @@ constexpr void matrix_vector_product(const rank_typed_matrix<2> auto &lhs,
 
       static_assert(std::is_convertible_v<term, first_term>,
                     "Matrix-vector product requires compatible element types.");
+      static_assert(tla::is_same_scale<term, first_term,
+                                       typename lhs_matrix::underlying>(),
+                    "Matrix-vector product requires terms of the same scale, "
+                    "convert first.");
     });
 
     static_assert(
@@ -80,6 +84,12 @@ constexpr void matrix_vector_product(const rank_typed_matrix<2> auto &lhs,
           std::declval<typename result_matrix::template element<i> &>() =
               std::declval<first_term>();
         }, "Matrix-vector product requires compatible element types.");
+    static_assert(
+        tla::is_same_scale<first_term,
+                           typename result_matrix::template element<i>,
+                           typename lhs_matrix::underlying>(),
+        "Matrix-vector product requires a result of the same scale as its "
+        "terms, convert first.");
   });
 
   using std::linalg::matrix_vector_product;

@@ -95,10 +95,10 @@ concept same_shape = tla::same_shape<Lhs, Rhs>;
 //!
 //! @details The matrices are of the same shape, and each element type of the
 //! source matrix implicitly converts to the corresponding element type of the
-//! destination matrix, whatever their row and column indexes. A typed matrix
-//! converts its elements' representations as-is, relabeled with the
-//! destination's element types, so an element type that does not convert would
-//! otherwise silently change the meaning of its value.
+//! destination matrix, whatever their row and column indexes. A conversion
+//! keeps the value of each element, as converting the element itself does. A
+//! non-owning view cannot hold converted values, so it only converts from
+//! elements of the same scale.
 //!
 //! @tparam From The source typed matrix type.
 //! @tparam To The destination typed matrix type.
@@ -231,7 +231,11 @@ public:
   //! matrix must implicitly convert to the corresponding element type of this
   //! matrix, whatever their row and column indexes. Otherwise, the constructor
   //! does not participate in overload resolution, so that the typed matrix is
-  //! not reported convertible from a matrix it cannot be constructed from.
+  //! not reported convertible from a matrix it cannot be constructed from. Each
+  //! element keeps its value, as converting the element itself does. Between
+  //! elements of different scales, each element converts in turn, so a
+  //! non-owning view, which cannot hold the converted values, does not
+  //! participate.
   constexpr explicit(false)
       typed_matrix(const convertible_typed_matrix<typed_matrix> auto &other);
 

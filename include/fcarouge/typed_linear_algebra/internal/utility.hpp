@@ -586,21 +586,126 @@ constexpr auto is_convertible_typed_matrix() -> bool {
   return result;
 }
 
+//! @brief Whether the same stored number means the same value in two element
+//! types.
+//!
+//! @details The storage holds bare numbers, each in its own element's unit. A
+//! computation on the storage is therefore only correct between elements of one
+//! scale, whether or not their types are the same: the speed and the velocity
+//! in meters per second share a scale, the meter and the kilometer do not. The
+//! typed values of the numbers zero and one are compared, the second telling
+//! scales apart, the first offsets. Types without a common type are not of one
+//! scale: comparing them directly may hard-error instead, as in Au and
+//! nholthaus/units between dimensions.
+//!
+//! @tparam Lhs The first element type.
+//! @tparam Rhs The second element type.
+//! @tparam LhsUnderlying The storage type of the first element.
+//! @tparam RhsUnderlying The storage type of the second element.
+template <typename Lhs, typename Rhs, typename LhsUnderlying,
+          typename RhsUnderlying = LhsUnderlying>
+constexpr auto is_same_scale() -> bool {
+  if constexpr (std::same_as<Lhs, Rhs>) {
+    return true;
+  } else if constexpr (requires { typename std::common_type_t<Lhs, Rhs>; }) {
+    using lhs_caster = element_caster<Lhs, LhsUnderlying>;
+    using rhs_caster = element_caster<Rhs, RhsUnderlying>;
+
+    return lhs_caster{}(LhsUnderlying{1}) == rhs_caster{}(RhsUnderlying{1}) and
+           lhs_caster{}(LhsUnderlying{0}) == rhs_caster{}(RhsUnderlying{0});
+  } else {
+    return false;
+  }
+}
+
+//! @brief Whether each element type of a typed matrix is of the same scale as
+//! the corresponding element type of another typed matrix of the same shape.
+//!
+//! @tparam From The source typed matrix type.
+//! @tparam To The destination typed matrix type, of the same shape.
+template <typename From, typename To>
+constexpr auto is_same_scale_typed_matrix() -> bool {
+  using from_matrix = std::remove_cvref_t<From>;
+  using to_matrix = std::remove_cvref_t<To>;
+  bool result{true};
+
+  for_constexpr<to_matrix::rows>([&result](auto i) {
+    for_constexpr<to_matrix::columns>([&result, &i](auto j) {
+      result &= is_same_scale<
+          element_at<from_matrix, i, j>, element_at<to_matrix, i, j>,
+          typename from_matrix::underlying, typename to_matrix::underlying>();
+    });
+  });
+
+  return result;
+}
+
+//! @brief Concept of a backend matrix holding its own elements, independent
+//! from any other: the precondition to hold values converted from another
+//! matrix. A view has no storage of its own: copying one shares the viewed
+//! elements, which are the ones `std::mdspan` exposes through `data_handle()`.
+template <typename Matrix>
+concept owning_storage = std::default_initializable<Matrix> and
+                         not requires(Matrix &value) { value.data_handle(); };
+
 //! @brief Concept of a typed matrix implicitly convertible to another typed
 //! matrix, element by element.
 //!
-//! @details The storage holds representations oblivious to the indexes, so a
-//! conversion between typed matrices copies the storage as-is and relabels its
-//! elements with the destination's types. The matrices must therefore be of
-//! the same shape, and each source element type must implicitly convert to the
-//! corresponding destination element type, otherwise a mistyped expression
-//! would be silently relabeled on conversion.
+//! @details A conversion keeps the value of each element, as converting the
+//! element itself does. The matrices must be of the same shape, and each source
+//! element type must implicitly convert to the corresponding destination
+//! element type, otherwise a mistyped expression would be silently relabeled on
+//! conversion. Elements of different scales must also convert into a storage
+//! able to hold the converted values, which a non-owning view cannot.
 //!
 //! @tparam From The source typed matrix type.
 //! @tparam To The destination typed matrix type.
 template <typename From, typename To>
 concept convertible_typed_matrix =
-    same_shape<From, To> and is_convertible_typed_matrix<From, To>();
+    same_shape<From, To> and is_convertible_typed_matrix<From, To>() and
+    (owning_storage<typename std::remove_cvref_t<To>::matrix> or
+     is_same_scale_typed_matrix<From, To>());
+
+//! @brief The storage of the typed matrix `To` keeping the values of `from`.
+//!
+//! @details Elements of one scale need no conversion: their storage is passed
+//! as-is. Otherwise, each element converts through its type, read from an
+//! evaluation of the source, which may be an expression template.
+template <typename To>
+[[nodiscard]] constexpr auto converted_storage(auto &&from) -> decltype(auto) {
+  using from_matrix = std::remove_cvref_t<decltype(from)>;
+  using to_matrix = std::remove_cvref_t<To>;
+
+  if constexpr (is_same_scale_typed_matrix<from_matrix, to_matrix>()) {
+    return std::forward<decltype(from)>(from).data();
+  } else {
+    using storage = typename to_matrix::matrix;
+    using from_underlying = typename from_matrix::underlying;
+    using to_underlying = typename to_matrix::underlying;
+
+    const storage evaluated{from.data()};
+    storage result{};
+
+    // The casters are named directly, the `cast` object is declared after the
+    // class.
+    for_constexpr<to_matrix::rows>([&](auto i) {
+      for_constexpr<to_matrix::columns>([&](auto j) {
+        using from_element = element_at<from_matrix, i, j>;
+        using to_element = element_at<to_matrix, i, j>;
+
+        // Copy-initialization: the implicit conversion the concept verified.
+        const to_element converted =
+            element_caster<from_element, from_underlying>{}(
+                read_element<from_matrix::columns>(evaluated, i, j));
+        write_element<to_matrix::columns>(
+            result, element_caster<to_underlying, to_element>{}(converted), i,
+            j);
+      });
+    });
+
+    return storage{result};
+  }
+}
 
 template <typename Type, std::size_t Size> struct tupler {
   template <typename = std::make_index_sequence<Size>> struct helper;

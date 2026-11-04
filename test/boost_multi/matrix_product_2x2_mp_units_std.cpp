@@ -54,8 +54,12 @@ namespace {
 //! memory owned by Boost.Multi arrays, read and written in row-major order.
 [[maybe_unused]] const auto test{[] -> int {
   using length = quantity<mp_units::isq::length[m]>;
+  using area = tla::product<length, length>;
   using indexes = std::tuple<length, length>;
+  using area_indexes = std::tuple<area, area>;
   using storage = boost::multi::inplace_array<representation, 2>;
+
+  constexpr auto m4{m2 * m2};
 
   storage storage_a({2, 2}, 0.);
   storage storage_b({2, 2}, 0.);
@@ -73,16 +77,16 @@ namespace {
 
   matrix<representation, indexes, indexes> a{span_a};
   matrix<representation, indexes, indexes> b{span_b};
-  matrix<representation, indexes, indexes> r{span_r};
+  matrix<representation, area_indexes, area_indexes> r{span_r};
 
   matrix_product(a, b, r);
 
   assert((a.at<0, 1>() == 2. * m2));
   assert((a.at<1, 0>() == 3. * m2));
-  assert((r.at<0, 0>() == 19. * m2));
-  assert((r.at<0, 1>() == 22. * m2));
-  assert((r.at<1, 0>() == 43. * m2));
-  assert((r.at<1, 1>() == 50. * m2));
+  assert((r.at<0, 0>() == 19. * m4));
+  assert((r.at<0, 1>() == 22. * m4));
+  assert((r.at<1, 0>() == 43. * m4));
+  assert((r.at<1, 1>() == 50. * m4));
   assert(
       std::ranges::equal(storage_r.elements(), std::array{19., 22., 43., 50.}));
 

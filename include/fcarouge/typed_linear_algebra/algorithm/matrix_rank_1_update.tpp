@@ -81,6 +81,11 @@ constexpr void matrix_rank_1_update(const rank_typed_matrix<1> auto &lhs,
             std::declval<result_element &>() =
                 std::declval<lhs_element>() * std::declval<rhs_element>();
           }, "Matrix rank-1 update requires compatible element types.");
+      static_assert(
+          tla::is_same_scale<tla::product<lhs_element, rhs_element>,
+                             result_element, typename lhs_matrix::underlying>(),
+          "Matrix rank-1 update requires a result of the same scale as its "
+          "products, convert first.");
     });
   });
 

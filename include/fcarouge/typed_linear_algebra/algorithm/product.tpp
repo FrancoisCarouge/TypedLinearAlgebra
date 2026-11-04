@@ -88,10 +88,47 @@ constexpr auto are_terms_multipliable() -> bool {
 template <typename Lhs, typename Rhs>
 concept multipliable_elements = are_terms_multipliable<Lhs, Rhs>();
 
+//! @brief Whether every per-term product of the `Lhs * Rhs` matrix product is
+//! of the scale of its row-column's first term, as required to sum their stored
+//! numbers.
+//!
+//! @pre `Lhs` and `Rhs` are `multipliable_shape`.
+template <typename Lhs, typename Rhs>
+constexpr auto are_terms_same_scale() -> bool {
+  using lhs_matrix = std::remove_cvref_t<Lhs>;
+  using rhs_matrix = std::remove_cvref_t<Rhs>;
+  using underlying = typename lhs_matrix::underlying;
+
+  bool same_scale{true};
+
+  tla::for_constexpr<lhs_matrix::rows>([&same_scale](auto i) {
+    tla::for_constexpr<rhs_matrix::columns>([&same_scale, i](auto j) {
+      tla::for_constexpr<lhs_matrix::columns>([&same_scale, i, j](auto k) {
+        static_cast<void>(i); // Compiler compatibility.
+        static_cast<void>(j); // Compiler compatibility.
+        same_scale &=
+            tla::is_same_scale<tla::product<tla::element_at<lhs_matrix, i, k>,
+                                            tla::element_at<rhs_matrix, k, j>>,
+                               tla::product<tla::element_at<lhs_matrix, i, 0>,
+                                            tla::element_at<rhs_matrix, 0, j>>,
+                               underlying>();
+      });
+    });
+  });
+
+  return same_scale;
+}
+
+//! @brief Concept of typed matrices whose per-term products can be summed from
+//! their stored numbers: convert the operands first otherwise.
+template <typename Lhs, typename Rhs>
+concept same_scale_terms = are_terms_same_scale<Lhs, Rhs>();
+
 //! @brief Concept of typed matrices that can be multiplied together.
 template <typename Lhs, typename Rhs>
 concept multipliable =
-    multipliable_shape<Lhs, Rhs> and multipliable_elements<Lhs, Rhs>;
+    multipliable_shape<Lhs, Rhs> and multipliable_elements<Lhs, Rhs> and
+    same_scale_terms<Lhs, Rhs>;
 
 //! @brief Concept of a type scalable by another.
 //!

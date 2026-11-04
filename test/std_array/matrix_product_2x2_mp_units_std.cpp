@@ -50,7 +50,11 @@ namespace {
 //! caller-owned `std::array` memory, read and written in row-major order.
 [[maybe_unused]] const auto test{[] -> int {
   using length = quantity<mp_units::isq::length[m]>;
+  using area = tla::product<length, length>;
   using indexes = std::tuple<length, length>;
+  using area_indexes = std::tuple<area, area>;
+
+  constexpr auto m4{m2 * m2};
 
   std::array storage_a{1., 2., 3., 4.};
   std::array storage_b{5., 6., 7., 8.};
@@ -62,16 +66,16 @@ namespace {
 
   matrix<representation, indexes, indexes> a{span_a};
   matrix<representation, indexes, indexes> b{span_b};
-  matrix<representation, indexes, indexes> r{span_r};
+  matrix<representation, area_indexes, area_indexes> r{span_r};
 
   matrix_product(a, b, r);
 
   assert((a.at<0, 1>() == 2. * m2));
   assert((a.at<1, 0>() == 3. * m2));
-  assert((r.at<0, 0>() == 19. * m2));
-  assert((r.at<0, 1>() == 22. * m2));
-  assert((r.at<1, 0>() == 43. * m2));
-  assert((r.at<1, 1>() == 50. * m2));
+  assert((r.at<0, 0>() == 19. * m4));
+  assert((r.at<0, 1>() == 22. * m4));
+  assert((r.at<1, 0>() == 43. * m4));
+  assert((r.at<1, 1>() == 50. * m4));
   assert((storage_r == std::array{19., 22., 43., 50.}));
 
   return 0;

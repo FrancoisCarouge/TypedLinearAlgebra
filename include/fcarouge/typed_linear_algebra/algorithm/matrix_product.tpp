@@ -39,14 +39,36 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge {
 
-//! @brief
+//! @brief Computes the product of two matrices.
+//!
+//! @details Every term summed into an element of the result must be of the
+//! scale of that element: the stored numbers are computed on directly. Convert
+//! the operands first otherwise.
 //!
 //! @see std::linalg::matrix_product
-//!
-//! @todo Requires, assert that the element types are compatible.
 constexpr void matrix_product(const same_as_typed_matrix auto &lhs,
                               const same_as_typed_matrix auto &rhs,
                               same_as_typed_matrix auto &result) {
+  using lhs_matrix = std::remove_cvref_t<decltype(lhs)>;
+  using rhs_matrix = std::remove_cvref_t<decltype(rhs)>;
+  using result_matrix = std::remove_cvref_t<decltype(result)>;
+
+  tla::for_constexpr<lhs_matrix::rows>([](auto i) {
+    tla::for_constexpr<rhs_matrix::columns>([i](auto j) {
+      tla::for_constexpr<lhs_matrix::columns>([i, j](auto k) {
+        static_cast<void>(i); // Compiler compatibility.
+        static_cast<void>(j); // Compiler compatibility.
+        static_assert(
+            tla::is_same_scale<tla::product<tla::element_at<lhs_matrix, i, k>,
+                                            tla::element_at<rhs_matrix, k, j>>,
+                               tla::element_at<result_matrix, i, j>,
+                               typename lhs_matrix::underlying>(),
+            "Matrix product requires a result of the scale of its terms, "
+            "convert first.");
+      });
+    });
+  });
+
   using std::linalg::matrix_product;
   matrix_product(lhs.data(), rhs.data(), result.data());
 }
