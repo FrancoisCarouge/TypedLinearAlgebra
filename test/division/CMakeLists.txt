@@ -31,9 +31,11 @@ For more information, please refer to <https://unlicense.org> ]]
 
 fail("1x2_2x2_mp_units_eigen_fail" BACKENDS "mp_units_eigen")
 
-pass("1x1_au_eigen" BACKENDS "au_eigen")
-pass("1x1_dimensionless_mp_units_eigen" BACKENDS "mp_units_eigen")
-pass("1x1_mp_units_eigen" BACKENDS "mp_units_eigen")
+pass("1x1_au_eigen" BACKENDS "au_eigen" "au_sparse")
+pass(
+  "1x1_dimensionless_mp_units_eigen"
+  BACKENDS "mp_units_eigen" "mp_units_sparse")
+pass("1x1_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_sparse")
 pass("1x2_2x2_mp_units_eigen" BACKENDS "mp_units_eigen")
 pass("2x2_2x2_mp_units_eigen" BACKENDS "mp_units_eigen")
 pass("2x1_au_eigen" BACKENDS "au_eigen")

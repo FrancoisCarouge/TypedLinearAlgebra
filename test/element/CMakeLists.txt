@@ -38,12 +38,22 @@ fail("2x1_mp_units_eigen_fail" BACKENDS "mp_units_eigen" "mp_units_armadillo")
 fail("2x2_au_eigen_fail" BACKENDS "au_eigen" "au_armadillo")
 fail("2x2_mp_units_eigen_fail" BACKENDS "mp_units_eigen" "mp_units_armadillo")
 
-build("1x1_au_eigen" BACKENDS "au_eigen" "au_armadillo")
-build("1x1_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
-build("1x2_au_eigen" BACKENDS "au_eigen" "au_armadillo")
-build("1x2_chrono_eigen" BACKENDS "chrono_eigen" "chrono_armadillo")
-build("1x2_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
-build("2x1_au_eigen" BACKENDS "au_eigen" "au_armadillo")
-build("2x1_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
-build("2x2_au_eigen" BACKENDS "au_eigen" "au_armadillo")
-build("2x2_mp_units_eigen" BACKENDS "mp_units_eigen" "mp_units_armadillo")
+build("1x1_au_eigen" BACKENDS "au_eigen" "au_armadillo" "au_sparse")
+build(
+  "1x1_mp_units_eigen"
+  BACKENDS "mp_units_eigen" "mp_units_armadillo" "mp_units_sparse")
+build("1x2_au_eigen" BACKENDS "au_eigen" "au_armadillo" "au_sparse")
+build(
+  "1x2_chrono_eigen"
+  BACKENDS "chrono_eigen" "chrono_armadillo" "chrono_sparse")
+build(
+  "1x2_mp_units_eigen"
+  BACKENDS "mp_units_eigen" "mp_units_armadillo" "mp_units_sparse")
+build("2x1_au_eigen" BACKENDS "au_eigen" "au_armadillo" "au_sparse")
+build(
+  "2x1_mp_units_eigen"
+  BACKENDS "mp_units_eigen" "mp_units_armadillo" "mp_units_sparse")
+build("2x2_au_eigen" BACKENDS "au_eigen" "au_armadillo" "au_sparse")
+build(
+  "2x2_mp_units_eigen"
+  BACKENDS "mp_units_eigen" "mp_units_armadillo" "mp_units_sparse")

@@ -32,29 +32,43 @@ For more information, please refer to <https://unlicense.org> ]]
 fail("add_chrono_std_fail" BACKENDS "chrono_std")
 fail("add_mp_units_std_fail" BACKENDS "mp_units_std")
 fail("add_nholthaus_std_fail" BACKENDS "nholthaus_std")
-fail("addition_2x2_au_fail" BACKENDS "au_armadillo" "au_eigen")
-fail("addition_2x2_chrono_fail" BACKENDS "chrono_armadillo" "chrono_eigen")
+fail("addition_2x2_au_fail" BACKENDS "au_armadillo" "au_eigen" "au_sparse")
+fail(
+  "addition_2x2_chrono_fail"
+  BACKENDS "chrono_armadillo" "chrono_eigen" "chrono_sparse")
 fail(
   "addition_2x2_mp_units_fail"
-  BACKENDS "mp_units_armadillo" "mp_units_eigen")
+  BACKENDS "mp_units_armadillo" "mp_units_eigen" "mp_units_sparse")
 fail(
   "addition_2x2_nholthaus_fail"
-  BACKENDS "nholthaus_armadillo" "nholthaus_eigen")
-fail("addition_au_fail" BACKENDS "au_armadillo" "au_eigen")
-fail("addition_chrono_fail" BACKENDS "chrono_armadillo" "chrono_eigen")
-fail("addition_mp_units_fail" BACKENDS "mp_units_armadillo" "mp_units_eigen")
-fail("addition_nholthaus_fail" BACKENDS "nholthaus_armadillo" "nholthaus_eigen")
-fail("division_au_fail" BACKENDS "au_eigen")
-fail("division_chrono_fail" BACKENDS "chrono_eigen")
-fail("division_mp_units_fail" BACKENDS "mp_units_eigen")
-fail("division_nholthaus_fail" BACKENDS "nholthaus_eigen")
-fail("dot_au_fail" BACKENDS "au_armadillo" "au_eigen")
+  BACKENDS "nholthaus_armadillo" "nholthaus_eigen" "nholthaus_sparse")
+fail("addition_au_fail" BACKENDS "au_armadillo" "au_eigen" "au_sparse")
+fail(
+  "addition_chrono_fail"
+  BACKENDS "chrono_armadillo" "chrono_eigen" "chrono_sparse")
+fail(
+  "addition_mp_units_fail"
+  BACKENDS "mp_units_armadillo" "mp_units_eigen" "mp_units_sparse")
+fail(
+  "addition_nholthaus_fail"
+  BACKENDS "nholthaus_armadillo" "nholthaus_eigen" "nholthaus_sparse")
+fail("division_au_fail" BACKENDS "au_eigen" "au_sparse")
+fail("division_chrono_fail" BACKENDS "chrono_eigen" "chrono_sparse")
+fail("division_mp_units_fail" BACKENDS "mp_units_eigen" "mp_units_sparse")
+fail("division_nholthaus_fail" BACKENDS "nholthaus_eigen" "nholthaus_sparse")
+fail("dot_au_fail" BACKENDS "au_armadillo" "au_eigen" "au_sparse")
 fail("dot_au_std_fail" BACKENDS "au_std")
-fail("dot_chrono_fail" BACKENDS "chrono_armadillo" "chrono_eigen")
+fail(
+  "dot_chrono_fail"
+  BACKENDS "chrono_armadillo" "chrono_eigen" "chrono_sparse")
 fail("dot_chrono_std_fail" BACKENDS "chrono_std")
-fail("dot_mp_units_fail" BACKENDS "mp_units_armadillo" "mp_units_eigen")
+fail(
+  "dot_mp_units_fail"
+  BACKENDS "mp_units_armadillo" "mp_units_eigen" "mp_units_sparse")
 fail("dot_mp_units_std_fail" BACKENDS "mp_units_std")
-fail("dot_nholthaus_fail" BACKENDS "nholthaus_armadillo" "nholthaus_eigen")
+fail(
+  "dot_nholthaus_fail"
+  BACKENDS "nholthaus_armadillo" "nholthaus_eigen" "nholthaus_sparse")
 fail("dot_nholthaus_std_fail" BACKENDS "nholthaus_std")
 fail("matrix_product_au_std_fail" BACKENDS "au_std")
 fail("matrix_product_chrono_std_fail" BACKENDS "chrono_std")
@@ -68,50 +82,78 @@ fail("matrix_vector_product_au_std_fail" BACKENDS "au_std")
 fail("matrix_vector_product_chrono_std_fail" BACKENDS "chrono_std")
 fail("matrix_vector_product_mp_units_std_fail" BACKENDS "mp_units_std")
 fail("matrix_vector_product_nholthaus_std_fail" BACKENDS "nholthaus_std")
-fail("subtraction_2x2_au_fail" BACKENDS "au_armadillo" "au_eigen")
-fail("subtraction_2x2_chrono_fail" BACKENDS "chrono_armadillo" "chrono_eigen")
+fail("subtraction_2x2_au_fail" BACKENDS "au_armadillo" "au_eigen" "au_sparse")
+fail(
+  "subtraction_2x2_chrono_fail"
+  BACKENDS "chrono_armadillo" "chrono_eigen" "chrono_sparse")
 fail(
   "subtraction_2x2_mp_units_fail"
-  BACKENDS "mp_units_armadillo" "mp_units_eigen")
+  BACKENDS "mp_units_armadillo" "mp_units_eigen" "mp_units_sparse")
 fail(
   "subtraction_2x2_nholthaus_fail"
-  BACKENDS "nholthaus_armadillo" "nholthaus_eigen")
-fail("subtraction_au_fail" BACKENDS "au_armadillo" "au_eigen")
-fail("subtraction_chrono_fail" BACKENDS "chrono_armadillo" "chrono_eigen")
-fail("subtraction_mp_units_fail" BACKENDS "mp_units_armadillo" "mp_units_eigen")
+  BACKENDS "nholthaus_armadillo" "nholthaus_eigen" "nholthaus_sparse")
+fail("subtraction_au_fail" BACKENDS "au_armadillo" "au_eigen" "au_sparse")
+fail(
+  "subtraction_chrono_fail"
+  BACKENDS "chrono_armadillo" "chrono_eigen" "chrono_sparse")
+fail(
+  "subtraction_mp_units_fail"
+  BACKENDS "mp_units_armadillo" "mp_units_eigen" "mp_units_sparse")
 fail(
   "subtraction_nholthaus_fail"
-  BACKENDS "nholthaus_armadillo" "nholthaus_eigen")
+  BACKENDS "nholthaus_armadillo" "nholthaus_eigen" "nholthaus_sparse")
 
 build("conversion_au_std" BACKENDS "au_std")
 build("conversion_chrono_std" BACKENDS "chrono_std")
 build("conversion_mp_units_std" BACKENDS "mp_units_std")
 build("conversion_nholthaus_std" BACKENDS "nholthaus_std")
-build("product_au" BACKENDS "au_armadillo" "au_eigen")
-build("product_chrono" BACKENDS "chrono_armadillo" "chrono_eigen")
-build("product_mp_units" BACKENDS "mp_units_armadillo" "mp_units_eigen")
-build("product_nholthaus" BACKENDS "nholthaus_armadillo" "nholthaus_eigen")
+build("product_au" BACKENDS "au_armadillo" "au_eigen" "au_sparse")
+build(
+  "product_chrono"
+  BACKENDS "chrono_armadillo" "chrono_eigen" "chrono_sparse")
+build(
+  "product_mp_units"
+  BACKENDS "mp_units_armadillo" "mp_units_eigen" "mp_units_sparse")
+build(
+  "product_nholthaus"
+  BACKENDS "nholthaus_armadillo" "nholthaus_eigen" "nholthaus_sparse")
 
-pass("cancelling_units_au" BACKENDS "au_armadillo" "au_eigen")
-pass("cancelling_units_mp_units" BACKENDS "mp_units_armadillo" "mp_units_eigen")
-pass("control_au" BACKENDS "au_armadillo" "au_eigen")
-pass("control_chrono" BACKENDS "chrono_armadillo" "chrono_eigen")
-pass("control_mp_units" BACKENDS "mp_units_armadillo" "mp_units_eigen")
-pass("control_nholthaus" BACKENDS "nholthaus_armadillo" "nholthaus_eigen")
-pass("conversion_au" BACKENDS "au_armadillo" "au_eigen")
-pass("conversion_chrono" BACKENDS "chrono_armadillo" "chrono_eigen")
-pass("conversion_mp_units" BACKENDS "mp_units_armadillo" "mp_units_eigen")
-pass("conversion_nholthaus" BACKENDS "nholthaus_armadillo" "nholthaus_eigen")
+pass("cancelling_units_au" BACKENDS "au_armadillo" "au_eigen" "au_sparse")
+pass(
+  "cancelling_units_mp_units"
+  BACKENDS "mp_units_armadillo" "mp_units_eigen" "mp_units_sparse")
+pass("control_au" BACKENDS "au_armadillo" "au_eigen" "au_sparse")
+pass(
+  "control_chrono"
+  BACKENDS "chrono_armadillo" "chrono_eigen" "chrono_sparse")
+pass(
+  "control_mp_units"
+  BACKENDS "mp_units_armadillo" "mp_units_eigen" "mp_units_sparse")
+pass(
+  "control_nholthaus"
+  BACKENDS "nholthaus_armadillo" "nholthaus_eigen" "nholthaus_sparse")
+pass("conversion_au" BACKENDS "au_armadillo" "au_eigen" "au_sparse")
+pass(
+  "conversion_chrono"
+  BACKENDS "chrono_armadillo" "chrono_eigen" "chrono_sparse")
+pass(
+  "conversion_mp_units"
+  BACKENDS "mp_units_armadillo" "mp_units_eigen" "mp_units_sparse")
+pass(
+  "conversion_nholthaus"
+  BACKENDS "nholthaus_armadillo" "nholthaus_eigen" "nholthaus_sparse")
 pass("conversion_same_scale_mp_units_std" BACKENDS "mp_units_std")
 pass("division_au" BACKENDS "au_eigen")
 pass("division_chrono" BACKENDS "chrono_eigen")
 pass("division_mp_units" BACKENDS "mp_units_eigen")
 pass("division_nholthaus" BACKENDS "nholthaus_eigen")
-pass("explicit_conversion_au" BACKENDS "au_armadillo" "au_eigen")
-pass("explicit_conversion_chrono" BACKENDS "chrono_armadillo" "chrono_eigen")
+pass("explicit_conversion_au" BACKENDS "au_armadillo" "au_eigen" "au_sparse")
+pass(
+  "explicit_conversion_chrono"
+  BACKENDS "chrono_armadillo" "chrono_eigen" "chrono_sparse")
 pass(
   "explicit_conversion_mp_units"
-  BACKENDS "mp_units_armadillo" "mp_units_eigen")
+  BACKENDS "mp_units_armadillo" "mp_units_eigen" "mp_units_sparse")
 pass(
   "explicit_conversion_nholthaus"
-  BACKENDS "nholthaus_armadillo" "nholthaus_eigen")
+  BACKENDS "nholthaus_armadillo" "nholthaus_eigen" "nholthaus_sparse")
