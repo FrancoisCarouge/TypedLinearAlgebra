@@ -41,6 +41,14 @@ endif()
 
 check_ipo_supported(RESULT IPO_SUPPORTED OUTPUT _)
 
+# Interprocedural optimization defaults on for the benchmark drivers, unless
+# explicitly disabled: static analysis captures the compilation of each
+# translation unit and has no use for link-time optimized objects.
+if(DEFINED CMAKE_INTERPROCEDURAL_OPTIMIZATION
+   AND NOT CMAKE_INTERPROCEDURAL_OPTIMIZATION)
+  set(IPO_SUPPORTED OFF)
+endif()
+
 # Add a given test.
 #
 # * NAME The name of the test file without extension.
