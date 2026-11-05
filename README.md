@@ -22,6 +22,7 @@ std::println("{}", x * transposed(x));
 [![Format](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/format.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/format.yml)
 [![ClangTidy](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/clang_tidy.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/clang_tidy.yml)
 [![CppCheck](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/cppcheck.yml)
+[![Coverity Scan](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/coverity.yml/badge.svg)](https://scan.coverity.com/projects/francoiscarouge-typedlinearalgebra)
 [![Doxygen](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/doxygen.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/doxygen.yml)
 [![Valgrind](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/valgrind_memory.yml/badge.svg)](https://github.com/FrancoisCarouge/TypedLinearAlgebra/actions/workflows/valgrind_memory.yml)
 [![Public Domain](https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen)](https://raw.githubusercontent.com/francoiscarouge/TypedLinearAlgebra/master/LICENSE.txt)
@@ -338,6 +339,7 @@ The library is designed, developed, and tested with the help of third-party tool
 - [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) for static analysis.
 - [CMake](https://cmake.org) for build automation.
 - [cmakefmt](https://cmakefmt.dev) for pretty CMake list files.
+- [Coverity Scan](https://scan.coverity.com/projects/francoiscarouge-typedlinearalgebra) for static analysis.
 - [cppcheck](https://cppcheck.sourceforge.io) for static analysis.
 - [Doxygen](https://doxygen.nl) for documentation generation.
 - [Doxygen Awesome](https://github.com/jothepro/doxygen-awesome-css) for pretty documentation.
