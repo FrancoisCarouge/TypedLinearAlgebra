@@ -18,6 +18,10 @@ var searchData=
   ['equal_5fto_5f2x2_2ecpp_15',['equal_to_2x2.cpp',['../equal__to__2x2_8cpp.xhtml',1,'']]],
   ['equality_2ecpp_16',['equality.cpp',['../equality_8cpp.xhtml',1,'']]],
   ['estimate_5funcertainty_17',['estimate_uncertainty',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__array_8cpp_03.xhtml#aa695b6cff3fdd30e2adf58a9f615578d',1,'fcarouge::sample::anonymous_namespace{mp_units_std_array.cpp}::estimate_uncertainty'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#aba36da3d81d7ff9be71bd902cc3c2e08',1,'fcarouge::sample::anonymous_namespace{mp_units_std_boost_multi.cpp}::estimate_uncertainty']]],
-  ['expression_18',['expression',['../namespacefcarouge_1_1test_1_1anonymous__namespace_023x1__eigen_8cpp_03.xhtml#a0dfce1d30963be7903c8690f9ec4d8ef',1,'fcarouge::test::anonymous_namespace{3x1_eigen.cpp}']]],
-  ['extents_5fsize_19',['extents_size',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__std_8cpp_03.xhtml#a029a815cdafeb9c0ff113a78e4ca31bc',1,'fcarouge::sample::anonymous_namespace{au_std.cpp}::extents_size'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#abadda8a5417037ae0b6596f861948290',1,'fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::extents_size']]]
+  ['explicit_5fconversion_5fau_2ecpp_18',['explicit_conversion_au.cpp',['../explicit__conversion__au_8cpp.xhtml',1,'']]],
+  ['explicit_5fconversion_5fchrono_2ecpp_19',['explicit_conversion_chrono.cpp',['../explicit__conversion__chrono_8cpp.xhtml',1,'']]],
+  ['explicit_5fconversion_5fmp_5funits_2ecpp_20',['explicit_conversion_mp_units.cpp',['../explicit__conversion__mp__units_8cpp.xhtml',1,'']]],
+  ['explicit_5fconversion_5fnholthaus_2ecpp_21',['explicit_conversion_nholthaus.cpp',['../explicit__conversion__nholthaus_8cpp.xhtml',1,'']]],
+  ['expression_22',['expression',['../namespacefcarouge_1_1test_1_1anonymous__namespace_023x1__eigen_8cpp_03.xhtml#a0dfce1d30963be7903c8690f9ec4d8ef',1,'fcarouge::test::anonymous_namespace{3x1_eigen.cpp}']]],
+  ['extents_5fsize_23',['extents_size',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__std_8cpp_03.xhtml#a029a815cdafeb9c0ff113a78e4ca31bc',1,'fcarouge::sample::anonymous_namespace{au_std.cpp}::extents_size'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#abadda8a5417037ae0b6596f861948290',1,'fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::extents_size']]]
 ];

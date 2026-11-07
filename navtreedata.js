@@ -125,18 +125,19 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
-"addition_21x2__mp__units__eigen__fail_8cpp_source.xhtml",
-"classfcarouge_1_1typed__matrix.xhtml#a1dc38147712504cb9cf88b6c2f9dc968",
-"dir_ee1764ef7e89f8bab90de731673224c8.xhtml",
-"index.xhtml#installation--usage",
-"md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#breaking-changes--build-requirements",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__armadillo_8cpp_03.xhtml#a5981ba7054407b047ccaa99ef849d77d",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_022x1__1x2__mp__units__std_8cpp_03.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02initializer__lists_8cpp_03.xhtml#afeda3bcc35b67e6f14a5a2250988baa2",
-"namespacemembers_type.xhtml",
-"scale_21x2__nholthaus__std_8cpp_source.xhtml",
-"subtraction_21x1__nholthaus__eigen_8cpp.xhtml",
-"unit__conversion_8cpp.xhtml#aa607ee0615f1276ac1fd77de67f1214c"
+"addition_21x2__chrono__eigen_8cpp_source.xhtml",
+"classfcarouge_1_1test_1_1anonymous__namespace_02underlying__count_8cpp_03_1_1counted__storage.xhtml#a1ea662daa753d15b2a877c6b41b9df75",
+"dir_306b7748d0bdd9aaaa796e9def489455.xhtml",
+"equal__to_21x1__eigen_8cpp.xhtml",
+"matrix__inf__norm_21x1__mp__units__std_8cpp.xhtml",
+"mp__units__armadillo_2fcarouge_2linalg_8hpp_source.xhtml",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#afbc261b1054d2dca1459c359f5a8058a",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_022x3__ambiguous__fail_8cpp_03.xhtml#a6a7069a6ebe9150e48188ea966f64bde",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02explicit__conversion__au_8cpp_03.xhtml#a33a3ec3f301345ddca6f5f14657e692f",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#abdca7995c8b1e7a94081de3a5b195b07",
+"sample_2chrono__eigen_8cpp.xhtml#a2f6158385f8f9b88de6794f5ecc43914",
+"structmp__units_1_1representation__canonical__type_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_88cb568bfd22172f87f75426ff9b1681.xhtml#af6eb714e4f34c23d6ab4284acc6e4bd8",
+"typed__linear__algebra_8hpp.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -39,5 +39,6 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "subtraction", "dir_4f3678926883fd205cbee147b4936add.xhtml", "dir_4f3678926883fd205cbee147b4936add" ],
     [ "transposed", "dir_1a6ddf7e0d22624ef70b722ca0f63316.xhtml", "dir_1a6ddf7e0d22624ef70b722ca0f63316" ],
     [ "underlying", "dir_5808b4da18f227130090ece718c34e46.xhtml", "dir_5808b4da18f227130090ece718c34e46" ],
-    [ "uniform_typed_matrix", "dir_1bc3a1532d89e79438cdb32fd118cac5.xhtml", "dir_1bc3a1532d89e79438cdb32fd118cac5" ]
+    [ "uniform_typed_matrix", "dir_1bc3a1532d89e79438cdb32fd118cac5.xhtml", "dir_1bc3a1532d89e79438cdb32fd118cac5" ],
+    [ "unit_scale", "dir_27635d1b498a97cc3f453736edc0bcc9.xhtml", "dir_27635d1b498a97cc3f453736edc0bcc9" ]
 ];

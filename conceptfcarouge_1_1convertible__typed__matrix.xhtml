@@ -114,7 +114,7 @@ $(function(){initNavTree('conceptfcarouge_1_1convertible__typed__matrix.xhtml','
 <div class="ttc" id="aconceptfcarouge_1_1convertible__typed__matrix_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1convertible__typed__matrix.xhtml">fcarouge::convertible_typed_matrix</a></div><div class="ttdoc">Concept of a typed matrix implicitly convertible to another typed matrix, element by element.</div><div class="ttdef"><b>Definition</b> <a href="typed__linear__algebra_8hpp_source.xhtml#l00106">typed_linear_algebra.hpp:106</a></div></div>
 </div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Concept of a typed matrix implicitly convertible to another typed matrix, element by element. </p>
-<p>The matrices are of the same shape, and each element type of the source matrix implicitly converts to the corresponding element type of the destination matrix, whatever their row and column indexes. A typed matrix converts its elements' representations as-is, relabeled with the destination's element types, so an element type that does not convert would otherwise silently change the meaning of its value.</p>
+<p>The matrices are of the same shape, and each element type of the source matrix implicitly converts to the corresponding element type of the destination matrix, whatever their row and column indexes. A conversion keeps the value of each element, as converting the element itself does. A non-owning view cannot hold converted values, so it only converts from elements of the same scale.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">From</td><td>The source typed matrix type. </td></tr>

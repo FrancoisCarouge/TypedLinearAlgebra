@@ -21,5 +21,13 @@ var searchData=
   ['subscript_5f3x1_5fconst_2ecpp_18',['subscript_3x1_const.cpp',['../subscript__3x1__const_8cpp.xhtml',1,'']]],
   ['subscript_5f3x3_2ecpp_19',['subscript_3x3.cpp',['../subscript__3x3_8cpp.xhtml',1,'']]],
   ['subscript_5f3x3_5fconst_2ecpp_20',['subscript_3x3_const.cpp',['../subscript__3x3__const_8cpp.xhtml',1,'']]],
-  ['subtraction_5f2x2_2ecpp_21',['subtraction_2x2.cpp',['../subtraction__2x2_8cpp.xhtml',1,'']]]
+  ['subtraction_5f2x2_2ecpp_21',['subtraction_2x2.cpp',['../subtraction__2x2_8cpp.xhtml',1,'']]],
+  ['subtraction_5f2x2_5fau_5ffail_2ecpp_22',['subtraction_2x2_au_fail.cpp',['../subtraction__2x2__au__fail_8cpp.xhtml',1,'']]],
+  ['subtraction_5f2x2_5fchrono_5ffail_2ecpp_23',['subtraction_2x2_chrono_fail.cpp',['../subtraction__2x2__chrono__fail_8cpp.xhtml',1,'']]],
+  ['subtraction_5f2x2_5fmp_5funits_5ffail_2ecpp_24',['subtraction_2x2_mp_units_fail.cpp',['../subtraction__2x2__mp__units__fail_8cpp.xhtml',1,'']]],
+  ['subtraction_5f2x2_5fnholthaus_5ffail_2ecpp_25',['subtraction_2x2_nholthaus_fail.cpp',['../subtraction__2x2__nholthaus__fail_8cpp.xhtml',1,'']]],
+  ['subtraction_5fau_5ffail_2ecpp_26',['subtraction_au_fail.cpp',['../subtraction__au__fail_8cpp.xhtml',1,'']]],
+  ['subtraction_5fchrono_5ffail_2ecpp_27',['subtraction_chrono_fail.cpp',['../subtraction__chrono__fail_8cpp.xhtml',1,'']]],
+  ['subtraction_5fmp_5funits_5ffail_2ecpp_28',['subtraction_mp_units_fail.cpp',['../subtraction__mp__units__fail_8cpp.xhtml',1,'']]],
+  ['subtraction_5fnholthaus_5ffail_2ecpp_29',['subtraction_nholthaus_fail.cpp',['../subtraction__nholthaus__fail_8cpp.xhtml',1,'']]]
 ];
