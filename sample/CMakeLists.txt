@@ -129,6 +129,17 @@ add_test(
   NAME typed_linear_algebra_sample_mp_units_eigen
   COMMAND typed_linear_algebra_sample_mp_units_eigen_driver)
 
+add_executable(typed_linear_algebra_sample_mp_units_sparse_driver
+               "mp_units_sparse.cpp")
+target_link_libraries(
+  typed_linear_algebra_sample_mp_units_sparse_driver
+  PRIVATE
+    typed_linear_algebra_main typed_linear_algebra_mp_units_sparse
+    typed_linear_algebra_options)
+add_test(
+  NAME typed_linear_algebra_sample_mp_units_sparse
+  COMMAND typed_linear_algebra_sample_mp_units_sparse_driver)
+
 add_executable(typed_linear_algebra_sample_mp_units_std_driver
                "mp_units_std.cpp")
 target_link_libraries(

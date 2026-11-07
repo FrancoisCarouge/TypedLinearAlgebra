@@ -1,6 +1,6 @@
 ## François Carouge / Typed Linear Algebra
 
-Physical unit mismatches in matrix and vector computations have crashed projects and cost billions, because ordinary linear algebra treats a mismatched unit, an out-of-order axis, or a mixed-up reference frame as just another number and lets it compile, run, and fail silently. This library is a C++ strongly-typed facade to a matrix linear algebra backend [Eigen, std::linalg/mdspan, Kokkos, Armadillo] adapting strong types [Au, mp-units, nholthaus/units, std::chrono] that brings type safety to matrix operations. It turns mismatches into compile errors and preventing common errors in scientific and engineering computations.
+Physical unit mismatches in matrix and vector computations have crashed projects and cost billions, because ordinary linear algebra treats a mismatched unit, an out-of-order axis, or a mixed-up reference frame as just another number and lets it compile, run, and fail silently. This library is a C++ strongly-typed facade to a matrix linear algebra backend [Eigen, std::linalg/mdspan, Kokkos, Armadillo, a compile-time sparse storage] adapting strong types [Au, mp-units, nholthaus/units, std::chrono] that brings type safety to matrix operations. It turns mismatches into compile errors and preventing common errors in scientific and engineering computations.
 
 ```cpp
 state x{3. * m,
@@ -82,6 +82,7 @@ Add a plug-in for each strong type and/or linear algebra backend you use:
 | Kokkos | [Example plug-in: `support/kokkos`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | mp-units | [Example plug-in: `support/mp_units`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | nholthaus/units | [Example plug-in: `support/nholthaus`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
+| Sparse | [Example plug-in: `support/sparse`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support/sparse/README.md). |
 | std::chrono | No plug-in needed. Hosted implementation only. |
 | std::linalg | No plug-in needed. Hosted implementation only. |
 
@@ -94,6 +95,7 @@ Add a plug-in for each strong type and/or linear algebra backend you use:
 | Au + std::linalg | [Usage example: `sample/au_std.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/au_std.cpp). |
 | mp-units + Armadillo | [Usage example: `sample/mp_units_armadillo.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_armadillo.cpp). |
 | mp-units + Eigen | [Usage example: `sample/mp_units_eigen.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_eigen.cpp). |
+| mp-units + Sparse | [Usage example: `sample/mp_units_sparse.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_sparse.cpp). |
 | mp-units + std::linalg | [Usage example: `sample/mp_units_std.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std.cpp). |
 | mp-units + std::linalg + std::array | [Usage example: `sample/mp_units_std_array.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std_array.cpp). |
 | mp-units + std::linalg + Boost.Multi | [Usage example: `sample/mp_units_std_boost_multi.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std_boost_multi.cpp). |
@@ -219,7 +221,7 @@ std::println("{}", m[1_i, 2_i]); // Same as: m.at<1, 2>()
 | Concept | Definition |
 | --- | --- |
 | `column_typed_matrix` | Concept of a column typed matrix, vector. |
-| `convertible_typed_matrix` | Concept of a typed matrix implicitly convertible to another typed matrix of the same shape, element by element, keeping each element's value. A non-owning view only converts from elements of the same scale. |
+| `convertible_typed_matrix` | Concept of a typed matrix implicitly convertible to another typed matrix of the same shape, element by element, keeping each element's value. A non-owning view only converts from elements of the same scale, and an element the storage cannot write, as a sparse structural zero, only through a conversion keeping its value. |
 | `index` | Concept of a compile-time index. |
 | `other` | Concept of any type other than the typed matrix type. |
 | `other_tuple_like_vector` | Concept of a tuple-like vector convertible to a one-dimension typed matrix. |
@@ -325,8 +327,9 @@ The library is used in projects:
 3. M. Pusz, "Implementing Physical Units Library for C++" presented at C++Now, Aspen, CO, USA, May 2019. [Online]. Available: <https://www.youtube.com/watch?v=wKchCktZPHU>
 4. C. Hogg, "Units Libraries and Autonomous Vehicles: Lessons from the Trenches," presented at CppCon, Aurora, CO, USA, Oct. 2021. [Online]. Available: <https://www.youtube.com/watch?v=5dhFtSu3wCo>
 5. D. Withopf, "Taking Static Type-Safety to the Next Level: Physical Units for Matrices," presented at C++Now, Aspen, CO, USA, May 2022. [Online]. Available: <https://www.youtube.com/watch?v=SLSTS-EvOx4>
-6. M. Hoemmen, "std::linalg: Linear Algebra Coming to Standard C++" (WG21 P1673), presented at CppCon, Aurora, CO, USA, Oct. 2023. [Online]. Available: <https://www.youtube.com/watch?v=-UXHMlAMXNk>
-7. D. Hanson, "Guide to Linear Algebra With the Eigen C++ Library," presented at CppCon, Aurora, CO, USA, Sep. 2024. [Online]. Available: <https://www.youtube.com/watch?v=99G-APJkMc0>
+6. D. Withopf, "Compile-time Is the New Constexpr: Leveraging Compile-time Sparsity for Vectors and Matrices," presented at C++Now, Aspen, CO, USA, May 2023. [Online]. Available: <https://schedule.cppnow.org/session/2023/compile-time-is-the-new-constexpr-leveraging-compile-time-sparsity-for-vectors-and-matrices/>
+7. M. Hoemmen, "std::linalg: Linear Algebra Coming to Standard C++" (WG21 P1673), presented at CppCon, Aurora, CO, USA, Oct. 2023. [Online]. Available: <https://www.youtube.com/watch?v=-UXHMlAMXNk>
+8. D. Hanson, "Guide to Linear Algebra With the Eigen C++ Library," presented at CppCon, Aurora, CO, USA, Sep. 2024. [Online]. Available: <https://www.youtube.com/watch?v=99G-APJkMc0>
 
 ### Third Party Acknowledgement
 

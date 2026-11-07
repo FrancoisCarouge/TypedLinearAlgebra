@@ -255,8 +255,18 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::operator()(this auto &&self,
         std::conditional_t<by_value, tla::element_at<typed_matrix, 0, 0>,
                            tla::element_at<typed_matrix, 0, 0> &>;
 
-    return cast<qualified_element, qualified_underlying>(
-        tla::read_element<columns>(self.storage, indexes...));
+    if constexpr (by_value and not std::is_const_v<self_t>) {
+      // Const, so that assigning to this temporary, a write that would be lost,
+      // does not compile.
+      const tla::element_at<typed_matrix, 0, 0> value{
+          cast<qualified_element, qualified_underlying>(
+              tla::read_element<columns>(self.storage, indexes...))};
+
+      return value;
+    } else {
+      return cast<qualified_element, qualified_underlying>(
+          tla::read_element<columns>(self.storage, indexes...));
+    }
   }
 }
 
@@ -281,8 +291,18 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
   using qualified_element =
       std::conditional_t<by_value, element<Indexes...>, element<Indexes...> &>;
 
-  return cast<qualified_element, qualified_underlying>(
-      tla::read_element<columns>(self.storage, Indexes...));
+  if constexpr (by_value and not std::is_const_v<self_t>) {
+    // Const, so that assigning to this temporary, a write that would be lost,
+    // does not compile.
+    const element<Indexes...> value{
+        cast<qualified_element, qualified_underlying>(
+            tla::read_element<columns>(self.storage, Indexes...))};
+
+    return value;
+  } else {
+    return cast<qualified_element, qualified_underlying>(
+        tla::read_element<columns>(self.storage, Indexes...));
+  }
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
@@ -316,8 +336,8 @@ constexpr void typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(
   // access support, which selects the access pattern from the linear algebra
   // backend's available API. The value is converted to the storage underlying
   // type here, where both the element and underlying types are known.
-  tla::write_element<columns>(
-      self.storage, cast<underlying, element<Indexes...>>(value), Indexes...);
+  tla::write_element_at<columns, Indexes...>(
+      self.storage, cast<underlying, element<Indexes...>>(value));
 }
 
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
