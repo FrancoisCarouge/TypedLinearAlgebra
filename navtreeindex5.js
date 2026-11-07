@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"matrix__inf__norm_21x1__eigen_8cpp_source.xhtml":[17,0,6,19,0],
 "matrix__inf__norm_21x1__mp__units__std_8cpp.xhtml":[17,0,6,19,1],
 "matrix__inf__norm_21x1__mp__units__std_8cpp_source.xhtml":[17,0,6,19,1],
 "matrix__inf__norm_21x3__eigen_8cpp.xhtml":[17,0,6,19,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX5 =
 "mixed__mp__units__std_8cpp.xhtml#aa99a58a3faa0e5810aaed28b0e64c5b9":[17,0,6,22,8,0],
 "mixed__mp__units__std_8cpp_source.xhtml":[17,0,6,22,8],
 "mp__units_8hpp.xhtml":[17,0,5,16,0,0],
-"mp__units_8hpp_source.xhtml":[17,0,5,16,0,0],
-"mp__units__armadillo_2fcarouge_2linalg_8hpp.xhtml":[17,0,5,17,0,0]
+"mp__units_8hpp_source.xhtml":[17,0,5,16,0,0]
 };

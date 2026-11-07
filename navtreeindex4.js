@@ -132,6 +132,7 @@ var NAVTREEINDEX4 =
 "index.xhtml#as-seen-at-cppnow-2026":[0,2,1],
 "index.xhtml#class-typed-matrix":[0,1,6],
 "index.xhtml#cmake":[0,1,1],
+"index.xhtml#commercial-support--consulting":[0,2,9],
 "index.xhtml#concepts":[0,1,11],
 "index.xhtml#contributors-1":[0,2,7],
 "index.xhtml#corporations--institutions":[0,2,8,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "matrix__frob__norm_2uniform__mp__units__eigen_8cpp.xhtml#ad0683250fea316f9433c07de8040fc5a":[17,0,6,18,15,2],
 "matrix__frob__norm_2uniform__mp__units__eigen_8cpp.xhtml#adc5372a6f12ef5a5be5b42c4d1abb7f4":[17,0,6,18,15,3],
 "matrix__frob__norm_2uniform__mp__units__eigen_8cpp_source.xhtml":[17,0,6,18,15],
-"matrix__inf__norm_21x1__eigen_8cpp.xhtml":[17,0,6,19,0],
-"matrix__inf__norm_21x1__eigen_8cpp_source.xhtml":[17,0,6,19,0]
+"matrix__inf__norm_21x1__eigen_8cpp.xhtml":[17,0,6,19,0]
 };
