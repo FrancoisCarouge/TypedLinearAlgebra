@@ -18,43 +18,43 @@ MSVC 19.50.35728.0
 
 <img src="plot.png">
 
-| Title | Size | Median Elapsed Time (s) | Median Absolute Error (%) |
+| Title | Size | Median Elapsed Time (ns) | Median Absolute Percentage Error (%) |
 | --- | --- | --- | --- |
-| Eigen::Matrix |     1x1     | 3.87771386512016e-10 | 0.00538872883190906 |
-| Eigen::Matrix |     2x2     | 2.1351601012727e-09 | 0.00105165925212321 |
-| Eigen::Matrix |     4x4     | 5.80896895063472e-09 | 0.00206230836566979 |
-| Eigen::Matrix |     8x8     | 8.82150833190173e-08 | 0.00636310746770291 |
-| Eigen::Matrix |    16x16    | 4.81609195402299e-07 | 0.00553949572120116 |
-| Eigen::Matrix |    32x32    | 3.20642458100559e-06 | 0.00310933918515592 |
-| Eigen::Matrix |    64x64    | 2.45040816326531e-05 | 0.00122316643192698 |
-| Eigen::Matrix |   128x128   | 0.00018674 | 0.00527562446167087 |
-| typed matrix from Eigen::Matrix |     1x1     | 5.80222304380841e-10 | 0.00234271518047659 |
-| typed matrix from Eigen::Matrix |     2x2     | 1.95578082670628e-09 | 0.00757158029212781 |
-| typed matrix from Eigen::Matrix |     4x4     | 5.82380065620289e-09 | 0.00354615746619045 |
-| typed matrix from Eigen::Matrix |     8x8     | 8.79135665664081e-08 | 0.00376541518675338 |
-| typed matrix from Eigen::Matrix |    16x16    | 4.81799075241698e-07 | 0.0068258799481259 |
-| typed matrix from Eigen::Matrix |    32x32    | 3.18402203856749e-06 | 0.00464654136650976 |
-| std::mdspan |     1x1     | 3.9203347453668e-10 | 0.014576617073535 |
-| std::mdspan |     2x2     | 2.16613117637008e-09 | 0.00854977222211279 |
-| std::mdspan |     4x4     | 1.17157248713773e-08 | 0.00628431019065444 |
-| std::mdspan |     8x8     | 7.46247996502987e-08 | 0.00246572419649173 |
-| std::mdspan |    16x16    | 6.03748680042239e-07 | 0.00379745275307134 |
-| std::mdspan |    32x32    | 5.43271028037383e-06 | 0.00252122924297414 |
-| std::mdspan |    64x64    | 5.45894736842105e-05 | 0.00250048086170408 |
-| std::mdspan |   128x128   | 0.0007067 | 0.00688589094997183 |
-| typed matrix from std::mdspan |     1x1     | 4.0251135383016e-10 | 0.0415372123392322 |
-| typed matrix from std::mdspan |     2x2     | 2.18066853838217e-09 | 0.00853373531597857 |
-| typed matrix from std::mdspan |     4x4     | 1.19625453850564e-08 | 0.00575635449177043 |
-| typed matrix from std::mdspan |     8x8     | 7.49313491008947e-08 | 0.00280541684762946 |
-| typed matrix from std::mdspan |    16x16    | 6.03710247349823e-07 | 0.00263030856332186 |
-| typed matrix from std::mdspan |    32x32    | 5.46612903225806e-06 | 0.00490970365005946 |
-| std::mdspan from std::tuple |     1x1     | 2.33409641032824e-09 | 0.00461088654682818 |
-| std::mdspan from std::tuple |     2x2     | 2.22298122503053e-08 | 0.00130157821595603 |
-| std::mdspan from std::tuple |     4x4     | 2.01255539143279e-07 | 0.00106235441111578 |
-| std::mdspan from std::tuple |     8x8     | 2.94166666666667e-06 | 0.00749697894803798 |
-| std::mdspan from std::tuple |    16x16    | 4.92409090909091e-05 | 0.00248094125941906 |
-| typed matrix from std::mdspan from std::tuple |     1x1     | 2.33872770351826e-09 | 0.00737212389527389 |
-| typed matrix from std::mdspan from std::tuple |     2x2     | 2.22671644886953e-08 | 0.00292630696616741 |
-| typed matrix from std::mdspan from std::tuple |     4x4     | 2.01591668304185e-07 | 0.0038063912684703 |
-| typed matrix from std::mdspan from std::tuple |     8x8     | 3.23577464788732e-06 | 0.00523916174533996 |
-| typed matrix from std::mdspan from std::tuple |    16x16    | 4.88857142857143e-05 | 0.00247095985327078 |
+| Eigen::Matrix | 1x1 | 0.39 | 0.54 |
+| Eigen::Matrix | 2x2 | 2.14 | 0.11 |
+| Eigen::Matrix | 4x4 | 5.81 | 0.21 |
+| Eigen::Matrix | 8x8 | 88.22 | 0.64 |
+| Eigen::Matrix | 16x16 | 481.61 | 0.55 |
+| Eigen::Matrix | 32x32 | 3206.42 | 0.31 |
+| Eigen::Matrix | 64x64 | 24504.08 | 0.12 |
+| Eigen::Matrix | 128x128 | 186740.00 | 0.53 |
+| typed matrix from Eigen::Matrix | 1x1 | 0.58 | 0.23 |
+| typed matrix from Eigen::Matrix | 2x2 | 1.96 | 0.76 |
+| typed matrix from Eigen::Matrix | 4x4 | 5.82 | 0.35 |
+| typed matrix from Eigen::Matrix | 8x8 | 87.91 | 0.38 |
+| typed matrix from Eigen::Matrix | 16x16 | 481.80 | 0.68 |
+| typed matrix from Eigen::Matrix | 32x32 | 3184.02 | 0.46 |
+| std::mdspan | 1x1 | 0.39 | 1.46 |
+| std::mdspan | 2x2 | 2.17 | 0.85 |
+| std::mdspan | 4x4 | 11.72 | 0.63 |
+| std::mdspan | 8x8 | 74.62 | 0.25 |
+| std::mdspan | 16x16 | 603.75 | 0.38 |
+| std::mdspan | 32x32 | 5432.71 | 0.25 |
+| std::mdspan | 64x64 | 54589.47 | 0.25 |
+| std::mdspan | 128x128 | 706700.00 | 0.69 |
+| typed matrix from std::mdspan | 1x1 | 0.40 | 4.15 |
+| typed matrix from std::mdspan | 2x2 | 2.18 | 0.85 |
+| typed matrix from std::mdspan | 4x4 | 11.96 | 0.58 |
+| typed matrix from std::mdspan | 8x8 | 74.93 | 0.28 |
+| typed matrix from std::mdspan | 16x16 | 603.71 | 0.26 |
+| typed matrix from std::mdspan | 32x32 | 5466.13 | 0.49 |
+| std::mdspan from std::tuple | 1x1 | 2.33 | 0.46 |
+| std::mdspan from std::tuple | 2x2 | 22.23 | 0.13 |
+| std::mdspan from std::tuple | 4x4 | 201.26 | 0.11 |
+| std::mdspan from std::tuple | 8x8 | 2941.67 | 0.75 |
+| std::mdspan from std::tuple | 16x16 | 49240.91 | 0.25 |
+| typed matrix from std::mdspan from std::tuple | 1x1 | 2.34 | 0.74 |
+| typed matrix from std::mdspan from std::tuple | 2x2 | 22.27 | 0.29 |
+| typed matrix from std::mdspan from std::tuple | 4x4 | 201.59 | 0.38 |
+| typed matrix from std::mdspan from std::tuple | 8x8 | 3235.77 | 0.52 |
+| typed matrix from std::mdspan from std::tuple | 16x16 | 48885.71 | 0.25 |
