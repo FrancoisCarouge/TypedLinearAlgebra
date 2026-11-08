@@ -49,13 +49,12 @@ namespace {
 //! entry point: it opts out of the real-time verification for its lifetime.
 const not_realtime opt_out;
 
-template <auto Size> auto csv() -> std::string {
-  return std::format(
-      "{{{{#result}}}}| {{{{title}}}} | {:5d}x{:<5d} | "
-      "{{{{median(elapsed)}}}} | "
-      "{{{{medianAbsolutePercentError(elapsed)}}}} |{{{{/result}}}}\n",
-      Size, Size);
-}
+//! @brief Nanoseconds in a second, nanobench measuring elapsed time in seconds.
+constexpr double nanoseconds_per_second{1e9};
+
+//! @brief Percent in a ratio, nanobench reporting its median absolute
+//! percentage error as a ratio.
+constexpr double percent_per_ratio{100.};
 
 //! @benchmark `std::mdspan` square matrix-matrix product.
 template <auto Size> void bench() {
@@ -88,15 +87,21 @@ template <auto Size> void bench() {
     }
   }
 
+  ankerl::nanobench::Bench runner;
+  runner.output(nullptr).title("typed matrix from std::mdspan").run([&]() {
+    matrix_product(a, b, r);
+    ankerl::nanobench::doNotOptimizeAway(r);
+  });
+
+  const auto &result{runner.results().front()};
   std::ofstream results{"results.txt", std::ios::app};
-  ankerl::nanobench::Bench{}
-      .output(nullptr)
-      .title("typed matrix from std::mdspan")
-      .run([&]() {
-        matrix_product(a, b, r);
-        ankerl::nanobench::doNotOptimizeAway(r);
-      })
-      .render(csv<Size>().c_str(), results);
+  results << std::format(
+      "| {} | {}x{} | {:.2f} | {:.2f} |\n", runner.title(), Size, Size,
+      result.median(ankerl::nanobench::Result::Measure::elapsed) *
+          nanoseconds_per_second,
+      result.medianAbsolutePercentError(
+          ankerl::nanobench::Result::Measure::elapsed) *
+          percent_per_ratio);
 }
 } // namespace
 } // namespace fcarouge::benchmark

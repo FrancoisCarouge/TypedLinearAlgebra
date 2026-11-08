@@ -123,7 +123,7 @@ int main() {
       const auto method{tokens[0]};
       auto size_str{tokens[1]};
       const auto time_str{tokens[2]};
-      auto time{std::stod(time_str) * 1e9};
+      const auto time{std::stod(time_str)};
 
       const auto x_pos{size_str.find('x')};
       if (x_pos != std::string::npos) {
