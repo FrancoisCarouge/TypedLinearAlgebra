@@ -52,7 +52,7 @@ using quantity = mp_units::quantity<QuantityReference, representation>;
 using mp_units::one;
 using mp_units::si::unit_symbols::m;
 using mp_units::si::unit_symbols::s;
-using sparse::literals::operator""_o;
+using literals::operator""_o;
 
 using position = quantity<mp_units::isq::length[m]>;
 using velocity = quantity<mp_units::isq::speed[m / s]>;
@@ -94,7 +94,7 @@ using inverse_velocity = quantity<one / mp_units::isq::speed[m / s]>;
   assert(predicted.at<1>() == 3. * m / s);
 
   // A pattern of any shape is a list of positions.
-  constexpr auto ends{sparse::make_pattern<3, 1>({{0, 0}, {2, 0}})};
+  constexpr sparse::pattern ends{sparse::shape<3, 1>, {{0, 0}, {2, 0}}};
 
   using sparse_state = typed_sparse_column_vector<representation, ends,
                                                   position, velocity, position>;
