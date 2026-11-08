@@ -109,9 +109,6 @@ $(function(){initNavTree('namespacefcarouge_1_1benchmark_1_1anonymous__namespace
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a844800d1f15d89381d68ad27caf41807" id="r_a844800d1f15d89381d68ad27caf41807"><td class="memTemplParams" colspan="2">template&lt;auto Size&gt; </td></tr>
-<tr class="memitem:a844800d1f15d89381d68ad27caf41807"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a844800d1f15d89381d68ad27caf41807">csv</a> () -&gt; std::string</td></tr>
-<tr class="separator:a844800d1f15d89381d68ad27caf41807"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf9f1c1263f54f8440979ddb0f64d273" id="r_adf9f1c1263f54f8440979ddb0f64d273"><td class="memTemplParams" colspan="2">template&lt;auto Size&gt; </td></tr>
 <tr class="memitem:adf9f1c1263f54f8440979ddb0f64d273"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#adf9f1c1263f54f8440979ddb0f64d273">bench</a> ()</td></tr>
 <tr class="separator:adf9f1c1263f54f8440979ddb0f64d273"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,6 +118,12 @@ Variables</h2></td></tr>
 <tr class="memitem:a2fbfe6b335aaa8f341c20489cccfa1e4" id="r_a2fbfe6b335aaa8f341c20489cccfa1e4"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classfcarouge_1_1not__realtime.xhtml">not_realtime</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2fbfe6b335aaa8f341c20489cccfa1e4">opt_out</a></td></tr>
 <tr class="memdesc:a2fbfe6b335aaa8f341c20489cccfa1e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The benchmark measures, prints, and tears down its counters past its entry point: it opts out of the real-time verification for its lifetime.  <br /></td></tr>
 <tr class="separator:a2fbfe6b335aaa8f341c20489cccfa1e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a735454a11b16a55c4e3ea9c378c79d98" id="r_a735454a11b16a55c4e3ea9c378c79d98"><td class="memItemLeft" align="right" valign="top">constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a735454a11b16a55c4e3ea9c378c79d98">nanoseconds_per_second</a> {1e9}</td></tr>
+<tr class="memdesc:a735454a11b16a55c4e3ea9c378c79d98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nanoseconds in a second, nanobench measuring elapsed time in seconds.  <br /></td></tr>
+<tr class="separator:a735454a11b16a55c4e3ea9c378c79d98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03430a43dfe1f096da89b09f997d6fc3" id="r_a03430a43dfe1f096da89b09f997d6fc3"><td class="memItemLeft" align="right" valign="top">constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03430a43dfe1f096da89b09f997d6fc3">percent_per_ratio</a> {100.}</td></tr>
+<tr class="memdesc:a03430a43dfe1f096da89b09f997d6fc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Percent in a ratio, nanobench reporting its median absolute percentage error as a ratio.  <br /></td></tr>
+<tr class="separator:a03430a43dfe1f096da89b09f997d6fc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="adf9f1c1263f54f8440979ddb0f64d273" name="adf9f1c1263f54f8440979ddb0f64d273"></a>
@@ -141,64 +144,69 @@ template&lt;auto Size&gt; </div>
 </div><div class="memdoc">
 <dl class="section user"><dt>Benchmark</dt><dd>Typed <a class="el" href="namespace_eigen.xhtml">Eigen</a> square matrix-matrix product. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="typed__eigen__product_8cpp_source.xhtml#l00058">58</a> of file <a class="el" href="typed__eigen__product_8cpp_source.xhtml">typed_eigen_product.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   58</span>                                  {</div>
-<div class="line"><span class="lineno">   59</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;double, Size, Size&gt;</a> a;</div>
-<div class="line"><span class="lineno">   60</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;double, Size, Size&gt;</a> b;</div>
-<div class="line"><span class="lineno">   61</span>  std::random_device device;</div>
-<div class="line"><span class="lineno">   62</span>  std::mt19937 generator{device()};</div>
-<div class="line"><span class="lineno">   63</span>  std::uniform_real_distribution&lt;&gt; distribution{0., 1.};</div>
-<div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>  <span class="keywordflow">for</span> (std::size_t i{0}; i &lt; Size; ++i) {</div>
-<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">for</span> (std::size_t j{0}; j &lt; Size; ++j) {</div>
-<div class="line"><span class="lineno">   67</span>      a(i, j) = distribution(generator);</div>
-<div class="line"><span class="lineno">   68</span>      b(i, j) = distribution(generator);</div>
-<div class="line"><span class="lineno">   69</span>    }</div>
-<div class="line"><span class="lineno">   70</span>  }</div>
-<div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>  std::ofstream results{<span class="stringliteral">&quot;results.txt&quot;</span>, std::ios::app};</div>
-<div class="line"><span class="lineno">   73</span>  ankerl::nanobench::Bench{}</div>
-<div class="line"><span class="lineno">   74</span>      .output(<span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">   75</span>      .title(<span class="stringliteral">&quot;typed matrix from Eigen::Matrix&quot;</span>)</div>
-<div class="line"><span class="lineno">   76</span>      .run([&amp;]() {</div>
-<div class="line"><span class="lineno">   77</span>        matrix&lt;double, Size, Size&gt; r{a * b};</div>
-<div class="line"><span class="lineno">   78</span>        ankerl::nanobench::doNotOptimizeAway(r);</div>
-<div class="line"><span class="lineno">   79</span>      })</div>
-<div class="line"><span class="lineno">   80</span>      .render(csv&lt;Size&gt;().c_str(), results);</div>
-<div class="line"><span class="lineno">   81</span>}</div>
+<p class="definition">Definition at line <a class="el" href="typed__eigen__product_8cpp_source.xhtml#l00057">57</a> of file <a class="el" href="typed__eigen__product_8cpp_source.xhtml">typed_eigen_product.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   57</span>                                  {</div>
+<div class="line"><span class="lineno">   58</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;double, Size, Size&gt;</a> a;</div>
+<div class="line"><span class="lineno">   59</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;double, Size, Size&gt;</a> b;</div>
+<div class="line"><span class="lineno">   60</span>  std::random_device device;</div>
+<div class="line"><span class="lineno">   61</span>  std::mt19937 generator{device()};</div>
+<div class="line"><span class="lineno">   62</span>  std::uniform_real_distribution&lt;&gt; distribution{0., 1.};</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>  <span class="keywordflow">for</span> (std::size_t i{0}; i &lt; Size; ++i) {</div>
+<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">for</span> (std::size_t j{0}; j &lt; Size; ++j) {</div>
+<div class="line"><span class="lineno">   66</span>      a(i, j) = distribution(generator);</div>
+<div class="line"><span class="lineno">   67</span>      b(i, j) = distribution(generator);</div>
+<div class="line"><span class="lineno">   68</span>    }</div>
+<div class="line"><span class="lineno">   69</span>  }</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>  ankerl::nanobench::Bench runner;</div>
+<div class="line"><span class="lineno">   72</span>  runner.output(<span class="keyword">nullptr</span>).title(<span class="stringliteral">&quot;typed matrix from Eigen::Matrix&quot;</span>).run([&amp;]() {</div>
+<div class="line"><span class="lineno">   73</span>    matrix&lt;double, Size, Size&gt; r{a * b};</div>
+<div class="line"><span class="lineno">   74</span>    ankerl::nanobench::doNotOptimizeAway(r);</div>
+<div class="line"><span class="lineno">   75</span>  });</div>
+<div class="line"><span class="lineno">   76</span> </div>
+<div class="line"><span class="lineno">   77</span>  <span class="keyword">const</span> <span class="keyword">auto</span> &amp;result{runner.results().front()};</div>
+<div class="line"><span class="lineno">   78</span>  std::ofstream results{<span class="stringliteral">&quot;results.txt&quot;</span>, std::ios::app};</div>
+<div class="line"><span class="lineno">   79</span>  results &lt;&lt; std::format(</div>
+<div class="line"><span class="lineno">   80</span>      <span class="stringliteral">&quot;| {} | {}x{} | {:.2f} | {:.2f} |\n&quot;</span>, runner.title(), Size, Size,</div>
+<div class="line"><span class="lineno">   81</span>      result.median(ankerl::nanobench::Result::Measure::elapsed) *</div>
+<div class="line"><span class="lineno">   82</span>          nanoseconds_per_second,</div>
+<div class="line"><span class="lineno">   83</span>      result.medianAbsolutePercentError(</div>
+<div class="line"><span class="lineno">   84</span>          ankerl::nanobench::Result::Measure::elapsed) *</div>
+<div class="line"><span class="lineno">   85</span>          percent_per_ratio);</div>
+<div class="line"><span class="lineno">   86</span>}</div>
 <div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_a0fa52776262afae30db82d7c0a9339ac"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">fcarouge::armadillo::matrix</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Armadillo matrix.</div><div class="ttdef"><b>Definition</b> <a href="armadillo_8hpp_source.xhtml#l00091">armadillo.hpp:91</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a844800d1f15d89381d68ad27caf41807" name="a844800d1f15d89381d68ad27caf41807"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a844800d1f15d89381d68ad27caf41807">&#9670;&#160;</a></span>csv()</h2>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a735454a11b16a55c4e3ea9c378c79d98" name="a735454a11b16a55c4e3ea9c378c79d98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a735454a11b16a55c4e3ea9c378c79d98">&#9670;&#160;</a></span>nanoseconds_per_second</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;auto Size&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto fcarouge::benchmark::anonymous_namespace{typed_eigen_product.cpp}::csv </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> -&gt; std::string </td>
+          <td class="memname">double fcarouge::benchmark::anonymous_namespace{typed_eigen_product.cpp}::nanoseconds_per_second {1e9}</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typed__eigen__product_8cpp_source.xhtml#l00049">49</a> of file <a class="el" href="typed__eigen__product_8cpp_source.xhtml">typed_eigen_product.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>                                             {</div>
-<div class="line"><span class="lineno">   50</span>  <span class="keywordflow">return</span> std::format(</div>
-<div class="line"><span class="lineno">   51</span>      <span class="stringliteral">&quot;{{{{#result}}}}| {{{{title}}}} | {:5d}x{:&lt;5d} | &quot;</span></div>
-<div class="line"><span class="lineno">   52</span>      <span class="stringliteral">&quot;{{{{median(elapsed)}}}} | &quot;</span></div>
-<div class="line"><span class="lineno">   53</span>      <span class="stringliteral">&quot;{{{{medianAbsolutePercentError(elapsed)}}}} |{{{{/result}}}}\n&quot;</span>,</div>
-<div class="line"><span class="lineno">   54</span>      Size, Size);</div>
-<div class="line"><span class="lineno">   55</span>}</div>
+<p>Nanoseconds in a second, nanobench measuring elapsed time in seconds. </p>
+
+<p class="definition">Definition at line <a class="el" href="typed__eigen__product_8cpp_source.xhtml#l00050">50</a> of file <a class="el" href="typed__eigen__product_8cpp_source.xhtml">typed_eigen_product.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   50</span>{1e9};</div>
 </div><!-- fragment -->
 </div>
 </div>
-<h2 class="groupheader">Variable Documentation</h2>
 <a id="a2fbfe6b335aaa8f341c20489cccfa1e4" name="a2fbfe6b335aaa8f341c20489cccfa1e4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2fbfe6b335aaa8f341c20489cccfa1e4">&#9670;&#160;</a></span>opt_out</h2>
 
@@ -215,6 +223,33 @@ template&lt;auto Size&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="typed__eigen__product_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="typed__eigen__product_8cpp_source.xhtml">typed_eigen_product.cpp</a>.</p>
 
+</div>
+</div>
+<a id="a03430a43dfe1f096da89b09f997d6fc3" name="a03430a43dfe1f096da89b09f997d6fc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03430a43dfe1f096da89b09f997d6fc3">&#9670;&#160;</a></span>percent_per_ratio</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double fcarouge::benchmark::anonymous_namespace{typed_eigen_product.cpp}::percent_per_ratio {100.}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Percent in a ratio, nanobench reporting its median absolute percentage error as a ratio. </p>
+
+<p class="definition">Definition at line <a class="el" href="typed__eigen__product_8cpp_source.xhtml#l00054">54</a> of file <a class="el" href="typed__eigen__product_8cpp_source.xhtml">typed_eigen_product.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   54</span>{100.};</div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"equal__to_21x1__chrono__std_8cpp_source.xhtml":[17,0,6,13,3],
 "equal__to_21x1__eigen_8cpp.xhtml":[17,0,6,13,4],
 "equal__to_21x1__eigen_8cpp.xhtml#a3e1783b83e242383086deca92caa0669":[17,0,6,13,4,0],
 "equal__to_21x1__eigen_8cpp_source.xhtml":[17,0,6,13,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "matrix__frob__norm_2uniform__mp__units__eigen_8cpp.xhtml#ac69ec7404212df4ba2de7be92b717e4c":[17,0,6,18,15,4],
 "matrix__frob__norm_2uniform__mp__units__eigen_8cpp.xhtml#ad0683250fea316f9433c07de8040fc5a":[17,0,6,18,15,2],
 "matrix__frob__norm_2uniform__mp__units__eigen_8cpp.xhtml#adc5372a6f12ef5a5be5b42c4d1abb7f4":[17,0,6,18,15,3],
-"matrix__frob__norm_2uniform__mp__units__eigen_8cpp_source.xhtml":[17,0,6,18,15],
-"matrix__inf__norm_21x1__eigen_8cpp.xhtml":[17,0,6,19,0]
+"matrix__frob__norm_2uniform__mp__units__eigen_8cpp_source.xhtml":[17,0,6,18,15]
 };
