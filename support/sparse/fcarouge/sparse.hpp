@@ -63,7 +63,7 @@ namespace fcarouge {
 //! @tparam RowIndexes The row indexes, by default of the representation type.
 //! @tparam ColumnIndexes The column indexes, by default of the representation
 //! type.
-template <typename Representation, sparse::sparsity_pattern auto Pattern,
+template <typename Representation, sparsity_pattern auto Pattern,
           typename RowIndexes = tla::tuple_n_type<Representation, Pattern.rows>,
           typename ColumnIndexes =
               tla::tuple_n_type<Representation, Pattern.columns>>
@@ -73,14 +73,14 @@ using typed_sparse_matrix = typed_matrix<sparse_matrix<Representation, Pattern>,
                                          RowIndexes, ColumnIndexes>;
 
 //! @brief Typed column vector of a compile-time sparsity pattern.
-template <typename Representation, sparse::sparsity_pattern auto Pattern,
+template <typename Representation, sparsity_pattern auto Pattern,
           typename... Types>
   requires(Pattern.rows == sizeof...(Types) and Pattern.columns == 1)
 using typed_sparse_column_vector =
     typed_column_vector<sparse_matrix<Representation, Pattern>, Types...>;
 
 //! @brief Typed row vector of a compile-time sparsity pattern.
-template <typename Representation, sparse::sparsity_pattern auto Pattern,
+template <typename Representation, sparsity_pattern auto Pattern,
           typename... Types>
   requires(Pattern.rows == 1 and Pattern.columns == sizeof...(Types))
 using typed_sparse_row_vector =
