@@ -36,9 +36,8 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the underlying type of the matrix.
-[[maybe_unused]] const matrix<double, 3, 3> z;
+using underlying = matrix<double, 3, 3>::underlying;
 
-using underlying = typename decltype(z)::underlying;
 static_assert(std::is_same_v<double, underlying>);
 } // namespace
 } // namespace fcarouge::test
