@@ -36,6 +36,7 @@ var hierarchy =
       [ "vertical_velocity", "structvertical__velocity.xhtml", null ]
     ] ],
     [ "mp_units::representation_canonical_type< fcarouge::typed_matrix< Matrix, RowIndexes, ColumnIndexes > >", "structmp__units_1_1representation__canonical__type_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_88cb568bfd22172f87f75426ff9b1681.xhtml", null ],
+    [ "mp_units::representation_underlying_type< fcarouge::typed_matrix< fcarouge::sparse_matrix< Type, Pattern >, RowIndexes, ColumnIndexes > >", "structmp__units_1_1representation__underlying__type_3_01fcarouge_1_1typed__matrix_3_01fcarouge_1053b002f68ee9b7dba8d2419cfb5a6da.xhtml", null ],
     [ "mp_units::representation_underlying_type< fcarouge::typed_matrix< Matrix, RowIndexes, ColumnIndexes > >", "structmp__units_1_1representation__underlying__type_3_01fcarouge_1_1typed__matrix_3_01_matrix_007bb3dc97a35e2d584c04497c33efbeb2.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{reentrant_tuple_size.cpp}::self_sized< Types >", "structfcarouge_1_1test_1_1anonymous__namespace_02reentrant__tuple__size_8cpp_03_1_1self__sized.xhtml", null ],
     [ "std::tuple_element", null, [

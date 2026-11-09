@@ -1,20 +1,25 @@
 <map id="fcarouge::typed_linear_algebra::internal::converted_storage" name="fcarouge::typed_linear_algebra::internal::converted_storage">
-<area shape="rect" id="Node000001" title="The storage of the typed matrix To keeping the values of from." alt="" coords="5,104,187,160"/>
-<area shape="rect" id="Node000002" href="$namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#ae001291878746fdd7db287616a067664" title=" " alt="" coords="462,5,609,61"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,101,183,76,234,56,288,43,344,35,446,29,447,34,344,40,289,48,235,61,185,81,141,106"/>
-<area shape="rect" id="Node000004" href="$namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a96df1bb0530f2d566558ee2f626386f3" title="Whether each element type of a typed matrix is of the same scale as the corresponding element type of..." alt="" coords="235,71,413,126"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="187,116,219,111,220,116,187,121"/>
-<area shape="rect" id="Node000006" href="$namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#aeaac2b3147a168c0a834b924fb008364" title="Read the storage element at the given typed matrix index(es)." alt="" coords="461,195,610,250"/>
-<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="188,143,296,162,414,187,447,195,446,200,412,192,295,168,187,149"/>
-<area shape="rect" id="Node000008" href="$namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#ad8b49524f3f1b03ddf34a0c5d6c10293" title="Write the storage element at the given typed matrix index(es)." alt="" coords="248,201,400,257"/>
-<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="164,158,244,192,242,197,162,163"/>
-<area shape="rect" id="Node000003" href="$namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a7ddbf3e8193c90dc7ae78735063b0a0e" title=" " alt="" coords="668,5,815,61"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="609,30,653,30,653,36,609,36"/>
-<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="412,68,447,58,449,63,414,74"/>
-<area shape="rect" id="Node000005" href="$namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a2473932eaa72753d9b4a44a75b715bc2" title="Whether the same stored number means the same value in two element types." alt="" coords="462,85,609,141"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="413,102,447,104,447,110,413,107"/>
-<area shape="poly" id="edge8_Node000006_Node000006" title=" " alt="" coords="495,194,496,184,503,176,516,170,536,168,557,171,571,177,568,182,556,176,536,173,518,175,506,180,500,186,500,194"/>
-<area shape="rect" id="Node000007" href="$namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#af699ec1d59850ee3df349a2fa6e39832" title="Access the storage element at the given storage row and column." alt="" coords="658,195,825,250"/>
-<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="611,220,643,220,643,225,611,225"/>
-<area shape="poly" id="edge10_Node000008_Node000006" title=" " alt="" coords="400,224,446,223,446,228,400,229"/>
+<area shape="rect" id="Node000001" title="The storage of the typed matrix To keeping the values of from." alt="" coords="5,119,187,174"/>
+<area shape="rect" id="Node000002" href="$namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#ae001291878746fdd7db287616a067664" title=" " alt="" coords="464,5,610,61"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,116,184,91,234,71,288,56,345,45,448,34,449,39,345,51,290,61,236,76,186,96,142,120"/>
+<area shape="rect" id="Node000004" href="$namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a96df1bb0530f2d566558ee2f626386f3" title="Whether each element type of a typed matrix is of the same scale as the corresponding element type of..." alt="" coords="235,85,413,141"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="187,131,219,126,220,131,187,136"/>
+<area shape="rect" id="Node000006" href="$namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#aeaac2b3147a168c0a834b924fb008364" title="Read the storage element at the given typed matrix index(es)." alt="" coords="661,208,811,264"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="187,150,384,168,499,183,614,201,647,208,646,214,613,206,498,188,383,173,187,155"/>
+<area shape="rect" id="Node000009" href="$namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#af57c49d9548374b07edffc09ebed17ed" title="Write the storage element at the given compile&#45;time typed matrix index(es)." alt="" coords="248,216,400,272"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="164,172,244,207,242,212,162,177"/>
+<area shape="rect" id="Node000003" href="$namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a7ddbf3e8193c90dc7ae78735063b0a0e" title=" " alt="" coords="663,5,809,61"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="611,30,647,30,647,36,611,36"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="399,82,449,63,450,68,401,87"/>
+<area shape="rect" id="Node000005" href="$namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a2473932eaa72753d9b4a44a75b715bc2" title="Whether the same stored number means the same value in two element types." alt="" coords="464,85,610,141"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="413,110,448,110,448,116,413,116"/>
+<area shape="poly" id="edge8_Node000006_Node000006" title=" " alt="" coords="697,207,697,198,704,189,717,183,736,181,757,184,770,191,767,196,755,189,736,187,719,188,707,193,702,200,702,208"/>
+<area shape="rect" id="Node000007" href="$namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#af699ec1d59850ee3df349a2fa6e39832" title="Access the storage element at the given storage row and column." alt="" coords="859,201,1026,257"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="811,231,843,230,843,235,811,236"/>
+<area shape="rect" id="Node000008" href="$namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a93decdb5b3f44cad3e8d3bba807852dd" title="The storage row and column of the given typed matrix index(es)." alt="" coords="859,281,1026,337"/>
+<area shape="poly" id="edge9_Node000006_Node000008" title=" " alt="" coords="812,260,849,273,847,278,810,265"/>
+<area shape="poly" id="edge11_Node000009_Node000008" title=" " alt="" coords="401,267,461,281,563,295,665,303,843,308,843,313,665,308,562,300,461,286,400,272"/>
+<area shape="rect" id="Node000010" href="$namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#ad8b49524f3f1b03ddf34a0c5d6c10293" title="Write the storage element at the given typed matrix index(es)." alt="" coords="461,216,613,272"/>
+<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="401,241,445,241,445,246,401,246"/>
+<area shape="poly" id="edge13_Node000010_Node000006" title=" " alt="" coords="614,238,646,237,646,242,614,243"/>
 </map>

@@ -8,6 +8,14 @@ var namespacefcarouge =
       [ "operator\"\"_i", "namespacefcarouge_1_1literals.xhtml#a96bdab646ac7be1505482cf553b9650b", null ]
     ] ],
     [ "sample", "namespacefcarouge_1_1sample.xhtml", "namespacefcarouge_1_1sample" ],
+    [ "sparse", "namespacefcarouge_1_1sparse.xhtml", [
+      [ "structural_zero_t", "namespacefcarouge_1_1sparse.xhtml#ae16d10150147372cce6eec722c18a7f0", null ],
+      [ "make_matrix", "namespacefcarouge_1_1sparse.xhtml#a43bad47b3473e403eaac4dbe5025dcf9", null ],
+      [ "are_given", "namespacefcarouge_1_1sparse.xhtml#a1ddd01a122a1ef4a2c82c2fdd26190fe", null ],
+      [ "are_given_at", "namespacefcarouge_1_1sparse.xhtml#a6c78068b428c5d279af2f93db0f67f13", null ],
+      [ "is_given_at", "namespacefcarouge_1_1sparse.xhtml#a8e065a50ba60d7cd977642a973029211", null ],
+      [ "is_given_at< Value, TypedMatrix, Position, false >", "namespacefcarouge_1_1sparse.xhtml#ab9bcc544860a0a95314cbcf8c5da8c92", null ]
+    ] ],
     [ "test", "namespacefcarouge_1_1test.xhtml", "namespacefcarouge_1_1test" ],
     [ "typed_linear_algebra", "namespacefcarouge_1_1typed__linear__algebra.xhtml", "namespacefcarouge_1_1typed__linear__algebra" ],
     [ "element_caster", "structfcarouge_1_1element__caster.xhtml", "structfcarouge_1_1element__caster" ],
@@ -38,6 +46,9 @@ var namespacefcarouge =
     [ "row_vector", "namespacefcarouge.xhtml#a60b6b92762905569a26339025d4b0821", null ],
     [ "typed_column_vector", "namespacefcarouge.xhtml#a96fea71ab24114a61950988fdac23f58", null ],
     [ "typed_row_vector", "namespacefcarouge.xhtml#a7558e7ccc03031fb7de678cf4977e1bf", null ],
+    [ "typed_sparse_column_vector", "namespacefcarouge.xhtml#ab7cd21cb026c1229c9760b5116cf9123", null ],
+    [ "typed_sparse_matrix", "namespacefcarouge.xhtml#af5cce0464f048b913097be837f77f855", null ],
+    [ "typed_sparse_row_vector", "namespacefcarouge.xhtml#abe82c758047f143c417b9a59f21208c1", null ],
     [ "dot", "namespacefcarouge.xhtml#abd59a3fd717517a0bf8904bb70974aab", null ],
     [ "get", "namespacefcarouge.xhtml#a85bf4d94c90e04287495f05e468ca66f", null ],
     [ "get", "namespacefcarouge.xhtml#a0756c9c3868ee00a5fbc858c522a048b", null ],

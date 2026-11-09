@@ -8,6 +8,7 @@ var dir_c29eeb5af533606caea8a09e66794740 =
     [ "chrono_std.cpp", "sample_2chrono__std_8cpp.xhtml", "sample_2chrono__std_8cpp" ],
     [ "mp_units_armadillo.cpp", "mp__units__armadillo_8cpp.xhtml", "mp__units__armadillo_8cpp" ],
     [ "mp_units_eigen.cpp", "sample_2mp__units__eigen_8cpp.xhtml", "sample_2mp__units__eigen_8cpp" ],
+    [ "mp_units_sparse.cpp", "mp__units__sparse_8cpp.xhtml", "mp__units__sparse_8cpp" ],
     [ "mp_units_std.cpp", "sample_2mp__units__std_8cpp.xhtml", "sample_2mp__units__std_8cpp" ],
     [ "mp_units_std_array.cpp", "mp__units__std__array_8cpp.xhtml", "mp__units__std__array_8cpp" ],
     [ "mp_units_std_boost_multi.cpp", "mp__units__std__boost__multi_8cpp.xhtml", "mp__units__std__boost__multi_8cpp" ],

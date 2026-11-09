@@ -126,6 +126,8 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1sample.xhtml">sample</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1sparse.xhtml">sparse</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1test.xhtml">test</a></td></tr>
 <tr class="memdesc:namespacefcarouge_1_1test"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unit, integration, regression, and usage tests. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -224,6 +226,18 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a60b6b92762905569a26339025d4b0821"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a60b6b92762905569a26339025d4b0821">row_vector</a> = <a class="el" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix</a>&lt;Type, 1, Column&gt;</td></tr>
 <tr class="memdesc:a60b6b92762905569a26339025d4b0821"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scalar type row vector with Armadillo implementations.  <br /></td></tr>
 <tr class="separator:a60b6b92762905569a26339025d4b0821"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5cce0464f048b913097be837f77f855" id="r_af5cce0464f048b913097be837f77f855"><td class="memTemplParams" colspan="2">template&lt;typename Representation , sparsity_pattern auto Pattern, typename RowIndexes  = tla::tuple_n_type&lt;Representation, Pattern.rows&gt;, typename ColumnIndexes  = tla::tuple_n_type&lt;Representation, Pattern.columns&gt;&gt; </td></tr>
+<tr class="memitem:af5cce0464f048b913097be837f77f855"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#af5cce0464f048b913097be837f77f855">typed_sparse_matrix</a></td></tr>
+<tr class="memdesc:af5cce0464f048b913097be837f77f855"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typed matrix of a compile-time sparsity pattern.  <br /></td></tr>
+<tr class="separator:af5cce0464f048b913097be837f77f855"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7cd21cb026c1229c9760b5116cf9123" id="r_ab7cd21cb026c1229c9760b5116cf9123"><td class="memTemplParams" colspan="2">template&lt;typename Representation , sparsity_pattern auto Pattern, typename... Types&gt; </td></tr>
+<tr class="memitem:ab7cd21cb026c1229c9760b5116cf9123"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab7cd21cb026c1229c9760b5116cf9123">typed_sparse_column_vector</a></td></tr>
+<tr class="memdesc:ab7cd21cb026c1229c9760b5116cf9123"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typed column vector of a compile-time sparsity pattern.  <br /></td></tr>
+<tr class="separator:ab7cd21cb026c1229c9760b5116cf9123"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe82c758047f143c417b9a59f21208c1" id="r_abe82c758047f143c417b9a59f21208c1"><td class="memTemplParams" colspan="2">template&lt;typename Representation , sparsity_pattern auto Pattern, typename... Types&gt; </td></tr>
+<tr class="memitem:abe82c758047f143c417b9a59f21208c1"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#abe82c758047f143c417b9a59f21208c1">typed_sparse_row_vector</a></td></tr>
+<tr class="memdesc:abe82c758047f143c417b9a59f21208c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typed row vector of a compile-time sparsity pattern.  <br /></td></tr>
+<tr class="separator:abe82c758047f143c417b9a59f21208c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -332,17 +346,22 @@ template&lt;typename Type  = double, std::size_t Row = 1&gt; </div>
 </div><div class="memdoc">
 
 <p>Scalar type column vector with Armadillo implementations. </p>
+<p>Scalar type column vector without structural zeros.</p>
 <p>Quantity column vector with nholthaus/units and std::linalg implementations.</p>
+<p>Quantity column vector with nholthaus/units, without structural zeros.</p>
 <p>Quantity column vector with nholthaus/units and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.</p>
 <p>Quantity column vector with nholthaus/units and Armadillo implementations.</p>
+<p>Quantity column vector with mp-units, without structural zeros.</p>
 <p>Quantity column vector with mp-units and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.</p>
 <p>Quantity column vector with mp-units and Armadillo implementations.</p>
 <p>Scalar type column vector with a freestanding implementation.</p>
 <p>Scalar type column vector with <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.</p>
 <p>Time quantity column vector with std::chrono and std::linalg implementations.</p>
+<p>Quantity column vector with std::chrono, without structural zeros.</p>
 <p>Time quantity column vector with std::chrono and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.</p>
 <p>Time quantity column vector with std::chrono and Armadillo implementations.</p>
 <p>Quantity column vector with Au and std::linalg implementations.</p>
+<p>Quantity column vector with Au, without structural zeros.</p>
 <p>Quantity column vector with Au and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.</p>
 <p>Quantity column vector with Au and Armadillo implementations. </p>
 
@@ -368,17 +387,22 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 <div class="line">                 tla::tuple_n_type&lt;Type, Row&gt;, tla::tuple_n_type&lt;Type, Column&gt;&gt;</div>
 </div><!-- fragment -->
 <p>Scalar type matrix with Armadillo implementations. </p>
+<p>Scalar type matrix without structural zeros.</p>
 <p>Quantity matrix with nholthaus/units and std::linalg implementations.</p>
+<p>Quantity matrix with nholthaus/units, without structural zeros.</p>
 <p>Quantity matrix with nholthaus/units and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.</p>
 <p>Quantity matrix with nholthaus/units and Armadillo implementations.</p>
+<p>Quantity matrix with mp-units, without structural zeros.</p>
 <p>Quantity matrix with mp-units and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.</p>
 <p>Quantity matrix with mp-units and Armadillo implementations.</p>
 <p>Scalar type matrix with a freestanding implementation.</p>
 <p>Scalar type matrix with <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.</p>
 <p>Time quantity matrix with std::chrono and std::linalg implementations.</p>
+<p>Quantity matrix with std::chrono, without structural zeros.</p>
 <p>Time quantity matrix with std::chrono and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.</p>
 <p>Time quantity matrix with std::chrono and Armadillo implementations.</p>
 <p>Quantity matrix with Au and std::linalg implementations.</p>
+<p>Quantity matrix with Au, without structural zeros.</p>
 <p>Quantity matrix with Au and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.</p>
 <p>Quantity matrix with Au and Armadillo implementations. </p>
 
@@ -463,17 +487,22 @@ template&lt;typename Type  = double, std::size_t Column = 1&gt; </div>
 </div><div class="memdoc">
 
 <p>Scalar type row vector with Armadillo implementations. </p>
+<p>Scalar type row vector without structural zeros.</p>
 <p>Quantity row vector with nholthaus/units and std::linalg implementations.</p>
+<p>Quantity row vector with nholthaus/units, without structural zeros.</p>
 <p>Quantity row vector with nholthaus/units and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.</p>
 <p>Quantity row vector with nholthaus/units and Armadillo implementations.</p>
+<p>Quantity row vector with mp-units, without structural zeros.</p>
 <p>Quantity row vector with mp-units and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.</p>
 <p>Quantity row vector with mp-units and Armadillo implementations.</p>
 <p>Scalar type row vector with a freestanding implementation.</p>
 <p>Scalar type row vector with <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.</p>
 <p>Time quantity row vector with std::chrono and std::linalg implementations.</p>
+<p>Quantity row vector with std::chrono, without structural zeros.</p>
 <p>Time quantity row vector with std::chrono and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.</p>
 <p>Time quantity row vector with std::chrono and Armadillo implementations.</p>
 <p>Quantity row vector with Au and std::linalg implementations.</p>
+<p>Quantity row vector with Au, without structural zeros.</p>
 <p>Quantity row vector with Au and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.</p>
 <p>Quantity row vector with Au and Armadillo implementations. </p>
 
@@ -499,7 +528,7 @@ template&lt;typename Matrix , typename... RowIndexes&gt; </div>
 </div><!-- fragment -->
 <p>Strongly typed column vector. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00545">545</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00550">550</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
 
 </div>
 </div>
@@ -521,7 +550,82 @@ template&lt;typename Matrix , typename... ColumnIndexes&gt; </div>
 </div><!-- fragment -->
 <p>Strongly typed row vector. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00540">540</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00545">545</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab7cd21cb026c1229c9760b5116cf9123" name="ab7cd21cb026c1229c9760b5116cf9123"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7cd21cb026c1229c9760b5116cf9123">&#9670;&#160;</a></span>typed_sparse_column_vector</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Representation , sparsity_pattern auto Pattern, typename... Types&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#ab7cd21cb026c1229c9760b5116cf9123">fcarouge::typed_sparse_column_vector</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line">    typed_column_vector&lt;sparse_matrix&lt;Representation, Pattern&gt;, Types...&gt;</div>
+</div><!-- fragment -->
+<p>Typed column vector of a compile-time sparsity pattern. </p>
+
+<p class="definition">Definition at line <a class="el" href="sparse_8hpp_source.xhtml#l00079">79</a> of file <a class="el" href="sparse_8hpp_source.xhtml">sparse.hpp</a>.</p>
+
+</div>
+</div>
+<a id="af5cce0464f048b913097be837f77f855" name="af5cce0464f048b913097be837f77f855"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5cce0464f048b913097be837f77f855">&#9670;&#160;</a></span>typed_sparse_matrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Representation , sparsity_pattern auto Pattern, typename RowIndexes  = tla::tuple_n_type&lt;Representation, Pattern.rows&gt;, typename ColumnIndexes  = tla::tuple_n_type&lt;Representation, Pattern.columns&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#af5cce0464f048b913097be837f77f855">fcarouge::typed_sparse_matrix</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> typed_matrix&lt;sparse_matrix&lt;Representation, Pattern&gt;,</div>
+<div class="line">                                         RowIndexes, ColumnIndexes&gt;</div>
+</div><!-- fragment -->
+<p>Typed matrix of a compile-time sparsity pattern. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Representation</td><td>The stored element representation type. </td></tr>
+    <tr><td class="paramname">Pattern</td><td>The sparsity pattern, of the indexes' shape. </td></tr>
+    <tr><td class="paramname">RowIndexes</td><td>The row indexes, by default of the representation type. </td></tr>
+    <tr><td class="paramname">ColumnIndexes</td><td>The column indexes, by default of the representation type. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="sparse_8hpp_source.xhtml#l00072">72</a> of file <a class="el" href="sparse_8hpp_source.xhtml">sparse.hpp</a>.</p>
+
+</div>
+</div>
+<a id="abe82c758047f143c417b9a59f21208c1" name="abe82c758047f143c417b9a59f21208c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe82c758047f143c417b9a59f21208c1">&#9670;&#160;</a></span>typed_sparse_row_vector</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Representation , sparsity_pattern auto Pattern, typename... Types&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#abe82c758047f143c417b9a59f21208c1">fcarouge::typed_sparse_row_vector</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line">    typed_row_vector&lt;sparse_matrix&lt;Representation, Pattern&gt;, Types...&gt;</div>
+</div><!-- fragment -->
+<p>Typed row vector of a compile-time sparsity pattern. </p>
+
+<p class="definition">Definition at line <a class="el" href="sparse_8hpp_source.xhtml#l00086">86</a> of file <a class="el" href="sparse_8hpp_source.xhtml">sparse.hpp</a>.</p>
 
 </div>
 </div>
@@ -597,7 +701,7 @@ template&lt;int Index&gt; </div>
 <p>Get function argument-dependent lookup overload. </p>
 <p>Also provides support for structured bindings. </p>
 
-<p class="reference">Referenced by <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00399">fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::typed_matrix()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00402">fcarouge::typed_matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::typed_matrix()</a>.</p>
 <div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -1566,9 +1670,11 @@ template&lt;typename To , typename From &gt; </div>
 <p>Matrix element and storage conversion CPO. </p>
 <p>Customization point object (CPO) for the element caster function objects which allows the end-user to specialize conversion of their element types to/from the storage underlying types. </p>
 
-<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00567">567</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  567</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="typed__linear__algebra_8hpp_source.xhtml#l00572">572</a> of file <a class="el" href="typed__linear__algebra_8hpp_source.xhtml">typed_linear_algebra.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  572</span>{};</div>
 </div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="sparse_8hpp_source.xhtml#l00139">fcarouge::sparse::make_matrix()</a>.</p>
+
 </div>
 </div>
 </div><!-- contents -->

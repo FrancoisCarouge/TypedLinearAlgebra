@@ -104,7 +104,7 @@ $(function(){initNavTree('index.xhtml',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__2github_2workspace_2_r_e_a_d_m_e"></a></p>
-<p>Physical unit mismatches in matrix and vector computations have crashed projects and cost billions, because ordinary linear algebra treats a mismatched unit, an out-of-order axis, or a mixed-up reference frame as just another number and lets it compile, run, and fail silently. This library is a C++ strongly-typed facade to a matrix linear algebra backend [<a class="el" href="namespace_eigen.xhtml">Eigen</a>, std::linalg/mdspan, Kokkos, Armadillo] adapting strong types [Au, mp-units, nholthaus/units, std::chrono] that brings type safety to matrix operations. It turns mismatches into compile errors and preventing common errors in scientific and engineering computations.</p>
+<p>Physical unit mismatches in matrix and vector computations have crashed projects and cost billions, because ordinary linear algebra treats a mismatched unit, an out-of-order axis, or a mixed-up reference frame as just another number and lets it compile, run, and fail silently. This library is a C++ strongly-typed facade to a matrix linear algebra backend [<a class="el" href="namespace_eigen.xhtml">Eigen</a>, std::linalg/mdspan, Kokkos, Armadillo, Sparse Linear Algebra] adapting strong types [Au, mp-units, nholthaus/units, std::chrono] that brings type safety to matrix operations. It turns mismatches into compile errors and preventing common errors in scientific and engineering computations.</p>
 <div class="fragment"><div class="line">state x{3. * m,</div>
 <div class="line">        2. * m / s,</div>
 <div class="line">        1. * m / s2};</div>
@@ -162,8 +162,10 @@ Plug-ins</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">nholthaus/units   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support">Example plug-in: <code>support/nholthaus</code></a>.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">std::chrono   </td><td class="markdownTableBodyNone">No plug-in needed. Hosted implementation only.    </td></tr>
+<td class="markdownTableBodyNone">Sparse Linear Algebra   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support">Example plug-in: <code>support/sparse</code></a>.    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">std::chrono   </td><td class="markdownTableBodyNone">No plug-in needed. Hosted implementation only.    </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">std::linalg   </td><td class="markdownTableBodyNone">No plug-in needed. Hosted implementation only.   </td></tr>
 </table>
 <h2><a class="anchor" id="samples"></a>
@@ -182,22 +184,24 @@ Samples</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">mp-units + <a class="el" href="namespace_eigen.xhtml">Eigen</a>   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_eigen.cpp">Usage example: <code>sample/mp_units_eigen.cpp</code></a>.    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">mp-units + Sparse   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_sparse.cpp">Usage example: <code>sample/mp_units_sparse.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">mp-units + std::linalg   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std.cpp">Usage example: <code>sample/mp_units_std.cpp</code></a>.    </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">mp-units + std::linalg + std::array   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std_array.cpp">Usage example: <code>sample/mp_units_std_array.cpp</code></a>.    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">mp-units + std::linalg + Boost.Multi   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std_boost_multi.cpp">Usage example: <code>sample/mp_units_std_boost_multi.cpp</code></a>.    </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">nholthaus/units + Armadillo   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_armadillo.cpp">Usage example: <code>sample/nholthaus_armadillo.cpp</code></a>.    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">nholthaus/units + <a class="el" href="namespace_eigen.xhtml">Eigen</a>   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_eigen.cpp">Usage example: <code>sample/nholthaus_eigen.cpp</code></a>.    </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">nholthaus/units + std::linalg   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_std.cpp">Usage example: <code>sample/nholthaus_std.cpp</code></a>.    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">std::chrono + Armadillo   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_armadillo.cpp">Usage example: <code>sample/chrono_armadillo.cpp</code></a>.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">std::chrono + <a class="el" href="namespace_eigen.xhtml">Eigen</a>   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_eigen.cpp">Usage example: <code>sample/chrono_eigen.cpp</code></a>.    </td></tr>
+<td class="markdownTableBodyNone">std::chrono + Armadillo   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_armadillo.cpp">Usage example: <code>sample/chrono_armadillo.cpp</code></a>.    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">std::chrono + <a class="el" href="namespace_eigen.xhtml">Eigen</a>   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_eigen.cpp">Usage example: <code>sample/chrono_eigen.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">std::chrono + std::linalg   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_std.cpp">Usage example: <code>sample/chrono_std.cpp</code></a>.   </td></tr>
 </table>
 <h2><a class="anchor" id="class-typed-matrix"></a>
@@ -356,7 +360,7 @@ Concepts</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>column_typed_matrix</code>   </td><td class="markdownTableBodyNone">Concept of a column typed matrix, vector.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>convertible_typed_matrix</code>   </td><td class="markdownTableBodyNone">Concept of a typed matrix implicitly convertible to another typed matrix of the same shape, element by element, keeping each element's value. A non-owning view only converts from elements of the same scale.    </td></tr>
+<td class="markdownTableBodyNone"><code>convertible_typed_matrix</code>   </td><td class="markdownTableBodyNone">Concept of a typed matrix implicitly convertible to another typed matrix of the same shape, element by element, keeping each element's value. A non-owning view only converts from elements of the same scale, and an element the storage cannot write, as a sparse structural zero, only through a conversion keeping its value.    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>index</code>   </td><td class="markdownTableBodyNone">Concept of a compile-time index.    </td></tr>
 <tr class="markdownTableRowEven">
@@ -451,6 +455,7 @@ Resources</h2>
 <li>M. Pusz, "Implementing Physical Units Library for C++" presented at C++Now, Aspen, CO, USA, May 2019. [Online]. Available: <a href="https://www.youtube.com/watch?v=wKchCktZPHU">https://www.youtube.com/watch?v=wKchCktZPHU</a></li>
 <li>C. Hogg, "Units Libraries and Autonomous Vehicles: Lessons from the Trenches," presented at CppCon, Aurora, CO, USA, Oct. 2021. [Online]. Available: <a href="https://www.youtube.com/watch?v=5dhFtSu3wCo">https://www.youtube.com/watch?v=5dhFtSu3wCo</a></li>
 <li>D. Withopf, "Taking Static Type-Safety to the Next Level: Physical Units for Matrices," presented at C++Now, Aspen, CO, USA, May 2022. [Online]. Available: <a href="https://www.youtube.com/watch?v=SLSTS-EvOx4">https://www.youtube.com/watch?v=SLSTS-EvOx4</a></li>
+<li>D. Withopf, "Compile-time Is the New Constexpr: Leveraging Compile-time Sparsity for Vectors and Matrices," presented at C++Now, Aspen, CO, USA, May 2023. [Online]. Available: <a href="https://schedule.cppnow.org/session/2023/compile-time-is-the-new-constexpr-leveraging-compile-time-sparsity-for-vectors-and-matrices/">https://schedule.cppnow.org/session/2023/compile-time-is-the-new-constexpr-leveraging-compile-time-sparsity-for-vectors-and-matrices/</a></li>
 <li>M. Hoemmen, "std::linalg: Linear Algebra Coming to Standard C++" (WG21 P1673), presented at CppCon, Aurora, CO, USA, Oct. 2023. [Online]. Available: <a href="https://www.youtube.com/watch?v=-UXHMlAMXNk">https://www.youtube.com/watch?v=-UXHMlAMXNk</a></li>
 <li>D. Hanson, "Guide to Linear Algebra With the Eigen C++ Library," presented at CppCon, Aurora, CO, USA, Sep. 2024. [Online]. Available: <a href="https://www.youtube.com/watch?v=99G-APJkMc0">https://www.youtube.com/watch?v=99G-APJkMc0</a></li>
 </ol>
@@ -480,6 +485,7 @@ Third Party Acknowledgement</h2>
 <li><a href="https://github.com/mpusz/mp-units">mp-units</a> the quantities and units library for C++.</li>
 <li><a href="https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist">MSVC</a> for compilation and code sanitizers.</li>
 <li><a href="https://github.com/nholthaus/units">nholthaus/units</a> the compile-time dimensional analysis and unit conversion library for C++.</li>
+<li><a href="https://github.com/FrancoisCarouge/SparseLinearAlgebra">Sparse Linear Algebra</a> for compile-time sparsity pattern linear algebra.</li>
 <li><a href="https://github.com/kokkos/stdBLAS">stdBLAS</a> for standard BLAS interface.</li>
 <li><a href="https://valgrind.org">Valgrind</a> to check for correct memory management.</li>
 </ul>

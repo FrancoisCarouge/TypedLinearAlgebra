@@ -25,9 +25,10 @@ var searchData=
   ['mp_5funits_2ehpp_22',['mp_units.hpp',['../mp__units_8hpp.xhtml',1,'']]],
   ['mp_5funits_5farmadillo_2ecpp_23',['mp_units_armadillo.cpp',['../mp__units__armadillo_8cpp.xhtml',1,'']]],
   ['mp_5funits_5feigen_2ecpp_24',['mp_units_eigen.cpp',['../sample_2mp__units__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../test_2column__typed__matrix_2mp__units__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../test_2format_2mp__units__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../test_2rank__typed__matrix_2mp__units__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../test_2row__typed__matrix_2mp__units__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../test_2same__shape_2mp__units__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../test_2uniform__typed__matrix_2mp__units__eigen_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['mp_5funits_5fstd_2ecpp_25',['mp_units_std.cpp',['../sample_2mp__units__std_8cpp.xhtml',1,'(Global Namespace)'],['../test_2format_2mp__units__std_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['mp_5funits_5fstd_5farray_2ecpp_26',['mp_units_std_array.cpp',['../mp__units__std__array_8cpp.xhtml',1,'']]],
-  ['mp_5funits_5fstd_5fboost_5fmulti_2ecpp_27',['mp_units_std_boost_multi.cpp',['../mp__units__std__boost__multi_8cpp.xhtml',1,'']]],
-  ['multiplication_5f2x3_5f3x2_2ecpp_28',['multiplication_2x3_3x2.cpp',['../multiplication__2x3__3x2_8cpp.xhtml',1,'']]],
-  ['multiplication_5fscalar_2ecpp_29',['multiplication_scalar.cpp',['../multiplication__scalar_8cpp.xhtml',1,'']]]
+  ['mp_5funits_5fsparse_2ecpp_25',['mp_units_sparse.cpp',['../mp__units__sparse_8cpp.xhtml',1,'']]],
+  ['mp_5funits_5fstd_2ecpp_26',['mp_units_std.cpp',['../sample_2mp__units__std_8cpp.xhtml',1,'(Global Namespace)'],['../test_2format_2mp__units__std_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['mp_5funits_5fstd_5farray_2ecpp_27',['mp_units_std_array.cpp',['../mp__units__std__array_8cpp.xhtml',1,'']]],
+  ['mp_5funits_5fstd_5fboost_5fmulti_2ecpp_28',['mp_units_std_boost_multi.cpp',['../mp__units__std__boost__multi_8cpp.xhtml',1,'']]],
+  ['multiplication_5f2x3_5f3x2_2ecpp_29',['multiplication_2x3_3x2.cpp',['../multiplication__2x3__3x2_8cpp.xhtml',1,'']]],
+  ['multiplication_5fscalar_2ecpp_30',['multiplication_scalar.cpp',['../multiplication__scalar_8cpp.xhtml',1,'']]]
 ];
