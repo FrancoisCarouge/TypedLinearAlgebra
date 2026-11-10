@@ -49,38 +49,39 @@ concept multipliable_shape =
 //! converts to the type of its row-column's first term, as required to sum
 //! them.
 //!
+//! @details The terms of the first row-column are verified, at a cost linear in
+//! the inner dimension rather than cubic in the size of the matrices: an
+//! element type is the product of its row and column indexes, so each term of
+//! another row-column is the corresponding term of the first row-column times
+//! the same row and column index factors. This holds for element types whose
+//! product is associative and commutative, as the result indexes, formed from
+//! the first column and row of the operands, already require. Matrices of
+//! `std::identity` indexes only have no terms to verify.
+//!
 //! @pre `Lhs` and `Rhs` are `multipliable_shape`.
 template <typename Lhs, typename Rhs>
 constexpr auto are_terms_multipliable() -> bool {
   using lhs_matrix = std::remove_cvref_t<Lhs>;
   using rhs_matrix = std::remove_cvref_t<Rhs>;
-  using lhs_row_indexes = typename lhs_matrix::row_indexes;
-  using lhs_column_indexes = typename lhs_matrix::column_indexes;
-  using rhs_row_indexes = typename rhs_matrix::row_indexes;
-  using rhs_column_indexes = typename rhs_matrix::column_indexes;
 
-  bool convertible{true};
+  if constexpr (tla::identity_typed_matrix<lhs_matrix> and
+                tla::identity_typed_matrix<rhs_matrix>) {
+    return true;
+  } else {
+    using first = tla::product<tla::element_at<lhs_matrix, 0, 0>,
+                               tla::element_at<rhs_matrix, 0, 0>>;
 
-  tla::for_constexpr<lhs_matrix::rows>([&convertible](auto i) {
-    using lhs_row = tla::product<std::tuple_element_t<i, lhs_row_indexes>,
-                                 lhs_column_indexes>;
-    tla::for_constexpr<rhs_matrix::columns>([&convertible, i](auto j) {
-      using rhs_column =
-          tla::product<rhs_row_indexes,
-                       std::tuple_element_t<j, rhs_column_indexes>>;
-      tla::for_constexpr<lhs_matrix::columns>([&convertible, i, j](auto k) {
-        static_cast<void>(i); // Compiler compatibility.
-        static_cast<void>(j); // Compiler compatibility.
-        convertible &= std::is_convertible_v<
-            tla::product<std::tuple_element_t<k, lhs_row>,
-                         std::tuple_element_t<k, rhs_column>>,
-            tla::product<std::tuple_element_t<0, lhs_row>,
-                         std::tuple_element_t<0, rhs_column>>>;
-      });
+    bool convertible{true};
+
+    tla::for_constexpr<lhs_matrix::columns>([&convertible](auto k) {
+      convertible &=
+          std::is_convertible_v<tla::product<tla::element_at<lhs_matrix, 0, k>,
+                                             tla::element_at<rhs_matrix, k, 0>>,
+                                first>;
     });
-  });
 
-  return convertible;
+    return convertible;
+  }
 }
 
 //! @brief Concept of typed matrices whose per-term products can be summed
@@ -92,31 +93,35 @@ concept multipliable_elements = are_terms_multipliable<Lhs, Rhs>();
 //! of the scale of its row-column's first term, as required to sum their stored
 //! numbers.
 //!
+//! @details The terms of the first row-column are verified, for the reasons
+//! of `are_terms_multipliable`: the scale of a product is the product of the
+//! scales of its factors.
+//!
 //! @pre `Lhs` and `Rhs` are `multipliable_shape`.
 template <typename Lhs, typename Rhs>
 constexpr auto are_terms_same_scale() -> bool {
   using lhs_matrix = std::remove_cvref_t<Lhs>;
   using rhs_matrix = std::remove_cvref_t<Rhs>;
-  using underlying = typename lhs_matrix::underlying;
 
-  bool same_scale{true};
+  if constexpr (tla::identity_typed_matrix<lhs_matrix> and
+                tla::identity_typed_matrix<rhs_matrix>) {
+    return true;
+  } else {
+    using underlying = typename lhs_matrix::underlying;
+    using first = tla::product<tla::element_at<lhs_matrix, 0, 0>,
+                               tla::element_at<rhs_matrix, 0, 0>>;
 
-  tla::for_constexpr<lhs_matrix::rows>([&same_scale](auto i) {
-    tla::for_constexpr<rhs_matrix::columns>([&same_scale, i](auto j) {
-      tla::for_constexpr<lhs_matrix::columns>([&same_scale, i, j](auto k) {
-        static_cast<void>(i); // Compiler compatibility.
-        static_cast<void>(j); // Compiler compatibility.
-        same_scale &=
-            tla::is_same_scale<tla::product<tla::element_at<lhs_matrix, i, k>,
-                                            tla::element_at<rhs_matrix, k, j>>,
-                               tla::product<tla::element_at<lhs_matrix, i, 0>,
-                                            tla::element_at<rhs_matrix, 0, j>>,
-                               underlying>();
-      });
+    bool same_scale{true};
+
+    tla::for_constexpr<lhs_matrix::columns>([&same_scale](auto k) {
+      same_scale &=
+          tla::is_same_scale<tla::product<tla::element_at<lhs_matrix, 0, k>,
+                                          tla::element_at<rhs_matrix, k, 0>>,
+                             first, underlying>();
     });
-  });
 
-  return same_scale;
+    return same_scale;
+  }
 }
 
 //! @brief Concept of typed matrices whose per-term products can be summed from

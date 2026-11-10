@@ -74,31 +74,36 @@ namespace fcarouge {
   // The quotient `X` must satisfy `X * rhs = lhs` element-wise: every term
   // `X(i, k) * rhs(k, j)` must convert to `lhs(i, j)`. The result indexes are
   // derived from the first columns only, so this does not hold by construction.
-  tla::for_constexpr<lhs_matrix::rows>([](auto i) {
-    tla::for_constexpr<rhs_matrix::rows>([i](auto k) {
-      tla::for_constexpr<lhs_matrix::columns>([i, k](auto j) {
-        static_cast<void>(i); // Compiler compatibility.
-        static_cast<void>(k); // Compiler compatibility.
-        static_assert(
-            std::is_convertible_v<
-                tla::product<
-                    tla::product<std::tuple_element_t<i, row_indexes>,
-                                 std::tuple_element_t<k, column_indexes>>,
-                    tla::element_at<rhs_matrix, k, j>>,
-                tla::element_at<lhs_matrix, i, j>>,
-            "Matrix division requires compatible element types.");
-        static_assert(
-            tla::is_same_scale<
-                tla::product<
-                    tla::product<std::tuple_element_t<i, row_indexes>,
-                                 std::tuple_element_t<k, column_indexes>>,
-                    tla::element_at<rhs_matrix, k, j>>,
-                tla::element_at<lhs_matrix, i, j>,
-                typename lhs_matrix::underlying>(),
-            "Matrix division requires terms of the same scale, convert first.");
-      });
-    });
-  });
+  // Every element type is the product of its row and column indexes: a term
+  // and its target element share the row index factor of `i`, and a term's
+  // dependence on `k` and on `j` are separate factors. Verifying the terms of
+  // the first row, along `k` in the first column and along `j` for the first
+  // `k`, thus verifies every term, at a cost linear in the size of the
+  // matrices rather than cubic, for element types whose product is associative
+  // and commutative, as the result indexes already require. Matrices of
+  // `std::identity` indexes only have no terms to verify.
+  if constexpr (not(tla::identity_typed_matrix<lhs_matrix> and
+                    tla::identity_typed_matrix<rhs_matrix>)) {
+    const auto verify{[](auto k, auto j) {
+      using term =
+          tla::product<tla::product<std::tuple_element_t<0, row_indexes>,
+                                    std::tuple_element_t<k, column_indexes>>,
+                       tla::element_at<rhs_matrix, k, j>>;
+      using element = tla::element_at<lhs_matrix, 0, j>;
+
+      static_assert(std::is_convertible_v<term, element>,
+                    "Matrix division requires compatible element types.");
+      static_assert(
+          tla::is_same_scale<term, element, typename lhs_matrix::underlying>(),
+          "Matrix division requires terms of the same scale, convert first.");
+    }};
+    constexpr std::integral_constant<std::size_t, 0> first{};
+
+    tla::for_constexpr<rhs_matrix::rows>(
+        [&verify, &first](auto k) { verify(k, first); });
+    tla::for_constexpr<lhs_matrix::columns>(
+        [&verify, &first](auto j) { verify(first, j); });
+  }
 
   return make_typed_matrix<row_indexes, column_indexes>(lhs.data() /
                                                         rhs.data());
