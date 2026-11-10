@@ -59,14 +59,20 @@ public:
 
   constexpr ~counted_storage() = default;
 
-  [[nodiscard]] constexpr auto operator[](std::size_t /*row*/,
-                                          std::size_t /*column*/) -> double & {
+  [[nodiscard]] constexpr auto operator[](std::size_t row, std::size_t column)
+      -> double & {
+    static_cast<void>(row);
+    static_cast<void>(column);
+
     return value;
   }
 
-  [[nodiscard]] constexpr auto operator[](std::size_t /*row*/,
-                                          std::size_t /*column*/) const -> const
+  [[nodiscard]] constexpr auto operator[](std::size_t row,
+                                          std::size_t column) const -> const
       double & {
+    static_cast<void>(row);
+    static_cast<void>(column);
+
     return value;
   }
 
