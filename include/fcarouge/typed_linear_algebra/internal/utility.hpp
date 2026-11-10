@@ -632,6 +632,24 @@ template <typename Type>
 concept uniform_typed_matrix =
     same_as_typed_matrix<Type> and is_uniform_typed_matrix<Type>();
 
+template <typename Indexes> inline constexpr bool is_identity_indexes{false};
+
+template <typename... Types>
+inline constexpr bool is_identity_indexes<std::tuple<Types...>>{
+    (std::same_as<Types, std::identity> and ...)};
+
+//! @brief Concept of a typed matrix whose row and column indexes are all the
+//! dimensionless `std::identity`, an untyped matrix of its underlying type.
+//!
+//! @details Decided on the indexes alone, without forming any element type, so
+//! that algorithms can skip their per-element verifications at a cost linear
+//! in the size of the matrix.
+template <typename Type>
+concept identity_typed_matrix =
+    same_as_typed_matrix<Type> and
+    is_identity_indexes<typename std::remove_cvref_t<Type>::row_indexes> and
+    is_identity_indexes<typename std::remove_cvref_t<Type>::column_indexes>;
+
 template <typename Type>
 concept column_typed_matrix =
     same_as_typed_matrix<Type> and (std::remove_cvref_t<Type>::columns == 1);

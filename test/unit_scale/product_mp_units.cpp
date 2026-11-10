@@ -43,6 +43,7 @@ namespace {
 [[maybe_unused]] const auto test{[] -> int {
   using mp_units::si::unit_symbols::km;
   using mp_units::si::unit_symbols::m;
+  using mp_units::si::unit_symbols::s;
 
   using small_unit =
       mp_units::quantity<mp_units::isq::length[m], representation>;
@@ -51,9 +52,13 @@ namespace {
   using gain =
       matrix<representation, std::tuple<representation, representation>,
              std::tuple<std::identity, std::identity>>;
+  using time_unit =
+      mp_units::quantity<mp_units::isq::duration[s], representation>;
   using small_column = column_vector<representation, small_unit, small_unit>;
   using large_column = column_vector<representation, large_unit, large_unit>;
   using mixed_column = column_vector<representation, small_unit, large_unit>;
+  using mixed_dimension_column =
+      column_vector<representation, small_unit, time_unit>;
   using mixed_row = row_vector<representation, small_unit, large_unit>;
   using scalar_row = row_vector<representation, representation, representation>;
   using scalar_column =
@@ -72,6 +77,10 @@ namespace {
   static_assert(not multipliable<scalar_row, mixed_column>);
   static_assert(not multipliable<mixed_row, gain>);
   static_assert(not multipliable<mixed_columns, scalar_column>);
+
+  // Terms of different dimensions in a sum, past the first term.
+  static_assert(not multipliable<gain, mixed_dimension_column>);
+  static_assert(not multipliable<scalar_row, mixed_dimension_column>);
 
   return 0;
 }()};
