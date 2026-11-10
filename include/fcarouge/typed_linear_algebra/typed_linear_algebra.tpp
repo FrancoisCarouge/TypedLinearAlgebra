@@ -279,7 +279,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
 {
   using self_t = std::remove_reference_t<decltype(self)>;
   using storage_access =
-      decltype(tla::read_element<columns>(self.storage, Indexes...));
+      decltype(tla::read_element_at<columns, Indexes...>(self.storage));
 
   // An unevaluated expression template has nothing to reference, so read it
   // by value even through a non-const `self`.
@@ -296,12 +296,12 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
     // does not compile.
     const element<Indexes...> value{
         cast<qualified_element, qualified_underlying>(
-            tla::read_element<columns>(self.storage, Indexes...))};
+            tla::read_element_at<columns, Indexes...>(self.storage))};
 
     return value;
   } else {
     return cast<qualified_element, qualified_underlying>(
-        tla::read_element<columns>(self.storage, Indexes...));
+        tla::read_element_at<columns, Indexes...>(self.storage));
   }
 }
 

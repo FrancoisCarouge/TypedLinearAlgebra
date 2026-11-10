@@ -29,6 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+build("2x2_compile_time_read" BACKENDS "eigexed" "sparse")
+
 pass(
   "1x1_const"
   BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed" "sparse")
