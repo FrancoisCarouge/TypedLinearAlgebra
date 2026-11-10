@@ -387,6 +387,37 @@ read_element(Storage &&storage,
   }
 }
 
+//! @brief Read the storage element at the given compile-time typed matrix
+//! index(es).
+//!
+//! @details Offers the storage the position as compile-time constants, of the
+//! standard type of the `_i` literal, as `write_element_at` does, for a storage
+//! whose element access depends on the position, which then needs no run-time
+//! lookup of it. A storage without a subscript of two indexes reads as for a
+//! run-time position.
+//!
+//! @tparam Columns The count of columns of the typed matrix.
+//! @tparam Indexes Compile-time position(s) of the element.
+//! @param storage Passed unforwarded, as an lvalue: constness, not value
+//! category, flows from the caller.
+template <std::size_t Columns, auto... Indexes, typename Storage>
+[[nodiscard]] constexpr auto read_element_at(Storage &&storage)
+    -> decltype(auto) {
+  static constexpr std::array<std::size_t, 2> position{
+      storage_position<Columns>(Indexes...)};
+
+  using row = std::integral_constant<std::size_t, position[0]>;
+  using column = std::integral_constant<std::size_t, position[1]>;
+
+  if constexpr (same_as_typed_matrix<Storage>) {
+    return read_element_at<Columns, Indexes...>(storage.data());
+  } else if constexpr (requires { storage[row{}, column{}]; }) {
+    return storage[row{}, column{}];
+  } else {
+    return read_element<Columns>(storage, Indexes...);
+  }
+}
+
 //! @brief Write the storage element at the given typed matrix index(es).
 //!
 //! @details Writes through `read_element`, whose access must therefore yield a
@@ -853,7 +884,8 @@ template <typename To>
           // Copy-initialization: the implicit conversion the concept verified.
           const to_element converted =
               element_caster<from_element, from_underlying>{}(
-                  read_element<from_matrix::columns>(evaluated, i, j));
+                  read_element_at<from_matrix::columns, decltype(i)::value,
+                                  decltype(j)::value>(evaluated));
 
           write_element_at<to_matrix::columns, decltype(i)::value,
                            decltype(j)::value>(
@@ -3687,7 +3719,7 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
 {
   using self_t = std::remove_reference_t<decltype(self)>;
   using storage_access =
-      decltype(tla::read_element<columns>(self.storage, Indexes...));
+      decltype(tla::read_element_at<columns, Indexes...>(self.storage));
 
   // An unevaluated expression template has nothing to reference, so read it
   // by value even through a non-const `self`.
@@ -3704,12 +3736,12 @@ typed_matrix<Matrix, RowIndexes, ColumnIndexes>::at(this auto &&self)
     // does not compile.
     const element<Indexes...> value{
         cast<qualified_element, qualified_underlying>(
-            tla::read_element<columns>(self.storage, Indexes...))};
+            tla::read_element_at<columns, Indexes...>(self.storage))};
 
     return value;
   } else {
     return cast<qualified_element, qualified_underlying>(
-        tla::read_element<columns>(self.storage, Indexes...));
+        tla::read_element_at<columns, Indexes...>(self.storage));
   }
 }
 
