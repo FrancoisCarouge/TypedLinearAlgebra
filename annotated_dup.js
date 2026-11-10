@@ -22,6 +22,9 @@ var annotated_dup =
           [ "first", "structfcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03_1_1first.xhtml", null ],
           [ "second", "structfcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03_1_1second.xhtml", null ]
         ] ],
+        [ "anonymous_namespace{2x2_compile_time_read.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_022x2__compile__time__read_8cpp_03.xhtml", [
+          [ "positioned_storage", "classfcarouge_1_1test_1_1anonymous__namespace_022x2__compile__time__read_8cpp_03_1_1positioned__storage.xhtml", "classfcarouge_1_1test_1_1anonymous__namespace_022x2__compile__time__read_8cpp_03_1_1positioned__storage" ]
+        ] ],
         [ "anonymous_namespace{reentrant_tuple_size.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02reentrant__tuple__size_8cpp_03.xhtml", [
           [ "self_sized", "structfcarouge_1_1test_1_1anonymous__namespace_02reentrant__tuple__size_8cpp_03_1_1self__sized.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02reentrant__tuple__size_8cpp_03_1_1self__sized" ]
         ] ],

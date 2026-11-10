@@ -24,6 +24,7 @@ var utility_8hpp =
     [ "keeps_fixed_elements", "utility_8hpp.xhtml#a36aead92c9cac0ad7ecfa33526d09141", null ],
     [ "parse_digits", "utility_8hpp.xhtml#a00297c357886f0244dee013a5ea4a183", null ],
     [ "read_element", "utility_8hpp.xhtml#aeaac2b3147a168c0a834b924fb008364", null ],
+    [ "read_element_at", "utility_8hpp.xhtml#a1af4442a372f6ed7487f3d0c6458db07", null ],
     [ "storage_position", "utility_8hpp.xhtml#a93decdb5b3f44cad3e8d3bba807852dd", null ],
     [ "write_element", "utility_8hpp.xhtml#ad8b49524f3f1b03ddf34a0c5d6c10293", null ],
     [ "write_element_at", "utility_8hpp.xhtml#af57c49d9548374b07edffc09ebed17ed", null ],

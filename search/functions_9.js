@@ -1,11 +1,4 @@
 var searchData=
 [
-  ['magnitude_0',['magnitude',['../namespacefcarouge.xhtml#a3b31459df9951d183e7e7f065a28bc32',1,'fcarouge']]],
-  ['main_1',['main',['../eigen__product_8cpp.xhtml#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;eigen_product.cpp'],['../mdspan__product_8cpp.xhtml#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;mdspan_product.cpp'],['../mdspan__tuple__product_8cpp.xhtml#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;mdspan_tuple_product.cpp'],['../plot_8cpp.xhtml#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;plot.cpp'],['../typed__eigen__product_8cpp.xhtml#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;typed_eigen_product.cpp'],['../typed__mdspan__product_8cpp.xhtml#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;typed_mdspan_product.cpp'],['../typed__mdspan__tupled__product_8cpp.xhtml#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;typed_mdspan_tupled_product.cpp'],['../main_8cpp.xhtml#a8216c1645620cdb2f629cde3ac02ffef',1,'main() -&gt; int:&#160;main.cpp'],['../find__package_8cpp.xhtml#a8216c1645620cdb2f629cde3ac02ffef',1,'main() -&gt; int:&#160;find_package.cpp']]],
-  ['make_5fmatrix_2',['make_matrix',['../namespacefcarouge_1_1sparse.xhtml#a43bad47b3473e403eaac4dbe5025dcf9',1,'fcarouge::sparse']]],
-  ['make_5ftyped_5fmatrix_3',['make_typed_matrix',['../namespacefcarouge.xhtml#a4073b31d56e98e110bf4a993ed190c80',1,'fcarouge']]],
-  ['matrix_5ffrob_5fnorm_4',['matrix_frob_norm',['../namespacefcarouge.xhtml#aa315b3e178e104f9914d9c34f4caa464',1,'fcarouge']]],
-  ['matrix_5finf_5fnorm_5',['matrix_inf_norm',['../namespacefcarouge.xhtml#a913f5d0fe3d1db7677e3d1462b57829c',1,'fcarouge']]],
-  ['matrix_5fone_5fnorm_6',['matrix_one_norm',['../namespacefcarouge.xhtml#a7d5d3b12f0d7e033c68631bccf60765f',1,'fcarouge']]],
-  ['moves_7',['moves',['../classfcarouge_1_1test_1_1anonymous__namespace_02underlying__count_8cpp_03_1_1counted__storage.xhtml#acfc00231d2ba8214b9ec905843ab1c5f',1,'fcarouge::test::anonymous_namespace{underlying_count.cpp}::counted_storage']]]
+  ['lookups_0',['lookups',['../classfcarouge_1_1test_1_1anonymous__namespace_022x2__compile__time__read_8cpp_03_1_1positioned__storage.xhtml#ac5e24981cfaa810497b3ec37ebcc5e3b',1,'fcarouge::test::anonymous_namespace{2x2_compile_time_read.cpp}::positioned_storage']]]
 ];
