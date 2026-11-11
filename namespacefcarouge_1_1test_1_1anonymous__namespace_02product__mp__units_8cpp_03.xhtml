@@ -123,44 +123,53 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000513">Test</a></b></dt><dd>Verifies the matrix product is only available for terms of one scale, with meters and kilometers. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000517">Test</a></b></dt><dd>Verifies the matrix product is only available for terms of one scale, with meters and kilometers. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="product__mp__units_8cpp_source.xhtml#l00043">43</a> of file <a class="el" href="product__mp__units_8cpp_source.xhtml">product_mp_units.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   43</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line"><span class="lineno">   44</span>  <span class="keyword">using </span>mp_units::si::unit_symbols::km;</div>
 <div class="line"><span class="lineno">   45</span>  <span class="keyword">using </span>mp_units::si::unit_symbols::m;</div>
-<div class="line"><span class="lineno">   46</span> </div>
-<div class="line"><span class="lineno">   47</span>  <span class="keyword">using </span>small_unit =</div>
-<div class="line"><span class="lineno">   48</span>      mp_units::quantity&lt;mp_units::isq::length[m], representation&gt;;</div>
-<div class="line"><span class="lineno">   49</span>  <span class="keyword">using </span>large_unit =</div>
-<div class="line"><span class="lineno">   50</span>      mp_units::quantity&lt;mp_units::isq::length[km], representation&gt;;</div>
-<div class="line"><span class="lineno">   51</span>  <span class="keyword">using </span>gain =</div>
-<div class="line"><span class="lineno">   52</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;representation, std::tuple&lt;representation, representation&gt;</a>,</div>
-<div class="line"><span class="lineno">   53</span>             std::tuple&lt;std::identity, std::identity&gt;&gt;;</div>
-<div class="line"><span class="lineno">   54</span>  <span class="keyword">using </span>small_column = <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">column_vector&lt;representation, small_unit, small_unit&gt;</a>;</div>
-<div class="line"><span class="lineno">   55</span>  <span class="keyword">using </span>large_column = <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">column_vector&lt;representation, large_unit, large_unit&gt;</a>;</div>
-<div class="line"><span class="lineno">   56</span>  <span class="keyword">using </span>mixed_column = <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">column_vector&lt;representation, small_unit, large_unit&gt;</a>;</div>
-<div class="line"><span class="lineno">   57</span>  <span class="keyword">using </span>mixed_row = <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a78babe39d09cdcd708529e3a99518e95">row_vector&lt;representation, small_unit, large_unit&gt;</a>;</div>
-<div class="line"><span class="lineno">   58</span>  <span class="keyword">using </span>scalar_row = <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a78babe39d09cdcd708529e3a99518e95">row_vector&lt;representation, representation, representation&gt;</a>;</div>
-<div class="line"><span class="lineno">   59</span>  <span class="keyword">using </span>scalar_column =</div>
-<div class="line"><span class="lineno">   60</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">column_vector&lt;representation, representation, representation&gt;</a>;</div>
-<div class="line"><span class="lineno">   61</span>  <span class="keyword">using </span>mixed_columns =</div>
-<div class="line"><span class="lineno">   62</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;representation, std::tuple&lt;representation, representation&gt;</a>,</div>
-<div class="line"><span class="lineno">   63</span>             std::tuple&lt;small_unit, large_unit&gt;&gt;;</div>
-<div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>  <span class="comment">// Terms of one scale.</span></div>
-<div class="line"><span class="lineno">   66</span>  <span class="keyword">static_assert</span>(multipliable&lt;gain, small_column&gt;);</div>
-<div class="line"><span class="lineno">   67</span>  <span class="keyword">static_assert</span>(multipliable&lt;gain, large_column&gt;);</div>
-<div class="line"><span class="lineno">   68</span>  <span class="keyword">static_assert</span>(multipliable&lt;scalar_row, small_column&gt;);</div>
+<div class="line"><span class="lineno">   46</span>  <span class="keyword">using </span>mp_units::si::unit_symbols::s;</div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>  <span class="keyword">using </span>small_unit =</div>
+<div class="line"><span class="lineno">   49</span>      mp_units::quantity&lt;mp_units::isq::length[m], representation&gt;;</div>
+<div class="line"><span class="lineno">   50</span>  <span class="keyword">using </span>large_unit =</div>
+<div class="line"><span class="lineno">   51</span>      mp_units::quantity&lt;mp_units::isq::length[km], representation&gt;;</div>
+<div class="line"><span class="lineno">   52</span>  <span class="keyword">using </span>gain =</div>
+<div class="line"><span class="lineno">   53</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;representation, std::tuple&lt;representation, representation&gt;</a>,</div>
+<div class="line"><span class="lineno">   54</span>             std::tuple&lt;std::identity, std::identity&gt;&gt;;</div>
+<div class="line"><span class="lineno">   55</span>  <span class="keyword">using </span>time_unit =</div>
+<div class="line"><span class="lineno">   56</span>      mp_units::quantity&lt;mp_units::isq::duration[s], representation&gt;;</div>
+<div class="line"><span class="lineno">   57</span>  <span class="keyword">using </span>small_column = <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">column_vector&lt;representation, small_unit, small_unit&gt;</a>;</div>
+<div class="line"><span class="lineno">   58</span>  <span class="keyword">using </span>large_column = <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">column_vector&lt;representation, large_unit, large_unit&gt;</a>;</div>
+<div class="line"><span class="lineno">   59</span>  <span class="keyword">using </span>mixed_column = <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">column_vector&lt;representation, small_unit, large_unit&gt;</a>;</div>
+<div class="line"><span class="lineno">   60</span>  <span class="keyword">using </span>mixed_dimension_column =</div>
+<div class="line"><span class="lineno">   61</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">column_vector&lt;representation, small_unit, time_unit&gt;</a>;</div>
+<div class="line"><span class="lineno">   62</span>  <span class="keyword">using </span>mixed_row = <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a78babe39d09cdcd708529e3a99518e95">row_vector&lt;representation, small_unit, large_unit&gt;</a>;</div>
+<div class="line"><span class="lineno">   63</span>  <span class="keyword">using </span>scalar_row = <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a78babe39d09cdcd708529e3a99518e95">row_vector&lt;representation, representation, representation&gt;</a>;</div>
+<div class="line"><span class="lineno">   64</span>  <span class="keyword">using </span>scalar_column =</div>
+<div class="line"><span class="lineno">   65</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">column_vector&lt;representation, representation, representation&gt;</a>;</div>
+<div class="line"><span class="lineno">   66</span>  <span class="keyword">using </span>mixed_columns =</div>
+<div class="line"><span class="lineno">   67</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;representation, std::tuple&lt;representation, representation&gt;</a>,</div>
+<div class="line"><span class="lineno">   68</span>             std::tuple&lt;small_unit, large_unit&gt;&gt;;</div>
 <div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>  <span class="comment">// Terms of different scales in a sum, whichever operand holds the units.</span></div>
-<div class="line"><span class="lineno">   71</span>  <span class="keyword">static_assert</span>(not multipliable&lt;gain, mixed_column&gt;);</div>
-<div class="line"><span class="lineno">   72</span>  <span class="keyword">static_assert</span>(not multipliable&lt;scalar_row, mixed_column&gt;);</div>
-<div class="line"><span class="lineno">   73</span>  <span class="keyword">static_assert</span>(not multipliable&lt;mixed_row, gain&gt;);</div>
-<div class="line"><span class="lineno">   74</span>  <span class="keyword">static_assert</span>(not multipliable&lt;mixed_columns, scalar_column&gt;);</div>
-<div class="line"><span class="lineno">   75</span> </div>
-<div class="line"><span class="lineno">   76</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   77</span>}()};</div>
+<div class="line"><span class="lineno">   70</span>  <span class="comment">// Terms of one scale.</span></div>
+<div class="line"><span class="lineno">   71</span>  <span class="keyword">static_assert</span>(multipliable&lt;gain, small_column&gt;);</div>
+<div class="line"><span class="lineno">   72</span>  <span class="keyword">static_assert</span>(multipliable&lt;gain, large_column&gt;);</div>
+<div class="line"><span class="lineno">   73</span>  <span class="keyword">static_assert</span>(multipliable&lt;scalar_row, small_column&gt;);</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>  <span class="comment">// Terms of different scales in a sum, whichever operand holds the units.</span></div>
+<div class="line"><span class="lineno">   76</span>  <span class="keyword">static_assert</span>(not multipliable&lt;gain, mixed_column&gt;);</div>
+<div class="line"><span class="lineno">   77</span>  <span class="keyword">static_assert</span>(not multipliable&lt;scalar_row, mixed_column&gt;);</div>
+<div class="line"><span class="lineno">   78</span>  <span class="keyword">static_assert</span>(not multipliable&lt;mixed_row, gain&gt;);</div>
+<div class="line"><span class="lineno">   79</span>  <span class="keyword">static_assert</span>(not multipliable&lt;mixed_columns, scalar_column&gt;);</div>
+<div class="line"><span class="lineno">   80</span> </div>
+<div class="line"><span class="lineno">   81</span>  <span class="comment">// Terms of different dimensions in a sum, past the first term.</span></div>
+<div class="line"><span class="lineno">   82</span>  <span class="keyword">static_assert</span>(not multipliable&lt;gain, mixed_dimension_column&gt;);</div>
+<div class="line"><span class="lineno">   83</span>  <span class="keyword">static_assert</span>(not multipliable&lt;scalar_row, mixed_dimension_column&gt;);</div>
+<div class="line"><span class="lineno">   84</span> </div>
+<div class="line"><span class="lineno">   85</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   86</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_a0fa52776262afae30db82d7c0a9339ac"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">fcarouge::armadillo::matrix</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Armadillo matrix.</div><div class="ttdef"><b>Definition</b> <a href="armadillo_8hpp_source.xhtml#l00091">armadillo.hpp:91</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_a78babe39d09cdcd708529e3a99518e95"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#a78babe39d09cdcd708529e3a99518e95">fcarouge::armadillo::row_vector</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; 1, Column &gt; row_vector</div><div class="ttdoc">Compile-time sized Armadillo row vector.</div><div class="ttdef"><b>Definition</b> <a href="armadillo_8hpp_source.xhtml#l00095">armadillo.hpp:95</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_ab95c9e8d65ece459f17360e871fb7490"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">fcarouge::armadillo::column_vector</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; Row, 1 &gt; column_vector</div><div class="ttdoc">Compile-time sized Armadillo column vector.</div><div class="ttdef"><b>Definition</b> <a href="armadillo_8hpp_source.xhtml#l00099">armadillo.hpp:99</a></div></div>

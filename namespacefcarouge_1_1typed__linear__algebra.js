@@ -32,6 +32,7 @@ var namespacefcarouge_1_1typed__linear__algebra =
       [ "!requires", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a78930c589db3e9281461c7040f16c208", null ],
       [ "is_constructible_tuple_like_v", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#afc5ec77bcdbc3ccad4b052e5f1e7b475", null ],
       [ "is_convertible_tuple_like_v", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a87e17afa739b457ae25fb330173e3214", null ],
+      [ "is_identity_indexes", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a6f547db16f0463ccda833ee73b42f8c9", null ],
       [ "rank", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a5b8f7212f7676df392e49713c7d9b89a", null ]
     ] ]
 ];

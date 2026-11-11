@@ -7,5 +7,6 @@ var searchData=
   ['is_5fconstructible_5ftuple_5flike_5fv_4',['is_constructible_tuple_like_v',['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#afc5ec77bcdbc3ccad4b052e5f1e7b475',1,'fcarouge::typed_linear_algebra::internal']]],
   ['is_5fconvertible_5ftuple_5flike_5fv_5',['is_convertible_tuple_like_v',['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a87e17afa739b457ae25fb330173e3214',1,'fcarouge::typed_linear_algebra::internal']]],
   ['is_5fgiven_5fat_6',['is_given_at',['../namespacefcarouge_1_1sparse.xhtml#a8e065a50ba60d7cd977642a973029211',1,'fcarouge::sparse']]],
-  ['is_5fgiven_5fat_3c_20value_2c_20typedmatrix_2c_20position_2c_20false_20_3e_7',['is_given_at&lt; Value, TypedMatrix, Position, false &gt;',['../namespacefcarouge_1_1sparse.xhtml#ab9bcc544860a0a95314cbcf8c5da8c92',1,'fcarouge::sparse']]]
+  ['is_5fgiven_5fat_3c_20value_2c_20typedmatrix_2c_20position_2c_20false_20_3e_7',['is_given_at&lt; Value, TypedMatrix, Position, false &gt;',['../namespacefcarouge_1_1sparse.xhtml#ab9bcc544860a0a95314cbcf8c5da8c92',1,'fcarouge::sparse']]],
+  ['is_5fidentity_5findexes_8',['is_identity_indexes',['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a6f547db16f0463ccda833ee73b42f8c9',1,'fcarouge::typed_linear_algebra::internal']]]
 ];

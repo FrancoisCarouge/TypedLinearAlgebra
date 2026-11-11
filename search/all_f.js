@@ -30,7 +30,8 @@ var searchData=
   ['is_5fconvertible_5ftyped_5fmatrix_27',['is_convertible_typed_matrix',['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a19891acc4dc45bd42753c68d70251411',1,'fcarouge::typed_linear_algebra::internal']]],
   ['is_5fgiven_5fat_28',['is_given_at',['../namespacefcarouge_1_1sparse.xhtml#a8e065a50ba60d7cd977642a973029211',1,'fcarouge::sparse']]],
   ['is_5fgiven_5fat_3c_20value_2c_20typedmatrix_2c_20position_2c_20false_20_3e_29',['is_given_at&lt; Value, TypedMatrix, Position, false &gt;',['../namespacefcarouge_1_1sparse.xhtml#ab9bcc544860a0a95314cbcf8c5da8c92',1,'fcarouge::sparse']]],
-  ['is_5fsame_5fscale_30',['is_same_scale',['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a2473932eaa72753d9b4a44a75b715bc2',1,'fcarouge::typed_linear_algebra::internal']]],
-  ['is_5fsame_5fscale_5ftyped_5fmatrix_31',['is_same_scale_typed_matrix',['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a96df1bb0530f2d566558ee2f626386f3',1,'fcarouge::typed_linear_algebra::internal']]],
-  ['is_5funiform_5ftyped_5fmatrix_32',['is_uniform_typed_matrix',['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a2238a99ab35d65098efb485ef3e05611',1,'fcarouge::typed_linear_algebra::internal']]]
+  ['is_5fidentity_5findexes_30',['is_identity_indexes',['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a6f547db16f0463ccda833ee73b42f8c9',1,'fcarouge::typed_linear_algebra::internal']]],
+  ['is_5fsame_5fscale_31',['is_same_scale',['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a2473932eaa72753d9b4a44a75b715bc2',1,'fcarouge::typed_linear_algebra::internal']]],
+  ['is_5fsame_5fscale_5ftyped_5fmatrix_32',['is_same_scale_typed_matrix',['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a96df1bb0530f2d566558ee2f626386f3',1,'fcarouge::typed_linear_algebra::internal']]],
+  ['is_5funiform_5ftyped_5fmatrix_33',['is_uniform_typed_matrix',['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a2238a99ab35d65098efb485ef3e05611',1,'fcarouge::typed_linear_algebra::internal']]]
 ];

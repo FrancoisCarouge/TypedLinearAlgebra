@@ -31,5 +31,6 @@ var utility_8hpp =
     [ "!requires", "utility_8hpp.xhtml#a78930c589db3e9281461c7040f16c208", null ],
     [ "is_constructible_tuple_like_v", "utility_8hpp.xhtml#afc5ec77bcdbc3ccad4b052e5f1e7b475", null ],
     [ "is_convertible_tuple_like_v", "utility_8hpp.xhtml#a87e17afa739b457ae25fb330173e3214", null ],
+    [ "is_identity_indexes", "utility_8hpp.xhtml#a6f547db16f0463ccda833ee73b42f8c9", null ],
     [ "rank", "utility_8hpp.xhtml#a5b8f7212f7676df392e49713c7d9b89a", null ]
 ];
