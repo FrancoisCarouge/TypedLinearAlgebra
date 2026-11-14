@@ -39,6 +39,11 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
   unset(CMAKE_CXX_STANDARD)
 endif()
 
+# The project uses no C++ module. CMake 4.5 builds the `std` module for every
+# scanned C++ 20 and later target, from the standard library its compiler
+# selects by default, while the Clang options select libc++.
+set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
+
 check_ipo_supported(RESULT IPO_SUPPORTED OUTPUT _)
 
 # Interprocedural optimization defaults on for the benchmark drivers, unless
