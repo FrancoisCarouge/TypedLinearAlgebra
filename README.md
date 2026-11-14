@@ -36,7 +36,7 @@ std::println("{}", x * transposed(x));
 
 ## Installation & Usage
 
-See [INSTALL.md](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/INSTALL.md) for installation instructions.
+See [INSTALL.md](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/INSTALL.md) for installation instructions. Only the `include/` folder is the library: `cmake --install` and the release packages deliver it, with its CMake package configuration, and nothing else. The `support/`, `sample/`, `test/`, and `benchmark/` folders are development examples and tooling, not part of the delivered library.
 
 ## Reference
 
@@ -70,7 +70,7 @@ The public API lives in the `fcarouge` namespace. Import it with a using-declara
 
 ### Plug-ins
 
-Add a plug-in for each strong type and/or linear algebra backend you use:
+Add a plug-in for each strong type and/or linear algebra backend you use. The plug-ins below are examples, not installed: write your own for your project.
 
 | Integration | Example Plug-in |
 | --- | --- |
