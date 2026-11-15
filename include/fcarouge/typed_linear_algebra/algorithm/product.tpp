@@ -166,9 +166,29 @@ concept scalable_by = requires {
                                                         rhs.data());
 }
 
+//! @brief Concept of a typed matrix scalable by a type.
+//!
+//! @details The scaled matrix's row indexes are those of the typed matrix
+//! times the scale, column indexes unchanged, so each row index must multiply
+//! by the scale. Named for the reasons of `scalable_by`: `mp-units` probes
+//! whether a typed matrix multiplies by one of its unit magnitudes, which an
+//! unconstrained overload would answer with a hard error rather than `false`.
+template <typename Matrix, typename Scale>
+concept matrix_scalable_by = requires {
+  typename tla::product<typename std::remove_cvref_t<Matrix>::row_indexes,
+                        std::remove_cvref_t<Scale>>;
+};
+
+//! @brief Scales a vector or a matrix.
+//!
+//! @details A singleton is scaled by its own overloads instead, into an
+//! element. The two sets are disjoint rather than ordered by constraint
+//! subsumption, which compilers do not agree on across these constraints.
 [[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
-                                       const other auto &rhs) {
-  //! @todo Should there be constraints on the type?
+                                       const other auto &rhs)
+  requires(not rank_typed_matrix<decltype(lhs), 0>) and
+          matrix_scalable_by<decltype(lhs), decltype(rhs)>
+{
   using type = std::remove_cvref_t<decltype(rhs)>;
   using matrix = std::remove_cvref_t<decltype(lhs)>;
   using row_indexes = typename matrix::row_indexes;
@@ -179,9 +199,12 @@ concept scalable_by = requires {
       lhs.data() * cast<underlying, type>(rhs));
 }
 
+//! @see operator*(const same_as_typed_matrix auto &, const other auto &)
 [[nodiscard]] constexpr auto operator*(const other auto &lhs,
-                                       const same_as_typed_matrix auto &rhs) {
-  //! @todo Should there be constraints on the type?
+                                       const same_as_typed_matrix auto &rhs)
+  requires(not rank_typed_matrix<decltype(rhs), 0>) and
+          matrix_scalable_by<decltype(rhs), decltype(lhs)>
+{
   using type = std::remove_cvref_t<decltype(lhs)>;
   using matrix = std::remove_cvref_t<decltype(rhs)>;
   using row_indexes = typename matrix::row_indexes;

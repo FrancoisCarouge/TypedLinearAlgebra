@@ -115,8 +115,14 @@ struct divides<std::tuple<Types1...>, std::tuple<Types2...>> {
       -> std::tuple<quotient<Types1, Types2>...>;
 };
 
+// The call operators that compute a product, rather than name one, are
+// templates deducing their operands, so that an ill-formed product is a
+// substitution failure: `product` is then not a type, which a `requires`
+// expression detects, instead of a hard error.
 template <typename Lhs, typename Rhs> struct multiplies {
-  [[nodiscard]] static constexpr auto operator()(const Lhs &lhs, const Rhs &rhs)
+  template <typename Factor>
+  [[nodiscard]] static constexpr auto operator()(const Factor &lhs,
+                                                 const Rhs &rhs)
       -> decltype(lhs * rhs);
 };
 
@@ -139,16 +145,18 @@ template <typename Rhs> struct multiplies<std::identity, Rhs> {
 template <typename Lhs, typename... Types>
   requires(not std::same_as<Lhs, std::identity>)
 struct multiplies<Lhs, std::tuple<Types...>> {
+  template <typename... Factors>
   [[nodiscard]] static constexpr auto
-  operator()(const Lhs &lhs, const std::tuple<Types...> &rhs)
-      -> std::tuple<product<Lhs, Types>...>;
+  operator()(const Lhs &lhs, const std::tuple<Factors...> &rhs)
+      -> std::tuple<product<Lhs, Factors>...>;
 };
 
 template <typename Rhs, typename... Types>
 struct multiplies<std::tuple<Types...>, Rhs> {
+  template <typename... Factors>
   [[nodiscard]] static constexpr auto
-  operator()(const std::tuple<Types...> &lhs, const Rhs &rhs)
-      -> std::tuple<product<Types, Rhs>...>;
+  operator()(const std::tuple<Factors...> &lhs, const Rhs &rhs)
+      -> std::tuple<product<Factors, Rhs>...>;
 };
 
 //! @todo Some specialization with identity may be redundant, to remove.
@@ -161,9 +169,11 @@ struct multiplies<std::tuple<Types...>, std::identity> {
 
 template <typename... Types1, typename... Types2>
 struct multiplies<std::tuple<Types1...>, std::tuple<Types2...>> {
+  template <typename... Factors1, typename... Factors2>
   [[nodiscard]] static constexpr auto
-  operator()(const std::tuple<Types1...> &lhs, const std::tuple<Types2...> &rhs)
-      -> std::tuple<product<Types1, Types2>...>;
+  operator()(const std::tuple<Factors1...> &lhs,
+             const std::tuple<Factors2...> &rhs)
+      -> std::tuple<product<Factors1, Factors2>...>;
 };
 
 template <std::size_t... Is, typename F>
