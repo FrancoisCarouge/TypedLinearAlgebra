@@ -34,27 +34,27 @@ jobs:
         CXXFLAGS: '-O0 -g --coverage -fno-inline'
         CC: 'gcc-15'
         CCFLAGS: '-O0 -g --coverage -fno-inline'
-      run: cmake -S . -B 'build'
+      run: cmake -S . -B 'build' -D CMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
-    - name: 'Test'
-      run: ctest --test-dir 'build' --timeout 60 --verbose --parallel 4
     - name: 'Coverage: Base'
       run: |
-        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --capture --initial --directory . --output-file base.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --remove base.info '*/benchmark/*' --output-file base.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --remove base.info '*/build/*' --output-file base.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --remove base.info '*/sample/*' --output-file base.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --remove base.info '*/test/*' --output-file base.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --remove base.info '/usr/*' --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent,unused --capture --initial --directory . --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent,unused --remove base.info '*/benchmark/*' --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent,unused --remove base.info '*/build/*' --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent,unused --remove base.info '*/sample/*' --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent,unused --remove base.info '*/test/*' --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent,unused --remove base.info '/usr/*' --output-file base.info
+    - name: 'Test'
+      run: ctest --test-dir 'build' --timeout 60 --verbose --parallel 4
     - name: 'Coverage: Test'
       run: |
-        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --capture --directory . --output-file test.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --remove test.info '*/benchmark/*' --output-file test.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --remove test.info '*/build/*' --output-file test.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --remove test.info '*/sample/*' --output-file test.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --remove test.info '*/test/*' --output-file test.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --remove test.info '/usr/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent,unused --capture --directory . --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent,unused --remove test.info '*/benchmark/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent,unused --remove test.info '*/build/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent,unused --remove test.info '*/sample/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent,unused --remove test.info '*/test/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent,unused --remove test.info '/usr/*' --output-file test.info
     - name: 'Coverage: Results'
       run: |
         echo "${{ github.event.pull_request.number }}" > pull_request_id.txt
@@ -66,13 +66,24 @@ jobs:
         path: |
           pull_request_id.txt
           coverage.txt
-    - name: 'Coverage: Check'
+    - name: 'Coverage: Threshold'
       run: |
-        for metric in lines functions; do
-          read -r hit total < <(sed -nE "s/^${metric}\.+: [0-9.]+% \(([0-9]+) of ([0-9]+) ${metric}\)$/\1 \2/p" coverage.txt) || true
-          if [[ -z "${total}" || "${total}" -eq 0 || "${hit}" -ne "${total}" ]]; then
-            echo "::error::The ${metric} coverage is not 100%."
-            cat coverage.txt
-            exit 1
-          fi
-        done
+        awk '
+          /^(lines|functions)\.+:/ {
+            found++
+            name = $1
+            sub(/\.+:$/, "", name)
+            hit = substr($3, 2)
+            if (hit != $5) {
+              printf "::error::Coverage of %s is %s: %s of %s covered, 100%% required.\n", name, $2, hit, $5
+              failed = 1
+            }
+          }
+          END {
+            if (found != 2) {
+              print "::error::The line and function coverage summary is missing."
+              exit 1
+            }
+            exit failed
+          }
+        ' coverage.txt
