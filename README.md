@@ -393,7 +393,7 @@ Need help adopting typed linear algebra, units, or a custom backend in your prod
 
 ## License
 
-<img align="right" src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png">
+<img align="right" width="100" src="https://opensource.org/wp-content/uploads/2006/09/OSIApproved.png" alt="Open Source Initiative Approved License">
 
 TypedLinearAlgebra is public domain:
 
