@@ -51,13 +51,9 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
           typename Char>
 struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
                       Char> {
-private:
+  //! @brief The formatted typed matrix type.
   using matrix = fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>;
 
-  static constexpr std::size_t rows{matrix::rows};
-  static constexpr std::size_t columns{matrix::columns};
-
-public:
   //! @todo Add a pretty, multi-line, aligned format option?
   //! @todo Add a debug, showing index-types, format option?
   static constexpr auto
@@ -155,6 +151,10 @@ public:
 
     return format_context.out();
   }
+
+private:
+  static constexpr std::size_t rows{matrix::rows};
+  static constexpr std::size_t columns{matrix::columns};
 };
 
 #endif // __STDC_HOSTED__

@@ -206,9 +206,6 @@ public:
   //! @name Public Member Functions
   //! @{
 
-  //! @brief Destruct a default typed matrix.
-  constexpr ~typed_matrix() = default;
-
   //! @brief Construct a zero-initialized typed matrix.
   constexpr typed_matrix()
     requires std::default_initializable<Matrix>;
@@ -410,6 +407,9 @@ public:
           storage, element_caster<underlying, element<i>>{}(converted), i);
     });
   }
+
+  //! @brief Destruct a default typed matrix.
+  constexpr ~typed_matrix() = default;
 
   //! @brief Read the singleton, one-element typed matrix element.
   //!
