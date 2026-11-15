@@ -32,6 +32,12 @@ var annotated_dup =
           [ "derived", "structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1derived.xhtml", null ],
           [ "fake", "structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1fake.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1fake" ]
         ] ],
+        [ "anonymous_namespace{scalar_constraint.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02scalar__constraint_8cpp_03.xhtml", [
+          [ "unrelated", "structfcarouge_1_1test_1_1anonymous__namespace_02scalar__constraint_8cpp_03_1_1unrelated.xhtml", null ]
+        ] ],
+        [ "anonymous_namespace{scalar_constraint_mp_units_eigen.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02scalar__constraint__mp__units__eigen_8cpp_03.xhtml", [
+          [ "unrelated", "structfcarouge_1_1test_1_1anonymous__namespace_02scalar__constraint__mp__units__eigen_8cpp_03_1_1unrelated.xhtml", null ]
+        ] ],
         [ "anonymous_namespace{underlying_count.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02underlying__count_8cpp_03.xhtml", [
           [ "counted_storage", "classfcarouge_1_1test_1_1anonymous__namespace_02underlying__count_8cpp_03_1_1counted__storage.xhtml", "classfcarouge_1_1test_1_1anonymous__namespace_02underlying__count_8cpp_03_1_1counted__storage" ]
         ] ]

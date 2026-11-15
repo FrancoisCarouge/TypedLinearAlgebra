@@ -1,5 +1,9 @@
 var NAVTREEINDEX5 =
 {
+"matrix__frob__norm_22x1__mp__units__eigen__fail_8cpp_source.xhtml":[17,0,6,18,4],
+"matrix__frob__norm_22x2__au__eigen_8cpp.xhtml":[17,0,6,18,5],
+"matrix__frob__norm_22x2__au__eigen_8cpp.xhtml#ac8cbc10d83ba0975f96294e0f1bfcb13":[17,0,6,18,5,0],
+"matrix__frob__norm_22x2__au__eigen_8cpp_source.xhtml":[17,0,6,18,5],
 "matrix__frob__norm_22x2__au__std_8cpp.xhtml":[17,0,6,18,6],
 "matrix__frob__norm_22x2__au__std_8cpp.xhtml#a30c85420e33962d93f25401282142b3d":[17,0,6,18,6,0],
 "matrix__frob__norm_22x2__au__std_8cpp_source.xhtml":[17,0,6,18,6],
@@ -245,9 +249,5 @@ var NAVTREEINDEX5 =
 "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#reporting-a-vulnerability":[11,1],
 "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#supported-versions":[11,0],
 "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml":[2],
-"md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#results":[2,0],
-"mdspan__product_8cpp.xhtml":[17,0,0,1],
-"mdspan__product_8cpp.xhtml#a5ea5e2fff1603e0accdc0433303ec28c":[17,0,0,1,2],
-"mdspan__product_8cpp.xhtml#a6c9f5e2e18b448ad9bd708ed318e5d39":[17,0,0,1,3],
-"mdspan__product_8cpp.xhtml#a7055b4eba8685f6705f54a7be25a9883":[17,0,0,1,4]
+"md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#results":[2,0]
 };
