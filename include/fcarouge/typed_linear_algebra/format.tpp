@@ -51,9 +51,6 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
           typename Char>
 struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
                       Char> {
-  //! @brief The formatted typed matrix type.
-  using matrix = fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>;
-
   //! @todo Add a pretty, multi-line, aligned format option?
   //! @todo Add a debug, showing index-types, format option?
   static constexpr auto
@@ -62,9 +59,9 @@ struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
   }
 
   template <typename FormatContext>
-  constexpr auto format(const matrix &value,
-                        FormatContext &format_context) const
-      -> FormatContext::iterator {
+  constexpr auto
+  format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
+         FormatContext &format_context) const -> FormatContext::iterator {
     format_context.advance_to(std::format_to(format_context.out(), "["));
 
     fcarouge::tla::for_constexpr<rows>([&value, &format_context](auto i) {
@@ -93,11 +90,13 @@ struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
   }
 
   template <typename FormatContext>
-  constexpr auto format(const matrix &value,
-                        FormatContext &format_context) const
-      -> FormatContext::iterator
-    requires fcarouge::tla::column_typed_matrix<matrix> and
-             fcarouge::tla::rank_typed_matrix<matrix, 1>
+  constexpr auto
+  format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
+         FormatContext &format_context) const -> FormatContext::iterator
+    requires fcarouge::tla::column_typed_matrix<
+                 fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>> and
+             fcarouge::tla::rank_typed_matrix<
+                 fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>, 1>
   {
     format_context.advance_to(std::format_to(format_context.out(), "["));
 
@@ -117,11 +116,13 @@ struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
   }
 
   template <typename FormatContext>
-  constexpr auto format(const matrix &value,
-                        FormatContext &format_context) const
-      -> FormatContext::iterator
-    requires fcarouge::tla::row_typed_matrix<matrix> and
-             fcarouge::tla::rank_typed_matrix<matrix, 1>
+  constexpr auto
+  format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
+         FormatContext &format_context) const -> FormatContext::iterator
+    requires fcarouge::tla::row_typed_matrix<
+                 fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>> and
+             fcarouge::tla::rank_typed_matrix<
+                 fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>, 1>
   {
     format_context.advance_to(std::format_to(format_context.out(), "["));
 
@@ -141,10 +142,11 @@ struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
   }
 
   template <typename FormatContext>
-  constexpr auto format(const matrix &value,
-                        FormatContext &format_context) const
-      -> FormatContext::iterator
-    requires fcarouge::tla::rank_typed_matrix<matrix, 0>
+  constexpr auto
+  format(const fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
+         FormatContext &format_context) const -> FormatContext::iterator
+    requires fcarouge::tla::rank_typed_matrix<
+        fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>, 0>
   {
     format_context.advance_to(
         std::format_to(format_context.out(), "{}", value.at()));
@@ -153,8 +155,10 @@ struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
   }
 
 private:
-  static constexpr std::size_t rows{matrix::rows};
-  static constexpr std::size_t columns{matrix::columns};
+  static constexpr std::size_t rows{
+      fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>::rows};
+  static constexpr std::size_t columns{
+      fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>::columns};
 };
 
 #endif // __STDC_HOSTED__
