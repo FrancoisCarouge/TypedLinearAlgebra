@@ -1205,9 +1205,6 @@ public:
   //! @name Public Member Functions
   //! @{
 
-  //! @brief Destruct a default typed matrix.
-  constexpr ~typed_matrix() = default;
-
   //! @brief Construct a zero-initialized typed matrix.
   constexpr typed_matrix()
     requires std::default_initializable<Matrix>;
@@ -1409,6 +1406,9 @@ public:
           storage, element_caster<underlying, element<i>>{}(converted), i);
     });
   }
+
+  //! @brief Destruct a default typed matrix.
+  constexpr ~typed_matrix() = default;
 
   //! @brief Read the singleton, one-element typed matrix element.
   //!
@@ -3338,13 +3338,9 @@ template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
           typename Char>
 struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
                       Char> {
-private:
+  //! @brief The formatted typed matrix type.
   using matrix = fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>;
 
-  static constexpr std::size_t rows{matrix::rows};
-  static constexpr std::size_t columns{matrix::columns};
-
-public:
   //! @todo Add a pretty, multi-line, aligned format option?
   //! @todo Add a debug, showing index-types, format option?
   static constexpr auto
@@ -3442,6 +3438,10 @@ public:
 
     return format_context.out();
   }
+
+private:
+  static constexpr std::size_t rows{matrix::rows};
+  static constexpr std::size_t columns{matrix::columns};
 };
 
 #endif // __STDC_HOSTED__
