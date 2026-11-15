@@ -702,15 +702,24 @@ matrix_one_norm(const uniform_typed_matrix auto &value);
                                        const same_as_typed_matrix auto &rhs)
   requires multipliable<decltype(lhs), decltype(rhs)>;
 [[nodiscard]] constexpr auto operator*(const same_as_typed_matrix auto &lhs,
-                                       const other auto &rhs);
+                                       const other auto &rhs)
+  requires(not rank_typed_matrix<decltype(lhs), 0>) and
+          matrix_scalable_by<decltype(lhs), decltype(rhs)>;
 [[nodiscard]] constexpr auto operator*(const other auto &lhs,
-                                       const same_as_typed_matrix auto &rhs);
+                                       const same_as_typed_matrix auto &rhs)
+  requires(not rank_typed_matrix<decltype(rhs), 0>) and
+          matrix_scalable_by<decltype(rhs), decltype(lhs)>;
 [[nodiscard]] constexpr auto operator*(const rank_typed_matrix<0> auto &lhs,
                                        const rank_typed_matrix<0> auto &rhs);
 [[nodiscard]] constexpr auto operator*(const rank_typed_matrix<0> auto &lhs,
-                                       const other auto &rhs);
+                                       const other auto &rhs)
+  requires scalable_by<
+      typename std::remove_cvref_t<decltype(lhs)>::template element<>,
+      decltype(rhs)>;
 [[nodiscard]] constexpr auto operator*(const other auto &lhs,
-                                       const rank_typed_matrix<0> auto &rhs);
+                                       const rank_typed_matrix<0> auto &rhs)
+  requires scalable_by<decltype(lhs), typename std::remove_cvref_t<
+                                          decltype(rhs)>::template element<>>;
 
 [[nodiscard]] constexpr auto operator/(const same_as_typed_matrix auto &lhs,
                                        const same_as_typed_matrix auto &rhs);

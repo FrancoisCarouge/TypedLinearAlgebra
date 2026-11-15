@@ -31,6 +31,13 @@ For more information, please refer to <https://unlicense.org> ]]
 
 fail("1x1_chrono_eigen_fail" BACKENDS "chrono_eigen" "chrono_armadillo")
 
+build(
+  "scalar_constraint"
+  BACKENDS "eigexed" "nested_typed_eigen" "armadilloxed" "sparse")
+build(
+  "scalar_constraint_mp_units_eigen"
+  BACKENDS "mp_units_eigen" "mp_units_armadillo" "mp_units_sparse")
+
 pass("1x1_au_eigen" BACKENDS "au_eigen" "au_armadillo" "au_sparse")
 pass("1x1_au_std" BACKENDS "au_std")
 pass(
