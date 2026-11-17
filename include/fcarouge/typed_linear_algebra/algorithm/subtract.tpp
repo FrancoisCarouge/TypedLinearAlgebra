@@ -46,21 +46,28 @@ namespace fcarouge {
 
   // Each typed element of the lhs matrix must be subtractable to the
   // corresponding typed element of the rhs matrix.
-  tla::for_constexpr<lhs_matrix::rows>([&](auto i) {
-    tla::for_constexpr<lhs_matrix::columns>([&](auto j) {
-      using lhs_element = typename lhs_matrix::template element<i, j>;
-      using rhs_element = typename rhs_matrix::template element<i, j>;
+  static_assert(
+      tla::all_of_positions<lhs_matrix::rows, lhs_matrix::columns>(
+          [](auto i, auto j) -> bool {
+            using lhs_element = typename lhs_matrix::template element<i, j>;
+            using rhs_element = typename rhs_matrix::template element<i, j>;
 
-      static_assert(
-          requires {
-            std::declval<lhs_element>() - std::declval<rhs_element>();
-          }, "Matrix subtraction requires compatible element types.");
-      static_assert(tla::is_same_scale<lhs_element, rhs_element,
-                                       typename lhs_matrix::underlying>(),
-                    "Matrix subtraction requires elements of the same scale, "
-                    "convert first.");
-    });
-  });
+            return requires {
+              std::declval<lhs_element>() - std::declval<rhs_element>();
+            };
+          }),
+      "Matrix subtraction requires compatible element types.");
+  static_assert(
+      tla::all_of_positions<lhs_matrix::rows, lhs_matrix::columns>(
+          [](auto i, auto j) -> bool {
+            using lhs_element = typename lhs_matrix::template element<i, j>;
+            using rhs_element = typename rhs_matrix::template element<i, j>;
+
+            return tla::is_same_scale<lhs_element, rhs_element,
+                                      typename lhs_matrix::underlying>();
+          }),
+      "Matrix subtraction requires elements of the same scale, "
+      "convert first.");
 
   using row_indexes = typename lhs_matrix::row_indexes;
   using column_indexes = typename lhs_matrix::column_indexes;
@@ -80,18 +87,28 @@ namespace fcarouge {
 
   // Each typed element of the lhs matrix must be subtractable to the
   // corresponding typed element of the rhs matrix.
-  tla::for_constexpr<lhs_matrix::rows * lhs_matrix::columns>([&](auto i) {
-    using lhs_element = typename lhs_matrix::template element<i>;
-    using rhs_element = typename rhs_matrix::template element<i>;
+  static_assert(
+      tla::all_of_indexes<lhs_matrix::rows * lhs_matrix::columns>(
+          [](auto i) -> bool {
+            using lhs_element = typename lhs_matrix::template element<i>;
+            using rhs_element = typename rhs_matrix::template element<i>;
 
-    static_assert(
-        requires { std::declval<lhs_element>() - std::declval<rhs_element>(); },
-        "Matrix subtraction requires compatible element types.");
-    static_assert(tla::is_same_scale<lhs_element, rhs_element,
-                                     typename lhs_matrix::underlying>(),
-                  "Matrix subtraction requires elements of the same scale, "
-                  "convert first.");
-  });
+            return requires {
+              std::declval<lhs_element>() - std::declval<rhs_element>();
+            };
+          }),
+      "Matrix subtraction requires compatible element types.");
+  static_assert(
+      tla::all_of_indexes<lhs_matrix::rows * lhs_matrix::columns>(
+          [](auto i) -> bool {
+            using lhs_element = typename lhs_matrix::template element<i>;
+            using rhs_element = typename rhs_matrix::template element<i>;
+
+            return tla::is_same_scale<lhs_element, rhs_element,
+                                      typename lhs_matrix::underlying>();
+          }),
+      "Matrix subtraction requires elements of the same scale, "
+      "convert first.");
 
   using row_indexes = typename lhs_matrix::row_indexes;
   using column_indexes = typename lhs_matrix::column_indexes;

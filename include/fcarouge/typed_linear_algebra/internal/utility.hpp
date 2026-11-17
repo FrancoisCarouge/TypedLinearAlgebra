@@ -189,6 +189,54 @@ constexpr void for_constexpr(Function function) {
   for_constexpr_detail(std::make_index_sequence<Size>{}, function);
 }
 
+template <typename Predicate, std::size_t... Is>
+[[nodiscard]] consteval auto
+all_of_indexes_detail(const Predicate &predicate,
+                      [[maybe_unused]] std::index_sequence<Is...> indexes)
+    -> bool {
+  return (predicate(std::integral_constant<std::size_t, Is>{}) and ...);
+}
+
+//! @brief Whether the predicate holds at each compile-time index, from zero to
+//! the size excluded, as an `std::integral_constant` argument.
+//!
+//! @details Evaluated at compile time only: an element check of a run-time
+//! algorithm, which a `for_constexpr` loop of `static_assert`s would compile as
+//! a function per element, called at run time, whose count grows with the
+//! elements of large matrices. Stops at the first index failing the predicate.
+template <std::size_t Size, typename Predicate>
+[[nodiscard]] consteval auto all_of_indexes(Predicate predicate) -> bool {
+  return all_of_indexes_detail(predicate, std::make_index_sequence<Size>{});
+}
+
+template <std::size_t Row, typename Predicate, std::size_t... Columns>
+[[nodiscard]] consteval auto
+all_of_row(const Predicate &predicate,
+           [[maybe_unused]] std::index_sequence<Columns...> columns) -> bool {
+  return (predicate(std::integral_constant<std::size_t, Row>{},
+                    std::integral_constant<std::size_t, Columns>{}) and
+          ...);
+}
+
+template <std::size_t Columns, typename Predicate, std::size_t... Rows>
+[[nodiscard]] consteval auto
+all_of_positions_detail(const Predicate &predicate,
+                        [[maybe_unused]] std::index_sequence<Rows...> rows)
+    -> bool {
+  return (all_of_row<Rows>(predicate, std::make_index_sequence<Columns>{}) and
+          ...);
+}
+
+//! @brief Whether the predicate holds at each compile-time position of a
+//! shape, as a row and a column `std::integral_constant` arguments.
+//!
+//! @details Evaluated at compile time only, as `all_of_indexes`.
+template <std::size_t Rows, std::size_t Columns, typename Predicate>
+[[nodiscard]] consteval auto all_of_positions(Predicate predicate) -> bool {
+  return all_of_positions_detail<Columns>(predicate,
+                                          std::make_index_sequence<Rows>{});
+}
+
 //! @brief Whether the type is a typed matrix class template instantiation.
 //!
 //! @details Matched by partial specialization on the template arguments alone,
