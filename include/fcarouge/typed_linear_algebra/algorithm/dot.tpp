@@ -94,16 +94,25 @@ namespace typed_linear_algebra::internal {
   using first_term = tla::product<typename lhs_matrix::template element<0>,
                                   typename rhs_matrix::template element<0>>;
 
-  tla::for_constexpr<lhs_matrix::rows * lhs_matrix::columns>([](auto i) {
-    using term = tla::product<typename lhs_matrix::template element<i>,
-                              typename rhs_matrix::template element<i>>;
+  static_assert(
+      tla::all_of_indexes<lhs_matrix::rows * lhs_matrix::columns>(
+          [](auto i) -> bool {
+            using term = tla::product<typename lhs_matrix::template element<i>,
+                                      typename rhs_matrix::template element<i>>;
 
-    static_assert(std::is_convertible_v<term, first_term>,
-                  "Dot product requires compatible element types.");
-    static_assert(
-        tla::is_same_scale<term, first_term, typename lhs_matrix::underlying>(),
-        "Dot product requires terms of the same scale, convert first.");
-  });
+            return std::is_convertible_v<term, first_term>;
+          }),
+      "Dot product requires compatible element types.");
+  static_assert(
+      tla::all_of_indexes<lhs_matrix::rows * lhs_matrix::columns>(
+          [](auto i) -> bool {
+            using term = tla::product<typename lhs_matrix::template element<i>,
+                                      typename rhs_matrix::template element<i>>;
+
+            return tla::is_same_scale<term, first_term,
+                                      typename lhs_matrix::underlying>();
+          }),
+      "Dot product requires terms of the same scale, convert first.");
 
   using underlying = typename lhs_matrix::underlying;
 

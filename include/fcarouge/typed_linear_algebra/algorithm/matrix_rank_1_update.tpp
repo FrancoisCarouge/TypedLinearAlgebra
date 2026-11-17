@@ -70,24 +70,34 @@ constexpr void matrix_rank_1_update(const rank_typed_matrix<1> auto &lhs,
 
   // Each product of the typed elements of the lhs and rhs vectors must be
   // assignable to the corresponding typed element of the result matrix.
-  tla::for_constexpr<result_matrix::rows>([&](auto i) {
-    tla::for_constexpr<result_matrix::columns>([&](auto j) {
-      using lhs_element = typename lhs_matrix::template element<i>;
-      using rhs_element = typename rhs_matrix::template element<j>;
-      using result_element = typename result_matrix::template element<i, j>;
+  static_assert(
+      tla::all_of_positions<result_matrix::rows, result_matrix::columns>(
+          [](auto i, auto j) -> bool {
+            using lhs_element = typename lhs_matrix::template element<i>;
+            using rhs_element = typename rhs_matrix::template element<j>;
+            using result_element =
+                typename result_matrix::template element<i, j>;
 
-      static_assert(
-          requires {
-            std::declval<result_element &>() =
-                std::declval<lhs_element>() * std::declval<rhs_element>();
-          }, "Matrix rank-1 update requires compatible element types.");
-      static_assert(
-          tla::is_same_scale<tla::product<lhs_element, rhs_element>,
-                             result_element, typename lhs_matrix::underlying>(),
-          "Matrix rank-1 update requires a result of the same scale as its "
-          "products, convert first.");
-    });
-  });
+            return requires {
+              std::declval<result_element &>() =
+                  std::declval<lhs_element>() * std::declval<rhs_element>();
+            };
+          }),
+      "Matrix rank-1 update requires compatible element types.");
+  static_assert(
+      tla::all_of_positions<result_matrix::rows, result_matrix::columns>(
+          [](auto i, auto j) -> bool {
+            using lhs_element = typename lhs_matrix::template element<i>;
+            using rhs_element = typename rhs_matrix::template element<j>;
+            using result_element =
+                typename result_matrix::template element<i, j>;
+
+            return tla::is_same_scale<tla::product<lhs_element, rhs_element>,
+                                      result_element,
+                                      typename lhs_matrix::underlying>();
+          }),
+      "Matrix rank-1 update requires a result of the same scale as its "
+      "products, convert first.");
 
   using std::linalg::matrix_rank_1_update;
   matrix_rank_1_update(tla::as_vector_span(lhs), tla::as_vector_span(rhs),
@@ -130,21 +140,23 @@ constexpr void matrix_rank_1_update(const rank_typed_matrix<1> auto &lhs,
   // Each typed element of the addend matrix must be addable to the product of
   // the corresponding typed elements of the lhs and rhs vectors, and the sum
   // must be assignable to the corresponding typed element of the result matrix.
-  tla::for_constexpr<result_matrix::rows>([&](auto i) {
-    tla::for_constexpr<result_matrix::columns>([&](auto j) {
-      using lhs_element = typename lhs_matrix::template element<i>;
-      using rhs_element = typename rhs_matrix::template element<j>;
-      using addend_element = typename addend_matrix::template element<i, j>;
-      using result_element = typename result_matrix::template element<i, j>;
+  static_assert(
+      tla::all_of_positions<result_matrix::rows, result_matrix::columns>(
+          [](auto i, auto j) -> bool {
+            using lhs_element = typename lhs_matrix::template element<i>;
+            using rhs_element = typename rhs_matrix::template element<j>;
+            using addend_element =
+                typename addend_matrix::template element<i, j>;
+            using result_element =
+                typename result_matrix::template element<i, j>;
 
-      static_assert(
-          requires {
-            std::declval<result_element &>() =
-                std::declval<addend_element>() +
-                std::declval<lhs_element>() * std::declval<rhs_element>();
-          }, "Matrix rank-1 update requires compatible element types.");
-    });
-  });
+            return requires {
+              std::declval<result_element &>() =
+                  std::declval<addend_element>() +
+                  std::declval<lhs_element>() * std::declval<rhs_element>();
+            };
+          }),
+      "Matrix rank-1 update requires compatible element types.");
 
   using std::linalg::matrix_rank_1_update;
   matrix_rank_1_update(tla::as_vector_span(lhs), tla::as_vector_span(rhs),

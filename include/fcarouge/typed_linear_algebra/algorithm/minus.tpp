@@ -37,15 +37,13 @@ namespace fcarouge {
   using matrix = std::remove_cvref_t<decltype(value)>;
 
   // Each typed element of the matrix must be negatable.
-  tla::for_constexpr<matrix::rows>([&](auto i) {
-    tla::for_constexpr<matrix::columns>([&](auto j) {
-      using element = typename matrix::template element<i, j>;
+  static_assert(tla::all_of_positions<matrix::rows, matrix::columns>(
+                    [](auto i, auto j) -> bool {
+                      using element = typename matrix::template element<i, j>;
 
-      static_assert(
-          requires { -std::declval<element>(); },
-          "Matrix negation requires negatable element types.");
-    });
-  });
+                      return requires { -std::declval<element>(); };
+                    }),
+                "Matrix negation requires negatable element types.");
 
   using row_indexes = typename matrix::row_indexes;
   using column_indexes = typename matrix::column_indexes;
@@ -57,13 +55,13 @@ namespace fcarouge {
   using matrix = std::remove_cvref_t<decltype(value)>;
 
   // Each typed element of the matrix must be negatable.
-  tla::for_constexpr<matrix::rows * matrix::columns>([&](auto i) {
-    using element = typename matrix::template element<i>;
+  static_assert(
+      tla::all_of_indexes<matrix::rows * matrix::columns>([](auto i) -> bool {
+        using element = typename matrix::template element<i>;
 
-    static_assert(
-        requires { -std::declval<element>(); },
-        "Matrix negation requires negatable element types.");
-  });
+        return requires { -std::declval<element>(); };
+      }),
+      "Matrix negation requires negatable element types.");
 
   using row_indexes = typename matrix::row_indexes;
   using column_indexes = typename matrix::column_indexes;

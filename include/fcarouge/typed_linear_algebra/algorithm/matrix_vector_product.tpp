@@ -63,34 +63,58 @@ constexpr void matrix_vector_product(const rank_typed_matrix<2> auto &lhs,
   // to that row's first term, as required to sum them, and that first term
   // must be assignable to the result's corresponding element. Mirrors the
   // row and column type convention of `operator*` and `matrix_product`.
-  tla::for_constexpr<lhs_matrix::rows>([&](auto i) {
-    using first_term = tla::product<typename lhs_matrix::template element<i, 0>,
-                                    typename rhs_matrix::template element<0>>;
+  static_assert(
+      tla::all_of_positions<lhs_matrix::rows, lhs_matrix::columns>(
+          [](auto i, auto k) -> bool {
+            using first_term =
+                tla::product<typename lhs_matrix::template element<i, 0>,
+                             typename rhs_matrix::template element<0>>;
+            using term =
+                tla::product<typename lhs_matrix::template element<i, k>,
+                             typename rhs_matrix::template element<k>>;
 
-    tla::for_constexpr<lhs_matrix::columns>([&](auto k) {
-      using term = tla::product<typename lhs_matrix::template element<i, k>,
-                                typename rhs_matrix::template element<k>>;
+            return std::is_convertible_v<term, first_term>;
+          }),
+      "Matrix-vector product requires compatible element types.");
+  static_assert(
+      tla::all_of_positions<lhs_matrix::rows, lhs_matrix::columns>(
+          [](auto i, auto k) -> bool {
+            using first_term =
+                tla::product<typename lhs_matrix::template element<i, 0>,
+                             typename rhs_matrix::template element<0>>;
+            using term =
+                tla::product<typename lhs_matrix::template element<i, k>,
+                             typename rhs_matrix::template element<k>>;
 
-      static_assert(std::is_convertible_v<term, first_term>,
-                    "Matrix-vector product requires compatible element types.");
-      static_assert(tla::is_same_scale<term, first_term,
-                                       typename lhs_matrix::underlying>(),
-                    "Matrix-vector product requires terms of the same scale, "
-                    "convert first.");
-    });
+            return tla::is_same_scale<term, first_term,
+                                      typename lhs_matrix::underlying>();
+          }),
+      "Matrix-vector product requires terms of the same scale, "
+      "convert first.");
+  static_assert(
+      tla::all_of_indexes<lhs_matrix::rows>([](auto i) -> bool {
+        using first_term =
+            tla::product<typename lhs_matrix::template element<i, 0>,
+                         typename rhs_matrix::template element<0>>;
 
-    static_assert(
-        requires {
+        return requires {
           std::declval<typename result_matrix::template element<i> &>() =
               std::declval<first_term>();
-        }, "Matrix-vector product requires compatible element types.");
-    static_assert(
-        tla::is_same_scale<first_term,
-                           typename result_matrix::template element<i>,
-                           typename lhs_matrix::underlying>(),
-        "Matrix-vector product requires a result of the same scale as its "
-        "terms, convert first.");
-  });
+        };
+      }),
+      "Matrix-vector product requires compatible element types.");
+  static_assert(
+      tla::all_of_indexes<lhs_matrix::rows>([](auto i) -> bool {
+        using first_term =
+            tla::product<typename lhs_matrix::template element<i, 0>,
+                         typename rhs_matrix::template element<0>>;
+
+        return tla::is_same_scale<first_term,
+                                  typename result_matrix::template element<i>,
+                                  typename lhs_matrix::underlying>();
+      }),
+      "Matrix-vector product requires a result of the same scale as its "
+      "terms, convert first.");
 
   using std::linalg::matrix_vector_product;
   matrix_vector_product(lhs.data(), tla::as_vector_span(rhs),
