@@ -43,13 +43,13 @@ inline constexpr struct flight_velocity
     : mp_units::quantity_spec<mp_units::isq::velocity> {
 } flight_velocity;
 inline constexpr struct forward_velocity
-    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::is_kind> {
+    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::subkind> {
 } forward_velocity;
 inline constexpr struct lateral_velocity
-    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::is_kind> {
+    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::subkind> {
 } lateral_velocity;
 inline constexpr struct vertical_velocity
-    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::is_kind> {
+    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::subkind> {
 } vertical_velocity;
 
 template <>

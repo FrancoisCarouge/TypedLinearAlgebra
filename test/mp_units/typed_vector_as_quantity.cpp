@@ -36,9 +36,9 @@ For more information, please refer to <https://unlicense.org> */
 #include <format>
 
 QUANTITY_SPEC(flight_velocity, mp_units::isq::velocity);
-QUANTITY_SPEC(forward_velocity, mp_units::isq::velocity, mp_units::is_kind);
-QUANTITY_SPEC(lateral_velocity, mp_units::isq::velocity, mp_units::is_kind);
-QUANTITY_SPEC(vertical_velocity, mp_units::isq::velocity, mp_units::is_kind);
+QUANTITY_SPEC(forward_velocity, mp_units::isq::velocity, mp_units::subkind);
+QUANTITY_SPEC(lateral_velocity, mp_units::isq::velocity, mp_units::subkind);
+QUANTITY_SPEC(vertical_velocity, mp_units::isq::velocity, mp_units::subkind);
 
 template <>
 struct mp_units::component_vectors<flight_velocity>
