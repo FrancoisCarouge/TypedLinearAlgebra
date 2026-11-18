@@ -62,6 +62,8 @@ if(PROJECT_IS_TOP_LEVEL)
   add_subdirectory("sample")
   add_subdirectory("support")
   add_subdirectory("test")
+
+  configure_file("CTestCustom.cmake.in" "CTestCustom.cmake" @ONLY)
 endif()
 
 add_subdirectory("cmake")
