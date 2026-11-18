@@ -14,7 +14,7 @@ var searchData=
   ['versions_11',['Supported Versions',['../md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#supported-versions',1,'']]],
   ['vertical_5fkmph_12',['vertical_kmph',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#a2b8317b4274804e7555a3e27053523f6',1,'fcarouge::test::anonymous_namespace{unit_conversion.cpp}']]],
   ['vertical_5fmps_13',['vertical_mps',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#aa607ee0615f1276ac1fd77de67f1214c',1,'fcarouge::test::anonymous_namespace{unit_conversion.cpp}']]],
-  ['vertical_5fvelocity_14',['vertical_velocity',['../structvertical__velocity.xhtml',1,'vertical_velocity'],['../unit__conversion_8cpp.xhtml#a47cb5746b052e4b86e507f2bdd7cf66b',1,'vertical_velocity:&#160;unit_conversion.cpp']]],
+  ['vertical_5fvelocity_14',['vertical_velocity',['../structvertical__velocity.xhtml',1,'vertical_velocity'],['../round__trip_8cpp.xhtml#a47cb5746b052e4b86e507f2bdd7cf66b',1,'vertical_velocity:&#160;round_trip.cpp'],['../typed__vector__as__quantity_8cpp.xhtml#a47cb5746b052e4b86e507f2bdd7cf66b',1,'vertical_velocity:&#160;typed_vector_as_quantity.cpp'],['../unit__conversion_8cpp.xhtml#a47cb5746b052e4b86e507f2bdd7cf66b',1,'vertical_velocity:&#160;unit_conversion.cpp']]],
   ['vision_15',['Roadmap &amp; Vision',['../index.xhtml#roadmap--vision',1,'']]],
   ['vulnerability_16',['Reporting a Vulnerability',['../md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#reporting-a-vulnerability',1,'']]]
 ];

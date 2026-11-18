@@ -32,8 +32,16 @@ var hierarchy =
     [ "fcarouge::test::anonymous_namespace{2x2_compile_time_read.cpp}::positioned_storage", "classfcarouge_1_1test_1_1anonymous__namespace_022x2__compile__time__read_8cpp_03_1_1positioned__storage.xhtml", null ],
     [ "mp_units::quantity_spec", null, [
       [ "flight_velocity", "structflight__velocity.xhtml", null ],
+      [ "flight_velocity", "structflight__velocity.xhtml", null ],
+      [ "flight_velocity", "structflight__velocity.xhtml", null ],
+      [ "forward_velocity", "structforward__velocity.xhtml", null ],
+      [ "forward_velocity", "structforward__velocity.xhtml", null ],
       [ "forward_velocity", "structforward__velocity.xhtml", null ],
       [ "lateral_velocity", "structlateral__velocity.xhtml", null ],
+      [ "lateral_velocity", "structlateral__velocity.xhtml", null ],
+      [ "lateral_velocity", "structlateral__velocity.xhtml", null ],
+      [ "vertical_velocity", "structvertical__velocity.xhtml", null ],
+      [ "vertical_velocity", "structvertical__velocity.xhtml", null ],
       [ "vertical_velocity", "structvertical__velocity.xhtml", null ]
     ] ],
     [ "mp_units::representation_canonical_type< fcarouge::typed_matrix< Matrix, RowIndexes, ColumnIndexes > >", "structmp__units_1_1representation__canonical__type_3_01fcarouge_1_1typed__matrix_3_01_matrix_00_88cb568bfd22172f87f75426ff9b1681.xhtml", null ],

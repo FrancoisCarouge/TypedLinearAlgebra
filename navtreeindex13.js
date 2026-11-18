@@ -1,6 +1,5 @@
 var NAVTREEINDEX13 =
 {
-"subtraction__au__fail_8cpp_source.xhtml":[17,0,6,40,66],
 "subtraction__chrono__fail_8cpp.xhtml":[17,0,6,40,67],
 "subtraction__chrono__fail_8cpp.xhtml#a96a0f6b7335c861462b131411820ade9":[17,0,6,40,67,0],
 "subtraction__chrono__fail_8cpp_source.xhtml":[17,0,6,40,67],
@@ -199,11 +198,11 @@ var NAVTREEINDEX13 =
 "typed__mdspan__tupled__product_8cpp.xhtml#ae66f6b31b5ad750f1fe042a706a4e3d4":[17,0,0,6,4],
 "typed__mdspan__tupled__product_8cpp_source.xhtml":[17,0,0,6],
 "typed__vector__as__quantity_8cpp.xhtml":[17,0,6,25,2],
-"typed__vector__as__quantity_8cpp.xhtml#a0f621f4c56c49ecc3bbad51e8dcf2b21":[17,0,6,25,2,5],
-"typed__vector__as__quantity_8cpp.xhtml#a35e96e3191da0a7ef1d9f1e7d0fef158":[17,0,6,25,2,3],
-"typed__vector__as__quantity_8cpp.xhtml#a5cb2d1167847ca0d5c56e3f5e8d194bf":[17,0,6,25,2,4],
-"typed__vector__as__quantity_8cpp.xhtml#a943650a7f7dcc119df482361b68a2d43":[17,0,6,25,2,1],
-"typed__vector__as__quantity_8cpp.xhtml#ab2357e1a221ee49d13efcad5a75319c1":[17,0,6,25,2,2],
+"typed__vector__as__quantity_8cpp.xhtml#a0f621f4c56c49ecc3bbad51e8dcf2b21":[17,0,6,25,2,8],
+"typed__vector__as__quantity_8cpp.xhtml#a47cb5746b052e4b86e507f2bdd7cf66b":[17,0,6,25,2,9],
+"typed__vector__as__quantity_8cpp.xhtml#a492abf3227d815c0027f72069a94836e":[17,0,6,25,2,5],
+"typed__vector__as__quantity_8cpp.xhtml#a8e1906e61a5fd41acc661e91a08a9f94":[17,0,6,25,2,6],
+"typed__vector__as__quantity_8cpp.xhtml#aa6cc66e4cb3831f4d244ae1af8f9aa0c":[17,0,6,25,2,7],
 "typed__vector__as__quantity_8cpp_source.xhtml":[17,0,6,25,2],
 "underlying_23x3_8cpp.xhtml":[17,0,6,38,0],
 "underlying_23x3_8cpp.xhtml#ac2cd833b011989a5b7ec64b36ee3d8fe":[17,0,6,38,0,0],
@@ -249,5 +248,6 @@ var NAVTREEINDEX13 =
 "update__au__std_8cpp.xhtml":[17,0,6,22,12],
 "update__au__std_8cpp.xhtml#ab27107caa1b6564d4280463e95275e30":[17,0,6,22,12,0],
 "update__au__std_8cpp_source.xhtml":[17,0,6,22,12],
-"update__chrono__std_8cpp.xhtml":[17,0,6,22,13]
+"update__chrono__std_8cpp.xhtml":[17,0,6,22,13],
+"update__chrono__std_8cpp.xhtml#abb7b4f805d004a4dad59ef7723b7f66a":[17,0,6,22,13,0]
 };

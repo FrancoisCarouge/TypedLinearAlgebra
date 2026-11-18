@@ -103,7 +103,6 @@ $(function(){initNavTree('typed__vector__as__quantity_8cpp.xhtml',''); initResiz
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">typed_vector_as_quantity.cpp File Reference</div></div>
 </div><!--header-->
@@ -124,6 +123,14 @@ $(function(){initNavTree('typed__vector__as__quantity_8cpp.xhtml',''); initResiz
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structflight__velocity.xhtml">flight_velocity</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structforward__velocity.xhtml">forward_velocity</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlateral__velocity.xhtml">lateral_velocity</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvertical__velocity.xhtml">vertical_velocity</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmp__units_1_1component__vectors_3_01flight__velocity_01_4.xhtml">mp_units::component_vectors&lt; flight_velocity &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -138,116 +145,70 @@ Namespaces</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__vector__as__quantity_8cpp_03.xhtml">fcarouge::test::anonymous_namespace{typed_vector_as_quantity.cpp}</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a943650a7f7dcc119df482361b68a2d43" id="r_a943650a7f7dcc119df482361b68a2d43"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a943650a7f7dcc119df482361b68a2d43">QUANTITY_SPEC</a> (<a class="el" href="structflight__velocity.xhtml">flight_velocity</a>, mp_units::isq::velocity)</td></tr>
-<tr class="separator:a943650a7f7dcc119df482361b68a2d43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2357e1a221ee49d13efcad5a75319c1" id="r_ab2357e1a221ee49d13efcad5a75319c1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2357e1a221ee49d13efcad5a75319c1">QUANTITY_SPEC</a> (<a class="el" href="structforward__velocity.xhtml">forward_velocity</a>, mp_units::isq::velocity, mp_units::subkind)</td></tr>
-<tr class="separator:ab2357e1a221ee49d13efcad5a75319c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35e96e3191da0a7ef1d9f1e7d0fef158" id="r_a35e96e3191da0a7ef1d9f1e7d0fef158"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35e96e3191da0a7ef1d9f1e7d0fef158">QUANTITY_SPEC</a> (<a class="el" href="structlateral__velocity.xhtml">lateral_velocity</a>, mp_units::isq::velocity, mp_units::subkind)</td></tr>
-<tr class="separator:a35e96e3191da0a7ef1d9f1e7d0fef158"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cb2d1167847ca0d5c56e3f5e8d194bf" id="r_a5cb2d1167847ca0d5c56e3f5e8d194bf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5cb2d1167847ca0d5c56e3f5e8d194bf">QUANTITY_SPEC</a> (<a class="el" href="structvertical__velocity.xhtml">vertical_velocity</a>, mp_units::isq::velocity, mp_units::subkind)</td></tr>
-<tr class="separator:a5cb2d1167847ca0d5c56e3f5e8d194bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:a492abf3227d815c0027f72069a94836e" id="r_a492abf3227d815c0027f72069a94836e"><td class="memItemLeft" align="right" valign="top">flight_velocity&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a492abf3227d815c0027f72069a94836e">flight_velocity</a></td></tr>
+<tr class="separator:a492abf3227d815c0027f72069a94836e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e1906e61a5fd41acc661e91a08a9f94" id="r_a8e1906e61a5fd41acc661e91a08a9f94"><td class="memItemLeft" align="right" valign="top">forward_velocity&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e1906e61a5fd41acc661e91a08a9f94">forward_velocity</a></td></tr>
+<tr class="separator:a8e1906e61a5fd41acc661e91a08a9f94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6cc66e4cb3831f4d244ae1af8f9aa0c" id="r_aa6cc66e4cb3831f4d244ae1af8f9aa0c"><td class="memItemLeft" align="right" valign="top">lateral_velocity&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6cc66e4cb3831f4d244ae1af8f9aa0c">lateral_velocity</a></td></tr>
+<tr class="separator:aa6cc66e4cb3831f4d244ae1af8f9aa0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47cb5746b052e4b86e507f2bdd7cf66b" id="r_a47cb5746b052e4b86e507f2bdd7cf66b"><td class="memItemLeft" align="right" valign="top">vertical_velocity&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47cb5746b052e4b86e507f2bdd7cf66b">vertical_velocity</a></td></tr>
+<tr class="separator:a47cb5746b052e4b86e507f2bdd7cf66b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f621f4c56c49ecc3bbad51e8dcf2b21" id="r_a0f621f4c56c49ecc3bbad51e8dcf2b21"><td class="memItemLeft" align="right" valign="top">const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__vector__as__quantity_8cpp_03.xhtml#a0f621f4c56c49ecc3bbad51e8dcf2b21">fcarouge::test::anonymous_namespace{typed_vector_as_quantity.cpp}::test</a></td></tr>
 <tr class="separator:a0f621f4c56c49ecc3bbad51e8dcf2b21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a943650a7f7dcc119df482361b68a2d43" name="a943650a7f7dcc119df482361b68a2d43"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a943650a7f7dcc119df482361b68a2d43">&#9670;&#160;</a></span>QUANTITY_SPEC() <span class="overload">[1/4]</span></h2>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a492abf3227d815c0027f72069a94836e" name="a492abf3227d815c0027f72069a94836e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a492abf3227d815c0027f72069a94836e">&#9670;&#160;</a></span>flight_velocity</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">QUANTITY_SPEC </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structflight__velocity.xhtml">flight_velocity</a></td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">mp_units::isq::velocity</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+          <td class="memname">flight_velocity flight_velocity</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="ab2357e1a221ee49d13efcad5a75319c1" name="ab2357e1a221ee49d13efcad5a75319c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab2357e1a221ee49d13efcad5a75319c1">&#9670;&#160;</a></span>QUANTITY_SPEC() <span class="overload">[2/4]</span></h2>
+<a id="a8e1906e61a5fd41acc661e91a08a9f94" name="a8e1906e61a5fd41acc661e91a08a9f94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e1906e61a5fd41acc661e91a08a9f94">&#9670;&#160;</a></span>forward_velocity</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">QUANTITY_SPEC </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structforward__velocity.xhtml">forward_velocity</a></td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">mp_units::isq::velocity</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">mp_units::subkind</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+          <td class="memname">forward_velocity forward_velocity</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a35e96e3191da0a7ef1d9f1e7d0fef158" name="a35e96e3191da0a7ef1d9f1e7d0fef158"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a35e96e3191da0a7ef1d9f1e7d0fef158">&#9670;&#160;</a></span>QUANTITY_SPEC() <span class="overload">[3/4]</span></h2>
+<a id="aa6cc66e4cb3831f4d244ae1af8f9aa0c" name="aa6cc66e4cb3831f4d244ae1af8f9aa0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6cc66e4cb3831f4d244ae1af8f9aa0c">&#9670;&#160;</a></span>lateral_velocity</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">QUANTITY_SPEC </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structlateral__velocity.xhtml">lateral_velocity</a></td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">mp_units::isq::velocity</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">mp_units::subkind</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+          <td class="memname">lateral_velocity lateral_velocity</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a5cb2d1167847ca0d5c56e3f5e8d194bf" name="a5cb2d1167847ca0d5c56e3f5e8d194bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5cb2d1167847ca0d5c56e3f5e8d194bf">&#9670;&#160;</a></span>QUANTITY_SPEC() <span class="overload">[4/4]</span></h2>
+<a id="a47cb5746b052e4b86e507f2bdd7cf66b" name="a47cb5746b052e4b86e507f2bdd7cf66b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47cb5746b052e4b86e507f2bdd7cf66b">&#9670;&#160;</a></span>vertical_velocity</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">QUANTITY_SPEC </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structvertical__velocity.xhtml">vertical_velocity</a></td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">mp_units::isq::velocity</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">mp_units::subkind</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+          <td class="memname">vertical_velocity vertical_velocity</td>
         </tr>
       </table>
 </div><div class="memdoc">

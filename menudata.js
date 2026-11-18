@@ -157,7 +157,6 @@ var menudata={children:[
 {text:"m",url:"globals_m.xhtml#index_m"},
 {text:"o",url:"globals_o.xhtml#index_o"},
 {text:"p",url:"globals_p.xhtml#index_p"},
-{text:"q",url:"globals_q.xhtml#index_q"},
 {text:"s",url:"globals_s.xhtml#index_s"},
 {text:"u",url:"globals_u.xhtml#index_u"},
 {text:"v",url:"globals_v.xhtml#index_v"}]},
