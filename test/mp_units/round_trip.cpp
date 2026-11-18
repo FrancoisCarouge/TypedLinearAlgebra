@@ -37,10 +37,18 @@ For more information, please refer to <https://unlicense.org> */
 #include <format>
 #include <type_traits>
 
-QUANTITY_SPEC(flight_velocity, mp_units::isq::velocity);
-QUANTITY_SPEC(forward_velocity, mp_units::isq::velocity, mp_units::subkind);
-QUANTITY_SPEC(lateral_velocity, mp_units::isq::velocity, mp_units::subkind);
-QUANTITY_SPEC(vertical_velocity, mp_units::isq::velocity, mp_units::subkind);
+inline constexpr struct flight_velocity
+    : mp_units::quantity_spec<mp_units::isq::velocity> {
+} flight_velocity;
+inline constexpr struct forward_velocity
+    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::subkind> {
+} forward_velocity;
+inline constexpr struct lateral_velocity
+    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::subkind> {
+} lateral_velocity;
+inline constexpr struct vertical_velocity
+    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::subkind> {
+} vertical_velocity;
 
 template <>
 struct mp_units::component_vectors<flight_velocity>
