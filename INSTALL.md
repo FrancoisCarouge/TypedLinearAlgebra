@@ -34,11 +34,19 @@ FetchContent_MakeAvailable(fcarouge-typed-linear-algebra)
 target_link_libraries(your_target PRIVATE fcarouge-typed-linear-algebra::tlinalg)
 ```
 
+A single, amalgamated `typed_linear_algebra.h` header is also [published](https://francoiscarouge.github.io/TypedLinearAlgebra/amalgamate/fcarouge/typed_linear_algebra.h), or generated locally with `cmake --build "build" --target "amalgamate"` into `build/amalgamate/fcarouge/typed_linear_algebra.h`.
+
+In your sources, include the library header and add a plug-in for each strong type and linear algebra backend you use. See [the samples](https://github.com/FrancoisCarouge/TypedLinearAlgebra/tree/master/sample) for more.
+
+```cpp
+#include "fcarouge/typed_linear_algebra.hpp"
+```
+
 # Development Build & Run
 
-## Tests
+## Tests & Samples
 
-Build and run the tests:
+Build and run the tests and samples:
 
 ```shell
 git clone --depth 1 "https://github.com/FrancoisCarouge/TypedLinearAlgebra"
@@ -46,6 +54,10 @@ cmake -S "TypedLinearAlgebra" -B "build"
 cmake --build "build" --config "Debug" --parallel
 ctest --test-dir "build" --build-config "Debug" --output-on-failure --parallel
 ```
+
+## Benchmarks
+
+See the [Benchmark](https://github.com/FrancoisCarouge/TypedLinearAlgebra/tree/master/benchmark) section.
 
 ## Installation Packages
 
