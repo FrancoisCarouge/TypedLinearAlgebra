@@ -50,7 +50,7 @@ namespace fcarouge {
   // Each typed element of the lhs matrix must be addable to the corresponding
   // typed element of the rhs matrix.
   static_assert(
-      tla::all_of_positions<lhs_matrix::rows, lhs_matrix::columns>(
+      tla::all_of_distinct_positions<lhs_matrix, rhs_matrix>(
           [](auto i, auto j) -> bool {
             using lhs_element = typename lhs_matrix::template element<i, j>;
             using rhs_element = typename rhs_matrix::template element<i, j>;
@@ -61,7 +61,7 @@ namespace fcarouge {
           }),
       "Matrix addition requires compatible element types.");
   static_assert(
-      tla::all_of_positions<lhs_matrix::rows, lhs_matrix::columns>(
+      tla::all_of_distinct_positions<lhs_matrix, rhs_matrix>(
           [](auto i, auto j) -> bool {
             using lhs_element = typename lhs_matrix::template element<i, j>;
             using rhs_element = typename rhs_matrix::template element<i, j>;
@@ -165,7 +165,7 @@ constexpr void add(const rank_typed_matrix<2> auto &lhs,
   // typed element of the rhs matrix and assignable to the corresponding typed
   // element of the result matrix.
   static_assert(
-      tla::all_of_positions<lhs_matrix::rows, lhs_matrix::columns>(
+      tla::all_of_distinct_positions<lhs_matrix, rhs_matrix, result_matrix>(
           [](auto i, auto j) -> bool {
             using lhs_element = typename lhs_matrix::template element<i, j>;
             using rhs_element = typename rhs_matrix::template element<i, j>;
@@ -179,7 +179,7 @@ constexpr void add(const rank_typed_matrix<2> auto &lhs,
           }),
       "Matrix addition requires compatible element types.");
   static_assert(
-      tla::all_of_positions<lhs_matrix::rows, lhs_matrix::columns>(
+      tla::all_of_distinct_positions<lhs_matrix, rhs_matrix, result_matrix>(
           [](auto i, auto j) -> bool {
             using lhs_element = typename lhs_matrix::template element<i, j>;
             using rhs_element = typename rhs_matrix::template element<i, j>;

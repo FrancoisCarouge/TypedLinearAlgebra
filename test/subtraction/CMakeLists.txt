@@ -44,6 +44,9 @@ fail("1x2_mp_units_eigen_fail" BACKENDS "mp_units_eigen" "mp_units_armadillo")
 fail(
   "1x2_nholthaus_eigen_fail"
   BACKENDS "nholthaus_eigen" "nholthaus_armadillo")
+fail(
+  "3x3_mp_units_eigen_fail"
+  BACKENDS "mp_units_eigen" "mp_units_armadillo" "mp_units_sparse")
 
 pass("1x1_au_eigen" BACKENDS "au_eigen" "au_armadillo" "au_sparse")
 pass("1x1_au_std" BACKENDS "au_std")
@@ -73,3 +76,6 @@ pass(
 pass(
   "1x2_nholthaus_eigen"
   BACKENDS "nholthaus_eigen" "nholthaus_armadillo" "nholthaus_sparse")
+pass(
+  "3x3_mp_units_eigen"
+  BACKENDS "mp_units_eigen" "mp_units_armadillo" "mp_units_sparse")

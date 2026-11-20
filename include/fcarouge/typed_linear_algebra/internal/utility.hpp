@@ -237,6 +237,124 @@ template <std::size_t Rows, std::size_t Columns, typename Predicate>
                                           std::make_index_sequence<Rows>{});
 }
 
+//! @brief The object whose address identifies a type in constant evaluation.
+//!
+//! @details One variable per type, so that comparing types costs a comparison
+//! of addresses rather than an instantiation per pair of types.
+template <typename Type> inline constexpr char type_token{};
+
+//! @brief The types at one index of several index tuples, as one type.
+//!
+//! @details Declared only: naming it never completes it.
+template <typename... Types> struct index_types;
+
+template <std::size_t Index, typename... Indexes>
+using index_types_at = index_types<std::tuple_element_t<Index, Indexes>...>;
+
+//! @brief The first index of each distinct combination of the types of several
+//! index tuples, in increasing order, and their count.
+template <std::size_t Size> struct distinct_indexes_t {
+  std::array<std::size_t, Size> indexes{};
+  std::size_t count{0};
+};
+
+//! @brief The first index of each distinct combination of the types at an
+//! index of several index tuples of the same size.
+//!
+//! @complexity One type instantiation per index, and a count of address
+//! comparisons of the size times the count of distinct combinations, at most.
+template <std::size_t Size, typename... Indexes, std::size_t... Is>
+[[nodiscard]] consteval auto
+distinct_indexes([[maybe_unused]] std::index_sequence<Is...> indexes)
+    -> distinct_indexes_t<Size> {
+  const std::array<const void *, Size> tokens{
+      &type_token<index_types_at<Is, Indexes...>>...};
+  std::array<const void *, Size> distinct_tokens{};
+  distinct_indexes_t<Size> result;
+  auto distinct_token{distinct_tokens.begin()};
+  auto distinct_index{result.indexes.begin()};
+  std::size_t index{0};
+
+  for (const void *const token : tokens) {
+    bool distinct{true};
+
+    for (auto seen{distinct_tokens.begin()}; seen != distinct_token; ++seen) {
+      distinct = distinct and *seen != token;
+    }
+
+    if (distinct) {
+      *distinct_token = token;
+      ++distinct_token;
+      *distinct_index = index;
+      ++distinct_index;
+      ++result.count;
+    }
+
+    ++index;
+  }
+
+  return result;
+}
+
+template <auto Rows, auto Columns, std::size_t Row, typename Predicate,
+          std::size_t... Cs>
+[[nodiscard]] consteval auto
+all_of_distinct_row(const Predicate &predicate,
+                    [[maybe_unused]] std::index_sequence<Cs...> columns)
+    -> bool {
+  return (
+      predicate(std::integral_constant<std::size_t, Rows.indexes[Row]>{},
+                std::integral_constant<std::size_t, Columns.indexes[Cs]>{}) and
+      ...);
+}
+
+template <auto Rows, auto Columns, typename Predicate, std::size_t... Rs>
+[[nodiscard]] consteval auto all_of_distinct_positions_detail(
+    const Predicate &predicate,
+    [[maybe_unused]] std::index_sequence<Rs...> rows) -> bool {
+  return (all_of_distinct_row<Rows, Columns, Rs>(
+              predicate, std::make_index_sequence<Columns.count>{}) and
+          ...);
+}
+
+template <typename First, typename... Rest> struct first_of {
+  using type = First;
+};
+
+//! @brief Whether the predicate holds at each compile-time position of typed
+//! matrices of the same shape, as a row and a column `std::integral_constant`
+//! arguments, checked once per distinct combination of their element types.
+//!
+//! @details The type of an element is the product of the types of its row and
+//! column indexes. Two rows whose index types are the same in every matrix
+//! hold the same element types, and so do two such columns: the predicate is
+//! evaluated at the first row of each distinct combination of row index types
+//! and the first column of each distinct combination of column index types
+//! only. A matrix of a few kinds of elements repeated over its rows and columns
+//! is checked at a cost that grows with its kinds of elements, not with its
+//! size. Evaluated at compile time only, as `all_of_positions`.
+//!
+//! @pre Every matrix is of the same shape, and the predicate depends on the
+//! position only through the element types of the matrices.
+//!
+//! @tparam Matrices The typed matrices whose element types the predicate
+//! checks.
+template <typename... Matrices, typename Predicate>
+[[nodiscard]] consteval auto all_of_distinct_positions(Predicate predicate)
+    -> bool {
+  using shape = first_of<Matrices...>::type;
+
+  constexpr auto rows{
+      distinct_indexes<shape::rows, typename Matrices::row_indexes...>(
+          std::make_index_sequence<shape::rows>{})};
+  constexpr auto columns{
+      distinct_indexes<shape::columns, typename Matrices::column_indexes...>(
+          std::make_index_sequence<shape::columns>{})};
+
+  return all_of_distinct_positions_detail<rows, columns>(
+      predicate, std::make_index_sequence<rows.count>{});
+}
+
 //! @brief Whether the type is a typed matrix class template instantiation.
 //!
 //! @details Matched by partial specialization on the template arguments alone,

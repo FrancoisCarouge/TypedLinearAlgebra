@@ -47,7 +47,7 @@ namespace fcarouge {
   // Each typed element of the lhs matrix must be subtractable to the
   // corresponding typed element of the rhs matrix.
   static_assert(
-      tla::all_of_positions<lhs_matrix::rows, lhs_matrix::columns>(
+      tla::all_of_distinct_positions<lhs_matrix, rhs_matrix>(
           [](auto i, auto j) -> bool {
             using lhs_element = typename lhs_matrix::template element<i, j>;
             using rhs_element = typename rhs_matrix::template element<i, j>;
@@ -58,7 +58,7 @@ namespace fcarouge {
           }),
       "Matrix subtraction requires compatible element types.");
   static_assert(
-      tla::all_of_positions<lhs_matrix::rows, lhs_matrix::columns>(
+      tla::all_of_distinct_positions<lhs_matrix, rhs_matrix>(
           [](auto i, auto j) -> bool {
             using lhs_element = typename lhs_matrix::template element<i, j>;
             using rhs_element = typename rhs_matrix::template element<i, j>;
