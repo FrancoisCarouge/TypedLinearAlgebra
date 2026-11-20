@@ -103,7 +103,12 @@ function(build NAME)
     add_test(
       NAME typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_pass
       COMMAND
-        ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target
+        ${CMAKE_COMMAND}
+        --build
+        ${CMAKE_BINARY_DIR}
+        --config
+        $<CONFIG>
+        --target
         typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_build_driver)
     set_tests_properties(
       typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_pass
@@ -137,7 +142,12 @@ function(fail NAME)
     add_test(
       NAME typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}
       COMMAND
-        ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target
+        ${CMAKE_COMMAND}
+        --build
+        ${CMAKE_BINARY_DIR}
+        --config
+        $<CONFIG>
+        --target
         typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}_driver)
     set_tests_properties(
       typed_linear_algebra_${BACKEND}_${CALLER}_${NAME}
