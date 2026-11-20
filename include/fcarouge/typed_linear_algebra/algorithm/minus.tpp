@@ -37,13 +37,13 @@ namespace fcarouge {
   using matrix = std::remove_cvref_t<decltype(value)>;
 
   // Each typed element of the matrix must be negatable.
-  static_assert(tla::all_of_positions<matrix::rows, matrix::columns>(
-                    [](auto i, auto j) -> bool {
-                      using element = typename matrix::template element<i, j>;
+  static_assert(
+      tla::all_of_distinct_positions<matrix>([](auto i, auto j) -> bool {
+        using element = typename matrix::template element<i, j>;
 
-                      return requires { -std::declval<element>(); };
-                    }),
-                "Matrix negation requires negatable element types.");
+        return requires { -std::declval<element>(); };
+      }),
+      "Matrix negation requires negatable element types.");
 
   using row_indexes = typename matrix::row_indexes;
   using column_indexes = typename matrix::column_indexes;
