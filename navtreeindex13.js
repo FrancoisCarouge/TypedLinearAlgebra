@@ -1,5 +1,6 @@
 var NAVTREEINDEX13 =
 {
+"subtraction__2x2__nholthaus__fail_8cpp.xhtml":[17,0,6,40,65],
 "subtraction__2x2__nholthaus__fail_8cpp.xhtml#acc0dc2de71f36746faf119f0a57e5faa":[17,0,6,40,65,0],
 "subtraction__2x2__nholthaus__fail_8cpp_source.xhtml":[17,0,6,40,65],
 "subtraction__au__fail_8cpp.xhtml":[17,0,6,40,66],
@@ -248,6 +249,5 @@ var NAVTREEINDEX13 =
 "unit__conversion_8cpp.xhtml#ac183290662d8ab35685ff4fadb33fa54":[17,0,6,25,3,12],
 "unit__conversion_8cpp.xhtml#ad774ac28df820dbb4d3841b7c4f264d3":[17,0,6,25,3,15],
 "unit__conversion_8cpp.xhtml#af53afe82e1f41d49857a58d1460fcd3f":[17,0,6,25,3,5],
-"unit__conversion_8cpp_source.xhtml":[17,0,6,25,3],
-"unit_test_coverage.xhtml":[7]
+"unit__conversion_8cpp_source.xhtml":[17,0,6,25,3]
 };

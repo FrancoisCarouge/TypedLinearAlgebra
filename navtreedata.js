@@ -76,7 +76,8 @@ var NAVTREE =
     [ "Run-Time Call Traces", "call_trace.xhtml", null ],
     [ "Installation", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml", [
       [ "Development Build & Run", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run", [
-        [ "Tests", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#tests", null ],
+        [ "Tests & Samples", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#tests--samples", null ],
+        [ "Benchmarks", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#benchmarks-1", null ],
         [ "Installation Packages", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#installation-packages", [
           [ "Linux", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#linux", null ],
           [ "Windows", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#windows", null ]
@@ -130,15 +131,15 @@ var NAVTREEINDEX =
 "conversion__mp__units_8cpp_source.xhtml",
 "element_21x2__au__eigen__fail_8cpp_source.xhtml",
 "matrix__frob__norm_22x2__au__eigen_8cpp.xhtml",
-"mdspan__product_8cpp.xhtml#a5ea5e2fff1603e0accdc0433303ec28c",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__std_8cpp_03.xhtml#a45b9ae231b1a3072c4bb41b4b73ae8ee",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_022x1__au__eigen_8cpp_03.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02column__mp__units__std_8cpp_03.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02shape__mp__units__std__fail_8cpp_03.xhtml",
-"product__mp__units_8cpp.xhtml",
-"structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1lookup_3b299f5c7aa92788bf7430e8496a9663f.xhtml#a3ff940c74d0f67d66ca87344bc83dcbc",
-"subtraction__2x2__nholthaus__fail_8cpp.xhtml#acc0dc2de71f36746faf119f0a57e5faa",
-"update__au__std_8cpp.xhtml"
+"mdspan__product_8cpp.xhtml",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__std_8cpp_03.xhtml#a029a815cdafeb9c0ff113a78e4ca31bc",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_022x1__1x2__mp__units__std_8cpp_03.xhtml#ab57dac46e41ffc66c1c6ec2da3c5e71d",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02column__fail_8cpp_03.xhtml#a5c9bb1fbd3a63bd17e4b7e9f98166555",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02scale__1x1__mp__units__std_8cpp_03.xhtml#a4979b2f2a3e0b2ae2fd84248927fafff",
+"product__chrono_8cpp_source.xhtml",
+"structfcarouge_1_1benchmark_1_1anonymous__namespace_02mdspan__tuple__product_8cpp_03_1_1lookup_3b299f5c7aa92788bf7430e8496a9663f.xhtml",
+"subtraction__2x2__nholthaus__fail_8cpp.xhtml",
+"unit_test_coverage.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
