@@ -267,15 +267,15 @@ template <std::size_t Size, typename... Indexes, std::size_t... Is>
 [[nodiscard]] consteval auto
 distinct_indexes([[maybe_unused]] std::index_sequence<Is...> indexes)
     -> distinct_indexes_t<Size> {
-  const std::array<const void *, Size> tokens{
+  const std::array<const char *, Size> tokens{
       &type_token<index_types_at<Is, Indexes...>>...};
-  std::array<const void *, Size> distinct_tokens{};
+  std::array<const char *, Size> distinct_tokens{};
   distinct_indexes_t<Size> result;
   auto distinct_token{distinct_tokens.begin()};
   auto distinct_index{result.indexes.begin()};
   std::size_t index{0};
 
-  for (const void *const token : tokens) {
+  for (const char *const token : tokens) {
     bool distinct{true};
 
     for (auto seen{distinct_tokens.begin()}; seen != distinct_token; ++seen) {
@@ -321,6 +321,27 @@ template <typename First, typename... Rest> struct first_of {
   using type = First;
 };
 
+//! @brief The first row of each distinct combination of the row index types of
+//! typed matrices of the same shape, and their count.
+//!
+//! @details A variable template, of static storage duration, rather than a
+//! `constexpr` local variable of the `consteval` function using it as a
+//! template argument: MSVC rejects a local variable as a template argument
+//! (C2131, C2971).
+template <typename... Matrices>
+inline constexpr auto distinct_rows{
+    distinct_indexes<first_of<Matrices...>::type::rows,
+                     typename Matrices::row_indexes...>(
+        std::make_index_sequence<first_of<Matrices...>::type::rows>{})};
+
+//! @brief The first column of each distinct combination of the column index
+//! types of typed matrices of the same shape, and their count.
+template <typename... Matrices>
+inline constexpr auto distinct_columns{
+    distinct_indexes<first_of<Matrices...>::type::columns,
+                     typename Matrices::column_indexes...>(
+        std::make_index_sequence<first_of<Matrices...>::type::columns>{})};
+
 //! @brief Whether the predicate holds at each compile-time position of typed
 //! matrices of the same shape, as a row and a column `std::integral_constant`
 //! arguments, checked once per distinct combination of their element types.
@@ -342,17 +363,9 @@ template <typename First, typename... Rest> struct first_of {
 template <typename... Matrices, typename Predicate>
 [[nodiscard]] consteval auto all_of_distinct_positions(Predicate predicate)
     -> bool {
-  using shape = first_of<Matrices...>::type;
-
-  constexpr auto rows{
-      distinct_indexes<shape::rows, typename Matrices::row_indexes...>(
-          std::make_index_sequence<shape::rows>{})};
-  constexpr auto columns{
-      distinct_indexes<shape::columns, typename Matrices::column_indexes...>(
-          std::make_index_sequence<shape::columns>{})};
-
-  return all_of_distinct_positions_detail<rows, columns>(
-      predicate, std::make_index_sequence<rows.count>{});
+  return all_of_distinct_positions_detail<distinct_rows<Matrices...>,
+                                          distinct_columns<Matrices...>>(
+      predicate, std::make_index_sequence<distinct_rows<Matrices...>.count>{});
 }
 
 //! @brief Whether the type is a typed matrix class template instantiation.
