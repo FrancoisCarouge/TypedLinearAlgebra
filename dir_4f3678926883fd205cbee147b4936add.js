@@ -23,5 +23,7 @@ var dir_4f3678926883fd205cbee147b4936add =
     [ "1x2_mp_units_eigen.cpp", "subtraction_21x2__mp__units__eigen_8cpp.xhtml", null ],
     [ "1x2_mp_units_eigen_fail.cpp", "subtraction_21x2__mp__units__eigen__fail_8cpp.xhtml", null ],
     [ "1x2_nholthaus_eigen.cpp", "subtraction_21x2__nholthaus__eigen_8cpp.xhtml", null ],
-    [ "1x2_nholthaus_eigen_fail.cpp", "subtraction_21x2__nholthaus__eigen__fail_8cpp.xhtml", null ]
+    [ "1x2_nholthaus_eigen_fail.cpp", "subtraction_21x2__nholthaus__eigen__fail_8cpp.xhtml", null ],
+    [ "3x3_mp_units_eigen.cpp", "subtraction_23x3__mp__units__eigen_8cpp.xhtml", null ],
+    [ "3x3_mp_units_eigen_fail.cpp", "subtraction_23x3__mp__units__eigen__fail_8cpp.xhtml", null ]
 ];

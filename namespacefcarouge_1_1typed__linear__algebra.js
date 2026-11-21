@@ -4,6 +4,7 @@ var namespacefcarouge_1_1typed__linear__algebra =
       [ "element", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a9382a03c870ee0c7618bf220b95ed7a7", null ],
       [ "element_at", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a0d908ebc1cc55da12d83d2fefc10ab1d", null ],
       [ "identity_index", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#ae8c912e436a2523bb6d22e98883960cd", null ],
+      [ "index_types_at", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a1f7c2bd69f859087d425a9eb00d1a436", null ],
       [ "product", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a0659020dfaef848bf9f5f3b745fa7690", null ],
       [ "quotient", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a42f888090e0022b7f6cff2915b7ba65d", null ],
       [ "storage_index_t", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a9e34d14107202dcfa913aa2658018a7c", null ],
@@ -11,6 +12,9 @@ var namespacefcarouge_1_1typed__linear__algebra =
       [ "tuple_typed_matrix", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#aa7edbb6c75d6e336989e7c49fdc1c570", null ],
       [ "underlying_t", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a47f2d246dc0f293daafe913a3aba2a10", null ],
       [ "access_element", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#af699ec1d59850ee3df349a2fa6e39832", null ],
+      [ "all_of_distinct_positions", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a5ec0fee7d4cfbbe127a0fb0ca0ace00b", null ],
+      [ "all_of_distinct_positions_detail", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a8f5262bec0b615131f493ba47dfa101d", null ],
+      [ "all_of_distinct_row", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a1bd5d77059f24c7501276578b3d286e5", null ],
       [ "all_of_indexes", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#aab07647ab2fda77011c6b127be29046e", null ],
       [ "all_of_indexes_detail", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#abe582f077c073d403c0376bc22d9b583", null ],
       [ "all_of_positions", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a945f64c2245cf46a0704e816a2da8112", null ],
@@ -18,6 +22,7 @@ var namespacefcarouge_1_1typed__linear__algebra =
       [ "all_of_row", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#aa80410ba83a0436ea7ff32e3044f23e7", null ],
       [ "converted_storage", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a7ff10b16443c2216c9b129813cd74c6e", null ],
       [ "count_convertible_indexes", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#afda6200599ba2c58e5656ebc21edf1d8", null ],
+      [ "distinct_indexes", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#ab4b5523cb1d39697c5bd04329cb7816b", null ],
       [ "find_first_convertible_index", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a28d8419fc35e153a8b037928ac0dcdf6", null ],
       [ "for_constexpr", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#ae001291878746fdd7db287616a067664", null ],
       [ "for_constexpr_detail", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a7ddbf3e8193c90dc7ae78735063b0a0e", null ],
@@ -38,6 +43,7 @@ var namespacefcarouge_1_1typed__linear__algebra =
       [ "is_constructible_tuple_like_v", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#afc5ec77bcdbc3ccad4b052e5f1e7b475", null ],
       [ "is_convertible_tuple_like_v", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a87e17afa739b457ae25fb330173e3214", null ],
       [ "is_identity_indexes", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a6f547db16f0463ccda833ee73b42f8c9", null ],
-      [ "rank", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a5b8f7212f7676df392e49713c7d9b89a", null ]
+      [ "rank", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a5b8f7212f7676df392e49713c7d9b89a", null ],
+      [ "type_token", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#aa4e8bc2f345523798bc9d2cd5e00056a", null ]
     ] ]
 ];

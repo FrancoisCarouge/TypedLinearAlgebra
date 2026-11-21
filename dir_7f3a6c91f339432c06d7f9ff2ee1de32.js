@@ -23,5 +23,7 @@ var dir_7f3a6c91f339432c06d7f9ff2ee1de32 =
     [ "1x2_mp_units_eigen.cpp", "addition_21x2__mp__units__eigen_8cpp.xhtml", "addition_21x2__mp__units__eigen_8cpp" ],
     [ "1x2_mp_units_eigen_fail.cpp", "addition_21x2__mp__units__eigen__fail_8cpp.xhtml", "addition_21x2__mp__units__eigen__fail_8cpp" ],
     [ "1x2_nholthaus_eigen.cpp", "addition_21x2__nholthaus__eigen_8cpp.xhtml", "addition_21x2__nholthaus__eigen_8cpp" ],
-    [ "1x2_nholthaus_eigen_fail.cpp", "addition_21x2__nholthaus__eigen__fail_8cpp.xhtml", "addition_21x2__nholthaus__eigen__fail_8cpp" ]
+    [ "1x2_nholthaus_eigen_fail.cpp", "addition_21x2__nholthaus__eigen__fail_8cpp.xhtml", "addition_21x2__nholthaus__eigen__fail_8cpp" ],
+    [ "3x3_mp_units_eigen.cpp", "addition_23x3__mp__units__eigen_8cpp.xhtml", "addition_23x3__mp__units__eigen_8cpp" ],
+    [ "3x3_mp_units_eigen_fail.cpp", "addition_23x3__mp__units__eigen__fail_8cpp.xhtml", "addition_23x3__mp__units__eigen__fail_8cpp" ]
 ];

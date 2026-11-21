@@ -19,5 +19,7 @@ var searchData=
   ['3x2_5fmp_5funits_5fstd_2ecpp_16',['3x2_mp_units_std.cpp',['../matrix__rank__1__update_23x2__mp__units__std_8cpp.xhtml',1,'(Global Namespace)'],['../matrix__vector__product_23x2__mp__units__std_8cpp.xhtml',1,'(Global Namespace)']]],
   ['3x2_5fnholthaus_5fstd_2ecpp_17',['3x2_nholthaus_std.cpp',['../matrix__rank__1__update_23x2__nholthaus__std_8cpp.xhtml',1,'(Global Namespace)'],['../matrix__vector__product_23x2__nholthaus__std_8cpp.xhtml',1,'(Global Namespace)']]],
   ['3x3_2ecpp_18',['3x3.cpp',['../at_23x3_8cpp.xhtml',1,'(Global Namespace)'],['../format_23x3_8cpp.xhtml',1,'(Global Namespace)'],['../nested_23x3_8cpp.xhtml',1,'(Global Namespace)'],['../underlying_23x3_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['3x3_5fconst_2ecpp_19',['3x3_const.cpp',['../3x3__const_8cpp.xhtml',1,'']]]
+  ['3x3_5fconst_2ecpp_19',['3x3_const.cpp',['../3x3__const_8cpp.xhtml',1,'']]],
+  ['3x3_5fmp_5funits_5feigen_2ecpp_20',['3x3_mp_units_eigen.cpp',['../addition_23x3__mp__units__eigen_8cpp.xhtml',1,'(Global Namespace)'],['../subtraction_23x3__mp__units__eigen_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['3x3_5fmp_5funits_5feigen_5ffail_2ecpp_21',['3x3_mp_units_eigen_fail.cpp',['../addition_23x3__mp__units__eigen__fail_8cpp.xhtml',1,'(Global Namespace)'],['../subtraction_23x3__mp__units__eigen__fail_8cpp.xhtml',1,'(Global Namespace)']]]
 ];

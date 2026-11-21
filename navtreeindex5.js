@@ -1,5 +1,11 @@
 var NAVTREEINDEX5 =
 {
+"matrix__frob__norm_21x2__eigen_8cpp.xhtml":[17,0,6,18,2],
+"matrix__frob__norm_21x2__eigen_8cpp_source.xhtml":[17,0,6,18,2],
+"matrix__frob__norm_22x1__au__std__fail_8cpp.xhtml":[17,0,6,18,3],
+"matrix__frob__norm_22x1__au__std__fail_8cpp_source.xhtml":[17,0,6,18,3],
+"matrix__frob__norm_22x1__mp__units__eigen__fail_8cpp.xhtml":[17,0,6,18,4],
+"matrix__frob__norm_22x1__mp__units__eigen__fail_8cpp_source.xhtml":[17,0,6,18,4],
 "matrix__frob__norm_22x2__au__eigen_8cpp.xhtml":[17,0,6,18,5],
 "matrix__frob__norm_22x2__au__eigen_8cpp.xhtml#ac8cbc10d83ba0975f96294e0f1bfcb13":[17,0,6,18,5,0],
 "matrix__frob__norm_22x2__au__eigen_8cpp_source.xhtml":[17,0,6,18,5],
@@ -243,11 +249,5 @@ var NAVTREEINDEX5 =
 "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run":[10,0],
 "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#installation-packages":[10,0,2],
 "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#linux":[10,0,2,0],
-"md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#tests--samples":[10,0,0],
-"md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#windows":[10,0,2,1],
-"md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml":[11],
-"md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#reporting-a-vulnerability":[11,1],
-"md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#supported-versions":[11,0],
-"md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml":[2],
-"md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#results":[2,0]
+"md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#tests--samples":[10,0,0]
 };
