@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+pass("offset_unit" BACKENDS "mp_units_eigen" "mp_units_sparse")
 pass("representation" BACKENDS "mp_units_eigen")
 pass("round_trip" BACKENDS "mp_units_eigen" "mp_units_sparse")
 pass("typed_vector_as_quantity" BACKENDS "mp_units_eigen" "mp_units_sparse")
