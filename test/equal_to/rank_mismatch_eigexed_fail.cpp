@@ -31,8 +31,6 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <cassert>
-
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the equal to operator rejects matrices of different
@@ -41,7 +39,7 @@ namespace {
   const matrix<double, 1, 2> a{1., 2.};
   const matrix<double, 2, 2> b{{1., 2.}, {3., 4.}};
 
-  assert(a == b);
+  [[maybe_unused]] const auto equal{a == b};
 
   return 0;
 }()};

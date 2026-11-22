@@ -34,7 +34,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <au/units/meters.hh>
 #include <au/units/seconds.hh>
 
-#include <cassert>
 #include <tuple>
 
 namespace fcarouge::test {
@@ -53,7 +52,7 @@ namespace {
   matrix<representation, std::tuple<time, time>, std::tuple<time, time, time>>
       b;
 
-  assert(a == b);
+  [[maybe_unused]] const auto equal{a == b};
 
   return 0;
 }()};
