@@ -33,8 +33,6 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <au/units/meters.hh>
 
-#include <cassert>
-
 namespace fcarouge::test {
 using representation = double;
 
@@ -57,7 +55,7 @@ namespace {
   const row_vector<representation, length, length> a{1. * m, 2. * m};
   const row_vector<representation, area, area> b{1. * m2, 2. * m2};
 
-  assert(a == b);
+  [[maybe_unused]] const auto equal{a == b};
 
   return 0;
 }()};

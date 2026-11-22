@@ -34,8 +34,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <units/area.h>
 #include <units/length.h>
 
-#include <cassert>
-
 namespace fcarouge::test {
 using units::m;
 using units::m2;
@@ -56,7 +54,7 @@ namespace {
 
   const row_vector<representation, length> b{2. * m};
 
-  assert(a == b);
+  [[maybe_unused]] const auto equal{a == b};
 
   return 0;
 }()};

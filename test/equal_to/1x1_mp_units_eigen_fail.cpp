@@ -31,8 +31,6 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
 
-#include <cassert>
-
 namespace fcarouge::test {
 using representation = double;
 
@@ -57,7 +55,7 @@ namespace {
 
   const row_vector<representation, length> b{2. * m};
 
-  assert(a == b);
+  [[maybe_unused]] const auto equal{a == b};
 
   return 0;
 }()};
