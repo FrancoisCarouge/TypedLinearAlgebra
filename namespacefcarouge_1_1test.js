@@ -721,6 +721,10 @@ var namespacefcarouge_1_1test =
       [ "singleton", "namespacefcarouge_1_1test_1_1anonymous__namespace_02nholthaus__std_8cpp_03.xhtml#aaf8770fb35d2831cf95982a15e84d172", null ],
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02nholthaus__std_8cpp_03.xhtml#a47cfbaea4c033ad57690e623500f905f", null ]
     ] ],
+    [ "anonymous_namespace{offset_unit.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02offset__unit_8cpp_03.xhtml", [
+      [ "temperature", "namespacefcarouge_1_1test_1_1anonymous__namespace_02offset__unit_8cpp_03.xhtml#a4ef3bc803e857b52c9cbe4237ad3f680", null ],
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02offset__unit_8cpp_03.xhtml#a339121391bee825e25f17b47200d0d22", null ]
+    ] ],
     [ "anonymous_namespace{position_velocity_au_eigen.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02position__velocity__au__eigen_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02position__velocity__au__eigen_8cpp_03.xhtml#a8dc2598d350b895e4d64c62f3e335b25", null ]
     ] ],

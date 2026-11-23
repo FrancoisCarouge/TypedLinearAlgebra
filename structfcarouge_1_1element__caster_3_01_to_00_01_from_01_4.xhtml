@@ -290,7 +290,7 @@ template&lt;nholthaus_quantity To, typename From &gt; </div>
 <div class="line"><span class="lineno">   85</span>                  <span class="stringliteral">&quot;quantity representation type to guarantee the conversion is &quot;</span></div>
 <div class="line"><span class="lineno">   86</span>                  <span class="stringliteral">&quot;explicitly decided by the end-user.&quot;</span>);</div>
 <div class="line"><span class="lineno">   87</span> </div>
-<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">return</span> value * To::reference;</div>
+<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">return</span> To{value, To::reference};</div>
 <div class="line"><span class="lineno">   89</span>  }</div>
 </div><!-- fragment -->
 </div>
