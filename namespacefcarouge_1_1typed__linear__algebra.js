@@ -40,6 +40,8 @@ var namespacefcarouge_1_1typed__linear__algebra =
       [ "write_element", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#ad8b49524f3f1b03ddf34a0c5d6c10293", null ],
       [ "write_element_at", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#af57c49d9548374b07edffc09ebed17ed", null ],
       [ "!requires", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a78930c589db3e9281461c7040f16c208", null ],
+      [ "distinct_columns", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#ae0167a64e0b4b4d676624547165cb54a", null ],
+      [ "distinct_rows", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a5d2dbce712efb6360a9a86d2c84e4963", null ],
       [ "is_constructible_tuple_like_v", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#afc5ec77bcdbc3ccad4b052e5f1e7b475", null ],
       [ "is_convertible_tuple_like_v", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a87e17afa739b457ae25fb330173e3214", null ],
       [ "is_identity_indexes", "namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a6f547db16f0463ccda833ee73b42f8c9", null ],

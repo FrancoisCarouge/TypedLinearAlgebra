@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['elements_0',['elements',['../structfcarouge_1_1freestanding_1_1matrix.xhtml#a2ab2a888f5829605b691c6ae44583ebe',1,'fcarouge::freestanding::matrix']]],
-  ['extents_5fsize_1',['extents_size',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__std_8cpp_03.xhtml#a029a815cdafeb9c0ff113a78e4ca31bc',1,'fcarouge::sample::anonymous_namespace{au_std.cpp}::extents_size'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#abadda8a5417037ae0b6596f861948290',1,'fcarouge::sample::anonymous_namespace{mp_units_std.cpp}::extents_size']]]
+  ['distinct_5fcolumns_0',['distinct_columns',['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#ae0167a64e0b4b4d676624547165cb54a',1,'fcarouge::typed_linear_algebra::internal']]],
+  ['distinct_5frows_1',['distinct_rows',['../namespacefcarouge_1_1typed__linear__algebra_1_1internal.xhtml#a5d2dbce712efb6360a9a86d2c84e4963',1,'fcarouge::typed_linear_algebra::internal']]]
 ];

@@ -133,27 +133,27 @@ Variables</h2></td></tr>
 <div class="line">  matrix&lt;representation, std::tuple&lt;time, time&gt;, std::tuple&lt;time, time, time&gt;&gt;</div>
 <div class="line">      b;</div>
 <div class="line"> </div>
-<div class="line">  assert(a == b);</div>
+<div class="line">  [[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> equal{a == b};</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000174">Test</a></b></dt><dd>Verifies the rectangular matrix equal to operator rejects incompatible element types. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000176">Test</a></b></dt><dd>Verifies the rectangular matrix equal to operator rejects incompatible element types. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="2x3__au__eigen__fail_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="2x3__au__eigen__fail_8cpp_source.xhtml">2x3_au_eigen_fail.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>                                {[] {</div>
-<div class="line"><span class="lineno">   47</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">length</a> = au::QuantityD&lt;au::Meters&gt;;</div>
-<div class="line"><span class="lineno">   48</span>  <span class="keyword">using </span>time = au::QuantityD&lt;au::Seconds&gt;;</div>
-<div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;representation, std::tuple&lt;length, length&gt;</a>,</div>
-<div class="line"><span class="lineno">   51</span>         std::tuple&lt;length, length, length&gt;&gt;</div>
-<div class="line"><span class="lineno">   52</span>      a;</div>
-<div class="line"><span class="lineno">   53</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;representation, std::tuple&lt;time, time&gt;</a>, std::tuple&lt;time, time, time&gt;&gt;</div>
-<div class="line"><span class="lineno">   54</span>      b;</div>
-<div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>  assert(a == b);</div>
-<div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   59</span>}()};</div>
+<p class="definition">Definition at line <a class="el" href="2x3__au__eigen__fail_8cpp_source.xhtml#l00045">45</a> of file <a class="el" href="2x3__au__eigen__fail_8cpp_source.xhtml">2x3_au_eigen_fail.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   45</span>                                {[] {</div>
+<div class="line"><span class="lineno">   46</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">length</a> = au::QuantityD&lt;au::Meters&gt;;</div>
+<div class="line"><span class="lineno">   47</span>  <span class="keyword">using </span>time = au::QuantityD&lt;au::Seconds&gt;;</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;representation, std::tuple&lt;length, length&gt;</a>,</div>
+<div class="line"><span class="lineno">   50</span>         std::tuple&lt;length, length, length&gt;&gt;</div>
+<div class="line"><span class="lineno">   51</span>      a;</div>
+<div class="line"><span class="lineno">   52</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;representation, std::tuple&lt;time, time&gt;</a>, std::tuple&lt;time, time, time&gt;&gt;</div>
+<div class="line"><span class="lineno">   53</span>      b;</div>
+<div class="line"><span class="lineno">   54</span> </div>
+<div class="line"><span class="lineno">   55</span>  [[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> equal{a == b};</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   58</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_a0fa52776262afae30db82d7c0a9339ac"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">fcarouge::armadillo::matrix</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Armadillo matrix.</div><div class="ttdef"><b>Definition</b> <a href="armadillo_8hpp_source.xhtml#l00091">armadillo.hpp:91</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml_a7194bc200104fad679ef56587aaec86f"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">fcarouge::test::length</a></div><div class="ttdeci">au::QuantityD&lt; au::Meters &gt; length</div><div class="ttdef"><b>Definition</b> <a href="test_2format_2au__eigen_8cpp_source.xhtml#l00045">au_eigen.cpp:45</a></div></div>
 </div><!-- fragment -->
