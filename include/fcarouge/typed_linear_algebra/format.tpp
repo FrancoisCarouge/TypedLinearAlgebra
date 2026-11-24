@@ -71,14 +71,17 @@ struct std::formatter<fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>,
 
       format_context.advance_to(std::format_to(format_context.out(), "["));
 
-      fcarouge::tla::for_constexpr<columns>([&value, &format_context,
-                                             &i](auto j) {
+      // The row index is named by the type of `i` rather than by a reference
+      // capture of it: MSVC 19.52 rejects a reference capture as a template
+      // argument, although its conversion reads no state.
+      fcarouge::tla::for_constexpr<columns>([&value, &format_context](auto j) {
         if constexpr (j > 0) {
           format_context.advance_to(std::format_to(format_context.out(), ", "));
         }
 
-        format_context.advance_to(std::format_to(format_context.out(), "{}",
-                                                 value.template at<i, j>()));
+        format_context.advance_to(
+            std::format_to(format_context.out(), "{}",
+                           value.template at<decltype(i)::value, j>()));
       });
 
       format_context.advance_to(std::format_to(format_context.out(), "]"));
