@@ -35,9 +35,9 @@ var classfcarouge_1_1typed__matrix =
     [ "columns", "classfcarouge_1_1typed__matrix.xhtml#ac58c4338ccd368b56b8dcf8d5c189769", null ],
     [ "rank", "classfcarouge_1_1typed__matrix.xhtml#a187f5727fc775dc07aff603ee5f66c30", null ],
     [ "rows", "classfcarouge_1_1typed__matrix.xhtml#afd5534246d7ed85750e1cf58e2b85f5b", null ],
-    [ "second_value", "classfcarouge_1_1typed__matrix.xhtml#ad141a90cb2a922aa08f840f7a0a863fc", null ],
     [ "second_value", "classfcarouge_1_1typed__matrix.xhtml#a0950a08ca40ab315141910fa55d01c5e", null ],
+    [ "second_value", "classfcarouge_1_1typed__matrix.xhtml#ad141a90cb2a922aa08f840f7a0a863fc", null ],
     [ "storage", "classfcarouge_1_1typed__matrix.xhtml#a4329fed7250ec71b8b0312accb3ddff6", null ],
-    [ "values", "classfcarouge_1_1typed__matrix.xhtml#a7b479e434ccb36e8f13c7baa4bffd28e", null ],
-    [ "values", "classfcarouge_1_1typed__matrix.xhtml#aa8fa6e62076ce73228ee6caa855af402", null ]
+    [ "values", "classfcarouge_1_1typed__matrix.xhtml#aa8fa6e62076ce73228ee6caa855af402", null ],
+    [ "values", "classfcarouge_1_1typed__matrix.xhtml#a7b479e434ccb36e8f13c7baa4bffd28e", null ]
 ];

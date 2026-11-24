@@ -1,12 +1,5 @@
 var searchData=
 [
-  ['test_20code_20coverage_0',['Unit Test Code Coverage',['../unit_test_coverage.xhtml',1,'']]],
-  ['test_20list_1',['Test List',['../test.xhtml',1,'']]],
-  ['time_20call_20traces_2',['Run-Time Call Traces',['../call_trace.xhtml',1,'']]],
-  ['time_20traces_3',['Compile-Time Traces',['../time_trace.xhtml',1,'']]],
-  ['to_20typedlinearalgebra_4',['Contributing to TypedLinearAlgebra',['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml',1,'']]],
-  ['todo_20list_5',['Todo List',['../todo.xhtml',1,'']]],
-  ['traces_6',['Traces',['../time_trace.xhtml',1,'Compile-Time Traces'],['../call_trace.xhtml',1,'Run-Time Call Traces']]],
-  ['typed_20linear_20algebra_7',['François Carouge / Typed Linear Algebra',['../index.xhtml',1,'']]],
-  ['typedlinearalgebra_8',['Contributing to TypedLinearAlgebra',['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml',1,'']]]
+  ['header_0',['Core header',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#core-header',1,'']]],
+  ['hooks_1',['Pre-commit Hooks',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pre-commit-hooks',1,'']]]
 ];

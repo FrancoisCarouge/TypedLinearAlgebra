@@ -1,5 +1,12 @@
 var searchData=
 [
-  ['agents_20md_0',['AGENTS.md',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml',1,'']]],
-  ['algebra_1',['François Carouge / Typed Linear Algebra',['../index.xhtml',1,'']]]
+  ['0_201_200_202026_2003_2016_0',['&lt;a href=&quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra/releases/tag/0.1.0&quot;&gt;0.1.0&lt;/a&gt; - 2026-03-16',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md010---2026-03-16',1,'']]],
+  ['0_202_200_202026_2006_2030_1',['&lt;a href=&quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra/compare/0.1.0...0.2.0&quot;&gt;0.2.0&lt;/a&gt; - 2026-06-30',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md020---2026-06-30',1,'']]],
+  ['0_202026_2003_2016_2',['&lt;a href=&quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra/releases/tag/0.1.0&quot;&gt;0.1.0&lt;/a&gt; - 2026-03-16',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md010---2026-03-16',1,'']]],
+  ['0_202026_2006_2030_3',['&lt;a href=&quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra/compare/0.1.0...0.2.0&quot;&gt;0.2.0&lt;/a&gt; - 2026-06-30',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md020---2026-06-30',1,'']]],
+  ['0_202026_2009_2012_4',['&lt;a href=&quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra/compare/0.2.0...0.3.0&quot;&gt;0.3.0&lt;/a&gt; - 2026-09-12',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2026-09-12',1,'']]],
+  ['0_203_200_202026_2009_2012_5',['&lt;a href=&quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra/compare/0.2.0...0.3.0&quot;&gt;0.3.0&lt;/a&gt; - 2026-09-12',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2026-09-12',1,'']]],
+  ['03_2016_6',['&lt;a href=&quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra/releases/tag/0.1.0&quot;&gt;0.1.0&lt;/a&gt; - 2026-03-16',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md010---2026-03-16',1,'']]],
+  ['06_2030_7',['&lt;a href=&quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra/compare/0.1.0...0.2.0&quot;&gt;0.2.0&lt;/a&gt; - 2026-06-30',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md020---2026-06-30',1,'']]],
+  ['09_2012_8',['&lt;a href=&quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra/compare/0.2.0...0.3.0&quot;&gt;0.3.0&lt;/a&gt; - 2026-09-12',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2026-09-12',1,'']]]
 ];

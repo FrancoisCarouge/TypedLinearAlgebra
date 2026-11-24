@@ -26,67 +26,74 @@ var NAVTREE =
 [
   [ "Typed Linear Algebra", "index.xhtml", [
     [ "François Carouge / Typed Linear Algebra", "index.xhtml", "index" ],
-    [ "AGENTS.md", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml", [
-      [ "AI agent conduct", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#ai-agent-conduct", null ],
-      [ "Build & test", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#build--test", null ]
-    ] ],
-    [ "Benchmarks", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml", [
-      [ "Results", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#results", null ]
-    ] ],
-    [ "Changelog", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml", [
-      [ "0.3.0 - 2026-09-12", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2026-09-12", [
-        [ "Added", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added", null ],
-        [ "Changed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#changed", null ],
-        [ "Compiler & Build", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build", null ],
-        [ "Fixed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#fixed", null ],
-        [ "Dependencies", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#dependencies", null ]
+    [ "AGENTS.md", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml", [
+      [ "AI agent conduct", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#ai-agent-conduct", null ],
+      [ "Build &amp; test", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#build--test", null ],
+      [ "Architecture", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#architecture", [
+        [ "Core header", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#core-header", null ],
+        [ "Backend plug-in pattern", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#backend-plug-in-pattern", null ],
+        [ "Algorithms (<span class=\"tt\">include/fcarouge/typed_linear_algebra/algorithm/</span>)", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#algorithms-includefcarougetyped_linear_algebraalgorithm", null ],
+        [ "Test/benchmark generation (<span class=\"tt\">support/support.cmake</span>)", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#testbenchmark-generation-supportsupportcmake", null ],
+        [ "Other directories", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#other-directories", null ]
       ] ],
-      [ "0.2.0 - 2026-06-30", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md020---2026-06-30", [
-        [ "Added", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added-1", null ],
-        [ "Changed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#changed-1", null ],
-        [ "Breaking Changes & Build Requirements", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#breaking-changes--build-requirements", null ],
-        [ "Fixed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#fixed-1", null ],
-        [ "Dependencies", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#dependencies-1", null ]
+      [ "Recipe: adding an algorithm", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#recipe-adding-an-algorithm", null ],
+      [ "Completion checklist", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#completion-checklist", null ],
+      [ "Conventions", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#conventions", null ]
+    ] ],
+    [ "Changelog", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml", [
+      [ "<a href=\"https://github.com/FrancoisCarouge/TypedLinearAlgebra/compare/0.2.0...0.3.0\">0.3.0</a> - 2026-09-12", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2026-09-12", [
+        [ "Added", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#added", null ],
+        [ "Changed", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#changed", null ],
+        [ "Compiler &amp; Build", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build", null ],
+        [ "Fixed", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#fixed", null ],
+        [ "Dependencies", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#dependencies", null ]
       ] ],
-      [ "0.1.0 - 2026-03-16", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md010---2026-03-16", [
-        [ "Added", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added-2", null ],
-        [ "Compiler & Build", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-1", null ]
+      [ "<a href=\"https://github.com/FrancoisCarouge/TypedLinearAlgebra/compare/0.1.0...0.2.0\">0.2.0</a> - 2026-06-30", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md020---2026-06-30", [
+        [ "Added", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#added-1", null ],
+        [ "Changed", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#changed-1", null ],
+        [ "Breaking Changes &amp; Build Requirements", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#breaking-changes--build-requirements", null ],
+        [ "Fixed", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#fixed-1", null ],
+        [ "Dependencies", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#dependencies-1", null ]
+      ] ],
+      [ "<a href=\"https://github.com/FrancoisCarouge/TypedLinearAlgebra/releases/tag/0.1.0\">0.1.0</a> - 2026-03-16", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md010---2026-03-16", [
+        [ "Added", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#added-2", null ],
+        [ "Compiler &amp; Build", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-1", null ]
       ] ]
     ] ],
-    [ "Contributor Covenant Code of Conduct", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml", [
-      [ "Our Pledge", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-pledge", null ],
-      [ "Our Standards", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-standards", null ],
-      [ "Our Responsibilities", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-responsibilities", null ],
-      [ "Scope", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#scope", null ],
-      [ "Enforcement", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#enforcement", null ],
-      [ "Attribution", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution", null ]
+    [ "Contributor Covenant Code of Conduct", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml", [
+      [ "Our Pledge", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-pledge", null ],
+      [ "Our Standards", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-standards", null ],
+      [ "Our Responsibilities", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-responsibilities", null ],
+      [ "Scope", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#scope", null ],
+      [ "Enforcement", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#enforcement", null ],
+      [ "Attribution", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution", null ]
     ] ],
-    [ "Contributing to TypedLinearAlgebra", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml", [
-      [ "Code of Conduct", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#code-of-conduct", null ],
-      [ "Reporting Bugs", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#reporting-bugs", null ],
-      [ "Requesting Features", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#requesting-features", null ],
-      [ "Security Policy", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#security-policy", null ],
-      [ "Questions & Ideas", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#questions--ideas", null ],
-      [ "Pre-commit Hooks", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pre-commit-hooks", null ],
-      [ "Pull Request Merge Checklist", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pull-request-merge-checklist", null ]
+    [ "Contributing to TypedLinearAlgebra", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml", [
+      [ "Code of Conduct", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#code-of-conduct", null ],
+      [ "Reporting Bugs", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#reporting-bugs", null ],
+      [ "Requesting Features", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#requesting-features", null ],
+      [ "Security Policy", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#security-policy", null ],
+      [ "Questions &amp; Ideas", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#questions--ideas", null ],
+      [ "Pre-commit Hooks", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pre-commit-hooks", null ],
+      [ "Pull Request Merge Checklist", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pull-request-merge-checklist", null ]
     ] ],
-    [ "Contributors", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_o_r_s.xhtml", null ],
+    [ "Contributors", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_o_r_s.xhtml", null ],
     [ "Unit Test Code Coverage", "unit_test_coverage.xhtml", null ],
     [ "Compile-Time Traces", "time_trace.xhtml", null ],
     [ "Run-Time Call Traces", "call_trace.xhtml", null ],
-    [ "Installation", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml", [
-      [ "Development Build & Run", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run", [
-        [ "Tests & Samples", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#tests--samples", null ],
-        [ "Benchmarks", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#benchmarks-1", null ],
-        [ "Installation Packages", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#installation-packages", [
-          [ "Linux", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#linux", null ],
-          [ "Windows", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#windows", null ]
+    [ "Installation", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_i_n_s_t_a_l_l.xhtml", [
+      [ "Development Build &amp; Run", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_i_n_s_t_a_l_l.xhtml#development-build--run", [
+        [ "Tests &amp; Samples", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_i_n_s_t_a_l_l.xhtml#tests--samples", null ],
+        [ "Benchmarks", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_i_n_s_t_a_l_l.xhtml#benchmarks-1", null ],
+        [ "Installation Packages", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_i_n_s_t_a_l_l.xhtml#installation-packages", [
+          [ "Linux", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_i_n_s_t_a_l_l.xhtml#linux", null ],
+          [ "Windows", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_i_n_s_t_a_l_l.xhtml#windows", null ]
         ] ]
       ] ]
     ] ],
-    [ "Security Policy", "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml", [
-      [ "Supported Versions", "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#supported-versions", null ],
-      [ "Reporting a Vulnerability", "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#reporting-a-vulnerability", null ]
+    [ "Security Policy", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_s_e_c_u_r_i_t_y.xhtml", [
+      [ "Supported Versions", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_s_e_c_u_r_i_t_y.xhtml#supported-versions", null ],
+      [ "Reporting a Vulnerability", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_s_e_c_u_r_i_t_y.xhtml#reporting-a-vulnerability", null ]
     ] ],
     [ "Todo List", "todo.xhtml", null ],
     [ "Test List", "test.xhtml", null ],
@@ -126,21 +133,19 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "1x1__array_8cpp.xhtml",
-"addition_21x2__au__eigen__fail_8cpp_source.xhtml",
-"classfcarouge_1_1not__realtime.xhtml#acbf906c37a79fc4791ab2997360b2b60",
-"conversion__chrono_8cpp_source.xhtml",
-"element_21x1__mp__units__eigen__fail_8cpp.xhtml",
-"matrix__frob__norm_21x2__eigen_8cpp.xhtml",
-"md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#windows",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02au__eigen_8cpp_03.xhtml#a21aa6560df20cbba27b26052c8097645",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_021x3__mp__units__std_8cpp_03.xhtml#ad81098d1d123ccd993df3be8e4a9ce0a",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02chrono__std_8cpp_03.xhtml#a83b08040223f61e5f8de47c94e90e1d4",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02scalar__constraint_8cpp_03.xhtml#a4b881ed37ebe99e9543aa0e499f4d778",
-"nholthaus__armadillo_8cpp.xhtml#aac6aa06f59365bfea000eefe88c75a23",
-"std__array_2dot__1x2__nholthaus__std_8cpp_source.xhtml",
-"subtraction_21x2__au__eigen_8cpp_source.xhtml",
-"underlying__expression_8cpp.xhtml#a216b639c394c14be6e1ec4cd8f496756"
+"au__armadillo_8cpp_source.xhtml",
+"conceptfcarouge_1_1test_1_1anonymous__namespace_02scalar__constraint_8cpp_03_1_1multipliable__by.xhtml",
+"element_21x1__au__eigen__fail_8cpp_source.xhtml",
+"matrix__inf__norm_21x1__eigen_8cpp_source.xhtml",
+"multiplication_21x1__chrono__eigen__fail_8cpp_source.xhtml",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#ad933da5af1bf8ebc56a07d958a23b2bc",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_022x3__mp__units__eigen_8cpp_03.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02element__mp__units__std__fail_8cpp_03.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03.xhtml#ad0683250fea316f9433c07de8040fc5a",
+"scalar__constraint_8cpp.xhtml",
+"subtraction_21x1__au__std_8cpp.xhtml"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+const SYNCONMSG = 'click to disable panel synchronization';
+const SYNCOFFMSG = 'click to enable panel synchronization';
+const LISTOFALLMEMBERS = 'List of all members';

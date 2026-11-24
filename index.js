@@ -1,6 +1,6 @@
 var index =
 [
-    [ "Installation & Usage", "index.xhtml#installation--usage", null ],
+    [ "Installation &amp; Usage", "index.xhtml#installation--usage", null ],
     [ "Reference", "index.xhtml#reference", [
       [ "Layers", "index.xhtml#layers", null ],
       [ "CMake", "index.xhtml#cmake", null ],
@@ -25,17 +25,17 @@ var index =
     [ "More", "index.xhtml#more", [
       [ "Use Cases", "index.xhtml#use-cases", null ],
       [ "As seen at CppNow 2026", "index.xhtml#as-seen-at-cppnow-2026", null ],
-      [ "Roadmap & Vision", "index.xhtml#roadmap--vision", null ],
+      [ "Roadmap &amp; Vision", "index.xhtml#roadmap--vision", null ],
       [ "Lessons Learned", "index.xhtml#lessons-learned", null ],
       [ "Projects", "index.xhtml#projects", null ],
       [ "Resources", "index.xhtml#resources", null ],
       [ "Third Party Acknowledgement", "index.xhtml#third-party-acknowledgement", null ],
       [ "Contributors", "index.xhtml#contributors-1", null ],
       [ "Sponsors", "index.xhtml#sponsors", [
-        [ "Corporations & Institutions", "index.xhtml#corporations--institutions", null ],
+        [ "Corporations &amp; Institutions", "index.xhtml#corporations--institutions", null ],
         [ "Individuals", "index.xhtml#individuals", null ]
       ] ],
-      [ "Commercial Support & Consulting", "index.xhtml#commercial-support--consulting", null ]
+      [ "Commercial Support &amp; Consulting", "index.xhtml#commercial-support--consulting", null ]
     ] ],
     [ "License", "index.xhtml#license", null ]
 ];

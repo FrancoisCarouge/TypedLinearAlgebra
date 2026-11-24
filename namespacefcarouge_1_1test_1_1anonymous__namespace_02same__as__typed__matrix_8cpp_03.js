@@ -1,7 +1,7 @@
 var namespacefcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03 =
 [
-    [ "derived", "structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1derived.xhtml", null ],
     [ "fake", "structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1fake.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1fake" ],
+    [ "derived", "structfcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03_1_1derived.xhtml", null ],
     [ "base", "namespacefcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03.xhtml#a24fd1e26804a196bf4f847cf143ac4d3", null ],
     [ "column", "namespacefcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03.xhtml#a6e238c2def79609061fd0d393f82e157", null ],
     [ "full", "namespacefcarouge_1_1test_1_1anonymous__namespace_02same__as__typed__matrix_8cpp_03.xhtml#a92dedf7eb6fd575ec96fd923a67f53e0", null ],
