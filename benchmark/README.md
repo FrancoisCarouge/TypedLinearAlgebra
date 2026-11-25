@@ -1,5 +1,22 @@
 # Benchmarks
 
+## Embedded Footprint
+
+The [embedded footprint](https://francoiscarouge.github.io/TypedLinearAlgebra/footprint.xhtml) measures the flash, RAM, and worst-case stack sizes of each operation of the freestanding backend, for the [configurations](https://github.com/FrancoisCarouge/TypedLinearAlgebra/tree/master/benchmark/footprint) of single precision floating point matrices, per optimization level, on a bare-metal Arm Cortex-M4 target. Each operation is measured on the typed matrix and on its untyped storage, against the same criteria where the typing costs zero bytes.
+
+Measure on Linux with the Arm GNU Toolchain:
+
+```shell
+git clone --depth 1 "https://github.com/FrancoisCarouge/TypedLinearAlgebra" "linalg"
+cmake -S "linalg" -B "build" --toolchain "cmake/toolchain_arm_cortex_m4.cmake"
+cmake --build "build" --parallel
+ctest --test-dir "build" --output-on-failure --parallel
+```
+
+The tests write the measurements to `build/footprint/index.html`, and fail on any size change, larger or smaller, from its `footprint()` line in [footprint/CMakeLists.txt](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/benchmark/footprint/CMakeLists.txt). The criteria hold for the toolchain of the continuous integration runner, `gcc-arm-none-eabi` 14.2 on Ubuntu 26.04. To accept a change, update the line, with its reason in the commit message.
+
+## Speed
+
 Build and run the benchmarks on Windows platform:
 
 ```shell

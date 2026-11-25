@@ -33,6 +33,12 @@ if(NOT BUILD_TESTING)
   return()
 endif()
 
+add_subdirectory("footprint")
+
+if(CMAKE_CROSSCOMPILING)
+  return()
+endif()
+
 FetchContent_Declare(
   nanobench
   GIT_REPOSITORY "https://github.com/martinus/nanobench.git"
