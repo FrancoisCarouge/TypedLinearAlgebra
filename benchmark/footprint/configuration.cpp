@@ -50,7 +50,8 @@ using storage_factor = freestanding::matrix<float, columns, rows>;
 } // namespace fcarouge::benchmark
 
 //! @brief The entry points of the operations, each linked alone, of the typed
-//! matrix and of its freestanding storage.
+//! matrix and of its freestanding storage, named after their variant and
+//! operation.
 //!
 //! @details The operands are the caller's. A matrix result is statically
 //! allocated, a scalar result returned. The equality has no storage operation:
@@ -61,95 +62,93 @@ using fcarouge::benchmark::storage_factor;
 using fcarouge::benchmark::typed;
 using fcarouge::benchmark::typed_factor;
 
-[[gnu::flatten]] auto typed_addition_step(const typed &lhs, const typed &rhs)
+[[gnu::flatten]] auto typed_addition(const typed &lhs, const typed &rhs)
     -> const decltype(lhs + rhs) * {
   static decltype(lhs + rhs) result;
   result = lhs + rhs;
   return &result;
 }
 
-[[gnu::flatten]] auto storage_addition_step(const storage &lhs,
-                                            const storage &rhs) -> const
-    decltype(lhs + rhs) * {
+[[gnu::flatten]] auto storage_addition(const storage &lhs, const storage &rhs)
+    -> const decltype(lhs + rhs) * {
   static decltype(lhs + rhs) result;
   result = lhs + rhs;
   return &result;
 }
 
-[[gnu::flatten]] auto typed_subtraction_step(const typed &lhs, const typed &rhs)
+[[gnu::flatten]] auto typed_subtraction(const typed &lhs, const typed &rhs)
     -> const decltype(lhs - rhs) * {
   static decltype(lhs - rhs) result;
   result = lhs - rhs;
   return &result;
 }
 
-[[gnu::flatten]] auto storage_subtraction_step(const storage &lhs,
-                                               const storage &rhs) -> const
+[[gnu::flatten]] auto storage_subtraction(const storage &lhs,
+                                          const storage &rhs) -> const
     decltype(lhs - rhs) * {
   static decltype(lhs - rhs) result;
   result = lhs - rhs;
   return &result;
 }
 
-[[gnu::flatten]] auto typed_negation_step(const typed &value) -> const
+[[gnu::flatten]] auto typed_negation(const typed &value) -> const
     decltype(-value) * {
   static decltype(-value) result;
   result = -value;
   return &result;
 }
 
-[[gnu::flatten]] auto storage_negation_step(const storage &value) -> const
+[[gnu::flatten]] auto storage_negation(const storage &value) -> const
     decltype(-value) * {
   static decltype(-value) result;
   result = -value;
   return &result;
 }
 
-[[gnu::flatten]] auto typed_product_step(const typed &lhs,
-                                         const typed_factor &rhs) -> const
-    decltype(lhs * rhs) * {
-  static decltype(lhs * rhs) result;
-  result = lhs * rhs;
-  return &result;
-}
-
-[[gnu::flatten]] auto storage_product_step(const storage &lhs,
-                                           const storage_factor &rhs) -> const
-    decltype(lhs * rhs) * {
-  static decltype(lhs * rhs) result;
-  result = lhs * rhs;
-  return &result;
-}
-
-[[gnu::flatten]] auto typed_scale_step(const typed &lhs, float rhs) -> const
-    decltype(lhs * rhs) * {
-  static decltype(lhs * rhs) result;
-  result = lhs * rhs;
-  return &result;
-}
-
-[[gnu::flatten]] auto storage_scale_step(const storage &lhs, float rhs) -> const
-    decltype(lhs * rhs) * {
-  static decltype(lhs * rhs) result;
-  result = lhs * rhs;
-  return &result;
-}
-
-[[gnu::flatten]] auto typed_left_scale_step(float lhs, const typed &rhs)
+[[gnu::flatten]] auto typed_product(const typed &lhs, const typed_factor &rhs)
     -> const decltype(lhs * rhs) * {
   static decltype(lhs * rhs) result;
   result = lhs * rhs;
   return &result;
 }
 
-[[gnu::flatten]] auto storage_left_scale_step(float lhs, const storage &rhs)
-    -> const decltype(lhs * rhs) * {
+[[gnu::flatten]] auto storage_product(const storage &lhs,
+                                      const storage_factor &rhs) -> const
+    decltype(lhs * rhs) * {
   static decltype(lhs * rhs) result;
   result = lhs * rhs;
   return &result;
 }
 
-[[gnu::flatten]] auto typed_equal_to_step(const typed &lhs, const typed &rhs)
+[[gnu::flatten]] auto typed_scale(const typed &lhs, float rhs) -> const
+    decltype(lhs * rhs) * {
+  static decltype(lhs * rhs) result;
+  result = lhs * rhs;
+  return &result;
+}
+
+[[gnu::flatten]] auto storage_scale(const storage &lhs, float rhs) -> const
+    decltype(lhs * rhs) * {
+  static decltype(lhs * rhs) result;
+  result = lhs * rhs;
+  return &result;
+}
+
+[[gnu::flatten]] auto typed_left_scale(float lhs, const typed &rhs) -> const
+    decltype(lhs * rhs) * {
+  static decltype(lhs * rhs) result;
+  result = lhs * rhs;
+  return &result;
+}
+
+[[gnu::flatten]] auto storage_left_scale(float lhs, const storage &rhs) -> const
+    decltype(lhs * rhs) * {
+  static decltype(lhs * rhs) result;
+  result = lhs * rhs;
+  return &result;
+}
+
+[[gnu::flatten]] auto typed_equal_to(const typed &lhs, const typed &rhs)
     -> bool {
   return lhs == rhs;
 }
