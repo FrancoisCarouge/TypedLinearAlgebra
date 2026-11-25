@@ -215,22 +215,22 @@ Functions</h2></td></tr>
 <tr class="memitem:a5ec0fee7d4cfbbe127a0fb0ca0ace00b template"><td class="memItemLeft">consteval auto&#160;</td><td class="memItemRight"><a class="el" href="#a5ec0fee7d4cfbbe127a0fb0ca0ace00b">all_of_distinct_positions</a> (Predicate predicate) -&gt; bool</td></tr>
 <tr class="memdesc:a5ec0fee7d4cfbbe127a0fb0ca0ace00b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the predicate holds at each compile-time position of typed matrices of the same shape, as a row and a column <span class="tt">std::integral_constant</span> arguments, checked once per distinct combination of their element types.  <br /></td></tr>
 <tr class="memitem:af699ec1d59850ee3df349a2fa6e39832" id="r_af699ec1d59850ee3df349a2fa6e39832"><td class="memTemplParams" colspan="2">template&lt;typename Storage&gt; </td></tr>
-<tr class="memitem:af699ec1d59850ee3df349a2fa6e39832 template"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="#af699ec1d59850ee3df349a2fa6e39832">access_element</a> (Storage &amp;storage, auto row, auto column) -&gt; decltype(storage[row, column])</td></tr>
+<tr class="memitem:af699ec1d59850ee3df349a2fa6e39832 template"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="#af699ec1d59850ee3df349a2fa6e39832">access_element</a> (Storage &amp;storage<a class="el" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>, auto row, auto column) -&gt; decltype(storage<a class="el" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>[row, column])</td></tr>
 <tr class="memdesc:af699ec1d59850ee3df349a2fa6e39832"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the storage element at the given storage row and column.  <br /></td></tr>
 <tr class="memitem:a93decdb5b3f44cad3e8d3bba807852dd" id="r_a93decdb5b3f44cad3e8d3bba807852dd"><td class="memTemplParams" colspan="2">template&lt;std::size_t Columns&gt; </td></tr>
 <tr class="memitem:a93decdb5b3f44cad3e8d3bba807852dd template"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="#a93decdb5b3f44cad3e8d3bba807852dd">storage_position</a> (std::convertible_to&lt; std::size_t &gt; auto... indexes) -&gt; std::array&lt; std::size_t, 2 &gt;</td></tr>
 <tr class="memdesc:a93decdb5b3f44cad3e8d3bba807852dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The storage row and column of the given typed matrix index(es).  <br /></td></tr>
 <tr class="memitem:aeaac2b3147a168c0a834b924fb008364" id="r_aeaac2b3147a168c0a834b924fb008364"><td class="memTemplParams" colspan="2">template&lt;std::size_t Columns, typename Storage&gt; </td></tr>
-<tr class="memitem:aeaac2b3147a168c0a834b924fb008364 template"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="#aeaac2b3147a168c0a834b924fb008364">read_element</a> (Storage &amp;&amp;storage, std::convertible_to&lt; std::size_t &gt; auto... indexes) -&gt; decltype(auto)</td></tr>
+<tr class="memitem:aeaac2b3147a168c0a834b924fb008364 template"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="#aeaac2b3147a168c0a834b924fb008364">read_element</a> (Storage &amp;&amp;storage<a class="el" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>, std::convertible_to&lt; std::size_t &gt; auto... indexes) -&gt; decltype(auto)</td></tr>
 <tr class="memdesc:aeaac2b3147a168c0a834b924fb008364"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the storage element at the given typed matrix index(es).  <br /></td></tr>
 <tr class="memitem:a1af4442a372f6ed7487f3d0c6458db07" id="r_a1af4442a372f6ed7487f3d0c6458db07"><td class="memTemplParams" colspan="2">template&lt;std::size_t Columns, auto... Indexes, typename Storage&gt; </td></tr>
-<tr class="memitem:a1af4442a372f6ed7487f3d0c6458db07 template"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="#a1af4442a372f6ed7487f3d0c6458db07">read_element_at</a> (Storage &amp;&amp;storage) -&gt; decltype(auto)</td></tr>
+<tr class="memitem:a1af4442a372f6ed7487f3d0c6458db07 template"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="#a1af4442a372f6ed7487f3d0c6458db07">read_element_at</a> (Storage &amp;&amp;storage<a class="el" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>) -&gt; decltype(auto)</td></tr>
 <tr class="memdesc:a1af4442a372f6ed7487f3d0c6458db07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the storage element at the given compile-time typed matrix index(es).  <br /></td></tr>
 <tr class="memitem:ad8b49524f3f1b03ddf34a0c5d6c10293" id="r_ad8b49524f3f1b03ddf34a0c5d6c10293"><td class="memTemplParams" colspan="2">template&lt;std::size_t Columns, typename Storage, typename Value&gt; </td></tr>
-<tr class="memitem:ad8b49524f3f1b03ddf34a0c5d6c10293 template"><td class="memItemLeft">constexpr void&#160;</td><td class="memItemRight"><a class="el" href="#ad8b49524f3f1b03ddf34a0c5d6c10293">write_element</a> (Storage &amp;&amp;storage, Value &amp;&amp;value, std::convertible_to&lt; std::size_t &gt; auto... indexes)</td></tr>
+<tr class="memitem:ad8b49524f3f1b03ddf34a0c5d6c10293 template"><td class="memItemLeft">constexpr void&#160;</td><td class="memItemRight"><a class="el" href="#ad8b49524f3f1b03ddf34a0c5d6c10293">write_element</a> (Storage &amp;&amp;storage<a class="el" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>, Value &amp;&amp;value, std::convertible_to&lt; std::size_t &gt; auto... indexes)</td></tr>
 <tr class="memdesc:ad8b49524f3f1b03ddf34a0c5d6c10293"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the storage element at the given typed matrix index(es).  <br /></td></tr>
 <tr class="memitem:af57c49d9548374b07edffc09ebed17ed" id="r_af57c49d9548374b07edffc09ebed17ed"><td class="memTemplParams" colspan="2">template&lt;std::size_t Columns, auto... Indexes, typename Storage, typename Value&gt; </td></tr>
-<tr class="memitem:af57c49d9548374b07edffc09ebed17ed template"><td class="memItemLeft">constexpr void&#160;</td><td class="memItemRight"><a class="el" href="#af57c49d9548374b07edffc09ebed17ed">write_element_at</a> (Storage &amp;&amp;storage, Value &amp;&amp;value)</td></tr>
+<tr class="memitem:af57c49d9548374b07edffc09ebed17ed template"><td class="memItemLeft">constexpr void&#160;</td><td class="memItemRight"><a class="el" href="#af57c49d9548374b07edffc09ebed17ed">write_element_at</a> (Storage &amp;&amp;storage<a class="el" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>, Value &amp;&amp;value)</td></tr>
 <tr class="memdesc:af57c49d9548374b07edffc09ebed17ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the storage element at the given compile-time typed matrix index(es).  <br /></td></tr>
 <tr class="memitem:a28d8419fc35e153a8b037928ac0dcdf6" id="r_a28d8419fc35e153a8b037928ac0dcdf6"><td class="memTemplParams" colspan="2">template&lt;typename To, typename Tuple&gt; </td></tr>
 <tr class="memitem:a28d8419fc35e153a8b037928ac0dcdf6 template"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="#a28d8419fc35e153a8b037928ac0dcdf6">find_first_convertible_index</a> () -&gt; std::size_t</td></tr>
@@ -275,7 +275,7 @@ Variables</h2></td></tr>
 <tr class="memitem:ae0167a64e0b4b4d676624547165cb54a" id="r_ae0167a64e0b4b4d676624547165cb54a"><td class="memTemplParams" colspan="2">template&lt;typename... Matrices&gt; </td></tr>
 <tr class="memitem:ae0167a64e0b4b4d676624547165cb54a template"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="#ae0167a64e0b4b4d676624547165cb54a">distinct_columns</a></td></tr>
 <tr class="memdesc:ae0167a64e0b4b4d676624547165cb54a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The first column of each distinct combination of the column index types of typed matrices of the same shape, and their count.  <br /></td></tr>
-<tr class="memitem:a78930c589db3e9281461c7040f16c208" id="r_a78930c589db3e9281461c7040f16c208"><td class="memItemLeft">&amp;&amp;&#160;</td><td class="memItemRight"><a class="el" href="#a78930c589db3e9281461c7040f16c208">!requires</a> { storage(row, column)</td></tr>
+<tr class="memitem:a78930c589db3e9281461c7040f16c208" id="r_a78930c589db3e9281461c7040f16c208"><td class="memItemLeft">&amp;&amp;&#160;</td><td class="memItemRight"><a class="el" href="#a78930c589db3e9281461c7040f16c208">!requires</a> { <a class="el" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>(row, column)</td></tr>
 <tr class="memitem:a5b8f7212f7676df392e49713c7d9b89a" id="r_a5b8f7212f7676df392e49713c7d9b89a"><td class="memTemplParams" colspan="2">template&lt;std::size_t Rows, std::size_t Columns&gt; </td></tr>
 <tr class="memitem:a5b8f7212f7676df392e49713c7d9b89a template"><td class="memItemLeft">constexpr std::size_t&#160;</td><td class="memItemRight"><a class="el" href="#a5b8f7212f7676df392e49713c7d9b89a">rank</a></td></tr>
 <tr class="memitem:a973ec1b7009ea4755475e3b103da73ca" id="r_a973ec1b7009ea4755475e3b103da73ca"><td class="memTemplParams" colspan="2">template&lt;typename Indexes&gt; </td></tr>
@@ -525,7 +525,7 @@ template&lt;typename Storage&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">auto</td>          <td class="paramname"><span class="paramname"><em>column</em></span>&#160;) -&gt; decltype(storage[row, column])</td>
+          <td class="paramtype">auto</td>          <td class="paramname"><span class="paramname"><em>column</em></span>&#160;) -&gt; decltype(<a class="el" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>[row, column])</td>
         </tr>
       </table>
   </td>
@@ -535,7 +535,8 @@ template&lt;typename Storage&gt; </div>
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{</div>
-<div class="line">  <span class="keywordflow">return</span> storage(row, column)</div>
+<div class="line">  <span class="keywordflow">return</span> <a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>(row, column)</div>
+<div class="ttc" id="aconfiguration_8cpp_xhtml_a7d2a468c8303d74eee49b53932c4c569"><div class="ttname"><a href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a></div><div class="ttdeci">freestanding::matrix&lt; float, rows, columns &gt; storage</div><div class="ttdoc">The entry points of the operations, each linked alone, of the typed matrix and of its freestanding st...</div><div class="ttdef"><b>Definition</b> <a href="configuration_8cpp_source.xhtml#l00048">configuration.cpp:48</a></div></div>
 </div><!-- fragment -->
 <p>Access the storage element at the given storage row and column. </p>
 <p>Tries the storage access syntaxes from most to least specific: a two-index subscript, a two-index call operator, and a two-index <span class="tt">.at()</span> member. Each overload spells its access in its return type, so naming the type of an access only needs the declaration: the body, with its index conversions, is not instantiated. </p>
@@ -1034,12 +1035,12 @@ template&lt;typename To&gt; </div>
 <div class="line"><span class="lineno"> 1027</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<a class="code hl_function" href="#a96df1bb0530f2d566558ee2f626386f3">is_same_scale_typed_matrix&lt;from_matrix, to_matrix&gt;</a>()) {</div>
 <div class="line"><span class="lineno"> 1028</span>    <span class="keywordflow">return</span> std::forward&lt;decltype(from)&gt;(from).data();</div>
 <div class="line"><span class="lineno"> 1029</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno"> 1030</span>    <span class="keyword">using </span>storage = <span class="keyword">typename</span> to_matrix::matrix;</div>
+<div class="line"><span class="lineno"> 1030</span>    <span class="keyword">using </span><a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a> = <span class="keyword">typename</span> to_matrix::matrix;</div>
 <div class="line"><span class="lineno"> 1031</span>    <span class="keyword">using </span>from_underlying = <span class="keyword">typename</span> from_matrix::underlying;</div>
 <div class="line"><span class="lineno"> 1032</span>    <span class="keyword">using </span>to_underlying = <span class="keyword">typename</span> to_matrix::underlying;</div>
 <div class="line"><span class="lineno"> 1033</span> </div>
-<div class="line"><span class="lineno"> 1034</span>    <span class="keyword">const</span> storage evaluated{from.data()};</div>
-<div class="line"><span class="lineno"> 1035</span>    storage result{};</div>
+<div class="line"><span class="lineno"> 1034</span>    <span class="keyword">const</span> <a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a> evaluated{from.data()};</div>
+<div class="line"><span class="lineno"> 1035</span>    <a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a> result{};</div>
 <div class="line"><span class="lineno"> 1036</span> </div>
 <div class="line"><span class="lineno"> 1037</span>    <span class="comment">// The casters are named directly, the `cast` object is declared after the</span></div>
 <div class="line"><span class="lineno"> 1038</span>    <span class="comment">// class.</span></div>
@@ -1062,10 +1063,9 @@ template&lt;typename To&gt; </div>
 <div class="line"><span class="lineno"> 1055</span>      });</div>
 <div class="line"><span class="lineno"> 1056</span>    });</div>
 <div class="line"><span class="lineno"> 1057</span> </div>
-<div class="line"><span class="lineno"> 1058</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25">storage</a>{result};</div>
+<div class="line"><span class="lineno"> 1058</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>{result};</div>
 <div class="line"><span class="lineno"> 1059</span>  }</div>
 <div class="line"><span class="lineno"> 1060</span>}</div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03_xhtml_a4f249c13a6fe6cfdd036b6f765fe8e25"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25">fcarouge::sample::anonymous_namespace{mp_units_std_boost_multi.cpp}::storage</a></div><div class="ttdeci">boost::multi::inplace_array&lt; representation, 2 &gt; storage</div><div class="ttdef"><b>Definition</b> <a href="mp__units__std__boost__multi_8cpp_source.xhtml#l00093">mp_units_std_boost_multi.cpp:93</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra_1_1internal_xhtml_a1af4442a372f6ed7487f3d0c6458db07"><div class="ttname"><a href="#a1af4442a372f6ed7487f3d0c6458db07">fcarouge::typed_linear_algebra::internal::read_element_at</a></div><div class="ttdeci">constexpr auto read_element_at(Storage &amp;&amp;storage) -&gt; decltype(auto)</div><div class="ttdoc">Read the storage element at the given compile-time typed matrix index(es).</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00547">utility.hpp:547</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra_1_1internal_xhtml_a96df1bb0530f2d566558ee2f626386f3"><div class="ttname"><a href="#a96df1bb0530f2d566558ee2f626386f3">fcarouge::typed_linear_algebra::internal::is_same_scale_typed_matrix</a></div><div class="ttdeci">constexpr auto is_same_scale_typed_matrix() -&gt; bool</div><div class="ttdoc">Whether each element type of a typed matrix is of the same scale as the corresponding element type of...</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00923">utility.hpp:923</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra_1_1internal_xhtml_ad49689f3003203a120076cd6c91d7c99"><div class="ttname"><a href="#ad49689f3003203a120076cd6c91d7c99">fcarouge::typed_linear_algebra::internal::element_at</a></div><div class="ttdeci">std::remove_cvref_t&lt; product&lt; std::tuple_element_t&lt; RowIndex, typename std::remove_cvref_t&lt; Type &gt;::row_indexes &gt;, std::tuple_element_t&lt; ColumnIndex, typename std::remove_cvref_t&lt; Type &gt;::column_indexes &gt; &gt; &gt; element_at</div><div class="ttdoc">The type of the element at the given row and column matrix indexes.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00670">utility.hpp:670</a></div></div>
@@ -1825,20 +1825,20 @@ template&lt;typename From, typename To&gt; </div>
 <div class="fragment"><div class="line"><span class="lineno">  959</span>                                              {</div>
 <div class="line"><span class="lineno">  960</span>  <span class="keyword">using </span>from_matrix = std::remove_cvref_t&lt;From&gt;;</div>
 <div class="line"><span class="lineno">  961</span>  <span class="keyword">using </span>to_matrix = std::remove_cvref_t&lt;To&gt;;</div>
-<div class="line"><span class="lineno">  962</span>  <span class="keyword">using </span>storage = <span class="keyword">typename</span> to_matrix::matrix;</div>
+<div class="line"><span class="lineno">  962</span>  <span class="keyword">using </span><a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a> = <span class="keyword">typename</span> to_matrix::matrix;</div>
 <div class="line"><span class="lineno">  963</span>  <span class="keyword">using </span>from_underlying = <span class="keyword">typename</span> from_matrix::underlying;</div>
 <div class="line"><span class="lineno">  964</span>  <span class="keyword">using </span>to_underlying = <span class="keyword">typename</span> to_matrix::underlying;</div>
 <div class="line"><span class="lineno">  965</span>  <span class="keywordtype">bool</span> result{<span class="keyword">true</span>};</div>
 <div class="line"><span class="lineno">  966</span> </div>
 <div class="line"><span class="lineno">  967</span>  <a class="code hl_function" href="#ae001291878746fdd7db287616a067664">for_constexpr&lt;to_matrix::rows&gt;</a>([&amp;result](<span class="keyword">auto</span> i) {</div>
 <div class="line"><span class="lineno">  968</span>    <a class="code hl_function" href="#ae001291878746fdd7db287616a067664">for_constexpr&lt;to_matrix::columns&gt;</a>([&amp;result, &amp;i](<span class="keyword">auto</span> j) {</div>
-<div class="line"><span class="lineno">  969</span>      <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (not writable_element_at&lt;storage, to_matrix::columns, i,</div>
+<div class="line"><span class="lineno">  969</span>      <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (not writable_element_at&lt;<a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>, to_matrix::columns, i,</div>
 <div class="line"><span class="lineno">  970</span>                                            j&gt;) {</div>
 <div class="line"><span class="lineno">  971</span>        <span class="keyword">using </span>from_element = <a class="code hl_typedef" href="#ad49689f3003203a120076cd6c91d7c99">element_at&lt;from_matrix, i, j&gt;</a>;</div>
 <div class="line"><span class="lineno">  972</span>        <span class="keyword">using </span>to_element = <a class="code hl_typedef" href="#ad49689f3003203a120076cd6c91d7c99">element_at&lt;to_matrix, i, j&gt;</a>;</div>
 <div class="line"><span class="lineno">  973</span> </div>
 <div class="line"><span class="lineno">  974</span>        <span class="keyword">constexpr</span> to_underlying fixed{</div>
-<div class="line"><span class="lineno">  975</span>            <a class="code hl_function" href="#aeaac2b3147a168c0a834b924fb008364">read_element&lt;to_matrix::columns&gt;</a>(storage{}, i, j)};</div>
+<div class="line"><span class="lineno">  975</span>            <a class="code hl_function" href="#aeaac2b3147a168c0a834b924fb008364">read_element&lt;to_matrix::columns&gt;</a>(<a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>{}, i, j)};</div>
 <div class="line"><span class="lineno">  976</span> </div>
 <div class="line"><span class="lineno">  977</span>        <span class="comment">// Copy-initialization: the implicit conversion the concept verifies.</span></div>
 <div class="line"><span class="lineno">  978</span>        <span class="keyword">const</span> to_element converted =</div>
@@ -1976,16 +1976,16 @@ template&lt;std::size_t Columns, typename Storage&gt; </div>
 <div class="line"><span class="lineno">  512</span>  <span class="keyword">const</span> <span class="keyword">auto</span> [row, column]{<a class="code hl_function" href="#a93decdb5b3f44cad3e8d3bba807852dd">storage_position&lt;Columns&gt;</a>(indexes...)};</div>
 <div class="line"><span class="lineno">  513</span> </div>
 <div class="line"><span class="lineno">  514</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<a class="code hl_concept" href="conceptfcarouge_1_1same__as__typed__matrix.xhtml">same_as_typed_matrix&lt;Storage&gt;</a>) {</div>
-<div class="line"><span class="lineno">  515</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#aeaac2b3147a168c0a834b924fb008364">read_element&lt;Columns&gt;</a>(storage.data(), indexes...);</div>
-<div class="line"><span class="lineno">  516</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">requires</span> { <a class="code hl_function" href="#af699ec1d59850ee3df349a2fa6e39832">access_element</a>(storage, row, column); }) {</div>
+<div class="line"><span class="lineno">  515</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#aeaac2b3147a168c0a834b924fb008364">read_element&lt;Columns&gt;</a>(<a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>.data(), indexes...);</div>
+<div class="line"><span class="lineno">  516</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">requires</span> { <a class="code hl_function" href="#af699ec1d59850ee3df349a2fa6e39832">access_element</a>(<a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>, row, column); }) {</div>
 <div class="line"><span class="lineno">  517</span>    <span class="keyword">using </span>storage_index = <a class="code hl_typedef" href="#a9cdcad8f42a997fc63396623df2eb98e">storage_index_t&lt;std::remove_reference_t&lt;Storage&gt;</a>&gt;;</div>
 <div class="line"><span class="lineno">  518</span> </div>
-<div class="line"><span class="lineno">  519</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#af699ec1d59850ee3df349a2fa6e39832">access_element</a>(storage, <span class="keyword">static_cast&lt;</span>storage_index<span class="keyword">&gt;</span>(row),</div>
+<div class="line"><span class="lineno">  519</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#af699ec1d59850ee3df349a2fa6e39832">access_element</a>(<a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>, <span class="keyword">static_cast&lt;</span>storage_index<span class="keyword">&gt;</span>(row),</div>
 <div class="line"><span class="lineno">  520</span>                          <span class="keyword">static_cast&lt;</span>storage_index<span class="keyword">&gt;</span>(column));</div>
-<div class="line"><span class="lineno">  521</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">requires</span> { <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25">storage</a>.eval(); }) {</div>
+<div class="line"><span class="lineno">  521</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">requires</span> { <a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>.eval(); }) {</div>
 <div class="line"><span class="lineno">  522</span>    <span class="comment">// `auto{...}` copies the element out of the local evaluation before it</span></div>
 <div class="line"><span class="lineno">  523</span>    <span class="comment">// goes out of scope.</span></div>
-<div class="line"><span class="lineno">  524</span>    <span class="keyword">auto</span> evaluated{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25">storage</a>.eval()};</div>
+<div class="line"><span class="lineno">  524</span>    <span class="keyword">auto</span> evaluated{<a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>.eval()};</div>
 <div class="line"><span class="lineno">  525</span>    <span class="keywordflow">return</span> <span class="keyword">auto</span>{<a class="code hl_function" href="#aeaac2b3147a168c0a834b924fb008364">read_element&lt;Columns&gt;</a>(evaluated, indexes...)};</div>
 <div class="line"><span class="lineno">  526</span>  } <span class="keywordflow">else</span> {</div>
 <div class="line"><span class="lineno">  527</span>    <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(Storage) == 0,</div>
@@ -2066,11 +2066,11 @@ template&lt;std::size_t Columns, auto... Indexes, typename Storage&gt; </div>
 <div class="line"><span class="lineno">  553</span>  <span class="keyword">using </span>column = std::integral_constant&lt;std::size_t, position[1]&gt;;</div>
 <div class="line"><span class="lineno">  554</span> </div>
 <div class="line"><span class="lineno">  555</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<a class="code hl_concept" href="conceptfcarouge_1_1same__as__typed__matrix.xhtml">same_as_typed_matrix&lt;Storage&gt;</a>) {</div>
-<div class="line"><span class="lineno">  556</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a1af4442a372f6ed7487f3d0c6458db07">read_element_at</a>&lt;Columns, Indexes...&gt;(storage.data());</div>
-<div class="line"><span class="lineno">  557</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">requires</span> { storage[row{}, column{}]; }) {</div>
-<div class="line"><span class="lineno">  558</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25">storage</a>[<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03.xhtml#a20285d1fe38e6a2a381cc08b7d212651">row</a>{}, <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03.xhtml#ae3c376a1446aaa17c84a95188cb68b40">column</a>{}];</div>
+<div class="line"><span class="lineno">  556</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a1af4442a372f6ed7487f3d0c6458db07">read_element_at</a>&lt;Columns, Indexes...&gt;(<a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>.data());</div>
+<div class="line"><span class="lineno">  557</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">requires</span> { <a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>[row{}, column{}]; }) {</div>
+<div class="line"><span class="lineno">  558</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>[<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03.xhtml#a20285d1fe38e6a2a381cc08b7d212651">row</a>{}, <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03.xhtml#ae3c376a1446aaa17c84a95188cb68b40">column</a>{}];</div>
 <div class="line"><span class="lineno">  559</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  560</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#aeaac2b3147a168c0a834b924fb008364">read_element&lt;Columns&gt;</a>(storage, Indexes...);</div>
+<div class="line"><span class="lineno">  560</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#aeaac2b3147a168c0a834b924fb008364">read_element&lt;Columns&gt;</a>(<a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>, Indexes...);</div>
 <div class="line"><span class="lineno">  561</span>  }</div>
 <div class="line"><span class="lineno">  562</span>}</div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03_xhtml_a20285d1fe38e6a2a381cc08b7d212651"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03.xhtml#a20285d1fe38e6a2a381cc08b7d212651">fcarouge::test::anonymous_namespace{1x2_ambiguous_fail.cpp}::row</a></div><div class="ttdeci">std::tuple&lt; std::identity &gt; row</div><div class="ttdef"><b>Definition</b> <a href="1x2__ambiguous__fail_8cpp_source.xhtml#l00047">1x2_ambiguous_fail.cpp:47</a></div></div>
@@ -2205,11 +2205,11 @@ template&lt;std::size_t Columns, typename Storage, typename Value&gt; </div>
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00569">569</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  570</span>                                                                           {</div>
 <div class="line"><span class="lineno">  571</span>  <span class="keyword">static_assert</span>(std::is_lvalue_reference_v&lt;decltype(read_element&lt;Columns&gt;(</div>
-<div class="line"><span class="lineno">  572</span>                    storage, indexes...))&gt;,</div>
+<div class="line"><span class="lineno">  572</span>                    <a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>, indexes...))&gt;,</div>
 <div class="line"><span class="lineno">  573</span>                <span class="stringliteral">&quot;Element write access requires a referenceable storage &quot;</span></div>
 <div class="line"><span class="lineno">  574</span>                <span class="stringliteral">&quot;element.&quot;</span>);</div>
 <div class="line"><span class="lineno">  575</span> </div>
-<div class="line"><span class="lineno">  576</span>  <a class="code hl_function" href="#aeaac2b3147a168c0a834b924fb008364">read_element&lt;Columns&gt;</a>(storage, indexes...) = std::forward&lt;Value&gt;(value);</div>
+<div class="line"><span class="lineno">  576</span>  <a class="code hl_function" href="#aeaac2b3147a168c0a834b924fb008364">read_element&lt;Columns&gt;</a>(<a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>, indexes...) = std::forward&lt;Value&gt;(value);</div>
 <div class="line"><span class="lineno">  577</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00509">read_element()</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00569">write_element()</a>.</p>
@@ -2279,11 +2279,11 @@ template&lt;std::size_t Columns, auto... Indexes, typename Storage, typename Val
 <div class="line"><span class="lineno">  615</span> </div>
 <div class="line"><span class="lineno">  616</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">requires</span> {</div>
 <div class="line"><span class="lineno">  617</span>                  <span class="keyword">requires</span> std::is_lvalue_reference_v&lt;</div>
-<div class="line"><span class="lineno">  618</span>                      <span class="keyword">decltype</span>(storage[row{}, column{}])&gt;;</div>
+<div class="line"><span class="lineno">  618</span>                      <span class="keyword">decltype</span>(<a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>[row{}, column{}])&gt;;</div>
 <div class="line"><span class="lineno">  619</span>                }) {</div>
-<div class="line"><span class="lineno">  620</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#a4f249c13a6fe6cfdd036b6f765fe8e25">storage</a>[<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03.xhtml#a20285d1fe38e6a2a381cc08b7d212651">row</a>{}, <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03.xhtml#ae3c376a1446aaa17c84a95188cb68b40">column</a>{}] = std::forward&lt;Value&gt;(value);</div>
+<div class="line"><span class="lineno">  620</span>    <a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>[<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03.xhtml#a20285d1fe38e6a2a381cc08b7d212651">row</a>{}, <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__ambiguous__fail_8cpp_03.xhtml#ae3c376a1446aaa17c84a95188cb68b40">column</a>{}] = std::forward&lt;Value&gt;(value);</div>
 <div class="line"><span class="lineno">  621</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  622</span>    <a class="code hl_function" href="#ad8b49524f3f1b03ddf34a0c5d6c10293">write_element&lt;Columns&gt;</a>(storage, std::forward&lt;Value&gt;(value), Indexes...);</div>
+<div class="line"><span class="lineno">  622</span>    <a class="code hl_function" href="#ad8b49524f3f1b03ddf34a0c5d6c10293">write_element&lt;Columns&gt;</a>(<a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>, std::forward&lt;Value&gt;(value), Indexes...);</div>
 <div class="line"><span class="lineno">  623</span>  }</div>
 <div class="line"><span class="lineno">  624</span>}</div>
 <div class="ttc" id="anamespacefcarouge_1_1typed__linear__algebra_1_1internal_xhtml_ad8b49524f3f1b03ddf34a0c5d6c10293"><div class="ttname"><a href="#ad8b49524f3f1b03ddf34a0c5d6c10293">fcarouge::typed_linear_algebra::internal::write_element</a></div><div class="ttdeci">constexpr void write_element(Storage &amp;&amp;storage, Value &amp;&amp;value, std::convertible_to&lt; std::size_t &gt; auto... indexes)</div><div class="ttdoc">Write the storage element at the given typed matrix index(es).</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00569">utility.hpp:569</a></div></div>
@@ -2314,7 +2314,7 @@ template&lt;std::size_t Columns, auto... Indexes, typename Storage, typename Val
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">&amp;&amp; fcarouge::typed_linear_algebra::internal::!requires { storage(row, column)</td>
+          <td class="memname">&amp;&amp; fcarouge::typed_linear_algebra::internal::!requires { <a class="el" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>(row, column)</td>
         </tr>
       </table>
 </div><div class="memdoc">

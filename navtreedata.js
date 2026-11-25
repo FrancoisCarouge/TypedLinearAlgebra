@@ -78,6 +78,7 @@ var NAVTREE =
       [ "Pull Request Merge Checklist", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pull-request-merge-checklist", null ]
     ] ],
     [ "Contributors", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_o_r_s.xhtml", null ],
+    [ "Embedded Footprint", "footprint.xhtml", null ],
     [ "Unit Test Code Coverage", "unit_test_coverage.xhtml", null ],
     [ "Compile-Time Traces", "time_trace.xhtml", null ],
     [ "Run-Time Call Traces", "call_trace.xhtml", null ],
@@ -124,7 +125,8 @@ var NAVTREE =
       [ "File Members", "globals.xhtml", [
         [ "All", "globals.xhtml", "globals_dup" ],
         [ "Functions", "globals_func.xhtml", null ],
-        [ "Variables", "globals_vars.xhtml", "globals_vars" ]
+        [ "Variables", "globals_vars.xhtml", "globals_vars" ],
+        [ "Typedefs", "globals_type.xhtml", null ]
       ] ]
     ] ]
   ] ]
@@ -135,15 +137,15 @@ var NAVTREEINDEX =
 "1x1__array_8cpp.xhtml",
 "au__armadillo_8cpp_source.xhtml",
 "conceptfcarouge_1_1test_1_1anonymous__namespace_02scalar__constraint_8cpp_03_1_1multipliable__by.xhtml",
-"element_21x1__au__eigen__fail_8cpp_source.xhtml",
-"matrix__inf__norm_21x1__eigen_8cpp_source.xhtml",
-"multiplication_21x1__chrono__eigen__fail_8cpp_source.xhtml",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__boost__multi_8cpp_03.xhtml#ad933da5af1bf8ebc56a07d958a23b2bc",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_022x3__mp__units__eigen_8cpp_03.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02element__mp__units__std__fail_8cpp_03.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02uniform__mp__units__eigen_8cpp_03.xhtml#ad0683250fea316f9433c07de8040fc5a",
-"scalar__constraint_8cpp.xhtml",
-"subtraction_21x1__au__std_8cpp.xhtml"
+"dot__nholthaus__fail_8cpp.xhtml",
+"matrix__frob__norm_22x1__mp__units__eigen__fail_8cpp_source.xhtml",
+"minus__2x2_8cpp_source.xhtml",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#a880cd5f1a8f1c7ebaa36ee843db729eb",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_022x2__fail_8cpp_03.xhtml#a5093dc1ffefe913dc9a34fdfdec73e75",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02division__au__fail_8cpp_03.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02subtraction__au__fail_8cpp_03.xhtml#ac351b75ef2bf3cb86cfa095f86522623",
+"row__typed__matrix_2nested__typed__eigen_8cpp.xhtml",
+"structstd_1_1tuple__size_3_01fcarouge_1_1test_1_1self__sized_3_01_types_8_8_8_01_4_01_4.xhtml"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';

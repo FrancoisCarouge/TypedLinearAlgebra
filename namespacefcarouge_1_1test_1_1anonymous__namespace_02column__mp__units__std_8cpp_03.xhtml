@@ -137,9 +137,9 @@ Variables</h2></td></tr>
 <div class="line">  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">length</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__mp__units__eigen_8cpp_03.xhtml#a16e3bd6ba1f46e17c599b71a1956c0b3">quantity&lt;mp_units::isq::length[m]&gt;</a>;</div>
 <div class="line">  <span class="keyword">using </span>area = <a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#a9770b8c17efb82bfa80edbfb9a1de8a7">quantity&lt;mp_units::isq::area[m2]&gt;</a>;</div>
 <div class="line"> </div>
-<div class="line">  <span class="keywordtype">double</span> storage[]{0., 0.};</div>
+<div class="line">  <span class="keywordtype">double</span> <a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>[]{0., 0.};</div>
 <div class="line"> </div>
-<div class="line">  std::mdspan span{&amp;storage[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
+<div class="line">  std::mdspan span{&amp;<a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">column_vector&lt;representation, length, area&gt;</a> x{span};</div>
 <div class="line"> </div>
@@ -153,6 +153,7 @@ Variables</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
+<div class="ttc" id="aconfiguration_8cpp_xhtml_a7d2a468c8303d74eee49b53932c4c569"><div class="ttname"><a href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a></div><div class="ttdeci">freestanding::matrix&lt; float, rows, columns &gt; storage</div><div class="ttdoc">The entry points of the operations, each linked alone, of the typed matrix and of its freestanding st...</div><div class="ttdef"><b>Definition</b> <a href="configuration_8cpp_source.xhtml#l00048">configuration.cpp:48</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_ab95c9e8d65ece459f17360e871fb7490"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">fcarouge::armadillo::column_vector</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; Row, 1 &gt; column_vector</div><div class="ttdoc">Compile-time sized Armadillo column vector.</div><div class="ttdef"><b>Definition</b> <a href="armadillo_8hpp_source.xhtml#l00099">armadillo.hpp:99</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_021x1__mp__units__eigen_8cpp_03_xhtml_a16e3bd6ba1f46e17c599b71a1956c0b3"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x1__mp__units__eigen_8cpp_03.xhtml#a16e3bd6ba1f46e17c599b71a1956c0b3">fcarouge::test::anonymous_namespace{1x1_mp_units_eigen.cpp}::quantity</a></div><div class="ttdeci">decltype(1. *m2) quantity</div><div class="ttdef"><b>Definition</b> <a href="element_21x1__mp__units__eigen_8cpp_source.xhtml#l00048">1x1_mp_units_eigen.cpp:48</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml_a7194bc200104fad679ef56587aaec86f"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml#a7194bc200104fad679ef56587aaec86f">fcarouge::test::length</a></div><div class="ttdeci">au::QuantityD&lt; au::Meters &gt; length</div><div class="ttdef"><b>Definition</b> <a href="test_2format_2au__eigen_8cpp_source.xhtml#l00045">au_eigen.cpp:45</a></div></div>

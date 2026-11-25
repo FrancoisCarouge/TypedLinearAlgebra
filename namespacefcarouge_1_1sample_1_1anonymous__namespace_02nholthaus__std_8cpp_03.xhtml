@@ -233,8 +233,8 @@ template&lt;typename... Types&gt; </div>
 <div class="line">  </div>
 <div class="line">  <span class="keyword">using </span>state = <a class="code hl_typedef" href="#a220f6e7ba4d8945a91a46ee5d9952b4d">column_vector&lt;position, velocity, acceleration&gt;</a>;</div>
 <div class="line"> </div>
-<div class="line">  std::vector&lt;representation&gt; storage(3, <a class="code hl_typedef" href="#af72380dd357b35290d61f1e55bc7d121">representation</a>{});</div>
-<div class="line">  std::mdspan span{storage.data(), std::extents&lt;std::size_t, 3, 1&gt;{}};</div>
+<div class="line">  std::vector&lt;representation&gt; <a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>(3, <a class="code hl_typedef" href="#af72380dd357b35290d61f1e55bc7d121">representation</a>{});</div>
+<div class="line">  std::mdspan span{<a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>.data(), std::extents&lt;std::size_t, 3, 1&gt;{}};</div>
 <div class="line">  state x0{span};</div>
 <div class="line"> </div>
 <div class="line">  </div>
@@ -255,6 +255,7 @@ template&lt;typename... Types&gt; </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
 <div class="ttc" id="aclassfcarouge_1_1not__realtime_xhtml"><div class="ttname"><a href="classfcarouge_1_1not__realtime.xhtml">fcarouge::not_realtime</a></div><div class="ttdoc">Opt-out token of the real-time verification.</div><div class="ttdef"><b>Definition</b> <a href="realtime_8hpp_source.xhtml#l00056">realtime.hpp:56</a></div></div>
+<div class="ttc" id="aconfiguration_8cpp_xhtml_a7d2a468c8303d74eee49b53932c4c569"><div class="ttname"><a href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a></div><div class="ttdeci">freestanding::matrix&lt; float, rows, columns &gt; storage</div><div class="ttdoc">The entry points of the operations, each linked alone, of the typed matrix and of its freestanding st...</div><div class="ttdef"><b>Definition</b> <a href="configuration_8cpp_source.xhtml#l00048">configuration.cpp:48</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02nholthaus__std_8cpp_03_xhtml_a220f6e7ba4d8945a91a46ee5d9952b4d"><div class="ttname"><a href="#a220f6e7ba4d8945a91a46ee5d9952b4d">fcarouge::sample::anonymous_namespace{nholthaus_std.cpp}::column_vector</a></div><div class="ttdeci">column_vector&lt; representation, Types... &gt; column_vector</div><div class="ttdef"><b>Definition</b> <a href="sample_2nholthaus__std_8cpp_source.xhtml#l00066">nholthaus_std.cpp:66</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02nholthaus__std_8cpp_03_xhtml_af72380dd357b35290d61f1e55bc7d121"><div class="ttname"><a href="#af72380dd357b35290d61f1e55bc7d121">fcarouge::sample::anonymous_namespace{nholthaus_std.cpp}::representation</a></div><div class="ttdeci">double representation</div><div class="ttdef"><b>Definition</b> <a href="sample_2nholthaus__std_8cpp_source.xhtml#l00059">nholthaus_std.cpp:59</a></div></div>
 </div><!-- fragment -->

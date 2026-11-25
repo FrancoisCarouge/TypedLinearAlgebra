@@ -120,9 +120,13 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('dir_44cec6e3ea
 <div id="dynsection-0-summary" class="dynsummary">
 </div>
 <div id="dynsection-0-content" class="dyncontent hidden">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="dir_44cec6e3ea30e076b9313c4641539d9f_dep.svg" width="174" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="dir_44cec6e3ea30e076b9313c4641539d9f_dep.svg" width="262" height="136"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-subdirs" class="groupheader"><a id="subdirs" name="subdirs"></a>
+Directories</h2></td></tr>
+<tr class="memitem:footprint" id="r_footprint"><td class="memItemLeft"><span class="iconfolder"><div class="folder-icon"></div></span>&#160;</td><td class="memItemRight"><a class="el" href="dir_2542fae376fc6d82c1013ad0f602a03b.xhtml">footprint</a></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-files" class="groupheader"><a id="files" name="files"></a>
 Files</h2></td></tr>
 <tr class="memitem:eigen_5Fproduct_2Ecpp" id="r_eigen_5Fproduct_2Ecpp"><td class="memItemLeft"><a href="eigen__product_8cpp_source.xhtml"><span class="icondoc"><div class="doc-icon"></div></span></a>&#160;</td><td class="memItemRight"><a class="el" href="eigen__product_8cpp.xhtml">eigen_product.cpp</a></td></tr>
@@ -137,6 +141,17 @@ Files</h2></td></tr>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><h1 class="doxsection"><a class="anchor" id="benchmarks"></a>
 Benchmarks</h1>
+<h1 class="doxsection"><a class="anchor" id="embedded-footprint"></a>
+Embedded Footprint</h1>
+<p>The <a href="https://francoiscarouge.github.io/TypedLinearAlgebra/footprint.xhtml">embedded footprint</a> measures the flash, RAM, and worst-case stack sizes of each operation of the freestanding backend, for the <a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/tree/master/benchmark/footprint">configurations</a> of single precision floating point matrices, per optimization level, on a bare-metal Arm Cortex-M4 target. Each operation is measured on the typed matrix and on its untyped storage, against the same criteria where the typing costs zero bytes.</p>
+<p>Measure on Linux with the Arm GNU Toolchain:</p>
+<div class="fragment"><div class="line">git clone --depth 1 &quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra&quot; &quot;linalg&quot;</div>
+<div class="line">cmake -S &quot;linalg&quot; -B &quot;build&quot; --toolchain &quot;cmake/toolchain_arm_cortex_m4.cmake&quot;</div>
+<div class="line">cmake --build &quot;build&quot; --parallel</div>
+<div class="line">ctest --test-dir &quot;build&quot; --output-on-failure --parallel</div>
+</div><!-- fragment --><p>The tests write the measurements to <span class="tt">build/footprint/index.html</span>, and fail on any size change, larger or smaller, from its <span class="tt">footprint()</span> line in <a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/benchmark/footprint/CMakeLists.txt">footprint/CMakeLists.txt</a>. The criteria hold for the toolchain of the continuous integration runner, <span class="tt">gcc-arm-none-eabi</span> 14.2 on Ubuntu 26.04. To accept a change, update the line, with its reason in the commit message.</p>
+<h1 class="doxsection"><a class="anchor" id="speed"></a>
+Speed</h1>
 <p>Build and run the benchmarks on Windows platform:</p>
 <div class="fragment"><div class="line">git clone --depth 1 &quot;https://github.com/FrancoisCarouge/TypedLinearAlgebra&quot; &quot;linalg&quot;</div>
 <div class="line">Remove-Item -Path build -Force -Recurse</div>

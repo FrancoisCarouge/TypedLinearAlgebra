@@ -137,9 +137,9 @@ Variables</h2></td></tr>
 <div class="line">  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test.xhtml#af24586dd705e9c93d9869bce929d5213">seconds</a> = std::chrono::duration&lt;representation&gt;;</div>
 <div class="line">  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__chrono__eigen_8cpp_03.xhtml#a16b915a2292cbbc4fa19721e4d5a4763">minutes</a> = std::chrono::duration&lt;representation, std::ratio&lt;60&gt;&gt;;</div>
 <div class="line"> </div>
-<div class="line">  <span class="keywordtype">double</span> storage[]{0., 0.};</div>
+<div class="line">  <span class="keywordtype">double</span> <a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>[]{0., 0.};</div>
 <div class="line"> </div>
-<div class="line">  std::mdspan span{&amp;storage[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
+<div class="line">  std::mdspan span{&amp;<a class="code hl_typedef" href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a>[0], std::extents&lt;std::size_t, 2, 1&gt;{}};</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">column_vector&lt;representation, seconds, minutes&gt;</a> x{span};</div>
 <div class="line"> </div>
@@ -153,6 +153,7 @@ Variables</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
+<div class="ttc" id="aconfiguration_8cpp_xhtml_a7d2a468c8303d74eee49b53932c4c569"><div class="ttname"><a href="configuration_8cpp.xhtml#a7d2a468c8303d74eee49b53932c4c569">storage</a></div><div class="ttdeci">freestanding::matrix&lt; float, rows, columns &gt; storage</div><div class="ttdoc">The entry points of the operations, each linked alone, of the typed matrix and of its freestanding st...</div><div class="ttdef"><b>Definition</b> <a href="configuration_8cpp_source.xhtml#l00048">configuration.cpp:48</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_ab95c9e8d65ece459f17360e871fb7490"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#ab95c9e8d65ece459f17360e871fb7490">fcarouge::armadillo::column_vector</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; Row, 1 &gt; column_vector</div><div class="ttdoc">Compile-time sized Armadillo column vector.</div><div class="ttdef"><b>Definition</b> <a href="armadillo_8hpp_source.xhtml#l00099">armadillo.hpp:99</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03_xhtml_a3ff3c957ba84630faf14acbafe71f60c"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02chrono__armadillo_8cpp_03.xhtml#a3ff3c957ba84630faf14acbafe71f60c">fcarouge::sample::anonymous_namespace{chrono_armadillo.cpp}::minutes</a></div><div class="ttdeci">std::chrono::duration&lt; representation, std::ratio&lt; 60 &gt; &gt; minutes</div><div class="ttdef"><b>Definition</b> <a href="chrono__armadillo_8cpp_source.xhtml#l00054">chrono_armadillo.cpp:54</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_021x2__chrono__eigen_8cpp_03_xhtml_a16b915a2292cbbc4fa19721e4d5a4763"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x2__chrono__eigen_8cpp_03.xhtml#a16b915a2292cbbc4fa19721e4d5a4763">fcarouge::test::anonymous_namespace{1x2_chrono_eigen.cpp}::minutes</a></div><div class="ttdeci">std::chrono::duration&lt; representation, std::ratio&lt; 60 &gt; &gt; minutes</div><div class="ttdef"><b>Definition</b> <a href="element_21x2__chrono__eigen_8cpp_source.xhtml#l00045">1x2_chrono_eigen.cpp:45</a></div></div>

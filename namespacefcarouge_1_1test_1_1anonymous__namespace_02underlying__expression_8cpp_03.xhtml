@@ -134,19 +134,20 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line">  <span class="keyword">using </span>typed = <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;double, 2, 3&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_typedef" href="configuration_8cpp.xhtml#ad3e8a4c50c0a2844ec69f571225b03a0">typed</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">matrix&lt;double, 2, 3&gt;</a>;</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">const</span> typed lhs{{1., 2., 3.}, {4., -5., 6.}};</div>
-<div class="line">  <span class="keyword">const</span> typed rhs{{-6., 5., 4.}, {3., 2., -1.}};</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="configuration_8cpp.xhtml#ad3e8a4c50c0a2844ec69f571225b03a0">typed</a> lhs{{1., 2., 3.}, {4., -5., 6.}};</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="configuration_8cpp.xhtml#ad3e8a4c50c0a2844ec69f571225b03a0">typed</a> rhs{{-6., 5., 4.}, {3., 2., -1.}};</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">const</span> typed sum{lhs.data() + rhs.data()};</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="configuration_8cpp.xhtml#ad3e8a4c50c0a2844ec69f571225b03a0">typed</a> sum{lhs.data() + rhs.data()};</div>
 <div class="line"> </div>
-<div class="line">  assert((sum == typed{{-5., 7., 7.}, {7., -3., 5.}}));</div>
+<div class="line">  assert((sum == <a class="code hl_typedef" href="configuration_8cpp.xhtml#ad3e8a4c50c0a2844ec69f571225b03a0">typed</a>{{-5., 7., 7.}, {7., -3., 5.}}));</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
+<div class="ttc" id="aconfiguration_8cpp_xhtml_ad3e8a4c50c0a2844ec69f571225b03a0"><div class="ttname"><a href="configuration_8cpp.xhtml#ad3e8a4c50c0a2844ec69f571225b03a0">typed</a></div><div class="ttdeci">matrix&lt; float, rows, columns &gt; typed</div><div class="ttdoc">The typed matrix and its factor of the transposed shape.</div><div class="ttdef"><b>Definition</b> <a href="configuration_8cpp_source.xhtml#l00044">configuration.cpp:44</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1armadillo_xhtml_a0fa52776262afae30db82d7c0a9339ac"><div class="ttname"><a href="namespacefcarouge_1_1armadillo.xhtml#a0fa52776262afae30db82d7c0a9339ac">fcarouge::armadillo::matrix</a></div><div class="ttdeci">typename arma::Mat&lt; Type &gt;::template fixed&lt; Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Armadillo matrix.</div><div class="ttdef"><b>Definition</b> <a href="armadillo_8hpp_source.xhtml#l00091">armadillo.hpp:91</a></div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000104">Test</a></b></dt><dd>Verifies the construction from an underlying matrix expression implicitly converting to the underlying matrix. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000105">Test</a></b></dt><dd>Verifies the construction from an underlying matrix expression implicitly converting to the underlying matrix. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="underlying__expression_8cpp_source.xhtml#l00040">40</a> of file <a class="el" href="underlying__expression_8cpp_source.xhtml">underlying_expression.cpp</a>.</p>
 

@@ -27,6 +27,7 @@ var index =
       [ "As seen at CppNow 2026", "index.xhtml#as-seen-at-cppnow-2026", null ],
       [ "Roadmap &amp; Vision", "index.xhtml#roadmap--vision", null ],
       [ "Lessons Learned", "index.xhtml#lessons-learned", null ],
+      [ "Performance", "index.xhtml#performance", null ],
       [ "Projects", "index.xhtml#projects", null ],
       [ "Resources", "index.xhtml#resources", null ],
       [ "Third Party Acknowledgement", "index.xhtml#third-party-acknowledgement", null ],

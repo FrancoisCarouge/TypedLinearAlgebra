@@ -25,5 +25,11 @@ var namespacefcarouge_1_1benchmark =
       [ "opt_out", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__product_8cpp_03.xhtml#a548c7fc243e42f6a637a3d078d0e727c", null ],
       [ "percent_per_ratio", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__product_8cpp_03.xhtml#a59d39065b6fc3257ad28924b246519a7", null ]
     ] ],
-    [ "anonymous_namespace{typed_mdspan_tupled_product.cpp}", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03.xhtml", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03" ]
+    [ "anonymous_namespace{typed_mdspan_tupled_product.cpp}", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03.xhtml", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02typed__mdspan__tupled__product_8cpp_03" ],
+    [ "storage", "namespacefcarouge_1_1benchmark.xhtml#a7d2a468c8303d74eee49b53932c4c569", null ],
+    [ "storage_factor", "namespacefcarouge_1_1benchmark.xhtml#a52c4842a109d9c121084177d15b8afbe", null ],
+    [ "typed", "namespacefcarouge_1_1benchmark.xhtml#ad3e8a4c50c0a2844ec69f571225b03a0", null ],
+    [ "typed_factor", "namespacefcarouge_1_1benchmark.xhtml#a8e01150776a1154ce1699518976abf20", null ],
+    [ "columns", "namespacefcarouge_1_1benchmark.xhtml#ad98bba5ac4a99247f59c8e619a680870", null ],
+    [ "rows", "namespacefcarouge_1_1benchmark.xhtml#a5d432f4b82e803aeb6a4c33c64549fa6", null ]
 ];
