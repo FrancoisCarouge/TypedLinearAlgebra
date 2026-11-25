@@ -35,7 +35,7 @@ endif()
 
 # Add a given embedded footprint measurement.
 #
-# Cross-compiled, the test passes when the operation's step entry point, linked
+# Cross-compiled, the test passes when the operation's entry point, linked
 # alone, measures the expected sizes in bytes. Without a variant, the typed
 # matrix and its freestanding storage are measured against the same expected
 # sizes: the typing costs zero bytes. Otherwise, the configuration is only
@@ -117,7 +117,7 @@ function(footprint NAME OPERATION OPTIMIZATION)
       ${IMAGE}
       PRIVATE
         "-nostdlib" "LINKER:--gc-sections"
-        "LINKER:--entry=${VARIANT}_${OPERATION}_step"
+        "LINKER:--entry=${VARIANT}_${OPERATION}"
         "LINKER:--defsym=memcpy=footprint_copy"
         "LINKER:--defsym=memset=footprint_fill")
     add_test(
@@ -130,7 +130,8 @@ function(footprint NAME OPERATION OPTIMIZATION)
         "-DENTRY_USAGE=$<TARGET_OBJECTS:${CONFIGURATION}>"
         "-DLEAF_USAGE=$<TARGET_OBJECTS:${MEMORY}>"
         "-DNAME=${NAME}"
-        "-DPOLICY=${VARIANT}_${OPERATION}"
+        "-DENTRY=${VARIANT}_${OPERATION}"
+        "-DLABEL=${VARIANT}_${OPERATION}"
         "-DOPTIMIZATION=${OPTIMIZATION}"
         "-DFLASH=${EXPECTED_FLASH}"
         "-DRAM=${EXPECTED_RAM}"
