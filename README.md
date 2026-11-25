@@ -312,6 +312,10 @@ Type safety cannot be guaranteed at compilation time without **index safety**. T
 
 **The matrix cell unit convention** admits two valid choices when combining a row type and a column type into the type of cell `(i, j)`: the product, `row[i] * column[j]`, or the quotient, `row[i] / column[j]`. Mathematically, this encodes whether the matrix is interpreted as a bilinear form or as a linear map. A bilinear form combines two vectors into a scalar, `sum(i, j, v[i] * w[j] * G(i, j))`; both indices play the same, covector role, so the product convention is natural. A linear map transforms a vector into a vector, `y[i] = sum(j, A[i][j] * x[j])`; the column index cancels against the input unit, so the quotient convention is natural instead. In tensor index notation, the quotient corresponds to mixed variance, `M^i_j`, and the product to same variance, `G_ij`. In C++, `RowIndexes` and `ColumnIndexes` are tuples of types, and `element<i, j>` is computed through a `product<>` or a symmetric `quotient<>` type metafunction. Neither convention is more correct, only suited to a different use. The library keeps the product convention, favoring bilinear forms and quadratic, energy-like expressions over vectors. Consumers relying on linear map semantics, such as state-transition matrices, must declare column types as the reciprocal of the corresponding input type, not the input type itself.
 
+### Performance
+
+The [embedded footprint](https://francoiscarouge.github.io/TypedLinearAlgebra/footprint.xhtml) reports the flash, RAM, and worst-case stack sizes of the operations of the freestanding backend on a bare-metal Arm Cortex-M4 target, for the typed matrix and for its untyped storage. The typing costs zero bytes for the addition, the subtraction, the negation, and the scaling, verified by the continuous integration. The typed product copies its result once more than its storage.
+
 ### Projects
 
 The library is used in projects:

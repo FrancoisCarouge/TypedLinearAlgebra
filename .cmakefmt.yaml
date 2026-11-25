@@ -26,3 +26,14 @@ commands:
     pargs: 2
   amalgamate_get_inlined:
     pargs: 2
+  footprint:
+    pargs: 3
+    kwargs:
+      VARIANT:
+        nargs: 1
+      FLASH:
+        nargs: 1
+      RAM:
+        nargs: 1
+      STACK:
+        nargs: 1

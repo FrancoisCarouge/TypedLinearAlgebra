@@ -31,6 +31,11 @@ For more information, please refer to <https://unlicense.org> ]]
 
 add_subdirectory("amalgamate")
 
+if(CMAKE_CROSSCOMPILING)
+  add_subdirectory("freestanding")
+  return()
+endif()
+
 if(NOT BUILD_TESTING)
   return()
 endif()
