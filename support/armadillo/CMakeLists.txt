@@ -31,8 +31,8 @@ For more information, please refer to <https://unlicense.org> ]]
 
 FetchContent_Declare(
   armadillo
-  GIT_REPOSITORY "https://gitlab.com/conradsnicta/armadillo-code.git"
-  GIT_TAG "15.6.0"
+  GIT_REPOSITORY "https://gitlab.com/armadillo-lib/armadillo-code.git"
+  GIT_TAG "HEAD"
   GIT_SHALLOW TRUE
   SOURCE_SUBDIR "include"
   SYSTEM
