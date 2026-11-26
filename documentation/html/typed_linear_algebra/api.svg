@@ -1,0 +1,228 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 1610" width="880" height="1610" role="img" aria-labelledby="title description" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, 'DejaVu Sans', sans-serif">
+  <title id="title">The public API of Typed Linear Algebra</title>
+  <desc id="description">The public API of the fcarouge namespace. The typed_matrix class template composes a backend matrix with row and column index types that give each element its type. Concepts constrain it and its operations, and the element_caster and multiplies customization points convert and multiply its elements. Free functions and operators operate on it, aliases and functions make row and column vectors, the _i literal indexes it at compile time, and standard library specializations format it, find a common type, and bind its elements. A user supplied plug-in provides the backend matrix and specializes the customization points for strong element types.</desc>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      .card { fill: #0d1117; stroke: #3d444d; }
+      .layer { fill: #151b23; stroke: #3d444d; }
+      .rule { stroke: #3d444d; }
+      .ink { fill: #f0f6fc; }
+      .muted { fill: #9198a1; }
+      .link { stroke: #9198a1; }
+      .head { fill: #9198a1; }
+      .hollow { fill: #0d1117; stroke: #9198a1; }
+      .accent { fill: #238636; }
+    }
+  </style>
+
+  <rect class="card" x="0.5" y="0.5" width="879" height="1609" rx="10" fill="#ffffff" stroke="#d1d9e0"/>
+
+  <text class="muted" x="32" y="30" font-size="12" fill="#59636e" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">namespace fcarouge</text>
+  <rect class="layer" x="32" y="44" width="400" height="240" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <line class="rule" x1="32" y1="90" x2="432" y2="90" stroke="#d1d9e0"/>
+  <text class="muted" x="44" y="63" font-size="11" fill="#59636e">«concepts»</text>
+  <text class="ink" x="44" y="83" font-size="15" font-weight="600" fill="#1f2328">Concepts</text>
+  <text class="ink" x="44" y="109" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">same_as_typed_matrix&lt;T&gt;</text>
+  <text class="muted" x="276" y="109" font-size="12" fill="#59636e">a typed matrix</text>
+  <text class="ink" x="44" y="127" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">uniform_typed_matrix&lt;T&gt;</text>
+  <text class="muted" x="276" y="127" font-size="12" fill="#59636e">one element type</text>
+  <text class="ink" x="44" y="145" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">row_typed_matrix&lt;T&gt;</text>
+  <text class="muted" x="276" y="145" font-size="12" fill="#59636e">a row vector</text>
+  <text class="ink" x="44" y="163" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">column_typed_matrix&lt;T&gt;</text>
+  <text class="muted" x="276" y="163" font-size="12" fill="#59636e">a column vector</text>
+  <text class="ink" x="44" y="181" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">rank_typed_matrix&lt;T, Rank&gt;</text>
+  <text class="muted" x="276" y="181" font-size="12" fill="#59636e">0, 1, or 2 dimensions</text>
+  <text class="ink" x="44" y="199" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">same_shape&lt;Lhs, Rhs&gt;</text>
+  <text class="muted" x="276" y="199" font-size="12" fill="#59636e">same rows, columns</text>
+  <text class="ink" x="44" y="217" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">convertible_typed_matrix&lt;F, T&gt;</text>
+  <text class="muted" x="276" y="217" font-size="12" fill="#59636e">element by element</text>
+  <text class="ink" x="44" y="235" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">other&lt;T&gt;</text>
+  <text class="muted" x="276" y="235" font-size="12" fill="#59636e">not a typed matrix</text>
+  <text class="ink" x="44" y="253" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">other_tuple_like_vector&lt;V, M&gt;</text>
+  <text class="muted" x="276" y="253" font-size="12" fill="#59636e">a convertible tuple</text>
+  <text class="ink" x="44" y="271" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">index&lt;T&gt;</text>
+  <text class="muted" x="276" y="271" font-size="12" fill="#59636e">a compile-time index</text>
+  <rect class="layer" x="448" y="44" width="400" height="206" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <line class="rule" x1="448" y1="90" x2="848" y2="90" stroke="#d1d9e0"/>
+  <text class="muted" x="460" y="63" font-size="11" fill="#59636e">«class templates, specialize them»</text>
+  <text class="ink" x="460" y="83" font-size="15" font-weight="600" fill="#1f2328">Customization points</text>
+  <text class="muted" x="460" y="105" font-size="11" font-weight="600" fill="#59636e">element conversions to and from the underlying type</text>
+  <text class="ink" x="460" y="121" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">element_caster&lt;To, From&gt;</text>
+  <text class="muted" x="720" y="121" font-size="12" fill="#59636e">the conversion</text>
+  <text class="ink" x="460" y="139" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">  static operator()(From) -&gt; To</text>
+  <text class="ink" x="460" y="157" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">cast&lt;To, From&gt;</text>
+  <text class="muted" x="720" y="157" font-size="12" fill="#59636e">its instance</text>
+  <text class="ink" x="460" y="175" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">element_caster&lt;…, std::chrono::…&gt;</text>
+  <text class="muted" x="720" y="175" font-size="12" fill="#59636e">provided</text>
+  <line class="rule" x1="448" y1="188" x2="848" y2="188" stroke="#d1d9e0"/>
+  <text class="muted" x="460" y="203" font-size="11" font-weight="600" fill="#59636e">element types of products</text>
+  <text class="ink" x="460" y="219" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">multiplies&lt;Lhs, Rhs&gt;</text>
+  <text class="muted" x="720" y="219" font-size="12" fill="#59636e">the product type</text>
+  <text class="ink" x="460" y="237" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">  static operator()(lhs, rhs)</text>
+  <rect class="layer" x="32" y="336" width="816" height="546" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <path class="accent" d="M32 342 a6 6 0 0 1 6 -6 H842 a6 6 0 0 1 6 6 V382 H32 Z" fill="#1a7f37"/>
+  <text x="44" y="355" font-size="11" fill="#ffffff" fill-opacity="0.8">«class template» fcarouge/typed_linear_algebra.hpp</text>
+  <text x="44" y="375" font-size="14" font-weight="700" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">typed_matrix&lt;Matrix, RowIndexes, ColumnIndexes&gt;</text>
+  <text x="836" y="374" font-size="11" text-anchor="end" fill="#ffffff" fill-opacity="0.8">element&lt;i, j&gt;: row index i × column index j</text>
+  <text class="muted" x="44" y="397" font-size="11" font-weight="600" fill="#59636e">member types and constants</text>
+  <text class="ink" x="44" y="413" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">matrix</text>
+  <text class="muted" x="204" y="413" font-size="12" fill="#59636e">the backend Matrix</text>
+  <text class="ink" x="44" y="431" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">underlying</text>
+  <text class="muted" x="204" y="431" font-size="12" fill="#59636e">the storage element type</text>
+  <text class="ink" x="44" y="449" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">row_indexes</text>
+  <text class="muted" x="204" y="449" font-size="12" fill="#59636e">std::tuple of row types</text>
+  <text class="ink" x="44" y="467" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">column_indexes</text>
+  <text class="muted" x="204" y="467" font-size="12" fill="#59636e">std::tuple of column types</text>
+  <text class="ink" x="440" y="413" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">element&lt;i, j&gt;</text>
+  <text class="muted" x="600" y="413" font-size="12" fill="#59636e">the type at (i, j)</text>
+  <text class="ink" x="440" y="431" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">rows, columns</text>
+  <text class="muted" x="600" y="431" font-size="12" fill="#59636e">the counts</text>
+  <text class="ink" x="440" y="449" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">rank</text>
+  <text class="muted" x="600" y="449" font-size="12" fill="#59636e">0, 1, or 2 dimensions</text>
+  <line class="rule" x1="32" y1="480" x2="848" y2="480" stroke="#d1d9e0"/>
+  <text class="muted" x="44" y="495" font-size="11" font-weight="600" fill="#59636e">construction and assignment</text>
+  <text class="ink" x="44" y="511" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">typed_matrix()</text>
+  <text class="muted" x="454" y="511" font-size="12" fill="#59636e">of a default-initializable Matrix</text>
+  <text class="ink" x="44" y="529" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">typed_matrix(const typed_matrix &amp;), (typed_matrix &amp;&amp;)</text>
+  <text class="muted" x="454" y="529" font-size="12" fill="#59636e">copy, move, and their assignments</text>
+  <text class="ink" x="44" y="547" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">typed_matrix(convertible_typed_matrix auto &amp;&amp;)</text>
+  <text class="muted" x="454" y="547" font-size="12" fill="#59636e">implicit, from a compatible matrix</text>
+  <text class="ink" x="44" y="565" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">explicit typed_matrix(const Matrix &amp;), (Matrix &amp;&amp;)</text>
+  <text class="muted" x="454" y="565" font-size="12" fill="#59636e">from the backend matrix</text>
+  <text class="ink" x="44" y="583" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">explicit typed_matrix(const element&lt;&gt; &amp;)</text>
+  <text class="muted" x="454" y="583" font-size="12" fill="#59636e">a singleton from its value</text>
+  <text class="ink" x="44" y="601" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">typed_matrix(const element&lt;0&gt; (&amp;)[rows * columns])</text>
+  <text class="muted" x="454" y="601" font-size="12" fill="#59636e">a uniform vector from an array</text>
+  <text class="ink" x="44" y="619" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">typed_matrix({{a, b}, {c, d}})</text>
+  <text class="muted" x="454" y="619" font-size="12" fill="#59636e">a uniform matrix from its rows</text>
+  <text class="ink" x="44" y="637" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">typed_matrix(first, second, values...)</text>
+  <text class="muted" x="454" y="637" font-size="12" fill="#59636e">a vector from its elements</text>
+  <text class="ink" x="44" y="655" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">typed_matrix(const tuple_like &amp;)</text>
+  <text class="muted" x="454" y="655" font-size="12" fill="#59636e">a vector from a tuple-like value</text>
+  <text class="ink" x="44" y="673" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">~typed_matrix()</text>
+  <line class="rule" x1="32" y1="686" x2="848" y2="686" stroke="#d1d9e0"/>
+  <text class="muted" x="44" y="701" font-size="11" font-weight="600" fill="#59636e">element access</text>
+  <text class="ink" x="44" y="717" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">operator[](indexes...), operator()(indexes...)</text>
+  <text class="muted" x="454" y="717" font-size="12" fill="#59636e">read: index types, or any index if uniform</text>
+  <text class="ink" x="44" y="735" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">at&lt;i, j&gt;()</text>
+  <text class="muted" x="454" y="735" font-size="12" fill="#59636e">read, at a compile-time position</text>
+  <text class="ink" x="44" y="753" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">at&lt;i, j&gt;(const element&lt;i, j&gt; &amp;value)</text>
+  <text class="muted" x="454" y="753" font-size="12" fill="#59636e">write, at a compile-time position</text>
+  <text class="ink" x="44" y="771" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">at&lt;Type&gt;()</text>
+  <text class="muted" x="454" y="771" font-size="12" fill="#59636e">read the one element convertible to Type</text>
+  <text class="ink" x="44" y="789" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">explicit operator element&lt;&gt;()</text>
+  <text class="muted" x="454" y="789" font-size="12" fill="#59636e">the singleton element</text>
+  <text class="ink" x="44" y="807" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">data()</text>
+  <text class="muted" x="454" y="807" font-size="12" fill="#59636e">the backend matrix storage</text>
+  <line class="rule" x1="32" y1="820" x2="848" y2="820" stroke="#d1d9e0"/>
+  <text class="muted" x="44" y="835" font-size="11" font-weight="600" fill="#59636e">forward declarations: fcarouge/typed_linear_algebra_forward.hpp</text>
+  <text class="ink" x="44" y="851" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">template &lt;typename Matrix, typename RowIndexes, typename ColumnIndexes&gt; class typed_matrix;</text>
+  <text class="ink" x="44" y="869" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">template &lt;typename To, typename From&gt; struct element_caster;</text>
+  <rect class="layer" x="32" y="934" width="400" height="412" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <line class="rule" x1="32" y1="980" x2="432" y2="980" stroke="#d1d9e0"/>
+  <text class="muted" x="44" y="953" font-size="11" fill="#59636e">«free functions, argument-dependent lookup»</text>
+  <text class="ink" x="44" y="973" font-size="15" font-weight="600" fill="#1f2328">Operations</text>
+  <text class="muted" x="44" y="995" font-size="11" font-weight="600" fill="#59636e">operators</text>
+  <text class="ink" x="44" y="1011" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">lhs + rhs</text>
+  <text class="muted" x="200" y="1011" font-size="12" fill="#59636e">identical shapes</text>
+  <text class="ink" x="44" y="1029" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">lhs - rhs, -value</text>
+  <text class="muted" x="200" y="1029" font-size="12" fill="#59636e">identical shapes</text>
+  <text class="ink" x="44" y="1047" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">lhs * rhs</text>
+  <text class="muted" x="200" y="1047" font-size="12" fill="#59636e">multipliable, or by a scalar</text>
+  <text class="ink" x="44" y="1065" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">lhs / rhs</text>
+  <text class="muted" x="200" y="1065" font-size="12" fill="#59636e">X solving X * rhs = lhs</text>
+  <text class="ink" x="44" y="1083" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">lhs == rhs</text>
+  <text class="muted" x="200" y="1083" font-size="12" fill="#59636e">strict equality</text>
+  <line class="rule" x1="32" y1="1096" x2="432" y2="1096" stroke="#d1d9e0"/>
+  <text class="muted" x="44" y="1111" font-size="11" font-weight="600" fill="#59636e">algorithms</text>
+  <text class="ink" x="44" y="1127" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">transposed(value)</text>
+  <text class="muted" x="240" y="1127" font-size="12" fill="#59636e">indexes swapped</text>
+  <text class="ink" x="44" y="1145" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">dot(lhs, rhs)</text>
+  <text class="muted" x="240" y="1145" font-size="12" fill="#59636e">of two vectors</text>
+  <text class="ink" x="44" y="1163" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">magnitude(value)</text>
+  <text class="muted" x="240" y="1163" font-size="12" fill="#59636e">L2 norm of a vector</text>
+  <text class="ink" x="44" y="1181" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">matrix_frob_norm(value)</text>
+  <text class="muted" x="240" y="1181" font-size="12" fill="#59636e">Frobenius norm</text>
+  <text class="ink" x="44" y="1199" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">matrix_inf_norm(value)</text>
+  <text class="muted" x="240" y="1199" font-size="12" fill="#59636e">maximum row sum</text>
+  <text class="ink" x="44" y="1217" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">matrix_one_norm(value)</text>
+  <text class="muted" x="240" y="1217" font-size="12" fill="#59636e">maximum column sum</text>
+  <line class="rule" x1="32" y1="1230" x2="432" y2="1230" stroke="#d1d9e0"/>
+  <text class="muted" x="44" y="1245" font-size="11" font-weight="600" fill="#59636e">std::linalg out-parameter algorithms, with &lt;linalg&gt;</text>
+  <text class="ink" x="44" y="1261" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">add(lhs, rhs, result)</text>
+  <text class="ink" x="44" y="1279" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">matrix_product(lhs, rhs, result)</text>
+  <text class="ink" x="44" y="1297" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">matrix_rank_1_update(x, y, [e,] result)</text>
+  <text class="ink" x="44" y="1315" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">matrix_vector_product(a, x, result)</text>
+  <text class="ink" x="44" y="1333" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">scale(α, result)</text>
+  <rect class="layer" x="448" y="934" width="400" height="188" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <line class="rule" x1="448" y1="980" x2="848" y2="980" stroke="#d1d9e0"/>
+  <text class="muted" x="460" y="953" font-size="11" fill="#59636e">«alias templates, function templates»</text>
+  <text class="ink" x="460" y="973" font-size="15" font-weight="600" fill="#1f2328">Aliases and functions</text>
+  <text class="muted" x="460" y="995" font-size="11" font-weight="600" fill="#59636e">vectors</text>
+  <text class="ink" x="460" y="1011" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">typed_row_vector&lt;Matrix, ColumnIndexes...&gt;</text>
+  <text class="ink" x="460" y="1029" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">typed_column_vector&lt;Matrix, RowIndexes...&gt;</text>
+  <line class="rule" x1="448" y1="1042" x2="848" y2="1042" stroke="#d1d9e0"/>
+  <text class="muted" x="460" y="1057" font-size="11" font-weight="600" fill="#59636e">functions</text>
+  <text class="ink" x="460" y="1073" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">make_typed_matrix&lt;RowIndexes, ColumnIndexes&gt;(value)</text>
+  <text class="muted" x="460" y="1091" font-size="12" fill="#59636e">from a backend matrix, without type validation</text>
+  <text class="ink" x="460" y="1109" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">get&lt;Index&gt;(vector)</text>
+  <text class="muted" x="656" y="1109" font-size="12" fill="#59636e">structured bindings</text>
+  <rect class="layer" x="448" y="1138" width="400" height="96" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <line class="rule" x1="448" y1="1184" x2="848" y2="1184" stroke="#d1d9e0"/>
+  <text class="muted" x="460" y="1157" font-size="11" fill="#59636e">«user-defined literal»</text>
+  <text class="ink" x="460" y="1177" font-size="14" font-weight="700" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">literals::operator""_i</text>
+  <text class="ink" x="460" y="1203" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">m[1_i, 2_i]</text>
+  <text class="muted" x="576" y="1203" font-size="12" fill="#59636e">same as m.at&lt;1, 2&gt;()</text>
+  <text class="ink" x="460" y="1221" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">2_i</text>
+  <text class="muted" x="576" y="1221" font-size="12" fill="#59636e">std::integral_constant&lt;std::size_t, 2&gt;</text>
+  <rect class="layer" x="448" y="1250" width="400" height="132" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <line class="rule" x1="448" y1="1296" x2="848" y2="1296" stroke="#d1d9e0"/>
+  <text class="muted" x="460" y="1269" font-size="11" fill="#59636e">«specializations»</text>
+  <text class="ink" x="460" y="1289" font-size="15" font-weight="600" fill="#1f2328">Standard library</text>
+  <text class="ink" x="460" y="1315" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">std::formatter&lt;typed_matrix, Char&gt;</text>
+  <text class="muted" x="728" y="1315" font-size="12" fill="#59636e">hosted only</text>
+  <text class="ink" x="460" y="1333" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">std::common_type&lt;typed_matrix, …&gt;</text>
+  <text class="muted" x="728" y="1333" font-size="12" fill="#59636e">common Matrix</text>
+  <text class="ink" x="460" y="1351" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">std::tuple_size&lt;typed_matrix&gt;</text>
+  <text class="muted" x="728" y="1351" font-size="12" fill="#59636e">of a vector</text>
+  <text class="ink" x="460" y="1369" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">std::tuple_element&lt;I, typed_matrix&gt;</text>
+  <text class="muted" x="728" y="1369" font-size="12" fill="#59636e">or a singleton</text>
+  <rect class="layer" x="32" y="1434" width="816" height="152" rx="6" fill="#f6f8fa" stroke="#d1d9e0" stroke-dasharray="4 3"/>
+  <line class="rule" x1="32" y1="1480" x2="848" y2="1480" stroke="#d1d9e0"/>
+  <text class="muted" x="44" y="1453" font-size="11" fill="#59636e">«user supplied» see support/ for examples</text>
+  <text class="ink" x="44" y="1473" font-size="15" font-weight="600" fill="#1f2328">Plug-in</text>
+  <text class="muted" x="836" y="1472" font-size="11" text-anchor="end" fill="#59636e">supplies the Matrix, specializes the customization points</text>
+  <text class="muted" x="44" y="1495" font-size="11" font-weight="600" fill="#59636e">backend Matrix: Eigen, Armadillo, std::mdspan, Kokkos, Sparse Linear Algebra, ...</text>
+  <text class="ink" x="44" y="1511" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">m[i, j], m(i, j), m.data()</text>
+  <text class="muted" x="244" y="1511" font-size="12" fill="#59636e">element access</text>
+  <text class="ink" x="44" y="1529" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">+, -, *, /</text>
+  <text class="muted" x="244" y="1529" font-size="12" fill="#59636e">storage arithmetic</text>
+  <text class="ink" x="440" y="1511" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">m.transpose(), m.t()</text>
+  <text class="muted" x="640" y="1511" font-size="12" fill="#59636e">or std::linalg::transposed</text>
+  <line class="rule" x1="32" y1="1542" x2="848" y2="1542" stroke="#d1d9e0"/>
+  <text class="muted" x="44" y="1557" font-size="11" font-weight="600" fill="#59636e">strong element types: mp-units, Au, nholthaus/units, std::chrono, ...</text>
+  <text class="ink" x="44" y="1573" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">element_caster&lt;To, From&gt;</text>
+  <text class="muted" x="244" y="1573" font-size="12" fill="#59636e">to and from the storage</text>
+  <text class="ink" x="440" y="1573" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">multiplies&lt;Lhs, Rhs&gt;</text>
+  <text class="muted" x="640" y="1573" font-size="12" fill="#59636e">product types</text>
+
+  <path class="link" d="M232 284 L232 327" fill="none" stroke="#59636e" stroke-width="1.5"/>
+  <path class="head" d="M232 336 L227.5 327 L236.5 327 Z" fill="#59636e"/>
+  <text class="muted" x="244" y="314" font-size="12" fill="#59636e">constrain</text>
+  <path class="link" d="M648 250 L648 327" fill="none" stroke="#59636e" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <path class="head" d="M648 336 L643.5 327 L652.5 327 Z" fill="#59636e"/>
+  <text class="muted" x="660" y="297" font-size="12" fill="#59636e">convert and multiply elements</text>
+  <path class="link" d="M232 934 L232 891" fill="none" stroke="#59636e" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <path class="head" d="M232 882 L236.5 891 L227.5 891 Z" fill="#59636e"/>
+  <text class="muted" x="244" y="912" font-size="12" fill="#59636e">operate on</text>
+  <path class="link" d="M648 934 L648 891" fill="none" stroke="#59636e" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <path class="head" d="M648 882 L652.5 891 L643.5 891 Z" fill="#59636e"/>
+  <text class="muted" x="660" y="912" font-size="12" fill="#59636e">alias, make, bind</text>
+  <path class="link" d="M448 1316 L440 1316 L440 891" fill="none" stroke="#59636e" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <path class="head" d="M440 882 L444.5 891 L435.5 891 Z" fill="#59636e"/>
+  <text class="muted" x="452" y="912" font-size="12" fill="#59636e">index, specialize</text>
+  <path class="link" d="M32 1456 L16 1456 L16 609 L23 609" fill="none" stroke="#59636e" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <path class="head" d="M32 609 L23 613.5 L23 604.5 Z" fill="#59636e"/>
+  <path class="link" d="M848 1456 L864 1456 L864 147 L857 147" fill="none" stroke="#59636e" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <path class="head" d="M848 147 L857 142.5 L857 151.5 Z" fill="#59636e"/>
+</svg>

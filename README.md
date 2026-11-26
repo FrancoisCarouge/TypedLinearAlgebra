@@ -64,6 +64,12 @@ For forward declarations only, include instead:
 #include "fcarouge/typed_linear_algebra_forward.hpp"
 ```
 
+### Public API
+
+![The public API of Typed Linear Algebra: the typed_matrix class template, its member types, construction, and element access, the concepts and customization points around it, its operations, aliases, literal, and standard library specializations, and the plug-in a user supplies.](https://francoiscarouge.github.io/TypedLinearAlgebra/typed_linear_algebra/api.svg)
+
+Every public class, function, type, constant, and customization point of the library at a glance, detailed in the reference below.
+
 ### Namespace
 
 The public API lives in the `fcarouge` namespace. Import it with a using-declaration or namespace alias as your project's style prefers.
