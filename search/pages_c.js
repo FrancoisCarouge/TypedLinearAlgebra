@@ -1,13 +1,11 @@
 var searchData=
 [
-  ['ideas_0',['Questions &amp;amp; Ideas',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#questions--ideas',1,'']]],
-  ['in_20pattern_1',['Backend plug-in pattern',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#backend-plug-in-pattern',1,'']]],
-  ['include_2',['Include',['../index.xhtml#include',1,'']]],
-  ['include_20fcarouge_20typed_5flinear_5falgebra_20algorithm_3',['Algorithms (&lt;span class=&quot;tt&quot;&gt;include/fcarouge/typed_linear_algebra/algorithm/&lt;/span&gt;)',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#algorithms-includefcarougetyped_linear_algebraalgorithm',1,'']]],
-  ['individuals_4',['Individuals',['../index.xhtml#individuals',1,'']]],
-  ['ins_5',['Plug-ins',['../index.xhtml#plug-ins',1,'']]],
-  ['installation_6',['Installation',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_i_n_s_t_a_l_l.xhtml',1,'']]],
-  ['installation_20packages_7',['Installation Packages',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_i_n_s_t_a_l_l.xhtml#installation-packages',1,'']]],
-  ['installation_20usage_8',['Installation &amp;amp; Usage',['../index.xhtml#installation--usage',1,'']]],
-  ['institutions_9',['Corporations &amp;amp; Institutions',['../index.xhtml#corporations--institutions',1,'']]]
+  ['layers_0',['Layers',['../index.xhtml#layers',1,'']]],
+  ['learned_1',['Lessons Learned',['../index.xhtml#lessons-learned',1,'']]],
+  ['lessons_20learned_2',['Lessons Learned',['../index.xhtml#lessons-learned',1,'']]],
+  ['license_3',['License',['../index.xhtml#license',1,'']]],
+  ['linear_20algebra_4',['François Carouge / Typed Linear Algebra',['../index.xhtml',1,'']]],
+  ['linux_5',['Linux',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_i_n_s_t_a_l_l.xhtml#linux',1,'']]],
+  ['list_6',['List',['../test.xhtml',1,'Test List'],['../todo.xhtml',1,'Todo List']]],
+  ['literals_7',['Literals',['../index.xhtml#literals',1,'']]]
 ];

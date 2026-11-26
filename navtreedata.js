@@ -26,20 +26,6 @@ var NAVTREE =
 [
   [ "Typed Linear Algebra", "index.xhtml", [
     [ "François Carouge / Typed Linear Algebra", "index.xhtml", "index" ],
-    [ "AGENTS.md", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml", [
-      [ "AI agent conduct", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#ai-agent-conduct", null ],
-      [ "Build &amp; test", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#build--test", null ],
-      [ "Architecture", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#architecture", [
-        [ "Core header", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#core-header", null ],
-        [ "Backend plug-in pattern", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#backend-plug-in-pattern", null ],
-        [ "Algorithms (<span class=\"tt\">include/fcarouge/typed_linear_algebra/algorithm/</span>)", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#algorithms-includefcarougetyped_linear_algebraalgorithm", null ],
-        [ "Test/benchmark generation (<span class=\"tt\">support/support.cmake</span>)", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#testbenchmark-generation-supportsupportcmake", null ],
-        [ "Other directories", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#other-directories", null ]
-      ] ],
-      [ "Recipe: adding an algorithm", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#recipe-adding-an-algorithm", null ],
-      [ "Completion checklist", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#completion-checklist", null ],
-      [ "Conventions", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#conventions", null ]
-    ] ],
     [ "Changelog", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml", [
       [ "<a href=\"https://github.com/FrancoisCarouge/TypedLinearAlgebra/compare/0.2.0...0.3.0\">0.3.0</a> - 2026-09-12", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2026-09-12", [
         [ "Added", "md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#added", null ],
@@ -139,13 +125,13 @@ var NAVTREEINDEX =
 "conceptfcarouge_1_1test_1_1anonymous__namespace_02scalar__constraint_8cpp_03_1_1multipliable__by.xhtml",
 "dot__nholthaus__fail_8cpp.xhtml",
 "matrix__frob__norm_22x1__mp__units__eigen__fail_8cpp_source.xhtml",
-"minus__2x2_8cpp_source.xhtml",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std_8cpp_03.xhtml#a880cd5f1a8f1c7ebaa36ee843db729eb",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_022x2__fail_8cpp_03.xhtml#a5093dc1ffefe913dc9a34fdfdec73e75",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02division__au__fail_8cpp_03.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02subtraction__au__fail_8cpp_03.xhtml#ac351b75ef2bf3cb86cfa095f86522623",
-"row__typed__matrix_2nested__typed__eigen_8cpp.xhtml",
-"structstd_1_1tuple__size_3_01fcarouge_1_1test_1_1self__sized_3_01_types_8_8_8_01_4_01_4.xhtml"
+"mp__units__sparse_2fcarouge_2linalg_8hpp_source.xhtml",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02mp__units__std__array_8cpp_03.xhtml#a517f8977b5231ad8fcdef21aecfe16cb",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_022x2__nholthaus__eigen_8cpp_03.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02division__nholthaus__fail_8cpp_03.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02typed__linear__algebra_8cpp_03.xhtml#afa87651a6dde452c3bab402b23bea7b8",
+"sample_2au__std_8cpp.xhtml",
+"structured__bindings_23x1__const_8cpp_source.xhtml"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';

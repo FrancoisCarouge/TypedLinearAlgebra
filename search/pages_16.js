@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['unit_20test_20code_20coverage_0',['Unit Test Code Coverage',['../unit_test_coverage.xhtml',1,'']]],
-  ['usage_1',['Installation &amp;amp; Usage',['../index.xhtml#installation--usage',1,'']]],
-  ['use_20cases_2',['Use Cases',['../index.xhtml#use-cases',1,'']]]
+  ['variables_0',['Member Variables',['../index.xhtml#member-variables',1,'']]],
+  ['versions_1',['Supported Versions',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_s_e_c_u_r_i_t_y.xhtml#supported-versions',1,'']]],
+  ['vision_2',['Roadmap &amp;amp; Vision',['../index.xhtml#roadmap--vision',1,'']]],
+  ['vulnerability_3',['Reporting a Vulnerability',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_s_e_c_u_r_i_t_y.xhtml#reporting-a-vulnerability',1,'']]]
 ];

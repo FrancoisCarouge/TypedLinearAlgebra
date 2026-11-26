@@ -71,9 +71,7 @@ var searchData=
   ['subtraction_5fchrono_5ffail_2ecpp_68',['subtraction_chrono_fail.cpp',['../subtraction__chrono__fail_8cpp.xhtml',1,'']]],
   ['subtraction_5fmp_5funits_5ffail_2ecpp_69',['subtraction_mp_units_fail.cpp',['../subtraction__mp__units__fail_8cpp.xhtml',1,'']]],
   ['subtraction_5fnholthaus_5ffail_2ecpp_70',['subtraction_nholthaus_fail.cpp',['../subtraction__nholthaus__fail_8cpp.xhtml',1,'']]],
-  ['support_20cmake_71',['Test/benchmark generation (&lt;span class=&quot;tt&quot;&gt;support/support.cmake&lt;/span&gt;)',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#testbenchmark-generation-supportsupportcmake',1,'']]],
-  ['support_20consulting_72',['Commercial Support &amp;amp; Consulting',['../index.xhtml#commercial-support--consulting',1,'']]],
-  ['support_20support_20cmake_73',['Test/benchmark generation (&lt;span class=&quot;tt&quot;&gt;support/support.cmake&lt;/span&gt;)',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_a_g_e_n_t_s.xhtml#testbenchmark-generation-supportsupportcmake',1,'']]],
-  ['supported_20versions_74',['Supported Versions',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_s_e_c_u_r_i_t_y.xhtml#supported-versions',1,'']]],
-  ['swapped_5fvelocities_75',['swapped_velocities',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02round__trip_8cpp_03.xhtml#a102c811c2b269df83e14bbef2734055e',1,'fcarouge::test::anonymous_namespace{round_trip.cpp}::swapped_velocities'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#a528822164db74b181528cedcf733a8ec',1,'fcarouge::test::anonymous_namespace{unit_conversion.cpp}::swapped_velocities']]]
+  ['support_20consulting_71',['Commercial Support &amp;amp; Consulting',['../index.xhtml#commercial-support--consulting',1,'']]],
+  ['supported_20versions_72',['Supported Versions',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_s_e_c_u_r_i_t_y.xhtml#supported-versions',1,'']]],
+  ['swapped_5fvelocities_73',['swapped_velocities',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02round__trip_8cpp_03.xhtml#a102c811c2b269df83e14bbef2734055e',1,'fcarouge::test::anonymous_namespace{round_trip.cpp}::swapped_velocities'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02unit__conversion_8cpp_03.xhtml#a528822164db74b181528cedcf733a8ec',1,'fcarouge::test::anonymous_namespace{unit_conversion.cpp}::swapped_velocities']]]
 ];

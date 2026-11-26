@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['layers_0',['Layers',['../index.xhtml#layers',1,'']]],
-  ['learned_1',['Lessons Learned',['../index.xhtml#lessons-learned',1,'']]],
-  ['lessons_20learned_2',['Lessons Learned',['../index.xhtml#lessons-learned',1,'']]],
-  ['license_3',['License',['../index.xhtml#license',1,'']]],
-  ['linear_20algebra_4',['François Carouge / Typed Linear Algebra',['../index.xhtml',1,'']]],
-  ['linux_5',['Linux',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_i_n_s_t_a_l_l.xhtml#linux',1,'']]],
-  ['list_6',['List',['../test.xhtml',1,'Test List'],['../todo.xhtml',1,'Todo List']]],
-  ['literals_7',['Literals',['../index.xhtml#literals',1,'']]]
+  ['matrix_0',['Class Typed Matrix',['../index.xhtml#class-typed-matrix',1,'']]],
+  ['member_20functions_1',['Member Functions',['../index.xhtml#member-functions',1,'']]],
+  ['member_20types_2',['Member Types',['../index.xhtml#member-types',1,'']]],
+  ['member_20variables_3',['Member Variables',['../index.xhtml#member-variables',1,'']]],
+  ['merge_20checklist_4',['Pull Request Merge Checklist',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pull-request-merge-checklist',1,'']]],
+  ['more_5',['More',['../index.xhtml#more',1,'']]]
 ];
