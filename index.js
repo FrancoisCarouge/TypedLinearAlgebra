@@ -1,6 +1,7 @@
 var index =
 [
     [ "Installation &amp; Usage", "index.xhtml#installation--usage", null ],
+    [ "Samples", "index.xhtml#samples", null ],
     [ "Reference", "index.xhtml#reference", [
       [ "Layers", "index.xhtml#layers", null ],
       [ "CMake", "index.xhtml#cmake", null ],
@@ -8,7 +9,6 @@ var index =
       [ "Public API", "index.xhtml#public-api", null ],
       [ "Namespace", "index.xhtml#namespace", null ],
       [ "Plug-ins", "index.xhtml#plug-ins", null ],
-      [ "Samples", "index.xhtml#samples", null ],
       [ "Class Typed Matrix", "index.xhtml#class-typed-matrix", [
         [ "Declaration", "index.xhtml#declaration", null ],
         [ "Template Parameters", "index.xhtml#template-parameters", null ],

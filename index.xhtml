@@ -132,6 +132,42 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('index.xhtml','
 <h1 class="doxsection"><a class="anchor" id="installation--usage"></a>
 Installation &amp; Usage</h1>
 <p>See <a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/INSTALL.md">INSTALL.md</a> for installation instructions. Only the <span class="tt">include/</span> folder is the library: <span class="tt">cmake --install</span> and the release packages deliver it, with its CMake package configuration, and nothing else. The <span class="tt">support/</span>, <span class="tt">sample/</span>, <span class="tt">test/</span>, and <span class="tt">benchmark/</span> folders are development examples and tooling, not part of the delivered library.</p>
+<h1 class="doxsection"><a class="anchor" id="samples"></a>
+Samples</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Interoperability  </th><th class="markdownTableHeadNone">Sample  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Au + Armadillo  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/au_armadillo.cpp">Usage example: <span class="tt">sample/au_armadillo.cpp</span></a>.  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Au + <a class="el" href="namespace_eigen.xhtml">Eigen</a>  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/au_eigen.cpp">Usage example: <span class="tt">sample/au_eigen.cpp</span></a>.  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Au + std::linalg  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/au_std.cpp">Usage example: <span class="tt">sample/au_std.cpp</span></a>.  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">mp-units + Armadillo  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_armadillo.cpp">Usage example: <span class="tt">sample/mp_units_armadillo.cpp</span></a>.  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">mp-units + <a class="el" href="namespace_eigen.xhtml">Eigen</a>  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_eigen.cpp">Usage example: <span class="tt">sample/mp_units_eigen.cpp</span></a>.  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">mp-units + Sparse  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_sparse.cpp">Usage example: <span class="tt">sample/mp_units_sparse.cpp</span></a>.  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">mp-units + std::linalg  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std.cpp">Usage example: <span class="tt">sample/mp_units_std.cpp</span></a>.  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">mp-units + std::linalg + std::array  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std_array.cpp">Usage example: <span class="tt">sample/mp_units_std_array.cpp</span></a>.  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">mp-units + std::linalg + Boost.Multi  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std_boost_multi.cpp">Usage example: <span class="tt">sample/mp_units_std_boost_multi.cpp</span></a>.  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">nholthaus/units + Armadillo  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_armadillo.cpp">Usage example: <span class="tt">sample/nholthaus_armadillo.cpp</span></a>.  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">nholthaus/units + <a class="el" href="namespace_eigen.xhtml">Eigen</a>  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_eigen.cpp">Usage example: <span class="tt">sample/nholthaus_eigen.cpp</span></a>.  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">nholthaus/units + std::linalg  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_std.cpp">Usage example: <span class="tt">sample/nholthaus_std.cpp</span></a>.  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">std::chrono + Armadillo  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_armadillo.cpp">Usage example: <span class="tt">sample/chrono_armadillo.cpp</span></a>.  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">std::chrono + <a class="el" href="namespace_eigen.xhtml">Eigen</a>  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_eigen.cpp">Usage example: <span class="tt">sample/chrono_eigen.cpp</span></a>.  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">std::chrono + std::linalg  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_std.cpp">Usage example: <span class="tt">sample/chrono_std.cpp</span></a>.  </td></tr>
+</table>
 <h1 class="doxsection"><a class="anchor" id="reference"></a>
 Reference</h1>
 <h2 class="doxsection"><a class="anchor" id="layers"></a>
@@ -184,42 +220,6 @@ Plug-ins</h2>
 <td class="markdownTableBodyNone">std::chrono  </td><td class="markdownTableBodyNone">No plug-in needed. Hosted implementation only.  </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">std::linalg  </td><td class="markdownTableBodyNone">No plug-in needed. Hosted implementation only.  </td></tr>
-</table>
-<h2 class="doxsection"><a class="anchor" id="samples"></a>
-Samples</h2>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Interoperability  </th><th class="markdownTableHeadNone">Sample  </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Au + Armadillo  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/au_armadillo.cpp">Usage example: <span class="tt">sample/au_armadillo.cpp</span></a>.  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Au + <a class="el" href="namespace_eigen.xhtml">Eigen</a>  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/au_eigen.cpp">Usage example: <span class="tt">sample/au_eigen.cpp</span></a>.  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Au + std::linalg  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/au_std.cpp">Usage example: <span class="tt">sample/au_std.cpp</span></a>.  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">mp-units + Armadillo  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_armadillo.cpp">Usage example: <span class="tt">sample/mp_units_armadillo.cpp</span></a>.  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">mp-units + <a class="el" href="namespace_eigen.xhtml">Eigen</a>  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_eigen.cpp">Usage example: <span class="tt">sample/mp_units_eigen.cpp</span></a>.  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">mp-units + Sparse  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_sparse.cpp">Usage example: <span class="tt">sample/mp_units_sparse.cpp</span></a>.  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">mp-units + std::linalg  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std.cpp">Usage example: <span class="tt">sample/mp_units_std.cpp</span></a>.  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">mp-units + std::linalg + std::array  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std_array.cpp">Usage example: <span class="tt">sample/mp_units_std_array.cpp</span></a>.  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">mp-units + std::linalg + Boost.Multi  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std_boost_multi.cpp">Usage example: <span class="tt">sample/mp_units_std_boost_multi.cpp</span></a>.  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">nholthaus/units + Armadillo  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_armadillo.cpp">Usage example: <span class="tt">sample/nholthaus_armadillo.cpp</span></a>.  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">nholthaus/units + <a class="el" href="namespace_eigen.xhtml">Eigen</a>  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_eigen.cpp">Usage example: <span class="tt">sample/nholthaus_eigen.cpp</span></a>.  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">nholthaus/units + std::linalg  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_std.cpp">Usage example: <span class="tt">sample/nholthaus_std.cpp</span></a>.  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">std::chrono + Armadillo  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_armadillo.cpp">Usage example: <span class="tt">sample/chrono_armadillo.cpp</span></a>.  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">std::chrono + <a class="el" href="namespace_eigen.xhtml">Eigen</a>  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_eigen.cpp">Usage example: <span class="tt">sample/chrono_eigen.cpp</span></a>.  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">std::chrono + std::linalg  </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_std.cpp">Usage example: <span class="tt">sample/chrono_std.cpp</span></a>.  </td></tr>
 </table>
 <h2 class="doxsection"><a class="anchor" id="class-typed-matrix"></a>
 Class Typed Matrix</h2>
