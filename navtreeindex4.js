@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"matrix__frob__norm_22x1__mp__units__eigen__fail_8cpp.xhtml":[16,0,6,18,4],
 "matrix__frob__norm_22x1__mp__units__eigen__fail_8cpp_source.xhtml":[16,0,6,18,4],
 "matrix__frob__norm_22x2__au__eigen_8cpp.xhtml":[16,0,6,18,5],
 "matrix__frob__norm_22x2__au__eigen_8cpp_source.xhtml":[16,0,6,18,5],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "mp__units__armadillo_8cpp.xhtml":[16,0,4,6],
 "mp__units__armadillo_8cpp_source.xhtml":[16,0,4,6],
 "mp__units__eigen_2fcarouge_2linalg_8hpp.xhtml":[16,0,5,20,0,0],
-"mp__units__eigen_2fcarouge_2linalg_8hpp_source.xhtml":[16,0,5,20,0,0],
-"mp__units__sparse_2fcarouge_2linalg_8hpp.xhtml":[16,0,5,21,0,0]
+"mp__units__eigen_2fcarouge_2linalg_8hpp_source.xhtml":[16,0,5,20,0,0]
 };

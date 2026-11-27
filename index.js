@@ -5,6 +5,7 @@ var index =
       [ "Layers", "index.xhtml#layers", null ],
       [ "CMake", "index.xhtml#cmake", null ],
       [ "Include", "index.xhtml#include", null ],
+      [ "Public API", "index.xhtml#public-api", null ],
       [ "Namespace", "index.xhtml#namespace", null ],
       [ "Plug-ins", "index.xhtml#plug-ins", null ],
       [ "Samples", "index.xhtml#samples", null ],
