@@ -38,6 +38,26 @@ std::println("{}", x * transposed(x));
 
 See [INSTALL.md](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/INSTALL.md) for installation instructions. Only the `include/` folder is the library: `cmake --install` and the release packages deliver it, with its CMake package configuration, and nothing else. The `support/`, `sample/`, `test/`, and `benchmark/` folders are development examples and tooling, not part of the delivered library.
 
+## Samples
+
+| Interoperability | Sample |
+| --- | --- |
+| Au + Armadillo | [Usage example: `sample/au_armadillo.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/au_armadillo.cpp). |
+| Au + Eigen | [Usage example: `sample/au_eigen.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/au_eigen.cpp). |
+| Au + std::linalg | [Usage example: `sample/au_std.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/au_std.cpp). |
+| mp-units + Armadillo | [Usage example: `sample/mp_units_armadillo.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_armadillo.cpp). |
+| mp-units + Eigen | [Usage example: `sample/mp_units_eigen.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_eigen.cpp). |
+| mp-units + Sparse | [Usage example: `sample/mp_units_sparse.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_sparse.cpp). |
+| mp-units + std::linalg | [Usage example: `sample/mp_units_std.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std.cpp). |
+| mp-units + std::linalg + std::array | [Usage example: `sample/mp_units_std_array.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std_array.cpp). |
+| mp-units + std::linalg + Boost.Multi | [Usage example: `sample/mp_units_std_boost_multi.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std_boost_multi.cpp). |
+| nholthaus/units + Armadillo | [Usage example: `sample/nholthaus_armadillo.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_armadillo.cpp). |
+| nholthaus/units + Eigen | [Usage example: `sample/nholthaus_eigen.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_eigen.cpp). |
+| nholthaus/units + std::linalg | [Usage example: `sample/nholthaus_std.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_std.cpp). |
+| std::chrono + Armadillo | [Usage example: `sample/chrono_armadillo.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_armadillo.cpp). |
+| std::chrono + Eigen | [Usage example: `sample/chrono_eigen.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_eigen.cpp). |
+| std::chrono + std::linalg | [Usage example: `sample/chrono_std.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_std.cpp). |
+
 ## Reference
 
 ### Layers
@@ -91,26 +111,6 @@ Add a plug-in for each strong type and/or linear algebra backend you use. The pl
 | Sparse Linear Algebra | [Example plug-in: `support/sparse`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/support). |
 | std::chrono | No plug-in needed. Hosted implementation only. |
 | std::linalg | No plug-in needed. Hosted implementation only. |
-
-### Samples
-
-| Interoperability | Sample |
-| --- | --- |
-| Au + Armadillo | [Usage example: `sample/au_armadillo.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/au_armadillo.cpp). |
-| Au + Eigen | [Usage example: `sample/au_eigen.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/au_eigen.cpp). |
-| Au + std::linalg | [Usage example: `sample/au_std.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/au_std.cpp). |
-| mp-units + Armadillo | [Usage example: `sample/mp_units_armadillo.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_armadillo.cpp). |
-| mp-units + Eigen | [Usage example: `sample/mp_units_eigen.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_eigen.cpp). |
-| mp-units + Sparse | [Usage example: `sample/mp_units_sparse.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_sparse.cpp). |
-| mp-units + std::linalg | [Usage example: `sample/mp_units_std.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std.cpp). |
-| mp-units + std::linalg + std::array | [Usage example: `sample/mp_units_std_array.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std_array.cpp). |
-| mp-units + std::linalg + Boost.Multi | [Usage example: `sample/mp_units_std_boost_multi.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/mp_units_std_boost_multi.cpp). |
-| nholthaus/units + Armadillo | [Usage example: `sample/nholthaus_armadillo.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_armadillo.cpp). |
-| nholthaus/units + Eigen | [Usage example: `sample/nholthaus_eigen.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_eigen.cpp). |
-| nholthaus/units + std::linalg | [Usage example: `sample/nholthaus_std.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/nholthaus_std.cpp). |
-| std::chrono + Armadillo | [Usage example: `sample/chrono_armadillo.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_armadillo.cpp). |
-| std::chrono + Eigen | [Usage example: `sample/chrono_eigen.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_eigen.cpp). |
-| std::chrono + std::linalg | [Usage example: `sample/chrono_std.cpp`](https://github.com/FrancoisCarouge/TypedLinearAlgebra/blob/master/sample/chrono_std.cpp). |
 
 ### Class Typed Matrix
 
