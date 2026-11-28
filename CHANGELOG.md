@@ -2,6 +2,35 @@
 
 All notable changes to TypedLinearAlgebra are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [0.4.0] - 2026-11-27
+
+### Added
+
+- Algorithms: `dot`, `matrix_frob_norm`, `matrix_one_norm`, `matrix_inf_norm`, and `matrix_rank_1_update`.
+- Backends: Armadillo (`armadillo`, `armadilloxed`, and its Au, `std::chrono`, mp-units, and nholthaus variants), SparseLinearAlgebra (`sparse` and its variants), Boost.Multi, `std::array`, and `freestanding`.
+- Freestanding and real-time support, and a single-header amalgamation.
+- An embedded Arm Cortex-M4 footprint page and gate.
+
+### Changed
+
+- Backends access their elements through the multidimensional subscript `operator[](i, j)`.
+- Matrix conversions are constrained on element convertibility and convert vector elements to their declared types; quantity elements are constructed from their value and reference.
+- Element checks run at compile time only, once per distinct element type, and product and division terms are verified in linear time.
+- Utilities internalized under a consistent internal namespace.
+
+### Removed
+
+- The non-standard formatter `matrix` alias.
+
+### Compiler & Build
+
+- macOS, real-time sanitizer, Coverity, and pre-commit workflows; full line and function coverage required; installation test.
+- Conversion, old-style cast, cast-qual, and null-dereference warnings; MSVC `/permissive-`; CMake formatted with cmakefmt.
+
+### Fixed
+
+- Division units and types, and MSVC 19.52 and mp-units compatibility.
+
 ## [0.3.0] - 2026-09-12
 
 ### Added
