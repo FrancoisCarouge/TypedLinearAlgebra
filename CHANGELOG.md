@@ -10,9 +10,11 @@ All notable changes to TypedLinearAlgebra are documented here. The format follow
 - Backends: Armadillo (`armadillo`, `armadilloxed`, and its Au, `std::chrono`, mp-units, and nholthaus variants), SparseLinearAlgebra (`sparse` and its variants), Boost.Multi, `std::array`, and `freestanding`.
 - Freestanding and real-time support, and a single-header amalgamation.
 - An embedded Arm Cortex-M4 footprint page and gate.
+- The `convertible_typed_matrix` concept.
 
 ### Changed
 
+- `at<Type>()` only requires exactly one element type to convert to the requested type, rather than a matrix of distinct element types.
 - Backends access their elements through the multidimensional subscript `operator[](i, j)`.
 - Matrix conversions are constrained on element convertibility and convert vector elements to their declared types; quantity elements are constructed from their value and reference.
 - Element checks run at compile time only, once per distinct element type, and product and division terms are verified in linear time.
@@ -20,6 +22,7 @@ All notable changes to TypedLinearAlgebra are documented here. The format follow
 
 ### Removed
 
+- The `distinct_typed_matrix` concept.
 - The non-standard formatter `matrix` alias.
 
 ### Compiler & Build
