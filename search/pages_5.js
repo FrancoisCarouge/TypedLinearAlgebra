@@ -1,9 +1,12 @@
 var searchData=
 [
-  ['benchmarks_0',['Benchmarks',['../dir_44cec6e3ea30e076b9313c4641539d9f.xhtml#benchmarks',1,'Benchmarks'],['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_i_n_s_t_a_l_l.xhtml#benchmarks-1',1,'Benchmarks']]],
-  ['breaking_20changes_20build_20requirements_1',['Breaking Changes &amp;amp; Build Requirements',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#breaking-changes--build-requirements',1,'']]],
-  ['bugs_2',['Reporting Bugs',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#reporting-bugs',1,'']]],
-  ['build_3',['Build',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build',1,'Compiler &amp;amp; Build'],['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-1',1,'Compiler &amp;amp; Build']]],
-  ['build_20requirements_4',['Breaking Changes &amp;amp; Build Requirements',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#breaking-changes--build-requirements',1,'']]],
-  ['build_20run_5',['Development Build &amp;amp; Run',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_i_n_s_t_a_l_l.xhtml#development-build--run',1,'']]]
+  ['a_20vulnerability_0',['Reporting a Vulnerability',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_s_e_c_u_r_i_t_y.xhtml#reporting-a-vulnerability',1,'']]],
+  ['acknowledgement_1',['Third Party Acknowledgement',['../index.xhtml#third-party-acknowledgement',1,'']]],
+  ['added_2',['Added',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#added',1,'Added'],['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#added-1',1,'Added'],['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#added-2',1,'Added'],['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#added-3',1,'Added']]],
+  ['algebra_3',['François Carouge / Typed Linear Algebra',['../index.xhtml',1,'']]],
+  ['aliases_4',['Aliases',['../index.xhtml#aliases',1,'']]],
+  ['api_5',['Public API',['../index.xhtml#public-api',1,'']]],
+  ['as_20seen_20at_20cppnow_202026_6',['As seen at CppNow 2026',['../index.xhtml#as-seen-at-cppnow-2026',1,'']]],
+  ['at_20cppnow_202026_7',['As seen at CppNow 2026',['../index.xhtml#as-seen-at-cppnow-2026',1,'']]],
+  ['attribution_8',['Attribution',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution',1,'']]]
 ];

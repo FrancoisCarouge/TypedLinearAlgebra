@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['layers_0',['Layers',['../index.xhtml#layers',1,'']]],
-  ['learned_1',['Lessons Learned',['../index.xhtml#lessons-learned',1,'']]],
-  ['lessons_20learned_2',['Lessons Learned',['../index.xhtml#lessons-learned',1,'']]],
-  ['license_3',['License',['../index.xhtml#license',1,'']]],
-  ['linear_20algebra_4',['François Carouge / Typed Linear Algebra',['../index.xhtml',1,'']]],
-  ['linux_5',['Linux',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_i_n_s_t_a_l_l.xhtml#linux',1,'']]],
-  ['list_6',['List',['../test.xhtml',1,'Test List'],['../todo.xhtml',1,'Todo List']]],
-  ['literals_7',['Literals',['../index.xhtml#literals',1,'']]]
+  ['ideas_0',['Questions &amp;amp; Ideas',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#questions--ideas',1,'']]],
+  ['include_1',['Include',['../index.xhtml#include',1,'']]],
+  ['individuals_2',['Individuals',['../index.xhtml#individuals',1,'']]],
+  ['ins_3',['Plug-ins',['../index.xhtml#plug-ins',1,'']]],
+  ['installation_4',['Installation',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_i_n_s_t_a_l_l.xhtml',1,'']]],
+  ['installation_20packages_5',['Installation Packages',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_i_n_s_t_a_l_l.xhtml#installation-packages',1,'']]],
+  ['installation_20usage_6',['Installation &amp;amp; Usage',['../index.xhtml#installation--usage',1,'']]],
+  ['institutions_7',['Corporations &amp;amp; Institutions',['../index.xhtml#corporations--institutions',1,'']]]
 ];

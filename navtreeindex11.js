@@ -1,5 +1,11 @@
 var NAVTREEINDEX11 =
 {
+"structured__bindings_21x3_8cpp.xhtml":[16,0,6,35,2],
+"structured__bindings_21x3_8cpp_source.xhtml":[16,0,6,35,2],
+"structured__bindings_21x3__const_8cpp.xhtml":[16,0,6,35,3],
+"structured__bindings_21x3__const_8cpp_source.xhtml":[16,0,6,35,3],
+"structured__bindings_23x1_8cpp.xhtml":[16,0,6,35,4],
+"structured__bindings_23x1_8cpp_source.xhtml":[16,0,6,35,4],
 "structured__bindings_23x1__const_8cpp.xhtml":[16,0,6,35,5],
 "structured__bindings_23x1__const_8cpp_source.xhtml":[16,0,6,35,5],
 "structvertical__velocity.xhtml":[15,0,7],

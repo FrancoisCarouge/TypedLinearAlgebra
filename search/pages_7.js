@@ -1,6 +1,29 @@
 var searchData=
 [
-  ['declaration_0',['Declaration',['../index.xhtml#declaration',1,'']]],
-  ['dependencies_1',['Dependencies',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#dependencies',1,'Dependencies'],['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#dependencies-1',1,'Dependencies']]],
-  ['development_20build_20run_2',['Development Build &amp;amp; Run',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_i_n_s_t_a_l_l.xhtml#development-build--run',1,'']]]
+  ['call_20traces_0',['Run-Time Call Traces',['../call_trace.xhtml',1,'']]],
+  ['carouge_20typed_20linear_20algebra_1',['François Carouge / Typed Linear Algebra',['../index.xhtml',1,'']]],
+  ['cases_2',['Use Cases',['../index.xhtml#use-cases',1,'']]],
+  ['caster_3',['Structure Element Caster',['../index.xhtml#structure-element-caster',1,'']]],
+  ['changed_4',['Changed',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#changed',1,'Changed'],['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#changed-1',1,'Changed'],['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#changed-2',1,'Changed']]],
+  ['changelog_5',['Changelog',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml',1,'']]],
+  ['changes_20build_20requirements_6',['Breaking Changes &amp;amp; Build Requirements',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#breaking-changes--build-requirements',1,'']]],
+  ['checklist_7',['Pull Request Merge Checklist',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pull-request-merge-checklist',1,'']]],
+  ['class_20typed_20matrix_8',['Class Typed Matrix',['../index.xhtml#class-typed-matrix',1,'']]],
+  ['cmake_9',['CMake',['../index.xhtml#cmake',1,'']]],
+  ['code_20coverage_10',['Unit Test Code Coverage',['../unit_test_coverage.xhtml',1,'']]],
+  ['code_20of_20conduct_11',['Code of Conduct',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#code-of-conduct',1,'Code of Conduct'],['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml',1,'Contributor Covenant Code of Conduct']]],
+  ['commercial_20support_20consulting_12',['Commercial Support &amp;amp; Consulting',['../index.xhtml#commercial-support--consulting',1,'']]],
+  ['commit_20hooks_13',['Pre-commit Hooks',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pre-commit-hooks',1,'']]],
+  ['compile_20time_20traces_14',['Compile-Time Traces',['../time_trace.xhtml',1,'']]],
+  ['compiler_20build_15',['Compiler Build',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build',1,'Compiler &amp;amp; Build'],['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-1',1,'Compiler &amp;amp; Build'],['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-2',1,'Compiler &amp;amp; Build']]],
+  ['concepts_16',['Concepts',['../index.xhtml#concepts',1,'']]],
+  ['conduct_17',['Conduct',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#code-of-conduct',1,'Code of Conduct'],['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml',1,'Contributor Covenant Code of Conduct']]],
+  ['consulting_18',['Commercial Support &amp;amp; Consulting',['../index.xhtml#commercial-support--consulting',1,'']]],
+  ['contributing_20to_20typedlinearalgebra_19',['Contributing to TypedLinearAlgebra',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml',1,'']]],
+  ['contributor_20covenant_20code_20of_20conduct_20',['Contributor Covenant Code of Conduct',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml',1,'']]],
+  ['contributors_21',['Contributors',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_o_r_s.xhtml',1,'Contributors'],['../index.xhtml#contributors-1',1,'Contributors']]],
+  ['corporations_20institutions_22',['Corporations &amp;amp; Institutions',['../index.xhtml#corporations--institutions',1,'']]],
+  ['covenant_20code_20of_20conduct_23',['Contributor Covenant Code of Conduct',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml',1,'']]],
+  ['coverage_24',['Unit Test Code Coverage',['../unit_test_coverage.xhtml',1,'']]],
+  ['cppnow_202026_25',['As seen at CppNow 2026',['../index.xhtml#as-seen-at-cppnow-2026',1,'']]]
 ];

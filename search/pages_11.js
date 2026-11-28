@@ -1,4 +1,14 @@
 var searchData=
 [
-  ['questions_20ideas_0',['Questions &amp;amp; Ideas',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#questions--ideas',1,'']]]
+  ['packages_0',['Installation Packages',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_i_n_s_t_a_l_l.xhtml#installation-packages',1,'']]],
+  ['parameters_1',['Template Parameters',['../index.xhtml#template-parameters',1,'']]],
+  ['party_20acknowledgement_2',['Third Party Acknowledgement',['../index.xhtml#third-party-acknowledgement',1,'']]],
+  ['performance_3',['Performance',['../index.xhtml#performance',1,'']]],
+  ['pledge_4',['Our Pledge',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-pledge',1,'']]],
+  ['plug_20ins_5',['Plug-ins',['../index.xhtml#plug-ins',1,'']]],
+  ['policy_6',['Policy',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_s_e_c_u_r_i_t_y.xhtml',1,'Security Policy'],['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#security-policy',1,'Security Policy']]],
+  ['pre_20commit_20hooks_7',['Pre-commit Hooks',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pre-commit-hooks',1,'']]],
+  ['projects_8',['Projects',['../index.xhtml#projects',1,'']]],
+  ['public_20api_9',['Public API',['../index.xhtml#public-api',1,'']]],
+  ['pull_20request_20merge_20checklist_10',['Pull Request Merge Checklist',['../md__2home_2runner_2work_2_typed_linear_algebra_2_typed_linear_algebra_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pull-request-merge-checklist',1,'']]]
 ];
